@@ -21,30 +21,6 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "airbnb",
-      "airbnb/hooks",
-      "plugin:jest/recommended",
-      "plugin:jsx-a11y/recommended"
-    ],
-    "plugins": [
-      "jsx-a11y",
-      "jest"
-    ],
-    "env": {
-      "jest/globals": true,
-      "browser": true
-    },
-    "rules": {
-      "arrow-parens": ["error", "as-needed"],
-      "import/no-extraneous-dependencies": [
-        "error",
-        { "devDependencies": [".storybook/**", "stories/**", "**/*.stories.jsx"] }
-      ]
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",
