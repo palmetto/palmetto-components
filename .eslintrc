@@ -1,5 +1,13 @@
 {
-  "extends": ["airbnb", "airbnb/hooks", "plugin:jest/recommended"],
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:jest/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "plugins": [
+    "jsx-a11y"
+  ],
   "env": {
     "jest/globals": true,
     "browser": true

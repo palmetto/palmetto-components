@@ -12,16 +12,38 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "EXTEND_ESLINT=true react-scripts start",
+    "build": "EXTEND_ESLINT=true react-scripts build",
     "test": "react-scripts test",
-    "lint": "eslint . ",
+    "lint": "EXTEND_ESLINT=true eslint .",
+    "lint:fix": "EXTEND_ESLINT=true eslint . --fix",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "airbnb",
+      "airbnb/hooks",
+      "plugin:jest/recommended",
+      "plugin:jsx-a11y/recommended"
+    ],
+    "plugins": [
+      "jsx-a11y",
+      "jest"
+    ],
+    "env": {
+      "jest/globals": true,
+      "browser": true
+    },
+    "rules": {
+      "arrow-parens": ["error", "as-needed"],
+      "import/no-extraneous-dependencies": [
+        "error",
+        { "devDependencies": [".storybook/**", "stories/**", "**/*.stories.jsx"] }
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -42,7 +64,6 @@
     "@storybook/preset-create-react-app": "^3.0.0",
     "@storybook/react": "^5.3.19",
     "chromatic": "^4.0.3",
-    "eslint": "^7.1.0",
     "eslint-config-airbnb": "18.1.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.13.2",
