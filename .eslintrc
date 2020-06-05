@@ -1,20 +1,20 @@
-module.exports = {
-  extends: [
+{
+  "extends": [
     "react-app",
     "airbnb",
     "airbnb/hooks",
     "plugin:jest/recommended",
     "plugin:jsx-a11y/recommended"
   ],
-  plugins: [
+  "plugins": [
     "jsx-a11y",
     "jest"
   ],
-  env: {
+  "env": {
     "jest/globals": true,
     "browser": true
   },
-  rules: {
+  "rules": {
     "arrow-parens": ["error", "as-needed"],
     "import/no-extraneous-dependencies": [
       "error",

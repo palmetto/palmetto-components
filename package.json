@@ -12,8 +12,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "EXTEND_ESLINT=true react-scripts start",
-    "build": "EXTEND_ESLINT=true react-scripts build",
+    "start": "EXTEND_ESLINT=true react-app-rewired start",
+    "build": "EXTEND_ESLINT=true react-app-rewired build",
     "test": "react-scripts test",
     "lint": "EXTEND_ESLINT=true eslint .",
     "lint:fix": "EXTEND_ESLINT=true eslint . --fix",
@@ -45,6 +45,10 @@
     "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "2.5.0"
+    "eslint-plugin-react-hooks": "2.5.0",
+    "react-app-rewired": "^2.1.6",
+    "stylelint": "^13.6.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-webpack-plugin": "^2.0.0"
   }
 }
