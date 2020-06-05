@@ -7,7 +7,7 @@ module.exports = {
         new StylelintPlugin({
           configFile: '.stylelintrc',
           context: 'src',
-          files: '**/*.css',
+          files: '**/*.scss',
           failOnError: false,
           quiet: false,
           emitErrors: true
