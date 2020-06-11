@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        yarn && yarn storybook
+        yarn
     - uses: chromaui/action@v1
       with:
         fetch-depth: 0 # Required to retrieve git history
