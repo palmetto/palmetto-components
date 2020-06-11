@@ -1,4 +1,4 @@
-# pneuma-react
+# Palmetto Components
 A React component library to power all Palmetto UI.
 
 ## Available Scripts
