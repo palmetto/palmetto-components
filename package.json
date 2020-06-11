@@ -21,7 +21,8 @@
     "lint:fix": "EXTEND_ESLINT=true eslint . --fix",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "chromatic": "chromatic --project-token=x8ffq4qv9tq"
   },
   "browserslist": {
     "production": [
