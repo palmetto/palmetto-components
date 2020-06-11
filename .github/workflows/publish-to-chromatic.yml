@@ -1,0 +1,18 @@
+name: "Chromatic"
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        yarn && yarn storybook
+    - uses: chromaui/action@v1
+      with:
+        fetch-depth: 0 # Required to retrieve git history
+        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
