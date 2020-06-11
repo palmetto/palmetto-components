@@ -1,9 +1,10 @@
 import React from 'react';
 import palmettoColors from '@palmetto/palmetto-design-tokens/build/js/colors.js';
 import '../../main.scss';
+import './colors.scss';
 // import { action } from '@storybook/addon-actions';
 
-const [baseColors, brandColors] = Object.values(palmettoColors.color); // eslint-disable-line no-unused-vars
+const [baseColors, brandColors] = Object.values(palmettoColors.color);
 
 export default {
   title: 'Colors'
@@ -11,19 +12,38 @@ export default {
 
 const renderColorBlock = (colorEntry) => {
   const [colorName, colorVariations] = colorEntry;
-  const divStyle = {
-    padding: '1rem',
-    backgroundColor: `${colorVariations['base'].value}`,
-    color: 'white',
-    width: '100px',
-    marginRight: '1rem',
-    marginBottom: '1rem',
-    borderRadius: '6px',
-  };
+
   return (
-    <div style={divStyle}>
+    <div className="colors__color-block__item" style={{ backgroundColor: `${colorVariations['base'].value}` }}>
       <h3>{colorName}</h3>
       <p>{colorVariations['base'].value}</p>
+    </div>
+  );
+};
+
+const renderColorPalette = (colorEntry, index) => {
+  const [colorName, colorVariations] = colorEntry;
+
+  const getFontColor = (colorVariation) => {
+    return colorVariation?.attributes?.font === 'base' ? 'black' : 'white';
+  }
+
+  return (
+    <div key={index}>
+      <h3 style={{ marginTop: '0' }}>{colorName}</h3>
+      {Object.entries(colorVariations).map((colorVariationEntry, index) => {
+        const [colorVariationName, colorVariation] = colorVariationEntry;
+        return (
+          <div
+            key={index}
+            className="colors__color-palette__item"
+            style={{ backgroundColor: `${colorVariation.value}`, color: `${getFontColor(colorVariation)}`}}
+          >
+            <small style={{ display: 'block' }}>{colorVariationName}</small>
+            <small>{colorVariation.value}</small>
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -35,6 +55,20 @@ export const brand = () => (
       {Object.entries(brandColors).map(renderColorBlock)}
     </div>
     <h1>Extended Brand Palette</h1>
-    {/* PLACEHOLDER */}
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      {Object.entries(brandColors).map(renderColorPalette)}
+    </div>
+  </div>
+);
+
+export const base = () => (
+  <div style={{ padding: '1rem' }}>
+    <h1>Base Color Palette</h1>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      {Object.entries(baseColors)
+        .filter(colorEntry => colorEntry[0] !== 'white' && colorEntry[0] !== 'black') /* Filtering out black and white at the moment */
+        .map(renderColorPalette)
+      }
+    </div>
   </div>
 );
