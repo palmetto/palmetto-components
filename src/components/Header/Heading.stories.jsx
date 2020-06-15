@@ -1,17 +1,55 @@
-import React from 'react';
-import Heading from './Heading.jsx';
+import React from "react";
+import Heading from "./Heading.jsx";
 
 export default {
-  title: 'Heading',
+  title: "Heading",
   component: Heading,
 };
 
-export const all = () => (
-  <div style={{ padding: '1rem' }}>
-    <Heading as="h1" size="3xl">Heading 1</Heading>
-    <Heading as="h2" size="2xl">Heading 2</Heading>
-    <Heading as="h3" size="xl">Heading 3</Heading>
-    <Heading as="h4" size="lg">Heading 4</Heading>
-    <Heading as="h5" size="md">Heading 5</Heading>
+export const AllSizes = () => (
+  <div style={{ padding: "1rem" }}>
+    <Heading size="5xl">Size 5xl</Heading>
+    <Heading size="4xl">Size 4xl</Heading>
+    <Heading size="3xl">Size 3xl</Heading>
+    <Heading size="2xl">Size 2xl</Heading>
+    <Heading size="xl">Size xl</Heading>
+    <Heading size="lg">Size lg</Heading>
+    <Heading size="md">Size md</Heading>
+    <Heading size="sm">Size sm</Heading>
+    <Heading size="xs">Size xs</Heading>
+  </div>
+);
+
+export const DefaultSizes = () => (
+  <div style={{ padding: "1rem" }}>
+    <Heading as="h1">H1 Heading Default Size</Heading>
+    <Heading as="h2">H2 Heading Default Size</Heading>
+    <Heading as="h3">H3 Heading Default Size</Heading>
+    <Heading as="h4">H4 Heading Default Size</Heading>
+    <Heading as="h5">H5 Heading Default Size</Heading>
+    <Heading as="h6">H6 Heading Default Size</Heading>
+  </div>
+);
+
+export const OverrideDefaultSize = () => (
+  <div style={{ padding: "1rem" }}>
+    <Heading as="h1" size="xs">
+      H1 Heading with xs Size
+    </Heading>
+    <Heading as="h2" size="sm">
+      H2 Heading with sm Size
+    </Heading>
+    <Heading as="h3" size="md">
+      H3 Heading with md Size
+    </Heading>
+    <Heading as="h4" size="lg">
+      H4 Heading with lg Size
+    </Heading>
+    <Heading as="h5" size="xl">
+      H5 Heading with xl Size
+    </Heading>
+    <Heading as="h6" size="2xl">
+      H6 Heading with 2xl Size
+    </Heading>
   </div>
 );
