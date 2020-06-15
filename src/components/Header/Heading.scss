@@ -1,0 +1,14 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/sizes.scss';
+
+.heading {
+  line-height: 1; // @TODO -- figure out specific line-heights for each heading.
+
+  &.heading--5xl { font-size: $size-font-5-xl; }
+  &.heading--4xl { font-size: $size-font-4-xl; }
+  &.heading--3xl { font-size: $size-font-3-xl; }
+  &.heading--2xl { font-size: $size-font-2-xl; }
+  &.heading--xl { font-size: $size-font-xl; }
+  &.heading--lg { font-size: $size-font-lg; }
+  &.heading--md { font-size: $size-font-md; }
+  &.heading--sm { font-size: $size-font-sm; }
+}

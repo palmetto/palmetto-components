@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header.jsx';
+import Heading from './Heading.jsx';
 // import palmettoColors from '@palmetto/palmetto-design-tokens/build/js/colors.js';
 // import '../../main.scss';
 // import './colors.scss';
@@ -8,8 +8,8 @@ import Header from './Header.jsx';
 // const [baseColors, brandColors] = Object.values(palmettoColors.color);
 
 export default {
-  title: 'Header',
-  component: Header,
+  title: 'Heading',
+  component: Heading,
 };
 
 // const renderColorBlock = (colorEntry) => {
@@ -52,6 +52,6 @@ export default {
 
 export const all = () => (
   <div style={{ padding: '1rem' }}>
-    <Header>Hello World!</Header>
+    <Heading as="h1" size="2xl">Heading 1</Heading>
   </div>
 );
