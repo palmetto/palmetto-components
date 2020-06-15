@@ -7,7 +7,7 @@ export default {
 };
 
 export const AllSizes = () => (
-  <div style={{ padding: "1rem" }}>
+  <>
     <Heading size="5xl">Size 5xl</Heading>
     <Heading size="4xl">Size 4xl</Heading>
     <Heading size="3xl">Size 3xl</Heading>
@@ -17,22 +17,22 @@ export const AllSizes = () => (
     <Heading size="md">Size md</Heading>
     <Heading size="sm">Size sm</Heading>
     <Heading size="xs">Size xs</Heading>
-  </div>
+  </>
 );
 
 export const DefaultSizes = () => (
-  <div style={{ padding: "1rem" }}>
+  <>
     <Heading as="h1">H1 Heading Default Size</Heading>
     <Heading as="h2">H2 Heading Default Size</Heading>
     <Heading as="h3">H3 Heading Default Size</Heading>
     <Heading as="h4">H4 Heading Default Size</Heading>
     <Heading as="h5">H5 Heading Default Size</Heading>
     <Heading as="h6">H6 Heading Default Size</Heading>
-  </div>
+  </>
 );
 
 export const OverrideDefaultSize = () => (
-  <div style={{ padding: "1rem" }}>
+  <>
     <Heading as="h1" size="xs">
       H1 Heading with xs Size
     </Heading>
@@ -51,5 +51,5 @@ export const OverrideDefaultSize = () => (
     <Heading as="h6" size="2xl">
       H6 Heading with 2xl Size
     </Heading>
-  </div>
+  </>
 );
