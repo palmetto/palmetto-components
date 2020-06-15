@@ -30,4 +30,8 @@ Heading.propTypes = {
   children: PropTypes.node,
 }
 
+Heading.defaultProps = {
+  as: 'h4',
+}
+
 export default Heading;
