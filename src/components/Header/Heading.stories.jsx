@@ -56,3 +56,32 @@ export const OverrideDefaultSize = () => (
     </Heading>
   </>
 );
+
+export const Colors = () => (
+  <>
+    <Heading color='primary'>
+      Primary
+    </Heading>
+    <Heading color='secondary'>
+      Secondary
+    </Heading>
+    <Heading color='tertiary'>
+      Tertiary
+    </Heading>
+    <Heading color='success'>
+      Success
+    </Heading>
+    <Heading color='warning'>
+      Warning
+    </Heading>
+    <Heading color='danger'>
+      Danger
+    </Heading>
+    <Heading color='info'>
+      Info
+    </Heading>
+    <Heading color='grey'>
+      Grey
+    </Heading>
+  </>
+);

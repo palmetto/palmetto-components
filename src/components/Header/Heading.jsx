@@ -10,12 +10,13 @@ import './Heading.scss';
  * The `Heading` component allows you to specify an appropriate semantic element (h1-h6) and independently set its size so that it is appropriate for the surrounding content. If no size is specified, a default size will be applied.
  */
 const Heading = (props) => {
-  const { className, children, size } = props;
+  const { className, children, size, color } = props;
 
   const Element = getElementType(Heading, props);
 
   const classes = classNames(className, 'heading', {
     [`heading--${size}`]: size,
+    [`heading--${color}`]: color,
   });
 
   return <Element className={classes}>{children}</Element>;
@@ -25,6 +26,7 @@ Heading.propTypes = {
   as: PropTypes.elementType,
   className: PropTypes.string,
   children: PropTypes.node,
+  color: PropTypes.string,
 };
 
 Heading.defaultProps = {
