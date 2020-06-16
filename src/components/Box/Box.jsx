@@ -4,9 +4,8 @@ import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import BorderType from '../../types';
 /**
- * Use `Headings` as labels for pages or sections of a page that make up an interface. `Headings` can label an entire page, or sections of related content.
- *
- * The `Heading` component allows you to specify an appropriate semantic element (h1-h6) and independently set its size so that it is appropriate for the surrounding content. If no size is specified, a default size will be applied.
+ * A `<Box>` is a layout component to build UIs with consistent padding and spacing between
+ * elements.
  */
 function Box(props) {
   const {
@@ -22,6 +21,7 @@ function Box(props) {
     childGap,
     children,
     flex,
+    fontSize,
     height,
     justify,
     margin,
@@ -119,6 +119,10 @@ Box.propTypes = {
       shrink: PropTypes.number,
     }),
   ]),
+  /**
+   * The font size for the Box contents
+   */
+  fontSize: PropTypes.string, // need to define based on design tokens
   /**
    * The height of the element
    */
