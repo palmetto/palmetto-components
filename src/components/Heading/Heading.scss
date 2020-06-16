@@ -1,4 +1,5 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/sizes.scss';
+@import '~@palmetto/palmetto-design-tokens/build/scss/colors.scss';
 
 .heading {
   line-height: 1; // @TODO -- figure out specific line-heights for each heading.
@@ -12,4 +13,13 @@
   &.heading--md { font-size: $size-font-md; }
   &.heading--sm { font-size: $size-font-sm; }
   &.heading--xs { font-size: $size-font-xs; }
+
+  &.heading--primary { color: $color-brand-primary-base; }
+  &.heading--secondary { color: $color-brand-secondary-base; }
+  &.heading--tertiary { color: $color-brand-tertiary-base; }
+  &.heading--success { color: $color-brand-success-base; }
+  &.heading--warning { color: $color-brand-warning-base; }
+  &.heading--danger { color: $color-brand-danger-base; }
+  &.heading--info { color: $color-brand-info-base; }
+  &.heading--grey { color: $color-brand-grey-base; }
 }
