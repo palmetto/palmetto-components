@@ -23,8 +23,8 @@ const Heading = (props) => {
   const Element = getElementType(Heading, props);
 
   const classes = classNames(className, 'heading', {
-    [`heading--${size}`]: size,
-    [`heading--${color}`]: color,
+    [`fs--${size}`]: size,
+    [`${color}`]: color,
   });
 
   return <Element className={classes}>{children}</Element>;

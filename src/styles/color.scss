@@ -1,0 +1,33 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/colors.scss';
+
+.primary {
+  color: $color-brand-primary-base;
+}
+
+.secondary {
+  color: $color-brand-secondary-base;
+}
+
+.tertiary {
+  color: $color-brand-tertiary-base;
+}
+
+.success {
+  color: $color-brand-success-base;
+}
+
+.warning {
+  color: $color-brand-warning-base;
+}
+
+.danger {
+  color: $color-brand-danger-base;
+}
+
+.info {
+  color: $color-brand-info-base;
+}
+
+.grey {
+  color: $color-brand-grey-base;
+}

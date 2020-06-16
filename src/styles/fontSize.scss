@@ -1,0 +1,40 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/sizes.scss';
+
+.fs--5xl {
+  font-size: $size-font-5-xl;
+  letter-spacing: -0.025em;
+}
+
+.fs--4xl {
+  font-size: $size-font-4-xl;
+  letter-spacing: -0.025em;
+}
+
+.fs--3xl {
+  font-size: $size-font-3-xl;
+  letter-spacing: -0.025em;
+}
+
+.fs--2xl {
+  font-size: $size-font-2-xl;
+}
+
+.fs--xl {
+  font-size: $size-font-xl;
+}
+
+.fs--lg {
+  font-size: $size-font-lg;
+}
+
+.fs--md {
+  font-size: $size-font-md;
+}
+
+.fs--sm {
+  font-size: $size-font-sm;
+}
+
+.fs--xs {
+  font-size: $size-font-xs;
+}
