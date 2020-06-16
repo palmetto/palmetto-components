@@ -2,7 +2,7 @@ import React from 'react';
 import Heading from './Heading';
 
 export default {
-  title: 'Heading',
+  title: 'Components/Heading',
   parameters: {
     componentSubtitle: 'For page and section headings',
   },
