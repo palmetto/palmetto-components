@@ -8,30 +8,30 @@
  * @returns {string|function} A ReactElement type
  */
 function getElementType(Component, props, getDefault) {
-  const { defaultProps = {} } = Component
+  const { defaultProps = {} } = Component;
 
   // ----------------------------------------
   // user defined "as" element type
 
-  if (props.as && props.as !== defaultProps.as) return props.as
+  if (props.as && props.as !== defaultProps.as) return props.as;
 
   // ----------------------------------------
   // computed default element type
 
   if (getDefault) {
-    const computedDefault = getDefault()
-    if (computedDefault) return computedDefault
+    const computedDefault = getDefault();
+    if (computedDefault) return computedDefault;
   }
 
   // ----------------------------------------
   // infer anchor links
 
-  if (props.href) return 'a'
+  if (props.href) return 'a';
 
   // ----------------------------------------
   // use defaultProp or 'div'
 
-  return defaultProps.as || 'div'
+  return defaultProps.as || 'div';
 }
 
-export default getElementType
+export default getElementType;
