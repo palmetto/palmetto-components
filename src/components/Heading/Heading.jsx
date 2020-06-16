@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { size } from '@palmetto/palmetto-design-tokens/build/js/sizes';
-import { color } from '@palmetto/palmetto-design-tokens/build/js/colors';
+import { size } from '@palmetto/palmetto-design-tokens/build/js/variables-size';
+import { color } from '@palmetto/palmetto-design-tokens/build/js/variables-color';
 import getElementType from '../../lib/getElementType';
 import './Heading.scss';
-import { HEADER_LEVELS } from './Heading.constants';
+import { HEADING_LEVELS } from './Heading.constants';
 
 const PALMETTO_FONT_SIZES = Object.keys(size.font);
 const PALMETTO_BRAND_COLORS = Object.keys(color.brand);
@@ -31,7 +31,7 @@ const Heading = (props) => {
 };
 
 Heading.propTypes = {
-  as: PropTypes.oneOf(HEADER_LEVELS),
+  as: PropTypes.oneOf(HEADING_LEVELS),
   className: PropTypes.string,
   children: PropTypes.node,
   color: PropTypes.oneOf(PALMETTO_BRAND_COLORS),

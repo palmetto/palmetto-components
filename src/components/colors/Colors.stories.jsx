@@ -1,5 +1,5 @@
 import React from 'react';
-import palmettoColors from '@palmetto/palmetto-design-tokens/build/js/colors.js';
+import palmettoColors from '@palmetto/palmetto-design-tokens/build/js/variables-color.js';
 import '../../main.scss';
 import './colors.scss';
 // import { action } from '@storybook/addon-actions';
