@@ -1,11 +1,11 @@
 import React from 'react';
-import Heading from './Heading';
 import { size } from '@palmetto/palmetto-design-tokens/build/js/sizes';
 import { color } from '@palmetto/palmetto-design-tokens/build/js/colors';
+import Heading from './Heading';
+import { HEADER_LEVELS } from './Heading.constants';
 
 const PALMETTO_FONT_SIZES = Object.keys(size.font);
 const PALMETTO_BRAND_COLORS = Object.keys(color.brand);
-const HEADER_LEVELS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 export default {
   title: 'Heading',

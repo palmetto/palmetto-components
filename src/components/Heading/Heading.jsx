@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { size } from '@palmetto/palmetto-design-tokens/build/js/sizes';
+import { color } from '@palmetto/palmetto-design-tokens/build/js/colors';
 import getElementType from '../../lib/getElementType';
 import './Heading.scss';
+import { HEADER_LEVELS } from './Heading.constants';
+
+const PALMETTO_FONT_SIZES = Object.keys(size.font);
+const PALMETTO_BRAND_COLORS = Object.keys(color.brand);
 
 /**
  * Use `Headings` as labels for pages or sections of a page that make up an interface. `Headings` can label an entire page, or sections of related content.
@@ -23,10 +29,11 @@ const Heading = (props) => {
 };
 
 Heading.propTypes = {
-  as: PropTypes.elementType,
+  as: PropTypes.oneOf(HEADER_LEVELS),
   className: PropTypes.string,
   children: PropTypes.node,
-  color: PropTypes.string,
+  color: PropTypes.oneOf(PALMETTO_BRAND_COLORS),
+  size: PropTypes.oneOf(PALMETTO_FONT_SIZES),
 };
 
 Heading.defaultProps = {
