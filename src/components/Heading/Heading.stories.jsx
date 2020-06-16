@@ -1,5 +1,11 @@
 import React from 'react';
 import Heading from './Heading';
+import { size } from '@palmetto/palmetto-design-tokens/build/js/sizes';
+import { color } from '@palmetto/palmetto-design-tokens/build/js/colors';
+
+const PALMETTO_FONT_SIZES = Object.keys(size.font);
+const PALMETTO_BRAND_COLORS = Object.keys(color.brand);
+const HEADER_LEVELS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 export default {
   title: 'Heading',
@@ -11,77 +17,40 @@ export default {
 
 export const AllHeadings = () => (
   <>
-    <Heading as='h1'>H1 Heading Default Size</Heading>
-    <Heading as='h2'>H2 Heading Default Size</Heading>
-    <Heading as='h3'>H3 Heading Default Size</Heading>
-    <Heading as='h4'>H4 Heading Default Size</Heading>
-    <Heading as='h5'>H5 Heading Default Size</Heading>
-    <Heading as='h6'>H6 Heading Default Size</Heading>
+    {HEADER_LEVELS.map((level, index) => (
+      <Heading as={level} key={index}>
+        {level} Heading Default Size
+      </Heading>
+    ))}
   </>
 );
 
 export const Sizes = () => (
   <>
-    <Heading size='5xl'>Size 5xl</Heading>
-    <Heading size='4xl'>Size 4xl</Heading>
-    <Heading size='3xl'>Size 3xl</Heading>
-    <Heading size='2xl'>Size 2xl</Heading>
-    <Heading size='xl'>Size xl</Heading>
-    <Heading size='lg'>Size lg</Heading>
-    <Heading size='md'>Size md</Heading>
-    <Heading size='sm'>Size sm</Heading>
-    <Heading size='xs'>Size xs</Heading>
+    {[...PALMETTO_FONT_SIZES].reverse().map((fontSize, index) => (
+      <Heading size={fontSize} key={index}>
+        Size {fontSize}
+      </Heading>
+    ))}
   </>
 );
 
 export const OverrideDefaultSize = () => (
   <>
-    <Heading as='h1' size='xs'>
-      H1 Heading with xs Size
-    </Heading>
-    <Heading as='h2' size='sm'>
-      H2 Heading with sm Size
-    </Heading>
-    <Heading as='h3' size='md'>
-      H3 Heading with md Size
-    </Heading>
-    <Heading as='h4' size='lg'>
-      H4 Heading with lg Size
-    </Heading>
-    <Heading as='h5' size='xl'>
-      H5 Heading with xl Size
-    </Heading>
-    <Heading as='h6' size='2xl'>
-      H6 Heading with 2xl Size
-    </Heading>
+    {HEADER_LEVELS.map((level, index) => (
+      <Heading as={level} size={PALMETTO_FONT_SIZES[index]} key={index}>
+        {level} Heading with {PALMETTO_FONT_SIZES[index]} size
+      </Heading>
+    ))}
   </>
 );
 
 export const Colors = () => (
   <>
-    <Heading color='primary'>
-      Primary
-    </Heading>
-    <Heading color='secondary'>
-      Secondary
-    </Heading>
-    <Heading color='tertiary'>
-      Tertiary
-    </Heading>
-    <Heading color='success'>
-      Success
-    </Heading>
-    <Heading color='warning'>
-      Warning
-    </Heading>
-    <Heading color='danger'>
-      Danger
-    </Heading>
-    <Heading color='info'>
-      Info
-    </Heading>
-    <Heading color='grey'>
-      Grey
-    </Heading>
+    {PALMETTO_BRAND_COLORS.map((color, index) => (
+      <Heading color={color} key={index}>
+        {color} heading
+      </Heading>
+    ))}
   </>
 );
