@@ -1812,9 +1812,9 @@
     fastq "^1.6.0"
 
 "@palmetto/palmetto-design-tokens@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.1.5.tgz#aa5fba5284c0fbdef6db07b4d84b3e120e90afd6"
-  integrity sha512-S64vIRsLokHEGX9aUHM0MarxVdtoL6bDb9TqBLbPvCvbiOsbxL1biQZbXi+73vV5yuIiXsSTlRfAjgUGkdPpZg==
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.1.6.tgz#c2ba6fb3be407c6a1b32edff0792f6abfb778f9a"
+  integrity sha512-THnGMKkBuWLZcxngxTXnVrmovI9TwrU95Ppi8QO9ZVL8VOsJVgKpJOhn1GVkG1m4s81YOdDRbbSt1C5Ud/O6KQ==
 
 "@reach/router@^1.2.1":
   version "1.3.3"
