@@ -1811,7 +1811,7 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@palmetto/palmetto-design-tokens@^0.1.5":
+"@palmetto/palmetto-design-tokens@^0.1.6":
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.1.6.tgz#c2ba6fb3be407c6a1b32edff0792f6abfb778f9a"
   integrity sha512-THnGMKkBuWLZcxngxTXnVrmovI9TwrU95Ppi8QO9ZVL8VOsJVgKpJOhn1GVkG1m4s81YOdDRbbSt1C5Ud/O6KQ==
