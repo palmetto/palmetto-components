@@ -20,13 +20,8 @@ console.log(PALMETTO_BRAND_COLORS);
  * and independently set its size so that it is appropriate for the surrounding content.
  * If no size is specified, a default size will be applied.
  */
-const Heading = props => {
-  const {
-    className,
-    children,
-    size,
-    color,
-  } = props;
+const Heading = (props) => {
+  const { className, children, size, color } = props;
 
   const Element = getElementType(Heading, props);
 
@@ -39,10 +34,27 @@ const Heading = props => {
 };
 
 Heading.propTypes = {
+  /**
+   * The DOM tag or react component to use for the element.
+   * Select the appropriate semantic element (h1-h6).
+   */
   as: PropTypes.oneOf(HEADING_LEVELS), // eslint-disable-line react/no-unused-prop-types
+  /**
+   * Additional class names to add
+   */
   className: PropTypes.string,
+  /**
+   * Heading contents
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * A color token identifier to use for the text color.
+   */
   color: PropTypes.oneOf(PALMETTO_BRAND_COLORS),
+  /**
+   * By default, size is determined by the chosen tag (e.g. h1 is bigger than h2).
+   * However, size can be set independently so that its size is appropriate for the surrounding content.
+   */
   size: PropTypes.oneOf(PALMETTO_FONT_SIZES),
 };
 
