@@ -1,5 +1,5 @@
 import React from 'react';
-import palmettoColors from '@palmetto/palmetto-design-tokens/build/js/colors.js';
+import palmettoColors from '@palmetto/palmetto-design-tokens/build/js/variables-color.js';
 import '../../main.scss';
 import './colors.scss';
 // import { action } from '@storybook/addon-actions';
@@ -49,7 +49,7 @@ const renderColorPalette = (colorEntry, index) => {
 };
 
 export const brand = () => (
-  <div style={{ padding: '1rem' }}>
+  <>
     <h1>Brand Colors</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(brandColors).map(renderColorBlock)}
@@ -58,11 +58,11 @@ export const brand = () => (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(brandColors).map(renderColorPalette)}
     </div>
-  </div>
+  </>
 );
 
 export const base = () => (
-  <div style={{ padding: '1rem' }}>
+  <>
     <h1>Base Color Palette</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(baseColors)
@@ -70,5 +70,5 @@ export const base = () => (
         .map(renderColorPalette)
       }
     </div>
-  </div>
+  </>
 );
