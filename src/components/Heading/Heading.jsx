@@ -10,6 +10,8 @@ import { HEADING_LEVELS } from './Heading.constants';
 const PALMETTO_FONT_SIZES = Object.keys(palmettoSizes.font);
 const PALMETTO_BRAND_COLORS = Object.keys(palmettoColors.brand);
 
+console.log(PALMETTO_BRAND_COLORS);
+
 /**
  * Use `Headings` as labels for pages or sections of a page that make up an interface.
  * `Headings` can label an entire page, or sections of related content.
@@ -47,8 +49,8 @@ Heading.propTypes = {
 Heading.defaultProps = {
   as: 'h4',
   className: '',
-  color: '',
-  size: '',
+  color: 'dark',
+  size: 'lg',
 };
 
 export default Heading;
