@@ -1,5 +1,5 @@
 import React from 'react';
-import uuid from 'uuid/v4'
+import { v4 as uuid } from 'uuid';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { size as palmettoSizes } from '@palmetto/palmetto-design-tokens/build/js/variables-size';

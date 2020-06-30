@@ -1,0 +1,24 @@
+/* @TODO -- replace with variables or use global utility classes */
+.input {
+  height: 40px;
+  border: 1px solid #BEC9C4;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 16px;
+  color: #555555;
+
+  &::placeholder {
+    opacity: 1; /* Override lower placeholder opacity in Firefox */
+    color: lighten(#555555, 30%);
+  }
+}
+
+.label {
+  font-size: 14px;
+  color: #555555;
+  display: block;
+  font-weight: 700;
+  margin-bottom: .75rem;
+}
