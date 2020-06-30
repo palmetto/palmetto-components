@@ -1,26 +1,27 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import uuid from 'uuid/v4'
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { size as palmettoSizes } from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 import { color as palmettoColors } from '@palmetto/palmetto-design-tokens/build/js/variables-color';
 import { HEADING_LEVELS } from './Heading.constants';
+import Heading from './Heading';
 
 const PALMETTO_FONT_SIZES = Object.keys(palmettoSizes.font);
 const PALMETTO_BRAND_COLORS = Object.keys(palmettoColors.brand);
 
-import Heading from './Heading';
 
 const headingComponentLevels = (
-  HEADING_LEVELS.map((level, index) => (
-    <Heading as={level} key={index}>
+  HEADING_LEVELS.map((level) => (
+    <Heading as={level} key={uuid()}>
       {level} Heading Default Size
     </Heading>
   ))
 );
 
 const headingComponentSizes = (
-  PALMETTO_FONT_SIZES.map((fontSize, index) => (
-    <Heading size={fontSize} key={index}>
+  PALMETTO_FONT_SIZES.map((fontSize) => (
+    <Heading size={fontSize} key={uuid()}>
       Size {fontSize}
     </Heading>
   ))
@@ -28,7 +29,7 @@ const headingComponentSizes = (
 
 const headingComponentSizeOverrides = (
   HEADING_LEVELS.map((level, index) => (
-    <Heading as={level} size={PALMETTO_FONT_SIZES[index]} key={index}>
+    <Heading as={level} size={PALMETTO_FONT_SIZES[index]} key={uuid()}>
       {level} Heading with {PALMETTO_FONT_SIZES[index]} size
     </Heading>
   ))
@@ -36,7 +37,7 @@ const headingComponentSizeOverrides = (
 
 const headingComponentColors = (
   PALMETTO_BRAND_COLORS.map((color, index) => (
-    <Heading color={color} key={index}>
+    <Heading color={color} key={uuid()}>
       {color} heading
     </Heading>
   ))
