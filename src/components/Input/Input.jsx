@@ -59,7 +59,9 @@ const Input = (props) => {
     if (!label) return;
 
     return (
-      <label className="label" htmlFor={inputId}>{label}</label>
+      <label className="label" htmlFor={inputId}>
+        {label}<span className="font-color-danger font-size-sm">&nbsp;*</span>
+      </label>
     );
   }
 
@@ -85,11 +87,15 @@ Input.propTypes = {
   /**
    * The input's id attribute. We will use this to programmatically tie the input with its label.
    */
-  id: PropTypes.bool,
+  id: PropTypes.string,
   /**
    * The input's disabled attribute
    */
   isDisabled: PropTypes.bool,
+  /**
+   * Determines if input is required or not. (Label will have an asterisk if required)
+   */
+  isRequired: PropTypes.bool,
   /**
    * Value for HTML <label> tag
    */
@@ -124,6 +130,7 @@ Input.defaultProps = {
   className: '',
   id: undefined,
   isDisabled: false,
+  isRequired: false,
   label: undefined,
   onBlur: undefined,
   onFocus: undefined,

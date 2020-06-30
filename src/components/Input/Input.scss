@@ -1,24 +1,28 @@
 /* @TODO -- replace with variables or use global utility classes */
 .input {
   height: 40px;
-  border: 1px solid #BEC9C4;
+  border: 1px solid $color-font-grey-lighter;
   box-sizing: border-box;
   box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
-  padding: 0 12px;
-  font-size: 16px;
-  color: #555555;
+  padding: 0 $size-spacing-sm;
+  font-size: $size-font-base;
+  color: $color-font-base;
 
   &::placeholder {
     opacity: 1; /* Override lower placeholder opacity in Firefox */
-    color: lighten(#555555, 30%);
+    color: $color-font-grey-light;
+  }
+
+  &:disabled {
+    color: $color-font-grey-light;
   }
 }
 
 .label {
-  font-size: 14px;
-  color: #555555;
+  font-size: $size-font-sm;
+  color: $color-font-base;
   display: block;
   font-weight: 700;
-  margin-bottom: .75rem;
+  margin-bottom: $size-spacing-sm;
 }
