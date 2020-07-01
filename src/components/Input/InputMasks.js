@@ -5,5 +5,5 @@ export const phone = {
 };
 
 export const creditCard = {
-  creditCard: true
+  creditCard: true,
 };
