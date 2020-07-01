@@ -109,7 +109,9 @@ Input.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * An options object to mask the input appearance. See https://github.com/nosir/cleave.js for options.
+   * Pass a value to apply a mask to the input value. 
+   * Can be one of the existing present strings, or a custom object with options
+   * For options object formats See https://github.com/nosir/cleave.js
    */
   inputMask: PropTypes.oneOfType([
     PropTypes.oneOf(['phone', 'creditCard']),
