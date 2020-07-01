@@ -2,84 +2,108 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { v4 as uuid } from 'uuid';
+import Cleave from 'cleave.js/react';
+import * as InputMasks from './InputMasks';
 import './Input.scss';
 
-const Input = (props) => {
-  const {
-    className,
-    id,
-    isDisabled,
-    label,
-    onBlur,
-    onChange,
-    onFocus,
-    placeholder,
-    type,
-    value,
-  } = props;
+const Input = ({
+  autoComplete,
+  autoFocus,
+  className,
+  id,
+  inputMask,
+  isDisabled,
+  isRequired,
+  label,
+  name,
+  onBlur,
+  onChange,
+  onFocus,
+  placeholder,
+  type,
+  value,
+}) => {
 
-  const handleChange = (event) => {
-    onChange(event);
-  }
+  const handleChange = (e) => {
+    onChange(e);
+  };
 
-  const handleFocus = (event) => {
-    if (onFocus) onFocus(event);
-  }
+  const handleFocus = (e) => {
+    if (onFocus) onFocus(e);
+    e.currentTarget.select();
+  };
 
-  const handleBlur = (event) => {
-    if (onBlur) onBlur(event);
-  }
+  const handleBlur = (e) => {
+    if (onBlur) onBlur(e);
+  };
 
-  const classes = classNames(
+  const inputClasses = classNames(
     className,
     'input',
-    // { @TODO Placeholder until size/color props are added.
-    //   [`font-size-${size}`]: size,
-    //   [`font-color-${color}`]: color,
-    // }
+    {
+      // [`font-size-${size}`]: size,
+      // [`font-color-${color}`]: color,
+    }
   );
 
   const inputId = id || uuid();
 
-  const renderInput = () => (
-    <input
-      className={classes}
-      disabled={isDisabled}
-      id={inputId}
-      onBlur={handleBlur}
-      onChange={handleChange}
-      onFocus={handleFocus}
-      placeholder={placeholder}
-      type={type}
-      value={value}
-    />
-  );
+  const getInputMask = () => {
+    if (!inputMask) return undefined;
+
+    if (typeof inputMask === 'string') {
+      return InputMasks[inputMask];
+    } else {
+      return inputMask;
+    }
+  };
+
+  const renderInput = () => {
+    const inputProps = {
+      autoComplete,
+      autoFocus,
+      className: inputClasses,
+      disabled: isDisabled,
+      id: inputId,
+      name,
+      onBlur: handleBlur,
+      onChange: handleChange,
+      onFocus: handleFocus,
+      placeholder,
+      type,
+      value,
+    };
+
+    return !getInputMask() ? <input {...inputProps} /> : <Cleave {...inputProps} options={getInputMask()} />;
+  };
 
   const renderLabel = () => {
     if (!label) return;
 
     return (
       <label className="label" htmlFor={inputId}>
-        {label}<span className="font-color-danger font-size-sm">&nbsp;*</span>
+        {label}{isRequired && <span className="font-color-danger font-size-sm">&nbsp;*</span>}
       </label>
     );
   }
 
   return (
-    label ? (
-      <>
-        {renderLabel()}
-        {renderInput()}
-      </>
-    ) : (
-      <>
-        {renderInput()}
-      </>
-    )
+    <>
+      {label && renderLabel()}
+      {renderInput()}
+    </>
   );
 };
 
 Input.propTypes = {
+  /**
+   * The input's 'autocomplete' attribute
+   */
+  autoComplete: PropTypes.oneOf(['on', 'off']),
+  /**
+   * The input's 'autocomplete' attribute
+   */
+  autoFocus: PropTypes.bool,
   /**
    * Custom class to be added to standard input classes.
    */
@@ -89,9 +113,20 @@ Input.propTypes = {
    */
   id: PropTypes.string,
   /**
+   * An options object to mask the input appearance. See https://github.com/nosir/cleave.js for options.
+   */
+  inputMask: PropTypes.oneOfType([
+    PropTypes.oneOf(['phone', 'creditCard']),
+    PropTypes.object,
+  ]),
+  /**
    * The input's disabled attribute
    */
   isDisabled: PropTypes.bool,
+  /**
+   * Determines if input will take 100% width of its container.
+   */
+  isFullwidth: PropTypes.bool,
   /**
    * Determines if input is required or not. (Label will have an asterisk if required)
    */
@@ -100,6 +135,10 @@ Input.propTypes = {
    * Value for HTML <label> tag
    */
   label: PropTypes.string,
+  /**
+   * The input's 'name' attribute
+   */
+  name: PropTypes.string,
   /**
    * Callback function to call on blur event.
    */
@@ -127,15 +166,19 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  autoComplete: 'off',
+  autoFocus: false,
   className: '',
   id: undefined,
+  inputMask: undefined,
   isDisabled: false,
   isRequired: false,
   label: undefined,
+  name: '',
   onBlur: undefined,
   onFocus: undefined,
   placeholder: '',
-  type: 'text',
+  type: 'text'
 };
 
 export default Input;

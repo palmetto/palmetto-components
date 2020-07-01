@@ -8,6 +8,7 @@
     "@testing-library/react": "^10.2.0",
     "@testing-library/user-event": "^7.1.2",
     "classnames": "^2.2.6",
+    "cleave.js": "^1.6.0",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
