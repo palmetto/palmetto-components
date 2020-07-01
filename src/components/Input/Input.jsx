@@ -77,15 +77,11 @@ const Input = ({
     return !getInputMask() ? <input {...inputProps} /> : <Cleave {...inputProps} options={getInputMask()} />;
   };
 
-  const renderLabel = () => {
-    if (!label) return;
-
-    return (
-      <label className="label" htmlFor={inputId}>
-        {label}{isRequired && <span className="font-color-danger font-size-sm">&nbsp;*</span>}
-      </label>
-    );
-  }
+  const renderLabel = () => (
+    <label className="label" htmlFor={inputId}>
+      {label}{isRequired && <span className="font-color-danger font-size-sm">&nbsp;*</span>}
+    </label>
+  );
 
   return (
     <>
