@@ -120,10 +120,6 @@ Input.propTypes = {
    */
   isDisabled: PropTypes.bool,
   /**
-   * Determines if input will take 100% width of its container.
-   */
-  isFullwidth: PropTypes.bool,
-  /**
    * Determines if input is required or not. (Label will have an asterisk if required)
    */
   isRequired: PropTypes.bool,
