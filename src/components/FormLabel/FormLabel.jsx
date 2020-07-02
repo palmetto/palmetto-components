@@ -9,7 +9,7 @@ const FormLabel = ({
 }) => {
   return (
     <label className="label" htmlFor={inputId}>
-      {labelText}{isFieldRequired && <span className="font-color-danger font-size-sm">&nbsp;*</span>}
+      {labelText}{isFieldRequired && <span className="font-size-sm">&nbsp;*</span>}
     </label>
   );
 };
