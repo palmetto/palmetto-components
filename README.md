@@ -25,14 +25,14 @@ Builds the library for release to the `dist` folder.<br />
 
 Builds the storybook instance into static files for deployment/hosting to the `storybook-static` folder. NOTE: This one likely never needs to be run locally.<br />
 
-## `local development`
+## local development
 This library is meant to be added as a dependency to React apps. Aside from sandbox testing in storybook, you can also test any changes or new features by following these steps:
 
 Build locally by running `yarn build`
 
 In order to test any local changes you'll need to build the library, and symlink your local package into any project that consumes it. See [NPM link](https://docs.npmjs.com/cli/link) or [Yarn link](https://classic.yarnpkg.com/en/docs/cli/link/) for more details.
 
-## `usage`
+## usage
 Refer to the storybook for available components.
 In your project: `yarn add @palmetto/palmetto-components`
 
