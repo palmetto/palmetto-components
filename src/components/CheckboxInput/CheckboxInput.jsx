@@ -37,6 +37,7 @@ const CheckboxInput = ({
 CheckboxInput.defaultProps = {
   id: undefined,
   className: '',
+  isChecked: false,
   isDisabled: false,
   children: undefined,
 };
@@ -53,7 +54,7 @@ CheckboxInput.propTypes = {
   /**
    * The checkbox input "checked" attribute
    */
-  isChecked: PropTypes.bool.isRequired,
+  isChecked: PropTypes.bool,
   /**
    * If the input should be disabled and not focusable
    */
@@ -65,7 +66,7 @@ CheckboxInput.propTypes = {
   /**
    * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 
 export default CheckboxInput;

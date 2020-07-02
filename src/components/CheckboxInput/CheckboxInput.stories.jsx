@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
 import CheckboxInput from './CheckboxInput';
 
@@ -26,21 +27,48 @@ const StatefulCheckboxInput = ({ initialCheckedValue, children, isDisabled }) =>
   );
 };
 
+StatefulCheckboxInput.defaultProps = {
+  initialCheckedValue: undefined,
+  children: undefined,
+  isDisabled: false,
+};
+
+StatefulCheckboxInput.propTypes = {
+  initialCheckedValue: PropTypes.bool,
+  children: PropTypes.node,
+  isDisabled: PropTypes.bool,
+};
+
 export const All = () => {
-  const firstCheckboxState= true;
+  const firstCheckboxState = true;
   const secondCheckboxState = true;
   return (
-    <div style={{ width: '400px' }}>
+    <div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulCheckboxInput>
+          Default state is unchecked.
+        </StatefulCheckboxInput>
+      </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulCheckboxInput initialCheckedValue={firstCheckboxState}>
-          I have a link!
+          Initial state can be set to checked.
+        </StatefulCheckboxInput>
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulCheckboxInput>
+          Pass any element(s) as children for the label, even links!
           {' '}
           <a href="https://www.palmetto.com">Go to Palmetto.com</a>
         </StatefulCheckboxInput>
       </div>
       <div style={{ marginBottom: '1rem' }}>
+        <StatefulCheckboxInput isDisabled>
+          Disabled, and unchecked.
+        </StatefulCheckboxInput>
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
         <StatefulCheckboxInput isDisabled initialCheckedValue={secondCheckboxState}>
-          I am disabled
+          Disabled, and checked.
         </StatefulCheckboxInput>
       </div>
     </div>
