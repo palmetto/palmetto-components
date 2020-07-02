@@ -7,24 +7,24 @@ import './CheckboxInput.scss';
 const CheckboxInput = ({
   id,
   className,
-  selected,
-  onChange,
+  isSelected,
   isDisabled,
+  onChange,
   children,
 }) => {
-  const [isSelected, setIsSelected] = useState(selected || false);
+  const [selected, setSelected] = useState(isSelected || false);
   const inputId = id || uuid();
 
   const handleChange = () => {
-    setIsSelected(!isSelected);
-    onChange(!isSelected);
+    setSelected(!selected);
+    onChange(!selected);
   };
 
   return (
     <div className={cx('checkboxInput', { isDisabled })}>
       <input
         id={inputId}
-        checked={isSelected}
+        checked={selected}
         disabled={isDisabled}
         onChange={handleChange}
         type="checkbox"
@@ -40,7 +40,7 @@ const CheckboxInput = ({
 CheckboxInput.defaultProps = {
   id: undefined,
   className: '',
-  selected: false,
+  isSelected: false,
   isDisabled: false,
   children: undefined,
 };
@@ -57,17 +57,17 @@ CheckboxInput.propTypes = {
   /**
    * Set the checkbox as selected
    */
-  selected: PropTypes.bool,
-  /**
-   * Callback function when input is changed
-   */
-  onChange: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool,
   /**
    * If the input should be disabled and not focusable
    */
   isDisabled: PropTypes.bool,
   /**
-   * Content to be displayed to right of checkbox. Can be any valid node, anchors, etc.
+   * Callback function when input is changed
+   */
+  onChange: PropTypes.func.isRequired,
+  /**
+   * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */
   children: PropTypes.element,
 };
