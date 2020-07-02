@@ -1,5 +1,6 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
+import { withA11y } from '@storybook/addon-a11y';
 import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
 import Heading from './Heading';
 import { HEADING_LEVELS } from './Heading.constants';
@@ -10,6 +11,7 @@ export default {
     componentSubtitle: 'For page and section headings',
   },
   component: Heading,
+  decorators: [withA11y],
 };
 
 export const AllHeadings = () => (
