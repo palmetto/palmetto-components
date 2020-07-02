@@ -14,7 +14,9 @@ const getInputMask = (inputMask, availableInputMasks) => {
 
   return inputMask;
 };
-
+/**
+ * Use TextInput to show where users can enter text based data. It does not maintain any internal state, so its value should be managed by the parent.
+ */
 const Input = ({
   autoComplete,
   autoFocus,
@@ -55,7 +57,7 @@ const Input = ({
   const inputProps = {
     'aria-required': isRequired,
     'aria-label': label || name,
-    autoComplete,
+    autoComplete: !autoComplete ? 'off' : autoComplete,
     autoFocus,
     className: inputClasses,
     disabled: isDisabled,
@@ -91,9 +93,12 @@ Input.propTypes = {
   /**
    * The input's 'autocomplete' attribute
    */
-  autoComplete: PropTypes.oneOf(['on', 'off']),
+  autoComplete: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
   /**
-   * The input's 'autocomplete' attribute
+   * Automatically focus the input when the page is loaded
    */
   autoFocus: PropTypes.bool,
   /**
@@ -101,7 +106,7 @@ Input.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * The input's id attribute. We will use this to programmatically tie the input with its label.
+   * The input's id attribute. Used to programmatically tie the input with its label.
    */
   id: PropTypes.string,
   /**
@@ -156,7 +161,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  autoComplete: 'off',
+  autoComplete: false,
   autoFocus: false,
   className: '',
   id: undefined,
