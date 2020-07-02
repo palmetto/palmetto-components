@@ -7,7 +7,7 @@ import './CheckboxInput.scss';
 const CheckboxInput = ({
   id,
   className,
-  isSelected,
+  isChecked,
   isDisabled,
   onChange,
   children,
@@ -22,12 +22,11 @@ const CheckboxInput = ({
     <div className={cx('checkboxInput', { isDisabled })}>
       <input
         id={inputId}
-        checked={isSelected}
+        checked={isChecked}
         disabled={isDisabled}
         onChange={handleChange}
         type="checkbox"
         className={className}
-        value={isSelected}
         style={{ width: '24px', height: '24px' }}
       />
       <label htmlFor={inputId} className="checkboxInputInstructions">{children}</label>
@@ -38,7 +37,6 @@ const CheckboxInput = ({
 CheckboxInput.defaultProps = {
   id: undefined,
   className: '',
-  isSelected: false,
   isDisabled: false,
   children: undefined,
 };
@@ -53,9 +51,9 @@ CheckboxInput.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Set the checkbox as selected
+   * The checkbox input "checked" attribute
    */
-  isSelected: PropTypes.bool,
+  isChecked: PropTypes.bool.isRequired,
   /**
    * If the input should be disabled and not focusable
    */
