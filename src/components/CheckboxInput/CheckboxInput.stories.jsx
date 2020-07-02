@@ -56,7 +56,7 @@ export const All = () => {
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulCheckboxInput>
-          Pass any element(s) as children for the label, even links!
+          <span style={{ color: '#21c841' }}>Pass any element(s) as children for the label, even links! Add custom styles.</span>
           {' '}
           <a href="https://www.palmetto.com">Go to Palmetto.com</a>
         </StatefulCheckboxInput>
