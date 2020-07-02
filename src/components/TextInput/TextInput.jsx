@@ -55,7 +55,7 @@ const Input = ({
   const inputProps = {
     'aria-required': isRequired,
     'aria-label': label || name,
-    autoComplete,
+    autoComplete: !autoComplete ? 'off' : autoComplete,
     autoFocus,
     className: inputClasses,
     disabled: isDisabled,
@@ -91,7 +91,10 @@ Input.propTypes = {
   /**
    * The input's 'autocomplete' attribute
    */
-  autoComplete: PropTypes.oneOf(['on', 'off']),
+  autoComplete: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
   /**
    * The input's 'autocomplete' attribute
    */
@@ -156,7 +159,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  autoComplete: 'off',
+  autoComplete: false,
   autoFocus: false,
   className: '',
   id: undefined,
