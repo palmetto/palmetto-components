@@ -30,7 +30,7 @@ const CheckboxInput = ({
         value={isSelected}
         style={{ width: '24px', height: '24px' }}
       />
-      <span className="checkboxInputInstructions">{children}</span>
+      <label htmlFor={inputId} className="checkboxInputInstructions">{children}</label>
     </div>
   );
 };
