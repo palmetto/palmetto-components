@@ -14,7 +14,9 @@ const getInputMask = (inputMask, availableInputMasks) => {
 
   return inputMask;
 };
-
+/**
+ * Use TextInput to show where users can enter text based data. It does not maintain any internal state, so its value should be managed by the parent.
+ */
 const Input = ({
   autoComplete,
   autoFocus,
