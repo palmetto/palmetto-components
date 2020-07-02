@@ -1,10 +1,10 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-// import typescript from 'rollup-plugin-typescript2';
 import babel from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import copy from 'rollup-plugin-copy';
+import cleaner from 'rollup-plugin-cleaner';
 
 const packageJson = require('./package.json');
 
@@ -14,7 +14,7 @@ export default {
     {
       file: packageJson.main,
       format: 'cjs',
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: packageJson.module,
@@ -22,15 +22,15 @@ export default {
       sourcemap: true,
     },
   ],
+  external: ['@palmetto/palmetto-design-tokens'],
   plugins: [
-    babel({ babelHelpers: 'bundled', presets: ['@babel/preset-react'] }),
+    babel({ babelHelpers: 'bundled' }),
     peerDepsExternal(),
     resolve({
       mainFields: ['module', 'main', 'jsnext:main', 'browser'],
       extensions: ['.js', '.jsx'],
     }),
     commonjs(),
-    // typescript({ useTsconfigDeclarationDir: true }),
     postcss({
       use: ['sass'],
     }),
@@ -39,13 +39,18 @@ export default {
         {
           src: 'src/styles/variables.scss',
           dest: 'dist',
-          rename: '/scss/variables.scss'
+          rename: '/scss/variables.scss',
         },
         {
           src: 'src/styles/utilities.scss',
           dest: 'dist',
-          rename: '/scss/utilities.scss'
+          rename: '/scss/utilities.scss',
         },
+      ],
+    }),
+    cleaner({
+      targets: [
+        './dist/',
       ],
     }),
   ],

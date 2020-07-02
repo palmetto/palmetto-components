@@ -17,9 +17,9 @@
     "react-dom": ">=16.8.0"
   },
   "scripts": {
-    "build": "rollup -c",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "build": "BABEL_ENV=build rollup -c",
+    "test": "BABEL_ENV=test jest",
+    "test:watch": "BABEL_ENV=test jest --watch",
     "lint": "EXTEND_ESLINT=true eslint src",
     "lint:fix": "EXTEND_ESLINT=true eslint . --fix",
     "storybook": "EXTEND_ESLINT=true eslint src && start-storybook -p 9009 -s public",
@@ -79,6 +79,7 @@
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
     "rollup": "^1.27.4",
+    "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^3.1.2",

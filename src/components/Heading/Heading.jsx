@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-const { size } = require('@palmetto/palmetto-design-tokens/build/js/variables-size');
-const { color } = require('@palmetto/palmetto-design-tokens/build/js/variables-color');
+import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
 import getElementType from '../../lib/getElementType';
 import './Heading.scss';
 import { HEADING_LEVELS } from './Heading.constants';
-
-const PALMETTO_FONT_SIZES = Object.keys(size.font);
-const PALMETTO_BRAND_COLORS = Object.keys(color.brand);
-
-console.log(PALMETTO_BRAND_COLORS);
 
 /**
  * Use `Headings` as labels for pages or sections of a page that make up an interface.
@@ -20,10 +14,14 @@ console.log(PALMETTO_BRAND_COLORS);
  * and independently set its size so that it is appropriate for the surrounding content.
  * If no size is specified, a default size will be applied.
  */
-const Heading = (props) => {
-  const { className, children, size, color } = props;
-
-  const Element = getElementType(Heading, props);
+const Heading = ({
+  as,
+  className,
+  children,
+  color,
+  size,
+}) => {
+  const Element = getElementType(Heading, { as });
 
   const classes = classNames(className, 'heading', {
     [`font-size-${size}`]: size,
@@ -50,12 +48,12 @@ Heading.propTypes = {
   /**
    * A color token identifier to use for the text color.
    */
-  color: PropTypes.oneOf(PALMETTO_BRAND_COLORS),
+  color: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
   /**
    * By default, size is determined by the chosen tag (e.g. h1 is bigger than h2).
    * However, size can be set independently so that its size is appropriate for the surrounding content.
    */
-  size: PropTypes.oneOf(PALMETTO_FONT_SIZES),
+  size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
 };
 
 Heading.defaultProps = {
