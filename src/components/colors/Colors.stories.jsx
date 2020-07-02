@@ -25,7 +25,7 @@ const renderColorPalette = (colorEntry, index) => {
   const [colorName, colorVariations] = colorEntry;
 
   const getFontColor = (colorVariation) => {
-    return colorVariation?.attributes?.font === 'base' ? 'black' : 'white';
+    return colorVariation && colorVariation.attributes && colorVariation.attributes.font === 'base' ? 'black' : 'white';
   }
 
   return (

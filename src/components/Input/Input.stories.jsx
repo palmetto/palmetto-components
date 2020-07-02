@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { storiesOf } from '@storybook/react';
+import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
 import Input from './Input';
 
@@ -9,7 +9,8 @@ export default {
 }
 
 const StatefulInput = props => {
-  const [value, setValue] = useState(props.initialValue);
+  const { initialValue } = props;
+  const [value, setValue] = useState(initialValue);
 
   const handleChange = e => {
     action('onChange')(e);
@@ -30,9 +31,13 @@ const StatefulInput = props => {
       onChange={handleChange}
       onFocus={handleFocus}
       onBlur={handleBlur}
-      { ...props }
+      {...props} // eslint-disable-line react/jsx-props-no-spreading
     />
   );
+};
+
+StatefulInput.propTypes = {
+  initialValue: PropTypes.string.isRequired,
 };
 
 export const All = () => {
@@ -75,7 +80,7 @@ export const All = () => {
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulInput
-          initialValue={autoFocusedInputValue}
+          initialValue={withInputMaskValue}
           label="With phone input mask"
           placeholder="I have a phone number format"
           type="tel"

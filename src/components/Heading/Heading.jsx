@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { size as palmettoSizes } from '@palmetto/palmetto-design-tokens/build/js/variables-size';
-import { color as palmettoColors } from '@palmetto/palmetto-design-tokens/build/js/variables-color';
+const { size } = require('@palmetto/palmetto-design-tokens/build/js/variables-size');
+const { color } = require('@palmetto/palmetto-design-tokens/build/js/variables-color');
 import getElementType from '../../lib/getElementType';
 import './Heading.scss';
 import { HEADING_LEVELS } from './Heading.constants';
 
-const PALMETTO_FONT_SIZES = Object.keys(palmettoSizes.font);
-const PALMETTO_BRAND_COLORS = Object.keys(palmettoColors.brand);
+const PALMETTO_FONT_SIZES = Object.keys(size.font);
+const PALMETTO_BRAND_COLORS = Object.keys(color.brand);
 
 console.log(PALMETTO_BRAND_COLORS);
 
