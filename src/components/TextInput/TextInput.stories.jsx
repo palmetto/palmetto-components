@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
 import TextInput from './TextInput';
 
 export default {
   title: 'TextInput',
   component: TextInput,
+  decorators: [withA11y],
 };
 
 const StatefulInput = props => {

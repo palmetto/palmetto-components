@@ -28,6 +28,7 @@ module.exports = {
     '@storybook/addon-actions/register',
     '@storybook/addon-links',
     '@storybook/addon-docs',
+    '@storybook/addon-a11y/register',
   ],
   webpackFinal: (config) => {
     config.plugins.push(new MiniCssExtractPlugin());
