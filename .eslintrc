@@ -1,6 +1,5 @@
 {
   "extends": [
-    "react-app",
     "airbnb",
     "airbnb/hooks",
     "plugin:jest/recommended",
@@ -18,7 +17,9 @@
     "arrow-parens": ["error", "as-needed"],
     "import/no-extraneous-dependencies": [
       "error",
-      { "devDependencies": [".storybook/**", "stories/**", "**/*.stories.jsx"] }
-    ]
+      { "devDependencies": true }
+    ],
+    "react/jsx-props-no-spreading": [0],
+    "max-len": [1, 120]
   }
 }
