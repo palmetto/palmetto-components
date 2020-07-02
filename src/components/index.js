@@ -1,7 +1,7 @@
-import Input from './Input/Input';
+import TextInput from './TextInput/TextInput';
 import Heading from './Heading/Heading';
 
 export {
-  Input,
+  TextInput,
   Heading,
 };

@@ -15,10 +15,10 @@
   },
   "rules": {
     "arrow-parens": ["error", "as-needed"],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": [".storybook/**", "stories/**", "**/*.stories.jsx"] }
-    ],
+    // "import/no-extraneous-dependencies": [
+    //   "error",
+    //   { "devDependencies": [".storybook/**", "stories/**", "**/*.stories.jsx"] }
+    // ],
     "react/jsx-props-no-spreading": [0],
     "max-len": [1, 120]
   }
