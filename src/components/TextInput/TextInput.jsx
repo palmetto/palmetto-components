@@ -93,7 +93,7 @@ Input.propTypes = {
    */
   autoComplete: PropTypes.oneOf(['on', 'off']),
   /**
-   * The input's 'autocomplete' attribute
+   * Automatically focus the input when the page is loaded
    */
   autoFocus: PropTypes.bool,
   /**
@@ -101,7 +101,7 @@ Input.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * The input's id attribute. We will use this to programmatically tie the input with its label.
+   * The input's id attribute. Used to programmatically tie the input with its label.
    */
   id: PropTypes.string,
   /**
