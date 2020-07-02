@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { action } from '@storybook/addon-actions';
 import CheckboxInput from './CheckboxInput';
 
@@ -8,19 +8,16 @@ export default {
 };
 
 const StatefulCheckboxInput = props => {
-  const [isChecked, setIsChecked] = useState(false);
 
-  const handleChange = () => {
-    action('onChange')(!isChecked);
-    setIsChecked(!isChecked);
+  const handleChange = e => {
+    action('onChange')(e);
   };
 
   return (
     <CheckboxInput
-      checked={isChecked}
-      value={isChecked}
+      checked
       onChange={handleChange}
-      {...props}
+      { ...props }
     />
   );
 };
@@ -28,10 +25,10 @@ const StatefulCheckboxInput = props => {
 export const All = () => (
   <div style={{ width: '400px' }}>
     <div style={{ marginBottom: '1rem' }}>
-      <StatefulCheckboxInput>
+      <StatefulCheckboxInput checked onChange={handleChange}>
         I have a link!
         {' '}
-        <a href='https://www.palmetto.com'>Go to Palmetto.com</a>
+        <a href="https://www.palmetto.com">Go to Palmetto.com</a>
       </StatefulCheckboxInput>
     </div>
     <div style={{ marginBottom: '1rem' }}>

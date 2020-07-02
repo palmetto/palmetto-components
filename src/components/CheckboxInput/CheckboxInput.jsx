@@ -12,22 +12,17 @@ const CheckboxInput = ({
   onChange,
   children,
 }) => {
-  const [selected, setSelected] = useState(isSelected || false);
   const inputId = id || uuid();
 
-  useEffect(() => {
-    onChange(selected);
-  }, [selected, onChange]);
-
   const handleChange = () => {
-    setSelected(!selected);
+    onChange(!isSelected);
   };
 
   return (
     <div className={cx('checkboxInput', { isDisabled })}>
       <input
         id={inputId}
-        checked={selected}
+        checked={isSelected}
         disabled={isDisabled}
         onChange={handleChange}
         type="checkbox"
