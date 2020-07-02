@@ -38,7 +38,7 @@ const Input = ({
 
   const handleFocus = e => {
     if (onFocus) onFocus(e);
-    e.currentTarget.select(); // Selects input content allowing immediate edit. @TODO -- Confirm if desired functionality.
+    e.currentTarget.select(); // Selects input content allowing immediate edit. @TODO Confirm if desired functionality.
   };
 
   const handleBlur = e => {
