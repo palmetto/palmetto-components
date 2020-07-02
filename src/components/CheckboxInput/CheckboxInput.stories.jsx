@@ -12,12 +12,12 @@ const StatefulCheckboxInput = ({ initialCheckedValue, children, isDisabled }) =>
 
   const handleChange = isChecked => {
     action('onChange')(isChecked);
-    setIsChecked(isChecked);
+    setIsCheckboxChecked(isChecked);
   };
 
   return (
     <CheckboxInput
-      isSelected={isCheckboxChecked}
+      isChecked={isCheckboxChecked}
       onChange={handleChange}
       isDisabled={isDisabled}
     >
