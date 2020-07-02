@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { v4 as uuid } from 'uuid';
@@ -14,8 +14,8 @@ const CheckboxInput = ({
 }) => {
   const inputId = id || uuid();
 
-  const handleChange = () => {
-    onChange(!isSelected);
+  const handleChange = e => {
+    onChange(e.target.checked);
   };
 
   return (
