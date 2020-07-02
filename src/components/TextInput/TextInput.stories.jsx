@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
-import Input from './Input';
+import TextInput from './TextInput';
 
 export default {
-  title: 'Input',
-  component: Input,
-}
+  title: 'TextInput',
+  component: TextInput,
+};
 
 const StatefulInput = props => {
   const { initialValue } = props;
@@ -26,7 +26,7 @@ const StatefulInput = props => {
   };
 
   return (
-    <Input
+    <TextInput
       value={value}
       onChange={handleChange}
       onFocus={handleFocus}
