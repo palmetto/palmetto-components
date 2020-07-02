@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { v4 as uuid } from 'uuid';
 import Cleave from 'cleave.js/react';
-import * as InputMasks from './InputMasks';
-import './Input.scss';
+import * as InputMasks from './TextInputMasks';
+import './TextInput.scss';
+import FormLabel from '../FormLabel/FormLabel';
+
+const getInputMask = (inputMask, availableInputMasks) => {
+  if (typeof inputMask === 'string') {
+    return availableInputMasks[inputMask];
+  }
+
+  return inputMask;
+};
 
 const Input = ({
   autoComplete,
@@ -23,70 +32,57 @@ const Input = ({
   type,
   value,
 }) => {
-
-  const handleChange = (e) => {
+  const handleChange = e => {
     onChange(e);
   };
 
-  const handleFocus = (e) => {
+  const handleFocus = e => {
     if (onFocus) onFocus(e);
-    e.currentTarget.select();
+    e.currentTarget.select(); // Selects input content allowing immediate edit. @TODO Confirm if desired functionality.
   };
 
-  const handleBlur = (e) => {
+  const handleBlur = e => {
     if (onBlur) onBlur(e);
   };
 
   const inputClasses = classNames(
     className,
     'input',
-    {
-      // [`font-size-${size}`]: size,
-      // [`font-color-${color}`]: color,
-    }
   );
 
   const inputId = id || uuid();
 
-  const getInputMask = () => {
-    if (!inputMask) return undefined;
-
-    if (typeof inputMask === 'string') {
-      return InputMasks[inputMask];
-    } else {
-      return inputMask;
-    }
+  const inputProps = {
+    'aria-required': isRequired,
+    'aria-label': label || name,
+    autoComplete,
+    autoFocus,
+    className: inputClasses,
+    disabled: isDisabled,
+    id: inputId,
+    name,
+    onBlur: handleBlur,
+    onChange: handleChange,
+    onFocus: handleFocus,
+    placeholder,
+    type,
+    value,
   };
 
-  const renderInput = () => {
-    const inputProps = {
-      autoComplete,
-      autoFocus,
-      className: inputClasses,
-      disabled: isDisabled,
-      id: inputId,
-      name,
-      onBlur: handleBlur,
-      onChange: handleChange,
-      onFocus: handleFocus,
-      placeholder,
-      type,
-      value,
-    };
-
-    return !getInputMask() ? <input {...inputProps} /> : <Cleave {...inputProps} options={getInputMask()} />;
+  const labelProps = {
+    isFieldRequired: isRequired,
+    inputId,
+    labelText: label,
   };
-
-  const renderLabel = () => (
-    <label className="label" htmlFor={inputId}>
-      {label}{isRequired && <span className="font-color-danger font-size-sm">&nbsp;*</span>}
-    </label>
-  );
 
   return (
     <>
-      {label && renderLabel()}
-      {renderInput()}
+      {label && <FormLabel {...labelProps} />}
+      {!inputMask ? (
+        <input {...inputProps} />
+      ) : (
+        <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+      )}
     </>
   );
 };
@@ -109,7 +105,7 @@ Input.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * Pass a value to apply a mask to the input value. 
+   * Pass a value to apply a mask to the input value.
    * Can be one of the existing present strings, or a custom object with options
    * For options object formats See https://github.com/nosir/cleave.js
    */
@@ -172,7 +168,7 @@ Input.defaultProps = {
   onBlur: undefined,
   onFocus: undefined,
   placeholder: '',
-  type: 'text'
+  type: 'text',
 };
 
 export default Input;
