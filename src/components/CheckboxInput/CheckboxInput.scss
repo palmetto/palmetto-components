@@ -7,6 +7,11 @@
     color: $color-font-grey-light;
   }
 
+  .input {
+    width: $size-spacing-lg;
+    height: $size-spacing-lg;
+  }
+
   .checkboxInputInstructions {
     margin-left: $size-spacing-sm;
     font-size: $size-font-sm;

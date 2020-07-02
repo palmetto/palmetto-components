@@ -19,15 +19,14 @@ const CheckboxInput = ({
   };
 
   return (
-    <div className={cx('checkboxInput', { isDisabled })}>
+    <div className={cx('checkboxInput', className, { isDisabled })}>
       <input
         id={inputId}
         checked={isChecked}
         disabled={isDisabled}
         onChange={handleChange}
         type="checkbox"
-        className={className}
-        style={{ width: '24px', height: '24px' }}
+        className="input"
       />
       <label htmlFor={inputId} className="checkboxInputInstructions">{children}</label>
     </div>
@@ -39,7 +38,6 @@ CheckboxInput.defaultProps = {
   className: '',
   isChecked: false,
   isDisabled: false,
-  children: undefined,
 };
 
 CheckboxInput.propTypes = {
@@ -66,7 +64,7 @@ CheckboxInput.propTypes = {
   /**
    * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 export default CheckboxInput;

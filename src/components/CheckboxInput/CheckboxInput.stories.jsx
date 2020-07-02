@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
 import CheckboxInput from './CheckboxInput';
 
 export default {
   title: 'CheckboxInput',
   component: CheckboxInput,
+  decorators: [withA11y],
 };
 
 const StatefulCheckboxInput = ({ initialCheckedValue, children, isDisabled }) => {
@@ -56,7 +58,7 @@ export const All = () => {
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulCheckboxInput>
-          <span style={{ color: '#21c841' }}>Pass any element(s) as children for the label, even links! Add custom styles.</span>
+          <span style={{ color: '#5620c5' }}>Pass any element(s) as children for the label, even links! Add custom styles.</span>
           {' '}
           <a href="https://www.palmetto.com">Go to Palmetto.com</a>
         </StatefulCheckboxInput>

@@ -17,7 +17,7 @@ const getInputMask = (inputMask, availableInputMasks) => {
 /**
  * Use TextInput to show where users can enter text based data. It does not maintain any internal state, so its value should be managed by the parent.
  */
-const Input = ({
+const TextInput = ({
   autoComplete,
   autoFocus,
   className,
@@ -49,7 +49,7 @@ const Input = ({
 
   const inputClasses = classNames(
     className,
-    'input',
+    'TextInput',
   );
 
   const inputId = id || uuid();
@@ -89,7 +89,7 @@ const Input = ({
   );
 };
 
-Input.propTypes = {
+TextInput.propTypes = {
   /**
    * The input's 'autocomplete' attribute
    */
@@ -160,7 +160,7 @@ Input.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-Input.defaultProps = {
+TextInput.defaultProps = {
   autoComplete: false,
   autoFocus: false,
   className: '',
@@ -176,4 +176,4 @@ Input.defaultProps = {
   type: 'text',
 };
 
-export default Input;
+export default TextInput;
