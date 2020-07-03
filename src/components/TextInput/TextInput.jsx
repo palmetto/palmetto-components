@@ -24,6 +24,7 @@ const TextInput = ({
   id,
   inputMask,
   isDisabled,
+  error,
   isRequired,
   label,
   name,
@@ -57,9 +58,10 @@ const TextInput = ({
   const inputProps = {
     'aria-required': isRequired,
     'aria-label': label || name,
+    'aria-invalid': !!error,
     autoComplete: !autoComplete ? 'off' : autoComplete,
     autoFocus,
-    className: inputClasses,
+    className: error ? 'error' : null,
     disabled: isDisabled,
     id: inputId,
     name,
@@ -75,17 +77,19 @@ const TextInput = ({
     isFieldRequired: isRequired,
     inputId,
     labelText: label,
+    error: !!error,
   };
 
   return (
-    <>
+    <div className={inputClasses}>
       {label && <FormLabel {...labelProps} />}
       {!inputMask ? (
         <input {...inputProps} />
       ) : (
         <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
       )}
-    </>
+      {error && <div className="validationMessage">{error}</div>}
+    </div>
   );
 };
 
@@ -122,6 +126,14 @@ TextInput.propTypes = {
    * The input's disabled attribute
    */
   isDisabled: PropTypes.bool,
+  /**
+   * Mark the input field as invalid and display a validation message
+   */
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
   /**
    * Determines if input is required or not. (Label will have an asterisk if required)
    */
@@ -167,6 +179,7 @@ TextInput.defaultProps = {
   id: undefined,
   inputMask: undefined,
   isDisabled: false,
+  error: false,
   isRequired: false,
   label: undefined,
   name: '',

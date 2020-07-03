@@ -50,9 +50,10 @@ export const All = () => {
   const requiredInputValue = '';
   const autoFocusedInputValue = '';
   const withInputMaskValue = '';
+  const errorInputValue = 'invalid value';
 
   return (
-    <div style={{ width: '400px' }}>
+    <div style={{ maxWidth: '400px' }}>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulInput initialValue={basicInputValue} />
       </div>
@@ -88,6 +89,9 @@ export const All = () => {
           type="tel"
           inputMask="phone"
         />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput error="This is a validation message" initialValue={errorInputValue} label="Invalid Value" />
       </div>
     </div>
   );

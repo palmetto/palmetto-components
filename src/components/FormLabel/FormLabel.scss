@@ -6,4 +6,8 @@
   display: block;
   font-weight: 700;
   margin-bottom: $size-spacing-sm;
+
+  &.error {
+    color: $color-brand-danger-base;
+  }
 }
