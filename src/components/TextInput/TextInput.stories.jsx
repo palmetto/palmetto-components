@@ -50,7 +50,8 @@ export const All = () => {
   const requiredInputValue = '';
   const autoFocusedInputValue = '';
   const withInputMaskValue = '';
-  const errorInputValue = 'invalid value';
+  const errorInputValue = '';
+  const withLabelErrorInputValue = 'invalid value';
 
   return (
     <div style={{ maxWidth: '400px' }}>
@@ -91,7 +92,13 @@ export const All = () => {
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput error="This is a validation message" initialValue={errorInputValue} label="Invalid Value" />
+        <StatefulInput error initialValue={errorInputValue} placeholder="invalid with no label" />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput error initialValue={withLabelErrorInputValue} label="Invalid" />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid with Validation Message" />
       </div>
     </div>
   );
