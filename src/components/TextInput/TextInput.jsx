@@ -6,6 +6,7 @@ import Cleave from 'cleave.js/react';
 import * as InputMasks from './TextInputMasks';
 import './TextInput.scss';
 import FormLabel from '../FormLabel/FormLabel';
+import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 
 const getInputMask = (inputMask, availableInputMasks) => {
   if (typeof inputMask === 'string') {
@@ -51,6 +52,7 @@ const TextInput = ({
   const inputClasses = classNames(
     className,
     'TextInput',
+    { error },
   );
 
   const inputId = id || uuid();
@@ -61,7 +63,7 @@ const TextInput = ({
     'aria-invalid': !!error,
     autoComplete: !autoComplete ? 'off' : autoComplete,
     autoFocus,
-    className: error ? 'error' : null,
+    className: inputClasses,
     disabled: isDisabled,
     id: inputId,
     name,
@@ -81,14 +83,14 @@ const TextInput = ({
   };
 
   return (
-    <div className={inputClasses}>
+    <div>
       {label && <FormLabel {...labelProps} />}
       {!inputMask ? (
         <input {...inputProps} />
       ) : (
-          <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
-        )}
-      {error && <div className="validationMessage">{error}</div>}
+        <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+      )}
+      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </div>
   );
 };

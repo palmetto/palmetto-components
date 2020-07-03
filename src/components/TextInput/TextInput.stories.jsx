@@ -92,13 +92,16 @@ export const All = () => {
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid Not Required with Validation Message" />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput isRequired error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid Required with Validation Message" />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
         <StatefulInput error initialValue={errorInputValue} placeholder="invalid with no label" />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulInput error initialValue={withLabelErrorInputValue} label="Invalid" />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid with Validation Message" />
       </div>
     </div>
   );
