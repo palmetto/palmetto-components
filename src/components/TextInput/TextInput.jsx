@@ -86,8 +86,8 @@ const TextInput = ({
       {!inputMask ? (
         <input {...inputProps} />
       ) : (
-        <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
-      )}
+          <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+        )}
       {error && <div className="validationMessage">{error}</div>}
     </div>
   );
@@ -110,6 +110,15 @@ TextInput.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * Mark the input field as invalid and display a validation message.
+   * Pass a string or node to render a validation message below the input
+   */
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
+  /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
   id: PropTypes.string,
@@ -126,14 +135,6 @@ TextInput.propTypes = {
    * The input's disabled attribute
    */
   isDisabled: PropTypes.bool,
-  /**
-   * Mark the input field as invalid and display a validation message
-   */
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]),
   /**
    * Determines if input is required or not. (Label will have an asterisk if required)
    */
