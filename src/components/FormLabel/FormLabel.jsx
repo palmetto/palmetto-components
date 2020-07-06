@@ -25,9 +25,21 @@ const FormLabel = ({
 };
 
 FormLabel.propTypes = {
+  /**
+   * Mark the label has invalid
+   */
   hasError: PropTypes.bool,
+  /**
+   * The id of the form control that the label is labeling
+   */
   inputId: PropTypes.string.isRequired,
+  /**
+   * The label text
+   */
   labelText: PropTypes.string.isRequired,
+  /**
+   * Render an asterisk after the label to mark it as required
+   */
   isFieldRequired: PropTypes.bool,
 };
 
