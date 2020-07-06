@@ -50,9 +50,11 @@ export const All = () => {
   const requiredInputValue = '';
   const autoFocusedInputValue = '';
   const withInputMaskValue = '';
+  const errorInputValue = '';
+  const withLabelErrorInputValue = 'invalid value';
 
   return (
-    <div style={{ width: '400px' }}>
+    <div style={{ maxWidth: '400px' }}>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulInput initialValue={basicInputValue} />
       </div>
@@ -88,6 +90,18 @@ export const All = () => {
           type="tel"
           inputMask="phone"
         />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid Not Required with Validation Message" />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput isRequired error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid Required with Validation Message" />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput error initialValue={errorInputValue} placeholder="invalid with no label" />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput error initialValue={withLabelErrorInputValue} label="Invalid" />
       </div>
     </div>
   );

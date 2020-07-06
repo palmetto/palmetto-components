@@ -6,6 +6,7 @@ import Cleave from 'cleave.js/react';
 import * as InputMasks from './TextInputMasks';
 import './TextInput.scss';
 import FormLabel from '../FormLabel/FormLabel';
+import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 
 const getInputMask = (inputMask, availableInputMasks) => {
   if (typeof inputMask === 'string') {
@@ -24,6 +25,7 @@ const TextInput = ({
   id,
   inputMask,
   isDisabled,
+  error,
   isRequired,
   label,
   name,
@@ -50,6 +52,7 @@ const TextInput = ({
   const inputClasses = classNames(
     className,
     'TextInput',
+    { error },
   );
 
   const inputId = id || uuid();
@@ -57,6 +60,7 @@ const TextInput = ({
   const inputProps = {
     'aria-required': isRequired,
     'aria-label': label || name,
+    'aria-invalid': !!error,
     autoComplete: !autoComplete ? 'off' : autoComplete,
     autoFocus,
     className: inputClasses,
@@ -75,17 +79,19 @@ const TextInput = ({
     isFieldRequired: isRequired,
     inputId,
     labelText: label,
+    hasError: !!error,
   };
 
   return (
-    <>
+    <div>
       {label && <FormLabel {...labelProps} />}
       {!inputMask ? (
         <input {...inputProps} />
       ) : (
         <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
       )}
-    </>
+      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
+    </div>
   );
 };
 
@@ -105,6 +111,15 @@ TextInput.propTypes = {
    * Custom class to be added to standard input classes.
    */
   className: PropTypes.string,
+  /**
+   * Mark the input field as invalid and display a validation message.
+   * Pass a string or node to render a validation message below the input
+   */
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -167,6 +182,7 @@ TextInput.defaultProps = {
   id: undefined,
   inputMask: undefined,
   isDisabled: false,
+  error: false,
   isRequired: false,
   label: undefined,
   name: '',
