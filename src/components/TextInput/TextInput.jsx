@@ -79,7 +79,7 @@ const TextInput = ({
     isFieldRequired: isRequired,
     inputId,
     labelText: label,
-    error: !!error,
+    hasError: !!error,
   };
 
   return (

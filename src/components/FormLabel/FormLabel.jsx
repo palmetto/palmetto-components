@@ -4,14 +4,16 @@ import classNames from 'classnames';
 import './FormLabel.scss';
 
 const FormLabel = ({
-  error,
+  hasError,
   inputId,
   isFieldRequired,
   labelText,
 }) => {
   const labelClasses = classNames(
-    error ? 'error' : null,
     'label',
+    {
+      error: hasError,
+    },
   );
 
   return (
@@ -23,14 +25,14 @@ const FormLabel = ({
 };
 
 FormLabel.propTypes = {
-  error: PropTypes.bool,
+  hasError: PropTypes.bool,
   inputId: PropTypes.string.isRequired,
   labelText: PropTypes.string.isRequired,
   isFieldRequired: PropTypes.bool,
 };
 
 FormLabel.defaultProps = {
-  error: false,
+  hasError: false,
   isFieldRequired: false,
 };
 
