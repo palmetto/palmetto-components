@@ -19,7 +19,7 @@ const CheckboxInput = ({
   };
 
   return (
-    <div className={cx('checkboxInput', className, { isDisabled })}>
+    <div className={cx('Palmetto-CheckboxInput', className, { isDisabled })}>
       <input
         id={inputId}
         checked={isChecked}

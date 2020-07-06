@@ -23,7 +23,7 @@ const Heading = ({
 }) => {
   const Element = getElementType(Heading, { as });
 
-  const classes = classNames(className, 'heading', {
+  const classes = classNames('Palmetto-Heading', className, {
     [`font-size-${size}`]: size,
     [`font-color-${color}`]: color,
   });

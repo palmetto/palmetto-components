@@ -50,8 +50,8 @@ const TextInput = ({
   };
 
   const inputClasses = classNames(
+    'Palmetto-TextInput',
     className,
-    'TextInput',
     { error },
   );
 
