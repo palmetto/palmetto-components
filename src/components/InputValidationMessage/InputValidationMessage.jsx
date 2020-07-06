@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Used by form inputs such as TextInput, to display a validation message for an invalid input.
+ */
+
 const InputValidationMessage = ({
   children,
 }) => (
