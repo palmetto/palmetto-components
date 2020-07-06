@@ -6,6 +6,7 @@ import Cleave from 'cleave.js/react';
 import * as InputMasks from './TextInputMasks';
 import './TextInput.scss';
 import FormLabel from '../FormLabel/FormLabel';
+import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 
 const getInputMask = (inputMask, availableInputMasks) => {
   if (typeof inputMask === 'string') {
@@ -17,13 +18,14 @@ const getInputMask = (inputMask, availableInputMasks) => {
 /**
  * Use TextInput to show where users can enter text based data. It does not maintain any internal state, so its value should be managed by the parent.
  */
-const Input = ({
+const TextInput = ({
   autoComplete,
   autoFocus,
   className,
   id,
   inputMask,
   isDisabled,
+  error,
   isRequired,
   label,
   name,
@@ -49,7 +51,8 @@ const Input = ({
 
   const inputClasses = classNames(
     className,
-    'input',
+    'TextInput',
+    { error },
   );
 
   const inputId = id || uuid();
@@ -57,6 +60,7 @@ const Input = ({
   const inputProps = {
     'aria-required': isRequired,
     'aria-label': label || name,
+    'aria-invalid': !!error,
     autoComplete: !autoComplete ? 'off' : autoComplete,
     autoFocus,
     className: inputClasses,
@@ -75,21 +79,23 @@ const Input = ({
     isFieldRequired: isRequired,
     inputId,
     labelText: label,
+    hasError: !!error,
   };
 
   return (
-    <>
+    <div>
       {label && <FormLabel {...labelProps} />}
       {!inputMask ? (
         <input {...inputProps} />
       ) : (
         <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
       )}
-    </>
+      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
+    </div>
   );
 };
 
-Input.propTypes = {
+TextInput.propTypes = {
   /**
    * The input's 'autocomplete' attribute
    */
@@ -105,6 +111,15 @@ Input.propTypes = {
    * Custom class to be added to standard input classes.
    */
   className: PropTypes.string,
+  /**
+   * Mark the input field as invalid and display a validation message.
+   * Pass a string or node to render a validation message below the input
+   */
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -160,13 +175,14 @@ Input.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-Input.defaultProps = {
+TextInput.defaultProps = {
   autoComplete: false,
   autoFocus: false,
   className: '',
   id: undefined,
   inputMask: undefined,
   isDisabled: false,
+  error: false,
   isRequired: false,
   label: undefined,
   name: '',
@@ -176,4 +192,4 @@ Input.defaultProps = {
   type: 'text',
 };
 
-export default Input;
+export default TextInput;

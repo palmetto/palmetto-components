@@ -10,7 +10,7 @@ const headingComponentLevels = (
   HEADING_LEVELS.map(level => (
     <Heading as={level} key={uuid()}>
       {level}
-      Heading Default Size
+      &nbsp;Heading Default Size
     </Heading>
   ))
 );
@@ -18,7 +18,7 @@ const headingComponentLevels = (
 const headingComponentSizes = (
   PALMETTO_FONT_SIZE_OPTIONS.map(fontSize => (
     <Heading size={fontSize} key={uuid()}>
-      Size
+      Size&nbsp;
       {fontSize}
     </Heading>
   ))
@@ -28,9 +28,9 @@ const headingComponentSizeOverrides = (
   HEADING_LEVELS.map((level, index) => (
     <Heading as={level} size={PALMETTO_FONT_SIZE_OPTIONS[index]} key={uuid()}>
       {level}
-      Heading with
+      &nbsp;Heading with&nbsp;
       {PALMETTO_FONT_SIZE_OPTIONS[index]}
-      size
+      &nbsp;size
     </Heading>
   ))
 );
@@ -39,7 +39,7 @@ const headingComponentColors = (
   PALMETTO_BRAND_COLOR_OPTIONS.map(color => (
     <Heading color={color} key={uuid()}>
       {color}
-      heading
+      &nbsp;heading
     </Heading>
   ))
 );
