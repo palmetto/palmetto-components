@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
+    "@babel/polyfill": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "@rollup/plugin-babel": "^5.0.4",
     "@rollup/plugin-commonjs": "^11.1.0",

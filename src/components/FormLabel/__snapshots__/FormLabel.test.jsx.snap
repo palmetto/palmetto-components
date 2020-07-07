@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormLabel Matches the snapshot for component with default props 1`] = `
+<DocumentFragment>
+  <label
+    class="label"
+    for="myId"
+  >
+    hello world
+  </label>
+</DocumentFragment>
+`;
+
+exports[`FormLabel Matches the snapshot for component with hasError prop 1`] = `
+<DocumentFragment>
+  <label
+    class="label error"
+    for="myId"
+  >
+    hello world
+  </label>
+</DocumentFragment>
+`;
+
+exports[`FormLabel Matches the snapshot for component with isRequired prop 1`] = `
+<DocumentFragment>
+  <label
+    class="label"
+    for="myId"
+  >
+    hello world
+  </label>
+</DocumentFragment>
+`;

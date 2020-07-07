@@ -57,11 +57,25 @@ const TextInput = ({
 
   const inputId = id || uuid();
 
+  const getAutoCompleteValue = () => {
+    if (
+      !autoComplete
+      || (typeof autoComplete !== 'boolean' && typeof autoComplete !== 'string')) {
+      return 'off';
+    }
+
+    if (typeof autoComplete === 'boolean' && autoComplete) {
+      return 'on';
+    }
+
+    return autoComplete;
+  };
+
   const inputProps = {
     'aria-required': isRequired,
     'aria-label': label || name,
     'aria-invalid': !!error,
-    autoComplete: !autoComplete ? 'off' : autoComplete,
+    autoComplete: getAutoCompleteValue(),
     autoFocus,
     className: inputClasses,
     disabled: isDisabled,
@@ -193,4 +207,3 @@ TextInput.defaultProps = {
 };
 
 export default TextInput;
-
