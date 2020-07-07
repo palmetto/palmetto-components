@@ -10,7 +10,12 @@ export default {
   decorators: [withA11y],
 };
 
-const StatefulButton = ({ children, fullWidth, isDisabled, isLoading }) => {
+const StatefulButton = ({
+  children,
+  fullWidth,
+  isDisabled,
+  isLoading,
+}) => {
   const handleClick = e => {
     action('onClick')(e);
   };

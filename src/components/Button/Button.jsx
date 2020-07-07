@@ -6,6 +6,7 @@ import './Button.scss';
 
 const Button = ({
   id,
+  type,
   className,
   children,
   isDisabled,
@@ -21,8 +22,8 @@ const Button = ({
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames('Palmetto-Button', className, {
-    'loading': isLoading,
-    'fullWidth': fullWidth,
+    loading: isLoading,
+    fullWidth,
   });
 
   const handleClick = e => {
@@ -54,12 +55,13 @@ const Button = ({
     <button
       disabled={disabled}
       id={inputId}
-      type="button"
+      type={type} // eslint-disable-line react/button-has-type
       className={buttonClasses}
       onClick={handleClick}
       onFocus={handleFocus}
       onBlur={handleBlur}
       tabIndex={tabIndex}
+      aria-label={isLoading && 'Loading'}
       aria-busy={isLoading ? true : undefined}
     >
       {content}
@@ -69,10 +71,12 @@ const Button = ({
 
 Button.defaultProps = {
   id: undefined,
+  type: 'button',
   className: '',
   isDisabled: false,
   isLoading: undefined,
   fullWidth: undefined,
+  onClick: undefined,
   tabIndex: undefined,
   onFocus: undefined,
   onBlur: undefined,
@@ -83,6 +87,10 @@ Button.propTypes = {
    * A unique identifier for the button
    */
   id: PropTypes.string,
+  /**
+   * Button type
+   */
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
   /**
    * Additional ClassNames to add to button
    */
@@ -109,7 +117,7 @@ Button.propTypes = {
   /**
    * Callback when button is pressed
    */
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   /**
    * Callback when button receives focus
    */
