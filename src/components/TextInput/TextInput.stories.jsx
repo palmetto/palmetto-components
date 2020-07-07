@@ -44,7 +44,7 @@ StatefulInput.propTypes = {
 
 export const All = () => {
   const basicInputValue = 'Hello World!';
-  const disabledInputValue = 'I am disabled';
+  const disabledInputValue = 'Disabled value';
   const placeholderInputValue = '';
   const withLabelInputValue = 'With a label';
   const requiredInputValue = '';
@@ -59,7 +59,13 @@ export const All = () => {
         <StatefulInput initialValue={basicInputValue} />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput initialValue={disabledInputValue} isDisabled />
+        <StatefulInput label="Disabled input with value" initialValue={disabledInputValue} isDisabled />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput label="Disabled input without value" isDisabled />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulInput label="Disabled input with placeholder" placeholder="I am placeholder inside disabled input" isDisabled />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulInput initialValue={withLabelInputValue} label="Name" />
