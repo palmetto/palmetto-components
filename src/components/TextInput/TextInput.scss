@@ -2,6 +2,7 @@
 
 /* @TODO -- replace any remaining harcoded values with variables or use global utility classes */
 .Palmetto-TextInput {
+  background-color: $color-base-white;
   border: 1px solid $color-font-grey-lighter;
   box-sizing: border-box;
   box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
