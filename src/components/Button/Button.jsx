@@ -47,7 +47,6 @@ const Button = ({
             src={loadingIndicator}
             className="img"
             alt="Loading..."
-            style={{ position: 'relative' }}
           />
         </div>
       )}
