@@ -3,9 +3,9 @@ import {
   render,
   fireEvent,
   screen,
-  waitFor,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import validateUuid from '../../lib/validateUuid';
 import TextInput from './TextInput';
 
 describe('TextInput', () => {
@@ -40,7 +40,7 @@ describe('TextInput', () => {
    * Component Functionality
    */
   test('onChange event fires callback function', () => {
-    const onChangeMock = jest.fn(() => null);
+    const mockedHandleChange = jest.fn(() => null);
 
     render(
       <TextInput
@@ -48,25 +48,25 @@ describe('TextInput', () => {
         id="firstName"
         label="first name"
         value="hello"
-        onChange={onChangeMock}
+        onChange={mockedHandleChange}
       />,
     );
     const inputElement = screen.getByDisplayValue('hello');
 
     fireEvent.change(inputElement, { target: { value: 'good bye' } });
-    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(mockedHandleChange).toHaveBeenCalledTimes(1);
   });
 
   test('Input value is updated properly when upper state changes', () => {
     let value = 'hello';
-    const onChangeMock = jest.fn(event => { value = event.target.value; });
+    const mockedHandleChange = jest.fn(event => { value = event.target.value; });
     const { rerender } = render(
       <TextInput
         name="firstName"
         id="firstName"
         label="first name"
         value={value}
-        onChange={onChangeMock}
+        onChange={mockedHandleChange}
       />,
     );
 
@@ -74,7 +74,7 @@ describe('TextInput', () => {
     expect(inputElement.value).toBe('hello');
 
     fireEvent.change(inputElement, { target: { value: 'good bye' } });
-    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(mockedHandleChange).toHaveBeenCalledTimes(1);
 
     rerender(
       <TextInput
@@ -82,27 +82,27 @@ describe('TextInput', () => {
         id="firstName"
         label="first name"
         value={value}
-        onChange={onChangeMock}
+        onChange={mockedHandleChange}
       />,
     );
     expect(inputElement.value).toBe('good bye');
   });
 
   test('Input fires onFocus callback', () => {
-    const mockedOnFocus = jest.fn();
-    render(<TextInput value="hello" onChange={() => null} onFocus={mockedOnFocus} />);
+    const mockedHandleFocus = jest.fn();
+    render(<TextInput value="hello" onChange={() => null} onFocus={mockedHandleFocus} />);
     const inputElement = screen.getByDisplayValue('hello');
     fireEvent.focus(inputElement);
-    expect(mockedOnFocus).toBeCalledTimes(1);
+    expect(mockedHandleFocus).toBeCalledTimes(1);
   });
 
   test('Input fires onBlur callback', () => {
-    const mockedOnBlur = jest.fn();
-    render(<TextInput value="hello" onChange={() => null} onBlur={mockedOnBlur} />);
+    const mockedHandleBlur = jest.fn();
+    render(<TextInput value="hello" onChange={() => null} onBlur={mockedHandleBlur} />);
     const inputElement = screen.getByDisplayValue('hello');
     fireEvent.focus(inputElement);
     fireEvent.blur(inputElement);
-    expect(mockedOnBlur).toBeCalledTimes(1);
+    expect(mockedHandleBlur).toBeCalledTimes(1);
   });
 
   test('Input autofocuses if "autoFocus" prop is set to true', () => {
@@ -111,33 +111,49 @@ describe('TextInput', () => {
     expect(document.activeElement).toEqual(inputElement);
   });
 
-  /**
-   * Snapshots
-   * NOTE: Even though 'id' is not a required prop for this component we must provide it for the test
-   * to pass since the component will otherwise generate a uuid which means the snapshot is different every time.
-   */
-  test('Matches the snapshot for component with default props', () => {
-    const { asFragment } = render(<TextInput value="" onChange={() => null} id="myId" />);
-    expect(asFragment()).toMatchSnapshot();
+  test('Input correctly generates a uuid if none is provided', () => {
+    render(<TextInput value="hello" onChange={() => null} />);
+    const inputElement = screen.getByDisplayValue('hello');
+    expect(validateUuid(inputElement.id)).toBe(true);
   });
 
-  test('Matches the snapshot for a disabled input', () => {
-    const { asFragment } = render(<TextInput value="" onChange={() => null} id="myId" isDisabled />);
-    expect(asFragment()).toMatchSnapshot();
+  test('Input correctly assigns autocomplete value of "on" when bool true is provided', () => {
+    render(<TextInput value="hello" onChange={() => null} autoComplete />);
+    const inputElement = screen.getByDisplayValue('hello');
+    expect(inputElement).toHaveAttribute('autocomplete', 'on');
   });
 
-  test('Matches the snapshot for a required input', () => {
-    const { asFragment } = render(<TextInput value="" onChange={() => null} id="myId" isRequired />);
-    expect(asFragment()).toMatchSnapshot();
+  test('Input correctly assigns autocomplete value of "off" when bool false is provided', () => {
+    render(<TextInput value="hello" onChange={() => null} autoComplete={false} />);
+    const inputElement = screen.getByDisplayValue('hello');
+    expect(inputElement).toHaveAttribute('autocomplete', 'off');
   });
 
-  test('Matches the snapshot for an input with an error but no validation message', () => {
-    const { asFragment } = render(<TextInput value="" onChange={() => null} id="myId" error />);
-    expect(asFragment()).toMatchSnapshot();
+  test('Input correctly assigns autocomplete value of "off" when incorrect type is provided', () => {
+    render(<TextInput value="hello" onChange={() => null} autoComplete={['a', 'random', 'array']} />);
+    const inputElement = screen.getByDisplayValue('hello');
+    expect(inputElement).toHaveAttribute('autocomplete', 'off');
   });
 
-  test('Matches the snapshot for an input with an error and a validation message', () => {
-    const { asFragment } = render(<TextInput value="" onChange={() => null} id="myId" error="You silly goose" />);
-    expect(asFragment()).toMatchSnapshot();
+  test('Input correctly assigns the "aria-required" attribute when "isRequired" prop is true', () => {
+    render(<TextInput value="hello" onChange={() => null} isRequired />);
+    const inputElement = screen.getByDisplayValue('hello');
+    expect(inputElement).toHaveAttribute('aria-required', 'true');
+  });
+
+  test('Input correctly passes props to dependency label component', () => {
+    render(<TextInput value="hello" onChange={() => null} isRequired id="myId" label="goodbye" error="my error" />);
+    const labelElement = screen.getByText('goodbye');
+    expect(labelElement).toHaveAttribute('for', 'myId');
+    expect(labelElement).toHaveTextContent('goodbye');
+    expect(labelElement).toHaveTextContent('*');
+    expect(labelElement.getAttribute('class')).toContain('error');
+  });
+
+  test('Input correctly displays error message if provided', () => {
+    render(<TextInput value="hey" onChange={() => null} id="myId" error="You silly goose" />);
+    const validationMessageElement = screen.getByText('You silly goose');
+    expect(validationMessageElement).toBeInTheDocument();
+    expect(validationMessageElement).toHaveTextContent('You silly goose');
   });
 });
