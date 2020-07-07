@@ -1,5 +1,6 @@
 module.exports = {
   roots: ['./src'],
+  restoreMocks: true,
   setupFilesAfterEnv: ['./jest.setup.js'],
   moduleFileExtensions: ['js', 'jsx'],
   testPathIgnorePatterns: ['node_modules/'],
