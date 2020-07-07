@@ -4,7 +4,7 @@ exports[`FormLabel Matches the snapshot for component with default props 1`] = `
 <DocumentFragment>
   <label
     class="label"
-    for="f5dc04b0-3062-4791-8619-723e85e7f11c"
+    for="myId"
   >
     hello world
   </label>
@@ -15,7 +15,7 @@ exports[`FormLabel Matches the snapshot for component with hasError prop 1`] = `
 <DocumentFragment>
   <label
     class="label error"
-    for="509e5957-d091-4187-ab10-74906de2fb06"
+    for="myId"
   >
     hello world
   </label>
@@ -26,7 +26,7 @@ exports[`FormLabel Matches the snapshot for component with isRequired prop 1`] =
 <DocumentFragment>
   <label
     class="label"
-    for="d218358c-74ac-4986-b484-275c61f24acd"
+    for="myId"
   >
     hello world
   </label>
