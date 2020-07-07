@@ -16,6 +16,10 @@
     margin-left: $size-spacing-sm;
     font-size: $size-font-sm;
 
+    &.error {
+      color: $color-brand-danger-base;
+    }
+
     & * {
       font-size: $size-font-sm;
     }

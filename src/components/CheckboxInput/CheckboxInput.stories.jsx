@@ -10,7 +10,8 @@ export default {
   decorators: [withA11y],
 };
 
-const StatefulCheckboxInput = ({ initialCheckedValue, children, isDisabled }) => {
+const StatefulCheckboxInput = props => {
+  const { initialCheckedValue, children, isDisabled } = props;
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(initialCheckedValue);
 
   const handleChange = isChecked => {
@@ -23,6 +24,7 @@ const StatefulCheckboxInput = ({ initialCheckedValue, children, isDisabled }) =>
       isChecked={isCheckboxChecked}
       onChange={handleChange}
       isDisabled={isDisabled}
+      {...props} // esli
     >
       {children}
     </CheckboxInput>
@@ -73,6 +75,12 @@ export const All = () => {
           Disabled, and checked.
         </StatefulCheckboxInput>
       </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulCheckboxInput error="You must accept the Terms and Conditions">
+          Invalid
+        </StatefulCheckboxInput>
+      </div>
     </div>
   );
 };
+
