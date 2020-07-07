@@ -2,20 +2,25 @@
 
 .Palmetto-Button {
   position: relative;
-  padding: 10px 16px;
-  min-width: 105px;
+  padding: $size-spacing-sm $size-spacing-md;
   border: none;
   border-radius: 8px;
   color: $color-base-white;
-  background-color: $color-brand-primary-base;
-  font-weight: bold;
+  background-color: #2F8459; // $color-brand-primary-base;
+  font-weight: 700;
+  letter-spacing: .2px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  transition-property: background-color, border, box-shadow;
 
   &:hover {
-    background-color: $color-brand-primary-dark;
+    background-color: #1F5E3F; //$color-brand-primary-dark;
   }
 
   &:disabled {
     pointer-events: none;
+    cursor: not-allowed;
     background-color: $color-brand-primary-light;
   }
 
