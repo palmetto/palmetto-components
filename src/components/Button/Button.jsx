@@ -39,11 +39,13 @@ const Button = ({
 
   const content = (
     <>
-      <span className="buttonLoadingIndicator">
-        <div className="bounce1" />
-        <div className="bounce2" />
-        <div className="bounce3" />
-      </span>
+      {isLoading && (
+        <span className="buttonLoadingIndicator">
+          <div className="bounce1" />
+          <div className="bounce2" />
+          <div className="bounce3" />
+        </span>
+      )}
       <span className="buttonLabel">{children}</span>
     </>
   );
