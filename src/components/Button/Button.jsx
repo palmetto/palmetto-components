@@ -42,11 +42,14 @@ const Button = ({
   const content = (
     <>
       {isLoading && (
-        <img
-          src={loadingIndicator}
-          className="buttonLoadingIndicator"
-          alt="Loading..."
-        />
+        <div className="buttonLoadingIndicator">
+          <img
+            src={loadingIndicator}
+            className="img"
+            alt="Loading..."
+            style={{ position: 'relative' }}
+          />
+        </div>
       )}
       <span className="buttonLabel">{children}</span>
     </>
