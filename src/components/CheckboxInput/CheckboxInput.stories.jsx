@@ -48,8 +48,15 @@ export const All = () => {
   return (
     <div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulCheckboxInput label="
-          Default state is unchecked" />
+        <StatefulCheckboxInput
+          label="Default state is unchecked"
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulCheckboxInput
+          isRequired
+          label="Required checkbox is unchecked"
+        />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulCheckboxInput initialCheckedValue={firstCheckboxState} label="Initial state can be set to checked." />
@@ -74,6 +81,13 @@ export const All = () => {
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulCheckboxInput error="You must accept the Terms and Conditions" label="Invalid checkbox" />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulCheckboxInput
+          isRequired
+          error="You must accept the Terms and Conditions"
+          label="Required Invalid checkbox"
+        />
       </div>
     </div>
   );
