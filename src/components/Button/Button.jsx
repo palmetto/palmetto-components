@@ -22,23 +22,30 @@ const Button = ({
 
   const buttonClasses = classNames('Palmetto-Button', className, {
     'loading': isLoading,
-    'w-100': fullWidth,
+    'fullWidth': fullWidth,
   });
 
-  const contentClasses = classNames(
-    'btn-content',
-    'flex',
-    'items-center',
-    {
-      'justify-center': fullWidth,
-    },
-  );
+  const handleClick = e => {
+    onClick(e);
+  };
+
+  const handleFocus = e => {
+    onFocus(e);
+  };
+
+  const handleBlur = e => {
+    onBlur(e);
+  };
 
   const content = (
-    <div className={contentClasses}>
-      {/* {spinnerSVGMarkup} */}
-      {children && <span className="label">{children}</span>}
-    </div>
+    <>
+      <span className="buttonLoadingIndicator">
+        <div className="bounce1" />
+        <div className="bounce2" />
+        <div className="bounce3" />
+      </span>
+      <span className="buttonLabel">{children}</span>
+    </>
   );
 
   return (
@@ -47,9 +54,9 @@ const Button = ({
       id={inputId}
       type="button"
       className={buttonClasses}
-      onClick={onClick}
-      onFocus={onFocus}
-      onBlur={onBlur}
+      onClick={handleClick}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
       tabIndex={tabIndex}
       aria-busy={isLoading ? true : undefined}
     >
@@ -102,17 +109,17 @@ Button.propTypes = {
    */
   onClick: PropTypes.func.isRequired,
   /**
-   * Specify the tabIndex of the button
-   */
-  tabIndex: PropTypes.number,
-  /**
-   * Replaces button contents with a spinner icon while a background action is being performed
+   * Callback when button receives focus
    */
   onFocus: PropTypes.func,
   /**
    * Callback when focus leaves button
    */
   onBlur: PropTypes.func,
+  /**
+   * Specify the tabIndex of the button
+   */
+  tabIndex: PropTypes.number,
 };
 
 export default Button;

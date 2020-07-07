@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import Button from './Button';
@@ -10,61 +10,69 @@ export default {
   decorators: [withA11y],
 };
 
-const StatefulButton = ({ children }) => {
-  // const [isCheckboxChecked, setIsCheckboxChecked] = useState(initialCheckedValue);
+const StatefulButton = ({ children, fullWidth, isDisabled, isLoading }) => {
+  const handleClick = e => {
+    action('onClick')(e);
+  };
 
-  // const handleChange = isChecked => {
-  //   action('onChange')(isChecked);
-  //   setIsCheckboxChecked(isChecked);
-  // };
+  const handleFocus = e => {
+    action('onFocus')(e);
+  };
+
+  const handleBlur = e => {
+    action('onBlur')(e);
+  };
 
   return (
-    <Button>
+    <Button
+      fullWidth={fullWidth}
+      isDisabled={isDisabled}
+      isLoading={isLoading}
+      onClick={handleClick}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+    >
       {children}
     </Button>
   );
 };
 
 StatefulButton.defaultProps = {
-  
+  fullWidth: undefined,
+  isDisabled: undefined,
+  isLoading: undefined,
 };
 
 StatefulButton.propTypes = {
-  
+  children: PropTypes.node.isRequired,
+  fullWidth: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
 export const All = () => {
-  const firstCheckboxState = true;
-  const secondCheckboxState = true;
   return (
     <div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulButton>
-          Default state is unchecked.
-        </StatefulButton>
-      </div>
-      {/* <div style={{ marginBottom: '1rem' }}>
-        <StatefulButton initialCheckedValue={firstCheckboxState}>
-          Initial state can be set to checked.
+          Button
         </StatefulButton>
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulButton>
-          <span style={{ color: '#5620c5' }}>Pass any element(s) as children for the label, even links! Add custom styles.</span>
-          {' '}
-          <a href="https://www.palmetto.com">Go to Palmetto.com</a>
+        <StatefulButton fullWidth>
+          Full Width Button
         </StatefulButton>
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulButton isDisabled>
-          Disabled, and unchecked.
+          Disabled Button
         </StatefulButton>
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulButton isDisabled initialCheckedValue={secondCheckboxState}>
-          Disabled, and checked.
+        <StatefulButton isLoading>
+          Button with a really long name. Width will not decrease when loading indicator is rendered.
         </StatefulButton>
-      </div> */}
+      </div>
     </div>
   );
 };
