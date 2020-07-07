@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { v4 as uuid } from 'uuid';
+import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import FormLabel from '../FormLabel/FormLabel';
 import './CheckboxInput.scss';
 
 const CheckboxInput = ({
@@ -10,8 +12,9 @@ const CheckboxInput = ({
   error,
   isChecked,
   isDisabled,
+  isRequired,
   onChange,
-  children,
+  label,
 }) => {
   const inputId = id || uuid();
 
@@ -19,10 +22,17 @@ const CheckboxInput = ({
     onChange(e.target.checked);
   };
 
-  const labelClasses = classNames(
-    'checkboxInputInstructions',
-    { error },
-  );
+  // const labelClasses = classNames(
+  //   'checkboxInputInstructions',
+  //   { error },
+  // );
+
+  const labelProps = {
+    isFieldRequired: isRequired,
+    inputId,
+    labelText: label,
+    hasError: !!error,
+  };
 
   return (
     <>
@@ -36,9 +46,9 @@ const CheckboxInput = ({
           type="checkbox"
           className="input"
         />
-        <label htmlFor={inputId} className={labelClasses}>{children}</label>
+        {label && <FormLabel {...labelProps} />}
       </div>
-      {error && <div>{error}</div>}
+      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </>
   );
 };
@@ -49,6 +59,7 @@ CheckboxInput.defaultProps = {
   error: false,
   isChecked: false,
   isDisabled: false,
+  isRequired: false,
 };
 
 CheckboxInput.propTypes = {
@@ -78,13 +89,17 @@ CheckboxInput.propTypes = {
    */
   isDisabled: PropTypes.bool,
   /**
+   * Determines if input is required or not. (Label will have an asterisk if required)
+   */
+  isRequired: PropTypes.bool,
+  /**
    * Callback function when input is changed
    */
   onChange: PropTypes.func.isRequired,
   /**
    * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */
-  children: PropTypes.node.isRequired,
+  label: PropTypes.node.isRequired,
 };
 
 export default CheckboxInput;

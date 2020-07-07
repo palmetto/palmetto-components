@@ -10,18 +10,7 @@
   .input {
     width: $size-spacing-lg;
     height: $size-spacing-lg;
+    margin: 0 $size-spacing-sm 0 0;
   }
 
-  .checkboxInputInstructions {
-    margin-left: $size-spacing-sm;
-    font-size: $size-font-sm;
-
-    &.error {
-      color: $color-brand-danger-base;
-    }
-
-    & * {
-      font-size: $size-font-sm;
-    }
-  }
 }
