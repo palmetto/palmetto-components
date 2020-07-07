@@ -34,7 +34,6 @@ describe('TextInput', () => {
     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
       .toContain('Failed prop type: Invalid prop `type`');
-    // expect()
   });
 
   /**
