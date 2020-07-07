@@ -23,6 +23,11 @@
 
   &:disabled {
     color: $color-font-grey-light;
+    background-color: $color-base-grey-50;
+
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 
   &:focus {
