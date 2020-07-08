@@ -19,7 +19,7 @@ const Button = ({
   onBlur,
 }) => {
   const inputId = id || uuid();
-
+  console.log(loadingIndicator);
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames('Palmetto-Button', className, {
