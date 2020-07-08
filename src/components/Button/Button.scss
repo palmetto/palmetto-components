@@ -7,9 +7,10 @@
   border-radius: 8px;
   color: $color-base-white;
   background-color: $color-brand-primary-base;
+  font-size: $size-font-md;
   font-weight: 700;
   letter-spacing: .2px;
-  line-height: 1.55; // hack to get the button to match TextInput's 44px height
+  line-height: 1.25; // hack to get the button to match TextInput's 44px height
   cursor: pointer;
   transition-duration: 0.2s;
   transition-timing-function: ease-in;
