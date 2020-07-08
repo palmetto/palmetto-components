@@ -1,5 +1,17 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const babelRules = config => {
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    loader: require.resolve('babel-loader'),
+    options: {
+      presets: [['react-app', { flow: false, typescript: true }]],
+    },
+  });
+  config.resolve.extensions.push('.ts', '.tsx');
+  return config;
+};
+
 const scssRules = {
   test: /\.scss$/,
   use: [
@@ -34,7 +46,7 @@ module.exports = {
   webpackFinal: (config) => {
     config.plugins.push(new MiniCssExtractPlugin());
     config.module.rules.push(scssRules);
-
+    config = babelRules(config);
     return config;
   }
 };
