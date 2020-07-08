@@ -48,7 +48,7 @@ const Heading = ({
 }: InferProps<typeof propTypes>) => {
   const element = getElementType(Heading, { as });
 
-  const classes = classNames(className, 'heading', {
+  const classes = classNames('Palmetto-Heading', className, 'heading', {
     [`font-size-${size}`]: size,
     [`font-color-${color}`]: color,
   });

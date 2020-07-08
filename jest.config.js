@@ -1,6 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
   roots: ['./src'],
+  restoreMocks: true,
   setupFilesAfterEnv: ['./jest.setup.js'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   testPathIgnorePatterns: ['node_modules/'],

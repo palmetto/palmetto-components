@@ -6,6 +6,7 @@ import postcss from 'rollup-plugin-postcss';
 import copy from 'rollup-plugin-copy';
 import cleaner from 'rollup-plugin-cleaner';
 import execute from 'rollup-plugin-execute';
+import svg from 'rollup-plugin-svg';
 
 const packageJson = require('./package.json');
 
@@ -60,5 +61,6 @@ export default {
         './dist/',
       ],
     }),
+    svg(),
   ],
 };

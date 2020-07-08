@@ -30,7 +30,7 @@ const FormLabel = ({
   labelText,
 }: InferProps<typeof propTypes>) => {
   const labelClasses = classNames(
-    'label',
+    'Palmetto-FormLabel',
     {
       error: hasError,
     },

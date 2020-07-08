@@ -16,7 +16,7 @@ const renderColorBlock = colorEntry => {
 
   return (
     <div className="colors__color-block__item" style={{ backgroundColor: `${colorVariations.base.value}` }}>
-      <h3>{colorName}</h3>
+      <h2>{colorName}</h2>
       <p>{colorVariations.base.value}</p>
     </div>
   );
@@ -31,14 +31,14 @@ const renderColorPalette = (colorEntry, index) => {
 
   return (
     <div key={index}>
-      <h3 style={{ marginTop: '0' }}>{colorName}</h3>
+      <h2 style={{ marginTop: '0' }}>{colorName}</h2>
       {Object.entries(colorVariations).map((colorVariationEntry, index) => {
         const [colorVariationName, colorVariation] = colorVariationEntry;
         return (
           <div
             key={index}
             className="colors__color-palette__item"
-            style={{ backgroundColor: `${colorVariation.value}`, color: `${getFontColor(colorVariation)}`}}
+            style={{ backgroundColor: `${colorVariation.value}`, color: `${getFontColor(colorVariation)}` }}
           >
             <small style={{ display: 'block' }}>{colorVariationName}</small>
             <small>{colorVariation.value}</small>
