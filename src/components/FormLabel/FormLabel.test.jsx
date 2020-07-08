@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import FormLabel from './FormLabel';
 
@@ -26,18 +26,22 @@ describe('FormLabel', () => {
       .toContain('Failed prop type: The prop `labelText`');
   });
 
-  test('Matches the snapshot for component with default props', () => {
-    const { asFragment } = render(<FormLabel inputId="myId" labelText="hello world" />);
-    expect(asFragment()).toMatchSnapshot();
+  test('Label correctly renders with base props', () => {
+    render(<FormLabel inputId="myId" labelText="my label" />);
+    const labelElement = screen.getByText('my label');
+    expect(labelElement).toHaveAttribute('for', 'myId');
+    expect(labelElement).toHaveTextContent('my label');
   });
 
-  test('Matches the snapshot for component with isRequired prop', () => {
-    const { asFragment } = render(<FormLabel inputId="myId" labelText="hello world" isRequired />);
-    expect(asFragment()).toMatchSnapshot();
+  test('Label correctly renders with askterisk if field is required', () => {
+    render(<FormLabel inputId="myId" labelText="my label" isFieldRequired />);
+    const labelElement = screen.getByText('my label');
+    expect(labelElement).toHaveTextContent('*');
   });
 
-  test('Matches the snapshot for component with hasError prop', () => {
-    const { asFragment } = render(<FormLabel inputId="myId" labelText="hello world" hasError />);
-    expect(asFragment()).toMatchSnapshot();
+  test('Label correctly renders with error class if field has eror', () => {
+    render(<FormLabel inputId="myId" labelText="my label" hasError />);
+    const labelElement = screen.getByText('my label');
+    expect(labelElement.getAttribute('class')).toContain('error');
   });
 });
