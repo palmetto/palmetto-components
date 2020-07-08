@@ -62,10 +62,15 @@ export const All = () => {
         <StatefulInput label="Disabled input with value" initialValue={disabledInputValue} isDisabled />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput label="Disabled input without value" isDisabled />
+        <StatefulInput label="Disabled input without value" isDisabled initialValue="" />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput label="Disabled input with placeholder" placeholder="I am placeholder inside disabled input" isDisabled />
+        <StatefulInput
+          label="Disabled input with placeholder"
+          placeholder="I am placeholder inside disabled input"
+          isDisabled
+          initialValue=""
+        />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulInput initialValue={withLabelInputValue} label="Name" />
@@ -98,10 +103,19 @@ export const All = () => {
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid Not Required with Validation Message" />
+        <StatefulInput
+          error="Helpful validation message"
+          initialValue={withLabelErrorInputValue}
+          label="Invalid Not Required with Validation Message"
+        />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput isRequired error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid Required with Validation Message" />
+        <StatefulInput
+          isRequired
+          error="Helpful validation message"
+          initialValue={withLabelErrorInputValue}
+          label="Invalid Required with Validation Message"
+        />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulInput error initialValue={errorInputValue} placeholder="invalid with no label" />
