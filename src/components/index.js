@@ -4,6 +4,7 @@ import FormikCheckboxInput from './FormikCheckboxInput/FormikCheckboxInput';
 import FormikTextInput from './FormikTextInput/FormikTextInput';
 import Heading from './Heading/Heading';
 import TextInput from './TextInput/TextInput';
+import SelectInput from './SelectInput/SelectInput';
 
 export {
   Button,
@@ -12,4 +13,5 @@ export {
   FormikTextInput,
   Heading,
   TextInput,
+  SelectInput,
 };

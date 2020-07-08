@@ -28,15 +28,15 @@ const Button = ({
   });
 
   const handleClick = e => {
-    onClick(e);
+    if (onClick) onClick(e);
   };
 
   const handleFocus = e => {
-    onFocus(e);
+    if (onFocus) onFocus(e);
   };
 
   const handleBlur = e => {
-    onBlur(e);
+    if (onBlur) onBlur(e);
   };
 
   const content = (

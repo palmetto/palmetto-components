@@ -14,7 +14,8 @@
   +input[type=tel],
   +input[type=password],
   +input[type=search],
-  +input[type=url] {
+  +input[type=url],
+  +.Palmetto-SelectInput {
     margin-top: $size-spacing-xs;
   }
 }
