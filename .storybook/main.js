@@ -21,6 +21,15 @@ const scssRules = {
   ],
 };
 
+const fileLoaderRules = {
+  test: /\.(png|jpe?g|gif|svg)$/i,
+  use: [
+    {
+      loader: 'file-loader',
+    },
+  ],
+};
+
 module.exports = {
   stories: ['../src/**/*.stories.jsx'],
   addons: [
@@ -34,6 +43,7 @@ module.exports = {
   webpackFinal: (config) => {
     config.plugins.push(new MiniCssExtractPlugin());
     config.module.rules.push(scssRules);
+    config.module.rules.push(fileLoaderRules);
 
     return config;
   }
