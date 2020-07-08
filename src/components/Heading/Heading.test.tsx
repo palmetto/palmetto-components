@@ -47,33 +47,33 @@ const headingComponentColors = (
 describe('Heading', () => {
   test('Matches the snapshot for component with default props', () => {
     const { asFragment } = render(<Heading>Hello World</Heading>);
-    expect(asFragment(<Heading>Hello World</Heading>)).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
   headingComponentLevels.forEach((headingComponent, index) => {
     test(`Matches the snapshot for heading ${HEADING_LEVELS[index]}`, () => {
       const { asFragment } = render(headingComponent);
-      expect(asFragment(headingComponent)).toMatchSnapshot();
+      expect(asFragment()).toMatchSnapshot();
     });
   });
 
   headingComponentSizes.forEach((headingComponent, index) => {
     test(`Matches the snapshot for size ${PALMETTO_FONT_SIZE_OPTIONS[index]}`, () => {
       const { asFragment } = render(headingComponent);
-      expect(asFragment(headingComponent)).toMatchSnapshot();
+      expect(asFragment()).toMatchSnapshot();
     });
   });
 
   headingComponentSizeOverrides.forEach((headingComponent, index) => {
     test(`Matches the snapshot for heading ${HEADING_LEVELS[index]} and font size ${PALMETTO_FONT_SIZE_OPTIONS[index]}`, () => { // eslint-disable-line max-len
       const { asFragment } = render(headingComponent);
-      expect(asFragment(headingComponent)).toMatchSnapshot();
+      expect(asFragment()).toMatchSnapshot();
     });
   });
 
   headingComponentColors.forEach((headingComponent, index) => {
     test(`Matches the snapshot for color ${PALMETTO_BRAND_COLOR_OPTIONS[index]}`, () => {
       const { asFragment } = render(headingComponent);
-      expect(asFragment(headingComponent)).toMatchSnapshot();
+      expect(asFragment()).toMatchSnapshot();
     });
   });
 });

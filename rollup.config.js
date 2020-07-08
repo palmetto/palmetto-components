@@ -5,10 +5,11 @@ import babel from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import copy from 'rollup-plugin-copy';
 import cleaner from 'rollup-plugin-cleaner';
+import execute from 'rollup-plugin-execute';
 
 const packageJson = require('./package.json');
 
-const extensions = ['.js', '.jsx', 'ts', '.tsx'];
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 export default {
   input: 'src/components/index.ts',
@@ -26,6 +27,7 @@ export default {
   ],
   external: ['@palmetto/palmetto-design-tokens'],
   plugins: [
+    execute('tsc'),
     babel({
       extensions,
       babelHelpers: 'bundled',
