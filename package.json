@@ -1,7 +1,7 @@
 {
   "name": "@palmetto/palmetto-components",
   "author": "@palmetto",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -11,6 +11,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/palmetto/palmetto-components"
+  },
+  "dependencies": {
+    "@palmetto/palmetto-design-tokens": "^0.1.9"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -41,8 +44,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
+    "@babel/polyfill": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
-    "@palmetto/palmetto-design-tokens": "^0.1.9",
     "@rollup/plugin-babel": "^5.0.4",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",

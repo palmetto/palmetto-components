@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .checkboxInput {
   display: flex;
   align-items: center;
@@ -10,14 +12,7 @@
   .input {
     width: $size-spacing-lg;
     height: $size-spacing-lg;
+    margin: 0 $size-spacing-sm 0 0;
   }
 
-  .checkboxInputInstructions {
-    margin-left: $size-spacing-sm;
-    font-size: $size-font-sm;
-
-    & * {
-      font-size: $size-font-sm;
-    }
-  }
 }
