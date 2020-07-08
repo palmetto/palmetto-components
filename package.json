@@ -13,7 +13,7 @@
     "url": "https://github.com/palmetto/palmetto-components"
   },
   "dependencies": {
-    "@palmetto/palmetto-design-tokens": "^0.1.9"
+    "@palmetto/palmetto-design-tokens": "^0.1.10"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
