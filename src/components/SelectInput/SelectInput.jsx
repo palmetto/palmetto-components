@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { v4 as uuid } from 'uuid';
-import Select from 'react-select'
+import Select from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import './SelectInput.scss';
@@ -11,7 +11,7 @@ const SelectInput = ({
   id,
   label,
   className,
-  error,
+  hasError,
   isDisabled,
   isRequired,
   onChange,
@@ -23,8 +23,8 @@ const SelectInput = ({
 }) => {
   const inputId = id || uuid();
 
-  const handleChange = e => {
-    onChange(e);
+  const handleChange = value => {
+    onChange(value);
   };
 
   const handleFocus = e => {
@@ -36,35 +36,34 @@ const SelectInput = ({
   };
 
   const inputClasses = classNames(
-    'Palmetto-SelectInput',
-    className,
-    { error },
+    'selectInput',
+    { error: hasError },
   );
 
   const labelProps = {
     isFieldRequired: isRequired,
     inputId,
     labelText: label,
-    hasError: !!error,
+    hasError: !!hasError,
   };
-
-  const selectOptions = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
 
   return (
     <>
-      <div className={classNames('Palmetto-SelectInput', className, { isDisabled })}>
+      <div className={classNames('Palmetto-SelectInput', className, { disabled: isDisabled })}>
         {label && <FormLabel {...labelProps} />}
         <Select
           className={inputClasses}
+          classNamePrefix="selectInput"
+          isDisabled={isDisabled}
+          isMulti={isMulti}
           autoFocus={autoFocus}
-          options={selectOptions}
+          options={options}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       </div>
-      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
+      {hasError && hasError !== true && <InputValidationMessage>{hasError}</InputValidationMessage>}
     </>
   );
 };
@@ -72,7 +71,7 @@ const SelectInput = ({
 SelectInput.defaultProps = {
   id: undefined,
   className: '',
-  error: false,
+  hasError: false,
   isDisabled: false,
   isRequired: false,
   onFocus: undefined,
@@ -98,7 +97,7 @@ SelectInput.propTypes = {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input
    */
-  error: PropTypes.oneOfType([
+  hasError: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
     PropTypes.node,

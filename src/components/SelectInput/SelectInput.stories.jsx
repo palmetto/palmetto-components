@@ -31,7 +31,6 @@ const StatefulSelectInput = props => {
 
   return (
     <SelectInput
-      autoFocus
       onChange={handleChange}
       options={selectOptions}
       {...props}
@@ -57,6 +56,38 @@ export const All = () => {
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
           label="Single Select"
+          className="singleSelect"
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulSelectInput
+          label="Multi Select"
+          className="multiSelect"
+          isMulti
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulSelectInput
+          label="Auto Focus"
+          autoFocus
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulSelectInput
+          label="Error"
+          hasError
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulSelectInput
+          label="Disabled"
+          isDisabled
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulSelectInput
+          label="Is Required"
+          isRequired
         />
       </div>
     </div>

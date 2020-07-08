@@ -1,4 +1,54 @@
 @import '../../styles/variables.scss';
 
 .Palmetto-SelectInput {
+  .selectInput__control {
+    padding: $size-spacing-2-xs;
+    border-radius: 8px;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
+
+    &.selectInput__control--is-focused {
+      border-color: $color-base-grey-700;
+      box-shadow: none;
+    }
+  }
+
+  .selectInput__placeholder {
+    color: $color-font-grey-light;
+  }
+
+  .selectInput__indicator-separator {
+    display: none;
+  }
+
+  .selectInput__control--is-disabled {
+    .selectInput__dropdown-indicator {
+      color: $color-font-grey-light;
+    }
+  }
+
+  .selectInput__dropdown-indicator {
+    padding: 0;
+    padding-right: 2px;
+    color: $color-font-base;
+
+    svg {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  .selectInput {
+    &.error {
+      .selectInput__control {
+        background-color: $color-base-red-50;
+        border-color: $color-base-red-200;
+
+        &.selectInput__control--is-focused {
+          background-color: $color-base-white;
+          border-color: $color-base-grey-700;
+          outline: none;
+        }
+      }
+    }
+  }
 }
