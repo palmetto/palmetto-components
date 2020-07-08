@@ -91,7 +91,45 @@ const CheckboxInput = ({
   );
 };
 
-CheckboxInput.propTypes = propTypes;
+CheckboxInput.propTypes = {
+  /**
+   * The id attribute of the input
+   */
+  id: PropTypes.string.isRequired,
+  /**
+   * Additional classes to add
+   */
+  className: PropTypes.string.isRequired,
+  /**
+   * Mark the input field as invalid and display a validation message.
+   * Pass a string or node to render a validation message below the input
+   */
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.node,
+  ]).isRequired,
+  /**
+   * The checkbox input "checked" attribute
+   */
+  isChecked: PropTypes.bool.isRequired,
+  /**
+   * If the input should be disabled and not focusable
+   */
+  isDisabled: PropTypes.bool.isRequired,
+  /**
+   * Determines if input is required or not. (Label will have an asterisk if required)
+   */
+  isRequired: PropTypes.bool.isRequired,
+  /**
+   * Callback function when input is changed
+   */
+  onChange: PropTypes.func.isRequired,
+  /**
+   * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
+   */
+  label: PropTypes.node.isRequired,
+};
 
 CheckboxInput.defaultProps = {
   id: undefined,
