@@ -3,7 +3,7 @@
 exports[`FormLabel Matches the snapshot for component with default props 1`] = `
 <DocumentFragment>
   <label
-    class="label"
+    class="Palmetto-FormLabel"
     for="myId"
   >
     hello world
@@ -14,7 +14,7 @@ exports[`FormLabel Matches the snapshot for component with default props 1`] = `
 exports[`FormLabel Matches the snapshot for component with hasError prop 1`] = `
 <DocumentFragment>
   <label
-    class="label error"
+    class="Palmetto-FormLabel error"
     for="myId"
   >
     hello world
@@ -25,7 +25,7 @@ exports[`FormLabel Matches the snapshot for component with hasError prop 1`] = `
 exports[`FormLabel Matches the snapshot for component with isRequired prop 1`] = `
 <DocumentFragment>
   <label
-    class="label"
+    class="Palmetto-FormLabel"
     for="myId"
   >
     hello world
