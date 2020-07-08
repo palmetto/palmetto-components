@@ -87,6 +87,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-app-rewired": "^2.1.6",
+    "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
     "rollup": "^1.27.4",
