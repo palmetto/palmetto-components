@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { v4 as uuid } from 'uuid';
 import './Button.scss';
-import loadingIndicator from '../../images/loading.svg';
+import loadingIndicator, { ReactComponent as LoadingIndicator } from '../../images/loading.svg';
 
 const Button = ({
   id,
@@ -43,11 +43,12 @@ const Button = ({
     <>
       {isLoading && (
         <div className="buttonLoadingIndicator">
-          <img
+          {/* <img
             src={loadingIndicator}
             className="img"
             alt="Loading..."
-          />
+          /> */}
+          <LoadingIndicator className="img" alt="Loading..." />
         </div>
       )}
       <span className="buttonLabel">{children}</span>
