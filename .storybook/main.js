@@ -1,7 +1,3 @@
-module.exports = {
-  stories: ['../stories/**/*.stories.js'],
-  addons: ['@storybook/addon-actions', '@storybook/addon-links'],
-};
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const scssRules = {
