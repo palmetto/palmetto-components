@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { v4 as uuid } from 'uuid';
@@ -15,10 +15,10 @@ const CheckboxInput = ({
   isRequired,
   onChange,
   label,
-}) => {
+}: any) => {
   const inputId = id || uuid();
 
-  const handleChange = e => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.checked);
   };
 

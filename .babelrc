@@ -3,13 +3,15 @@
     "test": {
       "presets": [
         ["@babel/preset-env", { "modules": "cjs" }],
-        "@babel/preset-react"
+        "@babel/preset-react",
+        "@babel/preset-typescript"
       ]
     },
     "build": {
        "presets": [
           ["@babel/preset-env", { "modules": false }],
-          "@babel/preset-react"
+          "@babel/preset-react",
+          "@babel/preset-typescript"
         ]
      }
   }

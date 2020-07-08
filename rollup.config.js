@@ -8,8 +8,10 @@ import cleaner from 'rollup-plugin-cleaner';
 
 const packageJson = require('./package.json');
 
+const extensions = ['.js', '.jsx', 'ts', '.tsx'];
+
 export default {
-  input: 'src/components/index.js',
+  input: 'src/components/index.ts',
   output: [
     {
       file: packageJson.main,
@@ -24,11 +26,14 @@ export default {
   ],
   external: ['@palmetto/palmetto-design-tokens'],
   plugins: [
-    babel({ babelHelpers: 'bundled' }),
+    babel({
+      extensions,
+      babelHelpers: 'bundled',
+    }),
     peerDepsExternal(),
     resolve({
+      extensions,
       mainFields: ['module', 'main', 'jsnext:main', 'browser'],
-      extensions: ['.js', '.jsx'],
     }),
     commonjs(),
     postcss({
