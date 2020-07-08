@@ -10,7 +10,7 @@ const FormLabel = ({
   labelText,
 }) => {
   const labelClasses = classNames(
-    'label',
+    'Palmetto-FormLabel',
     {
       error: hasError,
     },
