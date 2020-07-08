@@ -11,7 +11,7 @@ export default {
 };
 
 const StatefulCheckboxInput = props => {
-  const { initialCheckedValue, label, isDisabled } = props;
+  const { initialCheckedValue, label, isDisabled } = props; // eslint-disable-line
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(initialCheckedValue);
 
   const handleChange = isChecked => {
@@ -65,7 +65,9 @@ export const All = () => {
       <div style={{ marginBottom: '1rem' }}>
         <StatefulCheckboxInput label={(
           <>
-            <span style={{ color: '#5620c5' }}>Pass any element(s) as children for the label, even links! Add custom styles.</span>
+            <span style={{ color: '#5620c5' }}>
+              Pass any element(s) as children for the label, even links! Add custom styles.
+            </span>
             {' '}
             <a href="https://www.palmetto.com">Go to Palmetto.com</a>
           </>

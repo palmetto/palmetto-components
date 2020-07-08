@@ -1,3 +1,7 @@
+module.exports = {
+  stories: ['../stories/**/*.stories.js'],
+  addons: ['@storybook/addon-actions', '@storybook/addon-links'],
+};
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const scssRules = {
@@ -31,14 +35,13 @@ const fileLoaderRules = {
 };
 
 module.exports = {
-  stories: ['../src/**/*.stories.jsx'],
+  stories: ['../src/**/*.stories.[tj]sx'],
   addons: [
     '@storybook/addon-actions/register',
     '@storybook/addon-a11y/register',
     '@storybook/addon-docs',
-    '@storybook/addon-links',
-    '@storybook/addon-viewport/register',
-    '@storybook/preset-create-react-app',
+    '@storybook/addon-links/register',
+    // '@storybook/addon-viewport/register',
   ],
   webpackFinal: (config) => {
     config.plugins.push(new MiniCssExtractPlugin());
@@ -46,5 +49,5 @@ module.exports = {
     config.module.rules.push(fileLoaderRules);
 
     return config;
-  }
+  },
 };
