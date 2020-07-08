@@ -2051,10 +2051,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@palmetto/palmetto-design-tokens@^0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.1.9.tgz#b08111a4c2e5ab447f68c90c466fa7e266de80f5"
-  integrity sha512-TKWO/CO8NzmbK/GpB1RPSwoib8WAL7kHNMvChNrCeO/q4HalZs6tkdHRxXtxWQNEjgO+pJBoM9f9sf2dgF18dg==
+"@palmetto/palmetto-design-tokens@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.1.10.tgz#0511ff9b7190b776d70b3ebb0a6cb404f277f359"
+  integrity sha512-G0KZCTiY6zHARuPbB+nI+DUWb5bPtyZSylco89HML6+6dhtONNIv+RDgN3Bz4NjiuVEDw6rbae0wUtyFB8qUeg==
 
 "@reach/router@^1.2.1":
   version "1.3.3"
