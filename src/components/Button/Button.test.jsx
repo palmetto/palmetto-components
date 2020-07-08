@@ -65,7 +65,7 @@ describe('Button', () => {
   });
 
   describe('States', () => {
-    describe('Default State', () => {
+    describe('Default', () => {
       test('it renders the button with simple text', () => {
         render(
           <Button>
@@ -101,7 +101,7 @@ describe('Button', () => {
       });
     });
 
-    describe('Disabled State', () => {
+    describe('Disabled', () => {
       test('it has a disabled attribute', () => {
         render(
           <Button isDisabled>
@@ -113,7 +113,7 @@ describe('Button', () => {
       });
     });
 
-    describe('Loading State', () => {
+    describe('Loading', () => {
       test('it renders the loading indicator', () => {
         render(
           <Button isLoading>
