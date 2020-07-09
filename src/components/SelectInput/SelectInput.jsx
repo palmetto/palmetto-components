@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { v4 as uuid } from 'uuid';
 import Select from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -26,8 +25,6 @@ const SelectInput = ({
   isMulti,
   options,
 }) => {
-  const inputId = id || uuid();
-
   const handleChange = value => {
     onChange(value);
   };
@@ -47,7 +44,7 @@ const SelectInput = ({
 
   const labelProps = {
     isFieldRequired: isRequired,
-    inputId,
+    inputId: id,
     labelText: label,
     hasError: !!hasError,
   };
@@ -74,7 +71,6 @@ const SelectInput = ({
 };
 
 SelectInput.defaultProps = {
-  id: undefined,
   className: '',
   hasError: false,
   isDisabled: false,
@@ -89,7 +85,7 @@ SelectInput.propTypes = {
   /**
    * The id attribute of the input
    */
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   /**
    * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */

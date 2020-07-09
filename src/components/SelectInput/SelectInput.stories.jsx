@@ -44,12 +44,14 @@ export const All = () => {
     <div style={{ maxWidth: '400px' }}>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
+          id="select"
           label="Select"
           className="singleSelect"
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
+          id="multiSelect"
           label="Multi Select"
           className="multiSelect"
           isMulti
@@ -57,24 +59,28 @@ export const All = () => {
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
+          id="autoFocus"
           label="Auto Focus"
           autoFocus
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
+          id="isRequired"
           label="Is Required"
           isRequired
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
+          id="disabled"
           label="Disabled"
           isDisabled
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
+          id="disabledAndRequired"
           label="Disabled and Required"
           isDisabled
           isRequired
@@ -82,18 +88,21 @@ export const All = () => {
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
+          id="invalid"
           label="Invalid"
           hasError
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
+          id="invalidNotRequired"
           label="Invalid Not Required with Validation Message"
           hasError="Helpful validation message"
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
+          id="invalidRequired"
           label="Invalid Required with Validation Message"
           hasError="Helpful validation message"
           isRequired
