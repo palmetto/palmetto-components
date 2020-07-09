@@ -54,6 +54,8 @@ const SelectInput = ({
       <div className={classNames('Palmetto-SelectInput', className, { disabled: isDisabled })}>
         {label && <FormLabel {...labelProps} />}
         <Select
+          id={id}
+          aria-label={label || id}
           className={inputClasses}
           classNamePrefix="selectInput"
           isDisabled={isDisabled}
@@ -71,6 +73,7 @@ const SelectInput = ({
 };
 
 SelectInput.defaultProps = {
+  label: undefined,
   className: '',
   hasError: false,
   isDisabled: false,
@@ -87,9 +90,9 @@ SelectInput.propTypes = {
    */
   id: PropTypes.string.isRequired,
   /**
-   * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
+   * Custom content to be displayed above the input.
    */
-  label: PropTypes.node.isRequired,
+  label: PropTypes.string,
   /**
    * Additional classes to add
    */
@@ -116,7 +119,7 @@ SelectInput.propTypes = {
    */
   onChange: PropTypes.func.isRequired,
   /**
-   * Callback function to call on focus event..
+   * Callback function to call on focus event.
    */
   onFocus: PropTypes.func,
   /**

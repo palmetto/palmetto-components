@@ -9,48 +9,45 @@ export default {
   decorators: [withA11y],
 };
 
-const StatefulSelectInput = props => {
+const handleChange = e => {
+  action('onChange')(e);
+};
+
+const handleFocus = e => {
+  action('onFocus')(e);
+};
+
+const handleBlur = e => {
+  action('onBlur')(e);
+};
+
+export const All = () => {
   const selectOptions = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
     { value: 'vanilla', label: 'Vanilla' },
   ];
 
-  const handleChange = e => {
-    action('onChange')(e);
+  const selectInputProps = {
+    onChange: handleChange,
+    onFocus: handleFocus,
+    onBlur: handleBlur,
+    options: selectOptions,
   };
 
-  const handleFocus = e => {
-    action('onFocus')(e);
-  };
-
-  const handleBlur = e => {
-    action('onBlur')(e);
-  };
-
-  return (
-    <SelectInput
-      onChange={handleChange}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      options={selectOptions}
-      {...props}
-    />
-  );
-};
-
-export const All = () => {
   return (
     <div style={{ maxWidth: '400px' }}>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulSelectInput
+        <SelectInput
+          {...selectInputProps}
           id="select"
-          label="Select"
+          // label="Select"
           className="singleSelect"
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulSelectInput
+        <SelectInput
+          {...selectInputProps}
           id="multiSelect"
           label="Multi Select"
           className="multiSelect"
@@ -58,28 +55,32 @@ export const All = () => {
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulSelectInput
+        <SelectInput
+          {...selectInputProps}
           id="autoFocus"
           label="Auto Focus"
           autoFocus
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulSelectInput
+        <SelectInput
+          {...selectInputProps}
           id="isRequired"
           label="Is Required"
           isRequired
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulSelectInput
+        <SelectInput
+          {...selectInputProps}
           id="disabled"
           label="Disabled"
           isDisabled
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulSelectInput
+        <SelectInput
+          {...selectInputProps}
           id="disabledAndRequired"
           label="Disabled and Required"
           isDisabled
@@ -87,21 +88,24 @@ export const All = () => {
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulSelectInput
+        <SelectInput
+          {...selectInputProps}
           id="invalid"
           label="Invalid"
           hasError
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulSelectInput
+        <SelectInput
+          {...selectInputProps}
           id="invalidNotRequired"
           label="Invalid Not Required with Validation Message"
           hasError="Helpful validation message"
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulSelectInput
+        <SelectInput
+          {...selectInputProps}
           id="invalidRequired"
           label="Invalid Required with Validation Message"
           hasError="Helpful validation message"
