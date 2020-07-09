@@ -5,6 +5,7 @@ import './Button.scss';
 import { ReactComponent as LoadingIndicator } from '../../images/loading.svg';
 
 const Button = ({
+  id,
   type,
   className,
   children,
@@ -48,8 +49,9 @@ const Button = ({
 
   return (
     <button
-      disabled={disabled}
+      id={id}
       type={type} // eslint-disable-line react/button-has-type
+      disabled={disabled}
       className={buttonClasses}
       onClick={handleClick}
       onFocus={handleFocus}
@@ -64,6 +66,7 @@ const Button = ({
 };
 
 Button.defaultProps = {
+  id: undefined,
   type: 'button',
   className: '',
   isDisabled: false,
@@ -76,6 +79,10 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  /**
+   * A unique identifier for the button
+   */
+  id: PropTypes.string,
   /**
    * Button type
    */

@@ -4,7 +4,6 @@ import {
   fireEvent,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import validateUuid from '../../lib/validateUuid';
 import CheckboxInput from './CheckboxInput';
 
 describe('CheckboxInput', () => {
@@ -46,12 +45,6 @@ describe('CheckboxInput', () => {
     );
     const checkbox = getByLabelText('test checkbox');
     expect(checkbox.checked).toEqual(false);
-  });
-
-  test('correctly generates a uuid if none is provided', () => {
-    const { getByLabelText } = render(<CheckboxInput label="test checkbox" value="hello" onChange={() => null} />);
-    const inputElement = getByLabelText('test checkbox');
-    expect(validateUuid(inputElement.id)).toBe(true);
   });
 
   describe('onChange', () => {
