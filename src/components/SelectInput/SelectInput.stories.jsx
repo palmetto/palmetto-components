@@ -59,7 +59,7 @@ export const All = () => {
           id="preselectedValue"
           label="Single value pre-selected"
           className="singleSelectWithLabel"
-          value={{ value: 'vanilla', label: 'Vanilla' }}
+          value={selectOptions[2]}
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
@@ -70,7 +70,9 @@ export const All = () => {
           className="singleSelectWithLabel"
           isMulti
           value={[
-            { value: 'chocolate', label: 'Chocolate' }, { value: 'vanilla', label: 'Vanilla' }]}
+            selectOptions[0],
+            selectOptions[2],
+          ]}
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
