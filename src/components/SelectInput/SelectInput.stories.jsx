@@ -44,7 +44,7 @@ export const All = () => {
     <div style={{ maxWidth: '400px' }}>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
-          label="Single Select"
+          label="Select"
           className="singleSelect"
         />
       </div>
