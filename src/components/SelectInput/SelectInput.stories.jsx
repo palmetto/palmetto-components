@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import SelectInput from './SelectInput';
@@ -21,38 +20,28 @@ const StatefulSelectInput = props => {
     action('onChange')(e);
   };
 
-  // const handleFocus = e => {
-  //   action('onFocus')(e);
-  // };
+  const handleFocus = e => {
+    action('onFocus')(e);
+  };
 
-  // const handleBlur = e => {
-  //   action('onBlur')(e);
-  // };
+  const handleBlur = e => {
+    action('onBlur')(e);
+  };
 
   return (
     <SelectInput
       onChange={handleChange}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
       options={selectOptions}
       {...props}
     />
   );
 };
 
-// StatefulSelectInput.defaultProps = {
-//   initialCheckedValue: undefined,
-//   children: undefined,
-//   isDisabled: false,
-// };
-
-// StatefulSelectInput.propTypes = {
-//   initialCheckedValue: PropTypes.bool,
-//   children: PropTypes.node,
-//   isDisabled: PropTypes.bool,
-// };
-
 export const All = () => {
   return (
-    <div>
+    <div style={{ maxWidth: '400px' }}>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
           label="Single Select"
@@ -74,8 +63,8 @@ export const All = () => {
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
-          label="Error"
-          hasError
+          label="Is Required"
+          isRequired
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
@@ -86,7 +75,27 @@ export const All = () => {
       </div>
       <div style={{ marginBottom: '1rem' }}>
         <StatefulSelectInput
-          label="Is Required"
+          label="Disabled and Required"
+          isDisabled
+          isRequired
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulSelectInput
+          label="Invalid"
+          hasError
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulSelectInput
+          label="Invalid Not Required with Validation Message"
+          hasError="Helpful validation message"
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <StatefulSelectInput
+          label="Invalid Required with Validation Message"
+          hasError="Helpful validation message"
           isRequired
         />
       </div>
