@@ -36,7 +36,10 @@ FormLabel.propTypes = {
   /**
    * The label text
    */
-  labelText: PropTypes.string.isRequired,
+  labelText: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]).isRequired,
   /**
    * Render an asterisk after the label to mark it as required
    */

@@ -15,7 +15,7 @@ const FormikTextInput = (
   },
 ) => (
   <TextInput
-    name
+    name={name}
     onBlur={onBlur}
     onChange={onChange}
     value={value}
