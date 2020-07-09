@@ -56,6 +56,26 @@ export const All = () => {
       <div style={{ marginBottom: '1rem' }}>
         <SelectInput
           {...selectInputProps}
+          id="preselectedValue"
+          label="Single value pre-selected"
+          className="singleSelectWithLabel"
+          value={{ value: 'vanilla', label: 'Vanilla' }}
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <SelectInput
+          {...selectInputProps}
+          id="preselectedMultiValue"
+          label="Multi value pre-selected"
+          className="singleSelectWithLabel"
+          isMulti
+          value={[
+            { value: 'chocolate', label: 'Chocolate' }, { value: 'vanilla', label: 'Vanilla' }]}
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <SelectInput
+          {...selectInputProps}
           id="multiSelect"
           label="Multi Select"
           className="multiSelect"
@@ -93,6 +113,28 @@ export const All = () => {
           label="Disabled and Required"
           isDisabled
           isRequired
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <SelectInput
+          {...selectInputProps}
+          id="disabledPreselectedValue"
+          label="Disabled with value pre-selected"
+          className="singleSelectWithLabel"
+          value={{ value: 'vanilla', label: 'Vanilla' }}
+          isDisabled
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <SelectInput
+          {...selectInputProps}
+          id="disabledPreselectedMultiValue"
+          label="Disabled with multi value pre-selected"
+          className="singleSelectWithLabel"
+          isMulti
+          value={[
+            { value: 'chocolate', label: 'Chocolate' }, { value: 'vanilla', label: 'Vanilla' }]}
+          isDisabled
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>

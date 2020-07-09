@@ -25,11 +25,8 @@ const SelectInput = ({
   autoFocus,
   isMulti,
   options,
+  value,
 }) => {
-  const handleChange = value => {
-    onChange(value);
-  };
-
   const handleFocus = e => {
     if (onFocus) onFocus(e);
   };
@@ -64,9 +61,10 @@ const SelectInput = ({
           isMulti={isMulti}
           autoFocus={autoFocus}
           options={options}
-          onChange={handleChange}
+          onChange={onChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          value={value}
         />
       </div>
       {hasError && hasError !== true && <InputValidationMessage>{hasError}</InputValidationMessage>}
@@ -85,6 +83,7 @@ SelectInput.defaultProps = {
   onBlur: undefined,
   autoFocus: false,
   isMulti: false,
+  value: undefined,
 };
 
 SelectInput.propTypes = {
@@ -148,6 +147,13 @@ SelectInput.propTypes = {
     value: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
   })).isRequired,
+  /**
+   * The value(s) of select
+   */
+  value: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.object),
+  ]),
 };
 
 export default SelectInput;
