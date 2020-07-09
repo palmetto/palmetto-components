@@ -15,6 +15,7 @@ const SelectInput = ({
   id,
   label,
   className,
+  placeholder,
   hasError,
   isDisabled,
   isRequired,
@@ -58,6 +59,7 @@ const SelectInput = ({
           aria-label={label || id}
           className={inputClasses}
           classNamePrefix="selectInput"
+          placeholder={placeholder}
           isDisabled={isDisabled}
           isMulti={isMulti}
           autoFocus={autoFocus}
@@ -75,6 +77,7 @@ const SelectInput = ({
 SelectInput.defaultProps = {
   label: undefined,
   className: '',
+  placeholder: undefined,
   hasError: false,
   isDisabled: false,
   isRequired: false,
@@ -97,6 +100,10 @@ SelectInput.propTypes = {
    * Additional classes to add
    */
   className: PropTypes.string,
+  /**
+   * Placeholder
+   */
+  placeholder: PropTypes.string,
   /**
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input

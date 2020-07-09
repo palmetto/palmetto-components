@@ -36,13 +36,21 @@ export const All = () => {
   };
 
   return (
-    <div style={{ maxWidth: '400px' }}>
+    <div style={{ maxWidth: '500px' }}>
       <div style={{ marginBottom: '1rem' }}>
         <SelectInput
           {...selectInputProps}
-          id="select"
-          // label="Select"
-          className="singleSelect"
+          id="selectNoLabel"
+          className="singleSelectNoLabel"
+          placeholder="Select input with no label, and a custom placeholder..."
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <SelectInput
+          {...selectInputProps}
+          id="selectWithLabel"
+          label="Select"
+          className="singleSelectWithLabel"
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
