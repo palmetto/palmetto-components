@@ -4,7 +4,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import SelectInput from './SelectInput';
 
 export default {
-  title: 'SelectInput',
+  title: 'Forms/Inputs/SelectInput',
   component: SelectInput,
   decorators: [withA11y],
 };
