@@ -5,6 +5,10 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import FormLabel from '../FormLabel/FormLabel';
 import './CheckboxInput.scss';
 
+/**
+ * Used to allow users to make a range of selections (zero, one or many).
+ */
+
 const CheckboxInput = ({
   id,
   className,
