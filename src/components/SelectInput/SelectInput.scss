@@ -31,7 +31,7 @@
       }
 
       &.selectInput__control--is-focused {
-        border-color: $color-base-grey-700;
+        border-color: $color-base-grey-600;
         box-shadow: none;
       }
 
@@ -55,7 +55,7 @@
 
         &.selectInput__control--is-focused {
           background-color: $color-base-white;
-          border-color: $color-base-grey-700;
+          border-color: $color-base-grey-600;
           outline: none;
         }
       }
