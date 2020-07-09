@@ -88,7 +88,7 @@ const TextInput = ({
 
   const labelProps = {
     isFieldRequired: isRequired,
-    id,
+    inputId: id,
     labelText: label,
     hasError: !!error,
   };
