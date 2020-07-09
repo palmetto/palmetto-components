@@ -61,4 +61,10 @@
       }
     }
   }
+
+  &.disabled {
+    .selectInput__control--is-disabled {
+      background-color: $color-base-grey-50;
+    }
+  }
 }
