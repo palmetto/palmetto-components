@@ -22,7 +22,7 @@ const scssRules = {
 };
 
 const fileLoaderRules = {
-  test: /\.(png|jpe?g|gif|svg)$/i,
+  test: /\.(png|jpe?g|gif)$/i,
   use: [
     {
       loader: 'file-loader',
@@ -31,20 +31,31 @@ const fileLoaderRules = {
 };
 
 module.exports = {
-  stories: ['../src/**/*.stories.jsx'],
+  stories: ['../src/**/*.stories.[tj]sx'],
   addons: [
     '@storybook/addon-actions/register',
     '@storybook/addon-a11y/register',
     '@storybook/addon-docs',
-    '@storybook/addon-links',
-    '@storybook/addon-viewport/register',
-    '@storybook/preset-create-react-app',
+    '@storybook/addon-links/register',
+    // '@storybook/addon-viewport/register',
   ],
   webpackFinal: (config) => {
     config.plugins.push(new MiniCssExtractPlugin());
     config.module.rules.push(scssRules);
     config.module.rules.push(fileLoaderRules);
+    const assetRule = config.module.rules.find(({ test }) => test.test(".svg"));
+
+    const assetLoader = {
+      loader: assetRule.loader,
+      options: assetRule.options || assetRule.query
+    };
+
+    // Merge our rule with existing assetLoader rules
+    config.module.rules.unshift({
+      test: /\.svg$/,
+      use: ["@svgr/webpack", assetLoader]
+    });
 
     return config;
-  }
+  },
 };

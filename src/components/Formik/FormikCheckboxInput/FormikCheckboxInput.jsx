@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CheckboxInput from '../CheckboxInput/CheckboxInput';
+import CheckboxInput from '../../CheckboxInput/CheckboxInput';
 
 const FormikCheckboxInput = (
   {
