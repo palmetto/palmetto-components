@@ -7,6 +7,11 @@ import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import './SelectInput.scss';
 
+/**
+ * Allows users to pick a value from predefined list of options.
+ * Ideally, it should be used when there are more than 4 options, otherwise you should consider using a radio group instead.
+ */
+
 const SelectInput = ({
   id,
   label,
