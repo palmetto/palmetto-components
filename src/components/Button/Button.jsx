@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { v4 as uuid } from 'uuid';
 import './Button.scss';
-import loadingIndicator, { ReactComponent as LoadingIndicator } from '../../images/loading.svg';
+import { ReactComponent as LoadingIndicator } from '../../images/loading.svg';
 
 const Button = ({
   id,
@@ -19,7 +19,7 @@ const Button = ({
   onBlur,
 }) => {
   const inputId = id || uuid();
-  console.log(loadingIndicator);
+
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames('Palmetto-Button', className, {
@@ -43,11 +43,6 @@ const Button = ({
     <>
       {isLoading && (
         <div className="buttonLoadingIndicator">
-          {/* <img
-            src={loadingIndicator}
-            className="img"
-            alt="Loading..."
-          /> */}
           <LoadingIndicator className="img" alt="Loading..." />
         </div>
       )}

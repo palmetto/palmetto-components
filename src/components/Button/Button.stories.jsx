@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import Button from './Button';
@@ -10,74 +9,60 @@ export default {
   decorators: [withA11y],
 };
 
-const StatefulButton = ({
-  children,
-  fullWidth,
-  isDisabled,
-  isLoading,
-}) => {
-  const handleClick = e => {
-    action('onClick')(e);
-  };
-
-  const handleFocus = e => {
-    action('onFocus')(e);
-  };
-
-  const handleBlur = e => {
-    action('onBlur')(e);
-  };
-
-  return (
-    <Button
-      fullWidth={fullWidth}
-      isDisabled={isDisabled}
-      isLoading={isLoading}
-      onClick={handleClick}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-    >
-      {children}
-    </Button>
-  );
-};
-
-StatefulButton.defaultProps = {
-  fullWidth: undefined,
-  isDisabled: undefined,
-  isLoading: undefined,
-};
-
-StatefulButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  fullWidth: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isLoading: PropTypes.bool,
-};
-
 export const All = () => {
+  const handleClick = event => {
+    action('clicked')(event);
+  };
+
+  const handleBlur = event => {
+    action('blurred')(event);
+  };
+
+  const handleFocus = event => {
+    action('focused')(event);
+  };
+
   return (
-    <div>
+    <>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulButton>
+        <Button
+          onClick={handleClick}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+        >
           Button
-        </StatefulButton>
+        </Button>
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulButton fullWidth>
+        <Button
+          fullWidth
+          onClick={handleClick}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+        >
           Full Width Button
-        </StatefulButton>
+        </Button>
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulButton isDisabled>
+        <Button
+          isDisabled
+          onClick={handleClick}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+        >
           Disabled Button
-        </StatefulButton>
+        </Button>
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <StatefulButton isLoading>
+        <Button
+          isLoading
+          onClick={handleClick}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+        >
           Button with a really long name. Width will not decrease when loading indicator is rendered.
-        </StatefulButton>
+        </Button>
       </div>
-    </div>
+    </>
   );
 };

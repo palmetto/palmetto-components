@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextInput from '../TextInput/TextInput';
+import TextInput from '../../TextInput/TextInput';
 
 const FormikTextInput = (
   {
