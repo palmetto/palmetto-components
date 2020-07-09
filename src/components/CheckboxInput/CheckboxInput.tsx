@@ -104,4 +104,3 @@ CheckboxInput.defaultProps = {
 
 
 export default CheckboxInput;
-

@@ -1,114 +1,146 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { State, Store } from "@sambego/storybook-state";
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import TextInput from './TextInput';
 
 export default {
-  title: 'TextInput',
+  title: 'Forms/TextInput',
   component: TextInput,
   decorators: [withA11y],
 };
 
-const StatefulInput = props => {
-  const { initialValue } = props;
-  const [value, setValue] = useState(initialValue);
-
-  const handleChange = e => {
-    action('onChange')(e);
-    setValue(e.target.value || e.target.rawValue);
-  };
-
-  const handleFocus = e => {
-    action('onFocus')(e);
-  };
-
-  const handleBlur = e => {
-    action('onBlur')(e);
-  };
-
-  return (
-    <TextInput
-      value={value}
-      onChange={handleChange}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      {...props} // eslint-disable-line react/jsx-props-no-spreading
-    />
-  );
-};
-
-StatefulInput.propTypes = {
-  initialValue: PropTypes.string.isRequired,
-};
-
 export const All = () => {
-  const basicInputValue = 'Hello World!';
-  const disabledInputValue = 'Disabled value';
-  const placeholderInputValue = '';
-  const withLabelInputValue = 'With a label';
-  const requiredInputValue = '';
-  const autoFocusedInputValue = '';
-  const withInputMaskValue = '';
-  const errorInputValue = '';
-  const withLabelErrorInputValue = 'invalid value';
+  const store = new Store({
+    basicInputValue: 'Hello World!',
+    placeholderInputValue: '',
+    withLabelInputValue: 'With a label',
+    requiredInputValue: '',
+    autoFocusedInputValue: '',
+    withInputMaskValue: '',
+    errorInputValue: '',
+    withLabelErrorInputValue: 'invalid value',
+    withValidationMessage: '',
+    invalidWithLabel: '',
+  });
+
+  const handleChange = (event, key) => {
+    action('change')(event);
+    store.set({ [key]: event.target.value });
+  };
 
   return (
-    <div style={{ maxWidth: '400px' }}>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput initialValue={basicInputValue} />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput label="Disabled input with value" initialValue={disabledInputValue} isDisabled />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput label="Disabled input without value" isDisabled />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput label="Disabled input with placeholder" placeholder="I am placeholder inside disabled input" isDisabled />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput initialValue={withLabelInputValue} label="Name" />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput initialValue={requiredInputValue} label="Required Input" isRequired />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput
-          initialValue={placeholderInputValue}
-          label="With placeholder"
-          placeholder="I am a placeholder"
-        />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput
-          initialValue={autoFocusedInputValue}
-          label="Autofocused"
-          placeholder="I am autofocused on page load"
-          autoFocus
-        />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput
-          initialValue={withInputMaskValue}
-          label="With phone input mask"
-          placeholder="I have a phone number format"
-          type="tel"
-          inputMask="phone"
-        />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid Not Required with Validation Message" />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput isRequired error="Helpful validation message" initialValue={withLabelErrorInputValue} label="Invalid Required with Validation Message" />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput error initialValue={errorInputValue} placeholder="invalid with no label" />
-      </div>
-      <div style={{ marginBottom: '1rem' }}>
-        <StatefulInput error initialValue={withLabelErrorInputValue} label="Invalid" />
-      </div>
-    </div>
+    <State store={store}>
+      {state => (
+        <div style={{ maxWidth: '400px' }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              value={state.basicInputValue}
+              onChange={event => handleChange(event, 'basicInputValue')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              label="Disabled input with value"
+              value="I am disabled with a value"
+              isDisabled
+              onChange={() => null}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              label="Disabled input without value"
+              isDisabled
+              value=""
+              onChange={() => null}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              label="Disabled input with placeholder"
+              placeholder="I am placeholder inside disabled input"
+              isDisabled
+              value=""
+              onChange={() => null}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              value={state.withLabelInputValue}
+              label="Name"
+              onChange={event => handleChange(event, 'withLabelInputValue')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              value={state.requiredInputValue}
+              label="Required Input"
+              isRequired
+              onChange={event => handleChange(event, 'requiredInputValue')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              value={state.placeholderInputValue}
+              label="With placeholder"
+              placeholder="I am a placeholder"
+              onChange={event => handleChange(event, 'placeholderInputValue')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              value={state.autoFocusedInputValue}
+              label="Autofocused"
+              placeholder="I am autofocused on page load"
+              autoFocus
+              onChange={event => handleChange(event, 'autoFocusedInputValue')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              value={state.withInputMaskValue}
+              label="With phone input mask"
+              placeholder="I have a phone number format"
+              type="tel"
+              inputMask="phone"
+              onChange={event => handleChange(event, 'withInputMaskValue')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              error="Helpful validation message"
+              value={state.withLabelErrorInputValue}
+              label="Invalid Not Required with Validation Message"
+              onChange={event => handleChange(event, 'withLabelErrorInputValue')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              isRequired
+              error="Helpful validation message"
+              value={state.withValidationMessage}
+              label="Invalid Required with Validation Message"
+              onChange={event => handleChange(event, 'withValidationMessage')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              error
+              value={state.errorInputValue}
+              placeholder="invalid with no label"
+              onChange={event => handleChange(event, 'errorInputValue')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              error
+              value={state.invalidWithLabel}
+              label="Invalid With Label"
+              onChange={event => handleChange(event, 'invalidWithLabel')}
+            />
+          </div>
+        </div>
+      )}
+    </State>
   );
 };

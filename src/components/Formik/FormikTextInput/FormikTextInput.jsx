@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextInput from '../TextInput/TextInput';
+import TextInput from '../../TextInput/TextInput';
 
 const FormikTextInput = (
   {
@@ -15,7 +15,7 @@ const FormikTextInput = (
   },
 ) => (
   <TextInput
-    name
+    name={name}
     onBlur={onBlur}
     onChange={onChange}
     value={value}
