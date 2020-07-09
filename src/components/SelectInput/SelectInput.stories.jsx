@@ -9,7 +9,7 @@ export default {
   decorators: [withA11y],
 };
 
-const handleChange = e => {
+const onChange = e => {
   action('onChange')(e);
 };
 
@@ -29,7 +29,7 @@ export const All = () => {
   ];
 
   const selectInputProps = {
-    onChange: handleChange,
+    onChange,
     onFocus: handleFocus,
     onBlur: handleBlur,
     options: selectOptions,
@@ -123,7 +123,7 @@ export const All = () => {
           id="disabledPreselectedValue"
           label="Disabled with value pre-selected"
           className="singleSelectWithLabel"
-          value={{ value: 'vanilla', label: 'Vanilla' }}
+          value={selectOptions[2]}
           isDisabled
         />
       </div>
@@ -135,7 +135,9 @@ export const All = () => {
           className="singleSelectWithLabel"
           isMulti
           value={[
-            { value: 'chocolate', label: 'Chocolate' }, { value: 'vanilla', label: 'Vanilla' }]}
+            selectOptions[0],
+            selectOptions[2],
+          ]}
           isDisabled
         />
       </div>
