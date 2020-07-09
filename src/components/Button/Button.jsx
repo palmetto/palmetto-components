@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { v4 as uuid } from 'uuid';
 import './Button.scss';
 import { ReactComponent as LoadingIndicator } from '../../images/loading.svg';
 
 const Button = ({
-  id,
   type,
   className,
   children,
@@ -18,8 +16,6 @@ const Button = ({
   onFocus,
   onBlur,
 }) => {
-  const inputId = id || uuid();
-
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames('Palmetto-Button', className, {
@@ -53,7 +49,6 @@ const Button = ({
   return (
     <button
       disabled={disabled}
-      id={inputId}
       type={type} // eslint-disable-line react/button-has-type
       className={buttonClasses}
       onClick={handleClick}
@@ -69,7 +64,6 @@ const Button = ({
 };
 
 Button.defaultProps = {
-  id: undefined,
   type: 'button',
   className: '',
   isDisabled: false,
@@ -82,10 +76,6 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  /**
-   * A unique identifier for the button
-   */
-  id: PropTypes.string,
   /**
    * Button type
    */

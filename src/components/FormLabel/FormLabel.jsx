@@ -5,7 +5,7 @@ import './FormLabel.scss';
 
 const FormLabel = ({
   hasError,
-  inputId,
+  id,
   isFieldRequired,
   labelText,
 }) => {
@@ -17,7 +17,7 @@ const FormLabel = ({
   );
 
   return (
-    <label className={labelClasses} htmlFor={inputId}>
+    <label className={labelClasses} htmlFor={id}>
       {labelText}
       {isFieldRequired && <span className="font-size-sm">&nbsp;*</span>}
     </label>
@@ -32,7 +32,7 @@ FormLabel.propTypes = {
   /**
    * The id of the form control that the label is labeling
    */
-  inputId: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   /**
    * The label text
    */

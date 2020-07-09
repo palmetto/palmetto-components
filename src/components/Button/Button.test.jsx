@@ -5,7 +5,6 @@ import {
   screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import validateUuid from '../../lib/validateUuid';
 import Button from './Button';
 
 describe('Button', () => {
@@ -48,19 +47,6 @@ describe('Button', () => {
       fireEvent.blur(screen.getByText('Blur').closest('button'));
 
       expect(mockedHandleBlur).toBeCalledTimes(1);
-    });
-  });
-
-  describe('Automatic ID Generator', () => {
-    test('Button correctly generates a uuid if none is provided', () => {
-      render(
-        <Button>
-          Button!
-        </Button>,
-      );
-      const buttonElement = screen.getByText('Button!').closest('button');
-
-      expect(validateUuid(buttonElement.id)).toBe(true);
     });
   });
 
