@@ -103,4 +103,3 @@ CheckboxInput.propTypes = {
 };
 
 export default CheckboxInput;
-
