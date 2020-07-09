@@ -49,6 +49,7 @@
     "@rollup/plugin-babel": "^5.0.4",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
+    "@sambego/storybook-state": "^2.0.1",
     "@storybook/addon-a11y": "^5.3.19",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-docs": "^5.3.19",
