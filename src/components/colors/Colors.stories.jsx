@@ -1,14 +1,13 @@
 import React from 'react';
-// import { withA11y } from '@storybook/addon-a11y';
+import { withA11y } from '@storybook/addon-a11y';
 import { PALMETTO_COLOR_VALUES } from '../../lib/tokens';
 import './colors.scss';
-// import { action } from '@storybook/addon-actions';
 
 const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
 
 export default {
   title: 'Colors',
-  // decorators: [withA11y],
+  decorators: [withA11y],
 };
 
 const renderColorBlock = colorEntry => {
