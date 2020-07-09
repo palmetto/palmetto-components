@@ -10,6 +10,10 @@
       .selectInput__placeholder {
         color: $color-font-grey-light;
       }
+
+      .selectInput__clear-indicator {
+        padding: 7px 7px;
+      }
     
       .selectInput__indicator-separator {
         display: none;
