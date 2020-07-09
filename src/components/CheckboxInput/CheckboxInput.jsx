@@ -7,7 +7,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import './CheckboxInput.scss';
 
 /**
- * Use checkbox to allow users to make a range of selections (zero, one or many).
+ * Used to allow users to make a range of selections (zero, one or many).
  */
 
 const CheckboxInput = ({
