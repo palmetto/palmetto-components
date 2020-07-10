@@ -5,7 +5,6 @@ import {
   screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import validateUuid from '../../lib/validateUuid';
 import TextInput from './TextInput';
 
 describe('TextInput', () => {
@@ -109,12 +108,6 @@ describe('TextInput', () => {
     render(<TextInput value="hello" onChange={() => null} autoFocus />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(document.activeElement).toEqual(inputElement);
-  });
-
-  test('Input correctly generates a uuid if none is provided', () => {
-    render(<TextInput value="hello" onChange={() => null} />);
-    const inputElement = screen.getByDisplayValue('hello');
-    expect(validateUuid(inputElement.id)).toBe(true);
   });
 
   test('Input correctly assigns autocomplete value of "on" when bool true is provided', () => {

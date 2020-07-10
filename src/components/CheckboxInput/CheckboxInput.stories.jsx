@@ -33,6 +33,7 @@ export const All = () => {
         <>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
+              id="defaultStateIsUnchecked"
               label="Default state is unchecked"
               isChecked={state.default}
               onChange={value => handleChange(value, 'default')}
@@ -40,6 +41,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
+              id="requiredCheckboxIsUnchecked"
               isRequired
               label="Required checkbox is unchecked"
               isChecked={state.required}
@@ -48,6 +50,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
+              id="initialStateChecked"
               isChecked={state.initialChecked}
               label="Initial state can be set to checked."
               onChange={value => handleChange(value, 'initialChecked')}
@@ -55,6 +58,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
+              id="customLabel"
               label={(
                 <>
                   <span style={{ color: '#5620c5' }}>
@@ -71,6 +75,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
+              id="disabledAndUnchecked"
               isDisabled
               label="Disabled, and unchecked."
               isChecked={state.disabledUnchecked}
@@ -79,6 +84,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
+              id="disabledAndChecked"
               label="Disabled, and checked."
               isDisabled
               isChecked={state.disabledChecked}
@@ -87,6 +93,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
+              id="invalidCheckbox"
               error="You must accept the Terms and Conditions"
               label="Invalid checkbox"
               isChecked={state.withError}
@@ -95,6 +102,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
+              id="requiredInvalidCheckbox"
               isRequired
               error="You must accept the Terms and Conditions"
               label="Required Invalid checkbox"

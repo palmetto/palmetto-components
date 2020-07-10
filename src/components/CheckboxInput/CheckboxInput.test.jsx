@@ -4,12 +4,18 @@ import {
   fireEvent,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import validateUuid from '../../lib/validateUuid';
 import CheckboxInput from './CheckboxInput';
 
 describe('CheckboxInput', () => {
   test('not disabled, checked, or invalid by default', () => {
-    const { getByLabelText } = render(<CheckboxInput label="test checkbox" value="hello" onChange={() => null} />);
+    const { getByLabelText } = render(
+      <CheckboxInput
+        id="testCheckbox"
+        label="test checkbox"
+        value="hello"
+        onChange={() => null}
+      />,
+    );
     const checkbox = getByLabelText('test checkbox');
 
     expect(checkbox.checked).toBe(false);
@@ -18,13 +24,21 @@ describe('CheckboxInput', () => {
   });
 
   test('it renders the label if provided', () => {
-    const { getByLabelText } = render(<CheckboxInput label="test checkbox" value="hello" onChange={() => null} />);
+    const { getByLabelText } = render(
+      <CheckboxInput
+        id="testCheckbox"
+        label="test checkbox"
+        value="hello"
+        onChange={() => null}
+      />,
+    );
     expect(getByLabelText('test checkbox')).toBeDefined();
   });
 
   test('input is checked when isChecked is true', () => {
     const { getByLabelText } = render(
       <CheckboxInput
+        id="testCheckbox"
         label="test checkbox"
         value="hello"
         onChange={() => null}
@@ -38,6 +52,7 @@ describe('CheckboxInput', () => {
   test('input is not checked when isChecked is false', () => {
     const { getByLabelText } = render(
       <CheckboxInput
+        id="testCheckbox"
         label="test checkbox"
         value="hello"
         onChange={() => null}
@@ -48,18 +63,13 @@ describe('CheckboxInput', () => {
     expect(checkbox.checked).toEqual(false);
   });
 
-  test('correctly generates a uuid if none is provided', () => {
-    const { getByLabelText } = render(<CheckboxInput label="test checkbox" value="hello" onChange={() => null} />);
-    const inputElement = getByLabelText('test checkbox');
-    expect(validateUuid(inputElement.id)).toBe(true);
-  });
-
   describe('onChange', () => {
     test('onChange event fires callback function', () => {
       const mockedHandleChange = jest.fn(() => null);
 
       const { getByLabelText } = render(
         <CheckboxInput
+          id="testCheckbox"
           label="test checkbox"
           value="hello"
           onChange={mockedHandleChange}
@@ -75,6 +85,7 @@ describe('CheckboxInput', () => {
 
       const { getByLabelText } = render(
         <CheckboxInput
+          id="testCheckbox"
           label="test checkbox"
           value="hello"
           onChange={mockedHandleChange}
@@ -90,6 +101,7 @@ describe('CheckboxInput', () => {
 
       const { getByLabelText } = render(
         <CheckboxInput
+          id="testCheckbox"
           label="test checkbox"
           value="hello"
           onChange={mockedHandleChange}

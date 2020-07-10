@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { v4 as uuid } from 'uuid';
 import Cleave from 'cleave.js/react';
 import * as InputMasks from './TextInputMasks';
 import './TextInput.scss';
@@ -55,8 +54,6 @@ const TextInput = ({
     { error },
   );
 
-  const inputId = id || uuid();
-
   const getAutoCompleteValue = () => {
     if (
       !autoComplete
@@ -79,7 +76,7 @@ const TextInput = ({
     autoFocus,
     className: inputClasses,
     disabled: isDisabled,
-    id: inputId,
+    id,
     name,
     onBlur: handleBlur,
     onChange: handleChange,
@@ -91,7 +88,7 @@ const TextInput = ({
 
   const labelProps = {
     isFieldRequired: isRequired,
-    inputId,
+    inputId: id,
     labelText: label,
     hasError: !!error,
   };
@@ -137,7 +134,7 @@ TextInput.propTypes = {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   /**
    * Pass a value to apply a mask to the input value.
    * Can be one of the existing present strings, or a custom object with options
@@ -193,7 +190,6 @@ TextInput.defaultProps = {
   autoComplete: false,
   autoFocus: false,
   className: '',
-  id: undefined,
   inputMask: undefined,
   isDisabled: false,
   error: false,
