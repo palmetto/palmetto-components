@@ -1,5 +1,5 @@
 import React from 'react';
-import { State, Store } from "@sambego/storybook-state";
+import { State, Store } from '@sambego/storybook-state';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import TextInput from './TextInput';
