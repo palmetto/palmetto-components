@@ -62,7 +62,8 @@ export const FormikForm = () => {
         }}
         validate={handleValidation}
         onSubmit={handleSubmit}
-        render={({ isSubmitting, values }) => (
+        handleChange={event => action('change')(event)}
+        render={({ isSubmitting, values, setFieldValue }) => (
           <Form>
             <div style={{ marginBottom: '1rem' }}>
               <Field
@@ -71,7 +72,12 @@ export const FormikForm = () => {
                 name="firstName"
                 id="firstName"
                 component={FormikTextInput}
-                onChange={action('first name onChange')}
+                // With a custom onChange.
+                // We preserve Formik's convention and relegate state management back to the user.
+                onChange={event => {
+                  action('change')(event);
+                  setFieldValue('firstName', event.target.value);
+                }}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -81,7 +87,6 @@ export const FormikForm = () => {
                 name="lastName"
                 id="lastName"
                 component={FormikTextInput}
-                onChange={action('last name onChange')}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -90,7 +95,6 @@ export const FormikForm = () => {
                 name="email"
                 id="email"
                 component={FormikTextInput}
-                onChange={action('email onChange')}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -100,7 +104,10 @@ export const FormikForm = () => {
                 id="flavor"
                 options={selectOptions}
                 component={FormikSelectInput}
-                onChange={action('Select onChange')}
+                onChange={selectedOption => {
+                  action('change')(selectedOption);
+                  setFieldValue('flavor', selectedOption);
+                }}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
