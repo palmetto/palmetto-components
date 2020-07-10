@@ -98,7 +98,24 @@ export const FormikForm = () => {
                 component={FormikSelectInput}
               />
             </div>
-
+            <div style={{ marginBottom: '1rem' }}>
+              <Field
+                label="Flavors"
+                name="flavors"
+                id="flavors"
+                isMulti
+                options={selectOptions}
+                component={FormikSelectInput}
+              />
+            </div>
+            <div style={{ marginBottom: '1rem' }}>
+              <Field
+                label="Terms and Conditions"
+                name="areTermsChecked"
+                id="areTermsChecked"
+                component={FormikCheckboxInput}
+              />
+            </div>
             <Button type="submit" isLoading={isSubmitting}>Submit</Button>
             <pre>{JSON.stringify(values, isSubmitting, null, 2)}</pre>
           </Form>
