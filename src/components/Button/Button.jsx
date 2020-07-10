@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { v4 as uuid } from 'uuid';
 import './Button.scss';
 import { ReactComponent as LoadingIndicator } from '../../images/loading.svg';
 
@@ -18,8 +17,6 @@ const Button = ({
   onFocus,
   onBlur,
 }) => {
-  const inputId = id || uuid();
-
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames('Palmetto-Button', className, {
@@ -52,9 +49,9 @@ const Button = ({
 
   return (
     <button
-      disabled={disabled}
-      id={inputId}
+      id={id}
       type={type} // eslint-disable-line react/button-has-type
+      disabled={disabled}
       className={buttonClasses}
       onClick={handleClick}
       onFocus={handleFocus}
