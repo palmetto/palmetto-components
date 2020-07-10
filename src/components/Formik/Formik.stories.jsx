@@ -104,6 +104,8 @@ export const FormikForm = () => {
                 id="flavor"
                 options={selectOptions}
                 component={FormikSelectInput}
+                // With a custom onChange.
+                // We preserve Formik's convention and relegate state management back to the user.
                 onChange={selectedOption => {
                   action('change')(selectedOption);
                   setFieldValue('flavor', selectedOption);
