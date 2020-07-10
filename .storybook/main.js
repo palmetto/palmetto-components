@@ -1,9 +1,7 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 const scssRules = {
   test: /\.scss$/,
   use: [
-    MiniCssExtractPlugin.loader,
+    'style-loader',
     'css-loader',
     // 'postcss-loader', @TODO -- Add postcss config and re-enable loader.
     'sass-loader',
@@ -40,7 +38,6 @@ module.exports = {
     // '@storybook/addon-viewport/register',
   ],
   webpackFinal: (config) => {
-    config.plugins.push(new MiniCssExtractPlugin());
     config.module.rules.push(scssRules);
     config.module.rules.push(fileLoaderRules);
     const assetRule = config.module.rules.find(({ test }) => test.test(".svg"));
