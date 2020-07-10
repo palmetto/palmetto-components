@@ -10,9 +10,7 @@ const FormikSelectInput = (
       onChange,
       value,
     },
-    form: {
-      errors, touched, submitCount = 0,
-    },
+    form: { touched, errors },
     ...props
   },
 ) => (
@@ -21,7 +19,7 @@ const FormikSelectInput = (
     onBlur={onBlur}
     onChange={onChange}
     value={value}
-    error={(touched[name] || submitCount > 0) && errors[name]}
+    error={touched[name] && errors[name]}
     {...props}
   />
 );
@@ -34,6 +32,7 @@ FormikSelectInput.propTypes = {
     value: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.string,
+      PropTypes.arrayOf(PropTypes.object),
     ]),
   }).isRequired,
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types

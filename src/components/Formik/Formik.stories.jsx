@@ -24,7 +24,6 @@ export const FormikForm = () => {
     { value: 'vanilla', label: 'Vanilla' },
   ];
 
-
   const handleValidation = values => {
     const errors = {};
     if (!values.email) {
@@ -33,7 +32,8 @@ export const FormikForm = () => {
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
     ) {
       errors.email = 'Invalid email address';
-    } else if (!values.flavor) {
+    }
+    if (!values.flavor) {
       errors.flavor = 'Flavor is required';
     }
     return errors;
@@ -58,14 +58,14 @@ export const FormikForm = () => {
           email: '',
           areTermsChecked: false,
           flavor: null,
-          flavors: null,
+          flavors: [{ value: 'vanilla', label: 'Vanilla' }],
         }}
         validate={handleValidation}
         onSubmit={handleSubmit}
         handleChange={event => action('change')(event)}
         render={({ isSubmitting, values, setFieldValue }) => (
           <Form>
-            <div style={{ marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
               <Field
                 type="text"
                 label="First Name"
@@ -80,7 +80,7 @@ export const FormikForm = () => {
                 }}
               />
             </div>
-            <div style={{ marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
               <Field
                 type="text"
                 label="Last Name"
@@ -89,15 +89,16 @@ export const FormikForm = () => {
                 component={FormikTextInput}
               />
             </div>
-            <div style={{ marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
               <Field
                 label="Email"
                 name="email"
                 id="email"
                 component={FormikTextInput}
+                isRequired
               />
             </div>
-            <div style={{ marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
               <Field
                 label="Flavor"
                 name="flavor"
@@ -110,9 +111,10 @@ export const FormikForm = () => {
                   action('change')(selectedOption);
                   setFieldValue('flavor', selectedOption);
                 }}
+                isRequired
               />
             </div>
-            <div style={{ marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
               <Field
                 label="Flavors"
                 name="flavors"
@@ -122,13 +124,12 @@ export const FormikForm = () => {
                 component={FormikSelectInput}
               />
             </div>
-            <div style={{ marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
               <Field
                 label="Terms and Conditions"
                 name="areTermsChecked"
                 id="areTermsChecked"
                 component={FormikCheckboxInput}
-                onChange={action('checkbox onChange')}
               />
             </div>
             <Button type="submit" isLoading={isSubmitting}>Submit</Button>

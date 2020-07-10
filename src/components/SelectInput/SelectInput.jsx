@@ -16,7 +16,7 @@ const SelectInput = ({
   label,
   className,
   placeholder,
-  hasError,
+  error,
   isDisabled,
   isRequired,
   onChange,
@@ -37,14 +37,14 @@ const SelectInput = ({
 
   const inputClasses = classNames(
     'selectInput',
-    { error: hasError },
+    { error },
   );
 
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
     labelText: label,
-    hasError: !!hasError,
+    error: !!error,
   };
 
   return (
@@ -67,7 +67,7 @@ const SelectInput = ({
           value={value}
         />
       </div>
-      {hasError && hasError !== true && <InputValidationMessage>{hasError}</InputValidationMessage>}
+      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </>
   );
 };
@@ -76,7 +76,7 @@ SelectInput.defaultProps = {
   label: undefined,
   className: '',
   placeholder: undefined,
-  hasError: false,
+  error: false,
   isDisabled: false,
   isRequired: false,
   onFocus: undefined,
@@ -107,7 +107,7 @@ SelectInput.propTypes = {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input
    */
-  hasError: PropTypes.oneOfType([
+  error: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
     PropTypes.node,
