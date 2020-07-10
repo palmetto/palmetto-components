@@ -8,7 +8,14 @@ import CheckboxInput from './CheckboxInput';
 
 describe('CheckboxInput', () => {
   test('not disabled, checked, or invalid by default', () => {
-    const { getByLabelText } = render(<CheckboxInput label="test checkbox" value="hello" onChange={() => null} />);
+    const { getByLabelText } = render(
+      <CheckboxInput
+        id="testCheckbox"
+        label="test checkbox"
+        value="hello"
+        onChange={() => null}
+      />,
+    );
     const checkbox = getByLabelText('test checkbox');
 
     expect(checkbox.checked).toBe(false);
@@ -17,13 +24,21 @@ describe('CheckboxInput', () => {
   });
 
   test('it renders the label if provided', () => {
-    const { getByLabelText } = render(<CheckboxInput label="test checkbox" value="hello" onChange={() => null} />);
+    const { getByLabelText } = render(
+      <CheckboxInput
+        id="testCheckbox"
+        label="test checkbox"
+        value="hello"
+        onChange={() => null}
+      />,
+    );
     expect(getByLabelText('test checkbox')).toBeDefined();
   });
 
   test('input is checked when isChecked is true', () => {
     const { getByLabelText } = render(
       <CheckboxInput
+        id="testCheckbox"
         label="test checkbox"
         value="hello"
         onChange={() => null}
@@ -37,6 +52,7 @@ describe('CheckboxInput', () => {
   test('input is not checked when isChecked is false', () => {
     const { getByLabelText } = render(
       <CheckboxInput
+        id="testCheckbox"
         label="test checkbox"
         value="hello"
         onChange={() => null}
@@ -53,6 +69,7 @@ describe('CheckboxInput', () => {
 
       const { getByLabelText } = render(
         <CheckboxInput
+          id="testCheckbox"
           label="test checkbox"
           value="hello"
           onChange={mockedHandleChange}
@@ -68,6 +85,7 @@ describe('CheckboxInput', () => {
 
       const { getByLabelText } = render(
         <CheckboxInput
+          id="testCheckbox"
           label="test checkbox"
           value="hello"
           onChange={mockedHandleChange}
@@ -83,6 +101,7 @@ describe('CheckboxInput', () => {
 
       const { getByLabelText } = render(
         <CheckboxInput
+          id="testCheckbox"
           label="test checkbox"
           value="hello"
           onChange={mockedHandleChange}
