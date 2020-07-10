@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { v4 as uuid } from 'uuid';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
 import './CheckboxInput.scss';
+
+/**
+ * Used to allow users to make a range of selections (zero, one or many).
+ */
 
 const CheckboxInput = ({
   id,
@@ -16,8 +19,6 @@ const CheckboxInput = ({
   onChange,
   label,
 }) => {
-  const inputId = id || uuid();
-
   const handleChange = e => {
     onChange(e.target.checked);
   };
@@ -29,7 +30,7 @@ const CheckboxInput = ({
 
   const labelProps = {
     isFieldRequired: isRequired,
-    inputId,
+    inputId: id,
     labelText: label,
     hasError: !!error,
   };
@@ -39,7 +40,7 @@ const CheckboxInput = ({
       <div className={classNames('Palmetto-CheckboxInput', className, { isDisabled })}>
         <input
           aria-invalid={!!error}
-          id={inputId}
+          id={id}
           checked={isChecked}
           disabled={isDisabled}
           onChange={handleChange}
@@ -54,7 +55,6 @@ const CheckboxInput = ({
 };
 
 CheckboxInput.defaultProps = {
-  id: undefined,
   className: '',
   error: false,
   isChecked: false,
@@ -66,7 +66,7 @@ CheckboxInput.propTypes = {
   /**
    * The id attribute of the input
    */
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   /**
    * Additional classes to add
    */
