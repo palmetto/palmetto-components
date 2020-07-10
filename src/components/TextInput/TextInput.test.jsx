@@ -37,7 +37,7 @@ describe('TextInput', () => {
 
   test('Throws an error if "type" prop is anything other than allowed values', () => {
     console.error = jest.fn(); // eslint-disable-line no-console
-    render(<TextInput onChange={() => null} value="hello" type="notOnTheList" />);
+    render(<TextInput id="textInput2" onChange={() => null} value="hello" type="notOnTheList" />);
     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
       .toContain('Failed prop type: Invalid prop `type`');
