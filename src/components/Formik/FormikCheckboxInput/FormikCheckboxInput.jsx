@@ -27,14 +27,7 @@ FormikCheckboxInput.propTypes = {
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-<<<<<<< HEAD
-    value: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.string,
-    ]),
-=======
     value: PropTypes.bool,
->>>>>>> 8f7fafbb8c5c86b4c70b05ac66cf140b88f8e81d
   }).isRequired,
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
