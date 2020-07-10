@@ -1,7 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import classNames from 'classnames';
-import { v4 as uuid } from 'uuid';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
 import './CheckboxInput.scss';
@@ -55,10 +54,8 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
   isRequired,
   onChange,
   label,
-}: InferProps<typeof propTypes>) => {
-  const inputId = id || uuid();
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+}) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     onChange(e.target.checked);
   };
 
@@ -72,7 +69,7 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
       <div className={classNames('Palmetto-CheckboxInput', className, { isDisabled })}>
         <input
           aria-invalid={!!error}
-          id={inputId}
+          id={id}
           checked={isChecked}
           disabled={isDisabled}
           onChange={handleChange}
@@ -81,7 +78,7 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
         />
         {label && <FormLabel {...{
           isFieldRequired: isRequired,
-          inputId,
+          inputId: id,
           labelText: label,
           hasError: !!error,
         }} />}
@@ -94,13 +91,11 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
 CheckboxInput.propTypes = propTypes;
 
 CheckboxInput.defaultProps = {
-  id: undefined,
   className: '',
   error: false,
   isChecked: false,
   isDisabled: false,
   isRequired: false,
 };
-
 
 export default CheckboxInput;

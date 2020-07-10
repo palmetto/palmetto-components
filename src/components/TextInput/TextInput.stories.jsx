@@ -1,11 +1,11 @@
 import React from 'react';
-import { State, Store } from "@sambego/storybook-state";
+import { State, Store } from '@sambego/storybook-state';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import TextInput from './TextInput';
 
 export default {
-  title: 'Forms/TextInput',
+  title: 'Forms/Inputs/TextInput',
   component: TextInput,
   decorators: [withA11y],
 };
@@ -35,12 +35,14 @@ export const All = () => {
         <div style={{ maxWidth: '400px' }}>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="basicTextInput"
               value={state.basicInputValue}
               onChange={event => handleChange(event, 'basicInputValue')}
             />
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="disabledInputWithValue"
               label="Disabled input with value"
               value="I am disabled with a value"
               isDisabled
@@ -49,6 +51,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="disabledInputWithoutValue"
               label="Disabled input without value"
               isDisabled
               value=""
@@ -57,6 +60,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="disabledInputWithPlaceholder"
               label="Disabled input with placeholder"
               placeholder="I am placeholder inside disabled input"
               isDisabled
@@ -66,6 +70,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="inputWithName"
               value={state.withLabelInputValue}
               label="Name"
               onChange={event => handleChange(event, 'withLabelInputValue')}
@@ -73,6 +78,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="inputWithLabel"
               value={state.requiredInputValue}
               label="Required Input"
               isRequired
@@ -81,6 +87,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="InputWithPlaceholder"
               value={state.placeholderInputValue}
               label="With placeholder"
               placeholder="I am a placeholder"
@@ -89,6 +96,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="autoFocusedInput"
               value={state.autoFocusedInputValue}
               label="Autofocused"
               placeholder="I am autofocused on page load"
@@ -98,6 +106,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="inputWithPhoneMask"
               value={state.withInputMaskValue}
               label="With phone input mask"
               placeholder="I have a phone number format"
@@ -108,6 +117,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="inputNotRequiredWithValidationMessage"
               error="Helpful validation message"
               value={state.withLabelErrorInputValue}
               label="Invalid Not Required with Validation Message"
@@ -116,6 +126,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="inputRequiredWithValidationMessage"
               isRequired
               error="Helpful validation message"
               value={state.withValidationMessage}
@@ -125,6 +136,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="invalidWithNoLabel"
               error
               value={state.errorInputValue}
               placeholder="invalid with no label"
@@ -133,6 +145,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
+              id="invalidWithLabel"
               error
               value={state.invalidWithLabel}
               label="Invalid With Label"
