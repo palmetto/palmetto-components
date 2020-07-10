@@ -1,20 +1,29 @@
 import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
 import { Field, Form, Formik } from 'formik';
+import Button from '../Button/Button';
 import FormikTextInput from './FormikTextInput/FormikTextInput';
 import FormikCheckboxInput from './FormikCheckboxInput/FormikCheckboxInput';
-import Button from '../Button/Button';
+import FormikSelectInput from './FormikSelectInput/FormikSelectInput';
 
 export default {
   title: 'Forms/Formik',
   decorators: [withA11y],
   subcomponents: {
-    FormikTextInput,
     FormikCheckboxInput,
+    FormikSelectInput,
+    FormikTextInput,
   },
 };
 
 export const FormikForm = () => {
+  const selectOptions = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
+
+
   const handleValidation = values => {
     const errors = {};
     if (!values.email) {
@@ -23,6 +32,8 @@ export const FormikForm = () => {
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
     ) {
       errors.email = 'Invalid email address';
+    } else if (!values.flavor) {
+      errors.flavor = 'Flavor is required';
     }
     return errors;
   };
@@ -45,6 +56,8 @@ export const FormikForm = () => {
           lastName: '',
           email: '',
           areTermsChecked: false,
+          flavor: {},
+          colors: null,
         }}
         validate={handleValidation}
         onSubmit={handleSubmit}
@@ -74,6 +87,25 @@ export const FormikForm = () => {
                 name="email"
                 id="email"
                 component={FormikTextInput}
+              />
+            </div>
+            <div style={{ marginBottom: '1rem' }}>
+              <Field
+                label="Flavor"
+                name="flavor"
+                id="flavor"
+                options={selectOptions}
+                component={FormikSelectInput}
+              />
+            </div>
+            <div style={{ marginBottom: '1rem' }}>
+              <Field
+                label="Colors"
+                name="colors"
+                id="colors"
+                isMulti
+                options={selectOptions}
+                component={FormikSelectInput}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
