@@ -1,6 +1,7 @@
 import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
 import { Field, Form, Formik } from 'formik';
+import { action } from '@storybook/addon-actions';
 import Button from '../Button/Button';
 import FormikTextInput from './FormikTextInput/FormikTextInput';
 import FormikCheckboxInput from './FormikCheckboxInput/FormikCheckboxInput';
@@ -70,6 +71,7 @@ export const FormikForm = () => {
                 name="firstName"
                 id="firstName"
                 component={FormikTextInput}
+                onChange={action('first name onChange')}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -79,6 +81,7 @@ export const FormikForm = () => {
                 name="lastName"
                 id="lastName"
                 component={FormikTextInput}
+                onChange={action('last name onChange')}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -87,6 +90,7 @@ export const FormikForm = () => {
                 name="email"
                 id="email"
                 component={FormikTextInput}
+                onChange={action('email onChange')}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -96,6 +100,7 @@ export const FormikForm = () => {
                 id="flavor"
                 options={selectOptions}
                 component={FormikSelectInput}
+                onChange={action('Select onChange')}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -114,6 +119,7 @@ export const FormikForm = () => {
                 name="areTermsChecked"
                 id="areTermsChecked"
                 component={FormikCheckboxInput}
+                onChange={action('checkbox onChange')}
               />
             </div>
             <Button type="submit" isLoading={isSubmitting}>Submit</Button>
