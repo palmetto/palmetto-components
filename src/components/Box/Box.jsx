@@ -4,13 +4,14 @@ import classNames from 'classnames';
 import {
   PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_BRAND_COLOR_OPTIONS,
+  PALMETTO_BACKGROUND_COLOR_OPTIONS,
   // PALMETTO_SPACING_VALUES,
 } from '../../lib/tokens';
 import getElementType from '../../lib/getElementType';
 // import BorderType from '../../types';
 
 // console.log(PALMETTO_FONT_SIZE_OPTIONS);
-// console.log(PALMETTO_BRAND_COLOR_OPTIONS);
+console.log(PALMETTO_BACKGROUND_COLOR_OPTIONS);
 // console.log(PALMETTO_SPACING_VALUES);
 
 /**
@@ -24,7 +25,7 @@ function Box(props) {
     // alignContent,
     // alignSelf,
     as,
-    // background,
+    background,
     // basis,
     // border,
     color,
@@ -49,6 +50,7 @@ function Box(props) {
   const classes = classNames(className, {
     [`font-size-${fontSize}`]: fontSize,
     [`font-color-${color}`]: color,
+    [`background-color-${background}`]: background,
   });
 
   return (
@@ -90,10 +92,10 @@ Box.propTypes = {
    * The DOM tag or react component to use for the element.
    */
   as: PropTypes.elementType,
-  // /**
-  //  * Any valid color token, or a `url()` for an image
-  //  */
-  // background: PropTypes.oneOf([]),
+  /**
+   * Any valid color token, or a `url()` for an image
+   */
+  background: PropTypes.oneOf(PALMETTO_BACKGROUND_COLOR_OPTIONS),
   // /**
   //  * The default size of an element before the remaining space is distributed
   //  */
@@ -212,7 +214,7 @@ Box.defaultProps = {
   // alignContent: undefined,
   // alignSelf: undefined,
   as: 'div',
-  // background: undefined,
+  background: undefined,
   // basis: undefined,
   // border: 'none',
   className: undefined,

@@ -16,12 +16,26 @@ It lays out it contents in a specified direction.
 ## Props
 <Props of={Box} />
 
+## Background Color
+
+Use the `color` prop to set the color of the text
+
+<Preview>
+  <Story name="background">
+     {[...PALMETTO_BRAND_COLOR_OPTIONS].map((color, i) => (
+      <Box background={color} key={i}>
+        {`${color} background`}
+      </Box>
+    ))}
+  </Story>
+</Preview>
+
 ## Font Color
 
 Use the `color` prop to set the color of the text
 
 <Preview>
-  <Story name="Font Color">
+  <Story name="color">
      {[...PALMETTO_BRAND_COLOR_OPTIONS].map((color, i) => (
       <Box color={color} key={i}>
         {`${color} color`}
@@ -35,7 +49,7 @@ Use the `color` prop to set the color of the text
 Use the `fontSize` prop to set the size of the text
 
 <Preview>
-  <Story name="Font Size">
+  <Story name="fontSize">
     {[...PALMETTO_FONT_SIZE_OPTIONS].reverse().map((fontSize, i) => (
       <Box fontSize={fontSize} key={i}>
         {`${fontSize} font size`}
