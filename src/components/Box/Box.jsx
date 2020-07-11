@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import {
   PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_BRAND_COLOR_OPTIONS,
+  PALMETTO_SPACING_VALUES,
 } from '../../lib/tokens';
 import getElementType from '../../lib/getElementType';
 import BorderType from '../../types';
@@ -46,7 +47,11 @@ function Box(props) {
   });
 
   return (
-    <Element className={classes} {...rest}>
+    <Element
+      aria-label={a11yTitle}
+      className={classes}
+      {...rest}
+    >
       {children}
     </Element>
   );
@@ -159,7 +164,7 @@ Box.propTypes = {
    * Amount of space around the element. It models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
    */
-  margin: PropTypes.string, // need to define based on design tokens
+  margin: PropTypes.number, // need to define based on design tokens
   /**
    * Click handler function
    */
@@ -183,7 +188,7 @@ Box.propTypes = {
    * Amount of space within the element around the Box contents. It models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
    */
-  padding: PropTypes.string, // need to define based on design tokens
+  padding: PropTypes.number, // need to define based on design tokens
   /**
    * Set the radius of all corners
    */

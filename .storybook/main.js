@@ -21,15 +21,13 @@ const scssRules = {
 
 const fileLoaderRules = {
   test: /\.(png|jpe?g|gif)$/i,
-  use: [
-    {
-      loader: 'file-loader',
-    },
-  ],
+  use: [{
+    loader: 'file-loader',
+  }, ],
 };
 
 module.exports = {
-  stories: ['../src/**/*.stories.[tj]sx'],
+  stories: ['../src/**/*.stories.([tj]sx|mdx)'],
   addons: [
     '@storybook/addon-actions/register',
     '@storybook/addon-a11y/register',
@@ -40,7 +38,9 @@ module.exports = {
   webpackFinal: (config) => {
     config.module.rules.push(scssRules);
     config.module.rules.push(fileLoaderRules);
-    const assetRule = config.module.rules.find(({ test }) => test.test(".svg"));
+    const assetRule = config.module.rules.find(({
+      test
+    }) => test.test(".svg"));
 
     const assetLoader = {
       loader: assetRule.loader,

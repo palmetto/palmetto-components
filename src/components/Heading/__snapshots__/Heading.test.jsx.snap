@@ -50,6 +50,16 @@ exports[`Heading Matches the snapshot for color info 1`] = `
 </DocumentFragment>
 `;
 
+exports[`Heading Matches the snapshot for color inherit 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-inherit"
+  >
+    inherit heading
+  </h4>
+</DocumentFragment>
+`;
+
 exports[`Heading Matches the snapshot for color light 1`] = `
 <DocumentFragment>
   <h4
@@ -286,6 +296,16 @@ exports[`Heading Matches the snapshot for size base 1`] = `
     class="Palmetto-Heading heading font-size-base font-color-dark"
   >
     Size base
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size inherit 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-inherit font-color-dark"
+  >
+    Size inherit
   </h4>
 </DocumentFragment>
 `;
