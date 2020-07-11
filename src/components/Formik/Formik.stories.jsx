@@ -132,8 +132,6 @@ export const FormikForm = () => {
                 id="flavor2"
                 options={flavorOptions}
                 component={FormikSelectInput}
-                // With a custom onChange.
-                // We preserve Formik's convention and relegate state management back to the user.
                 isRequired
               />
             </div>
@@ -146,7 +144,6 @@ export const FormikForm = () => {
                 options={colorOptions}
                 component={FormikSelectInput}
                 onChange={selectedOption => {
-                  console.log(selectedOption)
                   setFieldValue('colors', selectedOption);
                 }}
               />
