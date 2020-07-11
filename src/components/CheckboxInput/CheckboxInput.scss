@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.Palmetto-CheckboxInput {
+  display: flex;
+  align-items: center;
+
+  &.isDisabled {
+    pointer-events: none;
+    color: $color-font-grey-light;
+  }
+
+  .input {
+    width: $size-spacing-lg;
+    height: $size-spacing-lg;
+    margin: 0 $size-spacing-sm 0 0;
+  }
+}

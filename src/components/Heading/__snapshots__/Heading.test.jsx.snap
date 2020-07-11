@@ -1,0 +1,341 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Heading Matches the snapshot for color black 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-black"
+  >
+    black heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color danger 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-danger"
+  >
+    danger heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color dark 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    dark heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color grey 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-grey"
+  >
+    grey heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color info 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-info"
+  >
+    info heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color light 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-light"
+  >
+    light heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color primary 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-primary"
+  >
+    primary heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color secondary 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-secondary"
+  >
+    secondary heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color success 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-success"
+  >
+    success heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color tertiary 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-tertiary"
+  >
+    tertiary heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for color warning 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-warning"
+  >
+    warning heading
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for component with default props 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    Hello World
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h1 1`] = `
+<DocumentFragment>
+  <h1
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    h1 Heading Default Size
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h1 and font size xs 1`] = `
+<DocumentFragment>
+  <h1
+    class="Palmetto-Heading heading font-size-xs font-color-dark"
+  >
+    h1 Heading with xs size
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h2 1`] = `
+<DocumentFragment>
+  <h2
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    h2 Heading Default Size
+  </h2>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h2 and font size sm 1`] = `
+<DocumentFragment>
+  <h2
+    class="Palmetto-Heading heading font-size-sm font-color-dark"
+  >
+    h2 Heading with sm size
+  </h2>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h3 1`] = `
+<DocumentFragment>
+  <h3
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    h3 Heading Default Size
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h3 and font size md 1`] = `
+<DocumentFragment>
+  <h3
+    class="Palmetto-Heading heading font-size-md font-color-dark"
+  >
+    h3 Heading with md size
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h4 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    h4 Heading Default Size
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h4 and font size lg 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    h4 Heading with lg size
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h5 1`] = `
+<DocumentFragment>
+  <h5
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    h5 Heading Default Size
+  </h5>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h5 and font size xl 1`] = `
+<DocumentFragment>
+  <h5
+    class="Palmetto-Heading heading font-size-xl font-color-dark"
+  >
+    h5 Heading with xl size
+  </h5>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h6 1`] = `
+<DocumentFragment>
+  <h6
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    h6 Heading Default Size
+  </h6>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for heading h6 and font size 2xl 1`] = `
+<DocumentFragment>
+  <h6
+    class="Palmetto-Heading heading font-size-2xl font-color-dark"
+  >
+    h6 Heading with 2xl size
+  </h6>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size 2xl 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-2xl font-color-dark"
+  >
+    Size 2xl
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size 3xl 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-3xl font-color-dark"
+  >
+    Size 3xl
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size 4xl 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-4xl font-color-dark"
+  >
+    Size 4xl
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size 5xl 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-5xl font-color-dark"
+  >
+    Size 5xl
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size base 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-base font-color-dark"
+  >
+    Size base
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size lg 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-lg font-color-dark"
+  >
+    Size lg
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size md 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-md font-color-dark"
+  >
+    Size md
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size sm 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-sm font-color-dark"
+  >
+    Size sm
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size xl 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-xl font-color-dark"
+  >
+    Size xl
+  </h4>
+</DocumentFragment>
+`;
+
+exports[`Heading Matches the snapshot for size xs 1`] = `
+<DocumentFragment>
+  <h4
+    class="Palmetto-Heading heading font-size-xs font-color-dark"
+  >
+    Size xs
+  </h4>
+</DocumentFragment>
+`;

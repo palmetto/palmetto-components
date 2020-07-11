@@ -1,22 +1,22 @@
 import React from 'react';
-import palmettoColors from '@palmetto/palmetto-design-tokens/build/js/colors.js';
-import '../../main.scss';
+import { withA11y } from '@storybook/addon-a11y';
+import { PALMETTO_COLOR_VALUES } from '../../lib/tokens';
 import './colors.scss';
-// import { action } from '@storybook/addon-actions';
 
-const [baseColors, brandColors] = Object.values(palmettoColors.color);
+const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
 
 export default {
-  title: 'Colors'
+  title: 'Colors',
+  decorators: [withA11y],
 };
 
-const renderColorBlock = (colorEntry) => {
+const renderColorBlock = colorEntry => {
   const [colorName, colorVariations] = colorEntry;
 
   return (
-    <div className="colors__color-block__item" style={{ backgroundColor: `${colorVariations['base'].value}` }}>
-      <h3>{colorName}</h3>
-      <p>{colorVariations['base'].value}</p>
+    <div className="colors__color-block__item" style={{ backgroundColor: `${colorVariations.base.value}` }}>
+      <h2>{colorName}</h2>
+      <p>{colorVariations.base.value}</p>
     </div>
   );
 };
@@ -24,20 +24,20 @@ const renderColorBlock = (colorEntry) => {
 const renderColorPalette = (colorEntry, index) => {
   const [colorName, colorVariations] = colorEntry;
 
-  const getFontColor = (colorVariation) => {
-    return colorVariation?.attributes?.font === 'base' ? 'black' : 'white';
-  }
+  const getFontColor = colorVariation => (
+    colorVariation && colorVariation.attributes && colorVariation.attributes.font === 'base' ? 'black' : 'white'
+  );
 
   return (
     <div key={index}>
-      <h3 style={{ marginTop: '0' }}>{colorName}</h3>
+      <h2 style={{ marginTop: '0' }}>{colorName}</h2>
       {Object.entries(colorVariations).map((colorVariationEntry, index) => {
         const [colorVariationName, colorVariation] = colorVariationEntry;
         return (
           <div
             key={index}
             className="colors__color-palette__item"
-            style={{ backgroundColor: `${colorVariation.value}`, color: `${getFontColor(colorVariation)}`}}
+            style={{ backgroundColor: `${colorVariation.value}`, color: `${getFontColor(colorVariation)}` }}
           >
             <small style={{ display: 'block' }}>{colorVariationName}</small>
             <small>{colorVariation.value}</small>
@@ -49,7 +49,7 @@ const renderColorPalette = (colorEntry, index) => {
 };
 
 export const brand = () => (
-  <div style={{ padding: '1rem' }}>
+  <>
     <h1>Brand Colors</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(brandColors).map(renderColorBlock)}
@@ -58,11 +58,11 @@ export const brand = () => (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(brandColors).map(renderColorPalette)}
     </div>
-  </div>
+  </>
 );
 
 export const base = () => (
-  <div style={{ padding: '1rem' }}>
+  <>
     <h1>Base Color Palette</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(baseColors)
@@ -70,5 +70,5 @@ export const base = () => (
         .map(renderColorPalette)
       }
     </div>
-  </div>
+  </>
 );

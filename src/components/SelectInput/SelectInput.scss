@@ -1,0 +1,70 @@
+@import '../../styles/variables.scss';
+
+.Palmetto-SelectInput {
+  .selectInput {
+    .selectInput__control {
+      padding: $size-spacing-2-xs;
+      border-radius: 8px;
+      box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
+
+      .selectInput__placeholder {
+        color: $color-font-grey-light;
+      }
+
+      .selectInput__clear-indicator {
+        padding: 7px 7px;
+      }
+
+      .selectInput__indicator-separator {
+        display: none;
+      }
+
+      .selectInput__dropdown-indicator {
+        padding: 0;
+        padding-right: 2px;
+        color: $color-brand-grey-light;
+
+        svg {
+          width: 34px;
+          height: 34px;
+        }
+      }
+
+      &.selectInput__control--is-focused {
+        border-color: $color-base-grey-600;
+        box-shadow: none;
+      }
+
+      &.selectInput__control--is-disabled {
+        .selectInput__dropdown-indicator {
+          color: $color-font-grey-light;
+        }
+      }
+    }
+
+    &:hover {
+      .selectInput__dropdown-indicator {
+        color: $color-brand-grey-base;
+      }
+    }
+
+    &.error {
+      .selectInput__control {
+        background-color: $color-base-red-50;
+        border-color: $color-base-red-200;
+
+        &.selectInput__control--is-focused {
+          background-color: $color-base-white;
+          border-color: $color-base-grey-600;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  &.disabled {
+    .selectInput__control--is-disabled {
+      background-color: $color-base-grey-50;
+    }
+  }
+}

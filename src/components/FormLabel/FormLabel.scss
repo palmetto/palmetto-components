@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.Palmetto-FormLabel {
+  font-size: $size-font-sm;
+  color: $color-font-base;
+  display: block;
+  font-weight: 700;
+
+  &.error {
+    color: $color-brand-danger-base;
+  }
+
+  +input[type=text],
+  +input[type=tel],
+  +input[type=password],
+  +input[type=search],
+  +input[type=url],
+  +.selectInput {
+    margin-top: $size-spacing-xs;
+  }
+}
