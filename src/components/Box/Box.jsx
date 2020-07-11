@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {
+  PALMETTO_FONT_SIZE_OPTIONS,
+  PALMETTO_BRAND_COLOR_OPTIONS,
+} from '../../lib/tokens';
 import getElementType from '../../lib/getElementType';
 import BorderType from '../../types';
 /**
@@ -17,6 +21,7 @@ function Box(props) {
     background,
     basis,
     border,
+    color,
     className,
     childGap,
     children,
@@ -35,7 +40,10 @@ function Box(props) {
 
   const Element = getElementType(Box, props);
 
-  const classes = classNames(className);
+  const classes = classNames(className, {
+    [`font-size-${fontSize}`]: fontSize,
+    [`font-color-${color}`]: color,
+  });
 
   return (
     <Element className={classes} {...rest}>
@@ -87,15 +95,22 @@ Box.propTypes = {
    * Apply a border to the element
    */
   border: BorderType,
+  /**
+   * Additional class names to add
+   */
   className: PropTypes.string,
   /**
    * The amount of spacing between child elements.
    */
-  childGap: PropTypes.any,
+  childGap: PropTypes.string,
   /**
    * The box's contents
    */
   children: PropTypes.node,
+  /**
+   * A color token identifier to use for the text color.
+   */
+  color: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
@@ -107,7 +122,8 @@ Box.propTypes = {
     'column-reverse',
   ]),
   /**
-   * Make the Box a flex container, and its children a flex item. Can be used as shorthand for the flexbox css properties `flex-grow` and `flex-shrink`
+   * Make the Box a flex container, and its children a flex item.
+   * Can be used as shorthand for the flexbox css properties `flex-grow` and `flex-shrink`
    */
   flex: PropTypes.oneOf([
     'grow',
@@ -122,7 +138,7 @@ Box.propTypes = {
   /**
    * The font size for the Box contents
    */
-  fontSize: PropTypes.string, // need to define based on design tokens
+  fontSize: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS), // need to define based on design tokens
   /**
    * The height of the element
    */
@@ -181,8 +197,30 @@ Box.propTypes = {
 };
 
 Box.defaultProps = {
+  a11yTitle: undefined,
+  align: undefined,
+  alignContent: undefined,
+  alignSelf: undefined,
   as: 'div',
+  background: undefined,
+  basis: undefined,
   border: 'none',
+  className: undefined,
+  childGap: undefined,
+  children: undefined,
+  color: 'inherit',
+  direction: undefined,
+  flex: undefined,
+  fontSize: 'inherit',
+  height: undefined,
+  justify: undefined,
+  margin: 0,
+  onClick: undefined,
+  overflow: 'unset',
+  padding: 0,
+  radius: 0,
+  wrap: false,
+  width: undefined,
 };
 
 export default Box;
