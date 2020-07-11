@@ -213,7 +213,7 @@ Box.defaultProps = {
   className: undefined,
   childGap: undefined,
   children: undefined,
-  color: 'inherit',
+  color: undefined,
   direction: undefined,
   flex: undefined,
   fontSize: 'inherit',
