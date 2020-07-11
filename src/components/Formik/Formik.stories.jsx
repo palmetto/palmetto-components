@@ -18,10 +18,20 @@ export default {
 };
 
 export const FormikForm = () => {
-  const selectOptions = [
+  const flavorOptions = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
     { value: 'vanilla', label: 'Vanilla' },
+  ];
+
+  const colorOptions = [
+    { value: 'red', label: 'red' },
+    { value: 'orange', label: 'orange' },
+    { value: 'yellow', label: 'yellow' },
+    { value: 'green', label: 'green' },
+    { value: 'blue', label: 'blue' },
+    { value: 'indigo', label: 'indigo' },
+    { value: 'violet', label: 'violet' },
   ];
 
   const handleValidation = values => {
@@ -58,7 +68,8 @@ export const FormikForm = () => {
           email: '',
           areTermsChecked: false,
           flavor: null,
-          flavors: [{ value: 'vanilla', label: 'Vanilla' }],
+          flavor2: null,
+          colors: [],
         }}
         validate={handleValidation}
         onSubmit={handleSubmit}
@@ -103,7 +114,7 @@ export const FormikForm = () => {
                 label="Flavor"
                 name="flavor"
                 id="flavor"
-                options={selectOptions}
+                options={flavorOptions}
                 component={FormikSelectInput}
                 // With a custom onChange.
                 // We preserve Formik's convention and relegate state management back to the user.
@@ -116,12 +127,28 @@ export const FormikForm = () => {
             </div>
             <div style={{ marginBottom: '1.25rem' }}>
               <Field
-                label="Flavors"
-                name="flavors"
-                id="flavors"
-                isMulti
-                options={selectOptions}
+                label="Flavor no onChange"
+                name="flavor2"
+                id="flavor2"
+                options={flavorOptions}
                 component={FormikSelectInput}
+                // With a custom onChange.
+                // We preserve Formik's convention and relegate state management back to the user.
+                isRequired
+              />
+            </div>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <Field
+                label="Colors"
+                name="colors"
+                id="colors"
+                isMulti
+                options={colorOptions}
+                component={FormikSelectInput}
+                onChange={selectedOption => {
+                  console.log(selectedOption)
+                  setFieldValue('colors', selectedOption);
+                }}
               />
             </div>
             <div style={{ marginBottom: '1.25rem' }}>
