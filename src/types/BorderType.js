@@ -36,6 +36,6 @@ export default PropTypes.oneOfType([
       'all',
       'none',
     ]),
-    //color: colorType, need to generate colorType based on design tokens
+    // color: colorType, need to generate colorType based on design tokens
   }),
 ]);
