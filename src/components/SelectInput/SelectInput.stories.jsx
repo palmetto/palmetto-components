@@ -163,7 +163,7 @@ export const All = () => {
             <SelectInput
               id="invalid"
               label="Invalid"
-              hasError
+              error
               value={state.invalid}
               onChange={value => handleChange(value, 'invalid')}
               options={selectOptions}
@@ -173,7 +173,7 @@ export const All = () => {
             <SelectInput
               id="invalidNotRequired"
               label="Invalid Not Required with Validation Message"
-              hasError="Helpful validation message"
+              error="Helpful validation message"
               value={state.invalidNotRequired}
               onChange={value => handleChange(value, 'invalidNotRequired')}
               options={selectOptions}
@@ -183,7 +183,7 @@ export const All = () => {
             <SelectInput
               id="invalidRequired"
               label="Invalid Required with Validation Message"
-              hasError="Helpful validation message"
+              error="Helpful validation message"
               isRequired
               value={state.invalidRequired}
               onChange={value => handleChange(value, 'invalidRequired')}

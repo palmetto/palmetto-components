@@ -44,7 +44,7 @@ const SelectInput = ({
     isFieldRequired: isRequired,
     inputId: id,
     labelText: label,
-    error: !!error,
+    hasError: !!error,
   };
 
   return (
