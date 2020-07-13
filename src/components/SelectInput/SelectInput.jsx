@@ -8,7 +8,8 @@ import './SelectInput.scss';
 
 /**
  * Allows users to pick a value from predefined list of options.
- * Ideally, it should be used when there are more than 4 options, otherwise you should consider using a radio group instead.
+ * Ideally, it should be used when there are more than 4 options,
+ * otherwise you should consider using a radio group instead.
  */
 
 const SelectInput = ({
@@ -19,6 +20,7 @@ const SelectInput = ({
   error,
   isDisabled,
   isRequired,
+  name,
   onChange,
   onFocus,
   onBlur,
@@ -27,6 +29,19 @@ const SelectInput = ({
   options,
   value,
 }) => {
+  const handleChange = values => {
+    if (onChange) {
+      const simulatedEventPayload = {
+        target: {
+          name,
+          value: values,
+        },
+      };
+
+      onChange(simulatedEventPayload);
+    }
+  };
+
   const handleFocus = e => {
     if (onFocus) onFocus(e);
   };
@@ -59,15 +74,16 @@ const SelectInput = ({
           placeholder={placeholder}
           isDisabled={isDisabled}
           isMulti={isMulti}
+          name={name}
           autoFocus={autoFocus}
           options={options}
-          onChange={onChange}
+          onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
           value={value}
         />
       </div>
-      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
+      {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
     </>
   );
 };
@@ -79,6 +95,7 @@ SelectInput.defaultProps = {
   error: false,
   isDisabled: false,
   isRequired: false,
+  name: '',
   onFocus: undefined,
   onBlur: undefined,
   autoFocus: false,
@@ -120,6 +137,10 @@ SelectInput.propTypes = {
    * Determines if input is required or not. (Label will have an asterisk if required)
    */
   isRequired: PropTypes.bool,
+  /**
+   * Select 'name' attribute
+   */
+  name: PropTypes.string,
   /**
    * Callback function to call on change event.
    */
