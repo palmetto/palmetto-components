@@ -5,6 +5,7 @@ import {
   screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 import TextInput from './TextInput';
 
 describe('TextInput', () => {
@@ -156,5 +157,24 @@ describe('TextInput', () => {
     const validationMessageElement = screen.getByText('You silly goose');
     expect(validationMessageElement).toBeInTheDocument();
     expect(validationMessageElement).toHaveTextContent('You silly goose');
+  });
+
+  test('Input correctly passes maxlength property if prop is passed', async () => {
+    render(
+      <TextInput
+        name="firstName"
+        id="firstName"
+        label="first name"
+        value=""
+        maxLength="3"
+        onChange={() => null}
+      />,
+    );
+
+    const inputElement = screen.getByLabelText('first name');
+    expect(inputElement).toBeInTheDocument();
+    expect(inputElement).toHaveAttribute('maxlength');
+    expect(inputElement.getAttribute('maxlength')).toBe('3');
+    expect(inputElement.value).toBe('');
   });
 });
