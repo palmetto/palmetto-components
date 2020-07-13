@@ -27,6 +27,7 @@ const TextInput = ({
   error,
   isRequired,
   label,
+  maxLength,
   name,
   onBlur,
   onChange,
@@ -77,6 +78,7 @@ const TextInput = ({
     className: inputClasses,
     disabled: isDisabled,
     id,
+    maxLength,
     name,
     onBlur: handleBlur,
     onChange: handleChange,
@@ -157,6 +159,11 @@ TextInput.propTypes = {
    */
   label: PropTypes.string,
   /**
+   * The input's 'maxlength' attribute.
+   * NOTE: initializing the input with a value longer than the desired maxlength will not trim this value.
+   */
+  maxLength: PropTypes.string,
+  /**
    * The input's 'name' attribute
    */
   name: PropTypes.string,
@@ -195,6 +202,7 @@ TextInput.defaultProps = {
   error: false,
   isRequired: false,
   label: undefined,
+  maxLength: undefined,
   name: '',
   onBlur: undefined,
   onFocus: undefined,

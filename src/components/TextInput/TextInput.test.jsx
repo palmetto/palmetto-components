@@ -5,6 +5,7 @@ import {
   screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 import TextInput from './TextInput';
 
 describe('TextInput', () => {
@@ -97,7 +98,7 @@ describe('TextInput', () => {
 
   test('Input fires onFocus callback', () => {
     const mockedHandleFocus = jest.fn();
-    render(<TextInput value="hello" onChange={() => null} onFocus={mockedHandleFocus} />);
+    render(<TextInput id="testInput" value="hello" onChange={() => null} onFocus={mockedHandleFocus} />);
     const inputElement = screen.getByDisplayValue('hello');
     fireEvent.focus(inputElement);
     expect(mockedHandleFocus).toBeCalledTimes(1);
@@ -105,7 +106,7 @@ describe('TextInput', () => {
 
   test('Input fires onBlur callback', () => {
     const mockedHandleBlur = jest.fn();
-    render(<TextInput value="hello" onChange={() => null} onBlur={mockedHandleBlur} />);
+    render(<TextInput id="testInput" value="hello" onChange={() => null} onBlur={mockedHandleBlur} />);
     const inputElement = screen.getByDisplayValue('hello');
     fireEvent.focus(inputElement);
     fireEvent.blur(inputElement);
@@ -113,31 +114,31 @@ describe('TextInput', () => {
   });
 
   test('Input autofocuses if "autoFocus" prop is set to true', () => {
-    render(<TextInput value="hello" onChange={() => null} autoFocus />);
+    render(<TextInput id="testInput" value="hello" onChange={() => null} autoFocus />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(document.activeElement).toEqual(inputElement);
   });
 
   test('Input correctly assigns autocomplete value of "on" when bool true is provided', () => {
-    render(<TextInput value="hello" onChange={() => null} autoComplete />);
+    render(<TextInput id="testInput" value="hello" onChange={() => null} autoComplete />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(inputElement).toHaveAttribute('autocomplete', 'on');
   });
 
   test('Input correctly assigns autocomplete value of "off" when bool false is provided', () => {
-    render(<TextInput value="hello" onChange={() => null} autoComplete={false} />);
+    render(<TextInput id="testInput" value="hello" onChange={() => null} autoComplete={false} />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(inputElement).toHaveAttribute('autocomplete', 'off');
   });
 
   test('Input correctly assigns autocomplete value of "off" when incorrect type is provided', () => {
-    render(<TextInput value="hello" onChange={() => null} autoComplete={['a', 'random', 'array']} />);
+    render(<TextInput id="testInput" value="hello" onChange={() => null} autoComplete={['a', 'random', 'array']} />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(inputElement).toHaveAttribute('autocomplete', 'off');
   });
 
   test('Input correctly assigns the "aria-required" attribute when "isRequired" prop is true', () => {
-    render(<TextInput value="hello" onChange={() => null} isRequired />);
+    render(<TextInput id="testInput" value="hello" onChange={() => null} isRequired />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(inputElement).toHaveAttribute('aria-required', 'true');
   });
@@ -156,5 +157,24 @@ describe('TextInput', () => {
     const validationMessageElement = screen.getByText('You silly goose');
     expect(validationMessageElement).toBeInTheDocument();
     expect(validationMessageElement).toHaveTextContent('You silly goose');
+  });
+
+  test('Input correctly passes maxlength property if prop is passed', async () => {
+    render(
+      <TextInput
+        name="firstName"
+        id="firstName"
+        label="first name"
+        value=""
+        maxLength="3"
+        onChange={() => null}
+      />,
+    );
+
+    const inputElement = screen.getByLabelText('first name');
+    expect(inputElement).toBeInTheDocument();
+    expect(inputElement).toHaveAttribute('maxlength');
+    expect(inputElement.getAttribute('maxlength')).toBe('3');
+    expect(inputElement.value).toBe('');
   });
 });
