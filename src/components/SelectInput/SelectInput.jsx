@@ -52,7 +52,7 @@ const SelectInput = ({
       <div className={classNames('Palmetto-SelectInput', className, { disabled: isDisabled })}>
         {label && <FormLabel {...labelProps} />}
         <Select
-          id={id}
+          inputId={id}
           aria-label={label || id}
           className={inputClasses}
           classNamePrefix="selectInput"
