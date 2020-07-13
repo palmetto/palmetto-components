@@ -151,65 +151,133 @@ describe('SelectInput', () => {
     });
   });
 
-  // describe('States', () => {
-  //   describe('Default', () => {
-  //     test('it renders the button with simple text', () => {
-  //       render(
-  //         <Button>
-  //           Button!
-  //         </Button>,
-  //       );
-  //       const buttonElement = screen.getByText('Button!');
+  describe('States', () => {
+    describe('No label, with a placeholder', () => {
+      test('it renders input without a label, and with a placeholder', () => {
+        render(
+          <SelectInput
+            id="testId"
+            placeholder="Test Placeholder"
+            options={selectOptions}
+          />,
+        );
 
-  //       expect(buttonElement).toBeInTheDocument();
-  //     });
+        expect(screen.getByText('Test Placeholder')).toBeInTheDocument();
+      });
+    });
 
-  //     test('it renders the button with nested dom nodes', () => {
-  //       render(
-  //         <Button>
-  //           <div className="buttonLoadingIndicator">
-  //             <div>Im a nested dom node!</div>
-  //           </div>
-  //         </Button>,
-  //       );
-  //       const buttonElement = screen.getByText('Im a nested dom node!');
+    describe('With a label, and no custom placeholder', () => {
+      test('it renders input with a label, and with a default placeholder', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+          />,
+        );
 
-  //       expect(buttonElement).toBeInTheDocument();
-  //     });
+        expect(screen.getAllByLabelText('Select Label')).toHaveLength(2);
+        expect(screen.getByText('Select...')).toBeInTheDocument();
+      });
+    });
 
-  //     test('it does not have a disabled attribute', () => {
-  //       render(
-  //         <Button>
-  //           Not Disabled Button
-  //         </Button>,
-  //       );
+    describe('Single select, pre-selected', () => {
+      test('it renders with value pre-selected', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+            value={selectOptions[2]}
+          />,
+        );
 
-  //       expect(screen.getByText('Not Disabled Button').closest('button')).not.toBeDisabled();
-  //     });
-  //   });
+        expect(screen.getByText('Vanilla')).toBeInTheDocument();
+      });
+    });
 
-  //   describe('Disabled', () => {
-  //     test('it has a disabled attribute', () => {
-  //       render(
-  //         <Button isDisabled>
-  //           Disabled Button
-  //         </Button>,
-  //       );
+    describe('Multi select, no selection', () => {
+      test('it renders input with a label, and with a default placeholder', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+            isMulti
+          />,
+        );
 
-  //       expect(screen.getByText('Disabled Button').closest('button')).toBeDisabled();
-  //     });
-  //   });
+        expect(screen.getAllByLabelText('Select Label')).toHaveLength(2);
+        expect(screen.getByText('Select...')).toBeInTheDocument();
+      });
+    });
 
-  //   describe('Loading', () => {
-  //     test('it renders the loading indicator', () => {
-  //       render(
-  //         <Button isLoading>
-  //           Disabled Button
-  //         </Button>,
-  //       );
+    describe('Multi select, with multiple items selected', () => {
+      test('it renders input with a label, and with two items selected', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+            isMulti
+            value={[
+              selectOptions[0],
+              selectOptions[2],
+            ]}
+          />,
+        );
 
-  //       expect(screen.getByText('Disabled Button')).toBeNull();
-  //     });
-  //   });
-  // });
+        expect(screen.getAllByLabelText('Select Label')).toHaveLength(2);
+        expect(screen.queryByText('Select...')).toBeNull();
+        expect(screen.getByText('Chocolate')).toBeInTheDocument();
+        expect(screen.getByText('Vanilla')).toBeInTheDocument();
+      });
+    });
+
+    describe('Is Required', () => {
+      test('it renders an asterisk in the label', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+            isRequired
+          />,
+        );
+
+        expect(screen.getByText('Select Label')).toBeInTheDocument();
+        expect(screen.getByText('*')).toBeInTheDocument();
+      });
+    });
+
+    describe('Is Disabled', () => {
+      test('it disables the input', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+            isDisabled
+          />,
+        );
+
+        expect(screen.getByRole('textbox')).toBeDisabled();
+      });
+    });
+
+    describe('Is Invalid, with a helpful message', () => {
+      test('it renders the helpful message', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+            hasError="Helpful message"
+          />,
+        );
+
+        expect(screen.getByText('Helpful message')).toBeInTheDocument();
+      });
+    });
+  });
 });
