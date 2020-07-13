@@ -10,7 +10,7 @@ const FormikCheckboxInput = (
       onChange, // eslint-disable-line no-unused-vars
       value,
     },
-    form: { touched, setFieldValue, errors },
+    form: { touched, errors },
     ...props
   },
 ) => (
@@ -18,7 +18,8 @@ const FormikCheckboxInput = (
     {...props}
     error={touched[name] && errors[name]}
     isChecked={value}
-    onChange={newValue => setFieldValue(name, newValue)}
+    onBlur={onBlur}
+    onChange={onChange}
   />
 );
 
