@@ -167,20 +167,20 @@ describe('SelectInput', () => {
       });
     });
 
-    // describe('With a label, and no custom placeholder', () => {
-    //   test('it renders input with a label, and with a default placeholder', () => {
-    //     render(
-    //       <SelectInput
-    //         id="testId"
-    //         label="Select Label"
-    //         options={selectOptions}
-    //       />,
-    //     );
+    describe('With a label, and no custom placeholder', () => {
+      test('it renders input with a label, and with a default placeholder', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+          />,
+        );
 
-    //     expect(screen.getAllByLabelText('Select Label')).toHaveLength(2);
-    //     expect(screen.getByText('Select...')).toBeInTheDocument();
-    //   });
-    // });
+        expect(screen.getByLabelText('Select Label')).toBeInTheDocument();
+        expect(screen.getByText('Select...')).toBeInTheDocument();
+      });
+    });
 
     describe('Single select, pre-selected', () => {
       test('it renders with value pre-selected', () => {
@@ -197,43 +197,43 @@ describe('SelectInput', () => {
       });
     });
 
-    // describe('Multi select, no selection', () => {
-    //   test('it renders input with a label, and with a default placeholder', () => {
-    //     render(
-    //       <SelectInput
-    //         id="testId"
-    //         label="Select Label"
-    //         options={selectOptions}
-    //         isMulti
-    //       />,
-    //     );
+    describe('Multi select, no selection', () => {
+      test('it renders input with a label, and with a default placeholder', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+            isMulti
+          />,
+        );
 
-    //     expect(screen.getAllByLabelText('Select Label')).toHaveLength(2);
-    //     expect(screen.getByText('Select...')).toBeInTheDocument();
-    //   });
-    // });
+        expect(screen.getByLabelText('Select Label')).toBeInTheDocument();
+        expect(screen.getByText('Select...')).toBeInTheDocument();
+      });
+    });
 
-    // describe('Multi select, with multiple items selected', () => {
-    //   test('it renders input with a label, and with two items selected', () => {
-    //     render(
-    //       <SelectInput
-    //         id="testId"
-    //         label="Select Label"
-    //         options={selectOptions}
-    //         isMulti
-    //         value={[
-    //           selectOptions[0],
-    //           selectOptions[2],
-    //         ]}
-    //       />,
-    //     );
+    describe('Multi select, with multiple items selected', () => {
+      test('it renders input with a label, and with two items selected', () => {
+        render(
+          <SelectInput
+            id="testId"
+            label="Select Label"
+            options={selectOptions}
+            isMulti
+            value={[
+              selectOptions[0],
+              selectOptions[2],
+            ]}
+          />,
+        );
 
-    //     expect(screen.getAllByLabelText('Select Label')).toHaveLength(2);
-    //     expect(screen.queryByText('Select...')).toBeNull();
-    //     expect(screen.getByText('Chocolate')).toBeInTheDocument();
-    //     expect(screen.getByText('Vanilla')).toBeInTheDocument();
-    //   });
-    // });
+        expect(screen.getByLabelText('Select Label')).toBeInTheDocument();
+        expect(screen.queryByText('Select...')).toBeNull();
+        expect(screen.getByText('Chocolate')).toBeInTheDocument();
+        expect(screen.getByText('Vanilla')).toBeInTheDocument();
+      });
+    });
 
     describe('Is Required', () => {
       test('it renders an asterisk in the label', () => {
@@ -273,7 +273,7 @@ describe('SelectInput', () => {
             id="testId"
             label="Select Label"
             options={selectOptions}
-            hasError="Helpful message"
+            error="Helpful message"
           />,
         );
 
