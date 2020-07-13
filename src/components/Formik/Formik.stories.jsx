@@ -84,7 +84,7 @@ export const FormikForm = () => {
                 id="firstName"
                 component={FormikTextInput}
                 // With a custom onChange.
-                // We preserve Formik's convention and relegate state management back to the user.
+                // We preserve Formik's convention and relegate state form management back to the user.
                 onChange={event => {
                   action('change')(event);
                   setFieldValue('firstName', event.target.value);
@@ -111,13 +111,13 @@ export const FormikForm = () => {
             </div>
             <div style={{ marginBottom: '1.25rem' }}>
               <Field
-                label="Flavor"
+                label="Flavor with custom onChange"
                 name="flavor"
                 id="flavor"
                 options={flavorOptions}
                 component={FormikSelectInput}
                 // With a custom onChange.
-                // We preserve Formik's convention and relegate state management back to the user.
+                // We preserve Formik's convention and relegate form state management back to the user.
                 onChange={event => {
                   action('change')(event.target.value);
                   setFieldValue('flavor', event.target.value);
@@ -127,7 +127,7 @@ export const FormikForm = () => {
             </div>
             <div style={{ marginBottom: '1.25rem' }}>
               <Field
-                label="Flavor no onChange"
+                label="Flavor without custom onChange"
                 name="flavor2"
                 id="flavor2"
                 options={flavorOptions}
@@ -143,9 +143,6 @@ export const FormikForm = () => {
                 isMulti
                 options={colorOptions}
                 component={FormikSelectInput}
-                onChange={selectedOption => {
-                  setFieldValue('colors', selectedOption);
-                }}
               />
             </div>
             <div style={{ marginBottom: '1.25rem' }}>
