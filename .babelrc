@@ -4,6 +4,10 @@
       "presets": [
         ["@babel/preset-env", { "modules": "cjs" }],
         "@babel/preset-react"
+      ],
+      "plugins": [
+        "@babel/plugin-transform-regenerator",
+        "@babel/plugin-transform-runtime"
       ]
     },
     "build": {
