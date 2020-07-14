@@ -8,7 +8,7 @@ import FormikCheckboxInput from './FormikCheckboxInput/FormikCheckboxInput';
 import FormikSelectInput from './FormikSelectInput/FormikSelectInput';
 
 export default {
-  title: 'Forms/Formik',
+  title: 'Patterns/Formik Form',
   decorators: [withA11y],
   subcomponents: {
     FormikCheckboxInput,

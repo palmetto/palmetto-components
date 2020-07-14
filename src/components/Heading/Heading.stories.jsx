@@ -6,7 +6,7 @@ import Heading from './Heading';
 import { HEADING_LEVELS } from './Heading.constants';
 
 export default {
-  title: 'Heading',
+  title: 'Components/Heading',
   parameters: {
     componentSubtitle: 'For page and section headings',
   },
