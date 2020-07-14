@@ -25,13 +25,16 @@ describe('SelectInput', () => {
       console.error = jest.fn(); // eslint-disable-line no-console
       render(
         <SelectInput
+          label="test select input"
           onChange={mockedHandleChange}
           options={selectOptions}
         />,
       );
-      expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
+      expect(console.error).toHaveBeenCalledTimes(2); // eslint-disable-line no-console
       expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
         .toContain('Failed prop type: The prop `id`');
+      expect(console.error.mock.calls[1][0]) // eslint-disable-line no-console
+        .toContain('Failed prop type: The prop `inputId` is marked as required in `FormLabel`');
     });
 
     test('Throws error if required prop "onChange" is not supplied to component', () => {
@@ -39,6 +42,7 @@ describe('SelectInput', () => {
       render(
         <SelectInput
           id="testId"
+          label="test select input"
           options={selectOptions}
         />,
       );
@@ -54,6 +58,7 @@ describe('SelectInput', () => {
       render(
         <SelectInput
           id="testId"
+          label="test select input"
           onChange={mockedHandleChange}
         />,
       );
@@ -122,21 +127,36 @@ describe('SelectInput', () => {
   });
 
   describe('States', () => {
-    describe('No label, with a placeholder', () => {
-      test('it renders input without a label, and with a placeholder', () => {
+    describe('Hidden label, with a placeholder', () => {
+      test('it renders input without a visual label, and with a placeholder', () => {
         const mockedHandleChange = jest.fn();
 
         render(
           <SelectInput
             id="testId"
+            label="hidden label"
+            hideLabel
             onChange={mockedHandleChange}
             placeholder="Test Placeholder"
             options={selectOptions}
           />,
         );
-
+        expect(screen.queryByText('hidden label')).toBeNull();
         expect(screen.getByText('Test Placeholder')).toBeInTheDocument();
       });
+    });
+
+    test('does not assign "aria-labelledby" attribute when a label is hidden', () => {
+      const mockedHandleChange = jest.fn();
+
+      render(<SelectInput
+        id="testInput"
+        label="hidden label"
+        hideLabel
+        onChange={mockedHandleChange}
+      />);
+      const inputElement = screen.getByLabelText('hidden label');
+      expect(inputElement).not.toHaveAttribute('aria-labelledby');
     });
 
     describe('With a label, and no custom placeholder', () => {
@@ -154,6 +174,13 @@ describe('SelectInput', () => {
 
         expect(screen.getByLabelText('Select Label')).toBeInTheDocument();
         expect(screen.getByText('Select...')).toBeInTheDocument();
+      });
+
+      test('assigns the "aria-labelledby" attribute and renders a label with correct id, when a label is provided', () => {
+        render(<SelectInput id="testInput" label="test label" />);
+        const inputElement = screen.getByLabelText('test label');
+        expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
+        expect(document.getElementById('testInputLabel')).toBeInTheDocument();
       });
     });
 
