@@ -12,6 +12,99 @@ import './SelectInput.scss';
  * otherwise you should consider using a radio group instead.
  */
 
+const propTypes = {
+  /**
+   * The id attribute of the input
+   */
+  id: PropTypes.string.isRequired,
+  /**
+   * Visually hide the label
+   */
+  hideLabel: PropTypes.bool,
+  /**
+   * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
+   */
+  label: PropTypes.string.isRequired,
+  /**
+   * Additional classes to add
+   */
+  className: PropTypes.string,
+  /**
+   * Placeholder
+   */
+  placeholder: PropTypes.string,
+  /**
+   * Mark the input field as invalid and display a validation message.
+   * Pass a string or node to render a validation message below the input
+   */
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
+  /**
+   * If the input should be disabled and not focusable
+   */
+  isDisabled: PropTypes.bool,
+  /**
+   * Determines if input is required or not. (Label will have an asterisk if required)
+   */
+  isRequired: PropTypes.bool,
+  /**
+   * Select 'name' attribute
+   */
+  name: PropTypes.string,
+  /**
+   * Callback function to call on change event.
+   */
+  onChange: PropTypes.func.isRequired,
+  /**
+   * Callback function to call on focus event.
+   */
+  onFocus: PropTypes.func,
+  /**
+   * Callback function to call on blur event.
+   */
+  onBlur: PropTypes.func,
+  /**
+   * Autofocus select input on render
+   */
+  autoFocus: PropTypes.bool,
+  /**
+   * Is multi select enabled
+   */
+  isMulti: PropTypes.bool,
+  /**
+   * Options for dropdown list
+   */
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  })).isRequired,
+  /**
+   * The value(s) of select
+   */
+  value: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.object),
+  ]),
+};
+
+const defaultProps = {
+  className: '',
+  placeholder: undefined,
+  error: false,
+  hideLabel: false,
+  isDisabled: false,
+  isRequired: false,
+  name: '',
+  onFocus: undefined,
+  onBlur: undefined,
+  autoFocus: false,
+  isMulti: false,
+  value: undefined,
+};
+
 const SelectInput = ({
   id,
   label,
@@ -90,97 +183,7 @@ const SelectInput = ({
   );
 };
 
-SelectInput.defaultProps = {
-  className: '',
-  placeholder: undefined,
-  error: false,
-  hideLabel: false,
-  isDisabled: false,
-  isRequired: false,
-  name: '',
-  onFocus: undefined,
-  onBlur: undefined,
-  autoFocus: false,
-  isMulti: false,
-  value: undefined,
-};
-
-SelectInput.propTypes = {
-  /**
-   * The id attribute of the input
-   */
-  id: PropTypes.string.isRequired,
-  /**
-   * Visually hide the label
-   */
-  hideLabel: PropTypes.bool,
-  /**
-   * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * Additional classes to add
-   */
-  className: PropTypes.string,
-  /**
-   * Placeholder
-   */
-  placeholder: PropTypes.string,
-  /**
-   * Mark the input field as invalid and display a validation message.
-   * Pass a string or node to render a validation message below the input
-   */
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  /**
-   * If the input should be disabled and not focusable
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Determines if input is required or not. (Label will have an asterisk if required)
-   */
-  isRequired: PropTypes.bool,
-  /**
-   * Select 'name' attribute
-   */
-  name: PropTypes.string,
-  /**
-   * Callback function to call on change event.
-   */
-  onChange: PropTypes.func.isRequired,
-  /**
-   * Callback function to call on focus event.
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Callback function to call on blur event.
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Autofocus select input on render
-   */
-  autoFocus: PropTypes.bool,
-  /**
-   * Is multi select enabled
-   */
-  isMulti: PropTypes.bool,
-  /**
-   * Options for dropdown list
-   */
-  options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-  })).isRequired,
-  /**
-   * The value(s) of select
-   */
-  value: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.arrayOf(PropTypes.object),
-  ]),
-};
+SelectInput.propTypes = propTypes;
+SelectInput.defaultProps = defaultProps;
 
 export default SelectInput;
