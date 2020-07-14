@@ -6,7 +6,7 @@ import './colors.scss';
 const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
 
 export default {
-  title: 'Colors',
+  title: 'Tokens/Colors',
   decorators: [withA11y],
 };
 

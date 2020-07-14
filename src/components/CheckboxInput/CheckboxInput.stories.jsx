@@ -5,7 +5,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import CheckboxInput from './CheckboxInput';
 
 export default {
-  title: 'Forms/Inputs/CheckboxInput',
+  title: 'Components/Form Inputs/CheckboxInput',
   component: CheckboxInput,
   decorators: [withA11y],
 };
