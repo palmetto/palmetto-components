@@ -16,17 +16,22 @@ const CheckboxInput = ({
   isChecked,
   isDisabled,
   isRequired,
+  onBlur,
   onChange,
+  onFocus,
   label,
 }) => {
-  const handleChange = e => {
-    onChange(e.target.checked);
+  const handleBlur = e => {
+    if (onBlur) onBlur(e);
   };
 
-  // const labelClasses = classNames(
-  //   'checkboxInputInstructions',
-  //   { error },
-  // );
+  const handleChange = e => {
+    onChange(e);
+  };
+
+  const handleFocus = e => {
+    if (onFocus) onFocus(e);
+  };
 
   const labelProps = {
     isFieldRequired: isRequired,
@@ -45,7 +50,9 @@ const CheckboxInput = ({
           id={id}
           checked={isChecked}
           disabled={isDisabled}
+          onBlur={handleBlur}
           onChange={handleChange}
+          onFocus={handleFocus}
           type="checkbox"
           className="input"
         />
@@ -62,6 +69,8 @@ CheckboxInput.defaultProps = {
   isChecked: false,
   isDisabled: false,
   isRequired: false,
+  onBlur: undefined,
+  onFocus: undefined,
 };
 
 CheckboxInput.propTypes = {
@@ -95,9 +104,17 @@ CheckboxInput.propTypes = {
    */
   isRequired: PropTypes.bool,
   /**
+   * Callback function when input is blurred.
+   */
+  onBlur: PropTypes.func,
+  /**
    * Callback function when input is changed
    */
   onChange: PropTypes.func.isRequired,
+  /**
+   * Callback function when input is focused
+   */
+  onFocus: PropTypes.func,
   /**
    * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */

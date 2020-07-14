@@ -12,7 +12,7 @@ describe('CheckboxInput', () => {
       <CheckboxInput
         id="testCheckbox"
         label="test checkbox"
-        value="hello"
+        isChecked={false}
         onChange={() => null}
       />,
     );
@@ -28,8 +28,8 @@ describe('CheckboxInput', () => {
       <CheckboxInput
         id="testCheckbox"
         label="test checkbox"
-        value="hello"
         onChange={() => null}
+        isChecked={false}
       />,
     );
     expect(getByLabelText('test checkbox')).toBeDefined();
@@ -40,7 +40,6 @@ describe('CheckboxInput', () => {
       <CheckboxInput
         id="testCheckbox"
         label="test checkbox"
-        value="hello"
         onChange={() => null}
         isChecked
       />,
@@ -54,9 +53,8 @@ describe('CheckboxInput', () => {
       <CheckboxInput
         id="testCheckbox"
         label="test checkbox"
-        value="hello"
-        onChange={() => null}
         isChecked={false}
+        onChange={() => null}
       />,
     );
     const checkbox = getByLabelText('test checkbox');
@@ -84,7 +82,7 @@ describe('CheckboxInput', () => {
         <CheckboxInput
           id="testCheckbox"
           label="test checkbox"
-          value="hello"
+          isChecked={false}
           onChange={mockedHandleChange}
         />,
       );
@@ -93,37 +91,22 @@ describe('CheckboxInput', () => {
       expect(mockedHandleChange).toHaveBeenCalledTimes(1);
     });
 
-    test('calls onChange with true when isCheck is false', () => {
-      const mockedHandleChange = jest.fn(() => null);
+    test('calls onChange and passes checked value in event', () => {
+      let value = true;
+      const mockedHandleChange = jest.fn(event => { value = event.target.checked; });
 
       const { getByLabelText } = render(
         <CheckboxInput
           id="testCheckbox"
           label="test checkbox"
-          value="hello"
           onChange={mockedHandleChange}
+          isChecked={value}
         />,
       );
       const checkbox = getByLabelText('test checkbox');
       fireEvent.click(checkbox);
-      expect(mockedHandleChange).toHaveBeenCalledWith(true);
-    });
-
-    test('calls onChange with false when isChecked when true', () => {
-      const mockedHandleChange = jest.fn(() => null);
-
-      const { getByLabelText } = render(
-        <CheckboxInput
-          id="testCheckbox"
-          label="test checkbox"
-          value="hello"
-          onChange={mockedHandleChange}
-          isChecked
-        />,
-      );
-      const checkbox = getByLabelText('test checkbox');
-      fireEvent.click(checkbox);
-      expect(mockedHandleChange).toHaveBeenCalledWith(false);
+      expect(mockedHandleChange).toBeCalledTimes(1);
+      expect(value).toBe(false);
     });
   });
 });

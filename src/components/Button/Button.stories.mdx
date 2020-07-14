@@ -1,0 +1,113 @@
+import Button from './Button';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+
+<Meta
+  title="Components/Button"
+  component={Button}
+  decorators={[withA11y]}
+/>
+
+# Button
+
+Buttons are used as triggers for actions.
+They are used in forms, toolbars, modal dialogs and as stand-alone action triggers.
+Actions almost always occur on the same page.
+
+<Preview isExpanded>
+  <Button onClick={() => alert('clicked')}>
+    Button
+  </Button>
+</Preview>
+
+## Props
+<Props of={Button} />
+
+## Appearance
+
+<Preview>
+  <Story name="Button">
+     <Button>
+      Button
+    </Button>
+  </Story>
+</Preview>
+
+## Full Width
+
+Use the `fullWidth` prop to allow the button to grow to its container's full width.
+
+<Preview>
+  <Story name="Full Width">
+    <Button fullWidth>
+      Full Width
+    </Button>
+  </Story>
+</Preview>
+
+## Loading
+
+Setting the `isLoading` prop to true will replace the button text with loading indicator and disable the button to prevent unintended submissions.
+The width of the button will remain consistent to prevent content from shifting.
+
+<Preview>
+  <Story name="Loading">
+    <>
+    <div style={{ marginBottom: '1rem' }}>
+        <Button isLoading>
+          Log  In
+        </Button>
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <Button isLoading>
+          Button with a really long name. Width will not decrease when loading indicator is rendered.
+        </Button>
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <Button fullWidth isLoading>
+          Full Width Loading Button
+        </Button>
+      </div>
+    </>
+  </Story>
+</Preview>
+
+## Disabled
+
+Use for actions that aren’t currently available, such as immediately after a form submission.
+The interface should make it clear why the button is disabled and what needs to be done to enable it.
+
+<Preview>
+  <Story name="Disabled">
+    <>
+    <div style={{ marginBottom: '1rem' }}>
+      <Button isDisabled>
+        Disabled Button
+      </Button>
+    </div>
+    <div style={{ marginBottom: '1rem' }}>
+      <Button fullWidth isDisabled>
+        Disabled Full Width Button
+      </Button>
+    </div>
+    </>
+  </Story>
+</Preview>
+
+## Event Callbacks
+
+Callback functions can be passed to `onClick`, `onBlur`, and `onFocus` events.
+
+<Preview>
+  <Story name="Event Callbacks">
+    <Button
+      onBlur={action('blur')}
+      onClick={action('click')}
+      onFocus={action('focus')}
+    >
+      click, focus, blur events
+    </Button>
+  </Story>
+</Preview>

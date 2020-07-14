@@ -18,31 +18,55 @@ const selectOptions = [
 ];
 
 describe('SelectInput', () => {
-  // describe('Props Validation', () => {
-  //   test('Throws error if required prop "id" is not supplied to component', () => {
-  //     console.error = jest.fn(); // eslint-disable-line no-console
-  //     render(<SelectInput label="Select Label" onChange={jest.fn()} options={selectOptions} />);
-  //     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-  //     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-  //       .toContain('Failed prop type: The prop `id`');
-  //   });
+  describe('Props Validation', () => {
+    test('Throws error if required prop "id" is not supplied to component', () => {
+      const mockedHandleChange = jest.fn();
 
-  //   test('Throws error if required prop "onChange" is not supplied to component', () => {
-  //     console.error = jest.fn(); // eslint-disable-line no-console
-  //     render(<SelectInput label="Select Label" id="testId" options={selectOptions} />);
-  //     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-  //     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-  //       .toContain('Failed prop type: The prop `onChange`');
-  //   });
+      console.error = jest.fn(); // eslint-disable-line no-console
+      render(
+        <SelectInput
+          label="test select input"
+          onChange={mockedHandleChange}
+          options={selectOptions}
+        />,
+      );
+      expect(console.error).toHaveBeenCalledTimes(2); // eslint-disable-line no-console
+      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
+        .toContain('Failed prop type: The prop `id`');
+      expect(console.error.mock.calls[1][0]) // eslint-disable-line no-console
+        .toContain('Failed prop type: The prop `inputId` is marked as required in `FormLabel`');
+    });
 
-  //   test('Throws error if required prop "options" is not supplied to component', () => {
-  //     console.error = jest.fn(); // eslint-disable-line no-console
-  //     render(<SelectInput label="Select Label" id="testId" onChange={jest.fn()} />);
-  //     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-  //     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-  //       .toContain('Failed prop type: The prop `options`');
-  //   });
-  // });
+    test('Throws error if required prop "onChange" is not supplied to component', () => {
+      console.error = jest.fn(); // eslint-disable-line no-console
+      render(
+        <SelectInput
+          id="testId"
+          label="test select input"
+          options={selectOptions}
+        />,
+      );
+      expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
+      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
+        .toContain('Failed prop type: The prop `onChange`');
+    });
+
+    test('Throws error if required prop "options" is not supplied to component', () => {
+      const mockedHandleChange = jest.fn();
+
+      console.error = jest.fn(); // eslint-disable-line no-console
+      render(
+        <SelectInput
+          id="testId"
+          label="test select input"
+          onChange={mockedHandleChange}
+        />,
+      );
+      expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
+      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
+        .toContain('Failed prop type: The prop `options`');
+    });
+  });
 
   describe('Callback Handling', () => {
     test('it fires onChange callback on change', async () => {
@@ -64,12 +88,13 @@ describe('SelectInput', () => {
     });
 
     test('it fires onFocus callback on focus', () => {
+      const mockedHandleChange = jest.fn();
       const mockedHandleFocus = jest.fn();
 
       render(
         <SelectInput
           id="testId"
-          label="Select Label"
+          onChange={mockedHandleChange}
           onFocus={mockedHandleFocus}
           placeholder="Test Placeholder"
           options={selectOptions}
@@ -82,12 +107,13 @@ describe('SelectInput', () => {
     });
 
     test('it fires onBlur callback on blur', () => {
+      const mockedHandleChange = jest.fn();
       const mockedHandleBlur = jest.fn();
 
       render(
         <SelectInput
           id="testId"
-          label="Select Label"
+          onChange={mockedHandleChange}
           onBlur={mockedHandleBlur}
           placeholder="Test Placeholder"
           options={selectOptions}
@@ -101,26 +127,46 @@ describe('SelectInput', () => {
   });
 
   describe('States', () => {
-    describe('No label, with a placeholder', () => {
-      test('it renders input without a label, and with a placeholder', () => {
+    describe('Hidden label, with a placeholder', () => {
+      test('it renders input without a visual label, and with a placeholder', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
-            label="Select Label"
+            label="hidden label"
+            hideLabel
+            onChange={mockedHandleChange}
             placeholder="Test Placeholder"
             options={selectOptions}
           />,
         );
-
+        expect(screen.queryByText('hidden label')).toBeNull();
         expect(screen.getByText('Test Placeholder')).toBeInTheDocument();
       });
     });
 
+    test('does not assign "aria-labelledby" attribute when a label is hidden', () => {
+      const mockedHandleChange = jest.fn();
+
+      render(<SelectInput
+        id="testInput"
+        label="hidden label"
+        hideLabel
+        onChange={mockedHandleChange}
+      />);
+      const inputElement = screen.getByLabelText('hidden label');
+      expect(inputElement).not.toHaveAttribute('aria-labelledby');
+    });
+
     describe('With a label, and no custom placeholder', () => {
       test('it renders input with a label, and with a default placeholder', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
           />,
@@ -129,13 +175,23 @@ describe('SelectInput', () => {
         expect(screen.getByLabelText('Select Label')).toBeInTheDocument();
         expect(screen.getByText('Select...')).toBeInTheDocument();
       });
+
+      test('assigns the "aria-labelledby" attribute and renders a label with correct id, when a label is provided', () => {
+        render(<SelectInput id="testInput" label="test label" />);
+        const inputElement = screen.getByLabelText('test label');
+        expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
+        expect(document.getElementById('testInputLabel')).toBeInTheDocument();
+      });
     });
 
     describe('Single select, pre-selected', () => {
       test('it renders with value pre-selected', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             value={selectOptions[2]}
@@ -148,9 +204,12 @@ describe('SelectInput', () => {
 
     describe('Multi select, no selection', () => {
       test('it renders input with a label, and with a default placeholder', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             isMulti
@@ -164,9 +223,12 @@ describe('SelectInput', () => {
 
     describe('Multi select, with multiple items selected', () => {
       test('it renders input with a label, and with two items selected', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             isMulti
@@ -186,9 +248,12 @@ describe('SelectInput', () => {
 
     describe('Is Required', () => {
       test('it renders an asterisk in the label', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             isRequired
@@ -202,9 +267,12 @@ describe('SelectInput', () => {
 
     describe('Is Disabled', () => {
       test('it disables the input', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             isDisabled
@@ -217,9 +285,12 @@ describe('SelectInput', () => {
 
     describe('Is Invalid, with a helpful message', () => {
       test('it renders the helpful message', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             error="Helpful message"
@@ -229,23 +300,5 @@ describe('SelectInput', () => {
         expect(screen.getByText('Helpful message')).toBeInTheDocument();
       });
     });
-  });
-
-  test('assigns the "aria-labelledby" attribute and renders a label with correct id, when a label is provided', () => {
-    render(<SelectInput id="testInput" label="test label" />);
-    const inputElement = screen.getByLabelText('test label');
-    expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
-    expect(document.getElementById('testInputLabel')).toBeInTheDocument();
-  });
-
-  test('does not assign "aria-labelledby" attribute when a label is hidden', () => {
-    render(<SelectInput
-      id="testInput"
-      label="hidden label"
-      hideLabel
-      onChange={() => null}
-    />);
-    const inputElement = screen.getByLabelText('hidden label');
-    expect(inputElement).not.toHaveAttribute('aria-labelledby');
   });
 });

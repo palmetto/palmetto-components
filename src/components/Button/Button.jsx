@@ -94,10 +94,7 @@ Button.propTypes = {
   /**
    * Contents of the button
    */
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * Disables the button, making it inoperable
    */
@@ -107,7 +104,7 @@ Button.propTypes = {
    */
   isLoading: PropTypes.bool,
   /**
-   * Callback when button receives focus
+   * Allow the button to grow to its container's full width
    */
   fullWidth: PropTypes.bool,
   /**
