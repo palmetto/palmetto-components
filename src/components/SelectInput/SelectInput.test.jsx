@@ -36,7 +36,6 @@ describe('SelectInput', () => {
       render(
         <SelectInput
           id="testId"
-          onChange={mockedHandleChange}
           options={selectOptions}
         />,
       );
@@ -53,7 +52,6 @@ describe('SelectInput', () => {
         <SelectInput
           id="testId"
           onChange={mockedHandleChange}
-          options={selectOptions}
         />,
       );
       expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
@@ -180,6 +178,8 @@ describe('SelectInput', () => {
       });
 
       test('it allows the selection of multiple items', async () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <form data-testid="form">
             <label htmlFor="iceCreamFlavors">Ice Cream Flavors</label>
@@ -205,6 +205,8 @@ describe('SelectInput', () => {
   describe('States', () => {
     describe('No label, with a placeholder', () => {
       test('it renders input without a label, and with a placeholder', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
@@ -220,6 +222,8 @@ describe('SelectInput', () => {
 
     describe('With a label, and no custom placeholder', () => {
       test('it renders input with a label, and with a default placeholder', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
@@ -236,6 +240,8 @@ describe('SelectInput', () => {
 
     describe('Single select, pre-selected', () => {
       test('it renders with value pre-selected', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
@@ -252,6 +258,8 @@ describe('SelectInput', () => {
 
     describe('Multi select, no selection', () => {
       test('it renders input with a label, and with a default placeholder', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
@@ -269,6 +277,8 @@ describe('SelectInput', () => {
 
     describe('Multi select, with multiple items selected', () => {
       test('it renders input with a label, and with two items selected', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
@@ -292,6 +302,8 @@ describe('SelectInput', () => {
 
     describe('Is Required', () => {
       test('it renders an asterisk in the label', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
@@ -309,6 +321,8 @@ describe('SelectInput', () => {
 
     describe('Is Disabled', () => {
       test('it disables the input', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
@@ -325,6 +339,8 @@ describe('SelectInput', () => {
 
     describe('Is Invalid, with a helpful message', () => {
       test('it renders the helpful message', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <SelectInput
             id="testId"
