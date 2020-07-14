@@ -22,6 +22,10 @@ const propTypes = {
   isFieldRequired: PropTypes.bool.isRequired,
 };
 
+const defaultProps = {
+  hasError: false,
+  isFieldRequired: false,
+};
 
 const FormLabel = ({
   hasError,
@@ -49,10 +53,6 @@ const FormLabel = ({
 };
 
 FormLabel.propTypes = propTypes;
-
-FormLabel.defaultProps = {
-  hasError: false,
-  isFieldRequired: false,
-};
+FormLabel.defaultProps = defaultProps;
 
 export default FormLabel;

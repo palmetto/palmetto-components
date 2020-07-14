@@ -6,6 +6,15 @@ import getElementType from '../../lib/getElementType';
 import './Heading.scss';
 import { HEADING_LEVELS } from './Heading.constants';
 
+/**
+ * Use `Headings` as labels for pages or sections of a page that make up an interface.
+ * `Headings` can label an entire page, or sections of related content.
+ *
+ * The `Heading` component allows you to specify an appropriate semantic element (h1-h6)
+ * and independently set its size so that it is appropriate for the surrounding content.
+ * If no size is specified, a default size will be applied.
+ */
+
 const propTypes = {
   /**
    * The DOM tag or react component to use for the element.
@@ -31,14 +40,13 @@ const propTypes = {
   size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS).isRequired,
 };
 
-/**
- * Use `Headings` as labels for pages or sections of a page that make up an interface.
- * `Headings` can label an entire page, or sections of related content.
- *
- * The `Heading` component allows you to specify an appropriate semantic element (h1-h6)
- * and independently set its size so that it is appropriate for the surrounding content.
- * If no size is specified, a default size will be applied.
- */
+const defaultProps = {
+  as: 'h4',
+  className: '',
+  color: 'dark',
+  size: 'lg',
+};
+
 const Heading = ({
   as,
   className,
@@ -57,12 +65,6 @@ const Heading = ({
 };
 
 Heading.propTypes = propTypes;
-
-Heading.defaultProps = {
-  as: 'h4',
-  className: '',
-  color: 'dark',
-  size: 'lg',
-};
+Heading.defaultProps = defaultProps;
 
 export default Heading;

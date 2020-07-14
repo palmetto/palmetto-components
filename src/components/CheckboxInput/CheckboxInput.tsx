@@ -57,6 +57,16 @@ const propTypes = {
   label: PropTypes.string,
 };
 
+const defaultProps = {
+  className: '',
+  error: false,
+  isChecked: false,
+  isDisabled: false,
+  isRequired: false,
+  onBlur: undefined,
+  onFocus: undefined,
+};
+
 const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
   id,
   className,
@@ -110,13 +120,6 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
 };
 
 CheckboxInput.propTypes = propTypes;
-
-CheckboxInput.defaultProps = {
-  className: '',
-  error: false,
-  isChecked: false,
-  isDisabled: false,
-  isRequired: false,
-};
+CheckboxInput.defaultProps = defaultProps;
 
 export default CheckboxInput;
