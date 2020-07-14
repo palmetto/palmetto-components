@@ -54,7 +54,7 @@ const propTypes = {
   /**
    * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */
-  label: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
@@ -87,7 +87,7 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
         <input
           aria-invalid={!!error}
           aria-label={label}
-          aria-labelledby={label ? `${id}Label` : null}
+          aria-labelledby={label ? `${id}Label` : undefined}
           id={id}
           checked={isChecked}
           disabled={isDisabled}
