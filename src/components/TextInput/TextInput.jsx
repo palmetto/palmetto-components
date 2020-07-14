@@ -161,7 +161,7 @@ TextInput.propTypes = {
    */
   isRequired: PropTypes.bool,
   /**
-   * Value for HTML <label> tag
+   * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
    */
   label: PropTypes.string.isRequired,
   /**

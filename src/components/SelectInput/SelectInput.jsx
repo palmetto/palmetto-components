@@ -115,7 +115,7 @@ SelectInput.propTypes = {
    */
   hideLabel: PropTypes.bool,
   /**
-   * Custom content to be displayed above the input.
+   * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
    */
   label: PropTypes.string.isRequired,
   /**
