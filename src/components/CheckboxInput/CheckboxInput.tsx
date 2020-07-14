@@ -42,7 +42,7 @@ const propTypes = {
   /**
    * Callback function when input is blurred.
    */
-  onBlur: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
   /**
    * Callback function when input is changed
    */
@@ -50,11 +50,11 @@ const propTypes = {
   /**
    * Callback function when input is focused
    */
-  onFocus: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
   /**
    * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
 };
 
 const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
@@ -86,7 +86,7 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
       <div className={classNames('Palmetto-CheckboxInput', className, { isDisabled })}>
         <input
           aria-invalid={!!error}
-          aria-label={label}
+          aria-label={label || undefined}
           aria-labelledby={label ? `${id}Label` : undefined}
           id={id}
           checked={isChecked}
@@ -117,8 +117,6 @@ CheckboxInput.defaultProps = {
   isChecked: false,
   isDisabled: false,
   isRequired: false,
-  onBlur: undefined,
-  onFocus: undefined,
 };
 
 export default CheckboxInput;
