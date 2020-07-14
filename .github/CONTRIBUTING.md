@@ -42,7 +42,7 @@ A short description is as follows:
 
 ## JS Style Guide
 
-We mostly follow the AirBnB JS style guide with few exceptions. Just follow linter rules as much as possible. Please use `// eslint-disable-line` very, very sparingly. If a disable is needed, please specify the rule you are disabling.
+We mostly follow the [AirBnB JS style guide](https://github.com/airbnb/javascript/tree/master/react) with few exceptions. Just follow linter rules as much as possible. Please use `// eslint-disable-line` very, very sparingly. If a disable is needed, please specify the rule you are disabling.
 
 E.G: `// eslint-disable-line no-console`
 
