@@ -5,7 +5,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import TextInput from './TextInput';
 
 export default {
-  title: 'Forms/Inputs/TextInput',
+  title: 'Components/Inputs/TextInput',
   component: TextInput,
   decorators: [withA11y],
 };

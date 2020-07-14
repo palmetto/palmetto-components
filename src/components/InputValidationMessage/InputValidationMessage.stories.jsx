@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import InputValidationMessage from './InputValidationMessage';
 
 export default {
-  title: 'Forms/InputValidationMessage',
+  title: 'Components/Inputs/Subcomponents/InputValidationMessage',
   component: InputValidationMessage,
   decorators: [withA11y],
 };
