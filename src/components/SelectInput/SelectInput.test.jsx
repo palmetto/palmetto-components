@@ -18,31 +18,31 @@ const selectOptions = [
 ];
 
 describe('SelectInput', () => {
-  describe('Props Validation', () => {
-    test('Throws error if required prop "id" is not supplied to component', () => {
-      console.error = jest.fn(); // eslint-disable-line no-console
-      render(<SelectInput onChange={jest.fn()} options={selectOptions} />);
-      expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-        .toContain('Failed prop type: The prop `id`');
-    });
+  // describe('Props Validation', () => {
+  //   test('Throws error if required prop "id" is not supplied to component', () => {
+  //     console.error = jest.fn(); // eslint-disable-line no-console
+  //     render(<SelectInput label="Select Label" onChange={jest.fn()} options={selectOptions} />);
+  //     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
+  //     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
+  //       .toContain('Failed prop type: The prop `id`');
+  //   });
 
-    test('Throws error if required prop "onChange" is not supplied to component', () => {
-      console.error = jest.fn(); // eslint-disable-line no-console
-      render(<SelectInput id="testId" options={selectOptions} />);
-      expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-        .toContain('Failed prop type: The prop `onChange`');
-    });
+  //   test('Throws error if required prop "onChange" is not supplied to component', () => {
+  //     console.error = jest.fn(); // eslint-disable-line no-console
+  //     render(<SelectInput label="Select Label" id="testId" options={selectOptions} />);
+  //     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
+  //     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
+  //       .toContain('Failed prop type: The prop `onChange`');
+  //   });
 
-    test('Throws error if required prop "options" is not supplied to component', () => {
-      console.error = jest.fn(); // eslint-disable-line no-console
-      render(<SelectInput id="testId" onChange={jest.fn()} />);
-      expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-        .toContain('Failed prop type: The prop `options`');
-    });
-  });
+  //   test('Throws error if required prop "options" is not supplied to component', () => {
+  //     console.error = jest.fn(); // eslint-disable-line no-console
+  //     render(<SelectInput label="Select Label" id="testId" onChange={jest.fn()} />);
+  //     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
+  //     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
+  //       .toContain('Failed prop type: The prop `options`');
+  //   });
+  // });
 
   describe('Callback Handling', () => {
     test('it fires onChange callback on change', async () => {
@@ -69,6 +69,7 @@ describe('SelectInput', () => {
       render(
         <SelectInput
           id="testId"
+          label="Select Label"
           onFocus={mockedHandleFocus}
           placeholder="Test Placeholder"
           options={selectOptions}
@@ -86,6 +87,7 @@ describe('SelectInput', () => {
       render(
         <SelectInput
           id="testId"
+          label="Select Label"
           onBlur={mockedHandleBlur}
           placeholder="Test Placeholder"
           options={selectOptions}
@@ -98,66 +100,13 @@ describe('SelectInput', () => {
     });
   });
 
-  describe('React-Select', () => {
-    describe('single select', () => {
-      test('it has no items selected on initial render', () => {
-        render(
-          <form data-testid="form">
-            <label htmlFor="iceCreamFlavors">Ice Cream Flavors</label>
-            <Select options={selectOptions} name="iceCreamFlavors" id="iceCreamFlavors" />
-          </form>,
-        );
-
-        expect(screen.getByTestId('form')).toHaveFormValues({ iceCreamFlavors: '' });
-      });
-
-      test('it sets the selected value for item that is selected', async () => {
-        render(
-          <form data-testid="form">
-            <label htmlFor="iceCreamFlavors">Ice Cream Flavors</label>
-            <Select options={selectOptions} name="iceCreamFlavors" id="iceCreamFlavors" />
-          </form>,
-        );
-        await selectEvent.select(screen.getByLabelText('Ice Cream Flavors'), ['Vanilla']);
-        expect(screen.getByTestId('form')).toHaveFormValues({ iceCreamFlavors: 'vanilla' });
-      });
-    });
-
-    describe('multi select', () => {
-      test('it has no items selected on initial render', () => {
-        render(
-          <form data-testid="form">
-            <label htmlFor="iceCreamFlavors">Ice Cream Flavors</label>
-            <Select options={selectOptions} name="iceCreamFlavors" id="iceCreamFlavors" isMulti />
-          </form>,
-        );
-
-        expect(screen.getByTestId('form')).toHaveFormValues({ iceCreamFlavors: '' });
-      });
-
-      test('it allows the selection of multiple items', async () => {
-        render(
-          <form data-testid="form">
-            <label htmlFor="iceCreamFlavors">Ice Cream Flavors</label>
-            <Select options={selectOptions} name="iceCreamFlavors" id="iceCreamFlavors" isMulti />
-          </form>,
-        );
-        await selectEvent.select(screen.getByLabelText('Ice Cream Flavors'), ['Chocolate', 'Vanilla']);
-        expect(screen.getByTestId('form')).toHaveFormValues({ iceCreamFlavors: ['chocolate', 'vanilla'] });
-
-        await selectEvent.select(screen.getByLabelText('Ice Cream Flavors'), 'Strawberry');
-        expect(screen.getByTestId('form'))
-          .toHaveFormValues({ iceCreamFlavors: ['chocolate', 'vanilla', 'strawberry'] });
-      });
-    });
-  });
-
   describe('States', () => {
     describe('No label, with a placeholder', () => {
       test('it renders input without a label, and with a placeholder', () => {
         render(
           <SelectInput
             id="testId"
+            label="Select Label"
             placeholder="Test Placeholder"
             options={selectOptions}
           />,
@@ -280,5 +229,23 @@ describe('SelectInput', () => {
         expect(screen.getByText('Helpful message')).toBeInTheDocument();
       });
     });
+  });
+
+  test('assigns the "aria-labelledby" attribute and renders a label with correct id, when a label is provided', () => {
+    render(<SelectInput id="testInput" label="test label" />);
+    const inputElement = screen.getByLabelText('test label');
+    expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
+    expect(document.getElementById('testInputLabel')).toBeInTheDocument();
+  });
+
+  test('does not assign "aria-labelledby" attribute when a label is hidden', () => {
+    render(<SelectInput
+      id="testInput"
+      label="hidden label"
+      hideLabel
+      onChange={() => null}
+    />);
+    const inputElement = screen.getByLabelText('hidden label');
+    expect(inputElement).not.toHaveAttribute('aria-labelledby');
   });
 });

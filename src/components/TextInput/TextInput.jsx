@@ -21,6 +21,7 @@ const TextInput = ({
   autoComplete,
   autoFocus,
   className,
+  hideLabel,
   id,
   inputMask,
   isDisabled,
@@ -71,8 +72,9 @@ const TextInput = ({
 
   const inputProps = {
     'aria-required': isRequired,
-    'aria-label': label || name,
     'aria-invalid': !!error,
+    'aria-label': label,
+    'aria-labelledby': label && !hideLabel ? `${id}Label` : null,
     autoComplete: getAutoCompleteValue(),
     autoFocus,
     className: inputClasses,
@@ -97,7 +99,7 @@ const TextInput = ({
 
   return (
     <div>
-      {label && <FormLabel {...labelProps} />}
+      {label && !hideLabel && <FormLabel {...labelProps} />}
       {!inputMask ? (
         <input {...inputProps} />
       ) : (
@@ -134,6 +136,10 @@ TextInput.propTypes = {
     PropTypes.node,
   ]),
   /**
+   * Visually hide the label
+   */
+  hideLabel: PropTypes.bool,
+  /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
   id: PropTypes.string.isRequired,
@@ -157,7 +163,7 @@ TextInput.propTypes = {
   /**
    * Value for HTML <label> tag
    */
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   /**
    * The input's 'maxlength' attribute.
    * NOTE: initializing the input with a value longer than the desired maxlength will not trim this value.
@@ -197,11 +203,11 @@ TextInput.defaultProps = {
   autoComplete: false,
   autoFocus: false,
   className: '',
+  hideLabel: false,
   inputMask: undefined,
   isDisabled: false,
   error: false,
   isRequired: false,
-  label: undefined,
   maxLength: undefined,
   name: '',
   onBlur: undefined,
