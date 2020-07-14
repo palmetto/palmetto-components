@@ -21,7 +21,7 @@ A React component library to power all Palmetto UI.
 [SEE FULL DOCS HERE](https://5ed9214b642dc10022b50a2d-uibkdayawa.chromatic.com/?path=/story/components-button--button)
 
 ## Contributing
-Issues and PRs welcome! See [HERE](https://github.com/palmetto-components/blob/develop/.github/CONTRIBUTING.md) for contribution guide.
+Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/develop/.github/CONTRIBUTING.md) for contribution guide.
 
 
 
