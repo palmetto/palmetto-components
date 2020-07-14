@@ -13,4 +13,10 @@ module.exports = {
   },
   coverageDirectory: './coverage/',
   collectCoverage: true,
+  collectCoverageFrom: [
+    '**/*.{js,jsx}',
+    '!**/*.stories.{js,jsx}',
+    '!**/node_modules/**',
+    '!**/vendor/**',
+  ],
 };
