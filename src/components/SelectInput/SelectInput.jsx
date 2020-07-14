@@ -8,7 +8,8 @@ import './SelectInput.scss';
 
 /**
  * Allows users to pick a value from predefined list of options.
- * Ideally, it should be used when there are more than 4 options, otherwise you should consider using a radio group instead.
+ * Ideally, it should be used when there are more than 4 options,
+ * otherwise you should consider using a radio group instead.
  */
 
 const SelectInput = ({
@@ -16,9 +17,10 @@ const SelectInput = ({
   label,
   className,
   placeholder,
-  hasError,
+  error,
   isDisabled,
   isRequired,
+  name,
   onChange,
   onFocus,
   onBlur,
@@ -27,6 +29,19 @@ const SelectInput = ({
   options,
   value,
 }) => {
+  const handleChange = values => {
+    if (onChange) {
+      const simulatedEventPayload = {
+        target: {
+          name,
+          value: values,
+        },
+      };
+
+      onChange(simulatedEventPayload);
+    }
+  };
+
   const handleFocus = e => {
     if (onFocus) onFocus(e);
   };
@@ -37,14 +52,14 @@ const SelectInput = ({
 
   const inputClasses = classNames(
     'selectInput',
-    { error: hasError },
+    { error },
   );
 
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
     labelText: label,
-    hasError: !!hasError,
+    hasError: !!error,
   };
 
   return (
@@ -59,15 +74,16 @@ const SelectInput = ({
           placeholder={placeholder}
           isDisabled={isDisabled}
           isMulti={isMulti}
+          name={name}
           autoFocus={autoFocus}
           options={options}
-          onChange={onChange}
+          onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
           value={value}
         />
       </div>
-      {hasError && hasError !== true && <InputValidationMessage>{hasError}</InputValidationMessage>}
+      {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
     </>
   );
 };
@@ -76,9 +92,10 @@ SelectInput.defaultProps = {
   label: undefined,
   className: '',
   placeholder: undefined,
-  hasError: false,
+  error: false,
   isDisabled: false,
   isRequired: false,
+  name: '',
   onFocus: undefined,
   onBlur: undefined,
   autoFocus: false,
@@ -107,7 +124,7 @@ SelectInput.propTypes = {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input
    */
-  hasError: PropTypes.oneOfType([
+  error: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
     PropTypes.node,
@@ -120,6 +137,10 @@ SelectInput.propTypes = {
    * Determines if input is required or not. (Label will have an asterisk if required)
    */
   isRequired: PropTypes.bool,
+  /**
+   * Select 'name' attribute
+   */
+  name: PropTypes.string,
   /**
    * Callback function to call on change event.
    */

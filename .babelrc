@@ -5,6 +5,10 @@
         ["@babel/preset-env", { "modules": "cjs" }],
         "@babel/preset-react",
         "@babel/preset-typescript"
+      ],
+      "plugins": [
+        "@babel/plugin-transform-regenerator",
+        "@babel/plugin-transform-runtime"
       ]
     },
     "build": {

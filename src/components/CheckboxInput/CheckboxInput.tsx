@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, FocusEvent } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -40,9 +40,17 @@ const propTypes = {
    */
   isRequired: PropTypes.bool.isRequired,
   /**
+   * Callback function when input is blurred.
+   */
+  onBlur: PropTypes.func.isRequired,
+  /**
    * Callback function when input is changed
    */
   onChange: PropTypes.func.isRequired,
+  /**
+   * Callback function when input is focused
+   */
+  onFocus: PropTypes.func.isRequired,
   /**
    * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */
@@ -56,17 +64,22 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
   isChecked,
   isDisabled,
   isRequired,
+  onBlur,
   onChange,
+  onFocus,
   label,
 }) => {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    onChange(e.target.checked);
+  const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
+    if (onBlur) onBlur(event);
   };
 
-  // const labelClasses = classNames(
-  //   'checkboxInputInstructions',
-  //   { error },
-  // );
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    onChange(event);
+  };
+
+  const handleFocus = (event: FocusEvent<HTMLInputElement>): void => {
+    if (onFocus) onFocus(event);
+  };
 
   return (
     <>
@@ -76,7 +89,9 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
           id={id}
           checked={isChecked}
           disabled={isDisabled}
+          onBlur={handleBlur}
           onChange={handleChange}
+          onFocus={handleFocus}
           type="checkbox"
           className="input"
         />
@@ -100,6 +115,8 @@ CheckboxInput.defaultProps = {
   isChecked: false,
   isDisabled: false,
   isRequired: false,
+  onBlur: undefined,
+  onFocus: undefined,
 };
 
 export default CheckboxInput;

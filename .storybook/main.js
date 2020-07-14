@@ -28,7 +28,7 @@ const babelRules = config => {
 const scssRules = {
   test: /\.scss$/,
   use: [
-    MiniCssExtractPlugin.loader,
+    'style-loader',
     'css-loader',
     // 'postcss-loader', @TODO -- Add postcss config and re-enable loader.
     'sass-loader',
@@ -48,11 +48,9 @@ const scssRules = {
 
 const fileLoaderRules = {
   test: /\.(png|jpe?g|gif)$/i,
-  use: [
-    {
-      loader: 'file-loader',
-    },
-  ],
+  use: [{
+    loader: 'file-loader',
+  }, ],
 };
 
 const svgRules = config => {
@@ -70,7 +68,7 @@ const svgRules = config => {
 }
 
 module.exports = {
-  stories: ['../src/**/*.stories.[tj]sx'],
+  stories: ['../src/**/*.stories.([tj]sx|mdx)'],
   addons: [
     '@storybook/addon-actions/register',
     '@storybook/addon-a11y/register',
@@ -79,7 +77,6 @@ module.exports = {
     // '@storybook/addon-viewport/register',
   ],
   webpackFinal: (config) => {
-    config.plugins.push(new MiniCssExtractPlugin());
     config.module.rules.push(scssRules);
     config = babelRules(config);
     config.module.rules.push(fileLoaderRules);

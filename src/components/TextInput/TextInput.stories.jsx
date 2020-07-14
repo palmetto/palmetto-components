@@ -5,7 +5,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import TextInput from './TextInput';
 
 export default {
-  title: 'Forms/Inputs/TextInput',
+  title: 'Components/Form Inputs/TextInput',
   component: TextInput,
   decorators: [withA11y],
 };
@@ -22,6 +22,7 @@ export const All = () => {
     withLabelErrorInputValue: 'invalid value',
     withValidationMessage: '',
     invalidWithLabel: '',
+    withMaxLength: 'asdhasdhasdh',
   });
 
   const handleChange = (event, key) => {
@@ -150,6 +151,15 @@ export const All = () => {
               value={state.invalidWithLabel}
               label="Invalid With Label"
               onChange={event => handleChange(event, 'invalidWithLabel')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              id="withMaxLength"
+              maxLength="5"
+              value={state.withMaxLength}
+              label="Can't enter more than 5 characters"
+              onChange={event => handleChange(event, 'withMaxLength')}
             />
           </div>
         </div>
