@@ -37,7 +37,11 @@ const FormLabel = ({
   );
 
   return (
-    <label className={labelClasses} htmlFor={inputId}>
+    <label
+      id={`${inputId}Label`}
+      className={labelClasses}
+      htmlFor={inputId}
+    >
       {labelText}
       {isFieldRequired && <span className="font-size-sm">&nbsp;*</span>}
     </label>

@@ -61,6 +61,19 @@ describe('CheckboxInput', () => {
     expect(checkbox.checked).toEqual(false);
   });
 
+  test('assigns the "aria-labelledby" attribute and renders a label with correct id, when a label is provided', () => {
+    const { getByLabelText } = render(
+      <CheckboxInput
+        id="testInput"
+        label="test label"
+        value="hello"
+        onChange={() => null}
+      />,
+    );
+    expect(getByLabelText('test label')).toHaveAttribute('aria-labelledby', 'testInputLabel');
+    expect(document.getElementById('testInputLabel')).toBeInTheDocument();
+  });
+
   describe('onChange', () => {
     test('onChange event fires callback function', () => {
       const mockedHandleChange = jest.fn(() => null);

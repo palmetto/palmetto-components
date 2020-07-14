@@ -86,6 +86,8 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
       <div className={classNames('Palmetto-CheckboxInput', className, { isDisabled })}>
         <input
           aria-invalid={!!error}
+          aria-label={label}
+          aria-labelledby={label ? `${id}Label` : null}
           id={id}
           checked={isChecked}
           disabled={isDisabled}
