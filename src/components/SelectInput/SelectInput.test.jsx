@@ -23,15 +23,18 @@ describe('SelectInput', () => {
       const mockedHandleChange = jest.fn();
 
       console.error = jest.fn(); // eslint-disable-line no-console
-      render(<SelectInput onChange={jest.fn()} options={selectOptions} />);
+      render(
+        <SelectInput
+          onChange={mockedHandleChange}
+          options={selectOptions}
+        />,
+      );
       expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
       expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
         .toContain('Failed prop type: The prop `id`');
     });
 
     test('Throws error if required prop "onChange" is not supplied to component', () => {
-      const mockedHandleChange = jest.fn();
-
       console.error = jest.fn(); // eslint-disable-line no-console
       render(
         <SelectInput
