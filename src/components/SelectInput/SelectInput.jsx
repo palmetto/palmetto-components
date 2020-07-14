@@ -18,6 +18,7 @@ const SelectInput = ({
   className,
   placeholder,
   error,
+  hideLabel,
   isDisabled,
   isRequired,
   name,
@@ -65,10 +66,11 @@ const SelectInput = ({
   return (
     <>
       <div className={classNames('Palmetto-SelectInput', className, { disabled: isDisabled })}>
-        {label && <FormLabel {...labelProps} />}
+        {label && !hideLabel && <FormLabel {...labelProps} />}
         <Select
           inputId={id}
-          aria-label={label || id}
+          aria-label={label}
+          aria-labelledby={label && !hideLabel ? `${id}Label` : null}
           className={inputClasses}
           classNamePrefix="selectInput"
           placeholder={placeholder}
@@ -89,10 +91,10 @@ const SelectInput = ({
 };
 
 SelectInput.defaultProps = {
-  label: undefined,
   className: '',
   placeholder: undefined,
   error: false,
+  hideLabel: false,
   isDisabled: false,
   isRequired: false,
   name: '',
@@ -109,9 +111,13 @@ SelectInput.propTypes = {
    */
   id: PropTypes.string.isRequired,
   /**
-   * Custom content to be displayed above the input.
+   * Visually hide the label
    */
-  label: PropTypes.string,
+  hideLabel: PropTypes.bool,
+  /**
+   * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
+   */
+  label: PropTypes.string.isRequired,
   /**
    * Additional classes to add
    */

@@ -43,4 +43,10 @@ describe('FormLabel', () => {
     const labelElement = screen.getByText('my label');
     expect(labelElement.getAttribute('class')).toContain('error');
   });
+
+  test('correctly assigns an id when given an inputId', () => {
+    render(<FormLabel inputId="myId" labelText="my label" hasError />);
+    const labelElement = screen.getByText('my label');
+    expect(labelElement).toHaveAttribute('id', 'myIdLabel');
+  });
 });
