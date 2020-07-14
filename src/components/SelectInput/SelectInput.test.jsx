@@ -20,6 +20,8 @@ const selectOptions = [
 describe('SelectInput', () => {
   describe('Props Validation', () => {
     test('Throws error if required prop "id" is not supplied to component', () => {
+      const mockedHandleChange = jest.fn();
+
       console.error = jest.fn(); // eslint-disable-line no-console
       render(<SelectInput onChange={jest.fn()} options={selectOptions} />);
       expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
@@ -28,16 +30,32 @@ describe('SelectInput', () => {
     });
 
     test('Throws error if required prop "onChange" is not supplied to component', () => {
+      const mockedHandleChange = jest.fn();
+
       console.error = jest.fn(); // eslint-disable-line no-console
-      render(<SelectInput id="testId" options={selectOptions} />);
+      render(
+        <SelectInput
+          id="testId"
+          onChange={mockedHandleChange}
+          options={selectOptions}
+        />,
+      );
       expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
       expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
         .toContain('Failed prop type: The prop `onChange`');
     });
 
     test('Throws error if required prop "options" is not supplied to component', () => {
+      const mockedHandleChange = jest.fn();
+
       console.error = jest.fn(); // eslint-disable-line no-console
-      render(<SelectInput id="testId" onChange={jest.fn()} />);
+      render(
+        <SelectInput
+          id="testId"
+          onChange={mockedHandleChange}
+          options={selectOptions}
+        />,
+      );
       expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
       expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
         .toContain('Failed prop type: The prop `options`');
@@ -64,11 +82,13 @@ describe('SelectInput', () => {
     });
 
     test('it fires onFocus callback on focus', () => {
+      const mockedHandleChange = jest.fn();
       const mockedHandleFocus = jest.fn();
 
       render(
         <SelectInput
           id="testId"
+          onChange={mockedHandleChange}
           onFocus={mockedHandleFocus}
           placeholder="Test Placeholder"
           options={selectOptions}
@@ -81,11 +101,13 @@ describe('SelectInput', () => {
     });
 
     test('it fires onBlur callback on blur', () => {
+      const mockedHandleChange = jest.fn();
       const mockedHandleBlur = jest.fn();
 
       render(
         <SelectInput
           id="testId"
+          onChange={mockedHandleChange}
           onBlur={mockedHandleBlur}
           placeholder="Test Placeholder"
           options={selectOptions}
@@ -101,10 +123,17 @@ describe('SelectInput', () => {
   describe('React-Select', () => {
     describe('single select', () => {
       test('it has no items selected on initial render', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <form data-testid="form">
             <label htmlFor="iceCreamFlavors">Ice Cream Flavors</label>
-            <Select options={selectOptions} name="iceCreamFlavors" id="iceCreamFlavors" />
+            <Select
+              id="iceCreamFlavors"
+              onChange={mockedHandleChange}
+              options={selectOptions}
+              name="iceCreamFlavors"
+            />
           </form>,
         );
 
@@ -112,10 +141,17 @@ describe('SelectInput', () => {
       });
 
       test('it sets the selected value for item that is selected', async () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <form data-testid="form">
             <label htmlFor="iceCreamFlavors">Ice Cream Flavors</label>
-            <Select options={selectOptions} name="iceCreamFlavors" id="iceCreamFlavors" />
+            <Select
+              id="iceCreamFlavors"
+              onChange={mockedHandleChange}
+              options={selectOptions}
+              name="iceCreamFlavors"
+            />
           </form>,
         );
         await selectEvent.select(screen.getByLabelText('Ice Cream Flavors'), ['Vanilla']);
@@ -125,10 +161,18 @@ describe('SelectInput', () => {
 
     describe('multi select', () => {
       test('it has no items selected on initial render', () => {
+        const mockedHandleChange = jest.fn();
+
         render(
           <form data-testid="form">
             <label htmlFor="iceCreamFlavors">Ice Cream Flavors</label>
-            <Select options={selectOptions} name="iceCreamFlavors" id="iceCreamFlavors" isMulti />
+            <Select
+              id="iceCreamFlavors"
+              onChange={mockedHandleChange}
+              options={selectOptions}
+              name="iceCreamFlavors"
+              isMulti
+            />
           </form>,
         );
 
@@ -139,7 +183,13 @@ describe('SelectInput', () => {
         render(
           <form data-testid="form">
             <label htmlFor="iceCreamFlavors">Ice Cream Flavors</label>
-            <Select options={selectOptions} name="iceCreamFlavors" id="iceCreamFlavors" isMulti />
+            <Select
+              id="iceCreamFlavors"
+              onChange={mockedHandleChange}
+              options={selectOptions}
+              name="iceCreamFlavors"
+              isMulti
+            />
           </form>,
         );
         await selectEvent.select(screen.getByLabelText('Ice Cream Flavors'), ['Chocolate', 'Vanilla']);
@@ -158,6 +208,7 @@ describe('SelectInput', () => {
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             placeholder="Test Placeholder"
             options={selectOptions}
           />,
@@ -172,6 +223,7 @@ describe('SelectInput', () => {
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
           />,
@@ -187,6 +239,7 @@ describe('SelectInput', () => {
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             value={selectOptions[2]}
@@ -202,6 +255,7 @@ describe('SelectInput', () => {
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             isMulti
@@ -218,6 +272,7 @@ describe('SelectInput', () => {
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             isMulti
@@ -240,6 +295,7 @@ describe('SelectInput', () => {
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             isRequired
@@ -256,6 +312,7 @@ describe('SelectInput', () => {
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             isDisabled
@@ -271,6 +328,7 @@ describe('SelectInput', () => {
         render(
           <SelectInput
             id="testId"
+            onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
             error="Helpful message"
