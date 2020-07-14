@@ -5,14 +5,14 @@ import { withA11y } from '@storybook/addon-a11y';
 import TextInput from './TextInput';
 
 export default {
-  title: 'Forms/Inputs/TextInput',
+  title: 'Components/Form Inputs/TextInput',
   component: TextInput,
   decorators: [withA11y],
 };
 
 export const All = () => {
   const store = new Store({
-    basicInputValue: 'Hello World!',
+    hiddenLabel: '',
     placeholderInputValue: '',
     withLabelInputValue: 'With a label',
     requiredInputValue: '',
@@ -22,6 +22,7 @@ export const All = () => {
     withLabelErrorInputValue: 'invalid value',
     withValidationMessage: '',
     invalidWithLabel: '',
+    withMaxLength: 'asdhasdhasdh',
   });
 
   const handleChange = (event, key) => {
@@ -35,44 +36,9 @@ export const All = () => {
         <div style={{ maxWidth: '400px' }}>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
-              id="basicTextInput"
-              value={state.basicInputValue}
-              onChange={event => handleChange(event, 'basicInputValue')}
-            />
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <TextInput
-              id="disabledInputWithValue"
-              label="Disabled input with value"
-              value="I am disabled with a value"
-              isDisabled
-              onChange={() => null}
-            />
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <TextInput
-              id="disabledInputWithoutValue"
-              label="Disabled input without value"
-              isDisabled
-              value=""
-              onChange={() => null}
-            />
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <TextInput
-              id="disabledInputWithPlaceholder"
-              label="Disabled input with placeholder"
-              placeholder="I am placeholder inside disabled input"
-              isDisabled
-              value=""
-              onChange={() => null}
-            />
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <TextInput
               id="inputWithName"
               value={state.withLabelInputValue}
-              label="Name"
+              label="Label Name"
               onChange={event => handleChange(event, 'withLabelInputValue')}
             />
           </div>
@@ -102,6 +68,44 @@ export const All = () => {
               placeholder="I am autofocused on page load"
               autoFocus
               onChange={event => handleChange(event, 'autoFocusedInputValue')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              id="hidden"
+              value={state.hiddenLabel}
+              label="I have a visually hidden label"
+              hideLabel
+              onChange={event => handleChange(event, 'hiddenLabel')}
+              placeholder="My label is visually hidden"
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              id="disabledInputWithValue"
+              label="Disabled input with value"
+              value="I am disabled with a value"
+              isDisabled
+              onChange={() => null}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              id="disabledInputWithoutValue"
+              label="Disabled input without value"
+              isDisabled
+              value=""
+              onChange={() => null}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              id="disabledInputWithPlaceholder"
+              label="Disabled input with placeholder"
+              placeholder="I am placeholder inside disabled input"
+              isDisabled
+              value=""
+              onChange={() => null}
             />
           </div>
           <div style={{ marginBottom: '1rem' }}>
@@ -136,7 +140,9 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
-              id="invalidWithNoLabel"
+              id="invalidWithNo"
+              label="invalid hidden label"
+              hideLabel
               error
               value={state.errorInputValue}
               placeholder="invalid with no label"
@@ -150,6 +156,15 @@ export const All = () => {
               value={state.invalidWithLabel}
               label="Invalid With Label"
               onChange={event => handleChange(event, 'invalidWithLabel')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              id="withMaxLength"
+              maxLength="5"
+              value={state.withMaxLength}
+              label="Can't enter more than 5 characters"
+              onChange={event => handleChange(event, 'withMaxLength')}
             />
           </div>
         </div>

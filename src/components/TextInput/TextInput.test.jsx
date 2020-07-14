@@ -13,7 +13,7 @@ describe('TextInput', () => {
    */
   test('Throws error if required prop "value" is not supplied to component', () => {
     console.error = jest.fn(); // eslint-disable-line no-console
-    render(<TextInput onChange={() => null} id="myId" />);
+    render(<TextInput label="test input" onChange={() => null} id="myId" />);
     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
       .toContain('Failed prop type: The prop `value`');
@@ -21,7 +21,7 @@ describe('TextInput', () => {
 
   test('Throws error if required prop "onChange" is not supplied to component', () => {
     console.error = jest.fn(); // eslint-disable-line no-console
-    render(<TextInput value="hello" id="myId" />);
+    render(<TextInput label="test input" value="hello" id="myId" />);
     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
       .toContain('Failed prop type: The prop `onChange`');
@@ -29,15 +29,15 @@ describe('TextInput', () => {
 
   test('Throws error if required prop "id" is not supplied to component', () => {
     console.error = jest.fn(); // eslint-disable-line no-console
-    render(<TextInput value="hello" onChange={() => null} />);
-    expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
+    render(<TextInput label="test input" value="hello" onChange={() => null} />);
+    expect(console.error).toHaveBeenCalledTimes(2); // eslint-disable-line no-console
     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
       .toContain('Failed prop type: The prop `id`');
   });
 
   test('Throws an error if "type" prop is anything other than allowed values', () => {
     console.error = jest.fn(); // eslint-disable-line no-console
-    render(<TextInput id="textInput2" onChange={() => null} value="hello" type="notOnTheList" />);
+    render(<TextInput label="test input" id="textInput2" onChange={() => null} value="hello" type="notOnTheList" />);
     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
       .toContain('Failed prop type: Invalid prop `type`');
@@ -97,7 +97,7 @@ describe('TextInput', () => {
 
   test('Input fires onFocus callback', () => {
     const mockedHandleFocus = jest.fn();
-    render(<TextInput value="hello" onChange={() => null} onFocus={mockedHandleFocus} />);
+    render(<TextInput label="test input" id="testInput" value="hello" onChange={() => null} onFocus={mockedHandleFocus} />);
     const inputElement = screen.getByDisplayValue('hello');
     fireEvent.focus(inputElement);
     expect(mockedHandleFocus).toBeCalledTimes(1);
@@ -105,7 +105,7 @@ describe('TextInput', () => {
 
   test('Input fires onBlur callback', () => {
     const mockedHandleBlur = jest.fn();
-    render(<TextInput value="hello" onChange={() => null} onBlur={mockedHandleBlur} />);
+    render(<TextInput label="test input" id="testInput" value="hello" onChange={() => null} onBlur={mockedHandleBlur} />);
     const inputElement = screen.getByDisplayValue('hello');
     fireEvent.focus(inputElement);
     fireEvent.blur(inputElement);
@@ -113,31 +113,31 @@ describe('TextInput', () => {
   });
 
   test('Input autofocuses if "autoFocus" prop is set to true', () => {
-    render(<TextInput value="hello" onChange={() => null} autoFocus />);
+    render(<TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoFocus />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(document.activeElement).toEqual(inputElement);
   });
 
   test('Input correctly assigns autocomplete value of "on" when bool true is provided', () => {
-    render(<TextInput value="hello" onChange={() => null} autoComplete />);
+    render(<TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoComplete />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(inputElement).toHaveAttribute('autocomplete', 'on');
   });
 
   test('Input correctly assigns autocomplete value of "off" when bool false is provided', () => {
-    render(<TextInput value="hello" onChange={() => null} autoComplete={false} />);
+    render(<TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoComplete={false} />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(inputElement).toHaveAttribute('autocomplete', 'off');
   });
 
   test('Input correctly assigns autocomplete value of "off" when incorrect type is provided', () => {
-    render(<TextInput value="hello" onChange={() => null} autoComplete={['a', 'random', 'array']} />);
+    render(<TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoComplete={['a', 'random', 'array']} />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(inputElement).toHaveAttribute('autocomplete', 'off');
   });
 
   test('Input correctly assigns the "aria-required" attribute when "isRequired" prop is true', () => {
-    render(<TextInput value="hello" onChange={() => null} isRequired />);
+    render(<TextInput label="test input" id="testInput" value="hello" onChange={() => null} isRequired />);
     const inputElement = screen.getByDisplayValue('hello');
     expect(inputElement).toHaveAttribute('aria-required', 'true');
   });
@@ -152,9 +152,47 @@ describe('TextInput', () => {
   });
 
   test('Input correctly displays error message if provided', () => {
-    render(<TextInput value="hey" onChange={() => null} id="myId" error="You silly goose" />);
+    render(<TextInput label="test input" value="hey" onChange={() => null} id="myId" error="You silly goose" />);
     const validationMessageElement = screen.getByText('You silly goose');
     expect(validationMessageElement).toBeInTheDocument();
     expect(validationMessageElement).toHaveTextContent('You silly goose');
+  });
+
+  test('Input correctly passes maxlength property if prop is passed', async () => {
+    render(
+      <TextInput
+        name="firstName"
+        id="firstName"
+        label="first name"
+        value=""
+        maxLength="3"
+        onChange={() => null}
+      />,
+    );
+
+    const inputElement = screen.getByLabelText('first name');
+    expect(inputElement).toBeInTheDocument();
+    expect(inputElement).toHaveAttribute('maxlength');
+    expect(inputElement.getAttribute('maxlength')).toBe('3');
+    expect(inputElement.value).toBe('');
+  });
+
+  test('assigns the "aria-labelledby" attribute and renders a label with correct id, when a label is provided', () => {
+    render(<TextInput id="testInput" label="test label" value="hello" onChange={() => null} />);
+    const inputElement = screen.getByDisplayValue('hello');
+    expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
+    expect(document.getElementById('testInputLabel')).toBeInTheDocument();
+  });
+
+  test('does not assign "aria-labelledby" attribute when a label is hidden', () => {
+    render(<TextInput
+      id="testInput"
+      label="hidden label"
+      hideLabel
+      value="hello"
+      onChange={() => null}
+    />);
+    const inputElement = screen.getByLabelText('hidden label');
+    expect(inputElement).not.toHaveAttribute('aria-labelledby');
   });
 });

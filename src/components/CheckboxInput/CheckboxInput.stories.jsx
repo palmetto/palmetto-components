@@ -5,7 +5,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import CheckboxInput from './CheckboxInput';
 
 export default {
-  title: 'Forms/Inputs/CheckboxInput',
+  title: 'Components/Form Inputs/CheckboxInput',
   component: CheckboxInput,
   decorators: [withA11y],
 };
@@ -22,9 +22,9 @@ export const All = () => {
     withErrorRequired: false,
   });
 
-  const handleChange = (value, key) => {
-    action('change')(value);
-    store.set({ [key]: value });
+  const handleChange = (event, key) => {
+    action('change')(event);
+    store.set({ [key]: event.target.checked });
   };
 
   return (

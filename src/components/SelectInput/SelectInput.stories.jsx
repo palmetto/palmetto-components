@@ -5,7 +5,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import SelectInput from './SelectInput';
 
 export default {
-  title: 'Forms/Inputs/SelectInput',
+  title: 'Components/Form Inputs/SelectInput',
   component: SelectInput,
   decorators: [withA11y],
 };
@@ -18,7 +18,7 @@ export const All = () => {
   ];
 
   const store = new Store({
-    singleSelectNoLabel: undefined,
+    labelHidden: undefined,
     singleSelectWithLabel: undefined,
     singleSelectPreselected: selectOptions[2],
     multiSelect: undefined,
@@ -51,11 +51,13 @@ export const All = () => {
         <div style={{ maxWidth: '500px' }}>
           <div style={{ marginBottom: '1rem' }}>
             <SelectInput
-              id="singleSelectNoLabel"
+              id="labelHidden"
+              label="My label is hidden"
               className="singleSelectNoLabel"
-              placeholder="Select input with no label, and a custom placeholder..."
-              value={state.singleSelectNoLabel}
-              onChange={value => handleChange(value, 'singleSelectNoLabel')}
+              placeholder="Visually hidden label and a custom placeholder..."
+              value={state.labelHidden}
+              hideLabel
+              onChange={event => handleChange(event.target.value, 'singleSelectNoLabel')}
               options={selectOptions}
             />
           </div>
@@ -64,7 +66,7 @@ export const All = () => {
               id="singleSelectWithLabel"
               label="Single Select"
               value={state.singleSelectWithLabel}
-              onChange={value => handleChange(value, 'singleSelectWithLabel')}
+              onChange={event => handleChange(event.target.value, 'singleSelectWithLabel')}
               options={selectOptions}
             />
           </div>
@@ -73,7 +75,7 @@ export const All = () => {
               id="singleSelectPreselected"
               label="Single Select Pre-Selected"
               value={state.singleSelectPreselected}
-              onChange={value => handleChange(value, 'singleSelectPreselected')}
+              onChange={event => handleChange(event.target.value, 'singleSelectPreselected')}
               options={selectOptions}
             />
           </div>
@@ -83,7 +85,7 @@ export const All = () => {
               label="Multi Select"
               isMulti
               value={state.multiSelect}
-              onChange={value => handleChange(value, 'multiSelect')}
+              onChange={event => handleChange(event.target.value, 'multiSelect')}
               options={selectOptions}
             />
           </div>
@@ -93,7 +95,7 @@ export const All = () => {
               label="Multi Select Pre-Selected"
               isMulti
               value={state.multiSelectPreselected}
-              onChange={value => handleChange(value, 'multiSelectPreselected')}
+              onChange={event => handleChange(event.target.value, 'multiSelectPreselected')}
               options={selectOptions}
             />
           </div>
@@ -103,7 +105,7 @@ export const All = () => {
               label="Auto Focus"
               autoFocus
               value={state.autoFocus}
-              onChange={value => handleChange(value, 'autoFocus')}
+              onChange={event => handleChange(event.target.value, 'autoFocus')}
               options={selectOptions}
             />
           </div>
@@ -113,7 +115,7 @@ export const All = () => {
               label="Required"
               isRequired
               value={state.required}
-              onChange={value => handleChange(value, 'required')}
+              onChange={event => handleChange(event.target.value, 'required')}
               options={selectOptions}
             />
           </div>
@@ -123,7 +125,7 @@ export const All = () => {
               label="Disabled"
               isDisabled
               value={state.disabled}
-              onChange={value => handleChange(value, 'disabled')}
+              onChange={event => handleChange(event.target.value, 'disabled')}
               options={selectOptions}
             />
           </div>
@@ -134,7 +136,7 @@ export const All = () => {
               isDisabled
               isRequired
               value={state.disabledRequired}
-              onChange={value => handleChange(value, 'disabledRequired')}
+              onChange={event => handleChange(event.target.value, 'disabledRequired')}
               options={selectOptions}
             />
           </div>
@@ -144,7 +146,7 @@ export const All = () => {
               label="Disabled Single Select Pre-Selected"
               isDisabled
               value={state.disabledSingleSelectPreselected}
-              onChange={value => handleChange(value, 'disabledSingleSelectPreselected')}
+              onChange={event => handleChange(event.target.value, 'disabledSingleSelectPreselected')}
               options={selectOptions}
             />
           </div>
@@ -155,7 +157,7 @@ export const All = () => {
               isMulti
               isDisabled
               value={state.disabledMultiValuePreselected}
-              onChange={value => handleChange(value, 'disabledMultiValuePreselected')}
+              onChange={event => handleChange(event.target.value, 'disabledMultiValuePreselected')}
               options={selectOptions}
             />
           </div>
@@ -163,9 +165,9 @@ export const All = () => {
             <SelectInput
               id="invalid"
               label="Invalid"
-              hasError
+              error
               value={state.invalid}
-              onChange={value => handleChange(value, 'invalid')}
+              onChange={event => handleChange(event.target.value, 'invalid')}
               options={selectOptions}
             />
           </div>
@@ -173,9 +175,9 @@ export const All = () => {
             <SelectInput
               id="invalidNotRequired"
               label="Invalid Not Required with Validation Message"
-              hasError="Helpful validation message"
+              error="Helpful validation message"
               value={state.invalidNotRequired}
-              onChange={value => handleChange(value, 'invalidNotRequired')}
+              onChange={event => handleChange(event.target.value, 'invalidNotRequired')}
               options={selectOptions}
             />
           </div>
@@ -183,10 +185,10 @@ export const All = () => {
             <SelectInput
               id="invalidRequired"
               label="Invalid Required with Validation Message"
-              hasError="Helpful validation message"
+              error="Helpful validation message"
               isRequired
               value={state.invalidRequired}
-              onChange={value => handleChange(value, 'invalidRequired')}
+              onChange={event => handleChange(event.target.value, 'invalidRequired')}
               options={selectOptions}
             />
           </div>
