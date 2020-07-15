@@ -31,8 +31,8 @@
     "build-storybook": "BABEL_ENV=test build-storybook",
     "chromatic": "chromatic --project-token=x8ffq4qv9tq",
     "prepublishOnly": "yarn build",
-    "typecheck": "tsc --pretty",
-    "typecheck:watch": "tsc --watch --pretty"
+    "typecheck": "BABEL_ENV=build && tsc --pretty",
+    "typecheck:watch": "BABEL_ENV=build && tsc --watch --pretty"
   },
   "browserslist": {
     "production": [
