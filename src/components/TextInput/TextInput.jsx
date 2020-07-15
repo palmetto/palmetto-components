@@ -153,16 +153,15 @@ const TextInput = ({
 
   const inputClasses = classNames(
     'Palmetto-TextInput',
-    className,
     { error },
   );
 
-  const getInputMask = (inputMask, availableInputMasks) => {
-    if (typeof inputMask === 'string') {
+  const getInputMask = (mask, availableInputMasks) => {
+    if (typeof mask === 'string') {
       return availableInputMasks[inputMask];
     }
 
-    return inputMask;
+    return mask;
   };
 
   const getAutoCompleteValue = () => {
@@ -207,7 +206,7 @@ const TextInput = ({
   };
 
   return (
-    <div>
+    <div className={className}>
       {label && !hideLabel && <FormLabel {...labelProps} />}
       {!inputMask ? (
         <input {...inputProps} />
