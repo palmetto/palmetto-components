@@ -87,7 +87,7 @@ describe('CheckboxInput', () => {
 
     describe('With Error', () => {
       test('correctly renders the checkbox with an error message underneath', async () => {
-        const { getByText, rerender } = render(renderForm(false, { isRequired: true }));
+        const { getByText } = render(renderForm(false, { isRequired: true }));
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
