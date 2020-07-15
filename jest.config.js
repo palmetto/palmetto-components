@@ -22,9 +22,4 @@ module.exports = {
     '!**/node_modules/**',
     '!**/vendor/**',
   ],
-  globals: {
-    'ts-jest': {
-      babelConfig: true,
-    },
-  },
 };
