@@ -1,60 +1,50 @@
 import React from 'react';
-import PropTypes, { InferProps } from 'prop-types';
 import classNames from 'classnames';
 import './Button.scss';
 import { ReactComponent as LoadingIndicator } from '../../images/loading.svg';
 
-type ButtonType = 'button' | 'submit' | 'reset';
-const BUTTON_TYPES: ButtonType[] = ['button', 'submit', 'reset'];
-
-const propTypes = {
+interface Props {
   /**
-   * A unique identifier for the button
-   */
-  id: PropTypes.string,
+    * A unique identifier for the button
+    */
+  id?: string;
   /**
    * Button type
    */
-  type: PropTypes.oneOf(BUTTON_TYPES).isRequired,
-  /**
-   * Additional ClassNames to add to button
-   */
-  className: PropTypes.string,
-  /**
-   * Contents of the button
-   */
-  children: PropTypes.node.isRequired,
+  type?: 'button' | 'submit' | 'reset';
   /**
    * Disables the button, making it inoperable
    */
-  isDisabled: PropTypes.bool,
+  isDisabled?: boolean;
   /**
-   * Button takes up the full width of its parent container
+   * Additional ClassNames to add to button
    */
-  isLoading: PropTypes.bool,
-  /**
-   * Allow the button to grow to its container's full width
-   */
-  fullWidth: PropTypes.bool,
+  className?: string;
   /**
    * Callback when button is pressed
    */
-  onClick: PropTypes.func,
-  /**
-   * Callback when button receives focus
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Callback when focus leaves button
-   */
-  onBlur: PropTypes.func,
+  fullWidth?: boolean;
   /**
    * Specify the tabIndex of the button
    */
-  tabIndex: PropTypes.number,
-};
-
-type Props = InferProps<typeof propTypes>;
+  tabIndex?: number;
+  /**
+   * Button takes up the full width of its parent container
+   */
+  isLoading?: boolean;
+  /**
+   * Callback when button is pressed
+   */
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  /**
+   * Callback when button receives focus
+   */
+  onFocus?: (e: React.FocusEvent<HTMLButtonElement>) => void;
+  /**
+   * Callback when focus leaves button
+   */
+  onBlur?: (e: React.FocusEvent<HTMLButtonElement>) => void;
+}
 
 const defaultProps: Partial<Props> = {
   type: 'button',
@@ -62,7 +52,7 @@ const defaultProps: Partial<Props> = {
   isDisabled: false,
 };
 
-const Button = ({
+const Button: React.FC<Props> = ({
   id,
   type = 'button',
   className,
@@ -74,7 +64,7 @@ const Button = ({
   isLoading,
   onFocus,
   onBlur,
-}: Props) => {
+}) => {
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames('Palmetto-Button', className, {
@@ -123,7 +113,6 @@ const Button = ({
   );
 };
 
-Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
 export default Button;
