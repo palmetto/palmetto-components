@@ -1,5 +1,4 @@
 module.exports = {
-  preset: 'ts-jest',
   roots: ['./src'],
   restoreMocks: true,
   setupFilesAfterEnv: ['./jest.setup.js'],
@@ -13,15 +12,19 @@ module.exports = {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
   transform: {
-    '^.+\\.(ts|tsx)?$': 'ts-jest',
-    '^.+\\.(js|jsx)$': 'babel-jest',
+    '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
   },
   coverageDirectory: './coverage/',
   collectCoverage: true,
   collectCoverageFrom: [
-    '**/*.{js,jsx}',
-    '!**/*.stories.{js,jsx}',
+    '**/*.{ts,tsx,js,jsx}',
+    '!**/*.stories.{ts,tsx,js,jsx}',
     '!**/node_modules/**',
     '!**/vendor/**',
   ],
+  globals: {
+    'ts-jest': {
+      babelConfig: true,
+    },
+  },
 };

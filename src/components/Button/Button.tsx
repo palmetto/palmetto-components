@@ -5,6 +5,10 @@ import { ReactComponent as LoadingIndicator } from '../../images/loading.svg';
 
 interface Props {
   /**
+   * Children of the button
+   */
+  children: React.ReactNode;
+  /**
     * A unique identifier for the button
     */
   id?: string;
@@ -52,7 +56,7 @@ const defaultProps: Partial<Props> = {
   isDisabled: false,
 };
 
-const Button: React.FC<Props> = ({
+const Button = ({
   id,
   type = 'button',
   className,
@@ -64,7 +68,7 @@ const Button: React.FC<Props> = ({
   isLoading,
   onFocus,
   onBlur,
-}) => {
+}: Props) => {
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames('Palmetto-Button', className, {
