@@ -40,7 +40,7 @@ const propTypes = {
   size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
 };
 
-const defaultProps = {
+const defaultProps: Partial<InferProps<typeof propTypes>> = {
   as: 'h4',
   className: undefined,
   color: undefined,

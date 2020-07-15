@@ -57,7 +57,7 @@ const propTypes = {
   label: PropTypes.string,
 };
 
-const defaultProps = {
+const defaultProps: Partial<InferProps<typeof propTypes>> = {
   className: '',
   error: false,
   isChecked: false,
@@ -67,7 +67,7 @@ const defaultProps = {
   onFocus: undefined,
 };
 
-const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
+const CheckboxInput = ({
   id,
   className,
   error,
@@ -78,7 +78,7 @@ const CheckboxInput: React.FC<InferProps<typeof propTypes>> = ({
   onChange,
   onFocus,
   label,
-}) => {
+}: InferProps<typeof propTypes>) => {
   const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
     if (onBlur) onBlur(event);
   };
