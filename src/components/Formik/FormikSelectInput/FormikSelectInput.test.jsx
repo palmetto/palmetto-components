@@ -8,7 +8,6 @@ import {
 import selectEvent from 'react-select-event';
 import { Formik, Form, Field } from 'formik';
 import FormikSelectInput from './FormikSelectInput';
-import SelectInput from '../../SelectInput/SelectInput';
 
 const testLabelName = 'test select';
 
