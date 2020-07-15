@@ -38,22 +38,6 @@ const FormikSelectInput = (
   />
 );
 
-<<<<<<< HEAD
-FormikSelectInput.propTypes = {
-  field: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.object),
-    ]),
-  }).isRequired,
-  form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
-=======
 FormikSelectInput.propTypes = propTypes;
->>>>>>> develop
 
 export default FormikSelectInput;
