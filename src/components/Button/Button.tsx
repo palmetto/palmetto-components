@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import classNames from 'classnames';
 import './Button.scss';
 import { ReactComponent as LoadingIndicator } from '../../images/loading.svg';
+
+type ButtonType = 'button' | 'submit' | 'reset';
+const BUTTON_TYPES: ButtonType[] = ['button', 'submit', 'reset'];
 
 const propTypes = {
   /**
@@ -12,7 +15,7 @@ const propTypes = {
   /**
    * Button type
    */
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  type: PropTypes.oneOf(BUTTON_TYPES).isRequired,
   /**
    * Additional ClassNames to add to button
    */
@@ -51,22 +54,17 @@ const propTypes = {
   tabIndex: PropTypes.number,
 };
 
-const defaultProps = {
-  id: undefined,
+type Props = InferProps<typeof propTypes>;
+
+const defaultProps: Partial<Props> = {
   type: 'button',
   className: '',
   isDisabled: false,
-  isLoading: undefined,
-  fullWidth: undefined,
-  onClick: undefined,
-  tabIndex: undefined,
-  onFocus: undefined,
-  onBlur: undefined,
 };
 
 const Button = ({
   id,
-  type,
+  type = 'button',
   className,
   children,
   isDisabled,
@@ -76,7 +74,7 @@ const Button = ({
   isLoading,
   onFocus,
   onBlur,
-}) => {
+}: Props) => {
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames('Palmetto-Button', className, {
@@ -84,15 +82,15 @@ const Button = ({
     fullWidth,
   });
 
-  const handleClick = e => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (onClick) onClick(e);
   };
 
-  const handleFocus = e => {
+  const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
     if (onFocus) onFocus(e);
   };
 
-  const handleBlur = e => {
+  const handleBlur = (e: React.FocusEvent<HTMLButtonElement>) => {
     if (onBlur) onBlur(e);
   };
 
@@ -109,15 +107,15 @@ const Button = ({
 
   return (
     <button
-      id={id}
+      id={id || undefined}
       type={type} // eslint-disable-line react/button-has-type
-      disabled={disabled}
+      disabled={disabled || undefined}
       className={buttonClasses}
       onClick={handleClick}
       onFocus={handleFocus}
       onBlur={handleBlur}
-      tabIndex={tabIndex}
-      aria-label={isLoading && 'Loading'}
+      tabIndex={tabIndex === null ? undefined : tabIndex}
+      aria-label={isLoading ? 'Loading' : undefined}
       aria-busy={isLoading ? true : undefined}
     >
       {content}
