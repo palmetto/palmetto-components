@@ -7,110 +7,12 @@ import './TextInput.scss';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 
-const getInputMask = (inputMask, availableInputMasks) => {
-  if (typeof inputMask === 'string') {
-    return availableInputMasks[inputMask];
-  }
-
-  return inputMask;
-};
 /**
- * Use TextInput to show where users can enter text based data. It does not maintain any internal state, so its value should be managed by the parent.
+ * Use TextInput to show where users can enter text based data.
+ * It does not maintain any internal state, so its value should be managed by the parent.
  */
-const TextInput = ({
-  autoComplete,
-  autoFocus,
-  className,
-  hideLabel,
-  id,
-  inputMask,
-  isDisabled,
-  error,
-  isRequired,
-  label,
-  maxLength,
-  name,
-  onBlur,
-  onChange,
-  onFocus,
-  placeholder,
-  type,
-  value,
-}) => {
-  const handleChange = e => {
-    onChange(e);
-  };
 
-  const handleFocus = e => {
-    if (onFocus) onFocus(e);
-    e.currentTarget.select(); // Selects input content allowing immediate edit. @TODO Confirm if desired functionality.
-  };
-
-  const handleBlur = e => {
-    if (onBlur) onBlur(e);
-  };
-
-  const inputClasses = classNames(
-    'Palmetto-TextInput',
-    className,
-    { error },
-  );
-
-  const getAutoCompleteValue = () => {
-    if (
-      !autoComplete
-      || (typeof autoComplete !== 'boolean' && typeof autoComplete !== 'string')) {
-      return 'off';
-    }
-
-    if (typeof autoComplete === 'boolean' && autoComplete) {
-      return 'on';
-    }
-
-    return autoComplete;
-  };
-
-  const inputProps = {
-    'aria-required': isRequired,
-    'aria-invalid': !!error,
-    'aria-label': label,
-    'aria-labelledby': label && !hideLabel ? `${id}Label` : null,
-    autoComplete: getAutoCompleteValue(),
-    autoFocus,
-    className: inputClasses,
-    disabled: isDisabled,
-    id,
-    maxLength,
-    name,
-    onBlur: handleBlur,
-    onChange: handleChange,
-    onFocus: handleFocus,
-    placeholder,
-    type,
-    value,
-  };
-
-  const labelProps = {
-    isFieldRequired: isRequired,
-    inputId: id,
-    labelText: label,
-    hasError: !!error,
-  };
-
-  return (
-    <div>
-      {label && !hideLabel && <FormLabel {...labelProps} />}
-      {!inputMask ? (
-        <input {...inputProps} />
-      ) : (
-        <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
-      )}
-      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
-    </div>
-  );
-};
-
-TextInput.propTypes = {
+const propTypes = {
   /**
    * The input's 'autocomplete' attribute
    */
@@ -199,7 +101,7 @@ TextInput.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-TextInput.defaultProps = {
+const defaultProps = {
   autoComplete: false,
   autoFocus: false,
   className: '',
@@ -215,5 +117,108 @@ TextInput.defaultProps = {
   placeholder: '',
   type: 'text',
 };
+
+const TextInput = ({
+  autoComplete,
+  autoFocus,
+  className,
+  hideLabel,
+  id,
+  inputMask,
+  isDisabled,
+  error,
+  isRequired,
+  label,
+  maxLength,
+  name,
+  onBlur,
+  onChange,
+  onFocus,
+  placeholder,
+  type,
+  value,
+}) => {
+  const handleChange = e => {
+    onChange(e);
+  };
+
+  const handleFocus = e => {
+    if (onFocus) onFocus(e);
+    e.currentTarget.select(); // Selects input content allowing immediate edit. @TODO Confirm if desired functionality.
+  };
+
+  const handleBlur = e => {
+    if (onBlur) onBlur(e);
+  };
+
+  const inputClasses = classNames(
+    'Palmetto-TextInput',
+    { error },
+  );
+
+  const getInputMask = (mask, availableInputMasks) => {
+    if (typeof mask === 'string') {
+      return availableInputMasks[inputMask];
+    }
+
+    return mask;
+  };
+
+  const getAutoCompleteValue = () => {
+    if (
+      !autoComplete
+      || (typeof autoComplete !== 'boolean' && typeof autoComplete !== 'string')) {
+      return 'off';
+    }
+
+    if (typeof autoComplete === 'boolean' && autoComplete) {
+      return 'on';
+    }
+
+    return autoComplete;
+  };
+
+  const inputProps = {
+    'aria-required': isRequired,
+    'aria-invalid': !!error,
+    'aria-label': label,
+    'aria-labelledby': label && !hideLabel ? `${id}Label` : null,
+    autoComplete: getAutoCompleteValue(),
+    autoFocus,
+    className: inputClasses,
+    disabled: isDisabled,
+    id,
+    maxLength,
+    name,
+    onBlur: handleBlur,
+    onChange: handleChange,
+    onFocus: handleFocus,
+    placeholder,
+    type,
+    value,
+  };
+
+  const labelProps = {
+    isFieldRequired: isRequired,
+    inputId: id,
+    labelText: label,
+    hasError: !!error,
+  };
+
+  return (
+    <div className={className}>
+      {label && !hideLabel && <FormLabel {...labelProps} />}
+      {!inputMask ? (
+        <input {...inputProps} />
+      ) : (
+        <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+      )}
+      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
+    </div>
+  );
+};
+
+TextInput.propTypes = propTypes;
+TextInput.defaultProps = defaultProps;
 
 export default TextInput;

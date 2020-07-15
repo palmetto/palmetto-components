@@ -4,7 +4,6 @@ import {
   fireEvent,
   screen,
 } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import TextInput from './TextInput';
 
 describe('TextInput', () => {
