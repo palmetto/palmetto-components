@@ -50,18 +50,12 @@ interface Props {
   onBlur?: (e: React.FocusEvent<HTMLButtonElement>) => void;
 }
 
-const defaultProps: Partial<Props> = {
-  type: 'button',
-  className: '',
-  isDisabled: false,
-};
-
 const Button = ({
   id,
   type = 'button',
-  className,
+  className = '',
   children,
-  isDisabled,
+  isDisabled = false,
   fullWidth,
   onClick,
   tabIndex,
@@ -116,7 +110,5 @@ const Button = ({
     </button>
   );
 };
-
-Button.defaultProps = defaultProps;
 
 export default Button;
