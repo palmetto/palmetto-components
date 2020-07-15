@@ -2,6 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectInput from '../../SelectInput/SelectInput';
 
+const propTypes = {
+  field: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.object),
+    ]),
+  }).isRequired,
+  form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
 const FormikSelectInput = (
   {
     field: {
@@ -24,6 +38,7 @@ const FormikSelectInput = (
   />
 );
 
+<<<<<<< HEAD
 FormikSelectInput.propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -37,5 +52,8 @@ FormikSelectInput.propTypes = {
   }).isRequired,
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
+=======
+FormikSelectInput.propTypes = propTypes;
+>>>>>>> develop
 
 export default FormikSelectInput;

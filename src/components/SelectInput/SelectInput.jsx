@@ -12,6 +12,7 @@ import './SelectInput.scss';
  * otherwise you should consider using a radio group instead.
  */
 
+<<<<<<< HEAD
 const SelectInput = ({
   id,
   label,
@@ -106,6 +107,9 @@ SelectInput.defaultProps = {
 };
 
 SelectInput.propTypes = {
+=======
+const propTypes = {
+>>>>>>> develop
   /**
    * The id attribute of the input
    */
@@ -182,5 +186,101 @@ SelectInput.propTypes = {
     PropTypes.arrayOf(PropTypes.object),
   ]),
 };
+
+const defaultProps = {
+  className: '',
+  placeholder: undefined,
+  error: false,
+  hideLabel: false,
+  isDisabled: false,
+  isRequired: false,
+  name: '',
+  onFocus: undefined,
+  onBlur: undefined,
+  autoFocus: false,
+  isMulti: false,
+  value: undefined,
+};
+
+const SelectInput = ({
+  id,
+  label,
+  className,
+  placeholder,
+  error,
+  hideLabel,
+  isDisabled,
+  isRequired,
+  name,
+  onChange,
+  onFocus,
+  onBlur,
+  autoFocus,
+  isMulti,
+  options,
+  value,
+}) => {
+  const handleChange = values => {
+    if (onChange) {
+      const simulatedEventPayload = {
+        target: {
+          name,
+          value: values,
+        },
+      };
+
+      onChange(simulatedEventPayload);
+    }
+  };
+
+  const handleFocus = e => {
+    if (onFocus) onFocus(e);
+  };
+
+  const handleBlur = e => {
+    if (onBlur) onBlur(e);
+  };
+
+  const inputClasses = classNames(
+    'selectInput',
+    { error },
+  );
+
+  const labelProps = {
+    isFieldRequired: isRequired,
+    inputId: id,
+    labelText: label,
+    hasError: !!error,
+  };
+
+  return (
+    <>
+      <div className={classNames('Palmetto-SelectInput', className, { disabled: isDisabled })}>
+        {label && !hideLabel && <FormLabel {...labelProps} />}
+        <Select
+          inputId={id}
+          aria-label={label}
+          aria-labelledby={label && !hideLabel ? `${id}Label` : null}
+          className={inputClasses}
+          classNamePrefix="selectInput"
+          placeholder={placeholder}
+          isDisabled={isDisabled}
+          isMulti={isMulti}
+          name={name}
+          autoFocus={autoFocus}
+          options={options}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          value={value}
+        />
+      </div>
+      {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
+    </>
+  );
+};
+
+SelectInput.propTypes = propTypes;
+SelectInput.defaultProps = defaultProps;
 
 export default SelectInput;

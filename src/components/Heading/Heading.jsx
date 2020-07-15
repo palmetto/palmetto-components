@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
 import getElementType from '../../lib/getElementType';
 import './Heading.scss';
-import { HEADING_LEVELS } from './Heading.constants';
+import { HEADING_LEVELS, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
 
 /**
  * Use `Headings` as labels for pages or sections of a page that make up an interface.
@@ -14,24 +14,8 @@ import { HEADING_LEVELS } from './Heading.constants';
  * and independently set its size so that it is appropriate for the surrounding content.
  * If no size is specified, a default size will be applied.
  */
-const Heading = ({
-  as,
-  className,
-  children,
-  color,
-  size,
-}) => {
-  const Element = getElementType(Heading, { as });
 
-  const classes = classNames('Palmetto-Heading', className, 'heading', {
-    [`font-size-${size}`]: size,
-    [`font-color-${color}`]: color,
-  });
-
-  return <Element className={classes}>{children}</Element>;
-};
-
-Heading.propTypes = {
+const propTypes = {
   /**
    * The DOM tag or react component to use for the element.
    * Select the appropriate semantic element (h1-h6).
@@ -56,11 +40,33 @@ Heading.propTypes = {
   size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
 };
 
-Heading.defaultProps = {
+const defaultProps = {
   as: 'h4',
-  className: '',
-  color: 'dark',
-  size: 'lg',
+  className: undefined,
+  color: undefined,
+  size: undefined,
 };
+
+const Heading = ({
+  as,
+  className,
+  children,
+  color,
+  size,
+}) => {
+  const Element = getElementType(Heading, { as });
+
+  const headingSize = size || HEADING_DEFAULT_SIZE_MAP[`${as}`];
+
+  const classes = classNames('Palmetto-Heading', className, 'heading', {
+    [`font-size-${headingSize}`]: headingSize,
+    [`font-color-${color}`]: color,
+  });
+
+  return <Element className={classes}>{children}</Element>;
+};
+
+Heading.propTypes = propTypes;
+Heading.defaultProps = defaultProps;
 
 export default Heading;

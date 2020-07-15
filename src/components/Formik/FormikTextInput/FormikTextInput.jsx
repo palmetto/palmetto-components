@@ -2,6 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../../TextInput/TextInput';
 
+const propTypes = {
+  field: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string,
+  }).isRequired,
+  form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
 const FormikTextInput = (
   {
     field: {
@@ -24,14 +34,6 @@ const FormikTextInput = (
   />
 );
 
-FormikTextInput.propTypes = {
-  field: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
-  }).isRequired,
-  form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+FormikTextInput.propTypes = propTypes;
 
 export default FormikTextInput;

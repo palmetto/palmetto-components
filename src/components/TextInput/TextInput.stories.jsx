@@ -23,6 +23,10 @@ export const All = () => {
     withValidationMessage: '',
     invalidWithLabel: '',
     withMaxLength: 'asdhasdhasdh',
+<<<<<<< HEAD
+=======
+    customClass: '',
+>>>>>>> develop
   });
 
   const handleChange = (event, key) => {
@@ -167,6 +171,18 @@ export const All = () => {
               onChange={event => handleChange(event, 'withMaxLength')}
             />
           </div>
+<<<<<<< HEAD
+=======
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              id="customClass"
+              value={state.customClass}
+              label="Custom Class"
+              className="background-color-primary"
+              onChange={event => handleChange(event, 'customClass')}
+            />
+          </div>
+>>>>>>> develop
         </div>
       )}
     </State>
