@@ -1,19 +1,9 @@
 import React from 'react';
-<<<<<<< HEAD
-import Select from 'react-select';
-import '@babel/polyfill';
-import 'mutationobserver-shim';
-=======
->>>>>>> develop
 import {
   render,
   fireEvent,
   screen,
 } from '@testing-library/react';
-<<<<<<< HEAD
-import '@testing-library/jest-dom/extend-expect';
-=======
->>>>>>> develop
 import selectEvent from 'react-select-event';
 import SelectInput from './SelectInput';
 

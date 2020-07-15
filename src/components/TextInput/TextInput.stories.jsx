@@ -23,10 +23,7 @@ export const All = () => {
     withValidationMessage: '',
     invalidWithLabel: '',
     withMaxLength: 'asdhasdhasdh',
-<<<<<<< HEAD
-=======
     customClass: '',
->>>>>>> develop
   });
 
   const handleChange = (event, key) => {
