@@ -8,93 +8,23 @@ import './SelectInput.scss';
 
 /**
  * Allows users to pick a value from predefined list of options.
- * Ideally, it should be used when there are more than 4 options, otherwise you should consider using a radio group instead.
+ * Ideally, it should be used when there are more than 4 options,
+ * otherwise you should consider using a radio group instead.
  */
 
-const SelectInput = ({
-  id,
-  label,
-  className,
-  placeholder,
-  hasError,
-  isDisabled,
-  isRequired,
-  onChange,
-  onFocus,
-  onBlur,
-  autoFocus,
-  isMulti,
-  options,
-  value,
-}) => {
-  const handleFocus = e => {
-    if (onFocus) onFocus(e);
-  };
-
-  const handleBlur = e => {
-    if (onBlur) onBlur(e);
-  };
-
-  const inputClasses = classNames(
-    'selectInput',
-    { error: hasError },
-  );
-
-  const labelProps = {
-    isFieldRequired: isRequired,
-    inputId: id,
-    labelText: label,
-    hasError: !!hasError,
-  };
-
-  return (
-    <>
-      <div className={classNames('Palmetto-SelectInput', className, { disabled: isDisabled })}>
-        {label && <FormLabel {...labelProps} />}
-        <Select
-          id={id}
-          aria-label={label || id}
-          className={inputClasses}
-          classNamePrefix="selectInput"
-          placeholder={placeholder}
-          isDisabled={isDisabled}
-          isMulti={isMulti}
-          autoFocus={autoFocus}
-          options={options}
-          onChange={onChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          value={value}
-        />
-      </div>
-      {hasError && hasError !== true && <InputValidationMessage>{hasError}</InputValidationMessage>}
-    </>
-  );
-};
-
-SelectInput.defaultProps = {
-  label: undefined,
-  className: '',
-  placeholder: undefined,
-  hasError: false,
-  isDisabled: false,
-  isRequired: false,
-  onFocus: undefined,
-  onBlur: undefined,
-  autoFocus: false,
-  isMulti: false,
-  value: undefined,
-};
-
-SelectInput.propTypes = {
+const propTypes = {
   /**
    * The id attribute of the input
    */
   id: PropTypes.string.isRequired,
   /**
-   * Custom content to be displayed above the input.
+   * Visually hide the label
    */
-  label: PropTypes.string,
+  hideLabel: PropTypes.bool,
+  /**
+   * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
+   */
+  label: PropTypes.string.isRequired,
   /**
    * Additional classes to add
    */
@@ -107,7 +37,7 @@ SelectInput.propTypes = {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input
    */
-  hasError: PropTypes.oneOfType([
+  error: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
     PropTypes.node,
@@ -120,6 +50,10 @@ SelectInput.propTypes = {
    * Determines if input is required or not. (Label will have an asterisk if required)
    */
   isRequired: PropTypes.bool,
+  /**
+   * Select 'name' attribute
+   */
+  name: PropTypes.string,
   /**
    * Callback function to call on change event.
    */
@@ -155,5 +89,101 @@ SelectInput.propTypes = {
     PropTypes.arrayOf(PropTypes.object),
   ]),
 };
+
+const defaultProps = {
+  className: '',
+  placeholder: undefined,
+  error: false,
+  hideLabel: false,
+  isDisabled: false,
+  isRequired: false,
+  name: '',
+  onFocus: undefined,
+  onBlur: undefined,
+  autoFocus: false,
+  isMulti: false,
+  value: undefined,
+};
+
+const SelectInput = ({
+  id,
+  label,
+  className,
+  placeholder,
+  error,
+  hideLabel,
+  isDisabled,
+  isRequired,
+  name,
+  onChange,
+  onFocus,
+  onBlur,
+  autoFocus,
+  isMulti,
+  options,
+  value,
+}) => {
+  const handleChange = values => {
+    if (onChange) {
+      const simulatedEventPayload = {
+        target: {
+          name,
+          value: values,
+        },
+      };
+
+      onChange(simulatedEventPayload);
+    }
+  };
+
+  const handleFocus = e => {
+    if (onFocus) onFocus(e);
+  };
+
+  const handleBlur = e => {
+    if (onBlur) onBlur(e);
+  };
+
+  const inputClasses = classNames(
+    'selectInput',
+    { error },
+  );
+
+  const labelProps = {
+    isFieldRequired: isRequired,
+    inputId: id,
+    labelText: label,
+    hasError: !!error,
+  };
+
+  return (
+    <>
+      <div className={classNames('Palmetto-SelectInput', className, { disabled: isDisabled })}>
+        {label && !hideLabel && <FormLabel {...labelProps} />}
+        <Select
+          inputId={id}
+          aria-label={label}
+          aria-labelledby={label && !hideLabel ? `${id}Label` : null}
+          className={inputClasses}
+          classNamePrefix="selectInput"
+          placeholder={placeholder}
+          isDisabled={isDisabled}
+          isMulti={isMulti}
+          name={name}
+          autoFocus={autoFocus}
+          options={options}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          value={value}
+        />
+      </div>
+      {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
+    </>
+  );
+};
+
+SelectInput.propTypes = propTypes;
+SelectInput.defaultProps = defaultProps;
 
 export default SelectInput;

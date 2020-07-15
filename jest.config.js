@@ -11,4 +11,12 @@ module.exports = {
       'identity-obj-proxy',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
+  coverageDirectory: './coverage/',
+  collectCoverage: true,
+  collectCoverageFrom: [
+    '**/*.{js,jsx}',
+    '!**/*.stories.{js,jsx}',
+    '!**/node_modules/**',
+    '!**/vendor/**',
+  ],
 };

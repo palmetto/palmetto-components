@@ -3,28 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './FormLabel.scss';
 
-const FormLabel = ({
-  hasError,
-  inputId,
-  isFieldRequired,
-  labelText,
-}) => {
-  const labelClasses = classNames(
-    'Palmetto-FormLabel',
-    {
-      error: hasError,
-    },
-  );
-
-  return (
-    <label className={labelClasses} htmlFor={inputId}>
-      {labelText}
-      {isFieldRequired && <span className="font-size-sm">&nbsp;*</span>}
-    </label>
-  );
-};
-
-FormLabel.propTypes = {
+const propTypes = {
   /**
    * Mark the label has invalid
    */
@@ -46,9 +25,37 @@ FormLabel.propTypes = {
   isFieldRequired: PropTypes.bool,
 };
 
-FormLabel.defaultProps = {
+const defaultProps = {
   hasError: false,
   isFieldRequired: false,
 };
+
+const FormLabel = ({
+  hasError,
+  inputId,
+  isFieldRequired,
+  labelText,
+}) => {
+  const labelClasses = classNames(
+    'Palmetto-FormLabel',
+    {
+      error: hasError,
+    },
+  );
+
+  return (
+    <label
+      id={`${inputId}Label`}
+      className={labelClasses}
+      htmlFor={inputId}
+    >
+      {labelText}
+      {isFieldRequired && <span className="font-size-sm">&nbsp;*</span>}
+    </label>
+  );
+};
+
+FormLabel.propTypes = propTypes;
+FormLabel.defaultProps = defaultProps;
 
 export default FormLabel;
