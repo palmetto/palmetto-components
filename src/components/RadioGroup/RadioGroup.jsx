@@ -34,7 +34,7 @@ const propTypes = {
    * Both a title and description can be included in the legend.
    */
   legend: PropTypes.shape({
-    title: PropTypes.node,
+    title: PropTypes.node.isRequired,
     description: PropTypes.node,
   }),
   /**
