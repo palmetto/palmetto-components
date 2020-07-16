@@ -37,10 +37,10 @@ export const All = () => {
   };
 
   const store = new Store({
-    default: '',
+    defaultWithTitle: '',
+    defaultWithTitleAndDescription: '',
     required: '',
     disabledOption: '',
-    withDescription: '',
     disabledGroup: '',
     error: '',
     errorWithMessage: '',
@@ -57,16 +57,28 @@ export const All = () => {
         <div style={{ maxWidth: '400px' }}>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              title="Default"
-              name="defaultGroup"
-              onChange={event => handleChange(event.target.value, 'default')}
+              legend={{ title: 'Default with Title' }}
+              name="defaultWithTitle"
+              onChange={event => handleChange(event.target.value, 'defaultWithTitle')}
               options={defaultOptions}
-              selectedOption={state.default}
+              selectedOption={state.defaultWithTitle}
             />
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              title="Required"
+              legend={{
+                title: 'Default with Title and Description',
+                description: 'A helpful description',
+              }}
+              name="defaultWithTitleAndDescription"
+              onChange={event => handleChange(event.target.value, 'defaultWithTitleAndDescription')}
+              options={defaultOptions}
+              selectedOption={state.defaultWithTitleAndDescription}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <RadioGroup
+              legend={{ title: 'Required' }}
               name="required"
               onChange={event => handleChange(event.target.value, 'required')}
               options={defaultOptions}
@@ -76,17 +88,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              title="With Description"
-              name="withDescription"
-              onChange={event => handleChange(event.target.value, 'withDescription')}
-              options={defaultOptions}
-              selectedOption={state.withDescription}
-              description="I'm a description"
-            />
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <RadioGroup
-              title="Disabled Option"
+              legend={{ title: 'Disabled Option' }}
               name="disabledOption"
               onChange={event => handleChange(event.target.value, 'disabledOption')}
               options={defaultOptions.concat(disabledOption)}
@@ -95,7 +97,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              title="Disabled"
+              legend={{ title: 'Disabled Group' }}
               name="disabledGroup"
               onChange={event => handleChange(event.target.value, 'disabledGroup')}
               options={[...defaultOptions, disabledOption]}
@@ -105,7 +107,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              title="Error"
+              legend={{ title: 'Error' }}
               name="error"
               onChange={event => handleChange(event.target.value, 'error')}
               options={[...defaultOptions, disabledOption]}
@@ -115,10 +117,10 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              title="Error with Validation Message"
+              legend={{ title: 'Error with Validation Message' }}
               name="errorWithMessage"
               onChange={event => handleChange(event.target.value, 'errorWithMessage')}
-              options={[...defaultOptions, disabledOption]}
+              options={defaultOptions}
               selectedOption={state.errorWithMessage}
               error="Helpful validation message"
             />

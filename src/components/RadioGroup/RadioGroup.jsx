@@ -13,10 +13,6 @@ import './RadioGroup.scss';
 
 const propTypes = {
   /**
-   * Custom content to be displayed above the input. If the title is hidden, will be used to set aria-label attribute.
-   */
-  title: PropTypes.node.isRequired,
-  /**
    * Radio group 'name'
    */
   name: PropTypes.string.isRequired,
@@ -34,9 +30,13 @@ const propTypes = {
     isDisabled: PropTypes.bool,
   })).isRequired,
   /**
-   * Additional classes to add
+   * Custom content to be displayed above the RadioGroup.
+   * Both a title and description can be included in the legend.
    */
-  description: PropTypes.node,
+  legend: PropTypes.shape({
+    title: PropTypes.node,
+    description: PropTypes.node,
+  }),
   /**
    * Additional classes to add
    */
@@ -73,7 +73,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  description: undefined,
+  legend: undefined,
   className: '',
   error: false,
   isDisabled: false,
@@ -84,8 +84,7 @@ const defaultProps = {
 };
 
 const RadioGroup = ({
-  title,
-  description,
+  legend,
   name,
   className,
   error,
@@ -118,38 +117,42 @@ const RadioGroup = ({
 
   return (
     <div className={classNames('Palmetto-RadioGroup', groupClasses)}>
-      <fieldset>
-        <legend className={legendClasses}>
-          {title}
-          {isRequired && <span className="font-size-sm">&nbsp;*</span>}
-        </legend>
-        {description && <div>{description}</div>}
-        {options.map(option => {
-          const labelProps = {
-            inputId: option.id,
-            labelText: option.label,
-            isDisabled: isDisabled || option.disabled,
-            displayInline: true,
-            hasError: error,
-          };
+      <fieldset className="fieldset">
+        {legend && (
+          <legend className={legendClasses}>
+            {legend.title}
+            {isRequired && <span className="font-size-sm">&nbsp;*</span>}
+            {legend.description && <div>{legend.description}</div>}
+          </legend>
+        )}
+        <div className="options">
+          {options.map(option => {
+            const labelProps = {
+              inputId: option.id,
+              labelText: option.label,
+              isDisabled: isDisabled || option.disabled,
+              displayInline: true,
+              hasError: error,
+            };
 
-          return (
-            <div key={option.id}>
-              <input
-                type="radio"
-                name={name}
-                className="radioInput"
-                value={option.value}
-                checked={selectedOption && selectedOption === option.value}
-                onChange={onChange}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                disabled={isDisabled || option.disabled}
-              />
-              {option.label && <FormLabel {...labelProps} />}
-            </div>
-          );
-        })}
+            return (
+              <div key={option.id}>
+                <input
+                  type="radio"
+                  name={name}
+                  className="radioInput"
+                  value={option.value}
+                  checked={selectedOption && selectedOption === option.value}
+                  onChange={onChange}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  disabled={isDisabled || option.disabled}
+                />
+                {option.label && <FormLabel {...labelProps} />}
+              </div>
+            );
+          })}
+        </div>
       </fieldset>
       {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
     </div>
