@@ -138,6 +138,7 @@ const RadioGroup = ({
             return (
               <div key={option.id}>
                 <input
+                  id={option.id}
                   type="radio"
                   name={name}
                   className="radioInput"
