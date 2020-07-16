@@ -1,6 +1,14 @@
 @import '../../styles/variables.scss';
 
 .Palmetto-RadioGroup {
-  .radioInput {
+  .legend {
+    font-size: $size-font-sm;
+    color: $color-font-base;
+    display: block;
+    font-weight: 700;
+    
+    &.error {
+      color: $color-brand-danger-base;
+    }
   }
 }

@@ -6,8 +6,20 @@
   display: block;
   font-weight: 700;
 
+  &.inline {
+    display: inline-block;
+  }
+
+  &.disabled {
+    color: $color-font-grey-light;
+  }
+
   &.error {
     color: $color-brand-danger-base;
+
+    &.disabled {
+      color: $color-brand-danger-lighter;
+    }
   }
 
   +input[type=text],

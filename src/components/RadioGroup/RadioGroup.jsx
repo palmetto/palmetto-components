@@ -13,13 +13,13 @@ import './RadioGroup.scss';
 
 const propTypes = {
   /**
-   * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
+   * Custom content to be displayed above the input. If the title is hidden, will be used to set aria-label attribute.
    */
-  groupLabel: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
   /**
    * Radio group 'name'
    */
-  groupName: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   /**
    * Callback function to call on change event.
    */
@@ -33,6 +33,10 @@ const propTypes = {
     label: PropTypes.string.isRequired,
     isDisabled: PropTypes.bool,
   })).isRequired,
+  /**
+   * Additional classes to add
+   */
+  description: PropTypes.node,
   /**
    * Additional classes to add
    */
@@ -69,6 +73,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  description: undefined,
   className: '',
   error: false,
   isDisabled: false,
@@ -79,72 +84,75 @@ const defaultProps = {
 };
 
 const RadioGroup = ({
-  groupLabel,
-  groupName,
+  title,
+  description,
+  name,
   className,
-  placeholder,
   error,
-  hideLabel,
   isDisabled,
   isRequired,
   onChange,
   onFocus,
   onBlur,
-  autoFocus,
-  isMulti,
   options,
   selectedOption,
 }) => {
-  const handleChange = e => {
-    if (onChange) onChange(e);
+  const handleFocus = e => {
+    if (onFocus) onFocus(e);
   };
 
-  // const handleFocus = e => {
-  //   if (onFocus) onFocus(e);
-  // };
-
-  // const handleBlur = e => {
-  //   if (onBlur) onBlur(e);
-  // };
+  const handleBlur = e => {
+    if (onBlur) onBlur(e);
+  };
 
   const groupClasses = classNames(
-    className,
     'radioGroup',
+    className,
     { error },
   );
 
-  const inputClasses = classNames(
-    'radioInput',
+  const legendClasses = classNames(
+    'legend',
     { error },
   );
 
   return (
-    <>
-      <div className={classNames('Palmetto-RadioGroup', groupClasses)}>
+    <div className={classNames('Palmetto-RadioGroup', groupClasses)}>
+      <fieldset>
+        <legend className={legendClasses}>
+          {title}
+          {isRequired && <span className="font-size-sm">&nbsp;*</span>}
+        </legend>
+        {description && <div>{description}</div>}
         {options.map(option => {
           const labelProps = {
-            id: option.id,
+            inputId: option.id,
             labelText: option.label,
+            isDisabled: isDisabled || option.disabled,
+            displayInline: true,
+            hasError: error,
           };
 
           return (
-            <>
+            <div key={option.id}>
               <input
                 type="radio"
                 name={name}
-                className={inputClasses}
+                className="radioInput"
                 value={option.value}
                 checked={selectedOption && selectedOption === option.value}
-                onChange={handleChange}
-                disabled={option.isDisabled}
+                onChange={onChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                disabled={isDisabled || option.disabled}
               />
-              {option.label && !hideLabel && <FormLabel {...labelProps} />}
-            </>
+              {option.label && <FormLabel {...labelProps} />}
+            </div>
           );
         })}
-      </div>
+      </fieldset>
       {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
-    </>
+    </div>
   );
 };
 

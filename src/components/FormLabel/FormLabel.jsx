@@ -5,10 +5,6 @@ import './FormLabel.scss';
 
 const propTypes = {
   /**
-   * Mark the label has invalid
-   */
-  hasError: PropTypes.bool,
-  /**
    * The id of the form control that the label is labeling
    */
   inputId: PropTypes.string.isRequired,
@@ -20,14 +16,23 @@ const propTypes = {
     PropTypes.node,
   ]).isRequired,
   /**
+   * Mark the label has invalid
+   */
+  hasError: PropTypes.bool,
+  /**
    * Render an asterisk after the label to mark it as required
    */
   isFieldRequired: PropTypes.bool,
+  /**
+   * Grey out label if associated control is disabled
+   */
+  isDisabled: PropTypes.bool,
 };
 
 const defaultProps = {
   hasError: false,
   isFieldRequired: false,
+  isDisabled: false,
 };
 
 const FormLabel = ({
@@ -35,11 +40,15 @@ const FormLabel = ({
   inputId,
   isFieldRequired,
   labelText,
+  isDisabled,
+  displayInline,
 }) => {
   const labelClasses = classNames(
     'Palmetto-FormLabel',
     {
       error: hasError,
+      disabled: isDisabled,
+      inline: displayInline,
     },
   );
 
