@@ -27,12 +27,17 @@ const propTypes = {
    * Grey out label if associated control is disabled
    */
   isDisabled: PropTypes.bool,
+  /**
+   * Display label inline with surrounding elements
+   */
+  displayInline: PropTypes.bool,
 };
 
 const defaultProps = {
   hasError: false,
   isFieldRequired: false,
   isDisabled: false,
+  displayInline: false,
 };
 
 const FormLabel = ({
