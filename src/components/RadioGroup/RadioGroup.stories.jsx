@@ -40,6 +40,7 @@ export const All = () => {
     defaultWithTitle: '',
     defaultWithTitleAndDescription: '',
     required: '',
+    preSelectedOption: '',
     disabledOption: '',
     disabledGroup: '',
     error: '',
@@ -84,6 +85,15 @@ export const All = () => {
               options={defaultOptions}
               selectedOption={state.required}
               isRequired
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <RadioGroup
+              legend={{ title: 'Pre-selected Option' }}
+              name="preSelectedOption"
+              onChange={event => handleChange(event.target.value, 'preSelectedOption')}
+              options={defaultOptions}
+              selectedOption={state.preSelectedOption || defaultOptions[1].value}
             />
           </div>
           <div style={{ marginBottom: '1rem' }}>

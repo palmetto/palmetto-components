@@ -43,7 +43,7 @@ const propTypes = {
   className: PropTypes.string,
   /**
    * Mark the radio group as invalid and display a validation message.
-   * Pass a string or node to render a validation message below the input
+   * Pass a string or node to render a validation message below the input.
    */
   error: PropTypes.oneOfType([
     PropTypes.bool,
@@ -132,7 +132,7 @@ const RadioGroup = ({
               labelText: option.label,
               isDisabled: isDisabled || option.disabled,
               displayInline: true,
-              hasError: error,
+              hasError: !!error,
             };
 
             return (
@@ -142,7 +142,7 @@ const RadioGroup = ({
                   name={name}
                   className="radioInput"
                   value={option.value}
-                  checked={selectedOption && selectedOption === option.value}
+                  checked={selectedOption === option.value}
                   onChange={onChange}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
