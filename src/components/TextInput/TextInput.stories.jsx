@@ -168,8 +168,6 @@ export const All = () => {
               onChange={event => handleChange(event, 'withMaxLength')}
             />
           </div>
-<<<<<<< HEAD
-=======
           <div style={{ marginBottom: '1rem' }}>
             <TextInput
               id="customClass"
@@ -179,7 +177,6 @@ export const All = () => {
               onChange={event => handleChange(event, 'customClass')}
             />
           </div>
->>>>>>> develop
         </div>
       )}
     </State>
