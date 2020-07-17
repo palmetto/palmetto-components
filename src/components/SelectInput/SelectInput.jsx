@@ -91,7 +91,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  className: '',
+  className: undefined,
   placeholder: undefined,
   error: false,
   hideLabel: false,

@@ -98,16 +98,23 @@ describe('Button', () => {
       });
     });
 
-    // describe('Loading', () => {
-    //   test('it renders the loading indicator', () => {
-    //     render(
-    //       <Button isLoading>
-    //         Disabled Button
-    //       </Button>,
-    //     );
-
-    //     expect(screen.getByText('Disabled Button')).toBeNull();
-    //   });
-    // });
+    describe('Loading', () => {
+      test('it renders the spinning loading indicator', () => {
+        render(
+          <Button isLoading>
+            Button is loading
+          </Button>,
+        );
+        expect(document.getElementsByClassName('spin')[0]).toBeInTheDocument();
+      });
+      test('it keeps the button text in the dom so the button width does not change', () => {
+        render(
+          <Button isLoading>
+            Button is loading
+          </Button>,
+        );
+        expect(screen.getByText('Button is loading')).toBeInTheDocument();
+      });
+    });
   });
 });
