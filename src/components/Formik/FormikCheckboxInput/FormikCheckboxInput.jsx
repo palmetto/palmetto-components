@@ -28,7 +28,7 @@ const FormikCheckboxInput = (
     error={touched[name] && errors[name]}
     isChecked={value}
     onBlur={onBlur}
-    onChange={onChange}
+    onChange={onChange} // eslint-disable-line
     {...props}
   />
 );

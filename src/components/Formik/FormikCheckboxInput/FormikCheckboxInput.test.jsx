@@ -11,11 +11,12 @@ import FormikCheckboxInput from './FormikCheckboxInput';
 const testLabelName = 'test checkbox';
 
 const handleValidation = values => {
+  console.log('CALLED VALIDATION');
   const errors = {};
   if (!values[testLabelName]) {
     errors[testLabelName] = 'Checkbox is required';
   }
-
+  console.log('ERRORS', errors);
   return errors;
 };
 
@@ -24,6 +25,7 @@ const renderForm = (initialValue, props) => (
     initialValues={{
       [testLabelName]: initialValue,
     }}
+    onSubmit={props.handleSubmit} // eslint-disable-line
     validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
     render={() => (
       <Form>
@@ -109,6 +111,21 @@ describe('CheckboxInput', () => {
 
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
         expect(value).toBe(true);
+      });
+
+      test('Standard Formik onChange modifies the target value', async () => {
+        const { getByLabelText, getByText, queryByText } = render(renderForm(false, { isRequired: true }));
+        const submitButton = getByText('submit');
+        const checkbox = getByLabelText(testLabelName);
+        expect(checkbox.checked).toBe(false);
+
+        fireEvent.click(submitButton);
+        // expect(mockedHandleSubmit).toHaveBeenCalledTimes(0);
+        await waitFor(() => expect(getByText('Checkbox is required')).toBeInTheDocument());
+
+        fireEvent.click(checkbox);
+        expect(checkbox.checked).toBe(true);
+        await waitFor(() => expect(queryByText('Checkbox is required')).not.toBeInTheDocument());
       });
     });
   });
