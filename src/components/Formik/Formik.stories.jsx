@@ -36,6 +36,9 @@ export const FormikForm = () => {
 
   const handleValidation = values => {
     const errors = {};
+    if (!values.areTermsChecked) {
+      errors.areTermsChecked = 'checkbox is required';
+    }
     if (!values.email) {
       errors.email = 'Required';
     } else if (
@@ -151,6 +154,7 @@ export const FormikForm = () => {
                 name="areTermsChecked"
                 id="areTermsChecked"
                 component={FormikCheckboxInput}
+                isRequired
               />
             </div>
             <Button type="submit" isLoading={isSubmitting}>Submit</Button>
