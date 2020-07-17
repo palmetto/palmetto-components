@@ -122,7 +122,7 @@ const RadioGroup = ({
           <legend className={legendClasses}>
             {legend.title}
             {isRequired && <span className="font-size-sm">&nbsp;*</span>}
-            {legend.description && <div>{legend.description}</div>}
+            {legend.description && <div className="description">{legend.description}</div>}
           </legend>
         )}
         <div className="options">
@@ -136,7 +136,7 @@ const RadioGroup = ({
             };
 
             return (
-              <div key={option.id}>
+              <div className="option" key={option.id}>
                 <input
                   id={option.id}
                   type="radio"

@@ -1,23 +1,42 @@
 @import '../../styles/variables.scss';
 
 .Palmetto-RadioGroup {
+  input[type='radio'] {
+    margin: 0 $size-spacing-xs 0 $size-spacing-2-xs;
+  }
+
+  .Palmetto-FormLabel {
+    font-weight: 400;
+  }
+
   .fieldset {
     margin: 0;
     padding: 0;
     border: none;
+    line-height: 1.25;
 
     .legend {
       font-size: $size-font-sm;
       color: $color-font-base;
       display: block;
       font-weight: 700;
-  
+      line-height: 1.25;
+
+      .description {
+        font-weight: 400;
+        margin-top: $size-spacing-xs;
+      }
+
       &.error {
         color: $color-brand-danger-base;
       }
     }
 
     .options {
+      margin-top: $size-spacing-md;
+    }
+
+    .option {
       margin-top: $size-spacing-xs;
     }
   }
