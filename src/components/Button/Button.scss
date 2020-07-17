@@ -1,10 +1,11 @@
 @import '../../styles/variables.scss';
 
 .Palmetto-Button {
+  font-family: inherit;
   position: relative;
   padding: $size-spacing-sm $size-spacing-md;
   border: none;
-  border-radius: 8px;
+  border-radius: $size-border-radius-md;
   color: $color-base-white;
   background-color: $color-brand-primary-base;
   font-size: $size-font-md;
@@ -15,6 +16,20 @@
   transition-duration: 0.2s;
   transition-timing-function: ease-in;
   transition-property: background-color, border, box-shadow;
+
+  &.sm {
+    border-radius: $size-border-radius-sm;
+    font-size: $size-font-sm;
+    line-height: 1.2;
+    padding: $size-spacing-xs $size-spacing-sm;
+  }
+
+  &.lg {
+    font-size: $size-font-lg;
+    line-height: 1;
+    letter-spacing: 1px;
+    padding: $size-spacing-md $size-spacing-lg;
+  }
 
   &:hover {
     background-color: $color-brand-primary-dark;
@@ -37,7 +52,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
-      .img {
+      .loadingAnimation {
         display: inherit;
         -webkit-animation: spin 1s infinite linear;
         animation: spin 1s infinite linear;

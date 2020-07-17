@@ -46,6 +46,10 @@ const propTypes = {
    */
   onBlur: PropTypes.func,
   /**
+   * The size of the button
+   */
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  /**
    * Specify the tabIndex of the button
    */
   tabIndex: PropTypes.number,
@@ -62,6 +66,7 @@ const defaultProps = {
   tabIndex: undefined,
   onFocus: undefined,
   onBlur: undefined,
+  size: 'md',
 };
 
 const Button = ({
@@ -72,6 +77,7 @@ const Button = ({
   isDisabled,
   fullWidth,
   onClick,
+  size,
   tabIndex,
   isLoading,
   onFocus,
@@ -82,6 +88,8 @@ const Button = ({
   const buttonClasses = classNames('Palmetto-Button', className, {
     loading: isLoading,
     fullWidth,
+    sm: size === 'sm',
+    lg: size === 'lg',
   });
 
   const handleClick = e => {
