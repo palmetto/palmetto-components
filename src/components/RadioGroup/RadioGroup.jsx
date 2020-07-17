@@ -6,7 +6,7 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import './RadioGroup.scss';
 
 /**
- * Allows users to pick a value from predefined list of options.
+ * Allows users to pick a single option from a predefined list of two or more options.
  * Ideally, it should be used when there are less than 5 options,
  * otherwise you should consider using SelectInput instead.
  */
