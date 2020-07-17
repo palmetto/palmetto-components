@@ -63,66 +63,6 @@ const defaultProps = {
   onBlur: undefined,
 };
 
-const propTypes = {
-  /**
-   * A unique identifier for the button
-   */
-  id: PropTypes.string,
-  /**
-   * Button type
-   */
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  /**
-   * Additional ClassNames to add to button
-   */
-  className: PropTypes.string,
-  /**
-   * Contents of the button
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Disables the button, making it inoperable
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Button takes up the full width of its parent container
-   */
-  isLoading: PropTypes.bool,
-  /**
-   * Allow the button to grow to its container's full width
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * Callback when button is pressed
-   */
-  onClick: PropTypes.func,
-  /**
-   * Callback when button receives focus
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Callback when focus leaves button
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Specify the tabIndex of the button
-   */
-  tabIndex: PropTypes.number,
-};
-
-const defaultProps = {
-  id: undefined,
-  type: 'button',
-  className: '',
-  isDisabled: false,
-  isLoading: undefined,
-  fullWidth: undefined,
-  onClick: undefined,
-  tabIndex: undefined,
-  onFocus: undefined,
-  onBlur: undefined,
-};
-
 const Button = ({
   id,
   type,
