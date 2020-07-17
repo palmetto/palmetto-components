@@ -58,7 +58,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  className: '',
+  className: undefined,
   error: false,
   isChecked: false,
   isDisabled: false,

@@ -104,7 +104,7 @@ const propTypes = {
 const defaultProps = {
   autoComplete: false,
   autoFocus: false,
-  className: '',
+  className: undefined,
   hideLabel: false,
   inputMask: undefined,
   isDisabled: false,
