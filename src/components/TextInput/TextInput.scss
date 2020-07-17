@@ -6,7 +6,7 @@
   border: 1px solid $color-font-grey-lighter;
   box-sizing: border-box;
   box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
+  border-radius: $size-border-radius-md;
   padding: $size-spacing-sm;
   font-size: $size-font-base;
   color: $color-font-base;

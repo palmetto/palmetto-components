@@ -4,7 +4,7 @@
   width: 100px;
   margin-right: 1rem;
   margin-bottom: 1rem;
-  border-radius: 6px;
+  border-radius: $size-border-radius-md;
 }
 
 .colors__color-palette__item {
@@ -12,5 +12,5 @@
   width: 100px;
   margin-right: 1rem;
   margin-bottom: 0.5rem;
-  border-radius: 6px;
+  border-radius: $size-border-radius-md;
 }
