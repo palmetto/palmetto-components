@@ -23,7 +23,7 @@
   "scripts": {
     "build": "BABEL_ENV=build rollup -c",
     "test": "BABEL_ENV=test jest",
-    "test:watch": "BABEL_ENV=test jest --watch",
+    "test:watch": "BABEL_ENV=test jest --watch --verbose",
     "lint": "EXTEND_ESLINT=true eslint src",
     "lint:fix": "EXTEND_ESLINT=true eslint . --fix",
     "storybook": "BABEL_ENV=test start-storybook -p 6006",
