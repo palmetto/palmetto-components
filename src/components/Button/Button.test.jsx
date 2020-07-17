@@ -99,13 +99,13 @@ describe('Button', () => {
     });
 
     describe('Loading', () => {
-      test('it renders the loading indicator', () => {
+      test('it renders the spinning loading indicator', () => {
         render(
           <Button isLoading>
             Button is loading
           </Button>,
         );
-        expect(document.getElementsByClassName('loadingAnimation')[0]).toBeInTheDocument();
+        expect(document.getElementsByClassName('spin')[0]).toBeInTheDocument();
       });
       test('it keeps the button text in the dom so the button width does not change', () => {
         render(
