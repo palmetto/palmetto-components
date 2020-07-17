@@ -23,6 +23,7 @@ export const All = () => {
     withValidationMessage: '',
     invalidWithLabel: '',
     withMaxLength: 'asdhasdhasdh',
+    customClass: '',
   });
 
   const handleChange = (event, key) => {
@@ -165,6 +166,15 @@ export const All = () => {
               value={state.withMaxLength}
               label="Can't enter more than 5 characters"
               onChange={event => handleChange(event, 'withMaxLength')}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <TextInput
+              id="customClass"
+              value={state.customClass}
+              label="Custom Class"
+              className="background-color-primary"
+              onChange={event => handleChange(event, 'customClass')}
             />
           </div>
         </div>
