@@ -37,6 +37,7 @@ export const All = () => {
   };
 
   const store = new Store({
+    noTitleOrDescription: '',
     defaultWithTitle: '',
     defaultWithTitleAndDescription: '',
     required: '',
@@ -58,7 +59,15 @@ export const All = () => {
         <div style={{ maxWidth: '400px' }}>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              legend={{ title: 'Default with Title' }}
+              name="noTitleOrDescription"
+              onChange={event => handleChange(event.target.value, 'noTitleOrDescription')}
+              options={defaultOptions}
+              selectedOption={state.noTitleOrDescription}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <RadioGroup
+              title="Default with Title"
               name="defaultWithTitle"
               onChange={event => handleChange(event.target.value, 'defaultWithTitle')}
               options={defaultOptions}
@@ -67,10 +76,8 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              legend={{
-                title: 'Default with Title and Description',
-                description: 'A helpful description',
-              }}
+              title="Default with Title and Description"
+              description="A helpful description"
               name="defaultWithTitleAndDescription"
               onChange={event => handleChange(event.target.value, 'defaultWithTitleAndDescription')}
               options={defaultOptions}
@@ -79,7 +86,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              legend={{ title: 'Required' }}
+              title="Required"
               name="required"
               onChange={event => handleChange(event.target.value, 'required')}
               options={defaultOptions}
@@ -89,7 +96,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              legend={{ title: 'Pre-selected Option' }}
+              title="Pre-selected Option"
               name="preSelectedOption"
               onChange={event => handleChange(event.target.value, 'preSelectedOption')}
               options={defaultOptions}
@@ -98,7 +105,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              legend={{ title: 'Disabled Option' }}
+              title="Disabled Option"
               name="disabledOption"
               onChange={event => handleChange(event.target.value, 'disabledOption')}
               options={defaultOptions.concat(disabledOption)}
@@ -107,7 +114,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              legend={{ title: 'Disabled Group' }}
+              title="Disabled Group"
               name="disabledGroup"
               onChange={event => handleChange(event.target.value, 'disabledGroup')}
               options={[...defaultOptions, disabledOption]}
@@ -117,7 +124,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              legend={{ title: 'Error' }}
+              title="Error"
               name="error"
               onChange={event => handleChange(event.target.value, 'error')}
               options={[...defaultOptions, disabledOption]}
@@ -127,7 +134,7 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              legend={{ title: 'Error with Validation Message' }}
+              title="Error with Validation Message"
               name="errorWithMessage"
               onChange={event => handleChange(event.target.value, 'errorWithMessage')}
               options={defaultOptions}

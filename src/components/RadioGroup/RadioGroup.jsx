@@ -30,13 +30,13 @@ const propTypes = {
     isDisabled: PropTypes.bool,
   })).isRequired,
   /**
-   * Custom content to be displayed above the RadioGroup.
-   * Both a title and description can be included in the legend.
+   * Title to be displayed above the RadioGroup.
    */
-  legend: PropTypes.shape({
-    title: PropTypes.node.isRequired,
-    description: PropTypes.node,
-  }),
+  title: PropTypes.node,
+  /**
+   * Description to be displayed below the title, and above the RadioGroup.
+   */
+  description: PropTypes.node,
   /**
    * Additional classes to add
    */
@@ -73,7 +73,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-  legend: undefined,
+  title: undefined,
+  description: undefined,
   className: '',
   error: false,
   isDisabled: false,
@@ -84,7 +85,8 @@ const defaultProps = {
 };
 
 const RadioGroup = ({
-  legend,
+  title,
+  description,
   name,
   className,
   error,
@@ -118,11 +120,11 @@ const RadioGroup = ({
   return (
     <div className={classNames('Palmetto-RadioGroup', groupClasses)}>
       <fieldset className="fieldset">
-        {legend && (
+        {(title || description) && (
           <legend className={legendClasses}>
-            {legend.title}
+            {title}
             {isRequired && <span className="font-size-sm">&nbsp;*</span>}
-            {legend.description && <div className="description">{legend.description}</div>}
+            {description && <div className="description">{description}</div>}
           </legend>
         )}
         <div className="options">
