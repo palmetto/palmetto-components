@@ -39,6 +39,7 @@ const renderForm = (initialValue, props) => (
           label={testLabelName}
           name={testLabelName}
           id={testLabelName}
+          options={selectOptions}
           component={FormikSelectInput}
           {...props}
         />
@@ -140,18 +141,26 @@ describe('SelectInput', () => {
 
   describe('Callback Handling', () => {
     describe('onChange', () => {
-      // test('Custom onChange event fires callback function, overwriting Formik\'s onChange', async () => {
-      //   let value = [];
-      //   const mockedHandleChange = jest.fn(event => { value = event.target.value; });
+      test('Custom onChange event fires callback function, overwriting Formik\'s onChange', async () => {
+        let value = [];
+        const mockedHandleChange = jest.fn(event => { value = event.target.value; });
 
-      //   const { getByLabelText } = render(renderForm(value, {}));
-      //   const selectInput = getByLabelText(testLabelName);
+        const { getByLabelText, container, getByText } = render(renderForm(value, { onChange: mockedHandleChange }));
+        const selectInput = getByLabelText(testLabelName);
+        /**
+         * This class is specific to react-select, combined with our custom classNamePrefix prop.
+         * While this is an implementation detail there appears to be
+         * no clearer path to test our own component which depends on react-select
+        */
+        const selectInputWrapper = container.querySelector('.selectInput__control');
 
-      //   fireEvent.focus(selectInput);
-      //   await selectEvent.select(selectInput, 'Vanilla');
-      //   expect(mockedHandleChange).toHaveBeenCalledTimes(1);
-      //   expect(value).toBe('Vanilla');
-      // });
+        fireEvent.focus(selectInput);
+        fireEvent.mouseDown(selectInputWrapper);
+        const option = await waitFor(() => getByText('Vanilla'), { container });
+        fireEvent.click(option);
+        expect(mockedHandleChange).toHaveBeenCalledTimes(1);
+        expect(value).toStrictEqual({ label: 'Vanilla', value: 'vanilla' });
+      });
 
       test('it fires onChange callback on change', async () => {
         const mockedHandleChange = jest.fn();

@@ -4,6 +4,7 @@ import {
   fireEvent,
   screen,
   waitFor,
+  act,
 } from '@testing-library/react';
 import { Formik, Form, Field } from 'formik';
 import FormikCheckboxInput from './FormikCheckboxInput';
@@ -11,12 +12,11 @@ import FormikCheckboxInput from './FormikCheckboxInput';
 const testLabelName = 'test checkbox';
 
 const handleValidation = values => {
-  console.log('CALLED VALIDATION');
   const errors = {};
   if (!values[testLabelName]) {
     errors[testLabelName] = 'Checkbox is required';
   }
-  console.log('ERRORS', errors);
+
   return errors;
 };
 
@@ -107,7 +107,7 @@ describe('CheckboxInput', () => {
         const { getByLabelText } = render(renderForm(value, { onChange: mockedHandleChange }));
         const checkbox = getByLabelText(testLabelName);
 
-        fireEvent.click(checkbox);
+        act(() => { fireEvent.click(checkbox); });
 
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
         expect(value).toBe(true);
@@ -123,7 +123,7 @@ describe('CheckboxInput', () => {
         // expect(mockedHandleSubmit).toHaveBeenCalledTimes(0);
         await waitFor(() => expect(getByText('Checkbox is required')).toBeInTheDocument());
 
-        fireEvent.click(checkbox);
+        act(() => { fireEvent.click(checkbox); });
         expect(checkbox.checked).toBe(true);
         await waitFor(() => expect(queryByText('Checkbox is required')).not.toBeInTheDocument());
       });
