@@ -37,6 +37,8 @@
     }
 
     .option {
+      display: flex;
+      align-items: center;
       margin-top: $size-spacing-xs;
     }
   }

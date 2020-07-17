@@ -13,11 +13,11 @@ import './RadioGroup.scss';
 
 const propTypes = {
   /**
-   * Radio group 'name'
+   * Radio group name
    */
   name: PropTypes.string.isRequired,
   /**
-   * Callback function to call on change event.
+   * Callback function to call on change event
    */
   onChange: PropTypes.func.isRequired,
   /**
@@ -30,17 +30,13 @@ const propTypes = {
     disabled: PropTypes.bool,
   })).isRequired,
   /**
-   * Title to be displayed above the RadioGroup.
+   * Additional classes to add
    */
-  title: PropTypes.node,
+  className: PropTypes.string,
   /**
    * Description to be displayed below the title, and above the RadioGroup.
    */
   description: PropTypes.node,
-  /**
-   * Additional classes to add
-   */
-  className: PropTypes.string,
   /**
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
@@ -59,43 +55,47 @@ const propTypes = {
    */
   isRequired: PropTypes.bool,
   /**
-   * Callback function to call on focus event.
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Callback function to call on blur event.
+   * Callback function to call on blur event
    */
   onBlur: PropTypes.func,
+  /**
+   * Callback function to call on focus event
+   */
+  onFocus: PropTypes.func,
   /**
    * The value of selected radio input
    */
   selectedOption: PropTypes.string,
+  /**
+   * Title to be displayed above the RadioGroup
+   */
+  title: PropTypes.node,
 };
 
 const defaultProps = {
-  title: undefined,
-  description: undefined,
   className: '',
+  description: undefined,
   error: false,
   isDisabled: false,
   isRequired: false,
-  onFocus: undefined,
   onBlur: undefined,
+  onFocus: undefined,
   selectedOption: undefined,
+  title: undefined,
 };
 
 const RadioGroup = ({
-  title,
-  description,
-  name,
   className,
+  description,
   error,
   isDisabled,
   isRequired,
+  name,
+  onBlur,
   onChange,
   onFocus,
-  onBlur,
   options,
+  title,
   selectedOption,
 }) => {
   const handleFocus = e => {
