@@ -38,8 +38,8 @@ export const All = () => {
 
   const store = new Store({
     noTitleOrDescription: '',
-    defaultWithTitle: '',
-    defaultWithTitleAndDescription: '',
+    withTitle: '',
+    withTitleAndDescription: '',
     required: '',
     preSelectedOption: '',
     disabledOption: '',
@@ -67,21 +67,21 @@ export const All = () => {
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              title="Default with Title"
-              name="defaultWithTitle"
-              onChange={event => handleChange(event.target.value, 'defaultWithTitle')}
+              title="With Title"
+              name="withTitle"
+              onChange={event => handleChange(event.target.value, 'withTitle')}
               options={defaultOptions}
-              selectedOption={state.defaultWithTitle}
+              selectedOption={state.withTitle}
             />
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup
-              title="Default with Title and Description"
+              title="With Title and Description"
               description="A helpful description"
-              name="defaultWithTitleAndDescription"
-              onChange={event => handleChange(event.target.value, 'defaultWithTitleAndDescription')}
+              name="withTitleAndDescription"
+              onChange={event => handleChange(event.target.value, 'withTitleAndDescription')}
               options={defaultOptions}
-              selectedOption={state.defaultWithTitleAndDescription}
+              selectedOption={state.withTitleAndDescription}
             />
           </div>
           <div style={{ marginBottom: '1rem' }}>

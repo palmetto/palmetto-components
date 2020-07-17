@@ -27,7 +27,7 @@ const propTypes = {
     id: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    isDisabled: PropTypes.bool,
+    disabled: PropTypes.bool,
   })).isRequired,
   /**
    * Title to be displayed above the RadioGroup.
