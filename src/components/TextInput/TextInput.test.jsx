@@ -262,4 +262,42 @@ describe('TextInput', () => {
       });
     });
   });
+
+  test('Input correctly passes maxlength property if prop is passed', async () => {
+    render(
+      <TextInput
+        name="firstName"
+        id="firstName"
+        label="first name"
+        value=""
+        maxLength="3"
+        onChange={() => null}
+      />,
+    );
+
+    const inputElement = screen.getByLabelText('first name');
+    expect(inputElement).toBeInTheDocument();
+    expect(inputElement).toHaveAttribute('maxlength');
+    expect(inputElement.getAttribute('maxlength')).toBe('3');
+    expect(inputElement.value).toBe('');
+  });
+
+  test('assigns the "aria-labelledby" attribute and renders a label with correct id, when a label is provided', () => {
+    render(<TextInput id="testInput" label="test label" value="hello" onChange={() => null} />);
+    const inputElement = screen.getByDisplayValue('hello');
+    expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
+    expect(document.getElementById('testInputLabel')).toBeInTheDocument();
+  });
+
+  test('does not assign "aria-labelledby" attribute when a label is hidden', () => {
+    render(<TextInput
+      id="testInput"
+      label="hidden label"
+      hideLabel
+      value="hello"
+      onChange={() => null}
+    />);
+    const inputElement = screen.getByLabelText('hidden label');
+    expect(inputElement).not.toHaveAttribute('aria-labelledby');
+  });
 });

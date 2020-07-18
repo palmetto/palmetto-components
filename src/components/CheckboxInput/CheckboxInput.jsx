@@ -58,7 +58,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  className: '',
+  className: undefined,
   error: false,
   isChecked: false,
   isDisabled: false,
@@ -104,7 +104,7 @@ const CheckboxInput = ({
         <input
           aria-invalid={!!error}
           aria-label={label}
-          aria-labelledby={label ? `${id}Label` : null}
+          aria-labelledby={`${id}Label`}
           id={id}
           checked={!!isChecked}
           disabled={isDisabled}

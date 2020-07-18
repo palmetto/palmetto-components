@@ -57,7 +57,7 @@ const propTypes = {
 const defaultProps = {
   id: undefined,
   type: 'button',
-  className: '',
+  className: undefined,
   isDisabled: false,
   isLoading: undefined,
   fullWidth: undefined,
