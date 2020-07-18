@@ -6,28 +6,28 @@
   --button-color-background-disabled: var(--color-brand-primary-light);
 
   // small
-  --button-size-small-border-radius: var(--size-border-radius-sm);
-  --button-size-small-font-size: var(--size-font-sm);
-  --button-size-small-padding: var(--size-spacing-xs) var(--size-spacing-sm);
+  --button-size-sm-border-radius: 4px; // var(--size-border-radius-sm);
+  --button-size-sm-font-size: var(--size-font-sm);
+  --button-size-sm-padding: var(--size-spacing-xs) var(--size-spacing-sm);
 
   // medium (default)
-  --button-size-medium-border-radius: var(--size-border-radius-md);
-  --button-size-medium-font-size: var(--size-font-md);
-  --button-size-medium-padding: var(--size-spacing-sm) var(--size-spacing-md);
+  --button-size-md-border-radius: 8px; // var(--size-border-radius-md);
+  --button-size-md-font-size: var(--size-font-md);
+  --button-size-md-padding: var(--size-spacing-sm) var(--size-spacing-md);
 
   // large
-  --button-size-large-border-radius: var(--size-border-radius-md);
-  --button-size-large-font-size: var(--size-font-lg);
-  --button-size-large-padding: var(--size-spacing-md) var(--size-spacing-lg);
+  --button-size-lg-border-radius: 8px; // var(--size-border-radius-md);
+  --button-size-lg-font-size: var(--size-font-lg);
+  --button-size-lg-padding: var(--size-spacing-md) var(--size-spacing-lg);
 
   font-family: inherit;
   position: relative;
-  padding: var(--button-size-medium-padding);
+  padding: var(--button-size-md-padding);
   border: none;
-  border-radius: var(--button-size-medium-border-radius);
+  border-radius: var(--button-size-md-border-radius);
   color: var(--button-color);
   background-color: var(--button-color-background);
-  font-size: var(--button-size-medium-font-size);
+  font-size: var(--button-size-md-font-size);
   font-weight: 700;
   letter-spacing: .2px;
   line-height: 1.25; // hack to get the button to match TextInput's 44px height
@@ -37,18 +37,18 @@
   transition-property: background-color, border, box-shadow;
 
   &.sm {
-    border-radius: var(--button-size-small-border-radius);
-    font-size: var(--button-size-small-font-size);
+    border-radius: var(--button-size-sm-border-radius);
+    font-size: var(--button-size-sm-font-size);
     line-height: 1.2;
-    padding: var(--button-size-small-padding);
+    padding: var(--button-size-sm-padding);
   }
 
   &.lg {
-    border-radius: var(--button-size-large-border-radius);
-    font-size: var(--button-size-large-font-size);
+    border-radius: var(--button-size-lg-border-radius);
+    font-size: var(--button-size-lg-font-size);
     line-height: 1;
     letter-spacing: 1px;
-    padding: var(--button-size-large-padding);
+    padding: var(--button-size-lg-padding);
   }
 
   &:hover {
