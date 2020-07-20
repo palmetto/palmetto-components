@@ -1,7 +1,7 @@
 {
   "name": "@palmetto/palmetto-components",
   "author": "@palmetto",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -24,7 +24,7 @@
   "scripts": {
     "build": "BABEL_ENV=build rollup -c",
     "test": "BABEL_ENV=test jest",
-    "test:watch": "BABEL_ENV=test jest --watch",
+    "test:watch": "BABEL_ENV=test jest --watch --verbose",
     "lint": "EXTEND_ESLINT=true eslint src",
     "lint:fix": "EXTEND_ESLINT=true eslint . --fix",
     "storybook": "BABEL_ENV=test start-storybook -p 6006",

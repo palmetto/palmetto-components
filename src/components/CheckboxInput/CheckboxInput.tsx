@@ -58,7 +58,7 @@ const propTypes = {
 };
 
 const defaultProps: Partial<InferProps<typeof propTypes>> = {
-  className: '',
+  className: undefined,
   error: false,
   isChecked: false,
   isDisabled: false,
@@ -99,7 +99,7 @@ const CheckboxInput = ({
           aria-label={label || undefined}
           aria-labelledby={label ? `${id}Label` : undefined}
           id={id}
-          checked={isChecked}
+          checked={!!isChecked}
           disabled={isDisabled}
           onBlur={handleBlur}
           onChange={handleChange}
