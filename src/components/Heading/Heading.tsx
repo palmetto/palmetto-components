@@ -1,10 +1,7 @@
 import React, { createElement, ReactNode } from 'react';
-import PropTypes, { InferProps } from 'prop-types';
 import classNames from 'classnames';
-import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
 import getElementType from '../../lib/getElementType';
 import './Heading.scss';
-import { HEADING_LEVELS, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
 
 /**
  * Use `Headings` as labels for pages or sections of a page that make up an interface.
@@ -15,45 +12,52 @@ import { HEADING_LEVELS, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
  * If no size is specified, a default size will be applied.
  */
 
-const propTypes = {
+type HEADING_LEVELS_TYPE = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+export const HEADING_LEVELS: HEADING_LEVELS_TYPE[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']; // eslint-disable-line import/prefer-default-export
+
+export const HEADING_DEFAULT_SIZE_MAP = {
+  h1: '3xl',
+  h2: '2xl',
+  h3: 'xl',
+  h4: 'lg',
+  h5: 'md',
+  h6: 'sm',
+};
+
+interface Props {
   /**
    * The DOM tag or react component to use for the element.
    * Select the appropriate semantic element (h1-h6).
    */
-  as: PropTypes.oneOf(HEADING_LEVELS).isRequired, // eslint-disable-line react/no-unused-prop-types
+  as?: HEADING_LEVELS_TYPE;
   /**
    * Additional class names to add
    */
-  className: PropTypes.string,
+  className?: string;
   /**
    * Heading contents
    */
-  children: PropTypes.node.isRequired,
+  children?: ReactNode;
   /**
-   * A color token identifier to use for the text color.
+   * A color token identifier to use for the text color. Available colors found [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/color/brand.json) 
    */
-  color: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
+  color?: string;
   /**
    * By default, size is determined by the chosen tag (e.g. h1 is bigger than h2).
    * However, size can be set independently so that its size is appropriate for the surrounding content.
+   * Available sizes found [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json)
    */
-  size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
+  size?: string;
 };
 
-const defaultProps: Partial<InferProps<typeof propTypes>> = {
-  as: 'h4',
-  className: undefined,
-  color: undefined,
-  size: undefined
-};
-
-const Heading = ({
-  as,
+const Heading: React.FC<Props> = ({
+  as = 'h4',
   className,
   children,
   color,
   size,
-}: InferProps<typeof propTypes>) => {
+}: Props) => {
   const element = getElementType(Heading, { as });
 
   const headingSize = size || HEADING_DEFAULT_SIZE_MAP[as];
@@ -65,8 +69,5 @@ const Heading = ({
 
   return createElement(element, { className: classes, children, });
 };
-
-Heading.propTypes = propTypes;
-Heading.defaultProps = defaultProps;
 
 export default Heading;
