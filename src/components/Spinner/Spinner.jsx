@@ -5,8 +5,17 @@ import styles from './Spinner.module.scss';
 import { PALMETTO_BRAND_COLOR_OPTIONS, PALMETTO_BRAND_COLOR_VALUES } from '../../lib/tokens';
 
 const propTypes = {
+  /**
+   * Custom classname to be applied to spinner container div.
+   */
   className: PropTypes.string,
+  /**
+   * Spinner color, pass down one of the options from the Palmetto 'brand' palette.
+   */
   color: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
+  /**
+   * Size of the spinner.
+   */
   size: PropTypes.oneOf(['sm', 'md', 'large']),
 };
 
