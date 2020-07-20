@@ -34,6 +34,8 @@ export default {
     }),
     commonjs(),
     postcss({
+      extract: false,
+      modules: true,
       use: ['sass'],
     }),
     copy({

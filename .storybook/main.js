@@ -2,7 +2,12 @@ const scssRules = {
   test: /\.scss$/,
   use: [
     'style-loader',
-    'css-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        modules: true,
+      },
+    },
     // 'postcss-loader', @TODO -- Add postcss config and re-enable loader.
     'sass-loader',
     {

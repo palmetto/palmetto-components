@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.Palmetto-Button {
+.button {
   position: relative;
   padding: $size-spacing-sm $size-spacing-md;
   border: none;
@@ -10,7 +10,7 @@
   font-size: $size-font-md;
   font-weight: 700;
   letter-spacing: .2px;
-  line-height: 1.25; // hack to get the button to match TextInput's 44px height
+  line-height: 1.25; /* hack to get the button to match TextInput's 44px height */
   cursor: pointer;
   transition-duration: 0.2s;
   transition-timing-function: ease-in;
@@ -27,33 +27,8 @@
   }
 
   &.loading {
-    .buttonLabel {
+    .label {
       visibility: hidden;
-    }
-
-    .buttonLoadingIndicator {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      .spin {
-        display: inherit;
-        -webkit-animation: spin 1s infinite linear;
-        animation: spin 1s infinite linear;
-
-        @keyframes spin {
-          0% {
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-
-          100% {
-            -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-          }
-        }
-      }
     }
   }
 
