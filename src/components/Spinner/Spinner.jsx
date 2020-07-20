@@ -20,7 +20,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  color: 'dark-base',
+  color: 'dark',
   className: '',
   size: 'md',
 };
@@ -30,7 +30,7 @@ const Spinner = ({
   className,
   size,
 }) => {
-  const classes = classNames(className, styles.loadingIndicator);
+  const classes = classNames(className, styles.spinner);
 
   const sizeInPixels = () => {
     let pixels;
@@ -44,11 +44,11 @@ const Spinner = ({
   return (
     <div className={classes}>
       <svg
-        alt="Loading"
         xmlns="http://www.w3.org/2000/svg"
         width={sizeInPixels()}
         height={sizeInPixels()}
         viewBox="0 0 16 16"
+        data-testid="spinner-testid"
       >
         <title>circle</title>
         <g fill={`${PALMETTO_BRAND_COLOR_VALUES[color].base.value}`}>
