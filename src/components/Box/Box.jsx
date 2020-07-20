@@ -27,7 +27,7 @@ function Box(props) {
     as,
     background,
     // basis,
-    // border,
+    border,
     color,
     className,
     // childGap,
@@ -51,12 +51,23 @@ function Box(props) {
     [`font-size-${fontSize}`]: fontSize,
     [`font-color-${color}`]: color,
     [`background-color-${background}`]: background,
+    [`border-color-${border}`]: border,
   });
+
+  const styles = {};
+
+  if (border) {
+    Object.assign(styles, {
+      borderWidth: '1px',
+      borderStyle: 'solid',
+    });
+  }
 
   return (
     <Element
       aria-label={a11yTitle}
       className={classes}
+      style={styles}
       {...rest}
     >
       {children}
@@ -103,10 +114,10 @@ Box.propTypes = {
   //   PropTypes.oneOf(['auto', 'full', '1/2', '1/4', '3/4', '1/3', '2/3']),
   //   PropTypes.string,
   // ]),
-  // /**
-  //  * Apply a border to the element
-  //  */
-  // border: BorderType,
+  /**
+   * Any valid color token for the border color
+   */
+  border: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
   /**
    * Additional class names to add
    */
@@ -216,7 +227,7 @@ Box.defaultProps = {
   as: 'div',
   background: undefined,
   // basis: undefined,
-  // border: 'none',
+  border: undefined,
   className: undefined,
   // childGap: undefined,
   children: undefined,

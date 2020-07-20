@@ -4,6 +4,7 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import {
   PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_BRAND_COLOR_OPTIONS,
+  PALMETTO_BACKGROUND_COLOR_OPTIONS
 } from '../../lib/tokens';
 
 <Meta title="Components/Box" component={Box} />
@@ -11,22 +12,92 @@ import {
 # Box
 
 A `<Box>` is a layout component to build UIs with consistent padding and spacing between elements.
-It lays out it contents in a specified direction.
+It lays out it contents in a specified direction, and by default renders a `div` element.
 
 ## Props
 <Props of={Box} />
 
 ## Background Color
 
-Use the `color` prop to set the color of the text
+Use the `background` prop to set the color of the background
 
 <Preview>
   <Story name="background">
-     {[...PALMETTO_BRAND_COLOR_OPTIONS].map((color, i) => (
-      <Box background={color} key={i}>
-        {`${color} background`}
-      </Box>
-    ))}
+     {[...PALMETTO_BACKGROUND_COLOR_OPTIONS].map((color, i) => {
+      if (color.includes('inherit')) return;
+      else if (color === 'dark'
+        || color === 'light'
+        || color === 'black'
+        || color === 'white'
+      ) {
+        return (
+          <Box background={color} key={i}>
+            {`${color} background`}
+          </Box>
+        );
+      }
+      return (
+        <>
+          <Box background={`${color}-lighter`} key={i}>
+            {`${color}-lighter background`}
+          </Box>
+          <Box background={`${color}-light`} key={i}>
+            {`${color}-light background`}
+          </Box>
+          <Box background={color} key={i}>
+            {`${color} background`}
+          </Box>
+          <Box background={`${color}-dark`} key={i}>
+            {`${color}-dark background`}
+          </Box>
+          <Box background={`${color}-darker`} key={i}>
+            {`${color}-darker background`}
+          </Box>
+        </>
+      )
+    })}
+  </Story>
+</Preview>
+
+## Border
+
+Use the `border` prop to set the color of the border
+
+<Preview>
+  <Story name="border">
+     {[...PALMETTO_BRAND_COLOR_OPTIONS].map((color, i) => {
+      if (color.includes('inherit')) return;
+      else if (color === 'dark'
+        || color === 'light'
+        || color === 'black'
+        || color === 'white'
+      ) {
+        return (
+          <Box border={color} key={i}>
+            {`${color} border`}
+          </Box>
+        );
+      }
+      return (
+        <>
+          <Box border={`${color}-lighter`} key={i}>
+            {`${color}-lighter border`}
+          </Box>
+          <Box border={`${color}-light`} key={i}>
+            {`${color}-light border`}
+          </Box>
+          <Box border={color} key={i}>
+            {`${color} border`}
+          </Box>
+          <Box border={`${color}-dark`} key={i}>
+            {`${color}-dark border`}
+          </Box>
+          <Box border={`${color}-darker`} key={i}>
+            {`${color}-darker border`}
+          </Box>
+        </>
+      )
+    })}
   </Story>
 </Preview>
 
