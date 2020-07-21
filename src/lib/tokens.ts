@@ -26,6 +26,21 @@ export type PALMETTO_FONTS =
   '5xl' |
   'base';
 
-export const PALMETTO_COLOR_VALUES = Object.values(colors);
+export interface ColorDictionary {
+  [name: string]: ColorEntry;
+}
+
+export interface ColorEntry {
+  base: ColorVariation;
+};
+
+export interface ColorVariation {
+  attributes?: {
+    font: string;
+  };
+  value: string;
+};
+
+export const PALMETTO_COLOR_VALUES = Object.values(colors.color) as ColorDictionary[];
 export const PALMETTO_FONT_SIZE_OPTIONS = Object.keys(sizes.size.font) as PALMETTO_FONTS[];
 export const PALMETTO_BRAND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
