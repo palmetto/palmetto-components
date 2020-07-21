@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './FormLabel.scss';
+import styles from './FormLabel.module.scss';
 
 const propTypes = {
   /**
@@ -37,9 +37,9 @@ const FormLabel = ({
   labelText,
 }) => {
   const labelClasses = classNames(
-    'Palmetto-FormLabel',
+    styles.label,
     {
-      error: hasError,
+      [styles.error]: hasError,
     },
   );
 

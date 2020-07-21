@@ -2,14 +2,14 @@
 
 /* @TODO -- replace any remaining harcoded values with variables or use global utility classes */
 .Palmetto-TextInput {
-  background-color: $color-base-white;
-  border: 1px solid $color-font-grey-lighter;
+  background-color: var(--color-base-white);
+  border: 1px solid var(--color-font-grey-lighter);
   box-sizing: border-box;
   box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
-  padding: $size-spacing-sm;
-  font-size: $size-font-base;
-  color: $color-font-base;
+  padding: var(--size-spacing-sm);
+  font-size: var(--size-font-base);
+  color: var(--color-font-base);
   width: 100%;
   transition-duration: 300ms;
   transition-property: border, background-color;
@@ -18,32 +18,31 @@
   &::placeholder {
     opacity: 1;
     /* Override lower placeholder opacity in Firefox */
-    color: $color-font-grey-light;
+    color: var(--color-font-grey-light);
+  }
+
+  &:focus {
+    border-color: var(--color-base-grey-600);
+    outline: none;
   }
 
   &:disabled {
-    color: $color-font-grey-light;
-    background-color: $color-base-grey-50;
+    color: var(--color-font-grey-light);
+    background-color: var(--color-base-grey-50);
 
     &:hover {
       cursor: not-allowed;
     }
   }
 
-  &:focus {
-    border-color: $color-base-grey-600;
-    outline: none;
-  }
-
   &.error {
-    background-color: $color-base-red-50;
-    border-color: $color-base-red-200;
+    background-color: var(--color-base-red-50);
+    border-color: var(--color-base-red-200);
 
     &:focus {
-      background-color: $color-base-white;
-      border-color: $color-base-grey-600;
+      background-color: var(--color-base-white);
+      border-color: var(--color-base-grey-600);
       outline: none;
     }
   }
-
 }

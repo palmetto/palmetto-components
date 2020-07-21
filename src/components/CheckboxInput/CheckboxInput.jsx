@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
-import './CheckboxInput.scss';
+import styles from './CheckboxInput.module.scss';
 
 /**
  * Used to allow users to make a range of selections (zero, one or many).
@@ -98,9 +98,15 @@ const CheckboxInput = ({
     hasError: !!error,
   };
 
+  const wrapperClasses = classNames(
+    styles.checkbox,
+    className,
+    { [styles.isDisabled]: isDisabled },
+  );
+
   return (
     <>
-      <div className={classNames('Palmetto-CheckboxInput', className, { isDisabled })}>
+      <div className={wrapperClasses}>
         <input
           aria-invalid={!!error}
           aria-label={label}
@@ -112,7 +118,7 @@ const CheckboxInput = ({
           onChange={handleChange}
           onFocus={handleFocus}
           type="checkbox"
-          className="input"
+          className={styles.input}
         />
         {label && <FormLabel {...labelProps} />}
       </div>

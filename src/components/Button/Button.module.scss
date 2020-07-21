@@ -2,12 +2,12 @@
 
 .button {
   position: relative;
-  padding: $size-spacing-sm $size-spacing-md;
+  padding: var(--size-spacing-sm) var(--size-spacing-md);
   border: none;
   border-radius: 8px;
-  color: $color-base-white;
-  background-color: $color-brand-primary-base;
-  font-size: $size-font-md;
+  color: var(--color-base-white);
+  background-color: var(--color-brand-primary-base);
+  font-size: var(--size-font-md);
   font-weight: 700;
   letter-spacing: .2px;
   line-height: 1.25; /* hack to get the button to match TextInput's 44px height */
@@ -17,13 +17,13 @@
   transition-property: background-color, border, box-shadow;
 
   &:hover {
-    background-color: $color-brand-primary-dark;
+    background-color: var(--color-brand-primary-dark);
   }
 
   &:disabled {
     pointer-events: none;
     cursor: not-allowed;
-    background-color: $color-brand-primary-light;
+    background-color: var(--color-brand-primary-light);
   }
 
   &.loading {
