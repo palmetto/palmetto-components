@@ -1,6 +1,6 @@
 @import '../../styles/variables.css';
 
-.colors__color-block__item {
+.colorBlock {
   padding: 1rem;
   color: white;
   width: 100px;
@@ -9,7 +9,7 @@
   border-radius: var(--size-border-radius-md);
 }
 
-.colors__color-palette__item {
+.paletteItem {
   padding: 0.5rem 1rem;
   width: 100px;
   margin-right: 1rem;
