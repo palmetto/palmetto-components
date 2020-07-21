@@ -1,7 +1,10 @@
-import React, { createElement, ReactNode } from 'react';
+import { createElement, FC } from 'react';
+import PropTypes, { string } from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import './Heading.scss';
+import { PALMETTO_BRAND_COLOR_OPTIONS, PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_COLOR_VALUES, PALMETTO_COLORS, PALMETTO_FONTS } from '../../lib/tokens';
+import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP, HEADING_LEVELS } from './Heading.constants';
 
 /**
  * Use `Headings` as labels for pages or sections of a page that make up an interface.
@@ -11,19 +14,6 @@ import './Heading.scss';
  * and independently set its size so that it is appropriate for the surrounding content.
  * If no size is specified, a default size will be applied.
  */
-
-type HEADING_LEVELS_TYPE = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-
-export const HEADING_LEVELS: HEADING_LEVELS_TYPE[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']; // eslint-disable-line import/prefer-default-export
-
-export const HEADING_DEFAULT_SIZE_MAP = {
-  h1: '3xl',
-  h2: '2xl',
-  h3: 'xl',
-  h4: 'lg',
-  h5: 'md',
-  h6: 'sm',
-};
 
 interface Props {
   /**
@@ -36,28 +26,24 @@ interface Props {
    */
   className?: string;
   /**
-   * Heading contents
-   */
-  children?: ReactNode;
-  /**
    * A color token identifier to use for the text color. Available colors found [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/color/brand.json) 
    */
-  color?: string;
+  color?: PALMETTO_COLORS;
   /**
    * By default, size is determined by the chosen tag (e.g. h1 is bigger than h2).
    * However, size can be set independently so that its size is appropriate for the surrounding content.
    * Available sizes found [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json)
    */
-  size?: string;
+  size?: PALMETTO_FONTS;
 };
 
-const Heading: React.FC<Props> = ({
+const Heading: FC<Props> = ({
   as = 'h4',
   className,
   children,
   color,
   size,
-}: Props) => {
+}) => {
   const element = getElementType(Heading, { as });
 
   const headingSize = size || HEADING_DEFAULT_SIZE_MAP[as];
@@ -69,5 +55,12 @@ const Heading: React.FC<Props> = ({
 
   return createElement(element, { className: classes, children, });
 };
+
+Heading.propTypes = {
+  as: PropTypes.oneOf(HEADING_LEVELS),
+  className: string,
+  color: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
+  size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
+}
 
 export default Heading;

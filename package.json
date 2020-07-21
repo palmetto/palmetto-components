@@ -31,8 +31,8 @@
     "build-storybook": "BABEL_ENV=test build-storybook",
     "chromatic": "chromatic --project-token=x8ffq4qv9tq",
     "prepublishOnly": "yarn build",
-    "type-check": "BABEL_ENV=build && tsc --pretty",
-    "type-check:watch": "BABEL_ENV=build && tsc --watch --pretty"
+    "type-check": "tsc --pretty",
+    "type-check:watch": "tsc --watch --pretty"
   },
   "browserslist": {
     "production": [
@@ -75,7 +75,6 @@
     "@types/uuid": "^8.0.0",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
-    "babel-plugin-typescript-to-proptypes": "^1.3.2",
     "babel-preset-react-app": "^9.1.2",
     "chromatic": "^4.0.3",
     "classnames": "^2.2.6",

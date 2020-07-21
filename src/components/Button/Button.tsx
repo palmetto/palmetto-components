@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import './Button.scss';
 
 interface Props {
-  /**
-   * Children of the button
-   */
-  children: React.ReactNode;
   /**
     * A unique identifier for the button
     */
@@ -38,18 +35,18 @@ interface Props {
   /**
    * Callback when button is pressed
    */
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   /**
    * Callback when button receives focus
    */
-  onFocus?: (e: React.FocusEvent<HTMLButtonElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
   /**
    * Callback when focus leaves button
    */
-  onBlur?: (e: React.FocusEvent<HTMLButtonElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
 };
 
-const Button = ({
+const Button: FC<Props> = ({
   id,
   type = 'button',
   className = '',
@@ -61,7 +58,7 @@ const Button = ({
   isLoading,
   onFocus,
   onBlur,
-}: Props) => {
+}) => {
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames('Palmetto-Button', className, {
@@ -101,20 +98,33 @@ const Button = ({
 
   return (
     <button
-      id={id || undefined}
+      id={id}
       type={type} // eslint-disable-line react/button-has-type
-      disabled={disabled || undefined}
+      disabled={disabled}
       className={buttonClasses}
       onClick={handleClick}
       onFocus={handleFocus}
       onBlur={handleBlur}
-      tabIndex={tabIndex === null ? undefined : tabIndex}
+      tabIndex={tabIndex}
       aria-label={isLoading ? 'Loading' : undefined}
-      aria-busy={isLoading ? true : undefined}
+      aria-busy={isLoading}
     >
       {content}
     </button>
   );
+};
+
+Button.propTypes = {
+  id: PropTypes.string,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  isDisabled: PropTypes.bool,
+  className: PropTypes.string,
+  fullWidth: PropTypes.bool,
+  tabIndex: PropTypes.number,
+  isLoading: PropTypes.bool,
+  onClick: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 export default Button;

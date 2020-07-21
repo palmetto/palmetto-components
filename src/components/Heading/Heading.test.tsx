@@ -2,7 +2,7 @@ import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { screen, render } from '@testing-library/react';
 import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
-import { HEADING_LEVELS } from './Heading';
+import { HEADING_LEVELS } from './Heading.constants';
 import Heading from './Heading';
 
 const headingComponentLevels = (

@@ -1,38 +1,33 @@
-import React from 'react';
-import PropTypes, { InferProps } from 'prop-types';
+import React, { FC } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './FormLabel.scss';
 
-const propTypes = {
-  /**
-   * Mark the label has invalid
-   */
-  hasError: PropTypes.bool.isRequired,
+interface Props {
   /**
    * The id of the form control that the label is labeling
    */
-  inputId: PropTypes.string.isRequired,
+  inputId: string;
   /**
    * The label text
    */
-  labelText: PropTypes.node.isRequired,
+  labelText: React.ReactNode;
+  /**
+   * Mark the label has invalid
+   */
+  hasError?: boolean;
   /**
    * Render an asterisk after the label to mark it as required
    */
-  isFieldRequired: PropTypes.bool.isRequired,
+  isFieldRequired?: boolean;
 };
 
-const defaultProps = {
-  hasError: false,
-  isFieldRequired: false,
-};
-
-const FormLabel = ({
-  hasError,
+const FormLabel: FC<Props> = ({
+  hasError = false,
   inputId,
-  isFieldRequired,
+  isFieldRequired = false,
   labelText,
-}: InferProps<typeof propTypes>) => {
+}) => {
   const labelClasses = classNames(
     'Palmetto-FormLabel',
     {
@@ -52,7 +47,11 @@ const FormLabel = ({
   );
 };
 
-FormLabel.propTypes = propTypes;
-FormLabel.defaultProps = defaultProps;
+FormLabel.propTypes = {
+  inputId: PropTypes.string.isRequired,
+  labelText: PropTypes.node.isRequired,
+  hasError: PropTypes.bool,
+  isFieldRequired: PropTypes.bool,
+};
 
 export default FormLabel;

@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FocusEvent } from 'react';
-import PropTypes, { InferProps } from 'prop-types';
+import React, { ChangeEvent, FocusEvent, FC } from 'react';
+import PropTypes, { InferProps, Validator } from 'prop-types';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
@@ -9,82 +9,68 @@ import './CheckboxInput.scss';
  * Used to allow users to make a range of selections (zero, one or many).
  */
 
-const propTypes = {
+interface Props {
   /**
    * The id attribute of the input
    */
-  id: PropTypes.string.isRequired,
+  id: string;
   /**
    * Additional classes to add
    */
-  className: PropTypes.string.isRequired,
+  className?: string;
   /**
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input
    */
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]).isRequired,
+  error?: React.ReactNode;
   /**
    * The checkbox input "checked" attribute
    */
-  isChecked: PropTypes.bool.isRequired,
+  isChecked?: boolean;
   /**
    * If the input should be disabled and not focusable
    */
-  isDisabled: PropTypes.bool.isRequired,
+  isDisabled?: boolean;
   /**
    * Determines if input is required or not. (Label will have an asterisk if required)
    */
-  isRequired: PropTypes.bool.isRequired,
+  isRequired?: boolean;
   /**
    * Callback function when input is blurred.
    */
-  onBlur: PropTypes.func,
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /**
    * Callback function when input is changed
    */
-  onChange: PropTypes.func.isRequired,
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   /**
    * Callback function when input is focused
    */
-  onFocus: PropTypes.func,
+  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
    * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
    */
-  label: PropTypes.string,
+  label?: string;
 };
 
-const defaultProps: Partial<InferProps<typeof propTypes>> = {
-  className: undefined,
-  error: false,
-  isChecked: false,
-  isDisabled: false,
-  isRequired: false,
-  onBlur: undefined,
-  onFocus: undefined,
-};
-
-const CheckboxInput = ({
+const CheckboxInput: FC<Props> = ({
   id,
   className,
-  error,
-  isChecked,
-  isDisabled,
-  isRequired,
+  error = false,
+  isChecked = false,
+  isDisabled = false,
+  isRequired = false,
   onBlur,
   onChange,
   onFocus,
   label,
-}: InferProps<typeof propTypes>) => {
+}) => {
   const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
     if (onBlur) onBlur(event);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    onChange(event);
+    if (onChange) onChange(event);
   };
 
   const handleFocus = (event: FocusEvent<HTMLInputElement>): void => {
@@ -96,7 +82,7 @@ const CheckboxInput = ({
       <div className={classNames('Palmetto-CheckboxInput', className, { isDisabled })}>
         <input
           aria-invalid={!!error}
-          aria-label={label || undefined}
+          aria-label={label}
           aria-labelledby={label ? `${id}Label` : undefined}
           id={id}
           checked={!!isChecked}
@@ -119,7 +105,21 @@ const CheckboxInput = ({
   );
 };
 
-CheckboxInput.propTypes = propTypes;
-CheckboxInput.defaultProps = defaultProps;
+CheckboxInput.propTypes = {
+  id: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
+  isChecked: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  isRequired: PropTypes.bool,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  label: PropTypes.string,
+};
 
 export default CheckboxInput;

@@ -1,14 +1,16 @@
 const path = require('path');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 const babelRules = config => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
-    loader: require.resolve('babel-loader'),
-    options: {
-      presets: [['react-app', { flow: false, typescript: true }]],
-    },
+    use: [
+      {
+        loader: require.resolve('babel-loader'),
+        options: {
+          envName: 'build',
+        },
+      }
+    ]
   });
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
@@ -16,7 +18,8 @@ const babelRules = config => {
       {
         loader: require.resolve('react-docgen-typescript-loader'),
         options: {
-          tsconfigPath:  path.resolve(__dirname, '../tsconfig.json')
+          shouldExtractLiteralValuesFromEnum: true,
+          tsconfigPath:  path.resolve('tsconfig.json')
         },
       },
     ]
