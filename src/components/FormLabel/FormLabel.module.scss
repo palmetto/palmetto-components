@@ -5,13 +5,8 @@
   color: var(--color-font-base);
   display: block;
   font-weight: 700;
-  margin-bottom: var(--size-spacing-xs);
 
   &.error {
     color: var(--color-brand-danger-base);
-  }
-
-  + input[type=checkbox] {
-    margin-bottom: 0;
   }
 }
