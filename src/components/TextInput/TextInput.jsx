@@ -6,6 +6,7 @@ import * as InputMasks from './TextInputMasks';
 import styles from './TextInput.module.scss';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import '../../styles/utilities.scss';
 
 /**
  * Use TextInput to show where users can enter text based data.
