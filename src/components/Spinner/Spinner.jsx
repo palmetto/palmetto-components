@@ -42,7 +42,7 @@ const Spinner = ({
   };
 
   return (
-    <div className={classes}>
+    <span className={classes}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={sizeInPixels()}
@@ -58,7 +58,7 @@ const Spinner = ({
           />
         </g>
       </svg>
-    </div>
+    </span>
   );
 };
 
