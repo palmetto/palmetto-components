@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 /* @TODO -- replace any remaining harcoded values with variables or use global utility classes */
-.Palmetto-TextInput {
+.textInput {
   background-color: var(--color-base-white);
   border: 1px solid var(--color-font-grey-lighter);
   box-sizing: border-box;

@@ -145,8 +145,8 @@ const SelectInput = ({
   };
 
   const inputClasses = classNames(
-    'selectInput',
-    { error },
+    styles.selectInputWrapper,
+    { [styles.error]: error },
   );
 
   const labelProps = {
@@ -154,7 +154,7 @@ const SelectInput = ({
     inputId: id,
     labelText: label,
     hasError: !!error,
-    className: 'm-bottom-sm',
+    className: 'm-bottom-xs',
   };
 
   return (

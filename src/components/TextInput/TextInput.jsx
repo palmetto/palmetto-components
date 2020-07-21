@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import * as InputMasks from './TextInputMasks';
-import './TextInput.scss';
+import styles from './TextInput.module.scss';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 
@@ -152,8 +152,8 @@ const TextInput = ({
   };
 
   const inputClasses = classNames(
-    'Palmetto-TextInput',
-    { error },
+    styles.textInput,
+    { [styles.error]: error },
   );
 
   const getInputMask = (mask, availableInputMasks) => {
@@ -203,6 +203,7 @@ const TextInput = ({
     inputId: id,
     labelText: label,
     hasError: !!error,
+    className: 'm-bottom-xs',
   };
 
   return (
@@ -211,8 +212,8 @@ const TextInput = ({
       {!inputMask ? (
         <input {...inputProps} />
       ) : (
-          <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
-        )}
+        <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+      )}
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </div>
   );
