@@ -46,6 +46,10 @@ const propTypes = {
    */
   onBlur: PropTypes.func,
   /**
+   * The size of the button
+   */
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  /**
    * Specify the tabIndex of the button
    */
   tabIndex: PropTypes.number,
@@ -62,6 +66,7 @@ const defaultProps = {
   tabIndex: undefined,
   onFocus: undefined,
   onBlur: undefined,
+  size: 'md',
 };
 
 const Button = ({
@@ -72,6 +77,7 @@ const Button = ({
   isDisabled,
   fullWidth,
   onClick,
+  size,
   tabIndex,
   isLoading,
   onFocus,
@@ -79,10 +85,16 @@ const Button = ({
 }) => {
   const disabled = isLoading || isDisabled;
 
-  const buttonClasses = classNames(styles.button, className, {
-    [styles.loading]: isLoading,
-    [styles.fullWidth]: fullWidth,
-  });
+  const buttonClasses = classNames(
+    styles.button,
+    className,
+    {
+      [styles.loading]: isLoading,
+      [styles.fullWidth]: fullWidth,
+      [styles.sm]: size === 'sm',
+      [styles.lg]: size === 'lg',
+    },
+  );
 
   const handleClick = e => {
     if (onClick) onClick(e);
