@@ -124,16 +124,14 @@ const SelectInput = ({
   value,
 }) => {
   const handleChange = values => {
-    if (onChange) {
-      const simulatedEventPayload = {
-        target: {
-          name,
-          value: values,
-        },
-      };
+    const simulatedEventPayload = {
+      target: {
+        name,
+        value: values,
+      },
+    };
 
-      onChange(simulatedEventPayload);
-    }
+    onChange(simulatedEventPayload);
   };
 
   const handleFocus = e => {

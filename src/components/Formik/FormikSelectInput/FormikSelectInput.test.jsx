@@ -154,7 +154,7 @@ describe('SelectInput', () => {
          * While this is an implementation detail there appears to be
          * no clearer path to test our own component which depends on react-select
         */
-        const selectInputWrapper = container.querySelector('.selectInput__control');
+        const selectInputWrapper = container.querySelector('.reactSelect__control');
 
         fireEvent.focus(selectInput);
         fireEvent.mouseDown(selectInputWrapper);

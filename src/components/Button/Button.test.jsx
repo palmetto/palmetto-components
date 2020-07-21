@@ -49,6 +49,16 @@ describe('Button', () => {
       expect(mockedHandleClick).toBeCalledTimes(1);
     });
 
+    test('Button does not fire function if onClick callback not provided', () => {
+      const mockedHandleClick = jest.fn();
+
+      render(<Button>Click</Button>);
+
+      fireEvent.click(screen.getByText('Click').closest('button'));
+
+      expect(mockedHandleClick).toBeCalledTimes(0);
+    });
+
     test('Button fires onFocus callback', () => {
       const mockedHandleFocus = jest.fn();
 
@@ -59,6 +69,16 @@ describe('Button', () => {
       expect(mockedHandleFocus).toBeCalledTimes(1);
     });
 
+    test('Button does not fire function of onFocus callback not provided', () => {
+      const mockedHandleFocus = jest.fn();
+
+      render(<Button>Focus</Button>);
+
+      fireEvent.focus(screen.getByText('Focus').closest('button'));
+
+      expect(mockedHandleFocus).toBeCalledTimes(0);
+    });
+
     test('Button fires onBlur callback', () => {
       const mockedHandleBlur = jest.fn();
 
@@ -67,6 +87,16 @@ describe('Button', () => {
       fireEvent.blur(screen.getByText('Blur').closest('button'));
 
       expect(mockedHandleBlur).toBeCalledTimes(1);
+    });
+
+    test('Button does not fire onBlur callback if not provided', () => {
+      const mockedHandleBlur = jest.fn();
+
+      render(<Button>Blur</Button>);
+
+      fireEvent.blur(screen.getByText('Blur').closest('button'));
+
+      expect(mockedHandleBlur).toBeCalledTimes(0);
     });
   });
 
