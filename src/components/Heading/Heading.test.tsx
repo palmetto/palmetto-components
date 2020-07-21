@@ -30,14 +30,6 @@ const headingComponentColors = (
 );
 
 describe('Heading', () => {
-  test('it has the correct defaultProps', () => {
-    const defaultProps = Heading.defaultProps || {};
-    expect(defaultProps.as).toEqual('h4');
-    expect(defaultProps.className).toBeUndefined();
-    expect(defaultProps.color).toBeUndefined();
-    expect(defaultProps.size).toBeUndefined();
-  });
-
   test('it adds className', () => {
     render(<Heading className="test-class">Hello World</Heading>);
     expect(screen.getByText('Hello World').classList).toContain('test-class');

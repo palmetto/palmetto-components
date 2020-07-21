@@ -5,6 +5,10 @@ import './Button.scss';
 
 interface Props {
   /**
+   * Contents of the button
+   */
+  children: React.ReactNode;
+  /**
     * A unique identifier for the button
     */
   id?: string;
@@ -115,6 +119,7 @@ const Button: FC<Props> = ({
 };
 
 Button.propTypes = {
+  children: PropTypes.node.isRequired,
   id: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   isDisabled: PropTypes.bool,
