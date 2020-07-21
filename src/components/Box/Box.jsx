@@ -5,14 +5,47 @@ import {
   PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_BRAND_COLOR_OPTIONS,
   PALMETTO_BACKGROUND_COLOR_OPTIONS,
-  // PALMETTO_SPACING_VALUES,
+  PALMETTO_SPACING_SIZE_OPTIONS,
 } from '../../lib/tokens';
 import getElementType from '../../lib/getElementType';
 // import BorderType from '../../types';
 
 // console.log(PALMETTO_FONT_SIZE_OPTIONS);
-console.log(PALMETTO_BACKGROUND_COLOR_OPTIONS);
-// console.log(PALMETTO_SPACING_VALUES);
+console.log(PALMETTO_SPACING_SIZE_OPTIONS);
+
+function getSpacingCss(attribute, value) {
+  if (value === undefined) {
+    return {
+      styles: {},
+      classes: [],
+    };
+  }
+
+  const classes = [];
+  let styles;
+
+  // value is css shorthand
+  if (value.split && value.split(' ').length > 1) {
+    const side = value.split(' ');
+    // x and y, e.g. 'xs sm'
+    if (side.length === 2) {
+      classes.push(`${attribute}-y-${side[0]}`);
+      classes.push(`${attribute}-x-${side[1]}`);
+    }
+  }
+  if (typeof value === 'string') {
+    if (value === 'inherit') {
+      styles = 'inherit';
+    } else {
+      classes.push(`${attribute}-all-${value}`);
+    }
+  }
+
+  return ({
+    styles,
+    classes,
+  });
+}
 
 /**
  * A `<Box>` is a layout component to build UIs with consistent padding and spacing between
@@ -36,9 +69,9 @@ function Box(props) {
     fontSize,
     // height,
     // justify,
-    // margin,
+    margin,
     // overflow,
-    // padding,
+    padding,
     // radius,
     // wrap,
     // width,
@@ -47,17 +80,27 @@ function Box(props) {
 
   const Element = getElementType(Box, props);
 
-  const classes = classNames(className, {
-    [`font-size-${fontSize}`]: fontSize,
-    [`font-color-${color}`]: color,
-    [`background-color-${background}`]: background,
-    [`border-color-${border}`]: border,
-  });
+  const marginCss = getSpacingCss('m', margin);
+  const paddingCss = getSpacingCss('p', padding);
 
-  const styles = {};
+  const classes = classNames(
+    className,
+    marginCss.classes,
+    paddingCss.classes,
+    {
+      [`background-color-${background}`]: background,
+      [`border-color-${border}`]: border,
+      [`font-color-${color}`]: color,
+      [`font-size-${fontSize}`]: fontSize,
+    },
+  );
+
+  const boxStyles = {};
+
+  Object.assign(boxStyles, { margin: marginCss.styles });
 
   if (border) {
-    Object.assign(styles, {
+    Object.assign(boxStyles, {
       borderWidth: '1px',
       borderStyle: 'solid',
     });
@@ -67,7 +110,7 @@ function Box(props) {
     <Element
       aria-label={a11yTitle}
       className={classes}
-      style={styles}
+      style={boxStyles}
       {...rest}
     >
       {children}
@@ -161,7 +204,7 @@ Box.propTypes = {
   /**
    * The font size for the Box contents
    */
-  fontSize: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS), // need to define based on design tokens
+  fontSize: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
   // /**
   //  * The height of the element
   //  */
@@ -178,11 +221,11 @@ Box.propTypes = {
   //   'start',
   //   'stretch',
   // ]),
-  // /**
-  //  * Amount of space around the element. It models itself after the css shorthand property,
-  //  * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
-  //  */
-  // margin: PropTypes.number, // need to define based on design tokens
+  /**
+   * Amount of space around the element. It models itself after the css shorthand property,
+   * where you can set the margin area on all four sides of an element.It is shorthand for top, right, bottom, left.
+   */
+  margin: PropTypes.oneOf(PALMETTO_SPACING_SIZE_OPTIONS),
   // /**
   //  * Click handler function
   //  */
@@ -202,11 +245,11 @@ Box.propTypes = {
   //   'initial',
   //   'unset',
   // ]),
-  // /**
-  //  * Amount of space within the element around the Box contents. It models itself after the css shorthand property,
-  //  * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
-  //  */
-  // padding: PropTypes.number, // need to define based on design tokens
+  /**
+   * Amount of space within the element around the Box contents. It models itself after the css shorthand property,
+   * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
+   */
+  padding: PropTypes.oneOf(PALMETTO_SPACING_SIZE_OPTIONS),
   // /**
   //  * Set the radius of all corners
   //  */
@@ -237,10 +280,10 @@ Box.defaultProps = {
   fontSize: 'inherit',
   // height: undefined,
   // justify: undefined,
-  // margin: 0,
+  margin: undefined,
   // onClick: undefined,
   // overflow: 'unset',
-  // padding: 0,
+  padding: undefined,
   // radius: 0,
   // wrap: false,
   // width: undefined,

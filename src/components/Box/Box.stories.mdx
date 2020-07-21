@@ -4,7 +4,8 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import {
   PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_BRAND_COLOR_OPTIONS,
-  PALMETTO_BACKGROUND_COLOR_OPTIONS
+  PALMETTO_BACKGROUND_COLOR_OPTIONS,
+  PALMETTO_SPACING_SIZE_OPTIONS,
 } from '../../lib/tokens';
 
 <Meta title="Components/Box" component={Box} />
@@ -31,26 +32,26 @@ Use the `background` prop to set the color of the background
         || color === 'white'
       ) {
         return (
-          <Box background={color} key={i}>
+          <Box padding="xs" background={color} key={i}>
             {`${color} background`}
           </Box>
         );
       }
       return (
         <>
-          <Box background={`${color}-lighter`} key={i}>
+          <Box padding="xs" background={`${color}-lighter`} key={i}>
             {`${color}-lighter background`}
           </Box>
-          <Box background={`${color}-light`} key={i}>
+          <Box padding="xs" background={`${color}-light`} key={i}>
             {`${color}-light background`}
           </Box>
-          <Box background={color} key={i}>
+          <Box padding="xs" background={color} key={i}>
             {`${color} background`}
           </Box>
-          <Box background={`${color}-dark`} key={i}>
+          <Box padding="xs" background={`${color}-dark`} key={i}>
             {`${color}-dark background`}
           </Box>
-          <Box background={`${color}-darker`} key={i}>
+          <Box padding="xs" background={`${color}-darker`} key={i}>
             {`${color}-darker background`}
           </Box>
         </>
@@ -73,26 +74,26 @@ Use the `border` prop to set the color of the border
         || color === 'white'
       ) {
         return (
-          <Box border={color} key={i}>
+          <Box border={color} margin="xs" padding="xs" key={i}>
             {`${color} border`}
           </Box>
         );
       }
       return (
         <>
-          <Box border={`${color}-lighter`} key={i}>
+          <Box border={`${color}-lighter`} margin="xs" padding="xs" key={i}>
             {`${color}-lighter border`}
           </Box>
-          <Box border={`${color}-light`} key={i}>
+          <Box border={`${color}-light`} margin="xs" padding="xs" key={i}>
             {`${color}-light border`}
           </Box>
-          <Box border={color} key={i}>
+          <Box border={color} margin="xs" padding="xs" key={i}>
             {`${color} border`}
           </Box>
-          <Box border={`${color}-dark`} key={i}>
+          <Box border={`${color}-dark`} margin="xs" padding="xs" key={i}>
             {`${color}-dark border`}
           </Box>
-          <Box border={`${color}-darker`} key={i}>
+          <Box border={`${color}-darker`} margin="xs" padding="xs" key={i}>
             {`${color}-darker border`}
           </Box>
         </>
@@ -128,3 +129,80 @@ Use the `fontSize` prop to set the size of the text
     ))}
   </Story>
 </Preview>
+
+## Margin
+
+### All Margin
+
+<Preview>
+  <Story name="margin">
+    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+      <Box margin={spacing} background="primary-lighter" key={i}>
+        {`${spacing} margin`}
+      </Box>
+    ))}
+  </Story>
+</Preview>
+
+### Horizontal Margin
+
+<Preview>
+  <Story name="horizontal margin">
+    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+      <Box margin={`0 ${spacing}`} background="primary-lighter" key={i}>
+        {`${spacing} horizontal margin`}
+      </Box>
+    ))}
+  </Story>
+</Preview>
+
+### Vertical Margin
+
+<Preview>
+  <Story name="vertical margin">
+    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+      <Box margin={`${spacing} 0`} background="primary-lighter" key={i}>
+        {`${spacing} vertical margin`}
+      </Box>
+    ))}
+  </Story>
+</Preview>
+
+## Padding
+
+### All Padding
+
+<Preview>
+  <Story name="padding">
+    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+      <Box padding={spacing} background="primary-lighter" margin="xs 0" key={i}>
+        {`${spacing} padding`}
+      </Box>
+    ))}
+  </Story>
+</Preview>
+
+### Horizontal Padding
+
+<Preview>
+  <Story name="horizontal padding">
+    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+      <Box padding={`0 ${spacing}`} background="primary-lighter" margin="xs 0" key={i}>
+        {`${spacing} padding margin`}
+      </Box>
+    ))}
+  </Story>
+</Preview>
+
+### Vertical Padding
+
+<Preview>
+  <Story name="vertical padding">
+    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+      <Box padding={`${spacing} 0`} background="primary-lighter" margin="xs 0" key={i}>
+        {`${spacing} padding margin`}
+      </Box>
+    ))}
+  </Story>
+</Preview>
+
