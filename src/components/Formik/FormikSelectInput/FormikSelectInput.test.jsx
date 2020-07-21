@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  act,
   render,
   fireEvent,
   screen,
@@ -33,7 +34,8 @@ const renderForm = (initialValue, props) => (
       [testLabelName]: initialValue,
     }}
     validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
-    render={() => (
+  >
+    {() => (
       <Form>
         <Field
           label={testLabelName}
@@ -46,7 +48,7 @@ const renderForm = (initialValue, props) => (
         <button type="submit">submit</button>
       </Form>
     )}
-  />
+  </Formik>
 );
 
 describe('SelectInput', () => {

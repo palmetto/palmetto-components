@@ -16,7 +16,7 @@ const propTypes = {
   /**
    * Size of the spinner.
    */
-  size: PropTypes.oneOf(['sm', 'md', 'large']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 const defaultProps = {
