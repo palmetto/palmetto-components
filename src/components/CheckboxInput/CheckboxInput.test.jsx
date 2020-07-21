@@ -49,6 +49,7 @@ describe('CheckboxInput', () => {
       hasError: false,
       isFieldRequired: false,
       labelText: 'test checkbox',
+      className: '',
     }, {});
   });
 
@@ -69,6 +70,7 @@ describe('CheckboxInput', () => {
       hasError: false,
       isFieldRequired: true,
       labelText: 'test checkbox',
+      className: '',
     }, {});
   });
 
@@ -140,6 +142,7 @@ describe('CheckboxInput', () => {
         hasError: true,
         isFieldRequired: false,
         labelText: 'test checkbox',
+        className: '',
       }, {});
     });
 
@@ -159,6 +162,7 @@ describe('CheckboxInput', () => {
         hasError: true,
         isFieldRequired: false,
         labelText: 'test checkbox',
+        className: '',
       }, {});
     });
   });
