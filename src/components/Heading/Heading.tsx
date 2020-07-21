@@ -1,5 +1,5 @@
 import { createElement, FC } from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import './Heading.scss';
@@ -58,7 +58,7 @@ const Heading: FC<Props> = ({
 
 Heading.propTypes = {
   as: PropTypes.oneOf(HEADING_LEVELS),
-  className: string,
+  className: PropTypes.string,
   color: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
   size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
 }
