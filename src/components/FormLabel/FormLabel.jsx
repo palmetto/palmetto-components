@@ -5,10 +5,6 @@ import styles from './FormLabel.module.scss';
 
 const propTypes = {
   /**
-   * Mark the label has invalid
-   */
-  hasError: PropTypes.bool,
-  /**
    * The id of the form control that the label is labeling
    */
   inputId: PropTypes.string.isRequired,
@@ -20,6 +16,14 @@ const propTypes = {
     PropTypes.node,
   ]).isRequired,
   /**
+   * Custom class to pass to label element.
+   */
+  className: PropTypes.string,
+  /**
+   * Mark the label has invalid
+   */
+  hasError: PropTypes.bool,
+  /**
    * Render an asterisk after the label to mark it as required
    */
   isFieldRequired: PropTypes.bool,
@@ -28,16 +32,19 @@ const propTypes = {
 const defaultProps = {
   hasError: false,
   isFieldRequired: false,
+  className: '',
 };
 
 const FormLabel = ({
-  hasError,
   inputId,
-  isFieldRequired,
   labelText,
+  className,
+  hasError,
+  isFieldRequired,
 }) => {
   const labelClasses = classNames(
     styles.label,
+    className,
     {
       [styles.error]: hasError,
     },

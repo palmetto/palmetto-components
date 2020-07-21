@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import './SelectInput.scss';
+import styles from './SelectInput.module.scss';
 
 /**
  * Allows users to pick a value from predefined list of options.
@@ -154,11 +154,12 @@ const SelectInput = ({
     inputId: id,
     labelText: label,
     hasError: !!error,
+    className: 'm-bottom-sm',
   };
 
   return (
     <>
-      <div className={classNames('Palmetto-SelectInput', className, { disabled: isDisabled })}>
+      <div className={classNames(styles.selectInputWrapper, className, { disabled: isDisabled })}>
         {label && !hideLabel && <FormLabel {...labelProps} />}
         <Select
           inputId={id}

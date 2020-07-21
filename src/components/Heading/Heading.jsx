@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
 import getElementType from '../../lib/getElementType';
-import './Heading.scss';
+import styles from './Heading.module.scss';
 import { HEADING_LEVELS, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
 
 /**
@@ -58,7 +58,7 @@ const Heading = ({
 
   const headingSize = size || HEADING_DEFAULT_SIZE_MAP[`${as}`];
 
-  const classes = classNames('Palmetto-Heading', className, 'heading', {
+  const classes = classNames(styles.heading, className, {
     [`font-size-${headingSize}`]: headingSize,
     [`font-color-${color}`]: color,
   });

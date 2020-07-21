@@ -111,7 +111,7 @@ const Button = ({
   const content = (
     <>
       {isLoading && (
-        <Spinner color="light" />
+        <Spinner color="white" />
       )}
       <span className={styles.label}>{children}</span>
     </>
