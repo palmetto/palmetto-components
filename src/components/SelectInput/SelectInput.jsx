@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import styles from './SelectInput.module.scss';
+import './ReactSelect.scss';
 
 /**
  * Allows users to pick a value from predefined list of options.
@@ -145,8 +145,8 @@ const SelectInput = ({
   };
 
   const inputClasses = classNames(
-    styles.selectInputWrapper,
-    { [styles.error]: error },
+    'reactSelect',
+    { error },
   );
 
   const labelProps = {
@@ -159,14 +159,14 @@ const SelectInput = ({
 
   return (
     <>
-      <div className={classNames(styles.selectInputWrapper, className, { disabled: isDisabled })}>
+      <div className={classNames('selectInputWrapper', className, { disabled: isDisabled })}>
         {label && !hideLabel && <FormLabel {...labelProps} />}
         <Select
           inputId={id}
           aria-label={label}
           aria-labelledby={label && !hideLabel ? `${id}Label` : null}
           className={inputClasses}
-          classNamePrefix="selectInput"
+          classNamePrefix="reactSelect"
           placeholder={placeholder}
           isDisabled={isDisabled}
           isMulti={isMulti}
