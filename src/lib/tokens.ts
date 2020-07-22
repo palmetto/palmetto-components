@@ -12,6 +12,7 @@ export type PALMETTO_COLORS =
   'info' |
   'dark' |
   'light' |
+  'white' |
   'black';
 
 export type PALMETTO_FONTS =

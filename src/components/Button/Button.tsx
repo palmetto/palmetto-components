@@ -49,6 +49,10 @@ interface Props {
    * Callback when focus leaves button
    */
   onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  /**
+   * The size of the button
+   */
+  size?: 'sm' | 'md' | 'lg';
 };
 
 const Button: FC<Props> = ({
@@ -59,7 +63,7 @@ const Button: FC<Props> = ({
   isDisabled = false,
   fullWidth,
   onClick,
-  size,
+  size = 'md',
   tabIndex,
   isLoading,
   onFocus,
@@ -129,6 +133,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 export default Button;
