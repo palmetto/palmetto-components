@@ -65,7 +65,7 @@ Use the `background` prop to set the color of the background
 Use the `border` prop to set the color of the border
 
 <Preview>
-  <Story name="border">
+  <Story name="border color">
      {[...PALMETTO_BRAND_COLOR_OPTIONS].map((color, i) => {
       if (color.includes('inherit')) return;
       else if (color === 'dark'
@@ -124,6 +124,7 @@ Use the `radius` prop to set the corner radius of the box.
     </>
   </Story>
 </Preview>
+
 ## Font Color
 
 Use the `color` prop to set the color of the text
@@ -154,7 +155,7 @@ Use the `fontSize` prop to set the size of the text
 
 ## Margin
 
-### All Margin
+Set a single spacing value for equal margin around the outside of the box.
 
 <Preview>
   <Story name="margin">
@@ -192,7 +193,7 @@ Use the `fontSize` prop to set the size of the text
 
 ## Padding
 
-### All Padding
+Set a single spacing value for equal padding around the contents of the box.
 
 <Preview>
   <Story name="padding">
@@ -227,4 +228,3 @@ Use the `fontSize` prop to set the size of the text
     ))}
   </Story>
 </Preview>
-
