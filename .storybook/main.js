@@ -1,3 +1,33 @@
+const path = require('path');
+
+const babelRules = config => {
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    use: [
+      {
+        loader: require.resolve('babel-loader'),
+        options: {
+          envName: 'build',
+        },
+      }
+    ]
+  });
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    use: [
+      {
+        loader: require.resolve('react-docgen-typescript-loader'),
+        options: {
+          shouldExtractLiteralValuesFromEnum: true,
+          tsconfigPath:  path.resolve('tsconfig.json')
+        },
+      },
+    ]
+  });
+  config.resolve.extensions.push('.ts', '.tsx');
+  return config;
+};
+
 const scssRules = {
   test: /\.scss$/,
   use: [
@@ -26,6 +56,20 @@ const fileLoaderRules = {
   }, ],
 };
 
+const svgRules = config => {
+  const assetRule = config.module.rules.find(({ test }) => test.test(".svg"));
+  const assetLoader = {
+    loader: assetRule.loader,
+    options: assetRule.options || assetRule.query
+  };
+  // Merge our rule with existing assetLoader rules
+  config.module.rules.unshift({
+    test: /\.svg$/,
+    use: ["@svgr/webpack", assetLoader]
+  });
+  return config;
+}
+
 module.exports = {
   stories: ['../src/**/*.stories.([tj]sx|mdx)'],
   addons: [
@@ -37,22 +81,9 @@ module.exports = {
   ],
   webpackFinal: (config) => {
     config.module.rules.push(scssRules);
+    config = babelRules(config);
     config.module.rules.push(fileLoaderRules);
-    const assetRule = config.module.rules.find(({
-      test
-    }) => test.test(".svg"));
-
-    const assetLoader = {
-      loader: assetRule.loader,
-      options: assetRule.options || assetRule.query
-    };
-
-    // Merge our rule with existing assetLoader rules
-    config.module.rules.unshift({
-      test: /\.svg$/,
-      use: ["@svgr/webpack", assetLoader]
-    });
-
+    config = svgRules(config);
     return config;
   },
 };

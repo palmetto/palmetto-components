@@ -5,13 +5,16 @@ import babel from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import copy from 'rollup-plugin-copy';
 import cleaner from 'rollup-plugin-cleaner';
+import execute from 'rollup-plugin-execute';
 import svg from 'rollup-plugin-svg';
 import svgr from '@svgr/rollup';
 
 const packageJson = require('./package.json');
 
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
+
 export default {
-  input: 'src/components/index.js',
+  input: 'src/components/index.ts',
   output: [
     {
       file: packageJson.main,
@@ -26,11 +29,15 @@ export default {
   ],
   external: ['@palmetto/palmetto-design-tokens'],
   plugins: [
-    babel({ babelHelpers: 'bundled' }),
+    execute('tsc'),
+    babel({
+      extensions,
+      babelHelpers: 'bundled',
+    }),
     peerDepsExternal(),
     resolve({
+      extensions,
       mainFields: ['module', 'main', 'jsnext:main', 'browser'],
-      extensions: ['.js', '.jsx'],
     }),
     commonjs(),
     postcss({
