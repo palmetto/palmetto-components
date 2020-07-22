@@ -102,29 +102,6 @@ Use the `border` prop to set the color of the border
   </Story>
 </Preview>
 
-## Radius
-
-Use the `radius` prop to set the corner radius of the box.
-
-<Preview>
-  <Story name="radius">
-    <>
-      <Box radius="xs" background="secondary-light" padding="sm" margin="xs 0">
-        sm radius
-      </Box>
-      <Box radius="sm" background="secondary-light" padding="sm" margin="xs 0">
-        md radius
-      </Box>
-      <Box radius="md" background="secondary-light" padding="sm" margin="xs 0">
-        lg radius
-      </Box>
-      <Box radius="lg" background="secondary-light" padding="sm" margin="xs 0">
-        xl radius
-      </Box>
-    </>
-  </Story>
-</Preview>
-
 ## Font Color
 
 Use the `color` prop to set the color of the text
@@ -170,7 +147,7 @@ Set a single spacing value for equal margin around the outside of the box.
 ### Horizontal Margin
 
 <Preview>
-  <Story name="horizontal margin">
+  <Story name="margin horizontal">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box margin={`0 ${spacing}`} background="primary-lighter" key={i}>
         {`${spacing} horizontal margin`}
@@ -182,7 +159,7 @@ Set a single spacing value for equal margin around the outside of the box.
 ### Vertical Margin
 
 <Preview>
-  <Story name="vertical margin">
+  <Story name="margin vertical">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box margin={`${spacing} 0`} background="primary-lighter" key={i}>
         {`${spacing} vertical margin`}
@@ -208,7 +185,7 @@ Set a single spacing value for equal padding around the contents of the box.
 ### Horizontal Padding
 
 <Preview>
-  <Story name="horizontal padding">
+  <Story name="padding horizontal">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box padding={`0 ${spacing}`} background="primary-lighter" margin="xs 0" key={i}>
         {`${spacing} padding margin`}
@@ -220,11 +197,34 @@ Set a single spacing value for equal padding around the contents of the box.
 ### Vertical Padding
 
 <Preview>
-  <Story name="vertical padding">
+  <Story name="padding vertical">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box padding={`${spacing} 0`} background="primary-lighter" margin="xs 0" key={i}>
         {`${spacing} padding margin`}
       </Box>
     ))}
+  </Story>
+</Preview>
+
+## Radius
+
+Use the `radius` prop to set the corner radius of the box.
+
+<Preview>
+  <Story name="radius">
+    <>
+      <Box radius="xs" background="secondary-light" padding="sm" margin="xs 0">
+        sm radius
+      </Box>
+      <Box radius="sm" background="secondary-light" padding="sm" margin="xs 0">
+        md radius
+      </Box>
+      <Box radius="md" background="secondary-light" padding="sm" margin="xs 0">
+        lg radius
+      </Box>
+      <Box radius="lg" background="secondary-light" padding="sm" margin="xs 0">
+        xl radius
+      </Box>
+    </>
   </Story>
 </Preview>
