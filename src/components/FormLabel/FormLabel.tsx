@@ -31,7 +31,7 @@ const FormLabel: FC<Props> = ({
   inputId,
   isFieldRequired = false,
   labelText,
-  className,
+  className = undefined,
 }) => {
   const labelClasses = classNames(
     styles.label,
