@@ -1,4 +1,5 @@
 @import './tokens.scss';
+@import './forms.scss';
 
 :root {
   --button-color: var(--color-base-white);
@@ -7,17 +8,17 @@
   --button-color-background-disabled: var(--color-brand-primary-light);
 
   // small
-  --button-size-sm-border-radius: var(--size-border-radius-sm);
-  --button-size-sm-font-size: var(--size-font-sm);
-  --button-size-sm-padding: var(--size-spacing-xs) var(--size-spacing-sm);
+  --button-size-sm-border-radius: var(--form-control-size-sm-border-radius);
+  --button-size-sm-font-size: var(--form-control-size-sm-font-size);
+  --button-size-sm-padding: var(--form-control-size-sm-padding);
 
   // medium (default)
-  --button-size-md-border-radius: var(--size-border-radius-md);
-  --button-size-md-font-size: var(--size-font-md);
-  --button-size-md-padding: var(--size-spacing-sm) var(--size-spacing-md);
+  --button-size-md-border-radius: var(--form-control-size-md-border-radius);
+  --button-size-md-font-size:  var(--form-control-size-md-font-size);
+  --button-size-md-padding: var(--form-control-size-md-padding);
 
   // large
-  --button-size-lg-border-radius: var(--size-border-radius-md);
-  --button-size-lg-font-size: var(--size-font-lg);
-  --button-size-lg-padding: var(--size-spacing-md) var(--size-spacing-lg);
+  --button-size-lg-border-radius: var(--form-control-size-lg-border-radius);
+  --button-size-lg-font-size:  var(--form-control-size-lg-font-size);
+  --button-size-lg-padding: var(--form-control-size-lg-padding);
 }
