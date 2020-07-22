@@ -1,2 +1,4 @@
-@import '~@palmetto/palmetto-design-tokens/build/utilities/utilities-color.scss';
-@import '~@palmetto/palmetto-design-tokens/build/utilities/utilities-size.scss';
+:global {
+  @import '~@palmetto/palmetto-design-tokens/build/utilities/utilities-color.scss';
+  @import '~@palmetto/palmetto-design-tokens/build/utilities/utilities-size.scss';
+}
