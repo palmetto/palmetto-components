@@ -45,7 +45,7 @@ const scssRules = {
       options: {
         // Provide path to the file with resources
         resources: [
-          './src/styles/variables.scss',
+          './src/styles/variables/tokens.scss',
           './src/styles/utilities.scss',
           './src/styles/reset.scss',
         ],
