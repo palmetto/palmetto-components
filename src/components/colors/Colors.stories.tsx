@@ -1,6 +1,6 @@
 import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
-import { PALMETTO_COLOR_VALUES } from '../../lib/tokens';
+import { PALMETTO_COLOR_VALUES, ColorEntry, ColorVariation } from '../../lib/tokens';
 import './colors.scss';
 
 const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
@@ -10,7 +10,7 @@ export default {
   decorators: [withA11y],
 };
 
-const renderColorBlock = colorEntry => {
+const renderColorBlock = (colorEntry: [string, ColorEntry]) => {
   const [colorName, colorVariations] = colorEntry;
 
   return (
@@ -21,10 +21,10 @@ const renderColorBlock = colorEntry => {
   );
 };
 
-const renderColorPalette = (colorEntry, index) => {
+const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => {
   const [colorName, colorVariations] = colorEntry;
 
-  const getFontColor = colorVariation => (
+  const getFontColor = (colorVariation: ColorVariation) => (
     colorVariation && colorVariation.attributes && colorVariation.attributes.font === 'base' ? 'black' : 'white'
   );
 
