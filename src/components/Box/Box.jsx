@@ -71,7 +71,7 @@ function Box(props) {
     margin,
     // overflow,
     padding,
-    // radius,
+    radius,
     // wrap,
     // width,
     ...rest
@@ -91,6 +91,7 @@ function Box(props) {
       [`border-color-${border}`]: border,
       [`font-color-${color}`]: color,
       [`font-size-${fontSize}`]: fontSize,
+      [`border-radius-${radius}`]: radius,
     },
   );
 
@@ -249,10 +250,10 @@ Box.propTypes = {
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
    */
   padding: PropTypes.oneOf(PALMETTO_SPACING_SIZE_OPTIONS),
-  // /**
-  //  * Set the radius of all corners
-  //  */
-  // radius: PropTypes.string, // need to define based on design tokens
+  /**
+   * Set the radius of all corners
+   */
+  radius: PropTypes.string, // need to define based on design tokens
   // wrap: PropTypes.oneOf([true, false, 'reverse']),
 
   // /**
@@ -283,7 +284,7 @@ Box.defaultProps = {
   // onClick: undefined,
   // overflow: 'unset',
   padding: undefined,
-  // radius: 0,
+  radius: undefined,
   // wrap: false,
   // width: undefined,
 };
