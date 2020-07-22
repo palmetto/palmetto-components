@@ -17,6 +17,27 @@ describe('Button', () => {
     });
   });
 
+  describe('Type', () => {
+    test('Sets the html button type to "button" by default', () => {
+      render(<Button>Default Button Type</Button>);
+
+      const testBtn = screen.getByText('Default Button Type').closest('button');
+      expect(testBtn.getAttribute('type')).toBe('button');
+    });
+    test('Sets the html button type to "submit" if specified', () => {
+      render(<Button type="submit">Submit Button</Button>);
+
+      const testBtn = screen.getByText('Submit Button').closest('button');
+      expect(testBtn.getAttribute('type')).toBe('submit');
+    });
+    test('Sets the html button type to "reset" if specified', () => {
+      render(<Button type="reset">Reset Button</Button>);
+
+      const testBtn = screen.getByText('Reset Button').closest('button');
+      expect(testBtn.getAttribute('type')).toBe('reset');
+    });
+  });
+
   describe('Callback Handling', () => {
     test('Button fires onClick callback', () => {
       const mockedHandleClick = jest.fn();
@@ -98,16 +119,23 @@ describe('Button', () => {
       });
     });
 
-    // describe('Loading', () => {
-    //   test('it renders the loading indicator', () => {
-    //     render(
-    //       <Button isLoading>
-    //         Disabled Button
-    //       </Button>,
-    //     );
-
-    //     expect(screen.getByText('Disabled Button')).toBeNull();
-    //   });
-    // });
+    describe('Loading', () => {
+      test('it renders the spinning loading indicator', () => {
+        render(
+          <Button isLoading>
+            Button is loading
+          </Button>,
+        );
+        expect(document.getElementsByClassName('spin')[0]).toBeInTheDocument();
+      });
+      test('it keeps the button text in the dom so the button width does not change', () => {
+        render(
+          <Button isLoading>
+            Button is loading
+          </Button>,
+        );
+        expect(screen.getByText('Button is loading')).toBeInTheDocument();
+      });
+    });
   });
 });

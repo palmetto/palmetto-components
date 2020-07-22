@@ -1,0 +1,75 @@
+import Heading from './Heading';
+import { v4 as uuid } from 'uuid';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
+import { HEADING_LEVELS } from './Heading.constants';
+
+<Meta
+  title="Components/Heading"
+  component={Heading}
+  decorators={[withA11y]}
+/>
+
+# Heading
+
+Headings are used as titles for a page or section of a page.
+
+<Preview isExpanded>
+  <Heading as="h1">
+    Lead the world towards a clean energy future
+  </Heading>
+</Preview>
+
+## Props
+<Props of={Heading} />
+
+## All Levels
+
+Each Heading level has a default size.
+
+<Preview>
+  <Story name="Levels">
+    <>
+      <Heading as="h1">h1 Heading</Heading>
+      <Heading as="h2">h2 Heading</Heading>
+      <Heading as="h3">h3 Heading</Heading>
+      <Heading as="h4">h4 Heading</Heading>
+      <Heading as="h5">h5 Heading</Heading>
+      <Heading as="h6">h6 Heading</Heading>
+    </>
+  </Story>
+</Preview>
+
+## Sizes
+
+The default size of the Heading can overridden as xs-5xl so that it's appropriate for its surrounding context.
+
+<Preview>
+  <Story name="Sizes">
+    <>
+      {[...PALMETTO_FONT_SIZE_OPTIONS].reverse().map(fontSize => (
+        <Heading size={fontSize} key={uuid()}>
+          {`Size ${fontSize}`}
+        </Heading>
+      ))}
+    </>
+  </Story>
+</Preview>
+
+## Colors
+
+The color of the heading is inherited from its parent, but can be set to brand color as well.
+
+<Preview>
+  <Story name="Colors">
+    <>
+      {PALMETTO_BRAND_COLOR_OPTIONS.map(color => (
+        <Heading color={color} key={uuid()}>
+          {`brand ${color}`}
+        </Heading>
+      ))}
+    </>
+  </Story>
+</Preview>
