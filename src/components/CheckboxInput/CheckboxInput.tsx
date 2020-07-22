@@ -21,7 +21,7 @@ interface Props {
   /**
    * Custom content to be displayed to right of checkbox.
    */
-  label: string;
+  label: React.ReactNode;
   /**
    * Additional classes to add
    */
@@ -114,7 +114,7 @@ const CheckboxInput: FC<Props> = ({
 CheckboxInput.propTypes = {
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   className: PropTypes.string,
   error: PropTypes.oneOfType([
     PropTypes.bool,
