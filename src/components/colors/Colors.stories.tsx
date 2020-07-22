@@ -4,8 +4,6 @@ import { PALMETTO_COLOR_VALUES, ColorEntry, ColorVariation } from '../../lib/tok
 import './colors.scss';
 
 const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
-console.log(baseColors);
-console.log(brandColors);
 
 export default {
   title: 'Tokens/Colors',

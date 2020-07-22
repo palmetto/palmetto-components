@@ -15,6 +15,14 @@ interface Props {
    */
   id: string;
   /**
+   * Callback function when input is changed
+   */
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  /**
+   * Custom content to be displayed to right of checkbox.
+   */
+  label: string;
+  /**
    * Additional classes to add
    */
   className?: string;
@@ -40,37 +48,29 @@ interface Props {
    */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /**
-   * Callback function when input is changed
-   */
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  /**
    * Callback function when input is focused
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-  /**
-   * Custom content to be displayed to right of checkbox. Can be any valid node/tree, anchors, etc.
-   */
-  label?: string;
 };
 
 const CheckboxInput: FC<Props> = ({
   id,
+  onChange,
+  label,
   className,
   error = false,
   isChecked = false,
   isDisabled = false,
   isRequired = false,
   onBlur,
-  onChange,
   onFocus,
-  label,
 }) => {
   const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
     if (onBlur) onBlur(event);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    if (onChange) onChange(event);
+    onChange(event);
   };
 
   const handleFocus = (event: FocusEvent<HTMLInputElement>): void => {
@@ -107,6 +107,8 @@ const CheckboxInput: FC<Props> = ({
 
 CheckboxInput.propTypes = {
   id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
   className: PropTypes.string,
   error: PropTypes.oneOfType([
     PropTypes.bool,
@@ -117,9 +119,7 @@ CheckboxInput.propTypes = {
   isDisabled: PropTypes.bool,
   isRequired: PropTypes.bool,
   onBlur: PropTypes.func,
-  onChange: PropTypes.func,
   onFocus: PropTypes.func,
-  label: PropTypes.string,
 };
 
 export default CheckboxInput;
