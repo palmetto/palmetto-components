@@ -53,6 +53,18 @@ export default {
           rename: '/css/variables.css',
         },
         {
+          src: 'src/styles/variables/buttons.scss',
+          dest: 'dist/css',
+        },
+        {
+          src: 'src/styles/variables/forms.scss',
+          dest: 'dist/css',
+        },
+        {
+          src: 'src/styles/variables/tokens.scss',
+          dest: 'dist/css',
+        },
+        {
           src: 'src/styles/utilities.scss',
           dest: 'dist',
           rename: '/css/utilities.css',

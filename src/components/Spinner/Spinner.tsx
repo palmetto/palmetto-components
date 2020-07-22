@@ -34,7 +34,7 @@ const Spinner: React.FC<Props>= ({
 
     return pixels;
   };
-  console.log(PALMETTO_BRAND_COLOR_OPTIONS);
+
   return (
     <span className={classes}>
       <svg
