@@ -1,10 +1,10 @@
-import React from 'react';
+import { createElement, FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
 import getElementType from '../../lib/getElementType';
 import styles from './Heading.module.scss';
-import { HEADING_LEVELS, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
+import { PALMETTO_BRAND_COLOR_OPTIONS, PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_COLORS, PALMETTO_FONTS } from '../../lib/tokens';
+import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP, HEADING_LEVELS } from './Heading.constants';
 
 /**
  * Use `Headings` as labels for pages or sections of a page that make up an interface.
@@ -15,58 +15,52 @@ import { HEADING_LEVELS, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
  * If no size is specified, a default size will be applied.
  */
 
-const propTypes = {
+interface Props {
   /**
    * The DOM tag or react component to use for the element.
    * Select the appropriate semantic element (h1-h6).
    */
-  as: PropTypes.oneOf(HEADING_LEVELS), // eslint-disable-line react/no-unused-prop-types
+  as?: HEADING_LEVELS_TYPE;
   /**
    * Additional class names to add
    */
-  className: PropTypes.string,
+  className?: string;
   /**
-   * Heading contents
+   * A color token identifier to use for the text color. Available colors found [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/color/brand.json) 
    */
-  children: PropTypes.node.isRequired,
-  /**
-   * A color token identifier to use for the text color.
-   */
-  color: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
+  color?: PALMETTO_COLORS;
   /**
    * By default, size is determined by the chosen tag (e.g. h1 is bigger than h2).
    * However, size can be set independently so that its size is appropriate for the surrounding content.
+   * Available sizes found [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json)
    */
-  size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
+  size?: PALMETTO_FONTS;
 };
 
-const defaultProps = {
-  as: 'h4',
-  className: undefined,
-  color: undefined,
-  size: undefined,
-};
-
-const Heading = ({
-  as,
+const Heading: FC<Props> = ({
+  as = 'h4',
   className,
   children,
   color,
   size,
 }) => {
-  const Element = getElementType(Heading, { as });
+  const element = getElementType(Heading, { as });
 
-  const headingSize = size || HEADING_DEFAULT_SIZE_MAP[`${as}`];
+  const headingSize = size || HEADING_DEFAULT_SIZE_MAP[as];
 
   const classes = classNames(styles.heading, className, {
     [`font-size-${headingSize}`]: headingSize,
     [`font-color-${color}`]: color,
   });
 
-  return <Element className={classes}>{children}</Element>;
+  return createElement(element, { className: classes, children, });
 };
 
-Heading.propTypes = propTypes;
-Heading.defaultProps = defaultProps;
+Heading.propTypes = {
+  as: PropTypes.oneOf(HEADING_LEVELS),
+  className: PropTypes.string,
+  color: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
+  size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
+}
 
 export default Heading;

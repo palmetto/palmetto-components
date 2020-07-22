@@ -1,46 +1,37 @@
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './FormLabel.module.scss';
 
-const propTypes = {
+interface Props {
   /**
    * The id of the form control that the label is labeling
    */
-  inputId: PropTypes.string.isRequired,
+  inputId: string;
   /**
    * The label text
    */
-  labelText: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node,
-  ]).isRequired,
-  /**
-   * Custom class to pass to label element.
-   */
-  className: PropTypes.string,
+  labelText: React.ReactNode;
   /**
    * Mark the label has invalid
    */
-  hasError: PropTypes.bool,
+  hasError?: boolean;
+  /**
+   * Custom class to pass to label element.
+   */
+  className?: string;
   /**
    * Render an asterisk after the label to mark it as required
    */
-  isFieldRequired: PropTypes.bool,
+  isFieldRequired?: boolean;
 };
 
-const defaultProps = {
-  hasError: false,
-  isFieldRequired: false,
-  className: '',
-};
-
-const FormLabel = ({
+const FormLabel: FC<Props> = ({
+  hasError = false,
   inputId,
+  isFieldRequired = false,
   labelText,
   className,
-  hasError,
-  isFieldRequired,
 }) => {
   const labelClasses = classNames(
     styles.label,
@@ -62,7 +53,12 @@ const FormLabel = ({
   );
 };
 
-FormLabel.propTypes = propTypes;
-FormLabel.defaultProps = defaultProps;
+FormLabel.propTypes = {
+  inputId: PropTypes.string.isRequired,
+  labelText: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  hasError: PropTypes.bool,
+  isFieldRequired: PropTypes.bool,
+};
 
 export default FormLabel;
