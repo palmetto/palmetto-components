@@ -1,48 +1,5 @@
-@import '../../styles/variables.css';
+@import '../../styles/globals/form-controls.scss';
 
-/* @TODO -- replace any remaining harcoded values with variables or use global utility classes */
 .textInput {
-  background-color: var(--color-base-white);
-  border: 1px solid var(--color-font-grey-lighter);
-  box-sizing: border-box;
-  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
-  border-radius: var(--size-border-radius-md);
-  padding: var(--size-spacing-sm);
-  font-size: var(--size-font-base);
-  color: var(--color-font-base);
-  width: 100%;
-  transition-duration: 300ms;
-  transition-property: border, background-color;
-  transition-timing-function: cubic-bezier(.2, .8, .4, 1);
-
-  &::placeholder {
-    opacity: 1;
-    /* Override lower placeholder opacity in Firefox */
-    color: var(--color-font-grey-light);
-  }
-
-  &:focus {
-    border-color: var(--color-base-grey-600);
-    outline: none;
-  }
-
-  &:disabled {
-    color: var(--color-font-grey-light);
-    background-color: var(--color-base-grey-50);
-
-    &:hover {
-      cursor: not-allowed;
-    }
-  }
-
-  &.error {
-    background-color: var(--color-base-red-50);
-    border-color: var(--color-base-red-200);
-
-    &:focus {
-      background-color: var(--color-base-white);
-      border-color: var(--color-base-grey-600);
-      outline: none;
-    }
-  }
+  composes: baseInput;
 }

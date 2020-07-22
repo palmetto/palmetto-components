@@ -43,17 +43,7 @@ export default {
         {
           src: 'src/styles/variables.scss',
           dest: 'dist',
-          rename: '/scss/variables.scss',
-        },
-        {
-          src: 'src/styles/variables.css',
-          dest: 'dist',
           rename: '/css/variables.css',
-        },
-        {
-          src: 'src/styles/utilities.scss',
-          dest: 'dist',
-          rename: '/scss/utilities.scss',
         },
         {
           src: 'src/styles/utilities.scss',

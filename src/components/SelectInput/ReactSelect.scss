@@ -1,15 +1,15 @@
-@import '../../styles/variables.css';
+@import '../../styles/variables/forms.scss';
 
 :global {
   .selectInputWrapper {
     .reactSelect {
       .reactSelect__control {
-        padding: var(--size-spacing-2-xs);
-        border-radius: var(--size-border-radius-md);
+        padding: var(--form-control-select-padding);
+        border-radius: var(--form-control-size-md-border-radius);
         box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
   
         .reactSelect__placeholder {
-          color: var(--color-font-grey-light);
+          color: var(--form-control-placeholder-color);
         }
   
         .reactSelect__clear-indicator {
@@ -23,40 +23,40 @@
         .reactSelect__dropdown-indicator {
           padding: 0;
           padding-right: 2px;
-          color: var(--color-brand-grey-light);
+          color: var(--form-control-select-chevron-color);
   
           svg {
-            width: 34px;
-            height: 34px;
+            width: var(--form-control-select-chevron-size);
+            height: var(--form-control-select-chevron-size);
           }
         }
   
         &.reactSelect__control--is-focused {
-          border-color: var(--color-base-grey-600);
+          border-color: var(--form-control-focus-border-color);
           box-shadow: none;
         }
   
         &.reactSelect__control--is-disabled {
           .reactSelect__dropdown-indicator {
-            color: var(--color-font-grey-light);
+            color: var(--form-control-placeholder-color);
           }
         }
       }
   
       &:hover {
         .reactSelect__dropdown-indicator {
-          color: var(--color-brand-grey-base);
+          color: var(--form-control-focus-border-color);
         }
       }
   
       &.error {
         .reactSelect__control {
-          background-color: var(--color-base-red-50);
-          border-color: var(--color-base-red-200);
+          background-color: var(--form-control-error-background-color);
+          border-color: var(--form-control-error-font-color);
   
           &.reactSelect__control--is-focused {
-            background-color: var(--color-base-white);
-            border-color: var(--color-base-grey-600);
+            background-color: var(--form-control-background-color);
+            border-color: var(--form-control-border-color);
             outline: none;
           }
         }
@@ -65,7 +65,7 @@
   
     &.disabled {
       .reactSelect__control--is-disabled {
-        background-color: var(--color-base-grey-50);
+        background-color: var(--form-control-disabled-background-color);
       }
     }
   }

@@ -1,0 +1,47 @@
+@import '../variables/forms.scss';
+
+.baseInput {
+  background-color: var(--form-control-background-color);
+  border: 1px solid var(--form-control-border-color);
+  box-sizing: border-box;
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
+  border-radius: var(--form-control-size-md-border-radius);
+  padding: var(--form-control-size-md-padding);
+  font-size: var(--form-control-size-md-font-size);
+  color: var(--form-control-font-color);
+  width: 100%;
+  transition-duration: 300ms;
+  transition-property: border, background-color;
+  transition-timing-function: cubic-bezier(.2, .8, .4, 1);
+
+  &::placeholder {
+    opacity: 1;
+    /* Override lower placeholder opacity in Firefox */
+    color: var(--form-control-placeholder-color);
+  }
+
+  &:focus {
+    border-color: var(--form-control-focus-border-color);
+    outline: none;
+  }
+
+  &:disabled {
+    color: var(--form-control-disabled-font-color);
+    background-color: var(--form-control-disabled-background-color);
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  &.error {
+    background-color: var(--form-control-error-background-color);
+    border-color: var(--form-control-error-border-color);
+
+    &:focus {
+      background-color: var(--form-control-background-color);
+      border-color: var(--form-control-focus-border-color);
+      outline: none;
+    }
+  }
+}
