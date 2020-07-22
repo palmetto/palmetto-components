@@ -41,7 +41,7 @@ export default {
     copy({
       targets: [
         {
-          src: 'src/styles/variables.scss',
+          src: 'src/styles/variables/index.scss',
           dest: 'dist',
           rename: '/css/variables.css',
         },
