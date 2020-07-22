@@ -29,15 +29,15 @@ function getSpacingCss(attribute, value) {
     const side = value.split(' ');
     // x and y, e.g. 'xs sm'
     if (side.length === 2) {
-      classes.push(`${attribute}-y-${side[0]}`);
-      classes.push(`${attribute}-x-${side[1]}`);
+      if (side[0] !== '0') classes.push(`${attribute}-v-${side[0]}`);
+      if (side[1] !== '0') classes.push(`${attribute}-h-${side[1]}`);
     }
   }
   if (typeof value === 'string') {
     if (value === 'inherit') {
       styles = 'inherit';
     } else {
-      classes.push(`${attribute}-all-${value}`);
+      classes.push(`${attribute}-${value}`);
     }
   }
 
