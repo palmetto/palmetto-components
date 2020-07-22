@@ -32,8 +32,7 @@ function getSpacingCss(attribute, value) {
       if (side[0] !== '0') classes.push(`${attribute}-v-${side[0]}`);
       if (side[1] !== '0') classes.push(`${attribute}-h-${side[1]}`);
     }
-  }
-  if (typeof value === 'string') {
+  } else if (typeof value === 'string') {
     if (value === 'inherit') {
       styles = 'inherit';
     } else {
