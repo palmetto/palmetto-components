@@ -49,7 +49,7 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
   );
 };
 
-export const brand = () => (
+export const brand: React.FC = () => (
   <>
     <h1>Brand Colors</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -62,7 +62,7 @@ export const brand = () => (
   </>
 );
 
-export const base = () => (
+export const base: React.FC = () => (
   <>
     <h1>Base Color Palette</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>

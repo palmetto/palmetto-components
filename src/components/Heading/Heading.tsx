@@ -41,7 +41,7 @@ interface Props {
    * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json)
    */
   size?: PALMETTO_FONTS;
-};
+}
 
 const Heading: FC<Props> = ({
   as = 'h4',
@@ -59,7 +59,7 @@ const Heading: FC<Props> = ({
     [`font-color-${color}`]: color,
   });
 
-  return createElement(element, { className: classes, children, });
+  return createElement(element, { className: classes, children });
 };
 
 Heading.propTypes = {

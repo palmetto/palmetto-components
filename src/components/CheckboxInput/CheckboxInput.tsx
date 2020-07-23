@@ -51,7 +51,7 @@ interface Props {
    * Callback function when input is focused
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-};
+}
 
 const CheckboxInput: FC<Props> = ({
   id,
