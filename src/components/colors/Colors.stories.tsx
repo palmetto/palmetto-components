@@ -1,7 +1,7 @@
 import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
-import styles from './Colors.module.scss';
 import { PALMETTO_COLOR_VALUES, ColorEntry, ColorVariation } from '../../lib/tokens';
+import styles from './Colors.module.scss';
 
 const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
 

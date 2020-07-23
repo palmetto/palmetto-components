@@ -1,3 +1,5 @@
+/* The following styles required the :global tag since they need to be applied to
+react-select elements for which we do not own the markup */
 :global {
   .selectInputWrapper {
     .reactSelect {
@@ -50,7 +52,7 @@
       &.error {
         .reactSelect__control {
           background-color: var(--form-control-error-background-color);
-          border-color: var(--form-control-error-font-color);
+          border-color: var(--form-control-error-border-color);
   
           &.reactSelect__control--is-focused {
             background-color: var(--form-control-background-color);

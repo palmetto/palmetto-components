@@ -9,6 +9,7 @@ import {
   PALMETTO_COLORS, PALMETTO_FONTS,
 } from '../../lib/tokens';
 import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP, HEADING_LEVELS } from './Heading.constants';
+import styles from './Heading.module.scss';
 
 /**
  * Use `Headings` as labels for pages or sections of a page that make up an interface.

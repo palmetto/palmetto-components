@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import '../../styles/globals/react-select.scss';
+import './SelectInput.scss'; // Not a module because it requires :global styles applied to react-select
 
 /**
  * Allows users to pick a value from predefined list of options.
@@ -142,6 +142,12 @@ const SelectInput = ({
     if (onBlur) onBlur(e);
   };
 
+  const wrapperClasses = classNames(
+    'selectInputWrapper',
+    className,
+    { disabled: isDisabled },
+  );
+
   const inputClasses = classNames(
     'reactSelect',
     { error },
@@ -157,7 +163,7 @@ const SelectInput = ({
 
   return (
     <>
-      <div className={classNames('selectInputWrapper', className, { disabled: isDisabled })}>
+      <div className={wrapperClasses}>
         {label && !hideLabel && <FormLabel {...labelProps} />}
         <Select
           inputId={id}
