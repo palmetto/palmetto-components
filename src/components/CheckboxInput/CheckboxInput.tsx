@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FocusEvent, FC } from 'react';
-import PropTypes, { InferProps, Validator } from 'prop-types';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
