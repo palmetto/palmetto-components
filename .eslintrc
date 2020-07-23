@@ -9,23 +9,34 @@
     "plugin:jest/recommended",
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": [
-    "jsx-a11y",
-    "jest",
-    "@typescript-eslint"
-  ],
+  "plugins": ["jsx-a11y", "jest", "@typescript-eslint"],
   "env": {
     "jest/globals": true,
     "browser": true
   },
   "rules": {
     "arrow-parens": ["error", "as-needed"],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": true }
-    ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", "tsx"] }],
     "react/jsx-props-no-spreading": [0],
-    "max-len": [1, 120]
+    "max-len": [1, 120],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }
