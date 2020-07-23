@@ -2,7 +2,6 @@ import { createElement, FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
-import styles from './Heading.module.scss';
 import {
   PALMETTO_BRAND_COLOR_OPTIONS,
   PALMETTO_FONT_SIZE_OPTIONS,
