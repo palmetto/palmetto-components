@@ -17,6 +17,27 @@ describe('Button', () => {
     });
   });
 
+  describe('Type', () => {
+    test('Sets the html button type to "button" by default', () => {
+      render(<Button>Default Button Type</Button>);
+
+      const testBtn = screen.getByText('Default Button Type').closest('button');
+      expect(testBtn.getAttribute('type')).toBe('button');
+    });
+    test('Sets the html button type to "submit" if specified', () => {
+      render(<Button type="submit">Submit Button</Button>);
+
+      const testBtn = screen.getByText('Submit Button').closest('button');
+      expect(testBtn.getAttribute('type')).toBe('submit');
+    });
+    test('Sets the html button type to "reset" if specified', () => {
+      render(<Button type="reset">Reset Button</Button>);
+
+      const testBtn = screen.getByText('Reset Button').closest('button');
+      expect(testBtn.getAttribute('type')).toBe('reset');
+    });
+  });
+
   describe('Callback Handling', () => {
     test('Button fires onClick callback', () => {
       const mockedHandleClick = jest.fn();
