@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FocusEvent, FC } from 'react';
-import PropTypes, { InferProps, Validator } from 'prop-types';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
@@ -99,12 +99,16 @@ const CheckboxInput: FC<Props> = ({
           type="checkbox"
           className={styles.input}
         />
-        {label && <FormLabel {...{
-          isFieldRequired: isRequired,
-          inputId: id,
-          labelText: label,
-          hasError: !!error,
-        }} />}
+        {label && (
+          <FormLabel
+            {...{
+              isFieldRequired: isRequired,
+              inputId: id,
+              labelText: label,
+              hasError: !!error,
+            }}
+          />
+        )}
       </div>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </>

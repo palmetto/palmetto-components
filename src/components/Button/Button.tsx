@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import classNames from 'classnames';
-import styles from './Button.module.scss';
-import Spinner from '../Spinner/Spinner';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Spinner from '../Spinner/Spinner';
+import styles from './Button.module.scss';
 
 interface Props {
   /**
