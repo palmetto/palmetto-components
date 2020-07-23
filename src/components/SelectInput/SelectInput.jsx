@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import './ReactSelect.scss';
+import '../../styles/globals/react-select.scss';
 
 /**
  * Allows users to pick a value from predefined list of options.
