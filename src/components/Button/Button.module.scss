@@ -1,6 +1,6 @@
 .button {
   position: relative;
-  padding: var(--button-size-md-padding);
+  padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
   border: none;
   border-radius: var(--button-size-md-border-radius);
   color: var(--button-color);
@@ -18,7 +18,7 @@
     border-radius: var(--button-size-sm-border-radius);
     font-size: var(--button-size-sm-font-size);
     line-height: 1.2;
-    padding: var(--button-size-sm-padding);
+    padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
   }
 
   &.lg {
@@ -26,7 +26,7 @@
     font-size: var(--button-size-lg-font-size);
     line-height: 1;
     letter-spacing: 1px;
-    padding: var(--button-size-lg-padding);
+    padding: var(--button-size-lg-padding-vertical) var(--button-size-lg-padding-horizontal);
   }
 
   &:hover {
