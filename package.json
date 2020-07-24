@@ -114,7 +114,9 @@
     "sass-resources-loader": "^2.0.3",
     "style-loader": "^1.2.1",
     "stylelint": "^13.6.0",
+    "stylelint-config-concentric-order": "^4.0.0",
     "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-sass-guidelines": "^7.0.0",
     "stylelint-webpack-plugin": "^2.0.0",
     "typescript": "^3.9.6",
     "uuid": "^8.2.0"

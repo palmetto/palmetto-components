@@ -1,42 +1,42 @@
 .button {
   position: relative;
-  padding: var(--button-size-md-padding);
+  transition-duration: 0.2s;
+  transition-property: background-color, border, box-shadow;
+  transition-timing-function: ease-in;
   border: none;
   border-radius: var(--button-size-md-border-radius);
-  color: var(--button-color);
   background-color: var(--button-color-background);
+  cursor: pointer;
+  padding: var(--button-size-md-padding);
+  line-height: 1.25; /* hack to get the button to match TextInput's 44px height */
+  letter-spacing: 0.2px;
+  color: var(--button-color);
   font-size: var(--button-size-md-font-size);
   font-weight: 700;
-  letter-spacing: .2px;
-  line-height: 1.25; /* hack to get the button to match TextInput's 44px height */
-  cursor: pointer;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in;
-  transition-property: background-color, border, box-shadow;
-
-  &.sm {
-    border-radius: var(--button-size-sm-border-radius);
-    font-size: var(--button-size-sm-font-size);
-    line-height: 1.2;
-    padding: var(--button-size-sm-padding);
-  }
-
-  &.lg {
-    border-radius: var(--button-size-lg-border-radius);
-    font-size: var(--button-size-lg-font-size);
-    line-height: 1;
-    letter-spacing: 1px;
-    padding: var(--button-size-lg-padding);
-  }
 
   &:hover {
     background-color: var(--button-color-background-hover);
   }
 
   &:disabled {
-    pointer-events: none;
-    cursor: not-allowed;
     background-color: var(--button-color-background-disabled);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &.sm {
+    border-radius: var(--button-size-sm-border-radius);
+    padding: var(--button-size-sm-padding);
+    line-height: 1.2;
+    font-size: var(--button-size-sm-font-size);
+  }
+
+  &.lg {
+    border-radius: var(--button-size-lg-border-radius);
+    padding: var(--button-size-lg-padding);
+    line-height: 1;
+    letter-spacing: 1px;
+    font-size: var(--button-size-lg-font-size);
   }
 
   &.loading {

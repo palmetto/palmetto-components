@@ -1,11 +1,11 @@
 {
-  "extends": "stylelint-config-recommended",
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-concentric-order"
+  ],
   "rules": {
-    "selector-pseudo-class-no-unknown": [
-      true,
-      {
-        "ignorePseudoClasses": ["global"]
-      }
-    ]
+    "order/properties-alphabetical-order": null,
+    "max-nesting-depth": 4
   }
 }
