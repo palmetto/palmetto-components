@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
@@ -53,7 +52,7 @@ interface Props {
    * The size of the button
    */
   size?: 'sm' | 'md' | 'lg';
-}
+};
 
 const Button: FC<Props> = ({
   id,
