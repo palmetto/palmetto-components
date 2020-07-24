@@ -1,5 +1,7 @@
 /* The following styles required the :global tag since they need to be applied to
 react-select elements for which we do not own the markup */
+
+/* stylelint-disable */
 :global {
   .selectInputWrapper {
     .reactSelect {
@@ -70,3 +72,4 @@ react-select elements for which we do not own the markup */
     }
   }
 }
+/* stylelint-enable */
