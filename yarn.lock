@@ -2648,10 +2648,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@palmetto/palmetto-design-tokens@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.2.0.tgz#c1e2489b976560cd259214f04b99a8722e412553"
-  integrity sha512-95cW76HDV/J9CQqJi7ARGAjRkdYHppVrmTSwKlAUbBt0hdsHQcTf0kQToRl2uvPn6Pe/K4E6pe3fSwcURWpp/w==
+"@palmetto/palmetto-design-tokens@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.3.0.tgz#24009512be5620e173f99a2c20fc3478f62d0817"
+  integrity sha512-jbntFq2S3oKwSeTcKfsVA81aJVmUay490ERggDIzLttLCE8yEJv3cFtN4Opt+6APmlpzr9N40gCw6BJZCIGiDg==
 
 "@reach/router@^1.2.1":
   version "1.3.4"
@@ -5880,9 +5880,9 @@ code-point-at@^1.0.0:
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
 codecov@^3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/codecov/-/codecov-3.7.1.tgz#434cb8d55f18ef01672e5739d3d266696bebc202"
-  integrity sha512-JHWxyPTkMLLJn9SmKJnwAnvY09kg2Os2+Ux+GG7LwZ9g8gzDDISpIN5wAsH1UBaafA/yGcd3KofMaorE8qd6Lw==
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/codecov/-/codecov-3.7.2.tgz#998e68c8c1ef4b55cfcf11cd456866d35e13d693"
+  integrity sha512-fmCjAkTese29DUX3GMIi4EaKGflHa4K51EoMc29g8fBHawdk/+KEq5CWOeXLdd9+AT7o1wO4DIpp/Z1KCqCz1g==
   dependencies:
     argv "0.0.2"
     ignore-walk "3.0.3"
