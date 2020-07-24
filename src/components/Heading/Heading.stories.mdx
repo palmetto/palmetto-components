@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
+import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_FONT_COLOR_OPTIONS } from '../../lib/tokens';
 
 <Meta
   title="Components/Heading"
@@ -64,7 +64,7 @@ The color of the heading is inherited from its parent, but can be set to brand c
 <Preview>
   <Story name="Colors">
     <>
-      {PALMETTO_BRAND_COLOR_OPTIONS.map(color => (
+      {PALMETTO_FONT_COLOR_OPTIONS.map(color => (
         <Heading color={color} key={uuid()}>
           {`brand ${color}`}
         </Heading>
