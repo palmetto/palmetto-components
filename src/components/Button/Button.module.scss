@@ -7,7 +7,7 @@
   border-radius: var(--button-size-md-border-radius);
   background-color: var(--button-color-background);
   cursor: pointer;
-  padding: var(--button-size-md-padding);
+  padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
   line-height: 1.25; /* hack to get the button to match TextInput's 44px height */
   letter-spacing: 0.2px;
   color: var(--button-color);
@@ -26,14 +26,14 @@
 
   &.sm {
     border-radius: var(--button-size-sm-border-radius);
-    padding: var(--button-size-sm-padding);
+    padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
     line-height: 1.2;
     font-size: var(--button-size-sm-font-size);
   }
 
   &.lg {
     border-radius: var(--button-size-lg-border-radius);
-    padding: var(--button-size-lg-padding);
+    padding: var(--button-size-lg-padding-vertical) var(--button-size-lg-padding-horizontal);
     line-height: 1;
     letter-spacing: 1px;
     font-size: var(--button-size-lg-font-size);

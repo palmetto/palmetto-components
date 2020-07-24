@@ -24,7 +24,7 @@ interface Props {
    * Render an asterisk after the label to mark it as required
    */
   isFieldRequired?: boolean;
-};
+}
 
 const FormLabel: FC<Props> = ({
   hasError = false,
