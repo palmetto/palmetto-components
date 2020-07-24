@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import './Heading.scss';
-import { PALMETTO_BRAND_COLOR_OPTIONS, PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_COLOR_VALUES, PALMETTO_COLORS, PALMETTO_FONTS } from '../../lib/tokens';
+import { PALMETTO_BRAND_COLOR_OPTIONS, PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_COLOR_VALUES, PALMETTO_COLORS, PALMETTO_FONT_SIZES } from '../../lib/tokens';
 import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP, HEADING_LEVELS } from './Heading.constants';
 
 /**
@@ -26,7 +26,7 @@ interface Props {
    */
   className?: string;
   /**
-   * A color token identifier to use for the text color. Available colors found [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/color/brand.json) 
+   * A color token identifier to use for the text color. Available colors found [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/color/brand.json)
    */
   color?: PALMETTO_COLORS;
   /**
@@ -34,7 +34,7 @@ interface Props {
    * However, size can be set independently so that its size is appropriate for the surrounding content.
    * Available sizes found [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json)
    */
-  size?: PALMETTO_FONTS;
+  size?: PALMETTO_FONT_SIZES;
 };
 
 const Heading: FC<Props> = ({

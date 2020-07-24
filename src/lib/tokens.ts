@@ -14,7 +14,7 @@ export type PALMETTO_COLORS =
   'light' |
   'black';
 
-export type PALMETTO_FONTS =
+export type PALMETTO_FONT_SIZES =
   'xs' |
   'sm' |
   'md' |
@@ -25,6 +25,21 @@ export type PALMETTO_FONTS =
   '4xl' |
   '5xl' |
   'base';
+
+export type PALMETTO_FONT_COLORS =
+  'base' |
+  'inverse' |
+  'primary' |
+  'secondary' |
+  'tertiary' |
+  'success' |
+  'warning' |
+  'danger' |
+  'grey' |
+  'grey-light' |
+  'grey-lighter' |
+  'grey-dark' |
+  'grey-darker';
 
 export type PALMETTO_SPACING =
   '2xs' |
@@ -55,7 +70,8 @@ export interface ColorVariation {
 };
 
 export const PALMETTO_COLOR_VALUES = Object.values(colors.color) as ColorDictionary[];
-export const PALMETTO_FONT_SIZE_OPTIONS = Object.keys(sizes.size.font) as PALMETTO_FONTS[];
+export const PALMETTO_FONT_SIZE_OPTIONS = Object.keys(sizes.size.font) as PALMETTO_FONT_SIZES[];
+export const PALMETTO_FONT_COLOR_OPTIONS = Object.keys(colors.color.font) as PALMETTO_FONT_COLORS[];
 export const PALMETTO_BRAND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
 export const PALMETTO_BACKGROUND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
 export const PALMETTO_SPACING_SIZE_OPTIONS = Object.keys(sizes.size.spacing) as PALMETTO_SPACING[];

@@ -3,6 +3,7 @@ import Box from './Box';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import {
   PALMETTO_FONT_SIZE_OPTIONS,
+  PALMETTO_FONT_COLOR_OPTIONS,
   PALMETTO_BRAND_COLOR_OPTIONS,
   PALMETTO_BACKGROUND_COLOR_OPTIONS,
   PALMETTO_SPACING_SIZE_OPTIONS,
@@ -19,21 +20,30 @@ It lays out it contents in a specified direction, and by default renders a `div`
   <>
     <Box
       margin="lg"
-      padding="md"
-      background="info-lighter"
+      padding="xl"
       border="grey-lighter"
       radius="md"
+      fontSize="2xl"
     >
-      This is a box
+      I am a Box
     </Box>
     <Box
       margin="lg"
       padding="md"
-      background="black"
-      color="light"
-      radius="sm"
+      background="info-lighter"
+      color="info"
+      radius="md"
     >
-      This is another box
+      I am a Box too!
+    </Box>
+    <Box
+      margin="lg"
+      padding="md"
+      background="grey-dark"
+      color="inverse"
+      fontSize="sm"
+    >
+      I am an inverse Box
     </Box>
   </>
 </Preview>
@@ -131,9 +141,9 @@ Use the `color` prop to set the color of the text
 
 <Preview>
   <Story name="color">
-     {[...PALMETTO_BRAND_COLOR_OPTIONS].map((color, i) => (
-      <Box color={color} key={i}>
-        {`${color} color`}
+     {[...PALMETTO_FONT_COLOR_OPTIONS].map((color, i) => (
+      <Box color={color} background={color === 'inverse' ? 'grey-darker' : null} key={i}>
+        {`${color}`}
       </Box>
     ))}
   </Story>
