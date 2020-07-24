@@ -115,6 +115,7 @@
     "style-loader": "^1.2.1",
     "stylelint": "^13.6.0",
     "stylelint-config-concentric-order": "^4.0.0",
+    "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-sass-guidelines": "^7.0.0",
     "stylelint-webpack-plugin": "^2.0.0",

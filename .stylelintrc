@@ -2,10 +2,12 @@
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-sass-guidelines",
+    "stylelint-config-css-modules",
     "stylelint-config-concentric-order"
   ],
   "rules": {
     "order/properties-alphabetical-order": null,
-    "max-nesting-depth": 4
+    "max-nesting-depth": 4,
+    "selector-class-pattern": null
   }
 }

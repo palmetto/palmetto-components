@@ -15285,6 +15285,11 @@ stylelint-config-concentric-order@^4.0.0:
   dependencies:
     stylelint-order "^4.0.0"
 
+stylelint-config-css-modules@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-css-modules/-/stylelint-config-css-modules-2.2.0.tgz#8ed2a54b1bdf637219e37cdeea1950405fd022ff"
+  integrity sha512-+zjcDbot+zbuxy1UA31k4G2lUG+nHUwnLyii3uT2F09B8kT2YrT9LZYNfMtAWlDidrxr7sFd5HX9EqPHGU3WKA==
+
 stylelint-config-recommended@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-3.0.0.tgz#e0e547434016c5539fe2650afd58049a2fd1d657"
