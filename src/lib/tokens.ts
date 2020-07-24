@@ -33,14 +33,14 @@ export interface ColorDictionary {
 
 export interface ColorEntry {
   base: ColorVariation;
-};
+}
 
 export interface ColorVariation {
   attributes?: {
     font: string;
   };
   value: string;
-};
+}
 
 export const PALMETTO_COLOR_VALUES = Object.values(colors.color) as ColorDictionary[];
 export const PALMETTO_FONT_SIZE_OPTIONS = Object.keys(sizes.size.font) as PALMETTO_FONTS[];

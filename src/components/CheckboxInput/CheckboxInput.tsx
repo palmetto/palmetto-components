@@ -51,7 +51,7 @@ interface Props {
    * Callback function when input is focused
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-};
+}
 
 const CheckboxInput: FC<Props> = ({
   id,
@@ -99,12 +99,16 @@ const CheckboxInput: FC<Props> = ({
           type="checkbox"
           className={styles.input}
         />
-        {label && <FormLabel {...{
-          isFieldRequired: isRequired,
-          inputId: id,
-          labelText: label,
-          hasError: !!error,
-        }} />}
+        {label && (
+          <FormLabel
+            {...{
+              isFieldRequired: isRequired,
+              inputId: id,
+              labelText: label,
+              hasError: !!error,
+            }}
+          />
+        )}
       </div>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </>
