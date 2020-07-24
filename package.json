@@ -14,8 +14,9 @@
     "url": "https://github.com/palmetto/palmetto-components"
   },
   "dependencies": {
-    "@palmetto/palmetto-design-tokens": "^0.1.10",
-    "react-select": "^3.1.0"
+    "@palmetto/palmetto-design-tokens": "^0.2.0",
+    "react-select": "^3.1.0",
+    "stylelint-config-sass-guidelines": "^7.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -114,6 +115,7 @@
     "sass-resources-loader": "^2.0.3",
     "style-loader": "^1.2.1",
     "stylelint": "^13.6.0",
+    "stylelint-config-concentric-order": "^4.0.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-webpack-plugin": "^2.0.0",
     "typescript": "^3.9.6",

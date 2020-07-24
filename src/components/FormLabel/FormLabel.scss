@@ -1,9 +1,9 @@
 @import '../../styles/variables.scss';
 
 .Palmetto-FormLabel {
-  font-size: $size-font-sm;
-  color: $color-font-base;
   display: block;
+  color: $color-font-base;
+  font-size: $size-font-sm;
   font-weight: 700;
 
   &.error {

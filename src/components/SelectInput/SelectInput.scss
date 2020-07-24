@@ -2,17 +2,23 @@
 
 .Palmetto-SelectInput {
   .selectInput {
+    &:hover {
+      .selectInput__dropdown-indicator {
+        color: $color-brand-grey-base;
+      }
+    }
+
     .selectInput__control {
-      padding: $size-spacing-2-xs;
       border-radius: 8px;
-      box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+      padding: $size-spacing-2-xs;
 
       .selectInput__placeholder {
         color: $color-font-grey-light;
       }
 
       .selectInput__clear-indicator {
-        padding: 7px 7px;
+        padding: 7px;
       }
 
       .selectInput__indicator-separator {
@@ -42,21 +48,15 @@
       }
     }
 
-    &:hover {
-      .selectInput__dropdown-indicator {
-        color: $color-brand-grey-base;
-      }
-    }
-
     &.error {
       .selectInput__control {
-        background-color: $color-base-red-50;
         border-color: $color-base-red-200;
+        background-color: $color-base-red-50;
 
         &.selectInput__control--is-focused {
-          background-color: $color-base-white;
-          border-color: $color-base-grey-600;
           outline: none;
+          border-color: $color-base-grey-600;
+          background-color: $color-base-white;
         }
       }
     }

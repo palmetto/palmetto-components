@@ -2,28 +2,28 @@
 
 .Palmetto-Button {
   position: relative;
-  padding: $size-spacing-sm $size-spacing-md;
+  transition-duration: 0.2s;
+  transition-property: background-color, border, box-shadow;
+  transition-timing-function: ease-in;
   border: none;
   border-radius: 8px;
-  color: $color-base-white;
   background-color: $color-brand-primary-base;
+  cursor: pointer;
+  padding: $size-spacing-sm $size-spacing-md;
+  line-height: 1.25; // hack to get the button to match TextInput's 44px height
+  letter-spacing: 0.2px;
+  color: $color-base-white;
   font-size: $size-font-md;
   font-weight: 700;
-  letter-spacing: .2px;
-  line-height: 1.25; // hack to get the button to match TextInput's 44px height
-  cursor: pointer;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in;
-  transition-property: background-color, border, box-shadow;
 
   &:hover {
     background-color: $color-brand-primary-dark;
   }
 
   &:disabled {
-    pointer-events: none;
-    cursor: not-allowed;
     background-color: $color-brand-primary-light;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   &.loading {

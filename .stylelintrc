@@ -1,3 +1,10 @@
 {
-  "extends": "stylelint-config-recommended"
+  "extends": [
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-concentric-order"
+  ],
+  "rules": {
+    "order/properties-alphabetical-order": null,
+    "max-nesting-depth": 4
+  }
 }

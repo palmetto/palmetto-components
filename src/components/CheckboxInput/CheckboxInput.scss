@@ -5,13 +5,13 @@
   align-items: center;
 
   &.isDisabled {
-    pointer-events: none;
     color: $color-font-grey-light;
+    pointer-events: none;
   }
 
   .input {
+    margin: 0 $size-spacing-sm 0 0;
     width: $size-spacing-lg;
     height: $size-spacing-lg;
-    margin: 0 $size-spacing-sm 0 0;
   }
 }
