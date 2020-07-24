@@ -1,3 +1,6 @@
+![Publish To NPM](https://github.com/palmetto/palmetto-components/workflows/Publish%20To%20NPM/badge.svg)
+![Chromatic](https://github.com/palmetto/palmetto-components/workflows/Chromatic/badge.svg?branch=master)
+
 # Palmetto Components
 A React component library to power all Palmetto UI.
 
