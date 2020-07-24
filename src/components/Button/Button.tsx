@@ -53,7 +53,7 @@ interface Props {
    * The size of the button
    */
   size?: 'sm' | 'md' | 'lg';
-};
+}
 
 const Button: FC<Props> = ({
   id,
