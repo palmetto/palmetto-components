@@ -7,7 +7,7 @@
   ],
   "rules": {
     "declaration-property-value-blacklist": null,
-    "max-nesting-depth": 4,
+    "max-nesting-depth": null,
     "order/properties-alphabetical-order": null,
     "selector-class-pattern": null,
     "selector-max-compound-selectors": 4
