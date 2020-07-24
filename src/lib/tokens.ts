@@ -12,6 +12,7 @@ export type PALMETTO_COLORS =
   'info' |
   'dark' |
   'light' |
+  'white' |
   'black';
 
 export type PALMETTO_FONTS =
@@ -44,3 +45,4 @@ export interface ColorVariation {
 export const PALMETTO_COLOR_VALUES = Object.values(colors.color) as ColorDictionary[];
 export const PALMETTO_FONT_SIZE_OPTIONS = Object.keys(sizes.size.font) as PALMETTO_FONTS[];
 export const PALMETTO_BRAND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
+export const PALMETTO_BRAND_COLOR_VALUES = colors.color.brand;

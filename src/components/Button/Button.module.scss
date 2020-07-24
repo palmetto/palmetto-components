@@ -1,0 +1,58 @@
+.button {
+  position: relative;
+  padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
+  border: none;
+  border-radius: var(--button-size-md-border-radius);
+  color: var(--button-color);
+  background-color: var(--button-color-background);
+  font-size: var(--button-size-md-font-size);
+  font-weight: 700;
+  letter-spacing: .2px;
+  line-height: 1.25; /* hack to get the button to match TextInput's 44px height */
+  cursor: pointer;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  transition-property: background-color, border, box-shadow;
+
+  &.sm {
+    border-radius: var(--button-size-sm-border-radius);
+    font-size: var(--button-size-sm-font-size);
+    line-height: 1.2;
+    padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
+  }
+
+  &.lg {
+    border-radius: var(--button-size-lg-border-radius);
+    font-size: var(--button-size-lg-font-size);
+    line-height: 1;
+    letter-spacing: 1px;
+    padding: var(--button-size-lg-padding-vertical) var(--button-size-lg-padding-horizontal);
+  }
+
+  &:hover {
+    background-color: var(--button-color-background-hover);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    background-color: var(--button-color-background-disabled);
+  }
+
+  &.loading {
+    .label {
+      visibility: hidden;
+    }
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
+
+.spinnerWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

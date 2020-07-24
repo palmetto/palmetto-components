@@ -2,9 +2,9 @@ import { createElement, FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
-import './Heading.scss';
-import { PALMETTO_BRAND_COLOR_OPTIONS, PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_COLOR_VALUES, PALMETTO_COLORS, PALMETTO_FONTS } from '../../lib/tokens';
+import { PALMETTO_BRAND_COLOR_OPTIONS, PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_COLORS, PALMETTO_FONTS } from '../../lib/tokens';
 import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP, HEADING_LEVELS } from './Heading.constants';
+import styles from './Heading.module.scss';
 
 /**
  * Use `Headings` as labels for pages or sections of a page that make up an interface.
@@ -48,7 +48,7 @@ const Heading: FC<Props> = ({
 
   const headingSize = size || HEADING_DEFAULT_SIZE_MAP[as];
 
-  const classes = classNames('Palmetto-Heading', className, 'heading', {
+  const classes = classNames(styles.heading, className, {
     [`font-size-${headingSize}`]: headingSize,
     [`font-color-${color}`]: color,
   });

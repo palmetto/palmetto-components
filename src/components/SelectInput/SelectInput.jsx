@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import './SelectInput.scss';
+import './SelectInput.scss'; // Not a module because it requires :global styles applied to react-select
 
 /**
  * Allows users to pick a value from predefined list of options.
@@ -124,16 +124,14 @@ const SelectInput = ({
   value,
 }) => {
   const handleChange = values => {
-    if (onChange) {
-      const simulatedEventPayload = {
-        target: {
-          name,
-          value: values,
-        },
-      };
+    const simulatedEventPayload = {
+      target: {
+        name,
+        value: values,
+      },
+    };
 
-      onChange(simulatedEventPayload);
-    }
+    onChange(simulatedEventPayload);
   };
 
   const handleFocus = e => {
@@ -144,8 +142,14 @@ const SelectInput = ({
     if (onBlur) onBlur(e);
   };
 
+  const wrapperClasses = classNames(
+    'selectInputWrapper',
+    className,
+    { disabled: isDisabled },
+  );
+
   const inputClasses = classNames(
-    'selectInput',
+    'reactSelect',
     { error },
   );
 
@@ -154,18 +158,19 @@ const SelectInput = ({
     inputId: id,
     labelText: label,
     hasError: !!error,
+    className: 'm-bottom-xs',
   };
 
   return (
     <>
-      <div className={classNames('Palmetto-SelectInput', className, { disabled: isDisabled })}>
+      <div className={wrapperClasses}>
         {label && !hideLabel && <FormLabel {...labelProps} />}
         <Select
           inputId={id}
           aria-label={label}
           aria-labelledby={label && !hideLabel ? `${id}Label` : null}
           className={inputClasses}
-          classNamePrefix="selectInput"
+          classNamePrefix="reactSelect"
           placeholder={placeholder}
           isDisabled={isDisabled}
           isMulti={isMulti}

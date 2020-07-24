@@ -1,0 +1,24 @@
+:root {
+  --button-color: var(--color-base-white);
+  --button-color-background: var(--color-brand-primary-base);
+  --button-color-background-hover: var(--color-brand-primary-dark);
+  --button-color-background-disabled: var(--color-brand-primary-light);
+
+  /* small */
+  --button-size-sm-border-radius: var(--form-control-size-sm-border-radius);
+  --button-size-sm-font-size: var(--form-control-size-sm-font-size);
+  --button-size-sm-padding-vertical: var(--size-spacing-xs);
+  --button-size-sm-padding-horizontal: var(--size-spacing-sm);
+
+  /* medium (default) */
+  --button-size-md-border-radius: var(--form-control-size-md-border-radius);
+  --button-size-md-font-size:  var(--form-control-size-md-font-size);
+  --button-size-md-padding-vertical: var(--size-spacing-sm);
+  --button-size-md-padding-horizontal: var(--size-spacing-md);
+
+  /* large */
+  --button-size-lg-border-radius: var(--form-control-size-lg-border-radius);
+  --button-size-lg-font-size:  var(--form-control-size-lg-font-size);
+  --button-size-lg-padding-vertical: var(--size-spacing-md);
+  --button-size-lg-padding-horizontal: var(--size-spacing-lg);
+}

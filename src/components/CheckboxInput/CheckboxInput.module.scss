@@ -1,0 +1,15 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+
+  &.isDisabled {
+    pointer-events: none;
+    color: var(--color-font-grey-light);
+  }
+
+  .input {
+    width: var(--size-spacing-lg);
+    height: var(--size-spacing-lg);
+    margin: 0 var(--size-spacing-sm) 0 0;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './FormLabel.scss';
+import styles from './FormLabel.module.scss';
 
 interface Props {
   /**
@@ -17,6 +17,10 @@ interface Props {
    */
   hasError?: boolean;
   /**
+   * Custom class to pass to label element.
+   */
+  className?: string;
+  /**
    * Render an asterisk after the label to mark it as required
    */
   isFieldRequired?: boolean;
@@ -27,11 +31,13 @@ const FormLabel: FC<Props> = ({
   inputId,
   isFieldRequired = false,
   labelText,
+  className = undefined,
 }) => {
   const labelClasses = classNames(
-    'Palmetto-FormLabel',
+    styles.label,
+    className,
     {
-      error: hasError,
+      [styles.error]: hasError,
     },
   );
 
@@ -50,6 +56,7 @@ const FormLabel: FC<Props> = ({
 FormLabel.propTypes = {
   inputId: PropTypes.string.isRequired,
   labelText: PropTypes.node.isRequired,
+  className: PropTypes.string,
   hasError: PropTypes.bool,
   isFieldRequired: PropTypes.bool,
 };
