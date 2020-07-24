@@ -10,6 +10,6 @@
     "max-nesting-depth": 4,
     "order/properties-alphabetical-order": null,
     "selector-class-pattern": null,
-    selector-max-compound-selectors: 4
+    "selector-max-compound-selectors": 4
   }
 }
