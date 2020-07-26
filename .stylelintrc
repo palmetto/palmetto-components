@@ -1,3 +1,15 @@
 {
-  "extends": "stylelint-config-recommended"
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-css-modules",
+    "stylelint-config-concentric-order"
+  ],
+  "rules": {
+    "declaration-property-value-blacklist": null,
+    "max-nesting-depth": null,
+    "order/properties-alphabetical-order": null,
+    "selector-class-pattern": null,
+    "selector-max-compound-selectors": 4
+  }
 }

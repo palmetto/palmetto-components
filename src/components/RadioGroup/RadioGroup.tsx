@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import './RadioGroup.scss';
+import styles from './RadioGroup.module.scss';
 
 /**
  * Allows users to pick a single option from a predefined list of two or more options.
@@ -92,31 +92,19 @@ const propTypes = {
   title: PropTypes.node,
 };
 
-// const defaultProps = {
-//   className: '',
-//   description: undefined,
-//   error: false,
-//   isDisabled: false,
-//   isRequired: false,
-//   onBlur: undefined,
-//   onFocus: undefined,
-//   selectedOption: undefined,
-//   title: undefined,
-// };
-
 const RadioGroup: FC<Props> = ({
-  className,
-  description,
-  error,
+  name,
+  onChange,
+  options,
+  className = '',
+  description = undefined,
+  error = false,
   isDisabled = false,
   isRequired = false,
-  name,
-  onBlur,
-  onChange,
-  onFocus,
-  options,
-  title,
-  selectedOption,
+  onBlur = undefined,
+  onFocus = undefined,
+  selectedOption = undefined,
+  title = undefined,
 }) => {
   const handleFocus = (event: React.FocusEvent<HTMLButtonElement>) => {
     if (onFocus) onFocus(event);
@@ -127,19 +115,22 @@ const RadioGroup: FC<Props> = ({
   };
 
   const groupClasses = classNames(
-    'radioGroup',
     className,
-    { error },
+    {
+      [styles.loading]: error,
+    },
   );
 
   const legendClasses = classNames(
-    'legend',
-    { error },
+    styles.legend,
+    {
+      [styles.loading]: error,
+    },
   );
 
   return (
     <div className={classNames('Palmetto-RadioGroup', groupClasses)}>
-      <fieldset className="fieldset">
+      <fieldset className={styles.fieldset}>
         {(title || description) && (
           <legend className={legendClasses}>
             {title}

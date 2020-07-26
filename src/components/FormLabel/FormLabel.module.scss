@@ -1,0 +1,27 @@
+.label {
+  display: block;
+  color: var(--color-font-base);
+  font-size: var(--size-font-sm);
+  font-weight: 700;
+
+  &.inline {
+    display: inline-block;
+  }
+
+  &.disabled {
+    color: var(--color-font-grey-light);
+  }
+
+  &.error {
+    color: var(--color-brand-danger-base);
+
+    &.disabled {
+      color: var(--color-brand-danger-lighter);
+    }
+  }
+
+  +input,
+  +.selectInput {
+    margin-top: var(--size-spacing-xs);
+  }
+}

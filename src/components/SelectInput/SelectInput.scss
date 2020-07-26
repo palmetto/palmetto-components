@@ -1,70 +1,75 @@
-@import '../../styles/variables.scss';
+/* The following styles required the :global tag since they need to be applied to
+react-select elements for which we do not own the markup */
 
-.Palmetto-SelectInput {
-  .selectInput {
-    .selectInput__control {
-      padding: $size-spacing-2-xs;
-      border-radius: 8px;
-      box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
-
-      .selectInput__placeholder {
-        color: $color-font-grey-light;
-      }
-
-      .selectInput__clear-indicator {
-        padding: 7px 7px;
-      }
-
-      .selectInput__indicator-separator {
-        display: none;
-      }
-
-      .selectInput__dropdown-indicator {
-        padding: 0;
-        padding-right: 2px;
-        color: $color-brand-grey-light;
-
-        svg {
-          width: 34px;
-          height: 34px;
+/* stylelint-disable */
+:global {
+  .selectInputWrapper {
+    .reactSelect {
+      &:hover {
+        .reactSelect__dropdown-indicator {
+          color: var(--form-control-focus-border-color);
         }
       }
 
-      &.selectInput__control--is-focused {
-        border-color: $color-base-grey-600;
-        box-shadow: none;
+      .reactSelect__control {
+        border-radius: var(--form-control-size-md-border-radius);
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+        padding: var(--form-control-select-padding);
+  
+        .reactSelect__placeholder {
+          color: var(--form-control-placeholder-color);
+        }
+  
+        .reactSelect__clear-indicator {
+          padding: 7px;
+        }
+  
+        .reactSelect__indicator-separator {
+          display: none;
+        }
+  
+        .reactSelect__dropdown-indicator {
+          padding: 0;
+          padding-right: 2px;
+          color: var(--form-control-select-chevron-color);
+  
+          svg {
+            width: var(--form-control-select-chevron-size);
+            height: var(--form-control-select-chevron-size);
+          }
+        }
+  
+        &.reactSelect__control--is-focused {
+          border-color: var(--form-control-focus-border-color);
+          box-shadow: none;
+        }
+  
+        &.reactSelect__control--is-disabled {
+          .reactSelect__dropdown-indicator {
+            color: var(--form-control-placeholder-color);
+          }
+        }
       }
-
-      &.selectInput__control--is-disabled {
-        .selectInput__dropdown-indicator {
-          color: $color-font-grey-light;
+  
+      &.error {
+        .reactSelect__control {
+          border-color: var(--form-control-error-border-color);
+          background-color: var(--form-control-error-background-color);
+  
+          &.reactSelect__control--is-focused {
+            outline: none;
+            border-color: var(--form-control-border-color);
+            background-color: var(--form-control-background-color);
+          }
         }
       }
     }
-
-    &:hover {
-      .selectInput__dropdown-indicator {
-        color: $color-brand-grey-base;
+  
+    &.disabled {
+      .reactSelect__control--is-disabled {
+        background-color: var(--form-control-disabled-background-color);
       }
-    }
-
-    &.error {
-      .selectInput__control {
-        background-color: $color-base-red-50;
-        border-color: $color-base-red-200;
-
-        &.selectInput__control--is-focused {
-          background-color: $color-base-white;
-          border-color: $color-base-grey-600;
-          outline: none;
-        }
-      }
-    }
-  }
-
-  &.disabled {
-    .selectInput__control--is-disabled {
-      background-color: $color-base-grey-50;
     }
   }
 }
+/* stylelint-enable */
