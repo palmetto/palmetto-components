@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FocusEvent, FC } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -68,29 +68,29 @@ interface Props {
   title?: React.ReactNode,
 };
 
-const propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    disabled: PropTypes.bool,
-  })).isRequired,
-  className: PropTypes.string,
-  description: PropTypes.node,
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  isDisabled: PropTypes.bool,
-  isRequired: PropTypes.bool,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  selectedOption: PropTypes.string,
-  title: PropTypes.node,
-};
+// const propTypes = {
+//   name: PropTypes.string.isRequired,
+//   onChange: PropTypes.func.isRequired,
+//   options: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.string.isRequired,
+//     value: PropTypes.string.isRequired,
+//     label: PropTypes.string.isRequired,
+//     disabled: PropTypes.bool,
+//   })).isRequired,
+//   className: PropTypes.string,
+//   description: PropTypes.node,
+//   error: PropTypes.oneOfType([
+//     PropTypes.bool,
+//     PropTypes.string,
+//     PropTypes.node,
+//   ]),
+//   isDisabled: PropTypes.bool,
+//   isRequired: PropTypes.bool,
+//   onBlur: PropTypes.func,
+//   onFocus: PropTypes.func,
+//   selectedOption: PropTypes.string,
+//   title: PropTypes.node,
+// };
 
 const RadioGroup: FC<Props> = ({
   name,
@@ -129,7 +129,7 @@ const RadioGroup: FC<Props> = ({
   );
 
   return (
-    <div className={classNames('Palmetto-RadioGroup', groupClasses)}>
+    <div className={classNames(styles['Palmetto-RadioGroup'], groupClasses)}>
       <fieldset className={styles.fieldset}>
         {(title || description) && (
           <legend className={legendClasses}>
@@ -173,6 +173,6 @@ const RadioGroup: FC<Props> = ({
   );
 };
 
-RadioGroup.propTypes = propTypes;
+// RadioGroup.propTypes = propTypes;
 
 export default RadioGroup;

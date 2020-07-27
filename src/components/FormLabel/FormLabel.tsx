@@ -57,9 +57,9 @@ const FormLabel: FC<Props> = ({
     styles.label,
     className,
     {
-      error: hasError,
-      disabled: isDisabled,
-      inline: displayInline,
+      [styles.error]: hasError,
+      [styles.disabled]: isDisabled,
+      [styles.inline]: displayInline,
     },
   );
 
