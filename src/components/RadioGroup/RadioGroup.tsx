@@ -134,8 +134,8 @@ const RadioGroup: FC<Props> = ({
         {(title || description) && (
           <legend className={legendClasses}>
             {title}
-            {isRequired && <span className="font-size-sm">&nbsp;*</span>}
-            {description && <div className="description">{description}</div>}
+            {isRequired && <span>&nbsp;*</span>}
+            {description && <div className={styles.description}>{description}</div>}
           </legend>
         )}
         <div className="options">
