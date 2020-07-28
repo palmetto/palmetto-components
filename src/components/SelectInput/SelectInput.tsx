@@ -1,5 +1,5 @@
 import React, { FocusEvent } from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
