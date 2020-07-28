@@ -80,6 +80,7 @@ const CheckboxInput: FC<Props> = ({
   const wrapperClasses = classNames(
     styles.checkbox,
     className,
+    { [styles.disabled]: isDisabled },
   );
 
   return (
