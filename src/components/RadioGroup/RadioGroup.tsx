@@ -27,7 +27,7 @@ interface Props {
     id: string,
     value: string,
     label: string,
-    disabled?: boolean,
+    disabled?: boolean | null,
   }[],
   /**
    * Additional classes to add
@@ -66,7 +66,7 @@ interface Props {
    * Title to be displayed above the RadioGroup
    */
   title?: React.ReactNode,
-};
+}
 
 const propTypes = {
   name: PropTypes.string.isRequired,
@@ -145,7 +145,7 @@ const RadioGroup: FC<Props> = ({
             const labelProps = {
               inputId: option.id,
               labelText: option.label,
-              isDisabled: isDisabled || option.disabled,
+              isDisabled: isDisabled || option.disabled || false,
               displayInline: true,
               hasError: !!error,
               isRadioInputLabel: true,
@@ -163,7 +163,7 @@ const RadioGroup: FC<Props> = ({
                   onChange={onChange}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
-                  disabled={isDisabled || option.disabled}
+                  disabled={isDisabled || option.disabled || false}
                 />
                 {option.label && <FormLabel {...labelProps} />}
               </div>
