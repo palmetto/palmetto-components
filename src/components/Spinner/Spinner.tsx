@@ -6,7 +6,7 @@ import styles from './Spinner.module.scss';
 
 interface Props {
   /**
-   * Custom classname to be applied to spinner container div.
+   * Custom className to be applied to spinner container div.
    */
   className?: string;
   /**
@@ -19,7 +19,7 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
 }
 
-const Spinner: React.FC<Props>= ({
+const Spinner: React.FC<Props> = ({
   color = 'dark',
   className,
   size = 'md',
@@ -58,7 +58,7 @@ const Spinner: React.FC<Props>= ({
 
 Spinner.propTypes = {
   /**
-   * Custom classname to be applied to spinner container div.
+   * Custom className to be applied to spinner container div.
    */
   className: PropTypes.string,
   /**

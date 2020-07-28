@@ -1,19 +1,27 @@
 /* The following styles required the :global tag since they need to be applied to
 react-select elements for which we do not own the markup */
+
+/* stylelint-disable */
 :global {
   .selectInputWrapper {
     .reactSelect {
+      &:hover {
+        .reactSelect__dropdown-indicator {
+          color: var(--form-control-focus-border-color);
+        }
+      }
+
       .reactSelect__control {
-        padding: var(--form-control-select-padding);
         border-radius: var(--form-control-size-md-border-radius);
-        box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+        padding: var(--form-control-select-padding);
   
         .reactSelect__placeholder {
           color: var(--form-control-placeholder-color);
         }
   
         .reactSelect__clear-indicator {
-          padding: 7px 7px;
+          padding: 7px;
         }
   
         .reactSelect__indicator-separator {
@@ -43,21 +51,15 @@ react-select elements for which we do not own the markup */
         }
       }
   
-      &:hover {
-        .reactSelect__dropdown-indicator {
-          color: var(--form-control-focus-border-color);
-        }
-      }
-  
       &.error {
         .reactSelect__control {
-          background-color: var(--form-control-error-background-color);
           border-color: var(--form-control-error-border-color);
+          background-color: var(--form-control-error-background-color);
   
           &.reactSelect__control--is-focused {
-            background-color: var(--form-control-background-color);
-            border-color: var(--form-control-border-color);
             outline: none;
+            border-color: var(--form-control-border-color);
+            background-color: var(--form-control-background-color);
           }
         }
       }
@@ -70,3 +72,4 @@ react-select elements for which we do not own the markup */
     }
   }
 }
+/* stylelint-enable */

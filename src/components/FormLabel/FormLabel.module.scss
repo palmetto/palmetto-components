@@ -1,7 +1,7 @@
 .label {
-  font-size: var(--size-font-sm);
-  color: var(--color-font-base);
   display: block;
+  color: var(--color-font-base);
+  font-size: var(--size-font-sm);
   font-weight: 700;
 
   &.error {

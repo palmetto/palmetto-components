@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { screen, render } from '@testing-library/react';
-import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
+import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_FONT_COLOR_OPTIONS } from '../../lib/tokens';
 import { HEADING_LEVELS } from './Heading.constants';
 import Heading from './Heading';
 
@@ -22,7 +22,7 @@ const headingComponentSizes = (
 );
 
 const headingComponentColors = (
-  PALMETTO_BRAND_COLOR_OPTIONS.map(color => (
+  PALMETTO_FONT_COLOR_OPTIONS.map(color => (
     <Heading color={color} key={uuid()}>
       {color}
     </Heading>
@@ -56,10 +56,10 @@ describe('Heading', () => {
 
   describe('Colors', () => {
     headingComponentColors.forEach((headingComponent, index) => {
-      test(`it renders the specified color ${PALMETTO_BRAND_COLOR_OPTIONS[index]}`, () => {
+      test(`it renders the specified color ${PALMETTO_FONT_COLOR_OPTIONS[index]}`, () => {
         render(headingComponent);
-        expect(screen.getByText(PALMETTO_BRAND_COLOR_OPTIONS[index]).classList)
-          .toContain(`font-color-${PALMETTO_BRAND_COLOR_OPTIONS[index]}`);
+        expect(screen.getByText(PALMETTO_FONT_COLOR_OPTIONS[index]).classList)
+          .toContain(`font-color-${PALMETTO_FONT_COLOR_OPTIONS[index]}`);
       });
     });
   });
