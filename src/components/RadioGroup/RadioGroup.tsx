@@ -131,7 +131,7 @@ const RadioGroup: FC<Props> = ({
   );
 
   return (
-    <div className={classNames(styles['Palmetto-RadioGroup'], groupClasses)}>
+    <div className={classNames(styles['radio-group'], groupClasses)}>
       <fieldset className={styles.fieldset}>
         {(title || description) && (
           <legend className={legendClasses}>

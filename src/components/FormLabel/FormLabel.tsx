@@ -67,7 +67,7 @@ const FormLabel: FC<Props> = ({
       [styles.error]: hasError,
       [styles.disabled]: isDisabled,
       [styles.inline]: displayInline,
-      [styles.radioInputLabel]: isRadioInputLabel,
+      [styles['radio-input-label']]: isRadioInputLabel,
     },
   );
 
