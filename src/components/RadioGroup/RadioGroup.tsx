@@ -138,7 +138,7 @@ const RadioGroup: FC<Props> = ({
             {description && <div className={styles.description}>{description}</div>}
           </legend>
         )}
-        <div className="options">
+        <div className={styles.options}>
           {options.map(option => {
             const labelProps = {
               inputId: option.id,
@@ -146,10 +146,11 @@ const RadioGroup: FC<Props> = ({
               isDisabled: isDisabled || option.disabled,
               displayInline: true,
               hasError: !!error,
+              isRadioInputLabel: true,
             };
 
             return (
-              <div className="option" key={option.id}>
+              <div className={styles.option} key={option.id}>
                 <input
                   id={option.id}
                   type="radio"

@@ -32,6 +32,10 @@ interface Props {
    * Render an asterisk after the label to mark it as required
    */
   isFieldRequired?: boolean;
+  /**
+   * Apply custom styling to labels for a radio input
+   */
+  isRadioInputLabel?: boolean;
 }
 
 const propTypes = {
@@ -42,6 +46,7 @@ const propTypes = {
   hasError: PropTypes.bool,
   isDisabled: PropTypes.bool,
   isFieldRequired: PropTypes.bool,
+  isRadioInputLabel: PropTypes.bool,
 };
 
 const FormLabel: FC<Props> = ({
@@ -52,6 +57,7 @@ const FormLabel: FC<Props> = ({
   hasError = false,
   isDisabled = false,
   isFieldRequired = false,
+  isRadioInputLabel = false,
 }) => {
   const labelClasses = classNames(
     styles.label,
@@ -60,6 +66,7 @@ const FormLabel: FC<Props> = ({
       [styles.error]: hasError,
       [styles.disabled]: isDisabled,
       [styles.inline]: displayInline,
+      [styles.radioInputLabel]: isRadioInputLabel,
     },
   );
 
@@ -70,7 +77,7 @@ const FormLabel: FC<Props> = ({
       htmlFor={inputId}
     >
       {labelText}
-      {isFieldRequired && <span className="font-size-sm">&nbsp;*</span>}
+      {isFieldRequired && <span>&nbsp;*</span>}
     </label>
   );
 };
