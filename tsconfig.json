@@ -1,24 +1,54 @@
+// {
+//   "compilerOptions": {
+//     "declaration": true,
+//     "declarationDir": "dist",
+//     "emitDeclarationOnly": true,
+//     "allowSyntheticDefaultImports": true,
+//     "target": "es5",
+//     "module": "commonjs",
+//     "moduleResolution": "node",
+//     "sourceMap": true,
+//     "jsx": "react",
+//     "lib": [
+//       "dom",
+//       "dom.iterable",
+//       "esnext"
+//     ],
+//     "strict": true,
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "esModuleInterop": true,
+//     "isolatedModules": true,
+//     "resolveJsonModule": true,
+//   },
+//   "exclude": [
+//     "node_modules",
+//     "dist"
+//   ]
+// }
 {
   "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "dist",
-    "emitDeclarationOnly": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
     "jsx": "react",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "strict": true,
-    "allowJs": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
+    // "allowJs": true,
     "resolveJsonModule": true,
+    // "declaration": true,
+//     "declarationDir": "dist",
+//     "emitDeclarationOnly": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    // "lib": [
+    //   "dom",
+    //   "dom.iterable",
+    //   "esnext"
+    // ],
+//     "strict": true,
+//     "skipLibCheck": true,
+    // "isolatedModules": true,
+//     "resolveJsonModule": true,
   },
   "exclude": [
     "node_modules",
