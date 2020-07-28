@@ -157,13 +157,13 @@ const SelectInput: FC<Props> = ({
   };
 
   const wrapperClasses = classNames(
-    'selectInputWrapper',
+    'select-input-wrapper',
     className,
     { disabled: isDisabled },
   );
 
   const inputClasses = classNames(
-    'reactSelect',
+    'react-select',
     { error },
   );
 
@@ -173,6 +173,7 @@ const SelectInput: FC<Props> = ({
     labelText: label,
     hasError: !!error,
     className: 'm-bottom-xs',
+    isDisabled,
   };
 
   return (

@@ -3,8 +3,8 @@ react-select elements for which we do not own the markup */
 
 /* stylelint-disable */
 :global {
-  .selectInputWrapper {
-    .reactSelect {
+  .select-input-wrapper {
+    .react-select {
       &:hover {
         .reactSelect__dropdown-indicator {
           color: var(--form-control-focus-border-color);

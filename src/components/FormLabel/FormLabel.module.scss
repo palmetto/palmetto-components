@@ -4,6 +4,10 @@
   font-size: var(--size-font-sm);
   font-weight: 700;
 
+  &.disabled {
+    color: var(--color-font-grey-light);
+  }
+
   &.error {
     color: var(--color-brand-danger-base);
   }

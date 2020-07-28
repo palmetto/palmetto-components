@@ -2,8 +2,7 @@
   display: flex;
   align-items: center;
 
-  &.isDisabled {
-    color: var(--color-font-grey-light);
+  &.disabled {
     pointer-events: none;
   }
 

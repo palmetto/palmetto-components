@@ -52,7 +52,7 @@ export const All = () => {
             <CheckboxInput
               id="initialStateChecked"
               isChecked={state.initialChecked}
-              label="Initial state can be set to checked."
+              label="Initial state can be set to checked"
               onChange={value => handleChange(value, 'initialChecked')}
             />
           </div>
@@ -77,7 +77,7 @@ export const All = () => {
             <CheckboxInput
               id="disabledAndUnchecked"
               isDisabled
-              label="Disabled, and unchecked."
+              label="Disabled, and unchecked"
               isChecked={state.disabledUnchecked}
               onChange={() => null}
             />
@@ -85,7 +85,7 @@ export const All = () => {
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
               id="disabledAndChecked"
-              label="Disabled, and checked."
+              label="Disabled, and checked"
               isDisabled
               isChecked={state.disabledChecked}
               onChange={() => null}
