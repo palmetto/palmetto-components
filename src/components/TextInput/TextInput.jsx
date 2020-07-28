@@ -152,7 +152,7 @@ const TextInput = ({
   };
 
   const inputClasses = classNames(
-    styles.textInput,
+    styles['text-input'],
     { [styles.error]: error },
   );
 

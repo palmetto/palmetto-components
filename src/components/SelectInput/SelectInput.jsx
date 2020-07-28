@@ -143,13 +143,13 @@ const SelectInput = ({
   };
 
   const wrapperClasses = classNames(
-    'selectInputWrapper',
+    'select-input-wrapper',
     className,
     { disabled: isDisabled },
   );
 
   const inputClasses = classNames(
-    'reactSelect',
+    'react-select',
     { error },
   );
 
