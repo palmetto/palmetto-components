@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FocusEvent, FC } from 'react';
-// import PropTypes from 'prop-types';
+import React, { FC, ChangeEvent, FocusEvent } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -23,12 +23,12 @@ interface Props {
   /**
    * Options for radio group
    */
-  options: [{
+  options: {
     id: string,
     value: string,
     label: string,
     disabled?: boolean,
-  }],
+  }[],
   /**
    * Additional classes to add
    */
@@ -53,11 +53,11 @@ interface Props {
   /**
    * Callback function to call on blur event
    */
-  onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
    * Callback function to call on focus event
    */
-  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
    * The value of selected radio input
    */
@@ -68,29 +68,31 @@ interface Props {
   title?: React.ReactNode,
 };
 
-// const propTypes = {
-//   name: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-//   options: PropTypes.arrayOf(PropTypes.shape({
-//     id: PropTypes.string.isRequired,
-//     value: PropTypes.string.isRequired,
-//     label: PropTypes.string.isRequired,
-//     disabled: PropTypes.bool,
-//   })).isRequired,
-//   className: PropTypes.string,
-//   description: PropTypes.node,
-//   error: PropTypes.oneOfType([
-//     PropTypes.bool,
-//     PropTypes.string,
-//     PropTypes.node,
-//   ]),
-//   isDisabled: PropTypes.bool,
-//   isRequired: PropTypes.bool,
-//   onBlur: PropTypes.func,
-//   onFocus: PropTypes.func,
-//   selectedOption: PropTypes.string,
-//   title: PropTypes.node,
-// };
+const propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      disabled: PropTypes.bool,
+    }).isRequired,
+  ).isRequired,
+  className: PropTypes.string,
+  description: PropTypes.node,
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
+  isDisabled: PropTypes.bool,
+  isRequired: PropTypes.bool,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  selectedOption: PropTypes.string,
+  title: PropTypes.node,
+};
 
 const RadioGroup: FC<Props> = ({
   name,
@@ -106,11 +108,11 @@ const RadioGroup: FC<Props> = ({
   selectedOption = undefined,
   title = undefined,
 }) => {
-  const handleFocus = (event: React.FocusEvent<HTMLButtonElement>) => {
+  const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
     if (onFocus) onFocus(event);
   };
 
-  const handleBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
     if (onBlur) onBlur(event);
   };
 
@@ -174,6 +176,6 @@ const RadioGroup: FC<Props> = ({
   );
 };
 
-// RadioGroup.propTypes = propTypes;
+RadioGroup.propTypes = propTypes;
 
 export default RadioGroup;
