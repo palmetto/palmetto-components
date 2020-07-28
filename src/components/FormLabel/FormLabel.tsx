@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './FormLabel.module.scss';
@@ -26,7 +26,7 @@ interface Props {
   isFieldRequired?: boolean;
 }
 
-const FormLabel: FC<Props> = ({
+const FormLabel: React.FC<Props> = ({
   hasError = false,
   inputId,
   isFieldRequired = false,

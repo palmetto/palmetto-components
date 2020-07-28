@@ -1,4 +1,4 @@
-import { createElement, FC } from 'react';
+import React, { createElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
@@ -42,9 +42,10 @@ interface Props {
    * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json)
    */
   size?: PALMETTO_FONT_SIZE;
+  children?: React.ReactNode;
 }
 
-const Heading: FC<Props> = ({
+const Heading: React.FC<Props> = ({
   as = 'h4',
   className,
   children,
@@ -68,6 +69,7 @@ Heading.propTypes = {
   className: PropTypes.string,
   color: PropTypes.oneOf(PALMETTO_FONT_COLOR_OPTIONS),
   size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
+  children: PropTypes.node,
 };
 
 export default Heading;
