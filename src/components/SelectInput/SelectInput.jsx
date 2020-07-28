@@ -159,6 +159,7 @@ const SelectInput = ({
     labelText: label,
     hasError: !!error,
     className: 'm-bottom-xs',
+    isDisabled,
   };
 
   return (
