@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { PALMETTO_BRAND_COLOR_OPTIONS, PALMETTO_BRAND_COLOR_VALUES, PALMETTO_COLORS } from '../../lib/tokens';
@@ -19,7 +19,7 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
 }
 
-const Spinner: React.FC<Props> = ({
+const Spinner: FC<Props> = ({
   color = 'dark',
   className,
   size = 'md',
