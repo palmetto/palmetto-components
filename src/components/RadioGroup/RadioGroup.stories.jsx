@@ -11,30 +11,22 @@ export default {
 };
 
 export const All = () => {
-  const defaultOptions = [
-    {
-      id: 'chocolate',
-      value: 'chocolate',
-      label: 'Chocolate',
-    },
-    {
-      id: 'strawberry',
-      value: 'strawberry',
-      label: 'Strawberry',
-    },
-    {
-      id: 'vanilla',
-      value: 'vanilla',
-      label: 'Vanilla',
-    },
-  ];
-
-  const disabledOption = {
-    id: 'peach',
-    value: 'peach',
-    label: 'Peach',
+  const preSelectedOptions = [{
+    id: 'car',
+    value: 'car',
+    label: 'Car',
+  },
+  {
+    id: 'truck',
+    value: 'truck',
+    label: 'Truck',
+  },
+  {
+    id: 'motorcycle',
+    value: 'motorcycle',
+    label: 'Motorcycle',
     disabled: true,
-  };
+  }];
 
   const store = new Store({
     noTitleOrDescription: '',
@@ -61,7 +53,21 @@ export const All = () => {
             <RadioGroup
               name="noTitleOrDescription"
               onChange={event => handleChange(event.target.value, 'noTitleOrDescription')}
-              options={defaultOptions}
+              options={[{
+                id: 'chocolate',
+                value: 'chocolate',
+                label: 'Chocolate',
+              },
+              {
+                id: 'strawberry',
+                value: 'strawberry',
+                label: 'Strawberry',
+              },
+              {
+                id: 'vanilla',
+                value: 'vanilla',
+                label: 'Vanilla',
+              }]}
               selectedOption={state.noTitleOrDescription}
             />
           </div>
@@ -70,7 +76,21 @@ export const All = () => {
               title="With Title"
               name="withTitle"
               onChange={event => handleChange(event.target.value, 'withTitle')}
-              options={defaultOptions}
+              options={[{
+                id: 'purple',
+                value: 'purple',
+                label: 'Purple',
+              },
+              {
+                id: 'green',
+                value: 'green',
+                label: 'Green',
+              },
+              {
+                id: 'blue',
+                value: 'blue',
+                label: 'Blue',
+              }]}
               selectedOption={state.withTitle}
             />
           </div>
@@ -80,7 +100,16 @@ export const All = () => {
               description="A helpful description"
               name="withTitleAndDescription"
               onChange={event => handleChange(event.target.value, 'withTitleAndDescription')}
-              options={defaultOptions}
+              options={[{
+                id: 'light',
+                value: 'light',
+                label: 'Light',
+              },
+              {
+                id: 'dark',
+                value: 'dark',
+                label: 'Dark',
+              }]}
               selectedOption={state.withTitleAndDescription}
             />
           </div>
@@ -89,7 +118,16 @@ export const All = () => {
               title="Required"
               name="required"
               onChange={event => handleChange(event.target.value, 'required')}
-              options={defaultOptions}
+              options={[{
+                id: 'cat',
+                value: 'cat',
+                label: 'Cat',
+              },
+              {
+                id: 'dog',
+                value: 'dog',
+                label: 'Dog',
+              }]}
               selectedOption={state.required}
               isRequired
             />
@@ -99,8 +137,8 @@ export const All = () => {
               title="Pre-selected Option"
               name="preSelectedOption"
               onChange={event => handleChange(event.target.value, 'preSelectedOption')}
-              options={defaultOptions}
-              selectedOption={state.preSelectedOption || defaultOptions[1].value}
+              options={preSelectedOptions}
+              selectedOption={state.preSelectedOption || preSelectedOptions[1].value}
             />
           </div>
           <div style={{ marginBottom: '1rem' }}>
@@ -108,7 +146,22 @@ export const All = () => {
               title="Disabled Option"
               name="disabledOption"
               onChange={event => handleChange(event.target.value, 'disabledOption')}
-              options={defaultOptions.concat(disabledOption)}
+              options={[{
+                id: 'short',
+                value: 'short',
+                label: 'Short',
+              },
+              {
+                id: 'tall',
+                value: 'tall',
+                label: 'Tall',
+              },
+              {
+                id: 'gigantic',
+                value: 'gigantic',
+                label: 'Gigantic',
+                disabled: true,
+              }]}
               selectedOption={state.disabledOption}
             />
           </div>
@@ -117,7 +170,22 @@ export const All = () => {
               title="Disabled Group"
               name="disabledGroup"
               onChange={event => handleChange(event.target.value, 'disabledGroup')}
-              options={[...defaultOptions, disabledOption]}
+              options={[{
+                id: 'react',
+                value: 'react',
+                label: 'React',
+              },
+              {
+                id: 'angular',
+                value: 'angular',
+                label: 'Angular',
+              },
+              {
+                id: 'vue',
+                value: 'vue',
+                label: 'Vue',
+                disabled: true,
+              }]}
               selectedOption={state.disabledGroup}
               isDisabled
             />
@@ -127,7 +195,22 @@ export const All = () => {
               title="Error"
               name="error"
               onChange={event => handleChange(event.target.value, 'error')}
-              options={[...defaultOptions, disabledOption]}
+              options={[{
+                id: 'apple',
+                value: 'apple',
+                label: 'Apple',
+              },
+              {
+                id: 'orange',
+                value: 'orange',
+                label: 'Orange',
+              },
+              {
+                id: 'banana',
+                value: 'banana',
+                label: 'Banana',
+                disabled: true,
+              }]}
               selectedOption={state.error}
               error
             />
@@ -137,7 +220,16 @@ export const All = () => {
               title="Error with Validation Message"
               name="errorWithMessage"
               onChange={event => handleChange(event.target.value, 'errorWithMessage')}
-              options={defaultOptions}
+              options={[{
+                id: 'narrow',
+                value: 'narrow',
+                label: 'Narrow',
+              },
+              {
+                id: 'wide',
+                value: 'wide',
+                label: 'Wide',
+              }]}
               selectedOption={state.errorWithMessage}
               error="Helpful validation message"
             />

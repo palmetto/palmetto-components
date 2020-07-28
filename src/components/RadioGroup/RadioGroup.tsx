@@ -126,7 +126,7 @@ const RadioGroup: FC<Props> = ({
   const legendClasses = classNames(
     styles.legend,
     {
-      [styles.loading]: error,
+      [styles.error]: error,
     },
   );
 
