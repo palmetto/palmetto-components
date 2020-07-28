@@ -9,7 +9,8 @@
     "declaration-property-value-blacklist": null,
     "max-nesting-depth": null,
     "order/properties-alphabetical-order": null,
-    "selector-class-pattern": null,
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
+    "selector-id-pattern": "^[a-z][a-zA-Z0-9]+$",
     "selector-max-compound-selectors": 4
   }
 }
