@@ -1,4 +1,4 @@
-import React, { FocusEvent } from 'react';
+import React, { FocusEvent, FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
@@ -119,7 +119,7 @@ const propTypes = {
   ]),
 };
 
-const SelectInput: React.FC<Props> = ({
+const SelectInput: FC<Props> = ({
   id,
   label,
   className,

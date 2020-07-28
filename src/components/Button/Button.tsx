@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
@@ -55,7 +55,7 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
 }
 
-const Button: React.FC<Props> = ({
+const Button: FC<Props> = ({
   id,
   type = 'button',
   className = '',

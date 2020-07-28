@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FocusEvent } from 'react';
+import React, { ChangeEvent, FocusEvent, FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -53,7 +53,7 @@ interface Props {
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 }
 
-const CheckboxInput: React.FC<Props> = ({
+const CheckboxInput: FC<Props> = ({
   id,
   onChange,
   label,

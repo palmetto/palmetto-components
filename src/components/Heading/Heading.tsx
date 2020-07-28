@@ -1,4 +1,4 @@
-import React, { createElement } from 'react';
+import React, { createElement, FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
@@ -45,7 +45,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Heading: React.FC<Props> = ({
+const Heading: FC<Props> = ({
   as = 'h4',
   className,
   children,
