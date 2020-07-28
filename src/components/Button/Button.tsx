@@ -76,7 +76,7 @@ const Button: FC<Props> = ({
     className,
     {
       [styles.loading]: isLoading,
-      [styles.fullWidth]: fullWidth,
+      [styles['full-width']]: fullWidth,
       [styles.sm]: size === 'sm',
       [styles.lg]: size === 'lg',
     },
@@ -97,7 +97,7 @@ const Button: FC<Props> = ({
   const content = (
     <>
       {isLoading && (
-        <Spinner color="white" className={styles.spinnerWrapper} />
+        <Spinner color="white" className={styles['spinner-wrapper']} />
       )}
       <span className={styles.label}>{children}</span>
     </>

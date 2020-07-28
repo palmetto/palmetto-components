@@ -8,7 +8,7 @@
     display: inline-block;
   }
 
-  &.radioInputLabel {
+  &.radio-input-label {
     font-weight: 400;
   }
 
@@ -25,7 +25,7 @@
   }
 
   +input,
-  +.selectInput {
+  +.select-input {
     margin-top: var(--size-spacing-xs);
   }
 }
