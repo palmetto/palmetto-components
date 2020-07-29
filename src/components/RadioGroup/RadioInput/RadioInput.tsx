@@ -1,6 +1,5 @@
 import React, { FC, ChangeEvent, FocusEvent } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import FormLabel from '../../FormLabel/FormLabel';
 import styles from './RadioInput.module.scss';
 
