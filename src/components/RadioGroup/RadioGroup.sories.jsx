@@ -50,7 +50,7 @@ export const All = () => {
       {state => (
         <div style={{ maxWidth: '400px' }}>
           <div style={{ marginBottom: '1rem' }}>
-            <RadioGroup
+            {/* <RadioGroup
               name="noTitleOrDescription"
               onChange={event => handleChange(event.target.value, 'noTitleOrDescription')}
               options={[{
@@ -69,7 +69,7 @@ export const All = () => {
                 label: 'Vanilla',
               }]}
               selectedOption={state.noTitleOrDescription}
-            />
+            /> */}
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <RadioGroup

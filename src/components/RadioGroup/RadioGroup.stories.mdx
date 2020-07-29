@@ -1,0 +1,46 @@
+import RadioGroup from './RadioGroup';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { useState } from 'react';
+
+<Meta
+  title="Components/RadioGroup"
+  component={RadioGroup}
+  decorators={[withA11y]}
+/>
+
+# RadioGroup
+
+<Preview isExpanded>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <RadioGroup
+          name="noTitleOrDescription"
+          onChange={event => setValue(event.target.value)}
+          options={[{
+            id: 'chocolate',
+            value: 'chocolate',
+            label: 'Chocolate',
+          },
+          {
+            id: 'strawberry',
+            value: 'strawberry',
+            label: 'Strawberry',
+          },
+          {
+            id: 'vanilla',
+            value: 'vanilla',
+            label: 'Vanilla',
+          }]}
+          selectedOption={value}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Props
+<Props of={RadioGroup} />
