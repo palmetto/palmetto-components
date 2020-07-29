@@ -1,0 +1,32 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
+import { PALMETTO_BREAKPOINT_OPTIONS, PALMETTO_BREAKPOINT_VALUES } from '../lib/tokens';
+
+<Meta
+  title="Design Tokens/Breakpoints"
+/>
+
+# Breakpoints
+
+Palmetto components follow a "mobile-first" approach, where styles are set with mobile devices considered first. Then styling adjustments are made as each minimum viewport width &mdash; the breakpoint &mdash; is reached.
+
+The following breakpoints are used in utility classes, but you can use them to modify your application depending on the user's viewport size.
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>value</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {PALMETTO_BREAKPOINT_OPTIONS.map((radius, i) => (
+      <tr key={i}>
+        <td><code>{`size-breakpoint-${radius}`}</code></td>
+        <td>{PALMETTO_BREAKPOINT_VALUES[i].value}</td>
+        <td>{PALMETTO_BREAKPOINT_VALUES[i].original.comment}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
