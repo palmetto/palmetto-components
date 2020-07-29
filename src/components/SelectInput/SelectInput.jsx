@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import './SelectInput.scss'; // Not a module because it requires :global styles applied to react-select
+import styles from './SelectInput.module.scss'; // Not a module because it requires :global styles applied to react-select
 
 /**
  * Allows users to pick a value from predefined list of options.
@@ -145,12 +145,12 @@ const SelectInput = ({
   const wrapperClasses = classNames(
     'selectInputWrapper',
     className,
-    { disabled: isDisabled },
+    { [styles.disabled]: isDisabled },
   );
 
   const inputClasses = classNames(
     'reactSelect',
-    { error },
+    { [styles.error]: error },
   );
 
   const labelProps = {
@@ -162,29 +162,27 @@ const SelectInput = ({
   };
 
   return (
-    <>
-      <div className={wrapperClasses}>
-        {label && !hideLabel && <FormLabel {...labelProps} />}
-        <Select
-          inputId={id}
-          aria-label={label}
-          aria-labelledby={label && !hideLabel ? `${id}Label` : null}
-          className={inputClasses}
-          classNamePrefix="reactSelect"
-          placeholder={placeholder}
-          isDisabled={isDisabled}
-          isMulti={isMulti}
-          name={name}
-          autoFocus={autoFocus}
-          options={options}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          value={value}
-        />
-      </div>
+    <div className={wrapperClasses}>
+      {label && !hideLabel && <FormLabel {...labelProps} />}
+      <Select
+        inputId={id}
+        aria-label={label}
+        aria-labelledby={label && !hideLabel ? `${id}Label` : null}
+        className={inputClasses}
+        classNamePrefix="reactSelect"
+        placeholder={placeholder}
+        isDisabled={isDisabled}
+        isMulti={isMulti}
+        name={name}
+        autoFocus={autoFocus}
+        options={options}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        value={value}
+      />
       {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
-    </>
+    </div>
   );
 };
 

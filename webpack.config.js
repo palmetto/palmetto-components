@@ -43,17 +43,6 @@ module.exports = {
           'css-loader',
           // 'postcss-loader',
           'sass-loader',
-          // {
-          //   loader: 'sass-resources-loader',
-          //   options: {
-          //     // Provide path to the file with resources
-          //     resources: [
-          //       path.join(__dirname, '/src/styles/variables/index.scss'),
-          //       path.join(__dirname, '/src/styles/globals/utilities.scss'),
-          //       path.join(__dirname, './src/styles/reset.scss'),
-          //     ],
-          //   },
-          // },
         ],
         exclude: /\.module\.scss$/,
       },
@@ -70,17 +59,6 @@ module.exports = {
           },
           // 'postcss-loader',
           'sass-loader',
-          // {
-          //   loader: 'sass-resources-loader',
-          //   options: {
-          //     // Provide path to the file with resources
-          //     resources: [
-          //       path.join(__dirname, '/src/styles/variables/index.scss'),
-          //       path.join(__dirname, '/src/styles/globals/utilities.scss'),
-          //       path.join(__dirname, './src/styles/reset.scss'),
-          //     ],
-          //   },
-          // },
         ],
         include: /\.module\.scss$/,
       },
