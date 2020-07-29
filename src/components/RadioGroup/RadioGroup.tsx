@@ -108,14 +108,6 @@ const RadioGroup: FC<Props> = ({
   selectedOption = undefined,
   title = undefined,
 }) => {
-  const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
-    if (onFocus) onFocus(event);
-  };
-
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    if (onBlur) onBlur(event);
-  };
-
   const groupClasses = classNames(
     className,
     {
