@@ -25,7 +25,7 @@ interface Props {
    */
   hasError?: boolean;
   /**
-   * Grey out label if associated control is disabled
+   * Mark the label has disabled
    */
   isDisabled?: boolean,
   /**
