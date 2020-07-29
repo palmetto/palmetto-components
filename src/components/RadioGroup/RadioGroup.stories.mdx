@@ -36,7 +36,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       return (
         <RadioGroup
           name="noTitleOrDescription"
-          selectedOption={value}
+          value={value}
           onChange={event => setValue(event.target.value)}
           options={options}
         />
@@ -72,7 +72,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
           title="With Title"
           name="withTitle"
           onChange={event => setValue(event.target.value)}
-          selectedOption={value}
+          value={value}
           options={options}
         />
       );
@@ -100,7 +100,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
           description="A helpful description"
           name="withTitleAndDescription"
           onChange={event => setValue(event.target.value)}
-          selectedOption={value}
+          value={value}
           options={options}
         />
       );
@@ -127,7 +127,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
           title="Required"
           name="required"
           onChange={event => setValue(event.target.value)}
-          selectedOption={value}
+          value={value}
           isRequired
           options={options}
         />
@@ -158,9 +158,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       return (
         <RadioGroup
           title="Pre-selected Option"
-          name="preSelectedOption"
+          name="prevalue"
           onChange={event => setValue(event.target.value)}
-          selectedOption={value || options[1].value}
+          value={value || options[1].value}
           options={options}
         />
       );
@@ -193,7 +193,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
           title="Disabled Option"
           name="disabledOption"
           onChange={event => setValue(event.target.value)}
-          selectedOption={value}
+          value={value}
           options={options}
         />
       );
@@ -226,7 +226,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
           title="Disabled Group"
           name="disabledGroup"
           onChange={event => setValue(event.target.value)}
-          selectedOption={value}
+          value={value}
           isDisabled
           options={options}
         />
@@ -261,7 +261,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
           name="error"
           onChange={event => setValue(event.target.value)}
           error
-          selectedOption={value}
+          value={value}
           options={options}
         />
       );
@@ -289,7 +289,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
           name="errorWithMessage"
           onChange={event => setValue(event.target.value)}
           error="Helpful validation message"
-          selectedOption={value}
+          value={value}
           options={options}
         />
       );
