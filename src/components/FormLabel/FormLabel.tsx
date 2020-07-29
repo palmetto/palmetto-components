@@ -13,13 +13,17 @@ interface Props {
    */
   labelText: React.ReactNode;
   /**
-   * Mark the label has invalid
-   */
-  hasError?: boolean;
-  /**
    * Custom class to pass to label element.
    */
   className?: string;
+  /**
+   * Mark the label has invalid
+   */
+  hasError?: boolean;
+   /**
+   * Mark the label has disabled
+   */
+  isDisabled?: boolean;
   /**
    * Render an asterisk after the label to mark it as required
    */
@@ -27,16 +31,18 @@ interface Props {
 }
 
 const FormLabel: FC<Props> = ({
-  hasError = false,
   inputId,
-  isFieldRequired = false,
   labelText,
   className = undefined,
+  hasError = false,
+  isDisabled = false,
+  isFieldRequired = false,
 }) => {
   const labelClasses = classNames(
     styles.label,
     className,
     {
+      [styles.disabled]: isDisabled,
       [styles.error]: hasError,
     },
   );
@@ -58,6 +64,7 @@ FormLabel.propTypes = {
   labelText: PropTypes.node.isRequired,
   className: PropTypes.string,
   hasError: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   isFieldRequired: PropTypes.bool,
 };
 
