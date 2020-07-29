@@ -133,7 +133,7 @@ const RadioGroup: FC<Props> = ({
           </legend>
         )}
         <div className={styles.options}>
-          {options.map(option => (
+          {options && options.map(option => (
             <RadioInput
               key={option.id}
               name={name}
