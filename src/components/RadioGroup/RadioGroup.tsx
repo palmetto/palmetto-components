@@ -135,6 +135,7 @@ const RadioGroup: FC<Props> = ({
         <div className={styles.options}>
           {options.map(option => (
             <RadioInput
+              key={option.id}
               name={name}
               onChange={onChange}
               option={option}

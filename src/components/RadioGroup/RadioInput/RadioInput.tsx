@@ -63,7 +63,7 @@ const propTypes = {
     PropTypes.node,
   ]),
   isDisabled: PropTypes.bool,
-  isSelected: false,
+  isSelected: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
 };
