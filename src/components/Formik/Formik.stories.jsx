@@ -73,6 +73,10 @@ export const FormikForm = () => {
     }, 2000);
   };
 
+  const formatOutput = (values, isSubmitting) => {
+    return { ...values, isSubmitting };
+  };
+
   return (
     <div
       style={{
@@ -185,7 +189,9 @@ export const FormikForm = () => {
               />
             </div>
             <Button type="submit" isLoading={isSubmitting}>Submit</Button>
-            <pre>{JSON.stringify(values, isSubmitting, null, 2)}</pre>
+            <pre>
+              {JSON.stringify(formatOutput(values, isSubmitting), undefined, 2)}
+            </pre>
           </Form>
         )}
       />
