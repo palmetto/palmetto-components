@@ -59,13 +59,13 @@ interface Props {
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
-   * The value of selected radio input
-   */
-  selectedOption?: string,
-  /**
    * Title to be displayed above the RadioGroup
    */
   title?: React.ReactNode,
+  /**
+   * The value of selected radio input
+   */
+  value?: string,
 }
 
 const propTypes = {
@@ -90,8 +90,8 @@ const propTypes = {
   isRequired: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
-  selectedOption: PropTypes.string,
   title: PropTypes.node,
+  value: PropTypes.string,
 };
 
 const RadioGroup: FC<Props> = ({
@@ -105,8 +105,8 @@ const RadioGroup: FC<Props> = ({
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
-  selectedOption = undefined,
   title = undefined,
+  value = undefined,
 }) => {
   const groupClasses = classNames(
     className,
@@ -140,7 +140,7 @@ const RadioGroup: FC<Props> = ({
               option={option}
               error={error}
               isDisabled={isDisabled || option.disabled || false}
-              isSelected={selectedOption === option.value}
+              isSelected={value === option.value}
               onBlur={onBlur}
               onFocus={onFocus}
             />
