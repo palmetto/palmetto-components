@@ -2,4 +2,8 @@
   display: flex;
   align-items: center;
   margin-top: var(--size-spacing-xs);
+
+  .input {
+    margin: 0 var(--size-spacing-xs) 0 var(--size-spacing-2-xs);
+  }
 }
