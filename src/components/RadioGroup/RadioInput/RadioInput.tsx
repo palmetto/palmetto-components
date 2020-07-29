@@ -86,31 +86,37 @@ const RadioInput: FC<Props> = ({
     if (onBlur) onBlur(event);
   };
 
-  const labelProps = {
-    inputId: option.id,
-    labelText: option.label,
-    isDisabled,
-    displayInline: true,
-    hasError: !!error,
-    isRadioInputLabel: true,
+  const generateLabelProps = () => {
+    return {
+      inputId: option.id,
+      labelText: option.label,
+      isDisabled,
+      displayInline: true,
+      hasError: !!error,
+      isRadioInputLabel: true,
+    };
   };
 
   return (
-    <div className={styles.option} key={option.id}>
-      <input
-        id={option.id}
-        type="radio"
-        name={name}
-        className={styles.input}
-        value={option.value}
-        checked={isSelected}
-        onChange={onChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        disabled={isDisabled}
-      />
-      {option.label && <FormLabel {...labelProps} />}
-    </div>
+    <>
+      {option && (
+        <div className={styles.option} key={option.id}>
+          <input
+            id={option.id}
+            type="radio"
+            name={name}
+            className={styles.input}
+            value={option.value}
+            checked={isSelected}
+            onChange={onChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            disabled={isDisabled}
+          />
+          {option.label && <FormLabel {...generateLabelProps()} />}
+        </div>
+      )}
+    </>
   );
 };
 

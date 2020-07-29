@@ -48,21 +48,21 @@ describe('RadioInput', () => {
       });
     });
 
-    // describe('Required option', () => {
-    //   test('Throws error if required prop "option" is not supplied to component', () => {
-    //     console.error = jest.fn(); // eslint-disable-line no-console
-    //     render(
-    //       <RadioInput
-    //         name="testGroup"
-    //         onChange={() => null}
-    //       />,
-    //     );
+    describe('Required option', () => {
+      test('Throws error if required prop "option" is not supplied to component', () => {
+        console.error = jest.fn(); // eslint-disable-line no-console
+        render(
+          <RadioInput
+            name="testGroup"
+            onChange={() => null}
+          />,
+        );
 
-    //     expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-    //     expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-    //       .toContain('Failed prop type: The prop `option`');
-    //   });
-    // });
+        expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
+        expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
+          .toContain('Failed prop type: The prop `option`');
+      });
+    });
   });
 
   describe('Callback Handling', () => {
