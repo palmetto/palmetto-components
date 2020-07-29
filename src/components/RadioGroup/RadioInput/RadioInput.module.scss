@@ -1,0 +1,39 @@
+.radio-group {
+  input {
+    margin: 0 var(--size-spacing-xs) 0 var(--size-spacing-2-xs);
+  }
+
+  .fieldset {
+    margin: 0;
+    border: none;
+    padding: 0;
+    line-height: 1.25;
+
+    .legend {
+      display: block;
+      line-height: 1.25;
+      color: var(--color-font-base);
+      font-size: var(--size-font-sm);
+      font-weight: 700;
+
+      .description {
+        margin-top: var(--size-spacing-xs);
+        font-weight: 400;
+      }
+
+      &.error {
+        color: var(--color-brand-danger-base);
+      }
+    }
+
+    .options {
+      margin-top: var(--size-spacing-md);
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      margin-top: var(--size-spacing-xs);
+    }
+  }
+}

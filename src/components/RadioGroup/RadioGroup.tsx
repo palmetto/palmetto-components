@@ -1,7 +1,7 @@
 import React, { FC, ChangeEvent, FocusEvent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import FormLabel from '../FormLabel/FormLabel';
+import RadioInput from './RadioInput/RadioInput';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './RadioGroup.module.scss';
 
@@ -141,34 +141,18 @@ const RadioGroup: FC<Props> = ({
           </legend>
         )}
         <div className={styles.options}>
-          {options.map(option => {
-            const labelProps = {
-              inputId: option.id,
-              labelText: option.label,
-              isDisabled: isDisabled || option.disabled || false,
-              displayInline: true,
-              hasError: !!error,
-              isRadioInputLabel: true,
-            };
-
-            return (
-              <div className={styles.option} key={option.id}>
-                <input
-                  id={option.id}
-                  type="radio"
-                  name={name}
-                  className="radioInput"
-                  value={option.value}
-                  checked={selectedOption === option.value}
-                  onChange={onChange}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  disabled={isDisabled || option.disabled || false}
-                />
-                {option.label && <FormLabel {...labelProps} />}
-              </div>
-            );
-          })}
+          {options.map(option => (
+            <RadioInput
+              name={name}
+              onChange={onChange}
+              option={option}
+              error={error}
+              isDisabled={isDisabled || option.disabled || false}
+              isSelected={selectedOption === option.value}
+              onBlur={onBlur}
+              onFocus={onFocus}
+            />
+          ))}
         </div>
       </fieldset>
       {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
