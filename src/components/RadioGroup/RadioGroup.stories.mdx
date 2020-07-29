@@ -16,26 +16,27 @@ import { useState } from 'react';
   <Story name="Default">
     {() => {
       const [value, setValue] = useState(null);
+      const options = [{
+        id: 'chocolate',
+        value: 'chocolate',
+        label: 'Chocolate',
+      },
+      {
+        id: 'strawberry',
+        value: 'strawberry',
+        label: 'Strawberry',
+      },
+      {
+        id: 'vanilla',
+        value: 'vanilla',
+        label: 'Vanilla',
+      }];
       return (
         <RadioGroup
           name="noTitleOrDescription"
           selectedOption={value}
           onChange={event => setValue(event.target.value)}
-          options={[{
-            id: 'chocolate',
-            value: 'chocolate',
-            label: 'Chocolate',
-          },
-          {
-            id: 'strawberry',
-            value: 'strawberry',
-            label: 'Strawberry',
-          },
-          {
-            id: 'vanilla',
-            value: 'vanilla',
-            label: 'Vanilla',
-          }]}
+          options={options}
         />
       );
     }}
@@ -49,27 +50,28 @@ import { useState } from 'react';
   <Story name="With Title">
     {() => {
       const [value, setValue] = useState(null);
+      const options = [{
+        id: 'purple',
+        value: 'purple',
+        label: 'Purple',
+      },
+      {
+        id: 'green',
+        value: 'green',
+        label: 'Green',
+      },
+      {
+        id: 'blue',
+        value: 'blue',
+        label: 'Blue',
+      }];
       return (
         <RadioGroup
           title="With Title"
           name="withTitle"
           onChange={event => setValue(event.target.value)}
           selectedOption={value}
-          options={[{
-            id: 'purple',
-            value: 'purple',
-            label: 'Purple',
-          },
-          {
-            id: 'green',
-            value: 'green',
-            label: 'Green',
-          },
-          {
-            id: 'blue',
-            value: 'blue',
-            label: 'Blue',
-          }]}
+          options={options}
         />
       );
     }}
@@ -80,6 +82,16 @@ import { useState } from 'react';
   <Story name="With Title and Description">
     {() => {
       const [value, setValue] = useState(null);
+      const options = [{
+        id: 'light',
+        value: 'light',
+        label: 'Light',
+      },
+      {
+        id: 'dark',
+        value: 'dark',
+        label: 'Dark',
+      }];
       return (
         <RadioGroup
           title="With Title and Description"
@@ -87,16 +99,7 @@ import { useState } from 'react';
           name="withTitleAndDescription"
           onChange={event => setValue(event.target.value)}
           selectedOption={value}
-          options={[{
-            id: 'light',
-            value: 'light',
-            label: 'Light',
-          },
-          {
-            id: 'dark',
-            value: 'dark',
-            label: 'Dark',
-          }]}
+          options={options}
         />
       );
     }}
@@ -107,6 +110,16 @@ import { useState } from 'react';
   <Story name="Required">
     {() => {
       const [value, setValue] = useState(null);
+      const options = [{
+        id: 'cat',
+        value: 'cat',
+        label: 'Cat',
+      },
+      {
+        id: 'dog',
+        value: 'dog',
+        label: 'Dog',
+      }];
       return (
         <RadioGroup
           title="Required"
@@ -114,16 +127,7 @@ import { useState } from 'react';
           onChange={event => setValue(event.target.value)}
           selectedOption={value}
           isRequired
-          options={[{
-            id: 'cat',
-            value: 'cat',
-            label: 'Cat',
-          },
-          {
-            id: 'dog',
-            value: 'dog',
-            label: 'Dog',
-          }]}
+          options={options}
         />
       );
     }}
@@ -166,28 +170,29 @@ import { useState } from 'react';
   <Story name="Disabled Option">
     {() => {
       const [value, setValue] = useState(null);
+      const options = [{
+        id: 'short',
+        value: 'short',
+        label: 'Short',
+      },
+      {
+        id: 'tall',
+        value: 'tall',
+        label: 'Tall',
+      },
+      {
+        id: 'gigantic',
+        value: 'gigantic',
+        label: 'Gigantic',
+        disabled: true,
+      }];
       return (
         <RadioGroup
           title="Disabled Option"
           name="disabledOption"
           onChange={event => setValue(event.target.value)}
           selectedOption={value}
-          options={[{
-            id: 'short',
-            value: 'short',
-            label: 'Short',
-          },
-          {
-            id: 'tall',
-            value: 'tall',
-            label: 'Tall',
-          },
-          {
-            id: 'gigantic',
-            value: 'gigantic',
-            label: 'Gigantic',
-            disabled: true,
-          }]}
+          options={options}
         />
       );
     }}
@@ -198,6 +203,22 @@ import { useState } from 'react';
   <Story name="Disabled Group">
     {() => {
       const [value, setValue] = useState(null);
+      const options = [{
+        id: 'react',
+        value: 'react',
+        label: 'React',
+      },
+      {
+        id: 'angular',
+        value: 'angular',
+        label: 'Angular',
+      },
+      {
+        id: 'vue',
+        value: 'vue',
+        label: 'Vue',
+        disabled: true,
+      }];
       return (
         <RadioGroup
           title="Disabled Group"
@@ -205,22 +226,7 @@ import { useState } from 'react';
           onChange={event => setValue(event.target.value)}
           selectedOption={value}
           isDisabled
-          options={[{
-            id: 'react',
-            value: 'react',
-            label: 'React',
-          },
-          {
-            id: 'angular',
-            value: 'angular',
-            label: 'Angular',
-          },
-          {
-            id: 'vue',
-            value: 'vue',
-            label: 'Vue',
-            disabled: true,
-          }]}
+          options={options}
         />
       );
     }}
@@ -231,6 +237,22 @@ import { useState } from 'react';
   <Story name="Error">
     {() => {
       const [value, setValue] = useState(null);
+      const options = [{
+        id: 'apple',
+        value: 'apple',
+        label: 'Apple',
+      },
+      {
+        id: 'orange',
+        value: 'orange',
+        label: 'Orange',
+      },
+      {
+        id: 'banana',
+        value: 'banana',
+        label: 'Banana',
+        disabled: true,
+      }];
       return (
         <RadioGroup
           title="Error"
@@ -238,22 +260,7 @@ import { useState } from 'react';
           onChange={event => setValue(event.target.value)}
           error
           selectedOption={value}
-          options={[{
-            id: 'apple',
-            value: 'apple',
-            label: 'Apple',
-          },
-          {
-            id: 'orange',
-            value: 'orange',
-            label: 'Orange',
-          },
-          {
-            id: 'banana',
-            value: 'banana',
-            label: 'Banana',
-            disabled: true,
-          }]}
+          options={options}
         />
       );
     }}
@@ -264,6 +271,16 @@ import { useState } from 'react';
   <Story name="Error with Validation Message">
     {() => {
       const [value, setValue] = useState(null);
+      const options = [{
+        id: 'narrow',
+        value: 'narrow',
+        label: 'Narrow',
+      },
+      {
+        id: 'wide',
+        value: 'wide',
+        label: 'Wide',
+      }];
       return (
         <RadioGroup
           title="Error with Validation Message"
@@ -271,16 +288,7 @@ import { useState } from 'react';
           onChange={event => setValue(event.target.value)}
           error="Helpful validation message"
           selectedOption={value}
-          options={[{
-            id: 'narrow',
-            value: 'narrow',
-            label: 'Narrow',
-          },
-          {
-            id: 'wide',
-            value: 'wide',
-            label: 'Wide',
-          }]}
+          options={options}
         />
       );
     }}
