@@ -201,26 +201,20 @@ describe('RadioGroup', () => {
     });
 
     describe('With Title and Description', () => {
-      const mockGroup = (
-        <RadioGroup
-          name="testName"
-          onChange={jest.fn()}
-          options={groupOptions}
-          title="Mock Title"
-          description="Mock Description"
-        />
-      );
-      test('it renders the title', () => {
-        render(mockGroup);
+      test('it renders the title and description', () => {
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={groupOptions}
+            title="Mock Title"
+            description="Mock Description"
+          />,
+        );
 
         const title = screen.getByText('Mock Title');
-        expect(title).toBeInTheDocument();
-      });
-
-      test('it renders the description', () => {
-        render(mockGroup);
-
         const description = screen.getByText('Mock Description');
+        expect(title).toBeInTheDocument();
         expect(description).toBeInTheDocument();
       });
     });
@@ -253,7 +247,7 @@ describe('RadioGroup', () => {
           />,
         );
 
-        const greenRadioInput = screen.getByLabelText('Green').closest('div').firstChild;
+        const greenRadioInput = screen.getByLabelText('Green');
         expect(greenRadioInput).toBeChecked();
       });
     });
