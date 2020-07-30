@@ -7,23 +7,23 @@
 
     .legend {
       display: block;
+      margin-bottom: var(--form-control-radio-group-options-spacing);
       line-height: 1.25;
-      color: var(--color-font-base);
-      font-size: var(--size-font-sm);
+      color: var(--form-control-font-color);
+      font-size: var(--form-control-size-md-label-size);
       font-weight: 700;
 
+
       .description {
-        margin-top: var(--size-spacing-xs);
+        margin-top: var(--form-control-radio-group-description-spacing);
+        color: var(--form-control-description-color);
         font-weight: 400;
       }
 
       &.error {
-        color: var(--color-brand-danger-base);
+        color: var(--form-control-error-color);
       }
     }
 
-    .options {
-      margin-top: var(--size-spacing-md);
-    }
   }
 }

@@ -1,9 +1,15 @@
 .option {
   display: flex;
   align-items: center;
-  margin-top: var(--size-spacing-xs);
+
+  &:not(:last-child) {
+    margin-bottom: var(--form-control-radio-group-option-spacing);
+  }
 
   .input {
-    margin: 0 var(--size-spacing-xs) 0 var(--size-spacing-2-xs);
+    margin-top: 0;
+    margin-right: var(--size-spacing-xs);
+    margin-bottom: 0;
+    margin-left: var(--size-spacing-2xs);
   }
 }
