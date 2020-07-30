@@ -1,0 +1,45 @@
+.text-input {
+  box-sizing: border-box;
+  transition-duration: 300ms;
+  transition-property: border, background-color;
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
+  border: 1px solid var(--form-control-border-color);
+  border-radius: var(--form-control-size-md-border-radius);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+  background-color: var(--form-control-background-color);
+  padding: var(--form-control-size-md-padding);
+  width: 100%;
+  color: var(--form-control-font-color);
+  font-size: var(--form-control-size-md-font-size);
+
+  &::placeholder {
+    opacity: 1;
+    /* Override lower placeholder opacity in Firefox */
+    color: var(--form-control-placeholder-color);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--form-control-focus-border-color);
+  }
+
+  &:disabled {
+    background-color: var(--form-control-disabled-background-color);
+    color: var(--form-control-disabled-font-color);
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  &.error {
+    border-color: var(--form-control-error-border-color);
+    background-color: var(--form-control-error-background-color);
+
+    &:focus {
+      outline: none;
+      border-color: var(--form-control-focus-border-color);
+      background-color: var(--form-control-background-color);
+    }
+  }
+}

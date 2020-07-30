@@ -33,7 +33,8 @@ const renderForm = (initialValue, props) => (
       [testLabelName]: initialValue,
     }}
     validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
-    render={() => (
+  >
+    {() => (
       <Form>
         <Field
           label={testLabelName}
@@ -46,7 +47,7 @@ const renderForm = (initialValue, props) => (
         <button type="submit">submit</button>
       </Form>
     )}
-  />
+  </Formik>
 );
 
 describe('SelectInput', () => {
@@ -152,7 +153,7 @@ describe('SelectInput', () => {
          * While this is an implementation detail there appears to be
          * no clearer path to test our own component which depends on react-select
         */
-        const selectInputWrapper = container.querySelector('.selectInput__control');
+        const selectInputWrapper = container.querySelector('.reactSelect__control');
 
         fireEvent.focus(selectInput);
         fireEvent.mouseDown(selectInputWrapper);

@@ -32,7 +32,12 @@ const scssRules = {
   test: /\.scss$/,
   use: [
     'style-loader',
-    'css-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        modules: true,
+      },
+    },
     // 'postcss-loader', @TODO -- Add postcss config and re-enable loader.
     'sass-loader',
     {
@@ -40,8 +45,8 @@ const scssRules = {
       options: {
         // Provide path to the file with resources
         resources: [
-          './src/styles/variables.scss',
-          './src/styles/utilities.scss',
+          './src/styles/variables/index.scss',
+          './src/styles/globals/utilities.scss',
           './src/styles/reset.scss',
         ],
       },
