@@ -15,9 +15,13 @@ import { useState } from 'react';
 Use a RadioGroup when a user is required to select one of five or less options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-form-inputs-selectinput--all) instead.
 
 ## Props
+
 <Props of={RadioGroup} />
 
 ## Default
+
+All that is required to render a basic version of the RadioGroup is the group's `name`, an onchange event handler passed to the `onChange` prop, and a list of options passed to the `options` prop. Each option must include a unique `id`, a `value`, and a `name`.
+
 <Preview isExpanded>
   <Story name="Default">
     {() => {
@@ -50,6 +54,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
 </Preview>
 
 ## Title
+
+Use the `title` prop to add a title.
+
 <Preview>
   <Story name="Title">
     {() => {
@@ -83,6 +90,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
 </Preview>
 
 ## Title and Description
+
+Use the `title` and `description` props to add a title and description.
+
 <Preview>
   <Story name="Title and Description">
     {() => {
@@ -112,6 +122,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
 </Preview>
 
 ## Required
+
+Use the `isRequired` prop to mark the group as required.
+
 <Preview>
   <Story name="Required">
     {() => {
@@ -141,10 +154,12 @@ Use a RadioGroup when a user is required to select one of five or less options. 
 </Preview>
 
 ## Pre-Selected Option
+
+Use the `value` prop to pre-select an option.
+
 <Preview>
   <Story name="Pre-Selected Option">
     {() => {
-      const [value, setValue] = useState(null);
       const options = [{
         id: 'car',
         value: 'car',
@@ -160,12 +175,13 @@ Use a RadioGroup when a user is required to select one of five or less options. 
         value: 'motorcycle',
         label: 'Motorcycle',
       }];
+      const [value, setValue] = useState(options[1].value);
       return (
         <RadioGroup
           title="Title"
           name="prevalue"
           onChange={event => setValue(event.target.value)}
-          value={value || options[1].value}
+          value={value}
           options={options}
         />
       );
@@ -174,6 +190,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
 </Preview>
 
 ## Disabled Option
+
+An individual option, or multiple options can be disabled by marking them as disabled in the list of options.
+
 <Preview>
   <Story name="Disabled Option">
     {() => {
@@ -208,6 +227,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
 </Preview>
 
 ## Disabled Group
+
+A group can be fully disabled by using the `isDisabled` prop.
+
 <Preview>
   <Story name="Disabled Group">
     {() => {
@@ -243,6 +265,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
 </Preview>
 
 ## Error
+
+An error state can be triggered by using the `error` prop. The prop accepts either a `boolean`, `string`, or `node`.
+
 <Preview>
   <Story name="Error">
     {() => {
@@ -278,6 +303,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
 </Preview>
 
 ## Error with Validation Message
+
+If either a `string` or `node` is passed to the `error` prop, a validation message will be rendered below the group.
+
 <Preview>
   <Story name="Error with Validation Message">
     {() => {
