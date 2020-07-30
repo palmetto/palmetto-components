@@ -77,120 +77,186 @@ describe('RadioGroup', () => {
     });
   });
 
-  // describe('Callback Handling', () => {
-  //   describe('onChange', () => {
-  //     test('onChange event fires callback function', () => {
-  //       render(
-  //         <RadioInput
-  //           name="mockName"
-  //           onChange={mockedHandleChange}
-  //           option={mockOption}
-  //         />,
-  //       );
+  describe('Callback Handling', () => {
+    describe('onChange', () => {
+      test('onChange event fires callback function', () => {
+        const mockHandleChange = jest.fn();
 
-  //       const radioInput = screen.getByLabelText('Chocolate');
-  //       fireEvent.click(radioInput);
-  //       expect(mockedHandleChange).toHaveBeenCalledTimes(1);
-  //     });
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={mockHandleChange}
+            options={mockOptions}
+          />,
+        );
 
-  //     test('calls onChange and passes checked value in event', () => {
-  //       let value = null;
-  //       const mockedHandleChangeWithValue = jest.fn(event => { value = event.target.value; });
+        const radioInput = screen.getByLabelText('Blue');
+        fireEvent.click(radioInput);
+        expect(mockHandleChange).toHaveBeenCalledTimes(1);
+      });
 
-  //       render(
-  //         <RadioInput
-  //           name="mockName"
-  //           onChange={mockedHandleChangeWithValue}
-  //           option={mockOption}
-  //         />,
-  //       );
-  //       const radioInput = screen.getByLabelText('Chocolate');
-  //       fireEvent.click(radioInput);
-  //       expect(mockedHandleChange).toBeCalledTimes(1);
-  //       expect(value).toBe('chocolate');
-  //     });
-  //   });
+      test('calls onChange and passes checked value in event', () => {
+        let value = null;
+        const mockedHandleChangeWithValue = jest.fn(event => { value = event.target.value; });
 
-  //   describe('onFocus', () => {
-  //     test('onFocus event fires callback function', () => {
-  //       const mockedHandleFocus = jest.fn();
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={mockedHandleChangeWithValue}
+            options={mockOptions}
+          />,
+        );
+        const radioInput = screen.getByLabelText('Blue');
+        fireEvent.click(radioInput);
+        expect(mockedHandleChangeWithValue).toBeCalledTimes(1);
+        expect(value).toBe('blue');
+      });
+    });
 
-  //       render(
-  //         <RadioInput
-  //           name="mockName"
-  //           onChange={mockedHandleChange}
-  //           option={mockOption}
-  //           onFocus={mockedHandleFocus}
-  //         />,
-  //       );
-  //       const radioInput = screen.getByLabelText('Chocolate');
-  //       fireEvent.focus(radioInput);
-  //       expect(mockedHandleFocus).toBeCalledTimes(1);
-  //     });
-  //   });
+    describe('onFocus', () => {
+      test('onFocus event fires callback function', () => {
+        const mockedHandleFocus = jest.fn();
 
-  //   describe('onBlur', () => {
-  //     test('onBlur event fires callback function', () => {
-  //       const mockedHandleBlur = jest.fn();
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={mockOptions}
+            onFocus={mockedHandleFocus}
+          />,
+        );
+        const radioInput = screen.getByLabelText('Blue');
+        fireEvent.focus(radioInput);
+        expect(mockedHandleFocus).toBeCalledTimes(1);
+      });
+    });
 
-  //       render(
-  //         <RadioInput
-  //           name="mockName"
-  //           onChange={mockedHandleChange}
-  //           option={mockOption}
-  //           onBlur={mockedHandleBlur}
-  //         />,
-  //       );
-  //       const radioInput = screen.getByLabelText('Chocolate');
-  //       fireEvent.blur(radioInput);
-  //       expect(mockedHandleBlur).toBeCalledTimes(1);
-  //     });
-  //   });
-  // });
+    describe('onBlur', () => {
+      test('onBlur event fires callback function', () => {
+        const mockedHandleBlur = jest.fn();
 
-  // describe('States', () => {
-  //   describe('Default', () => {
-  //     test('it renders a radio input', () => {
-  //       render(
-  //         <RadioInput
-  //           name="mockName"
-  //           onChange={mockedHandleChange}
-  //           option={mockOption}
-  //         />,
-  //       );
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={mockOptions}
+            onBlur={mockedHandleBlur}
+          />,
+        );
+        const radioInput = screen.getByLabelText('Blue');
+        fireEvent.blur(radioInput);
+        expect(mockedHandleBlur).toBeCalledTimes(1);
+      });
+    });
+  });
 
-  //       const radioInputElement = screen.getByRole('radio');
-  //       expect(radioInputElement).toBeInTheDocument();
-  //     });
+  describe('States', () => {
+    describe('Default', () => {
+      test('it renders 3 radio inputs', () => {
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={mockOptions}
+          />,
+        );
 
-  //     test('it renders a label', () => {
-  //       render(
-  //         <RadioInput
-  //           name="mockName"
-  //           onChange={mockedHandleChange}
-  //           option={mockOption}
-  //         />,
-  //       );
+        const radioInputElements = screen.getAllByRole('radio');
+        expect(radioInputElements).toHaveLength(3);
+      });
 
-  //       const radioInputLabel = screen.getByLabelText('Chocolate');
-  //       expect(radioInputLabel).toBeInTheDocument();
-  //     });
-  //   });
+      test('it renders 3 labels', () => {
+        render(
+          <RadioGroup
+            name="mockName"
+            onChange={jest.fn()}
+            options={mockOptions}
+          />,
+        );
 
-  //   describe('Disabled', () => {
-  //     test('the radio input is disabled', () => {
-  //       render(
-  //         <RadioInput
-  //           name="mockName"
-  //           onChange={mockedHandleChange}
-  //           option={mockOption}
-  //           isDisabled
-  //         />,
-  //       );
+        const purpleRadioInputLabel = screen.getByLabelText('Purple');
+        const greenRadioInputLabel = screen.getByLabelText('Green');
+        const blueRadioInputLabel = screen.getByLabelText('Blue');
 
-  //       const radioInputElement = screen.getByRole('radio');
-  //       expect(radioInputElement).toBeDisabled();
-  //     });
-  //   });
-  // });
+        expect(purpleRadioInputLabel).toBeInTheDocument();
+        expect(greenRadioInputLabel).toBeInTheDocument();
+        expect(blueRadioInputLabel).toBeInTheDocument();
+      });
+    });
+
+    describe('With Title', () => {
+      test('it renders the title', () => {
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={mockOptions}
+            title="Mock Title"
+          />,
+        );
+
+        const title = screen.getByText('Mock Title');
+        expect(title).toBeInTheDocument();
+      });
+    });
+
+    describe('With Title and Description', () => {
+      const mockGroup = (
+        <RadioGroup
+          name="testName"
+          onChange={jest.fn()}
+          options={mockOptions}
+          title="Mock Title"
+          description="Mock Description"
+        />
+      );
+      test('it renders the title', () => {
+        render(mockGroup);
+
+        const title = screen.getByText('Mock Title');
+        expect(title).toBeInTheDocument();
+      });
+
+      test('it renders the description', () => {
+        render(mockGroup);
+
+        const description = screen.getByText('Mock Description');
+        expect(description).toBeInTheDocument();
+      });
+    });
+
+    describe('Required', () => {
+      test('it renders asterisk next to the title', () => {
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={mockOptions}
+            title="Mock Title"
+            isRequired
+          />,
+        );
+
+        const title = screen.getByText('*');
+        expect(title).toBeInTheDocument();
+      });
+    });
+
+    describe('Pre-Selected Option', () => {
+      test('an option is automatically selected', () => {
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={mockOptions}
+            title="Mock Title"
+            value="green"
+          />,
+        );
+
+        const greenRadioInput = screen.getByLabelText('Green').closest('div').firstChild;
+        expect(greenRadioInput).toBeChecked();
+      });
+    });
+  });
 });

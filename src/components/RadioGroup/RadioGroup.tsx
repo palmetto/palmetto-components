@@ -5,12 +5,6 @@ import RadioInput from './RadioInput/RadioInput';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './RadioGroup.module.scss';
 
-/**
- * Allows users to pick a single option from a predefined list of two or more options.
- * Ideally, it should be used when there are less than 5 options,
- * otherwise you should consider using SelectInput instead.
- */
-
 interface Props {
   /**
    * Radio group name
