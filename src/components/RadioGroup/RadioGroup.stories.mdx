@@ -14,6 +14,10 @@ import { useState } from 'react';
 
 Use a RadioGroup when a user is required to select one of five or less options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-form-inputs-selectinput--all) instead.
 
+## Props
+<Props of={RadioGroup} />
+
+## Default
 <Preview isExpanded>
   <Story name="Default">
     {() => {
@@ -45,11 +49,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
   </Story>
 </Preview>
 
-## Props
-<Props of={RadioGroup} />
-
+## Title
 <Preview>
-  <Story name="With Title">
+  <Story name="Title">
     {() => {
       const [value, setValue] = useState(null);
       const options = [{
@@ -69,7 +71,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       }];
       return (
         <RadioGroup
-          title="With Title"
+          title="Title"
           name="withTitle"
           onChange={event => setValue(event.target.value)}
           value={value}
@@ -80,8 +82,9 @@ Use a RadioGroup when a user is required to select one of five or less options. 
   </Story>
 </Preview>
 
+## Title and Description
 <Preview>
-  <Story name="With Title and Description">
+  <Story name="Title and Description">
     {() => {
       const [value, setValue] = useState(null);
       const options = [{
@@ -96,8 +99,8 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       }];
       return (
         <RadioGroup
-          title="With Title and Description"
-          description="A helpful description"
+          title="Title"
+          description="Description"
           name="withTitleAndDescription"
           onChange={event => setValue(event.target.value)}
           value={value}
@@ -108,6 +111,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
   </Story>
 </Preview>
 
+## Required
 <Preview>
   <Story name="Required">
     {() => {
@@ -124,7 +128,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       }];
       return (
         <RadioGroup
-          title="Required"
+          title="Title"
           name="required"
           onChange={event => setValue(event.target.value)}
           value={value}
@@ -136,6 +140,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
   </Story>
 </Preview>
 
+## Pre-Selected Option
 <Preview>
   <Story name="Pre-Selected Option">
     {() => {
@@ -157,7 +162,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       }];
       return (
         <RadioGroup
-          title="Pre-Selected Option"
+          title="Title"
           name="prevalue"
           onChange={event => setValue(event.target.value)}
           value={value || options[1].value}
@@ -168,6 +173,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
   </Story>
 </Preview>
 
+## Disabled Option
 <Preview>
   <Story name="Disabled Option">
     {() => {
@@ -190,7 +196,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       }];
       return (
         <RadioGroup
-          title="Disabled Option"
+          title="Title"
           name="disabledOption"
           onChange={event => setValue(event.target.value)}
           value={value}
@@ -201,6 +207,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
   </Story>
 </Preview>
 
+## Disabled Group
 <Preview>
   <Story name="Disabled Group">
     {() => {
@@ -223,7 +230,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       }];
       return (
         <RadioGroup
-          title="Disabled Group"
+          title="Title"
           name="disabledGroup"
           onChange={event => setValue(event.target.value)}
           value={value}
@@ -235,6 +242,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
   </Story>
 </Preview>
 
+## Error
 <Preview>
   <Story name="Error">
     {() => {
@@ -257,7 +265,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       }];
       return (
         <RadioGroup
-          title="Error"
+          title="Title"
           name="error"
           onChange={event => setValue(event.target.value)}
           error
@@ -269,6 +277,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
   </Story>
 </Preview>
 
+## Error with Validation Message
 <Preview>
   <Story name="Error with Validation Message">
     {() => {
@@ -285,7 +294,7 @@ Use a RadioGroup when a user is required to select one of five or less options. 
       }];
       return (
         <RadioGroup
-          title="Error with Validation Message"
+          title="Title"
           name="errorWithMessage"
           onChange={event => setValue(event.target.value)}
           error="Helpful validation message"
