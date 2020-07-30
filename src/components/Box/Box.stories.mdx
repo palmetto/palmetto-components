@@ -72,6 +72,9 @@ Use the `background` prop to set the color of the background
       }
       return (
         <>
+          <Box padding="xs" background={`${color}-lightest`} key={i}>
+            {`${color}-lightest background`}
+          </Box>
           <Box padding="xs" background={`${color}-lighter`} key={i}>
             {`${color}-lighter background`}
           </Box>
@@ -86,6 +89,9 @@ Use the `background` prop to set the color of the background
           </Box>
           <Box padding="xs" background={`${color}-darker`} key={i}>
             {`${color}-darker background`}
+          </Box>
+          <Box padding="xs" background={`${color}-darkest`} key={i}>
+            {`${color}-darkest background`}
           </Box>
         </>
       )
@@ -114,6 +120,9 @@ Use the `border` prop to set the color of the border
       }
       return (
         <>
+          <Box border={`${color}-lightest`} margin="xs" padding="xs" key={i}>
+            {`${color}-lightest border`}
+          </Box>
           <Box border={`${color}-lighter`} margin="xs" padding="xs" key={i}>
             {`${color}-lighter border`}
           </Box>
@@ -128,6 +137,9 @@ Use the `border` prop to set the color of the border
           </Box>
           <Box border={`${color}-darker`} margin="xs" padding="xs" key={i}>
             {`${color}-darker border`}
+          </Box>
+          <Box border={`${color}-darkest`} margin="xs" padding="xs" key={i}>
+            {`${color}-darkest border`}
           </Box>
         </>
       )

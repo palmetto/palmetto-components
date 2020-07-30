@@ -44,6 +44,19 @@ export type PALMETTO_FONT_COLORS =
   'grey-darker' |
   'grey-darkest';
 
+export type PALMETTO_SPACING =
+  '2xs' |
+  'xs' |
+  'sm' |
+  'md' |
+  'lg' |
+  'xl' |
+  '2xl' |
+  '3xl' |
+  '4xl' |
+  '5xl' |
+  'base';
+
 export interface ColorDictionary {
   [name: string]: ColorEntry;
 }
@@ -64,3 +77,5 @@ export const PALMETTO_FONT_SIZE_OPTIONS = Object.keys(sizes.size.font) as PALMET
 export const PALMETTO_FONT_COLOR_OPTIONS = Object.keys(colors.color.font) as PALMETTO_FONT_COLORS[];
 export const PALMETTO_BRAND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
 export const PALMETTO_BRAND_COLOR_VALUES = colors.color.brand;
+export const PALMETTO_BACKGROUND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
+export const PALMETTO_SPACING_SIZE_OPTIONS = Object.keys(sizes.size.spacing) as PALMETTO_SPACING[];
