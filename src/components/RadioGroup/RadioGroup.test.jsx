@@ -6,7 +6,7 @@ import {
 } from '@testing-library/react';
 import RadioGroup from './RadioGroup';
 
-const mockOptions = [{
+const groupOptions = [{
   id: 'purple',
   value: 'purple',
   label: 'Purple',
@@ -30,7 +30,7 @@ describe('RadioGroup', () => {
         render(
           <RadioGroup
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
           />,
         );
 
@@ -46,7 +46,7 @@ describe('RadioGroup', () => {
         render(
           <RadioGroup
             name="testName"
-            options={mockOptions}
+            options={groupOptions}
           />,
         );
 
@@ -86,7 +86,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={mockHandleChange}
-            options={mockOptions}
+            options={groupOptions}
           />,
         );
 
@@ -103,7 +103,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={mockedHandleChangeWithValue}
-            options={mockOptions}
+            options={groupOptions}
           />,
         );
         const radioInput = screen.getByLabelText('Blue');
@@ -121,7 +121,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
             onFocus={mockedHandleFocus}
           />,
         );
@@ -139,7 +139,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
             onBlur={mockedHandleBlur}
           />,
         );
@@ -157,7 +157,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
           />,
         );
 
@@ -170,7 +170,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="mockName"
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
           />,
         );
 
@@ -190,7 +190,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
             title="Mock Title"
           />,
         );
@@ -205,7 +205,7 @@ describe('RadioGroup', () => {
         <RadioGroup
           name="testName"
           onChange={jest.fn()}
-          options={mockOptions}
+          options={groupOptions}
           title="Mock Title"
           description="Mock Description"
         />
@@ -231,7 +231,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
             title="Mock Title"
             isRequired
           />,
@@ -248,7 +248,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
             value="green"
           />,
         );
@@ -271,7 +271,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={jest.fn()}
-            options={[...mockOptions, disabledOption]}
+            options={[...groupOptions, disabledOption]}
           />,
         );
 
@@ -286,7 +286,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
             isDisabled
           />,
         );
@@ -304,7 +304,7 @@ describe('RadioGroup', () => {
           <RadioGroup
             name="testName"
             onChange={jest.fn()}
-            options={mockOptions}
+            options={groupOptions}
             error="Helpful Validation Message"
           />,
         );

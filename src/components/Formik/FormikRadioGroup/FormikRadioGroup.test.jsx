@@ -7,16 +7,26 @@ import {
 } from '@testing-library/react';
 import selectEvent from 'react-select-event';
 import { Formik, Form, Field } from 'formik';
-import FormikSelectInput from './FormikSelectInput';
-import SelectInput from '../../SelectInput/SelectInput';
+import FormikRadioGroup from './FormikRadioGroup';
+import RadioGroup from '../../RadioGroup/RadioGroup';
 
 const testLabelName = 'test select';
 
-const selectOptions = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-];
+const groupOptions = [{
+  id: 'purple',
+  value: 'purple',
+  label: 'Purple',
+},
+{
+  id: 'green',
+  value: 'green',
+  label: 'Green',
+},
+{
+  id: 'blue',
+  value: 'blue',
+  label: 'Blue',
+}];
 
 const handleValidation = values => {
   const errors = {};
