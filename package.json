@@ -22,14 +22,14 @@
     "react-dom": ">=16.8.0"
   },
   "scripts": {
-    "build": "BABEL_ENV=build webpack",
+    "build": "BABEL_ENV=build NODE_ENV=production webpack --config webpack.prod.js",
     "test": "BABEL_ENV=test jest",
     "test:watch": "BABEL_ENV=test jest --watch --verbose",
     "lint-js": "EXTEND_ESLINT=true eslint src",
     "lint-js:fix": "EXTEND_ESLINT=true eslint . --fix",
     "lint-styles": "stylelint '**/*.{css,scss,sass}'",
     "lint-styles:fix": "stylelint '**/*.{css,scss,sass}' --fix",
-    "storybook": "BABEL_ENV=test start-storybook -p 6006",
+    "storybook": "BABEL_ENV=test NODE_ENV=development start-storybook -p 6006",
     "build-storybook": "BABEL_ENV=test build-storybook",
     "chromatic": "chromatic --project-token=x8ffq4qv9tq",
     "prepublishOnly": "yarn build",
@@ -122,6 +122,7 @@
     "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-fix-style-only-entries": "^0.5.1"
+    "webpack-fix-style-only-entries": "^0.5.1",
+    "webpack-merge": "^5.0.9"
   }
 }

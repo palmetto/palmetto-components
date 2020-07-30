@@ -6,6 +6,7 @@ const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   entry: {
     index: [path.join(__dirname, 'src/components/index.ts')], // React components
     utilities: [path.join(__dirname, 'src/styles/utilities.scss')], // Utilities CSS only.
@@ -65,7 +66,9 @@ module.exports = {
       {
         test: /\.(ts|tsx|js|jsx)?$/,
         // Babel loader chosen over ts-loader so we can get accces to newer ES features should we want to.
-        loader: 'babel-loader',
+        use: [
+          'babel-loader',
+        ],
         exclude: /node_modules/,
       },
     ],
