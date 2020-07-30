@@ -249,13 +249,68 @@ describe('RadioGroup', () => {
             name="testName"
             onChange={jest.fn()}
             options={mockOptions}
-            title="Mock Title"
             value="green"
           />,
         );
 
         const greenRadioInput = screen.getByLabelText('Green').closest('div').firstChild;
         expect(greenRadioInput).toBeChecked();
+      });
+    });
+
+    describe('Disabled Option', () => {
+      test('the group contains a disabled option', () => {
+        const disabledOption = {
+          id: 'teal',
+          value: 'teal',
+          label: 'Teal',
+          disabled: true,
+        };
+
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={[...mockOptions, disabledOption]}
+          />,
+        );
+
+        const disabledRadioInputElements = screen.getAllByRole('radio');
+        expect(disabledRadioInputElements[3]).toBeDisabled();
+      });
+    });
+
+    describe('Disabled Group', () => {
+      test('all options in the group are disabled', () => {
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={mockOptions}
+            isDisabled
+          />,
+        );
+
+        const disabledRadioInputElements = screen.getAllByRole('radio');
+        expect(disabledRadioInputElements[0]).toBeDisabled();
+        expect(disabledRadioInputElements[1]).toBeDisabled();
+        expect(disabledRadioInputElements[2]).toBeDisabled();
+      });
+    });
+
+    describe('Error with Validation Message', () => {
+      test('it renders a validation message', () => {
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={mockOptions}
+            error="Helpful Validation Message"
+          />,
+        );
+
+        const validationMessage = screen.getByText('Helpful Validation Message');
+        expect(validationMessage).toBeInTheDocument();
       });
     });
   });
