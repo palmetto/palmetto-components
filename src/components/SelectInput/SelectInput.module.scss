@@ -2,7 +2,7 @@
 react-select elements for which we do not own the markup */
 
 /* stylelint-disable */
-:global(.selectInputWrapper) {
+:global(.select-input-wrapper) {
   :global(.react-select) {
     &:hover {
       :global(.react-select__dropdown-indicator) {

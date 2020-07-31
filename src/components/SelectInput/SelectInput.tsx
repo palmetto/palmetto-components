@@ -182,9 +182,9 @@ const SelectInput: FC<Props> = ({
       <Select
         inputId={id}
         aria-label={label}
-        aria-labelledby={label && !hideLabel ? `${id}Label` : null}
+        aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
         className={inputClasses}
-        classNamePrefix="reactSelect"
+        classNamePrefix="react-select"
         placeholder={placeholder}
         isDisabled={isDisabled}
         isMulti={isMulti}
