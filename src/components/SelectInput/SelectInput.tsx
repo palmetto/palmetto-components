@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FocusEvent, FC } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Select from 'react-select';
+import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import styles from './SelectInput.module.scss'; // Not a module because it requires :global styles applied to react-select
+import styles from './SelectInput.module.scss';
 
 /**
  * Allows users to pick a value from predefined list of options.
@@ -12,119 +12,133 @@ import styles from './SelectInput.module.scss'; // Not a module because it requi
  * otherwise you should consider using a radio group instead.
  */
 
-const propTypes = {
+interface SimulatedEventPayload {
+  target: {
+    name: string;
+    value: ValueType<OptionTypeBase>;
+  }
+}
+
+interface Props {
   /**
    * The id attribute of the input
    */
-  id: PropTypes.string.isRequired,
-  /**
-   * Visually hide the label
-   */
-  hideLabel: PropTypes.bool,
+  id: string;
   /**
    * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
    */
-  label: PropTypes.string.isRequired,
+  label: string;
+  /**
+   * Callback function to call on change event.
+   */
+  onChange: (event: SimulatedEventPayload) => void;
+  /**
+   * Options for dropdown list
+   */
+  options: {
+    value: string;
+    label: string;
+  }[];
+  /**
+   * Visually hide the label
+   */
+  hideLabel?: boolean;
   /**
    * Additional classes to add
    */
-  className: PropTypes.string,
+  className?: string;
   /**
    * Placeholder
    */
-  placeholder: PropTypes.string,
+  placeholder?: string;
   /**
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input
    */
+  error?: React.ReactNode;
+  /**
+   * If the input should be disabled and not focusable
+   */
+  isDisabled?: boolean;
+  /**
+   * Determines if input is required or not. (Label will have an asterisk if required)
+   */
+  isRequired?: boolean;
+  /**
+   * Select 'name' attribute
+   */
+  name?: string;
+  /**
+   * Callback function to call on focus event.
+   */
+  onFocus?: (event: FocusEvent<HTMLElement>) => void;
+  /**
+   * Callback function to call on blur event.
+   */
+  onBlur?: (event: FocusEvent<HTMLElement>) => void;
+  /**
+   * Autofocus select input on render
+   */
+  autoFocus?: boolean;
+  /**
+   * Is multi select enabled
+   */
+  isMulti?: boolean;
+  /**
+   * The value(s) of select
+   */
+  value?: any | any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+}
+
+const propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
+  hideLabel: PropTypes.bool,
+  className: PropTypes.string,
+  placeholder: PropTypes.string,
   error: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
     PropTypes.node,
   ]),
-  /**
-   * If the input should be disabled and not focusable
-   */
   isDisabled: PropTypes.bool,
-  /**
-   * Determines if input is required or not. (Label will have an asterisk if required)
-   */
   isRequired: PropTypes.bool,
-  /**
-   * Select 'name' attribute
-   */
   name: PropTypes.string,
-  /**
-   * Callback function to call on change event.
-   */
-  onChange: PropTypes.func.isRequired,
-  /**
-   * Callback function to call on focus event.
-   */
   onFocus: PropTypes.func,
-  /**
-   * Callback function to call on blur event.
-   */
   onBlur: PropTypes.func,
-  /**
-   * Autofocus select input on render
-   */
   autoFocus: PropTypes.bool,
-  /**
-   * Is multi select enabled
-   */
   isMulti: PropTypes.bool,
-  /**
-   * Options for dropdown list
-   */
-  options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-  })).isRequired,
-  /**
-   * The value(s) of select
-   */
   value: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.arrayOf(PropTypes.object),
   ]),
 };
 
-const defaultProps = {
-  className: undefined,
-  placeholder: undefined,
-  error: false,
-  hideLabel: false,
-  isDisabled: false,
-  isRequired: false,
-  name: '',
-  onFocus: undefined,
-  onBlur: undefined,
-  autoFocus: false,
-  isMulti: false,
-  value: undefined,
-};
-
-const SelectInput = ({
+const SelectInput: FC<Props> = ({
   id,
   label,
   className,
   placeholder,
-  error,
-  hideLabel,
-  isDisabled,
-  isRequired,
-  name,
+  error = false,
+  hideLabel = false,
+  isDisabled = false,
+  isRequired = false,
+  name = '',
   onChange,
   onFocus,
   onBlur,
-  autoFocus,
-  isMulti,
+  autoFocus = false,
+  isMulti = false,
   options,
   value,
 }) => {
-  const handleChange = values => {
-    const simulatedEventPayload = {
+  const handleChange = (values: ValueType<OptionTypeBase>) => {
+    const simulatedEventPayload: SimulatedEventPayload = {
       target: {
         name,
         value: values,
@@ -134,22 +148,22 @@ const SelectInput = ({
     onChange(simulatedEventPayload);
   };
 
-  const handleFocus = e => {
+  const handleFocus: FocusEventHandler = e => {
     if (onFocus) onFocus(e);
   };
 
-  const handleBlur = e => {
+  const handleBlur: FocusEventHandler = e => {
     if (onBlur) onBlur(e);
   };
 
   const wrapperClasses = classNames(
-    'selectInputWrapper',
+    'select-input-wrapper',
     className,
     { [styles.disabled]: isDisabled },
   );
 
   const inputClasses = classNames(
-    'reactSelect',
+    'react-select',
     { [styles.error]: error },
   );
 
@@ -159,6 +173,7 @@ const SelectInput = ({
     labelText: label,
     hasError: !!error,
     className: 'm-bottom-xs',
+    isDisabled,
   };
 
   return (
@@ -187,6 +202,5 @@ const SelectInput = ({
 };
 
 SelectInput.propTypes = propTypes;
-SelectInput.defaultProps = defaultProps;
 
 export default SelectInput;

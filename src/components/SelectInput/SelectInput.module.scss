@@ -3,31 +3,31 @@ react-select elements for which we do not own the markup */
 
 /* stylelint-disable */
 :global(.selectInputWrapper) {
-  :global(.reactSelect) {
+  :global(.react-select) {
     &:hover {
-      :global(.reactSelect__dropdown-indicator) {
+      :global(.react-select__dropdown-indicator) {
         color: var(--form-control-focus-border-color);
       }
     }
 
-    :global(.reactSelect__control) {
+    :global(.react-select__control) {
       border-radius: var(--form-control-size-md-border-radius);
       box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
       padding: var(--form-control-select-padding);
 
-      :global(.reactSelect__placeholder) {
+      :global(.react-select__placeholder) {
         color: var(--form-control-placeholder-color);
       }
 
-      :global(.reactSelect__clear-indicator) {
+      :global(.react-select__clear-indicator) {
         padding: 7px;
       }
 
-      :global(.reactSelect__indicator-separator) {
+      :global(.react-select__indicator-separator) {
         display: none;
       }
 
-      :global(.reactSelect__dropdown-indicator) {
+      :global(.react-select__dropdown-indicator) {
         padding: 0;
         padding-right: 2px;
         color: var(--form-control-select-chevron-color);
@@ -38,24 +38,24 @@ react-select elements for which we do not own the markup */
         }
       }
 
-      &:global(.reactSelect__control--is-focused) {
+      &:global(.react-select__control--is-focused) {
         border-color: var(--form-control-focus-border-color);
         box-shadow: none;
       }
 
-      &:global(.reactSelect__control--is-disabled) {
-        :global(.reactSelect__dropdown-indicator) {
+      &:global(.react-select__control--is-disabled) {
+        :global(.react-select__dropdown-indicator) {
           color: var(--form-control-placeholder-color);
         }
       }
     }
 
     &.error {
-      :global(.reactSelect__control) {
+      :global(.react-select__control) {
         border-color: var(--form-control-error-border-color);
         background-color: var(--form-control-error-background-color);
 
-        &:global(.reactSelect__control--is-focused) {
+        &:global(.react-select__control--is-focused) {
           outline: none;
           border-color: var(--form-control-border-color);
           background-color: var(--form-control-background-color);
@@ -65,7 +65,7 @@ react-select elements for which we do not own the markup */
   }
 
   &.disabled {
-    :global(.reactSelect__control--is-disabled) {
+    :global(.react-select__control--is-disabled) {
       background-color: var(--form-control-disabled-background-color);
     }
   }

@@ -6,7 +6,7 @@ import styles from './Colors.module.scss';
 const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
 
 export default {
-  title: 'Tokens/Colors',
+  title: 'Design Tokens/Colors',
   decorators: [withA11y],
 };
 
@@ -14,7 +14,7 @@ const renderColorBlock = (colorEntry: [string, ColorEntry]) => {
   const [colorName, colorVariations] = colorEntry;
 
   return (
-    <div className={styles.colorBlock} style={{ backgroundColor: `${colorVariations.base.value}` }}>
+    <div className={styles['color-block']} style={{ backgroundColor: `${colorVariations.base.value}` }}>
       <h2>{colorName}</h2>
       <p>{colorVariations.base.value}</p>
     </div>
@@ -37,7 +37,7 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
           <div
             // eslint-disable-next-line react/no-array-index-key
             key={i}
-            className={styles.paletteItem}
+            className={styles['palette-item']}
             style={{ backgroundColor: `${colorVariation.value}`, color: `${getFontColor(colorVariation)}` }}
           >
             <small style={{ display: 'block' }}>{colorVariationName}</small>

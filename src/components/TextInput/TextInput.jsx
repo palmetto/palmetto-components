@@ -152,7 +152,7 @@ const TextInput = ({
   };
 
   const inputClasses = classNames(
-    styles.textInput,
+    styles['text-input'],
     { [styles.error]: error },
   );
 
@@ -204,6 +204,7 @@ const TextInput = ({
     labelText: label,
     hasError: !!error,
     className: 'm-bottom-xs',
+    isDisabled,
   };
 
   return (
