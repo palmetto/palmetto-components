@@ -9,7 +9,7 @@ interface Props {
   /**
    * Radio group name
    */
-  name: string,
+  name: string;
   /**
    * Callback function to call on change event
    */
@@ -18,32 +18,32 @@ interface Props {
    * Options for radio group
    */
   options: {
-    id: string,
-    value: string,
-    label: string,
-    disabled?: boolean | null,
-  }[],
+    id: string;
+    value: string;
+    label: string;
+    disabled?: boolean | null;
+  }[];
   /**
    * Additional classes to add
    */
-  className?: string,
+  className?: string;
   /**
    * Description to be displayed below the title, and above the RadioGroup.
    */
-  description?: React.ReactNode,
+  description?: React.ReactNode;
   /**
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: boolean | string | React.ReactNode,
+  error?: boolean | string | React.ReactNode;
   /**
    * If the radio group should be disabled and not focusable
    */
-  isDisabled?: boolean,
+  isDisabled?: boolean;
   /**
    * Determines if radio group is required or not. (Label will have an asterisk if required)
    */
-  isRequired?: boolean,
+  isRequired?: boolean;
   /**
    * Callback function to call on blur event
    */
@@ -55,11 +55,11 @@ interface Props {
   /**
    * Title to be displayed above the RadioGroup
    */
-  title?: React.ReactNode,
+  title?: React.ReactNode;
   /**
    * The value of selected radio input
    */
-  value?: string,
+  value?: string;
 }
 
 const propTypes = {

@@ -11,7 +11,7 @@ interface Props {
   /**
    * Radio group name
    */
-  name: string,
+  name: string;
   /**
    * Callback function to call on change event
    */
@@ -20,24 +20,24 @@ interface Props {
    * Options for radio group
    */
   option: {
-    id: string,
-    value: string,
-    label: string,
-    disabled?: boolean | null,
-  },
+    id: string;
+    value: string;
+    label: string;
+    disabled?: boolean | null;
+  };
   /**
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: boolean | string | React.ReactNode,
+  error?: boolean | string | React.ReactNode;
   /**
    * If the radio group should be disabled and not focusable
    */
-  isDisabled?: boolean,
+  isDisabled?: boolean;
   /**
    * If the radio group should be disabled and not focusable
    */
-  isSelected?: boolean,
+  isSelected?: boolean;
   /**
    * Callback function to call on blur event
    */

@@ -19,7 +19,7 @@ interface Props {
   /**
    * Display label inline with surrounding elements
    */
-  displayInline?: boolean,
+  displayInline?: boolean;
   /**
    * Mark the label has invalid
    */
@@ -27,7 +27,7 @@ interface Props {
   /**
    * Mark the label has disabled
    */
-  isDisabled?: boolean,
+  isDisabled?: boolean;
   /**
    * Render an asterisk after the label to mark it as required
    */
