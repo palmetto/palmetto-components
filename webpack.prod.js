@@ -6,7 +6,8 @@ const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV, // Should be set in the yarn script since there is no true ENV.
+  // Files to be bundled
   entry: {
     index: [path.join(__dirname, 'src/components/index.ts')], // React components
     utilities: [path.join(__dirname, 'src/styles/utilities.scss')], // Utilities CSS only.
@@ -20,6 +21,7 @@ module.exports = {
       new OptimizeCSSAssetsPlugin({}),
     ],
   },
+  // Final files based on entry files.
   output: {
     filename: '[name].js',
     path: path.join(__dirname, 'dist'),
@@ -36,6 +38,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      // Process all global SCSS files (and export them to css)
       {
         test: /\.scss$/,
         use: [
@@ -47,6 +50,7 @@ module.exports = {
         ],
         exclude: /\.module\.scss$/,
       },
+      // Process all SCSS modules which will be compiled inside the main JS bundle.
       {
         test: /\.scss$/,
         use: [
@@ -74,7 +78,9 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.scss', '.css'],
+    // If multiple files share the same name but have different extensions,
+    // webpack will resolve the one with the extension listed first in the array and skip the rest.
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
   // Exclude 'react' and 'react-dom' from being bundled with our components.
   externals: {
