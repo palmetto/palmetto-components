@@ -41,7 +41,7 @@ interface Props {
    * Available sizes found:
    * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json)
    */
-  size?: PALMETTO_FONT_SIZE;
+  size?: PALMETTO_FONT_SIZES;
   children?: React.ReactNode;
 }
 
