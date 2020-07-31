@@ -3,6 +3,7 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -35,6 +36,8 @@ module.exports = {
     // This removes empty .js files generated for css/scss-only entries. Issue inherent to webpack, more details here:
     // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/151
     new FixStyleOnlyEntriesPlugin(),
+    // Add Typescript type checking on build.
+    new ForkTsCheckerWebpackPlugin(),
   ],
   module: {
     rules: [

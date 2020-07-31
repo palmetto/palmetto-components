@@ -4,8 +4,14 @@
  * These are additional config options that will get merged into the storybook config
  * in order to process Typescript components and SCSS files appropriately.
  */
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
 module.exports = {
   mode: process.env.NODE_ENV, // Should be set in the yarn script since there is no true ENV.
+  plugins: [
+    // Run Typescript type checker on dev server.
+    new ForkTsCheckerWebpackPlugin(),
+  ],
   module: {
     rules: [
       // Process all SCSS modules which will be compiled inside the main JS bundle.
@@ -45,5 +51,10 @@ module.exports = {
         exclude: /node_modules/,
       },
     ],
+  },
+  resolve: {
+    // If multiple files share the same name but have different extensions,
+    // webpack will resolve the one with the extension listed first in the array and skip the rest.
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
 };
