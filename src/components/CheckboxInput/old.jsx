@@ -30,65 +30,21 @@ export const All = () => {
             
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <CheckboxInput
-              id="requiredCheckboxIsUnchecked"
-              isRequired
-              label="Required checkbox is unchecked"
-              isChecked={state.required}
-              onChange={value => handleChange(value, 'required')}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <CheckboxInput
-              id="initialStateChecked"
-              isChecked={state.initialChecked}
-              label="Initial state can be set to checked"
-              onChange={value => handleChange(value, 'initialChecked')}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <CheckboxInput
-              id="customLabel"
-              label={(
-                <>
-                  <span style={{ color: '#5620c5' }}>
-                    Pass any element(s) as children for the label, even links! Add custom styles.
-                  </span>
-                  {' '}
-                  <a href="https://www.palmetto.com">Go to Palmetto.com</a>
-                </>
-              )}
-              isChecked={state.withLabelHtml}
-              onChange={value => handleChange(value, 'withLabelHtml')}
-            />
-
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <CheckboxInput
-              id="disabledAndUnchecked"
-              isDisabled
-              label="Disabled, and unchecked"
-              isChecked={state.disabledUnchecked}
-              onChange={() => null}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <CheckboxInput
-              id="disabledAndChecked"
-              label="Disabled, and checked"
-              isDisabled
-              isChecked={state.disabledChecked}
-              onChange={() => null}
-            />
+        
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <CheckboxInput
-              id="invalidCheckbox"
-              error="You must accept the Terms and Conditions"
-              label="Invalid checkbox"
-              isChecked={state.withError}
-              onChange={value => handleChange(value, 'withError')}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput

@@ -12,7 +12,7 @@ import CheckboxInput from './CheckboxInput';
 
 # CheckboxInput
 
-Use a RadioGroup when a user is required to select one of five or fewer options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-form-inputs-selectinput--all) instead.
+Use a CheckboxInput to allow users to make a range of selections (zero, one or many).
 
 ## Props
 
@@ -20,7 +20,7 @@ Use a RadioGroup when a user is required to select one of five or fewer options.
 
 ## Default
 
-All that is required to render a basic version of the Ra is the group's `name`, an onchange event handler passed to the `onChange` prop, and a list of options passed to the `options` prop. Each option must include a unique `id`, a `value`, and a `label`.
+All that is required to render a basic version of the CheckboxInput is a unique `id`, a `label`, and an onchange event handler passed to the `onChange` prop.
 
 <Preview isExpanded>
   <Story name="Default">
@@ -29,14 +29,148 @@ All that is required to render a basic version of the Ra is the group's `name`, 
       return (
         <CheckboxInput
           id="defaultStateIsUnchecked"
-          label="Unchecked"
-          isChecked={value}
+          label="Label"
           onChange={event => setValue(event.target.checked)}
+          isChecked={value}
         />
       );
     }}
   </Story>
 </Preview>
+
+## Required
+
+Use the `isRequired` prop to mark the input as required.
+
+<Preview isExpanded>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="requiredCheckboxIsUnchecked"
+          label="Label"
+          isChecked={value}
+          onChange={event => setValue(event.target.checked)}
+          isRequired
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Checked Initial State
+
+Use the `isChecked` prop to mark the input as checked upon initial render.
+
+<Preview isExpanded>
+  <Story name="Checked Initial State">
+    {() => {
+      const [value, setValue] = useState(true);
+      return (
+        <CheckboxInput
+          id="initialStateChecked"
+          label="Label"
+          onChange={value => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Custom Label
+
+Pass simple strings or any valid DOM node(s) to `label` to create custom labels.
+
+<Preview isExpanded>
+  <Story name="Custom Label">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="customLabel"
+          label={(
+            <span>
+              <span style={{ color: '#5620c5' }}>
+                Pass any element(s) as children for the label, even links! Add custom styles.
+              </span>
+              {' '}
+              <a href="https://www.palmetto.com">Go to Palmetto.com</a>
+            </span>
+          )}
+          onChange={value => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled and Unchecked
+
+Use the `isDiabled` prop to disable an input.
+
+<Preview isExpanded>
+  <Story name="Disabled and Unchecked">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="disabledAndUnchecked"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          isDisabled
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled and Checked
+
+Use the `isDiabled` and `isChecked` props to disable an input in a checked state.
+
+<Preview isExpanded>
+  <Story name="Disabled and Checked">
+    {() => {
+      const [value, setValue] = useState(true);
+      return (
+        <CheckboxInput
+          id="disabledAndUnchecked"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          isDisabled
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Invalid
+
+Use the `error` prop to mark an input as invalid. `error` accepts either a `boolean` or `string`. If a string is passed, a validation message is displayed below it.
+
+<Preview isExpanded>
+  <Story name="Invalid">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="invalidCheckbox"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          error="You must accept the Terms and Conditions"
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+
 
 
 
