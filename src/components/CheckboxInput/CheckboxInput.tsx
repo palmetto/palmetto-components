@@ -5,10 +5,6 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import FormLabel from '../FormLabel/FormLabel';
 import styles from './CheckboxInput.module.scss';
 
-/**
- * Used to allow users to make a range of selections (zero, one or many).
- */
-
 interface Props {
   /**
    * The id attribute of the input

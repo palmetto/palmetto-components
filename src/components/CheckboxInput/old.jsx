@@ -22,22 +22,12 @@ export const All = () => {
     withErrorRequired: false,
   });
 
-  const handleChange = (event, key) => {
-    action('change')(event);
-    store.set({ [key]: event.target.checked });
-  };
-
   return (
     <State store={store}>
       {state => (
         <>
           <div style={{ marginBottom: '1rem' }}>
-            <CheckboxInput
-              id="defaultStateIsUnchecked"
-              label="Default state is unchecked"
-              isChecked={state.default}
-              onChange={value => handleChange(value, 'default')}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <CheckboxInput
