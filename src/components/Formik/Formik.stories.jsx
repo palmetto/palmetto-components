@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import FormikTextInput from './FormikTextInput/FormikTextInput';
 import FormikCheckboxInput from './FormikCheckboxInput/FormikCheckboxInput';
 import FormikSelectInput from './FormikSelectInput/FormikSelectInput';
+import FormikRadioGroup from './FormikRadioGroup/FormikRadioGroup';
 
 export default {
   title: 'Patterns/Formik Form',
@@ -14,6 +15,7 @@ export default {
     FormikCheckboxInput,
     FormikSelectInput,
     FormikTextInput,
+    FormikRadioGroup,
   },
 };
 
@@ -34,10 +36,16 @@ export const FormikForm = () => {
     { value: 'violet', label: 'violet' },
   ];
 
+  const sizeOptions = [
+    { id: 'small', value: 'small', label: 'Small' },
+    { id: 'medium', value: 'medium', label: 'Medium' },
+    { id: 'large', value: 'large', label: 'Large' },
+  ];
+
   const handleValidation = values => {
     const errors = {};
     if (!values.areTermsChecked) {
-      errors.areTermsChecked = 'checkbox is required';
+      errors.areTermsChecked = 'Checkbox is required';
     }
     if (!values.email) {
       errors.email = 'Required';
@@ -48,6 +56,9 @@ export const FormikForm = () => {
     }
     if (!values.flavor) {
       errors.flavor = 'Flavor is required';
+    }
+    if (!values.sizes) {
+      errors.sizes = 'Sizes is required';
     }
     return errors;
   };
@@ -62,8 +73,18 @@ export const FormikForm = () => {
     }, 2000);
   };
 
+  const formatOutput = (values, isSubmitting) => {
+    return { ...values, isSubmitting };
+  };
+
   return (
-    <div style={{ maxWidth: '400px', margin: 'auto' }} className="App-header">
+    <div
+      style={{
+        maxWidth: '400px',
+        margin: 'auto',
+      }}
+      className="App-header"
+    >
       <Formik
         initialValues={{
           firstName: '',
@@ -73,6 +94,7 @@ export const FormikForm = () => {
           flavor: null,
           flavor2: null,
           colors: [],
+          sizes: null,
         }}
         validate={handleValidation}
         onSubmit={handleSubmit}
@@ -150,6 +172,15 @@ export const FormikForm = () => {
             </div>
             <div style={{ marginBottom: '1.25rem' }}>
               <Field
+                title="Sizes"
+                name="sizes"
+                options={sizeOptions}
+                component={FormikRadioGroup}
+                isRequired
+              />
+            </div>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <Field
                 label="Terms and Conditions"
                 name="areTermsChecked"
                 id="areTermsChecked"
@@ -158,7 +189,9 @@ export const FormikForm = () => {
               />
             </div>
             <Button type="submit" isLoading={isSubmitting}>Submit</Button>
-            <pre>{JSON.stringify(values, isSubmitting, null, 2)}</pre>
+            <pre>
+              {JSON.stringify(formatOutput(values, isSubmitting), undefined, 2)}
+            </pre>
           </Form>
         )}
       />
