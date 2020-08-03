@@ -5,8 +5,6 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import FormLabel from '../FormLabel/FormLabel';
 import styles from './CheckboxInput.module.scss';
 
-type LABEL_TYPES = React.ReactNode | string;
-
 interface Props {
   /**
    * The id attribute of the input
@@ -19,7 +17,7 @@ interface Props {
   /**
    * Custom content to be displayed to right of checkbox.
    */
-  label: LABEL_TYPES;
+  label: React.ReactNode | string;
   /**
    * Additional classes to add
    */
