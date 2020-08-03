@@ -1,0 +1,338 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import CheckboxInput from './CheckboxInput';
+
+<Meta
+  title="Components/Form Inputs/CheckboxInput"
+  component={CheckboxInput}
+  decorators={[withA11y]}
+/>
+
+# RadioGroup
+
+Use a RadioGroup when a user is required to select one of five or fewer options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-form-inputs-selectinput--all) instead.
+
+## Props
+
+<Props of={RadioGroup} />
+
+## Default
+
+All that is required to render a basic version of the RadioGroup is the group's `name`, an onchange event handler passed to the `onChange` prop, and a list of options passed to the `options` prop. Each option must include a unique `id`, a `value`, and a `label`.
+
+<Preview isExpanded>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [{
+        id: 'chocolate',
+        value: 'chocolate',
+        label: 'Chocolate',
+      },
+      {
+        id: 'strawberry',
+        value: 'strawberry',
+        label: 'Strawberry',
+      },
+      {
+        id: 'vanilla',
+        value: 'vanilla',
+        label: 'Vanilla',
+      }];
+      return (
+        <RadioGroup
+          name="noTitleOrDescription"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Title
+
+Use the `title` prop to add a title.
+
+<Preview>
+  <Story name="Title">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [{
+        id: 'purple',
+        value: 'purple',
+        label: 'Purple',
+      },
+      {
+        id: 'green',
+        value: 'green',
+        label: 'Green',
+      },
+      {
+        id: 'blue',
+        value: 'blue',
+        label: 'Blue',
+      }];
+      return (
+        <RadioGroup
+          title="Title"
+          name="withTitle"
+          onChange={event => setValue(event.target.value)}
+          value={value}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Title and Description
+
+Use the `title` and `description` props to add a title and description.
+
+<Preview>
+  <Story name="Title and Description">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [{
+        id: 'light',
+        value: 'light',
+        label: 'Light',
+      },
+      {
+        id: 'dark',
+        value: 'dark',
+        label: 'Dark',
+      }];
+      return (
+        <RadioGroup
+          title="Title"
+          description="Description"
+          name="withTitleAndDescription"
+          onChange={event => setValue(event.target.value)}
+          value={value}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Required
+
+Use the `isRequired` prop to mark the group as required.
+
+<Preview>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [{
+        id: 'cat',
+        value: 'cat',
+        label: 'Cat',
+      },
+      {
+        id: 'dog',
+        value: 'dog',
+        label: 'Dog',
+      }];
+      return (
+        <RadioGroup
+          title="Title"
+          name="required"
+          onChange={event => setValue(event.target.value)}
+          value={value}
+          isRequired
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Pre-Selected Option
+
+Use the `value` prop to pre-select an option.
+
+<Preview>
+  <Story name="Pre-Selected Option">
+    {() => {
+      const options = [{
+        id: 'car',
+        value: 'car',
+        label: 'Car',
+      },
+      {
+        id: 'truck',
+        value: 'truck',
+        label: 'Truck',
+      },
+      {
+        id: 'motorcycle',
+        value: 'motorcycle',
+        label: 'Motorcycle',
+      }];
+      const [value, setValue] = useState(options[1].value);
+      return (
+        <RadioGroup
+          title="Title"
+          name="prevalue"
+          onChange={event => setValue(event.target.value)}
+          value={value}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled Option
+
+An individual option, or multiple options can be disabled by marking them as disabled in the list of options.
+
+<Preview>
+  <Story name="Disabled Option">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [{
+        id: 'short',
+        value: 'short',
+        label: 'Short',
+      },
+      {
+        id: 'tall',
+        value: 'tall',
+        label: 'Tall',
+      },
+      {
+        id: 'gigantic',
+        value: 'gigantic',
+        label: 'Gigantic',
+        disabled: true,
+      }];
+      return (
+        <RadioGroup
+          title="Title"
+          name="disabledOption"
+          onChange={event => setValue(event.target.value)}
+          value={value}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled Group
+
+A group can be fully disabled by using the `isDisabled` prop.
+
+<Preview>
+  <Story name="Disabled Group">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [{
+        id: 'react',
+        value: 'react',
+        label: 'React',
+      },
+      {
+        id: 'angular',
+        value: 'angular',
+        label: 'Angular',
+      },
+      {
+        id: 'vue',
+        value: 'vue',
+        label: 'Vue',
+        disabled: true,
+      }];
+      return (
+        <RadioGroup
+          title="Title"
+          name="disabledGroup"
+          onChange={event => setValue(event.target.value)}
+          value={value}
+          isDisabled
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Error
+
+An error state can be triggered by using the `error` prop. The prop accepts either a `boolean`, `string`, or `node`.
+
+<Preview>
+  <Story name="Error">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [{
+        id: 'apple',
+        value: 'apple',
+        label: 'Apple',
+      },
+      {
+        id: 'orange',
+        value: 'orange',
+        label: 'Orange',
+      },
+      {
+        id: 'banana',
+        value: 'banana',
+        label: 'Banana',
+        disabled: true,
+      }];
+      return (
+        <RadioGroup
+          title="Title"
+          name="error"
+          onChange={event => setValue(event.target.value)}
+          error
+          value={value}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Error with Validation Message
+
+If either a `string` or `node` is passed to the `error` prop, a validation message will be rendered below the group.
+
+<Preview>
+  <Story name="Error with Validation Message">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [{
+        id: 'narrow',
+        value: 'narrow',
+        label: 'Narrow',
+      },
+      {
+        id: 'wide',
+        value: 'wide',
+        label: 'Wide',
+      }];
+      return (
+        <RadioGroup
+          title="Title"
+          name="errorWithMessage"
+          onChange={event => setValue(event.target.value)}
+          error="Helpful validation message"
+          value={value}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+
+
