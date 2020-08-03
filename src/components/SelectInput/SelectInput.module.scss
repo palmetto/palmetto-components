@@ -71,3 +71,7 @@ react-select elements for which we do not own the markup */
   }
 }
 /* stylelint-enable */
+
+.select-input-label {
+  margin-bottom: var(--form-control-label-margin);
+}

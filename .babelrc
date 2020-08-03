@@ -4,7 +4,6 @@
       "presets": [
         ["@babel/preset-env", { "modules": "cjs" }],
         "@babel/preset-react",
-        // ["@babel/preset-typescript", { "allExtensions": true, "isTSX": true }]
         "@babel/preset-typescript"
       ],
       "plugins": [
@@ -16,7 +15,6 @@
        "presets": [
          ["@babel/preset-env", { "modules": false }],
          "@babel/preset-react",
-        //  ["@babel/preset-typescript", { "allExtensions": true, "isTSX": true }]
         "@babel/preset-typescript"
         ]
      }

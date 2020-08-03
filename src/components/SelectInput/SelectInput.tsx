@@ -172,7 +172,7 @@ const SelectInput: FC<Props> = ({
     inputId: id,
     labelText: label,
     hasError: !!error,
-    className: 'm-bottom-xs',
+    className: styles['select-input-label'],
     isDisabled,
   };
 
