@@ -56,63 +56,22 @@ export const All = () => {
             
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <SelectInput
-              id="singleSelectPreselected"
-              label="Single Select Pre-Selected"
-              value={state.singleSelectPreselected}
-              onChange={event => handleChange(event.target.value, 'singleSelectPreselected')}
-              options={selectOptions}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <SelectInput
-              id="multiSelect"
-              label="Multi Select"
-              isMulti
-              value={state.multiSelect}
-              onChange={event => handleChange(event.target.value, 'multiSelect')}
-              options={selectOptions}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <SelectInput
-              id="multiSelectPreselected"
-              label="Multi Select Pre-Selected"
-              isMulti
-              value={state.multiSelectPreselected}
-              onChange={event => handleChange(event.target.value, 'multiSelectPreselected')}
-              options={selectOptions}
-            />
+    
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <SelectInput
-              id="autoFocus"
-              label="Auto Focus"
-              autoFocus
-              value={state.autoFocus}
-              onChange={event => handleChange(event.target.value, 'autoFocus')}
-              options={selectOptions}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <SelectInput
-              id="required"
-              label="Required"
-              isRequired
-              value={state.required}
-              onChange={event => handleChange(event.target.value, 'required')}
-              options={selectOptions}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <SelectInput
-              id="disabled"
-              label="Disabled"
-              isDisabled
-              value={state.disabled}
-              onChange={event => handleChange(event.target.value, 'disabled')}
-              options={selectOptions}
-            />
+          
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <SelectInput

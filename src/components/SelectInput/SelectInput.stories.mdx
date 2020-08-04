@@ -163,8 +163,10 @@ Use the `isMulti` prop to allow the selection of multiple options.
 
 ## Multi-Select and Pre-Selected
 
+Use the `isMulti` prop combined with passing one or more options in an array to the `value` prop to pre-selecte option(s).
+
 <Preview> 
-  <Story name="Multi-Select, Pre-Selected">
+  <Story name="Multi-Select and Pre-Selected">
     {() => {
       const options = [
         { value: 'chocolate', label: 'Chocolate' },
@@ -181,6 +183,123 @@ Use the `isMulti` prop to allow the selection of multiple options.
             onChange={event => setValue(event.target.value)}
             options={options}
             isMulti
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Autofocus
+
+Use the `autoFocus` prop to autofocus a SelectInput on render.
+
+<Preview> 
+  <Story name="Autofocus">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="autoFocus"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            autoFocus
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Required
+
+Use the `isRequired` prop to mark the input as required.
+
+<Preview> 
+  <Story name="Required">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="required"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isRequired
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled
+
+Use the `isDisabled` prop to mark the input as disabled.
+
+<Preview> 
+  <Story name="Disabled">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <SelectInput
+            id="disabled"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isDisabled
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Error
+
+Use the `error` prop to mark an input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
+
+<Preview> 
+  <Story name="Error">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="disabled"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isRequired
+            error="Helpful validation message"
           />
         </div>
       );
