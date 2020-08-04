@@ -46,6 +46,34 @@ All that is required to render a basic version of the SelectInput is a unique `i
   </Story>
 </Preview>
 
+## Pre-Selected
+
+Pre-select an option by passing its value to the `value` prop.
+
+<Preview> 
+  <Story name="Pre-Selected">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(options[1]);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="preSelected"
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
 ## Custom Placeholder
 
 Use the `placeholder` prop to add a custom placeholder.
@@ -97,6 +125,62 @@ Use the `hideLabel` prop to not render the label.
             options={options}
             value={value}
             hideLabel
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Multi-Select
+
+Use the `isMulti` prop to allow the selection of multiple options.
+
+<Preview> 
+  <Story name="Multi-Select">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="multiSelect"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isMulti
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Multi-Select and Pre-Selected
+
+<Preview> 
+  <Story name="Multi-Select, Pre-Selected">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState([options[0], options[2]]);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="multiSelect"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isMulti
           />
         </div>
       );
