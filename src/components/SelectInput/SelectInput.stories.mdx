@@ -74,12 +74,12 @@ Pre-select an option by passing its value to the `value` prop.
   </Story>
 </Preview>
 
-## Custom Placeholder
+## Placeholder
 
 Use the `placeholder` prop to add a custom placeholder.
 
 <Preview> 
-  <Story name="Custom Placeholder">
+  <Story name="Placeholder">
     {() => {
       const [value, setValue] = useState(null);
       const options = [
@@ -103,12 +103,12 @@ Use the `placeholder` prop to add a custom placeholder.
   </Story>
 </Preview>
 
-## Label Hidden
+## Hidden Label
 
 Use the `hideLabel` prop to not render the label.
 
 <Preview> 
-  <Story name="Label Hidden">
+  <Story name="Hidden Label">
     {() => {
       const [value, setValue] = useState(null);
       const options = [
@@ -279,7 +279,7 @@ Use the `isDisabled` prop to mark the input as disabled.
 
 ## Error
 
-Use the `error` prop to mark an input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
 
 <Preview> 
   <Story name="Error">

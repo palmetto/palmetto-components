@@ -7,11 +7,6 @@ import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './TextInput.module.scss';
 
-/**
- * Use TextInput to show where users can enter text based data.
- * It does not maintain any internal state, so its value should be managed by the parent.
- */
-
 const propTypes = {
   /**
    * The input's 'autocomplete' attribute
