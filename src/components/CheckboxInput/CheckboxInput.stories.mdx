@@ -171,6 +171,27 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
   </Story>
 </Preview>
 
+## Custom Classes
+
+Use the `className` prop to add a custom class, or classes to an input.
+
+<Preview>
+  <Story name="Custom Classes">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="customClasses"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          className="background-color-primary"
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
 
 
 
