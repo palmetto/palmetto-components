@@ -50,25 +50,10 @@ export const All = () => {
       {state => (
         <div style={{ maxWidth: '500px' }}>
           <div style={{ marginBottom: '1rem' }}>
-            <SelectInput
-              id="labelHidden"
-              label="My label is hidden"
-              className="singleSelectNoLabel"
-              placeholder="Visually hidden label and a custom placeholder..."
-              value={state.labelHidden}
-              hideLabel
-              onChange={event => handleChange(event.target.value, 'singleSelectNoLabel')}
-              options={selectOptions}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
-            <SelectInput
-              id="singleSelectWithLabel"
-              label="Single Select"
-              value={state.singleSelectWithLabel}
-              onChange={event => handleChange(event.target.value, 'singleSelectWithLabel')}
-              options={selectOptions}
-            />
+            
           </div>
           <div style={{ marginBottom: '1rem' }}>
             <SelectInput

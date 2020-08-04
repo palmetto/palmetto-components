@@ -1,0 +1,109 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import SelectInput from './SelectInput';
+
+<Meta
+  title="Components/Form Inputs/SelectInput"
+  component={SelectInput}
+  decorators={[withA11y]}
+/>
+
+# SelectInput
+
+Allows users to pick a value from predefined list of options. Ideally, it should be used when there are more than 4 options, otherwise you should consider using a radio group instead.
+
+## Props
+
+<Props of={SelectInput} />
+
+## Default
+
+All that is required to render a basic version of the SelectInput is a unique `id`, `label`, a list of options passed to the `options` prop, and an onchange event handler passed to the `onChange` prop.
+
+<Preview> 
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="singleSelectWithLabel"
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Custom Placeholder
+
+Use the `placeholder` prop to add a custom placeholder.
+
+<Preview> 
+  <Story name="Custom Placeholder">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="customPlaceholder"
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+            placeholder="Custom placeholder..."
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Label Hidden
+
+Use the `hideLabel` prop to not render the label.
+
+<Preview> 
+  <Story name="Label Hidden">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div style={{ height: '175px' }}>
+          <SelectInput
+            id="labelHidden"
+            label="My label is hidden"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+            hideLabel
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+  
+
+  
