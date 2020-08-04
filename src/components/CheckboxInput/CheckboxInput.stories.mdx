@@ -22,7 +22,7 @@ Use a CheckboxInput to allow users to make a range of selections (zero, one or m
 
 All that is required to render a basic version of the CheckboxInput is a unique `id`, a `label`, and an onchange event handler passed to the `onChange` prop.
 
-<Preview isExpanded>
+<Preview>
   <Story name="Default">
     {() => {
       const [value, setValue] = useState(null);
@@ -42,7 +42,7 @@ All that is required to render a basic version of the CheckboxInput is a unique 
 
 Use the `isRequired` prop to mark the input as required.
 
-<Preview isExpanded>
+<Preview>
   <Story name="Required">
     {() => {
       const [value, setValue] = useState(null);
@@ -63,7 +63,7 @@ Use the `isRequired` prop to mark the input as required.
 
 Use the `isChecked` prop to mark the input as checked upon initial render.
 
-<Preview isExpanded>
+<Preview>
   <Story name="Checked Initial State">
     {() => {
       const [value, setValue] = useState(true);
@@ -83,7 +83,7 @@ Use the `isChecked` prop to mark the input as checked upon initial render.
 
 Pass simple strings or any valid DOM node(s) to `label` to create custom labels.
 
-<Preview isExpanded>
+<Preview>
   <Story name="Custom Label">
     {() => {
       const [value, setValue] = useState(null);
@@ -111,7 +111,7 @@ Pass simple strings or any valid DOM node(s) to `label` to create custom labels.
 
 Use the `isDiabled` prop to disable an input.
 
-<Preview isExpanded>
+<Preview>
   <Story name="Disabled and Unchecked">
     {() => {
       const [value, setValue] = useState(null);
@@ -132,7 +132,7 @@ Use the `isDiabled` prop to disable an input.
 
 Use the `isDiabled` and `isChecked` props to disable an input in a checked state.
 
-<Preview isExpanded>
+<Preview>
   <Story name="Disabled and Checked">
     {() => {
       const [value, setValue] = useState(true);
@@ -149,11 +149,11 @@ Use the `isDiabled` and `isChecked` props to disable an input in a checked state
   </Story>
 </Preview>
 
-## Invalid
+## Is Required and Invalid
 
 Use the `error` prop to mark an input as invalid. `error` accepts either a `boolean` or `string`. If a string is passed, a validation message is displayed below it.
 
-<Preview isExpanded>
+<Preview>
   <Story name="Invalid">
     {() => {
       const [value, setValue] = useState(null);
@@ -163,6 +163,7 @@ Use the `error` prop to mark an input as invalid. `error` accepts either a `bool
           label="Label"
           isChecked={value}
           onChange={value => setValue(event.target.checked)}
+          isRequired
           error="You must accept the Terms and Conditions"
         />
       );
