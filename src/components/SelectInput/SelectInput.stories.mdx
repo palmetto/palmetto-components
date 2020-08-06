@@ -12,7 +12,7 @@ import SelectInput from './SelectInput';
 
 # SelectInput
 
-Allows users to pick a value from predefined list of options. Ideally, it should be used when there are more than 4 options, otherwise you should consider using a radio group instead.
+Allows users to pick a value from a predefined list of options. Ideally, it should be used when there are 5 or more options, otherwise you should consider using a radio group instead.
 
 ## Props
 
@@ -20,7 +20,7 @@ Allows users to pick a value from predefined list of options. Ideally, it should
 
 ## Default
 
-All that is required to render a basic version of the SelectInput is a unique `id`, `label`, a list of options passed to the `options` prop, and an onchange event handler passed to the `onChange` prop.
+All that is required to render a basic version of the SelectInput is a unique `id`, a `label`, a list of options passed to the `options` prop, and an onchange event handler passed to the `onChange` prop.
 
 <Preview> 
   <Story name="Default">
@@ -163,7 +163,7 @@ Use the `isMulti` prop to allow the selection of multiple options.
 
 ## Multi-Select and Pre-Selected
 
-Use the `isMulti` prop combined with passing one or more options in an array to the `value` prop to pre-selecte option(s).
+Use the `isMulti` prop combined with passing one or more options in an array to the `value` prop to pre-select option(s).
 
 <Preview> 
   <Story name="Multi-Select and Pre-Selected">
@@ -192,7 +192,7 @@ Use the `isMulti` prop combined with passing one or more options in an array to 
 
 ## Autofocus
 
-Use the `autoFocus` prop to autofocus a SelectInput on render.
+Use the `autoFocus` prop to autofocus a SelectInput.
 
 <Preview> 
   <Story name="Autofocus">
