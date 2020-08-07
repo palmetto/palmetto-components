@@ -1,3 +1,12 @@
+/**
+ * This single config file handles both the production and development/storybook builds.
+ * If the environment is production, a fully minified/production build,
+ * using custom plugins and module rules, is generated and output to `/dist`.
+ * If the environment is development/storybook, a custom set of module rules are created,
+ * and a subset of the resulting config (plugins, module.rules, and resolve.extensions) are consumed by
+ * `.storybook/main.js` to supplement Storybook's existing config.
+ */
+
 const path = require('path');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
