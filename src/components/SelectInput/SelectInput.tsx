@@ -16,7 +16,7 @@ interface SimulatedEventPayload {
   target: {
     name: string;
     value: ValueType<OptionTypeBase>;
-  }
+  };
 }
 
 interface Props {
