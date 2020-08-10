@@ -1,0 +1,29 @@
+.radio-group {
+  .fieldset {
+    margin: 0;
+    border: none;
+    padding: 0;
+    line-height: 1.25;
+
+    .legend {
+      display: block;
+      margin-bottom: var(--form-control-radio-group-options-spacing);
+      line-height: 1.25;
+      color: var(--form-control-font-color);
+      font-size: var(--form-control-size-md-label-size);
+      font-weight: 700;
+
+
+      .description {
+        margin-top: var(--form-control-radio-group-description-spacing);
+        color: var(--form-control-description-color);
+        font-weight: 400;
+      }
+
+      &.error {
+        color: var(--form-control-error-color);
+      }
+    }
+
+  }
+}

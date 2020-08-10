@@ -6,6 +6,7 @@ import FormikTextInput from './Formik/FormikTextInput/FormikTextInput';
 import Heading from './Heading/Heading';
 import TextInput from './TextInput/TextInput';
 import SelectInput from './SelectInput/SelectInput';
+import RadioGroup from './RadioGroup/RadioGroup';
 
 export {
   Button,
@@ -16,4 +17,5 @@ export {
   Heading,
   TextInput,
   SelectInput,
+  RadioGroup,
 };
