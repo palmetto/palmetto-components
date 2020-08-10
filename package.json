@@ -22,7 +22,7 @@
     "react-dom": ">=16.8.0"
   },
   "scripts": {
-    "build": "BABEL_ENV=build NODE_ENV=production webpack --config webpack.config.js",
+    "build": "BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js",
     "test": "BABEL_ENV=test jest",
     "test:watch": "BABEL_ENV=test jest --watch --verbose",
     "lint-js": "EXTEND_ESLINT=true eslint src",

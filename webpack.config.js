@@ -5,6 +5,10 @@
  * If the environment is development/storybook, a custom set of module rules are created,
  * and a subset of the resulting config (plugins, module.rules, and resolve.extensions) are consumed by
  * `.storybook/main.js` to supplement Storybook's existing config.
+ * We have three environments that we use depending on the necessary output:
+ * 1. 'development' -- used by storybook dev preview
+ * 2. 'production' -- used by storybook build
+ * 3. 'publish' -- used to build the library for publishing and 3rd party consumption
  */
 
 const path = require('path');
@@ -42,7 +46,7 @@ const rules = [
 ];
 
 // Check environment; customize plugins and module rules based on this.
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
   // Extract css to its own .css file as opposed to a JS module.
   plugins.push(new MiniCssExtractPlugin({ filename: 'css/[name].css' }));
   // Clear out /dist directory on every build.
