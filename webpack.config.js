@@ -79,9 +79,8 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
     {
       test: /\.(ts|tsx|js|jsx)?$/,
       use: [
-        {
-          loader: 'ts-loader',
-        },
+        'babel-loader',
+        'ts-loader',
         {
           loader: 'react-docgen-typescript-loader',
           options: {
