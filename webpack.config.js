@@ -65,28 +65,28 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
       exclude: /\.module\.scss$/,
     },
   );
-  // Babel-loader chosen over ts-loader so we can get access to newer ES features should we want to.
   rules.push(
     {
       test: /\.(ts|tsx|js|jsx)?$/,
       use: [
         'babel-loader',
+        'ts-loader',
       ],
       exclude: /node_modules/,
     },
   );
 } else {
-  // In addition to babel-loader, use react-docgen-typescript-loader to auto generate docs in Storybook.
   rules.push(
     {
       test: /\.(ts|tsx|js|jsx)?$/,
       use: [
         {
-          loader: 'babel-loader',
+          loader: require.resolve('babel-loader'),
           options: {
             envName: 'build',
           },
         },
+        'ts-loader',
         {
           loader: 'react-docgen-typescript-loader',
           options: {

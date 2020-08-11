@@ -4,7 +4,6 @@
   "version": "0.1.9",
   "private": false,
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
   "types": "dist/src/components/index.d.ts",
   "files": [
     "dist"
