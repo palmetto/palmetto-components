@@ -4,7 +4,7 @@
   "version": "0.1.9",
   "private": false,
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/components/index.d.ts",
   "files": [
     "dist"
   ],
@@ -21,7 +21,7 @@
     "react-dom": ">=16.8.0"
   },
   "scripts": {
-    "build": "NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js",
+    "build": "BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js",
     "test": "BABEL_ENV=test jest",
     "test:watch": "BABEL_ENV=test jest --watch --verbose",
     "lint-js": "EXTEND_ESLINT=true eslint src",
@@ -62,7 +62,6 @@
     "@storybook/addon-viewport": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
-    "@storybook/theming": "^5.3.19",
     "@svgr/webpack": "^5.4.0",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.2",

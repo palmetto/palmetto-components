@@ -68,6 +68,7 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
     {
       test: /\.(ts|tsx|js|jsx)?$/,
       use: [
+        'babel-loader',
         'ts-loader',
       ],
       exclude: /node_modules/,
