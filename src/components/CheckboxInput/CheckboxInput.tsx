@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FocusEvent, FC } from 'react';
+import React,
+{
+  FC,
+  ChangeEvent,
+  FocusEvent,
+  ReactNode,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -17,7 +23,7 @@ interface Props {
   /**
    * Custom content to be displayed to right of checkbox.
    */
-  label: React.ReactNode | string;
+  label: string;
   /**
    * Additional classes to add
    */
@@ -26,7 +32,7 @@ interface Props {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input
    */
-  error?: React.ReactNode;
+  error?: ReactNode;
   /**
    * The checkbox input "checked" attribute
    */
@@ -42,7 +48,7 @@ interface Props {
   /**
    * Callback function when input is blurred.
    */
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
    * Callback function when input is focused
    */
