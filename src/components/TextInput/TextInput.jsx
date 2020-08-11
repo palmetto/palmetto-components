@@ -203,7 +203,7 @@ const TextInput = ({
     inputId: id,
     labelText: label,
     hasError: !!error,
-    className: 'm-bottom-xs',
+    className: styles['text-input-label'],
     isDisabled,
   };
 
