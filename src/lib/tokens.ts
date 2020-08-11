@@ -15,7 +15,7 @@ export type PALMETTO_COLORS =
   'white' |
   'black';
 
-export type PALMETTO_FONT_SIZE =
+export type PALMETTO_FONT_SIZES =
   'xs' |
   'sm' |
   'md' |

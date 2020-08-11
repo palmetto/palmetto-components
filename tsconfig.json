@@ -1,27 +1,23 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
     "declaration": true,
     "declarationDir": "dist",
-    "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
-    "target": "esnext",
+    "target": "es6",
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
     "strict": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
+    "noEmit": false,
   },
   "exclude": [
-    "node_modules",
-    "dist"
+    "./node_modules",
+    "./dist"
   ]
 }
