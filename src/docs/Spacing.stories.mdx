@@ -1,0 +1,33 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
+import { PALMETTO_SPACING_OPTIONS, PALMETTO_SPACING_VALUES } from '../lib/tokens';
+
+<Meta
+  title="Design Tokens/Spacing"
+/>
+
+# Spacing
+
+Spacing tokens are intended for use with `margin` and `padding` properties. They are defined in `rem`, which means they will scale when adjusting the root font size. Pixel values are calculated with a root font size of `16px`.
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>value</th>
+      <th>px</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {PALMETTO_SPACING_OPTIONS.map((space, i) => (
+      <tr key={i}>
+        <td><code>{`size-spacing-${space}`}</code></td>
+        <td>{PALMETTO_SPACING_VALUES[i].value}</td>
+        <td>{space === 'base' ? '16' : PALMETTO_SPACING_VALUES[i].original.value * 16}</td>
+        <td>{PALMETTO_SPACING_VALUES[i].original.comment}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+

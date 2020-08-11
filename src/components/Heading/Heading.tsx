@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import {
-  PALMETTO_FONT_SIZE,
+  PALMETTO_FONT_SIZES,
   PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_FONT_COLORS,
   PALMETTO_FONT_COLOR_OPTIONS,
@@ -41,7 +41,7 @@ interface Props {
    * Available sizes found:
    * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json)
    */
-  size?: PALMETTO_FONT_SIZE;
+  size?: PALMETTO_FONT_SIZES;
   children?: React.ReactNode;
 }
 
