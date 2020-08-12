@@ -1,0 +1,12 @@
+.header:hover {
+  cursor: pointer;
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.sortIcon {
+  opacity: 0.5;
+}

@@ -1,0 +1,11 @@
+.table {
+  margin-top: 5px;
+  white-space: normal;
+  color: var(--very-dark-grey) !important;
+
+  &.fixedWidthColumns {
+    table-layout: fixed;
+  }
+}
+
+
