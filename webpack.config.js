@@ -69,29 +69,6 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
       test: /\.(ts|tsx|js|jsx)?$/,
       use: [
         'babel-loader',
-        'ts-loader',
-      ],
-      exclude: /node_modules/,
-    },
-  );
-} else {
-  rules.push(
-    {
-      test: /\.(ts|tsx|js|jsx)?$/,
-      use: [
-        {
-          loader: require.resolve('babel-loader'),
-          options: {
-            envName: 'build',
-          },
-        },
-        'ts-loader',
-        {
-          loader: 'react-docgen-typescript-loader',
-          options: {
-            shouldExtractLiteralValuesFromEnum: true,
-          },
-        },
       ],
       exclude: /node_modules/,
     },
@@ -109,7 +86,13 @@ module.exports = {
   optimization: {
     minimizer: [
       // Minify Javascript
-      new TerserJSPlugin({}),
+      new TerserJSPlugin({
+        terserOptions: {
+          // Ensure component names are preserved for consumers (useful when debugging)
+          keep_classnames: true,
+          keep_fnames: true,
+        },
+      }),
       // Minify CSS/SCSS
       new OptimizeCSSAssetsPlugin({}),
     ],
@@ -129,7 +112,7 @@ module.exports = {
     // webpack will resolve the one with the extension listed first in the array and skip the rest.
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
-  // Exclude 'react' and 'react-dom' from being bundled with our components.
+  // Exclude 'react' 'react-dom' and 'prop-types' from being bundled with our components.
   externals: {
     react: {
       commonjs: 'react',
@@ -142,6 +125,12 @@ module.exports = {
       commonjs2: 'react-dom',
       amd: 'ReactDOM',
       root: 'ReactDOM',
+    },
+    'prop-types': {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'PropTypes',
+      root: 'PropTypes',
     },
   },
 };

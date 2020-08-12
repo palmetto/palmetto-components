@@ -1,5 +1,4 @@
 import React, { FC, ChangeEvent, FocusEvent } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import RadioInput from './RadioInput/RadioInput';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -62,32 +61,6 @@ interface Props {
   value?: string;
 }
 
-const propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-      disabled: PropTypes.bool,
-    }).isRequired,
-  ).isRequired,
-  className: PropTypes.string,
-  description: PropTypes.node,
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  isDisabled: PropTypes.bool,
-  isRequired: PropTypes.bool,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  title: PropTypes.node,
-  value: PropTypes.string,
-};
-
 const RadioGroup: FC<Props> = ({
   name,
   onChange,
@@ -146,7 +119,5 @@ const RadioGroup: FC<Props> = ({
     </div>
   );
 };
-
-RadioGroup.propTypes = propTypes;
 
 export default RadioGroup;

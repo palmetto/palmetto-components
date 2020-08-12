@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { PALMETTO_BRAND_COLOR_OPTIONS, PALMETTO_BRAND_COLOR_VALUES, PALMETTO_COLORS } from '../../lib/tokens';
+import { PALMETTO_BRAND_COLOR_VALUES, PALMETTO_COLORS } from '../../lib/tokens';
 import styles from './Spinner.module.scss';
 
 interface Props {
@@ -54,21 +53,6 @@ const Spinner: FC<Props> = ({
       </svg>
     </span>
   );
-};
-
-Spinner.propTypes = {
-  /**
-   * Custom className to be applied to spinner container div.
-   */
-  className: PropTypes.string,
-  /**
-   * Spinner color, pass down one of the options from the Palmetto 'brand' palette.
-   */
-  color: PropTypes.oneOf(PALMETTO_BRAND_COLOR_OPTIONS),
-  /**
-   * Size of the spinner.
-   */
-  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 export default Spinner;

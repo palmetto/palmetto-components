@@ -1,5 +1,4 @@
 import React, { createElement, FC } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import {
@@ -62,14 +61,6 @@ const Heading: FC<Props> = ({
   });
 
   return createElement(element, { className: classes, children });
-};
-
-Heading.propTypes = {
-  as: PropTypes.oneOf(HEADING_LEVELS),
-  className: PropTypes.string,
-  color: PropTypes.oneOf(PALMETTO_FONT_COLOR_OPTIONS),
-  size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
-  children: PropTypes.node,
 };
 
 export default Heading;

@@ -1,5 +1,4 @@
 import React, { FocusEvent, FC } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
@@ -90,35 +89,6 @@ interface Props {
   value?: any | any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-const propTypes = {
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
-  hideLabel: PropTypes.bool,
-  className: PropTypes.string,
-  placeholder: PropTypes.string,
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  isDisabled: PropTypes.bool,
-  isRequired: PropTypes.bool,
-  name: PropTypes.string,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  autoFocus: PropTypes.bool,
-  isMulti: PropTypes.bool,
-  value: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.arrayOf(PropTypes.object),
-  ]),
-};
-
 const SelectInput: FC<Props> = ({
   id,
   label,
@@ -200,7 +170,5 @@ const SelectInput: FC<Props> = ({
     </div>
   );
 };
-
-SelectInput.propTypes = propTypes;
 
 export default SelectInput;
