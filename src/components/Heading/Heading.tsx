@@ -1,14 +1,11 @@
 import React, { createElement, FC } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import {
   PALMETTO_FONT_SIZES,
-  PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_FONT_COLORS,
-  PALMETTO_FONT_COLOR_OPTIONS,
 } from '../../lib/tokens';
-import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP, HEADING_LEVELS } from './Heading.constants';
+import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
 import styles from './Heading.module.scss';
 
 /**
@@ -62,14 +59,6 @@ const Heading: FC<Props> = ({
   });
 
   return createElement(element, { className: classes, children });
-};
-
-Heading.propTypes = {
-  as: PropTypes.oneOf(HEADING_LEVELS),
-  className: PropTypes.string,
-  color: PropTypes.oneOf(PALMETTO_FONT_COLOR_OPTIONS),
-  size: PropTypes.oneOf(PALMETTO_FONT_SIZE_OPTIONS),
-  children: PropTypes.node,
 };
 
 export default Heading;

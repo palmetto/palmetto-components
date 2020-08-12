@@ -15,12 +15,6 @@ const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-// Common plugins shared between storybook and production builds.
-const plugins = [
-  // Add Typescript type checking on build.
-  new ForkTsCheckerWebpackPlugin(),
-];
-
 // Common module rules shared between storybook and production builds.
 const rules = [
   // Process all SCSS modules which will be compiled inside the main JS bundle.
@@ -44,14 +38,6 @@ const rules = [
 
 // Check environment; customize plugins and module rules based on this.
 if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
-  // Extract css to its own .css file as opposed to a JS module.
-  plugins.push(new MiniCssExtractPlugin({ filename: 'css/[name].css' }));
-  // Clear out /dist directory on every build.
-  plugins.push(new CleanWebpackPlugin());
-  // This removes empty .js files generated for css/scss-only entries. Issue inherent to webpack, more details here:
-  // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/151
-  plugins.push(new FixStyleOnlyEntriesPlugin());
-
   // Process all global SCSS files (and export them to css)
   rules.push(
     {
@@ -70,29 +56,6 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
       test: /\.(ts|tsx|js|jsx)?$/,
       use: [
         'babel-loader',
-        'ts-loader',
-      ],
-      exclude: /node_modules/,
-    },
-  );
-} else {
-  rules.push(
-    {
-      test: /\.(ts|tsx|js|jsx)?$/,
-      use: [
-        {
-          loader: require.resolve('babel-loader'),
-          options: {
-            envName: 'build',
-          },
-        },
-        'ts-loader',
-        {
-          loader: 'react-docgen-typescript-loader',
-          options: {
-            shouldExtractLiteralValuesFromEnum: true,
-          },
-        },
       ],
       exclude: /node_modules/,
     },
@@ -110,7 +73,13 @@ module.exports = {
   optimization: {
     minimizer: [
       // Minify Javascript
-      new TerserJSPlugin({}),
+      new TerserJSPlugin({
+        terserOptions: {
+          // Ensure component names are preserved for consumers (useful when debugging)
+          keep_classnames: true,
+          keep_fnames: true,
+        },
+      }),
       // Minify CSS/SCSS
       new OptimizeCSSAssetsPlugin({}),
     ],
@@ -121,7 +90,17 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     libraryTarget: 'umd',
   },
-  plugins,
+  plugins: [
+    // Add Typescript type checking on build.
+    new ForkTsCheckerWebpackPlugin(),
+    // Extract css to its own .css file as opposed to a JS module.
+    new MiniCssExtractPlugin({ filename: 'css/[name].css' }),
+    // Clear out /dist directory on every build.
+    new CleanWebpackPlugin(),
+    // This removes empty .js files generated for css/scss-only entries. Issue inherent to webpack, more details here:
+    // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/151
+    new FixStyleOnlyEntriesPlugin(),
+  ],
   module: {
     rules,
   },
@@ -130,7 +109,7 @@ module.exports = {
     // webpack will resolve the one with the extension listed first in the array and skip the rest.
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
-  // Exclude 'react' and 'react-dom' from being bundled with our components.
+  // Exclude 'react' 'react-dom' and 'prop-types' from being bundled with our components.
   externals: {
     react: {
       commonjs: 'react',
@@ -143,6 +122,12 @@ module.exports = {
       commonjs2: 'react-dom',
       amd: 'ReactDOM',
       root: 'ReactDOM',
+    },
+    'prop-types': {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'PropTypes',
+      root: 'PropTypes',
     },
   },
 };
