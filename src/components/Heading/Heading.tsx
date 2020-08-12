@@ -3,11 +3,9 @@ import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import {
   PALMETTO_FONT_SIZES,
-  PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_FONT_COLORS,
-  PALMETTO_FONT_COLOR_OPTIONS,
 } from '../../lib/tokens';
-import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP, HEADING_LEVELS } from './Heading.constants';
+import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
 import styles from './Heading.module.scss';
 
 /**
