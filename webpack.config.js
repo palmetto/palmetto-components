@@ -15,19 +15,6 @@ const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-// Common plugins shared between storybook and production builds.
-const plugins = [
-  // Add Typescript type checking on build.
-  new ForkTsCheckerWebpackPlugin(),
-  // Extract css to its own .css file as opposed to a JS module.
-  new MiniCssExtractPlugin({ filename: 'css/[name].css' }),
-  // Clear out /dist directory on every build.
-  new CleanWebpackPlugin(),
-  // This removes empty .js files generated for css/scss-only entries. Issue inherent to webpack, more details here:
-  // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/151
-  new FixStyleOnlyEntriesPlugin(),
-];
-
 // Common module rules shared between storybook and production builds.
 const rules = [
   // Process all SCSS modules which will be compiled inside the main JS bundle.
@@ -103,7 +90,17 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     libraryTarget: 'umd',
   },
-  plugins,
+  plugins: [
+    // Add Typescript type checking on build.
+    new ForkTsCheckerWebpackPlugin(),
+    // Extract css to its own .css file as opposed to a JS module.
+    new MiniCssExtractPlugin({ filename: 'css/[name].css' }),
+    // Clear out /dist directory on every build.
+    new CleanWebpackPlugin(),
+    // This removes empty .js files generated for css/scss-only entries. Issue inherent to webpack, more details here:
+    // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/151
+    new FixStyleOnlyEntriesPlugin(),
+  ],
   module: {
     rules,
   },
