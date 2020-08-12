@@ -19,9 +19,6 @@ module.exports = {
   webpackFinal: (config) => {
     return {
       ...config,
-      plugins: [
-        ...config.plugins,
-      ],
       module: { 
         ...config.module,
         rules: [
@@ -29,12 +26,6 @@ module.exports = {
           ...webpackConfig.module.rules
         ],
       },
-      resolve: {
-        ...config.resolve,
-        extensions: [
-          ...config.resolve.extensions,
-        ],
-      }
     }
   },
 };
