@@ -36,6 +36,7 @@ const rules = [
         },
       },
       'sass-loader',
+      'postcss-loader',
     ],
     include: /\.module\.scss$/,
   },
