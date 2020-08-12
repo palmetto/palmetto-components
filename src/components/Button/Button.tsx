@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
@@ -119,21 +118,6 @@ const Button: FC<Props> = ({
       {content}
     </button>
   );
-};
-
-Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  id: PropTypes.string,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  isDisabled: PropTypes.bool,
-  className: PropTypes.string,
-  fullWidth: PropTypes.bool,
-  tabIndex: PropTypes.number,
-  isLoading: PropTypes.bool,
-  onClick: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 export default Button;

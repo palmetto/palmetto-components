@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './FormLabel.module.scss';
 
@@ -38,17 +37,6 @@ interface Props {
   isRadioInputLabel?: boolean;
 }
 
-const propTypes = {
-  inputId: PropTypes.string.isRequired,
-  labelText: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  displayInline: PropTypes.bool,
-  hasError: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isFieldRequired: PropTypes.bool,
-  isRadioInputLabel: PropTypes.bool,
-};
-
 const FormLabel: FC<Props> = ({
   inputId,
   labelText,
@@ -82,7 +70,5 @@ const FormLabel: FC<Props> = ({
     </label>
   );
 };
-
-FormLabel.propTypes = propTypes;
 
 export default FormLabel;

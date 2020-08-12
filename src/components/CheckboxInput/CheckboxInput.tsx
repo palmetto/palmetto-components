@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FocusEvent, FC } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
@@ -114,23 +113,6 @@ const CheckboxInput: FC<Props> = ({
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </>
   );
-};
-
-CheckboxInput.propTypes = {
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  isChecked: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isRequired: PropTypes.bool,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
 };
 
 export default CheckboxInput;

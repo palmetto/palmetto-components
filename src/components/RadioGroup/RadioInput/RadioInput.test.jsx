@@ -15,56 +15,6 @@ const mockOption = {
 const mockedHandleChange = jest.fn();
 
 describe('RadioInput', () => {
-  describe('Props Validation', () => {
-    describe('Required name', () => {
-      test('Throws error if required prop "name" is not supplied to component', () => {
-        console.error = jest.fn(); // eslint-disable-line no-console
-        render(
-          <RadioInput
-            onChange={() => null}
-            option={mockOption}
-          />,
-        );
-
-        expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-        expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-          .toContain('Failed prop type: The prop `name`');
-      });
-    });
-
-    describe('Required onChange', () => {
-      test('Throws error if required prop "onChange" is not supplied to component', () => {
-        console.error = jest.fn(); // eslint-disable-line no-console
-        render(
-          <RadioInput
-            name="testGroup"
-            option={mockOption}
-          />,
-        );
-
-        expect(console.error).toHaveBeenCalledTimes(2); // eslint-disable-line no-console
-        expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-          .toContain('Failed prop type: The prop `onChange`');
-      });
-    });
-
-    describe('Required option', () => {
-      test('Throws error if required prop "option" is not supplied to component', () => {
-        console.error = jest.fn(); // eslint-disable-line no-console
-        render(
-          <RadioInput
-            name="testGroup"
-            onChange={() => null}
-          />,
-        );
-
-        expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-        expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-          .toContain('Failed prop type: The prop `option`');
-      });
-    });
-  });
-
   describe('Callback Handling', () => {
     describe('onChange', () => {
       test('onChange event fires callback function', () => {

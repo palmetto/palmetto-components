@@ -14,56 +14,6 @@ const selectOptions = [
 ];
 
 describe('SelectInput', () => {
-  describe('Props Validation', () => {
-    test('Throws error if required prop "id" is not supplied to component', () => {
-      const mockedHandleChange = jest.fn();
-
-      console.error = jest.fn(); // eslint-disable-line no-console
-      render(
-        <SelectInput
-          label="test select input"
-          onChange={mockedHandleChange}
-          options={selectOptions}
-        />,
-      );
-      expect(console.error).toHaveBeenCalledTimes(2); // eslint-disable-line no-console
-      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-        .toContain('Failed prop type: The prop `id`');
-      expect(console.error.mock.calls[1][0]) // eslint-disable-line no-console
-        .toContain('Failed prop type: The prop `inputId` is marked as required in `FormLabel`');
-    });
-
-    test('Throws error if required prop "onChange" is not supplied to component', () => {
-      console.error = jest.fn(); // eslint-disable-line no-console
-      render(
-        <SelectInput
-          id="testId"
-          label="test select input"
-          options={selectOptions}
-        />,
-      );
-      expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-        .toContain('Failed prop type: The prop `onChange`');
-    });
-
-    test('Throws error if required prop "options" is not supplied to component', () => {
-      const mockedHandleChange = jest.fn();
-
-      console.error = jest.fn(); // eslint-disable-line no-console
-      render(
-        <SelectInput
-          id="testId"
-          label="test select input"
-          onChange={mockedHandleChange}
-        />,
-      );
-      expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-        .toContain('Failed prop type: The prop `options`');
-    });
-  });
-
   describe('Callback Handling', () => {
     test('it fires onChange callback on change', async () => {
       const mockedHandleChange = jest.fn();

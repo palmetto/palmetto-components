@@ -1,5 +1,4 @@
 import React, { FC, ChangeEvent, FocusEvent } from 'react';
-import PropTypes from 'prop-types';
 import FormLabel from '../../FormLabel/FormLabel';
 import styles from './RadioInput.module.scss';
 
@@ -47,26 +46,6 @@ interface Props {
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 }
-
-const propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  option: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    disabled: PropTypes.bool,
-  }).isRequired,
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  isDisabled: PropTypes.bool,
-  isSelected: PropTypes.bool,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-};
 
 const RadioInput: FC<Props> = ({
   name,
@@ -117,7 +96,5 @@ const RadioInput: FC<Props> = ({
     </>
   );
 };
-
-RadioInput.propTypes = propTypes;
 
 export default RadioInput;

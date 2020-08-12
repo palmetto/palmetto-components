@@ -7,10 +7,9 @@
  */
 
 const webpackConfig = require('../webpack.config');
-const path = require('path');
 
 module.exports = {
-  stories: ['../src/**/*.stories.([tj]sx|mdx)'],
+  stories: ['../src/**/*.stories.@([tj]sx|mdx)'],
   addons: [
     '@storybook/addon-actions/register',
     '@storybook/addon-a11y/register',
@@ -20,10 +19,6 @@ module.exports = {
   webpackFinal: (config) => {
     return {
       ...config,
-      plugins: [
-        ...config.plugins,
-        ...webpackConfig.plugins,
-      ],
       module: { 
         ...config.module,
         rules: [
@@ -31,13 +26,6 @@ module.exports = {
           ...webpackConfig.module.rules
         ],
       },
-      resolve: {
-        ...config.resolve,
-        extensions: [
-          ...config.resolve.extensions,
-          ...webpackConfig.resolve.extensions,
-        ],
-      }
     }
   },
 };
