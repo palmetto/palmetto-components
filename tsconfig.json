@@ -3,6 +3,7 @@
     "outDir": "./dist",
     "declaration": true,
     "declarationDir": "dist",
+    "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
     "target": "es6",
     "module": "esnext",
@@ -14,10 +15,9 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
-    "noEmit": false,
   },
-  "exclude": [
-    "./node_modules",
-    "./dist"
+  "include": [
+    "./src",
+    "./types"
   ]
 }

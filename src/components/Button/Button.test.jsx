@@ -7,16 +7,6 @@ import {
 import Button from './Button';
 
 describe('Button', () => {
-  describe('Props Validation', () => {
-    test('Throws error if required prop "children" is not supplied to component', () => {
-      console.error = jest.fn(); // eslint-disable-line no-console
-      render(<Button />);
-      expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-      expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-        .toContain('Failed prop type: The prop `children`');
-    });
-  });
-
   describe('Type', () => {
     test('Sets the html button type to "button" by default', () => {
       render(<Button>Default Button Type</Button>);
