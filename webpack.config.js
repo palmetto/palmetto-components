@@ -19,6 +19,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const plugins = [
   // Add Typescript type checking on build.
   new ForkTsCheckerWebpackPlugin(),
+  // Extract css to its own .css file as opposed to a JS module.
+  new MiniCssExtractPlugin({ filename: 'css/[name].css' }),
+  // Clear out /dist directory on every build.
+  new CleanWebpackPlugin(),
+  // This removes empty .js files generated for css/scss-only entries. Issue inherent to webpack, more details here:
+  // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/151
+  new FixStyleOnlyEntriesPlugin(),
 ];
 
 // Common module rules shared between storybook and production builds.
@@ -44,14 +51,6 @@ const rules = [
 
 // Check environment; customize plugins and module rules based on this.
 if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
-  // Extract css to its own .css file as opposed to a JS module.
-  plugins.push(new MiniCssExtractPlugin({ filename: 'css/[name].css' }));
-  // Clear out /dist directory on every build.
-  plugins.push(new CleanWebpackPlugin());
-  // This removes empty .js files generated for css/scss-only entries. Issue inherent to webpack, more details here:
-  // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/151
-  plugins.push(new FixStyleOnlyEntriesPlugin());
-
   // Process all global SCSS files (and export them to css)
   rules.push(
     {
