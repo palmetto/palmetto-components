@@ -16,13 +16,14 @@ const Table = ({
   setSortedColumn,
   sortedColumn,
   useFixedWidthColumns,
-  truncateOverflow
+  truncateOverflow,
+  emptyCellPlaceholder,
 }) => {
   const tableClasses = classNames(
     className,
     styles.table,
     {
-      // [styles.fixedWidthColumns]: useFixedWidthColumns,
+      [styles.fixedWidthColumns]: useFixedWidthColumns,
     },
   );
 
@@ -51,6 +52,7 @@ const Table = ({
               key={index}
               data={record}
               truncateOverflow={truncateOverflow}
+              emptyCellPlaceholder={emptyCellPlaceholder}
             />
           ))
         }

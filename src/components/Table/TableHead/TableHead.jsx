@@ -46,7 +46,7 @@ export const TableHead = ({
   );
 
   return (
-    <thead className={styles.tableHead}>
+    <thead className={styles['table-head']}>
       <tr>
         {
           useSortedColumns
