@@ -16,6 +16,10 @@ interface Props {
    */
   id: string;
   /**
+   * The checkbox input "checked" attribute
+   */
+  isChecked: boolean;
+  /**
    * Callback function when input is changed
    */
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -32,10 +36,6 @@ interface Props {
    * Pass a string or node to render a validation message below the input
    */
   error?: ReactNode;
-  /**
-   * The checkbox input "checked" attribute
-   */
-  isChecked?: boolean;
   /**
    * If the input should be disabled and not focusable
    */
@@ -56,11 +56,11 @@ interface Props {
 
 const CheckboxInput: FC<Props> = ({
   id,
+  isChecked,
   onChange,
   label,
   className,
   error = false,
-  isChecked = false,
   isDisabled = false,
   isRequired = false,
   onBlur,
