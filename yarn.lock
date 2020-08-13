@@ -2899,10 +2899,10 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@palmetto/palmetto-design-tokens@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.4.0.tgz#3946c020568675f75b8df6eef494e9092234c923"
-  integrity sha512-3kzq3nELUrOJ2oQIKk3B4zrgRvZ/Q91QJjmGLjRAnbgvCNnbKfH9uFxJe+JbNaioH4Qsbd9mdDlw0+/vK0wUYg==
+"@palmetto/palmetto-design-tokens@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.5.0.tgz#2aac6ed3641107fd88018a49eec9c2ee10c86c8d"
+  integrity sha512-yBgU0ZWeKyocLhUJ+kimqnN+GMo5MRtZWQcOCjl5hn45hgytBA9CVsO4s8c41Xr7l1dCfNNDTl6dmugoc70FJA==
 
 "@reach/router@^1.2.1", "@reach/router@^1.3.3":
   version "1.3.4"
