@@ -1,0 +1,193 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import CheckboxInput from './CheckboxInput';
+
+<Meta
+  title="Components/Form Inputs/CheckboxInput"
+  component={CheckboxInput}
+  decorators={[withA11y]}
+/>
+
+# CheckboxInput
+
+Use a CheckboxInput to allow users to make a range of selections (zero, one or many).
+
+## Props
+
+<Props of={CheckboxInput} />
+
+## Default
+
+All that is required to render a basic version of the CheckboxInput is a unique `id`, a `label`, and an onchange event handler passed to the `onChange` prop.
+
+<Preview>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="defaultStateIsUnchecked"
+          label="Label"
+          onChange={event => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Required
+
+Use the `isRequired` prop to mark the input as required.
+
+<Preview>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="requiredCheckboxIsUnchecked"
+          label="Label"
+          isChecked={value}
+          onChange={event => setValue(event.target.checked)}
+          isRequired
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Checked Initial State
+
+Use the `isChecked` prop to mark the input as checked upon initial render.
+
+<Preview>
+  <Story name="Checked Initial State">
+    {() => {
+      const [value, setValue] = useState(true);
+      return (
+        <CheckboxInput
+          id="initialStateChecked"
+          label="Label"
+          onChange={value => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Custom Label
+
+Pass simple strings or any valid DOM node(s) to `label` to create custom labels.
+
+<Preview>
+  <Story name="Custom Label">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="customLabel"
+          label={(
+            <span>
+              <span style={{ color: '#5620c5' }}>
+                Pass any element(s) as children for the label, even links! Add custom styles.
+              </span>
+              {' '}
+              <a href="https://www.palmetto.com">Go to Palmetto.com</a>
+            </span>
+          )}
+          onChange={value => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled and Unchecked
+
+Use the `isDisabled` prop to disable an input.
+
+<Preview>
+  <Story name="Disabled and Unchecked">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="disabledAndUnchecked"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          isDisabled
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled and Checked
+
+Use the `isDisabled` and `isChecked` props to disable an input in a checked state.
+
+<Preview>
+  <Story name="Disabled and Checked">
+    {() => {
+      const [value, setValue] = useState(true);
+      return (
+        <CheckboxInput
+          id="disabledAndUnchecked"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          isDisabled
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Error
+
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
+
+<Preview>
+  <Story name="Error">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="invalidCheckbox"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          isRequired
+          error="You must accept the Terms and Conditions"
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Custom Classes
+
+Use the `className` prop to add a custom class, or classes to an input.
+
+<Preview>
+  <Story name="Custom Classes">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="customClasses"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          className="background-color-primary"
+        />
+      );
+    }}
+  </Story>
+</Preview>

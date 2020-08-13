@@ -1,12 +1,14 @@
-import React, { ChangeEvent, FocusEvent, FC } from 'react';
+import React,
+{
+  FC,
+  ChangeEvent,
+  FocusEvent,
+  ReactNode,
+} from 'react';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
 import styles from './CheckboxInput.module.scss';
-
-/**
- * Used to allow users to make a range of selections (zero, one or many).
- */
 
 interface Props {
   /**
@@ -29,7 +31,7 @@ interface Props {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input
    */
-  error?: React.ReactNode;
+  error?: ReactNode;
   /**
    * The checkbox input "checked" attribute
    */
@@ -45,7 +47,7 @@ interface Props {
   /**
    * Callback function when input is blurred.
    */
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
    * Callback function when input is focused
    */
