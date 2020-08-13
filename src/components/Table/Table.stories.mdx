@@ -1,0 +1,46 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Table from './Table';
+
+
+<Meta
+  title="Components/Table"
+  component={Table}
+  decorators={[withA11y]}
+/>
+
+# Table
+
+I'm a table!
+
+## Props
+
+<Props of={Table} />
+
+## Default
+
+<Preview isExpanded>
+  <Story name="Default">
+    {() => {
+      const columnConfig = [
+        {name: 'First Column'},
+        {name: 'Second Column'},
+        {name: 'Third Column'},
+      ];
+      const tableData = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={tableData}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
