@@ -33,6 +33,10 @@ interface Props {
     label: string;
   }[];
   /**
+   * The value(s) of select
+   */
+  value: any | any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+  /**
    * Visually hide the label
    */
   hideLabel?: boolean;
@@ -77,10 +81,6 @@ interface Props {
    * Is multi select enabled
    */
   isMulti?: boolean;
-  /**
-   * The value(s) of select
-   */
-  value?: any | any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const SelectInput: FC<Props> = ({
