@@ -34,7 +34,7 @@ const Table = ({
   const tableClasses = classNames(
     styles.table,
     {
-      [styles.fixedWidthColumns]: useFixedWidthColumns,
+      [styles['fixed-width-columns']]: useFixedWidthColumns,
       [styles.striped]: isStriped,
       [styles.bordered]: isBordered,
       [styles.borderless]: !isBordered,
