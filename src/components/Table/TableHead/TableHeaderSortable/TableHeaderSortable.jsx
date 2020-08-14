@@ -10,8 +10,11 @@ export const TableHeaderSortable = ({
   loading,
   width
 }) => {
-  const renderIcon = (sortedColumnName, sortColumnOrder, name) => {
-    const sortDirection = (sortedColumnName === name) ? sortColumnOrder : null;
+  const renderIcon = name => {
+    console.log(sortedColumn);
+    console.log(name);
+    const sortDirection = (sortedColumn && sortedColumn.columnName === name) ? sortedColumn.sortOrder : null;
+    console.log(sortDirection);
 
     return (
       <span>
@@ -25,8 +28,6 @@ export const TableHeaderSortable = ({
     const spaceKey = 32;
 
     if (e.keyCode === enterKey || e.keyCode === spaceKey) {
-      console.log(queryParam);
-      console.log(sortedColumn);
       onSort(queryParam);
     }
   };
@@ -48,7 +49,7 @@ export const TableHeaderSortable = ({
       onKeyDown={handleKeyPress}
     >
       {header}
-      {sortedColumn && renderIcon(sortedColumn.columnName, sortedColumn.sortOrder, queryParam)}
+      {renderIcon(queryParam)}
     </th>
   );
 };

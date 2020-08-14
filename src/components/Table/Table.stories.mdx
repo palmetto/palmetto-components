@@ -25,7 +25,6 @@ I'm a table!
   <Story name="Sortable">
     {() => {
       const [sortedColumn, setSortedColumn] = useState(sortedColumn);
-      console.log(sortedColumn);
       const columnConfig = [
         {name: 'First Column', apiKey: 'first', isSortable: true},
         {name: 'Second Column', apiKey: 'second'},
@@ -43,7 +42,7 @@ I'm a table!
       ];
       const handleTableHeaderClick = clickedColumnName => {
         let direction;
-        if (clickedColumnName !== sortedColumn.columnName) {
+        if (!sortedColumn || clickedColumnName !== sortedColumn.columnName) {
           direction = 'desc';
         } else {
           direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
@@ -59,7 +58,7 @@ I'm a table!
           isBordered
           isResponsive
           columnConfig={columnConfig}
-          tableData={tableDataDesc}
+          tableData={sortedColumn && sortedColumn.sortOrder === 'desc' ? tableDataDesc : tableDataAsc}
           onSort={handleTableHeaderClick}
           sortedColumn={sortedColumn}
         />
