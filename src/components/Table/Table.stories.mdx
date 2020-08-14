@@ -55,6 +55,56 @@ I'm a table!
   </Story>
 </Preview>
 
+## Sortable
+
+<Preview>
+  <Story name="Sortable">
+    {() => {
+      const columnConfig = [
+        {name: 'First Column', apiKey: 'first'},
+        {name: 'Second Column', apiKey: 'second'},
+        {name: 'Third Column', apiKey: 'third'},
+      ];
+      const tableDataAsc = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      const tableDataDesc = [
+        ['3', 'bazz', 'strawberry'],
+        ['2', 'bar', 'chocolate'],
+        ['1', 'foo', 'vanilla'],
+      ];
+      const handleTableHeaderClick = clickedColumnName => {
+        let direction;
+
+        if (clickedColumnName !== sortedColumn.columnName) {
+          direction = 'desc';
+        } else {
+          direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
+        }
+
+        const newSortedColumn = {
+          columnName: clickedColumnName,
+          sortOrder: direction,
+        };
+
+        setNewSortedColumn(newSortedColumn);
+        setPage(1);
+      };
+      return (
+        <Table
+          isBordered
+          isResponsive
+          columnConfig={columnConfig}
+          tableData={tableData}
+          useFixedWidthColumns
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
 ## Fixed-Width Columns
 
 <Preview>

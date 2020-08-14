@@ -20,7 +20,7 @@ export const TableHeaderSortable = ({
     );
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = e => {
     const enterKey = 13;
     const spaceKey = 32;
 

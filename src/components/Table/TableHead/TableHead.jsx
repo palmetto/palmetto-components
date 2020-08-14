@@ -5,29 +5,10 @@ import styles from './TableHead.module.scss';
 export const TableHead = ({ 
   columns, 
   sortedColumn, 
-  setNewSortedColumn, 
-  loading, 
-  setPage, 
-  useSortedColumns 
+  onSort, 
+  loading,
+  setPage,
 }) => {
-  const handleTableHeaderClick = clickedColumnName => {
-    let direction;
-
-    if (clickedColumnName !== sortedColumn.columnName) {
-      direction = 'desc';
-    } else {
-      direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
-    }
-
-    const newSortedColumn = {
-      columnName: clickedColumnName,
-      sortOrder: direction,
-    };
-
-    setNewSortedColumn(newSortedColumn);
-    setPage(1);
-  };
-
   const renderSortableColumns = () => (
     columns.map(column => (
       <TableHeaderSortable

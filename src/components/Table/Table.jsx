@@ -12,7 +12,7 @@ const Table = ({
   loadingFailed,
   useSortedColumns,
   setPage,
-  setSortedColumn,
+  onSort,
   sortedColumn,
   useFixedWidthColumns,
   truncateOverflow,
@@ -49,10 +49,8 @@ const Table = ({
         <TableHead
           columns={columnConfig}
           sortedColumn={sortedColumn}
-          setNewSortedColumn={setSortedColumn}
-          setPage={setPage}
           loading={loading}
-          useSortedColumns={useSortedColumns}
+          onSort={onSort}
         />
         <tbody>
           {
