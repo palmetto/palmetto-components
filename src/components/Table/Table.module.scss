@@ -10,7 +10,6 @@
   
     &.fixed-width-columns {
       table-layout: fixed;
-      width: 100%;
     }
   }
 
@@ -48,7 +47,7 @@
   }
   
   .striped {
-    tbody tr:nth-of-type(2n) {
+    tbody tr:nth-of-type(odd) {
       background-color: var(--color-brand-grey-lighter);
     }
   }
