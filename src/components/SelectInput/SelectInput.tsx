@@ -5,12 +5,6 @@ import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
-/**
- * Allows users to pick a value from predefined list of options.
- * Ideally, it should be used when there are more than 4 options,
- * otherwise you should consider using a radio group instead.
- */
-
 interface SimulatedEventPayload {
   target: {
     name: string;
@@ -38,6 +32,10 @@ interface Props {
     value: string;
     label: string;
   }[];
+  /**
+   * The value(s) of select
+   */
+  value: any | any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Visually hide the label
    */
@@ -83,10 +81,6 @@ interface Props {
    * Is multi select enabled
    */
   isMulti?: boolean;
-  /**
-   * The value(s) of select
-   */
-  value?: any | any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const SelectInput: FC<Props> = ({

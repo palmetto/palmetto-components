@@ -25,6 +25,8 @@ export const TableHeaderSortable = ({
     const spaceKey = 32;
 
     if (e.keyCode === enterKey || e.keyCode === spaceKey) {
+      console.log(queryParam);
+      console.log(sortedColumn);
       onSort(queryParam);
     }
   };
@@ -46,7 +48,7 @@ export const TableHeaderSortable = ({
       onKeyDown={handleKeyPress}
     >
       {header}
-      {renderIcon(sortedColumn.columnName, sortedColumn.sortOrder, queryParam)}
+      {sortedColumn && renderIcon(sortedColumn.columnName, sortedColumn.sortOrder, queryParam)}
     </th>
   );
 };

@@ -1,0 +1,400 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import TextInput from './TextInput';
+
+<Meta
+  title="Components/Form Inputs/TextInput"
+  component={TextInput}
+  decorators={[withA11y]}
+/>
+
+# TextInput
+
+Use TextInput to render a single-line text input. Masks can also be applied to custom format the input; currently supported masks include Credit Card and Phone.
+
+## Props
+
+<Props of={TextInput} />
+
+## Default
+
+All that is required to render a basic version of the TextInput is a unique `id`, `label`, `value`, and an onchange event handler passed to the `onChange` prop.
+
+<Preview>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="default"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Required
+
+Use the `isRequired` prop to mark the input as required.
+
+<Preview>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="required"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            isRequired
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Placeholder
+
+Use the `placeholder` prop to add a custom placeholder.
+
+<Preview>
+  <Story name="Placeholder">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="placeholder"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            placeholder="Custom placeholder..."
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Autofocus
+
+Use the `autoFocus` prop to autofocus the input.
+
+<Preview>
+  <Story name="Autofocus">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="autofocus"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            autoFocus
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Hidden Label
+
+Use the `hideLabel` prop to not render the label.
+
+<Preview>
+  <Story name="Hidden Label">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '60px' }}>
+          <TextInput
+            id="hiddenLabel"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            hideLabel
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled
+
+Use the `isDisabled` prop to mark the input as disabled.
+
+<Preview>
+  <Story name="Disabled">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="disabled"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            isDisabled
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled with Value
+
+Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can have values that are either preset, or entered by users.
+
+<Preview>
+  <Story name="Disabled with Value">
+    {() => {
+      const [value, setValue] = useState('Preset value');
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="disabledWithValue"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            isDisabled
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Disabled with Placeholder
+
+Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can have placeholders.
+
+<Preview>
+  <Story name="Disabled with Placeholder">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="disabledWithPlaceholder"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            isDisabled
+            placeholder="Useful placeholder..."
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## With Phone Mask
+
+Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to set the mask as "phone".
+
+<Preview>
+  <Story name="With Phone Mask">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="withPhoneMask"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            type="tel"
+            inputMask="phone"
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## With Credit Card Mask
+
+Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to set the mask as "creditCard".
+
+<Preview>
+  <Story name="With Credit Card Mask">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="withCreditCardMask"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            type="tel"
+            inputMask="creditCard"
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Max Length
+
+Use the `maxLength` prop to limit the number of characters that can be entered into an input.
+
+<Preview>
+  <Story name="Max Length">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="maxLength"
+            value={value}
+            label="Label"
+            maxLength="5"
+            onChange={event => setValue(event.target.value)}
+            placeholder="Can't enter more than 5 characters..."
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Required with Error
+
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. A `boolean` is passed in this example.
+
+<Preview>
+  <Story name="Required with Error">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="requiredWithError"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            error={true}
+            isRequired
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Required with Error and Validation Message
+
+Pass a `string` or `node` to the `error` prop to render a validation message.
+
+<Preview>
+  <Story name="Required with Error and Validation Message">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="requiredWithValidationMessage"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            isRequired
+            error="Helpful validation message"
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Not Required with Error and Validation Message
+
+An input does not need to be marked as required to render a validation message.
+
+<Preview>
+  <Story name="Not Required with Error and Validation Message">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="notRequiredWithValidationMessage"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            error="Helpful validation message"
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Error with Hidden Label
+
+<Preview>
+  <Story name="Error with Hidden Label">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '60px' }}>
+          <TextInput
+            id="errorWithHiddenLabel"
+            value={value}
+            label="Label"
+            hideLabel
+            onChange={event => setValue(event.target.value)}
+            error={true}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Custom Classes
+
+Use the `className` prop to add a custom class, or classes to an input.
+
+<Preview>
+  <Story name="Custom Classes">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="customClasses"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            className="background-color-primary"
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+
+
+
+
+
+
+
+

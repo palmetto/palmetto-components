@@ -13,7 +13,7 @@ import RadioGroup from './RadioGroup';
 
 # RadioGroup
 
-Use a RadioGroup when a user is required to select one of five or fewer options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-form-inputs-selectinput--all) instead.
+Use a RadioGroup when a user is required to select one of five or fewer options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-form-inputs-selectinput--default-story) instead.
 
 ## Props
 
@@ -267,7 +267,7 @@ A group can be fully disabled by using the `isDisabled` prop.
 
 ## Error
 
-An error state can be triggered by using the `error` prop. The prop accepts either a `boolean`, `string`, or `node`.
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
 
 <Preview>
   <Story name="Error">
@@ -294,41 +294,48 @@ An error state can be triggered by using the `error` prop. The prop accepts eith
           title="Title"
           name="error"
           onChange={event => setValue(event.target.value)}
-          error
           value={value}
           options={options}
+          isRequired
+          error="Helpful validation message"
         />
       );
     }}
   </Story>
 </Preview>
 
-## Error with Validation Message
+## Custom Classes
 
-If either a `string` or `node` is passed to the `error` prop, a validation message will be rendered below the group.
+Use the `className` prop to add a custom class, or classes to a RadioGroup.
 
 <Preview>
-  <Story name="Error with Validation Message">
+  <Story name="Custom Classes">
     {() => {
       const [value, setValue] = useState(null);
       const options = [{
-        id: 'narrow',
-        value: 'narrow',
-        label: 'Narrow',
+        id: 'apple',
+        value: 'apple',
+        label: 'Apple',
       },
       {
-        id: 'wide',
-        value: 'wide',
-        label: 'Wide',
+        id: 'orange',
+        value: 'orange',
+        label: 'Orange',
+      },
+      {
+        id: 'banana',
+        value: 'banana',
+        label: 'Banana',
+        disabled: true,
       }];
       return (
         <RadioGroup
           title="Title"
-          name="errorWithMessage"
+          name="customClasses"
           onChange={event => setValue(event.target.value)}
-          error="Helpful validation message"
           value={value}
           options={options}
+          className="background-color-primary"
         />
       );
     }}

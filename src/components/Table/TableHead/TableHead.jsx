@@ -4,36 +4,35 @@ import styles from './TableHead.module.scss';
 
 export const TableHead = ({ 
   columns, 
-  sortedColumn, 
   onSort, 
+  sortedColumn, 
   loading,
-  setPage,
 }) => {
-  const renderSortableColumns = () => (
-    columns.map(column => (
-      <TableHeaderSortable
-        header={column.name}
-        queryParam={column.apiKey}
-        sortedColumn={sortedColumn}
-        onSort={handleTableHeaderClick}
-        loading={loading}
-        width={column.width}
-      />
-    ))
+  const renderSortableColumn = column => (
+    <TableHeaderSortable
+      header={column.name}
+      queryParam={column.apiKey}
+      onSort={onSort}
+      sortedColumn={sortedColumn}
+      loading={loading}
+      width={column.width}
+    />
   );
 
-  const renderFixedColumns = () => (
-    columns.map(column => <th className={styles.header} key={column.name} style={{ width: `${column.width}px` }}>{column.name}</th>)
+  const renderFixedColumn = column => (
+    <th
+      className={styles.header}
+      key={column.name}
+      style={{ width: `${column.width}px` }}
+    >
+      {column.name}
+    </th>
   );
 
   return (
     <thead className={styles['table-head']}>
       <tr>
-        {
-          useSortedColumns
-            ? renderSortableColumns()
-            : renderFixedColumns()
-        }
+        {columns.map(column => (column.isSortable ? renderSortableColumn(column) : renderFixedColumn(column)))}
       </tr>
     </thead>
   );

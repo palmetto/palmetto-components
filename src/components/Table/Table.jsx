@@ -10,8 +10,6 @@ const Table = ({
   className,
   loading,
   loadingFailed,
-  useSortedColumns,
-  setPage,
   onSort,
   sortedColumn,
   useFixedWidthColumns,
@@ -48,9 +46,9 @@ const Table = ({
       <table className={tableClasses}>
         <TableHead
           columns={columnConfig}
-          sortedColumn={sortedColumn}
           loading={loading}
           onSort={onSort}
+          sortedColumn={sortedColumn}
         />
         <tbody>
           {
