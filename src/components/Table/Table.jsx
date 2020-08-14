@@ -20,8 +20,12 @@ const Table = ({
   isStriped,
   isBordered,
   isResponsive,
+  isSmall,
+  hasHover,
+
 }) => {
   const tableContainerClasses = classNames(
+    styles.container,
     className,
     {
       [styles.responsive]: isResponsive,
@@ -33,6 +37,9 @@ const Table = ({
       [styles.fixedWidthColumns]: useFixedWidthColumns,
       [styles.striped]: isStriped,
       [styles.bordered]: isBordered,
+      [styles.borderless]: !isBordered,
+      [styles.small]: isSmall,
+      [styles.hover]: hasHover,
     },
   );
 

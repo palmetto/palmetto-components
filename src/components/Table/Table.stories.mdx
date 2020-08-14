@@ -28,14 +28,25 @@ I'm a table!
         {name: 'First Column'},
         {name: 'Second Column'},
         {name: 'Third Column'},
+        {name: 'Fourth Column'},
+        {name: 'Fifth Column'},
+        {name: 'Sixth Column'},
+        {name: 'Seventh Column'},
+        {name: 'Eighth Column'},
+        {name: 'Nineth Column'},
+        {name: 'Tenth Column'},
+        {name: 'Eleventh Column'},
+        {name: 'Twelfth Column'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        ['1', 'foo', 'vanilla', 'Fran', 'BA', 'CA', 'DA', 'EA', 'FA', 'GA', 'HA', 'IA'],
+        ['2', 'bar', 'chocolate', 'Bob', 'BB', 'CB', 'DB', 'EB', 'FB', 'GB', 'HB', 'IB'],
+        ['3', 'bazz', 'strawberry', 'Cole', 'BC', 'CC', 'DC', 'EC', 'FC', 'GC', 'HC', 'IC'],
       ];
       return (
         <Table
+          isBordered
+          isResponsive
           columnConfig={columnConfig}
           tableData={tableData}
         />
