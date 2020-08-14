@@ -24,7 +24,11 @@ I'm a table!
 <Preview>
   <Story name="Sortable">
     {() => {
-      const [sortedColumn, setSortedColumn] = useState(sortedColumn);
+      const defaultSortedColumn = {
+        columnName: 'first',
+        sortOrder: 'asc'
+      };
+      const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
       const columnConfig = [
         {name: 'First Column', apiKey: 'first', isSortable: true},
         {name: 'Second Column', apiKey: 'second'},

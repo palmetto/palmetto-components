@@ -13,7 +13,7 @@ export const TableHeaderSortable = ({
   const renderIcon = name => {
     console.log(sortedColumn);
     console.log(name);
-    const sortDirection = (sortedColumn && sortedColumn.columnName === name) ? sortedColumn.sortOrder : null;
+    const sortDirection = (sortedColumn && sortedColumn.columnName === queryParam) ? sortedColumn.sortOrder : null;
     console.log(sortDirection);
 
     return (
