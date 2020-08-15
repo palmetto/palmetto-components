@@ -10,8 +10,9 @@ export const TableHead = ({
 }) => {
   const renderSortableColumn = column => (
     <TableHeaderSortable
-      header={column.name}
-      queryParam={column.apiKey}
+      heading={column.heading}
+      id={column.id}
+      key={column.id}
       onSort={onSort}
       sortedColumn={sortedColumn}
       loading={loading}
@@ -22,10 +23,10 @@ export const TableHead = ({
   const renderFixedColumn = column => (
     <th
       className={styles.header}
-      key={column.name}
+      key={column.id}
       style={{ width: `${column.width}px` }}
     >
-      {column.name}
+      {column.heading}
     </th>
   );
 

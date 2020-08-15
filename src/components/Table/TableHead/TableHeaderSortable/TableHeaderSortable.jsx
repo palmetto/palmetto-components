@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import styles from './TableHeaderSortable.module.scss';
 
 export const TableHeaderSortable = ({
-  header,
-  queryParam,
+  heading,
+  id,
   sortedColumn,
   onSort,
   loading,
@@ -13,7 +13,7 @@ export const TableHeaderSortable = ({
   const renderIcon = name => {
     console.log(sortedColumn);
     console.log(name);
-    const sortDirection = (sortedColumn && sortedColumn.columnName === queryParam) ? sortedColumn.sortOrder : null;
+    const sortDirection = (sortedColumn && sortedColumn.id === id) ? sortedColumn.sortOrder : null;
     console.log(sortDirection);
 
     return (
@@ -28,7 +28,7 @@ export const TableHeaderSortable = ({
     const spaceKey = 32;
 
     if (e.keyCode === enterKey || e.keyCode === spaceKey) {
-      onSort(queryParam);
+      onSort(id);
     }
   };
 
@@ -45,11 +45,11 @@ export const TableHeaderSortable = ({
       style={{ width: `${width}px` }}
       role="button"
       tabIndex={0}
-      onClick={() => onSort(queryParam)}
+      onClick={() => onSort(id)}
       onKeyDown={handleKeyPress}
     >
-      {header}
-      {renderIcon(queryParam)}
+      {heading}
+      {renderIcon(id)}
     </th>
   );
 };

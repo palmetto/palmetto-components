@@ -16,7 +16,7 @@ const Table = ({
   truncateOverflow,
   emptyCellPlaceholder,
   isStriped,
-  isBordered,
+  isBorderless,
   isResponsive,
   isSmall,
   hasHover,
@@ -34,8 +34,7 @@ const Table = ({
     {
       [styles['fixed-width-columns']]: useFixedWidthColumns,
       [styles.striped]: isStriped,
-      [styles.bordered]: isBordered,
-      [styles.borderless]: !isBordered,
+      [styles.borderless]: isBorderless,
       [styles.small]: isSmall,
       [styles.hover]: hasHover,
     },

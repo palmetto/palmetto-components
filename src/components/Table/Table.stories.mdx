@@ -19,20 +19,45 @@ I'm a table!
 
 <Props of={Table} />
 
+## Default
+
+<Preview>
+  <Story name="Default">
+    {() => {
+      const columnConfig = [
+        {heading: 'First Column'},
+        {heading: 'Second Column'},
+        {heading: 'Third Column'},
+      ];
+      const tableData = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={tableData}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
 ## Sortable
 
 <Preview>
   <Story name="Sortable">
     {() => {
       const defaultSortedColumn = {
-        columnName: 'first',
+        id: 'first',
         sortOrder: 'asc'
       };
       const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
       const columnConfig = [
-        {name: 'First Column', apiKey: 'first', isSortable: true},
-        {name: 'Second Column', apiKey: 'second'},
-        {name: 'Third Column', apiKey: 'third'},
+        {heading: 'First Column', id: 'first', isSortable: true},
+        {heading: 'Second Column', id: 'second'},
+        {heading: 'Third Column', id: 'third'},
       ];
       const tableDataAsc = [
         ['1', 'foo', 'vanilla'],
@@ -44,51 +69,50 @@ I'm a table!
         ['2', 'bar', 'chocolate'],
         ['1', 'foo', 'vanilla'],
       ];
-      const handleTableHeaderClick = clickedColumnName => {
+      const handleTableHeaderClick = headerId => {
         let direction;
-        if (!sortedColumn || clickedColumnName !== sortedColumn.columnName) {
+        if (!sortedColumn || headerId !== sortedColumn.id) {
           direction = 'desc';
         } else {
           direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
         }
         const newSortedColumn = {
-          columnName: clickedColumnName,
+          id: headerId,
           sortOrder: direction,
         };
         setSortedColumn(newSortedColumn);
       };
       return (
         <Table
-          isBordered
-          isResponsive
           columnConfig={columnConfig}
-          tableData={sortedColumn && sortedColumn.sortOrder === 'desc' ? tableDataDesc : tableDataAsc}
+          tableData={sortedColumn?.sortOrder === 'desc' ? tableDataDesc : tableDataAsc}
           onSort={handleTableHeaderClick}
           sortedColumn={sortedColumn}
+          isResponsive
         />
       );
     }}
   </Story>
 </Preview>
 
-## Default
+## Responsive
 
 <Preview>
-  <Story name="Default">
+  <Story name="Responsive">
     {() => {
       const columnConfig = [
-        {name: 'First Column'},
-        {name: 'Second Column'},
-        {name: 'Third Column'},
-        {name: 'Fourth Column'},
-        {name: 'Fifth Column'},
-        {name: 'Sixth Column'},
-        {name: 'Seventh Column'},
-        {name: 'Eighth Column'},
-        {name: 'Nineth Column'},
-        {name: 'Tenth Column'},
-        {name: 'Eleventh Column'},
-        {name: 'Twelfth Column'},
+        {heading: 'First Column'},
+        {heading: 'Second Column'},
+        {heading: 'Third Column'},
+        {heading: 'Fourth Column'},
+        {heading: 'Fifth Column'},
+        {heading: 'Sixth Column'},
+        {heading: 'Seventh Column'},
+        {heading: 'Eighth Column'},
+        {heading: 'Nineth Column'},
+        {heading: 'Tenth Column'},
+        {heading: 'Eleventh Column'},
+        {heading: 'Twelfth Column'},
       ];
       const tableData = [
         ['1', 'foo', 'vanilla', 'Fran', 'BA', 'CA', 'DA', 'EA', 'FA', 'GA', 'HA', 'IA'],
@@ -97,10 +121,9 @@ I'm a table!
       ];
       return (
         <Table
-          isBordered
-          isResponsive
           columnConfig={columnConfig}
           tableData={tableData}
+          isResponsive
         />
       );
     }}
@@ -113,9 +136,9 @@ I'm a table!
   <Story name="Fixed-Width Columns">
     {() => {
       const columnConfig = [
-        {name: 'First Column', width: '315'},
-        {name: 'Second Column', width: '215'},
-        {name: 'Third Column', width: '100'},
+        {heading: 'First Column', width: '315'},
+        {heading: 'Second Column', width: '215'},
+        {heading: 'Third Column', width: '100'},
       ];
       const tableData = [
         ['1', 'foo', 'vanilla'],
@@ -124,11 +147,10 @@ I'm a table!
       ];
       return (
         <Table
-          isBordered
-          isResponsive
           columnConfig={columnConfig}
           tableData={tableData}
           useFixedWidthColumns
+          isResponsive
         />
       );
     }}
