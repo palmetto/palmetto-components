@@ -57,17 +57,27 @@ I'm a table!
       const columnConfig = [
         {heading: 'First Column', id: 'first', isSortable: true},
         {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
+        {heading: 'Third Column', id: 'third', isSortable: true},
       ];
-      const tableDataAsc = [
+      const firstAsc = [
         ['1', 'foo', 'vanilla'],
         ['2', 'bar', 'chocolate'],
         ['3', 'bazz', 'strawberry'],
       ];
-      const tableDataDesc = [
+      const firstDesc = [
         ['3', 'bazz', 'strawberry'],
         ['2', 'bar', 'chocolate'],
         ['1', 'foo', 'vanilla'],
+      ];
+      const thirdAsc = [
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+        ['1', 'foo', 'vanilla'],
+      ];
+      const thirdDesc = [
+        ['1', 'foo', 'vanilla'],
+        ['3', 'bazz', 'strawberry'],
+        ['2', 'bar', 'chocolate'],
       ];
       const handleTableHeaderClick = headerId => {
         let direction;
@@ -82,10 +92,17 @@ I'm a table!
         };
         setSortedColumn(newSortedColumn);
       };
+      const generateTableData = () => {
+        if (sortedColumn?.id === 'first') {
+          return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
+        } else if (sortedColumn?.id === 'third') {
+          return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
+        }
+      }
       return (
         <Table
           columnConfig={columnConfig}
-          tableData={sortedColumn?.sortOrder === 'desc' ? tableDataDesc : tableDataAsc}
+          tableData={generateTableData()}
           onSort={handleTableHeaderClick}
           sortedColumn={sortedColumn}
           isResponsive

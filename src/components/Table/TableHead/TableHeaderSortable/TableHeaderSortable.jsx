@@ -11,10 +11,7 @@ export const TableHeaderSortable = ({
   width
 }) => {
   const renderIcon = name => {
-    console.log(sortedColumn);
-    console.log(name);
     const sortDirection = (sortedColumn && sortedColumn.id === id) ? sortedColumn.sortOrder : null;
-    console.log(sortDirection);
 
     return (
       <span>
