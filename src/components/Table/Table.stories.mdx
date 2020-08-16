@@ -49,10 +49,7 @@ I'm a table!
 <Preview>
   <Story name="Sortable">
     {() => {
-      const defaultSortedColumn = {
-        id: 'first',
-        sortOrder: 'asc'
-      };
+      const defaultSortedColumn = null;
       const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
       const columnConfig = [
         {heading: 'First Column', id: 'first', isSortable: true},
@@ -97,6 +94,8 @@ I'm a table!
           return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
         } else if (sortedColumn?.id === 'third') {
           return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
+        } else {
+          return firstAsc
         }
       }
       return (
@@ -130,11 +129,13 @@ I'm a table!
         {heading: 'Tenth Column'},
         {heading: 'Eleventh Column'},
         {heading: 'Twelfth Column'},
+        {heading: 'Thirteenth Column'},
+        {heading: 'Fourteenth Column'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla', 'Fran', 'BA', 'CA', 'DA', 'EA', 'FA', 'GA', 'HA', 'IA'],
-        ['2', 'bar', 'chocolate', 'Bob', 'BB', 'CB', 'DB', 'EB', 'FB', 'GB', 'HB', 'IB'],
-        ['3', 'bazz', 'strawberry', 'Cole', 'BC', 'CC', 'DC', 'EC', 'FC', 'GC', 'HC', 'IC'],
+        ['1', 'foo', 'vanilla', 'Fran', 'BA', 'CA', 'DA', 'EA', 'FA', 'GA', 'HA', 'IA', 'JA', 'KA'],
+        ['2', 'bar', 'chocolate', 'Bob', 'BB', 'CB', 'DB', 'EB', 'FB', 'GB', 'HB', 'IB', 'JB', 'KB'],
+        ['3', 'bazz', 'strawberry', 'Cole', 'BC', 'CC', 'DC', 'EC', 'FC', 'GC', 'HC', 'IC', 'JC', 'KC'],
       ];
       return (
         <Table
