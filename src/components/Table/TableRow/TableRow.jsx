@@ -3,8 +3,8 @@ import cx from 'classnames';
 import styles from './TableRow.module.scss';
 
 export const TableRow = ({ data, truncateOverflow, emptyCellPlaceholder }) => {
-  const NotApplicable = () => (
-    <span className={styles.notApplicable}>
+  const renderEmptyCellPlaceholder = () => (
+    <span>
       {emptyCellPlaceholder}
     </span>
   );
@@ -14,7 +14,7 @@ export const TableRow = ({ data, truncateOverflow, emptyCellPlaceholder }) => {
       {
         data.map((columnContent, index) => (
           <td className={cx(styles['table-cell'], { [styles['truncate-overflow']]: truncateOverflow })} key={index}>
-            {columnContent || <NotApplicable />}
+            {columnContent || renderEmptyCellPlaceholder()}
           </td>
         ))
       }

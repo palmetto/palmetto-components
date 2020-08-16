@@ -255,8 +255,8 @@ I'm a table!
         {heading: 'Third Column', width: '100'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
+        ['1', 'foofoofoofoofoofoofoofoofoofoofoofoo', 'vanilla'],
+        ['2', 'bar', 'chocolatechocolatechocolatechocolate'],
         ['3', 'baz', 'strawberry strawberry strawberry strawberry'],
       ];
       return (
@@ -291,6 +291,32 @@ I'm a table!
           columnConfig={columnConfig}
           tableData={tableData}
           isStriped
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Empty Cell Placeholder
+
+<Preview>
+  <Story name="Empty Cell Placeholder">
+    {() => {
+      const columnConfig = [
+        {heading: 'First Column'},
+        {heading: 'Second Column'},
+        {heading: 'Third Column'},
+      ];
+      const tableData = [
+        [undefined, 'foo', 'vanilla'],
+        ['2', null, 'chocolate'],
+        ['3', 'bazz', ''],
+      ];
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={tableData}
+          emptyCellPlaceholder="--"
         />
       );
     }}
