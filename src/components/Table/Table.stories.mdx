@@ -111,6 +111,76 @@ I'm a table!
   </Story>
 </Preview>
 
+## Sortable with Default Sorted Column
+
+<Preview>
+  <Story name="Sortable with Default Sorted Column">
+    {() => {
+      const defaultSortedColumn = {
+        id: 'third',
+        sortOrder: 'desc',
+      };
+      const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
+      const columnConfig = [
+        {heading: 'First Column', id: 'first', isSortable: true},
+        {heading: 'Second Column', id: 'second'},
+        {heading: 'Third Column', id: 'third', isSortable: true},
+      ];
+      const firstAsc = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      const firstDesc = [
+        ['3', 'bazz', 'strawberry'],
+        ['2', 'bar', 'chocolate'],
+        ['1', 'foo', 'vanilla'],
+      ];
+      const thirdAsc = [
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+        ['1', 'foo', 'vanilla'],
+      ];
+      const thirdDesc = [
+        ['1', 'foo', 'vanilla'],
+        ['3', 'bazz', 'strawberry'],
+        ['2', 'bar', 'chocolate'],
+      ];
+      const handleTableHeaderClick = headerId => {
+        let direction;
+        if (!sortedColumn || headerId !== sortedColumn.id) {
+          direction = 'desc';
+        } else {
+          direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
+        }
+        const newSortedColumn = {
+          id: headerId,
+          sortOrder: direction,
+        };
+        setSortedColumn(newSortedColumn);
+      };
+      const generateTableData = () => {
+        if (sortedColumn?.id === 'first') {
+          return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
+        } else if (sortedColumn?.id === 'third') {
+          return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
+        } else {
+          return firstAsc
+        }
+      }
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={generateTableData()}
+          onSort={handleTableHeaderClick}
+          sortedColumn={sortedColumn}
+          isResponsive
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
 ## Responsive
 
 <Preview>
@@ -168,7 +238,59 @@ I'm a table!
           columnConfig={columnConfig}
           tableData={tableData}
           useFixedWidthColumns
-          isResponsive
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Truncate Overflow
+
+<Preview>
+  <Story name="Truncate Overflow">
+    {() => {
+      const columnConfig = [
+        {heading: 'First Column', width: '315'},
+        {heading: 'Second Column', width: '215'},
+        {heading: 'Third Column', width: '100'},
+      ];
+      const tableData = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'baz', 'strawberrystrawberrystrawberrystrawberry'],
+      ];
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={tableData}
+          useFixedWidthColumns
+          truncateOverflow
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Striped
+
+<Preview>
+  <Story name="Striped">
+    {() => {
+      const columnConfig = [
+        {heading: 'First Column'},
+        {heading: 'Second Column'},
+        {heading: 'Third Column'},
+      ];
+      const tableData = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={tableData}
+          isStriped
         />
       );
     }}
