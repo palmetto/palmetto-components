@@ -26,7 +26,7 @@
     }
   }
 
-  .small {
+  .less-padding {
     th,
     td {
       padding: var(--size-spacing-xs);
@@ -49,9 +49,9 @@
   }
   
   .hover {
-    tbody tr {
-      background-color: --color-font-base;
-      color: var(--color-brand-grey-darker);
+    tbody tr:hover {
+      background-color: var(--color-font-base);
+      color: var(--color-brand-primary-light);
     }
   }
 

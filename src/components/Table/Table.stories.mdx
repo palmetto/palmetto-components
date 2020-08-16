@@ -323,3 +323,81 @@ I'm a table!
   </Story>
 </Preview>
 
+## Borderless
+
+<Preview>
+  <Story name="Borderless">
+    {() => {
+      const columnConfig = [
+        {heading: 'First Column'},
+        {heading: 'Second Column'},
+        {heading: 'Third Column'},
+      ];
+      const tableData = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={tableData}
+          isBorderless
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Less Padding
+
+<Preview>
+  <Story name="Less Padding">
+    {() => {
+      const columnConfig = [
+        {heading: 'First Column'},
+        {heading: 'Second Column'},
+        {heading: 'Third Column'},
+      ];
+      const tableData = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={tableData}
+          useLessPadding
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Hover
+
+<Preview>
+  <Story name="Hover">
+    {() => {
+      const columnConfig = [
+        {heading: 'First Column'},
+        {heading: 'Second Column'},
+        {heading: 'Third Column'},
+      ];
+      const tableData = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={tableData}
+          hover
+        />
+      );
+    }}
+  </Story>
+</Preview>
+

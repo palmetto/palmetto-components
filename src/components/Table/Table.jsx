@@ -18,8 +18,8 @@ const Table = ({
   isStriped,
   isBorderless,
   isResponsive,
-  isSmall,
-  hasHover,
+  useLessPadding,
+  hover,
 
 }) => {
   const tableContainerClasses = classNames(
@@ -35,8 +35,8 @@ const Table = ({
       [styles['fixed-width-columns']]: useFixedWidthColumns,
       [styles.striped]: isStriped,
       [styles.borderless]: isBorderless,
-      [styles.small]: isSmall,
-      [styles.hover]: hasHover,
+      [styles['less-padding']]: useLessPadding,
+      [styles.hover]: hover,
     },
   );
 
