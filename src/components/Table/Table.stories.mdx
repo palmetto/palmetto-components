@@ -231,7 +231,7 @@ I'm a table!
       const tableData = [
         ['1', 'foo', 'vanilla'],
         ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        ['3', 'bazz', 'strawberry strawberry strawberry strawberry'],
       ];
       return (
         <Table
@@ -250,14 +250,14 @@ I'm a table!
   <Story name="Truncate Overflow">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', width: '315'},
+        {heading: 'First Column', width: '70'},
         {heading: 'Second Column', width: '215'},
         {heading: 'Third Column', width: '100'},
       ];
       const tableData = [
         ['1', 'foo', 'vanilla'],
         ['2', 'bar', 'chocolate'],
-        ['3', 'baz', 'strawberrystrawberrystrawberrystrawberry'],
+        ['3', 'baz', 'strawberry strawberry strawberry strawberry'],
       ];
       return (
         <Table

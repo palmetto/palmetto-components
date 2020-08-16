@@ -21,6 +21,7 @@
     }
   
     &.fixed-width-columns {
+      width: fit-content;
       table-layout: fixed;
     }
   }
