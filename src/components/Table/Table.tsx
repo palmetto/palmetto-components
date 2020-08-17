@@ -40,7 +40,7 @@ interface Props {
    */
   isResponsive?: boolean;
   /**
-   * Adds zebra-striping to any table row within the <tbody>.
+   * Adds zebra-striping to any table row within the table body.
    */
   isStriped?: boolean;
   /**
@@ -68,7 +68,7 @@ interface Props {
   truncateOverflow?: boolean;
   /**
    * Fix the width of the columns. Can be useful if sorting is enabled and the content of
-   * the columns is changing; prevents the horizontal jump when this occurres. 
+   * the columns is changing; prevents the horizontal jump when this occurres.
    */
   useFixedWidthColumns?: boolean;
   /**
@@ -80,19 +80,19 @@ interface Props {
 const Table: FC<Props> = ({
   columnConfig,
   tableData,
-  className,
-  emptyCellPlaceholder,
-  hoverableRows,
-  isBorderless,
-  isResponsive,
-  isStriped,
-  isLoading,
-  loadingFailed,
-  onSort,
-  sortedColumn,
-  truncateOverflow,
-  useFixedWidthColumns,
-  useLessPadding,
+  className = undefined,
+  emptyCellPlaceholder = undefined,
+  hoverableRows = false,
+  isBorderless = false,
+  isResponsive = false,
+  isStriped = false,
+  isLoading = false,
+  loadingFailed = false,
+  onSort = undefined,
+  sortedColumn = undefined,
+  truncateOverflow = false,
+  useFixedWidthColumns = false,
+  useLessPadding = false,
 }) => {
   const tableContainerClasses = classNames(
     styles.container,
@@ -123,7 +123,7 @@ const Table: FC<Props> = ({
         />
         <tbody>
           {
-            !loading
+            !isLoading
             && !loadingFailed
             && tableData
             && tableData.map((record, index) => (
