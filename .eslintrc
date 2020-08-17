@@ -7,7 +7,7 @@
   ],
   "plugins": [
     "jsx-a11y",
-    "jest"
+    "jest",
   ],
   "env": {
     "jest/globals": true,
