@@ -19,7 +19,7 @@ const Table = ({
   isBorderless,
   isResponsive,
   useLessPadding,
-  hover,
+  hoverableRows,
 
 }) => {
   const tableContainerClasses = classNames(
@@ -36,7 +36,7 @@ const Table = ({
       [styles.striped]: isStriped,
       [styles.borderless]: isBorderless,
       [styles['less-padding']]: useLessPadding,
-      [styles.hover]: hover,
+      [styles.hover]: hoverableRows,
     },
   );
 

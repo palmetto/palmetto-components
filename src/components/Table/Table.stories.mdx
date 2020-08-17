@@ -402,3 +402,60 @@ I'm a table!
   </Story>
 </Preview>
 
+## Loading
+
+<Preview>
+  <Story name="Loading">
+    {() => {
+      const columnConfig = [
+        {heading: 'First Column'},
+        {heading: 'Second Column'},
+        {heading: 'Third Column'},
+      ];
+      const tableData = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      return (
+        <>
+          <Table
+            columnConfig={columnConfig}
+            tableData={tableData}
+            loading
+          />
+          <span>Add custom "loading" message here.</span>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Loading Failed
+
+<Preview>
+  <Story name="Loading Failed">
+    {() => {
+      const columnConfig = [
+        {heading: 'First Column'},
+        {heading: 'Second Column'},
+        {heading: 'Third Column'},
+      ];
+      const tableData = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      return (
+        <>
+          <Table
+            columnConfig={columnConfig}
+            tableData={tableData}
+            loadingFailed
+          />
+          <span>Add custom "load failed" message here.</span>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
