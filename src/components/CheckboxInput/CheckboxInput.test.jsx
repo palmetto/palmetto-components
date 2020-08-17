@@ -49,11 +49,8 @@ describe('CheckboxInput', () => {
       hasError: false,
       isFieldRequired: false,
       labelText: 'test checkbox',
-<<<<<<< HEAD
-=======
       className: undefined,
       isDisabled: false,
->>>>>>> develop
     }, {});
   });
 
@@ -74,11 +71,8 @@ describe('CheckboxInput', () => {
       hasError: false,
       isFieldRequired: true,
       labelText: 'test checkbox',
-<<<<<<< HEAD
-=======
       className: undefined,
       isDisabled: false,
->>>>>>> develop
     }, {});
   });
 
@@ -150,11 +144,8 @@ describe('CheckboxInput', () => {
         hasError: true,
         isFieldRequired: false,
         labelText: 'test checkbox',
-<<<<<<< HEAD
-=======
         className: undefined,
         isDisabled: false,
->>>>>>> develop
       }, {});
     });
 
@@ -174,10 +165,6 @@ describe('CheckboxInput', () => {
         hasError: true,
         isFieldRequired: false,
         labelText: 'test checkbox',
-<<<<<<< HEAD
-      }, {});
-    });
-=======
         className: undefined,
         isDisabled: false,
       }, {});
@@ -203,7 +190,6 @@ describe('CheckboxInput', () => {
       className: undefined,
       isDisabled: true,
     }, {});
->>>>>>> develop
   });
 
   describe('onChange', () => {
