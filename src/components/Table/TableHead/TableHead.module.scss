@@ -1,4 +1,10 @@
 .table-head {
   color: var(--white);
   background-color: var(--azure);
+
+  th,
+  td {
+    border-bottom-width: 2 * 1px;
+    text-align: left;
+  }
 }

@@ -13,13 +13,6 @@
       padding: var(--size-spacing-sm);
     }
   
-    thead {
-      th,
-      td {
-        border-bottom-width: 2 * 1px;
-      }
-    }
-  
     &.fixed-width-columns {
       width: fit-content;
       table-layout: fixed;
@@ -34,6 +27,8 @@
   }
   
   .borderless {
+    border: none;
+
     th,
     td,
     thead th,
