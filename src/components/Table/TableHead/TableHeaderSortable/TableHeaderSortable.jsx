@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSort, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import styles from './TableHeaderSortable.module.scss';
 
 export const TableHeaderSortable = ({
@@ -12,10 +14,13 @@ export const TableHeaderSortable = ({
 }) => {
   const renderIcon = name => {
     const sortDirection = (sortedColumn && sortedColumn.id === id) ? sortedColumn.sortOrder : null;
+    const renderUpDownArrows = () => (
+      sortDirection === 'desc' ? <FontAwesomeIcon icon={faArrowDown} /> : <FontAwesomeIcon icon={faArrowUp} />
+    );
 
     return (
       <span>
-        {sortDirection ? (sortDirection === 'desc' ? 'down' : 'up'): 'sort'}
+        {sortDirection ? renderUpDownArrows() : <FontAwesomeIcon icon={faSort} />}
       </span>
     );
   };
@@ -46,6 +51,7 @@ export const TableHeaderSortable = ({
       onKeyDown={handleKeyPress}
     >
       {heading}
+      {' '}
       {renderIcon(id)}
     </th>
   );
