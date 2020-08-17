@@ -146,7 +146,11 @@ describe('Button', () => {
             Button is loading
           </Button>,
         );
+<<<<<<< HEAD
         expect(document.getElementsByClassName('spinner')[0]).toBeInTheDocument();
+=======
+        expect(document.getElementsByClassName('spin')[0]).toBeInTheDocument();
+>>>>>>> master
       });
       test('it keeps the button text in the dom so the button width does not change', () => {
         render(

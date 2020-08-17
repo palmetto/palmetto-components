@@ -208,8 +208,8 @@ const TextInput = ({
       {!inputMask ? (
         <input {...inputProps} />
       ) : (
-        <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
-      )}
+          <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+        )}
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </div>
   );
