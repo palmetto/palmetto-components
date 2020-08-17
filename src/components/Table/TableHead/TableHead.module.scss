@@ -1,5 +1,9 @@
-.tabtab {
+.table-head {
   background-color: var(--color-brand-secondary-base);
   color: var(--color-brand-white-base);
   text-align: left;
+
+  th {
+    font-weight: 600;
+  }
 }
