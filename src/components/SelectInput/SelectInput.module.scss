@@ -27,15 +27,27 @@ react-select elements for which we do not own the markup */
         display: none;
       }
 
-      :global(.react-select__dropdown-indicator) {
+      .react-select-icon {
         padding: 0;
         padding-right: 2px;
-        color: var(--form-control-select-chevron-color);
-
-        svg {
-          width: var(--form-control-select-chevron-size);
-          height: var(--form-control-select-chevron-size);
+        color: var(--form-control-select-icon-color);
+      
+        &:hover {
+          color: var(--form-control-select-icon-hover-color)
         }
+      
+        svg {
+          width: var(--form-control-select-icon-size);
+          height: var(--form-control-select-icon-size);
+        }
+      }
+
+      :global(.react-select__dropdown-indicator) {
+        @extend .react-select-icon;
+      }
+
+      :global(.react-select__clear-indicator) {
+        @extend .react-select-icon;
       }
 
       &:global(.react-select__control--is-focused) {

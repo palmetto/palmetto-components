@@ -122,7 +122,7 @@ describe('SelectInput', () => {
         expect(screen.getByText('Select...')).toBeInTheDocument();
       });
 
-      test('assigns the "aria-labelledby" attribute and renders a label with correct id, when a label is provided', () => {
+      test('assigns the "aria-labelledby" attribute and renders label correct id, when a label is provided', () => {
         render(<SelectInput id="testInput" label="test label" />);
         const inputElement = screen.getByLabelText('test label');
         expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
@@ -244,6 +244,42 @@ describe('SelectInput', () => {
         );
 
         expect(screen.getByText('Helpful message')).toBeInTheDocument();
+      });
+    });
+
+    describe('Is Clearable', () => {
+      test('it does not render the X icon if input has value but is not clearable', () => {
+        const mockedHandleChange = jest.fn();
+
+        const { container } = render(
+          <SelectInput
+            id="testId"
+            onChange={mockedHandleChange}
+            label="Select Label"
+            options={selectOptions}
+            value={selectOptions[0]}
+            isClearable={false}
+          />,
+        );
+
+        expect(container.querySelector('.react-select__clear-indicator')).not.toBeInTheDocument();
+      });
+
+      test('it renders the X icon if input has value and is clearable', () => {
+        const mockedHandleChange = jest.fn();
+
+        const { container } = render(
+          <SelectInput
+            id="testId"
+            onChange={mockedHandleChange}
+            label="Select Label"
+            options={selectOptions}
+            value={selectOptions[0]}
+            isClearable
+          />,
+        );
+
+        expect(container.querySelector('.react-select__clear-indicator')).toBeInTheDocument();
       });
     });
   });

@@ -277,6 +277,37 @@ Use the `isDisabled` prop to mark the input as disabled.
   </Story>
 </Preview>
 
+## Clearable
+
+Use the `isClearable` prop to allow clearing of the input selected option. NOTE: this works by passing `null`
+to the `onChange` handler. 
+
+<Preview> 
+  <Story name="Clearable">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(options[0]);
+      return (
+        <div style={{ height: '85px' }}>
+          <SelectInput
+            id="disabled"
+            label="Label"
+            value={value}
+            name="myClearableSelect"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isClearable
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
 ## Error
 
 Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
