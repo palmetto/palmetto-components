@@ -25,12 +25,8 @@ const renderForm = (initialValue, props) => (
       [testLabelName]: initialValue,
     }}
     validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
-<<<<<<< HEAD
   >
     {() => (
-=======
-    render={() => (
->>>>>>> master
       <Form>
         <Field
           label={testLabelName}
@@ -42,11 +38,7 @@ const renderForm = (initialValue, props) => (
         <button type="submit">submit</button>
       </Form>
     )}
-<<<<<<< HEAD
   </Formik>
-=======
-  />
->>>>>>> master
 );
 
 describe('FormikTextInput', () => {
