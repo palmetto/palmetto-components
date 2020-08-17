@@ -1,0 +1,33 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
+import { PALMETTO_BORDER_RADIUS_OPTIONS, PALMETTO_BORDER_RADIUS_VALUES } from '../lib/tokens';
+
+<Meta
+  title="Design Tokens/Border Radius"
+/>
+
+# Border Radius
+
+Use these tokens for `border-radius`. They are defined in `rem`, which means they will scale when adjusting the root font size. Pixel values are calculated with a root font size of `16px`.
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>value</th>
+      <th>px</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {PALMETTO_BORDER_RADIUS_OPTIONS.map((radius, i) => (
+      <tr key={i}>
+        <td><code>{`size-border-radius-${radius}`}</code></td>
+        <td>{PALMETTO_BORDER_RADIUS_VALUES[i].value}</td>
+        <td>{radius !== 'circle' ? PALMETTO_BORDER_RADIUS_VALUES[i].original.value * 16 : 'n/a'}</td>
+        <td>{PALMETTO_BORDER_RADIUS_VALUES[i].original.comment}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+

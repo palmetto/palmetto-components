@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 
-
 <Meta
   title="Components/Button"
   component={Button}
@@ -47,6 +46,32 @@ Use the `fullWidth` prop to allow the button to grow to its container's full wid
   </Story>
 </Preview>
 
+## Size
+
+Set the size of the button
+
+<Preview>
+  <Story name="Size">
+    <>
+    <div style={{ marginBottom: '1rem'}}>
+      <Button size="sm">
+        Small
+      </Button>
+    </div>
+    <div style={{ marginBottom: '1rem'}}>
+      <Button>
+        Medium (default)
+      </Button>
+    </div>
+    <div>
+      <Button size="lg">
+        Large
+      </Button>
+    </div>
+    </>
+  </Story>
+</Preview>
+
 ## Loading
 
 Setting the `isLoading` prop to true will replace the button text with loading indicator and disable the button to prevent unintended submissions.
@@ -55,7 +80,7 @@ The width of the button will remain consistent to prevent content from shifting.
 <Preview>
   <Story name="Loading">
     <>
-    <div style={{ marginBottom: '1rem' }}>
+      <div style={{ marginBottom: '1rem' }}>
         <Button isLoading>
           Log  In
         </Button>
@@ -108,6 +133,18 @@ Callback functions can be passed to `onClick`, `onBlur`, and `onFocus` events.
       onFocus={action('focus')}
     >
       click, focus, blur events
+    </Button>
+  </Story>
+</Preview>
+
+## Custom Classes
+
+Use the `className` prop to add a custom class, or classes to a Button.
+
+<Preview>
+  <Story name="Custom Classes">
+    <Button className="background-color-secondary">
+      Custom Classes
     </Button>
   </Story>
 </Preview>

@@ -32,8 +32,7 @@ describe('TextInput', () => {
       test('Throws error if required prop "id" is not supplied to component', () => {
         console.error = jest.fn(); // eslint-disable-line no-console
         render(<TextInput label="test input" value="hello" onChange={() => null} />);
-        // This is called twice because the FormLabel component will also throw an error due to missing ID.
-        expect(console.error).toHaveBeenCalledTimes(2); // eslint-disable-line no-console
+        expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
         expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
           .toContain('Failed prop type: The prop `id`');
       });

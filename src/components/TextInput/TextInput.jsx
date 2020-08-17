@@ -3,14 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import * as InputMasks from './TextInputMasks';
-import './TextInput.scss';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-
-/**
- * Use TextInput to show where users can enter text based data.
- * It does not maintain any internal state, so its value should be managed by the parent.
- */
+import styles from './TextInput.module.scss';
 
 const propTypes = {
   /**
@@ -152,8 +147,8 @@ const TextInput = ({
   };
 
   const inputClasses = classNames(
-    'Palmetto-TextInput',
-    { error },
+    styles['text-input'],
+    { [styles.error]: error },
   );
 
   const getInputMask = (mask, availableInputMasks) => {
@@ -203,6 +198,8 @@ const TextInput = ({
     inputId: id,
     labelText: label,
     hasError: !!error,
+    className: styles['text-input-label'],
+    isDisabled,
   };
 
   return (

@@ -1,0 +1,89 @@
+/* The following styles required the :global tag since they need to be applied to
+react-select elements for which we do not own the markup */
+
+/* stylelint-disable */
+:global(.select-input-wrapper) {
+  :global(.react-select) {
+    &:hover {
+      :global(.react-select__dropdown-indicator) {
+        color: var(--form-control-focus-border-color);
+      }
+    }
+
+    :global(.react-select__control) {
+      border-radius: var(--form-control-size-md-border-radius);
+      box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+      padding: var(--form-control-select-padding);
+
+      :global(.react-select__placeholder) {
+        color: var(--form-control-placeholder-color);
+      }
+
+      :global(.react-select__clear-indicator) {
+        padding: 7px;
+      }
+
+      :global(.react-select__indicator-separator) {
+        display: none;
+      }
+
+      .react-select-icon {
+        padding: 0;
+        padding-right: 2px;
+        color: var(--form-control-select-icon-color);
+      
+        &:hover {
+          color: var(--form-control-select-icon-hover-color)
+        }
+      
+        svg {
+          width: var(--form-control-select-icon-size);
+          height: var(--form-control-select-icon-size);
+        }
+      }
+
+      :global(.react-select__dropdown-indicator) {
+        @extend .react-select-icon;
+      }
+
+      :global(.react-select__clear-indicator) {
+        @extend .react-select-icon;
+      }
+
+      &:global(.react-select__control--is-focused) {
+        border-color: var(--form-control-focus-border-color);
+        box-shadow: none;
+      }
+
+      &:global(.react-select__control--is-disabled) {
+        :global(.react-select__dropdown-indicator) {
+          color: var(--form-control-placeholder-color);
+        }
+      }
+    }
+
+    &.error {
+      :global(.react-select__control) {
+        border-color: var(--form-control-error-border-color);
+        background-color: var(--form-control-error-background-color);
+
+        &:global(.react-select__control--is-focused) {
+          outline: none;
+          border-color: var(--form-control-border-color);
+          background-color: var(--form-control-background-color);
+        }
+      }
+    }
+  }
+
+  &.disabled {
+    :global(.react-select__control--is-disabled) {
+      background-color: var(--form-control-disabled-background-color);
+    }
+  }
+}
+/* stylelint-enable */
+
+.select-input-label {
+  margin-bottom: var(--form-control-label-margin);
+}
