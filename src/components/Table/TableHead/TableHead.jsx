@@ -31,7 +31,7 @@ export const TableHead = ({
   );
 
   return (
-    <thead className={styles['table-head']}>
+    <thead className={styles.tabtab}>
       <tr>
         {columns.map(column => (column.isSortable ? renderSortableColumn(column) : renderFixedColumn(column)))}
       </tr>
