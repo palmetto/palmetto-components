@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
 import cx from 'classnames';
 import styles from './TableRow.module.scss';
 
-export const TableRow = ({ data, truncateOverflow, emptyCellPlaceholder }) => {
+interface Props {
+  data: (string | number | ReactNode)[];
+  truncateOverflow?: boolean;
+  emptyCellPlaceholder?: ReactNode | string;
+}
+
+const TableRow: FC<Props> = ({
+  data,
+  truncateOverflow,
+  emptyCellPlaceholder,
+}) => {
   const renderEmptyCellPlaceholder = () => (
     <span>
       {emptyCellPlaceholder}
