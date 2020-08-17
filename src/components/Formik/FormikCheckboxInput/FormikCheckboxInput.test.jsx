@@ -27,7 +27,8 @@ const renderForm = (initialValue, props) => (
     }}
     onSubmit={props.handleSubmit} // eslint-disable-line
     validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
-    render={() => (
+  >
+    {() => (
       <Form>
         <Field
           label={testLabelName}
@@ -39,7 +40,7 @@ const renderForm = (initialValue, props) => (
         <button type="submit">submit</button>
       </Form>
     )}
-  />
+  </Formik>
 );
 
 describe('CheckboxInput', () => {

@@ -1,0 +1,16 @@
+.color-block {
+  margin-right: var(--size-spacing-md);
+  margin-bottom: var(--size-spacing-md);
+  border-radius: var(--size-border-radius-md);
+  padding: var(--size-spacing-md);
+  width: 100px;
+  color: var(--color-brand-white-base);
+}
+
+.palette-item {
+  margin-right: var(--size-spacing-md);
+  margin-bottom: var(--size-spacing-xs);
+  border-radius: var(--size-border-radius-md);
+  padding: var(--size-spacing-xs) var(--size-spacing-md);
+  width: 100px;
+}

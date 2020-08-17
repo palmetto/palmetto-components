@@ -1,5 +1,9 @@
 {
+  "root": true,
+  "parser": "@typescript-eslint/parser",
   "extends": [
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "airbnb",
     "airbnb/hooks",
     "plugin:jest/recommended",
@@ -8,18 +12,90 @@
   "plugins": [
     "jsx-a11y",
     "jest",
+    "@typescript-eslint"
   ],
   "env": {
     "jest/globals": true,
     "browser": true
   },
   "rules": {
-    "arrow-parens": ["error", "as-needed"],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
     "import/no-extraneous-dependencies": [
       "error",
-      { "devDependencies": true }
+      {
+        "devDependencies": true
+      }
     ],
-    "react/jsx-props-no-spreading": [0],
-    "max-len": [1, 120]
-  }
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".jsx",
+          "tsx"
+        ]
+      }
+    ],
+    "react/jsx-props-no-spreading": [
+      0
+    ],
+    "max-len": [
+      1,
+      120
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      "multiline": {
+        "delimiter": "semi",
+        "requireLast": true
+      },
+      "singleline": {
+        "delimiter": "semi",
+        "requireLast": true
+      }
+    }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.js"
+      ],
+      "rules": {
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/explicit-module-boundary-types": 0
+      }
+    },
+    {
+      "files": [
+        "**/*.tsx"
+      ],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
+  ]
 }

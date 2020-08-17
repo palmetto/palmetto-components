@@ -49,6 +49,8 @@ describe('CheckboxInput', () => {
       hasError: false,
       isFieldRequired: false,
       labelText: 'test checkbox',
+      className: undefined,
+      isDisabled: false,
     }, {});
   });
 
@@ -69,6 +71,8 @@ describe('CheckboxInput', () => {
       hasError: false,
       isFieldRequired: true,
       labelText: 'test checkbox',
+      className: undefined,
+      isDisabled: false,
     }, {});
   });
 
@@ -140,6 +144,8 @@ describe('CheckboxInput', () => {
         hasError: true,
         isFieldRequired: false,
         labelText: 'test checkbox',
+        className: undefined,
+        isDisabled: false,
       }, {});
     });
 
@@ -159,8 +165,31 @@ describe('CheckboxInput', () => {
         hasError: true,
         isFieldRequired: false,
         labelText: 'test checkbox',
+        className: undefined,
+        isDisabled: false,
       }, {});
     });
+  });
+
+  test('calls FormLabel with the correct properties when disabled', () => {
+    render(
+      <CheckboxInput
+        id="testCheckbox"
+        label="test checkbox"
+        isChecked={false}
+        onChange={() => null}
+        isDisabled
+      />,
+    );
+    expect(FormLabel).toHaveBeenCalledTimes(1);
+    expect(FormLabel).toHaveBeenCalledWith({
+      inputId: 'testCheckbox',
+      hasError: false,
+      isFieldRequired: false,
+      labelText: 'test checkbox',
+      className: undefined,
+      isDisabled: true,
+    }, {});
   });
 
   describe('onChange', () => {
