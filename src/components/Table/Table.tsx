@@ -10,7 +10,7 @@ interface Props {
    */
   columnConfig: {
     heading: string;
-    id?: string;
+    id: string;
     isSortable?: boolean;
     width?: string;
   }[];

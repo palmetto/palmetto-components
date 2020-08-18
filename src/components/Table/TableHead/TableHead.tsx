@@ -8,7 +8,7 @@ interface Props {
    */
   columns: {
     heading: string;
-    id?: string;
+    id: string;
     isSortable?: boolean;
     width?: string;
   }[];
@@ -42,7 +42,7 @@ const TableHead: FC<Props> = ({
       key={column.id}
       onSort={onSort}
       sortedColumn={sortedColumn}
-      loading={isLoading}
+      isLoading={isLoading}
       width={column.width}
     />
   );
