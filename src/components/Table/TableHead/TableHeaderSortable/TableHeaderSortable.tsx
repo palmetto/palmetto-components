@@ -34,11 +34,10 @@ const TableHeaderSortable: FC<Props> = ({
   heading,
   id,
   onSort,
-  isLoading = false,
   sortedColumn = undefined,
   width = undefined,
 }) => {
-  const renderIcon = name => {
+  const renderIcon = () => {
     const sortDirection = (sortedColumn && sortedColumn.id === id) ? sortedColumn.sortOrder : null;
     const renderUpDownArrows = () => (
       sortDirection === 'desc' ? <FontAwesomeIcon icon={faArrowDown} /> : <FontAwesomeIcon icon={faArrowUp} />

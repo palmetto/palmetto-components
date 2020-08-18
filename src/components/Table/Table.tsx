@@ -128,9 +128,9 @@ const Table: FC<Props> = ({
         />
         <tbody>
           {
-            tableData && tableData.map((record, index) => (
+            tableData && tableData.map(record => (
               <TableRow
-                key={index}
+                key={record[0]}
                 data={record}
                 truncateOverflow={truncateOverflow}
                 emptyCellPlaceholder={emptyCellPlaceholder}

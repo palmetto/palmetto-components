@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import cx from 'classnames';
+import classNames from 'classnames';
 import styles from './TableRow.module.scss';
 
 interface Props {
@@ -12,16 +12,28 @@ const TableRow: FC<Props> = ({
   data,
   truncateOverflow,
   emptyCellPlaceholder,
-}) => (
-  <tr>
+}) => {
+  const tableCellClasses = classNames(
+    styles['table-cell'],
     {
-      data.map((columnContent, index) => (
-        <td className={cx(styles['table-cell'], { [styles['truncate-overflow']]: truncateOverflow })} key={index}>
-          {columnContent || emptyCellPlaceholder}
-        </td>
-      ))
-    }
-  </tr>
-);
+      [styles['truncate-overflow']]: truncateOverflow,
+    },
+  );
+
+  return (
+    <tr>
+      {
+        data.map(columnContent => (
+          <td
+            className={tableCellClasses}
+            key={columnContent}
+          >
+            {columnContent || emptyCellPlaceholder}
+          </td>
+        ))
+      }
+    </tr>
+  );
+};
 
 export default TableRow;
