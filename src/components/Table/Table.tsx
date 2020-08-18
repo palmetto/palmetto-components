@@ -35,6 +35,10 @@ interface Props {
    * Remove borders around table, thead, tbody, td, etc.
    */
   isBorderless?: boolean;
+   /**
+   * Make Table more compact by cutting cell padding in half.
+   */
+  isCompact?: boolean;
   /**
    * Responsive tables allow tables to be scrolled horizontally with ease.
    * If table overruns horizontal width of container, allow for horizontal scrolling.
@@ -72,10 +76,6 @@ interface Props {
    * the columns is changing; prevents the horizontal jump when this occurres.
    */
   useFixedWidthColumns?: boolean;
-  /**
-   * Make Table more compact by cutting cell padding in half.
-   */
-  useLessPadding?: boolean;
 }
 
 const Table: FC<Props> = ({
@@ -85,6 +85,7 @@ const Table: FC<Props> = ({
   emptyCellPlaceholder = undefined,
   hoverableRows = false,
   isBorderless = false,
+  isCompact = false,
   isResponsive = false,
   isStriped = false,
   isLoading = false,
@@ -92,7 +93,6 @@ const Table: FC<Props> = ({
   sortedColumn = undefined,
   truncateOverflow = false,
   useFixedWidthColumns = false,
-  useLessPadding = false,
 }) => {
   const tableContainerClasses = classNames(
     styles.container,
@@ -107,7 +107,7 @@ const Table: FC<Props> = ({
       [styles['fixed-width-columns']]: useFixedWidthColumns,
       [styles.striped]: isStriped,
       [styles.borderless]: isBorderless,
-      [styles['less-padding']]: useLessPadding,
+      [styles.compact]: isCompact,
       [styles.hover]: hoverableRows,
     },
   );
