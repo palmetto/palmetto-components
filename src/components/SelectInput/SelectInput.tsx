@@ -54,6 +54,10 @@ interface Props {
    */
   error?: React.ReactNode;
   /**
+   * If the input value is clearable programmatically
+   */
+  isClearable?: boolean;
+  /**
    * If the input should be disabled and not focusable
    */
   isDisabled?: boolean;
@@ -90,12 +94,13 @@ const SelectInput: FC<Props> = ({
   placeholder,
   error = false,
   hideLabel = false,
+  isClearable = false,
   isDisabled = false,
   isRequired = false,
   name = '',
   onChange,
-  onFocus,
-  onBlur,
+  onFocus = null,
+  onBlur = null,
   autoFocus = false,
   isMulti = false,
   options,
@@ -150,6 +155,7 @@ const SelectInput: FC<Props> = ({
         className={inputClasses}
         classNamePrefix="react-select"
         placeholder={placeholder}
+        isClearable={isClearable}
         isDisabled={isDisabled}
         isMulti={isMulti}
         name={name}
