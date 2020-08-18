@@ -25,14 +25,14 @@ I'm a table!
   <Story name="Default">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first'},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
+        {heading: 'ID', id: 'first'},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       return (
         <Table
@@ -50,14 +50,14 @@ I'm a table!
   <Story name="Loading">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first'},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
+        {heading: 'ID', id: 'first'},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       return (
         <>
@@ -80,29 +80,29 @@ I'm a table!
       const defaultSortedColumn = null;
       const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
       const columnConfig = [
-        {heading: 'First Column', id: 'first', isSortable: true},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third', isSortable: true},
+        {heading: 'ID', id: 'first', isSortable: true},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third', isSortable: true},
       ];
       const firstAsc = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       const firstDesc = [
-        ['3', 'bazz', 'strawberry'],
-        ['2', 'bar', 'chocolate'],
-        ['1', 'foo', 'vanilla'],
+        {id: 3, color: 'green', flavor: 'strawberry'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 1, color: 'red', flavor: 'vanilla'},
       ];
       const thirdAsc = [
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
-        ['1', 'foo', 'vanilla'],
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
+        {id: 1, color: 'red', flavor: 'vanilla'},
       ];
       const thirdDesc = [
-        ['1', 'foo', 'vanilla'],
-        ['3', 'bazz', 'strawberry'],
-        ['2', 'bar', 'chocolate'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
       ];
       const handleTableHeaderClick = headerId => {
         let direction;
@@ -150,29 +150,29 @@ I'm a table!
       };
       const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
       const columnConfig = [
-        {heading: 'First Column', id: 'first', isSortable: true},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third', isSortable: true},
+        {heading: 'ID', id: 'first', isSortable: true},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third', isSortable: true},
       ];
       const firstAsc = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       const firstDesc = [
-        ['3', 'bazz', 'strawberry'],
-        ['2', 'bar', 'chocolate'],
-        ['1', 'foo', 'vanilla'],
+        {id: 3, color: 'green', flavor: 'strawberry'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 1, color: 'red', flavor: 'vanilla'},
       ];
       const thirdAsc = [
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
-        ['1', 'foo', 'vanilla'],
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
+        {id: 1, color: 'red', flavor: 'vanilla'},
       ];
       const thirdDesc = [
-        ['1', 'foo', 'vanilla'],
-        ['3', 'bazz', 'strawberry'],
-        ['2', 'bar', 'chocolate'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
       ];
       const handleTableHeaderClick = headerId => {
         let direction;
@@ -219,29 +219,29 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       const defaultSortedColumn = null;
       const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
       const columnConfig = [
-        {heading: 'First Column', id: 'first', isSortable: true},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third', isSortable: true},
+        {heading: 'ID', id: 'first', isSortable: true},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third', isSortable: true},
       ];
       const firstAsc = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       const firstDesc = [
-        ['3', 'bazz', 'strawberry'],
-        ['2', 'bar', 'chocolate'],
-        ['1', 'foo', 'vanilla'],
+        {id: 3, color: 'green', flavor: 'strawberry'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 1, color: 'red', flavor: 'vanilla'},
       ];
       const thirdAsc = [
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
-        ['1', 'foo', 'vanilla'],
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
+        {id: 1, color: 'red', flavor: 'vanilla'},
       ];
       const thirdDesc = [
-        ['1', 'foo', 'vanilla'],
-        ['3', 'bazz', 'strawberry'],
-        ['2', 'bar', 'chocolate'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
       ];
       const handleTableHeaderClick = headerId => {
         let direction;
@@ -284,37 +284,24 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Responsive">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first'},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
-        {heading: 'Fourth Column', id: 'fourth'},
-        {heading: 'Fifth Column', id: 'fifth'},
-        {heading: 'Sixth Column', id: 'sixth'},
-        {heading: 'Seventh Column', id: 'seventh'},
-        {heading: 'Eighth Column', id: 'eighth'},
-        {heading: 'Nineth Column', id: 'nineth'},
-        {heading: 'Tenth Column', id: 'tenth'},
-        {heading: 'Eleventh Column', id: 'eleventh'},
-        {heading: 'Twelfth Column', id: 'twelfth'},
-        {heading: 'Thirteenth Column', id: 'thirteenth'},
-        {heading: 'Fourteenth Column', id: 'fourteenth'},
-        {heading: 'Fifteenth Column', id: 'fifteenth'},
-        {heading: 'Sixteenth Column', id: 'sixteenth'},
-        {heading: 'Seventeenth Column', id: 'seventeenth'},
-        {heading: 'Eighteenth Column', id: 'eighteenth'},
-        {heading: 'Nineteenth Column', id: 'nineteenth'},
+        {heading: 'ID', id: 'first'},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third'},
+        {heading: 'Brightness', id: 'fourth'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla', 'Fran', 'BA', 'CA', 'DA', 'EA', 'FA', 'GA', 'HA', 'IA', 'JA', 'KA', 'LA', 'MA', 'NA', 'OA', 'PA'],
-        ['2', 'bar', 'chocolate', 'Bob', 'BB', 'CB', 'DB', 'EB', 'FB', 'GB', 'HB', 'IB', 'JB', 'KB', 'LB', 'MB', 'NB', 'OB', 'PB'],
-        ['3', 'bazz', 'strawberry', 'Cole', 'BC', 'CC', 'DC', 'EC', 'FC', 'GC', 'HC', 'IC', 'JC', 'KC', 'LC', 'MC', 'NC', 'OC', 'PB'],
+        {id: 1, color: 'red', flavor: 'vanilla', brightness: 'light'},
+        {id: 2, color: 'blue', flavor: 'chocolate', brightness: 'medium'},
+        {id: 3, color: 'green', flavor: 'strawberry', brightness: 'dark'},
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-          isResponsive
-        />
+        <div style={{ width: '260px' }}>
+          <Table
+            columns={columnConfig}
+            tableData={tableData}
+            isResponsive
+          />
+        </div>
       );
     }}
   </Story>
@@ -326,14 +313,14 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Fixed-Width Columns">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first', width: '315'},
-        {heading: 'Second Column', id: 'second', width: '215'},
-        {heading: 'Third Column', id: 'third', width: '100'},
+        {heading: 'ID', id: 'first', width: '315'},
+        {heading: 'Color', id: 'second', width: '215'},
+        {heading: 'Flavor', id: 'third', width: '100'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry strawberry strawberry strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       return (
         <Table
@@ -352,14 +339,14 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Truncate Overflow">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first', width: '70'},
-        {heading: 'Second Column', id: 'second', width: '215'},
-        {heading: 'Third Column', id: 'third', width: '100'},
+        {heading: 'ID', id: 'first', width: '70'},
+        {heading: 'Color', id: 'second', width: '215'},
+        {heading: 'Flavor', id: 'third', width: '100'},
       ];
       const tableData = [
-        ['1', 'foofoofoofoofoofoofoofoofoofoofoofoo', 'vanilla'],
-        ['2', 'bar', 'chocolatechocolatechocolatechocolate'],
-        ['3', 'baz', 'strawberry strawberry strawberry strawberry'],
+        {id: 1, color: 'redredredredredredredredredredredredred', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry strawberry strawberry strawberry'},
       ];
       return (
         <Table
@@ -379,14 +366,14 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Striped">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first'},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
+        {heading: 'ID', id: 'first'},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       return (
         <Table
@@ -405,14 +392,14 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Empty Cell Placeholder">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first'},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
+        {heading: 'ID', id: 'first'},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third'},
       ];
       const tableData = [
-        [undefined, 'foo', 'vanilla'],
-        ['2', null, 'chocolate'],
-        ['3', 'bazz', ''],
+        {id: undefined, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: null, flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: ''},
       ];
       return (
         <Table
@@ -431,14 +418,14 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Borderless">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first'},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
+        {heading: 'ID', id: 'first'},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       return (
         <Table
@@ -457,14 +444,14 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Compact">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first'},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
+        {heading: 'ID', id: 'first'},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       return (
         <Table
@@ -483,14 +470,14 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Hover">
     {() => {
       const columnConfig = [
-        {heading: 'First Column', id: 'first'},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
+        {heading: 'ID', id: 'first'},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third'},
       ];
       const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
+        {id: 1, color: 'red', flavor: 'vanilla'},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
       ];
       return (
         <Table

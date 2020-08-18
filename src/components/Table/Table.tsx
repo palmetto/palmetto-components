@@ -128,10 +128,10 @@ const Table: FC<Props> = ({
         />
         <tbody>
           {
-            tableData && tableData.map(record => (
+            tableData && tableData.map(row => (
               <TableRow
-                key={record[0]}
-                data={record}
+                key={row[0]}
+                data={row}
                 truncateOverflow={truncateOverflow}
                 emptyCellPlaceholder={emptyCellPlaceholder}
               />
