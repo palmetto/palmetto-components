@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Button from '../Button/Button';
 import Table from './Table';
 
 
@@ -354,6 +355,31 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
           tableData={tableData}
           useFixedWidthColumns
           truncateOverflow
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Custom Actions
+
+<Preview>
+  <Story name="Custom Actions">
+    {() => {
+      const columnConfig = [
+        {heading: 'ID', id: 'first'},
+        {heading: 'Color', id: 'second'},
+        {heading: 'Flavor', id: 'third'},
+      ];
+      const tableData = [
+        {id: 1, color: 'red', flavor: <Button onClick={() => alert('Ouch! Why would you do that!?')}>Click me</Button>},
+        {id: 2, color: 'blue', flavor: 'chocolate'},
+        {id: 3, color: 'green', flavor: 'strawberry'},
+      ];
+      return (
+        <Table
+          columns={columnConfig}
+          tableData={tableData}
         />
       );
     }}
