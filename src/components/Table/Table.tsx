@@ -27,7 +27,7 @@ interface Props {
    */
   emptyCellPlaceholder?: string | ReactNode;
   /**
-   * Enable a hover state on table rows within a <tbody>.
+   * Enable a hover state on table rows.
    */
   hoverableRows?: boolean;
   /**

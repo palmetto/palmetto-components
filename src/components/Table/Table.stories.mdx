@@ -422,10 +422,80 @@ I'm a table!
           <Table
             columnConfig={columnConfig}
             tableData={tableData}
-            loading
+            isLoading
           />
           <span>Add custom "loading" message here.</span>
         </>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Sortable and Loading
+
+Setting the `isLoading` prop to true will disable clicking on the column headers. This prevents a race condition where an attempt to sort is made before data from the previous load is available.
+
+<Preview>
+  <Story name="Sortable and Loading">
+    {() => {
+      const defaultSortedColumn = null;
+      const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
+      const columnConfig = [
+        {heading: 'First Column', id: 'first', isSortable: true},
+        {heading: 'Second Column', id: 'second'},
+        {heading: 'Third Column', id: 'third', isSortable: true},
+      ];
+      const firstAsc = [
+        ['1', 'foo', 'vanilla'],
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+      ];
+      const firstDesc = [
+        ['3', 'bazz', 'strawberry'],
+        ['2', 'bar', 'chocolate'],
+        ['1', 'foo', 'vanilla'],
+      ];
+      const thirdAsc = [
+        ['2', 'bar', 'chocolate'],
+        ['3', 'bazz', 'strawberry'],
+        ['1', 'foo', 'vanilla'],
+      ];
+      const thirdDesc = [
+        ['1', 'foo', 'vanilla'],
+        ['3', 'bazz', 'strawberry'],
+        ['2', 'bar', 'chocolate'],
+      ];
+      const handleTableHeaderClick = headerId => {
+        let direction;
+        if (!sortedColumn || headerId !== sortedColumn.id) {
+          direction = 'desc';
+        } else {
+          direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
+        }
+        const newSortedColumn = {
+          id: headerId,
+          sortOrder: direction,
+        };
+        setSortedColumn(newSortedColumn);
+      };
+      const generateTableData = () => {
+        if (sortedColumn?.id === 'first') {
+          return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
+        } else if (sortedColumn?.id === 'third') {
+          return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
+        } else {
+          return firstAsc
+        }
+      }
+      return (
+        <Table
+          columnConfig={columnConfig}
+          tableData={generateTableData()}
+          onSort={handleTableHeaderClick}
+          sortedColumn={sortedColumn}
+          isResponsive
+          isLoading
+        />
       );
     }}
   </Story>
