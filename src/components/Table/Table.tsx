@@ -2,6 +2,7 @@ import React, { FC, ReactNode, ChangeEvent } from 'react';
 import classNames from 'classnames';
 import TableHead from './TableHead/TableHead';
 import TableRow from './TableRow/TableRow';
+import Spinner from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 
 interface Props {
@@ -113,11 +114,15 @@ const Table: FC<Props> = ({
 
   return (
     <div className={tableContainerClasses}>
-      {isLoading && <div className={styles['loading-mask']} />}
+      {isLoading
+        && (
+          <div className={styles['loading-mask']}>
+            <Spinner size="xl" />
+          </div>
+        )}
       <table className={tableClasses}>
         <TableHead
           columns={columnConfig}
-          isLoading={isLoading}
           onSort={onSort}
           sortedColumn={sortedColumn}
         />

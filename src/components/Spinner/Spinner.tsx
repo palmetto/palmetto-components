@@ -15,7 +15,7 @@ interface Props {
   /**
    * Size of the spinner.
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
 const Spinner: FC<Props> = ({
@@ -30,6 +30,7 @@ const Spinner: FC<Props> = ({
     if (size === 'sm') pixels = '12';
     if (size === 'md') pixels = '16';
     if (size === 'lg') pixels = '24';
+    if (size === 'xl') pixels = '30';
 
     return pixels;
   };
