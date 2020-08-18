@@ -499,36 +499,6 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
             tableData={tableData}
             isLoading
           />
-          <span>Add custom "loading" message here.</span>
-        </>
-      );
-    }}
-  </Story>
-</Preview>
-
-## Loading Failed
-
-<Preview>
-  <Story name="Loading Failed">
-    {() => {
-      const columnConfig = [
-        {heading: 'First Column', id: 'first'},
-        {heading: 'Second Column', id: 'second'},
-        {heading: 'Third Column', id: 'third'},
-      ];
-      const tableData = [
-        ['1', 'foo', 'vanilla'],
-        ['2', 'bar', 'chocolate'],
-        ['3', 'bazz', 'strawberry'],
-      ];
-      return (
-        <>
-          <Table
-            columnConfig={columnConfig}
-            tableData={tableData}
-            loadingFailed
-          />
-          <span>Add custom "load failed" message here.</span>
         </>
       );
     }}

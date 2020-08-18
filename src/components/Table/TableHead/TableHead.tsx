@@ -13,10 +13,6 @@ interface Props {
     width?: string;
   }[];
   /**
-   * isLoading is used to disable clicking on a sortable table header while loading is in progress.
-   */
-  isLoading?: boolean;
-  /**
    * Callback function to execute when a sortable column's header is clicked.
    */
   onSort?: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -31,7 +27,6 @@ interface Props {
 
 const TableHead: FC<Props> = ({
   columns,
-  isLoading = false,
   onSort = undefined,
   sortedColumn = undefined,
 }) => {
@@ -42,7 +37,6 @@ const TableHead: FC<Props> = ({
       key={column.id}
       onSort={onSort}
       sortedColumn={sortedColumn}
-      isLoading={isLoading}
       width={column.width}
     />
   );

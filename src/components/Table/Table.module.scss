@@ -1,4 +1,16 @@
 .container {
+  display: inline-block;
+  position: relative;
+
+  .loading-mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: green;
+  }
+
   .table {
     margin-top: 5px;
     cursor: default;

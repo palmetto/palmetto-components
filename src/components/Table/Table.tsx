@@ -87,7 +87,6 @@ const Table: FC<Props> = ({
   isResponsive = false,
   isStriped = false,
   isLoading = false,
-  loadingFailed = false,
   onSort = undefined,
   sortedColumn = undefined,
   truncateOverflow = false,
@@ -114,6 +113,7 @@ const Table: FC<Props> = ({
 
   return (
     <div className={tableContainerClasses}>
+      {isLoading && <div className={styles['loading-mask']} />}
       <table className={tableClasses}>
         <TableHead
           columns={columnConfig}
@@ -123,10 +123,7 @@ const Table: FC<Props> = ({
         />
         <tbody>
           {
-            !isLoading
-            && !loadingFailed
-            && tableData
-            && tableData.map((record, index) => (
+            tableData && tableData.map((record, index) => (
               <TableRow
                 key={index}
                 data={record}
