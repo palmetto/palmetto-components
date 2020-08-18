@@ -117,7 +117,7 @@ const Table: FC<Props> = ({
       <table className={tableClasses}>
         <TableHead
           columns={columnConfig}
-          loading={isLoading}
+          isLoading={isLoading}
           onSort={onSort}
           sortedColumn={sortedColumn}
         />
