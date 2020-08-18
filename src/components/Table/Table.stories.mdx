@@ -36,7 +36,7 @@ I'm a table!
       ];
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={tableData}
         />
       );
@@ -62,7 +62,7 @@ I'm a table!
       return (
         <>
           <Table
-            columnConfig={columnConfig}
+            columns={columnConfig}
             tableData={tableData}
             isLoading
           />
@@ -128,7 +128,7 @@ I'm a table!
       }
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={generateTableData()}
           onSort={handleTableHeaderClick}
           sortedColumn={sortedColumn}
@@ -198,7 +198,7 @@ I'm a table!
       }
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={generateTableData()}
           onSort={handleTableHeaderClick}
           sortedColumn={sortedColumn}
@@ -267,7 +267,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       }
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={generateTableData()}
           onSort={handleTableHeaderClick}
           sortedColumn={sortedColumn}
@@ -311,7 +311,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       ];
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={tableData}
           isResponsive
         />
@@ -337,7 +337,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       ];
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={tableData}
           useFixedWidthColumns
         />
@@ -363,7 +363,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       ];
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={tableData}
           useFixedWidthColumns
           truncateOverflow
@@ -390,7 +390,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       ];
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={tableData}
           isStriped
         />
@@ -416,7 +416,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       ];
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={tableData}
           emptyCellPlaceholder="--"
         />
@@ -442,7 +442,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       ];
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={tableData}
           isBorderless
         />
@@ -468,7 +468,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       ];
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={tableData}
           isCompact
         />
@@ -494,7 +494,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       ];
       return (
         <Table
-          columnConfig={columnConfig}
+          columns={columnConfig}
           tableData={tableData}
           isStriped
           hoverableRows

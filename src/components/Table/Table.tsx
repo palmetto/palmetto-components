@@ -9,7 +9,7 @@ interface Props {
   /**
    * Configuration for the columns.
    */
-  columnConfig: {
+  columns: {
     heading: string;
     id: string;
     isSortable?: boolean;
@@ -18,7 +18,7 @@ interface Props {
   /**
    * Data to be displayed in the tbody.
    */
-  tableData: any[][]; // eslint-disable-line @typescript-eslint/no-explicit-any
+  tableData: ReactNode[][];
   /**
    * Additional classes to add.
    */
@@ -26,7 +26,7 @@ interface Props {
   /**
    * If a cell is missing data, populate it with custom content.
    */
-  emptyCellPlaceholder?: string | ReactNode;
+  emptyCellPlaceholder?: ReactNode;
   /**
    * Enable a hover state on table rows.
    */
@@ -79,7 +79,7 @@ interface Props {
 }
 
 const Table: FC<Props> = ({
-  columnConfig,
+  columns,
   tableData,
   className = undefined,
   emptyCellPlaceholder = undefined,
@@ -122,7 +122,7 @@ const Table: FC<Props> = ({
         )}
       <table className={tableClasses}>
         <TableHead
-          columns={columnConfig}
+          columns={columns}
           onSort={onSort}
           sortedColumn={sortedColumn}
         />
