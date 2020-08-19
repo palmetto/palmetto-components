@@ -45,13 +45,9 @@ interface Props {
    */
   isStriped?: boolean;
   /**
-   * If data is loading....
+   * Set to true if data is loading.
    */
   isLoading?: boolean;
-  /**
-   * If loading failed....
-   */
-  loadingFailed?: boolean;
   /**
    * Callback function to execute when a sortable column's header is clicked.
    */
