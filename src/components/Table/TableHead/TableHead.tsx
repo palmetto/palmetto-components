@@ -1,4 +1,5 @@
 import React, { FC, ChangeEvent } from 'react';
+import { Column } from '../types';
 import TableHeaderSortable from './TableHeaderSortable/TableHeaderSortable';
 import styles from './TableHead.module.scss';
 
@@ -6,12 +7,7 @@ interface Props {
   /**
    * Column configuration for the columns.
    */
-  columns: {
-    heading: string;
-    id: string;
-    isSortable?: boolean;
-    width?: string;
-  }[];
+  columns: Column[];
   /**
    * isLoading is used to disable clicking on a sortable table header while loading is in progress.
    */

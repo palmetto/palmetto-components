@@ -1,5 +1,6 @@
 import React, { FC, ReactNode, ChangeEvent } from 'react';
 import classNames from 'classnames';
+import { Column } from './types';
 import TableHead from './TableHead/TableHead';
 import TableRow from './TableRow/TableRow';
 import Spinner from '../Spinner/Spinner';
@@ -9,12 +10,7 @@ interface Props {
   /**
    * Configuration for the columns.
    */
-  columns: {
-    heading: string;
-    id: string;
-    isSortable?: boolean;
-    width?: string;
-  }[];
+  columns: Column[];
   /**
    * Data to be displayed in the tbody.
    */
