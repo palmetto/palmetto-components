@@ -22,16 +22,14 @@ const TableRow: FC<Props> = ({
 
   return (
     <tr>
-      {
-        Object.values(data).map(columnContent => (
-          <td
-            className={tableCellClasses}
-            key={columnContent}
-          >
-            {columnContent || emptyCellPlaceholder}
-          </td>
-        ))
-      }
+      {Object.values(data).map(columnContent => (
+        <td
+          className={tableCellClasses}
+          key={columnContent}
+        >
+          {columnContent || emptyCellPlaceholder}
+        </td>
+      ))}
     </tr>
   );
 };
