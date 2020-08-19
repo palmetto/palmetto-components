@@ -35,12 +35,12 @@ describe('Spinner', () => {
       });
 
       test('Renders with proper size when passed `xl` prop', () => {
-        const largeSize = '30';
+        const extraLargeSize = '30';
         const { getByTestId } = render(<Spinner size="xl" />);
         const svg = getByTestId('spinner-testid');
         expect(svg).toBeInTheDocument();
-        expect(svg).toHaveAttribute('width', largeSize);
-        expect(svg).toHaveAttribute('height', largeSize);
+        expect(svg).toHaveAttribute('width', extraLargeSize);
+        expect(svg).toHaveAttribute('height', extraLargeSize);
       });
     });
   });
