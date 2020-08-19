@@ -287,19 +287,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       }
       return (
         <Table isLoading>
-<<<<<<< HEAD
-          <TableHead 
-            columns={columnConfig} 
-            onSort={handleTableHeaderClick} 
-            sortedColumn={sortedColumn} 
-            isLoading 
-=======
           <TableHead
             columns={columnConfig}
             onSort={handleTableHeaderClick}
             sortedColumn={sortedColumn}
             isLoading
->>>>>>> ca4ce002e269126131484e49a1c70d3bb0ae154e
           />
           <TableBody>
             {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
