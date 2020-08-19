@@ -1,6 +1,6 @@
 import React, { FC, ReactNode, ChangeEvent } from 'react';
 import classNames from 'classnames';
-import { Column } from './types';
+import { Column, SortedColumn } from './types';
 import TableHead from './TableHead/TableHead';
 import TableRow from './TableRow/TableRow';
 import Spinner from '../Spinner/Spinner';
@@ -59,10 +59,7 @@ interface Props {
   /**
    * The current sorted column.
    */
-  sortedColumn?: {
-    id: string;
-    sortOrder: string;
-  };
+  sortedColumn?: SortedColumn;
   /**
    * If content overruns its cell's width, truncate the content, as opposed to wrapping it.
    */

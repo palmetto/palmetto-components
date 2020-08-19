@@ -1,5 +1,5 @@
 import React, { FC, ChangeEvent } from 'react';
-import { Column } from '../types';
+import { Column, SortedColumn } from '../types';
 import TableHeaderSortable from './TableHeaderSortable/TableHeaderSortable';
 import styles from './TableHead.module.scss';
 
@@ -19,10 +19,7 @@ interface Props {
   /**
    * The current sorted column.
    */
-  sortedColumn?: {
-    id: string;
-    sortOrder: string;
-  };
+  sortedColumn?: SortedColumn;
 }
 
 const TableHead: FC<Props> = ({

@@ -4,3 +4,8 @@ export interface Column {
   isSortable?: boolean;
   width?: string;
 }
+
+export interface SortedColumn {
+  id: string;
+  sortOrder: 'asc' | 'desc';
+}
