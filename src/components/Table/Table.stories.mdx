@@ -42,7 +42,7 @@ I'm a table!
         <Table>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            {tableData.map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
@@ -70,7 +70,7 @@ I'm a table!
           <Table isLoading>
             <TableHead columns={columnConfig} isLoading />
             <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+              {tableData.map(row => <TableRow data={row} uniqueId={row.id} />)}
             </TableBody>
           </Table>
         </>
@@ -141,7 +141,7 @@ I'm a table!
             sortedColumn={sortedColumn} 
           />
           <TableBody>
-            {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
+            {generateTableData().map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
@@ -214,7 +214,7 @@ I'm a table!
             sortedColumn={sortedColumn} 
           />
           <TableBody>
-            {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
+            {generateTableData().map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
@@ -287,7 +287,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
             isLoading
           />
           <TableBody>
-            {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
+            {generateTableData().map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
@@ -316,7 +316,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
           <Table isResponsive>
             <TableHead columns={columnConfig} />
             <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+              {tableData.map(row => <TableRow data={row} uniqueId={row.id} />)}
             </TableBody>
           </Table>
         </div>
@@ -344,7 +344,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table useFixedWidthColumns>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            {tableData.map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
@@ -371,7 +371,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table useFixedWidthColumns>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} truncateOverflow />)}
+            {tableData.map(row => <TableRow data={row} uniqueId={row.id} truncateOverflow />)}
           </TableBody>
         </Table>
       );
@@ -398,7 +398,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            {tableData.map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
@@ -425,7 +425,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table isStriped>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            {tableData.map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
@@ -452,7 +452,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} emptyCellPlaceholder="--" />)}
+            {tableData.map(row => <TableRow data={row} uniqueId={row.id} emptyCellPlaceholder="--" />)}
           </TableBody>
         </Table>
       );
@@ -479,7 +479,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table isBorderless>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            {tableData.map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
@@ -506,7 +506,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table isCompact>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            {tableData.map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
@@ -533,7 +533,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table isStriped hoverableRows>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            {tableData.map(row => <TableRow data={row} uniqueId={row.id} />)}
           </TableBody>
         </Table>
       );
