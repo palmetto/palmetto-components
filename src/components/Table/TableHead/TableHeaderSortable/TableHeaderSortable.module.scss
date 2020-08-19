@@ -1,3 +1,9 @@
 .header:hover {
   cursor: pointer;
 }
+
+.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+

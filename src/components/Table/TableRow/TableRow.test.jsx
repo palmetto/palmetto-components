@@ -7,6 +7,16 @@ describe('TableRow', () => {
     describe('Default', () => {
       const rowData = { id: 1, color: 'red', flavor: 'vanilla' };
 
+      test('it renders a row', () => {
+        render(
+          <TableRow data={rowData} />,
+        );
+
+        const row = screen.getByRole('row');
+
+        expect(row).toBeInTheDocument();
+      });
+
       test('it renders 3 cells', () => {
         render(
           <TableRow data={rowData} />,
