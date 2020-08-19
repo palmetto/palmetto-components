@@ -4,8 +4,8 @@ import { withA11y } from '@storybook/addon-a11y';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import Button from '../Button/Button';
 import Table from './Table';
-import TableBody from './TableBody/TableBody';
 import TableHead from './TableHead/TableHead';
+import TableBody from './TableBody/TableBody';
 import TableRow from './TableRow/TableRow';
 
 
@@ -69,7 +69,7 @@ I'm a table!
         <>
           <Table isLoading>
             <TableHead columns={columnConfig} isLoading />
-            <TableBody isLoading>
+            <TableBody>
               {tableData.map(row => <TableRow data={row} key={row.id} />)}
             </TableBody>
           </Table>
@@ -134,9 +134,7 @@ I'm a table!
         }
       }
       return (
-        <Table
-          isResponsive
-        >
+        <Table isResponsive>
           <TableHead columns={columnConfig} onSort={handleTableHeaderClick} sortedColumn={sortedColumn} />
           <TableBody>
             {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
@@ -274,7 +272,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       }
       return (
         <Table isLoading>
-          <TableHead columns={columnConfig} onSort={handleTableHeaderClick} sortedColumn={sortedColumn} isLoading />
+          <TableHead
+            columns={columnConfig}
+            onSort={handleTableHeaderClick}
+            sortedColumn={sortedColumn}
+            isLoading
+          />
           <TableBody>
             {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
           </TableBody>
@@ -360,7 +363,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table useFixedWidthColumns>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} truncateOverflow useFixed/>)}
+            {tableData.map(row => <TableRow data={row} key={row.id} truncateOverflow />)}
           </TableBody>
         </Table>
       );
@@ -438,7 +441,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: '' },
       ];
       return (
-        <Table isStriped>
+        <Table>
           <TableHead columns={columnConfig} />
           <TableBody>
             {tableData.map(row => <TableRow data={row} key={row.id} emptyCellPlaceholder="--" />)}
