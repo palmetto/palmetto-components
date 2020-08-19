@@ -40,12 +40,14 @@ const TableHeaderSortable: FC<Props> = ({
   const renderIcon = () => {
     const sortDirection = (sortedColumn && sortedColumn.id === id) ? sortedColumn.sortOrder : null;
     const renderUpDownArrows = () => (
-      sortDirection === 'desc' ? <FontAwesomeIcon icon={faArrowDown} /> : <FontAwesomeIcon icon={faArrowUp} />
+      sortDirection === 'desc'
+        ? <FontAwesomeIcon icon={faArrowDown} data-testid="arrowDown-testid" />
+        : <FontAwesomeIcon icon={faArrowUp} data-testid="arrowUp-testid" />
     );
 
     return (
       <span>
-        {sortDirection ? renderUpDownArrows() : <FontAwesomeIcon icon={faSort} />}
+        {sortDirection ? renderUpDownArrows() : <FontAwesomeIcon icon={faSort} data-testid="sort-testid" />}
       </span>
     );
   };

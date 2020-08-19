@@ -130,7 +130,7 @@ const Table: FC<Props> = ({
           {
             tableData && tableData.map(row => (
               <TableRow
-                key={row[0]}
+                key={row.id}
                 data={row}
                 truncateOverflow={truncateOverflow}
                 emptyCellPlaceholder={emptyCellPlaceholder}
