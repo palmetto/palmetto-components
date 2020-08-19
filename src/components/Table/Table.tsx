@@ -1,6 +1,5 @@
-import React, { FC, ReactNode, ChangeEvent } from 'react';
+import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { SortedColumn } from './types';
 import Spinner from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 
