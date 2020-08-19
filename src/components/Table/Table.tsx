@@ -5,10 +5,6 @@ import styles from './Table.module.scss';
 
 interface TableProps {
   /**
-   * Data to be displayed in the tbody.
-   */
-  tableData: ReactNode[][];
-  /**
    * Additional classes to add.
    */
   className?: string;
@@ -38,13 +34,9 @@ interface TableProps {
    */
   isStriped?: boolean;
   /**
-   * If data is loading....
+   * Set to true if data is loading.
    */
   isLoading?: boolean;
-  /**
-   * If loading failed....
-   */
-  loadingFailed?: boolean;
   /**
    * Fix the width of the columns. Can be useful if sorting is enabled and the content of
    * the columns is changing; prevents the horizontal jump when this occurres.

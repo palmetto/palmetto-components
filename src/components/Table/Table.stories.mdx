@@ -137,7 +137,11 @@ I'm a table!
         <Table
           isResponsive
         >
-          <TableHead columns={columnConfig} onSort={handleTableHeaderClick} sortedColumn={sortedColumn} />
+          <TableHead 
+            columns={columnConfig} 
+            onSort={handleTableHeaderClick} 
+            sortedColumn={sortedColumn} 
+          />
           <TableBody>
             {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
           </TableBody>
@@ -206,7 +210,11 @@ I'm a table!
       }
       return (
         <Table isResponsive>
-          <TableHead columns={columnConfig} onSort={handleTableHeaderClick} sortedColumn={sortedColumn} />
+          <TableHead 
+            columns={columnConfig} 
+            onSort={handleTableHeaderClick} 
+            sortedColumn={sortedColumn} 
+          />
           <TableBody>
             {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
           </TableBody>
@@ -274,7 +282,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       }
       return (
         <Table isLoading>
-          <TableHead columns={columnConfig} onSort={handleTableHeaderClick} sortedColumn={sortedColumn} isLoading />
+          <TableHead 
+            columns={columnConfig} 
+            onSort={handleTableHeaderClick} 
+            sortedColumn={sortedColumn} 
+            isLoading 
+          />
           <TableBody>
             {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
           </TableBody>
@@ -360,7 +373,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table useFixedWidthColumns>
           <TableHead columns={columnConfig} />
           <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} truncateOverflow useFixed/>)}
+            {tableData.map(row => <TableRow data={row} key={row.id} truncateOverflow/>)}
           </TableBody>
         </Table>
       );
