@@ -1,8 +1,6 @@
 import React, { FC, ReactNode, ChangeEvent } from 'react';
 import classNames from 'classnames';
-import { Column, SortedColumn } from './types';
-import TableHead from './TableHead/TableHead';
-import TableRow from './TableRow/TableRow';
+import { SortedColumn } from './types';
 import Spinner from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 
@@ -19,10 +17,6 @@ interface TableProps {
    * The children components to render inside the table
    */
   children?: ReactNode;
-  /**
-   * If a cell is missing data, populate it with custom content.
-   */
-  emptyCellPlaceholder?: ReactNode;
   /**
    * Enable a hover state on table rows.
    */
@@ -52,18 +46,6 @@ interface TableProps {
    * If loading failed....
    */
   loadingFailed?: boolean;
-  /**
-   * Callback function to execute when a sortable column's header is clicked.
-   */
-  onSort?: (event: ChangeEvent<HTMLInputElement>) => void;
-  /**
-   * The current sorted column.
-   */
-  sortedColumn?: SortedColumn;
-  /**
-   * If content overruns its cell's width, truncate the content, as opposed to wrapping it.
-   */
-  truncateOverflow?: boolean;
   /**
    * Fix the width of the columns. Can be useful if sorting is enabled and the content of
    * the columns is changing; prevents the horizontal jump when this occurres.
