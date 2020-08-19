@@ -6,6 +6,10 @@
     pointer-events: none;
   }
 
+  &.inline {
+    display: inline-flex;
+  }
+
   .input {
     margin: 0 var(--size-spacing-sm) 0 0;
     width: var(--size-spacing-lg);

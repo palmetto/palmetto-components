@@ -28,6 +28,15 @@ interface Props {
    */
   label: string;
   /**
+   * Determines if the label is not shown for stylistic reasons.
+   * Note the label is still a required prop and will be used as the aria-label for accesibility reasons.
+   */
+  hideLabel?: boolean;
+  /**
+   * Determines if the checkbox should be rendered with display: inline;
+   */
+  displayInline?: boolean;
+  /**
    * Additional classes to add
    */
   className?: string;
@@ -59,6 +68,8 @@ const CheckboxInput: FC<Props> = ({
   isChecked,
   onChange,
   label,
+  hideLabel = false,
+  displayInline = false,
   className,
   error = false,
   isDisabled = false,
@@ -82,34 +93,38 @@ const CheckboxInput: FC<Props> = ({
     styles.checkbox,
     className,
     { [styles.disabled]: isDisabled },
+    { [styles.inline]: displayInline },
   );
+
+  const inputProps = {
+    'aria-invalid': !!error,
+    'aria-label': label,
+    'aria-labelledby': label ? `${id}Label` : undefined,
+    id,
+    checked: !!isChecked,
+    disabled: isDisabled,
+    onBlur: handleBlur,
+    onChange: handleChange,
+    onFocus: handleFocus,
+    type: 'checkbox',
+    className: styles.input,
+  };
+
+  const labelProps = {
+    isFieldRequired: isRequired,
+    inputId: id,
+    hasError: !!error,
+    isDisabled,
+  };
 
   return (
     <>
       <div className={wrapperClasses}>
-        <input
-          aria-invalid={!!error}
-          aria-label={label}
-          aria-labelledby={label ? `${id}Label` : undefined}
-          id={id}
-          checked={!!isChecked}
-          disabled={isDisabled}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          type="checkbox"
-          className={styles.input}
-        />
-        {label && (
-          <FormLabel
-            {...{
-              isFieldRequired: isRequired,
-              inputId: id,
-              labelText: label,
-              hasError: !!error,
-              isDisabled,
-            }}
-          />
+        <input {...inputProps} />
+        {label && !hideLabel && (
+          <FormLabel {...labelProps}>
+            {label}
+          </FormLabel>
         )}
       </div>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
