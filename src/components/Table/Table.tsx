@@ -6,11 +6,7 @@ import TableRow from './TableRow/TableRow';
 import Spinner from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 
-interface Props {
-  /**
-   * Configuration for the columns.
-   */
-  columns: Column[];
+interface TableProps {
   /**
    * Data to be displayed in the tbody.
    */
@@ -19,6 +15,10 @@ interface Props {
    * Additional classes to add.
    */
   className?: string;
+  /**
+   * The children components to render inside the table
+   */
+  children?: ReactNode;
   /**
    * If a cell is missing data, populate it with custom content.
    */
@@ -71,20 +71,15 @@ interface Props {
   useFixedWidthColumns?: boolean;
 }
 
-const Table: FC<Props> = ({
-  columns,
-  tableData,
+const Table: FC<TableProps> = ({
   className = undefined,
-  emptyCellPlaceholder = undefined,
+  children = null,
   hoverableRows = false,
   isBorderless = false,
   isCompact = false,
   isResponsive = false,
   isStriped = false,
   isLoading = false,
-  onSort = undefined,
-  sortedColumn = undefined,
-  truncateOverflow = false,
   useFixedWidthColumns = false,
 }) => {
   const tableContainerClasses = classNames(
@@ -94,6 +89,7 @@ const Table: FC<Props> = ({
       [styles.responsive]: isResponsive,
     },
   );
+
   const tableClasses = classNames(
     styles.table,
     {
@@ -107,31 +103,13 @@ const Table: FC<Props> = ({
 
   return (
     <div className={tableContainerClasses}>
-      {isLoading
-        && (
-          <div className={styles['loading-mask']}>
-            <Spinner size="xl" />
-          </div>
-        )}
+      {isLoading && (
+        <div className={styles['loading-mask']}>
+          <Spinner size="xl" />
+        </div>
+      )}
       <table className={tableClasses}>
-        <TableHead
-          columns={columns}
-          onSort={onSort}
-          sortedColumn={sortedColumn}
-          isLoading={isLoading}
-        />
-        <tbody>
-          {
-            tableData && tableData.map(row => (
-              <TableRow
-                key={row.id}
-                data={row}
-                truncateOverflow={truncateOverflow}
-                emptyCellPlaceholder={emptyCellPlaceholder}
-              />
-            ))
-          }
-        </tbody>
+        {children}
       </table>
     </div>
   );

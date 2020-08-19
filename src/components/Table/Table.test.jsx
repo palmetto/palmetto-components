@@ -6,6 +6,9 @@ import {
 } from '@testing-library/react';
 import Button from '../Button/Button';
 import Table from './Table';
+import TableHead from './TableHead/TableHead';
+import TableBody from './TableBody/TableBody';
+import TableRow from './TableRow/TableRow';
 
 const columnConfig = [
   { heading: 'ID', id: 'first' },
@@ -32,11 +35,12 @@ describe('Table', () => {
     describe('onSort', () => {
       test('onSort event fires callback function', () => {
         render(
-          <Table
-            columns={columnConfigSortable}
-            tableData={tableData}
-            onSort={mockHandleSort}
-          />,
+          <Table>
+            <TableHead columns={columnConfigSortable} onSort={mockHandleSort} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const sortableColumnHeader = screen.getByText('ID');
@@ -51,10 +55,12 @@ describe('Table', () => {
     describe('Default', () => {
       test('it renders a table', () => {
         render(
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-          />,
+          <Table>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const table = screen.getByRole('table');
@@ -64,10 +70,12 @@ describe('Table', () => {
 
       test('it renders a thead and tbody', () => {
         render(
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-          />,
+          <Table>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const rows = screen.queryAllByRole('rowgroup');
@@ -77,10 +85,12 @@ describe('Table', () => {
 
       test('it renders 3 column headers', () => {
         render(
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-          />,
+          <Table>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const rows = screen.queryAllByRole('columnheader');
@@ -90,10 +100,12 @@ describe('Table', () => {
 
       test('it renders 3 headings', () => {
         render(
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-          />,
+          <Table>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const idHeader = screen.getByText('ID');
@@ -107,10 +119,12 @@ describe('Table', () => {
 
       test('it renders 4 rows', () => {
         render(
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-          />,
+          <Table>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const rows = screen.queryAllByRole('row');
@@ -120,10 +134,12 @@ describe('Table', () => {
 
       test('it renders 9 cells', () => {
         render(
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-          />,
+          <Table>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const rows = screen.queryAllByRole('cell');
@@ -133,10 +149,12 @@ describe('Table', () => {
 
       test('it renders the cell content', () => {
         render(
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-          />,
+          <Table>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const cell = screen.getByText('green');
@@ -148,11 +166,12 @@ describe('Table', () => {
     describe('Loading', () => {
       test('it renders a loading indicator', () => {
         render(
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-            isLoading
-          />,
+          <Table isLoading>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const spinner = screen.getByTestId('spinner-testid');
@@ -164,10 +183,12 @@ describe('Table', () => {
     describe('Sortable', () => {
       test('it renders 2 sortable table headers', () => {
         render(
-          <Table
-            columns={columnConfigSortable}
-            tableData={tableData}
-          />,
+          <Table>
+            <TableHead columns={columnConfigSortable} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const sortableHeaders = screen.getAllByTestId('sort-testid');
@@ -186,10 +207,12 @@ describe('Table', () => {
         ];
 
         render(
-          <Table
-            columns={columnConfigSortable}
-            tableData={tableDataWithClickableButton}
-          />,
+          <Table>
+            <TableHead columns={columnConfigSortable} />
+            <TableBody>
+              {tableDataWithClickableButton.map(row => <TableRow data={row} key={row.id} />)}
+            </TableBody>
+          </Table>,
         );
 
         const button = screen.getByText('Click me');
@@ -208,11 +231,14 @@ describe('Table', () => {
         ];
 
         render(
-          <Table
-            columns={columnConfigSortable}
-            tableData={tableDataWithMissingCellContent}
-            emptyCellPlaceholder="--"
-          />,
+          <Table>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableDataWithMissingCellContent.map(row => (
+                <TableRow data={row} key={row.id} emptyCellPlaceholder="--" />
+              ))}
+            </TableBody>
+          </Table>,
         );
 
         const placeholder = screen.getByText('--');
