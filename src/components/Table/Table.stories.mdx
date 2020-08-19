@@ -134,19 +134,12 @@ I'm a table!
         }
       }
       return (
-<<<<<<< HEAD
-        <Table
-          isResponsive
-        >
+        <Table isResponsive>
           <TableHead 
             columns={columnConfig} 
             onSort={handleTableHeaderClick} 
             sortedColumn={sortedColumn} 
           />
-=======
-        <Table isResponsive>
-          <TableHead columns={columnConfig} onSort={handleTableHeaderClick} sortedColumn={sortedColumn} />
->>>>>>> ca4ce002e269126131484e49a1c70d3bb0ae154e
           <TableBody>
             {generateTableData().map(row => <TableRow data={row} key={row.id} />)}
           </TableBody>
@@ -378,11 +371,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         <Table useFixedWidthColumns>
           <TableHead columns={columnConfig} />
           <TableBody>
-<<<<<<< HEAD
-            {tableData.map(row => <TableRow data={row} key={row.id} truncateOverflow/>)}
-=======
             {tableData.map(row => <TableRow data={row} key={row.id} truncateOverflow />)}
->>>>>>> ca4ce002e269126131484e49a1c70d3bb0ae154e
           </TableBody>
         </Table>
       );
