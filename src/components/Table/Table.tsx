@@ -125,6 +125,7 @@ const Table: FC<Props> = ({
           columns={columns}
           onSort={onSort}
           sortedColumn={sortedColumn}
+          isLoading={isLoading}
         />
         <tbody>
           {
