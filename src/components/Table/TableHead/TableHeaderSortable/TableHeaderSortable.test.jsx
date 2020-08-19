@@ -11,7 +11,7 @@ const mockHandleSort = jest.fn();
 describe('TableHead', () => {
   describe('Callback Handling', () => {
     describe('onSort', () => {
-      test('onSort event fires callback function', () => {
+      test('onSort event fires callback function on click', () => {
         render(
           <TableHeaderSortable
             heading="ID"
@@ -23,6 +23,36 @@ describe('TableHead', () => {
         const sortableColumnHeader = screen.getByText('ID');
 
         fireEvent.click(sortableColumnHeader);
+        expect(mockHandleSort).toHaveBeenCalledTimes(1);
+      });
+
+      test('onSort event fires callback function on Enter keydown', () => {
+        render(
+          <TableHeaderSortable
+            heading="ID"
+            id="first"
+            onSort={mockHandleSort}
+          />,
+        );
+
+        const sortableColumnHeader = screen.getByText('ID');
+
+        fireEvent.keyDown(sortableColumnHeader, { key: 'Enter', code: 'Enter' });
+        expect(mockHandleSort).toHaveBeenCalledTimes(1);
+      });
+
+      test('onSort event fires callback function on Space keydown', () => {
+        render(
+          <TableHeaderSortable
+            heading="ID"
+            id="first"
+            onSort={mockHandleSort}
+          />,
+        );
+
+        const sortableColumnHeader = screen.getByText('ID');
+
+        fireEvent.keyDown(sortableColumnHeader, { key: 'Space', code: 'Space' });
         expect(mockHandleSort).toHaveBeenCalledTimes(1);
       });
     });
