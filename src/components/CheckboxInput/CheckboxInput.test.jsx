@@ -48,7 +48,7 @@ describe('CheckboxInput', () => {
       inputId: 'testCheckbox',
       hasError: false,
       isFieldRequired: false,
-      labelText: 'test checkbox',
+      children: 'test checkbox',
       className: undefined,
       isDisabled: false,
     }, {});
@@ -70,7 +70,7 @@ describe('CheckboxInput', () => {
       inputId: 'testCheckbox',
       hasError: false,
       isFieldRequired: true,
-      labelText: 'test checkbox',
+      children: 'test checkbox',
       className: undefined,
       isDisabled: false,
     }, {});
@@ -143,7 +143,7 @@ describe('CheckboxInput', () => {
         inputId: 'testCheckbox',
         hasError: true,
         isFieldRequired: false,
-        labelText: 'test checkbox',
+        children: 'test checkbox',
         className: undefined,
         isDisabled: false,
       }, {});
@@ -164,7 +164,7 @@ describe('CheckboxInput', () => {
         inputId: 'testCheckbox',
         hasError: true,
         isFieldRequired: false,
-        labelText: 'test checkbox',
+        children: 'test checkbox',
         className: undefined,
         isDisabled: false,
       }, {});
@@ -186,7 +186,7 @@ describe('CheckboxInput', () => {
       inputId: 'testCheckbox',
       hasError: false,
       isFieldRequired: false,
-      labelText: 'test checkbox',
+      children: 'test checkbox',
       className: undefined,
       isDisabled: true,
     }, {});
