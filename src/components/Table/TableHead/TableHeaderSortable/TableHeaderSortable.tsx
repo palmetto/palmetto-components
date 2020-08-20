@@ -51,7 +51,7 @@ const TableHeaderSortable: FC<TableHeaderSortableProps> = ({
 
   const handleKeyPress = (event: KeyboardEvent<HTMLTableHeaderCellElement>): void => {
     const enterKey = 13;
-    const spaceKey = 32;
+    const spaceKey = 32
 
     if (event.keyCode === enterKey || event.keyCode === spaceKey) {
       onSort(id);
