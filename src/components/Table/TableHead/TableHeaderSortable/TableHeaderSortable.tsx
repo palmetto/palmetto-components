@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from 'react';
+import React, { FC, KeyboardEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { SortedColumn } from '../../types';
@@ -16,7 +16,7 @@ interface Props {
    /**
    * Callback function to execute when a sortable column's header is clicked.
    */
-  onSort: (event: ChangeEvent<HTMLInputElement>) => void;
+  onSort: (id: string) => void;
   /**
    * The current sorted column.
    */
@@ -49,11 +49,11 @@ const TableHeaderSortable: FC<Props> = ({
     );
   };
 
-  const handleKeyPress = e => {
+  const handleKeyPress = (event: KeyboardEvent<HTMLTableHeaderCellElement>): void => {
     const enterKey = 13;
     const spaceKey = 32;
 
-    if (e.keyCode === enterKey || e.keyCode === spaceKey) {
+    if (event.keyCode === enterKey || event.keyCode === spaceKey) {
       onSort(id);
     }
   };
@@ -69,7 +69,7 @@ const TableHeaderSortable: FC<Props> = ({
     >
       {heading}
       {' '}
-      {renderIcon(id)}
+      {renderIcon()}
     </th>
   );
 };

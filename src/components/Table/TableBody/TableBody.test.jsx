@@ -31,6 +31,16 @@ describe('TableBody', () => {
 
         expect(tableRow).toBeInTheDocument();
       });
+
+      test('it renders an empty table body if no children passed', () => {
+        render(
+          <TableBody />,
+        );
+
+        const tableBody = screen.getByRole('rowgroup');
+
+        expect(tableBody).toBeInTheDocument();
+      });
     });
   });
 });
