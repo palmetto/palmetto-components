@@ -1,4 +1,3 @@
-import { createElement } from 'react';
 import getElementType from './getElementType';
 
 const MockComponent = () => ({
@@ -7,9 +6,7 @@ const MockComponent = () => ({
   },
 });
 
-const getDefault = () => {
-  return 'p';
-};
+const getDefault = () => 'p';
 
 describe('Get Element Type', () => {
   test('function returns element type if provided by props', () => {
