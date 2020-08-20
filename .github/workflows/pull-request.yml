@@ -25,7 +25,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: install dependencies
         run: yarn
-      - name: type-check
+      - name: Type Check
         run: yarn type-check
   lint-js:
     name: Lint JS
@@ -40,7 +40,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: install dependencies
         run: yarn
-      - name: lint js
+      - name: Lint JS
         run: yarn lint-js
   lint-styles:
     name: Lint Styles
@@ -55,7 +55,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: install dependencies
         run: yarn
-      - name: lint styles
+      - name: Lint Styles
         run: yarn lint-styles
   unit-tests:
     name: Unit Tests
@@ -72,7 +72,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: install dependencies
         run: yarn
-      - name: unit test
+      - name: Unit Tests
         run: |
           yarn test
       - name: Upload coverage to Codecov  
