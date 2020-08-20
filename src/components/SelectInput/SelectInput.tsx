@@ -1,4 +1,4 @@
-import React, { FocusEvent, FC } from 'react';
+import React, { FC, FocusEvent } from 'react';
 import classNames from 'classnames';
 import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';

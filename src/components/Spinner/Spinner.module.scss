@@ -1,7 +1,7 @@
 .spinner {
   svg {
     display: inherit;
-    animation: spin 1s infinite linear;
+    animation: spin 0.85s infinite linear;
 
     @keyframes spin {
       0% {

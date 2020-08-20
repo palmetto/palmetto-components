@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { PALMETTO_BRAND_COLOR_VALUES, PALMETTO_COLORS } from '../../lib/tokens';
 import styles from './Spinner.module.scss';
 
-interface Props {
+interface SpinnerProps {
   /**
    * Custom className to be applied to spinner container div.
    */
@@ -15,10 +15,10 @@ interface Props {
   /**
    * Size of the spinner.
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
-const Spinner: FC<Props> = ({
+const Spinner: FC<SpinnerProps> = ({
   color = 'dark',
   className,
   size = 'md',
@@ -30,6 +30,7 @@ const Spinner: FC<Props> = ({
     if (size === 'sm') pixels = '12';
     if (size === 'md') pixels = '16';
     if (size === 'lg') pixels = '24';
+    if (size === 'xl') pixels = '30';
 
     return pixels;
   };
