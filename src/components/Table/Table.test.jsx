@@ -53,6 +53,16 @@ describe('Table', () => {
 
   describe('States', () => {
     describe('Default', () => {
+      test('it renders a table with no children passed', () => {
+        render(
+          <Table />,
+        );
+
+        const table = screen.getByRole('table');
+
+        expect(table).toBeInTheDocument();
+      });
+
       test('it renders a table', () => {
         render(
           <Table>

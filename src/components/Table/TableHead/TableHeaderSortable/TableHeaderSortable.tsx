@@ -53,6 +53,7 @@ const TableHeaderSortable: FC<Props> = ({
     const enterKey = 13;
     const spaceKey = 32;
 
+    console.log('LOOK AT ME', event.keyCode);
     if (event.keyCode === enterKey || event.keyCode === spaceKey) {
       onSort(id);
     }
