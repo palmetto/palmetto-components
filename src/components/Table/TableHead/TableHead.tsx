@@ -3,7 +3,7 @@ import { Column, SortedColumn } from '../types';
 import TableHeaderSortable from './TableHeaderSortable/TableHeaderSortable';
 import styles from './TableHead.module.scss';
 
-interface Props {
+interface TableHeadProps {
   /**
    * Column configuration for the columns.
    */
@@ -18,7 +18,7 @@ interface Props {
   sortedColumn?: SortedColumn;
 }
 
-const TableHead: FC<Props> = ({
+const TableHead: FC<TableHeadProps> = ({
   columns,
   onSort = undefined,
   sortedColumn = undefined,

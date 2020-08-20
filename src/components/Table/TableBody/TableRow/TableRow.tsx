@@ -2,14 +2,14 @@ import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './TableRow.module.scss';
 
-interface Props {
+interface TableRowProps {
   data: (string | number | ReactNode)[];
   id: string;
   truncateOverflow?: boolean;
   emptyCellPlaceholder?: ReactNode;
 }
 
-const TableRow: FC<Props> = ({
+const TableRow: FC<TableRowProps> = ({
   data,
   id,
   truncateOverflow,

@@ -4,7 +4,7 @@ import { faSort, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icon
 import { SortedColumn } from '../../types';
 import styles from './TableHeaderSortable.module.scss';
 
-interface Props {
+interface TableHeaderSortableProps {
   /**
    * Heading to display for the column.
    */
@@ -27,7 +27,7 @@ interface Props {
   width?: string;
 }
 
-const TableHeaderSortable: FC<Props> = ({
+const TableHeaderSortable: FC<TableHeaderSortableProps> = ({
   heading,
   id,
   onSort,
