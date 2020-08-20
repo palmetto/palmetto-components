@@ -8,6 +8,9 @@ import TextInput from './TextInput/TextInput';
 import SelectInput from './SelectInput/SelectInput';
 import RadioGroup from './RadioGroup/RadioGroup';
 import Table from './Table/Table';
+import TableHead from './Table/TableHead/TableHead';
+import TableBody from './Table/TableBody/TableBody';
+import TableRow from './Table/TableBody/TableRow/TableRow';
 
 export {
   Button,
@@ -20,4 +23,7 @@ export {
   SelectInput,
   RadioGroup,
   Table,
+  TableHead,
+  TableBody,
+  TableRow,
 };
