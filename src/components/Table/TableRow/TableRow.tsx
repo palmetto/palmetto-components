@@ -23,7 +23,7 @@ const TableRow: FC<Props> = ({
   );
 
   return (
-    <tr key={id}>
+    <tr>
       {Object.values(data).map(cellContent => (
         <td
           className={tableCellClasses}
