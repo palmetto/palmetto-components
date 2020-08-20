@@ -37,7 +37,7 @@ describe('TableHead', () => {
 
         const sortableColumnHeader = screen.getByText('ID');
 
-        fireEvent.keyDown(sortableColumnHeader, { key: 'Enter', code: 'Enter' });
+        fireEvent.keyDown(sortableColumnHeader, { keyCode: 'Enter', code: 'Enter' });
         expect(mockHandleSort).toHaveBeenCalledTimes(1);
       });
 
@@ -56,6 +56,21 @@ describe('TableHead', () => {
         expect(mockHandleSort).toHaveBeenCalledTimes(1);
       });
     });
+
+    // test('onSort does not fire callback function on keypresses that aren\'t Enter or space', () => {
+    //   render(
+    //     <TableHeaderSortable
+    //       heading="ID"
+    //       id="first"
+    //       onSort={mockHandleSort}
+    //     />,
+    //   );
+
+    //   const sortableColumnHeader = screen.getByText('ID');
+
+    //   fireEvent.keyDown(sortableColumnHeader, { key: 'a', code: 'keyA' });
+    //   expect(mockHandleSort).toHaveBeenCalledTimes(0);
+    // });
   });
 
   describe('States', () => {
