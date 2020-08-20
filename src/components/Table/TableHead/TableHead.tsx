@@ -11,7 +11,7 @@ interface TableHeadProps {
   /**
    * Callback function to execute when a sortable column's header is clicked.
    */
-  onSort?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onSort?: (id: string) => void;
   /**
    * The current sorted column.
    */
@@ -20,10 +20,10 @@ interface TableHeadProps {
 
 const TableHead: FC<TableHeadProps> = ({
   columns,
-  onSort = undefined,
+  onSort = () => undefined,
   sortedColumn = undefined,
 }) => {
-  const renderSortableColumn = column => (
+  const renderSortableColumn = (column: Column) => (
     <TableHeaderSortable
       heading={column.heading}
       id={column.id}
@@ -34,7 +34,7 @@ const TableHead: FC<TableHeadProps> = ({
     />
   );
 
-  const renderFixedColumn = column => (
+  const renderFixedColumn = (column: Column) => (
     <th
       className={styles.header}
       key={column.id}
