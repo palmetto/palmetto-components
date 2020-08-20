@@ -16,7 +16,7 @@ interface TableHeaderSortableProps {
    /**
    * Callback function to execute when a sortable column's header is clicked.
    */
-  onSort: (id: string) => void;
+  onSort?: (event: ChangeEvent<HTMLInputElement>) => void;
   /**
    * The current sorted column.
    */

@@ -12,8 +12,23 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  type-check:
+    name: Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: install dependencies
+        run: yarn
+      - name: type-check
+        run: yarn type-check
   lint-js:
-    name: lint js
+    name: Lint JS
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,7 +43,7 @@ jobs:
       - name: lint js
         run: yarn lint-js
   lint-styles:
-    name: lint styles
+    name: Lint Styles
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -43,7 +58,7 @@ jobs:
       - name: lint styles
         run: yarn lint-styles
   unit-tests:
-    name: unit tests
+    name: Unit Tests
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -70,7 +85,7 @@ jobs:
           yml: ./codecov.yml 
           fail_ci_if_error: true
   visual-tests:
-    name: visual regression tests
+    name: Visual Regression Tests
     runs-on: ubuntu-latest
     env:
       CI: true
