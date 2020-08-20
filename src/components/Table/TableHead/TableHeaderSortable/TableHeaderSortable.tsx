@@ -1,5 +1,4 @@
 import React, { FC, ChangeEvent } from 'react';
-import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { SortedColumn } from '../../types';
