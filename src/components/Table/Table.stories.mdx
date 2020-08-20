@@ -4,6 +4,9 @@ import { withA11y } from '@storybook/addon-a11y';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import Button from '../Button/Button';
 import Table from './Table';
+import TableHead from './TableHead/TableHead';
+import TableBody from './TableBody/TableBody';
+import TableRow from './TableBody/TableRow/TableRow';
 
 
 <Meta
@@ -36,10 +39,12 @@ I'm a table!
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-        />
+        <Table>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -62,11 +67,12 @@ I'm a table!
       ];
       return (
         <>
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-            isLoading
-          />
+          <Table isLoading>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+            </TableBody>
+          </Table>
         </>
       );
     }}
@@ -128,13 +134,16 @@ I'm a table!
         }
       }
       return (
-        <Table
-          columns={columnConfig}
-          tableData={generateTableData()}
-          onSort={handleTableHeaderClick}
-          sortedColumn={sortedColumn}
-          isResponsive
-        />
+        <Table isResponsive>
+          <TableHead 
+            columns={columnConfig} 
+            onSort={handleTableHeaderClick} 
+            sortedColumn={sortedColumn} 
+          />
+          <TableBody>
+            {generateTableData().map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -198,13 +207,16 @@ I'm a table!
         }
       }
       return (
-        <Table
-          columns={columnConfig}
-          tableData={generateTableData()}
-          onSort={handleTableHeaderClick}
-          sortedColumn={sortedColumn}
-          isResponsive
-        />
+        <Table isResponsive>
+          <TableHead 
+            columns={columnConfig} 
+            onSort={handleTableHeaderClick} 
+            sortedColumn={sortedColumn} 
+          />
+          <TableBody>
+            {generateTableData().map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -267,13 +279,17 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         }
       }
       return (
-        <Table
-          columns={columnConfig}
-          tableData={generateTableData()}
-          onSort={handleTableHeaderClick}
-          sortedColumn={sortedColumn}
-          isLoading
-        />
+        <Table isLoading>
+          <TableHead
+            columns={columnConfig}
+            onSort={handleTableHeaderClick}
+            sortedColumn={sortedColumn}
+            isLoading
+          />
+          <TableBody>
+            {generateTableData().map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -297,11 +313,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       ];
       return (
         <div style={{ width: '260px' }}>
-          <Table
-            columns={columnConfig}
-            tableData={tableData}
-            isResponsive
-          />
+          <Table isResponsive>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+            </TableBody>
+          </Table>
         </div>
       );
     }}
@@ -324,11 +341,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-          useFixedWidthColumns
-        />
+        <Table useFixedWidthColumns>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -350,12 +368,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry strawberry strawberry strawberry' },
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-          useFixedWidthColumns
-          truncateOverflow
-        />
+        <Table useFixedWidthColumns>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} truncateOverflow />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -377,10 +395,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-        />
+        <Table>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -402,11 +422,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-          isStriped
-        />
+        <Table isStriped>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -428,11 +449,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: '' },
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-          emptyCellPlaceholder="--"
-        />
+        <Table>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} emptyCellPlaceholder="--" />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -454,11 +476,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-          isBorderless
-        />
+        <Table isBorderless>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -480,11 +503,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-          isCompact
-        />
+        <Table isCompact>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>
@@ -506,12 +530,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table
-          columns={columnConfig}
-          tableData={tableData}
-          isStriped
-          hoverableRows
-        />
+        <Table isStriped hoverableRows>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
       );
     }}
   </Story>

@@ -4,12 +4,14 @@ import styles from './TableRow.module.scss';
 
 interface Props {
   data: (string | number | ReactNode)[];
+  id: string;
   truncateOverflow?: boolean;
   emptyCellPlaceholder?: ReactNode;
 }
 
 const TableRow: FC<Props> = ({
   data,
+  id,
   truncateOverflow,
   emptyCellPlaceholder,
 }) => {
@@ -22,16 +24,14 @@ const TableRow: FC<Props> = ({
 
   return (
     <tr>
-      {
-        Object.values(data).map(columnContent => (
-          <td
-            className={tableCellClasses}
-            key={columnContent}
-          >
-            {columnContent || emptyCellPlaceholder}
-          </td>
-        ))
-      }
+      {Object.values(data).map(cellContent => (
+        <td
+          className={tableCellClasses}
+          key={`${id}${cellContent?.toString()}`}
+        >
+          {cellContent || emptyCellPlaceholder}
+        </td>
+      ))}
     </tr>
   );
 };

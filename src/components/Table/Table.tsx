@@ -1,28 +1,17 @@
-import React, { FC, ReactNode, ChangeEvent } from 'react';
+import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Column, SortedColumn } from './types';
-import TableHead from './TableHead/TableHead';
-import TableRow from './TableRow/TableRow';
 import Spinner from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 
-interface Props {
-  /**
-   * Configuration for the columns.
-   */
-  columns: Column[];
-  /**
-   * Data to be displayed in the tbody.
-   */
-  tableData: ReactNode[][];
+interface TableProps {
   /**
    * Additional classes to add.
    */
   className?: string;
   /**
-   * If a cell is missing data, populate it with custom content.
+   * The children components to render inside the table
    */
-  emptyCellPlaceholder?: ReactNode;
+  children?: ReactNode;
   /**
    * Enable a hover state on table rows.
    */
@@ -49,38 +38,21 @@ interface Props {
    */
   isLoading?: boolean;
   /**
-   * Callback function to execute when a sortable column's header is clicked.
-   */
-  onSort?: (event: ChangeEvent<HTMLInputElement>) => void;
-  /**
-   * The current sorted column.
-   */
-  sortedColumn?: SortedColumn;
-  /**
-   * If content overruns its cell's width, truncate the content, as opposed to wrapping it.
-   */
-  truncateOverflow?: boolean;
-  /**
    * Fix the width of the columns. Can be useful if sorting is enabled and the content of
    * the columns is changing; prevents the horizontal jump when this occurres.
    */
   useFixedWidthColumns?: boolean;
 }
 
-const Table: FC<Props> = ({
-  columns,
-  tableData,
+const Table: FC<TableProps> = ({
   className = undefined,
-  emptyCellPlaceholder = undefined,
+  children = null,
   hoverableRows = false,
   isBorderless = false,
   isCompact = false,
   isResponsive = false,
   isStriped = false,
   isLoading = false,
-  onSort = undefined,
-  sortedColumn = undefined,
-  truncateOverflow = false,
   useFixedWidthColumns = false,
 }) => {
   const tableContainerClasses = classNames(
@@ -90,6 +62,7 @@ const Table: FC<Props> = ({
       [styles.responsive]: isResponsive,
     },
   );
+
   const tableClasses = classNames(
     styles.table,
     {
@@ -103,31 +76,13 @@ const Table: FC<Props> = ({
 
   return (
     <div className={tableContainerClasses}>
-      {isLoading
-        && (
-          <div className={styles['loading-mask']}>
-            <Spinner size="xl" />
-          </div>
-        )}
+      {isLoading && (
+        <div className={styles['loading-mask']}>
+          <Spinner size="xl" />
+        </div>
+      )}
       <table className={tableClasses}>
-        <TableHead
-          columns={columns}
-          onSort={onSort}
-          sortedColumn={sortedColumn}
-          isLoading={isLoading}
-        />
-        <tbody>
-          {
-            tableData && tableData.map(row => (
-              <TableRow
-                key={row.id}
-                data={row}
-                truncateOverflow={truncateOverflow}
-                emptyCellPlaceholder={emptyCellPlaceholder}
-              />
-            ))
-          }
-        </tbody>
+        {children}
       </table>
     </div>
   );
