@@ -1,0 +1,542 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Button from '../Button/Button';
+import Table from './Table';
+import TableHead from './TableHead/TableHead';
+import TableBody from './TableBody/TableBody';
+import TableRow from './TableBody/TableRow/TableRow';
+
+
+<Meta
+  title="Components/Table"
+  component={Table}
+  decorators={[withA11y]}
+/>
+
+# Table
+
+I'm a table!
+
+## Props
+
+<Props of={Table} />
+
+## Default
+
+<Preview>
+  <Story name="Default">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first' },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Loading
+
+<Preview>
+  <Story name="Loading">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first' },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <>
+          <Table isLoading>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+            </TableBody>
+          </Table>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Sortable
+
+<Preview>
+  <Story name="Sortable">
+    {() => {
+      const defaultSortedColumn = null;
+      const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
+      const columnConfig = [
+        { heading: 'ID', id: 'first', isSortable: true },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third', isSortable: true },
+      ];
+      const firstAsc = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      const firstDesc = [
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 1, color: 'red', flavor: 'vanilla' },
+      ];
+      const thirdAsc = [
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 1, color: 'red', flavor: 'vanilla' },
+      ];
+      const thirdDesc = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+      ];
+      const handleTableHeaderClick = headerId => {
+        let direction;
+        if (!sortedColumn || headerId !== sortedColumn.id) {
+          direction = 'desc';
+        } else {
+          direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
+        }
+        const newSortedColumn = {
+          id: headerId,
+          sortOrder: direction,
+        };
+        setSortedColumn(newSortedColumn);
+      };
+      const generateTableData = () => {
+        if (sortedColumn?.id === 'first') {
+          return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
+        } else if (sortedColumn?.id === 'third') {
+          return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
+        } else {
+          return firstAsc
+        }
+      }
+      return (
+        <Table isResponsive>
+          <TableHead 
+            columns={columnConfig} 
+            onSort={handleTableHeaderClick} 
+            sortedColumn={sortedColumn} 
+          />
+          <TableBody>
+            {generateTableData().map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Sortable with Default Sorted Column
+
+<Preview>
+  <Story name="Sortable with Default Sorted Column">
+    {() => {
+      const defaultSortedColumn = {
+        id: 'third',
+        sortOrder: 'desc',
+      };
+      const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
+      const columnConfig = [
+        { heading: 'ID', id: 'first', isSortable: true },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third', isSortable: true },
+      ];
+      const firstAsc = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      const firstDesc = [
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 1, color: 'red', flavor: 'vanilla' },
+      ];
+      const thirdAsc = [
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 1, color: 'red', flavor: 'vanilla' },
+      ];
+      const thirdDesc = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+      ];
+      const handleTableHeaderClick = headerId => {
+        let direction;
+        if (!sortedColumn || headerId !== sortedColumn.id) {
+          direction = 'desc';
+        } else {
+          direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
+        }
+        const newSortedColumn = {
+          id: headerId,
+          sortOrder: direction,
+        };
+        setSortedColumn(newSortedColumn);
+      };
+      const generateTableData = () => {
+        if (sortedColumn?.id === 'first') {
+          return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
+        } else if (sortedColumn?.id === 'third') {
+          return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
+        } else {
+          return firstAsc
+        }
+      }
+      return (
+        <Table isResponsive>
+          <TableHead 
+            columns={columnConfig} 
+            onSort={handleTableHeaderClick} 
+            sortedColumn={sortedColumn} 
+          />
+          <TableBody>
+            {generateTableData().map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Sortable and Loading
+
+Setting the `isLoading` prop to true will disable clicking on the column headers. This prevents a race condition where an attempt to sort is made before data from the previous load is available.
+
+<Preview>
+  <Story name="Sortable and Loading">
+    {() => {
+      const defaultSortedColumn = null;
+      const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
+      const columnConfig = [
+        { heading: 'ID', id: 'first', isSortable: true },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third', isSortable: true },
+      ];
+      const firstAsc = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      const firstDesc = [
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 1, color: 'red', flavor: 'vanilla' },
+      ];
+      const thirdAsc = [
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 1, color: 'red', flavor: 'vanilla' },
+      ];
+      const thirdDesc = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+      ];
+      const handleTableHeaderClick = headerId => {
+        let direction;
+        if (!sortedColumn || headerId !== sortedColumn.id) {
+          direction = 'desc';
+        } else {
+          direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
+        }
+        const newSortedColumn = {
+          id: headerId,
+          sortOrder: direction,
+        };
+        setSortedColumn(newSortedColumn);
+      };
+      const generateTableData = () => {
+        if (sortedColumn?.id === 'first') {
+          return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
+        } else if (sortedColumn?.id === 'third') {
+          return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
+        } else {
+          return firstAsc
+        }
+      }
+      return (
+        <Table isLoading>
+          <TableHead
+            columns={columnConfig}
+            onSort={handleTableHeaderClick}
+            sortedColumn={sortedColumn}
+            isLoading
+          />
+          <TableBody>
+            {generateTableData().map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Responsive
+
+<Preview>
+  <Story name="Responsive">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first' },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third' },
+        { heading: 'Brightness', id: 'fourth' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },
+        { id: 2, color: 'blue', flavor: 'chocolate', brightness: 'medium' },
+        { id: 3, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+      ];
+      return (
+        <div style={{ width: '260px' }}>
+          <Table isResponsive>
+            <TableHead columns={columnConfig} />
+            <TableBody>
+              {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+            </TableBody>
+          </Table>
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Fixed-Width Columns
+
+<Preview>
+  <Story name="Fixed-Width Columns">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first', width: '315' },
+        { heading: 'Color', id: 'second', width: '215' },
+        { heading: 'Flavor', id: 'third', width: '100' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table useFixedWidthColumns>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Truncate Overflow
+
+<Preview>
+  <Story name="Truncate Overflow">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first', width: '70' },
+        { heading: 'Color', id: 'second', width: '215' },
+        { heading: 'Flavor', id: 'third', width: '100' },
+      ];
+      const tableData = [
+        { id: 1, color: 'redredredredredredredredredredredredred', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry strawberry strawberry strawberry' },
+      ];
+      return (
+        <Table useFixedWidthColumns>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} truncateOverflow />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Custom Actions
+
+<Preview>
+  <Story name="Custom Actions">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first' },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: <Button onClick={() => alert('Ouch! Why would you do that!?')}>Click me</Button> },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Striped
+
+<Preview>
+  <Story name="Striped">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first' },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table isStriped>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Empty Cell Placeholder
+
+<Preview>
+  <Story name="Empty Cell Placeholder">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first' },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third' },
+      ];
+      const tableData = [
+        { id: undefined, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: null, flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: '' },
+      ];
+      return (
+        <Table>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} emptyCellPlaceholder="--" />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Borderless
+
+<Preview>
+  <Story name="Borderless">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first' },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table isBorderless>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story name="Compact">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first' },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table isCompact>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Hover
+
+<Preview>
+  <Story name="Hover">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', id: 'first' },
+        { heading: 'Color', id: 'second' },
+        { heading: 'Flavor', id: 'third' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table isStriped hoverableRows>
+          <TableHead columns={columnConfig} />
+          <TableBody>
+            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
+          </TableBody>
+        </Table>
+      );
+    }}
+  </Story>
+</Preview>

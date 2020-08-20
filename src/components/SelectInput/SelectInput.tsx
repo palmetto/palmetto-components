@@ -1,4 +1,4 @@
-import React, { FocusEvent, FC } from 'react';
+import React, { FC, FocusEvent } from 'react';
 import classNames from 'classnames';
 import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
@@ -139,7 +139,6 @@ const SelectInput: FC<Props> = ({
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
-    labelText: label,
     hasError: !!error,
     className: styles['select-input-label'],
     isDisabled,
@@ -147,7 +146,7 @@ const SelectInput: FC<Props> = ({
 
   return (
     <div className={wrapperClasses}>
-      {label && !hideLabel && <FormLabel {...labelProps} />}
+      {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       <Select
         inputId={id}
         aria-label={label}
