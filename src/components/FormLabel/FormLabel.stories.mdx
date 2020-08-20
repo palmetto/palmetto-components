@@ -1,0 +1,53 @@
+import FormLabel from './FormLabel';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Components/Form Inputs/Subcomponents/FormLabel"
+  component={FormLabel}
+  decorators={[withA11y]}
+/>
+
+# FormLabel
+
+FormLabel is a subcomponent of form inputs but can be used independently in unique cases
+where we want to use the consistent styles for the component with custom JSX content.
+
+## Props
+<Props of={FormLabel} />
+
+<Preview>
+  <Story name="Default">
+    <FormLabel>Default Label</FormLabel>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Required">
+    <FormLabel inputId="name" isFieldRequired>required input label</FormLabel>
+  </Story>
+</Preview>
+
+
+<Preview>
+  <Story name="Error States">
+    <>
+    <FormLabel inputId="name" hasError>input label has error</FormLabel>
+    <FormLabel inputId="name" hasError isFieldRequired>required input label has error</FormLabel>
+    </>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="More than just text">
+    <>
+    <FormLabel inputId="name">
+      This label has a span with
+      <span style={{ fontStyle: 'italic' }}>&nbsp;Italic&nbsp;</span>
+      and also a&nbsp;
+      <a href="https://palmetto.com" target="_blank">Link</a>
+    </FormLabel>
+    </>
+  </Story>
+</Preview>

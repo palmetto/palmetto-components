@@ -1,7 +1,7 @@
 {
   "name": "@palmetto/palmetto-components",
   "author": "@palmetto",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/src/components/index.d.ts",
@@ -13,6 +13,9 @@
     "url": "https://github.com/palmetto/palmetto-components"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@palmetto/palmetto-design-tokens": "^0.5.1",
     "react-select": "^3.1.0"
   },
@@ -54,7 +57,6 @@
     "@babel/plugin-transform-runtime": "^7.10.4",
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
-    "@sambego/storybook-state": "^2.0.1",
     "@storybook/addon-a11y": "^6.0.5",
     "@storybook/addon-actions": "^6.0.5",
     "@storybook/addon-docs": "^6.0.5",
