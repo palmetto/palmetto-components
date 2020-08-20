@@ -5,7 +5,9 @@ interface TableBodyProps {
 }
 
 const TableBody: FC<TableBodyProps> = ({ children = null }) => (
-  <tbody>{children}</tbody>
+  <tbody>
+    {children}
+  </tbody>
 );
 
 export default TableBody;
