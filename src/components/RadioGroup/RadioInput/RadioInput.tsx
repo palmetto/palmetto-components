@@ -65,14 +65,13 @@ const RadioInput: FC<Props> = ({
     if (onBlur) onBlur(event);
   };
 
-  const generateLabelProps = () => ({
+  const labelProps = {
     inputId: option.id,
-    labelText: option.label,
     isDisabled,
     displayInline: true,
     hasError: !!error,
     isRadioInputLabel: true,
-  });
+  };
 
   return (
     <>
@@ -90,7 +89,7 @@ const RadioInput: FC<Props> = ({
             onBlur={handleBlur}
             disabled={isDisabled}
           />
-          {option.label && <FormLabel {...generateLabelProps()} />}
+          {option.label && <FormLabel {...labelProps}>{option.label}</FormLabel>}
         </div>
       )}
     </>

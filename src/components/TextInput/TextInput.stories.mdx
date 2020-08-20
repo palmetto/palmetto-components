@@ -25,7 +25,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
 <Preview>
   <Story name="Default">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -47,7 +47,7 @@ Use the `isRequired` prop to mark the input as required.
 <Preview>
   <Story name="Required">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -70,7 +70,7 @@ Use the `placeholder` prop to add a custom placeholder.
 <Preview>
   <Story name="Placeholder">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -93,7 +93,7 @@ Use the `autoFocus` prop to autofocus the input.
 <Preview>
   <Story name="Autofocus">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -116,7 +116,7 @@ Use the `hideLabel` prop to not render the label.
 <Preview>
   <Story name="Hidden Label">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '60px' }}>
           <TextInput
@@ -139,7 +139,7 @@ Use the `isDisabled` prop to mark the input as disabled.
 <Preview>
   <Story name="Disabled">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -185,7 +185,7 @@ Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can hav
 <Preview>
   <Story name="Disabled with Placeholder">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -209,7 +209,7 @@ Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to
 <Preview>
   <Story name="With Phone Mask">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -233,7 +233,7 @@ Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to
 <Preview>
   <Story name="With Credit Card Mask">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -257,7 +257,7 @@ Use the `maxLength` prop to limit the number of characters that can be entered i
 <Preview>
   <Story name="Max Length">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -281,7 +281,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
 <Preview>
   <Story name="Required with Error">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -305,7 +305,7 @@ Pass a `string` or `node` to the `error` prop to render a validation message.
 <Preview>
   <Story name="Required with Error and Validation Message">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -329,7 +329,7 @@ An input does not need to be marked as required to render a validation message.
 <Preview>
   <Story name="Not Required with Error and Validation Message">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -350,7 +350,7 @@ An input does not need to be marked as required to render a validation message.
 <Preview>
   <Story name="Error with Hidden Label">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '60px' }}>
           <TextInput
@@ -374,7 +374,7 @@ Use the `className` prop to add a custom class, or classes to an input.
 <Preview>
   <Story name="Custom Classes">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('');
       return (
         <div style={{ height: '85px' }}>
           <TextInput

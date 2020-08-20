@@ -1,16 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './FormLabel.module.scss';
 
-interface Props {
+interface FormLabelProps {
   /**
    * The id of the form control that the label is labeling
    */
   inputId: string;
   /**
-   * The label text
+   * Content to be rendered inside the label.
    */
-  labelText: React.ReactNode;
+  children: ReactNode;
   /**
    * Custom class to pass to label element.
    */
@@ -37,9 +37,9 @@ interface Props {
   isRadioInputLabel?: boolean;
 }
 
-const FormLabel: FC<Props> = ({
+const FormLabel: FC<FormLabelProps> = ({
   inputId,
-  labelText,
+  children,
   className = '',
   displayInline = false,
   hasError = false,
@@ -65,7 +65,7 @@ const FormLabel: FC<Props> = ({
       className={labelClasses}
       htmlFor={inputId}
     >
-      {labelText}
+      {children}
       {isFieldRequired && <span>&nbsp;*</span>}
     </label>
   );

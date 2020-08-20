@@ -196,7 +196,6 @@ const TextInput = ({
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
-    labelText: label,
     hasError: !!error,
     className: styles['text-input-label'],
     isDisabled,
@@ -204,12 +203,12 @@ const TextInput = ({
 
   return (
     <div className={className}>
-      {label && !hideLabel && <FormLabel {...labelProps} />}
+      {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       {!inputMask ? (
         <input {...inputProps} />
       ) : (
-          <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
-        )}
+        <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+      )}
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </div>
   );
