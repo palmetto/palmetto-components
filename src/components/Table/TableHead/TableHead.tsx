@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from 'react';
+import React, { FC } from 'react';
 import { Column, SortedColumn } from '../types';
 import TableHeaderSortable from './TableHeaderSortable/TableHeaderSortable';
 import styles from './TableHead.module.scss';
