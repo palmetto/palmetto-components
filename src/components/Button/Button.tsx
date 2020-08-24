@@ -3,70 +3,70 @@ import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
-interface Props {
+interface ButtonProps {
   /**
    * Contents of the button
    */
   children: React.ReactNode;
   /**
-    * A unique identifier for the button
-    */
-  id?: string;
-  /**
-   * Button type
+   * Additional ClassNames to add to button
    */
-  type?: 'button' | 'submit' | 'reset';
+  className?: string;
+  /**
+   * Make button take full width of container.
+   */
+  fullWidth?: boolean;
+  /**
+   * A unique identifier for the button
+   */
+  id?: string;
   /**
    * Disables the button, making it inoperable
    */
   isDisabled?: boolean;
   /**
-   * Additional ClassNames to add to button
+   * Button takes up the full width of its parent container
    */
-  className?: string;
-  /**
-   * Callback when button is pressed
-   */
-  fullWidth?: boolean;
+  isLoading?: boolean;
   /**
    * Specify the tabIndex of the button
    */
   tabIndex?: number;
   /**
-   * Button takes up the full width of its parent container
+   * Button type
    */
-  isLoading?: boolean;
+  type?: 'button' | 'submit' | 'reset';
   /**
    * Callback when button is pressed
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   /**
-   * Callback when button receives focus
-   */
-  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
-  /**
    * Callback when focus leaves button
    */
   onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  /**
+   * Callback when button receives focus
+   */
+  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
   /**
    * The size of the button
    */
   size?: 'sm' | 'md' | 'lg';
 }
 
-const Button: FC<Props> = ({
-  id,
-  type = 'button',
-  className = '',
+const Button: FC<ButtonProps> = ({
   children,
+  className = '',
+  fullWidth = false,
+  id = undefined,
   isDisabled = false,
-  fullWidth,
-  onClick,
+  isLoading = false,
+  tabIndex = undefined,
+  type = 'button',
+  onClick = undefined,
+  onFocus = undefined,
+  onBlur = undefined,
   size = 'md',
-  tabIndex,
-  isLoading,
-  onFocus,
-  onBlur,
 }) => {
   const disabled = isLoading || isDisabled;
 
