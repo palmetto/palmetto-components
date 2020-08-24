@@ -34,7 +34,6 @@ const TableHead: FC<TableHeadProps> = ({
     />
   );
 
-
   const renderFixedColumn = (column: Column) => (
     <th
       className={styles.header}
