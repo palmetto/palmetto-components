@@ -4,13 +4,13 @@ import styles from './FormLabel.module.scss';
 
 interface FormLabelProps {
   /**
-   * The id of the form control that the label is labeling
-   */
-  inputId: string;
-  /**
    * Content to be rendered inside the label.
    */
   children: ReactNode;
+  /**
+   * The id of the form control that the label is labeling
+   */
+  inputId: string;
   /**
    * Custom class to pass to label element.
    */
@@ -38,8 +38,8 @@ interface FormLabelProps {
 }
 
 const FormLabel: FC<FormLabelProps> = ({
-  inputId,
   children,
+  inputId,
   className = '',
   displayInline = false,
   hasError = false,
