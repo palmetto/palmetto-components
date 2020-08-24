@@ -12,9 +12,9 @@ interface SimulatedEventPayload {
   };
 }
 
-interface Props {
+interface SelectInputProps {
   /**
-   * The id attribute of the input
+   * The id attribute of the input.
    */
   id: string;
   /**
@@ -26,85 +26,85 @@ interface Props {
    */
   onChange: (event: SimulatedEventPayload) => void;
   /**
-   * Options for dropdown list
+   * Options for dropdown list.
    */
   options: {
     value: string;
     label: string;
   }[];
   /**
-   * The value(s) of select
+   * The value(s) of select.
    */
   value: any | any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
-   * Visually hide the label
+   * Autofocus select input on render.
    */
-  hideLabel?: boolean;
+  autoFocus?: boolean;
   /**
-   * Additional classes to add
+   * Additional classes to add.
    */
   className?: string;
   /**
-   * Placeholder
-   */
-  placeholder?: string;
-  /**
    * Mark the input field as invalid and display a validation message.
-   * Pass a string or node to render a validation message below the input
+   * Pass a string or node to render a validation message below the input.
    */
   error?: React.ReactNode;
   /**
-   * If the input value is clearable programmatically
+   * Visually hide the label.
+   */
+  hideLabel?: boolean;
+  /**
+   * If the input value is clearable programmatically.
    */
   isClearable?: boolean;
   /**
-   * If the input should be disabled and not focusable
+   * If the input should be disabled and not focusable.
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required)
+   * Is multi select enabled.
+   */
+  isMulti?: boolean;
+  /**
+   * Determines if input is required or not. (Label will have an asterisk if required).
    */
   isRequired?: boolean;
   /**
-   * Select 'name' attribute
+   * Select 'name' attribute.
    */
   name?: string;
-  /**
-   * Callback function to call on focus event.
-   */
-  onFocus?: (event: FocusEvent<HTMLElement>) => void;
   /**
    * Callback function to call on blur event.
    */
   onBlur?: (event: FocusEvent<HTMLElement>) => void;
   /**
-   * Autofocus select input on render
+   * Callback function to call on focus event.
    */
-  autoFocus?: boolean;
+  onFocus?: (event: FocusEvent<HTMLElement>) => void;
   /**
-   * Is multi select enabled
+   * Placeholder for input.
    */
-  isMulti?: boolean;
+  placeholder?: string;
 }
 
-const SelectInput: FC<Props> = ({
+const SelectInput: FC<SelectInputProps> = ({
   id,
   label,
-  className,
-  placeholder,
+  onChange,
+  options,
+  value,
+  autoFocus = false,
+  className = '',
   error = false,
   hideLabel = false,
   isClearable = false,
   isDisabled = false,
+  isMulti = false,
   isRequired = false,
   name = '',
-  onChange,
   onFocus = null,
   onBlur = null,
-  autoFocus = false,
-  isMulti = false,
-  options,
-  value,
+  placeholder = undefined,
 }) => {
   const handleChange = (values: ValueType<OptionTypeBase>) => {
     const simulatedEventPayload: SimulatedEventPayload = {
