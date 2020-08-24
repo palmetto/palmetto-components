@@ -1,4 +1,4 @@
-import React, { FC, FocusEvent } from 'react';
+import React, { FC, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
 import FormLabel from '../FormLabel/FormLabel';
@@ -48,7 +48,7 @@ interface SelectInputProps {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: React.ReactNode;
+  error?: ReactNode;
   /**
    * Visually hide the label.
    */

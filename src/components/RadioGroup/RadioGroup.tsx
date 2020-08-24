@@ -1,4 +1,9 @@
-import React, { FC, ChangeEvent, FocusEvent } from 'react';
+import React, {
+  FC,
+  ChangeEvent,
+  FocusEvent,
+  ReactNode,
+} from 'react';
 import classNames from 'classnames';
 import RadioInput from './RadioInput/RadioInput';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -29,12 +34,12 @@ interface RadioGroupProps {
   /**
    * Description to be displayed below the title, and above the RadioGroup.
    */
-  description?: React.ReactNode;
+  description?: ReactNode;
   /**
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: boolean | string | React.ReactNode;
+  error?: boolean | string | ReactNode;
   /**
    * If the radio group should be disabled and not focusable.
    */
@@ -54,7 +59,7 @@ interface RadioGroupProps {
   /**
    * Title to be displayed above the RadioGroup.
    */
-  title?: React.ReactNode;
+  title?: ReactNode;
   /**
    * The value of selected radio input.
    */

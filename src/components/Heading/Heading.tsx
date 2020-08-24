@@ -1,4 +1,4 @@
-import React, { FC, createElement } from 'react';
+import React, { FC, createElement, ReactNode } from 'react';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import {
@@ -14,7 +14,7 @@ interface HeadingProps {
    * Select the appropriate semantic element (h1-h6).
    */
   as?: HEADING_LEVELS_TYPE;
-  children?: React.ReactNode;
+  children?: ReactNode;
   /**
    * Additional class names to add.
    */

@@ -1,4 +1,9 @@
-import React, { FC, ChangeEvent, FocusEvent } from 'react';
+import React, {
+  FC,
+  ChangeEvent,
+  FocusEvent,
+  ReactNode,
+} from 'react';
 import FormLabel from '../../FormLabel/FormLabel';
 import styles from './RadioInput.module.scss';
 
@@ -24,7 +29,7 @@ interface RadioInputProps {
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: boolean | string | React.ReactNode;
+  error?: boolean | string | ReactNode;
   /**
    * If the radio group should be disabled and not focusable.
    */
