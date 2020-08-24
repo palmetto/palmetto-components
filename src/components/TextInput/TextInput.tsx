@@ -1,4 +1,9 @@
-import React from 'react';
+import React, {
+  FC,
+  ChangeEvent,
+  FocusEvent,
+  ReactNode,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
@@ -7,131 +12,104 @@ import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './TextInput.module.scss';
 
-const propTypes = {
-  /**
-   * The input's 'autocomplete' attribute
-   */
-  autoComplete: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-  ]),
-  /**
-   * Automatically focus the input when the page is loaded
-   */
-  autoFocus: PropTypes.bool,
-  /**
-   * Custom class to be added to standard input classes.
-   */
-  className: PropTypes.string,
-  /**
-   * Mark the input field as invalid and display a validation message.
-   * Pass a string or node to render a validation message below the input
-   */
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  /**
-   * Visually hide the label
-   */
-  hideLabel: PropTypes.bool,
+interface TextInputProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
-  id: PropTypes.string.isRequired,
+  id: string;
+  /**
+   * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
+   */
+  label: string;
+  /**
+   * Callback function to call on change event.
+   */
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  /**
+   * The text value of the input. Required since our Input is a controlled component.
+   */
+  value: string;
+   /**
+   * The input's 'autocomplete' attribute.
+   */
+  autoComplete?: boolean | string;
+  /**
+   * Automatically focus the input when the page is loaded.
+   */
+  autoFocus?: boolean;
+  /**
+   * Custom class to be added to standard input classes.
+   */
+  className?: string;
+  /**
+   * Mark the input field as invalid and display a validation message.
+   * Pass a string or node to render a validation message below the input.
+   */
+  error?: ReactNode | boolean | string;
+  /**
+   * Visually hide the label.
+   */
+  hideLabel?: boolean;
   /**
    * Pass a value to apply a mask to the input value.
    * Can be one of the existing present strings, or a custom object with options
    * For options object formats See https://github.com/nosir/cleave.js
    */
-  inputMask: PropTypes.oneOfType([
-    PropTypes.oneOf(['phone', 'creditCard']),
-    PropTypes.object,
-  ]),
+  inputMask?: ('phone' | 'creditCard') | { [key: string]: any; }; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * The input's disabled attribute
    */
-  isDisabled: PropTypes.bool,
+  isDisabled?: boolean;
   /**
    * Determines if input is required or not. (Label will have an asterisk if required)
    */
-  isRequired: PropTypes.bool,
-  /**
-   * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
-   */
-  label: PropTypes.string.isRequired,
+  isRequired?: boolean;
   /**
    * The input's 'maxlength' attribute.
    * NOTE: initializing the input with a value longer than the desired maxlength will not trim this value.
    */
-  maxLength: PropTypes.string,
+  maxLength?: string;
   /**
    * The input's 'name' attribute
    */
-  name: PropTypes.string,
+  name?: string;
   /**
    * Callback function to call on blur event.
    */
-  onBlur: PropTypes.func,
-  /**
-   * Callback function to call on change event.
-   */
-  onChange: PropTypes.func.isRequired,
+  onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
   /**
    * Callback function to call on focus event..
    */
-  onFocus: PropTypes.func,
+  onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
   /**
    * The input placeholder attribute
    */
-  placeholder: PropTypes.string,
+  placeholder?: string;
   /**
    * The input 'type' value. Defaults to type 'text'.
    */
-  type: PropTypes.oneOf(['text', 'password', 'email', 'tel', 'url', 'search']),
-  /**
-   * The text value of the input. Required since our Input is a controlled component.
-   */
-  value: PropTypes.string.isRequired,
-};
-
-const defaultProps = {
-  autoComplete: false,
-  autoFocus: false,
-  className: undefined,
-  hideLabel: false,
-  inputMask: undefined,
-  isDisabled: false,
-  error: false,
-  isRequired: false,
-  maxLength: undefined,
-  name: '',
-  onBlur: undefined,
-  onFocus: undefined,
-  placeholder: '',
-  type: 'text',
-};
+  type: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
+}
 
 const TextInput = ({
-  autoComplete,
-  autoFocus,
-  className,
-  hideLabel,
   id,
-  inputMask,
-  isDisabled,
-  error,
-  isRequired,
   label,
-  maxLength,
-  name,
-  onBlur,
   onChange,
-  onFocus,
-  placeholder,
-  type,
   value,
+  autoComplete = false,
+  autoFocus = false,
+  className = undefined,
+  error = false,
+  hideLabel = false,
+  inputMask = undefined,
+  isDisabled = false,
+  isRequired = false,
+  maxLength = undefined,
+  name = '',
+  onBlur = undefined,
+  onFocus = undefined,
+  placeholder = '',
+  type = 'text',
 }) => {
   const handleChange = e => {
     onChange(e);
