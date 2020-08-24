@@ -1,14 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 
 /**
  * Used by form inputs such as TextInput, to display a validation message for an invalid input.
  */
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-};
+interface InputValidationMessageProps {
+  children: ReactNode;
+}
 
 const classes = classNames(
   'font-color-danger',
@@ -16,10 +15,10 @@ const classes = classNames(
   'm-top-xs',
 );
 
-const InputValidationMessage = ({ children }) => (
-  <div className={classes}>{children}</div>
+const InputValidationMessage: FC<InputValidationMessageProps> = ({ children }) => (
+  <div className={classes}>
+    {children}
+  </div>
 );
-
-InputValidationMessage.propTypes = propTypes;
 
 export default InputValidationMessage;
