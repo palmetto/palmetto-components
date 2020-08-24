@@ -1,4 +1,4 @@
-export default interface availableMasksTypes {
+export default interface RadioGroupOption {
   phone: {
     numericOnly: boolean;
     blocks: number[];
