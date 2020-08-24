@@ -5,15 +5,15 @@ import styles from './TableRow.module.scss';
 interface TableRowProps {
   data: (string | number | ReactNode)[];
   id: string;
-  truncateOverflow?: boolean;
   emptyCellPlaceholder?: ReactNode;
+  truncateOverflow?: boolean;
 }
 
 const TableRow: FC<TableRowProps> = ({
   data,
   id,
-  truncateOverflow,
   emptyCellPlaceholder,
+  truncateOverflow,
 }) => {
   const tableCellClasses = classNames(
     styles['table-cell'],

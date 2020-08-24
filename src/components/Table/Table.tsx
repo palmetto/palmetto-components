@@ -5,13 +5,13 @@ import styles from './Table.module.scss';
 
 interface TableProps {
   /**
+   * The children components to render inside the table.
+   */
+  children?: ReactNode;
+  /**
    * Additional classes to add.
    */
   className?: string;
-  /**
-   * The children components to render inside the table
-   */
-  children?: ReactNode;
   /**
    * Enable a hover state on table rows.
    */
@@ -25,6 +25,10 @@ interface TableProps {
    */
   isCompact?: boolean;
   /**
+   * Set to true if data is loading.
+   */
+  isLoading?: boolean;
+  /**
    * Responsive tables allow tables to be scrolled horizontally with ease.
    * If table overruns horizontal width of container, allow for horizontal scrolling.
    */
@@ -33,10 +37,6 @@ interface TableProps {
    * Adds zebra-striping to any table row within the table body.
    */
   isStriped?: boolean;
-  /**
-   * Set to true if data is loading.
-   */
-  isLoading?: boolean;
   /**
    * Fix the width of the columns. Can be useful if sorting is enabled and the content of
    * the columns is changing; prevents the horizontal jump when this occurres.
@@ -50,9 +50,9 @@ const Table: FC<TableProps> = ({
   hoverableRows = false,
   isBorderless = false,
   isCompact = false,
+  isLoading = false,
   isResponsive = false,
   isStriped = false,
-  isLoading = false,
   useFixedWidthColumns = false,
 }) => {
   const tableContainerClasses = classNames(
