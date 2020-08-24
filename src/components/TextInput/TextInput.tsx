@@ -4,10 +4,10 @@ import React, {
   FocusEvent,
   ReactNode,
 } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import * as InputMasks from './TextInputMasks';
+import availableMasksTypes from './types';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './TextInput.module.scss';
@@ -52,8 +52,8 @@ interface TextInputProps {
   hideLabel?: boolean;
   /**
    * Pass a value to apply a mask to the input value.
-   * Can be one of the existing present strings, or a custom object with options
-   * For options object formats See https://github.com/nosir/cleave.js
+   * Can be one of the existing present strings, or a custom object with options.
+   * For options object formats See https://github.com/nosir/cleave.js.
    */
   inputMask?: ('phone' | 'creditCard') | { [key: string]: any; }; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
@@ -61,28 +61,28 @@ interface TextInputProps {
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required)
+   * Determines if input is required or not. (Label will have an asterisk if required).
    */
   isRequired?: boolean;
   /**
    * The input's 'maxlength' attribute.
    * NOTE: initializing the input with a value longer than the desired maxlength will not trim this value.
    */
-  maxLength?: string;
+  maxLength?: number;
   /**
-   * The input's 'name' attribute
+   * The input's 'name' attribute.
    */
   name?: string;
   /**
    * Callback function to call on blur event.
    */
-  onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
-   * Callback function to call on focus event..
+   * Callback function to call on focus event.
    */
-  onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
-   * The input placeholder attribute
+   * The input placeholder attribute.
    */
   placeholder?: string;
   /**
@@ -91,7 +91,7 @@ interface TextInputProps {
   type: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
 }
 
-const TextInput = ({
+const TextInput: FC<TextInputProps> = ({
   id,
   label,
   onChange,
@@ -111,17 +111,17 @@ const TextInput = ({
   placeholder = '',
   type = 'text',
 }) => {
-  const handleChange = e => {
-    onChange(e);
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    onChange(event);
   };
 
-  const handleFocus = e => {
-    if (onFocus) onFocus(e);
-    e.currentTarget.select(); // Selects input content allowing immediate edit. @TODO Confirm if desired functionality.
+  const handleFocus = (event: FocusEvent<HTMLInputElement>): void => {
+    if (onFocus) onFocus(event);
+    event.currentTarget.select(); // Selects input content allowing immediate edit. @TODO Confirm if desired functionality.
   };
 
-  const handleBlur = e => {
-    if (onBlur) onBlur(e);
+  const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
+    if (onBlur) onBlur(event);
   };
 
   const inputClasses = classNames(
@@ -129,9 +129,9 @@ const TextInput = ({
     { [styles.error]: error },
   );
 
-  const getInputMask = (mask, availableInputMasks) => {
+  const getInputMask = (mask: ('phone' | 'creditCard') | { [key: string]: any; }, availableInputMasks: availableMasksTypes) => {
     if (typeof mask === 'string') {
-      return availableInputMasks[inputMask];
+      return availableInputMasks[mask];
     }
 
     return mask;
@@ -155,7 +155,7 @@ const TextInput = ({
     'aria-required': isRequired,
     'aria-invalid': !!error,
     'aria-label': label,
-    'aria-labelledby': label && !hideLabel ? `${id}Label` : null,
+    'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
     autoComplete: getAutoCompleteValue(),
     autoFocus,
     className: inputClasses,
@@ -191,8 +191,5 @@ const TextInput = ({
     </div>
   );
 };
-
-TextInput.propTypes = propTypes;
-TextInput.defaultProps = defaultProps;
 
 export default TextInput;
