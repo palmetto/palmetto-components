@@ -5,11 +5,11 @@ import styles from './Button.module.scss';
 
 interface ButtonProps {
   /**
-   * Contents of the button
+   * Contents of the button.
    */
   children: React.ReactNode;
   /**
-   * Additional ClassNames to add to button
+   * Additional ClassNames to add to button.
    */
   className?: string;
   /**
@@ -17,39 +17,39 @@ interface ButtonProps {
    */
   fullWidth?: boolean;
   /**
-   * A unique identifier for the button
+   * A unique identifier for the button.
    */
   id?: string;
   /**
-   * Disables the button, making it inoperable
+   * Disables the button, making it inoperable.
    */
   isDisabled?: boolean;
   /**
-   * Button takes up the full width of its parent container
+   * Button takes up the full width of its parent container.
    */
   isLoading?: boolean;
   /**
-   * Specify the tabIndex of the button
+   * Specify the tabIndex of the button.
    */
   tabIndex?: number;
   /**
-   * Button type
+   * The Button's type.
    */
   type?: 'button' | 'submit' | 'reset';
   /**
-   * Callback when button is pressed
+   * Callback when Button is pressed.
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   /**
-   * Callback when focus leaves button
+   * Callback when focus leaves Button.
    */
   onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
   /**
-   * Callback when button receives focus
+   * Callback when Button receives focus.
    */
   onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
   /**
-   * The size of the button
+   * The size of the button.
    */
   size?: 'sm' | 'md' | 'lg';
 }
