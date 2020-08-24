@@ -10,47 +10,47 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import FormLabel from '../FormLabel/FormLabel';
 import styles from './CheckboxInput.module.scss';
 
-interface Props {
+interface CheckboxInputProps {
   /**
-   * The id attribute of the input
+   * The id attribute of the input.
    */
   id: string;
   /**
-   * The checkbox input "checked" attribute
+   * The checkbox input "checked" attribute.
    */
   isChecked: boolean;
-  /**
-   * Callback function when input is changed
-   */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   /**
    * Custom content to be displayed to right of checkbox.
    */
   label: string;
   /**
-   * Determines if the label is not shown for stylistic reasons.
-   * Note the label is still a required prop and will be used as the aria-label for accesibility reasons.
+   * Callback function when input is changed.
    */
-  hideLabel?: boolean;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   /**
-   * Determines if the checkbox should be rendered with display: inline;
-   */
-  displayInline?: boolean;
-  /**
-   * Additional classes to add
+   * Additional classes to add.
    */
   className?: string;
   /**
+   * Determines if the checkbox should be rendered with display: inline;.
+   */
+  displayInline?: boolean;
+  /**
    * Mark the input field as invalid and display a validation message.
-   * Pass a string or node to render a validation message below the input
+   * Pass a string or node to render a validation message below the input.
    */
   error?: ReactNode;
   /**
-   * If the input should be disabled and not focusable
+   * Determines if the label is not shown for stylistic reasons.
+   * Note the label is still a required prop and will be used as the aria-label for accessibility reasons.
+   */
+  hideLabel?: boolean;
+  /**
+   * If the input should be disabled and not focusable.
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required)
+   * Determines if input is required or not. (Label will have an asterisk if required).
    */
   isRequired?: boolean;
   /**
@@ -58,24 +58,24 @@ interface Props {
    */
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
-   * Callback function when input is focused
+   * Callback function when input is focused.
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 }
 
-const CheckboxInput: FC<Props> = ({
+const CheckboxInput: FC<CheckboxInputProps> = ({
   id,
   isChecked,
-  onChange,
   label,
-  hideLabel = false,
+  onChange,
+  className = '',
   displayInline = false,
-  className,
   error = false,
+  hideLabel = false,
   isDisabled = false,
   isRequired = false,
-  onBlur,
-  onFocus,
+  onBlur = undefined,
+  onFocus = undefined,
 }) => {
   const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
     if (onBlur) onBlur(event);
