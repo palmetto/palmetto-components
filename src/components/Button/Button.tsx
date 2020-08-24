@@ -1,4 +1,9 @@
-import React, { FC } from 'react';
+import React, {
+  FC,
+  ReactNode,
+  MouseEvent,
+  FocusEvent,
+} from 'react';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
@@ -7,7 +12,7 @@ interface ButtonProps {
   /**
    * Contents of the button.
    */
-  children: React.ReactNode;
+  children: ReactNode;
   /**
    * Additional ClassNames to add to button.
    */
@@ -39,15 +44,15 @@ interface ButtonProps {
   /**
    * Callback when Button is pressed.
    */
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   /**
    * Callback when focus leaves Button.
    */
-  onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
   /**
    * Callback when Button receives focus.
    */
-  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
   /**
    * The size of the button.
    */
@@ -81,16 +86,16 @@ const Button: FC<ButtonProps> = ({
     },
   );
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (onClick) onClick(e);
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    if (onClick) onClick(event);
   };
 
-  const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
-    if (onFocus) onFocus(e);
+  const handleFocus = (event: FocusEvent<HTMLButtonElement>) => {
+    if (onFocus) onFocus(event);
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLButtonElement>) => {
-    if (onBlur) onBlur(e);
+  const handleBlur = (event: FocusEvent<HTMLButtonElement>) => {
+    if (onBlur) onBlur(event);
   };
 
   const content = (
