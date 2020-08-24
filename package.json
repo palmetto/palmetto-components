@@ -1,7 +1,7 @@
 {
   "name": "@palmetto/palmetto-components",
   "author": "@palmetto",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/src/components/index.d.ts",
