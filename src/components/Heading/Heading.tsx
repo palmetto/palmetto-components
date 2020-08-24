@@ -1,4 +1,4 @@
-import React, { FC, createElement, ReactNode } from 'react';
+import { FC, createElement, ReactNode } from 'react';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 import {
