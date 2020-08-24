@@ -7,6 +7,8 @@ import CheckboxInput from '../../CheckboxInput/CheckboxInput';
 
 interface FormikCheckboxInputProps {
   field: {
+    id: string;
+    label: string;
     name: string;
     onBlur: (event: FocusEvent<HTMLElement>) => void;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -17,6 +19,8 @@ interface FormikCheckboxInputProps {
 
 const FormikCheckboxInput: FC<FormikCheckboxInputProps> = ({
   field: {
+    id,
+    label,
     name,
     onBlur,
     onChange,
@@ -26,6 +30,8 @@ const FormikCheckboxInput: FC<FormikCheckboxInputProps> = ({
   ...props
 }) => (
   <CheckboxInput
+    id={id}
+    label={label}
     error={touched[name] && errors[name]}
     isChecked={value}
     onBlur={onBlur}
