@@ -1,16 +1,10 @@
 import React, { FC, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
+import { SimulatedEventPayload, Option } from './SelectInputTypes';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
-
-interface SimulatedEventPayload {
-  target: {
-    name: string;
-    value: ValueType<OptionTypeBase>;
-  };
-}
 
 interface SelectInputProps {
   /**
@@ -28,10 +22,7 @@ interface SelectInputProps {
   /**
    * Options for dropdown list.
    */
-  options: {
-    value: string;
-    label: string;
-  }[];
+  options: Option[];
   /**
    * The value(s) of select.
    */

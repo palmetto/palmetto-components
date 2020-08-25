@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import RadioInput from './RadioInput/RadioInput';
-import Option from './types';
+import Option from './RadioGroupTypes';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './RadioGroup.module.scss';
 

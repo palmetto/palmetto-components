@@ -1,7 +1,7 @@
 import React, { FC, KeyboardEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { SortedColumn } from '../../types';
+import { SortedColumn } from '../../TableTypes';
 import styles from './TableHeaderSortable.module.scss';
 
 interface TableHeaderSortableProps {

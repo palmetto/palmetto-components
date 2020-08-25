@@ -4,7 +4,7 @@ import React, {
   FocusEvent,
 } from 'react';
 import RadioGroup from '../../RadioGroup/RadioGroup';
-import Option from '../../RadioGroup/types';
+import Option from '../../RadioGroup/RadioGroupTypes';
 
 interface RadioGroupProps {
   field: {

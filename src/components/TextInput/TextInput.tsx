@@ -7,7 +7,7 @@ import React, {
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import * as InputMasks from './TextInputMasks';
-import availableMasksTypes from './types';
+import availableMasksTypes from './TextInputTypes';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './TextInput.module.scss';

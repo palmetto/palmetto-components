@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Column, SortedColumn } from '../types';
+import { Column, SortedColumn } from '../TableTypes';
 import TableHeaderSortable from './TableHeaderSortable/TableHeaderSortable';
 import styles from './TableHead.module.scss';
 
