@@ -13,7 +13,8 @@ interface FormikSelectInputProps {
     options: Option[];
     onBlur: (event: FocusEvent<HTMLElement>) => void;
     onChange: (event: SimulatedEventPayload) => void;
-    value?: { [key: string]: any; } | string | { [key: string]: any; }[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+    //  eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value?: { [key: string]: any; } | string | { [key: string]: any; }[];
   };
   form: { [key: string]: any; }; // eslint-disable-line @typescript-eslint/no-explicit-any
 }

@@ -55,7 +55,8 @@ interface TextInputProps {
    * Can be one of the existing present strings, or a custom object with options.
    * For options object formats See https://github.com/nosir/cleave.js.
    */
-  inputMask?: ('phone' | 'creditCard') | { [key: string]: any; }; // eslint-disable-line @typescript-eslint/no-explicit-any
+  //  eslint-disable-next-line @typescript-eslint/no-explicit-any
+  inputMask?: ('phone' | 'creditCard') | { [key: string]: any; };
   /**
    * The input's disabled attribute
    */
@@ -117,7 +118,8 @@ const TextInput: FC<TextInputProps> = ({
 
   const handleFocus = (event: FocusEvent<HTMLInputElement>): void => {
     if (onFocus) onFocus(event);
-    event.currentTarget.select(); // Selects input content allowing immediate edit. @TODO Confirm if desired functionality.
+    // Selects input content allowing immediate edit. @TODO Confirm if desired functionality.
+    event.currentTarget.select();
   };
 
   const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
@@ -129,7 +131,10 @@ const TextInput: FC<TextInputProps> = ({
     { [styles.error]: error },
   );
 
-  const getInputMask = (mask: ('phone' | 'creditCard') | { [key: string]: any; }, availableInputMasks: availableMasksTypes) => {
+  const getInputMask = (
+    mask: ('phone' | 'creditCard') | { [key: string]: any; }, // eslint-disable-line @typescript-eslint/no-explicit-any
+    availableInputMasks: availableMasksTypes,
+  ) => {
     if (typeof mask === 'string') {
       return availableInputMasks[mask];
     }
