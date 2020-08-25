@@ -1,54 +1,27 @@
-import React, { FC } from 'react';
-import { Column, SortedColumn } from '../types';
-import TableHeaderSortable from './TableHeaderSortable/TableHeaderSortable';
+import React, { FC, ReactNode } from 'react';
+import classNames from 'classnames';
 import styles from './TableHead.module.scss';
 
 interface TableHeadProps {
   /**
-   * Column configuration for the columns.
+   * Custom class to be applied to the `<thead>` element.
    */
-  columns: Column[];
+  className?: string;
   /**
    * Callback function to execute when a sortable column's header is clicked.
    */
-  onSort?: (id: string) => void;
-  /**
-   * The current sorted column.
-   */
-  sortedColumn?: SortedColumn;
+  children?: ReactNode;
 }
 
 const TableHead: FC<TableHeadProps> = ({
-  columns,
-  onSort = () => undefined,
-  sortedColumn = undefined,
+  className = '',
+  children = null,
 }) => {
-  const renderSortableColumn = (column: Column) => (
-    <TableHeaderSortable
-      heading={column.heading}
-      id={column.id}
-      key={column.id}
-      onSort={onSort}
-      sortedColumn={sortedColumn}
-      width={column.width}
-    />
-  );
-
-  const renderFixedColumn = (column: Column) => (
-    <th
-      className={styles.header}
-      key={column.id}
-      style={{ width: `${column.width}px` }}
-    >
-      {column.heading}
-    </th>
-  );
+  const tableHeadClasses = classNames(styles['table-head'], className);
 
   return (
-    <thead className={styles['table-head']}>
-      <tr>
-        {columns.map(column => (column.isSortable ? renderSortableColumn(column) : renderFixedColumn(column)))}
-      </tr>
+    <thead className={tableHeadClasses}>
+      {children}
     </thead>
   );
 };

@@ -17,11 +17,39 @@ import TableRow from './TableBody/TableRow/TableRow';
 
 # Table
 
-I'm a table!
+Use tables to render datasets.
 
-## Props
+Tables display information in a way that’s easy to scan, while making it easy to interact with individual records in a data set.
+
+Lastly use tables when you need the ability to sort, filter and/or paginate data.
+
+## The structure of the `<Table />` component
+
+Much like a standard HTML table, our API relies on nesting certain key elements (abstracted as components) in order to build the table.
+This allows for more flexibility within individual component APIs to be extended in the future without bloating a single component with props.
+
+The components that we will use to craft a table are:
+
+- `<Table/ >`
+- `<TableHead />`
+- `<TableBody />`
+- `<TableRow />`
+
+## `<Table />` Props
 
 <Props of={Table} />
+
+## `<TableHead />` Props
+
+<Props of={TableHead} />
+
+## `<TableBody />` Props
+
+<Props of={TableBody} />
+
+## `<TableRow />` Props
+
+<Props of={TableRow} />
 
 ## Default
 
@@ -29,9 +57,9 @@ I'm a table!
   <Story name="Default">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first' },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
@@ -39,19 +67,14 @@ I'm a table!
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table>
-          <TableHead columns={columnConfig} />
-          <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table rowKey="id" columns={columnConfig} rows={tableData} />
       );
     }}
   </Story>
 </Preview>
 
-## Loading
-
+<!-- ## Loading -->
+<!-- 
 <Preview>
   <Story name="Loading">
     {() => {
@@ -61,7 +84,7 @@ I'm a table!
         { heading: 'Flavor', id: 'third' },
       ];
       const tableData = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 1, hello: 'random key', color: 'red', flavor: 'vanilla' },
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
@@ -539,4 +562,4 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Preview> -->
