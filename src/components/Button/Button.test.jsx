@@ -29,64 +29,70 @@ describe('Button', () => {
   });
 
   describe('Callback Handling', () => {
-    test('Button fires onClick callback', () => {
-      const mockedHandleClick = jest.fn();
+    describe('onClick', () => {
+      test('it fires onClick callback', () => {
+        const mockedHandleClick = jest.fn();
 
-      render(<Button onClick={mockedHandleClick}>Click</Button>);
+        render(<Button onClick={mockedHandleClick}>Click</Button>);
 
-      fireEvent.click(screen.getByText('Click').closest('button'));
+        fireEvent.click(screen.getByText('Click').closest('button'));
 
-      expect(mockedHandleClick).toBeCalledTimes(1);
+        expect(mockedHandleClick).toBeCalledTimes(1);
+      });
+
+      test('it does not fire function if onClick callback not provided', () => {
+        const mockedHandleClick = jest.fn();
+
+        render(<Button>Click</Button>);
+
+        fireEvent.click(screen.getByText('Click').closest('button'));
+
+        expect(mockedHandleClick).toBeCalledTimes(0);
+      });
     });
 
-    test('Button does not fire function if onClick callback not provided', () => {
-      const mockedHandleClick = jest.fn();
+    describe('onFocus', () => {
+      test('it fires onFocus callback', () => {
+        const mockedHandleFocus = jest.fn();
 
-      render(<Button>Click</Button>);
+        render(<Button onFocus={mockedHandleFocus}>Focus</Button>);
 
-      fireEvent.click(screen.getByText('Click').closest('button'));
+        fireEvent.focus(screen.getByText('Focus').closest('button'));
 
-      expect(mockedHandleClick).toBeCalledTimes(0);
+        expect(mockedHandleFocus).toBeCalledTimes(1);
+      });
+
+      test('it does not fire function of onFocus callback not provided', () => {
+        const mockedHandleFocus = jest.fn();
+
+        render(<Button>Focus</Button>);
+
+        fireEvent.focus(screen.getByText('Focus').closest('button'));
+
+        expect(mockedHandleFocus).toBeCalledTimes(0);
+      });
     });
 
-    test('Button fires onFocus callback', () => {
-      const mockedHandleFocus = jest.fn();
+    describe('onBlur', () => {
+      test('it fires onBlur callback', () => {
+        const mockedHandleBlur = jest.fn();
 
-      render(<Button onFocus={mockedHandleFocus}>Focus</Button>);
+        render(<Button onBlur={mockedHandleBlur}>Blur</Button>);
 
-      fireEvent.focus(screen.getByText('Focus').closest('button'));
+        fireEvent.blur(screen.getByText('Blur').closest('button'));
 
-      expect(mockedHandleFocus).toBeCalledTimes(1);
-    });
+        expect(mockedHandleBlur).toBeCalledTimes(1);
+      });
 
-    test('Button does not fire function of onFocus callback not provided', () => {
-      const mockedHandleFocus = jest.fn();
+      test('it does not fire onBlur callback if not provided', () => {
+        const mockedHandleBlur = jest.fn();
 
-      render(<Button>Focus</Button>);
+        render(<Button>Blur</Button>);
 
-      fireEvent.focus(screen.getByText('Focus').closest('button'));
+        fireEvent.blur(screen.getByText('Blur').closest('button'));
 
-      expect(mockedHandleFocus).toBeCalledTimes(0);
-    });
-
-    test('Button fires onBlur callback', () => {
-      const mockedHandleBlur = jest.fn();
-
-      render(<Button onBlur={mockedHandleBlur}>Blur</Button>);
-
-      fireEvent.blur(screen.getByText('Blur').closest('button'));
-
-      expect(mockedHandleBlur).toBeCalledTimes(1);
-    });
-
-    test('Button does not fire onBlur callback if not provided', () => {
-      const mockedHandleBlur = jest.fn();
-
-      render(<Button>Blur</Button>);
-
-      fireEvent.blur(screen.getByText('Blur').closest('button'));
-
-      expect(mockedHandleBlur).toBeCalledTimes(0);
+        expect(mockedHandleBlur).toBeCalledTimes(0);
+      });
     });
   });
 
