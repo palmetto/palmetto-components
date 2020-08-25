@@ -1,4 +1,4 @@
-export default interface RadioGroupOption {
+export interface availableMasksTypes {
   phone: {
     numericOnly: boolean;
     blocks: number[];
@@ -8,3 +8,5 @@ export default interface RadioGroupOption {
     creditCard: boolean;
   };
 }
+
+export type Types = 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';

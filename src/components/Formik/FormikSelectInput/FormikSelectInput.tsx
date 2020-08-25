@@ -18,21 +18,19 @@ interface FormikSelectInputProps {
   form: { [key: string]: any; }; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-const FormikSelectInput: FC<FormikSelectInputProps> = (
-  {
-    field: {
-      id,
-      label,
-      name,
-      options,
-      onBlur,
-      onChange,
-      value,
-    },
-    form: { touched, errors },
-    ...props
+const FormikSelectInput: FC<FormikSelectInputProps> = ({
+  field: {
+    id,
+    label,
+    name,
+    options,
+    onBlur,
+    onChange,
+    value,
   },
-) => (
+  form: { touched, errors },
+  ...props
+}) => (
   <SelectInput
     id={id}
     label={label}

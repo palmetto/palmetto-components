@@ -3,40 +3,46 @@ import React, {
   ChangeEvent,
   FocusEvent,
 } from 'react';
-import RadioGroup from '../../RadioGroup/RadioGroup';
-import Option from '../../RadioGroup/RadioGroupTypes';
+import { Types } from '../../TextInput/TextInputTypes';
+import TextInput from '../../TextInput/TextInput';
 
-interface RadioGroupProps {
+interface FormikTextInputProps {
   field: {
+    id: string;
+    label: string;
     name: string;
+    type: Types;
     onBlur: (event: FocusEvent<HTMLElement>) => void;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-    value?: string; // eslint-disable-line @typescript-eslint/no-explicit-any
-    options: Option[];
+    value: string;
   };
   form: { [key: string]: any; }; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-const FormikRadioGroup: FC<RadioGroupProps> = ({
+const FormikTextInput: FC<FormikTextInputProps> = ({
   field: {
+    id,
+    label,
     name,
+    type,
     onBlur,
     onChange,
     value,
-    options,
   },
   form: { touched, errors },
   ...props
 }) => (
-  <RadioGroup
+  <TextInput
+    id={id}
+    label={label}
     name={name}
+    type={type}
     onBlur={onBlur}
     onChange={onChange}
     value={value}
     error={touched[name] && errors[name]}
-    options={options}
     {...props}
   />
 );
 
-export default FormikRadioGroup;
+export default FormikTextInput;
