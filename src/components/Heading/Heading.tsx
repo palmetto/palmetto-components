@@ -14,6 +14,9 @@ interface HeadingProps {
    * Select the appropriate semantic element (h1-h6).
    */
   as?: HEADING_LEVELS_TYPE;
+  /**
+   * Content of the heading. Can be a string or any valid DOM node.
+   */
   children?: ReactNode;
   /**
    * Additional class names to add.

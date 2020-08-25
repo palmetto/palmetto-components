@@ -1,4 +1,4 @@
-export interface availableMasksTypes {
+export interface AvailableMaskTypes {
   phone: {
     numericOnly: boolean;
     blocks: number[];
@@ -9,4 +9,4 @@ export interface availableMasksTypes {
   };
 }
 
-export type Types = 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
+export type InputTypes = 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';

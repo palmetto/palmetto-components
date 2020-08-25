@@ -3,7 +3,7 @@ import React, {
   ChangeEvent,
   FocusEvent,
 } from 'react';
-import { Types } from '../../TextInput/TextInputTypes';
+import { InputTypes } from '../../TextInput/TextInputTypes';
 import TextInput from '../../TextInput/TextInput';
 
 interface FormikTextInputProps {
@@ -11,7 +11,7 @@ interface FormikTextInputProps {
     id: string;
     label: string;
     name: string;
-    type: Types;
+    type: InputTypes;
     onBlur: (event: FocusEvent<HTMLElement>) => void;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     value: string;

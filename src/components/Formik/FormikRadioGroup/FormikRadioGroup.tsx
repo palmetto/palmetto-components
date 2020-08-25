@@ -11,7 +11,7 @@ interface RadioGroupProps {
     name: string;
     onBlur: (event: FocusEvent<HTMLElement>) => void;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-    value?: string; // eslint-disable-line @typescript-eslint/no-explicit-any
+    value?: string;
     options: Option[];
   };
   form: { [key: string]: any; }; // eslint-disable-line @typescript-eslint/no-explicit-any
