@@ -154,6 +154,7 @@ describe('Button', () => {
         );
         expect(document.getElementsByClassName('spinner')[0]).toBeInTheDocument();
       });
+
       test('it keeps the button text in the dom so the button width does not change', () => {
         render(
           <Button isLoading>
@@ -161,6 +162,18 @@ describe('Button', () => {
           </Button>,
         );
         expect(screen.getByText('Button is loading')).toBeInTheDocument();
+      });
+    });
+
+    describe('Disabled and Loading', () => {
+      test('it has a disabled attribute', () => {
+        render(
+          <Button isDisabled isLoading>
+            Disabled and Loading Button
+          </Button>,
+        );
+
+        expect(screen.getByText('Disabled and Loading Button').closest('button')).toBeDisabled();
       });
     });
   });
