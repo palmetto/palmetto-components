@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import { withA11y } from '@storybook/addon-a11y';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Button from '../Button/Button';
 import Table from './Table';
 import TableHead from './TableHead/TableHead';
@@ -12,7 +11,6 @@ import TableRow from './TableBody/TableRow/TableRow';
 <Meta
   title="Components/Table"
   component={Table}
-  decorators={[withA11y]}
 />
 
 # Table
@@ -21,11 +19,11 @@ I'm a table!
 
 ## Props
 
-<Props of={Table} />
+<ArgsTable of={Table} />
 
 ## Default
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {() => {
       const columnConfig = [
@@ -48,11 +46,11 @@ I'm a table!
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Loading
 
-<Preview>
+<Canvas>
   <Story name="Loading">
     {() => {
       const columnConfig = [
@@ -77,11 +75,11 @@ I'm a table!
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Sortable
 
-<Preview>
+<Canvas>
   <Story name="Sortable">
     {() => {
       const defaultSortedColumn = null;
@@ -147,11 +145,11 @@ I'm a table!
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Sortable with Default Sorted Column
 
-<Preview>
+<Canvas>
   <Story name="Sortable with Default Sorted Column">
     {() => {
       const defaultSortedColumn = {
@@ -220,13 +218,13 @@ I'm a table!
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Sortable and Loading
 
 Setting the `isLoading` prop to true will disable clicking on the column headers. This prevents a race condition where an attempt to sort is made before data from the previous load is available.
 
-<Preview>
+<Canvas>
   <Story name="Sortable and Loading">
     {() => {
       const defaultSortedColumn = null;
@@ -293,11 +291,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Responsive
 
-<Preview>
+<Canvas>
   <Story name="Responsive">
     {() => {
       const columnConfig = [
@@ -323,11 +321,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Fixed-Width Columns
 
-<Preview>
+<Canvas>
   <Story name="Fixed-Width Columns">
     {() => {
       const columnConfig = [
@@ -350,11 +348,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Truncate Overflow
 
-<Preview>
+<Canvas>
   <Story name="Truncate Overflow">
     {() => {
       const columnConfig = [
@@ -377,11 +375,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Actions
 
-<Preview>
+<Canvas>
   <Story name="Custom Actions">
     {() => {
       const columnConfig = [
@@ -404,11 +402,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Striped
 
-<Preview>
+<Canvas>
   <Story name="Striped">
     {() => {
       const columnConfig = [
@@ -431,11 +429,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Empty Cell Placeholder
 
-<Preview>
+<Canvas>
   <Story name="Empty Cell Placeholder">
     {() => {
       const columnConfig = [
@@ -458,11 +456,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Borderless
 
-<Preview>
+<Canvas>
   <Story name="Borderless">
     {() => {
       const columnConfig = [
@@ -485,11 +483,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Compact
 
-<Preview>
+<Canvas>
   <Story name="Compact">
     {() => {
       const columnConfig = [
@@ -512,11 +510,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Hover
 
-<Preview>
+<Canvas>
   <Story name="Hover">
     {() => {
       const columnConfig = [
@@ -539,4 +537,4 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>

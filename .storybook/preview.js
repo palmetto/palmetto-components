@@ -7,7 +7,16 @@ import '!style-loader!css-loader!sass-loader!../src/styles/variables/index.scss'
 import '!style-loader!css-loader!sass-loader!../src/styles/reset.scss';
 
 addParameters({
-  options: {
+  docs: {
     theme: palmettoTheme,
   },
 });
+
+export const parameters = {
+  a11y: {
+    element: '#root',
+    config: {},
+    options: {},
+    manual: false,
+  },
+};
