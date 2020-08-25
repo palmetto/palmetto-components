@@ -1,14 +1,12 @@
 import Heading from './Heading';
 import { v4 as uuid } from 'uuid';
 import { action } from '@storybook/addon-actions';
-import { withA11y } from '@storybook/addon-a11y';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_FONT_COLOR_OPTIONS } from '../../lib/tokens';
 
 <Meta
   title="Components/Heading"
   component={Heading}
-  decorators={[withA11y]}
 />
 
 # Heading
@@ -17,21 +15,22 @@ import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_FONT_COLOR_OPTIONS } from '../../l
  The `Heading` component allows you to specify an appropriate semantic element (h1-h6) and independently set its size so that it is appropriate for the surrounding content.
  If no size is specified, a default size will be applied.
 
-<Preview isExpanded>
+<Canvas isExpanded>
   <Heading as="h1">
     Lead the world towards a clean energy future
   </Heading>
-</Preview>
+</Canvas>
 
 ## Props
 
-<Props of={Heading} />
+
+<ArgsTable of={Heading} />
 
 ## All Levels
 
 Each Heading level has a default size.
 
-<Preview>
+<Canvas>
   <Story name="Levels">
     <>
       <Heading as="h1">h1 Heading</Heading>
@@ -42,13 +41,13 @@ Each Heading level has a default size.
       <Heading as="h6">h6 Heading</Heading>
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Sizes
 
 The default size of the Heading can overridden as xs-5xl so that it's appropriate for its surrounding context.
 
-<Preview>
+<Canvas>
   <Story name="Sizes">
     <>
       {[...PALMETTO_FONT_SIZE_OPTIONS].reverse().map(fontSize => (
@@ -58,13 +57,13 @@ The default size of the Heading can overridden as xs-5xl so that it's appropriat
       ))}
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Colors
 
 The color of the heading is inherited from its parent, but can be set to brand color as well.
 
-<Preview>
+<Canvas>
   <Story name="Colors">
     <>
       {PALMETTO_FONT_COLOR_OPTIONS.map(color => (
@@ -74,4 +73,4 @@ The color of the heading is inherited from its parent, but can be set to brand c
       ))}
     </>
   </Story>
-</Preview>
+</Canvas>

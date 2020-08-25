@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import { withA11y } from '@storybook/addon-a11y';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TextInput from './TextInput';
 
 <Meta
   title="Components/Form Inputs/TextInput"
   component={TextInput}
-  decorators={[withA11y]}
 />
 
 # TextInput
@@ -16,13 +14,13 @@ Use TextInput to render a single-line text input. Masks can also be applied to c
 
 ## Props
 
-<Props of={TextInput} />
+<ArgsTable of={TextInput} />
 
 ## Default
 
 All that is required to render a basic version of the TextInput is a unique `id`, `label`, `value`, and an onchange event handler passed to the `onChange` prop.
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {() => {
       const [value, setValue] = useState('');
@@ -38,13 +36,13 @@ All that is required to render a basic version of the TextInput is a unique `id`
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Required
 
 Use the `isRequired` prop to mark the input as required.
 
-<Preview>
+<Canvas>
   <Story name="Required">
     {() => {
       const [value, setValue] = useState('');
@@ -61,13 +59,13 @@ Use the `isRequired` prop to mark the input as required.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Placeholder
 
 Use the `placeholder` prop to add a custom placeholder.
 
-<Preview>
+<Canvas>
   <Story name="Placeholder">
     {() => {
       const [value, setValue] = useState('');
@@ -84,13 +82,13 @@ Use the `placeholder` prop to add a custom placeholder.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Autofocus
 
 Use the `autoFocus` prop to autofocus the input.
 
-<Preview>
+<Canvas>
   <Story name="Autofocus">
     {() => {
       const [value, setValue] = useState('');
@@ -107,13 +105,13 @@ Use the `autoFocus` prop to autofocus the input.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Hidden Label
 
 Use the `hideLabel` prop to not render the label.
 
-<Preview>
+<Canvas>
   <Story name="Hidden Label">
     {() => {
       const [value, setValue] = useState('');
@@ -130,13 +128,13 @@ Use the `hideLabel` prop to not render the label.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled
 
 Use the `isDisabled` prop to mark the input as disabled.
 
-<Preview>
+<Canvas>
   <Story name="Disabled">
     {() => {
       const [value, setValue] = useState('');
@@ -153,13 +151,13 @@ Use the `isDisabled` prop to mark the input as disabled.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled with Value
 
 Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can have values that are either preset, or entered by users.
 
-<Preview>
+<Canvas>
   <Story name="Disabled with Value">
     {() => {
       const [value, setValue] = useState('Preset value');
@@ -176,13 +174,13 @@ Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can hav
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled with Placeholder
 
 Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can have placeholders.
 
-<Preview>
+<Canvas>
   <Story name="Disabled with Placeholder">
     {() => {
       const [value, setValue] = useState('');
@@ -200,13 +198,13 @@ Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can hav
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## With Phone Mask
 
 Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to set the mask as "phone".
 
-<Preview>
+<Canvas>
   <Story name="With Phone Mask">
     {() => {
       const [value, setValue] = useState('');
@@ -224,13 +222,13 @@ Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## With Credit Card Mask
 
 Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to set the mask as "creditCard".
 
-<Preview>
+<Canvas>
   <Story name="With Credit Card Mask">
     {() => {
       const [value, setValue] = useState('');
@@ -248,13 +246,13 @@ Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Max Length
 
 Use the `maxLength` prop to limit the number of characters that can be entered into an input.
 
-<Preview>
+<Canvas>
   <Story name="Max Length">
     {() => {
       const [value, setValue] = useState('');
@@ -272,13 +270,13 @@ Use the `maxLength` prop to limit the number of characters that can be entered i
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Required with Error
 
 Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. A `boolean` is passed in this example.
 
-<Preview>
+<Canvas>
   <Story name="Required with Error">
     {() => {
       const [value, setValue] = useState('');
@@ -296,13 +294,13 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Required with Error and Validation Message
 
 Pass a `string` or `node` to the `error` prop to render a validation message.
 
-<Preview>
+<Canvas>
   <Story name="Required with Error and Validation Message">
     {() => {
       const [value, setValue] = useState('');
@@ -320,13 +318,13 @@ Pass a `string` or `node` to the `error` prop to render a validation message.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Not Required with Error and Validation Message
 
 An input does not need to be marked as required to render a validation message.
 
-<Preview>
+<Canvas>
   <Story name="Not Required with Error and Validation Message">
     {() => {
       const [value, setValue] = useState('');
@@ -343,11 +341,11 @@ An input does not need to be marked as required to render a validation message.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Error with Hidden Label
 
-<Preview>
+<Canvas>
   <Story name="Error with Hidden Label">
     {() => {
       const [value, setValue] = useState('');
@@ -365,13 +363,13 @@ An input does not need to be marked as required to render a validation message.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Classes
 
 Use the `className` prop to add a custom class, or classes to an input.
 
-<Preview>
+<Canvas>
   <Story name="Custom Classes">
     {() => {
       const [value, setValue] = useState('');
@@ -388,7 +386,7 @@ Use the `className` prop to add a custom class, or classes to an input.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 
