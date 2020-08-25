@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import SelectInput from './SelectInput';
 
 <Meta
@@ -16,13 +16,13 @@ Allows users to pick a value from a predefined list of options. Ideally, it shou
 
 ## Props
 
-<Props of={SelectInput} />
+<ArgsTable of={SelectInput} />
 
 ## Default
 
 All that is required to render a basic version of the SelectInput is a unique `id`, a `label`, a list of options passed to the `options` prop, a `value`, and an onchange event handler passed to the `onChange` prop.
 
-<Preview> 
+<Canvas> 
   <Story name="Default">
     {() => {
       const [value, setValue] = useState(null);
@@ -44,13 +44,13 @@ All that is required to render a basic version of the SelectInput is a unique `i
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Pre-Selected
 
 Pre-select an option by passing its value to the `value` prop.
 
-<Preview> 
+<Canvas> 
   <Story name="Pre-Selected">
     {() => {
       const options = [
@@ -72,13 +72,13 @@ Pre-select an option by passing its value to the `value` prop.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Placeholder
 
 Use the `placeholder` prop to add a custom placeholder.
 
-<Preview> 
+<Canvas> 
   <Story name="Placeholder">
     {() => {
       const [value, setValue] = useState(null);
@@ -101,13 +101,13 @@ Use the `placeholder` prop to add a custom placeholder.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Hidden Label
 
 Use the `hideLabel` prop to not render the label.
 
-<Preview> 
+<Canvas> 
   <Story name="Hidden Label">
     {() => {
       const [value, setValue] = useState(null);
@@ -130,13 +130,13 @@ Use the `hideLabel` prop to not render the label.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Multi-Select
 
 Use the `isMulti` prop to allow the selection of multiple options.
 
-<Preview> 
+<Canvas> 
   <Story name="Multi-Select">
     {() => {
       const [value, setValue] = useState(null);
@@ -159,13 +159,13 @@ Use the `isMulti` prop to allow the selection of multiple options.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Multi-Select and Pre-Selected
 
 Use the `isMulti` prop combined with passing one or more options in an array to the `value` prop to pre-select option(s).
 
-<Preview> 
+<Canvas> 
   <Story name="Multi-Select and Pre-Selected">
     {() => {
       const options = [
@@ -188,13 +188,13 @@ Use the `isMulti` prop combined with passing one or more options in an array to 
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Autofocus
 
 Use the `autoFocus` prop to autofocus a SelectInput.
 
-<Preview> 
+<Canvas> 
   <Story name="Autofocus">
     {() => {
       const options = [
@@ -217,13 +217,13 @@ Use the `autoFocus` prop to autofocus a SelectInput.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Required
 
 Use the `isRequired` prop to mark the input as required.
 
-<Preview> 
+<Canvas> 
   <Story name="Required">
     {() => {
       const options = [
@@ -246,13 +246,13 @@ Use the `isRequired` prop to mark the input as required.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled
 
 Use the `isDisabled` prop to mark the input as disabled.
 
-<Preview> 
+<Canvas> 
   <Story name="Disabled">
     {() => {
       const options = [
@@ -275,14 +275,14 @@ Use the `isDisabled` prop to mark the input as disabled.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Clearable
 
 Use the `isClearable` prop to allow clearing of the input selected option. NOTE: this works by passing `null`
 to the `onChange` handler. 
 
-<Preview> 
+<Canvas> 
   <Story name="Clearable">
     {() => {
       const options = [
@@ -306,13 +306,13 @@ to the `onChange` handler.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Error
 
 Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
 
-<Preview> 
+<Canvas> 
   <Story name="Error">
     {() => {
       const options = [
@@ -336,13 +336,13 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Classes
 
 Use the `className` prop to add a custom class, or classes to an input.
 
-<Preview> 
+<Canvas> 
   <Story name="Custom Classes">
     {() => {
       const options = [
@@ -365,4 +365,4 @@ Use the `className` prop to add a custom class, or classes to an input.
       );
     }}
   </Story>
-</Preview>
+</Canvas>

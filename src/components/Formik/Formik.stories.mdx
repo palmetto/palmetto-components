@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import { Field, Form, Formik } from 'formik';
-import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import FormikTextInput from './FormikTextInput/FormikTextInput';
 import FormikCheckboxInput from './FormikCheckboxInput/FormikCheckboxInput';
 import FormikSelectInput from './FormikSelectInput/FormikSelectInput';
@@ -17,7 +17,7 @@ import Button from '../Button/Button';
 
 Formik Form demonstrates a pattern for integrating the input elements found in Palmetto Components with [Formik](https://formik.org/). The form is fully functional and even mock submits. Manipulate the inputs in the form and watch the state object below it update with the new values in real-time. Attempt to submit the form without filling out required inputs, and observe the error states for these inputs.
 
-<Preview>
+<Canvas>
   <Story name="Form">
     {() => {
       const flavorOptions = [
@@ -193,4 +193,4 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
       );
     }}
   </Story>
-</Preview>
+</Canvas>

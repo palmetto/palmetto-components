@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import RadioGroup from './RadioGroup';
 
 
@@ -17,13 +17,13 @@ Use a RadioGroup when a user is required to select one of five or fewer options.
 
 ## Props
 
-<Props of={RadioGroup} />
+<ArgsTable of={RadioGroup} />
 
 ## Default
 
 All that is required to render a basic version of the RadioGroup is the group's `name`, an onchange event handler passed to the `onChange` prop, and a list of options passed to the `options` prop. Each option must include a unique `id`, a `value`, and a `label`.
 
-<Preview isExpanded>
+<Canvas isExpanded>
   <Story name="Default">
     {() => {
       const [value, setValue] = useState(null);
@@ -52,13 +52,13 @@ All that is required to render a basic version of the RadioGroup is the group's 
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Title
 
 Use the `title` prop to add a title.
 
-<Preview>
+<Canvas>
   <Story name="Title">
     {() => {
       const [value, setValue] = useState(null);
@@ -88,13 +88,13 @@ Use the `title` prop to add a title.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Title and Description
 
 Use the `title` and `description` props to add a title and description.
 
-<Preview>
+<Canvas>
   <Story name="Title and Description">
     {() => {
       const [value, setValue] = useState(null);
@@ -120,13 +120,13 @@ Use the `title` and `description` props to add a title and description.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Required
 
 Use the `isRequired` prop to mark the group as required.
 
-<Preview>
+<Canvas>
   <Story name="Required">
     {() => {
       const [value, setValue] = useState(null);
@@ -152,13 +152,13 @@ Use the `isRequired` prop to mark the group as required.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Pre-Selected Option
 
 Use the `value` prop to pre-select an option.
 
-<Preview>
+<Canvas>
   <Story name="Pre-Selected Option">
     {() => {
       const options = [{
@@ -188,13 +188,13 @@ Use the `value` prop to pre-select an option.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled Option
 
 An individual option, or multiple options can be disabled by marking them as disabled in the list of options.
 
-<Preview>
+<Canvas>
   <Story name="Disabled Option">
     {() => {
       const [value, setValue] = useState(null);
@@ -225,13 +225,13 @@ An individual option, or multiple options can be disabled by marking them as dis
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled Group
 
 A group can be fully disabled by using the `isDisabled` prop.
 
-<Preview>
+<Canvas>
   <Story name="Disabled Group">
     {() => {
       const [value, setValue] = useState(null);
@@ -263,13 +263,13 @@ A group can be fully disabled by using the `isDisabled` prop.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Error
 
 Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
 
-<Preview>
+<Canvas>
   <Story name="Error">
     {() => {
       const [value, setValue] = useState(null);
@@ -302,13 +302,13 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Classes
 
 Use the `className` prop to add a custom class, or classes to a RadioGroup.
 
-<Preview>
+<Canvas>
   <Story name="Custom Classes">
     {() => {
       const [value, setValue] = useState(null);
@@ -340,7 +340,7 @@ Use the `className` prop to add a custom class, or classes to a RadioGroup.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import CheckboxInput from './CheckboxInput';
 import FormLabel from '../FormLabel/FormLabel';
 
@@ -17,13 +17,13 @@ Use a CheckboxInput to allow users to make a range of selections (zero, one or m
 
 ## Props
 
-<Props of={CheckboxInput} />
+<ArgsTable of={CheckboxInput} />
 
 ## Default
 
 All that is required to render a basic version of the CheckboxInput is a unique `id`, a `label`, `isChecked`, and an onchange event handler passed to the `onChange` prop.
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {() => {
       const [value, setValue] = useState(null);
@@ -37,13 +37,13 @@ All that is required to render a basic version of the CheckboxInput is a unique 
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Required
 
 Use the `isRequired` prop to mark the input as required.
 
-<Preview>
+<Canvas>
   <Story name="Required">
     {() => {
       const [value, setValue] = useState(null);
@@ -58,13 +58,13 @@ Use the `isRequired` prop to mark the input as required.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Checked Initial State
 
 Use the `isChecked` prop to mark the input as checked upon initial render.
 
-<Preview>
+<Canvas>
   <Story name="Checked Initial State">
     {() => {
       const [value, setValue] = useState(true);
@@ -78,7 +78,7 @@ Use the `isChecked` prop to mark the input as checked upon initial render.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Hidden Label
 
@@ -86,7 +86,7 @@ The `label` is a required prop, but if you need to hide it for stylistic reasons
 so with the `hideLabel` prop. The checkbox will still utilize the label string value to
 populate the `aria-label` property on the input for accessibility reasons.
 
-<Preview>
+<Canvas>
   <Story name="Hidden Label">
     {() => {
       const [value, setValue] = useState(null);
@@ -100,7 +100,7 @@ populate the `aria-label` property on the input for accessibility reasons.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Label
 
@@ -108,7 +108,7 @@ If you require a label with custom markup,
 simply hide the default label (remember to still pass a text value for the label)
 and append your own. Feel free to use the `FormLabel` component to keep the base text styles consistent.
 
-<Preview>
+<Canvas>
   <Story name="Custom Label">
     {() => {
       const [value, setValue] = useState(null);
@@ -131,13 +131,13 @@ and append your own. Feel free to use the `FormLabel` component to keep the base
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled and Unchecked
 
 Use the `isDisabled` prop to disable an input.
 
-<Preview>
+<Canvas>
   <Story name="Disabled and Unchecked">
     {() => {
       const [value, setValue] = useState(null);
@@ -152,13 +152,13 @@ Use the `isDisabled` prop to disable an input.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled and Checked
 
 Use the `isDisabled` and `isChecked` props to disable an input in a checked state.
 
-<Preview>
+<Canvas>
   <Story name="Disabled and Checked">
     {() => {
       const [value, setValue] = useState(true);
@@ -173,13 +173,13 @@ Use the `isDisabled` and `isChecked` props to disable an input in a checked stat
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Error
 
 Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
 
-<Preview>
+<Canvas>
   <Story name="Error">
     {() => {
       const [value, setValue] = useState(null);
@@ -195,13 +195,13 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Classes
 
 Use the `className` prop to add a custom class, or classes to an input.
 
-<Preview>
+<Canvas>
   <Story name="Custom Classes">
     {() => {
       const [value, setValue] = useState(null);
@@ -216,4 +216,4 @@ Use the `className` prop to add a custom class, or classes to an input.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
