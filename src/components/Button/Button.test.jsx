@@ -28,6 +28,39 @@ describe('Button', () => {
     });
   });
 
+  describe('Sizes', () => {
+    describe('Small', () => {
+      test('it has a sm class applied to it', () => {
+        render(<Button size="sm">Small Button</Button>);
+
+        const smallBtn = screen.getByText('Small Button').closest('button');
+
+        expect(smallBtn.getAttribute('class')).toContain('sm');
+      });
+    });
+
+    describe('Medium', () => {
+      test('it has neither a sm or lg class applied to it', () => {
+        render(<Button>Medium Button</Button>);
+
+        const mediumBtn = screen.getByText('Medium Button').closest('button');
+
+        expect(mediumBtn.getAttribute('class')).not.toContain('sm');
+        expect(mediumBtn.getAttribute('class')).not.toContain('lg');
+      });
+    });
+
+    describe('Large', () => {
+      test('it has a lg class applied to it', () => {
+        render(<Button size="lg">Large Button</Button>);
+
+        const largeBtn = screen.getByText('Large Button').closest('button');
+
+        expect(largeBtn.getAttribute('class')).toContain('lg');
+      });
+    });
+  });
+
   describe('Callback Handling', () => {
     describe('onClick', () => {
       test('it fires onClick callback', () => {
@@ -130,6 +163,34 @@ describe('Button', () => {
         );
 
         expect(screen.getByText('Not Disabled Button').closest('button')).not.toBeDisabled();
+      });
+    });
+
+    describe('Full Width', () => {
+      test('it has a fullWidth class applied to it', () => {
+        render(
+          <Button fullWidth>
+            Full Width Button
+          </Button>,
+        );
+
+        const fullWidthBtn = screen.getByText('Full Width Button').closest('button');
+
+        expect(fullWidthBtn.getAttribute('class')).toContain('full-width');
+      });
+    });
+
+    describe('Custom ClassName', () => {
+      test('if a ClassName is provided, its added to the button', () => {
+        render(
+          <Button className="custom-class">
+            Custom ClassName
+          </Button>,
+        );
+
+        const customClassNameBtn = screen.getByText('Custom ClassName').closest('button');
+
+        expect(customClassNameBtn.getAttribute('class')).toContain('custom-class');
       });
     });
 
