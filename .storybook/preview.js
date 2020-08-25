@@ -7,7 +7,7 @@ import '!style-loader!css-loader!sass-loader!../src/styles/variables/index.scss'
 import '!style-loader!css-loader!sass-loader!../src/styles/reset.scss';
 
 addParameters({
-  options: {
+  docs: {
     theme: palmettoTheme,
   },
 });
