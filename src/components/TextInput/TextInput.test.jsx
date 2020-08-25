@@ -7,60 +7,6 @@ import {
 import TextInput from './TextInput';
 
 describe('TextInput', () => {
-  describe('Props validation', () => {
-    describe('Required value', () => {
-      test('Throws error if required prop "value" is not supplied to component', () => {
-        console.error = jest.fn(); // eslint-disable-line no-console
-        render(<TextInput label="test input" onChange={() => null} id="myId" />);
-        expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-        expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-          .toContain('Failed prop type: The prop `value`');
-      });
-    });
-
-    describe('Required onChange', () => {
-      test('Throws error if required prop "onChange" is not supplied to component', () => {
-        console.error = jest.fn(); // eslint-disable-line no-console
-        render(<TextInput label="test input" value="hello" id="myId" />);
-        expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-        expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-          .toContain('Failed prop type: The prop `onChange`');
-      });
-    });
-
-    describe('Required ID', () => {
-      test('Throws error if required prop "id" is not supplied to component', () => {
-        console.error = jest.fn(); // eslint-disable-line no-console
-        render(<TextInput label="test input" value="hello" onChange={() => null} />);
-        expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-        expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-          .toContain('Failed prop type: The prop `id`');
-      });
-    });
-
-    describe('Required label', () => {
-      test('Throws error if required prop "label" is not supplied to component', () => {
-        console.error = jest.fn(); // eslint-disable-line no-console
-        render(<TextInput value="hello" onChange={() => null} id="myId" />);
-        expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-        expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-          .toContain('Failed prop type: The prop `label`');
-      });
-    });
-
-    describe('Allowed types', () => {
-      test('Throws an error if "type" prop is anything other than allowed values', () => {
-        console.error = jest.fn(); // eslint-disable-line no-console
-        render(
-          <TextInput label="test input" id="textInput2" onChange={() => null} value="hello" type="notOnTheList" />,
-        );
-        expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-        expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-          .toContain('Failed prop type: Invalid prop `type`');
-      });
-    });
-  });
-
   describe('Callback Handling', () => {
     describe('onChange', () => {
       test('onChange event fires callback function', () => {
