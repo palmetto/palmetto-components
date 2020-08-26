@@ -11,6 +11,7 @@ interface TableCellProps {
    * Custom class to be applied to `<tr>` element.
    */
   className?: string;
+  isCompact?: boolean;
   truncateOverflow?: boolean;
   emptyCellPlaceholder?: ReactNode;
 }
@@ -19,11 +20,13 @@ const TableCell: FC<TableCellProps> = ({
   children = null,
   className = '',
   emptyCellPlaceholder = null,
+  isCompact = false,
   truncateOverflow = false,
 }) => {
   const tableCellClasses = classNames(
     styles['table-cell'],
     {
+      [styles.compact]: isCompact,
       [styles['truncate-overflow']]: truncateOverflow,
     },
     className,

@@ -8,7 +8,7 @@ import Button from '../Button/Button';
 import Table from './Table';
 import TableHead from './TableHead/TableHead';
 import TableBody from './TableBody/TableBody';
-import TableRow from './TableBody/TableRow/TableRow';
+import TableRow from './TableRow/TableRow';
 
 const columnConfig = [
   { heading: 'ID', id: 'first' },

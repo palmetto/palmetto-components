@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import TableBody from './TableBody';
-import TableRow from './TableRow/TableRow';
+import TableRow from '../TableRow/TableRow';
 
 describe('TableBody', () => {
   describe('States', () => {

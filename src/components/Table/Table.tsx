@@ -1,13 +1,13 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, Key, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Column, Row } from './types';
+import { Column, Row, EventWithColumnKey } from './types';
 import getColumnKeys from '../../lib/getColumnKeys';
 import Spinner from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 import TableBody from './TableBody/TableBody';
 import TableHead from './TableHead/TableHead';
 import TableRow from './TableRow/TableRow';
-import TableHeaderSortable from './TableHeaderSortable/TableHeaderSortable';
+import TableHeaderCell from './TableHeaderCell/TableHeaderCell';
 import TableCell from './TableCell/TableCell';
 
 interface TableProps {
@@ -54,13 +54,31 @@ interface TableProps {
    */
   isLoading?: boolean;
   /**
+   * Callback function to fire on sorting one of the table headers.
+   */
+  onSort?: (event: EventWithColumnKey) => void;
+  /**
+   * The key of the sorted column and its sort direction.
+   */
+  sortedColumn?: {
+    dataKey: string | undefined;
+    sortDirection: 'none' | 'ascending' | 'descending' | undefined;
+  };
+  /**
+   * The key of the sorted column and its sort direction.
+   */
+  scroll?: {
+    x: number | undefined;
+    y: number | undefined;
+  };
+  /**
    * Fix the width of the columns. Can be useful if sorting is enabled and the content of
    * the columns is changing; prevents the horizontal jump when this occurres.
    */
   useFixedWidthColumns?: boolean;
   /**
    * Truncate overflow inside column based on column width. Can be overwritten on specific columns,
-   * by passing `truncateOverflow` value on a specific <Column>
+   * by passing `truncateOverflow` value on a specific Column
    */
   truncateOverflow?: boolean;
 }
@@ -73,19 +91,28 @@ const Table: FC<TableProps> = ({
   hoverableRows = false,
   isBorderless = false,
   isCompact = false,
-  isResponsive = false,
   isStriped = false,
   isLoading = false,
+  onSort = undefined,
+  scroll = undefined,
+  sortedColumn = undefined,
   truncateOverflow = false,
   useFixedWidthColumns = false,
 }) => {
   const tableContainerClasses = classNames(
     styles.container,
-    className,
     {
-      [styles.responsive]: isResponsive,
+      [styles.scroll]: scroll?.x || scroll?.y,
+      [styles['scroll-x']]: scroll?.x,
+      [styles['scroll-y']]: scroll?.y,
     },
+    className,
   );
+
+  const tableContainerStyles = {
+    ...scroll?.x && { maxWidth: `${scroll.x}px` },
+    ...scroll?.y && { maxHeight: `${scroll.y}px` },
+  };
 
   const tableClasses = classNames(
     styles.table,
@@ -98,16 +125,26 @@ const Table: FC<TableProps> = ({
     },
   );
 
+  const isColumnSorted = (columnDataKey: Key): boolean => (
+    !!sortedColumn && sortedColumn.dataKey === columnDataKey
+  );
+
   const renderColumnHeaders = (): ReactNode => (
     <>
       {Object.values(columns).map((column, columnIndex) => (
-        <TableCell
+        <TableHeaderCell
           key={getColumnKeys(columns)[columnIndex]}
+          dataKey={column.dataKey}
           className={column.className}
+          isSortable={column.isSortable}
+          onSort={onSort}
+          isCompact={isCompact}
+          sortDirection={sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'}
           truncateOverflow={column.truncateOverflow || truncateOverflow}
+          width={useFixedWidthColumns ? column.width : undefined}
         >
           {column.title}
-        </TableCell>
+        </TableHeaderCell>
       ))}
     </>
   );
@@ -120,8 +157,9 @@ const Table: FC<TableProps> = ({
             <TableCell
               truncateOverflow={column.truncateOverflow || truncateOverflow}
               key={getColumnKeys(columns)[columnIndex]}
+              isCompact={isCompact}
             >
-              {row[column.dataKey] || column.render(row[column.dataKey])}
+              {row[column.dataKey]}
             </TableCell>
           ))}
         </TableRow>
@@ -130,7 +168,10 @@ const Table: FC<TableProps> = ({
   );
 
   return (
-    <div className={tableContainerClasses}>
+    <div
+      className={tableContainerClasses}
+      style={tableContainerStyles}
+    >
       {isLoading && (
         <div className={styles['loading-mask']}>
           <Spinner size="xl" />

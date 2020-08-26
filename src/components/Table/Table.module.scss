@@ -20,26 +20,9 @@
     white-space: normal;
     color: var(--color-font-base) !important;
 
-    th,
-    td {
-      border: 1px solid var(--color-brand-grey-lighter);
-      padding: var(--size-spacing-sm);
-    }
-
-    th {
-      border-bottom-width: 2 * 1px;
-    }
-
     &.fixed-width-columns {
       width: fit-content;
       table-layout: fixed;
-    }
-  }
-
-  .compact {
-    th,
-    td {
-      padding: var(--size-spacing-xs);
     }
   }
   
@@ -66,11 +49,18 @@
     }
   }
 
-  &.responsive {
+  &.scroll {
     display: block;
-    width: 100%;
-    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+
+    &.scroll-x {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    &.scroll-y {
+      overflow-y: auto;
+    }
 
     > .table-bordered {
       border: 0;

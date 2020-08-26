@@ -10,29 +10,15 @@ interface TableRowProps {
    * Custom class to be applied to `<tr>` element.
    */
   className?: string;
-  // truncateOverflow?: boolean;
-  // emptyCellPlaceholder?: ReactNode;
 }
 
 const TableRow: FC<TableRowProps> = ({
   children = null,
   className = '',
 }) => {
-  // const tableCellClasses = classNames(
-  //   styles['table-cell'],
-  //   {
-  //     [styles['truncate-overflow']]: truncateOverflow,
-  //   },
-  // );
   const tableRowClasses = classNames(className);
 
   return <tr className={tableRowClasses}>{children}</tr>;
-  // <td
-  //   className={tableCellClasses}
-  //   key={`${id}${cellContent?.toString()}`}
-  // >
-  //   {cellContent || emptyCellPlaceholder}
-  // </td>
 };
 
 export default TableRow;

@@ -4,7 +4,7 @@ import {
   fireEvent,
   screen,
 } from '@testing-library/react';
-import TableHeaderSortable from './TableHeaderSortable';
+import TableHeaderSortable from './TableHeaderCell';
 
 describe('TableHead', () => {
   describe('Callback Handling', () => {

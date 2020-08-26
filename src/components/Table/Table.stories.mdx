@@ -4,10 +4,6 @@ import { withA11y } from '@storybook/addon-a11y';
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import Button from '../Button/Button';
 import Table from './Table';
-import TableHead from './TableHead/TableHead';
-import TableBody from './TableBody/TableBody';
-import TableRow from './TableBody/TableRow/TableRow';
-
 
 <Meta
   title="Components/Table"
@@ -23,33 +19,9 @@ Tables display information in a way that’s easy to scan, while making it easy 
 
 Lastly use tables when you need the ability to sort, filter and/or paginate data.
 
-## The structure of the `<Table />` component
-
-Much like a standard HTML table, our API relies on nesting certain key elements (abstracted as components) in order to build the table.
-This allows for more flexibility within individual component APIs to be extended in the future without bloating a single component with props.
-
-The components that we will use to craft a table are:
-
-- `<Table/ >`
-- `<TableHead />`
-- `<TableBody />`
-- `<TableRow />`
-
-## `<Table />` Props
+## Props
 
 <Props of={Table} />
-
-## `<TableHead />` Props
-
-<Props of={TableHead} />
-
-## `<TableBody />` Props
-
-<Props of={TableBody} />
-
-## `<TableRow />` Props
-
-<Props of={TableRow} />
 
 ## Default
 
@@ -73,177 +45,120 @@ The components that we will use to craft a table are:
   </Story>
 </Preview>
 
-<!-- ## Loading -->
-<!-- 
+## Loading
+
 <Preview>
   <Story name="Loading">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first' },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
       ];
       const tableData = [
-        { id: 1, hello: 'random key', color: 'red', flavor: 'vanilla' },
+        { id: 1, color: 'red', flavor: 'vanilla' },
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <>
-          <Table isLoading>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-            </TableBody>
-          </Table>
-        </>
+        <Table rowKey="id" columns={columnConfig} rows={tableData} isLoading />
       );
     }}
   </Story>
 </Preview>
+
 
 ## Sortable
 
 <Preview>
   <Story name="Sortable">
     {() => {
-      const defaultSortedColumn = null;
-      const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
-      const columnConfig = [
-        { heading: 'ID', id: 'first', isSortable: true },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third', isSortable: true },
-      ];
-      const firstAsc = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-      ];
-      const firstDesc = [
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 1, color: 'red', flavor: 'vanilla' },
-      ];
-      const thirdAsc = [
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 1, color: 'red', flavor: 'vanilla' },
-      ];
-      const thirdDesc = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-      ];
-      const handleTableHeaderClick = headerId => {
-        let direction;
-        if (!sortedColumn || headerId !== sortedColumn.id) {
-          direction = 'desc';
-        } else {
-          direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
-        }
-        const newSortedColumn = {
-          id: headerId,
-          sortOrder: direction,
-        };
-        setSortedColumn(newSortedColumn);
+      const getNewSortDirection = (event, currentSortedColumn) => {
+        if (
+          event.sortedKey === currentSortedColumn.dataKey
+          && currentSortedColumn.sortDirection === 'ascending'
+        ) return 'descending';
+        return 'ascending';
       };
-      const generateTableData = () => {
-        if (sortedColumn?.id === 'first') {
-          return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
-        } else if (sortedColumn?.id === 'third') {
-          return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
-        } else {
-          return firstAsc
-        }
-      }
+      const initialData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+      ];
+      const [sortedColumn, setSortedColumn] = useState({});
+      const [tableData, setTableData] = useState([...initialData]);
+      const handleSort = event => {
+        setSortedColumn({
+          dataKey: event.sortedKey,
+          sortDirection: getNewSortDirection(event, sortedColumn),
+        });
+        const sortedData = tableData.sort((a, b) => (a[event.sortedKey] > b[event.sortedKey]) ? 1 : -1)
+        setTableData(sortedData);
+      };
+      const columnConfig = [
+        { title: 'ID', dataKey: 'id', isSortable: true },
+        { title: 'Color', dataKey: 'color', isSortable: true },
+        { title: 'Flavor', dataKey: 'flavor', isSortable: true },
+      ];
       return (
-        <Table isResponsive>
-          <TableHead 
-            columns={columnConfig} 
-            onSort={handleTableHeaderClick} 
-            sortedColumn={sortedColumn} 
-          />
-          <TableBody>
-            {generateTableData().map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          sortedColumn={sortedColumn}
+          onSort={handleSort}
+        />
       );
     }}
   </Story>
 </Preview>
+
 
 ## Sortable with Default Sorted Column
 
 <Preview>
-  <Story name="Sortable with Default Sorted Column">
+  <Story name="Sortable with Default">
     {() => {
-      const defaultSortedColumn = {
-        id: 'third',
-        sortOrder: 'desc',
+      const getNewSortDirection = (event, currentSortedColumn) => {
+        if (
+          event.sortedKey === currentSortedColumn.dataKey
+          && currentSortedColumn.sortDirection === 'ascending'
+        ) return 'descending';
+        return 'ascending';
       };
-      const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
+      const initialData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      const [sortedColumn, setSortedColumn] = useState({ dataKey: 'id', sortDirection: 'ascending' });
+      const [tableData, setTableData] = useState([...initialData]);
+      const handleSort = event => {
+        setSortedColumn({
+          dataKey: event.sortedKey,
+          sortDirection: getNewSortDirection(event, sortedColumn),
+        });
+        const sortedData = tableData.sort((a, b) => (a[event.sortedKey] > b[event.sortedKey]) ? 1 : -1)
+        setTableData(sortedData);
+      };
       const columnConfig = [
-        { heading: 'ID', id: 'first', isSortable: true },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third', isSortable: true },
+        { title: 'ID', dataKey: 'id', isSortable: true },
+        { title: 'Color', dataKey: 'color', isSortable: true },
+        { title: 'Flavor', dataKey: 'flavor', isSortable: true },
       ];
-      const firstAsc = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-      ];
-      const firstDesc = [
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 1, color: 'red', flavor: 'vanilla' },
-      ];
-      const thirdAsc = [
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 1, color: 'red', flavor: 'vanilla' },
-      ];
-      const thirdDesc = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-      ];
-      const handleTableHeaderClick = headerId => {
-        let direction;
-        if (!sortedColumn || headerId !== sortedColumn.id) {
-          direction = 'desc';
-        } else {
-          direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
-        }
-        const newSortedColumn = {
-          id: headerId,
-          sortOrder: direction,
-        };
-        setSortedColumn(newSortedColumn);
-      };
-      const generateTableData = () => {
-        if (sortedColumn?.id === 'first') {
-          return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
-        } else if (sortedColumn?.id === 'third') {
-          return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
-        } else {
-          return firstAsc
-        }
-      }
       return (
-        <Table isResponsive>
-          <TableHead 
-            columns={columnConfig} 
-            onSort={handleTableHeaderClick} 
-            sortedColumn={sortedColumn} 
-          />
-          <TableBody>
-            {generateTableData().map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          sortedColumn={sortedColumn}
+          onSort={handleSort}
+        />
       );
     }}
   </Story>
 </Preview>
+
 
 ## Sortable and Loading
 
@@ -252,82 +167,57 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
 <Preview>
   <Story name="Sortable and Loading">
     {() => {
-      const defaultSortedColumn = null;
-      const [sortedColumn, setSortedColumn] = useState(defaultSortedColumn);
-      const columnConfig = [
-        { heading: 'ID', id: 'first', isSortable: true },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third', isSortable: true },
-      ];
-      const firstAsc = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-      ];
-      const firstDesc = [
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 1, color: 'red', flavor: 'vanilla' },
-      ];
-      const thirdAsc = [
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 1, color: 'red', flavor: 'vanilla' },
-      ];
-      const thirdDesc = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-      ];
-      const handleTableHeaderClick = headerId => {
-        let direction;
-        if (!sortedColumn || headerId !== sortedColumn.id) {
-          direction = 'desc';
-        } else {
-          direction = (sortedColumn.sortOrder === 'desc') ? 'asc' : 'desc';
-        }
-        const newSortedColumn = {
-          id: headerId,
-          sortOrder: direction,
-        };
-        setSortedColumn(newSortedColumn);
+      const getNewSortDirection = (event, currentSortedColumn) => {
+        if (
+          event.sortedKey === currentSortedColumn.dataKey
+          && currentSortedColumn.sortDirection === 'ascending'
+        ) return 'descending';
+        return 'ascending';
       };
-      const generateTableData = () => {
-        if (sortedColumn?.id === 'first') {
-          return sortedColumn.sortOrder === 'asc' ? firstAsc : firstDesc;
-        } else if (sortedColumn?.id === 'third') {
-          return sortedColumn.sortOrder === 'asc' ? thirdAsc : thirdDesc;
-        } else {
-          return firstAsc
-        }
-      }
+      const initialData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      const [sortedColumn, setSortedColumn] = useState({ dataKey: 'id', sortDirection: 'ascending' });
+      const [tableData, setTableData] = useState([...initialData]);
+      const handleSort = event => {
+        setSortedColumn({
+          dataKey: event.sortedKey,
+          sortDirection: getNewSortDirection(event, sortedColumn),
+        });
+        const sortedData = tableData.sort((a, b) => (a[event.sortedKey] > b[event.sortedKey]) ? 1 : -1)
+        setTableData(sortedData);
+      };
+      const columnConfig = [
+        { title: 'ID', dataKey: 'id', isSortable: true },
+        { title: 'Color', dataKey: 'color', isSortable: true },
+        { title: 'Flavor', dataKey: 'flavor', isSortable: true },
+      ];
       return (
-        <Table isLoading>
-          <TableHead
-            columns={columnConfig}
-            onSort={handleTableHeaderClick}
-            sortedColumn={sortedColumn}
-            isLoading
-          />
-          <TableBody>
-            {generateTableData().map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          sortedColumn={sortedColumn}
+          onSort={handleSort}
+          isLoading
+        />
       );
     }}
   </Story>
 </Preview>
 
-## Responsive
+## Scroll Horizontally (x axis)
 
 <Preview>
-  <Story name="Responsive">
+  <Story name="Scroll (x)">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first' },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third' },
-        { heading: 'Brightness', id: 'fourth' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
+        { title: 'Brightness', dataKey: 'brightness' },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },
@@ -335,28 +225,91 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry', brightness: 'dark' },
       ];
       return (
-        <div style={{ width: '260px' }}>
-          <Table isResponsive>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-            </TableBody>
-          </Table>
-        </div>
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          scroll={{ x: 200 }}
+        />
       );
     }}
   </Story>
 </Preview>
 
+## Scroll Vertically (y axis)
+
+<Preview>
+  <Story name="Scroll (y)">
+    {() => {
+      const columnConfig = [
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
+        { title: 'Brightness', dataKey: 'brightness' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },
+        { id: 2, color: 'blue', flavor: 'chocolate', brightness: 'medium' },
+        { id: 3, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 4, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 5, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 6, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 7, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+      ];
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          scroll={{ y: 150 }}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Scroll Horizontally and Vertically (x and y axes)
+
+<Preview>
+  <Story name="Scroll (x and y)">
+    {() => {
+      const columnConfig = [
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
+        { title: 'Brightness', dataKey: 'brightness' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },
+        { id: 2, color: 'blue', flavor: 'chocolate', brightness: 'medium' },
+        { id: 3, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 4, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 5, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 6, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 7, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+      ];
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          scroll={{ x: 200, y: 150 }}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+
 ## Fixed-Width Columns
 
 <Preview>
-  <Story name="Fixed-Width Columns">
+  <Story name="Fixed-width Columns">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first', width: '315' },
-        { heading: 'Color', id: 'second', width: '215' },
-        { heading: 'Flavor', id: 'third', width: '100' },
+        { title: 'ID', dataKey: 'id', width: 200 },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
@@ -364,16 +317,17 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table useFixedWidthColumns>
-          <TableHead columns={columnConfig} />
-          <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          useFixedWidthColumns
+        />
       );
     }}
   </Story>
 </Preview>
+
 
 ## Truncate Overflow
 
@@ -381,27 +335,29 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Truncate Overflow">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first', width: '70' },
-        { heading: 'Color', id: 'second', width: '215' },
-        { heading: 'Flavor', id: 'third', width: '100' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color', width: 100 },
+        { title: 'Flavor', dataKey: 'flavor' },
       ];
       const tableData = [
-        { id: 1, color: 'redredredredredredredredredredredredred', flavor: 'vanilla' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry strawberry strawberry strawberry' },
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue longy long long long', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table useFixedWidthColumns>
-          <TableHead columns={columnConfig} />
-          <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} truncateOverflow />)}
-          </TableBody>
-        </Table>
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          useFixedWidthColumns
+          truncateOverflow
+        />
       );
     }}
   </Story>
 </Preview>
 
+<!--
 ## Custom Actions
 
 <Preview>
