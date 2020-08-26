@@ -5,9 +5,9 @@ import React, {
   ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import RadioInput from './RadioInput/RadioInput';
 import { OptionType } from './RadioGroupTypes';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import RadioInput from './RadioInput/RadioInput';
 import styles from './RadioGroup.module.scss';
 
 interface RadioGroupProps {
