@@ -3,7 +3,7 @@ import React, {
   ChangeEvent,
   FocusEvent,
 } from 'react';
-import { UnknownPropertiesObj } from '../../../types/types';
+import { UnknownPropertiesObjType } from '../../../lib/types';
 import CheckboxInput from '../../CheckboxInput/CheckboxInput';
 
 interface FormikCheckboxInputProps {
@@ -15,7 +15,7 @@ interface FormikCheckboxInputProps {
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     value?: boolean;
   };
-  form: UnknownPropertiesObj;
+  form: UnknownPropertiesObjType;
 }
 
 const FormikCheckboxInput: FC<FormikCheckboxInputProps> = ({

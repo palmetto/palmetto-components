@@ -2,7 +2,7 @@ import React, {
   FC,
   FocusEvent,
 } from 'react';
-import { UnknownPropertiesObj } from '../../../types/types';
+import { UnknownPropertiesObjType } from '../../../lib/types';
 import { SimulatedEventPayloadType, OptionType } from '../../SelectInput/SelectInputTypes';
 import SelectInput from '../../SelectInput/SelectInput';
 
@@ -14,9 +14,9 @@ interface FormikSelectInputProps {
     options: OptionType[];
     onBlur: (event: FocusEvent<HTMLElement>) => void;
     onChange: (event: SimulatedEventPayloadType) => void;
-    value?: UnknownPropertiesObj | string | UnknownPropertiesObj[];
+    value?: UnknownPropertiesObjType | string | UnknownPropertiesObjType[];
   };
-  form: UnknownPropertiesObj;
+  form: UnknownPropertiesObjType;
 }
 
 const FormikSelectInput: FC<FormikSelectInputProps> = ({

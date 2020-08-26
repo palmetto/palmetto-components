@@ -3,7 +3,7 @@ import React, {
   ChangeEvent,
   FocusEvent,
 } from 'react';
-import { UnknownPropertiesObj } from '../../../types/types';
+import { UnknownPropertiesObjType } from '../../../lib/types';
 import { OptionType } from '../../RadioGroup/RadioGroupTypes';
 import RadioGroup from '../../RadioGroup/RadioGroup';
 
@@ -15,7 +15,7 @@ interface RadioGroupProps {
     value?: string;
     options: OptionType[];
   };
-  form: UnknownPropertiesObj;
+  form: UnknownPropertiesObjType;
 }
 
 const FormikRadioGroup: FC<RadioGroupProps> = ({
