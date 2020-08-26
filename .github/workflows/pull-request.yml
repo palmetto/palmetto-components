@@ -75,10 +75,13 @@ jobs:
       - name: unit test
         run: |
           yarn test
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          CC_TEST_REPORTER_ID: 33f3435d9437e9c9c10480d4a1b066a260bb9813624e5038b30c4b32a1be62c0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverageCommand: npm run coverage
+          debug: true
   visual-tests:
     name: visual regression tests
     runs-on: ubuntu-latest
