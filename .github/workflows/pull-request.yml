@@ -79,7 +79,6 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          fail_ci_if_error: true
   visual-tests:
     name: visual regression tests
     runs-on: ubuntu-latest

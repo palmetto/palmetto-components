@@ -2,7 +2,6 @@
 [![Chromatic](https://github.com/palmetto/palmetto-components/workflows/Chromatic/badge.svg?branch=master)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3AChromatic)
 [![Coverage Status](https://coveralls.io/repos/github/palmetto/palmetto-components/badge.svg?branch=master)](https://coveralls.io/github/palmetto/palmetto-components?branch=master)
 
-
 # Palmetto Components
 A React component library to power all Palmetto UI.
 
