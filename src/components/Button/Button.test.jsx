@@ -29,36 +29,23 @@ describe('Button', () => {
   });
 
   describe('Sizes', () => {
-    describe('Small', () => {
-      test('it has a sm class applied to it', () => {
-        render(<Button size="sm">Small Button</Button>);
+    const sizes = [
+      { name: 'Small', class: 'sm' },
+      { name: 'Medium', class: '' },
+      { name: 'Large', class: 'lg' },
+    ];
 
-        const smallBtn = screen.getByText('Small Button').closest('button');
+    sizes.map(size => (
+      describe(`${size.name}`, () => {
+        test(`it has a ${size.class} class applied to it`, () => {
+          render(<Button size={size.class}>{`${size.name} Button`}</Button>);
 
-        expect(smallBtn.getAttribute('class')).toContain('sm');
-      });
-    });
+          const btn = screen.getByText(`${size.name} Button`).closest('button');
 
-    describe('Medium', () => {
-      test('it has neither a sm or lg class applied to it', () => {
-        render(<Button>Medium Button</Button>);
-
-        const mediumBtn = screen.getByText('Medium Button').closest('button');
-
-        expect(mediumBtn.getAttribute('class')).not.toContain('sm');
-        expect(mediumBtn.getAttribute('class')).not.toContain('lg');
-      });
-    });
-
-    describe('Large', () => {
-      test('it has a lg class applied to it', () => {
-        render(<Button size="lg">Large Button</Button>);
-
-        const largeBtn = screen.getByText('Large Button').closest('button');
-
-        expect(largeBtn.getAttribute('class')).toContain('lg');
-      });
-    });
+          expect(btn.getAttribute('class')).toContain(size.class);
+        });
+      })
+    ));
   });
 
   describe('Callback Handling', () => {
