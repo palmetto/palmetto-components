@@ -1,13 +1,13 @@
 import { ValueType, OptionTypeBase } from 'react-select';
 
-export interface SimulatedEventPayload {
+export type SimulatedEventPayloadType = {
   target: {
     name: string;
     value: ValueType<OptionTypeBase>;
   };
 }
 
-export interface Option {
+export type OptionType = {
   value: string;
   label: string;
 }

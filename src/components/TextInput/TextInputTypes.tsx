@@ -1,4 +1,4 @@
-export interface Masks {
+export type MasksType = {
   phone: {
     numericOnly: boolean;
     blocks: number[];

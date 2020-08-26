@@ -3,8 +3,9 @@ import React, {
   ChangeEvent,
   FocusEvent,
 } from 'react';
+import { UnknownPropertiesObj } from '../../../types/types';
+import { OptionType } from '../../RadioGroup/RadioGroupTypes';
 import RadioGroup from '../../RadioGroup/RadioGroup';
-import { Option } from '../../RadioGroup/RadioGroupTypes';
 
 interface RadioGroupProps {
   field: {
@@ -12,9 +13,9 @@ interface RadioGroupProps {
     onBlur: (event: FocusEvent<HTMLElement>) => void;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     value?: string;
-    options: Option[];
+    options: OptionType[];
   };
-  form: { [key: string]: any; }; // eslint-disable-line @typescript-eslint/no-explicit-any
+  form: UnknownPropertiesObj;
 }
 
 const FormikRadioGroup: FC<RadioGroupProps> = ({

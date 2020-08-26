@@ -3,6 +3,7 @@ import React, {
   ChangeEvent,
   FocusEvent,
 } from 'react';
+import { UnknownPropertiesObj } from '../../../types/types';
 import CheckboxInput from '../../CheckboxInput/CheckboxInput';
 
 interface FormikCheckboxInputProps {
@@ -14,7 +15,7 @@ interface FormikCheckboxInputProps {
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     value?: boolean;
   };
-  form: { [key: string]: any; }; // eslint-disable-line @typescript-eslint/no-explicit-any
+  form: UnknownPropertiesObj;
 }
 
 const FormikCheckboxInput: FC<FormikCheckboxInputProps> = ({

@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import RadioInput from './RadioInput/RadioInput';
-import { Option } from './RadioGroupTypes';
+import { OptionType } from './RadioGroupTypes';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './RadioGroup.module.scss';
 
@@ -22,7 +22,7 @@ interface RadioGroupProps {
   /**
    * Options for radio group.
    */
-  options: Option[];
+  options: OptionType[];
   /**
    * Additional classes to add.
    */

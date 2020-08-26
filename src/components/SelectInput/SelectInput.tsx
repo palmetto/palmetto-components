@@ -1,7 +1,7 @@
 import React, { FC, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
-import { SimulatedEventPayload, Option } from './SelectInputTypes';
+import { SimulatedEventPayloadType, OptionType } from './SelectInputTypes';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
@@ -18,11 +18,11 @@ interface SelectInputProps {
   /**
    * Callback function to call on change event.
    */
-  onChange: (event: SimulatedEventPayload) => void;
+  onChange: (event: SimulatedEventPayloadType) => void;
   /**
    * Options for dropdown list.
    */
-  options: Option[];
+  options: OptionType[];
   /**
    * The value(s) of select.
    */
@@ -98,14 +98,14 @@ const SelectInput: FC<SelectInputProps> = ({
   placeholder = undefined,
 }) => {
   const handleChange = (values: ValueType<OptionTypeBase>) => {
-    const simulatedEventPayload: SimulatedEventPayload = {
+    const simulatedEventPayloadType: SimulatedEventPayloadType = {
       target: {
         name,
         value: values,
       },
     };
 
-    onChange(simulatedEventPayload);
+    onChange(simulatedEventPayloadType);
   };
 
   const handleFocus: FocusEventHandler = e => {
