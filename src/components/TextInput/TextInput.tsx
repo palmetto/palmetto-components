@@ -6,10 +6,13 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
+import { UnknownPropertiesObjType } from '../../lib/types';
 import * as InputMasks from './TextInputMasks';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './TextInput.module.scss';
+
+type inputMaskType = ('phone' | 'creditCard') | UnknownPropertiesObjType;
 
 interface TextInputProps {
   /**
@@ -44,7 +47,7 @@ interface TextInputProps {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: ReactNode | boolean | string;
+  error?: ReactNode;
   /**
    * Visually hide the label.
    */
@@ -54,8 +57,7 @@ interface TextInputProps {
    * Can be one of the existing present strings, or a custom object with options.
    * For options object formats See https://github.com/nosir/cleave.js.
    */
-  //  eslint-disable-next-line @typescript-eslint/no-explicit-any
-  inputMask?: ('phone' | 'creditCard') | { [key: string]: any; };
+  inputMask?: inputMaskType;
   /**
    * The input's disabled attribute
    */
@@ -131,7 +133,7 @@ const TextInput: FC<TextInputProps> = ({
   );
 
   const getInputMask = (
-    mask: ('phone' | 'creditCard') | { [key: string]: any; }, // eslint-disable-line @typescript-eslint/no-explicit-any
+    mask: inputMaskType,
     availableInputMasks: {
       phone: {
         numericOnly: boolean;
