@@ -7,7 +7,6 @@ import React, {
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import * as InputMasks from './TextInputMasks';
-import { MasksType, InputType } from './TextInputTypes';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './TextInput.module.scss';
@@ -89,7 +88,7 @@ interface TextInputProps {
   /**
    * The input 'type' value. Defaults to type 'text'.
    */
-  type: InputType;
+  type: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
 }
 
 const TextInput: FC<TextInputProps> = ({
@@ -133,7 +132,16 @@ const TextInput: FC<TextInputProps> = ({
 
   const getInputMask = (
     mask: ('phone' | 'creditCard') | { [key: string]: any; }, // eslint-disable-line @typescript-eslint/no-explicit-any
-    availableInputMasks: MasksType,
+    availableInputMasks: {
+      phone: {
+        numericOnly: boolean;
+        blocks: number[];
+        delimiters: string[];
+      };
+      creditCard: {
+        creditCard: boolean;
+      };
+    },
   ) => {
     if (typeof mask === 'string') {
       return availableInputMasks[mask];
