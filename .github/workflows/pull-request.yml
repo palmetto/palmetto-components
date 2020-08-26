@@ -80,7 +80,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: 33f3435d9437e9c9c10480d4a1b066a260bb9813624e5038b30c4b32a1be62c0
         with:
-          coverageCommand: npm run coverage
+          coverageCommand: yarn test
           debug: true
   visual-tests:
     name: visual regression tests
