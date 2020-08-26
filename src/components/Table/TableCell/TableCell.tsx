@@ -11,6 +11,10 @@ interface TableCellProps {
    * Custom class to be applied to `<tr>` element.
    */
   className?: string;
+  /**
+   * Remove borders around td elements.
+   */
+  isBorderless?: boolean;
   isCompact?: boolean;
   truncateOverflow?: boolean;
   emptyCellPlaceholder?: ReactNode;
@@ -20,6 +24,7 @@ const TableCell: FC<TableCellProps> = ({
   children = null,
   className = '',
   emptyCellPlaceholder = null,
+  isBorderless = false,
   isCompact = false,
   truncateOverflow = false,
 }) => {
@@ -27,7 +32,8 @@ const TableCell: FC<TableCellProps> = ({
     styles['table-cell'],
     {
       [styles.compact]: isCompact,
-      [styles['truncate-overflow']]: truncateOverflow,
+      [styles.borderless]: isBorderless,
+      [styles.truncated]: truncateOverflow,
     },
     className,
   );

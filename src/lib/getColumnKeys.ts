@@ -8,7 +8,7 @@ const getColumnKeys = (columns: Column[]): Key[] => {
 
   columns.forEach(column => {
     const { key, dataKey } = column || {};
-    const shapedDataKey = dataKey.includes(' ') ? dataKey.split(' ').join('-') : dataKey;
+    const shapedDataKey = dataKey?.includes(' ') ? dataKey.split(' ').join('-') : dataKey;
 
     let mergedKey = key || shapedDataKey || INTERNAL_KEY_PREFIX;
 

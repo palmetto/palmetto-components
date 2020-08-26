@@ -138,6 +138,7 @@ const Table: FC<TableProps> = ({
           className={column.className}
           isSortable={column.isSortable}
           onSort={onSort}
+          isBorderless={isBorderless}
           isCompact={isCompact}
           sortDirection={sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'}
           truncateOverflow={column.truncateOverflow || truncateOverflow}
@@ -157,9 +158,14 @@ const Table: FC<TableProps> = ({
             <TableCell
               truncateOverflow={column.truncateOverflow || truncateOverflow}
               key={getColumnKeys(columns)[columnIndex]}
+              isBorderless={isBorderless}
               isCompact={isCompact}
             >
-              {row[column.dataKey]}
+              {
+                column.render
+                  ? column.render(column.dataKey ? row[column.dataKey] : undefined)
+                  : row[column.dataKey]
+              }
             </TableCell>
           ))}
         </TableRow>

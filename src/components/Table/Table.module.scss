@@ -28,13 +28,6 @@
   
   .borderless {
     border: none;
-
-    th,
-    td,
-    thead th,
-    tbody + tbody {
-      border: 0;
-    }
   }
   
   .striped {

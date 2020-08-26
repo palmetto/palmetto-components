@@ -25,6 +25,10 @@ interface TableHeaderCellProps {
    */
   className: string | undefined;
   /**
+   * Remove borders around th elements.
+   */
+  isBorderless?: boolean;
+  /**
    * Determines if table header cells should render as compact (less padding);
    */
   isCompact?: boolean;
@@ -58,6 +62,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   dataKey,
   children = null,
   className = undefined,
+  isBorderless = false,
   isCompact = false,
   isSortable = false,
   onSort = undefined,
@@ -102,8 +107,9 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   const tableHeaderClasses = classNames(
     styles['table-header-cell'],
     {
-      [styles['is-sortable']]: isSortable,
-      [styles['truncate-overflow']]: truncateOverflow,
+      [styles.sortable]: isSortable,
+      [styles.borderless]: isBorderless,
+      [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
     },
     className,

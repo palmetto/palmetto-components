@@ -357,29 +357,29 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   </Story>
 </Preview>
 
-<!--
+
 ## Custom Actions
 
 <Preview>
   <Story name="Custom Actions">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first' },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'With some JSX flavor', dataKey: 'flavor', render: (cell) => <a href={cell.href}>{cell.name}</a>},
+        { title: 'Custom JSX', render: () => <Button>My Button</Button> }
       ];
       const tableData = [
-        { id: 1, color: 'red', flavor: <Button onClick={() => alert('Ouch! Why would you do that!?')}>Click me</Button> },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 1, color: 'red', flavor: { name: 'vanilla', href: 'www.vanilla.palmetto.com' } },
+        { id: 2, color: 'blue', flavor: { name: 'chocolate', href: 'www.chocolate.palmetto.com' } },
+        { id: 3, color: 'green', flavor: { name: 'strawberry', href: 'www.strawberry.palmetto.com' } },
       ];
       return (
-        <Table>
-          <TableHead columns={columnConfig} />
-          <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+        />
       );
     }}
   </Story>
@@ -391,27 +391,27 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Striped">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first' },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 4, color: 'green', flavor: 'strawberry' },
+        { id: 5, color: 'green', flavor: 'strawberry' },
+        { id: 6, color: 'green', flavor: 'strawberry' },
+        { id: 7, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table isStriped>
-          <TableHead columns={columnConfig} />
-          <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table rowKey="id" columns={columnConfig} rows={tableData} isStriped />
       );
     }}
   </Story>
 </Preview>
 
+<!--
 ## Empty Cell Placeholder
 
 <Preview>

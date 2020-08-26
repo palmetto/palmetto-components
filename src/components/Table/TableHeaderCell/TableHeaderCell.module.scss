@@ -7,7 +7,7 @@
   color: var(--color-brand-white-base);
   font-weight: 600;
 
-  &.is-sortable {
+  &.sortable {
     cursor: pointer;
   }
 
@@ -15,7 +15,11 @@
     padding: var(--size-spacing-xs);
   }
 
-  &.truncate-overflow {
+  &.borderless {
+    border: none;
+  }
+
+  &.truncated {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

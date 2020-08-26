@@ -14,7 +14,7 @@ export interface Column {
   sortDirection: 'none' | 'ascending' | 'descending';
   width?: number;
   truncateOverflow: boolean;
-  render: (cellData: Cell) => ReactNode;
+  render: (cellData?: Cell) => ReactNode;
 }
 
 export interface SortedColumn {

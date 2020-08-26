@@ -2,13 +2,17 @@
   border: 1px solid var(--color-brand-grey-lighter);
   padding: var(--size-spacing-sm);
 
-  .compact {
+  &.borderless {
+    border: none;
+  }
+
+  &.compact {
     padding: var(--size-spacing-xs);
   }
-}
 
-.truncate-overflow {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  &.truncated {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
