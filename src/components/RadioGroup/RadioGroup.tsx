@@ -35,7 +35,7 @@ interface RadioGroupProps {
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: boolean | string | ReactNode;
+  error?: ReactNode;
   /**
    * If the radio group should be disabled and not focusable.
    */
