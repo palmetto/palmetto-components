@@ -76,7 +76,7 @@ We use **jest** and **react-testing-library** for all tests. We discourage the u
 * Test whether components render with the correct props in their different states.
 * Test that required props are properly throwing warnings (examples in existing components). This guards against somebody removing a prop requirement inadvertedly.
 
-We use CODECOV reports for test coverage. Our expectation for any new PR getting merged is that the new feature must satisfy at least 80% coverage. It will not get approved otherwise.
+We use Code Climate reports for test coverage. Our expectation for any new PR getting merged is that the new feature must satisfy at least 95% coverage. It will not get approved otherwise.
 
 ## Publishing components
 
