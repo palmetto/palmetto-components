@@ -1,5 +1,6 @@
 [![Publish To NPM](https://github.com/palmetto/palmetto-components/workflows/Publish%20To%20NPM/badge.svg)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3A%22Publish+To+NPM%22)
 [![Chromatic](https://github.com/palmetto/palmetto-components/workflows/Chromatic/badge.svg?branch=master)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3AChromatic)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e61e897623b87d91d155/test_coverage)](https://codeclimate.com/github/palmetto/palmetto-components/test_coverage)
 
 # Palmetto Components
 A React component library to power all Palmetto UI.

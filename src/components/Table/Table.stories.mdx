@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import { withA11y } from '@storybook/addon-a11y';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Button from '../Button/Button';
 import Table from './Table';
 
 <Meta
   title="Components/Table"
   component={Table}
-  decorators={[withA11y]}
 />
 
 # Table
@@ -21,11 +19,11 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
 
 ## Props
 
-<Props of={Table} />
+<ArgsTable of={Table} />
 
 ## Default
 
-<Preview>
+<Canvas>
   <Story name="Default">
     {() => {
       const columnConfig = [
@@ -39,15 +37,19 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table rowKey="id" columns={columnConfig} rows={tableData} />
+        <Table 
+          rowKey="id" 
+          columns={columnConfig} 
+          rows={tableData} 
+        />
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Loading
 
-<Preview>
+<Canvas>
   <Story name="Loading">
     {() => {
       const columnConfig = [
@@ -61,16 +63,21 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table rowKey="id" columns={columnConfig} rows={tableData} isLoading />
+        <Table 
+          rowKey="id" 
+          columns={columnConfig} 
+          rows={tableData} 
+          isLoading 
+        />
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Sortable
 
-<Preview>
+<Canvas>
   <Story name="Sortable">
     {() => {
       const getNewSortDirection = (event, currentSortedColumn) => {
@@ -111,13 +118,13 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Sortable with Default Sorted Column
 
-<Preview>
-  <Story name="Sortable with Default">
+<Canvas>
+  <Story name="Sortable with Default Sorted Column">
     {() => {
       const getNewSortDirection = (event, currentSortedColumn) => {
         if (
@@ -157,14 +164,14 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Sortable and Loading
 
 Setting the `isLoading` prop to true will disable clicking on the column headers. This prevents a race condition where an attempt to sort is made before data from the previous load is available.
 
-<Preview>
+<Canvas>
   <Story name="Sortable and Loading">
     {() => {
       const getNewSortDirection = (event, currentSortedColumn) => {
@@ -206,11 +213,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Scroll Horizontally (x axis)
 
-<Preview>
+<Canvas>
   <Story name="Scroll (x)">
     {() => {
       const columnConfig = [
@@ -234,11 +241,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Scroll Vertically (y axis)
 
-<Preview>
+<Canvas>
   <Story name="Scroll (y)">
     {() => {
       const columnConfig = [
@@ -266,11 +273,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Scroll Horizontally and Vertically (x and y axes)
 
-<Preview>
+<Canvas>
   <Story name="Scroll (x and y)">
     {() => {
       const columnConfig = [
@@ -298,13 +305,13 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Fixed-Width Columns
 
-<Preview>
-  <Story name="Fixed-width Columns">
+<Canvas>
+  <Story name="Fixed-Width Columns">
     {() => {
       const columnConfig = [
         { title: 'ID', dataKey: 'id', width: 200 },
@@ -326,12 +333,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Truncate Overflow
 
-<Preview>
+<Canvas>
   <Story name="Truncate Overflow">
     {() => {
       const columnConfig = [
@@ -355,12 +362,12 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Custom Actions
 
-<Preview>
+<Canvas>
   <Story name="Custom Actions">
     {() => {
       const renderFlavor = (cell, row, index) => {
@@ -373,7 +380,14 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
           { title: 'ID', dataKey: 'id' },
           { title: 'Index', dataKey: 'index' },
         ];
-        return <Table columns={columns} rows={rows} rowKey="id" isCompact />
+        return (
+          <Table 
+            columns={columns} 
+            rows={rows} 
+            rowKey="id" 
+            isCompact 
+          />
+        );
       };
       const columnConfig = [
         { title: 'ID', dataKey: 'id' },
@@ -395,11 +409,11 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Striped
 
-<Preview>
+<Canvas>
   <Story name="Striped">
     {() => {
       const columnConfig = [
@@ -417,11 +431,16 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 7, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table rowKey="id" columns={columnConfig} rows={tableData} isStriped />
+        <Table 
+          rowKey="id" 
+          columns={columnConfig} 
+          rows={tableData} 
+          isStriped 
+        />
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Empty Cell Placeholder
@@ -430,7 +449,7 @@ by adding the `emptyCellPlaceholder` to the column configuration object. In case
 placeholder takes precedence over the global placeholder. As seen in the example below where the price column uses
 `$0.00` as a placeholder where a price is missing.  
 
-<Preview>
+<Canvas>
   <Story name="Empty Cell Placeholder">
     {() => {
       const columnConfig = [
@@ -446,16 +465,20 @@ placeholder takes precedence over the global placeholder. As seen in the example
         { id: 3, color: 'blue', flavor: 'rocky road' },
       ];
       return (
-        <Table rowKey="id" columns={columnConfig} rows={tableData} />
+        <Table 
+          rowKey="id" 
+          columns={columnConfig} 
+          rows={tableData} 
+        />
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Borderless
 
-<Preview>
+<Canvas>
   <Story name="Borderless">
     {() => {
       const columnConfig = [
@@ -469,16 +492,21 @@ placeholder takes precedence over the global placeholder. As seen in the example
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table rowKey="id" columns={columnConfig} rows={tableData} isBorderless />
+        <Table 
+          rowKey="id" 
+          columns={columnConfig} 
+          rows={tableData} 
+          isBorderless 
+        />
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Compact
 
-<Preview>
+<Canvas>
   <Story name="Compact Cells">
     {() => {
       const columnConfig = [
@@ -492,16 +520,21 @@ placeholder takes precedence over the global placeholder. As seen in the example
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table rowKey="id" columns={columnConfig} rows={tableData} isCompact />
+        <Table 
+          rowKey="id" 
+          columns={columnConfig} 
+          rows={tableData} 
+          isCompact 
+        />
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 
 ## Hover
 
-<Preview>
+<Canvas>
   <Story name="Hoverable Rows">
     {() => {
       const columnConfig = [
@@ -515,15 +548,20 @@ placeholder takes precedence over the global placeholder. As seen in the example
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table rowKey="id" columns={columnConfig} rows={tableData} hoverableRows />
+        <Table 
+          rowKey="id" 
+          columns={columnConfig} 
+          rows={tableData} 
+          hoverableRows 
+        />
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Striped & Hoverable
 
-<Preview>
+<Canvas>
   <Story name="Striped and Hoverable Rows">
     {() => {
       const columnConfig = [
@@ -537,8 +575,14 @@ placeholder takes precedence over the global placeholder. As seen in the example
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table rowKey="id" columns={columnConfig} rows={tableData} hoverableRows isStriped />
+        <Table 
+          rowKey="id" 
+          columns={columnConfig} 
+          rows={tableData} 
+          hoverableRows 
+          isStriped 
+        />
       );
     }}
   </Story>
-</Preview>
+</Canvas>

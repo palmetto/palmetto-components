@@ -25,7 +25,7 @@ interface TableProps {
    */
   rowKey: string;
   /**
-   * Additional classes to add to the table container
+   * Additional classes to add.
    */
   className?: string;
   /**
@@ -50,11 +50,6 @@ interface TableProps {
    */
   isLoading?: boolean;
   /**
-   * Responsive tables allow tables to be scrolled horizontally with ease.
-   * If table overruns horizontal width of container, allow for horizontal scrolling.
-   */
-  isResponsive?: boolean;
-  /**
    * Adds zebra-striping to any table row within the table body.
    */
   isStriped?: boolean;
@@ -63,18 +58,18 @@ interface TableProps {
    */
   onSort?: (event: EventWithColumnKey) => void;
   /**
+   * Scroll position.
+   */
+  scroll?: {
+    x: number | undefined;
+    y: number | undefined;
+  };
+  /**
    * The key of the sorted column and its sort direction.
    */
   sortedColumn?: {
     dataKey: string | undefined;
     sortDirection: 'none' | 'ascending' | 'descending' | undefined;
-  };
-  /**
-   * The key of the sorted column and its sort direction.
-   */
-  scroll?: {
-    x: number | undefined;
-    y: number | undefined;
   };
   /**
    * Fix the width of the columns. Can be useful if sorting is enabled and the content of

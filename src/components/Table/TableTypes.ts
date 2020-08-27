@@ -18,13 +18,15 @@ export interface Column {
   render?: (cell?: Cell, row?: Row, index?: number) => ReactNode;
 }
 
-export interface SortedColumn {
+export type SortedColumnType = {
   id: string;
   sortOrder: 'asc' | 'desc';
-}
+};
 
 export type Row = { [key: string]: any; } // eslint-disable-line @typescript-eslint/no-explicit-any
-export type Cell = string | number | { [key: string]: unknown; } | unknown[]
+
+export type Cell = string | number | { [key: string]: unknown; } | unknown[];
+
 export type EventWithColumnKey =
   (
     MouseEvent<HTMLTableHeaderCellElement> |
