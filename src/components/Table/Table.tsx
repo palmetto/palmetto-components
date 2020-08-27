@@ -131,7 +131,7 @@ const Table: FC<TableProps> = ({
     },
   );
 
-  const isColumnSorted = (columnDataKey: Key): boolean => (
+  const isColumnSorted = (columnDataKey: Key | undefined): boolean => (
     !!sortedColumn && sortedColumn.dataKey === columnDataKey
   );
 
@@ -167,12 +167,13 @@ const Table: FC<TableProps> = ({
               key={getColumnKeys(columns)[columnIndex]}
               isBorderless={isBorderless}
               isCompact={isCompact}
-              width={column.width}
+              width={useFixedWidthColumns ? column.width : undefined}
             >
               {
+                /* eslint-disable-next-line no-nested-ternary */
                 column.render
-                  ? column.render(row[column.dataKey], row, rowIndex)
-                  : row[column.dataKey]
+                  ? column.render((column.dataKey ? row[column.dataKey] : undefined), row, rowIndex)
+                  : (column.dataKey ? row[column.dataKey] : null)
               }
             </TableCell>
           ))}
@@ -185,6 +186,7 @@ const Table: FC<TableProps> = ({
     <div
       className={tableContainerClasses}
       style={tableContainerStyles}
+      data-testid="tableContainerDiv-testid"
     >
       {isLoading && (
         <div className={styles['loading-mask']}>

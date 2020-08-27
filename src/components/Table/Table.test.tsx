@@ -3,9 +3,12 @@ import {
   render,
   fireEvent,
   screen,
+  within,
 } from '@testing-library/react';
+import { Cell } from './types';
 import Button from '../Button/Button';
 import Table from './Table';
+
 
 const columnConfig = [
   { title: 'ID', dataKey: 'id' },
@@ -66,7 +69,7 @@ describe('Table', () => {
         expect(rows).toHaveLength(2);
       });
 
-      test('it renders 3 column headers', () => {
+      test(`it renders the correct amount of headers: ${columnConfig.length}`, () => {
         render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const rows = screen.queryAllByRole('columnheader');
@@ -74,7 +77,7 @@ describe('Table', () => {
         expect(rows).toHaveLength(3);
       });
 
-      test('it renders 3 headings with matching titles', () => {
+      test(`it renders 3 headings that match columns titles: ${[...columnConfig.map(c => `${c.title}, `)]}`, () => {
         render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const idHeader = screen.getByText('ID');
@@ -86,7 +89,7 @@ describe('Table', () => {
         expect(flavorHeader).toBeInTheDocument();
       });
 
-      test('it renders 4 rows', () => {
+      test(`it renders correct amount of rows based on data: ${tableData.length} + 1 (header row)`, () => {
         render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const rows = screen.queryAllByRole('row');
@@ -94,20 +97,23 @@ describe('Table', () => {
         expect(rows).toHaveLength(4);
       });
 
-      test('it renders 9 cells', () => {
-        render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
+      test(
+        `it renders correct amount of cells based on columns and rows: ${columnConfig.length + tableData.length}`,
+        () => {
+          render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
-        const rows = screen.queryAllByRole('cell');
+          const rows = screen.queryAllByRole('cell');
 
-        expect(rows).toHaveLength(9);
-      });
+          expect(rows).toHaveLength(9);
+        },
+      );
 
       test('it renders the cell content', () => {
         render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
+        const tableRowArrays = tableData.map(row => Object.values(row).map(v => v.toString()));
+        const cellData = tableRowArrays.reduce((target, current) => [...current, ...target], []);
 
-        const cell = screen.getByText('green');
-
-        expect(cell).toBeInTheDocument();
+        cellData.map(value => expect(screen.getByText(value)).toBeInTheDocument());
       });
     });
 
@@ -128,6 +134,34 @@ describe('Table', () => {
         const sortableHeaders = screen.getAllByTestId('tableHeaderCellSortNone-testid');
 
         expect(sortableHeaders).toHaveLength(2);
+      });
+
+      test('it passes the sorted column properly to the correct th element', () => {
+        render(<Table
+          columns={columnConfigSortable}
+          rows={tableData}
+          rowKey="id"
+          sortedColumn={{ dataKey: 'flavor', sortDirection: 'ascending' }}
+        />);
+
+        const { getByTestId } = within(screen.getByText('Flavor'));
+
+        expect(getByTestId('tableHeaderCellSortAsc-testid')).toBeInTheDocument();
+      });
+    });
+
+    describe('Scrollable', () => {
+      test('It renders the table container limited by width/height attributes', () => {
+        render(<Table
+          columns={columnConfig}
+          rows={tableData}
+          rowKey="id"
+          scroll={{ x: 100, y: 200 }}
+        />);
+
+        const tableContainer = screen.getByTestId('tableContainerDiv-testid');
+
+        expect(tableContainer).toHaveStyle({ maxWidth: '100px', maxHeight: '200px' });
       });
     });
 
@@ -162,12 +196,92 @@ describe('Table', () => {
             columns={columnConfig}
             rows={tableDataWithMissingCellContent}
             emptyCellPlaceholder="--"
+            rowKey="id"
           />,
         );
 
         const placeholder = screen.getByText('--');
 
         expect(placeholder).toBeInTheDocument();
+      });
+    });
+
+    describe('Custom width in column config', () => {
+      test('it renders columns with fixed width based on prop.', () => {
+        render(
+          <Table
+            columns={[...columnConfig.map(col => ({ ...col, width: 100 }))]}
+            rows={tableData}
+            rowKey="id"
+            useFixedWidthColumns
+          />,
+        );
+
+        const tableHeaderCell = screen.getByText('Flavor');
+        expect(tableHeaderCell).toHaveStyle({ width: '100px', maxWidth: '100px' });
+      });
+    });
+
+    describe('Column with no corresponding data key', () => {
+      test('it renders a column despite not matching a data key in the rows collection', () => {
+        const columnConfigNoKey = [
+          { title: 'ID', dataKey: 'id', isSortable: true },
+          { title: 'Color', dataKey: 'color' },
+          { title: 'Flavor', isSortable: true },
+        ];
+
+        render(
+          <Table
+            columns={columnConfigNoKey}
+            rows={tableData}
+            rowKey="id"
+          />,
+        );
+
+        const tableHeaderCell = screen.getByText('Flavor');
+        expect(tableHeaderCell).toBeInTheDocument();
+      });
+    });
+
+    describe('Column with render method', () => {
+      test('it renders a column with a custom render method', () => {
+        const columnConfigRender = [
+          { title: 'ID', dataKey: 'id', isSortable: true },
+          { title: 'Color', dataKey: 'color' },
+          { title: 'Flavor', isSortable: true, render: () => <button type="submit">Submit</button> },
+        ];
+
+        render(
+          <Table
+            columns={columnConfigRender}
+            rows={tableData}
+            rowKey="id"
+          />,
+        );
+
+        const submitButtons = screen.getAllByText('Submit');
+        expect(submitButtons).toHaveLength(tableData.length);
+      });
+    });
+
+    describe('Column with render method based on row', () => {
+      test('it renders a column with a custom render method', () => {
+        const columnConfigRender = [
+          { title: 'ID', dataKey: 'id', isSortable: true },
+          { title: 'Color', dataKey: 'color' },
+          { title: 'Flavor', dataKey: 'flavor', render: (cell?: Cell) => <button type="submit">{cell}</button> },
+        ];
+
+        render(
+          <Table
+            columns={columnConfigRender}
+            rows={tableData}
+            rowKey="id"
+          />,
+        );
+
+        const submitButton = screen.getByText('vanilla');
+        expect(submitButton).toBeInTheDocument();
       });
     });
   });

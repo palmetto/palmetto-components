@@ -6,16 +6,16 @@ import {
 } from 'react';
 
 export interface Column {
-  title: string;
-  dataKey: string;
+  title?: string;
+  dataKey?: string;
   className?: string;
   emptyCellPlaceholder?: string | number | undefined;
   key?: Key;
   isSortable?: boolean;
-  sortDirection: 'none' | 'ascending' | 'descending';
+  sortDirection?: 'none' | 'ascending' | 'descending';
   width?: number;
-  truncateOverflow: boolean;
-  render: (cell?: Cell, row?: Row, index?: number) => ReactNode;
+  truncateOverflow?: boolean;
+  render?: (cell?: Cell, row?: Row, index?: number) => ReactNode;
 }
 
 export interface SortedColumn {

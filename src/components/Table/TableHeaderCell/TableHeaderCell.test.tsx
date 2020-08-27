@@ -6,7 +6,7 @@ import {
 } from '@testing-library/react';
 import TableHeaderCell from './TableHeaderCell';
 
-describe('TableBody', () => {
+describe('TableHeaderCell', () => {
   describe('States', () => {
     test('It renders an empty th when no children passed', () => {
       render(<TableHeaderCell />);
@@ -35,6 +35,28 @@ describe('TableBody', () => {
       rerender(<TableHeaderCell isSortable sortDirection="descending" />);
       expect(tableHeaderCell).toHaveAttribute('aria-sort', 'descending');
       expect(screen.getByTestId('tableHeaderCellSortDesc-testid')).toBeInTheDocument();
+    });
+
+    test('th element is rendered with specific width style atrtibute based on width prop', () => {
+      render(
+        <TableHeaderCell
+          width={200}
+        >
+          ID
+        </TableHeaderCell>,
+      );
+
+      const tableHeaderCell = screen.getByText('ID');
+
+      expect(tableHeaderCell).toHaveStyle({ width: '200px', maxWidth: '200px' });
+    });
+
+    test('th element is rendered with custom class when passed as a prop', () => {
+      render(<TableHeaderCell className="my-custom-class" />);
+
+      const tableHeaderCell = screen.getByRole('columnheader');
+
+      expect(tableHeaderCell).toHaveClass('my-custom-class');
     });
   });
 
@@ -139,20 +161,6 @@ describe('TableBody', () => {
 
       fireEvent.click(tableHeaderCell);
       expect(mockHandleSort).toHaveBeenCalledTimes(0);
-    });
-
-    test('th element is rendered with specific width style atrtibute based on width prop', () => {
-      render(
-        <TableHeaderCell
-          width={200}
-        >
-          ID
-        </TableHeaderCell>,
-      );
-
-      const tableHeaderCell = screen.getByText('ID');
-
-      expect(tableHeaderCell).toHaveStyle({ width: '200px', maxWidth: '200px' });
     });
   });
 });
