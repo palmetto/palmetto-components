@@ -1,7 +1,7 @@
 import React, { FC, KeyboardEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { SortedColumn } from '../../types';
+import { SortedColumnType } from '../../TableTypes';
 import styles from './TableHeaderSortable.module.scss';
 
 interface TableHeaderSortableProps {
@@ -20,7 +20,7 @@ interface TableHeaderSortableProps {
   /**
    * The current sorted column.
    */
-  sortedColumn?: SortedColumn;
+  sortedColumn?: SortedColumnType;
   /**
    * Width of the column, if using the `useFixedWidthColumns` prop is set to true.
    */

@@ -1,22 +1,23 @@
-import React, { FC, ChangeEvent, FocusEvent } from 'react';
+import React, {
+  FC,
+  ChangeEvent,
+  FocusEvent,
+  ReactNode,
+} from 'react';
 import FormLabel from '../../FormLabel/FormLabel';
 import styles from './RadioInput.module.scss';
 
-/**
- * Radio input w/label for use in RadioGroup.
- */
-
-interface Props {
+interface RadioInputProps {
   /**
-   * Radio group name
+   * Radio input name.
    */
   name: string;
   /**
-   * Callback function to call on change event
+   * Callback function to call on change event.
    */
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   /**
-   * Options for radio group
+   * Options for radio group.
    */
   option: {
     id: string;
@@ -28,26 +29,26 @@ interface Props {
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: boolean | string | React.ReactNode;
+  error?: ReactNode;
   /**
-   * If the radio group should be disabled and not focusable
+   * If the radio group should be disabled and not focusable.
    */
   isDisabled?: boolean;
   /**
-   * If the radio group should be disabled and not focusable
+   * If the radio group should be disabled and not focusable.
    */
   isSelected?: boolean;
   /**
-   * Callback function to call on blur event
+   * Callback function to call on blur event.
    */
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
-   * Callback function to call on focus event
+   * Callback function to call on focus event.
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 }
 
-const RadioInput: FC<Props> = ({
+const RadioInput: FC<RadioInputProps> = ({
   name,
   onChange,
   option,

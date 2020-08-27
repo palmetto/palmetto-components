@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { withA11y } from '@storybook/addon-a11y';
 import { PALMETTO_COLOR_VALUES, ColorEntry, ColorVariation } from '../../lib/tokens';
 import styles from './Colors.module.scss';
@@ -49,7 +49,7 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
   );
 };
 
-export const brand: React.FC = () => (
+export const brand: FC = () => (
   <>
     <h1>Brand Colors</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -62,7 +62,7 @@ export const brand: React.FC = () => (
   </>
 );
 
-export const base: React.FC = () => (
+export const base: FC = () => (
   <>
     <h1>Base Color Palette</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>

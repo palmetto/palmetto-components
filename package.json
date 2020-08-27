@@ -17,6 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@palmetto/palmetto-design-tokens": "^0.5.1",
+    "@types/cleave.js": "^1.4.3",
     "react-select": "^3.1.0"
   },
   "peerDependencies": {

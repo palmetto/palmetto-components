@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Column, SortedColumn } from '../types';
+import { ColumnType, SortedColumnType } from '../TableTypes';
 import TableHeaderSortable from './TableHeaderSortable/TableHeaderSortable';
 import styles from './TableHead.module.scss';
 
@@ -7,7 +7,7 @@ interface TableHeadProps {
   /**
    * Column configuration for the columns.
    */
-  columns: Column[];
+  columns: ColumnType[];
   /**
    * Callback function to execute when a sortable column's header is clicked.
    */
@@ -15,7 +15,7 @@ interface TableHeadProps {
   /**
    * The current sorted column.
    */
-  sortedColumn?: SortedColumn;
+  sortedColumn?: SortedColumnType;
 }
 
 const TableHead: FC<TableHeadProps> = ({
@@ -23,7 +23,7 @@ const TableHead: FC<TableHeadProps> = ({
   onSort = () => undefined,
   sortedColumn = undefined,
 }) => {
-  const renderSortableColumn = (column: Column) => (
+  const renderSortableColumn = (column: ColumnType) => (
     <TableHeaderSortable
       heading={column.heading}
       id={column.id}
@@ -34,7 +34,7 @@ const TableHead: FC<TableHeadProps> = ({
     />
   );
 
-  const renderFixedColumn = (column: Column) => (
+  const renderFixedColumn = (column: ColumnType) => (
     <th
       className={styles.header}
       key={column.id}

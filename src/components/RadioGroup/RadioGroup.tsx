@@ -1,20 +1,25 @@
-import React, { FC, ChangeEvent, FocusEvent } from 'react';
+import React, {
+  FC,
+  ChangeEvent,
+  FocusEvent,
+  ReactNode,
+} from 'react';
 import classNames from 'classnames';
-import RadioInput from './RadioInput/RadioInput';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import RadioInput from './RadioInput/RadioInput';
 import styles from './RadioGroup.module.scss';
 
-interface Props {
+interface RadioGroupProps {
   /**
-   * Radio group name
+   * Radio group name.
    */
   name: string;
   /**
-   * Callback function to call on change event
+   * Callback function to call on change event.
    */
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   /**
-   * Options for radio group
+   * Options for radio group.
    */
   options: {
     id: string;
@@ -23,45 +28,45 @@ interface Props {
     disabled?: boolean | null;
   }[];
   /**
-   * Additional classes to add
+   * Additional classes to add.
    */
   className?: string;
   /**
    * Description to be displayed below the title, and above the RadioGroup.
    */
-  description?: React.ReactNode;
+  description?: ReactNode;
   /**
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: boolean | string | React.ReactNode;
+  error?: ReactNode;
   /**
-   * If the radio group should be disabled and not focusable
+   * If the radio group should be disabled and not focusable.
    */
   isDisabled?: boolean;
   /**
-   * Determines if radio group is required or not. (Label will have an asterisk if required)
+   * Determines if radio group is required or not. (Label will have an asterisk if required).
    */
   isRequired?: boolean;
   /**
-   * Callback function to call on blur event
+   * Callback function to call on blur event.
    */
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
-   * Callback function to call on focus event
+   * Callback function to call on focus event.
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
-   * Title to be displayed above the RadioGroup
+   * Title to be displayed above the RadioGroup.
    */
-  title?: React.ReactNode;
+  title?: ReactNode;
   /**
-   * The value of selected radio input
+   * The value of selected radio input.
    */
   value?: string;
 }
 
-const RadioGroup: FC<Props> = ({
+const RadioGroup: FC<RadioGroupProps> = ({
   name,
   onChange,
   options,
