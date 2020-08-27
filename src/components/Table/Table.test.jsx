@@ -6,20 +6,17 @@ import {
 } from '@testing-library/react';
 import Button from '../Button/Button';
 import Table from './Table';
-import TableHead from './TableHead/TableHead';
-import TableBody from './TableBody/TableBody';
-import TableRow from './TableRow/TableRow';
 
 const columnConfig = [
-  { heading: 'ID', id: 'first' },
-  { heading: 'Color', id: 'second' },
-  { heading: 'Flavor', id: 'third' },
+  { title: 'ID', dataKey: 'id' },
+  { title: 'Color', dataKey: 'color' },
+  { title: 'Flavor', dataKey: 'flavor' },
 ];
 
 const columnConfigSortable = [
-  { heading: 'ID', id: 'first', isSortable: true },
-  { heading: 'Color', id: 'second' },
-  { heading: 'Flavor', id: 'third', isSortable: true },
+  { title: 'ID', dataKey: 'id', isSortable: true },
+  { title: 'Color', dataKey: 'color' },
+  { title: 'Flavor', dataKey: 'flavor', isSortable: true },
 ];
 
 const tableData = [
@@ -35,12 +32,12 @@ describe('Table', () => {
     describe('onSort', () => {
       test('onSort event fires callback function', () => {
         render(
-          <Table>
-            <TableHead columns={columnConfigSortable} onSort={mockHandleSort} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
+          <Table
+            columns={columnConfigSortable}
+            rows={tableData}
+            rowKey="id"
+            onSort={mockHandleSort}
+          />,
         );
 
         const sortableColumnHeader = screen.getByText('ID');
@@ -53,25 +50,8 @@ describe('Table', () => {
 
   describe('States', () => {
     describe('Default', () => {
-      test('it renders a table with no children passed', () => {
-        render(
-          <Table />,
-        );
-
-        const table = screen.getByRole('table');
-
-        expect(table).toBeInTheDocument();
-      });
-
       test('it renders a table', () => {
-        render(
-          <Table>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+        render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const table = screen.getByRole('table');
 
@@ -79,14 +59,7 @@ describe('Table', () => {
       });
 
       test('it renders a thead and tbody', () => {
-        render(
-          <Table>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+        render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const rows = screen.queryAllByRole('rowgroup');
 
@@ -94,29 +67,15 @@ describe('Table', () => {
       });
 
       test('it renders 3 column headers', () => {
-        render(
-          <Table>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+        render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const rows = screen.queryAllByRole('columnheader');
 
         expect(rows).toHaveLength(3);
       });
 
-      test('it renders 3 headings', () => {
-        render(
-          <Table>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+      test('it renders 3 headings with matching titles', () => {
+        render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const idHeader = screen.getByText('ID');
         const colorHeader = screen.getByText('Color');
@@ -128,14 +87,7 @@ describe('Table', () => {
       });
 
       test('it renders 4 rows', () => {
-        render(
-          <Table>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+        render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const rows = screen.queryAllByRole('row');
 
@@ -143,14 +95,7 @@ describe('Table', () => {
       });
 
       test('it renders 9 cells', () => {
-        render(
-          <Table>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+        render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const rows = screen.queryAllByRole('cell');
 
@@ -158,14 +103,7 @@ describe('Table', () => {
       });
 
       test('it renders the cell content', () => {
-        render(
-          <Table>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+        render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const cell = screen.getByText('green');
 
@@ -175,14 +113,7 @@ describe('Table', () => {
 
     describe('Loading', () => {
       test('it renders a loading indicator', () => {
-        render(
-          <Table isLoading>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+        render(<Table columns={columnConfig} rows={tableData} rowKey="id" isLoading />);
 
         const spinner = screen.getByTestId('spinner-testid');
 
@@ -192,14 +123,7 @@ describe('Table', () => {
 
     describe('Sortable', () => {
       test('it renders 2 sortable table headers', () => {
-        render(
-          <Table>
-            <TableHead columns={columnConfigSortable} />
-            <TableBody>
-              {tableData.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+        render(<Table columns={columnConfigSortable} rows={tableData} rowKey="id" />);
 
         const sortableHeaders = screen.getAllByTestId('sort-testid');
 
@@ -216,14 +140,7 @@ describe('Table', () => {
           { id: 3, color: 'green', flavor: 'strawberry' },
         ];
 
-        render(
-          <Table>
-            <TableHead columns={columnConfigSortable} />
-            <TableBody>
-              {tableDataWithClickableButton.map(row => <TableRow data={row} key={row.id} />)}
-            </TableBody>
-          </Table>,
-        );
+        render(<Table columns={columnConfig} rows={tableDataWithClickableButton} rowKey="id" />);
 
         const button = screen.getByText('Click me');
 
@@ -241,14 +158,11 @@ describe('Table', () => {
         ];
 
         render(
-          <Table>
-            <TableHead columns={columnConfig} />
-            <TableBody>
-              {tableDataWithMissingCellContent.map(row => (
-                <TableRow data={row} key={row.id} emptyCellPlaceholder="--" />
-              ))}
-            </TableBody>
-          </Table>,
+          <Table
+            columns={columnConfig}
+            rows={tableDataWithMissingCellContent}
+            emptyCellPlaceholder="--"
+          />,
         );
 
         const placeholder = screen.getByText('--');

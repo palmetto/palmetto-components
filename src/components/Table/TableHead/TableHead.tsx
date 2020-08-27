@@ -1,6 +1,5 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import styles from './TableHead.module.scss';
 
 interface TableHeadProps {
   /**
@@ -17,7 +16,7 @@ const TableHead: FC<TableHeadProps> = ({
   className = '',
   children = null,
 }) => {
-  const tableHeadClasses = classNames(styles['table-head'], className);
+  const tableHeadClasses = classNames(className);
 
   return (
     <thead className={tableHeadClasses}>

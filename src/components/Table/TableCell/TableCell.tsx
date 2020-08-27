@@ -15,9 +15,24 @@ interface TableCellProps {
    * Remove borders around td elements.
    */
   isBorderless?: boolean;
+  /**
+   * Reduces padding inside table cells.
+   */
   isCompact?: boolean;
+  /**
+   * Truncates the cell contents based on width established by `Column`
+   * NOTE: Truncate only on cells with primitive data types.
+   */
   truncateOverflow?: boolean;
+  /**
+   * Placeholder for an empty cell, will be rendered when content is `null` `undefined`
+   * or `''`. Placeholders will not be rendered on values of `0`.
+   */
   emptyCellPlaceholder?: ReactNode;
+  /**
+   * Fixed width for a particular cell.
+   * Value should be taken from column config so it matches its parent.
+   */
   width?: number;
 }
 
