@@ -46,6 +46,10 @@ interface TableProps {
    */
   isCompact?: boolean;
   /**
+   * Set to true if data is loading.
+   */
+  isLoading?: boolean;
+  /**
    * Responsive tables allow tables to be scrolled horizontally with ease.
    * If table overruns horizontal width of container, allow for horizontal scrolling.
    */
@@ -54,10 +58,6 @@ interface TableProps {
    * Adds zebra-striping to any table row within the table body.
    */
   isStriped?: boolean;
-  /**
-   * Set to true if data is loading.
-   */
-  isLoading?: boolean;
   /**
    * Callback function to fire on sorting one of the table headers.
    */

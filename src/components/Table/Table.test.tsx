@@ -9,7 +9,6 @@ import { Cell } from './types';
 import Button from '../Button/Button';
 import Table from './Table';
 
-
 const columnConfig = [
   { title: 'ID', dataKey: 'id' },
   { title: 'Color', dataKey: 'color' },

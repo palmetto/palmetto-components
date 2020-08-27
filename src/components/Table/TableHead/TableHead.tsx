@@ -3,18 +3,18 @@ import classNames from 'classnames';
 
 interface TableHeadProps {
   /**
-   * Custom class to be applied to the `<thead>` element.
-   */
-  className?: string;
-  /**
    * Callback function to execute when a sortable column's header is clicked.
    */
   children?: ReactNode;
+  /**
+   * Custom class to be applied to the `<thead>` element.
+   */
+  className?: string;
 }
 
 const TableHead: FC<TableHeadProps> = ({
-  className = '',
   children = null,
+  className = '',
 }) => {
   const tableHeadClasses = classNames(className);
 
