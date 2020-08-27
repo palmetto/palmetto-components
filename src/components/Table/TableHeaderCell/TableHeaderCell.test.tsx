@@ -51,9 +51,9 @@ describe('TableBody', () => {
           </TableHeaderCell>,
         );
 
-        const sortableColumnHeader = screen.getByText('ID');
+        const tableHeaderCell = screen.getByText('ID');
 
-        fireEvent.click(sortableColumnHeader);
+        fireEvent.click(tableHeaderCell);
         expect(mockHandleSort).toHaveBeenCalledTimes(1);
       });
 
@@ -68,98 +68,91 @@ describe('TableBody', () => {
           </TableHeaderCell>,
         );
 
-        const sortableColumnHeader = screen.getByText('ID');
+        const tableHeaderCell = screen.getByText('ID');
 
-        fireEvent.keyDown(sortableColumnHeader, { keyCode: 13 });
+        fireEvent.keyDown(tableHeaderCell, { keyCode: 13 });
         expect(mockHandleSort).toHaveBeenCalledTimes(1);
       });
 
-  //     test('onSort event fires callback function on Space keydown', () => {
-  //       const mockHandleSort = jest.fn();
-  //       render(
-  //         <TableHeaderSortable
-  //           heading="ID"
-  //           id="first"
-  //           onSort={mockHandleSort}
-  //         />,
-  //       );
+      test('onSort event fires callback function on Space keydown', () => {
+        const mockHandleSort = jest.fn();
+        render(
+          <TableHeaderCell
+            isSortable
+            onSort={mockHandleSort}
+          >
+            ID
+          </TableHeaderCell>,
+        );
 
-  //       const sortableColumnHeader = screen.getByText('ID');
+        const tableHeaderCell = screen.getByText('ID');
 
-  //       fireEvent.keyDown(sortableColumnHeader, { keyCode: 32 });
-  //       expect(mockHandleSort).toHaveBeenCalledTimes(1);
-  //     });
-  //   });
+        fireEvent.keyDown(tableHeaderCell, { keyCode: 32 });
+        expect(mockHandleSort).toHaveBeenCalledTimes(1);
+      });
 
-  //   test('onSort does not fire callback function on keypresses that aren\'t Enter or space', () => {
-  //     const mockHandleSort = jest.fn();
-  //     render(
-  //       <TableHeaderSortable
-  //         heading="ID"
-  //         id="first"
-  //         onSort={mockHandleSort}
-  //       />,
-  //     );
+      test('onSort does NOT fire callback function on keydown that is not ENTER or SPACE', () => {
+        const mockHandleSort = jest.fn();
+        render(
+          <TableHeaderCell
+            isSortable
+            onSort={mockHandleSort}
+          >
+            ID
+          </TableHeaderCell>,
+        );
 
-  //     const sortableColumnHeader = screen.getByText('ID');
+        const tableHeaderCell = screen.getByText('ID');
 
-  //     fireEvent.keyDown(sortableColumnHeader, { keyCode: 1 });
-  //     expect(mockHandleSort).toHaveBeenCalledTimes(0);
-  //   });
-  // });
+        fireEvent.keyDown(tableHeaderCell, { keyCode: 77 });
+        expect(mockHandleSort).toHaveBeenCalledTimes(0);
+      });
 
-  // describe('States', () => {
-  //   describe('Default', () => {
-  //     test('it renders a sort icon', () => {
-  //       const mockHandleSort = jest.fn();
-  //       render(
-  //         <TableHeaderSortable
-  //           heading="ID"
-  //           id="first"
-  //           onSort={mockHandleSort}
-  //         />,
-  //       );
+      test('onSort does NOT fire callback when keyed unless both onSort and isSortable props are provided', () => {
+        const mockHandleSort = jest.fn();
+        render(
+          <TableHeaderCell
+            onSort={mockHandleSort}
+          >
+            ID
+          </TableHeaderCell>,
+        );
 
-  //       const sortIcon = screen.getByTestId('sort-testid');
+        const tableHeaderCell = screen.getByText('ID');
 
-  //       expect(sortIcon).toBeInTheDocument();
-  //     });
-  //   });
+        fireEvent.keyDown(tableHeaderCell, { keyCode: 32 });
+        expect(mockHandleSort).toHaveBeenCalledTimes(0);
+      });
+    });
 
-  //   describe('Sorted Descending', () => {
-  //     test('it renders a descending sort icon', () => {
-  //       const mockHandleSort = jest.fn();
-  //       render(
-  //         <TableHeaderSortable
-  //           heading="ID"
-  //           id="first"
-  //           onSort={mockHandleSort}
-  //           sortedColumn={{ id: 'first', sortOrder: 'desc' }}
-  //         />,
-  //       );
+    test('onSort does NOT fire callback when clicked unless both onSort and isSortable props are provided', () => {
+      const mockHandleSort = jest.fn();
+      render(
+        <TableHeaderCell
+          onSort={mockHandleSort}
+        >
+          ID
+        </TableHeaderCell>,
+      );
 
-  //       const sortIcon = screen.getByTestId('arrowDown-testid');
+      const tableHeaderCell = screen.getByText('ID');
 
-  //       expect(sortIcon).toBeInTheDocument();
-  //     });
-  //   });
+      fireEvent.click(tableHeaderCell);
+      expect(mockHandleSort).toHaveBeenCalledTimes(0);
+    });
 
-  //   describe('Sorted Ascending', () => {
-  //     test('it renders a ascending sort icon', () => {
-  //       const mockHandleSort = jest.fn();
-  //       render(
-  //         <TableHeaderSortable
-  //           heading="ID"
-  //           id="first"
-  //           onSort={mockHandleSort}
-  //           sortedColumn={{ id: 'first', sortOrder: 'asc' }}
-  //         />,
-  //       );
+    test('th element is rendered with specific width style atrtibute based on width prop', () => {
+      render(
+        <TableHeaderCell
+          width={200}
+        >
+          ID
+        </TableHeaderCell>,
+      );
 
-  //       const sortIcon = screen.getByTestId('arrowUp-testid');
+      const tableHeaderCell = screen.getByText('ID');
 
-  //       expect(sortIcon).toBeInTheDocument();
-  //     });
+      expect(tableHeaderCell).toHaveStyle({ width: '200px', maxWidth: '200px' });
     });
   });
 });
