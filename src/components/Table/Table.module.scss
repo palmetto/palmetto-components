@@ -21,7 +21,7 @@
     color: var(--color-font-base) !important;
 
     &.fixed-width-columns {
-      width: fit-content;
+      /* width: fit-content; */
       table-layout: fixed;
     }
   }

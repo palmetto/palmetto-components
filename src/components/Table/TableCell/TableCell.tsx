@@ -18,6 +18,7 @@ interface TableCellProps {
   isCompact?: boolean;
   truncateOverflow?: boolean;
   emptyCellPlaceholder?: ReactNode;
+  width?: number;
 }
 
 const TableCell: FC<TableCellProps> = ({
@@ -27,6 +28,7 @@ const TableCell: FC<TableCellProps> = ({
   isBorderless = false,
   isCompact = false,
   truncateOverflow = false,
+  width = undefined,
 }) => {
   const tableCellClasses = classNames(
     styles['table-cell'],
@@ -39,7 +41,10 @@ const TableCell: FC<TableCellProps> = ({
   );
 
   return (
-    <td className={tableCellClasses}>
+    <td
+      className={tableCellClasses}
+      style={{ ...width && { width: `${width}px`, maxWidth: `${width}px` } }}
+    >
       {(children === null || typeof children === 'undefined' || children === '') ? emptyCellPlaceholder : children}
     </td>
   );

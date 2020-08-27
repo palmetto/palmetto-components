@@ -167,6 +167,7 @@ const Table: FC<TableProps> = ({
               key={getColumnKeys(columns)[columnIndex]}
               isBorderless={isBorderless}
               isCompact={isCompact}
+              width={column.width}
             >
               {
                 column.render
