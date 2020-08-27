@@ -13,17 +13,17 @@ import styles from './TableHeaderCell.module.scss';
 
 interface TableHeaderCellProps {
   /**
-   * Key of corresponding data value in the dable.
-   */
-  dataKey: Key;
-  /**
    * Title to display for the column.
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * Custom class to apply to the `<th>` element.
    */
-  className: string | undefined;
+  className?: string | undefined;
+  /**
+   * Key of corresponding data value in the table.
+   */
+  dataKey?: Key;
   /**
    * Remove borders around th elements.
    */
@@ -59,9 +59,9 @@ interface TableHeaderCellProps {
 }
 
 const TableHeaderCell: FC<TableHeaderCellProps> = ({
-  dataKey,
   children = null,
   className = undefined,
+  dataKey = undefined,
   isBorderless = false,
   isCompact = false,
   isSortable = false,
@@ -72,10 +72,14 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
 }) => {
   const renderIcon = () => {
     const renderArrows = ():ReactNode => {
-      if (sortDirection === 'ascending') return <FontAwesomeIcon icon={faSortDown} data-testid="arrowDown-testid" />;
-      if (sortDirection === 'descending') return <FontAwesomeIcon icon={faSortUp} data-testid="arrowUp-testid" />;
+      if (sortDirection === 'ascending') {
+        return <FontAwesomeIcon icon={faSortUp} data-testid="tableHeaderCellSortAsc-testid" />;
+      }
+      if (sortDirection === 'descending') {
+        return <FontAwesomeIcon icon={faSortDown} data-testid="tableHeaderCellSortDesc-testid" />;
+      }
 
-      return <FontAwesomeIcon icon={faSort} data-testid="sort-testid" />;
+      return <FontAwesomeIcon icon={faSort} data-testid="tableHeaderCellSortNone-testid" />;
     };
 
     return (
@@ -118,7 +122,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   return (
     <th
       className={tableHeaderClasses}
-      style={{ ...width && { width: `${width}px` } }}
+      style={{ ...width && { width: `${width}px`, maxWidth: `${width}px` } }}
       aria-sort={sortDirection}
       tabIndex={0}
       onClick={handleSort}

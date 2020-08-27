@@ -30,4 +30,4 @@ export type EventWithColumnKey =
     MouseEvent<HTMLTableHeaderCellElement> |
     KeyboardEvent<HTMLTableHeaderCellElement>
   )
-  & { sortedKey: Key; };
+  & { sortedKey: Key | undefined; };

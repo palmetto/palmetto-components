@@ -69,6 +69,7 @@
     "@testing-library/react": "^10.0.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/classnames": "^2.2.10",
+    "@types/jest": "^26.0.10",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.41",
     "@types/react-select": "^3.0.14",

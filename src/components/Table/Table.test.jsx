@@ -125,7 +125,7 @@ describe('Table', () => {
       test('it renders 2 sortable table headers', () => {
         render(<Table columns={columnConfigSortable} rows={tableData} rowKey="id" />);
 
-        const sortableHeaders = screen.getAllByTestId('sort-testid');
+        const sortableHeaders = screen.getAllByTestId('tableHeaderCellSortNone-testid');
 
         expect(sortableHeaders).toHaveLength(2);
       });
