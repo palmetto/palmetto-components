@@ -2,6 +2,7 @@
   "name": "@palmetto/palmetto-components",
   "author": "@palmetto",
   "version": "0.0.0-development",
+  "description": "A React component library to power all Palmetto UI.",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/src/components/index.d.ts",
