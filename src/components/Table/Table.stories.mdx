@@ -363,10 +363,13 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
 <Preview>
   <Story name="Custom Actions">
     {() => {
+      const renderFlavor = (row) => (
+        <a href={row.flavor.href}>{row.flavor.name} -- {row.id}</a>
+      )
       const columnConfig = [
         { title: 'ID', dataKey: 'id' },
         { title: 'Color', dataKey: 'color' },
-        { title: 'With some JSX flavor', dataKey: 'flavor', render: (cell) => <a href={cell.href}>{cell.name}</a>},
+        { title: 'With some JSX flavor', dataKey: 'flavor', render: renderFlavor},
         { title: 'Custom JSX', render: () => <Button>My Button</Button> }
       ];
       const tableData = [

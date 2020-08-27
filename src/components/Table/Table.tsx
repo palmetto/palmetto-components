@@ -84,10 +84,10 @@ interface TableProps {
 }
 
 const Table: FC<TableProps> = ({
-  className = undefined,
   columns,
   rows,
   rowKey,
+  className = undefined,
   hoverableRows = false,
   isBorderless = false,
   isCompact = false,
@@ -163,7 +163,7 @@ const Table: FC<TableProps> = ({
             >
               {
                 column.render
-                  ? column.render(column.dataKey ? row[column.dataKey] : undefined)
+                  ? column.render(row)
                   : row[column.dataKey]
               }
             </TableCell>
