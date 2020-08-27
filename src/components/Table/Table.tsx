@@ -1,6 +1,6 @@
 import React, { FC, Key, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Column, Row, EventWithColumnKey } from './types';
+import { Column, Row, EventWithColumnKey } from './TableTypes';
 import getColumnKeys from '../../lib/getColumnKeys';
 import Spinner from '../Spinner/Spinner';
 import styles from './Table.module.scss';

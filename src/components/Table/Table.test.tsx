@@ -5,7 +5,7 @@ import {
   screen,
   within,
 } from '@testing-library/react';
-import { Cell } from './types';
+import { Cell } from './TableTypes';
 import Button from '../Button/Button';
 import Table from './Table';
 
