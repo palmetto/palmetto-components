@@ -29,6 +29,11 @@ interface TableProps {
    */
   className?: string;
   /**
+   * Global placeholder for empty cells. Can be overwritten by setting the same attribute
+   * in the `Column` config.
+   */
+  emptyCellPlaceholder?: string | number | undefined;
+  /**
    * Enable a hover state on table rows.
    */
   hoverableRows?: boolean;
@@ -88,6 +93,7 @@ const Table: FC<TableProps> = ({
   rows,
   rowKey,
   className = undefined,
+  emptyCellPlaceholder = undefined,
   hoverableRows = false,
   isBorderless = false,
   isCompact = false,
@@ -152,10 +158,11 @@ const Table: FC<TableProps> = ({
 
   const renderTableRows = (): ReactNode => (
     <>
-      {rows.map(row => (
+      {rows.map((row, rowIndex) => (
         <TableRow key={row[rowKey]}>
           {Object.values(columns).map((column, columnIndex) => (
             <TableCell
+              emptyCellPlaceholder={column.emptyCellPlaceholder || emptyCellPlaceholder}
               truncateOverflow={column.truncateOverflow || truncateOverflow}
               key={getColumnKeys(columns)[columnIndex]}
               isBorderless={isBorderless}
@@ -163,7 +170,7 @@ const Table: FC<TableProps> = ({
             >
               {
                 column.render
-                  ? column.render(row)
+                  ? column.render(row[column.dataKey], row, rowIndex)
                   : row[column.dataKey]
               }
             </TableCell>
@@ -189,7 +196,7 @@ const Table: FC<TableProps> = ({
             {renderColumnHeaders()}
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody isStriped={isStriped}>
           {renderTableRows()}
         </TableBody>
       </table>

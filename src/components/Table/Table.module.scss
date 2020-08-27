@@ -30,12 +30,6 @@
     border: none;
   }
   
-  .striped {
-    tbody tr:nth-of-type(odd) {
-      background-color: var(--color-brand-grey-lightest);
-    }
-  }
-  
   .hover {
     tbody tr:hover {
       background-color: var(--color-brand-grey-lighter);

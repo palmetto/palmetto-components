@@ -1,0 +1,7 @@
+.table-body {
+  &.striped { 
+    tr:nth-of-type(odd) {
+      background-color: var(--color-brand-grey-lightest);
+    }
+  }
+}

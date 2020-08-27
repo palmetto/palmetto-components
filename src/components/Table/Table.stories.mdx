@@ -363,19 +363,28 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
 <Preview>
   <Story name="Custom Actions">
     {() => {
-      const renderFlavor = (row) => (
-        <a href={row.flavor.href}>{row.flavor.name} -- {row.id}</a>
-      )
+      const renderFlavor = (cell, row, index) => {
+        const rows = [
+          { href: cell.href, name: cell.name, id: row.id, index, }
+        ];
+        const columns = [
+          { title: 'Url', dataKey: 'href', render: (cell) => <a href={cell}>{cell}</a> },
+          { title: 'Name', dataKey: 'name' },
+          { title: 'ID', dataKey: 'id' },
+          { title: 'Index', dataKey: 'index' },
+        ];
+        return <Table columns={columns} rows={rows} rowKey="id" isCompact />
+      };
       const columnConfig = [
         { title: 'ID', dataKey: 'id' },
         { title: 'Color', dataKey: 'color' },
-        { title: 'With some JSX flavor', dataKey: 'flavor', render: renderFlavor},
-        { title: 'Custom JSX', render: () => <Button>My Button</Button> }
+        { title: 'Render based on the record', dataKey: 'flavor', render: renderFlavor},
+        { title: 'Render anything you want', render: () => <Button>Do anything</Button> }
       ];
       const tableData = [
-        { id: 1, color: 'red', flavor: { name: 'vanilla', href: 'www.vanilla.palmetto.com' } },
-        { id: 2, color: 'blue', flavor: { name: 'chocolate', href: 'www.chocolate.palmetto.com' } },
-        { id: 3, color: 'green', flavor: { name: 'strawberry', href: 'www.strawberry.palmetto.com' } },
+        { id: 1, color: 'red', flavor: { name: 'vanilla', href: 'www.vanilla.com' } },
+        { id: 2, color: 'blue', flavor: { name: 'chocolate', href: 'www.chocolate.com' } },
+        { id: 3, color: 'green', flavor: { name: 'strawberry', href: 'www.strawberry.com' } },
       ];
       return (
         <Table
@@ -414,33 +423,35 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   </Story>
 </Preview>
 
-<!--
+
 ## Empty Cell Placeholder
+The empty cell placeholder can be set on a global level as a prop on `<Table />` or individually per column
+by adding the `emptyCellPlaceholder` to the column configuration object. In cases where both is set, the column
+placeholder takes precedence over the global placeholder. As seen in the example below where the price column uses
+`$0.00` as a placeholder where a price is missing.  
 
 <Preview>
   <Story name="Empty Cell Placeholder">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first' },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color', emptyCellPlaceholder: '--' },
+        { title: 'Flavor', dataKey: 'flavor' },
+        { title: 'Price', dataKey: 'price', render: (cell) => cell ?`$${cell}` : null, emptyCellPlaceholder: '$0.00'}
       ];
       const tableData = [
-        { id: undefined, color: 'red', flavor: 'vanilla' },
-        { id: 2, color: null, flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: '' },
+        { id: 1, color: 'red', flavor: 'vanilla', price: 10 },
+        { id: 2, color: '', flavor: 'chocolate', price: 12.21 },
+        { id: 3, color: 'green', flavor: 'strawberry', price: 9.24 },
+        { id: 3, color: 'blue', flavor: 'rocky road' },
       ];
       return (
-        <Table>
-          <TableHead columns={columnConfig} />
-          <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} emptyCellPlaceholder="--" />)}
-          </TableBody>
-        </Table>
+        <Table rowKey="id" columns={columnConfig} rows={tableData} />
       );
     }}
   </Story>
 </Preview>
+
 
 ## Borderless
 
@@ -448,9 +459,9 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   <Story name="Borderless">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first' },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
@@ -458,26 +469,22 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table isBorderless>
-          <TableHead columns={columnConfig} />
-          <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table rowKey="id" columns={columnConfig} rows={tableData} isBorderless />
       );
     }}
   </Story>
 </Preview>
+
 
 ## Compact
 
 <Preview>
-  <Story name="Compact">
+  <Story name="Compact Cells">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first' },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
@@ -485,26 +492,22 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table isCompact>
-          <TableHead columns={columnConfig} />
-          <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table rowKey="id" columns={columnConfig} rows={tableData} isCompact />
       );
     }}
   </Story>
 </Preview>
 
+
 ## Hover
 
 <Preview>
-  <Story name="Hover">
+  <Story name="Hoverable Rows">
     {() => {
       const columnConfig = [
-        { heading: 'ID', id: 'first' },
-        { heading: 'Color', id: 'second' },
-        { heading: 'Flavor', id: 'third' },
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
@@ -512,13 +515,30 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table isStriped hoverableRows>
-          <TableHead columns={columnConfig} />
-          <TableBody>
-            {tableData.map(row => <TableRow data={row} key={row.id} id={row.id} />)}
-          </TableBody>
-        </Table>
+        <Table rowKey="id" columns={columnConfig} rows={tableData} hoverableRows />
       );
     }}
   </Story>
-</Preview> -->
+</Preview>
+
+## Striped & Hoverable
+
+<Preview>
+  <Story name="Striped and Hoverable Rows">
+    {() => {
+      const columnConfig = [
+        { title: 'ID', dataKey: 'id' },
+        { title: 'Color', dataKey: 'color' },
+        { title: 'Flavor', dataKey: 'flavor' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table rowKey="id" columns={columnConfig} rows={tableData} hoverableRows isStriped />
+      );
+    }}
+  </Story>
+</Preview>

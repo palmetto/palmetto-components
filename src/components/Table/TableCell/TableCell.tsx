@@ -40,7 +40,7 @@ const TableCell: FC<TableCellProps> = ({
 
   return (
     <td className={tableCellClasses}>
-      {children || emptyCellPlaceholder}
+      {(children === null || typeof children === 'undefined' || children === '') ? emptyCellPlaceholder : children}
     </td>
   );
 };
