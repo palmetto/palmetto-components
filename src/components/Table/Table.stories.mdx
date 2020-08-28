@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Button from '../Button/Button';
@@ -80,6 +80,8 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
 <Canvas>
   <Story name="Sortable">
     {() => {
+      const sortDescending = (arrOfObj, key) => [...arrOfObj].sort((a, b) => (b[key] > a[key]) ? 1 : -1);
+      const sortAscending = (arrOfObj, key) => [...arrOfObj].sort((a, b) => (a[key] > b[key]) ? 1 : -1);
       const getNewSortDirection = (event, currentSortedColumn) => {
         if (
           event.sortedKey === currentSortedColumn.dataKey
@@ -89,19 +91,27 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
       };
       const initialData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 2, color: 'green', flavor: 'strawberry' },
+        { id: 3, color: 'blue', flavor: 'chocolate' },
       ];
       const [sortedColumn, setSortedColumn] = useState({});
-      const [tableData, setTableData] = useState([...initialData]);
+      const [tableData, setTableData] = useState(initialData);
       const handleSort = event => {
+        const newSortDirection = getNewSortDirection(event, sortedColumn);
         setSortedColumn({
           dataKey: event.sortedKey,
-          sortDirection: getNewSortDirection(event, sortedColumn),
+          sortDirection: newSortDirection,
         });
-        const sortedData = tableData.sort((a, b) => (a[event.sortedKey] > b[event.sortedKey]) ? 1 : -1)
-        setTableData(sortedData);
       };
+      useEffect(() => {
+        if (sortedColumn.dataKey && sortedColumn.sortDirection) {
+          const sortedData =
+            sortedColumn.sortDirection === 'ascending'
+            ? sortAscending(tableData, sortedColumn.dataKey)
+            : sortDescending(tableData, sortedColumn.dataKey);
+          setTableData(sortedData);
+        }
+      }, [sortedColumn]);
       const columnConfig = [
         { title: 'ID', dataKey: 'id', isSortable: true },
         { title: 'Color', dataKey: 'color', isSortable: true },
@@ -126,6 +136,8 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
 <Canvas>
   <Story name="Sortable with Default Sorted Column">
     {() => {
+      const sortDescending = (arrOfObj, key) => [...arrOfObj].sort((a, b) => (b[key] > a[key]) ? 1 : -1);
+      const sortAscending = (arrOfObj, key) => [...arrOfObj].sort((a, b) => (a[key] > b[key]) ? 1 : -1);
       const getNewSortDirection = (event, currentSortedColumn) => {
         if (
           event.sortedKey === currentSortedColumn.dataKey
@@ -135,19 +147,31 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
       };
       const initialData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 2, color: 'green', flavor: 'strawberry' },
+        { id: 3, color: 'blue', flavor: 'chocolate' },
       ];
-      const [sortedColumn, setSortedColumn] = useState({ dataKey: 'id', sortDirection: 'ascending' });
-      const [tableData, setTableData] = useState([...initialData]);
+      const [sortedColumn, setSortedColumn] = useState({ dataKey: 'color', sortDirection: 'descending' });
+      const [tableData, setTableData] = useState([
+        ...sortedColumn.sortDirecton === 'ascending'
+        ? sortAscending(initialData, sortedColumn.dataKey)
+        : sortDescending(initialData, sortedColumn.dataKey)
+      ]);
       const handleSort = event => {
+        const newSortDirection = getNewSortDirection(event, sortedColumn);
         setSortedColumn({
           dataKey: event.sortedKey,
-          sortDirection: getNewSortDirection(event, sortedColumn),
+          sortDirection: newSortDirection,
         });
-        const sortedData = tableData.sort((a, b) => (a[event.sortedKey] > b[event.sortedKey]) ? 1 : -1)
-        setTableData(sortedData);
       };
+      useEffect(() => {
+        if (sortedColumn.dataKey && sortedColumn.sortDirection) {
+          const sortedData =
+            sortedColumn.sortDirection === 'ascending'
+            ? sortAscending(tableData, sortedColumn.dataKey)
+            : sortDescending(tableData, sortedColumn.dataKey);
+          setTableData(sortedData);
+        }
+      }, [sortedColumn]);
       const columnConfig = [
         { title: 'ID', dataKey: 'id', isSortable: true },
         { title: 'Color', dataKey: 'color', isSortable: true },
@@ -174,6 +198,8 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
 <Canvas>
   <Story name="Sortable and Loading">
     {() => {
+      const sortDescending = (arrOfObj, key) => [...arrOfObj].sort((a, b) => (b[key] > a[key]) ? 1 : -1);
+      const sortAscending = (arrOfObj, key) => [...arrOfObj].sort((a, b) => (a[key] > b[key]) ? 1 : -1);
       const getNewSortDirection = (event, currentSortedColumn) => {
         if (
           event.sortedKey === currentSortedColumn.dataKey
@@ -183,19 +209,27 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
       };
       const initialData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 2, color: 'green', flavor: 'strawberry' },
+        { id: 3, color: 'blue', flavor: 'chocolate' },
       ];
-      const [sortedColumn, setSortedColumn] = useState({ dataKey: 'id', sortDirection: 'ascending' });
-      const [tableData, setTableData] = useState([...initialData]);
+      const [sortedColumn, setSortedColumn] = useState({});
+      const [tableData, setTableData] = useState(initialData);
       const handleSort = event => {
+        const newSortDirection = getNewSortDirection(event, sortedColumn);
         setSortedColumn({
           dataKey: event.sortedKey,
-          sortDirection: getNewSortDirection(event, sortedColumn),
+          sortDirection: newSortDirection,
         });
-        const sortedData = tableData.sort((a, b) => (a[event.sortedKey] > b[event.sortedKey]) ? 1 : -1)
-        setTableData(sortedData);
       };
+      useEffect(() => {
+        if (sortedColumn.dataKey && sortedColumn.sortDirection) {
+          const sortedData =
+            sortedColumn.sortDirection === 'ascending'
+            ? sortAscending(tableData, sortedColumn.dataKey)
+            : sortDescending(tableData, sortedColumn.dataKey);
+          setTableData(sortedData);
+        }
+      }, [sortedColumn])
       const columnConfig = [
         { title: 'ID', dataKey: 'id', isSortable: true },
         { title: 'Color', dataKey: 'color', isSortable: true },
@@ -462,7 +496,7 @@ placeholder takes precedence over the global placeholder. As seen in the example
         { id: 1, color: 'red', flavor: 'vanilla', price: 10 },
         { id: 2, color: '', flavor: 'chocolate', price: 12.21 },
         { id: 3, color: 'green', flavor: 'strawberry', price: 9.24 },
-        { id: 3, color: 'blue', flavor: 'rocky road' },
+        { id: 4, color: 'blue', flavor: 'rocky road' },
       ];
       return (
         <Table 
