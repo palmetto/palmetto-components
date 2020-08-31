@@ -49,7 +49,7 @@ For example, opening a PR to master with the commit message `fix: Resolve bug` w
 
 The link above provides full documentation for this workflow. However, a comprehensive list of the prefix types, and their intended uses are provide below for quick reference:
 
-### Types
+### Release Types
 Must be one of the following:
 
 * **feat**: A new feature
