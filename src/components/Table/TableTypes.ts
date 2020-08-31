@@ -4,6 +4,7 @@ import {
   MouseEvent,
   KeyboardEvent,
 } from 'react';
+import { UnknownPropertiesObjType } from '../../lib/types';
 
 export interface Column {
   heading?: string;
@@ -12,18 +13,12 @@ export interface Column {
   emptyCellPlaceholder?: string | number | undefined;
   key?: Key;
   isSortable?: boolean;
-  sortDirection?: 'none' | 'ascending' | 'descending';
   width?: number;
   truncateOverflow?: boolean;
-  render?: (cell?: Cell, row?: Row, index?: number) => ReactNode;
+  render?: (cell?: Cell, row?: Row, rowIndex?: number) => ReactNode;
 }
 
-export type SortedColumnType = {
-  id: string;
-  sortOrder: 'asc' | 'desc';
-};
-
-export type Row = { [key: string]: any; } // eslint-disable-line @typescript-eslint/no-explicit-any
+export type Row = UnknownPropertiesObjType
 
 export type Cell = string | number | { [key: string]: unknown; } | unknown[];
 

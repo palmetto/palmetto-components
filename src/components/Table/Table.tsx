@@ -8,7 +8,7 @@ import TableHead from './TableHead/TableHead';
 
 interface TableProps {
   /**
-   * Columns for the table
+   * Columns for the table. See Column definition below for details.
    */
   columns: Column[];
   /**
@@ -54,7 +54,9 @@ interface TableProps {
    */
   onSort?: (event: EventWithColumnKey) => void;
   /**
-   * Scroll position.
+   * Set the maximum width and height and enable scrolling within the container when the table grows
+   * past those values. Useful for when we want to render a large table but not force the parent container
+   * to grow and instead make the user scroll.
    */
   scroll?: {
     x: number | undefined;

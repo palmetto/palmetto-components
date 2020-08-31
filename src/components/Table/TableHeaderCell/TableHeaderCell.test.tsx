@@ -40,7 +40,7 @@ describe('TableHeaderCell', () => {
       expect(screen.getByTestId('tableHeaderCellSortDesc-testid')).toBeInTheDocument();
     });
 
-    test('th element is rendered with specific width style atrtibute based on width prop', () => {
+    test('th element is rendered with specific width style attribute based on width prop', () => {
       render(
         <TableHeaderCell
           column={column}
