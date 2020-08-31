@@ -1,13 +1,10 @@
-import React, { FC, Key, ReactNode } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 import { Column, Row, EventWithColumnKey } from './TableTypes';
-import getColumnKeys from '../../lib/getColumnKeys';
 import Spinner from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 import TableBody from './TableBody/TableBody';
 import TableHead from './TableHead/TableHead';
-import TableRow from './TableRow/TableRow';
-import TableHeaderCell from './TableHeaderCell/TableHeaderCell';
 
 interface TableProps {
   /**
@@ -71,15 +68,15 @@ interface TableProps {
     sortDirection: 'none' | 'ascending' | 'descending' | undefined;
   };
   /**
-   * Fix the width of the columns. Can be useful if sorting is enabled and the content of
-   * the columns is changing; prevents the horizontal jump when this occurres.
-   */
-  useFixedWidthColumns?: boolean;
-  /**
    * Truncate overflow inside column based on column width. Can be overwritten on specific columns,
    * by passing `truncateOverflow` value on a specific Column
    */
   truncateOverflow?: boolean;
+  /**
+   * Fix the width of the columns. Can be useful if sorting is enabled and the content of
+   * the columns is changing; prevents the horizontal jump when this occurres.
+   */
+  useFixedWidthColumns?: boolean;
 }
 
 const Table: FC<TableProps> = ({

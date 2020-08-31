@@ -8,10 +8,14 @@ import React, {
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
-import { EventWithColumnKey } from '../TableTypes';
+import { Column, EventWithColumnKey } from '../TableTypes';
 import styles from './TableHeaderCell.module.scss';
 
 interface TableHeaderCellProps {
+  /**
+   * Title to display for the column.
+   */
+  column: Column;
   /**
    * Title to display for the column.
    */
@@ -45,9 +49,12 @@ interface TableHeaderCellProps {
    */
   onSort?: (event: EventWithColumnKey) => void;
   /**
-   * The current sorted column.
+   * The key of the sorted column and its sort direction.
    */
-  sortDirection?: 'ascending' | 'descending' | 'none';
+  sortedColumn?: {
+    dataKey: string | undefined;
+    sortDirection: 'none' | 'ascending' | 'descending' | undefined;
+  };
   /**
    * Whether the text should be cut off with ellipsis if it exceeds the width of the column.
    */
@@ -59,23 +66,31 @@ interface TableHeaderCellProps {
 }
 
 const TableHeaderCell: FC<TableHeaderCellProps> = ({
-  children = null,
+  column,
   className = undefined,
   dataKey = undefined,
   isBorderless = false,
   isCompact = false,
   isSortable = false,
   onSort = undefined,
-  sortDirection = 'none',
+  sortedColumn = undefined,
   truncateOverflow = false,
   width = undefined,
 }) => {
-  const renderIcon = () => {
+  const isColumnSorted = (columnDataKey: Key | undefined): boolean => (
+    !!sortedColumn && sortedColumn.dataKey === columnDataKey
+  );
+
+  const getSortDirection = (): ('ascending' | 'descending' | 'none' | undefined) => (
+    sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'
+  );
+
+  const renderIcon = (): ReactNode => {
     const renderArrows = ():ReactNode => {
-      if (sortDirection === 'ascending') {
+      if (getSortDirection() === 'ascending') {
         return <FontAwesomeIcon icon={faSortUp} data-testid="tableHeaderCellSortAsc-testid" />;
       }
-      if (sortDirection === 'descending') {
+      if (getSortDirection() === 'descending') {
         return <FontAwesomeIcon icon={faSortDown} data-testid="tableHeaderCellSortDesc-testid" />;
       }
 
@@ -123,12 +138,12 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
     <th
       className={tableHeaderClasses}
       style={{ ...width && { width: `${width}px`, maxWidth: `${width}px` } }}
-      aria-sort={sortDirection}
+      aria-sort={sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'}
       tabIndex={0}
       onClick={handleSort}
       onKeyDown={handleKeyPress}
     >
-      {children}
+      {column.title}
       {isSortable && renderIcon()}
     </th>
   );

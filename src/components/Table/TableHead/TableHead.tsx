@@ -1,8 +1,7 @@
-import React, { FC, Key } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 import { Column, EventWithColumnKey } from '../TableTypes';
-import getColumnKeys from '../../../lib/getColumnKeys';
-import TableHeaderCell from '../TableHeaderCell/TableHeaderCell';
+import TableRow from '../TableRow/TableRow';
 
 interface TableHeadProps {
   /**
@@ -54,30 +53,20 @@ const TableHead: FC<TableHeadProps> = ({
   truncateOverflow = false,
   useFixedWidthColumns = false,
 }) => {
-  const isColumnSorted = (columnDataKey: Key | undefined): boolean => (
-    !!sortedColumn && sortedColumn.dataKey === columnDataKey
-  );
-
   const tableHeadClasses = classNames(className);
 
   return (
     <thead className={tableHeadClasses}>
-      {Object.values(columns).map((column, columnIndex) => (
-        <TableHeaderCell
-          key={getColumnKeys(columns)[columnIndex]}
-          dataKey={column.dataKey}
-          className={column.className}
-          isSortable={column.isSortable}
-          onSort={onSort}
-          isBorderless={isBorderless}
-          isCompact={isCompact}
-          sortDirection={sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'}
-          truncateOverflow={column.truncateOverflow || truncateOverflow}
-          width={useFixedWidthColumns ? column.width : undefined}
-        >
-          {column.title}
-        </TableHeaderCell>
-      ))}
+      <TableRow
+        columns={columns}
+        isTableHead
+        isBorderless={isBorderless}
+        isCompact={isCompact}
+        onSort={onSort}
+        sortedColumn={sortedColumn}
+        truncateOverflow={truncateOverflow}
+        useFixedWidthColumns={useFixedWidthColumns}
+      />
     </thead>
   );
 };

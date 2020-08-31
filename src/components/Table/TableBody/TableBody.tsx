@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, Key } from 'react';
+import React, { FC, Key } from 'react';
 import classNames from 'classnames';
 import styles from './TableBody.module.scss';
 import { Column, Row } from '../TableTypes';

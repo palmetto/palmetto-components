@@ -1,23 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './TableRow.module.scss';
-import { Column, Row } from '../TableTypes';
+import { Column, EventWithColumnKey, Row } from '../TableTypes';
 import getColumnKeys from '../../../lib/getColumnKeys';
 import TableCell from '../TableCell/TableCell';
+import TableHeaderCell from '../TableHeaderCell/TableHeaderCell';
 
 interface TableRowProps {
   /**
    * The table columns to be rendered
    */
   columns: Column[];
-  /**
-   * The unique key to identify a React node for each row.
-   */
-  rowIndex: number;
-  /**
-   * The table rows to be rendered
-   */
-  row: Row;
   /**
    * Custom class to be applied to `<tr>` element.
    */
@@ -40,6 +33,29 @@ interface TableRowProps {
    */
   isHoverable?: boolean;
   /**
+   * Whether the row is inside the table head (thead).
+   */
+  isTableHead?: boolean;
+   /**
+   * Callback function to fire on sorting one of the table headers.
+   */
+  onSort?: (event: EventWithColumnKey) => void;
+  /**
+   * The specific row to be rendered.
+   */
+  row?: Row;
+  /**
+   * The unique key to identify a React node for each row.
+   */
+  rowIndex?: number;
+  /**
+   * The key of the sorted column and its sort direction.
+   */
+  sortedColumn?: {
+    dataKey: string | undefined;
+    sortDirection: 'none' | 'ascending' | 'descending' | undefined;
+  };
+  /**
    * Truncate overflow inside column based on column width. Can be overwritten on specific columns,
    * by passing `truncateOverflow` value on a specific Column
    */
@@ -53,13 +69,16 @@ interface TableRowProps {
 
 const TableRow: FC<TableRowProps> = ({
   columns,
-  row,
-  rowIndex,
   className = '',
   emptyCellPlaceholder = '',
   isBorderless = false,
   isCompact = false,
   isHoverable = false,
+  isTableHead = false,
+  onSort = undefined,
+  sortedColumn = undefined,
+  row = undefined,
+  rowIndex = undefined,
   truncateOverflow = false,
   useFixedWidthColumns = false,
 }) => {
@@ -69,24 +88,44 @@ const TableRow: FC<TableRowProps> = ({
     className,
   );
 
+  const renderCellContent = (column: Column):ReactNode => {
+    if (column.render) {
+      const cellValue = column.dataKey && row ? row[column.dataKey] : undefined;
+      return column.render(cellValue, row, rowIndex);
+    }
+
+    return column.dataKey && row ? row[column.dataKey] : null;
+  };
+
   return (
     <tr className={tableRowClasses}>
       {Object.values(columns).map((column, columnIndex) => (
-        <TableCell
-          emptyCellPlaceholder={column.emptyCellPlaceholder || emptyCellPlaceholder}
-          truncateOverflow={column.truncateOverflow || truncateOverflow}
-          key={getColumnKeys(columns)[columnIndex]}
-          isBorderless={isBorderless}
-          isCompact={isCompact}
-          width={useFixedWidthColumns ? column.width : undefined}
-        >
-          {
-            /* eslint-disable-next-line no-nested-ternary */
-            column.render
-              ? column.render((column.dataKey ? row[column.dataKey] : undefined), row, rowIndex)
-              : (column.dataKey ? row[column.dataKey] : null)
-          }
-        </TableCell>
+        isTableHead ? (
+          <TableHeaderCell
+            column={column}
+            key={getColumnKeys(columns)[columnIndex]}
+            dataKey={column.dataKey}
+            className={column.className}
+            isSortable={column.isSortable}
+            onSort={onSort}
+            isBorderless={isBorderless}
+            isCompact={isCompact}
+            sortedColumn={sortedColumn}
+            truncateOverflow={column.truncateOverflow || truncateOverflow}
+            width={useFixedWidthColumns ? column.width : undefined}
+          />
+        ) : (
+          <TableCell
+            emptyCellPlaceholder={column.emptyCellPlaceholder || emptyCellPlaceholder}
+            truncateOverflow={column.truncateOverflow || truncateOverflow}
+            key={getColumnKeys(columns)[columnIndex]}
+            isBorderless={isBorderless}
+            isCompact={isCompact}
+            width={useFixedWidthColumns ? column.width : undefined}
+          >
+            {renderCellContent(column)}
+          </TableCell>
+        )
       ))}
     </tr>
   );
