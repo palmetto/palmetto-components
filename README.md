@@ -1,7 +1,6 @@
 # Palmetto Components [![Publish To NPM](https://github.com/palmetto/palmetto-components/workflows/Publish%20To%20NPM/badge.svg)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3A%22Publish+To+NPM%22) [![Chromatic](https://github.com/palmetto/palmetto-components/workflows/Chromatic/badge.svg?branch=master)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3AChromatic) [![Test Coverage](https://api.codeclimate.com/v1/badges/e61e897623b87d91d155/test_coverage)](https://codeclimate.com/github/palmetto/palmetto-components/test_coverage)
 
 A React component library to power all Palmetto UI. 
----
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -19,7 +18,6 @@ A React component library to power all Palmetto UI.
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Quick Start
----
 
 ### 1. Install
 `yarn add @palmetto/palmetto-components`
@@ -36,17 +34,14 @@ A React component library to power all Palmetto UI.
 
 
 ## Documentation / Storybook
----
 
 [SEE FULL DOCS HERE](https://master--5ed9214b642dc10022b50a2d.chromatic.com)
 
 ## Contributing
----
 
 Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/develop/.github/CONTRIBUTING.md) for contribution guide.
 
 ## Releases
----
 
 Palmetto-Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in package.json, and creating a new release tag in GitHub for each release, releases are automatically triggered by prefixing the commit message when merging to master. Upon triggering a release, the package version is bumped depending on the type of release specified, a release tag is created in GitHub, and the new version is automatically published to npm.
 
