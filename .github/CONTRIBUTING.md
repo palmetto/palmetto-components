@@ -1,3 +1,23 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Raising an Issue](#raising-an-issue)
+- [Submitting a Pull Request](#submitting-a-pull-request)
+  - [Principles](#principles)
+    - [1. Desktop and Mobile support](#1-desktop-and-mobile-support)
+    - [2. Accessibility](#2-accessibility)
+    - [3. When writing styles, do not deviate from existing tokens found in palmetto-design-tokens library](#3-when-writing-styles-do-not-deviate-from-existing-tokens-found-in-palmetto-design-tokens-library)
+  - [JS Style Guide](#js-style-guide)
+  - [Sass/CSS Style Guide](#sasscss-style-guide)
+  - [Writing Components](#writing-components)
+  - [Writing Documentation / Stories](#writing-documentation--stories)
+  - [Testing Components](#testing-components)
+  - [Publishing components](#publishing-components)
+- [Development Setup](#development-setup)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 > Thanks for contributing!
 
 # Raising an Issue
