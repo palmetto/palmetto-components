@@ -120,7 +120,6 @@ const Table: FC<TableProps> = ({
       [styles.striped]: isStriped,
       [styles.borderless]: isBorderless,
       [styles.compact]: isCompact,
-      [styles.hover]: hoverableRows,
     },
   );
 
@@ -151,6 +150,7 @@ const Table: FC<TableProps> = ({
           rowKey={rowKey}
           isStriped={isStriped}
           emptyCellPlaceholder={emptyCellPlaceholder}
+          hoverableRows={hoverableRows}
           truncateOverflow={truncateOverflow}
           isBorderless={isBorderless}
           isCompact={isCompact}

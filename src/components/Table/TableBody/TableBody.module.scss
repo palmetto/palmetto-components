@@ -4,4 +4,10 @@
       background-color: var(--color-brand-grey-lightest);
     }
   }
+
+  &.hover {
+    tr:hover {
+      background-color: var(--color-brand-grey-lighter);
+    }
+  }
 }

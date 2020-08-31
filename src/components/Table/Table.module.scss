@@ -29,12 +29,6 @@
   .borderless {
     border: none;
   }
-  
-  .hover {
-    tbody tr:hover {
-      background-color: var(--color-brand-grey-lighter);
-    }
-  }
 
   &.scroll {
     display: block;

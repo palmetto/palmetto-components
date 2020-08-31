@@ -27,6 +27,10 @@ interface TableBodyProps {
    */
   emptyCellPlaceholder?: string | number | undefined;
   /**
+   * Enable a hover state on table rows.
+   */
+  hoverableRows?: boolean;
+  /**
    * Whether the table has borders or not.
    */
   isBorderless?: boolean;
@@ -56,6 +60,7 @@ const TableBody: FC<TableBodyProps> = ({
   rows,
   className = '',
   emptyCellPlaceholder = '',
+  hoverableRows = false,
   isBorderless = false,
   isCompact = false,
   isStriped = false,
@@ -64,7 +69,10 @@ const TableBody: FC<TableBodyProps> = ({
 }) => {
   const tableBodyClasses = classNames(
     styles['table-body'],
-    { [styles.striped]: isStriped },
+    {
+      [styles.striped]: isStriped,
+      [styles.hover]: hoverableRows,
+    },
     className,
   );
 
