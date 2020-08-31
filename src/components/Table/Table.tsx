@@ -8,7 +8,6 @@ import TableBody from './TableBody/TableBody';
 import TableHead from './TableHead/TableHead';
 import TableRow from './TableRow/TableRow';
 import TableHeaderCell from './TableHeaderCell/TableHeaderCell';
-import TableCell from './TableCell/TableCell';
 
 interface TableProps {
   /**
@@ -126,57 +125,6 @@ const Table: FC<TableProps> = ({
     },
   );
 
-  const isColumnSorted = (columnDataKey: Key | undefined): boolean => (
-    !!sortedColumn && sortedColumn.dataKey === columnDataKey
-  );
-
-  const renderColumnHeaders = (): ReactNode => (
-    <>
-      {Object.values(columns).map((column, columnIndex) => (
-        <TableHeaderCell
-          key={getColumnKeys(columns)[columnIndex]}
-          dataKey={column.dataKey}
-          className={column.className}
-          isSortable={column.isSortable}
-          onSort={onSort}
-          isBorderless={isBorderless}
-          isCompact={isCompact}
-          sortDirection={sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'}
-          truncateOverflow={column.truncateOverflow || truncateOverflow}
-          width={useFixedWidthColumns ? column.width : undefined}
-        >
-          {column.title}
-        </TableHeaderCell>
-      ))}
-    </>
-  );
-
-  const renderTableRows = (): ReactNode => (
-    <>
-      {rows.map((row, rowIndex) => (
-        <TableRow key={row[rowKey]}>
-          {Object.values(columns).map((column, columnIndex) => (
-            <TableCell
-              emptyCellPlaceholder={column.emptyCellPlaceholder || emptyCellPlaceholder}
-              truncateOverflow={column.truncateOverflow || truncateOverflow}
-              key={getColumnKeys(columns)[columnIndex]}
-              isBorderless={isBorderless}
-              isCompact={isCompact}
-              width={useFixedWidthColumns ? column.width : undefined}
-            >
-              {
-                /* eslint-disable-next-line no-nested-ternary */
-                column.render
-                  ? column.render((column.dataKey ? row[column.dataKey] : undefined), row, rowIndex)
-                  : (column.dataKey ? row[column.dataKey] : null)
-              }
-            </TableCell>
-          ))}
-        </TableRow>
-      ))}
-    </>
-  );
-
   return (
     <div
       className={tableContainerClasses}
@@ -189,14 +137,26 @@ const Table: FC<TableProps> = ({
         </div>
       )}
       <table className={tableClasses}>
-        <TableHead>
-          <TableRow>
-            {renderColumnHeaders()}
-          </TableRow>
-        </TableHead>
-        <TableBody isStriped={isStriped}>
-          {renderTableRows()}
-        </TableBody>
+        <TableHead
+          columns={columns}
+          onSort={onSort}
+          isBorderless={isBorderless}
+          isCompact={isCompact}
+          sortedColumn={sortedColumn}
+          truncateOverflow={truncateOverflow}
+          useFixedWidthColumns={useFixedWidthColumns}
+        />
+        <TableBody
+          rows={rows}
+          columns={columns}
+          rowKey={rowKey}
+          isStriped={isStriped}
+          emptyCellPlaceholder={emptyCellPlaceholder}
+          truncateOverflow={truncateOverflow}
+          isBorderless={isBorderless}
+          isCompact={isCompact}
+          useFixedWidthColumns={useFixedWidthColumns}
+        />
       </table>
     </div>
   );
