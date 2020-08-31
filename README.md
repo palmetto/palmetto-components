@@ -13,7 +13,8 @@ A React component library to power all Palmetto UI.
   - [3. Use in React component](#3-use-in-react-component)
 - [Documentation / Storybook](#documentation--storybook)
 - [Contributing](#contributing)
-- [Pre-commit Test5](#pre-commit-test5)
+- [Releases](#releases)
+  - [Type](#type)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
