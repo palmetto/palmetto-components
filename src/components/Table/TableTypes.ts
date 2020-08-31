@@ -6,7 +6,7 @@ import {
 } from 'react';
 
 export interface Column {
-  title?: string;
+  heading?: string;
   dataKey?: string;
   className?: string;
   emptyCellPlaceholder?: string | number | undefined;

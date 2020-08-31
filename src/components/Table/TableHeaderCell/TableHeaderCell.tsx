@@ -143,7 +143,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       onClick={handleSort}
       onKeyDown={handleKeyPress}
     >
-      {column.title}
+      {column.heading}
       {isSortable && renderIcon()}
     </th>
   );
