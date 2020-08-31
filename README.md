@@ -14,7 +14,7 @@ A React component library to power all Palmetto UI.
   - [3. Use in React component](#3-use-in-react-component)
 - [Documentation / Storybook](#documentation--storybook)
 - [Contributing](#contributing)
-- [Pre-commit](#pre-commit)
+- [Pre-commit Test3](#pre-commit-test3)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -40,7 +40,7 @@ A React component library to power all Palmetto UI.
 ## Contributing
 Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/develop/.github/CONTRIBUTING.md) for contribution guide.
 
-## Pre-commit Test3
+## Pre-commit Test4
 TestTestTest
 
 
