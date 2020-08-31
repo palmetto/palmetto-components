@@ -7,7 +7,7 @@ import {
 import TableHeaderCell from './TableHeaderCell';
 
 const column = {
-  title: 'ID',
+  heading: 'ID',
   dataKey: 'id',
 };
 

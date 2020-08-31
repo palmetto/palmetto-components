@@ -10,15 +10,15 @@ import Button from '../Button/Button';
 import Table from './Table';
 
 const columnConfig = [
-  { title: 'ID', dataKey: 'id' },
-  { title: 'Color', dataKey: 'color' },
-  { title: 'Flavor', dataKey: 'flavor' },
+  { heading: 'ID', dataKey: 'id' },
+  { heading: 'Color', dataKey: 'color' },
+  { heading: 'Flavor', dataKey: 'flavor' },
 ];
 
 const columnConfigSortable = [
-  { title: 'ID', dataKey: 'id', isSortable: true },
-  { title: 'Color', dataKey: 'color' },
-  { title: 'Flavor', dataKey: 'flavor', isSortable: true },
+  { heading: 'ID', dataKey: 'id', isSortable: true },
+  { heading: 'Color', dataKey: 'color' },
+  { heading: 'Flavor', dataKey: 'flavor', isSortable: true },
 ];
 
 const tableData = [
@@ -76,7 +76,7 @@ describe('Table', () => {
         expect(rows).toHaveLength(3);
       });
 
-      test(`it renders 3 headings that match columns titles: ${[...columnConfig.map(c => `${c.title}, `)]}`, () => {
+      test(`it renders 3 headings that match columns headings: ${[...columnConfig.map(c => `${c.heading}, `)]}`, () => {
         render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
         const idHeader = screen.getByText('ID');
@@ -224,9 +224,9 @@ describe('Table', () => {
     describe('Column with no corresponding data key', () => {
       test('it renders a column despite not matching a data key in the rows collection', () => {
         const columnConfigNoKey = [
-          { title: 'ID', dataKey: 'id', isSortable: true },
-          { title: 'Color', dataKey: 'color' },
-          { title: 'Flavor', isSortable: true },
+          { heading: 'ID', dataKey: 'id', isSortable: true },
+          { heading: 'Color', dataKey: 'color' },
+          { heading: 'Flavor', isSortable: true },
         ];
 
         render(
@@ -245,9 +245,9 @@ describe('Table', () => {
     describe('Column with render method', () => {
       test('it renders a column with a custom render method', () => {
         const columnConfigRender = [
-          { title: 'ID', dataKey: 'id', isSortable: true },
-          { title: 'Color', dataKey: 'color' },
-          { title: 'Flavor', isSortable: true, render: () => <button type="submit">Submit</button> },
+          { heading: 'ID', dataKey: 'id', isSortable: true },
+          { heading: 'Color', dataKey: 'color' },
+          { heading: 'Flavor', isSortable: true, render: () => <button type="submit">Submit</button> },
         ];
 
         render(
@@ -266,9 +266,9 @@ describe('Table', () => {
     describe('Column with render method based on row', () => {
       test('it renders a column with a custom render method', () => {
         const columnConfigRender = [
-          { title: 'ID', dataKey: 'id', isSortable: true },
-          { title: 'Color', dataKey: 'color' },
-          { title: 'Flavor', dataKey: 'flavor', render: (cell?: Cell) => <button type="submit">{cell}</button> },
+          { heading: 'ID', dataKey: 'id', isSortable: true },
+          { heading: 'Color', dataKey: 'color' },
+          { heading: 'Flavor', dataKey: 'flavor', render: (cell?: Cell) => <button type="submit">{cell}</button> },
         ];
 
         render(
