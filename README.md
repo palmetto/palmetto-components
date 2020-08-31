@@ -40,7 +40,7 @@ A React component library to power all Palmetto UI.
 Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/develop/.github/CONTRIBUTING.md) for contribution guide.
 
 ## Pre-commit Test
-Test
+Tes
 
 
 
