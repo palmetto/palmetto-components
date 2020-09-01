@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import TableHead from './TableHead';
 
 const columns = [
-  { title: 'ID', dataKey: 'id' },
-  { title: 'Color', dataKey: 'color' },
-  { title: 'Flavor', dataKey: 'flavor' },
+  { heading: 'ID', dataKey: 'id' },
+  { heading: 'Color', dataKey: 'color' },
+  { heading: 'Flavor', dataKey: 'flavor' },
 ];
 
 describe('TableHead', () => {

@@ -6,9 +6,9 @@ import {
 import TableBody from './TableBody';
 
 const columns = [
-  { title: 'ID', dataKey: 'id' },
-  { title: 'Color', dataKey: 'color' },
-  { title: 'Flavor', dataKey: 'flavor' },
+  { heading: 'ID', dataKey: 'id' },
+  { heading: 'Color', dataKey: 'color' },
+  { heading: 'Flavor', dataKey: 'flavor' },
 ];
 
 const rows = [

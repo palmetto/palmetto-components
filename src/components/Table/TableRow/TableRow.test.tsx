@@ -5,8 +5,8 @@ import TableRow from './TableRow';
 const row = { id: 1, flavor: 'vanilla' };
 const rowIndex = 1;
 const columns = [
-  { title: 'ID', dataKey: 'id' },
-  { title: 'Flavor', dataKey: 'flavor' },
+  { heading: 'ID', dataKey: 'id' },
+  { heading: 'Flavor', dataKey: 'flavor' },
 ];
 
 describe('TableRow', () => {
