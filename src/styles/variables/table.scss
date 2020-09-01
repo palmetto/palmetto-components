@@ -1,0 +1,18 @@
+:root {
+  --table-color: var(--color-font-base);
+  --table-border-color: var(--color-brand-grey-lighter);
+
+  --table-padding-horizontal: var(--size-spacing-sm);
+  --table-padding-vertical: var(--size-spacing-sm);
+  --table-padding-horizontal-compact: var(--size-spacing-xs);
+  --table-padding-vertical-compact: var(--size-spacing-xs);
+
+  --table-header-color: var(--color-font-base);
+  --table-header-font-size: var(--size-font-xs);
+  --table-header-sort-icon-spacing: var(--size-spacing-xs);
+
+  --table-cell-font-size: var(--size-font-sm);
+
+  --table-row-hover-background: var(--color-brand-grey-lightest);
+  --table-row-striped-background: var(--color-brand-grey-lightest);
+}

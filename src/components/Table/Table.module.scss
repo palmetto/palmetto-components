@@ -1,5 +1,4 @@
 .container {
-  display: inline-block;
   position: relative;
 
   .loading-mask {
@@ -16,16 +15,17 @@
 
   .table {
     cursor: default;
+    width: 100%;
     border-collapse: collapse;
     white-space: normal;
-    color: var(--color-font-base) !important;
+    color: var(--table-color) !important;
 
     &.fixed-width-columns {
       /* width: fit-content; */
       table-layout: fixed;
     }
   }
-  
+
   .borderless {
     border: none;
   }
@@ -43,10 +43,8 @@
       overflow-y: auto;
     }
 
-    > .table-bordered {
+    >.table-bordered {
       border: 0;
     }
   }
 }
-
-
