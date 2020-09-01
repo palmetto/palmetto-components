@@ -34,7 +34,6 @@
 
 `import { TextInput } from '@palmetto/palmetto-components'`
 
-
 ## Documentation / Storybook
 
 [SEE FULL DOCS HERE](https://master--5ed9214b642dc10022b50a2d.chromatic.com)
