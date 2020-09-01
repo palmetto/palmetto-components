@@ -6,7 +6,7 @@ import {
 } from 'react';
 import { UnknownPropertiesObjType } from '../../lib/types';
 
-export interface Column {
+export type Column = {
   heading?: string;
   dataKey?: string;
   className?: string;
