@@ -26,7 +26,7 @@
 ### 2. import global css
 
 ```
-import '@palmetto/palmetto-components/dist/css/utilities.css';
+@import '@palmetto/palmetto-components/dist/css/utilities.css';
 import '@palmetto/palmetto-components/dist/css/variables.css';
 ```
 
@@ -42,7 +42,6 @@ import '@palmetto/palmetto-components/dist/css/variables.css';
 ## Contributing
 
 Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/master/docs/CONTRIBUTING.md) for contribution guide.
-
 
 
 
