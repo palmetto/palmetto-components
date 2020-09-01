@@ -43,7 +43,9 @@
     "semantic-release": "semantic-release",
     "generate-docs": "yarn doctoc docs/CONTRIBUTING.md"
   },
-  "pre-commit": [ "generate-docs" ],
+  "pre-commit": [
+    "generate-docs"
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
