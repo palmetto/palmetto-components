@@ -17,10 +17,6 @@ interface TableHeaderCellProps {
    */
   column: Column;
   /**
-   * Title to display for the column.
-   */
-  children?: ReactNode;
-  /**
    * Custom class to apply to the `<th>` element.
    */
   className?: string | undefined;
