@@ -18,7 +18,7 @@ export type Column = {
   render?: (cell?: Cell, row?: Row, rowIndex?: number) => ReactNode;
 }
 
-export type Row = UnknownPropertiesObjType
+export type Row = UnknownPropertiesObjType;
 
 export type Cell = string | number | { [key: string]: unknown; } | unknown[];
 
