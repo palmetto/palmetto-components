@@ -41,7 +41,7 @@ import '@palmetto/palmetto-components/dist/css/variables.css';
 
 ## Contributing
 
-Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/document-releases/.github/CONTRIBUTING.md) for contribution guide.
+Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/master/docs/CONTRIBUTING.md) for contribution guide.
 
 
 
