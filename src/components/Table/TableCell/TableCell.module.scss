@@ -1,0 +1,18 @@
+.table-cell {
+  border: 1px solid var(--color-brand-grey-lighter);
+  padding: var(--size-spacing-sm);
+
+  &.borderless {
+    border: none;
+  }
+
+  &.compact {
+    padding: var(--size-spacing-xs);
+  }
+
+  &.truncated {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

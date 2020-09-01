@@ -1,54 +1,72 @@
 import React, { FC } from 'react';
-import { ColumnType, SortedColumnType } from '../TableTypes';
-import TableHeaderSortable from './TableHeaderSortable/TableHeaderSortable';
-import styles from './TableHead.module.scss';
+import classNames from 'classnames';
+import { Column, EventWithColumnKey } from '../TableTypes';
+import TableRow from '../TableRow/TableRow';
 
 interface TableHeadProps {
   /**
-   * Column configuration for the columns.
+   * The table columns to be rendered
    */
-  columns: ColumnType[];
+  columns: Column[];
   /**
-   * Callback function to execute when a sortable column's header is clicked.
+   * Custom class to be applied to the `<thead>` element.
    */
-  onSort?: (id: string) => void;
+  className?: string;
   /**
-   * The current sorted column.
+   * Whether the table has borders or not.
    */
-  sortedColumn?: SortedColumnType;
+  isBorderless?: boolean;
+  /**
+   * Whether the table rows have smaller padding
+   */
+  isCompact?: boolean;
+  /**
+   * Callback function to fire on sorting one of the table headers.
+   */
+  onSort?: (event: EventWithColumnKey) => void;
+  /**
+   * The key of the sorted column and its sort direction.
+   */
+  sortedColumn?: {
+    dataKey: string | undefined;
+    sortDirection: 'none' | 'ascending' | 'descending' | undefined;
+  };
+  /**
+   * Truncate overflow inside column based on column width. Can be overwritten on specific columns,
+   * by passing `truncateOverflow` value on a specific Column
+   */
+  truncateOverflow?: boolean;
+  /**
+   * Fix the width of the columns. Can be useful if sorting is enabled and the content of
+   * the columns is changing; prevents the horizontal jump when this occurres.
+   */
+  useFixedWidthColumns?: boolean;
 }
 
 const TableHead: FC<TableHeadProps> = ({
   columns,
-  onSort = () => undefined,
+  className = '',
+  isBorderless = false,
+  isCompact = false,
+  onSort = undefined,
   sortedColumn = undefined,
+  truncateOverflow = false,
+  useFixedWidthColumns = false,
 }) => {
-  const renderSortableColumn = (column: ColumnType) => (
-    <TableHeaderSortable
-      heading={column.heading}
-      id={column.id}
-      key={column.id}
-      onSort={onSort}
-      sortedColumn={sortedColumn}
-      width={column.width}
-    />
-  );
-
-  const renderFixedColumn = (column: ColumnType) => (
-    <th
-      className={styles.header}
-      key={column.id}
-      style={{ width: `${column.width}px` }}
-    >
-      {column.heading}
-    </th>
-  );
+  const tableHeadClasses = classNames(className);
 
   return (
-    <thead className={styles['table-head']}>
-      <tr>
-        {columns.map(column => (column.isSortable ? renderSortableColumn(column) : renderFixedColumn(column)))}
-      </tr>
+    <thead className={tableHeadClasses}>
+      <TableRow
+        columns={columns}
+        isTableHead
+        isBorderless={isBorderless}
+        isCompact={isCompact}
+        onSort={onSort}
+        sortedColumn={sortedColumn}
+        truncateOverflow={truncateOverflow}
+        useFixedWidthColumns={useFixedWidthColumns}
+      />
     </thead>
   );
 };
