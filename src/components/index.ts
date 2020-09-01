@@ -10,7 +10,7 @@ import RadioGroup from './RadioGroup/RadioGroup';
 import Table from './Table/Table';
 import TableHead from './Table/TableHead/TableHead';
 import TableBody from './Table/TableBody/TableBody';
-import TableRow from './Table/TableBody/TableRow/TableRow';
+import TableRow from './Table/TableRow/TableRow';
 
 export {
   Button,
