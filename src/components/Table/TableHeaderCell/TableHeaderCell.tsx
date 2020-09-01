@@ -19,7 +19,7 @@ interface TableHeaderCellProps {
   /**
    * Custom class to apply to the `<th>` element.
    */
-  className?: string | undefined;
+  className?: string;
   /**
    * Key of corresponding data value in the table.
    */
