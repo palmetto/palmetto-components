@@ -1,6 +1,10 @@
-# Palmetto Components [![Publish To NPM](https://github.com/palmetto/palmetto-components/workflows/Publish%20To%20NPM/badge.svg)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3A%22Publish+To+NPM%22) [![Chromatic](https://github.com/palmetto/palmetto-components/workflows/Chromatic/badge.svg?branch=master)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3AChromatic) [![Test Coverage](https://api.codeclimate.com/v1/badges/e61e897623b87d91d155/test_coverage)](https://codeclimate.com/github/palmetto/palmetto-components/test_coverage)
-
-A React component library to power all Palmetto UI. 
+<h1 align="center" style="border-bottom: none;">Palmetto Components</h1>
+<h3 align="center">A React component library to power all Palmetto UI</h3>
+<p align="center">
+  [![Publish To NPM](https://github.com/palmetto/palmetto-components/workflows/Publish%20To%20NPM/badge.svg)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3A%22Publish+To+NPM%22)
+  [![Chromatic](https://github.com/palmetto/palmetto-components/workflows/Chromatic/badge.svg?branch=master)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3AChromatic)
+  [![Test Coverage](https://api.codeclimate.com/v1/badges/e61e897623b87d91d155/test_coverage)](https://codeclimate.com/github/palmetto/palmetto-components/test_coverage)
+</p>
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
