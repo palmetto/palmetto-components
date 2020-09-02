@@ -41,10 +41,10 @@
     "type-check": "tsc --pretty",
     "type-check:watch": "tsc --watch --pretty",
     "semantic-release": "semantic-release",
-    "generate-docs": "yarn doctoc docs/CONTRIBUTING.md"
+    "generate-readme-toc": "yarn doctoc docs/CONTRIBUTING.md"
   },
   "pre-commit": [
-    "generate-docs"
+    "generate-readme-toc"
   ],
   "browserslist": {
     "production": [

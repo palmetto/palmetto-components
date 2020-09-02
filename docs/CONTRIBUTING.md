@@ -7,6 +7,17 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Developing Locally](#developing-locally)
+  - [Available Scripts](#available-scripts)
+    - [Storybook](#storybook)
+    - [Test](#test)
+    - [Lint](#lint)
+    - [Build](#build)
+    - [TypeScript](#typescript)
+    - [Documentation](#documentation)
+  - [Testing Locally](#testing-locally)
 - [Raising an Issue](#raising-an-issue)
 - [Submitting a Pull Request](#submitting-a-pull-request)
 - [Guiding Principles for Development](#guiding-principles-for-development)
@@ -16,17 +27,105 @@
   - [4. Use the palmetto-design-tokens Library Exclusively when Styling Components](#4-use-the-palmetto-design-tokens-library-exclusively-when-styling-components)
 - [JS/JSX Style Guide](#jsjsx-style-guide)
 - [CSS/Sass Style Guide](#csssass-style-guide)
-- [Anatomy of a Component](#anatomy-of-a-component)
+- [Building a Component](#building-a-component)
 - [Writing Documentation / Stories](#writing-documentation--stories)
 - [Testing Components](#testing-components)
 - [Publishing components](#publishing-components)
-- [Development Setup](#development-setup)
 - [Releases](#releases)
   - [Release Types](#release-types)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 > Thanks for contributing!
+
+## Introduction
+
+The Palmetto Component Library powers all of Palmetto's UI. The project is open source and licensed under the terms of the [MIT license](/LICENSE). Feel free to add the library to your projects and use without restriction. Since it's open source, Palmetto both welcomes and encourages contributions. Use this guide to get up and running with the project, and begin building your first component.
+
+## Installation
+
+You need [Node.js](http://nodejs.org/) **version >= 6 and <= 11**.
+
+After cloning the repo, run:
+
+```bash
+$ yarn
+```
+
+## Developing Locally
+
+### Available Scripts
+
+In the project directory, you can run:
+
+#### Storybook
+
+`yarn storybook`
+
+Serve Storybook stories/docs with hot reload at localhost:6006.
+
+#### Test
+
+`yarn test`
+
+Run a single pass of the Jest test-runner.<br /> 
+In addition to running tests, this script outputs a test coverage summary.
+
+`yarn test:watch`
+
+Run the Jest test-runner in watch mode.
+
+#### Lint
+
+`yarn lint-js`
+
+Lint JS using ESLint.
+
+`yarn lint-js:fix`
+
+Lint JS, and have ESLint try to fix as many issues as possible.
+
+`yarn lint-styles`
+
+Lint styles using Stylelint
+
+`yarn lint-styles:fix`
+
+Lint styles, and have Stylelint try to fix as many issues as possible.
+
+#### Build
+
+`yarn build`
+
+Build library in the /dist folder.
+
+`yarn build-storybook`
+
+Build docs in /storybook-static folder.
+
+#### TypeScript
+
+`yarn type-check`
+
+Run a single pass of type-check.
+
+`yarn type-check:watch`
+
+Run type-check in watch mode.
+
+#### Documentation
+
+`yarn generate-readme-toc`
+
+[Automatically generate the TOC](https://github.com/thlorenz/doctoc) in this file. Note that the TOC will be automatically generated pre-commit using the git pre-commit hook. However, you might need update the TOC as you are editing this README in order to validate that the TOC is correct, before committing changes.
+
+### Testing Locally
+
+This library is meant to be added as a dependency to React apps. Aside from sandbox testing in Storybook, you can also test any changes or new features by following these steps:
+
+1) Build locally by running `yarn build`
+
+2) symlink your local package into any project that consumes it. See [NPM link](https://docs.npmjs.com/cli/link) or [Yarn link](https://classic.yarnpkg.com/en/docs/cli/link/) for more details.
 
 ## Raising an Issue
 
@@ -88,16 +187,18 @@ For example: `// eslint-disable-line no-console`
 
 ##  CSS/Sass Style Guide
 
-* TBD
+* We strictly adhere to the [Concentric CSS Model](https://rhodesmill.org/brandon/2011/concentric-css/) for organizing our CSS properties. If any properties are out of order when a PR is opened, the build will fail until the issues are corrected.
 
-## Anatomy of a Component
+## Building a Component
 
-Most if not all components in this library should be **controlled** components. Meaning that they hold no internal state. For an example of code structure for most components, review an existing component and adhere to the structure that you see. Some general rules:
+Most, if not all components in this library should be **controlled** components. Meaning that they hold no internal state. 
+
+A review of existing components will reveal that the library follows a set pattern for their organization; please review the components, and adhere to the structure that you see. Some general rules:
 
 * Follow order of PropType declarations (before/above component markup).
 * Always include `defaultProps` for non-required propTypes.
-* Whenever possible break components down into subcomponents, since this encourages re-usability and encapsulation further down the line. (use your best judgement). This is preferrable to smaller render functions within a single component since it makes testing more straightforward.
-* Try your best to not abstract away standard expected functionality. E.G: always return dispatched events to the user, and ensure that HTMl APIs are as complete as possible. If you feel prop spreading is needed to shore up missing props for a native HTML element, that is ok, but do so with caution since this will circumvent propTypes validation.
+* Whenever possible break components down into sub-components, since this encourages re-usability and encapsulation further down the line. (use your best judgement). This is preferable to smaller render functions within a single component since it makes testing more straightforward.
+* Try your best to not abstract away standard expected functionality. For e.g., always return dispatched events to the user, and ensure that HTMl APIs are as complete as possible. If you feel prop spreading is needed to shore up missing props for a native HTML element, that is ok, but do so with caution since this will circumvent prop validation.
 
 ## Writing Documentation / Stories
 
@@ -109,7 +210,7 @@ We use storybook to document components. Any new component, or addition to a com
 
 ## Testing Components
 
-We use **jest** and **react-testing-library** for all tests. We discourage the use of snapshot testing instead opting to test desired functionality of a component. General guidelines:
+We use **jest** and **react-testing-library** for all tests. We discourage the use of snapshot testing, instead opting to test desired functionality of a component. General guidelines:
 
 * Do not test implementation details, E.G: the name of a function changed (again, no snapshot testing).
 * Try do write result-oriented tests. E.G: when an change event happens, my onChange handler was properly invoked.
@@ -121,41 +222,6 @@ We use Code Climate reports for test coverage. Our expectation for any new PR ge
 ## Publishing components
 
 In order to ensure that a new component gets included in the library it must be imported and included in the corresponding export of `src/components/index.js`.
-
-## Development Setup
-
-You need [Node.js](http://nodejs.org/) **version >= 6 and <= 11**.
-
-After cloning the repo, run:
-
-```bash
-$ yarn
-```
-
-Scripts for local development:
-
-```bash
-# serve storybook stories/docs with hot reload at localhost:6006
-$ yarn storybook
-
-# build lib in /dist folder
-$ yarn build
-
-# build docs in /storybook-static folder
-$ yarn build-storybook
-
-# run jest test-runner
-$ yarn test
-
-# run eslint
-$ yarn lint
-```
-
-This library is meant to be added as a dependency to React apps. Aside from sandbox testing in storybook, you can also test any changes or new features by following these steps:
-
-Build locally by running `yarn build`
-
-In order to test any local changes you'll need to build the library, and symlink your local package into any project that consumes it. See [NPM link](https://docs.npmjs.com/cli/link) or [Yarn link](https://classic.yarnpkg.com/en/docs/cli/link/) for more details.
 
 ## Releases
 
