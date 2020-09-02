@@ -285,8 +285,8 @@ describe('Table', () => {
     });
 
     describe('Text alignment of columns', () => {
-      test('it renders column cells with text aligned right based on global align prop', () => {
-        render(
+      test('it renders column cells with text aligned based on global align prop', () => {
+        const { rerender } = render(
           <Table
             columns={columnConfig}
             rows={tableData}
@@ -295,14 +295,12 @@ describe('Table', () => {
           />,
         );
 
-        const cells = screen.queryAllByRole('cell');
-        cells.forEach(cell => {
+        const cellsRight = screen.queryAllByRole('cell');
+        cellsRight.forEach(cell => {
           expect(cell).toHaveClass('align-right');
         });
-      });
 
-      test('it renders column cells with text aligned center based on global align prop', () => {
-        render(
+        rerender(
           <Table
             columns={columnConfig}
             rows={tableData}
@@ -311,8 +309,8 @@ describe('Table', () => {
           />,
         );
 
-        const cells = screen.queryAllByRole('cell');
-        cells.forEach(cell => {
+        const cellsCenter = screen.queryAllByRole('cell');
+        cellsCenter.forEach(cell => {
           expect(cell).toHaveClass('align-center');
         });
       });
