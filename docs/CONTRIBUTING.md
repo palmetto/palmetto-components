@@ -9,8 +9,9 @@
 
 - [Raising an Issue](#raising-an-issue)
 - [Submitting a Pull Request](#submitting-a-pull-request)
-- [Principles](#principles)
-  - [1. Desktop and Mobile support](#1-desktop-and-mobile-support)
+- [Guiding Principles for Development](#guiding-principles-for-development)
+  - [1. Desktop and Mobile Support](#1-desktop-and-mobile-support)
+  - [1. Cross Browser Compliance](#1-cross-browser-compliance)
   - [2. Accessibility](#2-accessibility)
   - [3. When writing styles, do not deviate from existing tokens found in palmetto-design-tokens library](#3-when-writing-styles-do-not-deviate-from-existing-tokens-found-in-palmetto-design-tokens-library)
 - [JS Style Guide](#js-style-guide)
@@ -27,34 +28,46 @@
 
 > Thanks for contributing!
 
-
 ## Raising an Issue
 
-* Make sure the issue hasn't been raised yet
+* Make sure the issue hasn't been raised yet.
 * Tag issue accordingly using your best judgement. Do NOT create new tags. If you feel a new one is needed, raise it in your issue.
-* If bug, include **screenshots** or animated GIFs in your issue whenever needed (if visual issue)
-* If bug, include steps to reproduce, or link to reproducible issue, E.G: Code Sandbox or similar.
+* If your issue is a bug, include **screenshots** or animated GIFs in your issue whenever needed (if visual issue).
+* If your issue is a bug, include steps to reproduce, or link to reproducible issue, e.g.: Code Sandbox or similar. Please also provide additional details including device, browser, browser version etc.
 
 ## Submitting a Pull Request
 
-* The ``master`` branch is a snapshot of the latest release. **Submit your PR in the ``develop`` branch**
-* Include **screenshots** or animated GIFs in your pull request whenever needed (if visual changes)
-* It's OK to have multiple small commits as you work on the PR - we will let GitHub automatically squash it before merging
-* **DO NOT** commit the ``lib`` and ``dist`` folder, use it only for testing on your end. In general just respect the .gitignore.
-* If adding new feature:
-    * Provide convincing reason to add this feature. Ideally you should open a suggestion issue first and have it greenlighted before working on it
+* The ``master`` branch is the main branch, **and the one that you will open your PRs against**.
+* Merging a PR to ``master`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
+* Include **screenshots** or animated GIFs in your pull request whenever needed (if visual changes).
+* It's OK, and even encouraged, to make multiple small commits as you work a feature branch - we have configured GitHub to automatically squash commits before merging.
+* **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and for testing on your end. In general, respect the .gitignore.
+* If adding a new feature:
+    * Provide a convincing reason to add this feature. Ideally you should open a suggestion issue first and have it green lighted before starting development.
 
-## Principles
+## Guiding Principles for Development
 
-### 1. Desktop and Mobile support
+### 1. Desktop and Mobile Support
 
-It has to work, **and** have great UX on both platforms.
+All components **have** to be fully functional, **and** provide a great user experience on all devices.
+
+### 1. Cross Browser Compliance
+
+All components **must** be fully functional, and look good across all modern browsers, including Chrome, Firefox, Safari, and Edge.
 
 ### 2. Accessibility
 
-We aim to enforce accessibility (a11y) seriously and components that wrap HTML elements must reflect this by include the necessary aria attributes.
+We aim to strongly encourage the development of accessible components. With that:
+* All components are expected to adhere to the HTML5 spec, and semantic elements should be used whenever possible.
+* In cases where the use of semantic elements is not possible, aria attributes should be applied as necessary.
+* In interactive components such as inputs, buttons, etc, keyboard interaction should be supported, in addition to mouse interaction.
+* Components that wrap HTML elements must reflect this by including the necessary aria attributes.
 
-There are some of cases where the correct a11y is only possible to add in the library consumer's code, but in general we should do as much as possible on our side. Our storybook docs fully support the developer experience here, providing helpful accessibility checks for any components rendered in the canvas.
+In order to support the development of accessible components, this repo includes the following tools:
+* The [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) plugin lints our JS/JSX. Any linting errors will be caught by CI, and a merge to ``master`` will be prevented until the issues are resolved.
+* The [@storybook/addon-a11y](https://www.npmjs.com/package/@storybook/addon-a11y) has been added to Storybook. Our Storybook docs fully support the developer experience by providing helpful accessibility checks for any component rendered in the canvas.
+
+For more information on web accessibility, visit: [W3C - Web Accessibility Initiative](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
 
 ### 3. When writing styles, do not deviate from existing tokens found in palmetto-design-tokens library
 

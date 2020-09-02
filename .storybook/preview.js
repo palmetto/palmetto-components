@@ -1,5 +1,4 @@
 import { addParameters } from '@storybook/react';
-import { themes } from '@storybook/theming';
 import palmettoTheme from './palmettoTheme';
 
 import '!style-loader!css-loader!sass-loader!../src/styles/utilities.scss';
