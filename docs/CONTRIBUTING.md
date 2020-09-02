@@ -11,12 +11,12 @@
 - [Submitting a Pull Request](#submitting-a-pull-request)
 - [Guiding Principles for Development](#guiding-principles-for-development)
   - [1. Desktop and Mobile Support](#1-desktop-and-mobile-support)
-  - [1. Cross Browser Compliance](#1-cross-browser-compliance)
-  - [2. Accessibility](#2-accessibility)
-  - [3. When writing styles, do not deviate from existing tokens found in palmetto-design-tokens library](#3-when-writing-styles-do-not-deviate-from-existing-tokens-found-in-palmetto-design-tokens-library)
-- [JS Style Guide](#js-style-guide)
-- [Sass/CSS Style Guide](#sasscss-style-guide)
-- [Writing Components](#writing-components)
+  - [2. Cross Browser Compliance](#2-cross-browser-compliance)
+  - [3. Accessibility](#3-accessibility)
+  - [4. Use the palmetto-design-tokens Library Exclusively when Styling Components](#4-use-the-palmetto-design-tokens-library-exclusively-when-styling-components)
+- [JS/JSX Style Guide](#jsjsx-style-guide)
+- [CSS/Sass Style Guide](#csssass-style-guide)
+- [Anatomy of a Component](#anatomy-of-a-component)
 - [Writing Documentation / Stories](#writing-documentation--stories)
 - [Testing Components](#testing-components)
 - [Publishing components](#publishing-components)
@@ -51,11 +51,11 @@
 
 All components **have** to be fully functional, **and** provide a great user experience on all devices.
 
-### 1. Cross Browser Compliance
+### 2. Cross Browser Compliance
 
 All components **must** be fully functional, and look good across all modern browsers, including Chrome, Firefox, Safari, and Edge.
 
-### 2. Accessibility
+### 3. Accessibility
 
 We aim to strongly encourage the development of accessible components. With that:
 * All components are expected to adhere to the HTML5 spec, and semantic elements should be used whenever possible.
@@ -69,11 +69,9 @@ In order to support the development of accessible components, this repo includes
 
 For more information on web accessibility, visit: [W3C - Web Accessibility Initiative](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
 
-### 3. When writing styles, do not deviate from existing tokens found in palmetto-design-tokens library
+### 4. Use the palmetto-design-tokens Library Exclusively when Styling Components
 
-Our entire component library is based around this design system. https://github.com/palmetto/palmetto-design-tokens
-
-If you are unfamiliar with it, feel free to fork that repo and get a better understanding of how it works.
+Our component library is based on the [Palmetto Design Tokens](https://github.com/palmetto/palmetto-design-tokens) design system. If you are unfamiliar with it, 
 
 A short description is as follows:
 * Tokens are defined in JSON form, in palmetto-design-tokens.
@@ -81,17 +79,19 @@ A short description is as follows:
 * These classes and variables are imported globally in palmetto-components, and all styles are based on them.
 * Tokens should NEVER be component-specific, however component variables can be derived from tokens. E.G (with sass): `$form-control-height-medium: $size-spacing-medium;`
 
-## JS Style Guide
+If library does not meet your needs, see: .....
 
-We mostly follow the [AirBnB JS style guide](https://github.com/airbnb/javascript/tree/master/react) with few exceptions. Just follow linter rules as much as possible. Please use `// eslint-disable-line` very, very sparingly. If a disable is needed, please specify the rule you are disabling.
+## JS/JSX Style Guide
+
+We follow the [AirBnB JS style guide](https://github.com/airbnb/javascript/tree/master/react), with a few exceptions. Adhere to the linter rules as much as possible. In cases where you can't, use `// eslint-disable-line`, etc., very, very sparingly. If a disable is needed, specify the exact rule that you are disabling.
 
 E.G: `// eslint-disable-line no-console`
 
-##  Sass/CSS Style Guide
+##  CSS/Sass Style Guide
 
 * TBD
 
-## Writing Components
+## Anatomy of a Component
 
 Most if not all components in this library should be **controlled** components. Meaning that they hold no internal state. For an example of code structure for most components, review an existing component and adhere to the structure that you see. Some general rules:
 
