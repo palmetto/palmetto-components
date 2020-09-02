@@ -23,23 +23,38 @@
 
 `yarn add @palmetto/palmetto-components`
 
-### 2. import global css
+### 2. Import Global CSS
 
 ```
 @import '@palmetto/palmetto-components/dist/css/utilities.css';
 @import '@palmetto/palmetto-components/dist/css/variables.css';
 ```
 
-### 3. Use in React component
+### 3. Usage
 
-`import { TextInput } from '@palmetto/palmetto-components'`
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Button from '@palmetto/palmetto-components';
 
-## Documentation / Storybook
+function App() {
+  return <Button>Hello World</Button>;
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'));
+```
+
+## Documentation
 
 [SEE FULL DOCS HERE](https://master--5ed9214b642dc10022b50a2d.chromatic.com)
 
 ## Contributing
 
 Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/master/docs/CONTRIBUTING.md) for contribution guide.
+
+## License
+
+This project is licensed under the terms of the
+[MIT license](/LICENSE).
 
 
