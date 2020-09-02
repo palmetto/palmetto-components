@@ -71,8 +71,9 @@ For more information on web accessibility, visit: [W3C - Web Accessibility Initi
 
 ### 4. Use the palmetto-design-tokens Library Exclusively when Styling Components
 
-Our component library is based on the [Palmetto Design Tokens](https://github.com/palmetto/palmetto-design-tokens) design system. If you are unfamiliar with it, 
+Our component library is based on the [Palmetto Design Tokens](https://github.com/palmetto/palmetto-design-tokens) design system.
 
+The design system provides us with a set of commonly reusable
 A short description is as follows:
 * Tokens are defined in JSON form, in palmetto-design-tokens.
 * When palmetto-design-tokens is built, it will generate utility classes, scss, and css variables based on these tokens.
@@ -85,7 +86,7 @@ If library does not meet your needs, see: .....
 
 We follow the [AirBnB JS style guide](https://github.com/airbnb/javascript/tree/master/react), with a few exceptions. Adhere to the linter rules as much as possible. In cases where you can't, use `// eslint-disable-line`, etc., very, very sparingly. If a disable is needed, specify the exact rule that you are disabling.
 
-E.G: `// eslint-disable-line no-console`
+For example: `// eslint-disable-line no-console`
 
 ##  CSS/Sass Style Guide
 
