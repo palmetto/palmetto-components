@@ -105,7 +105,7 @@ const TableRow: FC<TableRowProps> = ({
             column={column}
             key={getColumnKeys(columns)[columnIndex]}
             dataKey={column.dataKey}
-            className={column.className}
+            className={column.headerClassName}
             isSortable={column.isSortable}
             onSort={onSort}
             isBorderless={isBorderless}
@@ -116,6 +116,7 @@ const TableRow: FC<TableRowProps> = ({
           />
         ) : (
           <TableCell
+            className={column.cellClassName}
             emptyCellPlaceholder={column.emptyCellPlaceholder || emptyCellPlaceholder}
             truncateOverflow={column.truncateOverflow || truncateOverflow}
             key={getColumnKeys(columns)[columnIndex]}
