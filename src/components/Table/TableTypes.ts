@@ -30,7 +30,7 @@ export type Column = {
   /**
    * CSS Class to be applied to the column header cell.
    */
-  headerClassName: string;
+  headerClassName?: string;
   /**
    * A custom key to be used when rendering the column array.
    * Not required as our table auto-generates static, but unique column keys if not passed in.

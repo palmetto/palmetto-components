@@ -101,9 +101,9 @@ describe('Table', () => {
         () => {
           render(<Table columns={columnConfig} rows={tableData} rowKey="id" />);
 
-          const rows = screen.queryAllByRole('cell');
+          const cells = screen.queryAllByRole('cell');
 
-          expect(rows).toHaveLength(9);
+          expect(cells).toHaveLength(9);
         },
       );
 
@@ -281,6 +281,111 @@ describe('Table', () => {
 
         const submitButton = screen.getByText('vanilla');
         expect(submitButton).toBeInTheDocument();
+      });
+    });
+
+    describe('Text alignment of columns', () => {
+      test('it renders column cells with text aligned right based on global align prop', () => {
+        render(
+          <Table
+            columns={columnConfig}
+            rows={tableData}
+            rowKey="id"
+            align="right"
+          />,
+        );
+
+        const cells = screen.queryAllByRole('cell');
+        cells.forEach(cell => {
+          expect(cell).toHaveClass('align-right');
+        });
+      });
+
+      test('it renders column cells with text aligned center based on global align prop', () => {
+        render(
+          <Table
+            columns={columnConfig}
+            rows={tableData}
+            rowKey="id"
+            align="center"
+          />,
+        );
+
+        const cells = screen.queryAllByRole('cell');
+        cells.forEach(cell => {
+          expect(cell).toHaveClass('align-center');
+        });
+      });
+
+      test('It renders column cells with alignment based on column align prop', () => {
+        const columnConfigWithAlign = [
+          { heading: 'ID', dataKey: 'id' },
+          { heading: 'Color', dataKey: 'color', align: 'left' as const },
+          { heading: 'Flavor', dataKey: 'flavor', align: 'right' as const },
+        ];
+
+        const tableDataAlign = [
+          { id: 1, color: 'red', flavor: 'vanilla' },
+          { id: 2, color: 'blue', flavor: 'chocolate' },
+          { id: 3, color: 'green', flavor: 'strawberry' },
+        ];
+
+        render(
+          <Table
+            columns={columnConfigWithAlign}
+            rows={tableDataAlign}
+            rowKey="id"
+            align="center"
+          />,
+        );
+
+        const cells = screen.queryAllByRole('cell');
+        // Checking cell classes based on where they are in the table.
+        cells.forEach((cell, index) => {
+          // First column
+          if (index === 0 || index === 3 || index === 6) {
+            expect(cell).toHaveClass('align-center');
+          }
+          // Second Column
+          if (index === 1 || index === 4 || index === 7) {
+            expect(cell).not.toHaveClass('align-center');
+            expect(cell).not.toHaveClass('align-right');
+          }
+          // Third Column
+          if (index === 2 || index === 5 || index === 8) {
+            expect(cell).toHaveClass('align-right');
+          }
+        });
+      });
+    });
+
+    describe('Custom cell classes', () => {
+      test('It renders columns with classes passed in the column config', () => {
+        const columnConfigClasses = [
+          { heading: 'ID', dataKey: 'id', headerClassName: 'header-class' },
+          { heading: 'Color', dataKey: 'color', cellClassName: 'cell-class' },
+          { heading: 'Flavor', dataKey: 'flavor', align: 'right' as const },
+        ];
+
+        render(
+          <Table
+            columns={columnConfigClasses}
+            rows={tableData}
+            rowKey="id"
+          />,
+        );
+
+        const headerCells = screen.queryAllByRole('columnheader');
+        expect(headerCells[0]).toHaveClass('header-class'); // Header(th) for first column.
+
+        const cells = screen.queryAllByRole('cell');
+        // Checking cell classes based on where they are in the table.
+        cells.forEach((cell, index) => {
+          // Second Column
+          if (index === 1 || index === 4 || index === 7) {
+            expect(cell).toHaveClass('cell-class');
+          }
+        });
       });
     });
   });
