@@ -24,6 +24,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  &.align-right {
+    text-align: right;
+  }
+
+  &.align-center {
+    text-align: center;
+  }
 }
 
 .sort-icon {

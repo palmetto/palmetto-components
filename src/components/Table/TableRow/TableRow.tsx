@@ -12,6 +12,11 @@ interface TableRowProps {
    */
   columns: Column[];
   /**
+   * Text alignment for all table cells. Can be superseded by passing the same prop into the `Column` object
+   * for a specific column.
+   */
+  align?: 'left' | 'right' | 'center';
+  /**
    * Custom class to be applied to `<tr>` element.
    */
   className?: string;
@@ -69,6 +74,7 @@ interface TableRowProps {
 
 const TableRow: FC<TableRowProps> = ({
   columns,
+  align = 'left',
   className = '',
   emptyCellPlaceholder = '',
   isBorderless = false,
@@ -103,9 +109,10 @@ const TableRow: FC<TableRowProps> = ({
         isTableHead ? (
           <TableHeaderCell
             column={column}
+            align={column.align || align}
             key={getColumnKeys(columns)[columnIndex]}
             dataKey={column.dataKey}
-            className={column.className}
+            className={column.headerClassName}
             isSortable={column.isSortable}
             onSort={onSort}
             isBorderless={isBorderless}
@@ -116,6 +123,8 @@ const TableRow: FC<TableRowProps> = ({
           />
         ) : (
           <TableCell
+            align={column.align || align}
+            className={column.cellClassName}
             emptyCellPlaceholder={column.emptyCellPlaceholder || emptyCellPlaceholder}
             truncateOverflow={column.truncateOverflow || truncateOverflow}
             key={getColumnKeys(columns)[columnIndex]}

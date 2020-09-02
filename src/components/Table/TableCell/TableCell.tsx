@@ -4,6 +4,11 @@ import styles from './TableCell.module.scss';
 
 interface TableCellProps {
   /**
+   * Text alignment for all table cells. Can be superseded by passing the same prop into the `Column` object
+   * for a specific column.
+   */
+  align?: 'left' | 'right' | 'center';
+  /**
    * Children node to be rendered.
    */
   children?: ReactNode;
@@ -37,6 +42,7 @@ interface TableCellProps {
 }
 
 const TableCell: FC<TableCellProps> = ({
+  align = 'left',
   children = null,
   className = '',
   emptyCellPlaceholder = null,
@@ -51,6 +57,8 @@ const TableCell: FC<TableCellProps> = ({
       [styles.compact]: isCompact,
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
+      [styles['align-right']]: align === 'right',
+      [styles['align-center']]: align === 'center',
     },
     className,
   );
