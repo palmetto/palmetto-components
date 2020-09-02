@@ -66,16 +66,16 @@ NOTE: all properties in a column object are optional, but we highly recommend in
 </Canvas>
 
 ## Common Example
-An example showcasing the props required to render a list of customers in a table. `rows` `columns` and a `rowKey`.
+An example showcasing the props required to render a list of customers in a table. `rows` and `columns`.
 
 <Canvas>
   <Story name="Default">
     {() => {
       const columnConfig = [
-        { heading: 'Customer', dataKey: 'customerInfo', render: (cell, row, index) => (
+        { heading: 'Customer', dataKey: 'customerInfo', render: (cell, row) => (
           <div>
-            <div>{cell.name}</div>
-            <div className="font-color-grey">{cell.email}</div>
+            <div>{row.name}</div>
+            <div className="font-color-grey">{row.email}</div>
           </div>
          ) },
         { heading: 'phone', dataKey: 'phone', width: 125 },
@@ -84,24 +84,27 @@ An example showcasing the props required to render a list of customers in a tabl
       ];
       const tableData = [
         { status: 'lead captured',
-          customerInfo: { name: 'John Smith', email: 'john@palmetto.com' },
+          name: 'John Smith',
+          email: 'john@palmetto.com',
           phone: '555 555-5555',
           plan: 'standard'
         },
         { status: 'proposal in progress',
-          customerInfo: { name: 'Jill Sanchez', email: 'jill@palmetto.com' },
+          name: 'Jill Sanchez',
+          email: 'jill@palmetto.com',
           phone: '555 555-5555',
           plan: 'premium'
         },
         { status: 'PTO',
-          customerInfo: { name: 'Jin Lee', email: 'jin@palmetto.com' },
+          name: 'Jin Lee',
+          email: 'jin@palmetto.com',
           phone: '555 555-5555',
         plan: 'standard'
         },
       ];
       return (
         <Table
-        useFixedWidthColumns
+          useFixedWidthColumns
           rowKey="id"
           columns={columnConfig}
           rows={tableData}
