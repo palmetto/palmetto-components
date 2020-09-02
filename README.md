@@ -50,7 +50,17 @@ ReactDOM.render(<App />, document.querySelector('#app'));
 
 ## Contributing
 
-Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/master/docs/CONTRIBUTING.md) for contribution guide.
+Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/master/docs/CONTRIBUTING.md) for our contribution guide.
+
+## Raising an Issue
+
+When raising an issue:
+* Make sure the issue hasn't been raised yet.
+* Tag issue accordingly using your best judgement. Do NOT create new tags. If you feel a new one is needed, raise it in your issue.
+* If your issue is a bug, include **screenshots** or animated GIFs in your issue whenever needed (if issue is visual in nature).
+* If your issue is a bug, include steps to reproduce, or link to reproducible issue, e.g.: Code Sandbox or similar. Please also provide any additional details including device, OS, browser, browser version etc.
+
+[Issues can be raised here](https://github.com/palmetto/palmetto-components/issues).
 
 ## License
 

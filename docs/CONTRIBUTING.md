@@ -18,19 +18,22 @@
     - [TypeScript](#typescript)
     - [Documentation](#documentation)
   - [Testing Locally](#testing-locally)
-- [Raising an Issue](#raising-an-issue)
-- [Submitting a Pull Request](#submitting-a-pull-request)
 - [Guiding Principles for Development](#guiding-principles-for-development)
   - [1. Desktop and Mobile Support](#1-desktop-and-mobile-support)
   - [2. Cross Browser Compliance](#2-cross-browser-compliance)
   - [3. Accessibility](#3-accessibility)
-  - [4. Use the palmetto-design-tokens Library Exclusively when Styling Components](#4-use-the-palmetto-design-tokens-library-exclusively-when-styling-components)
-- [JS/JSX Style Guide](#jsjsx-style-guide)
-- [CSS/Sass Style Guide](#csssass-style-guide)
+  - [4. Use the Palmetto Design Tokens Library Exclusively when Styling Components](#4-use-the-palmetto-design-tokens-library-exclusively-when-styling-components)
+  - [5. Strive for Exceptional Code Quality](#5-strive-for-exceptional-code-quality)
+    - [JS/JSX Style Guide](#jsjsx-style-guide)
+    - [CSS/Sass Style Guide](#csssass-style-guide)
 - [Building a Component](#building-a-component)
-- [Writing Documentation / Stories](#writing-documentation--stories)
-- [Testing Components](#testing-components)
-- [Publishing components](#publishing-components)
+  - [Component](#component)
+    - [Example](#example)
+  - [Styles](#styles)
+  - [Storybook Documentation](#storybook-documentation)
+  - [Testing](#testing)
+  - [Publishing](#publishing)
+- [Submitting a Pull Request](#submitting-a-pull-request)
 - [Releases](#releases)
   - [Release Types](#release-types)
 
@@ -42,6 +45,9 @@
 
 The Palmetto Component Library powers all of Palmetto's UI. The project is open source and licensed under the terms of the [MIT license](/LICENSE). Feel free to add the library to your projects and use without restriction. Since it's open source, Palmetto both welcomes and encourages contributions. Use this guide to get up and running with the project, and begin building your first component.
 
+
+
+
 ## Installation
 
 You need [Node.js](http://nodejs.org/) **version >= 6 and <= 11**.
@@ -52,72 +58,75 @@ After cloning the repo, run:
 $ yarn
 ```
 
+
+
+
 ## Developing Locally
 
 ### Available Scripts
 
 In the project directory, you can run:
 
-#### Storybook
+  #### Storybook
 
-`yarn storybook`
+  `yarn storybook`
 
-Serve Storybook stories/docs with hot reload at localhost:6006.
+  Serve Storybook stories/docs with hot reload at localhost:6006.
 
-#### Test
+  #### Test
 
-`yarn test`
+  `yarn test`
 
-Run a single pass of the Jest test-runner.<br /> 
-In addition to running tests, this script outputs a test coverage summary.
+  Run a single pass of the Jest test-runner.<br /> 
+  In addition to running tests, this script outputs a test coverage summary.
 
-`yarn test:watch`
+  `yarn test:watch`
 
-Run the Jest test-runner in watch mode.
+  Run the Jest test-runner in watch mode.
 
-#### Lint
+  #### Lint
 
-`yarn lint-js`
+  `yarn lint-js`
 
-Lint JS using ESLint.
+  Lint JS using ESLint.
 
-`yarn lint-js:fix`
+  `yarn lint-js:fix`
 
-Lint JS, and have ESLint try to fix as many issues as possible.
+  Lint JS, and have ESLint try to fix as many issues as possible.
 
-`yarn lint-styles`
+  `yarn lint-styles`
 
-Lint styles using Stylelint
+  Lint styles using Stylelint
 
-`yarn lint-styles:fix`
+  `yarn lint-styles:fix`
 
-Lint styles, and have Stylelint try to fix as many issues as possible.
+  Lint styles, and have Stylelint try to fix as many issues as possible.
 
-#### Build
+  #### Build
 
-`yarn build`
+  `yarn build`
 
-Build library in the /dist folder.
+  Build library in the /dist folder.
 
-`yarn build-storybook`
+  `yarn build-storybook`
 
-Build docs in /storybook-static folder.
+  Build docs in /storybook-static folder.
 
-#### TypeScript
+  #### TypeScript
 
-`yarn type-check`
+  `yarn type-check`
 
-Run a single pass of type-check.
+  Run a single pass of type-check.
 
-`yarn type-check:watch`
+  `yarn type-check:watch`
 
-Run type-check in watch mode.
+  Run type-check in watch mode.
 
 #### Documentation
 
 `yarn generate-readme-toc`
 
-[Automatically generate the TOC](https://github.com/thlorenz/doctoc) in this file. Note that the TOC will be automatically generated pre-commit using the git pre-commit hook. However, you might need update the TOC as you are editing this README in order to validate that the TOC is correct, before committing changes.
+[Automatically generate the TOC](https://github.com/thlorenz/doctoc) in this file. Note that the TOC will be automatically generated pre-commit using the git pre-commit hook. However, you might need to update the TOC as you are editing this README in order to validate that the TOC is correct, before committing changes.
 
 ### Testing Locally
 
@@ -127,22 +136,8 @@ This library is meant to be added as a dependency to React apps. Aside from sand
 
 2) symlink your local package into any project that consumes it. See [NPM link](https://docs.npmjs.com/cli/link) or [Yarn link](https://classic.yarnpkg.com/en/docs/cli/link/) for more details.
 
-## Raising an Issue
 
-* Make sure the issue hasn't been raised yet.
-* Tag issue accordingly using your best judgement. Do NOT create new tags. If you feel a new one is needed, raise it in your issue.
-* If your issue is a bug, include **screenshots** or animated GIFs in your issue whenever needed (if visual issue).
-* If your issue is a bug, include steps to reproduce, or link to reproducible issue, e.g.: Code Sandbox or similar. Please also provide additional details including device, browser, browser version etc.
 
-## Submitting a Pull Request
-
-* The ``master`` branch is the main branch, **and the one that you will open your PRs against**.
-* Merging a PR to ``master`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
-* Include **screenshots** or animated GIFs in your pull request whenever needed (if visual changes).
-* It's OK, and even encouraged, to make multiple small commits as you work a feature branch - we have configured GitHub to automatically squash commits before merging.
-* **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and for testing on your end. In general, respect the .gitignore.
-* If adding a new feature:
-    * Provide a convincing reason to add this feature. Ideally you should open a suggestion issue first and have it green lighted before starting development.
 
 ## Guiding Principles for Development
 
@@ -168,7 +163,7 @@ In order to support the development of accessible components, this repo includes
 
 For more information on web accessibility, visit: [W3C - Web Accessibility Initiative](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
 
-### 4. Use the palmetto-design-tokens Library Exclusively when Styling Components
+### 4. Use the Palmetto Design Tokens Library Exclusively when Styling Components
 
 Our component library is based on the [Palmetto Design Tokens](https://github.com/palmetto/palmetto-design-tokens) design system.
 
@@ -179,55 +174,148 @@ The design system provides us with a set of shared attributes used in the Palmet
 
 If there are additional attributes that you feel should be included in Palmetto Design Tokens, [raise an issue here](https://github.com/palmetto/palmetto-design-tokens/issues).
 
-## JS/JSX Style Guide
+### 5. Strive for Exceptional Code Quality
+
+Our component library values exceptional code quality in order to reduce the occurrence of bugs, and improve the developer experience. In order to achieve this, we test and lint our code extensively. In addition, we adhere to multiple CSS/JS/JSX style guides to standardize the way that components are built:
+
+#### JS/JSX Style Guide
 
 We follow the [AirBnB JS style guide](https://github.com/airbnb/javascript/tree/master/react), with a few exceptions. Adhere to the linter rules as much as possible. In cases where you can't, use `// eslint-disable-line`, etc., very, very sparingly. If a disable is needed, specify the exact rule that you are disabling.
 
 For example: `// eslint-disable-line no-console`
 
-##  CSS/Sass Style Guide
+####  CSS/Sass Style Guide
 
 * We strictly adhere to the [Concentric CSS Model](https://rhodesmill.org/brandon/2011/concentric-css/) for organizing our CSS properties. If any properties are out of order when a PR is opened, the build will fail until the issues are corrected.
 
+
+
+
 ## Building a Component
+
+Each Component consists of the following files:
+
+```
+Component
+│   Component.tsx
+│   Component.module.scss  
+│   Component.stories.mdx   
+│   Component.test.jsx
+│   ComponentTypes.ts (if necessary)
+│
+└───SubComponent
+    │   SubComponent.tsx
+    │   ...
+```
+
+### Component
 
 Most, if not all components in this library should be **controlled** components. Meaning that they hold no internal state. 
 
 A review of existing components will reveal that the library follows a set pattern for their organization; please review the components, and adhere to the structure that you see. Some general rules:
 
-* Follow order of PropType declarations (before/above component markup).
-* Always include `defaultProps` for non-required propTypes.
-* Whenever possible break components down into sub-components, since this encourages re-usability and encapsulation further down the line. (use your best judgement). This is preferable to smaller render functions within a single component since it makes testing more straightforward.
-* Try your best to not abstract away standard expected functionality. For e.g., always return dispatched events to the user, and ensure that HTMl APIs are as complete as possible. If you feel prop spreading is needed to shore up missing props for a native HTML element, that is ok, but do so with caution since this will circumvent prop validation.
+1) Imports are organized in the following order:
+    1) Vendor
+    2) Types, constants, etc.
+    3) Library Components
+    4) Styles
 
-## Writing Documentation / Stories
+2) The TypeScript interface is organized in the following order:
+    1) Required props, sorted A-Z
+    2) Optional props, sorted A-Z
+    3) A comment is placed above each prop in the interface. This comment is used to render the prop table in Storybook, and provide a meaningful description of the prop and its usage.
+3) Defaults for optional props are declared in the function declaration for the component
+4) Whenever possible break components down into sub-components, since this encourages re-usability and encapsulation further down the line. (use your best judgement). This is preferable to smaller render functions within a single component since it makes testing more straightforward.
+5) Try your best to not abstract away standard expected functionality. For e.g., always return dispatched events to the user, and ensure that HTMl APIs are as complete as possible. If you feel prop spreading is needed to shore up missing props for a native HTML element, that is ok, but do so with caution since this will circumvent prop validation.
 
-We use storybook to document components. Any new component, or addition to a component API must have a corresponding story where it's showcased.
+#### Example
+
+```jsx
+import React from 'react';
+import vendor from 'vendor';
+import { Type } from './ComponentTypes';
+import LibraryComponent from '../LibraryComponent/LibraryComponent';
+import styles from './Component.module.scss';
+
+interface ComponentProps {
+  /**
+   * Description of firstRequiredProp.
+   */
+  firstRequiredProp: ReactNode;
+  /**
+   * Description of secondRequiredProp.
+   */
+  secondRequiredProp: string;
+  /**
+   * Description of firstOptionalProp.
+   */
+  firstOptionalProp?: boolean;
+  /**
+   * Description of secondOptionalProp.
+   */
+  secondOptionalProp?: string;
+}
+
+const Component: FC<ComponentProps> = ({
+  firstRequiredProp,
+  secondRequiredProp,
+  firstOptionalProp = false,
+  secondOptionalProp = undefined;
+}) => {
+  
+  return (
+    ...
+  );
+};
+
+export default Component;
+```
+
+### Styles
+
+Styles can be written in either CSS or Sass; the file extension must always be `*.sass`. Styles are automatically prefixed at build-time using the [Autoprefixer](https://github.com/postcss/autoprefixer) PostCSS plugin. 
+
+### Storybook Documentation
+
+We use Storybook to document components. Any new component, or addition to a component's API must have a corresponding story where it's showcased.
 
 * Follow MDX format for writing stories. See `Button.stories.jsx` for a good example of this.
-* Ensure all components include a summary description at the top (which will get pulled in to storybook automatically).
-* Always add prop descriptions (see other components for reference) so that prop tables are populated accordingly.
 
-## Testing Components
+### Testing
 
 We use **jest** and **react-testing-library** for all tests. We discourage the use of snapshot testing, instead opting to test desired functionality of a component. General guidelines:
 
 * Do not test implementation details, E.G: the name of a function changed (again, no snapshot testing).
-* Try do write result-oriented tests. E.G: when an change event happens, my onChange handler was properly invoked.
-* Test whether components render with the correct props in their different states.
-* Test that required props are properly throwing warnings (examples in existing components). This guards against somebody removing a prop requirement inadvertedly.
+* Try to write result-oriented tests. E.G: when an change event happens, my onChange handler was properly invoked.
+* Test whether components render with the correct props in their different states. In general, write a test to validate each state showcased in Storybook.
 
 We use Code Climate reports for test coverage. Our expectation for any new PR getting merged is that the new feature must satisfy at least 95% coverage. It will not get approved otherwise.
 
-## Publishing components
+### Publishing
 
 In order to ensure that a new component gets included in the library it must be imported and included in the corresponding export of `src/components/index.js`.
+
+
+
+
+## Submitting a Pull Request
+
+* The ``master`` branch is the main branch, **and the one that you will open your PRs against**.
+* Merging a PR to ``master`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
+* Include **screenshots** or animated GIFs in your pull request whenever needed (if changes are visual in nature).
+* It's OK, and even encouraged, to make multiple small commits as you work a feature branch (commit early, and commit often) - we have configured GitHub to automatically squash commits before merging.
+* **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and for testing on your end. In general, respect the .gitignore.
+* If adding a new feature:
+    * Provide a convincing reason to add this feature. Ideally you should open a suggestion issue first and have it green lighted before starting development.
+
+
+
 
 ## Releases
 
 Palmetto-Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in package.json, and creating a new release tag in GitHub for each release, they are automatically triggered by prefixing the commit message when merging to master. Upon triggering a release, the package version is bumped depending on the type specified, a release tag is created in GitHub, and the new version is automatically published to npm.
 
-For example, opening a PR to master with the commit message `fix: Resolve bug` will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`.
+For example, opening a PR to master with the commit message `fix: Resolve bug`, will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`. Opening a PR with `feat(Table): Finalize tests` will trigger a feature release and bump the package's version from `0.0.0` to `0.1.0`.
 
 The link above provides full documentation for this workflow. However, a comprehensive list of the prefix types, and their intended uses are provide below for quick reference:
 
