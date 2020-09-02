@@ -89,6 +89,7 @@ const CheckboxInput: FC<CheckboxInputProps> = ({
   };
 
   const wrapperClasses = classNames(
+    styles['checkbox-input-reset'],
     styles.checkbox,
     className,
     { [styles.disabled]: isDisabled },

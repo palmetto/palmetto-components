@@ -1,4 +1,8 @@
-.container {
+.table-reset {
+  composes: base-css-reset from '../../styles/reset.scss';
+}
+
+.table-container {
   display: inline-block;
   position: relative;
 

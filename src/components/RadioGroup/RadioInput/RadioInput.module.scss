@@ -1,3 +1,7 @@
+.radio-input-reset {
+  composes: base-css-reset from '../../../styles/reset.scss';
+}
+
 .option {
   display: flex;
   align-items: center;
@@ -7,9 +11,6 @@
   }
 
   .input {
-    margin-top: 0;
-    margin-right: var(--size-spacing-xs);
-    margin-bottom: 0;
-    margin-left: var(--size-spacing-2xs);
+    margin: 0 var(--size-spacing-xs) 0 var(--size-spacing-2xs);
   }
 }

@@ -80,11 +80,13 @@ const RadioGroup: FC<RadioGroupProps> = ({
   title = undefined,
   value = undefined,
 }) => {
-  const groupClasses = classNames(
-    className,
+  const radioGroupClasses = classNames(
+    styles['radio-group-reset'],
+    styles['radio-group'],
     {
       [styles.loading]: error,
     },
+    className,
   );
 
   const legendClasses = classNames(
@@ -95,7 +97,7 @@ const RadioGroup: FC<RadioGroupProps> = ({
   );
 
   return (
-    <div className={classNames(styles['radio-group'], groupClasses)}>
+    <div className={radioGroupClasses}>
       <fieldset className={styles.fieldset}>
         {(title || description) && (
           <legend className={legendClasses}>

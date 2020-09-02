@@ -76,6 +76,7 @@ const Button: FC<ButtonProps> = ({
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames(
+    styles['button-reset'],
     styles.button,
     className,
     {

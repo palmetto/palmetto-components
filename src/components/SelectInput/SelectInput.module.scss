@@ -1,3 +1,7 @@
+.select-input-reset {
+  composes: base-css-reset from '../../styles/reset.scss';
+}
+
 /* The following styles required the :global tag since they need to be applied to
 react-select elements for which we do not own the markup */
 

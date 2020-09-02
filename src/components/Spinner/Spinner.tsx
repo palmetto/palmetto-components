@@ -23,7 +23,11 @@ const Spinner: FC<SpinnerProps> = ({
   className,
   size = 'md',
 }) => {
-  const classes = classNames(className, styles.spinner);
+  const spinnerClasses = classNames(
+    styles['spinner-reset'],
+    styles.spinner,
+    className,
+  );
 
   const sizeInPixels = () => {
     let pixels;
@@ -36,7 +40,7 @@ const Spinner: FC<SpinnerProps> = ({
   };
 
   return (
-    <span className={classes}>
+    <span className={spinnerClasses}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={sizeInPixels()}

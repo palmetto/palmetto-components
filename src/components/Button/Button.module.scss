@@ -1,3 +1,7 @@
+.button-reset {
+  composes: base-css-reset from '../../styles/reset.scss';
+}
+
 .button {
   position: relative;
   transition-duration: 0.2s;

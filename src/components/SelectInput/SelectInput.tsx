@@ -126,6 +126,7 @@ const SelectInput: FC<SelectInputProps> = ({
   };
 
   const wrapperClasses = classNames(
+    styles['select-input-reset'],
     'select-input-wrapper',
     className,
     { [styles.disabled]: isDisabled },

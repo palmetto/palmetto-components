@@ -1,3 +1,7 @@
+.spinner-reset {
+  composes: base-css-reset from '../../styles/reset.scss';
+}
+
 .spinner {
   svg {
     display: inherit;

@@ -1,8 +1,11 @@
+
+.radio-group-reset {
+  componses: base-css-reset from '../../styles/reset.scss';
+}
+
 .radio-group {
   .fieldset {
-    margin: 0;
     border: none;
-    padding: 0;
     line-height: 1.25;
 
     .legend {
@@ -17,7 +20,6 @@
       .description {
         margin-top: var(--form-control-radio-group-description-spacing);
         color: var(--form-control-description-color);
-        font-weight: 400;
       }
 
       &.error {

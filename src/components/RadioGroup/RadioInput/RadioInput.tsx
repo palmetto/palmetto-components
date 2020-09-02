@@ -4,6 +4,7 @@ import React, {
   FocusEvent,
   ReactNode,
 } from 'react';
+import classNames from 'classnames';
 import FormLabel from '../../FormLabel/FormLabel';
 import styles from './RadioInput.module.scss';
 
@@ -66,6 +67,11 @@ const RadioInput: FC<RadioInputProps> = ({
     if (onBlur) onBlur(event);
   };
 
+  const radioInputClasses = classNames(
+    styles['radio-input-reset'],
+    styles.option,
+  );
+
   const labelProps = {
     inputId: option.id,
     isDisabled,
@@ -77,7 +83,7 @@ const RadioInput: FC<RadioInputProps> = ({
   return (
     <>
       {option && (
-        <div className={styles.option} key={option.id}>
+        <div className={radioInputClasses} key={option.id}>
           <input
             id={option.id}
             type="radio"

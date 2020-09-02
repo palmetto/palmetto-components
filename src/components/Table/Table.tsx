@@ -99,7 +99,8 @@ const Table: FC<TableProps> = ({
   useFixedWidthColumns = false,
 }) => {
   const tableContainerClasses = classNames(
-    styles.container,
+    styles['table-reset'],
+    styles['table-container'],
     {
       [styles.scroll]: scroll?.x || scroll?.y,
       [styles['scroll-x']]: scroll?.x,

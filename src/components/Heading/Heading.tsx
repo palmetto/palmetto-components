@@ -47,10 +47,14 @@ const Heading: FC<HeadingProps> = ({
 
   const headingSize = size || HEADING_DEFAULT_SIZE_MAP[as];
 
-  const classes = classNames(styles.heading, className, {
-    [`font-size-${headingSize}`]: headingSize,
-    [`font-color-${color}`]: color,
-  });
+  const classes = classNames(
+    styles['heading-reset'],
+    {
+      [`font-size-${headingSize}`]: headingSize,
+      [`font-color-${color}`]: color,
+    },
+    className,
+  );
 
   return createElement(element, { className: classes, children });
 };
