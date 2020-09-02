@@ -73,14 +73,12 @@ For more information on web accessibility, visit: [W3C - Web Accessibility Initi
 
 Our component library is based on the [Palmetto Design Tokens](https://github.com/palmetto/palmetto-design-tokens) design system.
 
-The design system provides us with a set of commonly reusable
-A short description is as follows:
-* Tokens are defined in JSON form, in palmetto-design-tokens.
-* When palmetto-design-tokens is built, it will generate utility classes, scss, and css variables based on these tokens.
+The design system provides us with a set of shared attributes used in the Palmetto Design System. These attributes include: colors, fonts, spacing, and more.
+* The library provides the project with utility classes, scss, css, JS, and JSON variables.
 * These classes and variables are imported globally in palmetto-components, and all styles are based on them.
-* Tokens should NEVER be component-specific, however component variables can be derived from tokens. E.G (with sass): `$form-control-height-medium: $size-spacing-medium;`
+* Tokens should NEVER be component-specific, however component variables can be derived from tokens. For e.g. (with sass): `$form-control-height-medium: $size-spacing-medium;`
 
-If library does not meet your needs, see: .....
+If there are additional attributes that you feel should be included in Palmetto Design Tokens, [raise an issue here](https://github.com/palmetto/palmetto-design-tokens/issues).
 
 ## JS/JSX Style Guide
 
