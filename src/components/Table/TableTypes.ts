@@ -8,6 +8,10 @@ import { UnknownPropertiesObjType } from '../../lib/types';
 
 export type Column = {
   /**
+   * Text alignment for column cells (including header alignment). Cells will default to left if not defined.
+   */
+  align?: 'left' | 'right' | 'center';
+  /**
    * CSS Class to be applied uniformly to all individual cells in a column.
    */
   cellClassName?: string;

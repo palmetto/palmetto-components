@@ -39,6 +39,7 @@ NOTE: all properties in a column object are optional, but we highly recommend in
         backgroundColor: '#F8F8F8',
       };
       const columnInterfaceRows = [
+        { name: 'align', type: 'left | right | center', description: 'Text alignment for column cells (including header alignment). Cells will default to left if not defined.' },
         { name: 'cellClassName', type: 'string', description: 'A CSS class to be applied to all cells in the column' },
         { name: 'dataKey', type: 'string', description: 'The key in the rows object that matches this column' },
         { name: 'emptyCellPlaceholder', type: 'string | number | undefined', description: 'placeholder for empty cells' },
@@ -739,6 +740,64 @@ You can combine any of these boolean props based on your UI needs.
           rows={tableData}
           hoverableRows
           isStriped
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Aligning Cell Text
+
+Align cell content as needed with the `align` prop. Either pass the prop globally for all columns, or individually
+in a single `Column` object. NOTE: right alignment is best reserved for numerical data display.
+We recommend refraining from specific alignment unless it serves the data, as alignment discrepancies in different columns
+may interrupt the natural reading flow for a user.
+
+<Canvas>
+  <Story name="Aligning Cell Text">
+    {() => {
+      const columnConfig = [
+        { heading: 'Right aligned', dataKey: 'id', align: 'right' },
+        { heading: 'Center aligned', dataKey: 'color', align: 'center' },
+        { heading: 'Default Left', dataKey: 'flavor' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+The below is an example of setting the `align` prop globally in the `<Table />` and overwriting its value on a specific column
+
+<Canvas>
+  <Story name="Global Align">
+    {() => {
+      const columnConfig = [
+        { heading: 'Center Aligned via Column Config', dataKey: 'id', align: 'center' },
+        { heading: 'Globally aligned right', dataKey: 'color' },
+        { heading: 'Also globally aligned right', dataKey: 'flavor' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          align="right"
         />
       );
     }}
