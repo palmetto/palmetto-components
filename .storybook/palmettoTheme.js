@@ -1,4 +1,6 @@
-import { create } from '@storybook/theming/create';
+import {
+  create
+} from '@storybook/theming/create';
 
 export default create({
   base: 'light',
@@ -16,8 +18,8 @@ export default create({
   // fontBase: '"Open Sans", sans-serif',
   // fontCode: 'monospace',
 
-  // // Text colors
-  // textColor: 'black',
+  // Text colors
+  textColor: '#3C453E',
   // textInverseColor: 'rgba(255,255,255,0.9)',
 
   // // Toolbar default and active colors
