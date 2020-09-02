@@ -55,37 +55,59 @@ NOTE: all properties in a column object are optional, but we highly recommend in
         { heading: 'Description', dataKey: 'description' },
       ];
       return (
-        <Table 
-          rowKey="name" 
-          columns={columnConfig} 
-          rows={columnInterfaceRows} 
+        <Table
+          rowKey="name"
+          columns={columnConfig}
+          rows={columnInterfaceRows}
         />
       );
     }}
   </Story>
 </Canvas>
 
-## Default
-Basic example showcasing the minimum props required to render a table. `rows` `columns` and a `rowKey`.
+## Common Example
+An example showcasing the props required to render a list of customers in a table. `rows` and `columns`.
 
 <Canvas>
   <Story name="Default">
     {() => {
       const columnConfig = [
-        { heading: 'ID', dataKey: 'id' },
-        { heading: 'Color', dataKey: 'color' },
-        { heading: 'Flavor', dataKey: 'flavor' },
+        { heading: 'Customer', dataKey: 'customerInfo', render: (cell, row) => (
+          <div>
+            <div>{row.name}</div>
+            <div className="font-color-grey">{row.email}</div>
+          </div>
+         ) },
+        { heading: 'phone', dataKey: 'phone', width: 125 },
+        { heading: 'plan', dataKey: 'plan', width: 125 },
+        { heading: 'status', dataKey: 'status', width: 125 },
       ];
       const tableData = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
+        { status: 'lead captured',
+          name: 'John Smith',
+          email: 'john@palmetto.com',
+          phone: '555 555-5555',
+          plan: 'standard'
+        },
+        { status: 'proposal in progress',
+          name: 'Jill Sanchez',
+          email: 'jill@palmetto.com',
+          phone: '555 555-5555',
+          plan: 'premium'
+        },
+        { status: 'PTO',
+          name: 'Jin Lee',
+          email: 'jin@palmetto.com',
+          phone: '555 555-5555',
+        plan: 'standard'
+        },
       ];
       return (
-        <Table 
-          rowKey="id" 
-          columns={columnConfig} 
-          rows={tableData} 
+        <Table
+          useFixedWidthColumns
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
         />
       );
     }}
@@ -111,11 +133,11 @@ table data is being fetched or refreshed.
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table 
-          rowKey="id" 
-          columns={columnConfig} 
-          rows={tableData} 
-          isLoading 
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          isLoading
         />
       );
     }}
@@ -129,8 +151,8 @@ Sorting is completely controlled outside of our library. The table will fire an 
 which bubbles up the click or keyboard event, along with a `sortedKey` value. The `sortedKey` refers to the `dataKey` of the column
 that was sorted. E.G: if user clicks to sort the `color` column, then `sortedKey = 'color'` in the sort event.
 
-While sorting happens fully outside of the library, meaning that the Table expects sorted data to be passed correctly to it, 
-It does expect to know if a column is sorted so that it can update the UI accordingly. If you pass sorted data to the table, 
+While sorting happens fully outside of the library, meaning that the Table expects sorted data to be passed correctly to it,
+It does expect to know if a column is sorted so that it can update the UI accordingly. If you pass sorted data to the table,
 include the `sortedColumn` prop which comprises the following attributes:
 
 `dataKey: string mathching the column key,`
@@ -480,9 +502,7 @@ value will supersede the global setting.
 
 ## Custom Actions
 
-The `Column` object is equiped with a `render` method. When used, the cells will render any custom JSX returned by
-this method. This can be used in a completely agnostic way. See `Any custom JSX` column below, where we render
-the same markup regardless of the cell/row content. 
+The `Column` object is equiped with a `render` method. When used, the cells will render any custom JSX returned by this method. This can be used in a completely agnostic way. See `Any custom JSX` column below, where we render the same markup regardless of the cell/row content.
 
 The render method also exposes data about the cell and row, namely:
 
@@ -509,11 +529,11 @@ See `Based on cell/row` example below.
           { heading: 'Index', dataKey: 'index' },
         ];
         return (
-          <Table 
-            columns={columns} 
-            rows={rows} 
-            rowKey="id" 
-            isCompact 
+          <Table
+            columns={columns}
+            rows={rows}
+            rowKey="id"
+            isCompact
           />
         );
       };
@@ -561,11 +581,11 @@ Render a striped table to slightly improve readibility by passing `isStriped` (b
         { id: 7, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table 
-          rowKey="id" 
-          columns={columnConfig} 
-          rows={tableData} 
-          isStriped 
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          isStriped
         />
       );
     }}
@@ -577,7 +597,7 @@ Render a striped table to slightly improve readibility by passing `isStriped` (b
 The empty cell placeholder can be set on a global level as a prop on `<Table />` or individually per column
 by adding the `emptyCellPlaceholder` to the column configuration object. In cases where both is set, the column
 placeholder takes precedence over the global placeholder. As seen in the example below where the price column uses
-`$0.00` as a placeholder where a price is missing.  
+`$0.00` as a placeholder where a price is missing.
 
 <Canvas>
   <Story name="Empty Cell Placeholder">
@@ -595,10 +615,10 @@ placeholder takes precedence over the global placeholder. As seen in the example
         { id: 4, color: 'blue', flavor: 'rocky road' },
       ];
       return (
-        <Table 
-          rowKey="id" 
-          columns={columnConfig} 
-          rows={tableData} 
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
         />
       );
     }}
@@ -624,11 +644,11 @@ Render a borderless table by passing `isBorderless` (boolean) prop to the table.
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table 
-          rowKey="id" 
-          columns={columnConfig} 
-          rows={tableData} 
-          isBorderless 
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          isBorderless
         />
       );
     }}
@@ -654,11 +674,11 @@ Render a compact table by passing `isCompact` (boolean) prop to the table.
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table 
-          rowKey="id" 
-          columns={columnConfig} 
-          rows={tableData} 
-          isCompact 
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          isCompact
         />
       );
     }}
@@ -683,11 +703,11 @@ Make rows 'hoverable' by passing `hoverableRows` (boolean) prop to the table.
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table 
-          rowKey="id" 
-          columns={columnConfig} 
-          rows={tableData} 
-          hoverableRows 
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          hoverableRows
         />
       );
     }}
@@ -712,12 +732,12 @@ You can combine any of these boolean props based on your UI needs.
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
       return (
-        <Table 
-          rowKey="id" 
-          columns={columnConfig} 
-          rows={tableData} 
-          hoverableRows 
-          isStriped 
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          hoverableRows
+          isStriped
         />
       );
     }}

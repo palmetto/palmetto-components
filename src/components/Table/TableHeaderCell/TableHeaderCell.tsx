@@ -82,7 +82,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   );
 
   const renderIcon = (): ReactNode => {
-    const renderArrows = ():ReactNode => {
+    const renderArrows = (): ReactNode => {
       if (getSortDirection() === 'ascending') {
         return <FontAwesomeIcon icon={faSortUp} data-testid="tableHeaderCellSortAsc-testid" />;
       }
@@ -135,7 +135,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       className={tableHeaderClasses}
       style={{ ...width && { width: `${width}px`, maxWidth: `${width}px` } }}
       aria-sort={sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'}
-      tabIndex={0}
+      tabIndex={isSortable ? 0 : undefined}
       onClick={handleSort}
       onKeyDown={handleKeyPress}
     >
