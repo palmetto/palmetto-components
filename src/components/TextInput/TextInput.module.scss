@@ -1,3 +1,7 @@
+.text-input-reset {
+  composes: base-css-reset from '../../styles/reset.scss';
+}
+
 .text-input {
   box-sizing: border-box;
   transition-duration: 300ms;

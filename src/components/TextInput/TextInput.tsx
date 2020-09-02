@@ -128,6 +128,7 @@ const TextInput: FC<TextInputProps> = ({
   };
 
   const inputClasses = classNames(
+    styles['text-input-reset'],
     styles['text-input'],
     { [styles.error]: error },
   );

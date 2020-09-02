@@ -48,6 +48,7 @@ const FormLabel: FC<FormLabelProps> = ({
   isRadioInputLabel = false,
 }) => {
   const labelClasses = classNames(
+    styles['label-reset'],
     styles.label,
     className,
     {
