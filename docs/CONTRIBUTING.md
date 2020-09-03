@@ -33,6 +33,7 @@
   - [Styles](#styles)
   - [Storybook Documentation](#storybook-documentation)
   - [Testing](#testing)
+    - [Example](#example-1)
   - [Publishing](#publishing)
 - [Submitting a Pull Request](#submitting-a-pull-request)
 - [Releases](#releases)
@@ -292,9 +293,45 @@ We use [Jest](https://jestjs.io/) and [React Testing Library](https://testing-li
 
 * Do not test implementation details. For e.g., the name of a function changed (again, no snapshot testing).
 * Try to write result-oriented tests. For e.g., when a change event happens, the onChange handler was properly invoked.
-* Test whether components render with the correct props in their different states. In general, write a test to validate each state showcased in Storybook.
+* Test whether components render correctly in their different states. As a rule-of-thumb, write a test to validate each state showcased in Storybook.
 
 We use [Code Climate](https://codeclimate.com/) reports for test coverage. Our expectation for any new PR getting merged is that the new feature must satisfy at least 95% coverage. It will not get approved otherwise.
+
+#### Example
+
+```jsx
+import React from 'react';
+import { render, fireEvent, screen } from '@testing-library/react';
+import Component from './Component';
+
+describe('Component', () => {
+  describe('Callback Handling', () => {
+    describe('onClick', () => {
+      test('it fires an onClick callback', () => {
+        ...
+      });
+
+      ...
+    });
+
+    ...
+  });
+
+  describe('States', () => {
+    describe('Default', () => {
+      test('it renders the component in the default state', () => {
+        render(
+          <Component />
+        );
+        
+        ...
+      });
+    });
+
+    ...
+  });
+});
+```
 
 ### Publishing
 
