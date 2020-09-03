@@ -35,5 +35,5 @@ export default create({
 
   brandTitle: 'Palmetto Component Library',
   brandUrl: 'https://palmetto.com',
-  brandImage: 'https://alchemy.palmetto.com/public//default_logo/1541461188.png',
+  brandImage: 'https://app.palmetto.com/static/media/logo.4d85ce48.svg',
 });
