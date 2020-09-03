@@ -9,6 +9,7 @@
 **Table of Contents**
 
 - [Introduction](#introduction)
+- [TLDR](#tldr)
 - [Installation](#installation)
 - [Developing Locally](#developing-locally)
   - [Available Scripts](#available-scripts)
@@ -50,6 +51,16 @@
 The Palmetto Component Library powers all of Palmetto's UI. The project is open source and licensed under the terms of the [MIT license](/LICENSE). Feel free to add the library to your projects and use without restriction. Since it's open source, Palmetto both welcomes and encourages contributions. Use this guide to get up and running with the project, and begin building your first component.
 
 
+## TLDR
+
+1. Report a bug or propose changes or features by filing an [issue](https://github.com/palmetto/palmetto-components/issues).
+2. Clone the repo locally
+3. Create a branch
+4. Make your changes and commit to the branch (new component, fix a bug, update docs, write tests, etc...)
+5. Open a pull request to discuss and have your change reviewed
+6. Let the CI run through verification (lint, tests, chromatic)
+7. Address any feedback
+8. If accepted, one of the code owners will merge and get it deployed!
 
 
 ## Installation
@@ -63,10 +74,10 @@ After cloning the repo, run:
 
 
 
-
-
 ## Developing Locally
 [↥ back to top](#top)
+
+In general, we follow [github flow](https://guides.github.com/introduction/flow/) for development. Create a branch off of the `master` branch and push your commits there.
 
 ### Available Scripts
 
@@ -76,7 +87,7 @@ In the project directory, you can run:
 
   `yarn storybook`
 
-  Serve [Storybook](https://storybook.js.org/) stories/docs with hot reload at localhost:6006.
+  Serve [Storybook](https://storybook.js.org/) stories and documentation with hot reload at localhost:6006.
 
   #### Test
 
