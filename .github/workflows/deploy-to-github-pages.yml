@@ -13,4 +13,3 @@ jobs:
     - run: yarn deploy-storybook --ci
       env:
         GH_TOKEN: palmetto:${{ secrets.GITHUB_TOKEN }}
-
