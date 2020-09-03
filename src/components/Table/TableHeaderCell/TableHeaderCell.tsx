@@ -17,6 +17,11 @@ interface TableHeaderCellProps {
    */
   column: Column;
   /**
+   * Text alignment for all table cells. Can be superseded by passing the same prop into the `Column` object
+   * for a specific column.
+   */
+  align?: 'left' | 'right' | 'center';
+  /**
    * Custom class to apply to the `<th>` element.
    */
   className?: string;
@@ -63,6 +68,7 @@ interface TableHeaderCellProps {
 
 const TableHeaderCell: FC<TableHeaderCellProps> = ({
   column,
+  align = 'left',
   className = undefined,
   dataKey = undefined,
   isBorderless = false,
@@ -126,6 +132,8 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
+      [styles['align-right']]: align === 'right',
+      [styles['align-center']]: align === 'center',
     },
     className,
   );
