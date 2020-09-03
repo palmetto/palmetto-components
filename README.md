@@ -35,7 +35,7 @@
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from '@palmetto/palmetto-components';
+import { Button } from '@palmetto/palmetto-components';
 
 function App() {
   return <Button>Hello World</Button>;
