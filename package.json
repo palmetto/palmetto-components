@@ -39,13 +39,14 @@
     "prepublishOnly": "yarn build",
     "storybook": "BABEL_ENV=storybook NODE_ENV=development start-storybook -p 6006",
     "semantic-release": "semantic-release",
+    "generate-readme-toc": "yarn doctoc docs/CONTRIBUTING.md",
     "test": "BABEL_ENV=test jest",
     "test:watch": "BABEL_ENV=test jest --watch --verbose",
     "type-check": "tsc --pretty",
     "type-check:watch": "tsc --watch --pretty"
   },
   "pre-commit": [
-    "generate-docs"
+    "generate-readme-toc"
   ],
   "browserslist": {
     "production": [
