@@ -1,0 +1,35 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Alert from './Alert';
+
+<Meta
+  title="Components/Alert"
+  component={Alert}
+/>
+
+# Alert
+
+Use alerts to display feedback for users about specific actions, or states of an application.
+
+## Props
+
+<ArgsTable of={Alert} />
+
+## Default
+
+All that is required to render a basic version of an Alert is a `message` prop which will contain text
+or a ReactNode to be rendered.
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <Alert
+          message="Hello world!"
+        />
+      );
+    }}
+  </Story>
+</Canvas>

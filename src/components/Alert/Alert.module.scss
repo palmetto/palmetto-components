@@ -1,0 +1,10 @@
+.alert {
+  border: 1px solid var(--alert-border-color-default);
+  border-radius: var(--alert-border-radius);
+  background-color: var(--alert-background-color-default);
+  padding: var(--alert-padding-default);
+
+  .compact {
+    padding: var(--alert-padding-compact);
+  }
+}

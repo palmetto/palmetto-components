@@ -1,0 +1,16 @@
+:root {
+  --alert-border-radius: var(--size-border-radius-md);
+  --alert-padding-default: var(--size-spacing-lg);
+  --alert-padding-compact: var(--size-spacing-md);
+
+  /* Colors */
+  --alert-background-color-default: var(--color-brand-grey-lightest);
+  --alert-background-color-success: var(--color-brand-success-lightest);
+  --alert-background-color-warning: var(--color-brand-warning-lightest);
+  --alert-background-color-danger: var(--color-brand-danger-lightest);
+
+  --alert-border-color-default: var(--color-brand-grey-lighter);
+  --alert-border-color-success: var(--color-brand-success-lighter);
+  --alert-border-color-warning: var(--color-brand-warning-lighter);
+  --alert-border-color-danger: var(--color-brand-danger-lighter);
+}
