@@ -224,7 +224,7 @@ A review of existing components will reveal that the library follows a set patte
     1) Required props, sorted A-Z
     2) Optional props, sorted A-Z
     3) A comment is placed above each prop in the interface. This comment is used to render the prop table in Storybook, and provide a meaningful description of the prop and its usage.
-3) Defaults for optional props are declared in the function declaration for the component
+3) Defaults for optional props are declared in the function declaration for the component.
 4) Whenever possible break components down into sub-components, since this encourages re-usability and encapsulation further down the line. (use your best judgement). This is preferable to smaller render functions within a single component since it makes testing more straightforward.
 5) Try your best to not abstract away standard expected functionality. For e.g., always return dispatched events to the user, and ensure that HTMl APIs are as complete as possible. If you feel prop spreading is needed to shore up missing props for a native HTML element, that is ok, but do so with caution since this will circumvent prop validation.
 
@@ -273,13 +273,13 @@ export default Component;
 
 ### Styles
 
-Styles can be written in either CSS or Sass; the file extension must always be `*.sass`. Styles are automatically prefixed at build-time using the [Autoprefixer](https://github.com/postcss/autoprefixer) PostCSS plugin. 
+Styles can be written in either CSS or Sass; the file extension must always be `.sass`. Styles are automatically prefixed at build-time using the [Autoprefixer](https://github.com/postcss/autoprefixer) PostCSS plugin. 
 
 ### Storybook Documentation
 
 We use Storybook to document components. Any new component, or addition to a component's API must have a corresponding story where it's showcased.
 
-* Follow MDX format for writing stories. See `Button.stories.jsx` for a good example of this.
+* Follow MDX format for writing stories. See `Button.stories.mdx` for a good example of this.
 
 ### Testing
 
