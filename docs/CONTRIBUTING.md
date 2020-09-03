@@ -31,9 +31,10 @@
   - [Component](#component)
     - [Example](#example)
   - [Styles](#styles)
+    - [Example](#example-1)
   - [Storybook Documentation](#storybook-documentation)
   - [Testing](#testing)
-    - [Example](#example-1)
+    - [Example](#example-2)
   - [Publishing](#publishing)
 - [Submitting a Pull Request](#submitting-a-pull-request)
 - [Releases](#releases)
@@ -279,7 +280,22 @@ export default Component;
 
 ### Styles
 
-Styles can be written in either CSS or [Sass](https://sass-lang.com/); the file extension must always be `.sass`. Styles are automatically prefixed at build-time using the [Autoprefixer](https://github.com/postcss/autoprefixer) PostCSS plugin. 
+We use [CSS Modules](https://github.com/css-modules/css-modules) to import CSS, or [Sass](https://sass-lang.com/) into our components. Regardless of the the format imported, the extension for the file must always be `.sass`. 
+
+All `class`s or `id`s should be written in kebab-case; [Stylelint](https://stylelint.io/) will throw an exception otherwise.
+
+Styles are automatically vendor prefixed at build-time using the [Autoprefixer](https://github.com/postcss/autoprefixer) PostCSS plugin.
+
+#### Example
+```jsx
+.component {
+  composes: base from '../../styles/base.scss';
+
+  .component-child {
+    ...
+  }
+}
+```
 
 ### Storybook Documentation
 
