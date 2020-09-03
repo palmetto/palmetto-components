@@ -28,20 +28,21 @@
   },
   "scripts": {
     "build": "BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js && tsc",
-    "test": "BABEL_ENV=test jest",
-    "test:watch": "BABEL_ENV=test jest --watch --verbose",
+    "build-storybook": "BABEL_ENV=storybook build-storybook",
+    "chromatic": "chromatic --project-token=x8ffq4qv9tq",
+    "deploy-storybook": "storybook-to-ghpages",
+    "generate-docs": "yarn doctoc docs/CONTRIBUTING.md",
     "lint-js": "EXTEND_ESLINT=true eslint src",
     "lint-js:fix": "EXTEND_ESLINT=true eslint . --fix",
     "lint-styles": "stylelint '**/*.{css,scss,sass}'",
     "lint-styles:fix": "stylelint '**/*.{css,scss,sass}' --fix",
-    "storybook": "BABEL_ENV=storybook NODE_ENV=development start-storybook -p 6006",
-    "build-storybook": "BABEL_ENV=storybook build-storybook",
-    "chromatic": "chromatic --project-token=x8ffq4qv9tq",
     "prepublishOnly": "yarn build",
-    "type-check": "tsc --pretty",
-    "type-check:watch": "tsc --watch --pretty",
+    "storybook": "BABEL_ENV=storybook NODE_ENV=development start-storybook -p 6006",
     "semantic-release": "semantic-release",
-    "generate-docs": "yarn doctoc docs/CONTRIBUTING.md"
+    "test": "BABEL_ENV=test jest",
+    "test:watch": "BABEL_ENV=test jest --watch --verbose",
+    "type-check": "tsc --pretty",
+    "type-check:watch": "tsc --watch --pretty"
   },
   "pre-commit": [
     "generate-docs"
@@ -71,6 +72,7 @@
     "@storybook/addon-viewport": "^6.0.18",
     "@storybook/addons": "^6.0.18",
     "@storybook/react": "^6.0.18",
+    "@storybook/storybook-deployer": "^2.8.6",
     "@svgr/webpack": "^5.4.0",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.2",
