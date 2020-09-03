@@ -10,5 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: yarn
-    - run: yarn deploy-storybook --ci --host-token-env-variable=SB_DEPLOY_GH_TOKEN
+    - run: yarn deploy-storybook --ci
+      env:
+        GH_TOKEN: palmetto:${{ secrets.GITHUB_TOKEN }}
 
