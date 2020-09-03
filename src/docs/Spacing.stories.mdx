@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
-import { PALMETTO_SPACING_OPTIONS, PALMETTO_SPACING_VALUES } from '../lib/tokens';
+import { PALMETTO_SPACING_OPTIONS, PALMETTO_SPACING_SIZE_OPTIONS } from '../lib/tokens';
 
 <Meta
   title="Design Tokens/Spacing"
@@ -23,9 +23,9 @@ Spacing tokens are intended for use with `margin` and `padding` properties. They
     {PALMETTO_SPACING_OPTIONS.map((space, i) => (
       <tr key={i}>
         <td><code>{`size-spacing-${space}`}</code></td>
-        <td>{PALMETTO_SPACING_VALUES[i].value}</td>
-        <td>{space === 'base' ? '16' : PALMETTO_SPACING_VALUES[i].original.value * 16}</td>
-        <td>{PALMETTO_SPACING_VALUES[i].original.comment}</td>
+        <td>{PALMETTO_SPACING_SIZE_OPTIONS[i].value}</td>
+        <td>{space === 'base' ? '16' : PALMETTO_SPACING_SIZE_OPTIONS[i].original.value * 16}</td>
+        <td>{PALMETTO_SPACING_SIZE_OPTIONS[i].original.comment}</td>
       </tr>
     ))}
   </tbody>

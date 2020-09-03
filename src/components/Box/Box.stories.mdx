@@ -1,6 +1,5 @@
-
 import Box from './Box';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import {
   PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_FONT_COLOR_OPTIONS,
@@ -16,7 +15,7 @@ import {
 A `<Box>` is a layout component to build UIs with consistent padding and spacing between elements.
 It lays out it contents in a specified direction, and by default renders a `div` element.
 
-<Preview>
+<Canvas>
   <>
     <Box
       margin="lg"
@@ -46,10 +45,10 @@ It lays out it contents in a specified direction, and by default renders a `div`
       I am an inverse Box
     </Box>
   </>
-</Preview>
+</Canvas>
 
 ## Props
-<Props of={Box} />
+<ArgsTable of={Box} />
 
 ## Background Color
 
