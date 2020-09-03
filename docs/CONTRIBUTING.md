@@ -363,7 +363,7 @@ In order to ensure that a new component gets included in the library, it must be
 * Merging a PR to ``master`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
 * Include **screenshots** or animated GIFs in your pull request whenever needed (if changes are visual in nature).
 * It's OK, and even encouraged, to make multiple small commits as you work on a feature branch (commit early, and commit often) - we have configured GitHub to automatically squash commits before merging.
-* **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and testing on your end. In general, respect the [.gitignore](/.gitignore).
+* **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and testing on your end. In general, respect [.gitignore](/.gitignore).
 * If adding a new feature:
     * Provide a convincing reason to add this feature. Ideally you should open a suggestion issue first and have it green lighted before starting development.
 
