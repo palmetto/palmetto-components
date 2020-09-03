@@ -2,7 +2,7 @@
   <a href="https://palmetto.com" rel="noopener" target="_blank"><img width="150" src="https://alchemy.palmetto.com/public//default_logo/1541461188.png" alt="Palmetto logo"></a></p>
 </p>
 <h1 align="center" style="border-bottom: none;">Contribution Guide</h1>
-<span id="top"></span>
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
@@ -311,7 +311,6 @@ In order to ensure that a new component gets included in the library, it must be
 
 
 ## Releases
-[Back to Top](#top)
 
 Palmetto Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in `package.json`, and creating a new release tag in GitHub for each release, they are automatically triggered by prefixing the commit message when merging to `master`. Upon triggering a release, the package version is bumped depending on the type specified, a release tag is created in GitHub, and the new version is automatically published to [npm](https://www.npmjs.com/).
 
