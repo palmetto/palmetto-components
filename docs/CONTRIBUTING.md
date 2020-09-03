@@ -2,6 +2,7 @@
   <a href="https://palmetto.com" rel="noopener" target="_blank"><img width="150" src="https://alchemy.palmetto.com/public//default_logo/1541461188.png" alt="Palmetto logo"></a></p>
 </p>
 <h1 align="center" style="border-bottom: none;">Contribution Guide</h1>
+<span id="top"></span>
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -42,6 +43,7 @@
 > Thanks for contributing!
 
 ## Introduction
+[↥ back to top](#top)
 
 The Palmetto Component Library powers all of Palmetto's UI. The project is open source and licensed under the terms of the [MIT license](/LICENSE). Feel free to add the library to your projects and use without restriction. Since it's open source, Palmetto both welcomes and encourages contributions. Use this guide to get up and running with the project, and begin building your first component.
 
@@ -49,6 +51,7 @@ The Palmetto Component Library powers all of Palmetto's UI. The project is open 
 
 
 ## Installation
+[↥ back to top](#top)
 
 You need [Node.js](http://nodejs.org/) **version >= 6 and <= 11**.
 
@@ -61,6 +64,7 @@ After cloning the repo, run:
 
 
 ## Developing Locally
+[↥ back to top](#top)
 
 ### Available Scripts
 
@@ -139,6 +143,7 @@ This library is meant to be added as a dependency to React apps. Aside from sand
 
 
 ## Guiding Principles for Development
+[↥ back to top](#top)
 
 ### 1. Desktop and Mobile Support
 
@@ -191,6 +196,7 @@ If there are additional attributes that you feel should be included in Palmetto 
 
 
 ## Building a Component
+[↥ back to top](#top)
 
 Each Component consists of the following files:
 
@@ -298,6 +304,7 @@ In order to ensure that a new component gets included in the library, it must be
 
 
 ## Submitting a Pull Request
+[↥ back to top](#top)
 
 * The ``master`` branch is the main branch, **and the one that you will open your PRs against**.
 * Merging a PR to ``master`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
@@ -311,6 +318,7 @@ In order to ensure that a new component gets included in the library, it must be
 
 
 ## Releases
+[↥ back to top](#top)
 
 Palmetto Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in `package.json`, and creating a new release tag in GitHub for each release, they are automatically triggered by prefixing the commit message when merging to `master`. Upon triggering a release, the package version is bumped depending on the type specified, a release tag is created in GitHub, and the new version is automatically published to [npm](https://www.npmjs.com/).
 
