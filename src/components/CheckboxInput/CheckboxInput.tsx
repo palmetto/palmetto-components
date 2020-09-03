@@ -1,69 +1,80 @@
-import React, { ChangeEvent, FocusEvent, FC } from 'react';
-import PropTypes from 'prop-types';
+import React, {
+  FC,
+  ChangeEvent,
+  FocusEvent,
+  ReactNode,
+} from 'react';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
 import styles from './CheckboxInput.module.scss';
 
-/**
- * Used to allow users to make a range of selections (zero, one or many).
- */
-
-interface Props {
+interface CheckboxInputProps {
   /**
-   * The id attribute of the input
+   * The id attribute of the input.
    */
   id: string;
   /**
-   * Callback function when input is changed
+   * The checkbox input "checked" attribute.
    */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  isChecked: boolean;
   /**
    * Custom content to be displayed to right of checkbox.
    */
   label: string;
   /**
-   * Additional classes to add
+   * Callback function when input is changed.
+   */
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  /**
+   * Additional classes to add.
    */
   className?: string;
   /**
+   * Determines if the checkbox should be rendered with display: inline;.
+   */
+  displayInline?: boolean;
+  /**
    * Mark the input field as invalid and display a validation message.
-   * Pass a string or node to render a validation message below the input
+   * Pass a string or node to render a validation message below the input.
    */
-  error?: React.ReactNode;
+  error?: ReactNode;
   /**
-   * The checkbox input "checked" attribute
+   * Determines if the label is not shown for stylistic reasons.
+   * Note the label is still a required prop and will be used as the aria-label for accessibility reasons.
    */
-  isChecked?: boolean;
+  hideLabel?: boolean;
   /**
-   * If the input should be disabled and not focusable
+   * If the input should be disabled and not focusable.
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required)
+   * Determines if input is required or not. (Label will have an asterisk if required).
    */
   isRequired?: boolean;
   /**
    * Callback function when input is blurred.
    */
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
-   * Callback function when input is focused
+   * Callback function when input is focused.
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 }
 
-const CheckboxInput: FC<Props> = ({
+const CheckboxInput: FC<CheckboxInputProps> = ({
   id,
-  onChange,
+  isChecked,
   label,
-  className,
+  onChange,
+  className = '',
+  displayInline = false,
   error = false,
-  isChecked = false,
+  hideLabel = false,
   isDisabled = false,
   isRequired = false,
-  onBlur,
-  onFocus,
+  onBlur = undefined,
+  onFocus = undefined,
 }) => {
   const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
     if (onBlur) onBlur(event);
@@ -81,56 +92,43 @@ const CheckboxInput: FC<Props> = ({
     styles.checkbox,
     className,
     { [styles.disabled]: isDisabled },
+    { [styles.inline]: displayInline },
   );
+
+  const inputProps = {
+    'aria-invalid': !!error,
+    'aria-label': label,
+    'aria-labelledby': label ? `${id}Label` : undefined,
+    id,
+    checked: !!isChecked,
+    disabled: isDisabled,
+    onBlur: handleBlur,
+    onChange: handleChange,
+    onFocus: handleFocus,
+    type: 'checkbox',
+    className: styles.input,
+  };
+
+  const labelProps = {
+    isFieldRequired: isRequired,
+    inputId: id,
+    hasError: !!error,
+    isDisabled,
+  };
 
   return (
     <>
       <div className={wrapperClasses}>
-        <input
-          aria-invalid={!!error}
-          aria-label={label}
-          aria-labelledby={label ? `${id}Label` : undefined}
-          id={id}
-          checked={!!isChecked}
-          disabled={isDisabled}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          type="checkbox"
-          className={styles.input}
-        />
-        {label && (
-          <FormLabel
-            {...{
-              isFieldRequired: isRequired,
-              inputId: id,
-              labelText: label,
-              hasError: !!error,
-              isDisabled,
-            }}
-          />
+        <input {...inputProps} />
+        {label && !hideLabel && (
+          <FormLabel {...labelProps}>
+            {label}
+          </FormLabel>
         )}
       </div>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </>
   );
-};
-
-CheckboxInput.propTypes = {
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  error: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  isChecked: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isRequired: PropTypes.bool,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
 };
 
 export default CheckboxInput;

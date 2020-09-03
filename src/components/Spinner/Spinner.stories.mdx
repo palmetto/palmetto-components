@@ -1,13 +1,11 @@
 import Spinner from './Spinner';
-import { withA11y } from '@storybook/addon-a11y';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
 
 
 <Meta
   title="Components/Spinner"
   component={Spinner}
-  decorators={[withA11y]}
 />
 
 # Spinner
@@ -16,26 +14,27 @@ Spinners are used to show an action is in progress.
 They are used in buttons, forms, containers, pages,
 and pretty much anywhere that a 'Loading' state is necessary.
 
-<Preview>
+<Canvas>
   <Spinner />
-</Preview>
+</Canvas>
 
 ## Props
-<Props of={Spinner} />
+
+<ArgsTable of={Spinner} />
 
 ## Appearance
 
-<Preview>
+<Canvas>
   <Story name="Spinner">
      <Spinner />
   </Story>
-</Preview>
+</Canvas>
 
 ## Sizes
 
 Use the `size` prop on your Spinner based on what's a best fit for your layout
 
-<Preview>
+<Canvas>
   <Story name="Sizes">
     <>
       <div style={{ marginBottom: '1rem'}}>
@@ -50,15 +49,19 @@ Use the `size` prop on your Spinner based on what's a best fit for your layout
         <div style={{ marginBottom: '0.25rem'}}>lg</div>
         <Spinner size="lg" />
       </div>
+      <div style={{ marginBottom: '1rem'}}>
+        <div style={{ marginBottom: '0.25rem'}}>xl</div>
+        <Spinner size="xl" />
+      </div>
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Colors
 
 Set the color variations of the spinner
 
-<Preview>
+<Canvas>
   <Story name="Colors">
     <>
       {PALMETTO_BRAND_COLOR_OPTIONS.map(color => (
@@ -69,4 +72,4 @@ Set the color variations of the spinner
       ))}
     </>
   </Story>
-</Preview>
+</Canvas>

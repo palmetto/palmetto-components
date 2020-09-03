@@ -12,6 +12,21 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  type-check:
+    name: type check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: install dependencies
+        run: yarn
+      - name: type check
+        run: yarn type-check
   lint-js:
     name: lint js
     runs-on: ubuntu-latest
@@ -60,15 +75,13 @@ jobs:
       - name: unit test
         run: |
           yarn test
-      - name: Upload coverage to Codecov  
-        uses: codecov/codecov-action@v1.0.7
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          CC_TEST_REPORTER_ID: 33f3435d9437e9c9c10480d4a1b066a260bb9813624e5038b30c4b32a1be62c0
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage/clover.xml
-          flags: unittests
-          name: codecov-umbrella
-          yml: ./codecov.yml 
-          fail_ci_if_error: true
+          coverageCommand: yarn test
+          debug: true
   visual-tests:
     name: visual regression tests
     runs-on: ubuntu-latest

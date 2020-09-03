@@ -1,6 +1,8 @@
 :root {
   /* ----GLOBALS---- */
 
+  --form-control-label-margin: var(--size-spacing-xs);
+
   /* --SIZES-- */
 
   /* small */
@@ -9,6 +11,7 @@
   --form-control-size-sm-padding: var(--size-spacing-xs);
 
   /* medium (default) */
+  --form-control-size-md-label-size: var(--size-font-sm);
   --form-control-size-md-border-radius: var(--size-border-radius-md);
   --form-control-size-md-font-size: var(--size-font-md);
   --form-control-size-md-padding: var(--size-spacing-sm);
@@ -21,16 +24,24 @@
   /* --COLORS-- */
   --form-control-background-color: var(--color-brand-white-base);
   --form-control-disabled-background-color: var(--color-brand-grey-lightest);
+  --form-control-error-color: var(--color-brand-danger-base);
   --form-control-error-background-color: var(--color-brand-danger-lightest);
   --form-control-border-color: var(--color-font-grey-lighter);
   --form-control-error-border-color: var(--color-brand-danger-lighter);
   --form-control-focus-border-color: var(--color-brand-grey-dark);
   --form-control-font-color: var(--color-font-base);
+  --form-control-description-color: var(--color-font-grey-dark);
   --form-control-disabled-font-color: var(--color-font-grey-light);
   --form-control-placeholder-color: var(--color-font-grey-light);
 
+  /* ----RADIO GROUP---- */
+  --form-control-radio-group-description-spacing: var(--size-spacing-xs);
+  --form-control-radio-group-option-spacing: var(--size-spacing-sm);
+  --form-control-radio-group-options-spacing: var(--size-spacing-md);
+
   /* ----SELECT INPUT---- */
-  --form-control-select-chevron-color: var(--color-brand-grey-light);
-  --form-control-select-chevron-size: 34px;
-  --form-control-select-padding: var(--size-spacing-2-xs);
+  --form-control-select-icon-color: var(--color-brand-grey-light);
+  --form-control-select-icon-hover-color: var(--color-brand-grey);
+  --form-control-select-icon-size: 34px;
+  --form-control-select-padding: var(--size-spacing-2xs);
 }

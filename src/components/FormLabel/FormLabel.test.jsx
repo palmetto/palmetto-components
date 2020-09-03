@@ -11,41 +11,27 @@ afterEach(() => {
 });
 
 describe('FormLabel', () => {
-  test('Throws error if required prop "inputId" is not supplied to component', () => {
-    render(<FormLabel labelText="hello" />);
-    expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-    expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-      .toContain('Failed prop type: The prop `inputId`');
-  });
-
-  test('Throws error if required prop "labelText" is not supplied to component', () => {
-    render(<FormLabel inputId="myId" />);
-    expect(console.error).toHaveBeenCalledTimes(1); // eslint-disable-line no-console
-    expect(console.error.mock.calls[0][0]) // eslint-disable-line no-console
-      .toContain('Failed prop type: The prop `labelText`');
-  });
-
   test('Label correctly renders with base props', () => {
-    render(<FormLabel inputId="myId" labelText="my label" />);
+    render(<FormLabel inputId="myId">my label</FormLabel>);
     const labelElement = screen.getByText('my label');
     expect(labelElement).toHaveAttribute('for', 'myId');
     expect(labelElement).toHaveTextContent('my label');
   });
 
   test('Label correctly renders with askterisk if field is required', () => {
-    render(<FormLabel inputId="myId" labelText="my label" isFieldRequired />);
+    render(<FormLabel inputId="myId" isFieldRequired>my label</FormLabel>);
     const labelElement = screen.getByText('my label');
     expect(labelElement).toHaveTextContent('*');
   });
 
   test('Label correctly renders with error class if field has eror', () => {
-    render(<FormLabel inputId="myId" labelText="my label" hasError />);
+    render(<FormLabel inputId="myId" hasError>my label</FormLabel>);
     const labelElement = screen.getByText('my label');
     expect(labelElement.getAttribute('class')).toContain('error');
   });
 
   test('correctly assigns an id when given an inputId', () => {
-    render(<FormLabel inputId="myId" labelText="my label" hasError />);
+    render(<FormLabel inputId="myId" hasError>my label</FormLabel>);
     const labelElement = screen.getByText('my label');
     expect(labelElement).toHaveAttribute('id', 'myIdLabel');
   });

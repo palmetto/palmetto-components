@@ -1,0 +1,39 @@
+.table-header-cell {
+  border-bottom: 1px solid var(--table-border-color);
+  padding: var(--size-spacing-sm);
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--table-header-color);
+  font-size: var(--table-header-font-size);
+  font-weight: 600;
+
+  &.sortable {
+    cursor: pointer;
+  }
+
+  &.compact {
+    padding: var(--table-padding-vertical-compact) var(--table-padding-horizontal-compact);
+  }
+
+  &.borderless {
+    border: none;
+  }
+
+  &.truncated {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &.align-right {
+    text-align: right;
+  }
+
+  &.align-center {
+    text-align: center;
+  }
+}
+
+.sort-icon {
+  margin-left: var(--table-header-sort-icon-spacing);
+}

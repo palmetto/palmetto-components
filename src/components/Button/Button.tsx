@@ -1,73 +1,77 @@
-import React, { FC } from 'react';
-import PropTypes from 'prop-types';
+import React, {
+  FC,
+  ReactNode,
+  MouseEvent,
+  FocusEvent,
+} from 'react';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
-interface Props {
+interface ButtonProps {
   /**
-   * Contents of the button
+   * Contents of the button.
    */
-  children: React.ReactNode;
+  children: ReactNode;
   /**
-    * A unique identifier for the button
-    */
-  id?: string;
-  /**
-   * Button type
-   */
-  type?: 'button' | 'submit' | 'reset';
-  /**
-   * Disables the button, making it inoperable
-   */
-  isDisabled?: boolean;
-  /**
-   * Additional ClassNames to add to button
+   * Additional ClassNames to add to button.
    */
   className?: string;
   /**
-   * Callback when button is pressed
+   * Make button take full width of container.
    */
   fullWidth?: boolean;
   /**
-   * Specify the tabIndex of the button
+   * A unique identifier for the button.
    */
-  tabIndex?: number;
+  id?: string;
   /**
-   * Button takes up the full width of its parent container
+   * Disables the button, making it inoperable.
+   */
+  isDisabled?: boolean;
+  /**
+   * Button takes up the full width of its parent container.
    */
   isLoading?: boolean;
   /**
-   * Callback when button is pressed
+   * Specify the tabIndex of the button.
    */
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  tabIndex?: number;
   /**
-   * Callback when button receives focus
+   * The Button's type.
    */
-  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  type?: 'button' | 'submit' | 'reset';
   /**
-   * Callback when focus leaves button
+   * Callback when Button is pressed.
    */
-  onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   /**
-   * The size of the button
+   * Callback when focus leaves Button.
+   */
+  onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
+  /**
+   * Callback when Button receives focus.
+   */
+  onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
+  /**
+   * The size of the button.
    */
   size?: 'sm' | 'md' | 'lg';
 }
 
-const Button: FC<Props> = ({
-  id,
-  type = 'button',
-  className = '',
+const Button: FC<ButtonProps> = ({
   children,
+  className = '',
+  fullWidth = false,
+  id = undefined,
   isDisabled = false,
-  fullWidth,
-  onClick,
+  isLoading = false,
+  tabIndex = undefined,
+  type = 'button',
+  onClick = undefined,
+  onFocus = undefined,
+  onBlur = undefined,
   size = 'md',
-  tabIndex,
-  isLoading,
-  onFocus,
-  onBlur,
 }) => {
   const disabled = isLoading || isDisabled;
 
@@ -82,16 +86,16 @@ const Button: FC<Props> = ({
     },
   );
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (onClick) onClick(e);
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    if (onClick) onClick(event);
   };
 
-  const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
-    if (onFocus) onFocus(e);
+  const handleFocus = (event: FocusEvent<HTMLButtonElement>) => {
+    if (onFocus) onFocus(event);
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLButtonElement>) => {
-    if (onBlur) onBlur(e);
+  const handleBlur = (event: FocusEvent<HTMLButtonElement>) => {
+    if (onBlur) onBlur(event);
   };
 
   const content = (
@@ -119,21 +123,6 @@ const Button: FC<Props> = ({
       {content}
     </button>
   );
-};
-
-Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  id: PropTypes.string,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  isDisabled: PropTypes.bool,
-  className: PropTypes.string,
-  fullWidth: PropTypes.bool,
-  tabIndex: PropTypes.number,
-  isLoading: PropTypes.bool,
-  onClick: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 export default Button;

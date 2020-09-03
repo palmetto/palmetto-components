@@ -55,7 +55,17 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      "multiline": {
+        "delimiter": "semi",
+        "requireLast": true
+      },
+      "singleline": {
+        "delimiter": "semi",
+        "requireLast": true
+      }
+    }]
   },
   "settings": {
     "import/resolver": {
@@ -84,7 +94,7 @@
         "**/*.tsx"
       ],
       "rules": {
-        "react/require-default-props": 0
+        "react/prop-types": "off"
       }
     }
   ]

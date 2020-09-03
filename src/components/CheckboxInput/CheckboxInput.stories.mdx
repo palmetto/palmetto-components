@@ -1,0 +1,217 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import CheckboxInput from './CheckboxInput';
+import FormLabel from '../FormLabel/FormLabel';
+
+<Meta
+  title="Components/Form Inputs/CheckboxInput"
+  component={CheckboxInput}
+/>
+
+# CheckboxInput
+
+Use a CheckboxInput to allow users to make a range of selections (zero, one or many).
+
+## Props
+
+<ArgsTable of={CheckboxInput} />
+
+## Default
+
+All that is required to render a basic version of the CheckboxInput is a unique `id`, a `label`, `isChecked`, and an onchange event handler passed to the `onChange` prop.
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="defaultStateIsUnchecked"
+          label="Label"
+          onChange={event => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Required
+
+Use the `isRequired` prop to mark the input as required.
+
+<Canvas>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="requiredCheckboxIsUnchecked"
+          label="Label"
+          isChecked={value}
+          onChange={event => setValue(event.target.checked)}
+          isRequired
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Checked Initial State
+
+Use the `isChecked` prop to mark the input as checked upon initial render.
+
+<Canvas>
+  <Story name="Checked Initial State">
+    {() => {
+      const [value, setValue] = useState(true);
+      return (
+        <CheckboxInput
+          id="initialStateChecked"
+          label="Label"
+          onChange={value => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Hidden Label
+
+The `label` is a required prop, but if you need to hide it for stylistic reasons, you can do
+so with the `hideLabel` prop. The checkbox will still utilize the label string value to
+populate the `aria-label` property on the input for accessibility reasons.
+
+<Canvas>
+  <Story name="Hidden Label">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="hiddenLabel"
+          hideLabel
+          onChange={value => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Custom Label
+
+If you require a label with custom markup,
+simply hide the default label (remember to still pass a text value for the label)
+and append your own. Feel free to use the `FormLabel` component to keep the base text styles consistent.
+
+<Canvas>
+  <Story name="Custom Label">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+          <>
+            <CheckboxInput
+              id="customLabel"
+              label="This label is custom"
+              hideLabel
+              onChange={value => setValue(event.target.checked)}
+              isChecked={value}
+              displayInline
+            />
+            <div style={{ display: 'inline-flex', verticalAlign: 'super' }}>
+              <FormLabel inputId="customLabel">
+                This is custom, look at this <a href="https://palmetto.com" onClick={() => alert('hey you clicked me!')} target="_blank">Link</a>
+              </FormLabel>
+            </div>
+          </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Disabled and Unchecked
+
+Use the `isDisabled` prop to disable an input.
+
+<Canvas>
+  <Story name="Disabled and Unchecked">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="disabledAndUnchecked"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          isDisabled
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Disabled and Checked
+
+Use the `isDisabled` and `isChecked` props to disable an input in a checked state.
+
+<Canvas>
+  <Story name="Disabled and Checked">
+    {() => {
+      const [value, setValue] = useState(true);
+      return (
+        <CheckboxInput
+          id="disabledAndUnchecked"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          isDisabled
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Error
+
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
+
+<Canvas>
+  <Story name="Error">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="invalidCheckbox"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          isRequired
+          error="You must accept the Terms and Conditions"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Custom Classes
+
+Use the `className` prop to add a custom class, or classes to an input.
+
+<Canvas>
+  <Story name="Custom Classes">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="customClasses"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          className="background-color-primary"
+        />
+      );
+    }}
+  </Story>
+</Canvas>

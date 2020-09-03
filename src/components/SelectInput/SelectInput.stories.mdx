@@ -1,0 +1,366 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import SelectInput from './SelectInput';
+
+<Meta
+  title="Components/Form Inputs/SelectInput"
+  component={SelectInput}
+/>
+
+# SelectInput
+
+Allows users to pick a value from a predefined list of options. Ideally, it should be used when there are 5 or more options, otherwise you should consider using a radio group instead.
+
+## Props
+
+<ArgsTable of={SelectInput} />
+
+## Default
+
+All that is required to render a basic version of the SelectInput is a unique `id`, a `label`, a list of options passed to the `options` prop, a `value`, and an onchange event handler passed to the `onChange` prop.
+
+<Canvas> 
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="singleSelectWithLabel"
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Pre-Selected
+
+Pre-select an option by passing its value to the `value` prop.
+
+<Canvas> 
+  <Story name="Pre-Selected">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(options[1]);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="preSelected"
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Placeholder
+
+Use the `placeholder` prop to add a custom placeholder.
+
+<Canvas> 
+  <Story name="Placeholder">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="customPlaceholder"
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+            placeholder="Custom placeholder..."
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Hidden Label
+
+Use the `hideLabel` prop to not render the label.
+
+<Canvas> 
+  <Story name="Hidden Label">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div style={{ height: '175px' }}>
+          <SelectInput
+            id="labelHidden"
+            label="My label is hidden"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+            hideLabel
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Multi-Select
+
+Use the `isMulti` prop to allow the selection of multiple options.
+
+<Canvas> 
+  <Story name="Multi-Select">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="multiSelect"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isMulti
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Multi-Select and Pre-Selected
+
+Use the `isMulti` prop combined with passing one or more options in an array to the `value` prop to pre-select option(s).
+
+<Canvas> 
+  <Story name="Multi-Select and Pre-Selected">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState([options[0], options[2]]);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="multiSelect"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isMulti
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Autofocus
+
+Use the `autoFocus` prop to autofocus a SelectInput.
+
+<Canvas> 
+  <Story name="Autofocus">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="autoFocus"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            autoFocus
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Required
+
+Use the `isRequired` prop to mark the input as required.
+
+<Canvas> 
+  <Story name="Required">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="required"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isRequired
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Disabled
+
+Use the `isDisabled` prop to mark the input as disabled.
+
+<Canvas> 
+  <Story name="Disabled">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <SelectInput
+            id="disabled"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isDisabled
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Clearable
+
+Use the `isClearable` prop to allow clearing of the input selected option. NOTE: this works by passing `null`
+to the `onChange` handler. 
+
+<Canvas> 
+  <Story name="Clearable">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(options[0]);
+      return (
+        <div style={{ height: '85px' }}>
+          <SelectInput
+            id="disabled"
+            label="Label"
+            value={value}
+            name="myClearableSelect"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isClearable
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Error
+
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
+
+<Canvas> 
+  <Story name="Error">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="disabled"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isRequired
+            error="Helpful validation message"
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Custom Classes
+
+Use the `className` prop to add a custom class, or classes to an input.
+
+<Canvas> 
+  <Story name="Custom Classes">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="customClasses"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            className="background-color-primary"
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>

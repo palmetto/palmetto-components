@@ -1,12 +1,10 @@
 import Button from './Button';
 import { action } from '@storybook/addon-actions';
-import { withA11y } from '@storybook/addon-a11y';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 
 <Meta
   title="Components/Button"
   component={Button}
-  decorators={[withA11y]}
 />
 
 # Button
@@ -15,42 +13,43 @@ Buttons are used as triggers for actions.
 They are used in forms, toolbars, modal dialogs and as stand-alone action triggers.
 Actions almost always occur on the same page.
 
-<Preview isExpanded>
+<Canvas isExpanded>
   <Button onClick={() => alert('clicked')}>
     Button
   </Button>
-</Preview>
+</Canvas>
 
 ## Props
-<Props of={Button} />
+
+<ArgsTable of={Button} />
 
 ## Appearance
 
-<Preview>
+<Canvas>
   <Story name="Button">
      <Button>
       Button
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 ## Full Width
 
 Use the `fullWidth` prop to allow the button to grow to its container's full width.
 
-<Preview>
+<Canvas>
   <Story name="Full Width">
     <Button fullWidth>
       Full Width
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 ## Size
 
 Set the size of the button
 
-<Preview>
+<Canvas>
   <Story name="Size">
     <>
     <div style={{ marginBottom: '1rem'}}>
@@ -70,14 +69,14 @@ Set the size of the button
     </div>
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Loading
 
 Setting the `isLoading` prop to true will replace the button text with loading indicator and disable the button to prevent unintended submissions.
 The width of the button will remain consistent to prevent content from shifting.
 
-<Preview>
+<Canvas>
   <Story name="Loading">
     <>
       <div style={{ marginBottom: '1rem' }}>
@@ -97,14 +96,14 @@ The width of the button will remain consistent to prevent content from shifting.
       </div>
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled
 
 Use for actions that aren’t currently available, such as immediately after a form submission.
 The interface should make it clear why the button is disabled and what needs to be done to enable it.
 
-<Preview>
+<Canvas>
   <Story name="Disabled">
     <>
     <div style={{ marginBottom: '1rem' }}>
@@ -119,13 +118,13 @@ The interface should make it clear why the button is disabled and what needs to 
     </div>
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Event Callbacks
 
 Callback functions can be passed to `onClick`, `onBlur`, and `onFocus` events.
 
-<Preview>
+<Canvas>
   <Story name="Event Callbacks">
     <Button
       onBlur={action('blur')}
@@ -135,4 +134,16 @@ Callback functions can be passed to `onClick`, `onBlur`, and `onFocus` events.
       click, focus, blur events
     </Button>
   </Story>
-</Preview>
+</Canvas>
+
+## Custom Classes
+
+Use the `className` prop to add a custom class, or classes to a Button.
+
+<Canvas>
+  <Story name="Custom Classes">
+    <Button className="background-color-secondary">
+      Custom Classes
+    </Button>
+  </Story>
+</Canvas>

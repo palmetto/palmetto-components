@@ -3,8 +3,16 @@
   margin: 0;
   padding: 0;
   color: var(--color-font-base);
-  font-size: var(--size-font-sm);
+  font-size: var(--form-control-size-md-label-size);
   font-weight: 700;
+
+  &.inline {
+    display: inline;
+  }
+
+  &.radio-input-label {
+    font-weight: 400;
+  }
 
   &.disabled {
     color: var(--color-font-grey-light);
@@ -12,5 +20,9 @@
 
   &.error {
     color: var(--color-brand-danger-base);
+
+    &.disabled {
+      color: var(--color-brand-danger-lighter);
+    }
   }
 }

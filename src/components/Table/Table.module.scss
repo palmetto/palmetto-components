@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+
+  .loading-mask {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .table {
+    cursor: default;
+    width: 100%;
+    border-collapse: collapse;
+    white-space: normal;
+
+    &.fixed-width-columns {
+      /* width: fit-content; */
+      table-layout: fixed;
+    }
+  }
+
+  .borderless {
+    border: none;
+  }
+
+  &.scroll {
+    display: block;
+    -webkit-overflow-scrolling: touch;
+
+    &.scroll-x {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    &.scroll-y {
+      overflow-y: auto;
+    }
+
+    >.table-bordered {
+      border: 0;
+    }
+  }
+}
