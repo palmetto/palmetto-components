@@ -169,7 +169,7 @@ For more information on web accessibility, visit: [W3C - Web Accessibility Initi
 
 ### 4. Strive for Exceptional Code Quality
 
-Our component library values exceptional code quality in order to reduce the occurrence of bugs, and improve the developer experience. In order to achieve this, we test and lint our code extensively. In addition, we adhere to multiple CSS/JS/JSX style guides to standardize the way that components are built:
+Our component library values exceptional code quality in order to reduce the occurrence of bugs, and improve the developer experience. In order to achieve this, we test and lint our code extensively. In addition to [testing](#testing), we adhere to multiple CSS/JS/JSX style guides to standardize the way that components are built:
 
 #### JS/JSX Style Guide
 
