@@ -22,10 +22,10 @@
   - [1. Desktop and Mobile Support](#1-desktop-and-mobile-support)
   - [2. Cross Browser Compliance](#2-cross-browser-compliance)
   - [3. Accessibility](#3-accessibility)
-  - [4. Use the Palmetto Design Tokens Library Exclusively when Styling Components](#4-use-the-palmetto-design-tokens-library-exclusively-when-styling-components)
-  - [5. Strive for Exceptional Code Quality](#5-strive-for-exceptional-code-quality)
+  - [4. Strive for Exceptional Code Quality](#4-strive-for-exceptional-code-quality)
     - [JS/JSX Style Guide](#jsjsx-style-guide)
     - [CSS/Sass Style Guide](#csssass-style-guide)
+  - [5. Use the Palmetto Design Tokens Library Exclusively when Styling Components](#5-use-the-palmetto-design-tokens-library-exclusively-when-styling-components)
 - [Building a Component](#building-a-component)
   - [Component](#component)
     - [Example](#example)
@@ -54,9 +54,8 @@ You need [Node.js](http://nodejs.org/) **version >= 6 and <= 11**.
 
 After cloning the repo, run:
 
-```bash
-$ yarn
-```
+`yarn`
+
 
 
 
@@ -71,13 +70,13 @@ In the project directory, you can run:
 
   `yarn storybook`
 
-  Serve Storybook stories/docs with hot reload at localhost:6006.
+  Serve [Storybook](https://storybook.js.org/) stories/docs with hot reload at localhost:6006.
 
   #### Test
 
   `yarn test`
 
-  Run a single pass of the Jest test-runner.<br /> 
+  Run a single pass of the [Jest](https://jestjs.io/en/) test-runner.<br /> 
   In addition to running tests, this script outputs a test coverage summary.
 
   `yarn test:watch`
@@ -88,7 +87,7 @@ In the project directory, you can run:
 
   `yarn lint-js`
 
-  Lint JS using ESLint.
+  Lint JS using [ESLint](https://eslint.org/).
 
   `yarn lint-js:fix`
 
@@ -96,7 +95,7 @@ In the project directory, you can run:
 
   `yarn lint-styles`
 
-  Lint styles using Stylelint
+  Lint styles using [Stylelint](https://stylelint.io/).
 
   `yarn lint-styles:fix`
 
@@ -116,7 +115,7 @@ In the project directory, you can run:
 
   `yarn type-check`
 
-  Run a single pass of type-check.
+  Run a single pass of [type-check](https://www.typescriptlang.org/).
 
   `yarn type-check:watch`
 
@@ -130,11 +129,11 @@ In the project directory, you can run:
 
 ### Testing Locally
 
-This library is meant to be added as a dependency to React apps. Aside from sandbox testing in Storybook, you can also test any changes or new features by following these steps:
+This library is meant to be added as a dependency to React apps. Aside from sandbox testing in [Storybook](https://storybook.js.org/), you can also test any changes or new features by following these steps:
 
-1) Build locally by running `yarn build`
+1) Build locally by running `yarn build`.
 
-2) symlink your local package into any project that consumes it. See [NPM link](https://docs.npmjs.com/cli/link) or [Yarn link](https://classic.yarnpkg.com/en/docs/cli/link/) for more details.
+2) Symlink your local package into any project that consumes it. See [NPM link](https://docs.npmjs.com/cli/link) or [Yarn link](https://classic.yarnpkg.com/en/docs/cli/link/) for more details.
 
 
 
@@ -143,7 +142,7 @@ This library is meant to be added as a dependency to React apps. Aside from sand
 
 ### 1. Desktop and Mobile Support
 
-All components **have** to be fully functional, **and** provide a great user experience on all devices.
+All components **must** be fully functional, **and** provide a great user experience, on all devices.
 
 ### 2. Cross Browser Compliance
 
@@ -153,8 +152,8 @@ All components **must** be fully functional, and look good across all modern bro
 
 We aim to strongly encourage the development of accessible components. With that:
 * All components are expected to adhere to the HTML5 spec, and semantic elements should be used whenever possible.
-* In cases where the use of semantic elements is not possible, aria attributes should be applied as necessary.
-* In interactive components such as inputs, buttons, etc, keyboard interaction should be supported, in addition to mouse interaction.
+* In cases where the use of semantic elements is not possible, [aria](https://www.w3.org/WAI/standards-guidelines/aria/) attributes should be applied as necessary.
+* In interactive components such as inputs, buttons, etc, keyboard interaction **should** be supported, in addition to mouse interaction.
 * Components that wrap HTML elements must reflect this by including the necessary aria attributes.
 
 In order to support the development of accessible components, this repo includes the following tools:
@@ -163,30 +162,30 @@ In order to support the development of accessible components, this repo includes
 
 For more information on web accessibility, visit: [W3C - Web Accessibility Initiative](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
 
-### 4. Use the Palmetto Design Tokens Library Exclusively when Styling Components
+### 4. Strive for Exceptional Code Quality
+
+Our component library values exceptional code quality in order to reduce the occurrence of bugs, and improve the developer experience. In order to achieve this, we test and lint our code extensively. In addition, we adhere to multiple CSS/JS/JSX style guides to standardize the way that components are built:
+
+#### JS/JSX Style Guide
+
+We follow the [AirBnB JS](https://github.com/airbnb/javascript/tree/master/react) style guide, with a few exceptions. Adhere to the linter rules as much as possible. In cases where you can't, use `// eslint-disable-line`, very, very sparingly. If a disable is needed, specify the exact rule that you are disabling.
+
+For e.g: `// eslint-disable-line no-console`
+
+####  CSS/Sass Style Guide
+
+* We strictly adhere to the [Concentric CSS Model](https://rhodesmill.org/brandon/2011/concentric-css/) for organizing our CSS properties. If any properties are out of order when a PR is opened, the build will fail until the issues are corrected.
+
+### 5. Use the Palmetto Design Tokens Library Exclusively when Styling Components
 
 Our component library is based on the [Palmetto Design Tokens](https://github.com/palmetto/palmetto-design-tokens) design system.
 
 The design system provides us with a set of shared attributes used in the Palmetto Design System. These attributes include: colors, fonts, spacing, and more.
 * The library provides the project with utility classes, scss, css, JS, and JSON variables.
 * These classes and variables are imported globally in palmetto-components, and all styles are based on them.
-* Tokens should NEVER be component-specific, however component variables can be derived from tokens. For e.g. (with sass): `$form-control-height-medium: $size-spacing-medium;`
+* Tokens should NEVER be component-specific, however component variables can be derived from tokens. For e.g. (with Sass): `$form-control-height-medium: $size-spacing-medium;`
 
 If there are additional attributes that you feel should be included in Palmetto Design Tokens, [raise an issue here](https://github.com/palmetto/palmetto-design-tokens/issues).
-
-### 5. Strive for Exceptional Code Quality
-
-Our component library values exceptional code quality in order to reduce the occurrence of bugs, and improve the developer experience. In order to achieve this, we test and lint our code extensively. In addition, we adhere to multiple CSS/JS/JSX style guides to standardize the way that components are built:
-
-#### JS/JSX Style Guide
-
-We follow the [AirBnB JS style guide](https://github.com/airbnb/javascript/tree/master/react), with a few exceptions. Adhere to the linter rules as much as possible. In cases where you can't, use `// eslint-disable-line`, etc., very, very sparingly. If a disable is needed, specify the exact rule that you are disabling.
-
-For example: `// eslint-disable-line no-console`
-
-####  CSS/Sass Style Guide
-
-* We strictly adhere to the [Concentric CSS Model](https://rhodesmill.org/brandon/2011/concentric-css/) for organizing our CSS properties. If any properties are out of order when a PR is opened, the build will fail until the issues are corrected.
 
 
 
@@ -223,10 +222,10 @@ A review of existing components will reveal that the library follows a set patte
 2) The TypeScript interface is organized in the following order:
     1) Required props, sorted A-Z
     2) Optional props, sorted A-Z
-    3) A comment is placed above each prop in the interface. This comment is used to render the prop table in Storybook, and provide a meaningful description of the prop and its usage.
+    3) A comment is placed above each prop in the interface. This comment is used to render the prop table in [Storybook](https://storybook.js.org/), and provide a meaningful description of the prop and its usage.
 3) Defaults for optional props are declared in the function declaration for the component.
-4) Whenever possible break components down into sub-components, since this encourages re-usability and encapsulation further down the line. (use your best judgement). This is preferable to smaller render functions within a single component since it makes testing more straightforward.
-5) Try your best to not abstract away standard expected functionality. For e.g., always return dispatched events to the user, and ensure that HTMl APIs are as complete as possible. If you feel prop spreading is needed to shore up missing props for a native HTML element, that is ok, but do so with caution since this will circumvent prop validation.
+4) Whenever possible, break components down into sub-components, since this encourages re-usability and encapsulation further down the line. (use your best judgement). This is preferable to smaller render functions within a single component since it makes testing more straightforward.
+5) Try your best to not abstract away standard expected functionality. For e.g., always return dispatched events to the user, and ensure that HTML APIs are as complete as possible. If you feel prop spreading is needed to shore up missing props for a native HTML element, that is ok, but do so with caution since this will circumvent prop validation.
 
 #### Example
 
@@ -273,27 +272,27 @@ export default Component;
 
 ### Styles
 
-Styles can be written in either CSS or Sass; the file extension must always be `.sass`. Styles are automatically prefixed at build-time using the [Autoprefixer](https://github.com/postcss/autoprefixer) PostCSS plugin. 
+Styles can be written in either CSS or [Sass](https://sass-lang.com/); the file extension must always be `.sass`. Styles are automatically prefixed at build-time using the [Autoprefixer](https://github.com/postcss/autoprefixer) PostCSS plugin. 
 
 ### Storybook Documentation
 
-We use Storybook to document components. Any new component, or addition to a component's API must have a corresponding story where it's showcased.
+We use [Storybook](https://storybook.js.org/) to document components. Any new component, or addition to a component's API must have a corresponding story where it's showcased.
 
-* Follow MDX format for writing stories. See `Button.stories.mdx` for a good example of this.
+* Follow MDX format for writing stories. See [Button.stories.mdx](/src/components/Button/Button.stories.mdx) for a good example of this.
 
 ### Testing
 
-We use **jest** and **react-testing-library** for all tests. We discourage the use of snapshot testing, instead opting to test desired functionality of a component. General guidelines:
+We use [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) for all tests. We discourage the use of snapshot testing, instead opting to test desired functionality of a component. General guidelines:
 
-* Do not test implementation details, E.G: the name of a function changed (again, no snapshot testing).
-* Try to write result-oriented tests. E.G: when an change event happens, my onChange handler was properly invoked.
+* Do not test implementation details. For e.g., the name of a function changed (again, no snapshot testing).
+* Try to write result-oriented tests. For e.g., when a change event happens, the onChange handler was properly invoked.
 * Test whether components render with the correct props in their different states. In general, write a test to validate each state showcased in Storybook.
 
-We use Code Climate reports for test coverage. Our expectation for any new PR getting merged is that the new feature must satisfy at least 95% coverage. It will not get approved otherwise.
+We use [Code Climate](https://codeclimate.com/) reports for test coverage. Our expectation for any new PR getting merged is that the new feature must satisfy at least 95% coverage. It will not get approved otherwise.
 
 ### Publishing
 
-In order to ensure that a new component gets included in the library it must be imported and included in the corresponding export of `src/components/index.js`.
+In order to ensure that a new component gets included in the library, it must be imported and included in the corresponding export of `src/components/index.js`.
 
 
 
@@ -303,8 +302,8 @@ In order to ensure that a new component gets included in the library it must be 
 * The ``master`` branch is the main branch, **and the one that you will open your PRs against**.
 * Merging a PR to ``master`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
 * Include **screenshots** or animated GIFs in your pull request whenever needed (if changes are visual in nature).
-* It's OK, and even encouraged, to make multiple small commits as you work a feature branch (commit early, and commit often) - we have configured GitHub to automatically squash commits before merging.
-* **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and for testing on your end. In general, respect the .gitignore.
+* It's OK, and even encouraged, to make multiple small commits as you work on a feature branch (commit early, and commit often) - we have configured GitHub to automatically squash commits before merging.
+* **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and testing on your end. In general, respect the [.gitignore](/.gitignore).
 * If adding a new feature:
     * Provide a convincing reason to add this feature. Ideally you should open a suggestion issue first and have it green lighted before starting development.
 
@@ -313,9 +312,9 @@ In order to ensure that a new component gets included in the library it must be 
 
 ## Releases
 
-Palmetto-Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in package.json, and creating a new release tag in GitHub for each release, they are automatically triggered by prefixing the commit message when merging to master. Upon triggering a release, the package version is bumped depending on the type specified, a release tag is created in GitHub, and the new version is automatically published to npm.
+Palmetto Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in `package.json`, and creating a new release tag in GitHub for each release, they are automatically triggered by prefixing the commit message when merging to `master`. Upon triggering a release, the package version is bumped depending on the type specified, a release tag is created in GitHub, and the new version is automatically published to [npm](https://www.npmjs.com/).
 
-For example, opening a PR to master with the commit message `fix: Resolve bug`, will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`. Opening a PR with `feat(Table): Finalize tests` will trigger a feature release and bump the package's version from `0.0.0` to `0.1.0`.
+For e.g., opening a PR to master with the commit message `fix: Resolve bug`, will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`. Opening a PR with `feat(Table): Finalize tests` will trigger a feature release and bump the package's version from `0.0.0` to `0.1.0`.
 
 The link above provides full documentation for this workflow. However, a comprehensive list of the prefix types, and their intended uses are provide below for quick reference:
 

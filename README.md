@@ -50,7 +50,7 @@ ReactDOM.render(<App />, document.querySelector('#app'));
 
 ## Contributing
 
-Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/master/docs/CONTRIBUTING.md) for our contribution guide.
+Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/master/docs/CONTRIBUTING.md) for our Contribution Guide.
 
 ## Raising an Issue
 
