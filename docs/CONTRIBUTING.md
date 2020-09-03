@@ -82,7 +82,7 @@ In the project directory, you can run:
 
   `yarn test`
 
-  Run a single pass of the [Jest](https://jestjs.io/en/) test-runner.<br /> 
+  Run a single pass of the [Jest](https://jestjs.io/en/) test-runner.<br />
   In addition to running tests, this script outputs a test coverage summary.
 
   `yarn test:watch`
@@ -205,8 +205,8 @@ Each Component consists of the following files:
 ```
 Component
 │   Component.tsx
-│   Component.module.scss  
-│   Component.stories.mdx   
+│   Component.module.scss
+│   Component.stories.mdx
 │   Component.test.jsx
 │   ComponentTypes.ts (if necessary)
 │
@@ -217,7 +217,7 @@ Component
 
 ### Component
 
-Most, if not all components in this library should be **controlled** components. Meaning that they hold no internal state. 
+Most, if not all components in this library should be **controlled** components. Meaning that they hold no internal state.
 
 A review of existing components will reveal that the library follows a set pattern for their organization; please review the components, and adhere to the structure that you see. Some general rules:
 
@@ -269,7 +269,7 @@ const Component: FC<ComponentProps> = ({
   firstOptionalProp = false,
   secondOptionalProp = undefined;
 }) => {
-  
+
   return (
     ...
   );
@@ -280,7 +280,7 @@ export default Component;
 
 ### Styles
 
-We use [CSS Modules](https://github.com/css-modules/css-modules) to import CSS, or [Sass](https://sass-lang.com/) into our components. Regardless of the the format imported, the extension for the file must always be `.sass`. 
+We use [CSS Modules](https://github.com/css-modules/css-modules) to import CSS, or [Sass](https://sass-lang.com/) into our components. Regardless of the the format imported, the extension for the file must always be `.sass`.
 
 All `class`s or `id`s should be written in kebab-case; [Stylelint](https://stylelint.io/) will throw an exception otherwise.
 
@@ -339,7 +339,7 @@ describe('Component', () => {
         render(
           <Component />
         );
-        
+
         ...
       });
     });
