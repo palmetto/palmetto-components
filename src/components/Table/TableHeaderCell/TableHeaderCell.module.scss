@@ -3,6 +3,7 @@
   padding: var(--size-spacing-sm);
   text-align: left;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--table-header-color);
   font-size: var(--table-header-font-size);
   font-weight: 600;
@@ -32,8 +33,12 @@
   &.align-center {
     text-align: center;
   }
-}
 
-.sort-icon {
-  margin-left: var(--table-header-sort-icon-spacing);
+  .heading {
+    white-space: initial;
+  }
+
+  .sort-icon {
+    margin-left: var(--table-header-sort-icon-spacing);
+  }
 }
