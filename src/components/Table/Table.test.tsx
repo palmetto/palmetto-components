@@ -143,9 +143,14 @@ describe('Table', () => {
           sortedColumn={{ dataKey: 'flavor', sortDirection: 'ascending' }}
         />);
 
-        const { getByTestId } = within(screen.getByText('Flavor'));
-
-        expect(getByTestId('tableHeaderCellSortAsc-testid')).toBeInTheDocument();
+        const headingSpan = screen.getByText('Flavor');
+        expect(headingSpan).toBeInTheDocument();
+        const headingElement = headingSpan.closest('th');
+        expect(headingElement).toBeInTheDocument();
+        if (headingElement) {
+          const { getByTestId } = within(headingElement);
+          expect(getByTestId('tableHeaderCellSortAsc-testid')).toBeInTheDocument();
+        }
       });
     });
 
