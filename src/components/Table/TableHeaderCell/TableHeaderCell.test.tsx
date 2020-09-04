@@ -50,7 +50,7 @@ describe('TableHeaderCell', () => {
         </TableHeaderCell>,
       );
 
-      const tableHeaderCell = screen.getByText('ID');
+      const tableHeaderCell = screen.getByText('ID').closest('th');
 
       expect(tableHeaderCell).toHaveStyle({ width: '200px', maxWidth: '200px' });
     });
