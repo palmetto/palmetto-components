@@ -143,7 +143,9 @@ describe('Table', () => {
           sortedColumn={{ dataKey: 'flavor', sortDirection: 'ascending' }}
         />);
 
-        const { getByTestId } = within(screen.getByText('Flavor'));
+        const headingSpan = screen.getByText('Flavor');
+        const headingElement = headingSpan.closest('th');
+        const { getByTestId } = within(headingElement);
 
         expect(getByTestId('tableHeaderCellSortAsc-testid')).toBeInTheDocument();
       });
