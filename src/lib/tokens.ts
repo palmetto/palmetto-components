@@ -2,18 +2,66 @@ import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 import colors from '@palmetto/palmetto-design-tokens/build/js/variables-color';
 
 export type PALMETTO_COLORS =
+  'primary-lightest' |
+  'primary-lighter' |
+  'primary-light' |
   'primary' |
+  'primary-dark' |
+  'primary-darker' |
+  'primary-darkest' |
+  'secondary-lightest' |
+  'secondary-lighter' |
+  'secondary-light' |
   'secondary' |
+  'secondary-dark' |
+  'secondary-darker' |
+  'secondary-darkest' |
+  'tertiary-lightest' |
+  'tertiary-lighter' |
+  'tertiary-light' |
   'tertiary' |
+  'tertiary-dark' |
+  'tertiary-darker' |
+  'tertiary-darkest' |
+  'grey-lightest' |
+  'grey-lighter' |
+  'grey-light' |
   'grey' |
+  'grey-dark' |
+  'grey-darker' |
+  'grey-darkest' |
+  'success-lightest' |
+  'success-lighter' |
+  'success-light' |
   'success' |
+  'success-dark' |
+  'success-darker' |
+  'success-darkest' |
+  'warning-lightest' |
+  'warning-lighter' |
+  'warning-light' |
   'warning' |
+  'warning-dark' |
+  'warning-darker' |
+  'warning-darkest' |
+  'danger-lightest' |
+  'danger-lighter' |
+  'danger-light' |
   'danger' |
+  'danger-dark' |
+  'danger-darker' |
+  'danger-darkest' |
+  'info-lightest' |
+  'info-lighter' |
+  'info-light' |
   'info' |
+  'info-dark' |
+  'info-darker' |
+  'info-darkest' |
   'dark' |
   'light' |
-  'white' |
-  'black';
+  'black' |
+  'white';
 
 export type PALMETTO_FONT_SIZES =
   'xs' |

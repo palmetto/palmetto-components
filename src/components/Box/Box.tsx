@@ -1,56 +1,14 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import {
-  PALMETTO_FONT_SIZE_OPTIONS,
+  PALMETTO_FONT_SIZES,
   PALMETTO_FONT_COLORS,
-  PALMETTO_BRAND_COLOR_OPTIONS,
-  PALMETTO_BACKGROUND_COLOR_OPTIONS,
-  PALMETTO_SPACING_SIZE_OPTIONS,
+  PALMETTO_COLORS,
+  PALMETTO_SPACING,
 } from '../../lib/tokens';
-import getElementType from '../../lib/getElementType';
+// import getElementType from '../../lib/getElementType';
+import getSpacingCss from '../../lib/getSpacingCss';
 // import BorderType from '../../types';
-
-function getSpacingCss(attribute, value) {
-  if (value === undefined) {
-    return {
-      styles: {},
-      classes: [],
-    };
-  }
-
-  const classes = [];
-  let styles;
-
-  // value is css shorthand
-  if (value.split && value.split(' ').length > 1) {
-    const side = value.split(' ');
-    // x and y, e.g. 'xs sm'
-    if (side.length === 2) {
-      if (side[0] !== '0') classes.push(`${attribute}-v-${side[0]}`);
-      if (side[1] !== '0') classes.push(`${attribute}-h-${side[1]}`);
-    } else if (side.length === 3) { // top, horizontal, bottom
-      if (side[0] !== '0') classes.push(`${attribute}-top-${side[0]}`);
-      if (side[1] !== '0') classes.push(`${attribute}-h-${side[1]}`);
-      if (side[2] !== '0') classes.push(`${attribute}-bottom-${side[2]}`);
-    } else if (side.length === 4) { // top, right, bottom left
-      if (side[0] !== '0') classes.push(`${attribute}-top-${side[0]}`);
-      if (side[1] !== '0') classes.push(`${attribute}-right-${side[1]}`);
-      if (side[2] !== '0') classes.push(`${attribute}-bottom-${side[2]}`);
-      if (side[3] !== '0') classes.push(`${attribute}-left-${side[3]}`);
-    }
-  } else if (typeof value === 'string') {
-    if (value === 'inherit') {
-      styles = 'inherit';
-    } else {
-      classes.push(`${attribute}-${value}`);
-    }
-  }
-
-  return ({
-    styles,
-    classes,
-  });
-}
 
 interface BoxProps {
   /**
@@ -79,11 +37,11 @@ interface BoxProps {
   /**
    * The DOM tag or react component to use for the element.
    */
-  as?: elementType;
+  // as?: elementType;
   /**
    * Any valid color token, or a `url()` for an image
    */
-  background?: PALMETTO_BACKGROUND_COLOR_OPTIONS;
+  background?: PALMETTO_COLORS;
   // /**
   //  * The default size of an element before the remaining space is distributed
   //  */
@@ -92,9 +50,9 @@ interface BoxProps {
   //   PropTypes.string,
   // ]),
   /**
-   * Any valid color token for the border color
+   * Any valid [color token](/?path=/docs/design-tokens-colors--brand) for the border color
    */
-  border?: PALMETTO_BRAND_COLOR_OPTIONS;
+  border?: PALMETTO_COLORS;
   /**
    * Additional class names to add
    */
@@ -138,7 +96,7 @@ interface BoxProps {
   /**
    * The font size for the Box contents
    */
-  fontSize?: PALMETTO_FONT_SIZE_OPTIONS;
+  fontSize?: PALMETTO_FONT_SIZES;
   // /**
   //  * The height of the element
   //  */
@@ -159,7 +117,7 @@ interface BoxProps {
    * Amount of space around the element. It models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element.It is shorthand for top, right, bottom, left.
    */
-  margin?: PALMETTO_SPACING_SIZE_OPTIONS;
+  margin?: PALMETTO_SPACING;
   // /**
   //  * Click handler function
   //  */
@@ -183,7 +141,7 @@ interface BoxProps {
    * Amount of space within the element around the Box contents. It models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
    */
-  padding?: PALMETTO_SPACING_SIZE_OPTIONS;
+  padding?: PALMETTO_SPACING;
   /**
    * Set the radius of all corners
    */
@@ -196,7 +154,6 @@ interface BoxProps {
   // width: PropTypes.string, // need to define based on design tokens
 }
 
-
 /**
  * A `<Box>` is a layout component to build UIs with consistent padding and spacing between
  * elements.
@@ -206,14 +163,14 @@ const Box: FC<BoxProps> = ({
   // align,
   // alignContent,
   // alignSelf,
-  as = 'div',
+  // as = 'div',
   background,
   // basis,
   border,
-  color,
-  className,
-  // childGap,
   children,
+  // childGap,
+  className,
+  color,
   // flex,
   fontSize = 'inherit',
   // height,
@@ -226,7 +183,7 @@ const Box: FC<BoxProps> = ({
   // width,
   ...rest
 }) => {
-  const Element = getElementType(Box, { as });
+  // const Element = getElementType(Box, { as });
 
   const marginCss = getSpacingCss('m', margin);
   const paddingCss = getSpacingCss('p', padding);
@@ -256,13 +213,14 @@ const Box: FC<BoxProps> = ({
   }
 
   return (
-    <Element
+    <div
       aria-label={a11yTitle}
       className={classes}
       style={boxStyles}
+      {...rest}
     >
       {children}
-    </Element>
+    </div>
   );
 };
 
