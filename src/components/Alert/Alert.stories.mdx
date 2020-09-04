@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Alert from './Alert';
+import Heading from '../Heading/Heading';
+import Button from '../Button/Button';
 
 <Meta
   title="Components/Alert"
@@ -24,7 +26,6 @@ or a ReactNode to be rendered.
 <Canvas>
   <Story name="Default">
     {() => {
-      const [value, setValue] = useState(null);
       return (
         <Alert
           message="Hello world!"
@@ -50,7 +51,155 @@ Alerts come in different types based on the kind of feedback being delivered to 
       const message = (type) => `This is a ${type} alert.`;
       return (
         <>
-         {types.map(type => <Alert message={message(type)} type={type} />)}
+         {types.map(type => <Alert message={message(type)} type={type} className="m-bottom-md" />)}
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Custom Class
+
+You can apply a custom class to your alert with the `className` prop. Here we have modified the font-size.
+
+<Canvas>
+  <Story name="Custom Class">
+    {() => {
+      return (
+        <Alert
+          message="Hello world!"
+          type="success"
+          className="font-size-3xl"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Icon
+
+You can choose to display a standard icon for each type of notification, based on their nature.
+
+<Canvas>
+  <Story name="With Icon">
+    {() => {
+      const types = [
+        'default',
+        'info',
+        'success',
+        'warning',
+        'danger',
+      ];
+      const message = (type) => `
+        This is a ${type} alert. It also has longer text to see what these alerts
+        can look like when broken into multiple lines. This one will definitely
+        break into multiple lines in most standard screen resolutions.
+      `;
+      return (
+        <>
+         {types.map(type => <Alert message={message(type)} type={type} hasIcon className="m-bottom-md" />)}
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Custom JSX in the message
+
+The alert can display any custom JSX that is passed into the `message` prop, not just a string type.
+
+<Canvas>
+  <Story name="With Custom JSX Message">
+    {() => {
+      const myMessage = (
+        <>
+          <Heading as="h3" size="xl">Oops!</Heading>
+          <p>Looks like something went wrong.</p>
+          <Button size="sm">Click this button to fix it!</Button>
+        </>
+      );
+      return (
+        <Alert
+          message={myMessage}
+          type="danger"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Render Function
+
+If you prefer to pass a render function to the alert rather than a static `ReactNode`, you can pass a function
+that returns a `ReactNode` to the `render` prop.
+
+IMPORTANT: The `render` prop, will supersede the `message` prop, if both are present.
+
+<Canvas>
+  <Story name="With Render Function">
+    {() => {
+      const renderMyMessage = () => (
+        <>
+          <Heading as="h3" size="xl">Oops!</Heading>
+          <p>Looks like something went wrong. But I'm using a render function.</p>
+          <Button size="sm">Click this button to fix it!</Button>
+        </>
+      );
+      return (
+        <Alert
+          render={renderMyMessage}
+          type="danger"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Closable
+
+The alert can be made closable by passing the `isClosable` prop. Note that this only controls the prescence of
+the close icon, but closing actually happens programmatically with a callback passed to the `onClose` prop.
+If you need a custom close button or text, pass it in the `closeText` prop.
+
+<Canvas>
+  <Story name="Closable">
+    {() => {
+      const [isAlertTwoShowing, setAlertTwoShowing] = useState(true);
+      const [isAlertThreeShowing, setAlertThreeShowing] = useState(true);
+      return (
+        <>
+          <Alert
+            message="Closable, but with no onClose callback so nothing happens when clicked."
+            type="warning"
+            isClosable
+            className="m-bottom-md"
+          />
+          {isAlertTwoShowing ? (
+            <Alert
+              message="This one works!"
+              type="info"
+              isClosable
+              onClose={() => setAlertTwoShowing(false)}
+              className="m-bottom-md"
+            />
+          ) : (
+            <div className="m-bottom-md">
+              <Button onClick={() => setAlertTwoShowing(true)} size="sm">Give me the second alert back!</Button>
+            </div>
+          )}
+          {isAlertThreeShowing ? (
+            <Alert
+              message="With custom close text!"
+              type="info"
+              isClosable
+              onClose={() => setAlertThreeShowing(false)}
+              closeText="Close me!"
+            />
+          ) : (
+            <div className="m-bottom-md">
+              <Button onClick={() => setAlertThreeShowing(true)} size="sm">Give me the third alert back!</Button>
+            </div>
+          )}
         </>
       );
     }}

@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import React, { ReactNode } from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Alert from './Alert';
 
 describe('Alert', () => {
@@ -17,20 +17,140 @@ describe('Alert', () => {
     test('It renders with specific classes based on the type prop', () => {
       const message = 'Hello world!';
       const types = [
-        'info',
-        'success',
-        'warning',
-        'danger',
+        'info' as const,
+        'success' as const,
+        'warning' as const,
+        'danger' as const,
       ];
 
       const { rerender } = render(<Alert message={message} />);
 
       types.forEach(type => {
         rerender(<Alert message={message} type={type} />);
-        const alert = screen.getByText(message);
+        const alert = screen.getByRole('alert');
         expect(alert).toBeInTheDocument();
         expect(alert).toHaveClass(type);
       });
+    });
+  });
+
+  describe('Custom Class', () => {
+    test('It renders with a custom class if provided', () => {
+      const message = 'Hello world!';
+      render(<Alert message={message} className="custom-class" />);
+
+      const alert = screen.getByRole('alert');
+      expect(alert).toHaveClass('custom-class');
+    });
+  });
+
+  describe('With Icon', () => {
+    test('It shows a relevant icon when passed the `hasIcon` prop', () => {
+      const message = 'Hello world!';
+      const types = [
+        'info' as const,
+        'success' as const,
+        'warning' as const,
+        'danger' as const,
+      ];
+
+      const { rerender } = render(<Alert message={message} />);
+
+      types.forEach(type => {
+        rerender(<Alert message={message} type={type} hasIcon />);
+        const alertIcon = screen.getByTestId(`alert-icon-${type}-test-id`);
+        expect(alertIcon).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('With Custom JSX', () => {
+    test('It renders custom JSX if passed to the message prop', () => {
+      const jsxMessage: ReactNode = <button type="button">I am a button!</button>;
+
+      render(<Alert message={jsxMessage} />);
+
+      const alertButton = screen.getByRole('button');
+      expect(alertButton).toBeInTheDocument();
+      expect(alertButton.textContent).toBe('I am a button!');
+    });
+
+    test('It renders custom JSX if a render prop is passed with a render function', () => {
+      const jsxRenderProp = (): ReactNode => <button type="button">I am a button!</button>;
+
+      render(<Alert render={jsxRenderProp} />);
+
+      const alertButton = screen.getByRole('button');
+      expect(alertButton).toBeInTheDocument();
+      expect(alertButton.textContent).toBe('I am a button!');
+    });
+
+    test('Render prop supersedes message prop', () => {
+      const jsxRenderProp = (): ReactNode => <button type="button">I am a button!</button>;
+      const message = 'Hello world!';
+
+      render(<Alert render={jsxRenderProp} message={message} />);
+
+      const alertButton = screen.getByRole('button');
+      expect(alertButton).toBeInTheDocument();
+      expect(alertButton.textContent).toBe('I am a button!');
+
+      expect(screen.queryByText(message)).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Closable Alert', () => {
+    test('It renders a close icon if `isClosable` prop is passed', () => {
+      const message = 'I am closable!';
+      const { rerender } = render(<Alert message={message} />);
+
+      const noCloseButton = screen.queryByTestId('alert-close-icon-test-id');
+      expect(noCloseButton).not.toBeInTheDocument();
+
+      rerender(<Alert message={message} isClosable />);
+      const closeButton = screen.queryByTestId('alert-close-icon-test-id');
+      expect(closeButton).toBeInTheDocument();
+    });
+
+    test('It renders with custom close text if closeText prop is passed', () => {
+      const message = 'I am closable too!';
+      render(<Alert message={message} isClosable closeText="Close me!" />);
+
+      const closeButton = screen.queryByText('Close me!');
+      expect(closeButton).toBeInTheDocument();
+    });
+
+    test('It fires a callback if onClose prop is passed', () => {
+      const message = 'I am closable too!';
+      const mockOnClose = jest.fn();
+
+      const { rerender } = render(<Alert message={message} isClosable onClose={mockOnClose} />);
+
+      const closeButton = screen.queryByTestId('alert-close-icon-test-id');
+      if (closeButton) fireEvent.click(closeButton);
+      expect(mockOnClose).toBeCalledTimes(1);
+      mockOnClose.mockReset();
+
+      rerender(<Alert message={message} isClosable onClose={mockOnClose} closeText="close" />);
+      const closeButtonSpan = screen.getByText('close');
+      if (closeButtonSpan) {
+        fireEvent.click(closeButtonSpan); // 1
+        fireEvent.keyUp(closeButtonSpan, { keyCode: 13 }); // 2
+        fireEvent.keyUp(closeButtonSpan, { keyCode: 13 }); // 3
+        fireEvent.keyUp(closeButtonSpan, { keyCode: 30 }); // No-op
+        fireEvent.keyUp(closeButtonSpan, { keyCode: 30 }); // No-op
+      }
+      expect(mockOnClose).toBeCalledTimes(3);
+      mockOnClose.mockReset();
+
+      rerender(<Alert message={message} isClosable closeText="close" />);
+      const closeButtonNotClickable = screen.getByText('close');
+      if (closeButtonNotClickable) {
+        fireEvent.click(closeButtonSpan); // No-op
+        fireEvent.keyUp(closeButtonSpan, { keyCode: 13 }); // No-op
+        fireEvent.keyUp(closeButtonSpan, { keyCode: 30 }); // No-op
+      }
+      expect(mockOnClose).toBeCalledTimes(0);
     });
   });
 });

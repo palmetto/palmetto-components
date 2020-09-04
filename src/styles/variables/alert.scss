@@ -1,7 +1,7 @@
 :root {
   --alert-border-radius: var(--size-border-radius-md);
-  --alert-padding-default: var(--size-spacing-lg);
-  --alert-padding-compact: var(--size-spacing-md);
+  --alert-padding-default: var(--size-spacing-md);
+  --alert-padding-compact: var(--size-spacing-sm);
 
   /* Colors */
   --alert-background-color-default: var(--color-brand-grey-lightest);
@@ -11,8 +11,14 @@
   --alert-background-color-danger: var(--color-brand-danger-lightest);
 
   --alert-border-color-default: var(--color-brand-grey-lighter);
-  --alert-border-color-info: var(--color-brand-secondary-lighter);
-  --alert-border-color-success: var(--color-brand-success-lighter);
-  --alert-border-color-warning: var(--color-brand-warning-lighter);
-  --alert-border-color-danger: var(--color-brand-danger-lighter);
+  --alert-border-color-info: var(--color-brand-secondary-light);
+  --alert-border-color-success: var(--color-brand-success-light);
+  --alert-border-color-warning: var(--color-brand-warning-light);
+  --alert-border-color-danger: var(--color-brand-danger-light);
+
+  --alert-font-color-default: var(--color-font-base);
+  --alert-font-color-info: var(--color-font-info);
+  --alert-font-color-success: var(--color-font-success);
+  --alert-font-color-warning: var(--color-font-base);
+  --alert-font-color-danger: var(--color-font-danger);
 }
