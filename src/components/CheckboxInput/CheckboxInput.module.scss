@@ -1,6 +1,7 @@
 .checkbox {
   display: flex;
   align-items: center;
+  line-height: var(--form-control-line-height);
 
   &.disabled {
     pointer-events: none;
