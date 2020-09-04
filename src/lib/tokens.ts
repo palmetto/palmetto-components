@@ -74,7 +74,7 @@ export const PALMETTO_FONT_COLOR_OPTIONS = Object.keys(colors.color.font) as PAL
 export const PALMETTO_FONT_COLOR_VALUES = Object.values(colors.color.font);
 
 export const PALMETTO_BRAND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
-export const PALMETTO_FONT_COLOR_VALUESPALMETTO_BRAND_COLOR_VALUES = colors.color.brand;
+export const PALMETTO_BRAND_COLOR_VALUES = colors.color.brand;
 
 export const PALMETTO_SPACING_OPTIONS = Object.keys(sizes.size.spacing);
 export const PALMETTO_SPACING_VALUES = Object.values(sizes.size.spacing);
