@@ -1,4 +1,9 @@
-import React, { FC, ReactNode, MouseEvent, KeyboardEvent } from 'react';
+import React, {
+  FC,
+  ReactNode,
+  MouseEvent,
+  KeyboardEvent,
+} from 'react';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
