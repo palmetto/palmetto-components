@@ -144,10 +144,13 @@ describe('Table', () => {
         />);
 
         const headingSpan = screen.getByText('Flavor');
+        expect(headingSpan).toBeInTheDocument();
         const headingElement = headingSpan.closest('th');
-        const { getByTestId } = within(headingElement);
-
-        expect(getByTestId('tableHeaderCellSortAsc-testid')).toBeInTheDocument();
+        expect(headingElement).toBeInTheDocument();
+        if (headingElement) {
+          const { getByTestId } = within(headingElement);
+          expect(getByTestId('tableHeaderCellSortAsc-testid')).toBeInTheDocument();
+        }
       });
     });
 
