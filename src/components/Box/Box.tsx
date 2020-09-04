@@ -39,7 +39,7 @@ interface BoxProps {
    */
   // as?: elementType;
   /**
-   * Any valid color token, or a `url()` for an image
+   * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
   background?: PALMETTO_COLORS;
   // /**
@@ -50,7 +50,7 @@ interface BoxProps {
   //   PropTypes.string,
   // ]),
   /**
-   * Any valid [color token](/?path=/docs/design-tokens-colors--brand) for the border color
+   * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
    */
   border?: PALMETTO_COLORS;
   /**
@@ -94,7 +94,7 @@ interface BoxProps {
   //   }),
   // ]),
   /**
-   * The font size for the Box contents
+   * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
   fontSize?: PALMETTO_FONT_SIZES;
   // /**
