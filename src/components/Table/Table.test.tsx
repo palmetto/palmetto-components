@@ -216,7 +216,7 @@ describe('Table', () => {
           />,
         );
 
-        const tableHeaderCell = screen.getByText('Flavor');
+        const tableHeaderCell = screen.getByText('Flavor').closest('th');
         expect(tableHeaderCell).toHaveStyle({ width: '100px', maxWidth: '100px' });
       });
     });
