@@ -54,7 +54,7 @@ It lays out it contents in a specified direction, and by default renders a `div`
 
 Use the `background` prop to set the color of the background
 
-<Preview>
+<Canvas>
   <Story name="background">
      {[...PALMETTO_BACKGROUND_COLOR_OPTIONS].map((color, i) => {
       if (color.includes('inherit')) return;
@@ -96,13 +96,13 @@ Use the `background` prop to set the color of the background
       )
     })}
   </Story>
-</Preview>
+</Canvas>
 
 ## Border
 
 Use the `border` prop to set the color of the border
 
-<Preview>
+<Canvas>
   <Story name="border color">
      {[...PALMETTO_BRAND_COLOR_OPTIONS].map((color, i) => {
       if (color.includes('inherit')) return;
@@ -144,13 +144,13 @@ Use the `border` prop to set the color of the border
       )
     })}
   </Story>
-</Preview>
+</Canvas>
 
 ## Font Color
 
 Use the `color` prop to set the color of the text
 
-<Preview>
+<Canvas>
   <Story name="color">
      {[...PALMETTO_FONT_COLOR_OPTIONS].map((color, i) => (
       <Box color={color} background={color === 'inverse' ? 'grey-darker' : null} key={i}>
@@ -158,13 +158,13 @@ Use the `color` prop to set the color of the text
       </Box>
     ))}
   </Story>
-</Preview>
+</Canvas>
 
 ## Font Size
 
-Use the `fontSize` prop to set the size of the text
+Set the `fontSize` prop with a [font size](/?path=/story/design-tokens-font-size--page) token to set the size of the text in the Box.
 
-<Preview>
+<Canvas>
   <Story name="fontSize">
     {[...PALMETTO_FONT_SIZE_OPTIONS].reverse().map((fontSize, i) => (
       <Box fontSize={fontSize} key={i}>
@@ -172,13 +172,13 @@ Use the `fontSize` prop to set the size of the text
       </Box>
     ))}
   </Story>
-</Preview>
+</Canvas>
 
 ## Margin
 
-Set a single spacing value for equal margin around the outside of the box.
+The `margin` prop accepts a single [spacing](/?path=/story/design-tokens-spacing--page) value or a set of spacing values that correspond with css shorthand syntax. Margin values can be set on the horizontal or vertical axis, or the top, right, bottom and left sides of a Box.
 
-<Preview>
+<Canvas>
   <Story name="margin">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box margin={spacing} background="primary-lighter" key={i}>
@@ -186,11 +186,11 @@ Set a single spacing value for equal margin around the outside of the box.
       </Box>
     ))}
   </Story>
-</Preview>
+</Canvas>
 
 ### Horizontal Margin
 
-<Preview>
+<Canvas>
   <Story name="margin horizontal">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box margin={`0 ${spacing}`} background="primary-lighter" key={i}>
@@ -198,11 +198,11 @@ Set a single spacing value for equal margin around the outside of the box.
       </Box>
     ))}
   </Story>
-</Preview>
+</Canvas>
 
 ### Vertical Margin
 
-<Preview>
+<Canvas>
   <Story name="margin vertical">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box margin={`${spacing} 0`} background="primary-lighter" key={i}>
@@ -210,13 +210,30 @@ Set a single spacing value for equal margin around the outside of the box.
       </Box>
     ))}
   </Story>
-</Preview>
+</Canvas>
 
 ## Padding
 
-Set a single spacing value for equal padding around the contents of the box.
+The `padding` prop accepts a single [spacing](/?path=/story/design-tokens-spacing--page) value or a set of spacing values that correspond with css shorthand syntax. Padding values can be set on the horizontal or vertical axis, or the top, right, bottom and left sides of a Box.
 
-<Preview>
+<Canvas>
+  <Story name="padding four sides">
+    <Box padding="lg md" margin="sm 0" background="primary-lighter">
+      lg vertical and md horizontal
+    </Box>
+     <Box padding="0 2xl" margin="sm 0" background="primary-lighter">
+      0 vertical and 2xl horizontal
+    </Box>
+    <Box padding="sm md 2xl" margin="sm 0" background="primary-lighter">
+      sm top, md horizontal, 2xl bottom
+    </Box>
+    <Box padding="sm lg 2xl 0" margin="sm 0" background="primary-lighter">
+      sm top, lg right, 2xl bottom, 0 left
+    </Box>
+  </Story>
+</Canvas>
+
+<Canvas>
   <Story name="padding">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box padding={spacing} background="primary-lighter" margin="xs 0" key={i}>
@@ -224,37 +241,40 @@ Set a single spacing value for equal padding around the contents of the box.
       </Box>
     ))}
   </Story>
-</Preview>
+</Canvas>
+
+
 
 ### Horizontal Padding
 
-<Preview>
+<Canvas>
   <Story name="padding horizontal">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box padding={`0 ${spacing}`} background="primary-lighter" margin="xs 0" key={i}>
-        {`${spacing} padding margin`}
+        {`${spacing} horizontal padding`}
       </Box>
     ))}
   </Story>
-</Preview>
+</Canvas>
 
 ### Vertical Padding
 
-<Preview>
+<Canvas>
   <Story name="padding vertical">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box padding={`${spacing} 0`} background="primary-lighter" margin="xs 0" key={i}>
-        {`${spacing} padding margin`}
+        {`${spacing} vertical padding`}
       </Box>
     ))}
   </Story>
-</Preview>
+</Canvas>
+
 
 ## Radius
 
-Use the `radius` prop to set the corner radius of the box.
+Set the `radius` prop with a [radius token](/?path=/docs/design-tokens-border-radius--page) to set the corner radius of the box.
 
-<Preview>
+<Canvas>
   <Story name="radius">
     <>
       <Box radius="xs" background="secondary-light" padding="sm" margin="xs 0">
@@ -269,6 +289,9 @@ Use the `radius` prop to set the corner radius of the box.
       <Box radius="lg" background="secondary-light" padding="sm" margin="xs 0">
         xl radius
       </Box>
+      <Box radius="circle" background="secondary-light" padding="sm" margin="xs 0">
+        circle radius
+      </Box>
     </>
   </Story>
-</Preview>
+</Canvas>
