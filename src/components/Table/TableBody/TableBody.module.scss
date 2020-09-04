@@ -1,13 +1,13 @@
 .table-body {
-  &.striped { 
+  &.striped {
     tr:nth-of-type(odd) {
-      background-color: var(--color-brand-grey-lightest);
+      background-color: var(--table-row-striped-background);
     }
   }
 
   &.hover {
     tr:hover {
-      background-color: var(--color-brand-grey-lighter);
+      background-color: var(--table-row-hover-background);
     }
   }
 }

@@ -1,4 +1,6 @@
-import { create } from '@storybook/theming/create';
+import {
+  create
+} from '@storybook/theming/create';
 
 export default create({
   base: 'light',
@@ -16,8 +18,8 @@ export default create({
   // fontBase: '"Open Sans", sans-serif',
   // fontCode: 'monospace',
 
-  // // Text colors
-  // textColor: 'black',
+  // Text colors
+  textColor: '#3C453E',
   // textInverseColor: 'rgba(255,255,255,0.9)',
 
   // // Toolbar default and active colors
@@ -33,5 +35,5 @@ export default create({
 
   brandTitle: 'Palmetto Component Library',
   brandUrl: 'https://palmetto.com',
-  brandImage: 'https://alchemy.palmetto.com/public//default_logo/1541461188.png',
+  brandImage: 'https://app.palmetto.com/static/media/logo.4d85ce48.svg',
 });

@@ -1,18 +1,27 @@
 .table-cell {
-  border: 1px solid var(--color-brand-grey-lighter);
-  padding: var(--size-spacing-sm);
+  border-bottom: 1px solid var(--table-border-color);
+  padding: var(--table-padding-vertical) var(--table-padding-horizontal);
+  font-size: var(--table-cell-font-size);
 
   &.borderless {
     border: none;
   }
 
   &.compact {
-    padding: var(--size-spacing-xs);
+    padding: var(--table-padding-vertical-compact) var(--table-padding-horizontal-compact);
   }
 
   &.truncated {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  &.align-right {
+    text-align: right;
+  }
+
+  &.align-center {
+    text-align: center;
   }
 }

@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://palmetto.com" rel="noopener" target="_blank"><img width="150" src="https://alchemy.palmetto.com/public//default_logo/1541461188.png" alt="Palmetto logo"></a></p>
+  <a href="https://palmetto.com" rel="noopener" target="_blank"><img width="150" src="https://app.palmetto.com/static/media/logo.4d85ce48.svg" alt="Palmetto logo"></a></p>
 </p>
 
 <h1 align="center" style="border-bottom: none;">Palmetto Component Library</h1>
@@ -11,8 +11,8 @@
 
 <div align="center" style="margin-top: 25px">
 
-  [![Publish To NPM](https://github.com/palmetto/palmetto-components/workflows/Publish%20To%20NPM/badge.svg)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3A%22Publish+To+NPM%22) 
-  [![Chromatic](https://github.com/palmetto/palmetto-components/workflows/Chromatic/badge.svg?branch=master)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3AChromatic) 
+  [![Publish To NPM](https://github.com/palmetto/palmetto-components/workflows/Publish%20To%20NPM/badge.svg)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3A%22Publish+To+NPM%22)
+  [![Chromatic](https://github.com/palmetto/palmetto-components/workflows/Chromatic/badge.svg?branch=master)](https://github.com/palmetto/palmetto-components/actions?query=workflow%3AChromatic)
   [![Test Coverage](https://api.codeclimate.com/v1/badges/e61e897623b87d91d155/test_coverage)](https://codeclimate.com/github/palmetto/palmetto-components/test_coverage)
 
 </div>
@@ -23,23 +23,48 @@
 
 `yarn add @palmetto/palmetto-components`
 
-### 2. import global css
+### 2. Import Global CSS
 
 ```
 @import '@palmetto/palmetto-components/dist/css/utilities.css';
 @import '@palmetto/palmetto-components/dist/css/variables.css';
 ```
 
-### 3. Use in React component
+### 3. Usage
 
-`import { TextInput } from '@palmetto/palmetto-components'`
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Button } from '@palmetto/palmetto-components';
 
-## Documentation / Storybook
+function App() {
+  return <Button>Hello World</Button>;
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'));
+```
+
+## Documentation
 
 [SEE FULL DOCS HERE](https://master--5ed9214b642dc10022b50a2d.chromatic.com)
 
 ## Contributing
 
-Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/master/docs/CONTRIBUTING.md) for contribution guide.
+Issues and PRs welcome! See [HERE](https://github.com/palmetto/palmetto-components/blob/master/docs/CONTRIBUTING.md) for our Contribution Guide.
+
+## Raising an Issue
+
+When raising an issue:
+* Make sure the issue hasn't been raised yet.
+* Tag issue accordingly using your best judgement. Do NOT create new tags. If you feel a new one is needed, raise it in your issue.
+* If your issue is a bug, include **screenshots** or animated GIFs in your issue whenever needed (if issue is visual in nature).
+* If your issue is a bug, include steps to reproduce, or link to reproducible issue, e.g.: Code Sandbox or similar. Please also provide any additional details including device, OS, browser, browser version etc.
+
+[Issues can be raised here](https://github.com/palmetto/palmetto-components/issues).
+
+## License
+
+This project is licensed under the terms of the
+[MIT license](/LICENSE).
 
 

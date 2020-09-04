@@ -18,6 +18,11 @@ interface TableBodyProps {
    */
   rows: Row[];
   /**
+   * Text alignment for all table cells. Can be superseded by passing the same prop into the `Column` object
+   * for a specific column.
+   */
+  align?: 'left' | 'right' | 'center';
+  /**
    * A custom class to apply to the table body.
    */
   className?: string;
@@ -58,6 +63,7 @@ const TableBody: FC<TableBodyProps> = ({
   columns,
   rowKey,
   rows,
+  align = 'left',
   className = '',
   emptyCellPlaceholder = '',
   hoverableRows = false,
@@ -83,6 +89,7 @@ const TableBody: FC<TableBodyProps> = ({
           columns={columns}
           row={row}
           rowIndex={rowIndex}
+          align={align}
           key={row[rowKey]}
           emptyCellPlaceholder={emptyCellPlaceholder}
           truncateOverflow={truncateOverflow}

@@ -25,6 +25,11 @@ interface TableProps {
    */
   className?: string;
   /**
+   * Text alignment for all table cells. Can be superseded by passing the same prop into the `Column` object
+   * for a specific column.
+   */
+  align?: 'left' | 'right' | 'center';
+  /**
    * Global placeholder for empty cells. Can be overwritten by setting the same attribute
    * in the `Column` config.
    */
@@ -85,6 +90,7 @@ const Table: FC<TableProps> = ({
   columns,
   rows,
   rowKey,
+  align = 'left',
   className = undefined,
   emptyCellPlaceholder = undefined,
   hoverableRows = false,
@@ -137,6 +143,7 @@ const Table: FC<TableProps> = ({
       <table className={tableClasses}>
         <TableHead
           columns={columns}
+          align={align}
           onSort={onSort}
           isBorderless={isBorderless}
           isCompact={isCompact}
@@ -148,6 +155,7 @@ const Table: FC<TableProps> = ({
           rows={rows}
           columns={columns}
           rowKey={rowKey}
+          align={align}
           isStriped={isStriped}
           emptyCellPlaceholder={emptyCellPlaceholder}
           hoverableRows={hoverableRows}

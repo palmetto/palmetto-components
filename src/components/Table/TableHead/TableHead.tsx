@@ -9,6 +9,11 @@ interface TableHeadProps {
    */
   columns: Column[];
   /**
+   * Text alignment for all table cells. Can be superseded by passing the same prop into the `Column` object
+   * for a specific column.
+   */
+  align?: 'left' | 'right' | 'center';
+  /**
    * Custom class to be applied to the `<thead>` element.
    */
   className?: string;
@@ -45,6 +50,7 @@ interface TableHeadProps {
 
 const TableHead: FC<TableHeadProps> = ({
   columns,
+  align = 'left',
   className = '',
   isBorderless = false,
   isCompact = false,
@@ -59,6 +65,7 @@ const TableHead: FC<TableHeadProps> = ({
     <thead className={tableHeadClasses}>
       <TableRow
         columns={columns}
+        align={align}
         isTableHead
         isBorderless={isBorderless}
         isCompact={isCompact}
