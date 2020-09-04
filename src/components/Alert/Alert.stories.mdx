@@ -33,3 +33,26 @@ or a ReactNode to be rendered.
     }}
   </Story>
 </Canvas>
+
+## Types
+
+Alerts come in different types based on the kind of feedback being delivered to the user.
+
+<Canvas>
+  <Story name="Types">
+    {() => {
+      const types = [
+        'info',
+        'success',
+        'warning',
+        'danger',
+      ];
+      const message = (type) => `This is a ${type} alert.`;
+      return (
+        <>
+         {types.map(type => <Alert message={message(type)} type={type} />)}
+        </>
+      );
+    }}
+  </Story>
+</Canvas>

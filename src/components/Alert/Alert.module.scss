@@ -4,7 +4,27 @@
   background-color: var(--alert-background-color-default);
   padding: var(--alert-padding-default);
 
-  .compact {
+  &.info {
+    border: 1px solid var(--alert-border-color-info);
+    background-color: var(--alert-background-color-info);
+  }
+
+  &.success {
+    border: 1px solid var(--alert-border-color-success);
+    background-color: var(--alert-background-color-success);
+  }
+
+  &.warning {
+    border: 1px solid var(--alert-border-color-warning);
+    background-color: var(--alert-background-color-warning);
+  }
+
+  &.danger {
+    border: 1px solid var(--alert-border-color-danger);
+    background-color: var(--alert-background-color-danger);
+  }
+
+  &.compact {
     padding: var(--alert-padding-compact);
   }
 }
