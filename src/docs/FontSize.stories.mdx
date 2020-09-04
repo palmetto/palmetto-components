@@ -13,7 +13,8 @@ Use these tokens for `font-size`. They are defined in `rem`, which means they wi
 <table>
 <thead>
     <tr>
-      <th>name</th>
+      <th>token name</th>
+      <th>prop value</th>
       <th>value</th>
       <th>px</th>
       <th>notes</th>
@@ -23,6 +24,7 @@ Use these tokens for `font-size`. They are defined in `rem`, which means they wi
     {PALMETTO_FONT_SIZE_OPTIONS.map((size, i) => (
       <tr key={i}>
         <td><code>{`size-font-size-${size}`}</code></td>
+        <td><code>{size}</code></td>
         <td>{PALMETTO_FONT_SIZE_VALUES[i].value}</td>
         <td>{size === 'base' ? '16' : PALMETTO_FONT_SIZE_VALUES[i].original.value * 16}</td>
         <td>{PALMETTO_FONT_SIZE_VALUES[i].original.comment}</td>
