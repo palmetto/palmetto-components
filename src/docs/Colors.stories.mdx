@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  PALMETTO_FONT_COLOR_OPTIONS,
+  PALMETTO_FONT_COLOR_VALUES,
+  PALMETTO_BRAND_COLOR_OPTIONS,
+  PALMETTO_BRAND_COLOR_VALUES
+ } from '../lib/tokens';
+
+
+<Meta
+  title="Design Tokens/Colors"
+/>
+
+# Brand Colors
+
+A subset of base colors that used by components to set background and border colors.
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>prop value</th>
+      <th>value</th>
+      <th>example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>to do</td>
+      <td>to do</td>
+      <td>to do</td>
+      <td>to do</td>
+      </tr>
+  </tbody>
+</table>
+
+# Font Colors
+
+A subset of brand colors are defined for use asf `font-color`.
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>prop value</th>
+      <th>value</th>
+      <th>example</th>
+    </tr>
+  </thead>
+  <tbody>
+    {PALMETTO_FONT_COLOR_OPTIONS.map((color, i) => (
+      <tr key={i}>
+        <td><code>{`color-font-${color}`}</code></td>
+        <td><code>{color}</code></td>
+        <td>{PALMETTO_FONT_COLOR_VALUES[i].value}</td>
+        <td><div style={{color: PALMETTO_FONT_COLOR_VALUES[i].value}}>
+          Energy Savings Simplified
+        </div></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+# Base colors
+
+Generic colors to use within a Palmetto application.
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>prop value</th>
+      <th>value</th>
+      <th>example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>to do</td>
+      <td>to do</td>
+      <td>to do</td>
+      <td>to do</td>
+      </tr>
+  </tbody>
+</table>

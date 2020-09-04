@@ -69,10 +69,12 @@ export const PALMETTO_COLOR_VALUES = Object.values(colors.color) as ColorDiction
 
 export const PALMETTO_FONT_SIZE_OPTIONS = Object.keys(sizes.size.font) as PALMETTO_FONT_SIZES[];
 export const PALMETTO_FONT_SIZE_VALUES = Object.values(sizes.size.font);
+
 export const PALMETTO_FONT_COLOR_OPTIONS = Object.keys(colors.color.font) as PALMETTO_FONT_COLORS[];
+export const PALMETTO_FONT_COLOR_VALUES = Object.values(colors.color.font);
 
 export const PALMETTO_BRAND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
-export const PALMETTO_BRAND_COLOR_VALUES = colors.color.brand;
+export const PALMETTO_FONT_COLOR_VALUESPALMETTO_BRAND_COLOR_VALUES = colors.color.brand;
 
 export const PALMETTO_SPACING_OPTIONS = Object.keys(sizes.size.spacing);
 export const PALMETTO_SPACING_VALUES = Object.values(sizes.size.spacing);
