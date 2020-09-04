@@ -70,29 +70,29 @@ Use the `background` prop to set the color of the background
         );
       }
       return (
-        <>
-          <Box padding="xs" background={`${color}-lightest`} key={i}>
+        <div key={i}>
+          <Box padding="xs" background={`${color}-lightest`}>
             {`${color}-lightest background`}
           </Box>
-          <Box padding="xs" background={`${color}-lighter`} key={i}>
+          <Box padding="xs" background={`${color}-lighter`}>
             {`${color}-lighter background`}
           </Box>
-          <Box padding="xs" background={`${color}-light`} key={i}>
+          <Box padding="xs" background={`${color}-light`}>
             {`${color}-light background`}
           </Box>
           <Box padding="xs" background={color} key={i}>
             {`${color} background`}
           </Box>
-          <Box padding="xs" background={`${color}-dark`} key={i}>
+          <Box padding="xs" background={`${color}-dark`}>
             {`${color}-dark background`}
           </Box>
-          <Box padding="xs" background={`${color}-darker`} key={i}>
+          <Box padding="xs" background={`${color}-darker`}>
             {`${color}-darker background`}
           </Box>
-          <Box padding="xs" background={`${color}-darkest`} key={i}>
+          <Box padding="xs" background={`${color}-darkest`}>
             {`${color}-darkest background`}
           </Box>
-        </>
+        </div>
       )
     })}
   </Story>
@@ -118,29 +118,29 @@ Use the `border` prop to set the color of the border
         );
       }
       return (
-        <>
-          <Box border={`${color}-lightest`} margin="xs" padding="xs" key={i}>
+        <div key={i}>
+          <Box border={`${color}-lightest`} margin="xs" padding="xs">
             {`${color}-lightest border`}
           </Box>
-          <Box border={`${color}-lighter`} margin="xs" padding="xs" key={i}>
+          <Box border={`${color}-lighter`} margin="xs" padding="xs">
             {`${color}-lighter border`}
           </Box>
-          <Box border={`${color}-light`} margin="xs" padding="xs" key={i}>
+          <Box border={`${color}-light`} margin="xs" padding="xs">
             {`${color}-light border`}
           </Box>
-          <Box border={color} margin="xs" padding="xs" key={i}>
+          <Box border={color} margin="xs" padding="xs">
             {`${color} border`}
           </Box>
-          <Box border={`${color}-dark`} margin="xs" padding="xs" key={i}>
+          <Box border={`${color}-dark`} margin="xs" padding="xs">
             {`${color}-dark border`}
           </Box>
-          <Box border={`${color}-darker`} margin="xs" padding="xs" key={i}>
+          <Box border={`${color}-darker`} margin="xs" padding="xs">
             {`${color}-darker border`}
           </Box>
-          <Box border={`${color}-darkest`} margin="xs" padding="xs" key={i}>
+          <Box border={`${color}-darkest`} margin="xs" padding="xs">
             {`${color}-darkest border`}
           </Box>
-        </>
+        </div>
       )
     })}
   </Story>
