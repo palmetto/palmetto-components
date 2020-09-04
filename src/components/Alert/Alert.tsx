@@ -38,6 +38,10 @@ interface AlertProps {
    */
   isClosable?: boolean;
   /**
+   * Renders a version of the alert with smaller padding.
+   */
+  isCompact?: boolean;
+  /**
    * Deterimines whether the alert can be closed by the user. If `true` it will render
    * the 'close' icon on the right hand side of the alert.
    */
@@ -56,6 +60,7 @@ const Alert: FC<AlertProps> = ({
   className = '',
   closeText = '',
   hasIcon = false,
+  isCompact = false,
   isClosable = false,
   onClose = undefined,
   render = undefined,
@@ -119,6 +124,7 @@ const Alert: FC<AlertProps> = ({
   const alertContainerClasses: string = classNames(
     styles.alert,
     { [styles[type]]: !!type },
+    { [styles.compact]: isCompact },
     className,
   );
 

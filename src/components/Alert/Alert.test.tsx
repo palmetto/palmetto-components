@@ -8,8 +8,10 @@ describe('Alert', () => {
       const message = 'Hello world!';
       render(<Alert message={message} />);
 
-      const alert = screen.getByText(message);
+      const alert = screen.getByRole('alert');
       expect(alert).toBeInTheDocument();
+      const alertMessage = screen.getByText(message);
+      expect(alertMessage).toBeInTheDocument();
     });
   });
 
@@ -151,6 +153,16 @@ describe('Alert', () => {
         fireEvent.keyUp(closeButtonSpan, { keyCode: 30 }); // No-op
       }
       expect(mockOnClose).toBeCalledTimes(0);
+    });
+  });
+
+  describe('Compact', () => {
+    test('It renders with the compact class when isCompact prop is true', () => {
+      const message = 'Hello world!';
+      render(<Alert message={message} isCompact />);
+
+      const alert = screen.getByRole('alert');
+      expect(alert).toHaveClass('compact');
     });
   });
 });
