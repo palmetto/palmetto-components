@@ -66,6 +66,19 @@ describe('Alert', () => {
     });
   });
 
+  describe('With Title', () => {
+    test('It renders an alert with a title if passed', () => {
+      const message = 'Hello world!';
+      const title = 'title';
+      render(<Alert title={title} message={message} />);
+
+      const alert = screen.getByRole('alert');
+      expect(alert).toBeInTheDocument();
+      const alertTitle = screen.getByText(title);
+      expect(alertTitle).toBeInTheDocument();
+    });
+  });
+
   describe('With Custom JSX', () => {
     test('It renders custom JSX if passed to the message prop', () => {
       const jsxMessage: ReactNode = <button type="button">I am a button!</button>;

@@ -13,13 +13,10 @@ import {
   faCheckCircle,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+import Heading from '../Heading/Heading';
 import styles from './Alert.module.scss';
 
 interface AlertProps {
-  /**
-   * The text message or ReactNode to be rendered in the alert.
-   */
-  message?: string | ReactNode;
   /**
    * Custom class to apply to the alert container div.
    */
@@ -42,6 +39,10 @@ interface AlertProps {
    */
   isCompact?: boolean;
   /**
+   * The text message or ReactNode to be rendered in the alert.
+   */
+  message?: string | ReactNode;
+  /**
    * Deterimines whether the alert can be closed by the user. If `true` it will render
    * the 'close' icon on the right hand side of the alert.
    */
@@ -51,19 +52,24 @@ interface AlertProps {
    */
   render?: () => ReactNode;
   /**
+   * The title for the alert.
+   */
+  title?: string;
+  /**
    * The type/color of the alert to show.
    */
   type?: 'info' | 'success' | 'warning' | 'danger' | 'default';
 }
 const Alert: FC<AlertProps> = ({
-  message,
   className = '',
   closeText = '',
   hasIcon = false,
   isCompact = false,
   isClosable = false,
+  message = '',
   onClose = undefined,
   render = undefined,
+  title = '',
   type = 'default',
 }) => {
   const handleClose = (event: (MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>)): void => {
@@ -123,7 +129,7 @@ const Alert: FC<AlertProps> = ({
 
   const alertContainerClasses: string = classNames(
     styles.alert,
-    { [styles[type]]: !!type },
+    styles[type],
     { [styles.compact]: isCompact },
     className,
   );
@@ -132,7 +138,12 @@ const Alert: FC<AlertProps> = ({
     <div className={alertContainerClasses} role="alert">
       {hasIcon && renderAlertIcon()}
       <div className={styles['alert-message']}>
-        {render ? render() : message}
+        {render ? render() : (
+          <>
+            {title && <Heading as="h4" size="md" className={styles['alert-title']}>{title}</Heading>}
+            {message && <span>{message}</span>}
+          </>
+        )}
       </div>
       {isClosable && renderCloseIcon()}
     </div>

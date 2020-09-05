@@ -59,9 +59,33 @@ Alerts come in different types based on the kind of feedback being delivered to 
   </Story>
 </Canvas>
 
+## With Title
+
+Pass a string to the `title` prop to create a natural visual text hierarchy.
+
+<Canvas>
+  <Story name="With Title">
+    {() => {
+      return (
+        <>
+          <Alert
+            title="Hello world!"
+            message="How are you?"
+            className="m-bottom-md"
+          />
+          <Alert
+            title="Just the title"
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
 ## Custom Class
 
-You can apply a custom class to your alert with the `className` prop. Here we have modified the font-size.
+You can apply a custom class to your alert with the `className` prop. Here we have added a 3xl bottom margin.
 
 <Canvas>
   <Story name="Custom Class">
@@ -70,7 +94,7 @@ You can apply a custom class to your alert with the `className` prop. Here we ha
         <Alert
           message="Hello world!"
           type="success"
-          className="font-size-3xl"
+          className="m-bottom-3xl"
         />
       );
     }}
@@ -98,7 +122,16 @@ You can choose to display a standard icon for each type of notification, based o
       `;
       return (
         <>
-         {types.map(type => <Alert message={message(type)} type={type} hasIcon className="m-bottom-md" />)}
+         {types.map((type, index) => (
+            <Alert
+              message={message(type)}
+              key={type}
+              title={index % 2  ? type.charAt(0).toUpperCase() + type.slice(1) : ''}
+              type={type}
+              hasIcon
+              className="m-bottom-md"
+            />
+          ))}
         </>
       );
     }}
