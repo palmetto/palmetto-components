@@ -71,6 +71,7 @@ module.exports = {
     index: [path.join(__dirname, 'src/components/index.ts')], // React components
     utilities: [path.join(__dirname, 'src/styles/utilities.scss')], // Utilities CSS only.
     variables: [path.join(__dirname, 'src/styles/variables/index.scss')], // Variables CSS only.
+    reset: [path.join(__dirname, 'src/styles/reset.scss')], // CSS Reset only.
   },
   optimization: {
     minimizer: [

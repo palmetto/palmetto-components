@@ -30,6 +30,12 @@
 @import '@palmetto/palmetto-components/dist/css/variables.css';
 ```
 
+Not required but we also recommend importing our global reset in order to properly maintain the
+look of all components.
+```
+@import '@palmetto/palmetto-components/dist/css/reset.scss'
+```
+
 ### 3. Usage
 
 ```jsx
