@@ -63,7 +63,7 @@ interface TableProps {
    * past those values. Useful for when we want to render a large table but not force the parent container
    * to grow and instead make the user scroll.
    */
-  scroll?: {
+  scroll?: boolean | {
     x: number | undefined;
     y: number | undefined;
   };
@@ -107,16 +107,16 @@ const Table: FC<TableProps> = ({
   const tableContainerClasses = classNames(
     styles.container,
     {
-      [styles.scroll]: scroll?.x || scroll?.y,
-      [styles['scroll-x']]: scroll?.x,
-      [styles['scroll-y']]: scroll?.y,
+      [styles.scroll]: !!scroll,
+      [styles['scroll-x']]: scroll && typeof scroll !== 'boolean' ? scroll.x : null,
+      [styles['scroll-y']]: scroll && typeof scroll !== 'boolean' ? scroll.y : null,
     },
     className,
   );
 
   const tableContainerStyles = {
-    ...scroll?.x && { maxWidth: `${scroll.x}px` },
-    ...scroll?.y && { maxHeight: `${scroll.y}px` },
+    ...scroll && typeof scroll !== 'boolean' && scroll.x && { maxWidth: `${scroll.x}px` },
+    ...scroll && typeof scroll !== 'boolean' && scroll.y && { maxHeight: `${scroll.y}px` },
   };
 
   const tableClasses = classNames(
