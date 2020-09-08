@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faExclamationCircle,
   faExclamationTriangle,
+  faInfoCircle,
   faTimesCircle,
   faCheckCircle,
   faTimes,
@@ -46,7 +47,7 @@ interface AlertProps {
    * Deterimines whether the alert can be closed by the user. If `true` it will render
    * the 'close' icon on the right hand side of the alert.
    */
-  onClose?: (event: (MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>)) => void ;
+  onClose?: (event: (MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>)) => void;
   /**
    * A render function that returns JSX if preferred over a static ReactNode or string.
    */
@@ -78,10 +79,10 @@ const Alert: FC<AlertProps> = ({
     onClose(event);
   };
 
-  const renderAlertIcon = ():ReactNode => {
+  const renderAlertIcon = (): ReactNode => {
     const icons = {
       default: faExclamationCircle,
-      info: faExclamationCircle,
+      info: faInfoCircle,
       success: faCheckCircle,
       warning: faExclamationTriangle,
       danger: faTimesCircle,
