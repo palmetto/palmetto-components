@@ -73,16 +73,12 @@ An example showcasing the props required to render a list of customers in a tabl
   <Story name="Default">
     {() => {
       const columnConfig = [
-        { heading: 'Customer',
-          dataKey: 'customerInfo',
-          render: (cell, row) => (
-            <div>
-              <div>{row.name}</div>
-              <div className="font-color-grey">{row.email}</div>
-            </div>
-          ),
-          width: 140,
-        },
+        { heading: 'Customer', dataKey: 'customerInfo', render: (cell, row) => (
+          <div>
+            <div>{row.name}</div>
+            <div className="font-color-grey">{row.email}</div>
+          </div>
+         ) },
         { heading: 'phone', dataKey: 'phone', width: 125 },
         { heading: 'plan', dataKey: 'plan', width: 125 },
         { heading: 'status', dataKey: 'status', width: 125 },
