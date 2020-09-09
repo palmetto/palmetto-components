@@ -14,8 +14,8 @@
   }
 
   .table {
-    width: 100%;
     cursor: default;
+    width: 100%;
     border-collapse: collapse;
     white-space: normal;
 
@@ -29,7 +29,7 @@
   }
 
   .borderless {
-    border: none;
+    border: 0;
   }
 
   &.scrollable {

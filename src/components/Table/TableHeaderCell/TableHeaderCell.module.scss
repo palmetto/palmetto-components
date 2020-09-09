@@ -7,7 +7,6 @@
   color: var(--table-header-color);
   font-size: var(--table-header-font-size);
   font-weight: 600;
-  width: auto;
 
   &.sortable {
     cursor: pointer;
@@ -18,7 +17,7 @@
   }
 
   &.borderless {
-    border: none;
+    border: 0;
   }
 
   &.truncated {
