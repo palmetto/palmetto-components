@@ -112,23 +112,13 @@ const Alert: FC<AlertProps> = ({
 
     return (
       <div className={closeIconClasses}>
-        {closeText ? (
-          /* @TODO -- replace with <Button /> component once variations exists for this use case */
-          <button
-            type="button"
-            onClick={handleClose}
-            onKeyUp={handleCloseKeyPress}
-          >
-            {closeText}
-          </button>
-        ) : (
-          <FontAwesomeIcon
-            icon={faTimes}
-            role="button"
-            data-testid="alert-close-icon-test-id"
-            onClick={handleClose}
-          />
-        )}
+        <button
+          type="button"
+          onClick={handleClose}
+          onKeyUp={handleCloseKeyPress}
+        >
+          {closeText || <FontAwesomeIcon icon={faTimes} data-testid="alert-close-icon-test-id"/>}
+        </button>
       </div>
     );
   };
