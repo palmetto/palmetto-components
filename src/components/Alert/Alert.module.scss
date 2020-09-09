@@ -31,7 +31,24 @@
   }
 
   .type-icon {
-    margin-right: var(--size-spacing-sm);
+    margin-right: var(--alert-icon-margin);
+    color: var(--alert-icon-color-default);
+
+    &.info {
+      color: var(--alert-icon-color-info);
+    }
+  
+    &.success {
+      color: var(--alert-icon-color-success);
+    }
+  
+    &.warning {
+      color: var(--alert-icon-color-warning);
+    }
+  
+    &.danger {
+      color: var(--alert-icon-color-danger);
+    }
   }
 
   .close-icon {
@@ -39,6 +56,16 @@
     margin-left: auto;
     font-weight: 700;
 
+    > button {
+      /* Reset default button styles */
+      outline: inherit;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      color: inherit;
+      font: inherit;
+    }
 
     &.clickable {
       cursor: pointer;
@@ -47,13 +74,13 @@
 
   .alert-message {
     &:not(:last-child) {
-      margin-right: var(--size-spacing-sm);
+      margin-right: var(--alert-message-margin);
     }
   }
 }
 
 .alert-title {
   &:not(:last-child) {
-    margin-bottom: var(--size-spacing-2xs);
+    margin-bottom: var(--alert-title-margin);
   }
 }

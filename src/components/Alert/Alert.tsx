@@ -88,8 +88,13 @@ const Alert: FC<AlertProps> = ({
       danger: faTimesCircle,
     };
 
+    const iconClasses = classNames(
+      styles['type-icon'],
+      styles[type],
+    );
+
     return (
-      <div className={styles['type-icon']}>
+      <div className={iconClasses}>
         <FontAwesomeIcon icon={icons[type]} data-testid={`alert-icon-${type}-test-id`} />
       </div>
     );
@@ -108,14 +113,14 @@ const Alert: FC<AlertProps> = ({
     return (
       <div className={closeIconClasses}>
         {closeText ? (
-          <span
-            role="button"
+          /* @TODO -- replace with <Button /> component once variations exists for this use case */
+          <button
+            type="button"
             onClick={handleClose}
             onKeyUp={handleCloseKeyPress}
-            tabIndex={0}
           >
             {closeText}
-          </span>
+          </button>
         ) : (
           <FontAwesomeIcon
             icon={faTimes}
@@ -142,7 +147,7 @@ const Alert: FC<AlertProps> = ({
         {render ? render() : (
           <>
             {title && <Heading as="h4" size="md" className={styles['alert-title']}>{title}</Heading>}
-            {message && <span>{message}</span>}
+            {message && <p>{message}</p>}
           </>
         )}
       </div>
