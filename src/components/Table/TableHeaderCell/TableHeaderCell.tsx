@@ -141,7 +141,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   return (
     <th
       className={tableHeaderClasses}
-      style={{ ...width && { width: `${width}px`, maxWidth: `${width}px` } }}
+      style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
       aria-sort={sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'}
       tabIndex={isSortable ? 0 : undefined}
       onClick={handleSort}

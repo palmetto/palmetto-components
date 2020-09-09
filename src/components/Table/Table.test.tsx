@@ -160,12 +160,12 @@ describe('Table', () => {
           columns={columnConfig}
           rows={tableData}
           rowKey="id"
-          scroll={{ x: 100, y: 200 }}
+          isScrollable={{ x: true, y: true }}
         />);
 
         const tableContainer = screen.getByTestId('tableContainerDiv-testid');
 
-        expect(tableContainer).toHaveStyle({ maxWidth: '100px', maxHeight: '200px' });
+        expect(tableContainer).toHaveClass('scrollable', 'scrollable-x', 'scrollable-y');
       });
     });
 
@@ -217,12 +217,11 @@ describe('Table', () => {
             columns={[...columnConfig.map(col => ({ ...col, width: 100 }))]}
             rows={tableData}
             rowKey="id"
-            useFixedWidthColumns
           />,
         );
 
         const tableHeaderCell = screen.getByText('Flavor').closest('th');
-        expect(tableHeaderCell).toHaveStyle({ width: '100px', maxWidth: '100px' });
+        expect(tableHeaderCell).toHaveStyle({ minWidth: '100px', maxWidth: '100px' });
       });
     });
 

@@ -2,6 +2,7 @@
   border-bottom: 1px solid var(--table-border-color);
   padding: var(--table-padding-vertical) var(--table-padding-horizontal);
   font-size: var(--table-cell-font-size);
+  width: auto;
 
   &.borderless {
     border: none;

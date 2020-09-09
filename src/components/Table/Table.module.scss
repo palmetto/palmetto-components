@@ -1,5 +1,5 @@
 .container {
-  position: relative;
+  width: 100%;
 
   .loading-mask {
     display: flex;
@@ -14,13 +14,16 @@
   }
 
   .table {
-    cursor: default;
     width: 100%;
+    cursor: default;
     border-collapse: collapse;
     white-space: normal;
 
-    &.fixed-width-columns {
-      /* width: fit-content; */
+    &.auto {
+      table-layout: auto;
+    }
+
+    &.fixed {
       table-layout: fixed;
     }
   }
@@ -29,16 +32,16 @@
     border: none;
   }
 
-  &.scroll {
+  &.scrollable {
     display: block;
     -webkit-overflow-scrolling: touch;
 
-    &.scroll-x {
-      width: 100%;
+    &.scrollable-x {
       overflow-x: auto;
     }
 
-    &.scroll-y {
+    &.scrollable-y {
+      height: 100%;
       overflow-y: auto;
     }
 
