@@ -117,7 +117,7 @@ const Alert: FC<AlertProps> = ({
           onClick={handleClose}
           onKeyUp={handleCloseKeyPress}
         >
-          {closeText || <FontAwesomeIcon icon={faTimes} data-testid="alert-close-icon-test-id"/>}
+          {closeText || <FontAwesomeIcon icon={faTimes} data-testid="alert-close-icon-test-id" />}
         </button>
       </div>
     );
