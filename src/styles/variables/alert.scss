@@ -1,0 +1,24 @@
+:root {
+  /* Sizes */
+  --alert-font-size: var(--size-font-sm);
+  --alert-border-radius: var(--size-border-radius-md);
+  --alert-padding-default: var(--size-spacing-md);
+  --alert-padding-compact: var(--size-spacing-xs);
+  --alert-icon-margin: var(--size-spacing-sm);
+  --alert-message-margin: var(--size-spacing-sm);
+  --alert-title-margin: var(--size-spacing-2xs);
+
+  /* Colors */
+  --alert-background-color-default: var(--color-brand-grey-lighter);
+  --alert-background-color-info: var(--color-brand-secondary-lighter);
+  --alert-background-color-success: var(--color-brand-success-lighter);
+  --alert-background-color-warning: var(--color-brand-warning-lighter);
+  --alert-background-color-danger: var(--color-brand-danger-lighter);
+
+  --alert-font-color: var(--color-font-base);
+  --alert-icon-color-default: var(--color-font-base);
+  --alert-icon-color-info: var(--color-font-info);
+  --alert-icon-color-success: var(--color-font-success);
+  --alert-icon-color-warning: var(--color-font-warning);
+  --alert-icon-color-danger: var(--color-font-danger);
+}
