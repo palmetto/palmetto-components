@@ -400,7 +400,7 @@ If you wish to lock the width of a particular column set the actual column `widt
   <Story name="Fixed-Width Columns">
     {() => {
       const columnConfig = [
-        { heading: 'ID', dataKey: 'id', width: 300 },
+        { heading: 'ID', dataKey: 'id', width: 150 },
         { heading: 'Color', dataKey: 'color' },
         { heading: 'Flavor', dataKey: 'flavor' },
       ];
@@ -513,40 +513,6 @@ See `Based on cell/row` example below.
   </Story>
 </Canvas>
 
-## Striped
-
-Render a striped table to slightly improve readibility by passing `isStriped` (boolean) prop to the table.
-
-<Canvas>
-  <Story name="Striped">
-    {() => {
-      const columnConfig = [
-        { heading: 'ID', dataKey: 'id' },
-        { heading: 'Color', dataKey: 'color' },
-        { heading: 'Flavor', dataKey: 'flavor' },
-      ];
-      const tableData = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-        { id: 4, color: 'green', flavor: 'strawberry' },
-        { id: 5, color: 'green', flavor: 'strawberry' },
-        { id: 6, color: 'green', flavor: 'strawberry' },
-        { id: 7, color: 'green', flavor: 'strawberry' },
-      ];
-      return (
-        <Table
-          rowKey="id"
-          columns={columnConfig}
-          rows={tableData}
-          isStriped
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-
 ## Empty Cell Placeholder
 The empty cell placeholder can be set on a global level as a prop on `<Table />` or individually per column
 by adding the `emptyCellPlaceholder` to the column configuration object. In cases where both is set, the column
@@ -639,6 +605,38 @@ Render a compact table by passing `isCompact` (boolean) prop to the table.
   </Story>
 </Canvas>
 
+## Striped
+
+Render a striped table to slightly improve readibility by passing `isStriped` (boolean) prop to the table.
+
+<Canvas>
+  <Story name="Striped">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', dataKey: 'id' },
+        { heading: 'Color', dataKey: 'color' },
+        { heading: 'Flavor', dataKey: 'flavor' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+        { id: 4, color: 'green', flavor: 'strawberry' },
+        { id: 5, color: 'green', flavor: 'strawberry' },
+        { id: 6, color: 'green', flavor: 'strawberry' },
+        { id: 7, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          isStriped
+        />
+      );
+    }}
+  </Story>
+</Canvas>
 
 ## Hover
 
@@ -711,7 +709,7 @@ may interrupt the natural reading flow for a user.
       const columnConfig = [
         { heading: 'Right aligned', dataKey: 'id', align: 'right' },
         { heading: 'Center aligned', dataKey: 'color', align: 'center' },
-        { heading: 'Default Left', dataKey: 'flavor' },
+        { heading: 'Left aligned (default)', dataKey: 'flavor' },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla' },
