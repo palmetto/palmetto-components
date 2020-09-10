@@ -37,15 +37,15 @@
     &.info {
       color: var(--alert-icon-color-info);
     }
-  
+
     &.success {
       color: var(--alert-icon-color-success);
     }
-  
+
     &.warning {
       color: var(--alert-icon-color-warning);
     }
-  
+
     &.danger {
       color: var(--alert-icon-color-danger);
     }
@@ -56,9 +56,8 @@
     margin-left: auto;
     font-weight: 700;
 
-    > button {
+    >button {
       /* Reset default button styles */
-      outline: inherit;
       border: 0;
       background: none;
       cursor: pointer;
