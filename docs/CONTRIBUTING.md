@@ -40,6 +40,9 @@
 - [Submitting a Pull Request](#submitting-a-pull-request)
 - [Releases](#releases)
   - [Release Types](#release-types)
+  - [Major](#major)
+  - [Minor](#minor)
+  - [Patch](#patch)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
