@@ -422,7 +422,7 @@ If you wish to lock the width of a particular column set the actual column `widt
 
 ## Fixed Table Layout
 
-The default layout algorithm for a HTML table is `auto`. Use the `useFixedTableLayout` prop to set the table's layout algorithm to fixed.
+The default layout algorithm for a HTML table is `auto`. Use the `useFixedTableLayout` prop to set the table's layout algorithm to `fixed`.
 
 <Canvas>
   <Story name="Fixed Table Layout">
@@ -543,6 +543,7 @@ See `Based on cell/row` example below.
 </Canvas>
 
 ## Empty Cell Placeholder
+
 The empty cell placeholder can be set on a global level as a prop on `<Table />` or individually per column
 by adding the `emptyCellPlaceholder` to the column configuration object. In cases where both is set, the column
 placeholder takes precedence over the global placeholder. As seen in the example below where the price column uses
