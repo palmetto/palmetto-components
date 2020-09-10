@@ -420,6 +420,35 @@ If you wish to lock the width of a particular column set the actual column `widt
   </Story>
 </Canvas>
 
+## Fixed Table Layout
+
+The default layout algorithm for a HTML table is `auto`. Use the `useFixedTableLayout` prop to set the table's layout algorithm to fixed.
+
+<Canvas>
+  <Story name="Fixed Table Layout">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', dataKey: 'id', width: 150 },
+        { heading: 'Color', dataKey: 'color' },
+        { heading: 'Flavor', dataKey: 'flavor' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          useFixedTableLayout 
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 
 ## Truncate Overflow
 

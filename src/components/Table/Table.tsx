@@ -78,7 +78,7 @@ interface TableProps {
   /**
    * Control the `table-layout` css property for the table.
    */
-  tableLayout?: 'auto' | 'fixed';
+  useFixedTableLayout?: boolean;
   /**
    * Truncate overflow inside column based on column width. Can be overwritten on specific columns,
    * by passing `truncateOverflow` value on a specific Column
@@ -101,7 +101,7 @@ const Table: FC<TableProps> = ({
   isScrollable = undefined,
   onSort = undefined,
   sortedColumn = undefined,
-  tableLayout = 'auto',
+  useFixedTableLayout = false,
   truncateOverflow = false,
 }) => {
   const tableContainerClasses = classNames(
@@ -116,8 +116,8 @@ const Table: FC<TableProps> = ({
 
   const tableClasses = classNames(
     styles.table,
-    styles[tableLayout],
     {
+      [styles.fixed]: useFixedTableLayout,
       [styles.striped]: isStriped,
       [styles.borderless]: isBorderless,
       [styles.compact]: isCompact,
