@@ -1,0 +1,259 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Alert from './Alert';
+import Heading from '../Heading/Heading';
+import Button from '../Button/Button';
+
+<Meta
+  title="Components/Alert"
+  component={Alert}
+/>
+
+# Alert
+
+Use alerts to display feedback for users about specific actions, or states of an application.
+
+## Props
+
+<ArgsTable of={Alert} />
+
+## Default
+
+All that is required to render a basic version of an Alert is a `message` prop which will contain text
+or a ReactNode to be rendered.
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      return (
+        <Alert
+          message="Hello world!"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Types
+
+Alerts come in different types based on the kind of feedback being delivered to the user.
+
+<Canvas>
+  <Story name="Types">
+    {() => {
+      const types = [
+        'default',
+        'info',
+        'success',
+        'warning',
+        'danger',
+      ];
+      return (
+        <>
+         {types.map(type => <Alert message={type} type={type} className="m-bottom-md" />)}
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Title
+
+Pass a string to the `title` prop to create a natural visual text hierarchy.
+
+<Canvas>
+  <Story name="With Title">
+    {() => {
+      return (
+        <>
+          <Alert
+            title="Proposal Archived"
+            message="The proposal was archived on Sept 9, 2020 at 5:31pm?"
+            className="m-bottom-md"
+          />
+          <Alert
+            type="danger"
+            title="Contact Deleted"
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+## Custom Class
+
+You can apply a custom class to your alert with the `className` prop. Here we have added a 3xl bottom margin.
+
+<Canvas>
+  <Story name="Custom Class">
+    {() => {
+      return (
+        <Alert
+          message="Hello world!"
+          type="success"
+          className="m-bottom-3xl"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Icon
+
+You can choose to display a standard icon for each type of notification, based on their nature.
+
+<Canvas>
+  <Story name="With Icon">
+    {() => {
+      const types = [
+        'default',
+        'info',
+        'success',
+        'warning',
+        'danger',
+      ];
+      const message = (type) => `
+        This is a ${type} alert. It also has longer text to see what these alerts
+        can look like when broken into multiple lines. This one will definitely
+        break into multiple lines in most standard screen resolutions.
+      `;
+      return (
+        <>
+         {types.map((type, index) => (
+            <Alert
+              message={message(type)}
+              key={type}
+              title={index % 2  ? type.charAt(0).toUpperCase() + type.slice(1) : ''}
+              type={type}
+              hasIcon
+              className="m-bottom-md"
+            />
+          ))}
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Custom JSX in the message
+
+The alert can display any custom JSX that is passed into the `message` prop, not just a string type.
+
+<Canvas>
+  <Story name="With Custom JSX Message">
+    {() => {
+      const myMessage = (
+        <>
+          <Heading as="h3" size="xl">Oops!</Heading>
+          <p>Looks like something went wrong.</p>
+          <Button size="sm">Click this button to fix it!</Button>
+        </>
+      );
+      return (
+        <Alert
+          message={myMessage}
+          type="danger"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Render Function
+
+If you prefer to pass a render function to the alert rather than a static `ReactNode`, you can pass a function
+that returns a `ReactNode` to the `render` prop.
+
+IMPORTANT: The `render` prop, will supersede the `message` prop, if both are present.
+
+<Canvas>
+  <Story name="With Render Function">
+    {() => {
+      const renderMyMessage = () => (
+        <>
+          <Heading as="h3" size="xl">Oops!</Heading>
+          <p>Looks like something went wrong. But I'm using a render function.</p>
+          <Button size="sm">Click this button to fix it!</Button>
+        </>
+      );
+      return (
+        <Alert
+          render={renderMyMessage}
+          type="danger"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Closable
+
+The alert can be made closable by passing the `isClosable` prop. Note that this only controls the prescence of
+the close icon, but closing actually happens programmatically with a callback passed to the `onClose` prop.
+If you need custom close text, pass it in the `closeText` prop.
+
+<Canvas>
+  <Story name="Closable">
+    {() => {
+      const [isAlertTwoShowing, setAlertTwoShowing] = useState(true);
+      const [isAlertThreeShowing, setAlertThreeShowing] = useState(true);
+      return (
+        <>
+          <Alert
+            message="Closable, but with no onClose callback so nothing happens when clicked."
+            type="warning"
+            isClosable
+            className="m-bottom-md"
+          />
+          {isAlertTwoShowing ? (
+            <Alert
+              message="This one works!"
+              type="info"
+              isClosable
+              onClose={() => setAlertTwoShowing(false)}
+              className="m-bottom-md"
+            />
+          ) : (
+            <div className="m-bottom-md">
+              <Button onClick={() => setAlertTwoShowing(true)} size="sm">Give me the second alert back!</Button>
+            </div>
+          )}
+          {isAlertThreeShowing ? (
+            <Alert
+              message="With custom close text!"
+              type="info"
+              isClosable
+              onClose={() => setAlertThreeShowing(false)}
+              closeText="Close me!"
+            />
+          ) : (
+            <div className="m-bottom-md">
+              <Button onClick={() => setAlertThreeShowing(true)} size="sm">Give me the third alert back!</Button>
+            </div>
+          )}
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Compact
+
+Renders a version of the banner with less padding.
+
+<Canvas>
+  <Story name="Compact">
+    {() => {
+      return (
+        <Alert
+          message="Compact Alerts have less padding"
+          type="info"
+          isCompact
+        />
+      );
+    }}
+  </Story>
+</Canvas>
