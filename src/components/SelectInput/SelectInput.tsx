@@ -1,6 +1,14 @@
 import React, { FC, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
-import Select, { ValueType, OptionTypeBase, FocusEventHandler } from 'react-select';
+import Select, {
+  components,
+  ValueType,
+  OptionTypeBase,
+  FocusEventHandler,
+  IndicatorProps,
+} from 'react-select';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
@@ -144,12 +152,19 @@ const SelectInput: FC<SelectInputProps> = ({
     isDisabled,
   };
 
+  const ClearIndicator = (props: IndicatorProps<OptionTypeBase>) => (
+    <components.ClearIndicator {...props}>
+      <FontAwesomeIcon icon={faTimes} size="lg" />
+    </components.ClearIndicator>
+  );
+
   return (
     <div className={wrapperClasses}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       <Select
         inputId={id}
         aria-label={label}
+        components={{ ClearIndicator }}
         aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
         className={inputClasses}
         classNamePrefix="react-select"

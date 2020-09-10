@@ -48,3 +48,17 @@
 .text-input-label {
   margin-bottom: var(--form-control-label-margin);
 }
+
+.close-icon {
+  position: absolute;
+  right: 0;
+  transition-duration: 0.2s;
+  transition-property: color;
+  margin: var(--form-control-size-md-padding);
+  cursor: pointer;
+  color: var(--form-control-icon-color);
+
+  &:hover {
+    color: var(--form-control-icon-hover-color);
+  }
+}

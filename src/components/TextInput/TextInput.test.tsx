@@ -5,6 +5,7 @@ import {
   screen,
 } from '@testing-library/react';
 import TextInput from './TextInput';
+import { ChangeEvent } from 'cleave.js/react/props';
 
 describe('TextInput', () => {
   describe('Callback Handling', () => {
@@ -40,7 +41,7 @@ describe('TextInput', () => {
           />,
         );
 
-        const inputElement = screen.getByDisplayValue('hello');
+        const inputElement = screen.getByDisplayValue('hello') as HTMLInputElement;
         expect(inputElement.value).toBe('hello');
 
         fireEvent.change(inputElement, { target: { value: 'good bye' } });
@@ -58,6 +59,30 @@ describe('TextInput', () => {
         expect(inputElement.value).toBe('good bye');
       });
     });
+
+    describe('onClear', () => {
+      test('onClear event fires callback function', () => {
+        let value = '';
+        const mockedHandleClear = jest.fn(() => null);
+        const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+          value = event.target.value;
+        };
+
+        render(
+          <TextInput
+            name="firstName"
+            id="firstName"
+            label="first name"
+            value={value}
+            onChange={handleChange}
+            onClear={mockedHandleClear}
+          />,
+        );
+        const inputElement = screen.getByDisplayValue('hello');
+
+        fireEvent.change(inputElement, { target: { value: 'good bye' } });
+        expect(mockedHandleClear).toHaveBeenCalledTimes(1);
+      });
 
     describe('onFocus', () => {
       test('Input fires onFocus callback', () => {
@@ -133,20 +158,6 @@ describe('TextInput', () => {
       test('Input correctly assigns autocomplete value of "off" when bool false is provided', () => {
         render(
           <TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoComplete={false} />,
-        );
-        const inputElement = screen.getByDisplayValue('hello');
-        expect(inputElement).toHaveAttribute('autocomplete', 'off');
-      });
-
-      test('Input correctly assigns autocomplete value of "off" when incorrect type is provided', () => {
-        render(
-          <TextInput
-            label="test input"
-            id="testInput"
-            value="hello"
-            onChange={() => null}
-            autoComplete={['a', 'random', 'array']}
-          />,
         );
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'off');
@@ -230,7 +241,7 @@ describe('TextInput', () => {
             id="firstName"
             label="first name"
             value=""
-            maxLength="3"
+            maxLength={3}
             onChange={() => null}
           />,
         );
