@@ -49,10 +49,9 @@ Alerts come in different types based on the kind of feedback being delivered to 
         'warning',
         'danger',
       ];
-      const message = (type) => `This is a ${type} alert.`;
       return (
         <>
-         {types.map(type => <Alert message={message(type)} type={type} className="m-bottom-md" />)}
+         {types.map(type => <Alert message={type} type={type} className="m-bottom-md" />)}
         </>
       );
     }}
@@ -69,12 +68,13 @@ Pass a string to the `title` prop to create a natural visual text hierarchy.
       return (
         <>
           <Alert
-            title="Hello world!"
-            message="How are you?"
+            title="Proposal Archived"
+            message="The proposal was archived on Sept 9, 2020 at 5:31pm?"
             className="m-bottom-md"
           />
           <Alert
-            title="Just the title"
+            type="danger"
+            title="Contact Deleted"
           />
         </>
       );
@@ -249,7 +249,7 @@ Renders a version of the banner with less padding.
     {() => {
       return (
         <Alert
-          message="Hello world!"
+          message="Compact Alerts have less padding"
           type="info"
           isCompact
         />
