@@ -31,24 +31,26 @@ react-select elements for which we do not own the markup */
       .react-select-icon {
         padding: 0;
         padding-right: 2px;
-        color: var(--form-control-select-icon-color);
+        color: var(--form-control-icon-color);
       
         &:hover {
-          color: var(--form-control-select-icon-hover-color)
+          color: var(--form-control-icon-hover-color)
         }
-      
+      }
+
+      :global(.react-select__dropdown-indicator) {
+        @extend .react-select-icon;
+
         svg {
           width: var(--form-control-select-icon-size);
           height: var(--form-control-select-icon-size);
         }
       }
 
-      :global(.react-select__dropdown-indicator) {
-        @extend .react-select-icon;
-      }
-
       :global(.react-select__clear-indicator) {
         @extend .react-select-icon;
+
+        margin-right: var(--form-control-select-clear-icon-margin);
       }
 
       &:global(.react-select__control--is-focused) {

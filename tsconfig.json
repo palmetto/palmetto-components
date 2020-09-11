@@ -15,6 +15,10 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
+    "lib": [
+      "ES6",
+      "DOM"
+    ]
   },
   "include": [
     "./src",
