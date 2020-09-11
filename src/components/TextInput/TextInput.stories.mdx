@@ -209,7 +209,7 @@ a callback function when the clear icon is clicked, which can then be handled to
 <Canvas>
   <Story name="Clearable">
     {() => {
-      const [value, setValue] = useState('');
+      const [value, setValue] = useState('clear me');
       return (
         <div style={{ height: '85px' }}>
           <TextInput
@@ -413,7 +413,6 @@ Use the `className` prop to add a custom class, or classes to an input.
     }}
   </Story>
 </Canvas>
-
 
 
 
