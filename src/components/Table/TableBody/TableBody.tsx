@@ -52,11 +52,6 @@ interface TableBodyProps {
    * by passing `truncateOverflow` value on a specific Column
    */
   truncateOverflow?: boolean;
-  /**
-   * Fix the width of the columns. Can be useful if sorting is enabled and the content of
-   * the columns is changing; prevents the horizontal jump when this occurres.
-   */
-  useFixedWidthColumns?: boolean;
 }
 
 const TableBody: FC<TableBodyProps> = ({
@@ -71,7 +66,6 @@ const TableBody: FC<TableBodyProps> = ({
   isCompact = false,
   isStriped = false,
   truncateOverflow = false,
-  useFixedWidthColumns = false,
 }) => {
   const tableBodyClasses = classNames(
     styles['table-body'],
@@ -95,7 +89,6 @@ const TableBody: FC<TableBodyProps> = ({
           truncateOverflow={truncateOverflow}
           isBorderless={isBorderless}
           isCompact={isCompact}
-          useFixedWidthColumns={useFixedWidthColumns}
         />
       ))}
     </tbody>

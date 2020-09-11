@@ -65,11 +65,6 @@ interface TableRowProps {
    * by passing `truncateOverflow` value on a specific Column
    */
   truncateOverflow?: boolean;
-  /**
-   * Fix the width of the columns. Can be useful if sorting is enabled and the content of
-   * the columns is changing; prevents the horizontal jump when this occurres.
-   */
-  useFixedWidthColumns?: boolean;
 }
 
 const TableRow: FC<TableRowProps> = ({
@@ -86,7 +81,6 @@ const TableRow: FC<TableRowProps> = ({
   row = undefined,
   rowIndex = undefined,
   truncateOverflow = false,
-  useFixedWidthColumns = false,
 }) => {
   const tableRowClasses = classNames(
     styles['table-row'],
@@ -119,7 +113,7 @@ const TableRow: FC<TableRowProps> = ({
             isCompact={isCompact}
             sortedColumn={sortedColumn}
             truncateOverflow={column.truncateOverflow || truncateOverflow}
-            width={useFixedWidthColumns ? column.width : undefined}
+            width={column.width}
           />
         ) : (
           <TableCell
@@ -130,7 +124,7 @@ const TableRow: FC<TableRowProps> = ({
             key={getColumnKeys(columns)[columnIndex]}
             isBorderless={isBorderless}
             isCompact={isCompact}
-            width={useFixedWidthColumns ? column.width : undefined}
+            width={column.width}
           >
             {renderCellContent(column)}
           </TableCell>

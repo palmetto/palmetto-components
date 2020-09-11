@@ -41,11 +41,6 @@ interface TableHeadProps {
    * by passing `truncateOverflow` value on a specific Column
    */
   truncateOverflow?: boolean;
-  /**
-   * Fix the width of the columns. Can be useful if sorting is enabled and the content of
-   * the columns is changing; prevents the horizontal jump when this occurres.
-   */
-  useFixedWidthColumns?: boolean;
 }
 
 const TableHead: FC<TableHeadProps> = ({
@@ -57,7 +52,6 @@ const TableHead: FC<TableHeadProps> = ({
   onSort = undefined,
   sortedColumn = undefined,
   truncateOverflow = false,
-  useFixedWidthColumns = false,
 }) => {
   const tableHeadClasses = classNames(className);
 
@@ -72,7 +66,6 @@ const TableHead: FC<TableHeadProps> = ({
         onSort={onSort}
         sortedColumn={sortedColumn}
         truncateOverflow={truncateOverflow}
-        useFixedWidthColumns={useFixedWidthColumns}
       />
     </thead>
   );

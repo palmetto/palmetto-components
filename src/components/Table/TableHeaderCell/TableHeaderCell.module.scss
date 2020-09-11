@@ -17,7 +17,7 @@
   }
 
   &.borderless {
-    border: none;
+    border: 0;
   }
 
   &.truncated {
@@ -34,16 +34,11 @@
     text-align: center;
   }
 
-  .heading,
-  .sort-icon {
-    display: inline-block;
-  }
-
   .heading {
-    white-space: initial;
-  }
+    white-space: nowrap;
 
-  .sort-icon {
-    margin-left: var(--table-header-sort-icon-spacing);
+    .sort-icon {
+      margin-left: var(--table-header-sort-icon-spacing);
+    }
   }
 }
