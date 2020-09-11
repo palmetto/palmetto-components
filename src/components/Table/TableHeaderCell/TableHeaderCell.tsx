@@ -100,9 +100,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
     };
 
     return (
-      <span className={styles['sort-icon']}>
-        {renderArrows()}
-      </span>
+      renderArrows()
     );
   };
 
