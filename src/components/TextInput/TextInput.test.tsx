@@ -5,7 +5,6 @@ import {
   screen,
 } from '@testing-library/react';
 import TextInput from './TextInput';
-import { ChangeEvent } from 'cleave.js/react/props';
 
 describe('TextInput', () => {
   describe('Callback Handling', () => {
@@ -61,28 +60,45 @@ describe('TextInput', () => {
     });
 
     describe('onClear', () => {
+      test('onClear prop renders clear icon when input has value', () => {
+        render(
+          <TextInput
+            name="firstName"
+            id="firstName"
+            label="first name"
+            value="hello"
+            onChange={() => null}
+            onClear={() => null}
+          />,
+        );
+        const clearButton = screen.getByTestId('text-input-clear-button');
+        expect(clearButton).toBeInTheDocument();
+      });
+
       test('onClear event fires callback function', () => {
-        let value = '';
         const mockedHandleClear = jest.fn(() => null);
-        const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-          value = event.target.value;
-        };
 
         render(
           <TextInput
             name="firstName"
             id="firstName"
             label="first name"
-            value={value}
-            onChange={handleChange}
+            value="hello"
+            onChange={() => null}
             onClear={mockedHandleClear}
           />,
         );
-        const inputElement = screen.getByDisplayValue('hello');
+        const clearButton = screen.getByTestId('text-input-clear-button');
+        expect(clearButton).toBeInTheDocument();
 
-        fireEvent.change(inputElement, { target: { value: 'good bye' } });
+        fireEvent.click(clearButton);
         expect(mockedHandleClear).toHaveBeenCalledTimes(1);
+        fireEvent.keyUp(clearButton, { keyCode: 13 });
+        expect(mockedHandleClear).toHaveBeenCalledTimes(2);
+        fireEvent.keyUp(clearButton, { keyCode: 99 });
+        expect(mockedHandleClear).toHaveBeenCalledTimes(2);
       });
+    });
 
     describe('onFocus', () => {
       test('Input fires onFocus callback', () => {
@@ -161,6 +177,14 @@ describe('TextInput', () => {
         );
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'off');
+      });
+
+      test('Input correctly assigns autocomplete specific value when provided', () => {
+        render(
+          <TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoComplete="email" />,
+        );
+        const inputElement = screen.getByDisplayValue('hello');
+        expect(inputElement).toHaveAttribute('autocomplete', 'email');
       });
     });
 
@@ -271,6 +295,25 @@ describe('TextInput', () => {
         />);
         const inputElement = screen.getByLabelText('hidden label');
         expect(inputElement).not.toHaveAttribute('aria-labelledby');
+      });
+    });
+
+    // NOTE: due to an unknown bug in the Cleave implementation, we are unable to test change events,
+    // but we can at least confirm that the component renders an input when an inputMask is passed.
+    describe('Masked', () => {
+      test('Properly renders an input when inputMask is passed', () => {
+        render(
+          <TextInput
+            id="testInput"
+            label="test label"
+            value="hello"
+            onChange={() => null}
+            inputMask="phone"
+            placeholder="phone"
+          />,
+        );
+        const inputElement = screen.getByPlaceholderText('phone');
+        expect(inputElement).toBeInTheDocument();
       });
     });
   });

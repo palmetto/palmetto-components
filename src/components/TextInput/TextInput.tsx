@@ -87,7 +87,7 @@ interface TextInputProps {
    * Callback function to call when input us cleared. When this is passed,
    * the input will display an icon on the right side, for triggering this callback.
    */
-  onClear?: (event: (MouseEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>)) => void;
+  onClear?: (event: (MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>)) => void;
   /**
    * Callback function to call on focus event.
    */
@@ -123,11 +123,6 @@ const TextInput: FC<TextInputProps> = ({
   placeholder = '',
   type = 'text',
 }) => {
-  const inputClasses = classNames(
-    styles['text-input'],
-    { [styles.error]: error },
-  );
-
   const getInputMask = (
     mask: inputMaskType,
     availableInputMasks: {
@@ -162,6 +157,35 @@ const TextInput: FC<TextInputProps> = ({
     return autoComplete;
   };
 
+  const inputWrapperClasses = classNames(
+    styles['text-input-wrapper'],
+    {
+      [styles.error]: error,
+      [styles.disabled]: isDisabled,
+    },
+  );
+
+  const renderClearIcon = (): ReactNode => {
+    const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
+      if (event.keyCode === 13 && onClear) onClear(event);
+    };
+
+    return (
+      <button
+        type="button"
+        onClick={onClear}
+        onKeyUp={handleKeyPress}
+        className={styles['clear-button']}
+        data-testid="text-input-clear-button"
+      >
+        <FontAwesomeIcon
+          icon={faTimes}
+          className={styles['clear-icon']}
+        />
+      </button>
+    );
+  };
+
   const inputProps = {
     'aria-required': isRequired,
     'aria-invalid': !!error,
@@ -169,13 +193,11 @@ const TextInput: FC<TextInputProps> = ({
     'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
     autoComplete: getAutoCompleteValue(),
     autoFocus,
-    className: inputClasses,
     disabled: isDisabled,
     id,
     maxLength,
     name,
     onBlur,
-    onClear,
     onChange,
     onFocus,
     placeholder,
@@ -194,13 +216,13 @@ const TextInput: FC<TextInputProps> = ({
   return (
     <div className={className}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
-      <div style={{ position: 'relative' }}>
-        {!onClear && <FontAwesomeIcon icon={faTimes} className={styles['close-icon']} size="lg" />}
+      <div className={inputWrapperClasses}>
         {!inputMask ? (
           <input {...inputProps} />
         ) : (
           <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
         )}
+        {!!onClear && !!value && renderClearIcon()}
       </div>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </div>

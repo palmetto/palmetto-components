@@ -200,6 +200,32 @@ Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can hav
   </Story>
 </Canvas>
 
+
+## Clearable
+
+Use the `onClear` prop to display a clear icon (x) when the input has a value. `onClear` will fire
+a callback function when the clear icon is clicked, which can then be handled to clear the value.
+
+<Canvas>
+  <Story name="Clearable">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <div style={{ height: '85px' }}>
+          <TextInput
+            id="required"
+            value={value}
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            onClear={event => setValue('')}
+            isRequired
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## With Phone Mask
 
 Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to set the mask as "phone".

@@ -45,7 +45,9 @@
   /* ----SELECT INPUT---- */
   --form-control-select-icon-size: 34px;
   --form-control-select-padding: var(--size-spacing-2xs);
+  --form-control-select-clear-icon-margin: var(--size-spacing-xs);
 
   /* ----TEXT INPUT---- */
-  --form-control-clear-icon-margin: var(--size-spacing-md);
+  --form-control-text-clear-icon-margin: var(--size-spacing-xs);
+  --form-control-text-clear-icon-font-size: var(--size-font-lg);
 }

@@ -50,7 +50,7 @@ react-select elements for which we do not own the markup */
       :global(.react-select__clear-indicator) {
         @extend .react-select-icon;
 
-        margin-right: var(--size-spacing-xs);
+        margin-right: var(--form-control-select-clear-icon-margin);
       }
 
       &:global(.react-select__control--is-focused) {
