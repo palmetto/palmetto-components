@@ -1,4 +1,4 @@
-.disabled-base {
+%disabled-base {
   background-color: var(--form-control-disabled-background-color);
   color: var(--form-control-disabled-font-color);
 
@@ -29,7 +29,7 @@
   }
 
   &.disabled {
-    @extend .disabled-base;
+    @extend %disabled-base;
   }
 
   > input {
@@ -49,7 +49,7 @@
     }
 
     &:disabled {
-      @extend .disabled-base;
+      @extend %disabled-base;
     }
   }
 
