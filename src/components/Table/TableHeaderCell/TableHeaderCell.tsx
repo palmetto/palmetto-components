@@ -100,7 +100,9 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
     };
 
     return (
-      renderArrows()
+      <span className={styles['sort-icon']}>
+        {renderArrows()}
+      </span>
     );
   };
 
@@ -145,10 +147,10 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       onClick={handleSort}
       onKeyDown={handleKeyPress}
     >
-      <span className={styles.heading}>
+      <div className={styles.heading}>
         {column.heading}
-      </span>
-      {isSortable && renderIcon()}
+        {isSortable && renderIcon()}
+      </div>
     </th>
   );
 };
