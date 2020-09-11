@@ -11,6 +11,7 @@
         { "type": "ci", "release": "patch" },
         { "type": "build", "release": "patch" },
         { "type": "feat", "release": "minor" }
+        { "type": "fix", "release": "patch" }
       ]
     }]
   ]
