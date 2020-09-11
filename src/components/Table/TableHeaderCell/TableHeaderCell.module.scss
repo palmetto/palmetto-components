@@ -35,8 +35,10 @@
   }
 
   .heading {
-    display: inline;
-    margin-right: var(--table-header-sort-icon-spacing);
-    white-space: initial;
+    white-space: nowrap;
+
+    .sort-icon {
+      margin-left: var(--table-header-sort-icon-spacing);
+    }
   }
 }
