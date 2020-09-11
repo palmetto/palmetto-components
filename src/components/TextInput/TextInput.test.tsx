@@ -6,22 +6,23 @@ import {
 } from '@testing-library/react';
 import TextInput from './TextInput';
 
+const baseProps = {
+  name: 'firstName',
+  id: 'firstName',
+  label: 'first name',
+  value: 'hello',
+  onChange: () => null,
+  onClear: undefined,
+};
+
 describe('TextInput', () => {
   describe('Callback Handling', () => {
     describe('onChange', () => {
       test('onChange event fires callback function', () => {
         const mockedHandleChange = jest.fn(() => null);
 
-        render(
-          <TextInput
-            name="firstName"
-            id="firstName"
-            label="first name"
-            value="hello"
-            onChange={mockedHandleChange}
-          />,
-        );
-        const inputElement = screen.getByDisplayValue('hello');
+        render(<TextInput {...baseProps} onChange={mockedHandleChange} />);
+        const inputElement = screen.getByDisplayValue(baseProps.value);
 
         fireEvent.change(inputElement, { target: { value: 'good bye' } });
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
@@ -30,15 +31,7 @@ describe('TextInput', () => {
       test('Input value is updated properly when upper state changes', () => {
         let value = 'hello';
         const mockedHandleChange = jest.fn(event => { value = event.target.value; });
-        const { rerender } = render(
-          <TextInput
-            name="firstName"
-            id="firstName"
-            label="first name"
-            value={value}
-            onChange={mockedHandleChange}
-          />,
-        );
+        const { rerender } = render(<TextInput {...baseProps} value={value} onChange={mockedHandleChange} />);
 
         const inputElement = screen.getByDisplayValue('hello') as HTMLInputElement;
         expect(inputElement.value).toBe('hello');
@@ -46,31 +39,14 @@ describe('TextInput', () => {
         fireEvent.change(inputElement, { target: { value: 'good bye' } });
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
 
-        rerender(
-          <TextInput
-            name="firstName"
-            id="firstName"
-            label="first name"
-            value={value}
-            onChange={mockedHandleChange}
-          />,
-        );
+        rerender(<TextInput {...baseProps} value={value} onChange={mockedHandleChange} />);
         expect(inputElement.value).toBe('good bye');
       });
     });
 
     describe('onClear', () => {
       test('onClear prop renders clear icon when input has value', () => {
-        render(
-          <TextInput
-            name="firstName"
-            id="firstName"
-            label="first name"
-            value="hello"
-            onChange={() => null}
-            onClear={() => null}
-          />,
-        );
+        render(<TextInput {...baseProps} onClear={() => null} />);
         const clearButton = screen.getByTestId('text-input-clear-button');
         expect(clearButton).toBeInTheDocument();
       });
@@ -78,16 +54,7 @@ describe('TextInput', () => {
       test('onClear event fires callback function', () => {
         const mockedHandleClear = jest.fn(() => null);
 
-        render(
-          <TextInput
-            name="firstName"
-            id="firstName"
-            label="first name"
-            value="hello"
-            onChange={() => null}
-            onClear={mockedHandleClear}
-          />,
-        );
+        render(<TextInput {...baseProps} onClear={mockedHandleClear} />);
         const clearButton = screen.getByTestId('text-input-clear-button');
         expect(clearButton).toBeInTheDocument();
 
@@ -103,16 +70,8 @@ describe('TextInput', () => {
     describe('onFocus', () => {
       test('Input fires onFocus callback', () => {
         const mockedHandleFocus = jest.fn();
-        render(
-          <TextInput
-            label="test input"
-            id="testInput"
-            value="hello"
-            onChange={() => null}
-            onFocus={mockedHandleFocus}
-          />,
-        );
-        const inputElement = screen.getByDisplayValue('hello');
+        render(<TextInput {...baseProps} onFocus={mockedHandleFocus} />);
+        const inputElement = screen.getByDisplayValue(baseProps.value);
         fireEvent.focus(inputElement);
         expect(mockedHandleFocus).toBeCalledTimes(1);
       });
@@ -121,16 +80,8 @@ describe('TextInput', () => {
     describe('onBlur', () => {
       test('Input fires onBlur callback', () => {
         const mockedHandleBlur = jest.fn();
-        render(
-          <TextInput
-            label="test input"
-            id="testInput"
-            value="hello"
-            onChange={() => null}
-            onBlur={mockedHandleBlur}
-          />,
-        );
-        const inputElement = screen.getByDisplayValue('hello');
+        render(<TextInput {...baseProps} onBlur={mockedHandleBlur} />);
+        const inputElement = screen.getByDisplayValue(baseProps.value);
         fireEvent.focus(inputElement);
         fireEvent.blur(inputElement);
         expect(mockedHandleBlur).toBeCalledTimes(1);
@@ -141,16 +92,9 @@ describe('TextInput', () => {
   describe('States', () => {
     describe('Label', () => {
       test('it renders a label', () => {
-        render(
-          <TextInput
-            label="test input"
-            id="testInput"
-            value="hello"
-            onChange={() => null}
-          />,
-        );
+        render(<TextInput {...baseProps} />);
 
-        const labelElement = screen.getByText('test input');
+        const labelElement = screen.getByText(baseProps.label);
 
         expect(labelElement).toBeInTheDocument();
       });
@@ -158,22 +102,22 @@ describe('TextInput', () => {
 
     describe('Autofocused', () => {
       test('Input autofocuses if "autoFocus" prop is set to true', () => {
-        render(<TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoFocus />);
-        const inputElement = screen.getByDisplayValue('hello');
+        render(<TextInput {...baseProps} autoFocus />);
+        const inputElement = screen.getByDisplayValue(baseProps.value);
         expect(document.activeElement).toEqual(inputElement);
       });
     });
 
     describe('Autocomplete', () => {
       test('Input correctly assigns autocomplete value of "on" when bool true is provided', () => {
-        render(<TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoComplete />);
-        const inputElement = screen.getByDisplayValue('hello');
+        render(<TextInput {...baseProps} autoComplete />);
+        const inputElement = screen.getByDisplayValue(baseProps.value);
         expect(inputElement).toHaveAttribute('autocomplete', 'on');
       });
 
       test('Input correctly assigns autocomplete value of "off" when bool false is provided', () => {
         render(
-          <TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoComplete={false} />,
+          <TextInput {...baseProps} autoComplete={false} />,
         );
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'off');
@@ -181,7 +125,7 @@ describe('TextInput', () => {
 
       test('Input correctly assigns autocomplete specific value when provided', () => {
         render(
-          <TextInput label="test input" id="testInput" value="hello" onChange={() => null} autoComplete="email" />,
+          <TextInput {...baseProps} autoComplete="email" />,
         );
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'email');
@@ -190,15 +134,7 @@ describe('TextInput', () => {
 
     describe('Required', () => {
       test('it correctly assigns the "aria-required" attribute when "isRequired" prop is true', () => {
-        render(
-          <TextInput
-            label="test input"
-            id="testInput"
-            value="hello"
-            onChange={() => null}
-            isRequired
-          />,
-        );
+        render(<TextInput {...baseProps} isRequired />);
 
         const inputElement = screen.getByDisplayValue('hello');
 
@@ -206,17 +142,9 @@ describe('TextInput', () => {
       });
 
       test('it\'s label renders an asterisk indicating that it\'s required', () => {
-        render(
-          <TextInput
-            label="test input"
-            id="testInput"
-            value="hello"
-            onChange={() => null}
-            isRequired
-          />,
-        );
+        render(<TextInput {...baseProps} isRequired />);
 
-        const labelElement = screen.getByText('test input');
+        const labelElement = screen.getByText(baseProps.label);
 
         expect(labelElement).toHaveTextContent('*');
       });
@@ -224,31 +152,15 @@ describe('TextInput', () => {
 
     describe('Error', () => {
       test('the label renders in an error state', () => {
-        render(
-          <TextInput
-            label="test input"
-            value="hey"
-            onChange={() => null}
-            id="myId"
-            error="You silly goose"
-          />,
-        );
+        render(<TextInput {...baseProps} error="You silly goose" />);
 
-        const labelElement = screen.getByText('test input');
+        const labelElement = screen.getByText(baseProps.label);
 
         expect(labelElement.getAttribute('class')).toContain('error');
       });
 
       test('Input correctly displays error message if provided', () => {
-        render(
-          <TextInput
-            label="test input"
-            value="hey"
-            onChange={() => null}
-            id="myId"
-            error="You silly goose"
-          />,
-        );
+        render(<TextInput {...baseProps} error="You silly goose" />);
 
         const validationMessageElement = screen.getByText('You silly goose');
 
@@ -260,17 +172,10 @@ describe('TextInput', () => {
     describe('Max Length', () => {
       test('Input correctly passes maxlength property if prop is passed', async () => {
         render(
-          <TextInput
-            name="firstName"
-            id="firstName"
-            label="first name"
-            value=""
-            maxLength={3}
-            onChange={() => null}
-          />,
+          <TextInput {...baseProps} value="" maxLength={3} />,
         );
 
-        const inputElement = screen.getByLabelText('first name');
+        const inputElement = screen.getByLabelText(baseProps.label);
         expect(inputElement).toBeInTheDocument();
         expect(inputElement).toHaveAttribute('maxlength');
         expect(inputElement.getAttribute('maxlength')).toBe('3');
@@ -279,21 +184,15 @@ describe('TextInput', () => {
 
     describe('Aria-labelledby', () => {
       test('assigns the "aria-labelledby" attribute and renders label with correct id, when label is provided', () => {
-        render(<TextInput id="testInput" label="test label" value="hello" onChange={() => null} />);
-        const inputElement = screen.getByDisplayValue('hello');
-        expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
-        expect(document.getElementById('testInputLabel')).toBeInTheDocument();
+        render(<TextInput {...baseProps} />);
+        const inputElement = screen.getByDisplayValue(baseProps.value);
+        expect(inputElement).toHaveAttribute('aria-labelledby', `${baseProps.id}Label`);
+        expect(document.getElementById(baseProps.id)).toBeInTheDocument();
       });
 
       test('does not assign "aria-labelledby" attribute when a label is hidden', () => {
-        render(<TextInput
-          id="testInput"
-          label="hidden label"
-          hideLabel
-          value="hello"
-          onChange={() => null}
-        />);
-        const inputElement = screen.getByLabelText('hidden label');
+        render(<TextInput {...baseProps} hideLabel />);
+        const inputElement = screen.getByLabelText(baseProps.label);
         expect(inputElement).not.toHaveAttribute('aria-labelledby');
       });
     });
@@ -303,14 +202,7 @@ describe('TextInput', () => {
     describe('Masked', () => {
       test('Properly renders an input when inputMask is passed', () => {
         render(
-          <TextInput
-            id="testInput"
-            label="test label"
-            value="hello"
-            onChange={() => null}
-            inputMask="phone"
-            placeholder="phone"
-          />,
+          <TextInput {...baseProps} inputMask="phone" placeholder="phone" />,
         );
         const inputElement = screen.getByPlaceholderText('phone');
         expect(inputElement).toBeInTheDocument();
