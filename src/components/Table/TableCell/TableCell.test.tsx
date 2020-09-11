@@ -19,7 +19,7 @@ describe('TableCell', () => {
 
       const tableCell = screen.getByText('ID');
 
-      expect(tableCell).toHaveStyle({ width: '200px', maxWidth: '200px' });
+      expect(tableCell).toHaveStyle({ minWidth: '200px', maxWidth: '200px' });
     });
 
     test('td content is truncated if \'isTruncated\' prop is passed', () => {
