@@ -1,11 +1,15 @@
 import React, {
   FC,
   ChangeEvent,
+  MouseEvent,
+  KeyboardEvent,
   FocusEvent,
   ReactNode,
 } from 'react';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { UnknownPropertiesObjType } from '../../lib/types';
 import * as InputMasks from './TextInputMasks';
 import FormLabel from '../FormLabel/FormLabel';
@@ -80,6 +84,11 @@ interface TextInputProps {
    */
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
+   * Callback function to call when input us cleared. When this is passed,
+   * the input will display an icon on the right side, for triggering this callback.
+   */
+  onClear?: (event: (MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>)) => void;
+  /**
    * Callback function to call on focus event.
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
@@ -90,7 +99,7 @@ interface TextInputProps {
   /**
    * The input 'type' value. Defaults to type 'text'.
    */
-  type: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
+  type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
 }
 
 const TextInput: FC<TextInputProps> = ({
@@ -109,29 +118,11 @@ const TextInput: FC<TextInputProps> = ({
   maxLength = undefined,
   name = '',
   onBlur = undefined,
+  onClear = undefined,
   onFocus = undefined,
   placeholder = '',
   type = 'text',
 }) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    onChange(event);
-  };
-
-  const handleFocus = (event: FocusEvent<HTMLInputElement>): void => {
-    if (onFocus) onFocus(event);
-    // Selects input content allowing immediate edit. @TODO Confirm if desired functionality.
-    event.currentTarget.select();
-  };
-
-  const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
-    if (onBlur) onBlur(event);
-  };
-
-  const inputClasses = classNames(
-    styles['text-input'],
-    { [styles.error]: error },
-  );
-
   const getInputMask = (
     mask: inputMaskType,
     availableInputMasks: {
@@ -166,6 +157,35 @@ const TextInput: FC<TextInputProps> = ({
     return autoComplete;
   };
 
+  const inputWrapperClasses = classNames(
+    styles['text-input-wrapper'],
+    {
+      [styles.error]: error,
+      [styles.disabled]: isDisabled,
+    },
+  );
+
+  const renderClearIcon = (): ReactNode => {
+    const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
+      if (event.keyCode === 13 && onClear) onClear(event);
+    };
+
+    return (
+      <button
+        type="button"
+        onClick={onClear}
+        onKeyUp={handleKeyPress}
+        className={styles['clear-button']}
+        data-testid="text-input-clear-button"
+      >
+        <FontAwesomeIcon
+          icon={faTimes}
+          className={styles['clear-icon']}
+        />
+      </button>
+    );
+  };
+
   const inputProps = {
     'aria-required': isRequired,
     'aria-invalid': !!error,
@@ -173,14 +193,13 @@ const TextInput: FC<TextInputProps> = ({
     'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
     autoComplete: getAutoCompleteValue(),
     autoFocus,
-    className: inputClasses,
     disabled: isDisabled,
     id,
     maxLength,
     name,
-    onBlur: handleBlur,
-    onChange: handleChange,
-    onFocus: handleFocus,
+    onBlur,
+    onChange,
+    onFocus,
     placeholder,
     type,
     value,
@@ -197,11 +216,14 @@ const TextInput: FC<TextInputProps> = ({
   return (
     <div className={className}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
-      {!inputMask ? (
-        <input {...inputProps} />
-      ) : (
-        <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
-      )}
+      <div className={inputWrapperClasses}>
+        {!inputMask ? (
+          <input {...inputProps} />
+        ) : (
+          <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+        )}
+        {!!onClear && !!value && renderClearIcon()}
+      </div>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </div>
   );

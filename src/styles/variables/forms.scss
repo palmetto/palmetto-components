@@ -2,6 +2,7 @@
   /* ----GLOBALS---- */
 
   --form-control-label-margin: var(--size-spacing-xs);
+  --form-control-line-height: normal;
 
   /* --SIZES-- */
 
@@ -33,6 +34,8 @@
   --form-control-description-color: var(--color-font-grey-dark);
   --form-control-disabled-font-color: var(--color-font-grey-light);
   --form-control-placeholder-color: var(--color-font-grey-light);
+  --form-control-icon-color: var(--form-control-placeholder-color);
+  --form-control-icon-hover-color: var(--color-brand-grey);
 
   /* ----RADIO GROUP---- */
   --form-control-radio-group-description-spacing: var(--size-spacing-xs);
@@ -40,8 +43,11 @@
   --form-control-radio-group-options-spacing: var(--size-spacing-md);
 
   /* ----SELECT INPUT---- */
-  --form-control-select-icon-color: var(--color-brand-grey-light);
-  --form-control-select-icon-hover-color: var(--color-brand-grey);
   --form-control-select-icon-size: 34px;
   --form-control-select-padding: var(--size-spacing-2xs);
+  --form-control-select-clear-icon-margin: var(--size-spacing-xs);
+
+  /* ----TEXT INPUT---- */
+  --form-control-text-clear-icon-margin: var(--size-spacing-xs);
+  --form-control-text-clear-icon-font-size: var(--size-font-lg);
 }

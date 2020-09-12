@@ -50,9 +50,9 @@ describe('TableHeaderCell', () => {
         </TableHeaderCell>,
       );
 
-      const tableHeaderCell = screen.getByText('ID');
+      const tableHeaderCell = screen.getByText('ID').closest('th');
 
-      expect(tableHeaderCell).toHaveStyle({ width: '200px', maxWidth: '200px' });
+      expect(tableHeaderCell).toHaveStyle({ width: '200px' });
     });
 
     test('th element is rendered with custom class when passed as a prop', () => {

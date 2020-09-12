@@ -66,7 +66,7 @@ const TableCell: FC<TableCellProps> = ({
   return (
     <td
       className={tableCellClasses}
-      style={{ ...width && { width: `${width}px`, maxWidth: `${width}px` } }}
+      style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
     >
       {(children === null || typeof children === 'undefined' || children === '') ? emptyCellPlaceholder : children}
     </td>

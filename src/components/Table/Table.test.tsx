@@ -143,9 +143,14 @@ describe('Table', () => {
           sortedColumn={{ dataKey: 'flavor', sortDirection: 'ascending' }}
         />);
 
-        const { getByTestId } = within(screen.getByText('Flavor'));
-
-        expect(getByTestId('tableHeaderCellSortAsc-testid')).toBeInTheDocument();
+        const headingSpan = screen.getByText('Flavor');
+        expect(headingSpan).toBeInTheDocument();
+        const headingElement = headingSpan.closest('th');
+        expect(headingElement).toBeInTheDocument();
+        if (headingElement) {
+          const { getByTestId } = within(headingElement);
+          expect(getByTestId('tableHeaderCellSortAsc-testid')).toBeInTheDocument();
+        }
       });
     });
 
@@ -155,12 +160,12 @@ describe('Table', () => {
           columns={columnConfig}
           rows={tableData}
           rowKey="id"
-          scroll={{ x: 100, y: 200 }}
+          isScrollable={{ x: true, y: true }}
         />);
 
         const tableContainer = screen.getByTestId('tableContainerDiv-testid');
 
-        expect(tableContainer).toHaveStyle({ maxWidth: '100px', maxHeight: '200px' });
+        expect(tableContainer).toHaveClass('scrollable', 'scrollable-x', 'scrollable-y');
       });
     });
 
@@ -212,12 +217,11 @@ describe('Table', () => {
             columns={[...columnConfig.map(col => ({ ...col, width: 100 }))]}
             rows={tableData}
             rowKey="id"
-            useFixedWidthColumns
           />,
         );
 
-        const tableHeaderCell = screen.getByText('Flavor');
-        expect(tableHeaderCell).toHaveStyle({ width: '100px', maxWidth: '100px' });
+        const tableHeaderCell = screen.getByText('Flavor').closest('th');
+        expect(tableHeaderCell).toHaveStyle({ width: '100px' });
       });
     });
 
