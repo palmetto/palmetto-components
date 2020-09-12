@@ -28,7 +28,10 @@ function getSpacingCss(attribute, value) {
     }
   } else if (typeof value === 'string') {
     if (value === 'inherit') {
-      styles = 'inherit';
+      const property = attribute === 'p' ? 'padding' : 'margin';
+      styles = {
+        [property]: 'inherit',
+      };
     } else {
       classes.push(`${attribute}-${value}`);
     }
