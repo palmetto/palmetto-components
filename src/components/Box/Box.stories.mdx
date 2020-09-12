@@ -3,8 +3,8 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import {
   PALMETTO_FONT_SIZE_OPTIONS,
   PALMETTO_FONT_COLOR_OPTIONS,
-  PALMETTO_BRAND_COLOR_OPTIONS,
   PALMETTO_BACKGROUND_COLOR_OPTIONS,
+  PALMETTO_BORDER_COLOR_OPTIONS,
   PALMETTO_SPACING_SIZE_OPTIONS,
 } from '../../lib/tokens';
 
@@ -55,7 +55,23 @@ It lays out it contents in a specified direction, and by default renders a `div`
 Use the `background` prop to set the color of the background
 
 <Canvas>
-  <Story name="background">
+  <Story name="background color">
+    <Box background="secondary-lighter" margin="xs" padding="xs">
+      secondary-lighter
+    </Box>
+    <Box background="danger-lightest" margin="xs" padding="xs">
+      danger
+    </Box>
+    <Box background="primary" margin="xs" padding="xs">
+      primary
+    </Box>
+  </Story>
+</Canvas>
+
+All background colors
+`
+<Canvas>
+  <Story name="all background colors">
      {[...PALMETTO_BACKGROUND_COLOR_OPTIONS].map((color, i) => {
       if (color.includes('inherit')) return;
       else if (color === 'dark'
@@ -100,11 +116,27 @@ Use the `background` prop to set the color of the background
 
 ## Border
 
-Use the `border` prop to set the color of the border
+Use the `border` prop to set the color of the border.
 
 <Canvas>
   <Story name="border color">
-     {[...PALMETTO_BRAND_COLOR_OPTIONS].map((color, i) => {
+    <Box border="grey-lighter" margin="xs" padding="xs">
+      grey-lighter
+    </Box>
+    <Box border="danger" margin="xs" padding="xs">
+      danger
+    </Box>
+    <Box border="primary-darker" margin="xs" padding="xs">
+      primary-darker
+    </Box>
+  </Story>
+</Canvas>
+
+All border colors.
+
+<Canvas>
+  <Story name="all border colors">
+     {[...PALMETTO_BORDER_COLOR_OPTIONS].map((color, i) => {
       if (color.includes('inherit')) return;
       else if (color === 'dark'
         || color === 'light'
@@ -180,6 +212,25 @@ The `margin` prop accepts a single [spacing](/?path=/story/design-tokens-spacing
 
 <Canvas>
   <Story name="margin">
+    <Box margin="lg md" background="primary-lighter">
+      lg vertical and md horizontal
+    </Box>
+     <Box margin="0 2xl" background="primary-lighter">
+      0 vertical and 2xl horizontal
+    </Box>
+    <Box margin="sm md 2xl" background="primary-lighter">
+      sm top, md horizontal, 2xl bottom
+    </Box>
+    <Box margin="sm lg 2xl 0" background="primary-lighter">
+      sm top, lg right, 2xl bottom, 0 left
+    </Box>
+  </Story>
+</Canvas>
+
+A single `margin` value will apply an equal amount of space around the outside of a Box.
+
+<Canvas>
+  <Story name="single margin">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box margin={spacing} background="primary-lighter" key={i}>
         {`${spacing} margin`}
@@ -217,7 +268,7 @@ The `margin` prop accepts a single [spacing](/?path=/story/design-tokens-spacing
 The `padding` prop accepts a single [spacing](/?path=/story/design-tokens-spacing--page) value or a set of spacing values that correspond with css shorthand syntax. Padding values can be set on the horizontal or vertical axis, or the top, right, bottom and left sides of a Box.
 
 <Canvas>
-  <Story name="padding four sides">
+  <Story name="padding">
     <Box padding="lg md" margin="sm 0" background="primary-lighter">
       lg vertical and md horizontal
     </Box>
@@ -233,8 +284,10 @@ The `padding` prop accepts a single [spacing](/?path=/story/design-tokens-spacin
   </Story>
 </Canvas>
 
+A single `padding` value will apply an equal amount of space around the contents of a Box.
+
 <Canvas>
-  <Story name="padding">
+  <Story name="single padding">
     {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
       <Box padding={spacing} background="primary-lighter" margin="xs 0" key={i}>
         {`${spacing} padding`}
