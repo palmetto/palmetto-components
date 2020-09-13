@@ -57,8 +57,8 @@ interface TableProps {
    * without specifying a width/height
    */
   isScrollable?: {
-    x: boolean;
-    y: boolean;
+    x?: boolean;
+    y?: boolean;
   };
   /**
    * Adds zebra-striping to any table row within the table body.
