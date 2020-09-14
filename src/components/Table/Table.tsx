@@ -57,8 +57,8 @@ interface TableProps {
    * without specifying a width/height
    */
   isScrollable?: {
-    x: boolean;
-    y: boolean;
+    x?: boolean;
+    y?: boolean;
   };
   /**
    * Adds zebra-striping to any table row within the table body.
@@ -104,8 +104,8 @@ const Table: FC<TableProps> = ({
   useFixedTableLayout = false,
   truncateOverflow = false,
 }) => {
-  const tableContainerClasses = classNames(
-    styles.container,
+  const scrollContainerClasses = classNames(
+    styles['scroll-container'],
     {
       [styles.scrollable]: !!isScrollable?.x || !!isScrollable?.y,
       [styles['scrollable-x']]: !!isScrollable?.x,
@@ -125,38 +125,37 @@ const Table: FC<TableProps> = ({
   );
 
   return (
-    <div
-      className={tableContainerClasses}
-      data-testid="tableContainerDiv-testid"
-    >
+    <div className={styles.container}>
       {isLoading && (
         <div className={styles['loading-mask']}>
           <Spinner size="xl" />
         </div>
       )}
-      <table className={tableClasses}>
-        <TableHead
-          columns={columns}
-          align={align}
-          onSort={onSort}
-          isBorderless={isBorderless}
-          isCompact={isCompact}
-          sortedColumn={sortedColumn}
-          truncateOverflow={truncateOverflow}
-        />
-        <TableBody
-          rows={rows}
-          columns={columns}
-          rowKey={rowKey}
-          align={align}
-          isStriped={isStriped}
-          emptyCellPlaceholder={emptyCellPlaceholder}
-          hoverableRows={hoverableRows}
-          truncateOverflow={truncateOverflow}
-          isBorderless={isBorderless}
-          isCompact={isCompact}
-        />
-      </table>
+      <div className={scrollContainerClasses} data-testid="tableContainerDiv-testid">
+        <table className={tableClasses}>
+          <TableHead
+            columns={columns}
+            align={align}
+            onSort={onSort}
+            isBorderless={isBorderless}
+            isCompact={isCompact}
+            sortedColumn={sortedColumn}
+            truncateOverflow={truncateOverflow}
+          />
+          <TableBody
+            rows={rows}
+            columns={columns}
+            rowKey={rowKey}
+            align={align}
+            isStriped={isStriped}
+            emptyCellPlaceholder={emptyCellPlaceholder}
+            hoverableRows={hoverableRows}
+            truncateOverflow={truncateOverflow}
+            isBorderless={isBorderless}
+            isCompact={isCompact}
+          />
+        </table>
+      </div>
     </div>
   );
 };
