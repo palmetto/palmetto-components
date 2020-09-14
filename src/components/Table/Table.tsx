@@ -104,6 +104,13 @@ const Table: FC<TableProps> = ({
   useFixedTableLayout = false,
   truncateOverflow = false,
 }) => {
+  const containerClasses = classNames(
+    styles.container,
+    {
+      [styles['full-height']]: !!isScrollable?.y,
+    },
+  );
+
   const scrollContainerClasses = classNames(
     styles['scroll-container'],
     {
@@ -125,7 +132,7 @@ const Table: FC<TableProps> = ({
   );
 
   return (
-    <div className={styles.container}>
+    <div className={containerClasses}>
       {isLoading && (
         <div className={styles['loading-mask']}>
           <Spinner size="xl" />
