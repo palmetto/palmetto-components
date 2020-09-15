@@ -106,23 +106,6 @@ export type PALMETTO_SPACING =
   'base' |
   'inherit';
 
-export type PALMETTO_WIDTH =
-  '10' |
-  '15' |
-  '20' |
-  '25' |
-  '30' |
-  '33' |
-  '34' |
-  '40' |
-  '50' |
-  '60' |
-  '70' |
-  '75' |
-  '80' |
-  '90' |
-  '100';
-
 export interface ColorDictionary {
   [name: string]: ColorEntry;
 }
@@ -158,5 +141,5 @@ export const PALMETTO_SPACING_SIZE_OPTIONS = Object.keys(sizes.size.spacing) as 
 
 export const PALMETTO_SPACING_OPTIONS = Object.keys(sizes.size.spacing);
 
-export const PALMETTO_WIDTH = Object.keys(sizes.size.width) as PALMETTO_WIDTH[];
 export const PALMETTO_HEIGHT = Object.keys(sizes.size.height);
+export const PALMETTO_WIDTH = Object.keys(sizes.size.width);

@@ -5,7 +5,6 @@ import {
   PALMETTO_FONT_COLORS,
   PALMETTO_COLORS,
   PALMETTO_SPACING,
-  PALMETTO_WIDTH,
 } from '../../lib/tokens';
 // import getElementType from '../../lib/getElementType';
 import getDimensionCss from '../../lib/getDimensionCss';
@@ -99,10 +98,10 @@ interface BoxProps {
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
   fontSize?: PALMETTO_FONT_SIZES;
-  // /**
-  //  * The height of the element
-  //  */
-  // height: PropTypes.string, // need to define based on design tokens
+  /**
+   * The height of the element
+   */
+  height?: string;
   // /**
   //  * How space between and around content items is distributed along the main-axis a flex Box
   //  */
@@ -152,7 +151,7 @@ interface BoxProps {
   /**
    * The width of the element
    */
-  width?: PALMETTO_WIDTH;
+  width?: string;
 }
 
 /**
@@ -174,7 +173,7 @@ const Box: FC<BoxProps> = ({
   color,
   // flex,
   fontSize = 'inherit',
-  // height,
+  height,
   // justify,
   margin,
   // overflow,
@@ -188,12 +187,14 @@ const Box: FC<BoxProps> = ({
 
   const marginCss = getSpacingCss('m', margin);
   const paddingCss = getSpacingCss('p', padding);
+  const heightCss = getDimensionCss('h', height);
   const widthCss = getDimensionCss('w', width);
 
   const classes = classNames(
     className,
     marginCss.classes,
     paddingCss.classes,
+    heightCss.classes,
     widthCss.classes,
     {
       [`background-color-${background}`]: background,
@@ -209,6 +210,7 @@ const Box: FC<BoxProps> = ({
   Object.assign(
     boxStyles,
     { margin: marginCss.styles },
+    heightCss.styles,
     widthCss.styles,
   );
 
