@@ -140,6 +140,10 @@ export const PALMETTO_BORDER_COLOR_OPTIONS = Object.keys(colors.color.brand);
 export const PALMETTO_SPACING_SIZE_OPTIONS = Object.keys(sizes.size.spacing) as PALMETTO_SPACING[];
 
 export const PALMETTO_SPACING_OPTIONS = Object.keys(sizes.size.spacing);
+export const PALMETTO_SPACING_VALUES = Object.values(sizes.size.spacing);
 
-export const PALMETTO_HEIGHT = Object.keys(sizes.size.height);
-export const PALMETTO_WIDTH = Object.keys(sizes.size.width);
+export const PALMETTO_WIDTH_OPTIONS = Object.keys(sizes.size.width);
+export const PALMETTO_WIDTH_VALUES = Object.values(sizes.size.width);
+
+export const PALMETTO_HEIGHT_OPTIONS = Object.keys(sizes.size.height);
+export const PALMETTO_HEIGHT_VALUES = Object.values(sizes.size.height);

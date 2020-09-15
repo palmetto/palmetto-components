@@ -337,7 +337,7 @@ Setting the `isLoading` prop to true will disable clicking on the column headers
   </Story>
 </Canvas>
 
-## Scroll
+## Scrollable
 
 If you wish to lock your table into a particular `width` or `height` but render it fully (introducing scrolling) use the
 `scroll` prop. It is an object with the keys:
@@ -352,7 +352,7 @@ is given a specific width. In the example below we've made the table fit in a pa
 with the second column having a fixed width of 300 pixels.
 
 <Canvas>
-  <Story name="Scroll">
+  <Story name="Scrollable">
     {() => {
       const containerStyle = {
         padding: '3px 5px',
@@ -384,6 +384,51 @@ with the second column having a fixed width of 300 pixels.
             rows={tableData}
             scr
             isScrollable={{ x: true, y: true }}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Scrollable and Loading
+
+All interactions, including clicking and scrolling will be disabled when a scrollable table is loading.
+
+<Canvas>
+  <Story name="Scrollable and Loading">
+    {() => {
+      const containerStyle = {
+        padding: '3px 5px',
+        borderRadius: '3px',
+        border: '1px solid #EEEEEE',
+        width: '300px',
+        height: '300px',
+      };
+      const columnConfig = [
+        { heading: 'ID', dataKey: 'id' },
+        { heading: 'Color', dataKey: 'color', width: 300 },
+        { heading: 'Flavor', dataKey: 'flavor' },
+        { heading: 'Brightness', dataKey: 'brightness' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },
+        { id: 2, color: 'blue', flavor: 'chocolate', brightness: 'medium' },
+        { id: 3, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 4, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 5, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 6, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 7, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+      ];
+      return (
+        <div style={containerStyle}>
+          <Table
+            rowKey="id"
+            columns={columnConfig}
+            rows={tableData}
+            scr
+            isScrollable={{ x: true, y: true }}
+            isLoading
           />
         </div>
       );
