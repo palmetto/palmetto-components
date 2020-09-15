@@ -21,12 +21,12 @@ Height tokens are defined in `rem`, which means they will scale when adjusting t
     </tr>
   </thead>
   <tbody>
-    {PALMETTO_HEIGHT_OPTIONS.map((space, i) => (
+    {PALMETTO_HEIGHT_OPTIONS.map((height, i) => (
       <tr key={i}>
-        <td><code>{`size-height-${space}`}</code></td>
-        <td><code>{space}</code></td>
+        <td><code>{`size-height-${height}`}</code></td>
+        <td><code>{height}</code></td>
         <td>{PALMETTO_HEIGHT_VALUES[i].value}</td>
-        <td>{space === 'base' ? '16' : PALMETTO_HEIGHT_VALUES[i].original.value * 16}</td>
+        <td>{height === 'base' ? '16' : PALMETTO_HEIGHT_VALUES[i].value.includes('%') ? '' : PALMETTO_HEIGHT_VALUES[i].original.value * 16}</td>
         <td>{PALMETTO_HEIGHT_VALUES[i].original.comment}</td>
       </tr>
     ))}

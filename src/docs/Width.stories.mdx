@@ -21,12 +21,12 @@ Width tokens are defined in `rem`, which means they will scale when adjusting th
     </tr>
   </thead>
   <tbody>
-    {PALMETTO_WIDTH_OPTIONS.map((space, i) => (
+    {PALMETTO_WIDTH_OPTIONS.map((width, i) => (
       <tr key={i}>
-        <td><code>{`size-width-${space}`}</code></td>
-        <td><code>{space}</code></td>
+        <td><code>{`size-width-${width}`}</code></td>
+        <td><code>{width}</code></td>
         <td>{PALMETTO_WIDTH_VALUES[i].value}</td>
-        <td>{space === 'base' ? '16' : PALMETTO_WIDTH_VALUES[i].original.value * 16}</td>
+        <td>{width === 'base' ? '16' : PALMETTO_WIDTH_VALUES[i].value.includes('%') ? '' : PALMETTO_WIDTH_VALUES[i].original.value * 16}</td>
         <td>{PALMETTO_WIDTH_VALUES[i].original.comment}</td>
       </tr>
     ))}
