@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
+import { PALMETTO_WIDTH_OPTIONS, PALMETTO_WIDTH_VALUES } from '../lib/tokens';
+
+<Meta
+  title="Design Tokens/Width"
+/>
+
+# Width
+
+Standard widths have been defined based on percentages or `rem`.
+
+Rem based values will scale when adjusting the root font size. Pixel values are calculated with a root font size of `16px`.
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>prop value</th>
+      <th>value</th>
+      <th>px</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {PALMETTO_WIDTH_OPTIONS.map((width, i) => (
+      <tr key={i}>
+        <td><code>{`size-width-${width}`}</code></td>
+        <td><code>{width}</code></td>
+        <td>{PALMETTO_WIDTH_VALUES[i].value}</td>
+        <td>{width === 'base' ? '16' : PALMETTO_WIDTH_VALUES[i].value.includes('%') ? '' : PALMETTO_WIDTH_VALUES[i].original.value * 16}</td>
+        <td>{PALMETTO_WIDTH_VALUES[i].original.comment}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
