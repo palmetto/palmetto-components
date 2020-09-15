@@ -83,7 +83,7 @@ Text links are often used to highlight clickable text inside of a larger block o
 You can use our text link in this manner as well.
 
 <Canvas>
-  <Story name="Inside a paragraph" decorators={[Story => <BrowserRouter><Story /></BrowserRouter>]}>
+  <Story name="Inside a paragraph">
     {() => {
       return (
         <p>
@@ -97,7 +97,7 @@ You can use our text link in this manner as well.
 </Canvas>
 
 <Canvas>
-  <Story name="With inherited font-size" decorators={[Story => <BrowserRouter><Story /></BrowserRouter>]}>
+  <Story name="With inherited font-size">
     {() => {
       return (
         <p className="font-size-sm">
@@ -105,6 +105,26 @@ You can use our text link in this manner as well.
           and it should fit in just fine.
           Here is <TextLink href="https://ux.palmetto.com">that link</TextLink> again but inheriting
           a small font-size.
+        </p>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+## Color Variations
+
+Text link is available in the standard `primary` variant as well as `danger`. Pass the `variant` prop
+to render en either of these.
+
+<Canvas>
+  <Story name="Color variations">
+    {() => {
+      return (
+        <p>
+          We've got two variations if you want to communicate that a certain link may do something harmful,
+          use the <TextLink href="https://ux.palmetto.com" variant="danger">danger</TextLink> style. Otherwise
+          go with the default <TextLink href="https://ux.palmetto.com">primary</TextLink>.
         </p>
       );
     }}

@@ -2,22 +2,22 @@
   font-size: inherit;
 
   &.primary {
-    text-decoration-color: var(--color-font-primary);
-    color: var(--color-font-primary);
+    text-decoration-color: var(--text-link-font-color-primary);
+    color: var(--text-link-font-color-primary);
 
     &:hover {
-      text-decoration-color: var(--color-brand-success-darker);
-      color: var(--color-brand-success-darker);
+      text-decoration-color: var(--text-link-font-color-primary-hover);
+      color: var(--text-link-font-color-primary-hover);
     }
   }
 
   &.danger {
-    text-decoration-color: var(--color-font-danger);
-    color: var(--color-font-danger);
+    text-decoration-color: var(--text-link-font-color-danger);
+    color: var(--text-link-font-color-danger);
 
     &:hover {
-      text-decoration-color: var(--color-brand-danger-darker);
-      color: var(--color-brand-danger-darker);
+      text-decoration-color: var(--text-link-font-color-danger-hover);
+      color: var(--text-link-font-color-danger-hover);
     }
   }
 }

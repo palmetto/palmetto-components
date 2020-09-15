@@ -21,6 +21,7 @@ describe('TextTextLink', () => {
       const link = screen.getByRole('link');
       expect(link).toBeInTheDocument();
       expect(link).toHaveAttribute('href', ANCHOR_PROPS.href);
+      expect(link).toHaveClass('primary');
       const linkText = screen.getByText(LINK_TEXT);
       expect(linkText).toBeInTheDocument();
     });
@@ -42,13 +43,32 @@ describe('TextTextLink', () => {
   });
 
   describe('With anchor attributes', () => {
-    test('It renders a link with some text', () => {
-      render(<TextLink {...ANCHOR_PROPS} >{LINK_TEXT}</TextLink>);
+    test('It renders a link with anchor attributes if passed', () => {
+      render(<TextLink target="_blank" {...ANCHOR_PROPS}>{LINK_TEXT}</TextLink>);
 
       const link = screen.getByRole('link');
       expect(link).toBeInTheDocument();
-      const linkText = screen.getByText(LINK_TEXT);
-      expect(linkText).toBeInTheDocument();
+      expect(link).toHaveAttribute('target', '_blank');
+    });
+  });
+
+  describe('With custom className', () => {
+    test('It renders a link with a custom class', () => {
+      render(<TextLink className="my-class" {...ANCHOR_PROPS}>{LINK_TEXT}</TextLink>);
+
+      const link = screen.getByRole('link');
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveClass('my-class');
+    });
+  });
+
+  describe('Color variations', () => {
+    test('It renders with the danger class if variant=danger', () => {
+      render(<TextLink variant="danger" {...ANCHOR_PROPS}>{LINK_TEXT}</TextLink>);
+
+      const link = screen.getByRole('link');
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveClass('danger');
     });
   });
 });
