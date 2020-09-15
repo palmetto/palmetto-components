@@ -69,7 +69,7 @@ Use the `background` prop to set the color of the background
 </Canvas>
 
 All background colors
-`
+
 <Canvas>
   <Story name="all background colors">
      {[...PALMETTO_BACKGROUND_COLOR_OPTIONS].map((color, i) => {
@@ -346,5 +346,61 @@ Set the `radius` prop with a [radius token](/?path=/docs/design-tokens-border-ra
         circle radius
       </Box>
     </>
+  </Story>
+</Canvas>
+
+## Width
+
+Width can be set to any standard CSS value (px, rem, em, %).
+
+<Canvas>
+  <Story name="width">
+    <Box background="primary-lightest">
+      <Box background="primary-light" width="227px" margin="0 0 sm 0">227px</Box>
+      <Box background="primary-light" width="10rem" margin="0 0 sm 0">10rem</Box>
+      <Box background="primary-light" width="50%" margin="0 0 sm 0">50%</Box>
+    </Box>
+  </Story>
+</Canvas>
+
+Standard widths are available at `sm` - `5xl`.
+
+<Canvas>
+  <Story name="width standards">
+    <Box background="primary-lightest">
+      <Box background="primary-light" width="sm" margin="0 0 sm 0">sm</Box>
+      <Box background="primary-light" width="md" margin="0 0 sm 0">md</Box>
+      <Box background="primary-light" width="lg" margin="0 0 sm 0">lg</Box>
+      <Box background="primary-light" width="xl" margin="0 0 sm 0">xl</Box>
+      <Box background="primary-light" width="2xl" margin="0 0 sm 0">2xl</Box>
+      <Box background="primary-light" width="3xl" margin="0 0 sm 0">3xl</Box>
+      <Box background="primary-light" width="4xl" margin="0 0 sm 0">4xl</Box>
+      <Box background="primary-light" width="5xl">5xl</Box>
+    </Box>
+  </Story>
+</Canvas>
+
+
+Set the width to a common percentage of the Box's parent.
+
+<Canvas>
+  <Story name="width percentage">
+    <Box background="primary-lightest">
+      <Box background="primary-light" width="10" margin="0 0 sm 0">10%</Box>
+      <Box background="primary-light" width="15" margin="0 0 sm 0">15%</Box>
+      <Box background="primary-light" width="20" margin="0 0 sm 0">20%</Box>
+      <Box background="primary-light" width="25" margin="0 0 sm 0">25%</Box>
+      <Box background="primary-light" width="30" margin="0 0 sm 0">30%</Box>
+      <Box background="primary-light" width="33" margin="0 0 sm 0">33%</Box>
+      <Box background="primary-light" width="34" margin="0 0 sm 0">34%</Box>
+      <Box background="primary-light" width="40" margin="0 0 sm 0">40%</Box>
+      <Box background="primary-light" width="50" margin="0 0 sm 0">50%</Box>
+      <Box background="primary-light" width="60" margin="0 0 sm 0">60%</Box>
+      <Box background="primary-light" width="70" margin="0 0 sm 0">70%</Box>
+      <Box background="primary-light" width="75" margin="0 0 sm 0">75%</Box>
+      <Box background="primary-light" width="80" margin="0 0 sm 0">80%</Box>
+      <Box background="primary-light" width="90" margin="0 0 sm 0">90%</Box>
+      <Box background="primary-light" width="100">100%</Box>
+    </Box>
   </Story>
 </Canvas>

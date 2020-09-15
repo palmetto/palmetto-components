@@ -105,6 +105,23 @@ export type PALMETTO_SPACING =
   '5xl' |
   'base';
 
+export type PALMETTO_WIDTH =
+  '10' |
+  '15' |
+  '20' |
+  '25' |
+  '30' |
+  '33' |
+  '34' |
+  '40' |
+  '50' |
+  '60' |
+  '70' |
+  '75' |
+  '80' |
+  '90' |
+  '100';
+
 export interface ColorDictionary {
   [name: string]: ColorEntry;
 }
@@ -139,3 +156,5 @@ export const PALMETTO_BORDER_COLOR_OPTIONS = Object.keys(colors.color.brand);
 export const PALMETTO_SPACING_SIZE_OPTIONS = Object.keys(sizes.size.spacing) as PALMETTO_SPACING[];
 
 export const PALMETTO_SPACING_OPTIONS = Object.keys(sizes.size.spacing);
+
+export const PALMETTO_WIDTH = Object.keys(sizes.size.width) as PALMETTO_WIDTH[];

@@ -5,8 +5,10 @@ import {
   PALMETTO_FONT_COLORS,
   PALMETTO_COLORS,
   PALMETTO_SPACING,
+  PALMETTO_WIDTH,
 } from '../../lib/tokens';
 // import getElementType from '../../lib/getElementType';
+import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingCss from '../../lib/getSpacingCss';
 // import BorderType from '../../types';
 
@@ -147,11 +149,10 @@ interface BoxProps {
    */
   radius?: string; // need to define based on design tokens
   // wrap: PropTypes.oneOf([true, false, 'reverse']),
-
-  // /**
-  //  * The width of the element
-  //  */
-  // width: PropTypes.string, // need to define based on design tokens
+  /**
+   * The width of the element
+   */
+  width?: PALMETTO_WIDTH;
 }
 
 /**
@@ -180,18 +181,20 @@ const Box: FC<BoxProps> = ({
   padding,
   radius,
   // wrap,
-  // width,
+  width,
   ...rest
 }) => {
   // const Element = getElementType(Box, { as });
 
   const marginCss = getSpacingCss('m', margin);
   const paddingCss = getSpacingCss('p', padding);
+  const widthCss = getDimensionCss('w', width);
 
   const classes = classNames(
     className,
     marginCss.classes,
     paddingCss.classes,
+    widthCss.classes,
     {
       [`background-color-${background}`]: background,
       [`border-color-${border}`]: border,
@@ -203,7 +206,11 @@ const Box: FC<BoxProps> = ({
 
   const boxStyles = {};
 
-  Object.assign(boxStyles, { margin: marginCss.styles });
+  Object.assign(
+    boxStyles,
+    { margin: marginCss.styles },
+    { width: widthCss.styles },
+  );
 
   if (border) {
     Object.assign(boxStyles, {

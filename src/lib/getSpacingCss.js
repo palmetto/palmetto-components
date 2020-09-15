@@ -1,3 +1,8 @@
+/**
+ * Returns an object of styles and class names that correspond with the given value
+ * @param {string} attribute margin or padding
+ * @param {string} [value] value of the spacing
+ */
 function getSpacingCss(attribute, value) {
   if (value === undefined) {
     return {
