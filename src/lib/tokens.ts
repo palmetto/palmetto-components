@@ -103,7 +103,8 @@ export type PALMETTO_SPACING =
   '3xl' |
   '4xl' |
   '5xl' |
-  'base';
+  'base' |
+  'inherit';
 
 export type PALMETTO_WIDTH =
   '10' |

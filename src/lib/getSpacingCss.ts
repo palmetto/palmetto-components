@@ -1,9 +1,12 @@
+import { PALMETTO_SPACING } from './tokens';
+import { CssObject } from './types';
+
 /**
  * Returns an object of styles and class names that correspond with the given value
  * @param {string} attribute margin or padding
- * @param {string} [value] value of the spacing
+ * @param {PALMETTO_SPACING} [value] spacing token value
  */
-function getSpacingCss(attribute, value) {
+function getSpacingCss(attribute: string, value?: PALMETTO_SPACING): CssObject {
   if (value === undefined) {
     return {
       styles: {},

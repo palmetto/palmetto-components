@@ -1,9 +1,11 @@
+import { CssObject } from './types';
+
 /**
  * Returns an object of styles and class names that correspond with the given value
  * @param {string} dimension width or height
  * @param {string} [value] value of the dimension
  */
-function getDimensionCss(dimension, value) {
+function getDimensionCss(dimension: string, value?: string): CssObject {
   if (value === undefined) {
     return {
       styles: {},
@@ -14,7 +16,7 @@ function getDimensionCss(dimension, value) {
   const classes = [];
   let styles;
 
-  // value is a css unit
+  // value is a css unit so set its style property
   if (
     typeof value === 'string'
     && (value.includes('px')
@@ -22,7 +24,7 @@ function getDimensionCss(dimension, value) {
       || value.includes('rem')
       || value.includes('%'))
   ) {
-    styles = value;
+    styles = dimension === 'w' ? { width: value } : { height: value };
   } else if (typeof value === 'string' || typeof value === 'number') { // standard percentage or token value
     classes.push(`${dimension}-${value}`);
   }

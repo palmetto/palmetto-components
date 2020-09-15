@@ -209,7 +209,7 @@ const Box: FC<BoxProps> = ({
   Object.assign(
     boxStyles,
     { margin: marginCss.styles },
-    { width: widthCss.styles },
+    widthCss.styles,
   );
 
   if (border) {
