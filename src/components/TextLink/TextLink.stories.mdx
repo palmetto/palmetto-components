@@ -38,7 +38,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
 ## With React Router
 
 If you're doing in-app navigation and need to render a react router `Link` component, pass a `to`
-attribute as opposed to an href. NOTE: DO NOT pass these props simultaneously. The API for 
+attribute as opposed to an href. NOTE: DO NOT pass these props simultaneously. The API for
 
 <Canvas>
   <Story name="With React Router" decorators={[Story => <BrowserRouter><Story /></BrowserRouter>]}>
@@ -79,7 +79,7 @@ APIs for each option
 
 ## In the middle of a paragraph
 
-Text links are often used to highlight clickable text inside of a larger block of copy. 
+Text links are often used to highlight clickable text inside of a larger block of copy.
 You can use our text link in this manner as well.
 
 <Canvas>
@@ -88,13 +88,14 @@ You can use our text link in this manner as well.
       return (
         <p>
           This is a longish paragraph. Even though it says nothing of value, it does contain
-          a link so that's exciting! Can you find&nbsp;
-          <TextLink href="https://ux.palmetto.com">the link</TextLink> that's in here?
+          a link so that's exciting! Can you find <TextLink href="https://ux.palmetto.com">the link</TextLink> that's in here?
         </p>
       );
     }}
   </Story>
 </Canvas>
+
+The font size is inherited by its parent.
 
 <Canvas>
   <Story name="With inherited font-size">
