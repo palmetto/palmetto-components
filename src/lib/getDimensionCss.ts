@@ -1,11 +1,11 @@
-import { CssObject } from './types';
+import { CssObjectType, DimensionType } from './types';
 
 /**
  * Returns an object of styles and class names that correspond with the given value
- * @param {string} dimension width or height
+ * @param {DimensionType} dimension width or height
  * @param {string} [value] value of the dimension
  */
-function getDimensionCss(dimension: string, value?: string): CssObject {
+function getDimensionCss(dimension: DimensionType, value?: string): CssObjectType {
   if (value === undefined) {
     return {
       styles: {},
@@ -22,10 +22,12 @@ function getDimensionCss(dimension: string, value?: string): CssObject {
     && (value.includes('px')
       || value.includes('em')
       || value.includes('rem')
-      || value.includes('%'))
+      || value.includes('%')
+      || value.includes('vw')
+      || value.includes('vh'))
   ) {
     styles = dimension === 'w' ? { width: value } : { height: value };
-  } else if (typeof value === 'string' || typeof value === 'number') { // standard percentage or token value
+  } else if (typeof value === 'string') { // standard percentage or token value
     classes.push(`${dimension}-${value}`);
   }
 

@@ -1,13 +1,20 @@
 import getSpacingCss from './getSpacingCss';
+import {
+  PALMETTO_SPACING_OPTIONS,
+} from './tokens';
 
 describe('getSpacingCss', () => {
-  test('returns expected css object if single value is passed', () => {
-    const spacingCss = getSpacingCss('p', 'xs');
+  describe('token values', () => {
+    PALMETTO_SPACING_OPTIONS.map(token => (
+      test(`returns expected css object if token ${token} is passed`, () => {
+        const spacingCss = getSpacingCss('p', token);
 
-    expect(spacingCss).toEqual({
-      classes: ['p-xs'],
-      styles: undefined,
-    });
+        expect(spacingCss).toEqual({
+          classes: [`p-${token}`],
+          styles: undefined,
+        });
+      })
+    ));
   });
 
   describe('2 values', () => {
