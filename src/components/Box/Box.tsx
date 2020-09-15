@@ -99,7 +99,8 @@ interface BoxProps {
    */
   fontSize?: PALMETTO_FONT_SIZES;
   /**
-   * The height of the element
+   * The height of the element. Can be given a standard css value (px, rem, em, %),
+   * or a [height token](/?path=/docs/design-tokens-height--page)
    */
   height?: string;
   // /**
@@ -149,7 +150,8 @@ interface BoxProps {
   radius?: string; // need to define based on design tokens
   // wrap: PropTypes.oneOf([true, false, 'reverse']),
   /**
-   * The width of the element
+   * The width of the element. Can be given a standard css value (px, rem, em, %),
+   * or a [width token](/?path=/docs/design-tokens-width--page)
    */
   width?: string;
 }
