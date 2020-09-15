@@ -1,0 +1,33 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import TextLink from './TextLink';
+
+<Meta
+  title="Components/TextLink"
+  component={TextLink}
+/>
+
+# TextLink
+
+Use links to direct a user to a new location. Can be use for in-app navigation (react router)
+or external links (anchor tag).
+
+## Props
+
+<ArgsTable of={TextLink} />
+
+## Default
+
+All that is required to render a basic version of a TextLink is `children` which will contain text
+or a ReactNode to be rendered.
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      return (
+        <TextLink href="http://palmetto.com">Click me!</TextLink>
+      );
+    }}
+  </Story>
+</Canvas>
