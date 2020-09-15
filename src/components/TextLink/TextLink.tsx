@@ -1,7 +1,7 @@
 import React, { ReactNode, FC } from 'react';
+import { Link, LinkProps } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './TextLink.module.scss';
-import { Link } from 'react-router-dom';
 
 interface TextLinkBaseProps {
   /**
@@ -21,11 +21,7 @@ interface TextLinkAnchorProps extends TextLinkBaseProps {
   to?: never;
 }
 
-interface TextLinkRouterProps extends TextLinkBaseProps {
-  /**
-   * Target URL
-   */
-  to: string;
+interface TextLinkRouterProps extends LinkProps {
   /**
    * Target URL
    */
@@ -37,7 +33,7 @@ type TextLinkProps = TextLinkAnchorProps | TextLinkRouterProps;
 const TextLink: FC<TextLinkProps> = ({
   children = null,
   href = null,
-  to = null,
+  to = '',
   ...restProps
 }) => {
   const linkClasses = classNames(
@@ -51,7 +47,9 @@ const TextLink: FC<TextLinkProps> = ({
         {children}
       </a>
     ) : (
-      <Link to={to} {...restProps}>{children}</Link>
+      <Link to={to} className={linkClasses} {...restProps}>
+        {children}
+      </Link>
     )
   );
 };

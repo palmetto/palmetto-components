@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TextLink from './TextLink';
@@ -20,13 +21,30 @@ or external links (anchor tag).
 ## Default
 
 All that is required to render a basic version of a TextLink is `children` which will contain text
-or a ReactNode to be rendered.
+or a ReactNode to be rendered as well as an `href` attribute. `TextLink` will render an anchor tag automatically
+when given an `href`, and you can use the same exact API as a traditional anchor, as seen here:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
 
 <Canvas>
   <Story name="Default">
     {() => {
       return (
         <TextLink href="http://palmetto.com">Click me!</TextLink>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With React Router
+
+If you're doing in-app navigation and need to render a react router `Link` component, pass a `to`
+attribute as opposed to an href. NOTE: DO NOT pass these props simultaneously. The API for 
+
+<Canvas>
+  <Story name="With React Router" decorators={[Story => <BrowserRouter><Story /></BrowserRouter>]}>
+    {() => {
+      return (
+        <TextLink to="/?path=/docs/components-textlink--default-story">Click me!</TextLink>
       );
     }}
   </Story>
