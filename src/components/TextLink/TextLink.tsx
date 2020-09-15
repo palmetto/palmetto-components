@@ -1,27 +1,27 @@
-import React, { ReactNode, FC } from 'react';
+import React, { FC, AnchorHTMLAttributes } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './TextLink.module.scss';
 
 interface TextLinkBaseProps {
   /**
-   * Text to be rendered.
+   * Custom class to be passed to the link.
    */
-  children: ReactNode;
+  className?: string;
+  /**
+   * Font color for text link.
+   */
+  variant?: 'primary' | 'danger';
 }
 
-interface TextLinkAnchorProps extends TextLinkBaseProps {
-  /**
-   * Target URL
-   */
-  href: string;
+interface TextLinkAnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement>, TextLinkBaseProps {
   /**
    * Target URL
    */
   to?: never;
 }
 
-interface TextLinkRouterProps extends LinkProps {
+interface TextLinkRouterProps extends LinkProps, TextLinkBaseProps {
   /**
    * Target URL
    */
@@ -31,13 +31,17 @@ interface TextLinkRouterProps extends LinkProps {
 type TextLinkProps = TextLinkAnchorProps | TextLinkRouterProps;
 
 const TextLink: FC<TextLinkProps> = ({
-  children = null,
+  children,
+  className = null,
+  variant = 'primary',
   href = null,
   to = '',
   ...restProps
 }) => {
   const linkClasses = classNames(
     styles['text-link'],
+    styles[variant],
+    className,
     // { [styles['is-disabled']]: isDisabled },
   );
 

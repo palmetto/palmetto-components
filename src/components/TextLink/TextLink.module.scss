@@ -1,4 +1,23 @@
 .text-link {
-  text-decoration-color: var(--color-font-primary);
-  color: var(--color-font-primary);
+  font-size: inherit;
+
+  &.primary {
+    text-decoration-color: var(--color-font-primary);
+    color: var(--color-font-primary);
+
+    &:hover {
+      text-decoration-color: var(--color-brand-success-darker);
+      color: var(--color-brand-success-darker);
+    }
+  }
+
+  &.danger {
+    text-decoration-color: var(--color-font-danger);
+    color: var(--color-font-danger);
+
+    &:hover {
+      text-decoration-color: var(--color-brand-danger-darker);
+      color: var(--color-brand-danger-darker);
+    }
+  }
 }
