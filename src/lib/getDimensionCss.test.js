@@ -1,7 +1,7 @@
 import getDimensionCss from './getDimensionCss';
 import {
-  PALMETTO_HEIGHT,
-  PALMETTO_WIDTH,
+  PALMETTO_HEIGHT_OPTIONS,
+  PALMETTO_WIDTH_OPTIONS,
 } from './tokens';
 
 describe('getDimensionCss', () => {
@@ -28,7 +28,7 @@ describe('getDimensionCss', () => {
   });
 
   describe('width', () => {
-    PALMETTO_WIDTH.map(token => (
+    PALMETTO_WIDTH_OPTIONS.map(token => (
       test(`returns expected css object if ${token} width value is passed`, () => {
         const spacingCss = getDimensionCss('w', token);
 
@@ -41,7 +41,7 @@ describe('getDimensionCss', () => {
   });
 
   describe('height', () => {
-    PALMETTO_HEIGHT.map(token => (
+    PALMETTO_HEIGHT_OPTIONS.map(token => (
       test(`returns expected css object if ${token} width value is passed`, () => {
         const spacingCss = getDimensionCss('h', token);
 
