@@ -207,21 +207,12 @@ const Box: FC<BoxProps> = ({
     },
   );
 
-  const boxStyles = {};
-
-  Object.assign(
-    boxStyles,
-    { margin: marginCss.styles },
-    heightCss.styles,
-    widthCss.styles,
-  );
-
-  if (border) {
-    Object.assign(boxStyles, {
-      borderWidth: '1px',
-      borderStyle: 'solid',
-    });
-  }
+  const boxStyles = {
+    ...marginCss.styles,
+    ...heightCss.styles,
+    ...widthCss.styles,
+    ...border && { borderWidth: '1px', borderStyle: 'solid' },
+  };
 
   return (
     <div
