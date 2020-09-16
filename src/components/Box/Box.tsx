@@ -77,16 +77,14 @@ interface BoxProps {
    * A color token identifier to use for the text color.
    */
   color?: PALMETTO_FONT_COLORS;
-  // /**
-  //  * Sets how flex items are placed inside the Box, defining the main axis and the direction
-  //  */
-  // direction: PropTypes.oneOf([
-  //   'row',
-  //   'column',
-  //   'row-responsive',
-  //   'row-reverse',
-  //   'column-reverse',
-  // ]),
+  /**
+   * Sets how flex items are placed inside the Box, defining the main axis and the direction
+   */
+  direction:
+    'column'
+    | 'column-reverse'
+    | 'row'
+    | 'row-reverse';
   // /**
   //  * Make the Box a flex container, and its children a flex item.
   //  * Can be used as shorthand for the flexbox css properties `flex-grow` and `flex-shrink`
@@ -174,6 +172,7 @@ const Box: FC<BoxProps> = ({
   childGap,
   className,
   color,
+  direction = 'column',
   // flex,
   fontSize = 'inherit',
   height,
@@ -193,11 +192,13 @@ const Box: FC<BoxProps> = ({
 
   const classes = classNames(
     className,
+    'flex',
     marginCss.classes,
     paddingCss.classes,
     heightCss.classes,
     widthCss.classes,
     {
+      [`flex-direction-${direction}`]: direction,
       [`background-color-${background}`]: background,
       [`border-color-${border}`]: border,
       [`font-color-${color}`]: color,
@@ -214,7 +215,10 @@ const Box: FC<BoxProps> = ({
     ...border && { borderWidth: '1px', borderStyle: 'solid' },
   };
 
-  const childGapClass = childGap ? `m-bottom-${childGap}` : null; // need logic here to figure out bottom or right
+  const childGapClass = classNames({
+    [`m-bottom-${childGap}`]: childGap && direction.includes('column'),
+    [`m-right-${childGap}`]: childGap && direction.includes('row'),
+  });
 
   let decoratedChildren = children;
   if (childGapClass && Array.isArray(children)) {

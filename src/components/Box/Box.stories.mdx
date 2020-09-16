@@ -441,21 +441,21 @@ Set the height to a common percentage of the Box's parent.
 
 <Canvas>
   <Story name="height percentage">
-    <Box height="400px" background="primary-lightest">
-      <Box background="primary-light" height="10" margin="0 0 sm 0">10%</Box>
-      <Box background="primary-light" height="15" margin="0 0 sm 0">15%</Box>
-      <Box background="primary-light" height="20" margin="0 0 sm 0">20%</Box>
-      <Box background="primary-light" height="25" margin="0 0 sm 0">25%</Box>
-      <Box background="primary-light" height="30" margin="0 0 sm 0">30%</Box>
-      <Box background="primary-light" height="33" margin="0 0 sm 0">33%</Box>
-      <Box background="primary-light" height="34" margin="0 0 sm 0">34%</Box>
-      <Box background="primary-light" height="40" margin="0 0 sm 0">40%</Box>
-      <Box background="primary-light" height="50" margin="0 0 sm 0">50%</Box>
-      <Box background="primary-light" height="60" margin="0 0 sm 0">60%</Box>
-      <Box background="primary-light" height="70" margin="0 0 sm 0">70%</Box>
-      <Box background="primary-light" height="75" margin="0 0 sm 0">75%</Box>
-      <Box background="primary-light" height="80" margin="0 0 sm 0">80%</Box>
-      <Box background="primary-light" height="90" margin="0 0 sm 0">90%</Box>
+    <Box height="400px" childGap="lg" direction="row" background="primary-lightest">
+      <Box background="primary-light" height="10">10%</Box>
+      <Box background="primary-light" height="15">15%</Box>
+      <Box background="primary-light" height="20">20%</Box>
+      <Box background="primary-light" height="25">25%</Box>
+      <Box background="primary-light" height="30">30%</Box>
+      <Box background="primary-light" height="33">33%</Box>
+      <Box background="primary-light" height="34">34%</Box>
+      <Box background="primary-light" height="40">40%</Box>
+      <Box background="primary-light" height="50">50%</Box>
+      <Box background="primary-light" height="60">60%</Box>
+      <Box background="primary-light" height="70">70%</Box>
+      <Box background="primary-light" height="75">75%</Box>
+      <Box background="primary-light" height="80">80%</Box>
+      <Box background="primary-light" height="90">90%</Box>
       <Box background="primary-light" height="100">100%</Box>
     </Box>
   </Story>
@@ -468,32 +468,56 @@ Set the overlfow behavior of the Box with `overflow`
 
 <Canvas>
   <Story name="overflow">
-    <>
-      <Box overflow="visible" border="grey" height="100px">
-        <Box height="1000px" width="100%" background="primary-light">overflow auto</Box>
+    <Box childGap="3xl">
+      <Box overflow="visible" background="primary-light" border="grey" height="100px">
+        <p>Visible</p>
+        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
+        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
+        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
       </Box>
-      <Box overflow="hidden" border="grey" height="100px">
-        <Box height="1000px" width="100%" background="primary-light">overflow hidden</Box>
+      <Box overflow="hidden" border="grey" background="primary-light" height="100px">
+        <p>Hidden</p>
+        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
+        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
+        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
       </Box>
-      <Box overflow="clip" border="grey" height="100px">
-        <Box height="1000px" width="100%" background="primary-light">overflow clip</Box>
+      <Box overflow="clip" border="grey" background="primary-light" height="100px">
+        <p>clip</p>
+        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
+        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
+        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
       </Box>
-      <Box overflow="scroll" border="grey" height="100px">
-        <Box height="1000px" width="100%" background="primary-light">overflow scroll</Box>
+      <Box overflow="scroll" border="grey" background="primary-light" height="100px">
+        <p>scroll</p>
+        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
+        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
+        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
       </Box>
-      <Box overflow="auto" border="grey" height="100px">
-        <Box height="1000px" width="100%" background="primary-light">overflow auto</Box>
+      <Box overflow="auto" border="grey" background="primary-light" height="100px">
+        <p>auto</p>
+        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
+        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
+        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
       </Box>
-      <Box overflow="inherit" border="grey" height="100px">
-        <Box height="1000px" width="100%" background="primary-light">overflow inherit</Box>
+      <Box overflow="inherit" border="grey" background="primary-light" height="100px">
+        <p>inherit</p>
+        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
+        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
+        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
       </Box>
-      <Box overflow="initial" border="grey" height="100px">
-        <Box height="1000px" width="100%" background="primary-light">overflow initial</Box>
+      <Box overflow="initial" border="grey" background="primary-light" height="100px">
+        <p>initial</p>
+        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
+        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
+        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
       </Box>
-      <Box overflow="unset" border="grey" height="100px">
-        <Box height="1000px" width="100%" background="primary-light">overflow unset</Box>
+      <Box overflow="unset" border="grey" background="primary-light" height="100px">
+        <p>unset</p>
+        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
+        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
+        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
       </Box>
-    </>
+    </Box>
   </Story>
 </Canvas>
 

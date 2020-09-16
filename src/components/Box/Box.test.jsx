@@ -63,7 +63,7 @@ describe('Box', () => {
     });
   });
 
-  test('childGap margin classes are applied', () => {
+  test('childGap margin classes are applied for horizontal layout', () => {
     [...PALMETTO_SPACING_SIZE_OPTIONS].forEach((value, optionIndex) => {
       const { container } = render(
         <Box childGap={value} key={optionIndex}>
@@ -78,6 +78,26 @@ describe('Box', () => {
         expect(child.classList).toContain('foo');
         if (childIndex > children.length - 1) {
           expect(child.classList).toContain(`m-bottom-${value}`);
+        }
+      });
+    });
+  });
+
+  test('childGap margin classes are applied for vertical layout', () => {
+    [...PALMETTO_SPACING_SIZE_OPTIONS].forEach((value, optionIndex) => {
+      const { container } = render(
+        <Box childGap={value} key={optionIndex} direction="row">
+          <Box className="foo" key={`child1${optionIndex}`}>child 1</Box>
+          <Box className="foo" key={`child2${optionIndex}`}>child 2</Box>
+        </Box>,
+      );
+
+      const { children } = container.children[0];
+
+      Array.from(children).forEach((child, childIndex) => {
+        expect(child.classList).toContain('foo');
+        if (childIndex > children.length - 1) {
+          expect(child.classList).toContain(`m-right-${value}`);
         }
       });
     });
