@@ -14,14 +14,18 @@ interface TextLinkBaseProps {
   variant?: 'primary' | 'danger';
 }
 
-interface TextLinkAnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement>, TextLinkBaseProps {
+interface TextLinkAnchorProps extends TextLinkBaseProps, AnchorHTMLAttributes<HTMLAnchorElement> {
   /**
-   * Target URL
+   * Target URL (Anchor Tag)
+   */
+  href: string;
+  /**
+   * Target URL (React Router)
    */
   to?: never;
 }
 
-interface TextLinkRouterProps extends LinkProps, TextLinkBaseProps {
+interface TextLinkRouterProps extends TextLinkBaseProps, LinkProps {
   /**
    * Target URL
    */
@@ -35,7 +39,7 @@ const TextLink: FC<TextLinkProps> = ({
   className = null,
   variant = 'primary',
   href = null,
-  to = '',
+  to = null,
   ...restProps
 }) => {
   const linkClasses = classNames(
