@@ -1,4 +1,4 @@
-import React, { createElement, FC, ReactNode } from 'react';
+import { createElement, FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import {
   PALMETTO_FONT_SIZES,
