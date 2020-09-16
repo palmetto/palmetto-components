@@ -7,6 +7,8 @@ function doesValueIncludeCssUnit(value: string): boolean {
 }
 
 function getDimensionStyles(dimension: DimensionType, value?: string): { [key: string]: string; } | undefined {
+  if (value === undefined) return value;
+
   let styles;
   // value is a css unit so set its style property
   if (typeof value === 'string' && doesValueIncludeCssUnit(value)) {
@@ -17,6 +19,8 @@ function getDimensionStyles(dimension: DimensionType, value?: string): { [key: s
 }
 
 function getDimensionClasses(dimension: DimensionType, value?: string): string[] | undefined {
+  if (value === undefined) return value;
+
   const classes = [];
   if (typeof value === 'string' && !doesValueIncludeCssUnit(value)) {
     classes.push(`${dimension}-${value}`);
