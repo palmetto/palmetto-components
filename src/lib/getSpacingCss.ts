@@ -1,8 +1,8 @@
 import { PALMETTO_SPACING } from './tokens';
-import { CssObjectType, SpacingType } from './types';
+import { CssStylesAndClasses, CssSpacing } from './types';
 
 function getSpacingStyles(
-  attribute: SpacingType,
+  attribute: CssSpacing,
   value: PALMETTO_SPACING | undefined,
 ): { [key: string]: string; } | undefined {
   if (value === undefined || typeof value !== 'string' || value !== 'inherit') {
@@ -15,7 +15,7 @@ function getSpacingStyles(
   return styles;
 }
 
-function getSpacingClasses(attribute: SpacingType, value: PALMETTO_SPACING | undefined): string[] {
+function getSpacingClasses(attribute: CssSpacing, value: PALMETTO_SPACING | undefined): string[] {
   if (value === undefined || typeof value !== 'string' || value === 'inherit') {
     return [];
   }
@@ -45,10 +45,10 @@ function getSpacingClasses(attribute: SpacingType, value: PALMETTO_SPACING | und
 
 /**
  * Returns an object of styles and class names that correspond with the given value
- * @param {SpacingType} attribute margin or padding
+ * @param {CssSpacing} attribute margin or padding
  * @param {PALMETTO_SPACING} [value] spacing token value
  */
-function getSpacingCss(attribute: SpacingType, value?: PALMETTO_SPACING | undefined): CssObjectType {
+function getSpacingCss(attribute: CssSpacing, value?: PALMETTO_SPACING | undefined): CssStylesAndClasses {
   return ({
     styles: getSpacingStyles(attribute, value),
     classes: getSpacingClasses(attribute, value),
