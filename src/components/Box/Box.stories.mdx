@@ -460,3 +460,56 @@ Set the height to a common percentage of the Box's parent.
     </Box>
   </Story>
 </Canvas>
+
+
+### Overflow
+
+Set the overlfow behavior of the Box with `overflow` 
+
+<Canvas>
+  <Story name="overflow">
+    <>
+      <Box overflow="visible" border="grey" height="100px">
+        <Box height="1000px" width="100%" background="primary-light">overflow auto</Box>
+      </Box>
+      <Box overflow="hidden" border="grey" height="100px">
+        <Box height="1000px" width="100%" background="primary-light">overflow hidden</Box>
+      </Box>
+      <Box overflow="clip" border="grey" height="100px">
+        <Box height="1000px" width="100%" background="primary-light">overflow clip</Box>
+      </Box>
+      <Box overflow="scroll" border="grey" height="100px">
+        <Box height="1000px" width="100%" background="primary-light">overflow scroll</Box>
+      </Box>
+      <Box overflow="auto" border="grey" height="100px">
+        <Box height="1000px" width="100%" background="primary-light">overflow auto</Box>
+      </Box>
+      <Box overflow="inherit" border="grey" height="100px">
+        <Box height="1000px" width="100%" background="primary-light">overflow inherit</Box>
+      </Box>
+      <Box overflow="initial" border="grey" height="100px">
+        <Box height="1000px" width="100%" background="primary-light">overflow initial</Box>
+      </Box>
+      <Box overflow="unset" border="grey" height="100px">
+        <Box height="1000px" width="100%" background="primary-light">overflow unset</Box>
+      </Box>
+    </>
+  </Story>
+</Canvas>
+
+
+### Child Gap
+
+Set the spacing between children of the Box with `childGap`.
+
+<Canvas>
+  <Story name="child gap">
+    <Box childGap="xl" border="grey-light" padding="sm">
+      <Box border="grey-light" padding="sm">1</Box>
+      <Box border="grey-light" padding="sm">2</Box>
+      <Box border="grey-light" padding="sm">3</Box>
+      <Box border="grey-light" padding="sm">4</Box>
+      <Box border="grey-light" padding="sm">5</Box>
+    </Box>
+  </Story>
+</Canvas>

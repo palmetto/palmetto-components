@@ -1,0 +1,41 @@
+.overflow-visible { overflow: visible; }
+.overflow-hidden { overflow: hidden; }
+.overflow-clip { overflow: clip; }
+.overflow-scroll { overflow: scroll; }
+.overflow-auto { overflow: auto; }
+.overflow-inherit { overflow: inherit; }
+.overflow-initial { overflow: initial; }
+.overflow-unset { overflow: unset; }
+
+@media (min-width: var(--size-breakpoint-tablet)) {
+  .overflow-visible-tablet { overflow: visible; }
+  .overflow-hidden-tablet { overflow: hidden; }
+  .overflow-clip-tablet { overflow: clip; }
+  .overflow-scroll-tablet { overflow: scroll; }
+  .overflow-auto-tablet { overflow: auto; }
+  .overflow-inherit-tablet { overflow: inherit; }
+  .overflow-initial-tablet { overflow: initial; }
+  .overflow-unset-tablet { overflow: unset; }
+}
+
+@media (min-width: var(--size-breakpoint-desktop)) {
+  .overflow-visible-desktop { overflow: visible; }
+  .overflow-hidden-desktop { overflow: hidden; }
+  .overflow-clip-desktop { overflow: clip; }
+  .overflow-scroll-desktop { overflow: scroll; }
+  .overflow-auto-desktop { overflow: auto; }
+  .overflow-inherit-desktop { overflow: inherit; }
+  .overflow-initial-desktop { overflow: initial; }
+  .overflow-unset-desktop { overflow: unset; }
+}
+
+@media (min-width: var(--size-breakpoint-hd)) {
+  .overflow-visible-hd { overflow: visible; }
+  .overflow-hidden-hd { overflow: hidden; }
+  .overflow-clip-hd { overflow: clip; }
+  .overflow-scroll-hd { overflow: scroll; }
+  .overflow-auto-hd { overflow: auto; }
+  .overflow-inherit-hd { overflow: inherit; }
+  .overflow-initial-hd { overflow: initial; }
+  .overflow-unset-hd { overflow: unset; }
+}

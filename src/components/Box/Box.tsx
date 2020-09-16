@@ -1,7 +1,9 @@
 import {
   createElement,
+  cloneElement,
   FC,
   ReactNode,
+  ReactElement,
 } from 'react';
 import classNames from 'classnames';
 import {
@@ -17,10 +19,6 @@ import getElementType from '../../lib/getElementType';
 // import BorderType from '../../types';
 
 interface BoxProps {
-  // /**
-  //  * Custom label to be used by screen readers. When provided, an aria-label will be added to the element.
-  //  */
-  // a11yTitle?: string;
   /**
    * The element type to be rendered.
    */
@@ -67,10 +65,10 @@ interface BoxProps {
    * Additional class names to add
    */
   className?: string;
-  // /**
-  //  * The amount of spacing between child elements.
-  //  */
-  // childGap: PropTypes.string,
+  /**
+   * The amount of spacing between child elements.
+   */
+  childGap: PALMETTO_SPACING;
   /**
    * The box's contents
    */
@@ -129,25 +127,20 @@ interface BoxProps {
    * where you can set the margin area on all four sides of an element.It is shorthand for top, right, bottom, left.
    */
   margin?: PALMETTO_SPACING;
-  // /**
-  //  * Click handler function
-  //  */
-  // onClick: PropTypes.func,
-  // /**
-  //  * The overflow property is specified as one or two keywords.
-  //  * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
-  //  * Otherwise, both overflow-x and overflow-y are set to the same value.
-  //  */
-  // overflow: PropTypes.oneOf([
-  //   'visible',
-  //   'hidden',
-  //   'clip',
-  //   'scroll',
-  //   'auto',
-  //   'inherit',
-  //   'initial',
-  //   'unset',
-  // ]),
+  /**
+   * The overflow property is specified as one or two keywords.
+   * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
+   * Otherwise, both overflow-x and overflow-y are set to the same value.
+   */
+  overflow:
+    'visible'
+    | 'hidden'
+    | 'clip'
+    | 'scroll'
+    | 'auto'
+    | 'inherit'
+    | 'initial'
+    | 'unset';
   /**
    * Amount of space within the element around the Box contents. It models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
@@ -170,7 +163,6 @@ interface BoxProps {
  * elements.
  */
 const Box: FC<BoxProps> = ({
-  // a11yTitle,
   as = 'div',
   // align,
   // alignContent,
@@ -179,7 +171,7 @@ const Box: FC<BoxProps> = ({
   // basis,
   border,
   children,
-  // childGap,
+  childGap,
   className,
   color,
   // flex,
@@ -187,7 +179,7 @@ const Box: FC<BoxProps> = ({
   height,
   // justify,
   margin,
-  // overflow,
+  overflow,
   padding,
   radius,
   // wrap,
@@ -211,6 +203,7 @@ const Box: FC<BoxProps> = ({
       [`font-color-${color}`]: color,
       [`font-size-${fontSize}`]: fontSize,
       [`border-radius-${radius}`]: radius,
+      [`overflow-${overflow}`]: overflow,
     },
   );
 
@@ -221,8 +214,29 @@ const Box: FC<BoxProps> = ({
     ...border && { borderWidth: '1px', borderStyle: 'solid' },
   };
 
+  const childGapClass = childGap ? `m-bottom-${childGap}` : null; // need logic here to figure out bottom or right
+
+  let decoratedChildren = children;
+  if (childGapClass && Array.isArray(children)) {
+    decoratedChildren = children
+      .map((child, i) => {
+        if (i < children.length - 1) {
+          return cloneElement(
+            (child as ReactElement),
+            { className: classNames((child as ReactElement).props.className, childGapClass) },
+          );
+        }
+        return child;
+      });
+  }
+
   const element = getElementType(Box, { as });
-  return createElement(element, { className: classes, style: boxStyles, ...rest }, children);
+
+  return createElement(
+    element,
+    { className: classes, style: boxStyles, ...rest },
+    decoratedChildren,
+  );
 };
 
 export default Box;
