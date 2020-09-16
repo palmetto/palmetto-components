@@ -1,4 +1,4 @@
-import { createElement, FC, ReactNode } from 'react';
+import { createElement, FC, ReactNode, ReactHTMLElement } from 'react';
 import classNames from 'classnames';
 import {
   PALMETTO_FONT_SIZES,
@@ -12,7 +12,7 @@ import getSpacingCss from '../../lib/getSpacingCss';
 import getElementType from '../../lib/getElementType';
 // import BorderType from '../../types';
 
-interface BoxProps {
+interface BoxProps extends ReactHTMLElement<HTMLElement> {
   // /**
   //  * Custom label to be used by screen readers. When provided, an aria-label will be added to the element.
   //  */
