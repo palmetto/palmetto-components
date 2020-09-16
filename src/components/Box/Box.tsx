@@ -68,7 +68,7 @@ interface BoxProps {
   /**
    * The amount of spacing between child elements.
    */
-  childGap: PALMETTO_SPACING;
+  childGap?: PALMETTO_SPACING;
   /**
    * The box's contents
    */
@@ -80,11 +80,11 @@ interface BoxProps {
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
-  direction:
-    'column'
-    | 'column-reverse'
-    | 'row'
-    | 'row-reverse';
+  direction?: 'column' | 'column-reverse' | 'row' | 'row-reverse';
+  /**
+   * Display property. Only select values supported.
+   */
+  display?: 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
   // /**
   //  * Make the Box a flex container, and its children a flex item.
   //  * Can be used as shorthand for the flexbox css properties `flex-grow` and `flex-shrink`
@@ -130,7 +130,7 @@ interface BoxProps {
    * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
    * Otherwise, both overflow-x and overflow-y are set to the same value.
    */
-  overflow:
+  overflow?:
     'visible'
     | 'hidden'
     | 'clip'
@@ -165,24 +165,25 @@ const Box: FC<BoxProps> = ({
   // align,
   // alignContent,
   // alignSelf,
-  background,
+  background = undefined,
   // basis,
-  border,
+  border = undefined,
   children,
-  childGap,
-  className,
-  color,
+  childGap = undefined,
+  className = '',
+  color = undefined,
+  display = 'flex',
   direction = 'column',
   // flex,
   fontSize = 'inherit',
-  height,
+  height = undefined,
   // justify,
   margin,
-  overflow,
-  padding,
-  radius,
+  overflow = 'auto',
+  padding = undefined,
+  radius = undefined,
   // wrap,
-  width,
+  width = undefined,
   ...rest
 }) => {
   const marginCss = getSpacingCss('m', margin);
@@ -192,13 +193,13 @@ const Box: FC<BoxProps> = ({
 
   const classes = classNames(
     className,
-    'flex',
+    display,
     marginCss.classes,
     paddingCss.classes,
     heightCss.classes,
     widthCss.classes,
     {
-      [`flex-direction-${direction}`]: direction,
+      [`flex-direction-${direction}`]: display.includes('flex') && direction,
       [`background-color-${background}`]: background,
       [`border-color-${border}`]: border,
       [`font-color-${color}`]: color,
