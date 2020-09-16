@@ -24,7 +24,8 @@
   "peerDependencies": {
     "prop-types": ">=15.0.0",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "react-router-dom": ">=5.0.0"
   },
   "scripts": {
     "build": "BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js && tsc",
@@ -83,6 +84,7 @@
     "@types/jest": "^26.0.10",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.41",
+    "@types/react-router-dom": "^5.1.5",
     "@types/react-select": "^3.0.14",
     "@types/uuid": "^8.0.0",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
@@ -121,6 +123,7 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-select-event": "^4.1.4",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
