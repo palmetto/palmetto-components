@@ -46,7 +46,6 @@ const TextLink: FC<TextLinkProps> = ({
     styles['text-link'],
     styles[variant],
     className,
-    // { [styles['is-disabled']]: isDisabled },
   );
 
   return (
