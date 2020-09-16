@@ -12,7 +12,7 @@ import Box from './Box';
 
 describe('Box', () => {
   test('aria-label is applied if set', () => {
-    const { getByLabelText } = render(<Box a11yTitle="test label" />);
+    const { getByLabelText } = render(<Box aria-label="test label" />);
     expect(getByLabelText('test label')).toBeDefined();
   });
 

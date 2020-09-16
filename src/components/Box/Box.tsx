@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { createElement, FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import {
   PALMETTO_FONT_SIZES,
@@ -9,13 +9,18 @@ import {
 // import getElementType from '../../lib/getElementType';
 import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingCss from '../../lib/getSpacingCss';
+import getElementType from '../../lib/getElementType';
 // import BorderType from '../../types';
 
 interface BoxProps {
+  // /**
+  //  * Custom label to be used by screen readers. When provided, an aria-label will be added to the element.
+  //  */
+  // a11yTitle?: string;
   /**
-   * Custom label to be used by screen readers. When provided, an aria-label will be added to the element.
+   * The element type to be rendered.
    */
-  a11yTitle?: string;
+  as: string;
   // /**
   //  * How to align the contents along the cross axis.
   //  */
@@ -161,7 +166,8 @@ interface BoxProps {
  * elements.
  */
 const Box: FC<BoxProps> = ({
-  a11yTitle,
+  // a11yTitle,
+  as = 'div',
   // align,
   // alignContent,
   // alignSelf,
@@ -185,8 +191,6 @@ const Box: FC<BoxProps> = ({
   width,
   ...rest
 }) => {
-  // const Element = getElementType(Box, { as });
-
   const marginCss = getSpacingCss('m', margin);
   const paddingCss = getSpacingCss('p', padding);
   const heightCss = getDimensionCss('h', height);
@@ -214,16 +218,8 @@ const Box: FC<BoxProps> = ({
     ...border && { borderWidth: '1px', borderStyle: 'solid' },
   };
 
-  return (
-    <div
-      aria-label={a11yTitle}
-      className={classes}
-      style={boxStyles}
-      {...rest}
-    >
-      {children}
-    </div>
-  );
+  const element = getElementType(Box, { as });
+  return createElement(element, { className: classes, style: boxStyles, ...rest }, children);
 };
 
 export default Box;
