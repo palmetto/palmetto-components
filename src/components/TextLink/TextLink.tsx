@@ -39,7 +39,7 @@ const TextLink: FC<TextLinkProps> = ({
   className = null,
   variant = 'primary',
   href = null,
-  to = null,
+  to = '',
   ...restProps
 }) => {
   const linkClasses = classNames(
