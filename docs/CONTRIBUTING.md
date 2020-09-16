@@ -40,6 +40,9 @@
 - [Submitting a Pull Request](#submitting-a-pull-request)
 - [Releases](#releases)
   - [Release Types](#release-types)
+  - [Major](#major)
+  - [Minor](#minor)
+  - [Patch](#patch)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -393,6 +396,18 @@ The link above provides full documentation for this workflow. However, a compreh
 ### Release Types
 Must be one of the following:
 
+### Major
+* **BREAKING CHANGE**: A set of breaking changes.
+
+### Minor
 * **feat**: A new feature
+
+### Patch
 * **fix**: A bug fix
 * **perf**: A code change that improves performance
+* **ci**: A change to our CI pipelines/workflows.
+* **build**: A change to the library build process (That does not break the consumer API).
+* **test**: Added or improved testing in some area of the library.
+* **refactor**: Changed code structure without affecting features.
+* **docs**: Added to, or improved documentation.
+* **style**: Change in code style without affecting features.

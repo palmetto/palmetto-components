@@ -51,6 +51,16 @@ interface TableProps {
    */
   isLoading?: boolean;
   /**
+   * Set the maximum width and height and enable scrolling within the container when the table grows
+   * past those values. Useful for when we want to render a large table but not force the parent container
+   * to grow and instead make the user scroll. Set values to boolean `true` to enable `overflow: scroll` on the table
+   * without specifying a width/height
+   */
+  isScrollable?: {
+    x?: boolean;
+    y?: boolean;
+  };
+  /**
    * Adds zebra-striping to any table row within the table body.
    */
   isStriped?: boolean;
@@ -59,15 +69,6 @@ interface TableProps {
    */
   onSort?: (event: EventWithColumnKey) => void;
   /**
-   * Set the maximum width and height and enable scrolling within the container when the table grows
-   * past those values. Useful for when we want to render a large table but not force the parent container
-   * to grow and instead make the user scroll.
-   */
-  scroll?: {
-    x: number | undefined;
-    y: number | undefined;
-  };
-  /**
    * The key of the sorted column and its sort direction.
    */
   sortedColumn?: {
@@ -75,15 +76,14 @@ interface TableProps {
     sortDirection: 'none' | 'ascending' | 'descending' | undefined;
   };
   /**
+   * Control the `table-layout` css property for the table.
+   */
+  useFixedTableLayout?: boolean;
+  /**
    * Truncate overflow inside column based on column width. Can be overwritten on specific columns,
    * by passing `truncateOverflow` value on a specific Column
    */
   truncateOverflow?: boolean;
-  /**
-   * Fix the width of the columns. Can be useful if sorting is enabled and the content of
-   * the columns is changing; prevents the horizontal jump when this occurres.
-   */
-  useFixedWidthColumns?: boolean;
 }
 
 const Table: FC<TableProps> = ({
@@ -98,31 +98,33 @@ const Table: FC<TableProps> = ({
   isCompact = false,
   isStriped = false,
   isLoading = false,
+  isScrollable = undefined,
   onSort = undefined,
-  scroll = undefined,
   sortedColumn = undefined,
+  useFixedTableLayout = false,
   truncateOverflow = false,
-  useFixedWidthColumns = false,
 }) => {
-  const tableContainerClasses = classNames(
+  const containerClasses = classNames(
     styles.container,
     {
-      [styles.scroll]: scroll?.x || scroll?.y,
-      [styles['scroll-x']]: scroll?.x,
-      [styles['scroll-y']]: scroll?.y,
+      [styles['full-height']]: !!isScrollable?.y,
+    },
+  );
+
+  const scrollContainerClasses = classNames(
+    styles['scroll-container'],
+    {
+      [styles.scrollable]: !!isScrollable?.x || !!isScrollable?.y,
+      [styles['scrollable-x']]: !!isScrollable?.x,
+      [styles['scrollable-y']]: !!isScrollable?.y,
     },
     className,
   );
 
-  const tableContainerStyles = {
-    ...scroll?.x && { maxWidth: `${scroll.x}px` },
-    ...scroll?.y && { maxHeight: `${scroll.y}px` },
-  };
-
   const tableClasses = classNames(
     styles.table,
     {
-      [styles['fixed-width-columns']]: useFixedWidthColumns,
+      [styles.fixed]: useFixedTableLayout,
       [styles.striped]: isStriped,
       [styles.borderless]: isBorderless,
       [styles.compact]: isCompact,
@@ -130,41 +132,37 @@ const Table: FC<TableProps> = ({
   );
 
   return (
-    <div
-      className={tableContainerClasses}
-      style={tableContainerStyles}
-      data-testid="tableContainerDiv-testid"
-    >
+    <div className={containerClasses}>
       {isLoading && (
         <div className={styles['loading-mask']}>
           <Spinner size="xl" />
         </div>
       )}
-      <table className={tableClasses}>
-        <TableHead
-          columns={columns}
-          align={align}
-          onSort={onSort}
-          isBorderless={isBorderless}
-          isCompact={isCompact}
-          sortedColumn={sortedColumn}
-          truncateOverflow={truncateOverflow}
-          useFixedWidthColumns={useFixedWidthColumns}
-        />
-        <TableBody
-          rows={rows}
-          columns={columns}
-          rowKey={rowKey}
-          align={align}
-          isStriped={isStriped}
-          emptyCellPlaceholder={emptyCellPlaceholder}
-          hoverableRows={hoverableRows}
-          truncateOverflow={truncateOverflow}
-          isBorderless={isBorderless}
-          isCompact={isCompact}
-          useFixedWidthColumns={useFixedWidthColumns}
-        />
-      </table>
+      <div className={scrollContainerClasses} data-testid="tableContainerDiv-testid">
+        <table className={tableClasses}>
+          <TableHead
+            columns={columns}
+            align={align}
+            onSort={onSort}
+            isBorderless={isBorderless}
+            isCompact={isCompact}
+            sortedColumn={sortedColumn}
+            truncateOverflow={truncateOverflow}
+          />
+          <TableBody
+            rows={rows}
+            columns={columns}
+            rowKey={rowKey}
+            align={align}
+            isStriped={isStriped}
+            emptyCellPlaceholder={emptyCellPlaceholder}
+            hoverableRows={hoverableRows}
+            truncateOverflow={truncateOverflow}
+            isBorderless={isBorderless}
+            isCompact={isCompact}
+          />
+        </table>
+      </div>
     </div>
   );
 };

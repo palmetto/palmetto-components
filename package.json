@@ -17,7 +17,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@palmetto/palmetto-design-tokens": "^0.5.4",
+    "@palmetto/palmetto-design-tokens": "^0.6.1",
     "@types/cleave.js": "^1.4.3",
     "react-select": "^3.1.0"
   },
@@ -29,8 +29,8 @@
   "scripts": {
     "build": "BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js && tsc",
     "build-storybook": "BABEL_ENV=storybook build-storybook",
+    "deploy-storybook": "rm -fr storybook-static && npm run build-storybook && echo 'ux.palmetto.com' > 'storybook-static/CNAME' && storybook-to-ghpages --existing-output-dir=storybook-static",
     "chromatic": "chromatic --project-token=x8ffq4qv9tq",
-    "deploy-storybook": "storybook-to-ghpages",
     "generate-docs": "yarn doctoc docs/CONTRIBUTING.md",
     "lint-js": "EXTEND_ESLINT=true eslint src",
     "lint-js:fix": "EXTEND_ESLINT=true eslint . --fix",
@@ -66,6 +66,7 @@
     "@babel/plugin-transform-runtime": "^7.10.4",
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "@semantic-release/commit-analyzer": "^8.0.1",
     "@storybook/addon-a11y": "^6.0.21",
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-docs": "^6.0.21",

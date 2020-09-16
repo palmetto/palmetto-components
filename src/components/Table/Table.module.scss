@@ -13,37 +13,47 @@
     background: rgba(255, 255, 255, 0.5);
   }
 
-  .table {
-    cursor: default;
-    width: 100%;
-    border-collapse: collapse;
-    white-space: normal;
-
-    &.fixed-width-columns {
-      /* width: fit-content; */
-      table-layout: fixed;
-    }
-  }
-
-  .borderless {
-    border: none;
-  }
-
-  &.scroll {
-    display: block;
-    -webkit-overflow-scrolling: touch;
-
-    &.scroll-x {
+  .scroll-container {
+    .table {
+      margin-top: 1px;
+      cursor: default;
       width: 100%;
-      overflow-x: auto;
+      border-collapse: collapse;
+      white-space: normal;
+  
+      &.auto {
+        table-layout: auto;
+      }
+  
+      &.fixed {
+        table-layout: fixed;
+      }
     }
+  
+    .borderless {
+      border: none;
+    }
+  
+    &.scrollable {
+      display: block;
+      -webkit-overflow-scrolling: touch;
+  
+      &.scrollable-x {
+        overflow-x: auto;
+      }
+  
+      &.scrollable-y {
+        height: 100%;
+        overflow-y: auto;
+      }
+  
+      >.table-bordered {
+        border: 0;
+      }
+    }
+  }
 
-    &.scroll-y {
-      overflow-y: auto;
-    }
-
-    >.table-bordered {
-      border: 0;
-    }
+  &.full-height {
+    height: 100%;
   }
 }
