@@ -2,7 +2,7 @@ name: "Chromatic"
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   publish:
