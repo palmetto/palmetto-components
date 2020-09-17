@@ -7,7 +7,6 @@ import React, {
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
-import { PALMETTO_COLORS } from '../../lib/tokens';
 
 interface ButtonProps {
   /**
