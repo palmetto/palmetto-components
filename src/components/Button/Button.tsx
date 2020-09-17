@@ -31,9 +31,17 @@ interface ButtonProps {
    */
   isDisabled?: boolean;
   /**
+   * Displays the button with inverse colors
+   */
+  isInverse?: boolean;
+  /**
    * Button takes up the full width of its parent container.
    */
   isLoading?: boolean;
+  /**
+   * Renders an outline version of the button. With a transparent background.
+   */
+  isOutlined?: boolean;
   /**
    * Specify the tabIndex of the button.
    */
@@ -61,7 +69,7 @@ interface ButtonProps {
   /**
    * The color variant of the button
    */
-  variant?: PALMETTO_COLORS;
+  variant?: 'primary' | 'success' | 'danger' | 'light' | 'dark' | 'white' | 'dark';
 }
 
 const Button: FC<ButtonProps> = ({
@@ -70,7 +78,9 @@ const Button: FC<ButtonProps> = ({
   fullWidth = false,
   id = undefined,
   isDisabled = false,
+  isInverse = false,
   isLoading = false,
+  isOutlined = false,
   tabIndex = undefined,
   type = 'button',
   onClick = undefined,
@@ -86,6 +96,8 @@ const Button: FC<ButtonProps> = ({
     styles[variant],
     className,
     {
+      [styles.outline]: isOutlined,
+      [styles.inverse]: isInverse,
       [styles.loading]: isLoading,
       [styles['full-width']]: fullWidth,
       [styles.sm]: size === 'sm',

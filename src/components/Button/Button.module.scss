@@ -1,7 +1,7 @@
 .button {
   position: relative;
   transition-duration: 0.2s;
-  transition-property: background-color, border, box-shadow;
+  transition-property: background-color, border, box-shadow, color;
   transition-timing-function: ease-in;
   border: none;
   border-radius: var(--button-size-md-border-radius);
@@ -25,23 +25,26 @@
     &:hover {
       background-color: var(--button-background-hover-color-primary);
     }
-  }
 
-  &.secondary {
-    background-color: var(--button-background-color-secondary);
-    color: var(--button-font-color-secondary);
+    &.inverse {
+      background-color: var(--button-font-color-primary);
+      color: var(--button-background-color-primary);
 
-    &:hover {
-      background-color: var(--button-background-hover-color-secondary);
+      &:hover {
+        background-color: var(--color-brand-primary-lightest);
+      }
     }
-  }
 
-  &.tertiary {
-    background-color: var(--button-background-color-tertiary);
-    color: var(--button-font-color-tertiary);
+    &.outline {
+      border: 1px solid var(--button-background-color-primary);
+      background-color: transparent;
+      padding: calc(var(--button-size-md-padding-vertical) - 1px) calc(var(--button-size-md-padding-horizontal) - 1px);
+      color: var(--button-background-color-primary);
 
-    &:hover {
-      background-color: var(--button-background-hover-color-tertiary);
+      &:hover {
+        background-color: var(--button-background-color-primary);
+        color: var(--button-font-color-primary);
+      }
     }
   }
 
@@ -51,15 +54,6 @@
 
     &:hover {
       background-color: var(--button-background-hover-color-success);
-    }
-  }
-
-  &.warning {
-    background-color: var(--button-background-color-warning);
-    color: var(--button-font-color-warning);
-
-    &:hover {
-      background-color: var(--button-background-hover-color-warning);
     }
   }
 
@@ -78,15 +72,6 @@
 
     &:hover {
       background-color: var(--button-background-hover-color-grey);
-    }
-  }
-
-  &.info {
-    background-color: var(--button-background-color-info);
-    color: var(--button-font-color-info);
-
-    &:hover {
-      background-color: var(--button-background-hover-color-info);
     }
   }
 

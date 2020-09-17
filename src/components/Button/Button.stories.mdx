@@ -78,19 +78,19 @@ You can render a button in a variety of colors based on the need.
 <Canvas>
   <Story name="Colors">
     <>
-    <div style={{ marginBottom: '1rem'}}>
+    <div className="m-bottom-md p-md">
       <Button variant="primary">
         Primary
       </Button>
     </div>
-    <div style={{ marginBottom: '1rem'}}>
-      <Button variant="secondary">
-        Secondary
+    <div className="m-bottom-md p-md background-color-primary">
+      <Button variant="primary" isInverse>
+        Primary Inverse
       </Button>
     </div>
-    <div style={{ marginBottom: '1rem'}}>
-      <Button variant="tertiary">
-        Tertiary
+    <div className="m-bottom-md p-md background-color-primary-lightest">
+      <Button variant="primary" isOutlined>
+        Primary Outline
       </Button>
     </div>
     <div style={{ marginBottom: '1rem'}}>
@@ -99,18 +99,8 @@ You can render a button in a variety of colors based on the need.
       </Button>
     </div>
     <div style={{ marginBottom: '1rem'}}>
-      <Button variant="warning">
-        Warning
-      </Button>
-    </div>
-    <div style={{ marginBottom: '1rem'}}>
       <Button variant="danger">
         Danger
-      </Button>
-    </div>
-    <div style={{ marginBottom: '1rem'}}>
-      <Button variant="info">
-        Info
       </Button>
     </div>
     <div style={{ marginBottom: '1rem'}}>
