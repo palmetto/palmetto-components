@@ -414,11 +414,11 @@ This property has no effect when there is only one line of flex items.
       <Box direction="row" align="center" direction="row" childGap="md">
         <Box flex="auto" width="70px">stretch</Box>
         <Box flex="auto" alignContent="stretch" height="200px" wrap childGap="md" background="primary-lighter" direction="row" childGap="md">
-          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
-          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
-          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
-          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
-          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" margin="0 0 md 0" background="primary" />
         </Box>
       </Box>
       <Box direction="row" align="center" direction="row" childGap="md">
@@ -622,10 +622,10 @@ Width can be set to any standard CSS value (px, rem, em, %).
 
 <Canvas>
   <Story name="width">
-    <Box background="primary-lightest">
-      <Box background="primary-light" width="227px" margin="0 0 sm 0">227px</Box>
-      <Box background="primary-light" width="10rem" margin="0 0 sm 0">10rem</Box>
-      <Box background="primary-light" width="50%" margin="0 0 sm 0">50%</Box>
+    <Box background="primary-lightest" childGap="xs">
+      <Box background="primary-light" width="227px">227px</Box>
+      <Box background="primary-light" width="10rem">10rem</Box>
+      <Box background="primary-light" width="50%">50%</Box>
     </Box>
   </Story>
 </Canvas>
@@ -634,14 +634,14 @@ Standard widths are available at `sm` - `5xl`.
 
 <Canvas>
   <Story name="width standards">
-    <Box background="primary-lightest">
-      <Box background="primary-light" width="sm" margin="0 0 sm 0">sm</Box>
-      <Box background="primary-light" width="md" margin="0 0 sm 0">md</Box>
-      <Box background="primary-light" width="lg" margin="0 0 sm 0">lg</Box>
-      <Box background="primary-light" width="xl" margin="0 0 sm 0">xl</Box>
-      <Box background="primary-light" width="2xl" margin="0 0 sm 0">2xl</Box>
-      <Box background="primary-light" width="3xl" margin="0 0 sm 0">3xl</Box>
-      <Box background="primary-light" width="4xl" margin="0 0 sm 0">4xl</Box>
+    <Box background="primary-lightest" childGap="xs" overflow="auto">
+      <Box background="primary-light" width="sm">sm</Box>
+      <Box background="primary-light" width="md">md</Box>
+      <Box background="primary-light" width="lg">lg</Box>
+      <Box background="primary-light" width="xl">xl</Box>
+      <Box background="primary-light" width="2xl">2xl</Box>
+      <Box background="primary-light" width="3xl">3xl</Box>
+      <Box background="primary-light" width="4xl">4xl</Box>
       <Box background="primary-light" width="5xl">5xl</Box>
     </Box>
   </Story>
@@ -652,21 +652,21 @@ Set the width to a common percentage of the Box's parent.
 
 <Canvas>
   <Story name="width percentage">
-    <Box background="primary-lightest">
-      <Box background="primary-light" width="10" margin="0 0 sm 0">10%</Box>
-      <Box background="primary-light" width="15" margin="0 0 sm 0">15%</Box>
-      <Box background="primary-light" width="20" margin="0 0 sm 0">20%</Box>
-      <Box background="primary-light" width="25" margin="0 0 sm 0">25%</Box>
-      <Box background="primary-light" width="30" margin="0 0 sm 0">30%</Box>
-      <Box background="primary-light" width="33" margin="0 0 sm 0">33%</Box>
-      <Box background="primary-light" width="34" margin="0 0 sm 0">34%</Box>
-      <Box background="primary-light" width="40" margin="0 0 sm 0">40%</Box>
-      <Box background="primary-light" width="50" margin="0 0 sm 0">50%</Box>
-      <Box background="primary-light" width="60" margin="0 0 sm 0">60%</Box>
-      <Box background="primary-light" width="70" margin="0 0 sm 0">70%</Box>
-      <Box background="primary-light" width="75" margin="0 0 sm 0">75%</Box>
-      <Box background="primary-light" width="80" margin="0 0 sm 0">80%</Box>
-      <Box background="primary-light" width="90" margin="0 0 sm 0">90%</Box>
+    <Box background="primary-lightest" childGap="xs">
+      <Box background="primary-light" width="10">10%</Box>
+      <Box background="primary-light" width="15">15%</Box>
+      <Box background="primary-light" width="20">20%</Box>
+      <Box background="primary-light" width="25">25%</Box>
+      <Box background="primary-light" width="30">30%</Box>
+      <Box background="primary-light" width="33">33%</Box>
+      <Box background="primary-light" width="34">34%</Box>
+      <Box background="primary-light" width="40">40%</Box>
+      <Box background="primary-light" width="50">50%</Box>
+      <Box background="primary-light" width="60">60%</Box>
+      <Box background="primary-light" width="70">70%</Box>
+      <Box background="primary-light" width="75">75%</Box>
+      <Box background="primary-light" width="80">80%</Box>
+      <Box background="primary-light" width="90">90%</Box>
       <Box background="primary-light" width="100">100%</Box>
     </Box>
   </Story>
@@ -678,10 +678,10 @@ Width can be set to any standard CSS value (px, rem, em, %).
 
 <Canvas>
   <Story name="height">
-    <Box background="primary-lightest">
-      <Box background="primary-light" height="227px" margin="0 0 sm 0">227px</Box>
-      <Box background="primary-light" height="10rem" margin="0 0 sm 0">10rem</Box>
-      <Box background="primary-light" height="4em" margin="0 0 sm 0">4em</Box>
+    <Box background="primary-lightest" childGap="xs">
+      <Box background="primary-light" height="227px" justify="center" align="center">227px</Box>
+      <Box background="primary-light" height="10rem" justify="center" align="center">10rem</Box>
+      <Box background="primary-light" height="4em" justify="center" align="center">4em</Box>
     </Box>
   </Story>
 </Canvas>
@@ -691,14 +691,14 @@ Standard heights are available at `sm` - `5xl`.
 <Canvas>
   <Story name="height standards">
     <Box background="primary-lightest" childGap="xs" height="5xl" direction="row">
-      <Box flex="auto" background="primary-light" height="sm" margin="0 0 sm 0">sm</Box>
-      <Box flex="auto" background="primary-light" height="md" margin="0 0 sm 0">md</Box>
-      <Box flex="auto" background="primary-light" height="lg" margin="0 0 sm 0">lg</Box>
-      <Box flex="auto" background="primary-light" height="xl" margin="0 0 sm 0">xl</Box>
-      <Box flex="auto" background="primary-light" height="2xl" margin="0 0 sm 0">2xl</Box>
-      <Box flex="auto" background="primary-light" height="3xl" margin="0 0 sm 0">3xl</Box>
-      <Box flex="auto" background="primary-light" height="4xl" margin="0 0 sm 0">4xl</Box>
-      <Box flex="auto" background="primary-light" height="5xl">5xl</Box>
+      <Box flex="auto" background="primary-light" justify="center" align="center" height="sm">sm</Box>
+      <Box flex="auto" background="primary-light" justify="center" align="center" height="md">md</Box>
+      <Box flex="auto" background="primary-light" justify="center" align="center" height="lg">lg</Box>
+      <Box flex="auto" background="primary-light" justify="center" align="center" height="xl">xl</Box>
+      <Box flex="auto" background="primary-light" justify="center" align="center" height="2xl">2xl</Box>
+      <Box flex="auto" background="primary-light" justify="center" align="center" height="3xl">3xl</Box>
+      <Box flex="auto" background="primary-light" justify="center" align="center" height="4xl">4xl</Box>
+      <Box flex="auto" background="primary-light" justify="center" align="center" height="5xl">5xl</Box>
     </Box>
   </Story>
 </Canvas>
@@ -709,21 +709,21 @@ Set the height to a common percentage of the Box's parent.
 <Canvas>
   <Story name="height percentage">
     <Box height="400px" childGap="xs" direction="row" background="primary-lightest">
-      <Box flex="auto" justify="center" background="primary-light" height="10">10%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="15">15%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="20">20%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="25">25%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="30">30%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="33">33%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="34">34%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="40">40%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="50">50%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="60">60%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="70">70%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="75">75%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="80">80%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="90">90%</Box>
-      <Box flex="auto" justify="center" background="primary-light" height="100">100%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="10">10%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="15">15%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="20">20%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="25">25%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="30">30%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="33">33%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="34">34%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="40">40%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="50">50%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="60">60%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="70">70%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="75">75%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="80">80%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="90">90%</Box>
+      <Box flex="auto" justify="center" align="center" background="primary-light" height="100">100%</Box>
     </Box>
   </Story>
 </Canvas>
