@@ -10,7 +10,6 @@ import {
   PALMETTO_SPACING_SIZE_OPTIONS,
 } from '../../lib/tokens';
 import Box from './Box';
-import { text } from '@fortawesome/fontawesome-svg-core';
 
 describe('Box', () => {
   test('aria-label is applied if set', () => {
@@ -126,6 +125,18 @@ describe('Box', () => {
 
         expect(queryAllByText('hello')[i]).toHaveClass(value);
       });
+    });
+  });
+
+  describe('wrap', () => {
+    test('box renders with wrap class is wrap is true', () => {
+      const { getByText } = render(<Box wrap>Hello</Box>);
+      expect(getByText('Hello')).toHaveClass('flex-wrap');
+    });
+
+    test('box renders with nowrap class is wrap is false', () => {
+      const { getByText } = render(<Box>Hello</Box>);
+      expect(getByText('Hello')).toHaveClass('flex-nowrap');
     });
   });
 });

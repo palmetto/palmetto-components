@@ -1,4 +1,3 @@
-
 // min-width and min-height needed because of this
 // https://stackoverflow.com/questions/36247140/why-doesnt-flex-item-shrink-past-content-size
 .flex-auto { 
@@ -80,6 +79,7 @@
   .align-self-baseline-tablet { align-self: baseline; }
   .align-self-stretch-tablet { align-self: stretch; }
 }
+
 
 @media (min-width: var(--size-breakpoint-desktop)) {
   .flex-auto-desktop { 

@@ -23,29 +23,36 @@ interface BoxProps {
    * The element type to be rendered.
    */
   as: string;
-  // /**
-  //  * How to align the contents along the cross axis.
-  //  */
-  // align: PropTypes.oneOf(['start', 'center', 'end', 'baseline', 'stretch']),
-  // /**
-  //  * How to align the contents when there is extra space in the cross axis
-  //  */
-  // alignContent: PropTypes.oneOf([
-  //   'start',
-  //   'center',
-  //   'end',
-  //   'between',
-  //   'around',
-  //   'stretch',
-  // ]),
-  // /**
-  //  * How to align along the cross axis when contained in a Box or along the column axis when contained in a Grid.
-  //  */
-  // alignSelf: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
   /**
-   * The DOM tag or react component to use for the element.
+   * How to align the contents along the cross axis.
    */
-  // as?: elementType;
+  align:
+  'start'
+  | 'end'
+  | 'center'
+  | 'baseline'
+  | 'stretch';
+  /**
+   * How to align the contents when there is extra space in the cross axis.
+   * This property has no effect when there is only one line of flex items.
+   */
+  alignContent:
+  'start'
+  | 'end'
+  | 'center'
+  | 'stretch'
+  | 'between'
+  | 'around';
+  /**
+   * How to align along the cross axis when contained in a Box.
+   * This allows the default alignment (or the one specified by `align`) to be overridden for the individual Box.
+   */
+  alignSelf:
+  'start'
+  | 'end'
+  | 'center'
+  | 'baseline'
+  | 'stretch';
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
@@ -85,20 +92,18 @@ interface BoxProps {
    * Display property. Only select values supported.
    */
   display?: 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
-  // /**
-  //  * Make the Box a flex container, and its children a flex item.
-  //  * Can be used as shorthand for the flexbox css properties `flex-grow` and `flex-shrink`
-  //  */
-  // flex: PropTypes.oneOf([
-  //   'grow',
-  //   'shrink',
-  //   true,
-  //   false,
-  //   PropTypes.exact({
-  //     grow: PropTypes.number,
-  //     shrink: PropTypes.number,
-  //   }),
-  // ]),
+  /**
+   * Can be used as shorthand for the flexbox css properties `flex-grow` and `flex-shrink`
+   */
+  flex?:
+  'grow'
+  | 'shrink'
+  | true
+  | false
+  | {
+    grow: number;
+    shrink: number;
+  };
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
@@ -108,18 +113,17 @@ interface BoxProps {
    * or a [height token](/?path=/docs/design-tokens-height--page)
    */
   height?: string;
-  // /**
-  //  * How space between and around content items is distributed along the main-axis a flex Box
-  //  */
-  // justify: PropTypes.oneOf([
-  //   'around',
-  //   'between',
-  //   'center',
-  //   'end',
-  //   'evenly',
-  //   'start',
-  //   'stretch',
-  // ]),
+  /**
+   * How space between and around content items is distributed along the main-axis a flex Box
+   */
+  justify:
+  'around'
+  | 'between'
+  | 'center'
+  | 'end'
+  | 'evenly'
+  | 'start'
+  | 'stretch';
   /**
    * Amount of space around the element. It models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element.It is shorthand for top, right, bottom, left.
@@ -131,14 +135,14 @@ interface BoxProps {
    * Otherwise, both overflow-x and overflow-y are set to the same value.
    */
   overflow?:
-    'visible'
-    | 'hidden'
-    | 'clip'
-    | 'scroll'
-    | 'auto'
-    | 'inherit'
-    | 'initial'
-    | 'unset';
+  'visible'
+  | 'hidden'
+  | 'clip'
+  | 'scroll'
+  | 'auto'
+  | 'inherit'
+  | 'initial'
+  | 'unset';
   /**
    * Amount of space within the element around the Box contents. It models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
@@ -148,7 +152,11 @@ interface BoxProps {
    * Set the radius of all corners
    */
   radius?: string; // need to define based on design tokens
-  // wrap: PropTypes.oneOf([true, false, 'reverse']),
+  /**
+   * By default, a Box's items will all try to fit onto one line.
+   * Change that and allow the items to wrap as needed wrap
+   */
+  wrap?: boolean;
   /**
    * The width of the element. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/docs/design-tokens-width--page)
@@ -162,9 +170,9 @@ interface BoxProps {
  */
 const Box: FC<BoxProps> = ({
   as = 'div',
-  // align,
-  // alignContent,
-  // alignSelf,
+  align,
+  alignContent,
+  alignSelf,
   background = undefined,
   // basis,
   border = undefined,
@@ -174,15 +182,15 @@ const Box: FC<BoxProps> = ({
   color = undefined,
   display = 'flex',
   direction = 'column',
-  // flex,
+  flex,
   fontSize = 'inherit',
   height = undefined,
-  // justify,
+  justify,
   margin,
-  overflow = 'auto',
+  overflow = 'initial',
   padding = undefined,
   radius = undefined,
-  // wrap,
+  wrap,
   width = undefined,
   ...rest
 }) => {
@@ -191,15 +199,23 @@ const Box: FC<BoxProps> = ({
   const heightCss = getDimensionCss('h', height);
   const widthCss = getDimensionCss('w', width);
 
+  const wrapClass = wrap ? 'flex-wrap' : 'flex-nowrap';
+
   const classes = classNames(
     className,
     display,
+    wrapClass,
     marginCss.classes,
     paddingCss.classes,
     heightCss.classes,
     widthCss.classes,
     {
       [`flex-direction-${direction}`]: display.includes('flex') && direction,
+      'flex-auto': flex === true, // TODO setting this to true always for now, need to figure out how to interpret flex prop
+      [`justify-content-${justify}`]: justify,
+      [`align-items-${align}`]: align,
+      [`align-content-${alignContent}`]: alignContent,
+      [`align-slef-${alignSelf}`]: alignSelf,
       [`background-color-${background}`]: background,
       [`border-color-${border}`]: border,
       [`font-color-${color}`]: color,
