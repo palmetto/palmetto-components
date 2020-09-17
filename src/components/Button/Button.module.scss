@@ -5,23 +5,125 @@
   transition-timing-function: ease-in;
   border: none;
   border-radius: var(--button-size-md-border-radius);
-  background-color: var(--button-color-background);
   cursor: pointer;
   padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
   line-height: 1.25; /* hack to get the button to match TextInput's 44px height */
   letter-spacing: 0.2px;
-  color: var(--button-color);
   font-size: var(--button-size-md-font-size);
   font-weight: 700;
-
-  &:hover {
-    background-color: var(--button-color-background-hover);
-  }
 
   &:disabled {
     background-color: var(--button-color-background-disabled);
     cursor: not-allowed;
     pointer-events: none;
+  }
+
+  &.primary {
+    background-color: var(--button-background-color-primary);
+    color: var(--button-font-color-primary);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-primary);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--button-background-color-secondary);
+    color: var(--button-font-color-secondary);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-secondary);
+    }
+  }
+
+  &.tertiary {
+    background-color: var(--button-background-color-tertiary);
+    color: var(--button-font-color-tertiary);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-tertiary);
+    }
+  }
+
+  &.success {
+    background-color: var(--button-background-color-success);
+    color: var(--button-font-color-success);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-success);
+    }
+  }
+
+  &.warning {
+    background-color: var(--button-background-color-warning);
+    color: var(--button-font-color-warning);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-warning);
+    }
+  }
+
+  &.danger {
+    background-color: var(--button-background-color-danger);
+    color: var(--button-font-color-danger);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-danger);
+    }
+  }
+
+  &.grey {
+    background-color: var(--button-background-color-grey);
+    color: var(--button-font-color-grey);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-grey);
+    }
+  }
+
+  &.info {
+    background-color: var(--button-background-color-info);
+    color: var(--button-font-color-info);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-info);
+    }
+  }
+
+  &.dark {
+    background-color: var(--button-background-color-dark);
+    color: var(--button-font-color-dark);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-dark);
+    }
+  }
+
+  &.light {
+    background-color: var(--button-background-color-light);
+    color: var(--button-font-color-light);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-light);
+    }
+  }
+
+  &.white {
+    background-color: var(--button-background-color-white);
+    color: var(--button-font-color-white);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-white);
+    }
+  }
+
+  &.black {
+    background-color: var(--button-background-color-black);
+    color: var(--button-font-color-black);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-black);
+    }
   }
 
   &.sm {

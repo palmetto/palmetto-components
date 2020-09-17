@@ -7,6 +7,7 @@ import React, {
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
+import { PALMETTO_COLORS } from '../../lib/tokens';
 
 interface ButtonProps {
   /**
@@ -57,6 +58,10 @@ interface ButtonProps {
    * The size of the button.
    */
   size?: 'sm' | 'md' | 'lg';
+  /**
+   * The color variant of the button
+   */
+  variant?: PALMETTO_COLORS;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -72,11 +77,13 @@ const Button: FC<ButtonProps> = ({
   onFocus = undefined,
   onBlur = undefined,
   size = 'md',
+  variant = 'primary',
 }) => {
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames(
     styles.button,
+    styles[variant],
     className,
     {
       [styles.loading]: isLoading,
