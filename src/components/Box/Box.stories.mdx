@@ -13,38 +13,33 @@ import {
 # Box
 
 A `<Box>` is a layout component to build UIs with consistent padding and spacing between elements.
-It lays out it contents in a specified direction, and by default renders a `div` element.
+
+- It lays out it contents in a specified `direction`
+- Renders a `<div />` element by default, but can be changed using `as`
+- Allows you to specify the spacing between child elements using `childGap`
 
 <Canvas>
-  <>
+  <Box childGap="md">
     <Box
-      margin="lg"
       padding="xl"
-      border="grey-lighter"
+      border="primary-light"
+      background="primary-lightest"
       radius="md"
-      fontSize="2xl"
+      fontSize="xl"
     >
-      I am a Box
+      I am a box with a green background and border
     </Box>
     <Box
-      margin="lg"
-      padding="md"
-      background="info-lighter"
-      color="info"
-      radius="md"
+      childGap="sm"
+      direction="row"
     >
-      I am a Box too!
+      <Box flex="auto" radius="md" background="primary" height="lg" />
+      <Box flex="auto" radius="md" background="primary" height="lg" />
+      <Box flex="auto" radius="md" background="primary" height="lg" />
+      <Box flex="auto" radius="md" background="primary" height="lg" />
+      <Box flex="auto" radius="md" background="primary" height="lg" />
     </Box>
-    <Box
-      margin="lg"
-      padding="md"
-      background="grey-dark"
-      color="inverse"
-      fontSize="sm"
-    >
-      I am an inverse Box
-    </Box>
-  </>
+  </Box>
 </Canvas>
 
 ## Props
@@ -199,16 +194,58 @@ The space between children will be set whether the direction of is `row` or `col
       <Box flex="auto" background="primary-light" padding="sm">5</Box>
     </Box>
     <Box childGap="2xl" direction="row" padding="sm">
-      <Box flex="auto" background="primary-light" padding="sm">1</Box>
-      <Box flex="auto" background="primary-light" padding="sm">2</Box>
-      <Box flex="auto" background="primary-light" padding="sm">3</Box>
-      <Box flex="auto" background="primary-light" padding="sm">4</Box>
-      <Box flex="auto" background="primary-light" padding="sm">5</Box>
+      <Box width="20%" background="primary-light" padding="sm">1</Box>
+      <Box width="20%" background="primary-light" padding="sm">2</Box>
+      <Box width="20%" background="primary-light" padding="sm">3</Box>
+      <Box width="20%" background="primary-light" padding="sm">4</Box>
+      <Box width="20%" background="primary-light" padding="sm">5</Box>
     </Box>
   </Story>
 </Canvas>
 
 ## Flex Properties
+
+### Flex
+
+The most common use case is to set children of a `<Box />` to `flex="auto"`.
+The item is sized according to its width and height properties, but grows to absorb any extra free space in the parent, and shrinks to its minimum size to fit the container.
+This is equivalent to setting "flex: 1 1 auto".
+
+<Canvas>
+  <Story name="flex auto">
+    <Box childGap="md">
+      <Box
+        childGap="md"
+        direction="row"
+      >
+        <Box flex="auto" background="primary-light" height="lg" justify="center" align="center">auto</Box>
+        <Box flex="auto" background="primary-light" height="lg" justify="center" align="center">auto</Box>
+        <Box flex="auto" background="primary-light" height="lg" justify="center" align="center">auto</Box>
+        <Box flex="auto" background="primary-light" height="lg" justify="center" align="center">auto</Box>
+        <Box flex="auto" background="primary-light" height="lg" justify="center" align="center">auto</Box>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+The `flex` prop can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`.
+
+<Canvas>
+  <Story name="flex grow and shrink">
+    <Box childGap="md">
+      <Box
+        childGap="md"
+        direction="row"
+      >
+        <Box flex="3" background="primary-light" height="lg" justify="center" align="center">3</Box>
+        <Box flex="1" background="primary-light" height="lg" justify="center" align="center">1</Box>
+        <Box flex="1" background="primary-light" height="lg" justify="center" align="center">1</Box>
+        <Box flex="2" background="primary-light" height="lg" justify="center" align="center">2</Box>
+        <Box flex="1" background="primary-light" height="lg" justify="center" align="center">1</Box>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
 
 ### Justify
 
@@ -637,15 +674,15 @@ Standard heights are available at `sm` - `5xl`.
 
 <Canvas>
   <Story name="height standards">
-    <Box background="primary-lightest">
-      <Box background="primary-light" height="sm" margin="0 0 sm 0">sm</Box>
-      <Box background="primary-light" height="md" margin="0 0 sm 0">md</Box>
-      <Box background="primary-light" height="lg" margin="0 0 sm 0">lg</Box>
-      <Box background="primary-light" height="xl" margin="0 0 sm 0">xl</Box>
-      <Box background="primary-light" height="2xl" margin="0 0 sm 0">2xl</Box>
-      <Box background="primary-light" height="3xl" margin="0 0 sm 0">3xl</Box>
-      <Box background="primary-light" height="4xl" margin="0 0 sm 0">4xl</Box>
-      <Box background="primary-light" height="5xl">5xl</Box>
+    <Box background="primary-lightest" childGap="xs" height="5xl" direction="row">
+      <Box flex="auto" background="primary-light" height="sm" margin="0 0 sm 0">sm</Box>
+      <Box flex="auto" background="primary-light" height="md" margin="0 0 sm 0">md</Box>
+      <Box flex="auto" background="primary-light" height="lg" margin="0 0 sm 0">lg</Box>
+      <Box flex="auto" background="primary-light" height="xl" margin="0 0 sm 0">xl</Box>
+      <Box flex="auto" background="primary-light" height="2xl" margin="0 0 sm 0">2xl</Box>
+      <Box flex="auto" background="primary-light" height="3xl" margin="0 0 sm 0">3xl</Box>
+      <Box flex="auto" background="primary-light" height="4xl" margin="0 0 sm 0">4xl</Box>
+      <Box flex="auto" background="primary-light" height="5xl">5xl</Box>
     </Box>
   </Story>
 </Canvas>
@@ -682,55 +719,10 @@ Set the overlfow behavior of the Box with `overflow`
 
 <Canvas>
   <Story name="overflow">
-    <Box childGap="3xl">
-      <Box overflow="visible" background="primary-light" border="grey" height="100px">
-        <p>Visible</p>
-        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
-        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
-        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
-      </Box>
-      <Box overflow="hidden" border="grey" background="primary-light" height="100px">
-        <p>Hidden</p>
-        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
-        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
-        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
-      </Box>
-      <Box overflow="clip" border="grey" background="primary-light" height="100px">
-        <p>clip</p>
-        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
-        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
-        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
-      </Box>
-      <Box overflow="scroll" border="grey" background="primary-light" height="100px">
-        <p>scroll</p>
-        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
-        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
-        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
-      </Box>
-      <Box overflow="auto" border="grey" background="primary-light" height="100px">
-        <p>auto</p>
-        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
-        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
-        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
-      </Box>
-      <Box overflow="inherit" border="grey" background="primary-light" height="100px">
-        <p>inherit</p>
-        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
-        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
-        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
-      </Box>
-      <Box overflow="initial" border="grey" background="primary-light" height="100px">
-        <p>initial</p>
-        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
-        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
-        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
-      </Box>
-      <Box overflow="unset" border="grey" background="primary-light" height="100px">
-        <p>unset</p>
-        <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
-        <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
-        <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
-      </Box>
+    <Box overflow="auto" padding="md" childGap="md" flex="auto" background="primary-lighter" border="grey" height="100px">
+      <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
+      <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
+      <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
     </Box>
   </Story>
 </Canvas>

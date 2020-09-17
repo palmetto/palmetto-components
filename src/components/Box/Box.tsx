@@ -58,13 +58,6 @@ interface BoxProps {
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
   background?: PALMETTO_COLORS;
-  // /**
-  //  * The default size of an element before the remaining space is distributed
-  //  */
-  // basis: PropTypes.oneOfType([
-  //   PropTypes.oneOf(['auto', 'full', '1/2', '1/4', '3/4', '1/3', '2/3']),
-  //   PropTypes.string,
-  // ]),
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
    */
