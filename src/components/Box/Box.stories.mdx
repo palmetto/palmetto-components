@@ -198,7 +198,7 @@ The space between children will be set whether the direction of is `row` or `col
       <Box flex background="primary-light" padding="sm">4</Box>
       <Box flex background="primary-light" padding="sm">5</Box>
     </Box>
-    <Box childGap="3xl" direction="row" padding="sm">
+    <Box childGap="2xl" direction="row" padding="sm">
       <Box flex background="primary-light" padding="sm">1</Box>
       <Box flex background="primary-light" padding="sm">2</Box>
       <Box flex background="primary-light" padding="sm">3</Box>
@@ -216,36 +216,54 @@ Set content alignment along the main axis
 
 <Canvas>
   <Story name="justify">
-    <Box flex childGap="lg">
-      <Box border="grey-lighter" justify="start" direction="row" childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+    <Box flex childGap="md">
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">start</Box>
+        <Box flex background="primary-lighter" justify="start" direction="row" childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
-      <Box border="grey-light" justify="center" direction="row" childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">center</Box>
+        <Box flex background="primary-lighter" justify="center" direction="row" childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
-      <Box border="grey-light" justify="end" direction="row" childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">end</Box>
+        <Box flex background="primary-lighter" justify="end" direction="row" childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
-      <Box border="grey-light" justify="between"direction="row"  childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">between</Box>
+        <Box flex background="primary-lighter" justify="between" direction="row"  childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
-      <Box border="grey-light" justify="around" direction="row" childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">around</Box>
+          <Box flex background="primary-lighter" justify="around" direction="row" childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
-      <Box border="grey-light" justify="evenly" direction="row" childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">evenly</Box>
+        <Box flex background="primary-lighter" justify="evenly" direction="row" childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
     </Box>
   </Story>
@@ -257,31 +275,46 @@ Set content alignment along the cross axis.
 
 <Canvas>
   <Story name="alignment">
-    <Box flex childGap="lg">
-      <Box height="100px" border="grey-light" align="start" direction="row" childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+    <Box flex childGap="md">
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">start</Box>
+        <Box flex height="100px" background="primary-lighter" align="start" direction="row" childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
-      <Box height="100px" border="grey-light" align="center" direction="row" childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">center</Box>
+        <Box flex height="100px" background="primary-lighter" align="center" direction="row" childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
-      <Box height="100px" border="grey-light" align="end" direction="row" childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">end</Box>
+        <Box flex height="100px" background="primary-lighter" align="end" direction="row" childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
-      <Box height="100px" border="grey-light" align="baseline" direction="row" childGap="md">
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
-        <Box width="md" height="md" background="primary-light" />
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">baseline</Box>
+        <Box flex height="100px" background="primary-lighter" align="baseline" direction="row" childGap="md">
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
       </Box>
-      <Box height="100px" border="grey-light" align="stretch" direction="row" childGap="md">
-        <Box width="md" background="primary-light" />
-        <Box width="md" background="primary-light" />
-        <Box width="md" background="primary-light" />
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box width="70px">stretch</Box>
+        <Box flex height="100px" background="primary-lighter" align="stretch" direction="row" childGap="md">
+          <Box width="md" background="primary" />
+          <Box width="md" background="primary" />
+          <Box width="md" background="primary" />
+        </Box>
       </Box>
     </Box>
   </Story>
@@ -294,14 +327,66 @@ This property has no effect when there is only one line of flex items.
 
 <Canvas>
   <Story name="alignContent">
-    <Box flex childGap="lg">
-      <Box alignContent="center" height="200px" wrap childGap="md" border="grey-lighter" direction="row" childGap="md">
-        <Box width="2xl" height="md" margin="0 0 md 0" background="primary-light" />
-        <Box width="2xl" height="md" margin="0 0 md 0" background="primary-light" />
-        <Box width="2xl" height="md" margin="0 0 md 0" background="primary-light" />
-        <Box width="2xl" height="md" margin="0 0 md 0" background="primary-light" />
-        <Box width="2xl" height="md" margin="0 0 md 0" background="primary-light" />
-        <Box width="2xl" height="md" margin="0 0 md 0" background="primary-light" />
+    <Box childGap="md">
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box flex width="70px">start</Box>
+        <Box flex alignContent="start" height="200px" wrap childGap="md" background="primary-lighter" direction="row" childGap="md">
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box flex width="70px">center</Box>
+        <Box flex alignContent="center" height="200px" wrap childGap="md" background="primary-lighter" direction="row" childGap="md">
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box flex width="70px">end</Box>
+        <Box flex alignContent="end" height="200px" wrap childGap="md" background="primary-lighter" direction="row" childGap="md">
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box flex width="70px">stretch</Box>
+        <Box flex alignContent="stretch" height="200px" wrap childGap="md" background="primary-lighter" direction="row" childGap="md">
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box flex width="70px">between</Box>
+        <Box flex alignContent="between" height="200px" wrap childGap="md" background="primary-lighter" direction="row" childGap="md">
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" align="center" direction="row" childGap="md">
+        <Box flex width="70px">around</Box>
+        <Box flex  alignContent="center" height="200px" wrap childGap="md" background="primary-lighter" direction="row" childGap="md">
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+          <Box width="2xl" height="md" margin="0 0 md 0" background="primary" />
+        </Box>
       </Box>
     </Box>
   </Story>
