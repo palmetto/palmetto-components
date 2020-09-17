@@ -55,7 +55,7 @@ Use the `background` prop to set the color of the background
       secondary-lighter
     </Box>
     <Box background="danger-lightest" margin="xs" padding="xs">
-      danger
+      danger-lightest
     </Box>
     <Box background="primary" margin="xs" padding="xs">
       primary
@@ -187,19 +187,35 @@ The space between children will be set whether the direction of is `row` or `col
 <Canvas>
   <Story name="child gap">
     <Box childGap="md" padding="sm">
-      <Box flex="auto" background="primary-light" padding="sm">1</Box>
-      <Box flex="auto" background="primary-light" padding="sm">2</Box>
-      <Box flex="auto" background="primary-light" padding="sm">3</Box>
-      <Box flex="auto" background="primary-light" padding="sm">4</Box>
-      <Box flex="auto" background="primary-light" padding="sm">5</Box>
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
     </Box>
     <Box childGap="2xl" direction="row" padding="sm">
-      <Box width="20%" background="primary-light" padding="sm">1</Box>
-      <Box width="20%" background="primary-light" padding="sm">2</Box>
-      <Box width="20%" background="primary-light" padding="sm">3</Box>
-      <Box width="20%" background="primary-light" padding="sm">4</Box>
-      <Box width="20%" background="primary-light" padding="sm">5</Box>
+      <Box width="20%" background="primary-light" padding="sm"></Box>
+      <Box width="20%" background="primary-light" padding="sm"></Box>
+      <Box width="20%" background="primary-light" padding="sm"></Box>
+      <Box width="20%" background="primary-light" padding="sm"></Box>
+      <Box width="20%" background="primary-light" padding="sm"></Box>
     </Box>
+  </Story>
+</Canvas>
+
+All child gap options.
+
+<Canvas>
+  <Story name="all child gap">
+    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+      <Box childGap={spacing} direction="row" padding="sm" key={i}>
+        <Box width="20%" background="primary-light" padding="sm">{spacing}</Box>
+        <Box width="20%" background="primary-light" padding="sm">{spacing}</Box>
+        <Box width="20%" background="primary-light" padding="sm">{spacing}</Box>
+        <Box width="20%" background="primary-light" padding="sm">{spacing}</Box>
+        <Box width="20%" background="primary-light" padding="sm">{spacing}</Box>
+      </Box>
+    ))}
   </Story>
 </Canvas>
 
