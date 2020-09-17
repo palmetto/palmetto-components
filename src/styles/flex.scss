@@ -5,6 +5,10 @@
   min-width: 0;
   min-height: 0;
 }
+.flex-none { flex: none; }
+.flex-initial { flex: initial; }
+.flex-inherit { flex: inherit; }
+.flex-unset { flex: unset; }
 
 .flex-direction-column { flex-direction: column; }
 .flex-direction-row { flex-direction: row; }
@@ -45,6 +49,10 @@
     min-width: 0;
     min-height: 0;
   }
+  .flex-none-tablet { flex: none; }
+  .flex-initial-tablet { flex: initial; }
+  .flex-inherit-tablet { flex: inherit; }
+  .flex-unset-tablet { flex: unset; }
 
   .flex-direction-column-tablet { flex-direction: column; }
   .flex-direction-row-tablet { flex-direction: row; }
@@ -87,6 +95,11 @@
     min-width: 0;
     min-height: 0;
   }
+  .flex-none-desktop { flex: none; }
+  .flex-initial-desktop { flex: initial; }
+  .flex-inherit-desktop { flex: inherit; }
+  .flex-unset-desktop { flex: unset; }
+
   .flex-direction-column-desktop { flex-direction: column; }
   .flex-direction-row-desktop { flex-direction: row; }
 
@@ -127,6 +140,10 @@
     min-width: 0;
     min-height: 0;
   }
+  .flex-none-hd { flex: none; }
+  .flex-initial-hd { flex: initial; }
+  .flex-inherit-hd { flex: inherit; }
+  .flex-unset-hd { flex: unset; }
 
   .flex-direction-column-hd { flex-direction: column; }
   .flex-direction-row-hd { flex-direction: row; }

@@ -16,6 +16,7 @@ import {
 import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingCss from '../../lib/getSpacingCss';
 import getElementType from '../../lib/getElementType';
+import getFlexCss from '../../lib/getFlexCss';
 // import BorderType from '../../types';
 
 interface BoxProps {
@@ -93,17 +94,15 @@ interface BoxProps {
    */
   display?: 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
   /**
-   * Can be used as shorthand for the flexbox css properties `flex-grow` and `flex-shrink`
+   * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
    */
   flex?:
-  'grow'
-  | 'shrink'
-  | true
-  | false
-  | {
-    grow: number;
-    shrink: number;
-  };
+  'auto'
+  | 'initial'
+  | 'none'
+  | 'inherit'
+  | 'unset'
+  | string;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
@@ -198,6 +197,7 @@ const Box: FC<BoxProps> = ({
   const paddingCss = getSpacingCss('p', padding);
   const heightCss = getDimensionCss('h', height);
   const widthCss = getDimensionCss('w', width);
+  const flexCss = getFlexCss(flex);
 
   const wrapClass = wrap ? 'flex-wrap' : 'flex-nowrap';
 
@@ -209,9 +209,9 @@ const Box: FC<BoxProps> = ({
     paddingCss.classes,
     heightCss.classes,
     widthCss.classes,
+    flexCss.classes,
     {
       [`flex-direction-${direction}`]: display.includes('flex') && direction,
-      'flex-auto': flex === true, // TODO setting this to true always for now, need to figure out how to interpret flex prop
       [`justify-content-${justify}`]: justify,
       [`align-items-${align}`]: align,
       [`align-content-${alignContent}`]: alignContent,
@@ -229,6 +229,7 @@ const Box: FC<BoxProps> = ({
     ...marginCss.styles,
     ...heightCss.styles,
     ...widthCss.styles,
+    ...flexCss.styles,
     ...border && { borderWidth: '1px', borderStyle: 'solid' },
   };
 
