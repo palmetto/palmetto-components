@@ -1,17 +1,12 @@
 import { CssStylesAndClasses, CssDimension } from './types';
-
-function doesValueIncludeCssUnit(value: string): boolean {
-  const cssUnits = ['px', 'em', 'rem', '%', 'vw', 'vh'];
-
-  return cssUnits.some(unit => value.includes(unit));
-}
+import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
 
 function getDimensionStyles(dimension: CssDimension, value?: string): { [key: string]: string; } | undefined {
   if (value === undefined) return value;
 
   let styles;
   // value is a css unit so set its style property
-  if (typeof value === 'string' && doesValueIncludeCssUnit(value)) {
+  if (typeof value === 'string' && doesStringIncludeCssUnit(value)) {
     styles = dimension === 'w' ? { width: value } : { height: value };
   }
 
@@ -22,7 +17,7 @@ function getDimensionClasses(dimension: CssDimension, value?: string): string[] 
   if (value === undefined) return value;
 
   const classes = [];
-  if (typeof value === 'string' && !doesValueIncludeCssUnit(value)) {
+  if (typeof value === 'string' && !doesStringIncludeCssUnit(value)) {
     classes.push(`${dimension}-${value}`);
   }
 

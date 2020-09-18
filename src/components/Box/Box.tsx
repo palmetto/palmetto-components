@@ -194,7 +194,7 @@ const Box: FC<BoxProps> = ({
 
   const wrapClass = wrap ? 'flex-wrap' : 'flex-nowrap';
 
-  const classes = classNames(
+  const boxClasses = classNames(
     className,
     display,
     wrapClass,
@@ -232,24 +232,27 @@ const Box: FC<BoxProps> = ({
   });
 
   let decoratedChildren = children;
+
+  /**
+   * Shallow merges existing classes of child node with a className based on the childGap value.
+   */
+  const decorateChildren = (child: ReactElement, i: number, childrenArr: ReactElement[]) => {
+    if (i === childrenArr.length - 1) return child; // Child gap does not apply to last element in the list.
+
+    const childClasses = classNames(child.props.className, childGapClass);
+
+    return cloneElement(child, { className: childClasses });
+  };
+
   if (childGapClass && Array.isArray(children)) {
-    decoratedChildren = children
-      .map((child, i) => {
-        if (i < children.length - 1) {
-          return cloneElement(
-            (child as ReactElement),
-            { className: classNames((child as ReactElement).props.className, childGapClass) },
-          );
-        }
-        return child;
-      });
+    decoratedChildren = (children as ReactElement[]).map(decorateChildren);
   }
 
   const element = getElementType(Box, { as });
 
   return createElement(
     element,
-    { className: classes, style: boxStyles, ...rest },
+    { className: boxClasses, style: boxStyles, ...rest },
     decoratedChildren,
   );
 };
