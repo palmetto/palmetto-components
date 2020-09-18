@@ -1,3 +1,4 @@
+import Box from './Box/Box';
 import Button from './Button/Button';
 import CheckboxInput from './CheckboxInput/CheckboxInput';
 import FormikCheckboxInput from './Formik/FormikCheckboxInput/FormikCheckboxInput';
@@ -13,6 +14,7 @@ import TableBody from './Table/TableBody/TableBody';
 import TableRow from './Table/TableRow/TableRow';
 
 export {
+  Box,
   Button,
   CheckboxInput,
   FormikCheckboxInput,
