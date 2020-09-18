@@ -64,7 +64,7 @@ interface ButtonProps {
   /**
    * The color variant of the button
    */
-  variant?: 'primary' | 'success' | 'danger' | 'light' | 'dark' | 'white' | 'dark';
+  variant?: 'primary' | 'success' | 'danger' | 'light' | 'dark';
 }
 
 const Button: FC<ButtonProps> = ({
