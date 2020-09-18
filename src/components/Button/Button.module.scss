@@ -46,6 +46,7 @@
 
       &:disabled {
         border-color: var(--button-border-color-disabled-outline);
+        color: var(--button-font-color-primary-disabled-outline);
       }
     }
   }
@@ -75,6 +76,7 @@
 
       &:disabled {
         border-color: var(--button-border-color-disabled-outline);
+        color: var(--button-font-color-success-disabled-outline);
       }
     }
   }
@@ -104,6 +106,7 @@
 
       &:disabled {
         border-color: var(--button-border-color-disabled-outline);
+        color: var(--button-font-color-danger-disabled-outline);
       }
     }
   }
@@ -133,6 +136,7 @@
 
       &:disabled {
         border-color: var(--button-border-color-disabled-outline);
+        color: var(--button-font-color-dark-disabled-outline);
       }
     }
   }

@@ -29,7 +29,7 @@ Actions almost always occur on the same page.
 The `variant` prop determines which color variant to render.
 
 <Canvas>
-  <Story name="Colors">
+  <Story name="Variants">
     <Box childGap="sm" direction="row">
       <Button variant="primary">
         Primary
@@ -223,18 +223,27 @@ The interface should make it clear why the button is disabled and what needs to 
 
 <Canvas>
   <Story name="Disabled">
-    <>
-    <div style={{ marginBottom: '1rem' }}>
-      <Button isDisabled>
-        Disabled Button
-      </Button>
-    </div>
-    <div style={{ marginBottom: '1rem' }}>
-      <Button fullWidth isDisabled>
-        Disabled Full Width Button
-      </Button>
-    </div>
-    </>
+    <Box childGap="md">
+      <Box childGap="sm" direction="row">
+        <Button isDisabled variant="primary">Primary</Button>
+        <Button isDisabled variant="success">Success</Button>
+        <Button isDisabled variant="danger">Danger</Button>
+        <Button isDisabled variant="light">Light</Button>
+        <Button isDisabled variant="dark">Dark</Button>
+      </Box>
+      <Box childGap="sm" direction="row">
+        <Button isDisabled variant="primary" isOutlined>Primary</Button>
+        <Button isDisabled variant="success" isOutlined>Success</Button>
+        <Button isDisabled variant="danger" isOutlined>Danger</Button>
+        <Button isDisabled variant="light" isOutlined>Light</Button>
+        <Button isDisabled variant="dark" isOutlined>Dark</Button>
+      </Box>
+      <div style={{ marginBottom: '1rem' }}>
+        <Button fullWidth isDisabled>
+          Disabled Full Width Button
+        </Button>
+      </div>
+    </Box>
   </Story>
 </Canvas>
 
