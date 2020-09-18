@@ -2,18 +2,66 @@ import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 import colors from '@palmetto/palmetto-design-tokens/build/js/variables-color';
 
 export type PALMETTO_COLORS =
+  'primary-lightest' |
+  'primary-lighter' |
+  'primary-light' |
   'primary' |
+  'primary-dark' |
+  'primary-darker' |
+  'primary-darkest' |
+  'secondary-lightest' |
+  'secondary-lighter' |
+  'secondary-light' |
   'secondary' |
+  'secondary-dark' |
+  'secondary-darker' |
+  'secondary-darkest' |
+  'tertiary-lightest' |
+  'tertiary-lighter' |
+  'tertiary-light' |
   'tertiary' |
+  'tertiary-dark' |
+  'tertiary-darker' |
+  'tertiary-darkest' |
+  'grey-lightest' |
+  'grey-lighter' |
+  'grey-light' |
   'grey' |
+  'grey-dark' |
+  'grey-darker' |
+  'grey-darkest' |
+  'success-lightest' |
+  'success-lighter' |
+  'success-light' |
   'success' |
+  'success-dark' |
+  'success-darker' |
+  'success-darkest' |
+  'warning-lightest' |
+  'warning-lighter' |
+  'warning-light' |
   'warning' |
+  'warning-dark' |
+  'warning-darker' |
+  'warning-darkest' |
+  'danger-lightest' |
+  'danger-lighter' |
+  'danger-light' |
   'danger' |
+  'danger-dark' |
+  'danger-darker' |
+  'danger-darkest' |
+  'info-lightest' |
+  'info-lighter' |
+  'info-light' |
   'info' |
+  'info-dark' |
+  'info-darker' |
+  'info-darkest' |
   'dark' |
   'light' |
-  'white' |
-  'black';
+  'black' |
+  'white';
 
 export type PALMETTO_FONT_SIZES =
   'xs' |
@@ -44,6 +92,20 @@ export type PALMETTO_FONT_COLORS =
   'grey-darker' |
   'grey-darkest';
 
+export type PALMETTO_SPACING =
+  '2xs' |
+  'xs' |
+  'sm' |
+  'md' |
+  'lg' |
+  'xl' |
+  '2xl' |
+  '3xl' |
+  '4xl' |
+  '5xl' |
+  'base' |
+  'inherit';
+
 export interface ColorDictionary {
   [name: string]: ColorEntry;
 }
@@ -73,6 +135,9 @@ export const PALMETTO_FONT_COLOR_OPTIONS = Object.keys(colors.color.font) as PAL
 
 export const PALMETTO_BRAND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
 export const PALMETTO_BRAND_COLOR_VALUES = colors.color.brand;
+export const PALMETTO_BACKGROUND_COLOR_OPTIONS = Object.keys(colors.color.brand) as PALMETTO_COLORS[];
+export const PALMETTO_BORDER_COLOR_OPTIONS = Object.keys(colors.color.brand);
+export const PALMETTO_SPACING_SIZE_OPTIONS = Object.keys(sizes.size.spacing) as PALMETTO_SPACING[];
 
 export const PALMETTO_SPACING_OPTIONS = Object.keys(sizes.size.spacing);
 export const PALMETTO_SPACING_VALUES = Object.values(sizes.size.spacing);

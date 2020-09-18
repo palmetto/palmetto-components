@@ -1,0 +1,59 @@
+import { FlexStylesAndClasses, FlexProperty } from './types';
+import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
+
+const flexValues = ['initial', 'auto', 'unset', 'none', 'inherit'];
+
+function parsePropertyValue(value: string): string | number {
+  return Number.isNaN(Number(value)) ? value : Number(value);
+}
+
+function getFlexStyles(value?: string): FlexProperty | undefined {
+  if (value === undefined) return value;
+
+  const styles: FlexProperty = {};
+
+  // Single value
+  if (!value.includes(' ') && !flexValues.includes(value)) {
+    styles.flex = value;
+    return styles;
+  }
+
+  // CSS shorthand
+  if (value.includes(' ')) {
+    const flexProps = value.split(' ');
+    styles.flexGrow = parsePropertyValue(flexProps[0]);
+
+    if (flexProps.length === 2) {
+      if (doesStringIncludeCssUnit(flexProps[1])) {
+        styles.flexBasis = parsePropertyValue(flexProps[1]);
+      } else {
+        styles.flexShrink = parsePropertyValue(flexProps[1]);
+      }
+    } else if (flexProps.length === 3) {
+      styles.flexShrink = parsePropertyValue(flexProps[1]);
+      styles.flexBasis = parsePropertyValue(flexProps[2]);
+    }
+  }
+
+  return styles;
+}
+
+function getFlexClasses(value?: string): string[] | undefined {
+  if (value === undefined || value.split(' ').length > 1) return [];
+
+  const classes = [];
+  if (typeof value === 'string' && !doesStringIncludeCssUnit(value) && Number.isNaN(Number(value))) {
+    classes.push(`flex-${value}`);
+  }
+
+  return classes;
+}
+
+function getDimensionCss(value?: string): FlexStylesAndClasses {
+  return ({
+    styles: getFlexStyles(value),
+    classes: getFlexClasses(value),
+  });
+}
+
+export default getDimensionCss;
