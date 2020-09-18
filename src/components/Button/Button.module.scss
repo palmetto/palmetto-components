@@ -2,12 +2,12 @@
   position: relative;
   transition-duration: 0.2s;
   transition-property: background-color, border, box-shadow, color;
-  transition-timing-function: ease-in;
+  transition-timing-function: cubic-bezier(0.67, 0.83, 0.67);
   border: none;
   border-radius: var(--button-size-md-border-radius);
   cursor: pointer;
   padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
-  line-height: 1.25; /* hack to get the button to match TextInput's 44px height */
+  line-height: 1.25;
   letter-spacing: 0.2px;
   font-size: var(--button-size-md-font-size);
   font-weight: 700;
@@ -27,18 +27,17 @@
     }
 
     &.inverse {
-      background-color: var(--button-font-color-primary);
-      color: var(--button-background-color-primary);
+      background-color: var(--button-background-color-primary-inverse);
+      color: var(--button-font-color-primary-inverse);
 
       &:hover {
-        background-color: var(--color-brand-primary-lightest);
+        background-color: var(--button-background-hover-color-primary-inverse);
       }
     }
 
     &.outline {
-      border: 1px solid var(--button-background-color-primary);
+      border-color: var(--button-background-color-primary);
       background-color: transparent;
-      padding: calc(var(--button-size-md-padding-vertical) - 1px) calc(var(--button-size-md-padding-horizontal) - 1px);
       color: var(--button-background-color-primary);
 
       &:hover {
@@ -55,6 +54,15 @@
     &:hover {
       background-color: var(--button-background-hover-color-success);
     }
+
+    &.inverse {
+      background-color: var(--button-background-color-success-inverse);
+      color: var(--button-font-color-success-inverse);
+
+      &:hover {
+        background-color: var(--button-background-hover-color-success-inverse);
+      }
+    }
   }
 
   &.danger {
@@ -63,6 +71,15 @@
 
     &:hover {
       background-color: var(--button-background-hover-color-danger);
+    }
+
+    &.inverse {
+      background-color: var(--button-background-color-danger-inverse);
+      color: var(--button-font-color-danger-inverse);
+
+      &:hover {
+        background-color: var(--button-background-hover-color-danger-inverse);
+      }
     }
   }
 
@@ -73,6 +90,15 @@
     &:hover {
       background-color: var(--button-background-hover-color-grey);
     }
+
+    &.inverse {
+      background-color: var(--button-background-color-grey-inverse);
+      color: var(--button-font-color-grey-inverse);
+
+      &:hover {
+        background-color: var(--button-background-hover-color-grey-inverse);
+      }
+    }
   }
 
   &.dark {
@@ -81,6 +107,15 @@
 
     &:hover {
       background-color: var(--button-background-hover-color-dark);
+    }
+
+    &.inverse {
+      background-color: var(--button-background-color-dark-inverse);
+      color: var(--button-font-color-dark-inverse);
+
+      &:hover {
+        background-color: var(--button-background-hover-color-dark-inverse);
+      }
     }
   }
 
@@ -91,6 +126,15 @@
     &:hover {
       background-color: var(--button-background-hover-color-light);
     }
+
+    &.inverse {
+      background-color: var(--button-background-color-light-inverse);
+      color: var(--button-font-color-light-inverse);
+
+      &:hover {
+        background-color: var(--button-background-hover-color-light-inverse);
+      }
+    }
   }
 
   &.white {
@@ -99,6 +143,15 @@
 
     &:hover {
       background-color: var(--button-background-hover-color-white);
+    }
+
+    &.inverse {
+      background-color: var(--button-background-color-white-inverse);
+      color: var(--button-font-color-white-inverse);
+
+      &:hover {
+        background-color: var(--button-background-hover-color-white-inverse);
+      }
     }
   }
 
@@ -109,6 +162,15 @@
     &:hover {
       background-color: var(--button-background-hover-color-black);
     }
+
+    &.inverse {
+      background-color: var(--button-background-color-black-inverse);
+      color: var(--button-font-color-black-inverse);
+
+      &:hover {
+        background-color: var(--button-background-hover-color-black-inverse);
+      }
+    }
   }
 
   &.sm {
@@ -116,6 +178,23 @@
     padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
     line-height: 1.2;
     font-size: var(--button-size-sm-font-size);
+
+    &.outline {
+      border: 1px solid;
+      padding: calc(var(--button-size-sm-padding-vertical) - 1px) calc(var(--button-size-sm-padding-horizontal) - 1px);
+    }
+  }
+
+  &.md {
+    border-radius: var(--button-size-md-border-radius);
+    padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
+    line-height: 1.25;
+    font-size: var(--button-size-md-font-size);
+
+    &.outline {
+      border: 1px solid;
+      padding: calc(var(--button-size-md-padding-vertical) - 1px) calc(var(--button-size-md-padding-horizontal) - 1px);
+    }
   }
 
   &.lg {
@@ -124,6 +203,11 @@
     line-height: 1;
     letter-spacing: 1px;
     font-size: var(--button-size-lg-font-size);
+
+    &.outline {
+      border: 1px solid;
+      padding: calc(var(--button-size-lg-padding-vertical) - 1px) calc(var(--button-size-lg-padding-horizontal) - 1px);
+    }
   }
 
   &.loading {

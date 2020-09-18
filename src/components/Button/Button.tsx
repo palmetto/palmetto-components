@@ -32,7 +32,7 @@ interface ButtonProps {
   /**
    * Displays the button with inverse colors
    */
-  isInverse?: boolean;
+  isInversed?: boolean;
   /**
    * Button takes up the full width of its parent container.
    */
@@ -77,7 +77,7 @@ const Button: FC<ButtonProps> = ({
   fullWidth = false,
   id = undefined,
   isDisabled = false,
-  isInverse = false,
+  isInversed = false,
   isLoading = false,
   isOutlined = false,
   tabIndex = undefined,
@@ -93,14 +93,13 @@ const Button: FC<ButtonProps> = ({
   const buttonClasses = classNames(
     styles.button,
     styles[variant],
+    styles[size],
     className,
     {
       [styles.outline]: isOutlined,
-      [styles.inverse]: isInverse,
+      [styles.inverse]: isInversed,
       [styles.loading]: isLoading,
       [styles['full-width']]: fullWidth,
-      [styles.sm]: size === 'sm',
-      [styles.lg]: size === 'lg',
     },
   );
 

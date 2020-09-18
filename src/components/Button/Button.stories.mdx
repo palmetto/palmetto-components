@@ -1,6 +1,7 @@
-import Button from './Button';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Button from './Button';
+import Box from '../Box/Box';
 
 <Meta
   title="Components/Button"
@@ -73,62 +74,233 @@ Set the size of the button
 
 ## Color Variants
 
-You can render a button in a variety of colors based on the need.
+The `variant` prop determines which color variant to render.
 
 <Canvas>
   <Story name="Colors">
-    <>
-    <div className="m-bottom-md p-md">
-      <Button variant="primary">
+    <Box childGap="sm" className="m-bottom-md" direction="row">
+      <Button variant="primary" className="m-right-sm">
         Primary
       </Button>
-    </div>
-    <div className="m-bottom-md p-md background-color-primary">
-      <Button variant="primary" isInverse>
-        Primary Inverse
-      </Button>
-    </div>
-    <div className="m-bottom-md p-md background-color-primary-lightest">
-      <Button variant="primary" isOutlined>
-        Primary Outline
-      </Button>
-    </div>
-    <div style={{ marginBottom: '1rem'}}>
       <Button variant="success">
         Success
       </Button>
-    </div>
-    <div style={{ marginBottom: '1rem'}}>
       <Button variant="danger">
         Danger
       </Button>
-    </div>
-    <div style={{ marginBottom: '1rem'}}>
       <Button variant="grey">
         Grey
       </Button>
-    </div>
-    <div style={{ marginBottom: '1rem'}}>
       <Button variant="light">
         Light
       </Button>
-    </div>
-    <div style={{ marginBottom: '1rem'}}>
       <Button variant="dark">
         Dark
       </Button>
-    </div>
-    <div style={{ marginBottom: '1rem'}}>
       <Button variant="white">
         White
       </Button>
-    </div>
-    <div style={{ marginBottom: '1rem'}}>
       <Button variant="black">
         Black
       </Button>
+    </Box>
+  </Story>
+</Canvas>
+
+## Inverse Buttons
+
+Render an inverse button with the `isInversed` prop. This is helpful for rendering a button of a particular color style,
+on top of a background that doesn't produce enough contrast, E.G: a primary button on a dark background or on the same background
+as the button color.
+
+<Canvas>
+  <Story name="Inverse">
+    <div className="m-bottom-md p-sm background-color-primary">
+      <Button variant="primary" isInversed size="lg" className="m-right-sm">
+        Primary Inverse Large
+      </Button>
+      <Button variant="primary" isInversed className="m-right-sm">
+        Primary Inverse Medium
+      </Button>
+      <Button variant="primary" isInversed size="sm">
+        Primary Inverse Small
+      </Button>
     </div>
-    </>
+    <div className="m-bottom-md p-sm background-color-success">
+      <Button variant="success" isInversed size="lg" className="m-right-sm">
+        Success Inverse Large
+      </Button>
+      <Button variant="success" isInversed className="m-right-sm">
+        Success Inverse Medium
+      </Button>
+      <Button variant="success" isInversed size="sm">
+        Success Inverse Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-danger">
+      <Button variant="danger" isInversed size="lg" className="m-right-sm">
+        Danger Inverse Large
+      </Button>
+      <Button variant="danger" isInversed className="m-right-sm">
+        Danger Inverse Medium
+      </Button>
+      <Button variant="danger" isInversed size="sm">
+        Danger Inverse Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-grey">
+      <Button variant="grey" isInversed size="lg" className="m-right-sm">
+        Grey Inverse Large
+      </Button>
+      <Button variant="grey" isInversed className="m-right-sm">
+        Grey Inverse Medium
+      </Button>
+      <Button variant="grey" isInversed size="sm">
+        Grey Inverse Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-light">
+      <Button variant="light" isInversed size="lg" className="m-right-sm">
+        Light Inverse Large
+      </Button>
+      <Button variant="light" isInversed className="m-right-sm">
+        Light Inverse Medium
+      </Button>
+      <Button variant="light" isInversed size="sm">
+        Light Inverse Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-dark">
+      <Button variant="dark" isInversed size="lg" className="m-right-sm">
+        Dark Inverse Large
+      </Button>
+      <Button variant="dark" isInversed className="m-right-sm">
+        Dark Inverse Medium
+      </Button>
+      <Button variant="dark" isInversed size="sm">
+        Dark Inverse Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-white">
+      <Button variant="white" isInversed size="lg" className="m-right-sm">
+        White Inverse Large
+      </Button>
+      <Button variant="white" isInversed className="m-right-sm">
+        White Inverse Medium
+      </Button>
+      <Button variant="white" isInversed size="sm">
+        White Inverse Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-black">
+      <Button variant="black" isInversed size="lg" className="m-right-sm">
+        Black Inverse Large
+      </Button>
+      <Button variant="black" isInversed className="m-right-sm">
+        Black Inverse Medium
+      </Button>
+      <Button variant="black" isInversed size="sm">
+        Black Inverse Small
+      </Button>
+    </div>
+  </Story>
+</Canvas>
+
+## Outlined Buttons
+
+Use `isOutlined` to render an outline button. This is helpful for adding a secondary CTA in an application which matches
+the color of the primary CTA but makes the hierarchy clear.
+
+<Canvas>
+  <Story name="Outlined">
+    <div className="m-bottom-md p-sm background-color-light">
+      <Button variant="primary" isOutlined size="lg" className="m-right-sm">
+        Primary Outline Large
+      </Button>
+      <Button variant="primary" isOutlined className="m-right-sm">
+        Primary Outline Medium
+      </Button>
+      <Button variant="primary" isOutlined size="sm">
+        Primary Outline Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-light">
+      <Button variant="success" isOutlined size="lg" className="m-right-sm">
+        Success Outline Large
+      </Button>
+      <Button variant="success" isOutlined className="m-right-sm">
+        Success Outline Medium
+      </Button>
+      <Button variant="success" isOutlined size="sm">
+        Success Outline Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-danger">
+      <Button variant="danger" isOutlined size="lg" className="m-right-sm">
+        Danger Outline Large
+      </Button>
+      <Button variant="danger" isOutlined className="m-right-sm">
+        Danger Outline Medium
+      </Button>
+      <Button variant="danger" isOutlined size="sm">
+        Danger Outline Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-grey">
+      <Button variant="grey" isOutlined size="lg" className="m-right-sm">
+        Grey Outline Large
+      </Button>
+      <Button variant="grey" isOutlined className="m-right-sm">
+        Grey Outline Medium
+      </Button>
+      <Button variant="grey" isOutlined size="sm">
+        Grey Outline Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-light">
+      <Button variant="light" isOutlined size="lg" className="m-right-sm">
+        Light Outline Large
+      </Button>
+      <Button variant="light" isOutlined className="m-right-sm">
+        Light Outline Medium
+      </Button>
+      <Button variant="light" isOutlined size="sm">
+        Light Outline Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-dark">
+      <Button variant="dark" isOutlined size="lg" className="m-right-sm">
+        Dark Outline Large
+      </Button>
+      <Button variant="dark" isOutlined className="m-right-sm">
+        Dark Outline Medium
+      </Button>
+      <Button variant="dark" isOutlined size="sm">
+        Dark Outline Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-white">
+      <Button variant="white" isOutlined size="lg" className="m-right-sm">
+        White Outline Large
+      </Button>
+      <Button variant="white" isOutlined className="m-right-sm">
+        White Outline Medium
+      </Button>
+      <Button variant="white" isOutlined size="sm">
+        White Outline Small
+      </Button>
+    </div>
+    <div className="m-bottom-md p-sm background-color-black">
+      <Button variant="black" isOutlined size="lg" className="m-right-sm">
+        Black Outline Large
+      </Button>
+      <Button variant="black" isOutlined className="m-right-sm">
+        Black Outline Medium
+      </Button>
+      <Button variant="black" isOutlined size="sm">
+        Black Outline Small
+      </Button>
+    </div>
   </Story>
 </Canvas>
 
