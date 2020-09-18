@@ -24,25 +24,56 @@ Actions almost always occur on the same page.
 
 <ArgsTable of={Button} />
 
-## Appearance
+## Color Variants
+
+The `variant` prop determines which color variant to render.
 
 <Canvas>
-  <Story name="Button">
-     <Button>
-      Button
-    </Button>
+  <Story name="Colors">
+    <Box childGap="sm" direction="row">
+      <Button variant="primary">
+        Primary
+      </Button>
+      <Button variant="success">
+        Success
+      </Button>
+      <Button variant="danger">
+        Danger
+      </Button>
+      <Button variant="light">
+        Light
+      </Button>
+      <Button variant="dark">
+        Dark
+      </Button>
+    </Box>
   </Story>
 </Canvas>
 
-## Full Width
+## Outlined
 
-Use the `fullWidth` prop to allow the button to grow to its container's full width.
+Use `isOutlined` to render an outline button. This is helpful for adding a secondary CTA in an application which matches
+the color of the primary CTA but makes the hierarchy clear. The background is transparent in the default state.
 
 <Canvas>
-  <Story name="Full Width">
-    <Button fullWidth>
-      Full Width
-    </Button>
+  <Story name="Outlined">
+    <Box childGap="sm" direction="row">
+      <Button variant="primary" isOutlined>
+        Primary
+      </Button>
+      <Button variant="success" isOutlined>
+        Success
+      </Button>
+      <Button variant="danger" isOutlined>
+        Danger
+      </Button>
+      <Button variant="light" isOutlined>
+        Light
+      </Button>
+      <Button variant="dark" isOutlined>
+        Dark
+      </Button>
+    </Box>
   </Story>
 </Canvas>
 
@@ -72,94 +103,15 @@ Set the size of the button
   </Story>
 </Canvas>
 
-## Color Variants
+## Full Width
 
-The `variant` prop determines which color variant to render.
-
-<Canvas>
-  <Story name="Variants">
-    <Box childGap="sm" className="m-bottom-md" direction="row">
-      <Button variant="primary" className="m-right-sm">
-        Primary
-      </Button>
-      <Button variant="success">
-        Success
-      </Button>
-      <Button variant="danger">
-        Danger
-      </Button>
-      <Button variant="light">
-        Light
-      </Button>
-      <Button variant="dark">
-        Dark
-      </Button>
-    </Box>
-  </Story>
-</Canvas>
-
-## Outlined Buttons
-
-Use `isOutlined` to render an outline button. This is helpful for adding a secondary CTA in an application which matches
-the color of the primary CTA but makes the hierarchy clear.
+Use the `fullWidth` prop to allow the button to grow to its container's full width.
 
 <Canvas>
-  <Story name="Outlined">
-    <div className="m-bottom-md p-sm background-color-light">
-      <Button variant="primary" isOutlined size="lg" className="m-right-sm">
-        Primary Outline Large
-      </Button>
-      <Button variant="primary" isOutlined className="m-right-sm">
-        Primary Outline Medium
-      </Button>
-      <Button variant="primary" isOutlined size="sm">
-        Primary Outline Small
-      </Button>
-    </div>
-    <div className="m-bottom-md p-sm background-color-light">
-      <Button variant="success" isOutlined size="lg" className="m-right-sm">
-        Success Outline Large
-      </Button>
-      <Button variant="success" isOutlined className="m-right-sm">
-        Success Outline Medium
-      </Button>
-      <Button variant="success" isOutlined size="sm">
-        Success Outline Small
-      </Button>
-    </div>
-    <div className="m-bottom-md p-sm background-color-light">
-      <Button variant="danger" isOutlined size="lg" className="m-right-sm">
-        Danger Outline Large
-      </Button>
-      <Button variant="danger" isOutlined className="m-right-sm">
-        Danger Outline Medium
-      </Button>
-      <Button variant="danger" isOutlined size="sm">
-        Danger Outline Small
-      </Button>
-    </div>
-    <div className="m-bottom-md p-sm background-color-dark">
-      <Button variant="light" isOutlined size="lg" className="m-right-sm">
-        Light Outline Large
-      </Button>
-      <Button variant="light" isOutlined className="m-right-sm">
-        Light Outline Medium
-      </Button>
-      <Button variant="light" isOutlined size="sm">
-        Light Outline Small
-      </Button>
-    </div>
-    <div className="m-bottom-md p-sm background-color-light">
-      <Button variant="dark" isOutlined size="lg" className="m-right-sm">
-        Dark Outline Large
-      </Button>
-      <Button variant="dark" isOutlined className="m-right-sm">
-        Dark Outline Medium
-      </Button>
-      <Button variant="dark" isOutlined size="sm">
-        Dark Outline Small
-      </Button>
-    </div>
+  <Story name="Full Width">
+    <Button fullWidth>
+      Full Width
+    </Button>
   </Story>
 </Canvas>
 
