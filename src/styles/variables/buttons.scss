@@ -19,11 +19,15 @@
   --button-size-lg-padding-vertical: var(--size-spacing-md);
   --button-size-lg-padding-horizontal: var(--size-spacing-lg);
 
-  /* colors */
+
+  /* DISABLED */
+  --button-border-color-disabled-outline: var(--color-brand-grey-light);
+
   /* PRIMARY */
   --button-background-color-primary: var(--color-brand-primary-base);
   --button-font-color-primary: var(--color-brand-white-base);
   --button-background-hover-color-primary: var(--color-brand-primary-dark);
+  --button-color-background-disabled-primary: var(--color-brand-primary-light);
 
   --button-border-color-primary-outline: var(--color-brand-primary-base);
   --button-background-color-primary-outline: transparent;
@@ -31,11 +35,13 @@
   --button-border-hover-color-primary-outline: var(--color-brand-primary-base);
   --button-background-hover-color-primary-outline: var(--color-brand-primary-base);
   --button-font-hover-color-primary-outline: var(--color-brand-white-base);
+  --button-color-background-disabled-primary-disabled: var(--color-brand-primary-light);
 
   /* SUCCESS */
   --button-background-color-success: var(--color-brand-success-base);
   --button-font-color-success: var(--color-brand-white-base);
   --button-background-hover-color-success: var(--color-brand-success-dark);
+  --button-color-background-disabled-success: var(--color-brand-success-light);
 
   --button-border-color-success-outline: var(--color-brand-success-base);
   --button-background-color-success-outline: transparent;
@@ -48,6 +54,7 @@
   --button-background-color-danger: var(--color-brand-danger-base);
   --button-font-color-danger: var(--color-brand-white-base);
   --button-background-hover-color-danger: var(--color-brand-danger-dark);
+  --button-color-background-disabled-danger: var(--color-brand-danger-light);
 
   --button-border-color-danger-outline: var(--color-brand-danger-base);
   --button-background-color-danger-outline: transparent;
@@ -60,6 +67,7 @@
   --button-background-color-light: var(--color-brand-light-base);
   --button-font-color-light: var(--color-brand-dark-base);
   --button-background-hover-color-light: var(--color-brand-grey-light);
+  --button-color-background-disabled-light: var(--color-brand-grey-lightest);
 
   --button-border-color-light-outline: var(--color-brand-light-base);
   --button-background-color-light-outline: transparent;
@@ -72,6 +80,7 @@
   --button-background-color-dark: var(--color-brand-dark-base);
   --button-font-color-dark: var(--color-brand-white-base);
   --button-background-hover-color-dark: var(--color-brand-black-base);
+  --button-color-background-disabled-dark: var(--color-brand-grey-light);
 
   --button-border-color-dark-outline: var(--color-brand-dark-base);
   --button-background-color-dark-outline: transparent;

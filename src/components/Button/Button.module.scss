@@ -13,7 +13,6 @@
   font-weight: 700;
 
   &:disabled {
-    background-color: var(--button-color-background-disabled);
     cursor: not-allowed;
     pointer-events: none;
   }
@@ -30,6 +29,10 @@
       background-color: var(--button-background-hover-color-primary);
     }
 
+    &:disabled {
+      background-color: var(--button-color-background-disabled-primary);
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-primary-outline);
       background-color: transparent;
@@ -39,6 +42,10 @@
         border-color: var(--button-border-hover-color-primary-outline);
         background-color: var(--button-background-hover-color-primary-outline);
         color: var(--button-font-hover-color-primary-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
       }
     }
   }
@@ -51,6 +58,10 @@
       background-color: var(--button-background-hover-color-success);
     }
 
+    &:disabled {
+      background-color: var(--button-color-background-disabled-success);
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-success-outline);
       background-color: transparent;
@@ -60,6 +71,10 @@
         border-color: var(--button-border-hover-color-success-outline);
         background-color: var(--button-background-hover-color-success-outline);
         color: var(--button-font-hover-color-success-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
       }
     }
   }
@@ -72,6 +87,10 @@
       background-color: var(--button-background-hover-color-danger);
     }
 
+    &:disabled {
+      background-color: var(--button-color-background-disabled-danger);
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-danger-outline);
       background-color: transparent;
@@ -81,6 +100,10 @@
         border-color: var(--button-border-hover-color-danger-outline);
         background-color: var(--button-background-hover-color-danger-outline);
         color: var(--button-font-hover-color-danger-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
       }
     }
   }
@@ -93,6 +116,10 @@
       background-color: var(--button-background-hover-color-dark);
     }
 
+    &:disabled {
+      background-color: var(--button-color-background-disabled-dark);
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-dark-outline);
       background-color: transparent;
@@ -102,6 +129,10 @@
         border-color: var(--button-border-hover-color-dark-outline);
         background-color: var(--button-background-hover-color-dark-outline);
         color: var(--button-font-hover-color-dark-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
       }
     }
   }
@@ -114,6 +145,10 @@
       background-color: var(--button-background-hover-color-light);
     }
 
+    &:disabled {
+      background-color: var(--button-color-background-disabled-light);
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-light-outline);
       background-color: transparent;
@@ -123,6 +158,10 @@
         border-color: var(--button-border-hover-color-light-outline);
         background-color: var(--button-background-hover-color-light-outline);
         color: var(--button-font-hover-color-light-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
       }
     }
   }

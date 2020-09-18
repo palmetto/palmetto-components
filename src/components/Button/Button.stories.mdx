@@ -171,11 +171,23 @@ The width of the button will remain consistent to prevent content from shifting.
 <Canvas>
   <Story name="Loading">
     <>
-      <div style={{ marginBottom: '1rem' }}>
-        <Button isLoading>
+      <Box childGap="sm" direction="row" className="m-bottom-md">
+        <Button isLoading isOutlined>
           Log  In
         </Button>
-      </div>
+        <Button isLoading variant="success">
+          Log  In
+        </Button>
+        <Button isLoading variant="danger">
+          Log  In
+        </Button>
+        <Button isLoading variant="light">
+          Log  In
+        </Button>
+        <Button isLoading variant="dark">
+          Log  In
+        </Button>
+      </Box>
       <div style={{ marginBottom: '1rem' }}>
         <Button isLoading>
           Button with a really long name. Width will not decrease when loading indicator is rendered.
