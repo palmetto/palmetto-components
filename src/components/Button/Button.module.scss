@@ -18,6 +18,10 @@
     pointer-events: none;
   }
 
+  &.outline {
+    border: 1px solid;
+  }
+
   &.primary {
     background-color: var(--button-background-color-primary);
     color: var(--button-font-color-primary);
@@ -26,23 +30,15 @@
       background-color: var(--button-background-hover-color-primary);
     }
 
-    &.inverse {
-      background-color: var(--button-background-color-primary-inverse);
-      color: var(--button-font-color-primary-inverse);
-
-      &:hover {
-        background-color: var(--button-background-hover-color-primary-inverse);
-      }
-    }
-
     &.outline {
-      border-color: var(--button-background-color-primary);
+      border-color: var(--button-border-hover-color-primary-outline);
       background-color: transparent;
-      color: var(--button-background-color-primary);
+      color: var(--button-font-color-primary-outline);
 
       &:hover {
-        background-color: var(--button-background-color-primary);
-        color: var(--button-font-color-primary);
+        border-color: var(--button-border-hover-color-primary-outline);
+        background-color: var(--button-background-hover-color-primary-outline);
+        color: var(--button-font-hover-color-primary-outline);
       }
     }
   }
@@ -55,12 +51,15 @@
       background-color: var(--button-background-hover-color-success);
     }
 
-    &.inverse {
-      background-color: var(--button-background-color-success-inverse);
-      color: var(--button-font-color-success-inverse);
+    &.outline {
+      border-color: var(--button-border-hover-color-success-outline);
+      background-color: transparent;
+      color: var(--button-font-color-success-outline);
 
       &:hover {
-        background-color: var(--button-background-hover-color-success-inverse);
+        border-color: var(--button-border-hover-color-success-outline);
+        background-color: var(--button-background-hover-color-success-outline);
+        color: var(--button-font-hover-color-success-outline);
       }
     }
   }
@@ -73,30 +72,15 @@
       background-color: var(--button-background-hover-color-danger);
     }
 
-    &.inverse {
-      background-color: var(--button-background-color-danger-inverse);
-      color: var(--button-font-color-danger-inverse);
+    &.outline {
+      border-color: var(--button-border-hover-color-danger-outline);
+      background-color: transparent;
+      color: var(--button-font-color-danger-outline);
 
       &:hover {
-        background-color: var(--button-background-hover-color-danger-inverse);
-      }
-    }
-  }
-
-  &.grey {
-    background-color: var(--button-background-color-grey);
-    color: var(--button-font-color-grey);
-
-    &:hover {
-      background-color: var(--button-background-hover-color-grey);
-    }
-
-    &.inverse {
-      background-color: var(--button-background-color-grey-inverse);
-      color: var(--button-font-color-grey-inverse);
-
-      &:hover {
-        background-color: var(--button-background-hover-color-grey-inverse);
+        border-color: var(--button-border-hover-color-danger-outline);
+        background-color: var(--button-background-hover-color-danger-outline);
+        color: var(--button-font-hover-color-danger-outline);
       }
     }
   }
@@ -109,12 +93,15 @@
       background-color: var(--button-background-hover-color-dark);
     }
 
-    &.inverse {
-      background-color: var(--button-background-color-dark-inverse);
-      color: var(--button-font-color-dark-inverse);
+    &.outline {
+      border-color: var(--button-border-hover-color-dark-outline);
+      background-color: transparent;
+      color: var(--button-font-color-dark-outline);
 
       &:hover {
-        background-color: var(--button-background-hover-color-dark-inverse);
+        border-color: var(--button-border-hover-color-dark-outline);
+        background-color: var(--button-background-hover-color-dark-outline);
+        color: var(--button-font-hover-color-dark-outline);
       }
     }
   }
@@ -127,48 +114,15 @@
       background-color: var(--button-background-hover-color-light);
     }
 
-    &.inverse {
-      background-color: var(--button-background-color-light-inverse);
-      color: var(--button-font-color-light-inverse);
+    &.outline {
+      border-color: var(--button-border-hover-color-light-outline);
+      background-color: transparent;
+      color: var(--button-font-color-light-outline);
 
       &:hover {
-        background-color: var(--button-background-hover-color-light-inverse);
-      }
-    }
-  }
-
-  &.white {
-    background-color: var(--button-background-color-white);
-    color: var(--button-font-color-white);
-
-    &:hover {
-      background-color: var(--button-background-hover-color-white);
-    }
-
-    &.inverse {
-      background-color: var(--button-background-color-white-inverse);
-      color: var(--button-font-color-white-inverse);
-
-      &:hover {
-        background-color: var(--button-background-hover-color-white-inverse);
-      }
-    }
-  }
-
-  &.black {
-    background-color: var(--button-background-color-black);
-    color: var(--button-font-color-black);
-
-    &:hover {
-      background-color: var(--button-background-hover-color-black);
-    }
-
-    &.inverse {
-      background-color: var(--button-background-color-black-inverse);
-      color: var(--button-font-color-black-inverse);
-
-      &:hover {
-        background-color: var(--button-background-hover-color-black-inverse);
+        border-color: var(--button-border-hover-color-light-outline);
+        background-color: var(--button-background-hover-color-light-outline);
+        color: var(--button-font-hover-color-light-outline);
       }
     }
   }
@@ -180,7 +134,6 @@
     font-size: var(--button-size-sm-font-size);
 
     &.outline {
-      border: 1px solid;
       padding: calc(var(--button-size-sm-padding-vertical) - 1px) calc(var(--button-size-sm-padding-horizontal) - 1px);
     }
   }
@@ -192,7 +145,6 @@
     font-size: var(--button-size-md-font-size);
 
     &.outline {
-      border: 1px solid;
       padding: calc(var(--button-size-md-padding-vertical) - 1px) calc(var(--button-size-md-padding-horizontal) - 1px);
     }
   }
@@ -205,7 +157,6 @@
     font-size: var(--button-size-lg-font-size);
 
     &.outline {
-      border: 1px solid;
       padding: calc(var(--button-size-lg-padding-vertical) - 1px) calc(var(--button-size-lg-padding-horizontal) - 1px);
     }
   }
