@@ -80,7 +80,7 @@ After cloning the repo, run:
 ## Developing Locally
 [↥ back to top](#top)
 
-In general, we follow [github flow](https://guides.github.com/introduction/flow/) for development. Create a branch off of the `master` branch and push your commits there.
+In general, we follow [github flow](https://guides.github.com/introduction/flow/) for development. Create a branch off of the `main` branch and push your commits there.
 
 ### Available Scripts
 
@@ -178,7 +178,7 @@ We aim to strongly encourage the development of accessible components. With that
 * Components that wrap HTML elements must reflect this by including the necessary aria attributes.
 
 In order to support the development of accessible components, this repo includes the following tools:
-* The [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) plugin lints our JS/JSX. Any linting errors will be caught by CI, and a merge to ``master`` will be prevented until the issues are resolved.
+* The [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) plugin lints our JS/JSX. Any linting errors will be caught by CI, and a merge to ``main`` will be prevented until the issues are resolved.
 * The [@storybook/addon-a11y](https://www.npmjs.com/package/@storybook/addon-a11y) has been added to Storybook. Our Storybook docs fully support the developer experience by providing helpful accessibility checks for any component rendered in the canvas.
 
 For more information on web accessibility, visit: [W3C - Web Accessibility Initiative](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
@@ -373,8 +373,8 @@ In order to ensure that a new component gets included in the library, it must be
 ## Submitting a Pull Request
 [↥ back to top](#top)
 
-* The ``master`` branch is the main branch, **and the one that you will open your PRs against**.
-* Merging a PR to ``master`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
+* The ``main`` branch is the main branch, **and the one that you will open your PRs against**.
+* Merging a PR to ``main`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
 * Include **screenshots** or animated GIFs in your pull request whenever needed (if changes are visual in nature).
 * It's OK, and even encouraged, to make multiple small commits as you work on a feature branch (commit early, and commit often) - we have configured GitHub to automatically squash commits before merging.
 * **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and testing on your end. In general, respect [.gitignore](/.gitignore).
@@ -387,9 +387,9 @@ In order to ensure that a new component gets included in the library, it must be
 ## Releases
 [↥ back to top](#top)
 
-Palmetto Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in `package.json`, and creating a new release tag in GitHub for each release, they are automatically triggered by prefixing the commit message when merging to `master`. Upon triggering a release, the package version is bumped depending on the type specified, a release tag is created in GitHub, and the new version is automatically published to [npm](https://www.npmjs.com/).
+Palmetto Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in `package.json`, and creating a new release tag in GitHub for each release, they are automatically triggered by prefixing the commit message when merging to `main`. Upon triggering a release, the package version is bumped depending on the type specified, a release tag is created in GitHub, and the new version is automatically published to [npm](https://www.npmjs.com/).
 
-For e.g., opening a PR to master with the commit message `fix: Resolve bug`, will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`. Opening a PR with `feat(Table): Finalize tests` will trigger a feature release and bump the package's version from `0.0.0` to `0.1.0`.
+For e.g., opening a PR to main with the commit message `fix: Resolve bug`, will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`. Opening a PR with `feat(Table): Finalize tests` will trigger a feature release and bump the package's version from `0.0.0` to `0.1.0`.
 
 The link above provides full documentation for this workflow. However, a comprehensive list of the prefix types, and their intended uses are provide below for quick reference:
 
