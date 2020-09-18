@@ -23,11 +23,11 @@ interface BoxProps {
   /**
    * The element type to be rendered.
    */
-  as: string;
+  as?: string;
   /**
    * How to align the contents along the cross axis.
    */
-  align:
+  align?:
   'start'
   | 'end'
   | 'center'
@@ -37,7 +37,7 @@ interface BoxProps {
    * How to align the contents when there is extra space in the cross axis.
    * This property has no effect when there is only one line of flex items.
    */
-  alignContent:
+  alignContent?:
   'start'
   | 'end'
   | 'center'
@@ -48,7 +48,7 @@ interface BoxProps {
    * How to align along the cross axis when contained in a Box.
    * This allows the default alignment (or the one specified by `align`) to be overridden for the individual Box.
    */
-  alignSelf:
+  alignSelf?:
   'start'
   | 'end'
   | 'center'
@@ -108,7 +108,7 @@ interface BoxProps {
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
-  justify:
+  justify?:
   'around'
   | 'between'
   | 'center'
