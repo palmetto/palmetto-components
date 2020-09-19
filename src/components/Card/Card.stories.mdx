@@ -1,0 +1,71 @@
+import { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Box from '../Box/Box';
+import Button from '../Button/Button';
+import Table from '../Table/Table';
+import Card, { CardContent, CardHeader, CardFooter } from './Card';
+
+<Meta
+  title="Components/Card"
+  component={Card}
+/>
+
+# Card
+
+A card is a styled container to group related information and actions together.
+
+<Canvas>
+  <Box background="grey-lightest" padding="2xl">
+    <Card overflow="hidden">
+      <CardHeader padding="md lg" title="Card Demo">
+        <Box as="p" color="grey" fontSize="sm">subtitle</Box>
+      </CardHeader>
+      <CardContent style={{ borderTop: '1px solid #d5dcd7' }}>
+        <Box overflow="hidden" height="130px">
+          <img src="https://images.unsplash.com/photo-1573341830496-e89fcae7f5eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2468&q=80" />
+        </Box>
+        <Box direction="row" childGap="lg" padding="lg">
+          <Box flex="auto" childGap="lg">
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Full Name</Box>
+              <Box>Jessica Ramirez</Box>
+            </Box>
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Email</Box>
+              <Box>jw1416@palmetto.com</Box>
+            </Box>
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Phone</Box>
+              <Box>(123) 555-5555</Box>
+            </Box>
+          </Box>
+          <Box flex="auto" childGap="lg">
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Preferred Language</Box>
+              <Box>English</Box>
+            </Box>
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Country</Box>
+              <Box>United States</Box>
+            </Box>
+          </Box>
+        </Box>
+      </CardContent>
+      <CardFooter background="grey-lightest" padding="md lg" justify="between" direction="row">
+        <Box direction="row" childGap="sm">
+          <Button size="sm" variant="light">Edit</Button>
+          <Button size="sm" variant="light">Remove</Button>
+        </Box>
+        <Button variant="danger" isOutlined size="sm">Delete</Button>
+      </CardFooter>
+    </Card>
+  </Box>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Card} />
+
+
