@@ -1,27 +1,173 @@
 .button {
   position: relative;
   transition-duration: 0.2s;
-  transition-property: background-color, border, box-shadow;
-  transition-timing-function: ease-in;
+  transition-property: background-color, border, box-shadow, color;
+  transition-timing-function: cubic-bezier(0.67, 0.83, 0.67);
   border: none;
   border-radius: var(--button-size-md-border-radius);
-  background-color: var(--button-color-background);
   cursor: pointer;
   padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
-  line-height: 1.25; /* hack to get the button to match TextInput's 44px height */
+  line-height: 1.25;
   letter-spacing: 0.2px;
-  color: var(--button-color);
   font-size: var(--button-size-md-font-size);
   font-weight: 700;
 
-  &:hover {
-    background-color: var(--button-color-background-hover);
-  }
-
   &:disabled {
-    background-color: var(--button-color-background-disabled);
     cursor: not-allowed;
     pointer-events: none;
+  }
+
+  &.outline {
+    border: 1px solid;
+  }
+
+  &.primary {
+    background-color: var(--button-background-color-primary);
+    color: var(--button-font-color-primary);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-primary);
+    }
+
+    &:disabled {
+      background-color: var(--button-color-background-disabled-primary);
+    }
+
+    &.outline {
+      border-color: var(--button-border-hover-color-primary-outline);
+      background-color: transparent;
+      color: var(--button-font-color-primary-outline);
+
+      &:hover {
+        border-color: var(--button-border-hover-color-primary-outline);
+        background-color: var(--button-background-hover-color-primary-outline);
+        color: var(--button-font-hover-color-primary-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
+        color: var(--button-font-color-primary-disabled-outline);
+      }
+    }
+  }
+
+  &.success {
+    background-color: var(--button-background-color-success);
+    color: var(--button-font-color-success);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-success);
+    }
+
+    &:disabled {
+      background-color: var(--button-color-background-disabled-success);
+    }
+
+    &.outline {
+      border-color: var(--button-border-hover-color-success-outline);
+      background-color: transparent;
+      color: var(--button-font-color-success-outline);
+
+      &:hover {
+        border-color: var(--button-border-hover-color-success-outline);
+        background-color: var(--button-background-hover-color-success-outline);
+        color: var(--button-font-hover-color-success-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
+        color: var(--button-font-color-success-disabled-outline);
+      }
+    }
+  }
+
+  &.danger {
+    background-color: var(--button-background-color-danger);
+    color: var(--button-font-color-danger);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-danger);
+    }
+
+    &:disabled {
+      background-color: var(--button-color-background-disabled-danger);
+    }
+
+    &.outline {
+      border-color: var(--button-border-hover-color-danger-outline);
+      background-color: transparent;
+      color: var(--button-font-color-danger-outline);
+
+      &:hover {
+        border-color: var(--button-border-hover-color-danger-outline);
+        background-color: var(--button-background-hover-color-danger-outline);
+        color: var(--button-font-hover-color-danger-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
+        color: var(--button-font-color-danger-disabled-outline);
+      }
+    }
+  }
+
+  &.dark {
+    background-color: var(--button-background-color-dark);
+    color: var(--button-font-color-dark);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-dark);
+    }
+
+    &:disabled {
+      background-color: var(--button-color-background-disabled-dark);
+    }
+
+    &.outline {
+      border-color: var(--button-border-hover-color-dark-outline);
+      background-color: transparent;
+      color: var(--button-font-color-dark-outline);
+
+      &:hover {
+        border-color: var(--button-border-hover-color-dark-outline);
+        background-color: var(--button-background-hover-color-dark-outline);
+        color: var(--button-font-hover-color-dark-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
+        color: var(--button-font-color-dark-disabled-outline);
+      }
+    }
+  }
+
+  &.light {
+    background-color: var(--button-background-color-light);
+    color: var(--button-font-color-light);
+
+    &:hover {
+      background-color: var(--button-background-hover-color-light);
+    }
+
+    &:disabled {
+      background-color: var(--button-color-background-disabled-light);
+    }
+
+    &.outline {
+      border-color: var(--button-border-hover-color-light-outline);
+      background-color: transparent;
+      color: var(--button-font-color-light-outline);
+
+      &:hover {
+        border-color: var(--button-border-hover-color-light-outline);
+        background-color: var(--button-background-hover-color-light-outline);
+        color: var(--button-font-hover-color-light-outline);
+      }
+
+      &:disabled {
+        border-color: var(--button-border-color-disabled-outline);
+      }
+    }
   }
 
   &.sm {
@@ -29,6 +175,21 @@
     padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
     line-height: 1.2;
     font-size: var(--button-size-sm-font-size);
+
+    &.outline {
+      padding: calc(var(--button-size-sm-padding-vertical) - 1px) calc(var(--button-size-sm-padding-horizontal) - 1px);
+    }
+  }
+
+  &.md {
+    border-radius: var(--button-size-md-border-radius);
+    padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
+    line-height: 1.25;
+    font-size: var(--button-size-md-font-size);
+
+    &.outline {
+      padding: calc(var(--button-size-md-padding-vertical) - 1px) calc(var(--button-size-md-padding-horizontal) - 1px);
+    }
   }
 
   &.lg {
@@ -37,6 +198,10 @@
     line-height: 1;
     letter-spacing: 1px;
     font-size: var(--button-size-lg-font-size);
+
+    &.outline {
+      padding: calc(var(--button-size-lg-padding-vertical) - 1px) calc(var(--button-size-lg-padding-horizontal) - 1px);
+    }
   }
 
   &.loading {

@@ -224,5 +224,41 @@ describe('Button', () => {
         expect(screen.getByText('Disabled and Loading Button').closest('button')).toBeDisabled();
       });
     });
+
+    describe('Color Variations', () => {
+      test('Renders button with default variant primary', () => {
+        render(
+          <Button>
+            primary
+          </Button>,
+        );
+
+        expect(screen.getByText('primary').closest('button')).toHaveClass('primary');
+      });
+
+      const variants = ['primary', 'success', 'danger', 'light', 'dark'];
+      variants.forEach(variant => {
+        test(`It renders component with variant: ${variant} when passed`, () => {
+          render(
+            <Button variant={variant}>
+              {variant}
+            </Button>,
+          );
+          expect(screen.getByText(variant).closest('button')).toHaveClass(variant);
+        });
+      });
+    });
+
+    describe('Outlined', () => {
+      test('Renders button with outline class if prop passed', () => {
+        render(
+          <Button isOutlined>
+            primary
+          </Button>,
+        );
+
+        expect(screen.getByText('primary').closest('button')).toHaveClass('outline');
+      });
+    });
   });
 });
