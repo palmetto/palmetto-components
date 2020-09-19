@@ -49,11 +49,15 @@ function getFlexClasses(value?: string): string[] | undefined {
   return classes;
 }
 
-function getDimensionCss(value?: string): FlexStylesAndClasses {
+/**
+ * Returns an object of styles and class names that correspond with the given flex value
+ * @param {string} [value] spacing token value
+ */
+function getFlexCss(value?: string): FlexStylesAndClasses {
   return ({
     styles: getFlexStyles(value),
     classes: getFlexClasses(value),
   });
 }
 
-export default getDimensionCss;
+export default getFlexCss;
