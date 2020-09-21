@@ -27,6 +27,28 @@ describe('getDimensionCss', () => {
     });
   });
 
+  test('returns expected css object if max width css value is passed', () => {
+    const spacingCss = getDimensionCss('mw', '20px');
+
+    expect(spacingCss).toEqual({
+      classes: [],
+      styles: {
+        maxWidth: '20px',
+      },
+    });
+  });
+
+  test('returns expected css object if max height css value is passed', () => {
+    const spacingCss = getDimensionCss('mh', '42rem');
+
+    expect(spacingCss).toEqual({
+      classes: [],
+      styles: {
+        maxHeight: '42rem',
+      },
+    });
+  });
+
   describe('width', () => {
     PALMETTO_WIDTH_OPTIONS.map(token => (
       test(`returns expected css object if ${token} width value is passed`, () => {
@@ -47,6 +69,32 @@ describe('getDimensionCss', () => {
 
         expect(spacingCss).toEqual({
           classes: [`h-${token}`],
+          styles: undefined,
+        });
+      })
+    ));
+  });
+
+  describe('max width', () => {
+    PALMETTO_WIDTH_OPTIONS.map(token => (
+      test(`returns expected css object if ${token} max width value is passed`, () => {
+        const spacingCss = getDimensionCss('mw', token);
+
+        expect(spacingCss).toEqual({
+          classes: [`mw-${token}`],
+          styles: undefined,
+        });
+      })
+    ));
+  });
+
+  describe('max height', () => {
+    PALMETTO_HEIGHT_OPTIONS.map(token => (
+      test(`returns expected css object if ${token} max height value is passed`, () => {
+        const spacingCss = getDimensionCss('mh', token);
+
+        expect(spacingCss).toEqual({
+          classes: [`mh-${token}`],
           styles: undefined,
         });
       })
