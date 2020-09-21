@@ -149,7 +149,7 @@ The alert can display any custom JSX that is passed into the `message` prop, not
         <>
           <Heading as="h3" size="xl">Oops!</Heading>
           <p>Looks like something went wrong.</p>
-          <Button size="sm">Click this button to fix it!</Button>
+          <Button size="sm" className="m-top-sm">Click this button to fix it!</Button>
         </>
       );
       return (
@@ -176,7 +176,7 @@ IMPORTANT: The `render` prop, will supersede the `message` prop, if both are pre
         <>
           <Heading as="h3" size="xl">Oops!</Heading>
           <p>Looks like something went wrong. But I'm using a render function.</p>
-          <Button size="sm">Click this button to fix it!</Button>
+          <Button size="sm" className="m-top-sm">Click this button to fix it!</Button>
         </>
       );
       return (
