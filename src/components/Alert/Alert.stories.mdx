@@ -35,14 +35,14 @@ or a ReactNode to be rendered.
   </Story>
 </Canvas>
 
-## Types
+## Variants
 
-Alerts come in different types based on the kind of feedback being delivered to the user.
+Alerts come in different variants based on the kind of feedback being delivered to the user.
 
 <Canvas>
-  <Story name="Types">
+  <Story name="Variants">
     {() => {
-      const types = [
+      const variants = [
         'default',
         'info',
         'success',
@@ -51,7 +51,7 @@ Alerts come in different types based on the kind of feedback being delivered to 
       ];
       return (
         <>
-         {types.map(type => <Alert message={type} type={type} className="m-bottom-md" />)}
+         {variants.map(variant => <Alert message={variant} variant={variant} className="m-bottom-md" />)}
         </>
       );
     }}
@@ -73,7 +73,7 @@ Pass a string to the `title` prop to create a natural visual text hierarchy.
             className="m-bottom-md"
           />
           <Alert
-            type="danger"
+            variant="danger"
             title="Contact Deleted"
           />
         </>
@@ -93,7 +93,7 @@ You can apply a custom class to your alert with the `className` prop. Here we ha
       return (
         <Alert
           message="Hello world!"
-          type="success"
+          variant="success"
           className="m-bottom-3xl"
         />
       );
@@ -103,31 +103,31 @@ You can apply a custom class to your alert with the `className` prop. Here we ha
 
 ## With Icon
 
-You can choose to display a standard icon for each type of notification, based on their nature.
+You can choose to display a standard icon for each variant of notification, based on their nature.
 
 <Canvas>
   <Story name="With Icon">
     {() => {
-      const types = [
+      const variants = [
         'default',
         'info',
         'success',
         'warning',
         'danger',
       ];
-      const message = (type) => `
-        This is a ${type} alert. It also has longer text to see what these alerts
+      const message = (variant) => `
+        This is a ${variant} alert. It also has longer text to see what these alerts
         can look like when broken into multiple lines. This one will definitely
         break into multiple lines in most standard screen resolutions.
       `;
       return (
         <>
-         {types.map((type, index) => (
+         {variants.map((variant, index) => (
             <Alert
-              message={message(type)}
-              key={type}
-              title={index % 2  ? type.charAt(0).toUpperCase() + type.slice(1) : ''}
-              type={type}
+              message={message(variant)}
+              key={variant}
+              title={index % 2  ? variant.charAt(0).toUpperCase() + variant.slice(1) : ''}
+              variant={variant}
               hasIcon
               className="m-bottom-md"
             />
@@ -140,7 +140,7 @@ You can choose to display a standard icon for each type of notification, based o
 
 ## With Custom JSX in the message
 
-The alert can display any custom JSX that is passed into the `message` prop, not just a string type.
+The alert can display any custom JSX that is passed into the `message` prop, not just a string variant.
 
 <Canvas>
   <Story name="With Custom JSX Message">
@@ -149,13 +149,13 @@ The alert can display any custom JSX that is passed into the `message` prop, not
         <>
           <Heading as="h3" size="xl">Oops!</Heading>
           <p>Looks like something went wrong.</p>
-          <Button size="sm">Click this button to fix it!</Button>
+          <Button size="sm" className="m-top-sm">Click this button to fix it!</Button>
         </>
       );
       return (
         <Alert
           message={myMessage}
-          type="danger"
+          variant="danger"
         />
       );
     }}
@@ -176,13 +176,13 @@ IMPORTANT: The `render` prop, will supersede the `message` prop, if both are pre
         <>
           <Heading as="h3" size="xl">Oops!</Heading>
           <p>Looks like something went wrong. But I'm using a render function.</p>
-          <Button size="sm">Click this button to fix it!</Button>
+          <Button size="sm" className="m-top-sm">Click this button to fix it!</Button>
         </>
       );
       return (
         <Alert
           render={renderMyMessage}
-          type="danger"
+          variant="danger"
         />
       );
     }}
@@ -204,14 +204,14 @@ If you need custom close text, pass it in the `closeText` prop.
         <>
           <Alert
             message="Closable, but with no onClose callback so nothing happens when clicked."
-            type="warning"
+            variant="warning"
             isClosable
             className="m-bottom-md"
           />
           {isAlertTwoShowing ? (
             <Alert
               message="This one works!"
-              type="info"
+              variant="info"
               isClosable
               onClose={() => setAlertTwoShowing(false)}
               className="m-bottom-md"
@@ -224,7 +224,7 @@ If you need custom close text, pass it in the `closeText` prop.
           {isAlertThreeShowing ? (
             <Alert
               message="With custom close text!"
-              type="info"
+              variant="info"
               isClosable
               onClose={() => setAlertThreeShowing(false)}
               closeText="Close me!"
@@ -250,7 +250,7 @@ Renders a version of the banner with less padding.
       return (
         <Alert
           message="Compact Alerts have less padding"
-          type="info"
+          variant="info"
           isCompact
         />
       );

@@ -61,14 +61,14 @@ The default size of the Heading can overridden as xs-5xl so that it's appropriat
 
 ## Colors
 
-The color of the heading is inherited from its parent, but can be set to brand color as well.
+The variant of the heading is inherited from its parent, but can be set to brand variant as well.
 
 <Canvas>
   <Story name="Colors">
     <>
-      {PALMETTO_FONT_COLOR_OPTIONS.map(color => (
-        <Heading color={color} key={uuid()}>
-          {color}
+      {PALMETTO_FONT_COLOR_OPTIONS.map(variant => (
+        <Heading variant={variant} key={uuid()}>
+          {variant}
         </Heading>
       ))}
     </>

@@ -23,10 +23,10 @@ interface HeadingProps {
    */
   className?: string;
   /**
-   * A color token identifier to use for the text color. Available colors found:
-   * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/color/font.json).
+   * A variant token identifier to use for the text variant. Available variants found:
+   * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/variant/font.json).
    */
-  color?: PALMETTO_FONT_COLORS;
+  variant?: PALMETTO_FONT_COLORS;
   /**
    * By default, size is determined by the chosen tag (e.g. h1 is bigger than h2).
    * However, size can be set independently so that its size is appropriate for the surrounding content.
@@ -40,7 +40,7 @@ const Heading: FC<HeadingProps> = ({
   as = 'h4',
   children,
   className,
-  color,
+  variant,
   size,
 }) => {
   const element = getElementType(Heading, { as });
@@ -49,7 +49,7 @@ const Heading: FC<HeadingProps> = ({
 
   const classes = classNames(styles.heading, className, {
     [`font-size-${headingSize}`]: headingSize,
-    [`font-color-${color}`]: color,
+    [`font-color-${variant}`]: variant,
   });
 
   return createElement(element, { className: classes, children });
