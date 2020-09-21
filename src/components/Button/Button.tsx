@@ -110,9 +110,7 @@ const Button: FC<ButtonProps> = ({
   };
 
   const getSpinnerColor = () => {
-    if (isOutlined) {
-      return isLoading || isDisabled ? 'grey' : variant;
-    }
+    if (isOutlined) return variant;
 
     return variant === 'light' ? 'grey' : 'white';
   };
