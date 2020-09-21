@@ -34,6 +34,10 @@ interface ButtonProps {
    */
   isLoading?: boolean;
   /**
+   * Renders an outline version of the button. With a transparent background.
+   */
+  isOutlined?: boolean;
+  /**
    * Specify the tabIndex of the button.
    */
   tabIndex?: number;
@@ -57,6 +61,10 @@ interface ButtonProps {
    * The size of the button.
    */
   size?: 'sm' | 'md' | 'lg';
+  /**
+   * The color variant of the button
+   */
+  variant?: 'primary' | 'success' | 'danger' | 'light' | 'dark';
 }
 
 const Button: FC<ButtonProps> = ({
@@ -66,23 +74,26 @@ const Button: FC<ButtonProps> = ({
   id = undefined,
   isDisabled = false,
   isLoading = false,
+  isOutlined = false,
   tabIndex = undefined,
   type = 'button',
   onClick = undefined,
   onFocus = undefined,
   onBlur = undefined,
   size = 'md',
+  variant = 'primary',
 }) => {
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames(
     styles.button,
+    styles[variant],
+    styles[size],
     className,
     {
+      [styles.outline]: isOutlined,
       [styles.loading]: isLoading,
       [styles['full-width']]: fullWidth,
-      [styles.sm]: size === 'sm',
-      [styles.lg]: size === 'lg',
     },
   );
 
@@ -98,10 +109,16 @@ const Button: FC<ButtonProps> = ({
     if (onBlur) onBlur(event);
   };
 
+  const getSpinnerColor = () => {
+    if (isOutlined) return variant;
+
+    return variant === 'light' ? 'grey' : 'white';
+  };
+
   const content = (
     <>
       {isLoading && (
-        <Spinner color="white" className={styles['spinner-wrapper']} />
+        <Spinner color={getSpinnerColor()} className={styles['spinner-wrapper']} />
       )}
       <span className={styles.label}>{children}</span>
     </>
