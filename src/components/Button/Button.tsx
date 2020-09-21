@@ -101,7 +101,7 @@ const Button: FC<ButtonProps> = ({
   const content = (
     <>
       {isLoading && (
-        <Spinner color="white" className={styles['spinner-wrapper']} />
+        <Spinner variant="white" className={styles['spinner-wrapper']} />
       )}
       <span className={styles.label}>{children}</span>
     </>
