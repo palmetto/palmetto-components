@@ -22,9 +22,9 @@ const headingComponentSizes = (
 );
 
 const headingComponentColors = (
-  PALMETTO_FONT_COLOR_OPTIONS.map(color => (
-    <Heading color={color} key={uuid()}>
-      {color}
+  PALMETTO_FONT_COLOR_OPTIONS.map(variant => (
+    <Heading variant={variant} key={uuid()}>
+      {variant}
     </Heading>
   ))
 );
@@ -56,7 +56,7 @@ describe('Heading', () => {
 
   describe('Colors', () => {
     headingComponentColors.forEach((headingComponent, index) => {
-      test(`it renders the specified color ${PALMETTO_FONT_COLOR_OPTIONS[index]}`, () => {
+      test(`it renders the specified variant ${PALMETTO_FONT_COLOR_OPTIONS[index]}`, () => {
         render(headingComponent);
         expect(screen.getByText(PALMETTO_FONT_COLOR_OPTIONS[index]).classList)
           .toContain(`font-color-${PALMETTO_FONT_COLOR_OPTIONS[index]}`);

@@ -18,7 +18,7 @@ describe('Alert', () => {
   describe('Types', () => {
     test('It renders with specific classes based on the type prop', () => {
       const message = 'Hello world!';
-      const types = [
+      const variants = [
         'info' as const,
         'success' as const,
         'warning' as const,
@@ -27,11 +27,11 @@ describe('Alert', () => {
 
       const { rerender } = render(<Alert message={message} />);
 
-      types.forEach(type => {
-        rerender(<Alert message={message} type={type} />);
+      variants.forEach(variant => {
+        rerender(<Alert message={message} variant={variant} />);
         const alert = screen.getByRole('alert');
         expect(alert).toBeInTheDocument();
-        expect(alert).toHaveClass(type);
+        expect(alert).toHaveClass(variant);
       });
     });
   });
@@ -49,7 +49,7 @@ describe('Alert', () => {
   describe('With Icon', () => {
     test('It shows a relevant icon when passed the `hasIcon` prop', () => {
       const message = 'Hello world!';
-      const types = [
+      const variants = [
         'info' as const,
         'success' as const,
         'warning' as const,
@@ -58,9 +58,9 @@ describe('Alert', () => {
 
       const { rerender } = render(<Alert message={message} />);
 
-      types.forEach(type => {
-        rerender(<Alert message={message} type={type} hasIcon />);
-        const alertIcon = screen.getByTestId(`alert-icon-${type}-test-id`);
+      variants.forEach(variant => {
+        rerender(<Alert message={message} variant={variant} hasIcon />);
+        const alertIcon = screen.getByTestId(`alert-icon-${variant}-test-id`);
         expect(alertIcon).toBeInTheDocument();
       });
     });

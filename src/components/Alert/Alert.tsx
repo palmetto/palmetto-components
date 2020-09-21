@@ -27,7 +27,7 @@ interface AlertProps {
    */
   closeText?: string;
   /**
-   * The type/color of the alert to show.
+   * Whether the alert as an icon that corresponds to its variant (Success, warning, etc.).
    */
   hasIcon?: boolean;
   /**
@@ -59,7 +59,7 @@ interface AlertProps {
   /**
    * The type/color of the alert to show.
    */
-  type?: 'info' | 'success' | 'warning' | 'danger' | 'default';
+  variant?: 'info' | 'success' | 'warning' | 'danger' | 'default';
 }
 const Alert: FC<AlertProps> = ({
   className = '',
@@ -71,7 +71,7 @@ const Alert: FC<AlertProps> = ({
   onClose = undefined,
   render = undefined,
   title = '',
-  type = 'default',
+  variant = 'default',
 }) => {
   const handleClose = (event: (MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>)): void => {
     if (!onClose) return;
@@ -90,12 +90,12 @@ const Alert: FC<AlertProps> = ({
 
     const iconClasses = classNames(
       styles['type-icon'],
-      styles[type],
+      styles[variant],
     );
 
     return (
       <div className={iconClasses}>
-        <FontAwesomeIcon icon={icons[type]} data-testid={`alert-icon-${type}-test-id`} />
+        <FontAwesomeIcon icon={icons[variant]} data-testid={`alert-icon-${variant}-test-id`} />
       </div>
     );
   };
@@ -125,7 +125,7 @@ const Alert: FC<AlertProps> = ({
 
   const alertContainerClasses: string = classNames(
     styles.alert,
-    styles[type],
+    styles[variant],
     { [styles.compact]: isCompact },
     className,
   );
@@ -137,7 +137,9 @@ const Alert: FC<AlertProps> = ({
         {render ? render() : (
           <>
             {title && <Heading as="h4" size="md" className={styles['alert-title']}>{title}</Heading>}
-            {typeof message === 'string' ? <p>{message}</p> : message}
+            {message && (
+              typeof message === 'string' ? <p>{message}</p> : message
+            )}
           </>
         )}
       </div>
