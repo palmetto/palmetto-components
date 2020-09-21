@@ -137,7 +137,9 @@ const Alert: FC<AlertProps> = ({
         {render ? render() : (
           <>
             {title && <Heading as="h4" size="md" className={styles['alert-title']}>{title}</Heading>}
-            {typeof message === 'string' ? <p>{message}</p> : message}
+            {message && (
+              typeof message === 'string' ? <p>{message}</p> : message
+            )}
           </>
         )}
       </div>
