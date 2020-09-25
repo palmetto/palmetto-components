@@ -4,37 +4,6 @@ import Box from '../Box/Box';
 import Heading from '../Heading/Heading';
 import styles from './Card.module.scss';
 
-interface CardProps {
-  /**
-   * Custom class to be passed to the link.
-   */
-  className?: string;
-}
-
-const Card: FC<CardProps> = ({
-  children,
-  className = null,
-  ...restProps
-}) => {
-  const cardClasses = classNames(
-    styles.card,
-    className,
-  );
-
-  return (
-    <Box
-      background="white"
-      radius="md"
-      className={cardClasses}
-      {...restProps}
-    >
-      {children}
-    </Box>
-  );
-};
-
-export default Card;
-
 interface CardHeader {
   /**
    * Custom class to be passed to the link.
@@ -92,3 +61,40 @@ export const CardFooter: FC<CardFooter> = ({
     {children}
   </Box>
 );
+
+interface CardProps {
+  /**
+   * Custom class to be passed to the link.
+   */
+  className?: string;
+}
+
+class Card extends React.Component<CardProps> {
+  static Header = CardHeader;
+
+  static Content = CardContent;
+
+  static Footer = CardFooter;
+
+  render():React.ReactNode {
+    const { className, children } = this.props;
+
+    const cardClasses = classNames(
+      styles.card,
+      className,
+    );
+
+    return (
+      <Box
+        background="white"
+        radius="md"
+        className={cardClasses}
+      // {...restProps}
+      >
+        {children}
+      </Box>
+    );
+  }
+}
+
+export default Card;

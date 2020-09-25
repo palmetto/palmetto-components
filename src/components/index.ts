@@ -1,6 +1,7 @@
 import Alert from './Alert/Alert';
 import Box from './Box/Box';
 import Button from './Button/Button';
+import Card from './Card/Card';
 import CheckboxInput from './CheckboxInput/CheckboxInput';
 import FormikCheckboxInput from './Formik/FormikCheckboxInput/FormikCheckboxInput';
 import FormikRadioGroup from './Formik/FormikRadioGroup/FormikRadioGroup';
@@ -17,6 +18,7 @@ export {
   Alert,
   Box,
   Button,
+  Card,
   CheckboxInput,
   FormikCheckboxInput,
   FormikRadioGroup,

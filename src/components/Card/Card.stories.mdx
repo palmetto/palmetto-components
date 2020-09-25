@@ -5,7 +5,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Box from '../Box/Box';
 import Button from '../Button/Button';
 import Table from '../Table/Table';
-import Card, { CardContent, CardHeader, CardFooter } from './Card';
+import Card from './Card';
 
 <Meta
   title="Components/Card"
@@ -19,10 +19,10 @@ A card is a styled container to group related information and actions together.
 <Canvas>
   <Box background="grey-lightest" padding="2xl">
     <Card overflow="hidden">
-      <CardHeader padding="md lg" title="Card Demo">
+      <Card.Header padding="md lg" title="Card Demo">
         <Box as="p" color="grey" fontSize="sm">subtitle</Box>
-      </CardHeader>
-      <CardContent style={{ borderTop: '1px solid #d5dcd7' }}>
+      </Card.Header>
+      <Card.Content style={{ borderTop: '1px solid #d5dcd7' }}>
         <Box overflow="hidden" height="130px">
           <img src="https://images.unsplash.com/photo-1573341830496-e89fcae7f5eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2468&q=80" />
         </Box>
@@ -52,14 +52,14 @@ A card is a styled container to group related information and actions together.
             </Box>
           </Box>
         </Box>
-      </CardContent>
-      <CardFooter background="grey-lightest" padding="md lg" justify="between" direction="row">
+      </Card.Content>
+      <Card.Footer background="grey-lightest" padding="md lg" justify="between" direction="row">
         <Box direction="row" childGap="sm">
           <Button size="sm" variant="light">Edit</Button>
           <Button size="sm" variant="light">Remove</Button>
         </Box>
         <Button variant="danger" isOutlined size="sm">Delete</Button>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   </Box>
 </Canvas>
