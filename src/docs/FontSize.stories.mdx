@@ -23,7 +23,7 @@ Use these tokens for `font-size`. They are defined in `rem`, which means they wi
   <tbody>
     {PALMETTO_FONT_SIZE_OPTIONS.map((size, i) => (
       <tr key={i}>
-        <td><code>{`size-font-size-${size}`}</code></td>
+        <td><code>{`size-font-${size}`}</code></td>
         <td><code>{size}</code></td>
         <td>{PALMETTO_FONT_SIZE_VALUES[i].value}</td>
         <td>{size === 'base' ? '16' : PALMETTO_FONT_SIZE_VALUES[i].original.value * 16}</td>
