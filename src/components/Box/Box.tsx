@@ -122,6 +122,16 @@ interface BoxProps {
    */
   margin?: PALMETTO_SPACING;
   /**
+   * The maximum height of the element. Can be given a standard css value (px, rem, em, %),
+   * or a [height token](/?path=/docs/design-tokens-height--page)
+   */
+  maxHeight?: string;
+  /**
+   * The maximum width of the element. Can be given a standard css value (px, rem, em, %),
+   * or a [width token](/?path=/docs/design-tokens-width--page)
+   */
+  maxWidth?: string;
+  /**
    * The overflow property is specified as one or two keywords.
    * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
    * Otherwise, both overflow-x and overflow-y are set to the same value.
@@ -179,6 +189,8 @@ const Box: FC<BoxProps> = ({
   height = undefined,
   justify,
   margin,
+  maxHeight,
+  maxWidth,
   overflow = 'initial',
   padding = undefined,
   radius = undefined,
@@ -190,6 +202,8 @@ const Box: FC<BoxProps> = ({
   const paddingCss = getSpacingCss('p', padding);
   const heightCss = getDimensionCss('h', height);
   const widthCss = getDimensionCss('w', width);
+  const maxHeightCss = getDimensionCss('mh', maxHeight);
+  const maxWidthCss = getDimensionCss('mw', maxWidth);
   const flexCss = getFlexCss(flex);
 
   const wrapClass = wrap ? 'flex-wrap' : 'flex-nowrap';
@@ -201,6 +215,8 @@ const Box: FC<BoxProps> = ({
     marginCss.classes,
     paddingCss.classes,
     heightCss.classes,
+    maxHeightCss.classes,
+    maxWidthCss.classes,
     widthCss.classes,
     flexCss.classes,
     {
@@ -221,6 +237,8 @@ const Box: FC<BoxProps> = ({
   const boxStyles = {
     ...marginCss.styles,
     ...heightCss.styles,
+    ...maxHeightCss.styles,
+    ...maxWidthCss.styles,
     ...widthCss.styles,
     ...flexCss.styles,
     ...border && { borderWidth: '1px', borderStyle: 'solid' },

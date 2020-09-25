@@ -109,7 +109,7 @@ const Button: FC<ButtonProps> = ({
     if (onBlur) onBlur(event);
   };
 
-  const getSpinnerColor = () => {
+  const getSpinnerVariant = () => {
     if (isOutlined) return variant;
 
     return variant === 'light' ? 'grey' : 'white';
@@ -118,7 +118,7 @@ const Button: FC<ButtonProps> = ({
   const content = (
     <>
       {isLoading && (
-        <Spinner color={getSpinnerColor()} className={styles['spinner-wrapper']} />
+        <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
       )}
       <span className={styles.label}>{children}</span>
     </>

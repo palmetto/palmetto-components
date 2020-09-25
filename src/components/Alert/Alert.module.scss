@@ -56,7 +56,7 @@
     margin-left: auto;
     font-weight: 700;
 
-    >button {
+    > button {
       /* Reset default button styles */
       border: 0;
       background: none;
@@ -71,15 +71,19 @@
     }
   }
 
+  .alert-title {
+    &:not(:last-child) {
+      margin-bottom: var(--alert-title-margin);
+    }
+  }
+
   .alert-message {
     &:not(:last-child) {
       margin-right: var(--alert-message-margin);
     }
-  }
-}
 
-.alert-title {
-  &:not(:last-child) {
-    margin-bottom: var(--alert-title-margin);
+    > p {
+      margin: 0;
+    }
   }
 }

@@ -19,9 +19,7 @@ export interface FlexStylesAndClasses {
   classes?: string[];
 }
 
-export type CssDimension =
-  'h' |
-  'w';
+export type CssDimension = 'h' | 'w' | 'mw' | 'mh';
 
 export type CssSpacing =
   'm' |

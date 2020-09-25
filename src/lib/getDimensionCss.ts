@@ -7,9 +7,20 @@ function getDimensionStyles(dimension: CssDimension, value?: string): { [key: st
   let styles;
   // value is a css unit so set its style property
   if (typeof value === 'string' && doesStringIncludeCssUnit(value)) {
-    styles = dimension === 'w' ? { width: value } : { height: value };
+    switch (dimension) {
+      case 'h':
+        styles = { height: value };
+        break;
+      case 'mw':
+        styles = { maxWidth: value };
+        break;
+      case 'mh':
+        styles = { maxHeight: value };
+        break;
+      default:
+        styles = { width: value };
+    }
   }
-
   return styles;
 }
 

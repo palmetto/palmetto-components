@@ -618,7 +618,7 @@ Set the `radius` prop with a [radius token](/?path=/docs/design-tokens-border-ra
 
 ## Width
 
-Width can be set to any standard CSS value (px, rem, em, %).
+Width can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="width">
@@ -630,7 +630,7 @@ Width can be set to any standard CSS value (px, rem, em, %).
   </Story>
 </Canvas>
 
-Standard widths are available at `sm` - `5xl`.
+[Width tokens](/?path=/docs/design-tokens-width--page) may be used to set widths as well.
 
 <Canvas>
   <Story name="width standards">
@@ -672,9 +672,23 @@ Set the width to a common percentage of the Box's parent.
   </Story>
 </Canvas>
 
+## Max Width
+
+Set the maximum width of the Box by setting `maxWidth` to a [width token](/?path=/docs/design-tokens-width--page) or any valid css unit.
+
+<Canvas>
+  <Story name="max width">
+    <Box background="primary-lightest" childGap="xs">
+      <Box background="primary-light" maxWidth="2xl">2xl</Box>
+      <Box background="primary-light" maxWidth="145px">145px</Box>
+      <Box background="primary-light" maxWidth="50%">50%</Box>
+    </Box>
+  </Story>
+</Canvas>
+
 ## Height
 
-Width can be set to any standard CSS value (px, rem, em, %).
+Height can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="height">
@@ -686,7 +700,7 @@ Width can be set to any standard CSS value (px, rem, em, %).
   </Story>
 </Canvas>
 
-Standard heights are available at `sm` - `5xl`.
+[Width tokens](/?path=/docs/design-tokens-height--page) may be used to set height as well.
 
 <Canvas>
   <Story name="height standards">
@@ -702,7 +716,6 @@ Standard heights are available at `sm` - `5xl`.
     </Box>
   </Story>
 </Canvas>
-
 
 Set the height to a common percentage of the Box's parent.
 
@@ -728,6 +741,19 @@ Set the height to a common percentage of the Box's parent.
   </Story>
 </Canvas>
 
+## Max Height
+
+Set the maximum width of the Box by setting `maxHeight` to a [height token](/?path=/docs/design-tokens-height--page) or any valid css unit.
+
+<Canvas>
+  <Story name="max height">
+    <Box height="300px" background="primary-lightest" direction="row" childGap="xs">
+      <Box maxHeight="lg" flex="auto" justify="center" align="center" background="primary-light">lg</Box>
+      <Box maxHeight="50px" flex="auto" justify="center" align="center" background="primary-light">50px</Box>
+      <Box maxHeight="50%" flex="auto" justify="center" align="center" background="primary-light">50%</Box>
+    </Box>
+  </Story>
+</Canvas>
 
 ### Overflow
 
