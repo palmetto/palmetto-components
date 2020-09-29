@@ -3,9 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Box from '../Box/Box';
+import Card from './Card';
+import Heading from '../Heading/Heading';
 import Button from '../Button/Button';
 import Table from '../Table/Table';
-import Card from './Card';
+import TextInput from '../TextInput/TextInput';
+
 
 <Meta
   title="Components/Card"
@@ -59,7 +62,13 @@ A card is a styled container to group related information and actions together.
       <Card.Section title="utility" style={{ borderTop: '1px solid #d5dcd7' }}>
         <p>Another section</p>
       </Card.Section>
-      <Card.Footer overflow="hidden" background="grey-lightest" justify="between" direction="row">
+      <Card.Footer
+        background="grey-lightest"
+        direction="row"
+        justify="between"
+        overflow="hidden"
+        childGap="md"
+      >
         <Box direction="row" childGap="sm">
           <Button size="sm" variant="light">Edit</Button>
           <Button size="sm" variant="light">Remove</Button>
@@ -74,11 +83,26 @@ A card is a styled container to group related information and actions together.
 
 <ArgsTable of={Card} />
 
+## Header Actions
+
+Card headers
+
+## Footer Actions
+
+## Title Section
+
+## Multiple Sections
+
+## Muted Card
+
+## Muted Section
+
+<!--
 ## Child Components
 
 Included in the Card component package are child components to help layout content and actions in a consistent manner.
 
-### Card.Header
+<!-- ### Card.Header
 
 <ArgsTable of={Card.Header} />
 
@@ -88,6 +112,42 @@ Included in the Card component package are child components to help layout conte
 
 ### Card.Footer
 
-<ArgsTable of={Card.Footer} />
+<ArgsTable of={Card.Footer} /> --> -->
 
 
+## Examples
+
+
+<Canvas>
+  <Story name="Example - Sign Up Form">
+    <Box justify="center" align="center" padding="2xl" background="grey-lightest">
+        <Card maxWidth="4xl">
+          {/* Why can't i set childGap here? */}
+          <Card.Section padding="3xl">
+            <Box childGap="xl">
+              <Box childGap="sm" align="center">
+                <Heading as="h1" size="xl">Alchemy Sign Up</Heading>
+                <Box as="p" color="grey" fontSize="sm">Create your account to create leads and proposals</Box>
+              </Box>
+              <Box childGap="lg">
+                <TextInput id="email" value="" label="Email Address" />
+                <TextInput id="password" type="password" value="" label="Password" />
+                <Button fullWidth variant="primary">Sign Up</Button>
+              </Box>
+              <Box align="center" fontSize="sm" color="grey"><p>Already have an account? <a href="#" class="font-color-primary">Log in</a>.</p></Box>
+            </Box>
+          </Card.Section>
+        </Card>
+    </Box>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Example - Card With Table">
+    <Box justify="center" align="center" padding="2xl" background="grey-lightest">
+        <Card>
+          to do
+        </Card>
+    </Box>
+  </Story>
+</Canvas>

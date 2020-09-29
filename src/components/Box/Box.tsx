@@ -19,7 +19,7 @@ import getElementType from '../../lib/getElementType';
 import getFlexCss from '../../lib/getFlexCss';
 // import BorderType from '../../types';
 
-interface BoxProps {
+export interface BoxProps {
   /**
    * The element type to be rendered.
    */
@@ -118,8 +118,7 @@ interface BoxProps {
   | 'stretch';
   /**
    * Amount of space around the element. It models itself after the css shorthand property,
-   * where you can set the margin area on all four sides of an element.
-   * It is shorthand for top, right, bottom, left.
+   * where you can set the margin area on all four sides of an element.It is shorthand for top, right, bottom, left.
    */
   margin?: PALMETTO_SPACING;
   /**
@@ -207,7 +206,7 @@ const Box: FC<BoxProps> = ({
   const maxWidthCss = getDimensionCss('mw', maxWidth);
   const flexCss = getFlexCss(flex);
 
-  const wrapClass = wrap ? 'flex-wrap' : 'flex-nowrap';
+  const wrapClass = display.includes('flex') && wrap ? 'flex-wrap' : 'flex-nowrap';
 
   const boxClasses = classNames(
     className,

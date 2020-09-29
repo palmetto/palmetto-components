@@ -1,18 +1,10 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import Box from '../Box/Box';
+import Box, { BoxProps } from '../Box/Box';
 import Heading from '../Heading/Heading';
 import styles from './Card.module.scss';
 
-interface CardHeader {
-  /**
-   * Custom class to be passed to the link.
-   */
-  className?: string;
-  /**
-   * padding
-   */
-  padding?: string;
+interface CardHeader extends BoxProps {
   /**
    * The title of the card
    */
@@ -21,7 +13,7 @@ interface CardHeader {
 
 export const CardHeader: FC<CardHeader> = ({
   children,
-  padding = 'md lg',
+  padding = 'lg',
   title,
   ...restProps
 }) => (
@@ -39,15 +31,7 @@ export const CardHeader: FC<CardHeader> = ({
   </Box>
 );
 
-interface CardSection {
-  /**
-   * Custom class to be passed to the link.
-   */
-  className?: string;
-  /**
-   * padding
-   */
-  padding?: string;
+interface CardSection extends BoxProps {
   /**
    * title for the section
    */
@@ -72,20 +56,11 @@ export const CardSection: FC<CardSection> = ({
   </Box>
 );
 
-interface CardFooter {
-  /**
-   * Custom class to be passed to the link.
-   */
-  className?: string;
-  /**
-   * padding
-   */
-  padding?: string;
-}
+// interface CardFooter extends BoxProps {}
 
-export const CardFooter: FC<CardFooter> = ({
+export const CardFooter: FC<BoxProps> = ({
   children,
-  padding = 'md lg',
+  padding = 'lg',
   ...restProps
 }) => (
   <Box padding={padding} {...restProps}>
@@ -93,14 +68,8 @@ export const CardFooter: FC<CardFooter> = ({
   </Box>
 );
 
-interface CardProps {
-  /**
-   * Custom class to be passed to the link.
-   */
-  className?: string;
-}
 
-class Card extends React.Component<CardProps> {
+class Card extends React.Component<BoxProps> {
   static Header = CardHeader;
 
   static Section = CardSection;
@@ -108,7 +77,7 @@ class Card extends React.Component<CardProps> {
   static Footer = CardFooter;
 
   render(): React.ReactNode {
-    const { className, children } = this.props;
+    const { className, children, ...restProps } = this.props;
 
     const cardClasses = classNames(
       styles.card,
@@ -121,7 +90,9 @@ class Card extends React.Component<CardProps> {
         radius="md"
         className={cardClasses}
         overflow="hidden"
-      // {...restProps}
+        display="block"
+        width="100%"
+        {...restProps}
       >
         {children}
       </Box>
