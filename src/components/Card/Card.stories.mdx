@@ -117,7 +117,6 @@ Included in the Card component package are child components to help layout conte
 
 ## Examples
 
-
 <Canvas>
   <Story name="Example - Sign Up Form">
     <Box justify="center" align="center" padding="2xl" background="grey-lightest">
@@ -148,6 +147,22 @@ Included in the Card component package are child components to help layout conte
         <Card>
           to do
         </Card>
+    </Box>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Example - Full Bleed Photo">
+    <Box justify="center" align="center" padding="2xl" background="grey-lightest">
+      <Card width="60%">
+        <Box overflow="hidden" height="300px">
+          <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
+        </Box>
+        <Card.Section title="remove me" childGap="lg">
+          <Heading>Card Title</Heading>
+          <Box as="p">This is the body copy of the card.</Box>
+        </Card.Section>
+      </Card>
     </Box>
   </Story>
 </Canvas>

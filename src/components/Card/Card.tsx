@@ -1,75 +1,20 @@
-import React, { FC } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import Box, { BoxProps } from '../Box/Box';
-import Heading from '../Heading/Heading';
 import styles from './Card.module.scss';
 
-interface CardHeader extends BoxProps {
-  /**
-   * The title of the card
-   */
-  title?: string;
+import { CardFooter, CardHeader, CardSection } from './components';
+
+// TODO
+// childGap in Card.Section without a title fails
+// BOX margin/padding proptype error when setting to CSS shorthand
+//
+
+interface CardProps extends BoxProps {
+  muted?: boolean;
 }
 
-export const CardHeader: FC<CardHeader> = ({
-  children,
-  padding = 'lg',
-  title,
-  ...restProps
-}) => (
-  <Box
-    childGap="2xs"
-    padding={padding}
-    {...restProps}
-  >
-    {title && (
-      <Heading size="lg">
-        {title}
-      </Heading>
-    )}
-    {children}
-  </Box>
-);
-
-interface CardSection extends BoxProps {
-  /**
-   * title for the section
-   */
-  title?: string;
-}
-
-export const CardSection: FC<CardSection> = ({
-  children,
-  padding = 'lg',
-  title,
-  ...restProps
-}) => (
-  <Box padding={padding} {...restProps}>
-    {title && (
-      <Box margin="0 0 md 0">
-        <Heading as="h4" size="sm">
-          {title}
-        </Heading>
-      </Box>
-    )}
-    {children}
-  </Box>
-);
-
-// interface CardFooter extends BoxProps {}
-
-export const CardFooter: FC<BoxProps> = ({
-  children,
-  padding = 'lg',
-  ...restProps
-}) => (
-  <Box padding={padding} {...restProps}>
-    {children}
-  </Box>
-);
-
-
-class Card extends React.Component<BoxProps> {
+class Card extends React.Component<CardProps> {
   static Header = CardHeader;
 
   static Section = CardSection;
