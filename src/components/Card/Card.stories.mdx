@@ -22,9 +22,9 @@ A card is a styled container to group related information and actions together.
       <Card.Header title="Card Demo">
         <Box as="p" color="grey" fontSize="sm">subtitle</Box>
       </Card.Header>
-        <Box overflow="hidden" height="130px">
-          <img src="https://images.unsplash.com/photo-1573341830496-e89fcae7f5eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2468&q=80" />
-        </Box>
+      <Box overflow="hidden" height="130px">
+        <img src="https://images.unsplash.com/photo-1573341830496-e89fcae7f5eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2468&q=80" />
+      </Box>
       <Card.Section title="profile" style={{ borderTop: '1px solid #d5dcd7' }}>
         <Box direction="row" childGap="lg">
           <Box flex="auto" childGap="lg">
@@ -53,13 +53,13 @@ A card is a styled container to group related information and actions together.
           </Box>
         </Box>
       </Card.Section>
-      <Card.Section title="location">
+      <Card.Section title="location" style={{ borderTop: '1px solid #d5dcd7' }}>
         <p>Another section</p>
       </Card.Section>
-      <Card.Section title="utility">
+      <Card.Section title="utility" style={{ borderTop: '1px solid #d5dcd7' }}>
         <p>Another section</p>
       </Card.Section>
-      <Card.Footer background="grey-lightest" justify="between" direction="row">
+      <Card.Footer overflow="hidden" background="grey-lightest" justify="between" direction="row">
         <Box direction="row" childGap="sm">
           <Button size="sm" variant="light">Edit</Button>
           <Button size="sm" variant="light">Remove</Button>
@@ -73,5 +73,21 @@ A card is a styled container to group related information and actions together.
 ## Props
 
 <ArgsTable of={Card} />
+
+## Child Components
+
+Included in the Card component package are child components to help layout content and actions in a consistent manner.
+
+### Card.Header
+
+<ArgsTable of={Card.Header} />
+
+### Card.Section
+
+<ArgsTable of={Card.Section} />
+
+### Card.Footer
+
+<ArgsTable of={Card.Footer} />
 
 
