@@ -120,6 +120,7 @@ class Card extends React.Component<CardProps> {
         background="white"
         radius="md"
         className={cardClasses}
+        overflow="hidden"
       // {...restProps}
       >
         {children}
