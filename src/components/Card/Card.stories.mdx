@@ -28,7 +28,7 @@ A card is a styled container to group related information and actions together.
       <Box overflow="hidden" height="130px">
         <img src="https://images.unsplash.com/photo-1573341830496-e89fcae7f5eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2468&q=80" />
       </Box>
-      <Card.Section title="profile" style={{ borderTop: '1px solid #d5dcd7' }}>
+      <Card.Section title="profile">
         <Box direction="row" childGap="lg">
           <Box flex="auto" childGap="lg">
             <Box childGap="2xs">
@@ -56,14 +56,13 @@ A card is a styled container to group related information and actions together.
           </Box>
         </Box>
       </Card.Section>
-      <Card.Section title="location" style={{ borderTop: '1px solid #d5dcd7' }}>
+      <Card.Section title="site location">
         <p>Another section</p>
       </Card.Section>
-      <Card.Section title="utility" style={{ borderTop: '1px solid #d5dcd7' }}>
+      <Card.Section title="utility information">
         <p>Another section</p>
       </Card.Section>
       <Card.Footer
-        background="grey-lightest"
         direction="row"
         justify="between"
         overflow="hidden"
@@ -83,19 +82,95 @@ A card is a styled container to group related information and actions together.
 
 <ArgsTable of={Card} />
 
-## Header Actions
+## Default Card
 
-Card headers
+A `<Card />` consists of three child components:
 
-## Footer Actions
+1. `<Card.Header />` - a place for descriptive title for its content
+1. `<Card.Section />` - the body of the card can consists of many sections
+1. `<Card.Footer />` - where primary actions are placed
 
-## Title Section
+<Canvas>
+  <Story name="Default Card">
+    <Card>
+      <Card.Header title="Default Card" />
+      <Card.Section>
+        <p>Card content</p>
+      </Card.Section>
+      <Card.Footer>Footer</Card.Footer>
+    </Card>
+  </Story>
+</Canvas>
+
+## Section Title
+
+Give a `title` to a section to communicated distinct but related pieces of information within a `<Card />`.
+
+<Canvas>
+  <Story name="Section Title">
+    <Card>
+      <Card.Header title="Card Title" />
+      <Card.Section title="Section Title">
+        <p>Section content</p>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
 
 ## Multiple Sections
 
-## Muted Card
+Divider rules are automatically added between multiple `<Card.Section />` components.
 
-## Muted Section
+<Canvas>
+  <Story name="Multiple Sections">
+    <Card>
+      <Card.Header title="Subdued Card" />
+      <Card.Section title="Section A Title">
+        <p>Section content</p>
+      </Card.Section>
+      <Card.Section title="Section B Title">
+        <p>Section content</p>
+      </Card.Section>
+      <Card.Section>
+        <p>Section c has no title</p>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
+## Subdued Card
+
+Visually subdue the entire card using the `subdue` prop.
+
+<Canvas>
+  <Story name="Subdued Card">
+    <Card subdue>
+      <Card.Header title="Subdued Card" />
+      <Card.Section>
+        <p>Card content</p>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
+## Subdued Section
+
+A single section can be visually subdued using the `subdue` prop at the `<Card.Section />` level.
+
+<Canvas>
+  <Story name="Subdued Section">
+    <Card>
+      <Card.Header title="Card with Subdued Section" />
+      <Card.Section subdue>
+        <Box as="p">Subdued section</Box>
+      </Card.Section>
+      <Card.Section>
+        <Box as="p">Another section that is not subdued</Box>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
 
 <!--
 ## Child Components
@@ -117,6 +192,9 @@ Included in the Card component package are child components to help layout conte
 
 ## Examples
 
+Here are some common use cases of `<Card />`.
+
+### Sign Up Form
 <Canvas>
   <Story name="Example - Sign Up Form">
     <Box justify="center" align="center" padding="2xl" background="grey-lightest">
@@ -141,6 +219,8 @@ Included in the Card component package are child components to help layout conte
   </Story>
 </Canvas>
 
+### Card With Table
+
 <Canvas>
   <Story name="Example - Card With Table">
     <Box justify="center" align="center" padding="2xl" background="grey-lightest">
@@ -151,6 +231,8 @@ Included in the Card component package are child components to help layout conte
   </Story>
 </Canvas>
 
+### Full Bleed Photo
+
 <Canvas>
   <Story name="Example - Full Bleed Photo">
     <Box justify="center" align="center" padding="2xl" background="grey-lightest">
@@ -158,8 +240,8 @@ Included in the Card component package are child components to help layout conte
         <Box overflow="hidden" height="300px">
           <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
         </Box>
-        <Card.Section title="remove me" childGap="lg">
-          <Heading>Card Title</Heading>
+        <Card.Section childGap="xs">
+          <Heading>Headline</Heading>
           <Box as="p">This is the body copy of the card.</Box>
         </Card.Section>
       </Card>

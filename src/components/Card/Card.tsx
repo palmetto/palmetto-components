@@ -7,11 +7,15 @@ import { CardFooter, CardHeader, CardSection } from './components';
 
 // TODO
 // childGap in Card.Section without a title fails
-// BOX margin/padding proptype error when setting to CSS shorthand
+// Box margin/padding proptype error when setting to CSS shorthand
+// Box individual border sides
 //
 
 interface CardProps extends BoxProps {
-  muted?: boolean;
+  /**
+   * visually subdue the appearance of the entire card
+   */
+  subdue?: boolean;
 }
 
 class Card extends React.Component<CardProps> {
@@ -22,16 +26,23 @@ class Card extends React.Component<CardProps> {
   static Footer = CardFooter;
 
   render(): React.ReactNode {
-    const { className, children, ...restProps } = this.props;
+    const {
+      className,
+      children,
+      subdue,
+      ...restProps
+    } = this.props;
 
     const cardClasses = classNames(
       styles.card,
       className,
     );
 
+    const backgroundColor = subdue ? 'grey-lightest' : 'white';
+
     return (
       <Box
-        background="white"
+        background={backgroundColor}
         radius="md"
         className={cardClasses}
         overflow="hidden"
