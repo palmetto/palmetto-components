@@ -118,7 +118,8 @@ interface BoxProps {
   | 'stretch';
   /**
    * Amount of space around the element. It models itself after the css shorthand property,
-   * where you can set the margin area on all four sides of an element.It is shorthand for top, right, bottom, left.
+   * where you can set the margin area on all four sides of an element.
+   * It is shorthand for top, right, bottom, left.
    */
   margin?: PALMETTO_SPACING;
   /**

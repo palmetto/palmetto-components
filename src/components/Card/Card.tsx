@@ -10,6 +10,10 @@ interface CardHeader {
    */
   className?: string;
   /**
+   * padding
+   */
+  padding?: string;
+  /**
    * The title of the card
    */
   title?: string;
@@ -17,10 +21,15 @@ interface CardHeader {
 
 export const CardHeader: FC<CardHeader> = ({
   children,
+  padding = 'md lg',
   title,
   ...restProps
 }) => (
-  <Box childGap="2xs" {...restProps}>
+  <Box
+    childGap="2xs"
+    padding={padding}
+    {...restProps}
+  >
     {title && (
       <Heading size="lg">
         {title}
@@ -30,18 +39,35 @@ export const CardHeader: FC<CardHeader> = ({
   </Box>
 );
 
-interface CardContent {
+interface CardSection {
   /**
    * Custom class to be passed to the link.
    */
   className?: string;
+  /**
+   * padding
+   */
+  padding?: string;
+  /**
+   * title for the section
+   */
+  title?: string;
 }
 
-export const CardContent: FC<CardContent> = ({
+export const CardSection: FC<CardSection> = ({
   children,
+  padding = 'lg',
+  title,
   ...restProps
 }) => (
-  <Box {...restProps}>
+  <Box padding={padding} {...restProps}>
+    {title && (
+      <Box margin="0 0 md 0">
+        <Heading as="h4" size="sm">
+          {title}
+        </Heading>
+      </Box>
+    )}
     {children}
   </Box>
 );
@@ -51,13 +77,18 @@ interface CardFooter {
    * Custom class to be passed to the link.
    */
   className?: string;
+  /**
+   * padding
+   */
+  padding?: string;
 }
 
 export const CardFooter: FC<CardFooter> = ({
   children,
+  padding = 'md lg',
   ...restProps
 }) => (
-  <Box {...restProps}>
+  <Box padding={padding} {...restProps}>
     {children}
   </Box>
 );
@@ -72,11 +103,11 @@ interface CardProps {
 class Card extends React.Component<CardProps> {
   static Header = CardHeader;
 
-  static Content = CardContent;
+  static Section = CardSection;
 
   static Footer = CardFooter;
 
-  render():React.ReactNode {
+  render(): React.ReactNode {
     const { className, children } = this.props;
 
     const cardClasses = classNames(

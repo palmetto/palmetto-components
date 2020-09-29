@@ -19,14 +19,14 @@ A card is a styled container to group related information and actions together.
 <Canvas>
   <Box background="grey-lightest" padding="2xl">
     <Card overflow="hidden">
-      <Card.Header padding="md lg" title="Card Demo">
+      <Card.Header title="Card Demo">
         <Box as="p" color="grey" fontSize="sm">subtitle</Box>
       </Card.Header>
-      <Card.Content style={{ borderTop: '1px solid #d5dcd7' }}>
         <Box overflow="hidden" height="130px">
           <img src="https://images.unsplash.com/photo-1573341830496-e89fcae7f5eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2468&q=80" />
         </Box>
-        <Box direction="row" childGap="lg" padding="lg">
+      <Card.Section title="profile" style={{ borderTop: '1px solid #d5dcd7' }}>
+        <Box direction="row" childGap="lg">
           <Box flex="auto" childGap="lg">
             <Box childGap="2xs">
               <Box fontSize="sm" color="grey">Full Name</Box>
@@ -52,8 +52,14 @@ A card is a styled container to group related information and actions together.
             </Box>
           </Box>
         </Box>
-      </Card.Content>
-      <Card.Footer background="grey-lightest" padding="md lg" justify="between" direction="row">
+      </Card.Section>
+      <Card.Section title="location">
+        <p>Another section</p>
+      </Card.Section>
+      <Card.Section title="utility">
+        <p>Another section</p>
+      </Card.Section>
+      <Card.Footer background="grey-lightest" justify="between" direction="row">
         <Box direction="row" childGap="sm">
           <Button size="sm" variant="light">Edit</Button>
           <Button size="sm" variant="light">Remove</Button>
