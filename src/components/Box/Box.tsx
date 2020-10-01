@@ -17,7 +17,7 @@ import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingCss from '../../lib/getSpacingCss';
 import getElementType from '../../lib/getElementType';
 import getFlexCss from '../../lib/getFlexCss';
-// import BorderType from '../../types';
+import { DisplayType } from '../../lib/types';
 
 export interface BoxProps {
   /**
@@ -86,7 +86,7 @@ export interface BoxProps {
   /**
    * Display property. Only select values supported.
    */
-  display?: 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
+  display?: DisplayType;
   /**
    * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
    */
@@ -183,7 +183,6 @@ const Box: FC<BoxProps> = ({
   alignContent = undefined,
   alignSelf = undefined,
   background = undefined,
-  // basis,
   border = undefined,
   children = undefined,
   childGap = undefined,
