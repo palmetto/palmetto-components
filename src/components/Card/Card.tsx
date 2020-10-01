@@ -5,17 +5,28 @@ import styles from './Card.module.scss';
 
 import { CardFooter, CardHeader, CardSection } from './components';
 
-// TODO
-// childGap in Card.Section without a title fails
-// Box margin/padding proptype error when setting to CSS shorthand
-// Box individual border sides
-//
+type BoxPropsShallow = Omit<BoxProps,
+  'as' |
+  'align' |
+  'alignContent' |
+  'justifyContent' |
+  'alignSelf' |
+  'background' |
+  'direction' |
+  'flex' |
+  'fontSize' |
+  'justify' |
+  'radius' |
+  'wrap' |
+  'childGap' |
+  'display'
+>;
 
-interface CardProps extends BoxProps {
+interface CardProps extends BoxPropsShallow {
   /**
-   * visually subdue the appearance of the entire card
+   * visually subdued the appearance of the entire card
    */
-  subdue?: boolean;
+  subdued?: boolean;
 }
 
 class Card extends React.Component<CardProps> {
@@ -29,7 +40,7 @@ class Card extends React.Component<CardProps> {
     const {
       className,
       children,
-      subdue,
+      subdued,
       ...restProps
     } = this.props;
 
@@ -38,7 +49,7 @@ class Card extends React.Component<CardProps> {
       className,
     );
 
-    const backgroundColor = subdue ? 'grey-lightest' : 'white';
+    const backgroundColor = subdued ? 'grey-lightest' : 'white';
 
     return (
       <Box

@@ -1,23 +1,31 @@
 import React, { FC, ReactNode } from 'react';
-import Box, { BoxProps } from '../../../Box/Box';
+import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
 
-export interface CardHeaderProps extends BoxProps {
+export interface CardHeaderProps {
+  /**
+   * contents of the Header
+   */
+  children: React.ReactNode;
+  /**
+   * Additional class names to add
+   */
+  className: string;
   /**
    * The title of the card
    */
   title?: ReactNode;
 }
 
-export const CardHeader: FC<CardHeaderProps> = ({
+const CardHeader: FC<CardHeaderProps> = ({
   children,
-  padding = 'lg',
+  className,
   title,
   ...restProps
 }) => {
   const renderTitle = typeof title === 'string'
     ? (
-      <Heading size="lg">
+      <Heading size="lg" as="h4">
         {title}
       </Heading>
     ) : title;
@@ -25,7 +33,8 @@ export const CardHeader: FC<CardHeaderProps> = ({
   return (
     <Box
       childGap="2xs"
-      padding={padding}
+      padding="md lg"
+      className={className}
       {...restProps}
     >
       {renderTitle}

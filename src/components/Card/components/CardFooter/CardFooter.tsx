@@ -1,13 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import Box, { BoxProps } from '../../../Box/Box';
+import Box from '../../../Box/Box';
 import styles from '../../Card.module.scss';
 
-const CardFooter: FC<BoxProps> = ({
-  background = 'grey-lightest',
+const CardFooter: FC<{ children: ReactNode; className: string; }> = ({
   children,
   className,
-  padding = 'lg',
   ...restProps
 }) => {
   const footerClasses = classNames(
@@ -16,9 +14,9 @@ const CardFooter: FC<BoxProps> = ({
   );
   return (
     <Box
-      background={background}
+      background="grey-lightest"
       className={footerClasses}
-      padding={padding}
+      padding="lg"
       {...restProps}
     >
       {children}

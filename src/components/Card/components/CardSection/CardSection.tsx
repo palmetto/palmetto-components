@@ -1,14 +1,27 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import Box, { BoxProps } from '../../../Box/Box';
+import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
 import styles from '../../Card.module.scss';
 
-export interface CardSectionProps extends BoxProps {
+export interface CardSectionProps {
   /**
-   * visually subdue the appearance of the section
+   * Custom class to be applied to section container.
    */
-  subdue?: boolean;
+  className?: string;
+  /**
+   * The amount of spacing between child elements.
+   * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
+   */
+  childGap?: string;
+  /**
+   * Elements to be rendered.
+   */
+  children?: ReactNode;
+  /**
+   * visually subdued the appearance of the section
+   */
+  subdued?: boolean;
   /**
    * title for the section
    */
@@ -19,12 +32,11 @@ export const CardSection: FC<CardSectionProps> = ({
   children,
   childGap,
   className,
-  subdue,
-  padding = 'md lg',
+  subdued,
   title,
   ...restProps
 }) => {
-  const backgroundColor = subdue ? 'grey-lightest' : null;
+  const backgroundColor = subdued ? 'grey-lightest' : undefined;
 
   const renderTitle = typeof title === 'string'
     ? (
@@ -44,7 +56,7 @@ export const CardSection: FC<CardSectionProps> = ({
     <Box
       background={backgroundColor}
       className={sectionClasses}
-      padding={padding}
+      padding="md lg"
       {...restProps}
     >
       {renderTitle}

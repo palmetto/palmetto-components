@@ -102,9 +102,24 @@ A `<Card />` consists of three child components:
   </Story>
 </Canvas>
 
-## Section Title
+## Card Header Title
 
-Give a `title` to a section to communicated distinct but related pieces of information within a `<Card />`.
+The `<Card.Header />` component accepts a `title` prop for setting the title of a Card. Child nodes of the card will be rendered below the title.
+
+<Canvas>
+  <Story name="Card Title">
+    <Card>
+      <Card.Header title="Default Card">This is a good place for card description text</Card.Header>
+      <Card.Section>
+        <p>Card content</p>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
+## Card Section Title
+
+Give a `title` to a section to communicate distinct but related pieces of information within a `<Card />`.
 
 <Canvas>
   <Story name="Section Title">
@@ -140,11 +155,11 @@ Divider rules are automatically added between multiple `<Card.Section />` compon
 
 ## Subdued Card
 
-Visually subdue the entire card using the `subdue` prop.
+Visually subdued the entire card using the `subdued` prop.
 
 <Canvas>
   <Story name="Subdued Card">
-    <Card subdue>
+    <Card subdued>
       <Card.Header title="Subdued Card" />
       <Card.Section>
         <p>Card content</p>
@@ -155,17 +170,17 @@ Visually subdue the entire card using the `subdue` prop.
 
 ## Subdued Section
 
-A single section can be visually subdued using the `subdue` prop at the `<Card.Section />` level.
+A single section can be visually subduedd using the `subdued` prop at the `<Card.Section />` level.
 
 <Canvas>
   <Story name="Subdued Section">
     <Card>
       <Card.Header title="Card with Subdued Section" />
-      <Card.Section subdue>
+      <Card.Section subdued>
         <Box as="p">Subdued section</Box>
       </Card.Section>
       <Card.Section>
-        <Box as="p">Another section that is not subdued</Box>
+        <Box as="p">Another section that is not subduedd</Box>
       </Card.Section>
     </Card>
   </Story>
@@ -199,11 +214,10 @@ Here are some common use cases of `<Card />`.
   <Story name="Example - Sign Up Form">
     <Box justify="center" align="center" padding="2xl" background="grey-lightest">
         <Card maxWidth="4xl">
-          {/* Why can't i set childGap here? */}
           <Card.Section padding="3xl">
             <Box childGap="xl">
               <Box childGap="sm" align="center">
-                <Heading as="h1" size="xl">Alchemy Sign Up</Heading>
+                <Heading as="h1" size="xl">Sign Up</Heading>
                 <Box as="p" color="grey" fontSize="sm">Create your account to create leads and proposals</Box>
               </Box>
               <Box childGap="lg">
@@ -237,11 +251,13 @@ Here are some common use cases of `<Card />`.
       return (
         <Card>
           <Card.Header title="Flavor Table" />
+          <Card.Section padding="0">
           <Table
             rowKey="id"
             columns={columnConfig}
             rows={tableData}
           />
+          </Card.Section>
         </Card>
       );
     }}

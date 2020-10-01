@@ -68,8 +68,9 @@ export interface BoxProps {
   className?: string;
   /**
    * The amount of spacing between child elements.
+   * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
    */
-  childGap?: PALMETTO_SPACING;
+  childGap?: string;
   /**
    * The box's contents
    */
@@ -117,10 +118,13 @@ export interface BoxProps {
   | 'start'
   | 'stretch';
   /**
-   * Amount of space around the element. It models itself after the css shorthand property,
+   * Amount of space around the element.
+   * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
+   * Can also be a string of [spacing value](?path=/docs/design-tokens-spacing--page)
+   * that models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element.It is shorthand for top, right, bottom, left.
    */
-  margin?: PALMETTO_SPACING;
+  margin?: PALMETTO_SPACING | string;
   /**
    * The maximum height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
@@ -146,10 +150,13 @@ export interface BoxProps {
   | 'initial'
   | 'unset';
   /**
-   * Amount of space within the element around the Box contents. It models itself after the css shorthand property,
+   * Amount of space within the element around the Box contents.
+   * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
+   * Can also be a string of [spacing value](?path=/docs/design-tokens-spacing--page)
+   * that models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
    */
-  padding?: PALMETTO_SPACING;
+  padding?: PALMETTO_SPACING | string;
   /**
    * Set the radius of all corners
    */
@@ -172,29 +179,29 @@ export interface BoxProps {
  */
 const Box: FC<BoxProps> = ({
   as = 'div',
-  align,
-  alignContent,
-  alignSelf,
+  align = undefined,
+  alignContent = undefined,
+  alignSelf = undefined,
   background = undefined,
   // basis,
   border = undefined,
-  children,
+  children = undefined,
   childGap = undefined,
   className = '',
   color = undefined,
   display = 'flex',
   direction = 'column',
-  flex,
+  flex = undefined,
   fontSize = 'inherit',
   height = undefined,
-  justify,
-  margin,
-  maxHeight,
-  maxWidth,
+  justify = undefined,
+  margin = undefined,
+  maxHeight = undefined,
+  maxWidth = undefined,
   overflow = 'initial',
   padding = undefined,
   radius = undefined,
-  wrap,
+  wrap = undefined,
   width = undefined,
   ...rest
 }) => {
@@ -257,9 +264,11 @@ const Box: FC<BoxProps> = ({
   const decorateChildren = (child: ReactElement, i: number, childrenArr: ReactElement[]) => {
     if (i === childrenArr.length - 1) return child; // Child gap does not apply to last element in the list.
 
-    const childClasses = classNames(child.props.className, childGapClass);
-
-    return cloneElement(child, { className: childClasses });
+    if (child && child.props) {
+      const childClasses = classNames(child.props.className, childGapClass);
+      return cloneElement(child, { className: childClasses });
+    }
+    return child;
   };
 
   if (childGapClass && Array.isArray(children)) {
