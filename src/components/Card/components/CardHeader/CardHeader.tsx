@@ -6,11 +6,11 @@ export interface CardHeaderProps {
   /**
    * contents of the Header
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * Additional class names to add
    */
-  className: string;
+  className?: string;
   /**
    * The title of the card
    */
@@ -18,17 +18,16 @@ export interface CardHeaderProps {
 }
 
 const CardHeader: FC<CardHeaderProps> = ({
-  children,
-  className,
-  title,
+  children = null,
+  className = undefined,
+  title = null,
   ...restProps
 }) => {
-  const renderTitle = typeof title === 'string'
-    ? (
-      <Heading size="lg" as="h4">
-        {title}
-      </Heading>
-    ) : title;
+  const renderTitle = () => (
+    typeof title === 'string'
+      ? <Heading size="lg" as="h4">{title}</Heading>
+      : title
+  );
 
   return (
     <Box
@@ -37,7 +36,7 @@ const CardHeader: FC<CardHeaderProps> = ({
       className={className}
       {...restProps}
     >
-      {renderTitle}
+      {title && renderTitle()}
       {children}
     </Box>
   );

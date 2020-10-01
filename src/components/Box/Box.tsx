@@ -262,13 +262,11 @@ const Box: FC<BoxProps> = ({
    * Shallow merges existing classes of child node with a className based on the childGap value.
    */
   const decorateChildren = (child: ReactElement, i: number, childrenArr: ReactElement[]) => {
-    if (i === childrenArr.length - 1) return child; // Child gap does not apply to last element in the list.
+    if (i === childrenArr.length - 1 || !child) return child; // Not gap if child is last element.
 
-    if (child && child.props) {
-      const childClasses = classNames(child.props.className, childGapClass);
-      return cloneElement(child, { className: childClasses });
-    }
-    return child;
+    const childClasses = classNames(child?.props?.className, childGapClass);
+
+    return cloneElement(child, { className: childClasses });
   };
 
   if (childGapClass && Array.isArray(children)) {
