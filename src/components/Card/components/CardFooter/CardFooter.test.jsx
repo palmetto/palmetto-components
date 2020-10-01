@@ -12,6 +12,7 @@ describe('Card/CardFooter', () => {
 
   test('lg padding class is applied by default', () => {
     const { getByText } = render(<CardFooter>Test Box</CardFooter>);
-    expect(getByText('Test Box').classList).toContain('p-lg');
+    expect(getByText('Test Box').classList).toContain('p-v-md');
+    expect(getByText('Test Box').classList).toContain('p-h-lg');
   });
 });
