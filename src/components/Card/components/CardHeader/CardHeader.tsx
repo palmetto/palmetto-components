@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
+import { DisplayType } from '../../../../lib/types';
 
 export interface CardHeaderProps {
   /**
@@ -12,6 +13,10 @@ export interface CardHeaderProps {
    */
   className?: string;
   /**
+   * Display property. Only select values supported.
+   */
+  display?: DisplayType;
+  /**
    * The title of the card
    */
   title?: ReactNode;
@@ -20,6 +25,7 @@ export interface CardHeaderProps {
 const CardHeader: FC<CardHeaderProps> = ({
   children = null,
   className = undefined,
+  display = 'block',
   title = null,
   ...restProps
 }) => {
@@ -32,6 +38,7 @@ const CardHeader: FC<CardHeaderProps> = ({
   return (
     <Box
       childGap="2xs"
+      display={display}
       padding="md lg"
       className={className}
       {...restProps}

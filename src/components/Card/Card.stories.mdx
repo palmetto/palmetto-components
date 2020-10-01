@@ -66,17 +66,20 @@ A card is a styled container to group related information and actions together. 
           <Box>Seattle, WA 98123</Box>
         </Box>
       </Card.Section>
-      <Card.Footer
-        direction="row"
-        justify="between"
-        overflow="hidden"
-        childGap="md"
-      >
-        <Box direction="row" childGap="sm">
-          <Button size="sm" variant="light">Edit</Button>
-          <Button size="sm" variant="light">Remove</Button>
+      <Card.Footer>
+        <Box
+          display="flex"
+          direction="row"
+          justify="between"
+          overflow="hidden"
+          childGap="md"
+        >
+          <Box direction="row" childGap="sm">
+            <Button size="sm" variant="light">Edit</Button>
+            <Button size="sm" variant="light">Remove</Button>
+          </Box>
+          <Button variant="danger" isOutlined size="sm">Delete</Button>
         </Box>
-        <Button variant="danger" isOutlined size="sm">Delete</Button>
       </Card.Footer>
     </Card>
   </Box>
@@ -106,9 +109,26 @@ A `<Card />` consists of three child components:
   </Story>
 </Canvas>
 
-## Card Header Title
+## Subdued Card
+
+Visually subdue the entire card using the `subdued` prop.
+
+<Canvas>
+  <Story name="Subdued Card">
+    <Card subdued>
+      <Card.Header title="Subdued Card" />
+      <Card.Section>
+        <p>Card content</p>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
+## Card Header
 
 The `<Card.Header />` component accepts a `title` prop for setting the title of a Card. Child nodes of the card will be rendered below the title.
+
+See [Card.Header props](#cardheader-props)
 
 <Canvas>
   <Story name="Card Title">
@@ -121,9 +141,11 @@ The `<Card.Header />` component accepts a `title` prop for setting the title of 
   </Story>
 </Canvas>
 
-## Card Section Title
+## Card Sections
 
-Give a `title` to a section to communicate distinct but related pieces of information within a `<Card />`.
+Card sections contain the body content of the card. Give a `title` to a section to communicate distinct but related pieces of information within a `<Card />`.
+
+See [Card.Section props](#cardsection-props)
 
 <Canvas>
   <Story name="Section Title">
@@ -136,7 +158,7 @@ Give a `title` to a section to communicate distinct but related pieces of inform
   </Story>
 </Canvas>
 
-## Multiple Sections
+### Multiple Sections
 
 Divider rules are automatically added between multiple `<Card.Section />` components.
 
@@ -157,22 +179,7 @@ Divider rules are automatically added between multiple `<Card.Section />` compon
   </Story>
 </Canvas>
 
-## Subdued Card
-
-Visually subdue the entire card using the `subdued` prop.
-
-<Canvas>
-  <Story name="Subdued Card">
-    <Card subdued>
-      <Card.Header title="Subdued Card" />
-      <Card.Section>
-        <p>Card content</p>
-      </Card.Section>
-    </Card>
-  </Story>
-</Canvas>
-
-## Subdued Section
+### Subdued Section
 
 A single section can be visually subdued using the `subdued` prop at the `<Card.Section />` level.
 
@@ -191,22 +198,24 @@ A single section can be visually subdued using the `subdued` prop at the `<Card.
 </Canvas>
 
 
-<!--
-## Child Components
+## Card Footer
 
-Included in the Card component package are child components to help layout content and actions in a consistent manner.
+The footer of the card should contain primary actions related to the card's contents.
 
-<!-- ### Card.Header
 
-<ArgsTable of={Card.Header} />
+See [Card.Footer props](#cardfooter-props)
 
-### Card.Section
+<Canvas>
+  <Story name="Footer">
+    <Card>
+      <Card.Section>content</Card.Section>
+      <Card.Footer>
+        <Button variant="primary">Publish</Button>
+      </Card.Footer>
+    </Card>
+  </Story>
+</Canvas>
 
-<ArgsTable of={Card.Section} />
-
-### Card.Footer
-
-<ArgsTable of={Card.Footer} /> --> -->
 
 
 ## Examples
@@ -287,3 +296,18 @@ Here are some common use cases of `<Card />`.
     </Box>
   </Story>
 </Canvas>
+
+
+## Child Component Props
+
+### Card.Header Props
+
+<ArgsTable of={Card.Header} />
+
+### Card.Section Props
+
+<ArgsTable of={Card.Section} />
+
+### Card.Footer Props
+
+<ArgsTable of={Card.Footer} />

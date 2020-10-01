@@ -4,12 +4,9 @@ import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
 import styles from '../../Card.module.scss';
 import { PALMETTO_SPACING } from '../../../../lib/tokens';
+import { DisplayType } from '../../../../lib/types';
 
 export interface CardSectionProps {
-  /**
-   * Custom class to be applied to section container.
-   */
-  className?: string;
   /**
    * The amount of spacing between child elements.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
@@ -19,6 +16,14 @@ export interface CardSectionProps {
    * Elements to be rendered.
    */
   children?: ReactNode;
+  /**
+   * Custom class to be applied to section container.
+   */
+  className?: string;
+  /**
+   * Display property. Only select values supported.
+   */
+  display?: DisplayType;
   /**
    * visually subdued the appearance of the section
    */
@@ -33,6 +38,7 @@ export const CardSection: FC<CardSectionProps> = ({
   children = null,
   childGap = undefined,
   className = undefined,
+  display = 'block',
   subdued = undefined,
   title = undefined,
   ...restProps
@@ -57,6 +63,7 @@ export const CardSection: FC<CardSectionProps> = ({
     <Box
       background={backgroundColor}
       className={sectionClasses}
+      display={display}
       padding="md lg"
       {...restProps}
     >
