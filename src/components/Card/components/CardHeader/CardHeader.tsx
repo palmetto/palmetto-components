@@ -6,7 +6,7 @@ export interface CardHeaderProps {
   /**
    * contents of the Header
    */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /**
    * Additional class names to add
    */

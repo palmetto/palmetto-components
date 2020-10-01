@@ -30,11 +30,11 @@ export interface CardSectionProps {
 }
 
 export const CardSection: FC<CardSectionProps> = ({
-  children,
-  childGap,
-  className,
-  subdued,
-  title,
+  children = null,
+  childGap = undefined,
+  className = undefined,
+  subdued = undefined,
+  title = undefined,
   ...restProps
 }) => {
   const backgroundColor = subdued ? 'grey-lightest' : undefined;

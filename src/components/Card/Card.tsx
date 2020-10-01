@@ -1,9 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import Box, { BoxProps } from '../Box/Box';
-import styles from './Card.module.scss';
-
 import { CardFooter, CardHeader, CardSection } from './components';
+import styles from './Card.module.scss';
 
 type BoxPropsShallow = Omit<BoxProps,
   'as' |
