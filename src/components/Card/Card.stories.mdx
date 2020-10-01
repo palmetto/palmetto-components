@@ -221,11 +221,13 @@ Here are some common use cases of `<Card />`.
                 <Box as="p" color="grey" fontSize="sm">Create your account to create leads and proposals</Box>
               </Box>
               <Box childGap="lg">
-                <TextInput id="email" value="" label="Email Address" />
-                <TextInput id="password" type="password" value="" label="Password" />
+                <TextInput id="email" value="" label="Email Address" onChange={() => null} />
+                <TextInput id="password" type="password" value="" label="Password" onChange={() => null} />
                 <Button fullWidth variant="primary">Sign Up</Button>
               </Box>
-              <Box align="center" fontSize="sm" color="grey"><p>Already have an account? <a href="#" class="font-color-primary">Log in</a>.</p></Box>
+              <Box align="center" fontSize="sm" color="grey">
+                <p>Already have an account? <a href="#" className="font-color-primary">Log in</a>.</p>
+              </Box>
             </Box>
           </Card.Section>
         </Card>

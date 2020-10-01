@@ -203,7 +203,7 @@ const Box: FC<BoxProps> = ({
   radius = undefined,
   wrap = undefined,
   width = undefined,
-  ...rest
+  ...restProps
 }) => {
   const marginCss = getSpacingCss('m', margin);
   const paddingCss = getSpacingCss('p', padding);
@@ -264,9 +264,12 @@ const Box: FC<BoxProps> = ({
   const decorateChildren = (child: ReactElement, i: number, childrenArr: ReactElement[]) => {
     if (i === childrenArr.length - 1 || !child) return child; // Not gap if child is last element.
 
-    const childClasses = classNames(child?.props?.className, childGapClass);
+    const childClasses = classNames(child.props.className, childGapClass);
 
-    return cloneElement(child, { className: childClasses });
+    return cloneElement(child, {
+      className: childClasses,
+      key: child.key ?? i,
+    });
   };
 
   if (childGapClass && Array.isArray(children)) {
@@ -277,7 +280,7 @@ const Box: FC<BoxProps> = ({
 
   return createElement(
     element,
-    { className: boxClasses, style: boxStyles, ...rest },
+    { className: boxClasses, style: boxStyles, ...restProps },
     decoratedChildren,
   );
 };
