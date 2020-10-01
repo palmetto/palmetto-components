@@ -44,7 +44,9 @@ class Card extends React.Component<CardProps> {
     } = this.props;
 
     const cardClasses = classNames(
-      styles.card,
+      {
+        [styles.card]: !subdued,
+      },
       className,
     );
 

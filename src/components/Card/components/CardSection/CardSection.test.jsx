@@ -10,7 +10,7 @@ describe('Card/CardSection', () => {
     expect(container.children[0].classList).toContain('p-h-lg');
   });
 
-  test('card as correct background class if subduedd', () => {
+  test('card as correct background class if subdued', () => {
     const { container } = render(<CardSection subdued>subdued</CardSection>);
     expect(container.children[0].classList).toContain('background-color-grey-lightest');
   });
