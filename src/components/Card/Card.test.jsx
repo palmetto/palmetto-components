@@ -5,7 +5,11 @@ import '@testing-library/jest-dom/extend-expect';
 import Card from './Card';
 
 describe('Card', () => {
-  test('card has correct background class if subduedd', () => {
+  test('card has white background class by default', () => {
+    const { container } = render(<Card>test</Card>);
+    expect(container.children[0].classList).toContain('background-color-white');
+  });
+  test('card has correct background class if subdued', () => {
     const { container } = render(<Card subdued>subdued</Card>);
     expect(container.children[0].classList).toContain('background-color-grey-lightest');
   });
