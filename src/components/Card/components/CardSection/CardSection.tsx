@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
 import styles from '../../Card.module.scss';
+import { PALMETTO_SPACING } from '../../../../lib/tokens';
 
 export interface CardSectionProps {
   /**
@@ -13,7 +14,7 @@ export interface CardSectionProps {
    * The amount of spacing between child elements.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
    */
-  childGap?: string;
+  childGap?: PALMETTO_SPACING;
   /**
    * Elements to be rendered.
    */

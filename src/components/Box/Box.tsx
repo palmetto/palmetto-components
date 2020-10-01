@@ -70,7 +70,7 @@ export interface BoxProps {
    * The amount of spacing between child elements.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
    */
-  childGap?: string;
+  childGap?: PALMETTO_SPACING;
   /**
    * The box's contents
    */
