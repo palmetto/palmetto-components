@@ -2,6 +2,9 @@ import Alert from './Alert/Alert';
 import Box from './Box/Box';
 import Button from './Button/Button';
 import Card from './Card/Card';
+import CardHeader from './Card/components/CardHeader/CardHeader';
+import CardSection from './Card/components/CardSection/CardSection';
+import CardFooter from './Card/components/CardFooter/CardFooter';
 import CheckboxInput from './CheckboxInput/CheckboxInput';
 import FormikCheckboxInput from './Formik/FormikCheckboxInput/FormikCheckboxInput';
 import FormikRadioGroup from './Formik/FormikRadioGroup/FormikRadioGroup';
@@ -19,6 +22,9 @@ export {
   Box,
   Button,
   Card,
+  CardHeader,
+  CardSection,
+  CardFooter,
   CheckboxInput,
   FormikCheckboxInput,
   FormikRadioGroup,
