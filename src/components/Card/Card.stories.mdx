@@ -17,7 +17,11 @@ import TextInput from '../TextInput/TextInput';
 
 # Card
 
-A card is a styled container to group related information and actions together.
+A card is a styled container to group related information and actions together. It consists of three child components that are automatically included with the `<Card />`:
+
+1. `<Card.Header />` - should contain a descriptive title for the Card's contents
+1. `<Card.Section />` - for the body of the card, and can consists of many sections
+1. `<Card.Footer />` - a place for primary actions for the card's contents
 
 <Canvas>
   <Box background="grey-lightest" padding="2xl">
@@ -26,7 +30,7 @@ A card is a styled container to group related information and actions together.
         <Box as="p" color="grey" fontSize="sm">subtitle</Box>
       </Card.Header>
       <Box overflow="hidden" height="130px">
-        <img src="https://images.unsplash.com/photo-1573341830496-e89fcae7f5eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2468&q=80" />
+        <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
       </Box>
       <Card.Section title="profile">
         <Box direction="row" childGap="lg">
@@ -57,10 +61,10 @@ A card is a styled container to group related information and actions together.
         </Box>
       </Card.Section>
       <Card.Section title="site location">
-        <p>Another section</p>
-      </Card.Section>
-      <Card.Section title="utility information">
-        <p>Another section</p>
+        <Box childGap="2xs">
+          <Box>12345 Jones Rd</Box>
+          <Box>Seattle, WA 98123</Box>
+        </Box>
       </Card.Section>
       <Card.Footer
         direction="row"
@@ -270,8 +274,8 @@ Here are some common use cases of `<Card />`.
   <Story name="Example - Full Bleed Photo">
     <Box justify="center" align="center" padding="2xl" background="grey-lightest">
       <Card width="300px">
-        <Card.Section overflow="hidden" height="300px">
-          <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
+        <Card.Section padding="0" overflow="hidden" height="300px">
+          <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80" />
         </Card.Section>
         <Card.Section childGap="xs">
           <Heading>Headline</Heading>
