@@ -106,6 +106,8 @@ export type PALMETTO_SPACING =
   'base' |
   'inherit';
 
+export type PALMETTO_BREAKPOINTS = 'tablet' | 'desktop' | 'hd';
+
 export interface ColorDictionary {
   [name: string]: ColorEntry;
 }
@@ -124,7 +126,7 @@ export interface ColorVariation {
 export const PALMETTO_BORDER_RADIUS_OPTIONS = Object.keys(sizes.size['border-radius']);
 export const PALMETTO_BORDER_RADIUS_VALUES = Object.values(sizes.size['border-radius']);
 
-export const PALMETTO_BREAKPOINT_OPTIONS = Object.keys(sizes.size.breakpoint);
+export const PALMETTO_BREAKPOINT_OPTIONS = Object.keys(sizes.size.breakpoint) as PALMETTO_BREAKPOINTS[];
 export const PALMETTO_BREAKPOINT_VALUES = Object.values(sizes.size.breakpoint);
 
 export const PALMETTO_COLOR_VALUES = Object.values(colors.color) as ColorDictionary[];

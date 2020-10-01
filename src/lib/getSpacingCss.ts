@@ -1,9 +1,19 @@
-import { PALMETTO_SPACING } from './tokens';
-import { CssStylesAndClasses, CssSpacing } from './types';
+import { valueContainerCSS } from 'react-select/src/components/containers';
+import { CssStylesAndClasses, CssSpacing, SpacingFormat } from './types';
 
+function validateValue(value: SpacingFormat, isValid: boolean, returnValueIfTrue: [] | undefined) {
+  if (
+    value === undefined
+    || value === null
+    || value === 'inherit'
+    || (typeof value !== 'string' && typeof value !== 'object')
+  ) {
+    return [];
+  }
+}
 function getSpacingStyles(
   attribute: CssSpacing,
-  value: PALMETTO_SPACING | string | undefined,
+  value?: SpacingFormat,
 ): { [key: string]: string; } | undefined {
   if (value === undefined || typeof value !== 'string' || value !== 'inherit') {
     return undefined;
@@ -15,9 +25,18 @@ function getSpacingStyles(
   return styles;
 }
 
-function getSpacingClasses(attribute: CssSpacing, value: PALMETTO_SPACING | string | undefined): string[] {
-  if (value === undefined || typeof value !== 'string' || value === 'inherit') {
+function getSpacingClasses(attribute: CssSpacing, value?: SpacingFormat): string[] {
+  if (
+    value === undefined
+    || value === null
+    || value === 'inherit'
+    || (typeof value !== 'string' && typeof value !== 'object')
+  ) {
     return [];
+  }
+
+  if (typeof value === 'object') {
+
   }
 
   const classes = [];
@@ -48,7 +67,7 @@ function getSpacingClasses(attribute: CssSpacing, value: PALMETTO_SPACING | stri
  * @param {CssSpacing} attribute margin or padding
  * @param {PALMETTO_SPACING} [value] spacing token value
  */
-function getSpacingCss(attribute: CssSpacing, value?: PALMETTO_SPACING | string): CssStylesAndClasses {
+function getSpacingCss(attribute: CssSpacing, value?: SpacingFormat): CssStylesAndClasses {
   return ({
     styles: getSpacingStyles(attribute, value),
     classes: getSpacingClasses(attribute, value),

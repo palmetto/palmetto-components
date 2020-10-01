@@ -1,3 +1,4 @@
+import { PALMETTO_SPACING } from '../lib/tokens';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type UnknownPropertiesObjType = { [key: string]: any; };
 
@@ -26,3 +27,14 @@ export type CssSpacing =
   'p';
 
 export type DisplayType = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
+
+export type GlobalSpacing = PALMETTO_SPACING | string;
+
+export type ResponsiveSpacing = {
+  base: GlobalSpacing;
+  tablet: GlobalSpacing;
+  desktop: GlobalSpacing;
+  hd: GlobalSpacing;
+};
+
+export type SpacingFormat = GlobalSpacing | ResponsiveSpacing;

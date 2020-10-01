@@ -17,7 +17,7 @@ import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingCss from '../../lib/getSpacingCss';
 import getElementType from '../../lib/getElementType';
 import getFlexCss from '../../lib/getFlexCss';
-import { DisplayType } from '../../lib/types';
+import { DisplayType, SpacingFormat } from '../../lib/types';
 
 export interface BoxProps {
   /**
@@ -156,7 +156,7 @@ export interface BoxProps {
    * that models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
    */
-  padding?: PALMETTO_SPACING | string;
+  padding?: SpacingFormat;
   /**
    * Set the radius of all corners
    */
