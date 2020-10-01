@@ -1,0 +1,313 @@
+import { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Box from '../Box/Box';
+import Card from './Card';
+import Heading from '../Heading/Heading';
+import Button from '../Button/Button';
+import Table from '../Table/Table';
+import TextInput from '../TextInput/TextInput';
+
+
+<Meta
+  title="Components/Card"
+  component={Card}
+/>
+
+# Card
+
+A card is a styled container to group related information and actions together. It consists of three child components that are automatically included with the `<Card />`:
+
+1. `<Card.Header />` - should contain a descriptive title for the Card's contents
+1. `<Card.Section />` - for the body of the card, and can consists of many sections
+1. `<Card.Footer />` - a place for primary actions for the card's contents
+
+<Canvas>
+  <Box background="grey-lightest" padding="2xl">
+    <Card overflow="hidden">
+      <Card.Header title="Card Demo">
+        <Box as="p" color="grey" fontSize="sm">subtitle</Box>
+      </Card.Header>
+      <Box overflow="hidden" height="130px">
+        <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
+      </Box>
+      <Card.Section title="profile">
+        <Box direction="row" childGap="lg">
+          <Box flex="auto" childGap="lg">
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Full Name</Box>
+              <Box>Jessica Ramirez</Box>
+            </Box>
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Email</Box>
+              <Box>jw1416@palmetto.com</Box>
+            </Box>
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Phone</Box>
+              <Box>(123) 555-5555</Box>
+            </Box>
+          </Box>
+          <Box flex="auto" childGap="lg">
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Preferred Language</Box>
+              <Box>English</Box>
+            </Box>
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">Country</Box>
+              <Box>United States</Box>
+            </Box>
+          </Box>
+        </Box>
+      </Card.Section>
+      <Card.Section title="site location">
+        <Box childGap="2xs">
+          <Box>12345 Jones Rd</Box>
+          <Box>Seattle, WA 98123</Box>
+        </Box>
+      </Card.Section>
+      <Card.Footer>
+        <Box
+          display="flex"
+          direction="row"
+          justify="between"
+          overflow="hidden"
+          childGap="md"
+        >
+          <Box direction="row" childGap="sm">
+            <Button size="sm" variant="light">Edit</Button>
+            <Button size="sm" variant="light">Remove</Button>
+          </Box>
+          <Button variant="danger" isOutlined size="sm">Delete</Button>
+        </Box>
+      </Card.Footer>
+    </Card>
+  </Box>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Card} />
+
+## Default Card
+
+A `<Card />` consists of three child components:
+
+1. `<Card.Header />` - a place for descriptive title for its content
+1. `<Card.Section />` - the body of the card can consists of many sections
+1. `<Card.Footer />` - where primary actions are placed
+
+<Canvas>
+  <Story name="Default Card">
+    <Card>
+      <Card.Header title="Default Card" />
+      <Card.Section>
+        <p>Card content</p>
+      </Card.Section>
+      <Card.Footer>Footer</Card.Footer>
+    </Card>
+  </Story>
+</Canvas>
+
+## Subdued Card
+
+Visually subdue the entire card using the `subdued` prop.
+
+<Canvas>
+  <Story name="Subdued Card">
+    <Card subdued>
+      <Card.Header title="Subdued Card" />
+      <Card.Section>
+        <p>Card content</p>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
+## Card Header
+
+The `<Card.Header />` component accepts a `title` prop for setting the title of a Card. Child nodes of the card will be rendered below the title.
+
+See [Card.Header props](#cardheader-props)
+
+<Canvas>
+  <Story name="Card Title">
+    <Card>
+      <Card.Header title="Default Card">This is a good place for card description text</Card.Header>
+      <Card.Section>
+        <p>Card content</p>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
+## Card Sections
+
+Card sections contain the body content of the card. Give a `title` to a section to communicate distinct but related pieces of information within a `<Card />`.
+
+See [Card.Section props](#cardsection-props)
+
+<Canvas>
+  <Story name="Section Title">
+    <Card>
+      <Card.Header title="Card Title" />
+      <Card.Section title="Section Title">
+        <p>Section content</p>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
+### Multiple Sections
+
+Divider rules are automatically added between multiple `<Card.Section />` components.
+
+<Canvas>
+  <Story name="Multiple Sections">
+    <Card>
+      <Card.Header title="Card with Multiple Sections" />
+      <Card.Section title="Section A Title">
+        <p>Section content</p>
+      </Card.Section>
+      <Card.Section title="Section B Title">
+        <p>Section content</p>
+      </Card.Section>
+      <Card.Section>
+        <p>Section c has no title</p>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
+### Subdued Section
+
+A single section can be visually subdued using the `subdued` prop at the `<Card.Section />` level.
+
+<Canvas>
+  <Story name="Subdued Section">
+    <Card>
+      <Card.Header title="Card with Subdued Section" />
+      <Card.Section subdued>
+        <Box as="p">Subdued section</Box>
+      </Card.Section>
+      <Card.Section>
+        <Box as="p">Another section that is not subdued</Box>
+      </Card.Section>
+    </Card>
+  </Story>
+</Canvas>
+
+
+## Card Footer
+
+The footer of the card should contain primary actions related to the card's contents.
+
+
+See [Card.Footer props](#cardfooter-props)
+
+<Canvas>
+  <Story name="Footer">
+    <Card>
+      <Card.Section>content</Card.Section>
+      <Card.Footer>
+        <Button variant="primary">Publish</Button>
+      </Card.Footer>
+    </Card>
+  </Story>
+</Canvas>
+
+
+
+## Examples
+
+Here are some common use cases of `<Card />`.
+
+### Sign Up Form
+<Canvas>
+  <Story name="Example - Sign Up Form">
+    <Box justify="center" align="center" padding="2xl" background="grey-lightest">
+        <Card maxWidth="4xl">
+          <Card.Section padding="3xl">
+            <Box childGap="xl">
+              <Box childGap="sm" align="center">
+                <Heading as="h1" size="xl">Sign Up</Heading>
+                <Box as="p" color="grey" fontSize="sm">Create your account to create leads and proposals</Box>
+              </Box>
+              <Box childGap="lg">
+                <TextInput id="email" value="" label="Email Address" onChange={() => null} />
+                <TextInput id="password" type="password" value="" label="Password" onChange={() => null} />
+                <Button fullWidth variant="primary">Sign Up</Button>
+              </Box>
+              <Box align="center" fontSize="sm" color="grey">
+                <p>Already have an account? <a href="#" className="font-color-primary">Log in</a>.</p>
+              </Box>
+            </Box>
+          </Card.Section>
+        </Card>
+    </Box>
+  </Story>
+</Canvas>
+
+### Card With Table
+
+<Canvas>
+  <Story name="Example - Card With Table">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', dataKey: 'id' },
+        { heading: 'Color', dataKey: 'color' },
+        { heading: 'Flavor', dataKey: 'flavor' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Card>
+          <Card.Header title="Flavor Table" />
+          <Card.Section padding="0">
+          <Table
+            rowKey="id"
+            columns={columnConfig}
+            rows={tableData}
+          />
+          </Card.Section>
+        </Card>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Full Bleed Photo
+
+<Canvas>
+  <Story name="Example - Full Bleed Photo">
+    <Box justify="center" align="center" padding="2xl" background="grey-lightest">
+      <Card width="300px">
+        <Card.Section padding="0" overflow="hidden" height="300px">
+          <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80" />
+        </Card.Section>
+        <Card.Section childGap="xs">
+          <Heading>Headline</Heading>
+          <Box as="p">This is the body copy of the card.</Box>
+        </Card.Section>
+      </Card>
+    </Box>
+  </Story>
+</Canvas>
+
+
+## Child Component Props
+
+### Card.Header Props
+
+<ArgsTable of={Card.Header} />
+
+### Card.Section Props
+
+<ArgsTable of={Card.Section} />
+
+### Card.Footer Props
+
+<ArgsTable of={Card.Footer} />

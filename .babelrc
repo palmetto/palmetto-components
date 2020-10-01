@@ -8,7 +8,8 @@
       ],
       "plugins": [
         "@babel/plugin-transform-regenerator",
-        "@babel/plugin-transform-runtime"
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-proposal-class-properties"
       ]
     },
     "build": {
@@ -18,7 +19,8 @@
         "@babel/preset-typescript"
       ],
       "plugins": [
-        "babel-plugin-typescript-to-proptypes"
+        "babel-plugin-typescript-to-proptypes",
+        "@babel/plugin-proposal-class-properties"
       ]
     },
     "storybook": {

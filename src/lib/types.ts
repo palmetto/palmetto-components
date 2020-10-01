@@ -24,3 +24,5 @@ export type CssDimension = 'h' | 'w' | 'mw' | 'mh';
 export type CssSpacing =
   'm' |
   'p';
+
+export type DisplayType = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';

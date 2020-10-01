@@ -3,7 +3,7 @@ import { CssStylesAndClasses, CssSpacing } from './types';
 
 function getSpacingStyles(
   attribute: CssSpacing,
-  value: PALMETTO_SPACING | undefined,
+  value: PALMETTO_SPACING | string | undefined,
 ): { [key: string]: string; } | undefined {
   if (value === undefined || typeof value !== 'string' || value !== 'inherit') {
     return undefined;
@@ -15,7 +15,7 @@ function getSpacingStyles(
   return styles;
 }
 
-function getSpacingClasses(attribute: CssSpacing, value: PALMETTO_SPACING | undefined): string[] {
+function getSpacingClasses(attribute: CssSpacing, value: PALMETTO_SPACING | string | undefined): string[] {
   if (value === undefined || typeof value !== 'string' || value === 'inherit') {
     return [];
   }
@@ -48,7 +48,7 @@ function getSpacingClasses(attribute: CssSpacing, value: PALMETTO_SPACING | unde
  * @param {CssSpacing} attribute margin or padding
  * @param {PALMETTO_SPACING} [value] spacing token value
  */
-function getSpacingCss(attribute: CssSpacing, value?: PALMETTO_SPACING | undefined): CssStylesAndClasses {
+function getSpacingCss(attribute: CssSpacing, value?: PALMETTO_SPACING | string): CssStylesAndClasses {
   return ({
     styles: getSpacingStyles(attribute, value),
     classes: getSpacingClasses(attribute, value),
