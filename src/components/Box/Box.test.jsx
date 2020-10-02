@@ -107,7 +107,7 @@ describe('Box', () => {
     test('box renders with default display value of flex', () => {
       const { getByText } = render(<Box>Hello</Box>);
 
-      expect(getByText('Hello')).toHaveClass('flex');
+      expect(getByText('Hello')).toHaveClass('display-flex');
     });
 
     test('box renders with display class matching prop', () => {
@@ -123,7 +123,7 @@ describe('Box', () => {
       displayValues.forEach((value, i) => {
         const { queryAllByText } = render(<Box display={value}>hello</Box>);
 
-        expect(queryAllByText('hello')[i]).toHaveClass(value);
+        expect(queryAllByText('hello')[i]).toHaveClass(`display-${value}`);
       });
     });
   });

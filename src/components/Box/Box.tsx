@@ -87,7 +87,7 @@ export interface BoxProps {
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
-  fontSize?: PALMETTO_FONT_SIZES;
+  fontSize?: PALMETTO_FONT_SIZES | ResponsiveGeneric;
   /**
    * The height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
@@ -184,8 +184,6 @@ const Box: FC<BoxProps> = ({
   width = undefined,
   ...restProps
 }) => {
-  const marginClasses = getSpacingClasses('m', margin);
-  const paddingClasses = getSpacingClasses('p', padding);
   const heightCss = getDimensionCss('h', height);
   const widthCss = getDimensionCss('w', width);
   const maxHeightCss = getDimensionCss('mh', maxHeight);
@@ -198,8 +196,8 @@ const Box: FC<BoxProps> = ({
   const boxClasses = classNames(
     className,
     wrapClass,
-    marginClasses,
-    paddingClasses,
+    getSpacingClasses('m', margin),
+    getSpacingClasses('p', padding),
     heightCss.classes,
     maxHeightCss.classes,
     maxWidthCss.classes,
@@ -211,13 +209,13 @@ const Box: FC<BoxProps> = ({
     generateResponsiveClasses('align-items', alignItems),
     generateResponsiveClasses('align-content', alignContent),
     generateResponsiveClasses('align-self', alignSelf),
+    generateResponsiveClasses('font-size', fontSize),
+    generateResponsiveClasses('overflow', overflow),
     {
       [`background-color-${background}`]: background,
       [`border-color-${border}`]: border,
       [`font-color-${color}`]: color,
-      [`font-size-${fontSize}`]: fontSize,
       [`border-radius-${radius}`]: radius,
-      [`overflow-${overflow}`]: overflow,
     },
   );
 
