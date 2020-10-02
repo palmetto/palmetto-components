@@ -26,6 +26,11 @@ interface ButtonProps {
    */
   id?: string;
   /**
+   * URL to navigate to when clicked. Passing this attribute automatically
+   * renders an anchor <a> tag, NOT a <button> element.
+   */
+  href?: string;
+  /**
    * Disables the button, making it inoperable.
    */
   isDisabled?: boolean;
@@ -52,11 +57,11 @@ interface ButtonProps {
   /**
    * Callback when focus leaves Button.
    */
-  onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   /**
    * Callback when Button receives focus.
    */
-  onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   /**
    * The size of the button.
    */
@@ -72,6 +77,7 @@ const Button: FC<ButtonProps> = ({
   className = '',
   fullWidth = false,
   id = undefined,
+  href = undefined,
   isDisabled = false,
   isLoading = false,
   isOutlined = false,
@@ -82,6 +88,7 @@ const Button: FC<ButtonProps> = ({
   onBlur = undefined,
   size = 'md',
   variant = 'primary',
+  ...restProps
 }) => {
   const disabled = isLoading || isDisabled;
 
@@ -101,11 +108,11 @@ const Button: FC<ButtonProps> = ({
     if (onClick) onClick(event);
   };
 
-  const handleFocus = (event: FocusEvent<HTMLButtonElement>) => {
+  const handleFocus = (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     if (onFocus) onFocus(event);
   };
 
-  const handleBlur = (event: FocusEvent<HTMLButtonElement>) => {
+  const handleBlur = (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     if (onBlur) onBlur(event);
   };
 
@@ -125,20 +132,35 @@ const Button: FC<ButtonProps> = ({
   );
 
   return (
-    <button
-      id={id}
-      type={type} // eslint-disable-line react/button-has-type
-      disabled={disabled}
-      className={buttonClasses}
-      onClick={handleClick}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      tabIndex={tabIndex}
-      aria-label={isLoading ? 'Loading' : undefined}
-      aria-busy={isLoading}
-    >
-      {content}
-    </button>
+    href ? (
+      <a
+        href={href}
+        className={buttonClasses}
+        id={id}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        tabIndex={tabIndex}
+        {...restProps}
+      >
+        {content}
+      </a>
+    ) : (
+      <button
+        id={id}
+        type={type} // eslint-disable-line react/button-has-type
+        disabled={disabled}
+        className={buttonClasses}
+        onClick={handleClick}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        tabIndex={tabIndex}
+        aria-label={isLoading ? 'Loading' : undefined}
+        aria-busy={isLoading}
+        {...restProps}
+      >
+        {content}
+      </button>
+    )
   );
 };
 
