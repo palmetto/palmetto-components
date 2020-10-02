@@ -14,7 +14,7 @@ import {
 } from '../../lib/tokens';
 // import getElementType from '../../lib/getElementType';
 import getDimensionCss from '../../lib/getDimensionCss';
-import getSpacingCss from '../../lib/getSpacingCss';
+import getSpacingClasses from '../../lib/getSpacingClasses';
 import getElementType from '../../lib/getElementType';
 import getFlexCss from '../../lib/getFlexCss';
 import { DisplayType, SpacingFormat } from '../../lib/types';
@@ -204,8 +204,8 @@ const Box: FC<BoxProps> = ({
   width = undefined,
   ...restProps
 }) => {
-  const marginCss = getSpacingCss('m', margin);
-  const paddingCss = getSpacingCss('p', padding);
+  const marginClasses = getSpacingClasses('m', margin);
+  const paddingClasses = getSpacingClasses('p', padding);
   const heightCss = getDimensionCss('h', height);
   const widthCss = getDimensionCss('w', width);
   const maxHeightCss = getDimensionCss('mh', maxHeight);
@@ -218,8 +218,8 @@ const Box: FC<BoxProps> = ({
     className,
     display,
     wrapClass,
-    marginCss.classes,
-    paddingCss.classes,
+    marginClasses,
+    paddingClasses,
     heightCss.classes,
     maxHeightCss.classes,
     maxWidthCss.classes,
@@ -241,7 +241,6 @@ const Box: FC<BoxProps> = ({
   );
 
   const boxStyles = {
-    ...marginCss.styles,
     ...heightCss.styles,
     ...maxHeightCss.styles,
     ...maxWidthCss.styles,

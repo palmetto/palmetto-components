@@ -1,4 +1,5 @@
-import { PALMETTO_SPACING } from '../lib/tokens';
+import { PALMETTO_SPACING } from './tokens';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type UnknownPropertiesObjType = { [key: string]: any; };
 
@@ -22,19 +23,17 @@ export interface FlexStylesAndClasses {
 
 export type CssDimension = 'h' | 'w' | 'mw' | 'mh';
 
-export type CssSpacing =
-  'm' |
-  'p';
+export type CssSpacing = 'm' | 'p';
 
 export type DisplayType = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
 
-export type GlobalSpacing = PALMETTO_SPACING | string;
+export type GlobalSpacing = PALMETTO_SPACING | string | undefined;
 
 export type ResponsiveSpacing = {
-  base: GlobalSpacing;
-  tablet: GlobalSpacing;
-  desktop: GlobalSpacing;
-  hd: GlobalSpacing;
+  base?: GlobalSpacing;
+  tablet?: GlobalSpacing;
+  desktop?: GlobalSpacing;
+  hd?: GlobalSpacing;
 };
 
 export type SpacingFormat = GlobalSpacing | ResponsiveSpacing;
