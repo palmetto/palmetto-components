@@ -58,7 +58,14 @@ describe('getSpacingClasses', () => {
     test('returns expected css object if an object is passed with spacing for particular breakpoints', () => {
       const spacingClasses = getSpacingClasses('p', { base: 'md lg', tablet: 'sm md lg xl' });
 
-      expect(spacingClasses).toEqual(['p-v-md', 'p-h-lg', 'p-top-sm-tablet', 'p-right-md-tablet', 'p-bottom-lg-tablet', 'p-left-xl-tablet']);
+      expect(spacingClasses).toEqual([
+        'p-v-md',
+        'p-h-lg',
+        'p-top-sm-tablet',
+        'p-right-md-tablet',
+        'p-bottom-lg-tablet',
+        'p-left-xl-tablet',
+      ]);
     });
   });
 

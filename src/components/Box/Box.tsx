@@ -12,12 +12,21 @@ import {
   PALMETTO_COLORS,
   PALMETTO_SPACING,
 } from '../../lib/tokens';
-// import getElementType from '../../lib/getElementType';
+import {
+  DisplayType,
+  SpacingFormat,
+  CssJustifyContent,
+  CssAlignContent,
+  CssAlign,
+  ResponsiveGeneric,
+  CssFlexDirection,
+  CssFlex,
+} from '../../lib/types';
 import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingClasses from '../../lib/getSpacingClasses';
 import getElementType from '../../lib/getElementType';
 import getFlexCss from '../../lib/getFlexCss';
-import { DisplayType, SpacingFormat } from '../../lib/types';
+import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
 
 export interface BoxProps {
   /**
@@ -27,33 +36,17 @@ export interface BoxProps {
   /**
    * How to align the contents along the cross axis.
    */
-  align?:
-  'start'
-  | 'end'
-  | 'center'
-  | 'baseline'
-  | 'stretch';
+  alignItems?: CssAlign | ResponsiveGeneric;
   /**
    * How to align the contents when there is extra space in the cross axis.
    * This property has no effect when there is only one line of flex items.
    */
-  alignContent?:
-  'start'
-  | 'end'
-  | 'center'
-  | 'stretch'
-  | 'between'
-  | 'around';
+  alignContent?: CssAlignContent | ResponsiveGeneric;
   /**
    * How to align along the cross axis when contained in a Box.
    * This allows the default alignment (or the one specified by `align`) to be overridden for the individual Box.
    */
-  alignSelf?:
-  'start'
-  | 'end'
-  | 'center'
-  | 'baseline'
-  | 'stretch';
+  alignSelf?: CssAlign | ResponsiveGeneric;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
@@ -82,21 +75,15 @@ export interface BoxProps {
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
-  direction?: 'column' | 'column-reverse' | 'row' | 'row-reverse';
+  direction?: CssFlexDirection | ResponsiveGeneric;
   /**
    * Display property. Only select values supported.
    */
-  display?: DisplayType;
+  display?: DisplayType | ResponsiveGeneric;
   /**
    * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
    */
-  flex?:
-  'auto'
-  | 'initial'
-  | 'none'
-  | 'inherit'
-  | 'unset'
-  | string;
+  flex?: CssFlex;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
@@ -109,14 +96,7 @@ export interface BoxProps {
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
-  justify?:
-  'around'
-  | 'between'
-  | 'center'
-  | 'end'
-  | 'evenly'
-  | 'start'
-  | 'stretch';
+  justifyContent?: CssJustifyContent | ResponsiveGeneric;
   /**
    * Amount of space around the element.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
@@ -179,7 +159,7 @@ export interface BoxProps {
  */
 const Box: FC<BoxProps> = ({
   as = 'div',
-  align = undefined,
+  alignItems = undefined,
   alignContent = undefined,
   alignSelf = undefined,
   background = undefined,
@@ -193,7 +173,7 @@ const Box: FC<BoxProps> = ({
   flex = undefined,
   fontSize = 'inherit',
   height = undefined,
-  justify = undefined,
+  justifyContent = undefined,
   margin = undefined,
   maxHeight = undefined,
   maxWidth = undefined,
@@ -210,13 +190,13 @@ const Box: FC<BoxProps> = ({
   const widthCss = getDimensionCss('w', width);
   const maxHeightCss = getDimensionCss('mh', maxHeight);
   const maxWidthCss = getDimensionCss('mw', maxWidth);
+  // @TODO needs hook for passing only params based on breakpoint
   const flexCss = getFlexCss(flex);
 
-  const wrapClass = display.includes('flex') && wrap ? 'flex-wrap' : 'flex-nowrap';
+  const wrapClass = typeof display === 'string' && display.includes('flex') && wrap ? 'flex-wrap' : 'flex-nowrap';
 
   const boxClasses = classNames(
     className,
-    display,
     wrapClass,
     marginClasses,
     paddingClasses,
@@ -225,12 +205,13 @@ const Box: FC<BoxProps> = ({
     maxWidthCss.classes,
     widthCss.classes,
     flexCss.classes,
+    generateResponsiveClasses('display', display),
+    generateResponsiveClasses('flex-direction', direction),
+    generateResponsiveClasses('justify-content', justifyContent),
+    generateResponsiveClasses('align-items', alignItems),
+    generateResponsiveClasses('align-content', alignContent),
+    generateResponsiveClasses('align-self', alignSelf),
     {
-      [`flex-direction-${direction}`]: display.includes('flex') && direction,
-      [`justify-content-${justify}`]: justify,
-      [`align-items-${align}`]: align,
-      [`align-content-${alignContent}`]: alignContent,
-      [`align-slef-${alignSelf}`]: alignSelf,
       [`background-color-${background}`]: background,
       [`border-color-${border}`]: border,
       [`font-color-${color}`]: color,
@@ -250,8 +231,8 @@ const Box: FC<BoxProps> = ({
   };
 
   const childGapClass = classNames({
-    [`m-bottom-${childGap}`]: childGap && direction.includes('column'),
-    [`m-right-${childGap}`]: childGap && direction.includes('row'),
+    [`m-bottom-${childGap}`]: childGap && typeof direction === 'string' && direction.includes('column'),
+    [`m-right-${childGap}`]: childGap && typeof direction === 'string' && direction.includes('row'),
   });
 
   let decoratedChildren = children;
