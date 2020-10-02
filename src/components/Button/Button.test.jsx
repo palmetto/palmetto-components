@@ -142,6 +142,17 @@ describe('Button', () => {
         expect(buttonElement).toBeInTheDocument();
       });
 
+      test('it renders an anchor tag if an href attribute is passed as a prop', () => {
+        render(
+          <Button href="http://palmetto.com">
+            hey there
+          </Button>,
+        );
+        const buttonElement = screen.getByRole('link');
+
+        expect(buttonElement).toBeInTheDocument();
+      });
+
       test('it does not have a disabled attribute', () => {
         render(
           <Button>
