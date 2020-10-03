@@ -771,7 +771,33 @@ Set the overlfow behavior of the Box with `overflow`
 
 ### Responsive Styling
 
-A number of props take a keyed object that specifies at which breakpoints to apply certain properties. 
+Props that are responsive-enabled follow a mobile-first approach, which means that styles are applied first to smaller viewports (i.e. mobile devices).
+As the viewport size increases, new styles may be applied (styles are ovveridden for larger viewports).
+A number of props take a keyed object that specifies at which [breakpoints](/?path=/docs/design-tokens-breakpoints--page) to apply certain properties.
+
+```
+<Box
+  width={{
+    base: '100px' // box width is 100px
+    tablet: '200px' // box width is 200px when viewport width is greater than size-breakpoint-tablet
+    desktop: '300px' // box width is 600px when viewport width is greater than size-breakpoint-destkop
+    hd: '600px' // box width is 600px when viewport width is greater than size-breakpoint-hd
+  }}
+>
+```
+
+When passing an object, omitting a key is the same as no applying any styles. For example the following has padding at the `desktop` breakpoint and wider.
+
+<Canvas>
+  <Story name="responsive padding lg">
+    <Box
+      padding={{ desktop: 'lg'}}
+      background="primary-lighter"
+    >
+      <p>This box will have no padding until the viewport reaches the desktop breakpoint. </p>
+    </Box>
+  </Story>
+</Canvas>
 
 <Canvas>
   <Story name="responsive">
