@@ -104,7 +104,7 @@ export interface BoxProps {
    * that models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element.It is shorthand for top, right, bottom, left.
    */
-  margin?: PALMETTO_SPACING | string;
+  margin?: SpacingFormat;
   /**
    * The maximum height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
