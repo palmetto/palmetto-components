@@ -770,11 +770,11 @@ Set the overlfow behavior of the Box with `overflow`
   </Story>
 </Canvas>
 
-### Responsive Styling
+## Responsive Styling
 
 Props that are responsive-enabled follow a mobile-first approach, which means that styles are applied first to smaller viewports (i.e. mobile devices).
 As the viewport size increases, new styles may be applied (styles are overidden for larger viewports).
-A number of props take a keyed object that specifies at which [breakpoints](/?path=/docs/design-tokens-breakpoints--page) to apply certain properties.
+Responsive enabled props take a keyed object that specifies at which [breakpoints](/?path=/docs/design-tokens-breakpoints--page) to apply certain properties.
 
 ```
 <Box
@@ -787,21 +787,8 @@ A number of props take a keyed object that specifies at which [breakpoints](/?pa
 >
 ```
 
-When passing an object, omitting a key is the same as no applying any styles. For example the following has padding at the `desktop` breakpoint and wider.
-
 <Canvas>
-  <Story name="responsive padding lg">
-    <Box
-      padding={{ desktop: 'lg'}}
-      background="primary-lighter"
-    >
-      <p>This box will have no padding until the viewport reaches the desktop breakpoint. </p>
-    </Box>
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="responsive">
+  <Story name="responsive padding and margin">
     <>
     <p>This box will have different margin and padding values for each of its base, tablet, and desktop breakpoints.</p>
     <Box
@@ -820,8 +807,54 @@ When passing an object, omitting a key is the same as no applying any styles. Fo
   </Story>
 </Canvas>
 
+### Omitting Keys
+
+When passing an object, omitting a key is the same as not applying any styles.
+For example the following has padding at the `desktop` breakpoint and wider.
+
 <Canvas>
-  <Story name="Responsive Width and Height">
+  <Story name="responsive padding lg">
+    <Box
+      padding={{ desktop: 'lg'}}
+      background="primary-lighter"
+    >
+      <p>This box will have no padding until the viewport reaches the desktop breakpoint. </p>
+    </Box>
+  </Story>
+</Canvas>
+
+### Responsive Examples
+
+Try resizing the browser to see the responsive properties in action.
+
+### Font Size
+
+<Story name="responsive font size">
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const fontSize = { base: 'md', tablet: 'lg', desktop: 'xl', hd: '4xl' };
+      return (
+        <>
+          <p>This box will have different width and height values for each of its base, tablet, and desktop breakpoints.</p>
+          <Box
+            padding="sm"
+            margin="md"
+            background="primary-lighter"
+            border="grey"
+            fontSize={fontSize}
+          >
+            <p>Breakpoint: {activeBreakpoint.name}</p>
+            <p>fontSize: {fontSize[activeBreakpoint.name]}</p>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+
+### Width and Height
+
+<Canvas>
+  <Story name="responsive width and height">
     {() => {
       const activeBreakpoint = useBreakpoint();
       const width = { base: '50%', tablet: '60%', desktop: '70%', hd: '100%' };
@@ -846,6 +879,8 @@ When passing an object, omitting a key is the same as no applying any styles. Fo
     }}
   </Story>
 </Canvas>
+
+### Child gap
 
 <Canvas>
   <Story name="responsive gaps">
@@ -882,8 +917,10 @@ When passing an object, omitting a key is the same as no applying any styles. Fo
   </Story>
 </Canvas>
 
+### Radius
+
 <Canvas>
-  <Story name="Responsive Radius">
+  <Story name="responsive radius">
     {() => {
       const activeBreakpoint = useBreakpoint();
       const radius = { base: 'circle', tablet: 'sm', desktop: 'md', hd: 'lg' };
