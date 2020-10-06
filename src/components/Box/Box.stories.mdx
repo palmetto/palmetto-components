@@ -882,3 +882,26 @@ When passing an object, omitting a key is the same as no applying any styles. Fo
   </Story>
 </Canvas>
 
+<Canvas>
+  <Story name="Responsive Radius">
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const radius = { base: 'circle', tablet: 'sm', desktop: 'md', hd: 'lg' };
+      return (
+        <>
+          <p>This box will have different border radius based on the breakpoint</p>
+          <Box
+            padding="sm"
+            margin="md"
+            background="primary-lighter"
+            border="grey"
+            radius={radius}
+          >
+            <p>{radius[activeBreakpoint.name]}</p>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+

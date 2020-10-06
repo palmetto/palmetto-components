@@ -1,4 +1,4 @@
-import { PALMETTO_SPACING } from './tokens';
+import { PalmettoTokensRadius, PALMETTO_SPACING } from './tokens';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type UnknownPropertiesObjType = { [key: string]: any; };
@@ -59,6 +59,16 @@ export type CssFlex =
   'unset' |
   string;
 
+export type CssOverflow =
+  'visible' |
+  'hidden' |
+  'clip' |
+  'scroll' |
+  'auto' |
+  'inherit' |
+  'initial' |
+  'unset';
+
 export type DisplayType = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
 
 export type BaseSpacing = 'base' | PALMETTO_SPACING | string | undefined;
@@ -89,6 +99,20 @@ export type ResponsiveBoolean = {
   tablet?: boolean;
   desktop?: boolean;
   hd?: boolean;
+}
+
+export type ResponsiveRadius = {
+  base?: PalmettoTokensRadius;
+  tablet?: PalmettoTokensRadius;
+  desktop?: PalmettoTokensRadius;
+  hd?: PalmettoTokensRadius;
+}
+
+export type ResponsiveOverflow = {
+  base?: CssOverflow;
+  tablet?: CssOverflow;
+  desktop?: CssOverflow;
+  hd?: CssOverflow;
 }
 
 export type SpacingFormat = BaseSpacing | ResponsiveSpacing;

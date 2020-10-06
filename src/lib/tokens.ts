@@ -107,6 +107,8 @@ export type PALMETTO_SPACING =
   'base' |
   'inherit';
 
+export type PalmettoTokensRadius = 'xs' | 'sm' | 'md' | 'lg' | 'circle';
+
 export type BreakpointOption = 'tablet' | 'desktop' | 'hd' | 'base';
 
 export type Breakpoint = {

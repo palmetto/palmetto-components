@@ -13,6 +13,7 @@ import {
   PALMETTO_FONT_COLORS,
   PALMETTO_COLORS,
   PALMETTO_SPACING,
+  PalmettoTokensRadius,
 } from '../../lib/tokens';
 import {
   DisplayType,
@@ -23,9 +24,12 @@ import {
   ResponsiveGeneric,
   CssFlexDirection,
   CssFlex,
+  CssOverflow,
   ResponsiveFlex,
   ResponsiveSpacing,
   ResponsiveBoolean,
+  ResponsiveRadius,
+  ResponsiveOverflow,
 } from '../../lib/types';
 import useBreakpoint from '../../hooks/useBreakpoint';
 import getDimensionCss from '../../lib/getDimensionCss';
@@ -40,6 +44,7 @@ type MultiPurposeStyleProp =
   ResponsiveGeneric |
   ResponsiveFlex |
   ResponsiveBoolean |
+  ResponsiveOverflow |
   undefined;
 
 export interface BoxProps {
@@ -134,15 +139,7 @@ export interface BoxProps {
    * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
    * Otherwise, both overflow-x and overflow-y are set to the same value.
    */
-  overflow?:
-  'visible'
-  | 'hidden'
-  | 'clip'
-  | 'scroll'
-  | 'auto'
-  | 'inherit'
-  | 'initial'
-  | 'unset';
+  overflow?: CssOverflow | ResponsiveOverflow;
   /**
    * Amount of space within the element around the Box contents.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
@@ -154,7 +151,7 @@ export interface BoxProps {
   /**
    * Set the radius of all corners
    */
-  radius?: string; // need to define based on design tokens
+  radius?: PalmettoTokensRadius | ResponsiveRadius; // need to define based on design tokens
   /**
    * By default, a Box's items will all try to fit onto one line.
    * Change that and allow the items to wrap as needed wrap
@@ -204,7 +201,6 @@ const Box: FC<BoxProps> = ({
   const [activeMaxWidth, setActiveMaxWidth] = useState<string | undefined>(undefined);
   const [activeMaxHeight, setActiveMaxHeight] = useState<string | undefined>(undefined);
   const [activeFlex, setActiveFlex] = useState<string | undefined>(undefined);
-  const [activeChildGap, setActiveChildGap] = useState<string | undefined>(undefined);
   const [activeWrap, setActiveWrap] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
@@ -221,7 +217,6 @@ const Box: FC<BoxProps> = ({
     setActiveMaxWidth(getProp(maxWidth) as string);
     setActiveMaxHeight(getProp(maxHeight) as string);
     setActiveFlex(getProp(flex) as string);
-    setActiveChildGap(getProp(childGap) as string);
     setActiveWrap(getProp(wrap) as boolean);
   }, [activeBreakpoint, width, height, maxWidth, maxHeight, flex, childGap, wrap]);
 
@@ -251,11 +246,11 @@ const Box: FC<BoxProps> = ({
     generateResponsiveClasses('align-self', alignSelf),
     generateResponsiveClasses('font-size', fontSize),
     generateResponsiveClasses('overflow', overflow),
+    generateResponsiveClasses('border-radius', radius),
     {
       [`background-color-${background}`]: background,
       [`border-color-${border}`]: border,
       [`font-color-${color}`]: color,
-      [`border-radius-${radius}`]: radius,
     },
   );
 
@@ -268,10 +263,15 @@ const Box: FC<BoxProps> = ({
     ...border && { borderWidth: '1px', borderStyle: 'solid' },
   };
 
-  const childGapClass = classNames({
-    [`m-bottom-${activeChildGap}`]: activeChildGap && typeof direction === 'string' && direction.includes('column'),
-    [`m-right-${activeChildGap}`]: activeChildGap && typeof direction === 'string' && direction.includes('row'),
-  });
+  let childGapDirection = '';
+  let childGapClass = '';
+
+  if (direction && typeof direction === 'string' && childGap) {
+    if (direction.includes('row')) childGapDirection = 'right';
+    else if (direction.includes('column')) childGapDirection = 'bottom';
+
+    childGapClass = classNames(generateResponsiveClasses(`m-${childGapDirection}`, childGap));
+  }
 
   let decoratedChildren = children;
 
