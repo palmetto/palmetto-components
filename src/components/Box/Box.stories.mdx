@@ -827,6 +827,34 @@ For example the following has padding at the `desktop` breakpoint and wider.
 
 Try resizing the browser to see the responsive properties in action.
 
+### Direction
+
+<Story name="responsive direction">
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const direction = { base: 'column', 'tablet': 'column', desktop: 'row', hd: 'row' };
+      return (
+        <>
+          <p>This box will have different width and height values for each of its base, tablet, and desktop breakpoints.</p>
+          <Box
+            direction={direction}
+            childGap="lg"
+          >
+            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+              {direction[activeBreakpoint.name]}
+            </Box>
+            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+              {direction[activeBreakpoint.name]}
+            </Box>
+            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+              {direction[activeBreakpoint.name]}
+            </Box>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+
 ### Font Size
 
 <Story name="responsive font size">
