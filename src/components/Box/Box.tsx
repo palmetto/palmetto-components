@@ -209,7 +209,7 @@ const Box: FC<BoxProps> = ({
 
   useEffect(() => {
     const getProp = (prop?: MultiPurposeStyleProp) => {
-      if (typeof prop === 'string' || prop === undefined || typeof prop === 'boolean') { 
+      if (typeof prop === 'string' || prop === undefined || typeof prop === 'boolean') {
         return prop;
       }
 
