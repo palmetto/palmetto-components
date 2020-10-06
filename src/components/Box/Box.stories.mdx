@@ -835,7 +835,6 @@ Try resizing the browser to see the responsive properties in action.
       const direction = { base: 'column', 'tablet': 'column', desktop: 'row', hd: 'row' };
       return (
         <>
-          <p>This box will have different width and height values for each of its base, tablet, and desktop breakpoints.</p>
           <Box
             direction={direction}
             childGap="lg"
@@ -857,52 +856,50 @@ Try resizing the browser to see the responsive properties in action.
 
 ### Font Size
 
-<Story name="responsive font size">
+This box will have different fontSize values for each of its base, tablet, desktop, and hd breakpoints.
+
+<Canvas>
+  <Story name="responsive font size">
     {() => {
       const activeBreakpoint = useBreakpoint();
       const fontSize = { base: 'md', tablet: 'lg', desktop: 'xl', hd: '4xl' };
       return (
-        <>
-          <p>This box will have different width and height values for each of its base, tablet, and desktop breakpoints.</p>
-          <Box
-            padding="sm"
-            margin="md"
-            background="primary-lighter"
-            border="grey"
-            fontSize={fontSize}
-          >
-            <p>Breakpoint: {activeBreakpoint.name}</p>
-            <p>fontSize: {fontSize[activeBreakpoint.name]}</p>
-          </Box>
-        </>
+        <Box
+          padding="sm"
+          background="primary-lighter"
+          border="grey"
+          fontSize={fontSize}
+        >
+          <p>Breakpoint: {activeBreakpoint.name}</p>
+          <p>fontSize: {fontSize[activeBreakpoint.name]}</p>
+        </Box>
       );
     }}
   </Story>
+</Canvas>
 
 ### Width and Height
+
+This box will have different width and height values for each of its base, tablet, and desktop breakpoints.
 
 <Canvas>
   <Story name="responsive width and height">
     {() => {
       const activeBreakpoint = useBreakpoint();
       const width = { base: '50%', tablet: '60%', desktop: '70%', hd: '100%' };
-      const height = { base: '200px', tablet: '300px', desktop: '400px', hd: '500px' };
+      const height = { base: '100px', tablet: '200px', desktop: '300px', hd: '400px' };
       return (
-        <>
-          <p>This box will have different width and height values for each of its base, tablet, and desktop breakpoints.</p>
-          <Box
-            padding="sm"
-            margin="md"
-            background="primary-lighter"
-            border="grey"
-            height={height}
-            width={width}
-          >
-            <p>Breakpoint: {activeBreakpoint.name}</p>
-            <p>Width: {width[activeBreakpoint.name]}</p>
-            <p>Height: {height[activeBreakpoint.name]}</p>
-          </Box>
-        </>
+        <Box
+          padding="sm"
+          background="primary-lighter"
+          border="grey"
+          height={height}
+          width={width}
+        >
+          <p>Breakpoint: {activeBreakpoint.name}</p>
+          <p>Width: {width[activeBreakpoint.name]}</p>
+          <p>Height: {height[activeBreakpoint.name]}</p>
+        </Box>
       );
     }}
   </Story>
@@ -910,36 +907,34 @@ Try resizing the browser to see the responsive properties in action.
 
 ### Child gap
 
+The childGap in these boxes will change based on the active breakpoint
+
 <Canvas>
   <Story name="responsive gaps">
     {() => {
       const activeBreakpoint = useBreakpoint();
       const childGap = { base: 'sm', tablet: 'lg', desktop: '2xl', hd: '5xl' };
       return (
-        <>
-          <p>The childGap in these boxes will change based on the active breakpoint</p>
-          <Box
-            childGap={childGap}
-            direction="row"
-            margin="lg 0 0 0"
-          >
-            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
-              {childGap[activeBreakpoint.name]}
-            </Box>
-            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
-              {childGap[activeBreakpoint.name]}
-            </Box>
-            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
-              {childGap[activeBreakpoint.name]}
-            </Box>
-            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
-              {childGap[activeBreakpoint.name]}
-            </Box>
-            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
-              {childGap[activeBreakpoint.name]}
-            </Box>
+        <Box
+          childGap={childGap}
+          direction="row"
+        >
+          <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+            {childGap[activeBreakpoint.name]}
           </Box>
-        </>
+          <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+            {childGap[activeBreakpoint.name]}
+          </Box>
+          <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+            {childGap[activeBreakpoint.name]}
+          </Box>
+          <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+            {childGap[activeBreakpoint.name]}
+          </Box>
+          <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+            {childGap[activeBreakpoint.name]}
+          </Box>
+        </Box>
       );
     }}
   </Story>
@@ -947,24 +942,23 @@ Try resizing the browser to see the responsive properties in action.
 
 ### Radius
 
+This box will have different border radius based on the breakpoint
+
 <Canvas>
   <Story name="responsive radius">
     {() => {
       const activeBreakpoint = useBreakpoint();
       const radius = { base: 'circle', tablet: 'sm', desktop: 'md', hd: 'lg' };
       return (
-        <>
-          <p>This box will have different border radius based on the breakpoint</p>
-          <Box
-            padding="sm"
-            margin="md"
-            background="primary-lighter"
-            border="grey"
-            radius={radius}
-          >
-            <p>{radius[activeBreakpoint.name]}</p>
-          </Box>
-        </>
+        <Box
+          padding="sm"
+          margin="md"
+          background="primary-lighter"
+          border="grey"
+          radius={radius}
+        >
+          <p>{radius[activeBreakpoint.name]}</p>
+        </Box>
       );
     }}
   </Story>
