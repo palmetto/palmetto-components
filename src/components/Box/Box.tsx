@@ -25,6 +25,7 @@ import {
   CssFlex,
   ResponsiveFlex,
   ResponsiveSpacing,
+  ResponsiveBoolean,
 } from '../../lib/types';
 import useBreakpoint from '../../hooks/useBreakpoint';
 import getDimensionCss from '../../lib/getDimensionCss';
@@ -35,8 +36,10 @@ import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
 
 type MultiPurposeStyleProp =
   string |
+  boolean |
   ResponsiveGeneric |
   ResponsiveFlex |
+  ResponsiveBoolean |
   undefined;
 
 export interface BoxProps {
@@ -156,7 +159,7 @@ export interface BoxProps {
    * By default, a Box's items will all try to fit onto one line.
    * Change that and allow the items to wrap as needed wrap
    */
-  wrap?: boolean;
+  wrap?: boolean | ResponsiveBoolean;
   /**
    * The width of the element. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/docs/design-tokens-width--page)
@@ -202,20 +205,25 @@ const Box: FC<BoxProps> = ({
   const [activeMaxHeight, setActiveMaxHeight] = useState<string | undefined>(undefined);
   const [activeFlex, setActiveFlex] = useState<string | undefined>(undefined);
   const [activeChildGap, setActiveChildGap] = useState<string | undefined>(undefined);
+  const [activeWrap, setActiveWrap] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
     const getProp = (prop?: MultiPurposeStyleProp) => {
-      if (typeof prop === 'string' || prop === undefined) return prop;
+      if (typeof prop === 'string' || prop === undefined || typeof prop === 'boolean') { 
+        return prop;
+      }
+
       return prop[activeBreakpoint.name];
     };
 
-    setActiveWidth(getProp(width));
-    setActiveHeight(getProp(height));
-    setActiveMaxWidth(getProp(maxWidth));
-    setActiveMaxHeight(getProp(maxHeight));
-    setActiveFlex(getProp(flex));
-    setActiveChildGap(getProp(childGap));
-  }, [activeBreakpoint, width, height, maxWidth, maxHeight, flex, childGap]);
+    setActiveWidth(getProp(width) as string);
+    setActiveHeight(getProp(height) as string);
+    setActiveMaxWidth(getProp(maxWidth) as string);
+    setActiveMaxHeight(getProp(maxHeight) as string);
+    setActiveFlex(getProp(flex) as string);
+    setActiveChildGap(getProp(childGap) as string);
+    setActiveWrap(getProp(wrap) as boolean);
+  }, [activeBreakpoint, width, height, maxWidth, maxHeight, flex, childGap, wrap]);
 
   const heightCss = getDimensionCss('h', activeHeight);
   const widthCss = getDimensionCss('w', activeWidth);
@@ -223,7 +231,7 @@ const Box: FC<BoxProps> = ({
   const maxWidthCss = getDimensionCss('mw', activeMaxWidth);
   const flexCss = getFlexCss(activeFlex);
 
-  const wrapClass = typeof display === 'string' && display.includes('flex') && wrap ? 'flex-wrap' : 'flex-nowrap';
+  const wrapClass = typeof display === 'string' && display.includes('flex') && activeWrap ? 'flex-wrap' : 'flex-nowrap';
 
   const boxClasses = classNames(
     className,

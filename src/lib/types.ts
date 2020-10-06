@@ -84,4 +84,11 @@ export type ResponsiveFlex = {
   hd?: CssFlex;
 }
 
+export type ResponsiveBoolean = {
+  base?: boolean;
+  tablet?: boolean;
+  desktop?: boolean;
+  hd?: boolean;
+}
+
 export type SpacingFormat = BaseSpacing | ResponsiveSpacing;
