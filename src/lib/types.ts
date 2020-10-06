@@ -77,4 +77,11 @@ export type ResponsiveGeneric = {
   hd?: string;
 };
 
+export type ResponsiveFlex = {
+  base?: CssFlex;
+  tablet?: CssFlex;
+  desktop?: CssFlex;
+  hd?: CssFlex;
+}
+
 export type SpacingFormat = BaseSpacing | ResponsiveSpacing;

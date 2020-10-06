@@ -4,6 +4,8 @@ import {
   FC,
   ReactNode,
   ReactElement,
+  useEffect,
+  useState,
 } from 'react';
 import classNames from 'classnames';
 import {
@@ -21,12 +23,21 @@ import {
   ResponsiveGeneric,
   CssFlexDirection,
   CssFlex,
+  ResponsiveFlex,
+  ResponsiveSpacing,
 } from '../../lib/types';
+import useBreakpoint from '../../hooks/useBreakpoint';
 import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingClasses from '../../lib/getSpacingClasses';
 import getElementType from '../../lib/getElementType';
 import getFlexCss from '../../lib/getFlexCss';
 import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+
+type MultiPurposeStyleProp =
+  string |
+  ResponsiveGeneric |
+  ResponsiveFlex |
+  undefined;
 
 export interface BoxProps {
   /**
@@ -63,7 +74,7 @@ export interface BoxProps {
    * The amount of spacing between child elements.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
    */
-  childGap?: PALMETTO_SPACING;
+  childGap?: PALMETTO_SPACING | ResponsiveSpacing;
   /**
    * The box's contents
    */
@@ -83,7 +94,7 @@ export interface BoxProps {
   /**
    * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
    */
-  flex?: CssFlex;
+  flex?: CssFlex | ResponsiveFlex;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
@@ -92,7 +103,7 @@ export interface BoxProps {
    * The height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
    */
-  height?: string;
+  height?: string | ResponsiveGeneric;
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
@@ -109,12 +120,12 @@ export interface BoxProps {
    * The maximum height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
    */
-  maxHeight?: string;
+  maxHeight?: string | ResponsiveGeneric;
   /**
    * The maximum width of the element. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/docs/design-tokens-width--page)
    */
-  maxWidth?: string;
+  maxWidth?: string | ResponsiveGeneric;
   /**
    * The overflow property is specified as one or two keywords.
    * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
@@ -150,7 +161,7 @@ export interface BoxProps {
    * The width of the element. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/docs/design-tokens-width--page)
    */
-  width?: string;
+  width?: string | ResponsiveGeneric;
 }
 
 /**
@@ -184,12 +195,33 @@ const Box: FC<BoxProps> = ({
   width = undefined,
   ...restProps
 }) => {
-  const heightCss = getDimensionCss('h', height);
-  const widthCss = getDimensionCss('w', width);
-  const maxHeightCss = getDimensionCss('mh', maxHeight);
-  const maxWidthCss = getDimensionCss('mw', maxWidth);
-  // @TODO needs hook for passing only params based on breakpoint
-  const flexCss = getFlexCss(flex);
+  const activeBreakpoint = useBreakpoint();
+  const [activeWidth, setActiveWidth] = useState<string | undefined>(undefined);
+  const [activeHeight, setActiveHeight] = useState<string | undefined>(undefined);
+  const [activeMaxWidth, setActiveMaxWidth] = useState<string | undefined>(undefined);
+  const [activeMaxHeight, setActiveMaxHeight] = useState<string | undefined>(undefined);
+  const [activeFlex, setActiveFlex] = useState<string | undefined>(undefined);
+  const [activeChildGap, setActiveChildGap] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const getProp = (prop?: MultiPurposeStyleProp) => {
+      if (typeof prop === 'string' || prop === undefined) return prop;
+      return prop[activeBreakpoint.name];
+    };
+
+    setActiveWidth(getProp(width));
+    setActiveHeight(getProp(height));
+    setActiveMaxWidth(getProp(maxWidth));
+    setActiveMaxHeight(getProp(maxHeight));
+    setActiveFlex(getProp(flex));
+    setActiveChildGap(getProp(childGap));
+  }, [activeBreakpoint, width, height, maxWidth, maxHeight, flex, childGap]);
+
+  const heightCss = getDimensionCss('h', activeHeight);
+  const widthCss = getDimensionCss('w', activeWidth);
+  const maxHeightCss = getDimensionCss('mh', activeMaxHeight);
+  const maxWidthCss = getDimensionCss('mw', activeMaxWidth);
+  const flexCss = getFlexCss(activeFlex);
 
   const wrapClass = typeof display === 'string' && display.includes('flex') && wrap ? 'flex-wrap' : 'flex-nowrap';
 
@@ -229,8 +261,8 @@ const Box: FC<BoxProps> = ({
   };
 
   const childGapClass = classNames({
-    [`m-bottom-${childGap}`]: childGap && typeof direction === 'string' && direction.includes('column'),
-    [`m-right-${childGap}`]: childGap && typeof direction === 'string' && direction.includes('row'),
+    [`m-bottom-${activeChildGap}`]: activeChildGap && typeof direction === 'string' && direction.includes('column'),
+    [`m-right-${activeChildGap}`]: activeChildGap && typeof direction === 'string' && direction.includes('row'),
   });
 
   let decoratedChildren = children;

@@ -1,4 +1,4 @@
-import { PALMETTO_BREAKPOINTS } from './tokens';
+import { BreakpointOption } from './tokens';
 import { ResponsiveGeneric } from './types';
 
 function generateResponsiveClasses(classRoot: string, value: ResponsiveGeneric | string | undefined): string[] {
@@ -8,7 +8,7 @@ function generateResponsiveClasses(classRoot: string, value: ResponsiveGeneric |
 
   if (typeof value === 'object') {
     Object.keys(value).forEach(key => {
-      const baseClass = `${classRoot}-${value[key as PALMETTO_BREAKPOINTS | 'base']}`;
+      const baseClass = `${classRoot}-${value[key as BreakpointOption]}`;
       const responsiveClass = key === 'base' ? baseClass : `${baseClass}-${key}`;
 
       classes.push(responsiveClass);

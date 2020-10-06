@@ -1,5 +1,5 @@
 import { CssSpacing, SpacingFormat } from './types';
-import { PALMETTO_BREAKPOINTS } from './tokens';
+import { BreakpointOption } from './tokens';
 
 function isValidSpacingValue(value?: SpacingFormat): boolean {
   if (
@@ -46,7 +46,7 @@ function getSpacingClasses(attribute: CssSpacing, value?: SpacingFormat): string
 
   if (typeof value === 'object') {
     Object.keys(value).forEach(key => {
-      const baseClasses = generateBaseClasses(attribute, value[key as PALMETTO_BREAKPOINTS | 'base']);
+      const baseClasses = generateBaseClasses(attribute, value[key as BreakpointOption]);
       const responsiveClasses = baseClasses?.map(baseClass => (key === 'base' ? baseClass : `${baseClass}-${key}`));
       classes.push(...responsiveClasses);
     });

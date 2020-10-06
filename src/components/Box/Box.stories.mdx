@@ -1,4 +1,5 @@
 import Box from './Box';
+import useBreakpoint from '../../hooks/useBreakpoint';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import {
   PALMETTO_FONT_SIZE_OPTIONS,
@@ -772,7 +773,7 @@ Set the overlfow behavior of the Box with `overflow`
 ### Responsive Styling
 
 Props that are responsive-enabled follow a mobile-first approach, which means that styles are applied first to smaller viewports (i.e. mobile devices).
-As the viewport size increases, new styles may be applied (styles are ovveridden for larger viewports).
+As the viewport size increases, new styles may be applied (styles are overidden for larger viewports).
 A number of props take a keyed object that specifies at which [breakpoints](/?path=/docs/design-tokens-breakpoints--page) to apply certain properties.
 
 ```
@@ -801,6 +802,8 @@ When passing an object, omitting a key is the same as no applying any styles. Fo
 
 <Canvas>
   <Story name="responsive">
+    <>
+    <p>This box will have different margin and padding values for each of its base, tablet, and desktop breakpoints.</p>
     <Box
       padding={{ base: 'sm 2xs', tablet: '2xl lg', desktop: '5xl 3xl'}}
       margin={{ base: 'sm xs', tablet: 'md sm', desktop: 'lg md'}}
@@ -813,6 +816,69 @@ When passing an object, omitting a key is the same as no applying any styles. Fo
       <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
       <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
     </Box>
+    </>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Responsive Width and Height">
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const width = { base: '50%', tablet: '60%', desktop: '70%', hd: '100%' };
+      const height = { base: '200px', tablet: '300px', desktop: '400px', hd: '500px' };
+      return (
+        <>
+          <p>This box will have different width and height values for each of its base, tablet, and desktop breakpoints.</p>
+          <Box
+            padding="sm"
+            margin="md"
+            background="primary-lighter"
+            border="grey"
+            height={height}
+            width={width}
+          >
+            <p>Breakpoint: {activeBreakpoint.name}</p>
+            <p>Width: {width[activeBreakpoint.name]}</p>
+            <p>Height: {height[activeBreakpoint.name]}</p>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="responsive gaps">
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const childGap = { base: 'sm', tablet: 'lg', desktop: '2xl', hd: '5xl' };
+      return (
+        <>
+          <p>The childGap in these boxes will change based on the active breakpoint</p>
+          <Box
+            childGap={childGap}
+            direction="row"
+            margin="lg 0 0 0"
+          >
+            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+              {childGap[activeBreakpoint.name]}
+            </Box>
+            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+              {childGap[activeBreakpoint.name]}
+            </Box>
+            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+              {childGap[activeBreakpoint.name]}
+            </Box>
+            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+              {childGap[activeBreakpoint.name]}
+            </Box>
+            <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
+              {childGap[activeBreakpoint.name]}
+            </Box>
+          </Box>
+        </>
+      );
+    }}
   </Story>
 </Canvas>
 
