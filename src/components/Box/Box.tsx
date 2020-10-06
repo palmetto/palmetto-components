@@ -203,15 +203,15 @@ const Box: FC<BoxProps> = ({
   const [activeFlex, setActiveFlex] = useState<string | undefined>(undefined);
   const [activeWrap, setActiveWrap] = useState<boolean | undefined>(undefined);
 
+  const getProp = (prop?: MultiPurposeStyleProp) => {
+    if (typeof prop === 'string' || prop === undefined || typeof prop === 'boolean') {
+      return prop;
+    }
+
+    return prop[activeBreakpoint.name];
+  };
+
   useEffect(() => {
-    const getProp = (prop?: MultiPurposeStyleProp) => {
-      if (typeof prop === 'string' || prop === undefined || typeof prop === 'boolean') {
-        return prop;
-      }
-
-      return prop[activeBreakpoint.name];
-    };
-
     setActiveWidth(getProp(width) as string);
     setActiveHeight(getProp(height) as string);
     setActiveMaxWidth(getProp(maxWidth) as string);
@@ -266,9 +266,9 @@ const Box: FC<BoxProps> = ({
   let childGapDirection = '';
   let childGapClass = '';
 
-  if (direction && typeof direction === 'string' && childGap) {
-    if (direction.includes('row')) childGapDirection = 'right';
-    else if (direction.includes('column')) childGapDirection = 'bottom';
+  if (childGap && direction) {
+    if ((getProp(direction) as CssFlexDirection).includes('row')) childGapDirection = 'right';
+    else if ((getProp(direction) as CssFlexDirection).includes('column')) childGapDirection = 'bottom';
 
     childGapClass = classNames(generateResponsiveClasses(`m-${childGapDirection}`, childGap));
   }

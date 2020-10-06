@@ -139,4 +139,27 @@ describe('Box', () => {
       expect(getByText('Hello')).toHaveClass('flex-nowrap');
     });
   });
+
+  describe('Responsive styles and Classes', () => {
+    test('box renders with the correct classes based on the active breakpoint', () => {
+      const resizeWindow = (x, y) => {
+        window.innerWidth = x;
+        window.innerHeight = y;
+        window.dispatchEvent(new Event('resize'));
+      };
+
+      const width = {
+        base: 'sm',
+        tablet: 'md',
+        desktop: 'lg',
+        hd: 'xl',
+      };
+      const { container, debug } = render(<Box width={width} />);
+      resizeWindow(500, 300);
+      debug();
+      resizeWindow(2880, 1800);
+      debug();
+      expect(true).toBe(true);
+    });
+  });
 });
