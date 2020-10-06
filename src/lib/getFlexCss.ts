@@ -53,7 +53,7 @@ function getFlexClasses(value?: string): string[] | undefined {
  * Returns an object of styles and class names that correspond with the given flex value
  * @param {string} [value] spacing token value
  */
-function getFlexCss(value?: string): FlexStylesAndClasses {
+function getFlexCss(value?: ResponsiveFlex | string): FlexStylesAndClasses {
   return ({
     styles: getFlexStyles(value),
     classes: getFlexClasses(value),

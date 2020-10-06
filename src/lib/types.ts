@@ -1,4 +1,9 @@
-import { PalmettoTokensRadius, PALMETTO_SPACING } from './tokens';
+import {
+  BreakpointOption,
+  PalmettoTokensDimension,
+  PalmettoTokensRadius,
+  PALMETTO_SPACING,
+} from './tokens';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type UnknownPropertiesObjType = { [key: string]: any; };
@@ -73,46 +78,18 @@ export type DisplayType = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'i
 
 export type BaseSpacing = 'base' | PALMETTO_SPACING | string | undefined;
 
-export type ResponsiveSpacing = {
-  base?: BaseSpacing;
-  tablet?: BaseSpacing;
-  desktop?: BaseSpacing;
-  hd?: BaseSpacing;
-};
+export type ResponsiveSpacing = { [breakpoint in BreakpointOption]: BaseSpacing };
 
-export type ResponsiveGeneric = {
-  base?: string;
-  tablet?: string;
-  desktop?: string;
-  hd?: string;
-};
+export type ResponsiveGeneric = { [breakpoint in BreakpointOption]: string };
 
-export type ResponsiveFlex = {
-  base?: CssFlex;
-  tablet?: CssFlex;
-  desktop?: CssFlex;
-  hd?: CssFlex;
-}
+export type ResponsiveFlex = { [breakpoint in BreakpointOption]: CssFlex };
 
-export type ResponsiveBoolean = {
-  base?: boolean;
-  tablet?: boolean;
-  desktop?: boolean;
-  hd?: boolean;
-}
+export type ResponsiveBoolean = { [breakpoint in BreakpointOption]: boolean };
 
-export type ResponsiveRadius = {
-  base?: PalmettoTokensRadius;
-  tablet?: PalmettoTokensRadius;
-  desktop?: PalmettoTokensRadius;
-  hd?: PalmettoTokensRadius;
-}
+export type ResponsiveRadius = { [breakpoint in BreakpointOption]: PalmettoTokensRadius };
 
-export type ResponsiveOverflow = {
-  base?: CssOverflow;
-  tablet?: CssOverflow;
-  desktop?: CssOverflow;
-  hd?: CssOverflow;
-}
+export type ResponsiveOverflow = { [breakpoint in BreakpointOption]: CssOverflow };
+
+export type ResponsiveDimension = { [breakpoint in BreakpointOption]: PalmettoTokensDimension };
 
 export type SpacingFormat = BaseSpacing | ResponsiveSpacing;

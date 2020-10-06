@@ -109,6 +109,31 @@ export type PALMETTO_SPACING =
 
 export type PalmettoTokensRadius = 'xs' | 'sm' | 'md' | 'lg' | 'circle';
 
+export type PalmettoTokensDimension =
+  '10' |
+  '15' |
+  '20' |
+  '25' |
+  '30' |
+  '33' |
+  '34' |
+  '40' |
+  '50' |
+  '60' |
+  '70' |
+  '75' |
+  '80' |
+  '90' |
+  '100'|
+  'sm' |
+  'md' |
+  'lg' |
+  'xl' |
+  '2xl' |
+  '3xl' |
+  '4xl' |
+  '5xl';
+
 export type BreakpointOption = 'tablet' | 'desktop' | 'hd' | 'base';
 
 export type Breakpoint = {

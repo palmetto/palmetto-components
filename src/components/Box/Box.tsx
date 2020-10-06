@@ -6,6 +6,7 @@ import {
   ReactElement,
   useEffect,
   useState,
+  CSSProperties,
 } from 'react';
 import classNames from 'classnames';
 import {
@@ -14,6 +15,7 @@ import {
   PALMETTO_COLORS,
   PALMETTO_SPACING,
   PalmettoTokensRadius,
+  PalmettoTokensDimension,
 } from '../../lib/tokens';
 import {
   DisplayType,
@@ -30,6 +32,7 @@ import {
   ResponsiveBoolean,
   ResponsiveRadius,
   ResponsiveOverflow,
+  ResponsiveDimension,
 } from '../../lib/types';
 import useBreakpoint from '../../hooks/useBreakpoint';
 import getDimensionCss from '../../lib/getDimensionCss';
@@ -99,10 +102,10 @@ export interface BoxProps {
    * Display property. Only select values supported.
    */
   display?: DisplayType | ResponsiveGeneric;
-  /**
-   * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
-   */
-  flex?: CssFlex | ResponsiveFlex;
+  // /**
+  //  * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
+  //  */
+  // flex?: CssFlex | ResponsiveFlex;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
@@ -111,7 +114,7 @@ export interface BoxProps {
    * The height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
    */
-  height?: string | ResponsiveGeneric;
+  height?: PalmettoTokensDimension | ResponsiveDimension | string;
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
@@ -128,12 +131,12 @@ export interface BoxProps {
    * The maximum height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
    */
-  maxHeight?: string | ResponsiveGeneric;
+  maxHeight?: PalmettoTokensDimension | ResponsiveDimension | string;
   /**
    * The maximum width of the element. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/docs/design-tokens-width--page)
    */
-  maxWidth?: string | ResponsiveGeneric;
+  maxWidth?: PalmettoTokensDimension | ResponsiveDimension | string;
   /**
    * The overflow property is specified as one or two keywords.
    * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
@@ -151,7 +154,11 @@ export interface BoxProps {
   /**
    * Set the radius of all corners
    */
-  radius?: PalmettoTokensRadius | ResponsiveRadius; // need to define based on design tokens
+  radius?: PalmettoTokensRadius | ResponsiveRadius;
+  /**
+   * Set the radius of all corners
+   */
+  style?: CSSProperties;
   /**
    * By default, a Box's items will all try to fit onto one line.
    * Change that and allow the items to wrap as needed wrap
@@ -161,7 +168,7 @@ export interface BoxProps {
    * The width of the element. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/docs/design-tokens-width--page)
    */
-  width?: string | ResponsiveGeneric;
+  width?: PalmettoTokensDimension | ResponsiveDimension | string;
 }
 
 /**
@@ -181,7 +188,7 @@ const Box: FC<BoxProps> = ({
   color = undefined,
   display = 'flex',
   direction = 'column',
-  flex = undefined,
+  // flex = undefined,
   fontSize = 'inherit',
   height = undefined,
   justifyContent = undefined,
@@ -191,18 +198,11 @@ const Box: FC<BoxProps> = ({
   overflow = 'initial',
   padding = undefined,
   radius = undefined,
+  style = {},
   wrap = undefined,
   width = undefined,
   ...restProps
 }) => {
-  const activeBreakpoint = useBreakpoint();
-  const [activeWidth, setActiveWidth] = useState<string | undefined>(undefined);
-  const [activeHeight, setActiveHeight] = useState<string | undefined>(undefined);
-  const [activeMaxWidth, setActiveMaxWidth] = useState<string | undefined>(undefined);
-  const [activeMaxHeight, setActiveMaxHeight] = useState<string | undefined>(undefined);
-  const [activeFlex, setActiveFlex] = useState<string | undefined>(undefined);
-  const [activeWrap, setActiveWrap] = useState<boolean | undefined>(undefined);
-
   const getProp = (prop?: MultiPurposeStyleProp) => {
     if (typeof prop === 'string' || prop === undefined || typeof prop === 'boolean') {
       return prop;
@@ -211,20 +211,11 @@ const Box: FC<BoxProps> = ({
     return prop[activeBreakpoint.name];
   };
 
-  useEffect(() => {
-    setActiveWidth(getProp(width) as string);
-    setActiveHeight(getProp(height) as string);
-    setActiveMaxWidth(getProp(maxWidth) as string);
-    setActiveMaxHeight(getProp(maxHeight) as string);
-    setActiveFlex(getProp(flex) as string);
-    setActiveWrap(getProp(wrap) as boolean);
-  }, [activeBreakpoint, width, height, maxWidth, maxHeight, flex, childGap, wrap]);
-
-  const heightCss = getDimensionCss('h', activeHeight);
-  const widthCss = getDimensionCss('w', activeWidth);
-  const maxHeightCss = getDimensionCss('mh', activeMaxHeight);
-  const maxWidthCss = getDimensionCss('mw', activeMaxWidth);
-  const flexCss = getFlexCss(activeFlex);
+  const heightCss = getDimensionCss('h', height);
+  const widthCss = getDimensionCss('w', width);
+  const maxHeightCss = getDimensionCss('mh', maxHeight);
+  const maxWidthCss = getDimensionCss('mw', maxWidth);
+  // const flexCss = getFlexCss(flex);
 
   const wrapClass = typeof display === 'string' && display.includes('flex') && activeWrap ? 'flex-wrap' : 'flex-nowrap';
 
@@ -237,7 +228,7 @@ const Box: FC<BoxProps> = ({
     maxHeightCss.classes,
     maxWidthCss.classes,
     widthCss.classes,
-    flexCss.classes,
+    // flexCss.classes,
     generateResponsiveClasses('display', display),
     generateResponsiveClasses('flex-direction', direction),
     generateResponsiveClasses('justify-content', justifyContent),
@@ -255,11 +246,12 @@ const Box: FC<BoxProps> = ({
   );
 
   const boxStyles = {
+    ...style,
     ...heightCss.styles,
     ...maxHeightCss.styles,
     ...maxWidthCss.styles,
     ...widthCss.styles,
-    ...flexCss.styles,
+    // ...flexCss.styles,
     ...border && { borderWidth: '1px', borderStyle: 'solid' },
   };
 
