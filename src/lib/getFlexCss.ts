@@ -1,4 +1,4 @@
-import { FlexStylesAndClasses, FlexProperty } from './types';
+import { FlexStylesAndClasses, FlexProperty, ResponsiveFlex } from './types';
 import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
 
 const flexValues = ['initial', 'auto', 'unset', 'none', 'inherit'];
@@ -55,8 +55,8 @@ function getFlexClasses(value?: string): string[] | undefined {
  */
 function getFlexCss(value?: ResponsiveFlex | string): FlexStylesAndClasses {
   return ({
-    styles: getFlexStyles(value),
-    classes: getFlexClasses(value),
+    styles: getFlexStyles(value as string),
+    classes: getFlexClasses(value as string),
   });
 }
 
