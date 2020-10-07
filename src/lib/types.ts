@@ -47,7 +47,7 @@ export type CssAlignContent =
   'space-between' |
   'space-around';
 
-export type CssFlexDirection = 'column' | 'column-reverse' | 'row' | 'row-reverse';
+export type CssFlexDirection = 'column' | 'column-reverse' | 'row' | 'row-reverse' | undefined;
 
 export type CssAlign =
   'flex-start' |
@@ -61,8 +61,7 @@ export type CssFlex =
   'initial' |
   'none' |
   'inherit' |
-  'unset' |
-  string;
+  'unset';
 
 export type CssOverflow =
   'visible' |
@@ -78,18 +77,30 @@ export type DisplayType = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'i
 
 export type BaseSpacing = 'base' | PALMETTO_SPACING | string | undefined;
 
-export type ResponsiveSpacing = { [breakpoint in BreakpointOption]: BaseSpacing };
+export type ResponsiveSpacing = { [breakpoint in BreakpointOption]?: BaseSpacing };
 
-export type ResponsiveGeneric = { [breakpoint in BreakpointOption]: string };
+export type ResponsiveString = { [breakpoint in BreakpointOption]?: string };
 
-export type ResponsiveFlex = { [breakpoint in BreakpointOption]: CssFlex };
+export type ResponsiveFlex = { [breakpoint in BreakpointOption]?: CssFlex };
 
-export type ResponsiveBoolean = { [breakpoint in BreakpointOption]: boolean };
+export type ResponsiveBoolean = { [breakpoint in BreakpointOption]?: boolean };
 
-export type ResponsiveRadius = { [breakpoint in BreakpointOption]: PalmettoTokensRadius };
+export type ResponsiveRadius = { [breakpoint in BreakpointOption]?: PalmettoTokensRadius };
 
-export type ResponsiveOverflow = { [breakpoint in BreakpointOption]: CssOverflow };
+export type ResponsiveOverflow = { [breakpoint in BreakpointOption]?: CssOverflow };
 
-export type ResponsiveDimension = { [breakpoint in BreakpointOption]: PalmettoTokensDimension };
+export type ResponsiveDimension = { [breakpoint in BreakpointOption]?: PalmettoTokensDimension };
+
+export type ResponsiveDirection = { [breakpoint in BreakpointOption]?: CssFlexDirection };
+
+export type ResponsiveGeneric =
+  ResponsiveSpacing |
+  ResponsiveString |
+  ResponsiveFlex |
+  ResponsiveBoolean |
+  ResponsiveRadius |
+  ResponsiveOverflow |
+  ResponsiveDimension |
+  ResponsiveDirection;
 
 export type SpacingFormat = BaseSpacing | ResponsiveSpacing;

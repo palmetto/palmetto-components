@@ -93,7 +93,7 @@ All background colors
             <Box flex="auto" padding="xs" background={`${color}-light`}>
               {`${color}-light`}
             </Box>
-            <Box flex="auto" padding="xs" background={color} key={i}>
+            <Box flex="auto" padding="xs" background={color}>
               {`${color}`}
             </Box>
             <Box flex="auto" padding="xs" background={`${color}-dark`}>
@@ -833,7 +833,7 @@ Try resizing the browser to see the responsive properties in action.
   <Story name="responsive direction">
     {() => {
       const activeBreakpoint = useBreakpoint();
-      const direction = { base: 'column', 'tablet': 'column', desktop: 'row', hd: 'row' };
+      const direction = { base: 'column', tablet: 'column', desktop: 'row', hd: 'row' };
       return (
         <>
           <Box

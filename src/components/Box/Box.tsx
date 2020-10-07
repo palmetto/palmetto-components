@@ -4,8 +4,6 @@ import {
   FC,
   ReactNode,
   ReactElement,
-  useEffect,
-  useState,
   CSSProperties,
 } from 'react';
 import classNames from 'classnames';
@@ -16,6 +14,7 @@ import {
   PALMETTO_SPACING,
   PalmettoTokensRadius,
   PalmettoTokensDimension,
+  BreakpointOption,
 } from '../../lib/tokens';
 import {
   DisplayType,
@@ -25,7 +24,6 @@ import {
   CssAlign,
   ResponsiveGeneric,
   CssFlexDirection,
-  CssFlex,
   CssOverflow,
   ResponsiveFlex,
   ResponsiveSpacing,
@@ -33,12 +31,13 @@ import {
   ResponsiveRadius,
   ResponsiveOverflow,
   ResponsiveDimension,
+  ResponsiveDirection,
+  ResponsiveString,
+  CssFlex,
 } from '../../lib/types';
-import useBreakpoint from '../../hooks/useBreakpoint';
 import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingClasses from '../../lib/getSpacingClasses';
 import getElementType from '../../lib/getElementType';
-import getFlexCss from '../../lib/getFlexCss';
 import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
 
 type MultiPurposeStyleProp =
@@ -97,15 +96,15 @@ export interface BoxProps {
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
-  direction?: CssFlexDirection | ResponsiveGeneric;
+  direction?: CssFlexDirection | ResponsiveDirection;
   /**
    * Display property. Only select values supported.
    */
   display?: DisplayType | ResponsiveGeneric;
-  // /**
-  //  * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
-  //  */
-  // flex?: CssFlex | ResponsiveFlex;
+  /**
+   * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
+   */
+  flex?: CssFlex | ResponsiveFlex;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
@@ -188,7 +187,7 @@ const Box: FC<BoxProps> = ({
   color = undefined,
   display = 'flex',
   direction = 'column',
-  // flex = undefined,
+  flex = undefined,
   fontSize = 'inherit',
   height = undefined,
   justifyContent = undefined,
@@ -228,7 +227,6 @@ const Box: FC<BoxProps> = ({
     maxHeightCss.classes,
     maxWidthCss.classes,
     widthCss.classes,
-    // flexCss.classes,
     generateResponsiveClasses('display', display),
     generateResponsiveClasses('flex-direction', direction),
     generateResponsiveClasses('justify-content', justifyContent),
@@ -238,6 +236,8 @@ const Box: FC<BoxProps> = ({
     generateResponsiveClasses('font-size', fontSize),
     generateResponsiveClasses('overflow', overflow),
     generateResponsiveClasses('border-radius', radius),
+    generateResponsiveClasses('flex-direction', direction),
+    generateResponsiveClasses('flex', flex),
     {
       [`background-color-${background}`]: background,
       [`border-color-${border}`]: border,
@@ -255,14 +255,67 @@ const Box: FC<BoxProps> = ({
     ...border && { borderWidth: '1px', borderStyle: 'solid' },
   };
 
-  let childGapDirection = '';
-  let childGapClass = '';
+  const generateChildGapDirection = (): ResponsiveString => {
+    let childGapDirection = {};
+
+    const getChildGapMarginDirection = (d: CssFlexDirection) => {
+      let marginDirection = '';
+      if (d && d.includes('row')) marginDirection = 'right';
+      else if (d && d.includes('column')) marginDirection = 'bottom';
+
+      return marginDirection;
+    };
+
+    if (typeof direction === 'string') {
+      childGapDirection = { base: getChildGapMarginDirection(direction) };
+    } else if (typeof direction === 'object' && direction !== null) {
+      childGapDirection = Object.keys(direction).reduce((acc, curr) => ({
+        ...acc,
+        [curr]: getChildGapMarginDirection(direction[curr as BreakpointOption]),
+      }), {});
+    }
+
+    return childGapDirection;
+  };
+
+  const generateChildGap = (): ResponsiveSpacing => {
+    let childGapObj = {};
+
+    if (typeof childGap === 'string') {
+      childGapObj = { base: childGap };
+    } else if (typeof childGap === 'object' && childGap !== null) {
+      childGapObj = { ...childGap };
+    }
+
+    return childGapObj;
+  };
+
+  const childGapClasses: string[] = [];
 
   if (childGap && direction) {
-    if ((direction as CssFlexDirection).includes('row')) childGapDirection = 'right';
-    else if ((direction as CssFlexDirection).includes('column')) childGapDirection = 'bottom';
+    const childGapDirection = generateChildGapDirection();
+    const childGapValues = generateChildGap();
+    const breakpoints: BreakpointOption[] = ['hd', 'desktop', 'tablet', 'base'];
 
-    childGapClass = classNames(generateResponsiveClasses(`m-${childGapDirection}`, childGap));
+    const findMatchingBreakpoint = (responsiveObj: ResponsiveGeneric, key: BreakpointOption): string => {
+      const index = breakpoints.findIndex(breakpoint => breakpoint === key);
+
+      if (index < breakpoints.length - 1 && !responsiveObj[key]) {
+        findMatchingBreakpoint(responsiveObj, breakpoints[index + 1]);
+      } else if (responsiveObj[key]) {
+        return responsiveObj[key] as string;
+      }
+
+      return responsiveObj.base as string;
+    };
+
+    breakpoints.forEach(breakpoint => {
+      const foundDirection = findMatchingBreakpoint(childGapDirection, breakpoint as BreakpointOption);
+      const foundChildGap = findMatchingBreakpoint(childGapValues, breakpoint as BreakpointOption);
+      const classSuffix = breakpoint === 'base' ? '' : `-${breakpoint}`;
+
+      childGapClasses.push(`m-${foundDirection}-${foundChildGap}${classSuffix}`);
+    });
   }
 
   let decoratedChildren = children;
@@ -273,7 +326,7 @@ const Box: FC<BoxProps> = ({
   const decorateChildren = (child: ReactElement, i: number, childrenArr: ReactElement[]) => {
     if (i === childrenArr.length - 1 || !child) return child; // Not gap if child is last element.
 
-    const childClasses = classNames(child.props.className, childGapClass);
+    const childClasses = classNames(child.props.className, [...new Set([...childGapClasses])]);
 
     return cloneElement(child, {
       className: childClasses,
@@ -281,7 +334,7 @@ const Box: FC<BoxProps> = ({
     });
   };
 
-  if (childGapClass && Array.isArray(children)) {
+  if (childGapClasses && Array.isArray(children)) {
     decoratedChildren = (children as ReactElement[]).map(decorateChildren);
   }
 
