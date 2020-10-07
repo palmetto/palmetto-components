@@ -202,19 +202,10 @@ const Box: FC<BoxProps> = ({
   width = undefined,
   ...restProps
 }) => {
-  // const getProp = (prop?: MultiPurposeStyleProp) => {
-  //   if (typeof prop === 'string' || prop === undefined || typeof prop === 'boolean') {
-  //     return prop;
-  //   }
-
-  //   return prop[activeBreakpoint.name];
-  // };
-
   const heightCss = getDimensionCss('h', height);
   const widthCss = getDimensionCss('w', width);
   const maxHeightCss = getDimensionCss('mh', maxHeight);
   const maxWidthCss = getDimensionCss('mw', maxWidth);
-  // const flexCss = getFlexCss(flex);
 
   const wrapClass = typeof display === 'string' && display.includes('flex') && wrap ? 'flex-wrap' : 'flex-nowrap';
 
@@ -251,17 +242,20 @@ const Box: FC<BoxProps> = ({
     ...maxHeightCss.styles,
     ...maxWidthCss.styles,
     ...widthCss.styles,
-    // ...flexCss.styles,
     ...border && { borderWidth: '1px', borderStyle: 'solid' },
   };
 
+  /**
+   * Creates an object that maps the flex direction to either `right` or `bottom`
+   * so a margin can be applied to that side.
+   */
   const generateChildGapDirection = (): ResponsiveString => {
     let childGapDirection = {};
 
     const getChildGapMarginDirection = (d: CssFlexDirection) => {
       let marginDirection = '';
-      if (d && d.includes('row')) marginDirection = 'right';
-      else if (d && d.includes('column')) marginDirection = 'bottom';
+      if (d?.includes('row')) marginDirection = 'right';
+      else if (d?.includes('column')) marginDirection = 'bottom';
 
       return marginDirection;
     };
@@ -278,6 +272,11 @@ const Box: FC<BoxProps> = ({
     return childGapDirection;
   };
 
+  /**
+   * Shapes the childGap prop into a ResponsiveSpacing object
+   * so that we can cross-reference values between direction and childGap values to generate
+   * responsive classes.
+   */
   const generateChildGap = (): ResponsiveSpacing => {
     let childGapObj = {};
 
