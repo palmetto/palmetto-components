@@ -313,8 +313,10 @@ const Box: FC<BoxProps> = ({
       const foundDirection = findMatchingBreakpoint(childGapDirection, breakpoint as BreakpointOption);
       const foundChildGap = findMatchingBreakpoint(childGapValues, breakpoint as BreakpointOption);
       const classSuffix = breakpoint === 'base' ? '' : `-${breakpoint}`;
+      const oppositeDirection = foundDirection === 'bottom' ? 'right' : 'bottom';
 
       childGapClasses.push(`m-${foundDirection}-${foundChildGap}${classSuffix}`);
+      childGapClasses.push(`m-${oppositeDirection}-0${classSuffix}`);
     });
   }
 
@@ -325,8 +327,7 @@ const Box: FC<BoxProps> = ({
    */
   const decorateChildren = (child: ReactElement, i: number, childrenArr: ReactElement[]) => {
     if (i === childrenArr.length - 1 || !child) return child; // Not gap if child is last element.
-
-    const childClasses = classNames(child.props.className, [...new Set([...childGapClasses])]);
+    const childClasses = classNames(child.props.className, [...new Set(childGapClasses)]);
 
     return cloneElement(child, {
       className: childClasses,

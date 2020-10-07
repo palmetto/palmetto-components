@@ -819,11 +819,12 @@ The box will have different margin and padding values for at the base, tablet, a
     {() => {
       const activeBreakpoint = useBreakpoint();
       const direction = { base: 'column', tablet: 'column', desktop: 'row', hd: 'row' };
+      const childGap = { base: '2xl', desktop: 'md' };
       return (
         <>
           <Box
             direction={direction}
-            childGap="lg"
+            childGap={childGap}
           >
             <Box flex="auto" radius="md" background="primary-lighter" height="lg" justifyContent="center" align="center">
               {direction[activeBreakpoint.name]}
