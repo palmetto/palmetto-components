@@ -13,7 +13,7 @@ type WindowDimensions = {
  * the function being run too frequently which could result in performance issues with a
  * high number of listeners.
  */
-export default function useWindowSize(timeout = 400): WindowDimensions {
+export default function useWindowSize(timeout = 100): WindowDimensions {
   const [windowSize, setWindowSize] = useState<WindowDimensions>({
     width: undefined,
     height: undefined,
