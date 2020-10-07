@@ -787,10 +787,16 @@ Responsive enabled props take a keyed object that specifies at which [breakpoint
 >
 ```
 
+### Responsive Examples
+
+Try resizing the browser to see the responsive properties in action.
+
+#### Margin and Padding
+
+The box will have different margin and padding values for at the base, tablet, and desktop breakpoints.
+
 <Canvas>
   <Story name="responsive padding and margin">
-    <>
-    <p>This box will have different margin and padding values for each of its base, tablet, and desktop breakpoints.</p>
     <Box
       padding={{ base: 'sm 2xs', tablet: '2xl lg', desktop: '5xl 3xl'}}
       margin={{ base: 'sm xs', tablet: 'md sm', desktop: 'lg md'}}
@@ -803,31 +809,10 @@ Responsive enabled props take a keyed object that specifies at which [breakpoint
       <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
       <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
     </Box>
-    </>
   </Story>
 </Canvas>
 
-### Omitting Keys
-
-When passing an object, omitting a key is the same as not applying any styles.
-For example the following has padding at the `desktop` breakpoint and wider.
-
-<Canvas>
-  <Story name="responsive padding lg">
-    <Box
-      padding={{ desktop: 'lg'}}
-      background="primary-lighter"
-    >
-      <p>This box will have no padding until the viewport reaches the desktop breakpoint. </p>
-    </Box>
-  </Story>
-</Canvas>
-
-### Responsive Examples
-
-Try resizing the browser to see the responsive properties in action.
-
-### Direction
+#### Direction
 
 <Canvas>
   <Story name="responsive direction">
@@ -856,7 +841,7 @@ Try resizing the browser to see the responsive properties in action.
   </Story>
 </Canvas>
 
-### Font Size
+#### Font Size
 
 This box will have different fontSize values for each of its base, tablet, desktop, and hd breakpoints.
 
@@ -880,7 +865,7 @@ This box will have different fontSize values for each of its base, tablet, deskt
   </Story>
 </Canvas>
 
-### Width and Height
+#### Width and Height
 
 This box will have different width and height values for each of its base, tablet, and desktop breakpoints.
 
@@ -907,7 +892,7 @@ This box will have different width and height values for each of its base, table
   </Story>
 </Canvas>
 
-### Child gap
+#### Child gap
 
 The childGap in these boxes will change based on the active breakpoint
 
@@ -942,7 +927,7 @@ The childGap in these boxes will change based on the active breakpoint
   </Story>
 </Canvas>
 
-### Radius
+#### Radius
 
 This box will have different border radius based on the breakpoint
 
@@ -966,3 +951,19 @@ This box will have different border radius based on the breakpoint
   </Story>
 </Canvas>
 
+
+#### Omitting Keys
+
+When passing an object, omitting a key is the same as not applying any styles.
+For example the following has padding at the `desktop` breakpoint and wider.
+
+<Canvas>
+  <Story name="responsive padding lg">
+    <Box
+      padding={{ desktop: 'lg'}}
+      background="primary-lighter"
+    >
+      <p>This box will have no padding until the viewport reaches the desktop breakpoint. </p>
+    </Box>
+  </Story>
+</Canvas>
