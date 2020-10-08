@@ -1,7 +1,8 @@
 import { BreakpointOption } from './tokens';
-import { ResponsiveGeneric } from './types';
+import { ResponsiveProp } from './types';
 
-function generateResponsiveClasses(classRoot: string, value: ResponsiveGeneric | string | undefined): string[] {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function generateResponsiveClasses(classRoot: string, value: ResponsiveProp<any> | string | undefined): string[] {
   if (value === null || (typeof value !== 'string' && typeof value !== 'object')) return [];
 
   const classes: string[] = [];

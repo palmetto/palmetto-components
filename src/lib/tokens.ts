@@ -94,6 +94,7 @@ export type PALMETTO_FONT_COLORS =
   'grey-darkest';
 
 export type PALMETTO_SPACING =
+  '0' |
   '2xs' |
   'xs' |
   'sm' |

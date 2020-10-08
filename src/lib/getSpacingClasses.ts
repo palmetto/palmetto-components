@@ -1,7 +1,7 @@
-import { CssSpacing, SpacingFormat } from './types';
+import { CssSpacing, BaseSpacing, ResponsiveProp } from './types';
 import { BreakpointOption } from './tokens';
 
-function isValidSpacingValue(value?: SpacingFormat): boolean {
+function isValidSpacingValue(value?: BaseSpacing | ResponsiveProp<BaseSpacing>): boolean {
   if (
     value === undefined
     || value === null
@@ -13,7 +13,7 @@ function isValidSpacingValue(value?: SpacingFormat): boolean {
   return true;
 }
 
-function generateBaseClasses(attribute: CssSpacing, value: SpacingFormat): string[] {
+function generateBaseClasses(attribute: CssSpacing, value: BaseSpacing | ResponsiveProp<BaseSpacing>): string[] {
   if (typeof value !== 'string') return [];
 
   const classes: string[] = [];
@@ -39,7 +39,7 @@ function generateBaseClasses(attribute: CssSpacing, value: SpacingFormat): strin
   return classes;
 }
 
-function getSpacingClasses(attribute: CssSpacing, value?: SpacingFormat): string[] {
+function getSpacingClasses(attribute: CssSpacing, value?: BaseSpacing | ResponsiveProp<BaseSpacing>): string[] {
   if (!isValidSpacingValue(value)) return [];
 
   const classes: string[] = [];

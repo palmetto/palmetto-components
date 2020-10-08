@@ -1,11 +1,11 @@
-import { CssStylesAndClasses, CssDimension, ResponsiveDimension } from './types';
-import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
+import { CssStylesAndClasses, CssDimension, ResponsiveProp } from './types';
 import { PalmettoTokensDimension } from './tokens';
+import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
 import generateResponsiveClasses from './generateResponsiveClasses';
 
 function getDimensionStyles(
   dimension: CssDimension,
-  value?: PalmettoTokensDimension | ResponsiveDimension | string,
+  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
 ): { [key: string]: string; } | undefined {
   if (value === undefined) return value;
 
@@ -31,7 +31,7 @@ function getDimensionStyles(
 
 function getDimensionClasses(
   dimension: CssDimension,
-  value?: PalmettoTokensDimension | ResponsiveDimension | string,
+  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
 ): string[] | undefined {
   if (value === undefined) return value;
 
@@ -52,7 +52,7 @@ function getDimensionClasses(
  */
 function getDimensionCss(
   dimension: CssDimension,
-  value?: PalmettoTokensDimension | ResponsiveDimension | string,
+  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
 ): CssStylesAndClasses {
   return ({
     styles: getDimensionStyles(dimension, value),

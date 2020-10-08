@@ -1,7 +1,5 @@
 import {
   BreakpointOption,
-  PalmettoTokensDimension,
-  PalmettoTokensRadius,
   PALMETTO_SPACING,
 } from './tokens';
 
@@ -49,7 +47,7 @@ export type CssAlignContent =
 
 export type CssFlexDirection = 'column' | 'column-reverse' | 'row' | 'row-reverse' | undefined;
 
-export type CssAlign =
+export type CssAlignItems =
   'flex-start' |
   'flex-end' |
   'center' |
@@ -75,32 +73,6 @@ export type CssOverflow =
 
 export type DisplayType = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
 
-export type BaseSpacing = 'base' | PALMETTO_SPACING | string | undefined;
+export type BaseSpacing = PALMETTO_SPACING | string | undefined;
 
-export type ResponsiveSpacing = { [breakpoint in BreakpointOption]?: BaseSpacing };
-
-export type ResponsiveString = { [breakpoint in BreakpointOption]?: string };
-
-export type ResponsiveFlex = { [breakpoint in BreakpointOption]?: CssFlex };
-
-export type ResponsiveBoolean = { [breakpoint in BreakpointOption]?: boolean };
-
-export type ResponsiveRadius = { [breakpoint in BreakpointOption]?: PalmettoTokensRadius };
-
-export type ResponsiveOverflow = { [breakpoint in BreakpointOption]?: CssOverflow };
-
-export type ResponsiveDimension = { [breakpoint in BreakpointOption]?: PalmettoTokensDimension };
-
-export type ResponsiveDirection = { [breakpoint in BreakpointOption]?: CssFlexDirection };
-
-export type ResponsiveGeneric =
-  ResponsiveSpacing |
-  ResponsiveString |
-  ResponsiveFlex |
-  ResponsiveBoolean |
-  ResponsiveRadius |
-  ResponsiveOverflow |
-  ResponsiveDimension |
-  ResponsiveDirection;
-
-export type SpacingFormat = BaseSpacing | ResponsiveSpacing;
+export type ResponsiveProp<T> = { [breakpoint in BreakpointOption]?: T };
