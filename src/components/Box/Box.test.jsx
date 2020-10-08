@@ -107,7 +107,7 @@ describe('Box', () => {
     test('box renders with default display value of flex', () => {
       const { getByText } = render(<Box>Hello</Box>);
 
-      expect(getByText('Hello')).toHaveClass('flex');
+      expect(getByText('Hello')).toHaveClass('display-flex');
     });
 
     test('box renders with display class matching prop', () => {
@@ -123,7 +123,7 @@ describe('Box', () => {
       displayValues.forEach((value, i) => {
         const { queryAllByText } = render(<Box display={value}>hello</Box>);
 
-        expect(queryAllByText('hello')[i]).toHaveClass(value);
+        expect(queryAllByText('hello')[i]).toHaveClass(`display-${value}`);
       });
     });
   });
@@ -137,6 +137,104 @@ describe('Box', () => {
     test('box renders with nowrap class is wrap is false', () => {
       const { getByText } = render(<Box>Hello</Box>);
       expect(getByText('Hello')).toHaveClass('flex-nowrap');
+    });
+  });
+
+  describe('Responsive styles and Classes', () => {
+    test('box renders with the correct responsive spacing classes based on props', () => {
+      const spacing = {
+        base: 'sm',
+        tablet: 'md',
+        desktop: 'lg',
+        hd: 'xl',
+      };
+      const { getByText } = render(
+        <Box
+          width={spacing}
+          height={spacing}
+          maxWidth={spacing}
+          maxHeight={spacing}
+          padding={spacing}
+          margin={spacing}
+          fontSize={spacing}
+        >
+          my box
+        </Box>,
+      );
+      const box = getByText('my box');
+
+      expect(box).toHaveClass(...[
+        'w-sm',
+        'w-md-tablet',
+        'w-lg-desktop',
+        'w-xl-hd',
+        'h-sm',
+        'h-md-tablet',
+        'h-lg-desktop',
+        'h-xl-hd',
+        'mw-sm',
+        'mw-md-tablet',
+        'mw-lg-desktop',
+        'mw-xl-hd',
+        'mh-sm',
+        'mh-md-tablet',
+        'mh-lg-desktop',
+        'mh-xl-hd',
+        'p-sm',
+        'p-md-tablet',
+        'p-lg-desktop',
+        'p-xl-hd',
+        'm-sm',
+        'm-md-tablet',
+        'm-lg-desktop',
+        'm-xl-hd',
+        'font-size-sm',
+        'font-size-md-tablet',
+        'font-size-lg-desktop',
+        'font-size-xl-hd',
+      ]);
+    });
+
+    test('box renders children with the correct gap classes for its children', () => {
+      const direction = {
+        base: 'column',
+        tablet: 'column',
+        desktop: 'row',
+        hd: 'row',
+      };
+
+      const childGap = {
+        base: 'sm',
+        tablet: 'md',
+        desktop: 'lg',
+        hd: 'xl',
+      };
+
+      const { getByText } = render(
+        <Box
+          direction={direction}
+          childGap={childGap}
+        >
+          <div>
+            one
+          </div>
+          <div>
+            two
+          </div>
+        </Box>,
+      );
+      const childBox = getByText('one');
+
+      expect(childBox).toHaveClass(...[
+        'm-bottom-sm',
+        'm-right-0',
+        'm-bottom-md-tablet',
+        'm-right-0-tablet',
+        'm-right-lg-desktop',
+        'm-bottom-0-desktop',
+        'm-right-xl-hd',
+        'm-bottom-0-hd',
+      ]);
     });
   });
 });

@@ -1,7 +1,12 @@
-import { CssStylesAndClasses, CssDimension } from './types';
+import { CssStylesAndClasses, CssDimension, ResponsiveProp } from './types';
+import { PalmettoTokensDimension } from './tokens';
 import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
+import generateResponsiveClasses from './generateResponsiveClasses';
 
-function getDimensionStyles(dimension: CssDimension, value?: string): { [key: string]: string; } | undefined {
+function getDimensionStyles(
+  dimension: CssDimension,
+  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
+): { [key: string]: string; } | undefined {
   if (value === undefined) return value;
 
   let styles;
@@ -24,12 +29,18 @@ function getDimensionStyles(dimension: CssDimension, value?: string): { [key: st
   return styles;
 }
 
-function getDimensionClasses(dimension: CssDimension, value?: string): string[] | undefined {
+function getDimensionClasses(
+  dimension: CssDimension,
+  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
+): string[] | undefined {
   if (value === undefined) return value;
 
   const classes = [];
-  if (typeof value === 'string' && !doesStringIncludeCssUnit(value)) {
-    classes.push(`${dimension}-${value}`);
+  if (
+    (typeof value === 'string' && !doesStringIncludeCssUnit(value))
+    || (typeof value === 'object' && Object.values(value).every(v => !doesStringIncludeCssUnit(v)))
+  ) {
+    classes.push(...generateResponsiveClasses(dimension, value));
   }
 
   return classes;
@@ -39,7 +50,10 @@ function getDimensionClasses(dimension: CssDimension, value?: string): string[] 
  * @param {CssDimension} dimension width or height
  * @param {string} [value] value of the dimension
  */
-function getDimensionCss(dimension: CssDimension, value?: string): CssStylesAndClasses {
+function getDimensionCss(
+  dimension: CssDimension,
+  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
+): CssStylesAndClasses {
   return ({
     styles: getDimensionStyles(dimension, value),
     classes: getDimensionClasses(dimension, value),

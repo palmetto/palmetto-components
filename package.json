@@ -17,7 +17,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@palmetto/palmetto-design-tokens": "^0.7.0",
+    "@palmetto/palmetto-design-tokens": "^0.8.0",
     "@types/cleave.js": "^1.4.3",
     "react-select": "^3.1.0"
   },
@@ -99,6 +99,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "cleave.js": "^1.6.0",
     "css-loader": "^3.6.0",
+    "csstype": "^3.0.3",
     "doctoc": "^1.4.0",
     "eslint": "^7.3.1",
     "eslint-config-airbnb": "^18.2.0",

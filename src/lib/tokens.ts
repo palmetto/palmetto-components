@@ -1,5 +1,6 @@
 import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 import colors from '@palmetto/palmetto-design-tokens/build/js/variables-color';
+import { UnknownPropertiesObjType } from './types';
 
 export type PALMETTO_COLORS =
   'primary-lightest' |
@@ -93,6 +94,7 @@ export type PALMETTO_FONT_COLORS =
   'grey-darkest';
 
 export type PALMETTO_SPACING =
+  '0' |
   '2xs' |
   'xs' |
   'sm' |
@@ -106,6 +108,39 @@ export type PALMETTO_SPACING =
   'base' |
   'inherit';
 
+export type PalmettoTokensRadius = 'xs' | 'sm' | 'md' | 'lg' | 'circle';
+
+export type PalmettoTokensDimension =
+  '10' |
+  '15' |
+  '20' |
+  '25' |
+  '30' |
+  '33' |
+  '34' |
+  '40' |
+  '50' |
+  '60' |
+  '70' |
+  '75' |
+  '80' |
+  '90' |
+  '100'|
+  'sm' |
+  'md' |
+  'lg' |
+  'xl' |
+  '2xl' |
+  '3xl' |
+  '4xl' |
+  '5xl';
+
+export type BreakpointOption = 'tablet' | 'desktop' | 'hd' | 'base';
+
+export type Breakpoint = {
+  name: BreakpointOption;
+  minWidth: number; // min width in pixels
+}
 export interface ColorDictionary {
   [name: string]: ColorEntry;
 }
@@ -124,8 +159,13 @@ export interface ColorVariation {
 export const PALMETTO_BORDER_RADIUS_OPTIONS = Object.keys(sizes.size['border-radius']);
 export const PALMETTO_BORDER_RADIUS_VALUES = Object.values(sizes.size['border-radius']);
 
-export const PALMETTO_BREAKPOINT_OPTIONS = Object.keys(sizes.size.breakpoint);
+export const PALMETTO_BREAKPOINT_OPTIONS = Object.keys(sizes.size.breakpoint) as BreakpointOption[];
 export const PALMETTO_BREAKPOINT_VALUES = Object.values(sizes.size.breakpoint);
+export const PALMETTO_BREAKPOINTS = Object.entries(sizes.size.breakpoint)
+  .map((entry: UnknownPropertiesObjType) => ({
+    name: entry[0],
+    minWidth: parseInt(entry[1].original.value, 10),
+  })) as Breakpoint[];
 
 export const PALMETTO_COLOR_VALUES = Object.values(colors.color) as ColorDictionary[];
 

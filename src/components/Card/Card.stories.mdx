@@ -225,11 +225,11 @@ Here are some common use cases of `<Card />`.
 ### Sign Up Form
 <Canvas>
   <Story name="Example - Sign Up Form">
-    <Box justify="center" align="center" padding="2xl" background="grey-lightest">
+    <Box alignItems="center" alignContent="center" padding="2xl" background="grey-lightest">
         <Card maxWidth="4xl">
           <Card.Section padding="3xl">
             <Box childGap="xl">
-              <Box childGap="sm" align="center">
+              <Box childGap="sm" alignItems="center">
                 <Heading as="h1" size="xl">Sign Up</Heading>
                 <Box as="p" color="grey" fontSize="sm">Create your account to create leads and proposals</Box>
               </Box>
@@ -238,7 +238,7 @@ Here are some common use cases of `<Card />`.
                 <TextInput id="password" type="password" value="" label="Password" onChange={() => null} />
                 <Button fullWidth variant="primary">Sign Up</Button>
               </Box>
-              <Box align="center" fontSize="sm" color="grey">
+              <Box alignItems="center" fontSize="sm" color="grey">
                 <p>Already have an account? <a href="#" className="font-color-primary">Log in</a>.</p>
               </Box>
             </Box>
@@ -283,7 +283,7 @@ Here are some common use cases of `<Card />`.
 
 <Canvas>
   <Story name="Example - Full Bleed Photo">
-    <Box justify="center" align="center" padding="2xl" background="grey-lightest">
+    <Box alignItems="center" alignContent="center" padding="2xl" background="grey-lightest">
       <Card width="300px">
         <Card.Section padding="0" overflow="hidden" height="300px">
           <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80" />
