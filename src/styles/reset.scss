@@ -51,8 +51,8 @@ input,
 fieldset,
 div,
 button,
-ul[class],
-ol[class],
+ul,
+ol,
 li,
 figure,
 figcaption,
@@ -68,7 +68,7 @@ p {
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
-ul[class], ol[class] { /* stylelint-disable-line */
+ul, ol { /* stylelint-disable-line */
   list-style: none;
 }
 
