@@ -1,4 +1,4 @@
-/** 
+/**
 * CSS Reset based on https://hankchizljaw.com/wrote/a-modern-css-reset/
 * Some modifications made for our specific needs.
 */
@@ -21,7 +21,7 @@ body {
 }
 
 /* Remove default padding */
-ul[class], ol[class] { /* stylelint-disable-line */
+ul, ol { /* stylelint-disable-line */
   padding: 0;
 }
 
@@ -58,7 +58,7 @@ figure,
 figcaption,
 blockquote,
 dl,
-dd { /* stylelint-enable */ 
+dd { /* stylelint-enable */
   margin: 0;
 }
 
