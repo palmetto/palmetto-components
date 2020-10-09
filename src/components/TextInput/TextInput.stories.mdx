@@ -27,7 +27,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
           id="default"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
         />
       );
     }}
@@ -47,7 +47,7 @@ Use the `isRequired` prop to mark the input as required.
           id="required"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           isRequired
         />
       );
@@ -68,7 +68,7 @@ Use the `placeholder` prop to add a custom placeholder.
           id="placeholder"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           placeholder="Custom placeholder..."
         />
       );
@@ -89,7 +89,7 @@ Use the `autoFocus` prop to autofocus the input.
           id="autofocus"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           autoFocus
         />
       );
@@ -110,7 +110,7 @@ Use the `hideLabel` prop to not render the label.
           id="hiddenLabel"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           hideLabel
         />
       );
@@ -131,7 +131,7 @@ Use the `isDisabled` prop to mark the input as disabled.
           id="disabled"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           isDisabled
         />
       );
@@ -152,7 +152,7 @@ Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can hav
           id="disabledWithValue"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           isDisabled
         />
       );
@@ -173,7 +173,7 @@ Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can hav
           id="disabledWithPlaceholder"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           isDisabled
           placeholder="Useful placeholder..."
         />
@@ -196,8 +196,8 @@ a callback function when the clear icon is clicked, which can then be handled to
           id="required"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
-          onClear={(event) => setValue('')}
+          onChange={event => setValue(event.target.value)}
+          onClear={event => setValue('')}
           isRequired
         />
       );
@@ -218,7 +218,7 @@ Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to
           id="withPhoneMask"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           type="tel"
           inputMask="phone"
         />
@@ -240,7 +240,7 @@ Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to
           id="withCreditCardMask"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           type="tel"
           inputMask="creditCard"
         />
@@ -263,7 +263,7 @@ Use the `maxLength` prop to limit the number of characters that can be entered i
           value={value}
           label="Label"
           maxLength="5"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           placeholder="Can't enter more than 5 characters..."
         />
       );
@@ -284,7 +284,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
           id="requiredWithError"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           error={true}
           isRequired
         />
@@ -306,7 +306,7 @@ Pass a `string` or `node` to the `error` prop to render a validation message.
           id="requiredWithValidationMessage"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           isRequired
           error="Helpful validation message"
         />
@@ -328,7 +328,7 @@ An input does not need to be marked as required to render a validation message.
           id="notRequiredWithValidationMessage"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           error="Helpful validation message"
         />
       );
@@ -348,7 +348,7 @@ An input does not need to be marked as required to render a validation message.
           value={value}
           label="Label"
           hideLabel
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           error={true}
         />
       );
@@ -369,7 +369,7 @@ Use the `className` prop to add a custom class, or classes to an input.
           id="customClasses"
           value={value}
           label="Label"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => setValue(event.target.value)}
           className="background-color-primary"
         />
       );
@@ -387,7 +387,7 @@ Use the `className` prop to add a custom class, or classes to an input.
         <Box
           direction={{
             base: 'column',
-            tablet: 'column',
+            tablet: 'row',
             desktop: 'row',
             hd: 'row',
           }}
@@ -402,17 +402,12 @@ Use the `className` prop to add a custom class, or classes to an input.
           <TextInput
             value={value1}
             label="input 1"
-            onChange={(event) => setValue1(event.target.value)}
+            onChange={event => setValue1(event.target.value)}
           />
           <TextInput
             value={value2}
             label="input 2"
-            onChange={(event) => setValue2(event.target.value)}
-          />
-          <TextInput
-            value={value3}
-            label="input 3"
-            onChange={(event) => setValue3(event.target.value)}
+            onChange={event => setValue2(event.target.value)}
           />
         </Box>
       );

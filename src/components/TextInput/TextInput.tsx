@@ -148,8 +148,8 @@ const TextInput: FC<TextInputProps> = ({
 
   const getAutoCompleteValue = () => {
     if (
-      !autoComplete ||
-      (typeof autoComplete !== 'boolean' && typeof autoComplete !== 'string')
+      !autoComplete
+      || (typeof autoComplete !== 'boolean' && typeof autoComplete !== 'string')
     ) {
       return 'off';
     }
