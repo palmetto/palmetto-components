@@ -12,6 +12,7 @@ react-select elements for which we do not own the markup */
 
     :global(.react-select__control) {
       line-height: var(--form-control-line-height);
+      border-color: var(--form-control-border-color);
       border-radius: var(--form-control-size-md-border-radius);
       box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
       padding: var(--form-control-select-padding);
@@ -32,9 +33,9 @@ react-select elements for which we do not own the markup */
         padding: 0;
         padding-right: 2px;
         color: var(--form-control-icon-color);
-      
+
         &:hover {
-          color: var(--form-control-icon-hover-color)
+          color: var(--form-control-icon-hover-color);
         }
       }
 
