@@ -282,19 +282,19 @@ const Box: FC<BoxProps> = ({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const findMatchingBreakpoint = (responsiveObj: ResponsiveProp<any>, key: BreakpointOption): string => {
       const index = breakpoints.findIndex(breakpoint => breakpoint === key);
+      let value = '';
 
-      if (index < breakpoints.length - 1 && !responsiveObj[key]) {
-        findMatchingBreakpoint(responsiveObj, breakpoints[index + 1]);
-      } else if (responsiveObj[key]) {
-        return responsiveObj[key] as string;
-      }
+      value = responsiveObj[key];
 
-      return responsiveObj.base as string;
+      if (!value) return findMatchingBreakpoint(responsiveObj, breakpoints[index + 1]);
+
+      return value;
     };
 
     breakpoints.forEach(breakpoint => {
       const foundDirection = findMatchingBreakpoint(childGapDirection, breakpoint as BreakpointOption);
       const foundChildGap = findMatchingBreakpoint(childGapValues, breakpoint as BreakpointOption);
+
       const classSuffix = breakpoint === 'base' ? '' : `-${breakpoint}`;
       const oppositeDirection = foundDirection === 'bottom' ? 'right' : 'bottom';
 

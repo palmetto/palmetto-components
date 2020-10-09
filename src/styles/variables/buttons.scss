@@ -23,7 +23,7 @@
   /* PRIMARY */
   --button-background-color-primary: var(--color-brand-primary-base);
   --button-font-color-primary: var(--color-brand-white-base);
-  --button-background-hover-color-primary: var(--color-brand-primary-dark);
+  --button-background-hover-color-primary: var(--color-brand-primary-600);
 
   --button-border-color-primary-outline: var(--color-brand-primary-base);
   --button-background-color-primary-outline: transparent;
@@ -35,7 +35,7 @@
   /* SUCCESS */
   --button-background-color-success: var(--color-brand-success-base);
   --button-font-color-success: var(--color-brand-white-base);
-  --button-background-hover-color-success: var(--color-brand-success-dark);
+  --button-background-hover-color-success: var(--color-brand-success-600);
 
   --button-border-color-success-outline: var(--color-brand-success-base);
   --button-background-color-success-outline: transparent;
@@ -47,7 +47,7 @@
   /* DANGER */
   --button-background-color-danger: var(--color-brand-danger-base);
   --button-font-color-danger: var(--color-brand-white-base);
-  --button-background-hover-color-danger: var(--color-brand-danger-dark);
+  --button-background-hover-color-danger: var(--color-brand-danger-600);
 
   --button-border-color-danger-outline: var(--color-brand-danger-base);
   --button-background-color-danger-outline: transparent;

@@ -2,7 +2,7 @@
   display: block;
   margin: 0;
   padding: 0;
-  color: var(--color-font-base);
+  color: var(--color-brand-dark-base);
   font-size: var(--form-control-size-md-label-size);
   font-weight: 700;
 
@@ -15,7 +15,7 @@
   }
 
   &.disabled {
-    color: var(--color-font-grey-light);
+    color: var(--color-brand-grey-light);
   }
 
   &.error {
