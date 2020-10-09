@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { FC } from 'react';
 import { withA11y } from '@storybook/addon-a11y';
 import { PALMETTO_COLOR_VALUES, ColorEntry, ColorVariation } from '../../lib/tokens';
