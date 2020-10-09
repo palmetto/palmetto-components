@@ -30,7 +30,7 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
 
   return (
     <div key={index}>
-      <h2 style={{ marginTop: '0' }}>{colorName}</h2>
+      <h2 className="m-bottom-md">{colorName}</h2>
       {Object.entries(colorVariations).map((colorVariationEntry, i) => {
         const [colorVariationName, colorVariation] = colorVariationEntry;
         return (
@@ -51,25 +51,13 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
 
 export const brand: FC = () => (
   <>
-    <h1>Brand Colors</h1>
+    <h1 className="m-bottom-md">Brand Colors</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(brandColors).map(renderColorBlock)}
     </div>
     <h1>Extended Brand Palette</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(brandColors).map(renderColorPalette)}
-    </div>
-  </>
-);
-
-export const base: FC = () => (
-  <>
-    <h1>Base Color Palette</h1>
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {Object.entries(baseColors)
-        /* Filtering out black and white at the moment */
-        .filter(colorEntry => colorEntry[0] !== 'white' && colorEntry[0] !== 'black')
-        .map(renderColorPalette)}
     </div>
   </>
 );
