@@ -15,10 +15,10 @@
   --alert-background-color-warning: var(--color-brand-warning-lighter);
   --alert-background-color-danger: var(--color-brand-danger-lighter);
 
-  --alert-font-color: var(--color-font-base);
-  --alert-icon-color-default: var(--color-font-base);
-  --alert-icon-color-info: var(--color-font-info);
-  --alert-icon-color-success: var(--color-font-success);
-  --alert-icon-color-warning: var(--color-font-warning);
-  --alert-icon-color-danger: var(--color-font-danger);
+  --alert-font-color: var(--color-brand-dark-base);
+  --alert-icon-color-default: var(--color-brand-dark-base);
+  --alert-icon-color-info: var(--color-brand-info-base);
+  --alert-icon-color-success: var(--color-brand-success-base);
+  --alert-icon-color-warning: var(--color-brand-warning-base);
+  --alert-icon-color-danger: var(--color-brand-danger-base);
 }

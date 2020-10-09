@@ -3017,10 +3017,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@palmetto/palmetto-design-tokens@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.11.0.tgz#5ad36a31a96eaa3b6ea97f56477dccd98b23ec24"
-  integrity sha512-gOVDJifT2EOO3P5HDm/vNEatMV2JMI4iB7vv/sSt+3rm1sOrTwX6Lin0WMrldvezQFUdhQ11EOcoesDWZOFmJA==
+"@palmetto/palmetto-design-tokens@^0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.11.1.tgz#6976c75139ab668dfb76a2254ad995c7de63b79d"
+  integrity sha512-b2nDSVO11oMTDRFgbCGopaiwMSnMOQfSQTEf+ZHQ+ksRW1DXWUe1JKqytj48tZPNA5gw6zgHvt0ZAwH1QaKFxw==
 
 "@reach/router@^1.3.3":
   version "1.3.4"
