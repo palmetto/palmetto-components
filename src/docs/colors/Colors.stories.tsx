@@ -3,6 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { PALMETTO_COLOR_VALUES, ColorEntry, ColorVariation } from '../../lib/tokens';
 import styles from './Colors.module.scss';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
 
 export default {
