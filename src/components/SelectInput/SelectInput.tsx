@@ -9,6 +9,7 @@ import Select, {
 } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
@@ -18,7 +19,7 @@ type SimulatedEventPayloadType = {
     name: string;
     value: ValueType<OptionTypeBase>;
   };
-}
+};
 
 interface SelectInputProps {
   /**
@@ -133,16 +134,11 @@ const SelectInput: FC<SelectInputProps> = ({
     if (onBlur) onBlur(e);
   };
 
-  const wrapperClasses = classNames(
-    'select-input-wrapper',
-    className,
-    { [styles.disabled]: isDisabled },
-  );
+  const wrapperClasses = classNames('select-input-wrapper', className, {
+    [styles.disabled]: isDisabled,
+  });
 
-  const inputClasses = classNames(
-    'react-select',
-    { [styles.error]: error },
-  );
+  const inputClasses = classNames('react-select', { [styles.error]: error });
 
   const labelProps = {
     isFieldRequired: isRequired,
@@ -159,7 +155,7 @@ const SelectInput: FC<SelectInputProps> = ({
   );
 
   return (
-    <div className={wrapperClasses}>
+    <Box width="100%" className={wrapperClasses}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       <Select
         inputId={id}
@@ -180,8 +176,10 @@ const SelectInput: FC<SelectInputProps> = ({
         onBlur={handleBlur}
         value={value}
       />
-      {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
-    </div>
+      {error && typeof error !== 'boolean' && (
+        <InputValidationMessage>{error}</InputValidationMessage>
+      )}
+    </Box>
   );
 };
 

@@ -2,11 +2,9 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TextInput from './TextInput';
+import Box from '../Box/Box';
 
-<Meta
-  title="Components/Form Inputs/TextInput"
-  component={TextInput}
-/>
+<Meta title="Components/Form Inputs/TextInput" component={TextInput} />
 
 # TextInput
 
@@ -25,14 +23,12 @@ All that is required to render a basic version of the TextInput is a unique `id`
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="default"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-          />
-        </div>
+        <TextInput
+          id="default"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+        />
       );
     }}
   </Story>
@@ -47,15 +43,13 @@ Use the `isRequired` prop to mark the input as required.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="required"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            isRequired
-          />
-        </div>
+        <TextInput
+          id="required"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          isRequired
+        />
       );
     }}
   </Story>
@@ -70,15 +64,13 @@ Use the `placeholder` prop to add a custom placeholder.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="placeholder"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            placeholder="Custom placeholder..."
-          />
-        </div>
+        <TextInput
+          id="placeholder"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          placeholder="Custom placeholder..."
+        />
       );
     }}
   </Story>
@@ -93,15 +85,13 @@ Use the `autoFocus` prop to autofocus the input.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="autofocus"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            autoFocus
-          />
-        </div>
+        <TextInput
+          id="autofocus"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          autoFocus
+        />
       );
     }}
   </Story>
@@ -116,15 +106,13 @@ Use the `hideLabel` prop to not render the label.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '60px' }}>
-          <TextInput
-            id="hiddenLabel"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            hideLabel
-          />
-        </div>
+        <TextInput
+          id="hiddenLabel"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          hideLabel
+        />
       );
     }}
   </Story>
@@ -139,15 +127,13 @@ Use the `isDisabled` prop to mark the input as disabled.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="disabled"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            isDisabled
-          />
-        </div>
+        <TextInput
+          id="disabled"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          isDisabled
+        />
       );
     }}
   </Story>
@@ -162,15 +148,13 @@ Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can hav
     {() => {
       const [value, setValue] = useState('Preset value');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="disabledWithValue"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            isDisabled
-          />
-        </div>
+        <TextInput
+          id="disabledWithValue"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          isDisabled
+        />
       );
     }}
   </Story>
@@ -185,21 +169,18 @@ Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can hav
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="disabledWithPlaceholder"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            isDisabled
-            placeholder="Useful placeholder..."
-          />
-        </div>
+        <TextInput
+          id="disabledWithPlaceholder"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          isDisabled
+          placeholder="Useful placeholder..."
+        />
       );
     }}
   </Story>
 </Canvas>
-
 
 ## Clearable
 
@@ -211,16 +192,14 @@ a callback function when the clear icon is clicked, which can then be handled to
     {() => {
       const [value, setValue] = useState('clear me');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="required"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            onClear={event => setValue('')}
-            isRequired
-          />
-        </div>
+        <TextInput
+          id="required"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          onClear={event => setValue('')}
+          isRequired
+        />
       );
     }}
   </Story>
@@ -235,16 +214,14 @@ Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="withPhoneMask"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            type="tel"
-            inputMask="phone"
-          />
-        </div>
+        <TextInput
+          id="withPhoneMask"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          type="tel"
+          inputMask="phone"
+        />
       );
     }}
   </Story>
@@ -259,16 +236,14 @@ Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="withCreditCardMask"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            type="tel"
-            inputMask="creditCard"
-          />
-        </div>
+        <TextInput
+          id="withCreditCardMask"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          type="tel"
+          inputMask="creditCard"
+        />
       );
     }}
   </Story>
@@ -283,16 +258,14 @@ Use the `maxLength` prop to limit the number of characters that can be entered i
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="maxLength"
-            value={value}
-            label="Label"
-            maxLength="5"
-            onChange={event => setValue(event.target.value)}
-            placeholder="Can't enter more than 5 characters..."
-          />
-        </div>
+        <TextInput
+          id="maxLength"
+          value={value}
+          label="Label"
+          maxLength="5"
+          onChange={event => setValue(event.target.value)}
+          placeholder="Can't enter more than 5 characters..."
+        />
       );
     }}
   </Story>
@@ -307,16 +280,14 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="requiredWithError"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            error={true}
-            isRequired
-          />
-        </div>
+        <TextInput
+          id="requiredWithError"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          error={true}
+          isRequired
+        />
       );
     }}
   </Story>
@@ -331,16 +302,14 @@ Pass a `string` or `node` to the `error` prop to render a validation message.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="requiredWithValidationMessage"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            isRequired
-            error="Helpful validation message"
-          />
-        </div>
+        <TextInput
+          id="requiredWithValidationMessage"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          isRequired
+          error="Helpful validation message"
+        />
       );
     }}
   </Story>
@@ -355,15 +324,13 @@ An input does not need to be marked as required to render a validation message.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="notRequiredWithValidationMessage"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            error="Helpful validation message"
-          />
-        </div>
+        <TextInput
+          id="notRequiredWithValidationMessage"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          error="Helpful validation message"
+        />
       );
     }}
   </Story>
@@ -376,16 +343,14 @@ An input does not need to be marked as required to render a validation message.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '60px' }}>
-          <TextInput
-            id="errorWithHiddenLabel"
-            value={value}
-            label="Label"
-            hideLabel
-            onChange={event => setValue(event.target.value)}
-            error={true}
-          />
-        </div>
+        <TextInput
+          id="errorWithHiddenLabel"
+          value={value}
+          label="Label"
+          hideLabel
+          onChange={event => setValue(event.target.value)}
+          error={true}
+        />
       );
     }}
   </Story>
@@ -400,24 +365,52 @@ Use the `className` prop to add a custom class, or classes to an input.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <div style={{ height: '85px' }}>
-          <TextInput
-            id="customClasses"
-            value={value}
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            className="background-color-primary"
-          />
-        </div>
+        <TextInput
+          id="customClasses"
+          value={value}
+          label="Label"
+          onChange={event => setValue(event.target.value)}
+          className="background-color-primary"
+        />
       );
     }}
   </Story>
 </Canvas>
 
-
-
-
-
-
-
-
+<Canvas>
+  <Story name="Adjacent Inputs">
+    {() => {
+      const [value1, setValue1] = useState('');
+      const [value2, setValue2] = useState('');
+      const [value3, setValue3] = useState('');
+      return (
+        <Box
+          direction={{
+            base: 'column',
+            tablet: 'row',
+            desktop: 'row',
+            hd: 'row',
+          }}
+          childGap={{
+            base: 'sm',
+            tablet: 'md',
+            desktop: 'lg',
+            hd: 'lg',
+          }}
+          width="100%"
+        >
+          <TextInput
+            value={value1}
+            label="input 1"
+            onChange={event => setValue1(event.target.value)}
+          />
+          <TextInput
+            value={value2}
+            label="input 2"
+            onChange={event => setValue2(event.target.value)}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
