@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { UnknownPropertiesObjType } from '../../lib/types';
 import * as InputMasks from './TextInputMasks';
+import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './TextInput.module.scss';
@@ -35,7 +36,7 @@ interface TextInputProps {
    * The text value of the input. Required since our Input is a controlled component.
    */
   value: string;
-   /**
+  /**
    * The input's 'autocomplete' attribute.
    */
   autoComplete?: boolean | string;
@@ -87,7 +88,9 @@ interface TextInputProps {
    * Callback function to call when input us cleared. When this is passed,
    * the input will display an icon on the right side, for triggering this callback.
    */
-  onClear?: (event: (MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>)) => void;
+  onClear?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>,
+  ) => void;
   /**
    * Callback function to call on focus event.
    */
@@ -145,8 +148,9 @@ const TextInput: FC<TextInputProps> = ({
 
   const getAutoCompleteValue = () => {
     if (
-      !autoComplete
-      || (typeof autoComplete !== 'boolean' && typeof autoComplete !== 'string')) {
+      !autoComplete ||
+      (typeof autoComplete !== 'boolean' && typeof autoComplete !== 'string')
+    ) {
       return 'off';
     }
 
@@ -157,13 +161,10 @@ const TextInput: FC<TextInputProps> = ({
     return autoComplete;
   };
 
-  const inputWrapperClasses = classNames(
-    styles['text-input-wrapper'],
-    {
-      [styles.error]: error,
-      [styles.disabled]: isDisabled,
-    },
-  );
+  const inputWrapperClasses = classNames(styles['text-input-wrapper'], {
+    [styles.error]: error,
+    [styles.disabled]: isDisabled,
+  });
 
   const renderClearIcon = (): ReactNode => {
     const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
@@ -178,10 +179,7 @@ const TextInput: FC<TextInputProps> = ({
         className={styles['clear-button']}
         data-testid="text-input-clear-button"
       >
-        <FontAwesomeIcon
-          icon={faTimes}
-          className={styles['clear-icon']}
-        />
+        <FontAwesomeIcon icon={faTimes} className={styles['clear-icon']} />
       </button>
     );
   };
@@ -214,18 +212,23 @@ const TextInput: FC<TextInputProps> = ({
   };
 
   return (
-    <div className={className}>
+    <Box width="100%" className={className}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       <div className={inputWrapperClasses}>
         {!inputMask ? (
           <input {...inputProps} />
         ) : (
-          <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+          <Cleave
+            {...inputProps}
+            options={getInputMask(inputMask, InputMasks)}
+          />
         )}
         {!!onClear && !!value && renderClearIcon()}
       </div>
-      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
-    </div>
+      {error && error !== true && (
+        <InputValidationMessage>{error}</InputValidationMessage>
+      )}
+    </Box>
   );
 };
 
