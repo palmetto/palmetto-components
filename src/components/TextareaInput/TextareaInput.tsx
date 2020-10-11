@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextareaInput.module.scss';
 
 interface TextareaInputProps {
@@ -104,18 +105,6 @@ const TextareaInput: FC<TextareaInputProps> = ({
   resize = 'vertical',
   rows = 3,
 }) => {
-  const getAutoCompleteValue = () => {
-    if (!autoComplete || (typeof autoComplete !== 'boolean' && typeof autoComplete !== 'string')) {
-      return 'off';
-    }
-
-    if (typeof autoComplete === 'boolean' && autoComplete) {
-      return 'on';
-    }
-
-    return autoComplete;
-  };
-
   const inputWrapperClasses = classNames(styles['textarea-input-wrapper'], {
     [styles.error]: error,
     [styles.disabled]: isDisabled,
@@ -126,7 +115,7 @@ const TextareaInput: FC<TextareaInputProps> = ({
     'aria-invalid': !!error,
     'aria-label': label,
     'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
-    autoComplete: getAutoCompleteValue(),
+    autoComplete: getAutoCompleteValue(autoComplete),
     autoFocus,
     className: classNames(styles[`textarea-resize-${resize}`]),
     disabled: isDisabled,

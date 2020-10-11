@@ -15,6 +15,7 @@ import * as InputMasks from './TextInputMasks';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextInput.module.scss';
 
 type inputMaskType = ('phone' | 'creditCard') | UnknownPropertiesObjType;
@@ -146,21 +147,6 @@ const TextInput: FC<TextInputProps> = ({
     return mask;
   };
 
-  const getAutoCompleteValue = () => {
-    if (
-      !autoComplete
-      || (typeof autoComplete !== 'boolean' && typeof autoComplete !== 'string')
-    ) {
-      return 'off';
-    }
-
-    if (typeof autoComplete === 'boolean' && autoComplete) {
-      return 'on';
-    }
-
-    return autoComplete;
-  };
-
   const inputWrapperClasses = classNames(styles['text-input-wrapper'], {
     [styles.error]: error,
     [styles.disabled]: isDisabled,
@@ -189,7 +175,7 @@ const TextInput: FC<TextInputProps> = ({
     'aria-invalid': !!error,
     'aria-label': label,
     'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
-    autoComplete: getAutoCompleteValue(),
+    autoComplete: getAutoCompleteValue(autoComplete),
     autoFocus,
     disabled: isDisabled,
     id,
