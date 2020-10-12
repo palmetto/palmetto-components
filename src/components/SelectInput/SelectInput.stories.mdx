@@ -72,6 +72,36 @@ Pre-select an option by passing its value to the `value` prop.
   </Story>
 </Canvas>
 
+## Help Text
+
+Use the `helpText` prop to add clarifying text beneath the input label.
+
+<Canvas> 
+  <Story name="Help Text">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="customPlaceholder"
+            label="Flavor"
+            helpText="Choose your favorite flavor"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+            placeholder="Custom placeholder..."
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Placeholder
 
 Use the `placeholder` prop to add a custom placeholder.

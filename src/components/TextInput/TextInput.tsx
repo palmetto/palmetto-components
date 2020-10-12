@@ -59,6 +59,10 @@ interface TextInputProps {
    */
   hideLabel?: boolean;
   /**
+   * Additional clarifying text to help describe the input
+   */
+  helpText?: ReactNode;
+  /**
    * Pass a value to apply a mask to the input value.
    * Can be one of the existing present strings, or a custom object with options.
    * For options object formats See https://github.com/nosir/cleave.js.
@@ -115,6 +119,7 @@ const TextInput: FC<TextInputProps> = ({
   autoFocus = false,
   className = undefined,
   error = false,
+  helpText,
   hideLabel = false,
   inputMask = undefined,
   isDisabled = false,
@@ -193,6 +198,7 @@ const TextInput: FC<TextInputProps> = ({
     isFieldRequired: isRequired,
     inputId: id,
     hasError: !!error,
+    helpText,
     className: styles['text-input-label'],
     isDisabled,
   };

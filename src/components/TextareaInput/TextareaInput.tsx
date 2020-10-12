@@ -43,6 +43,10 @@ interface TextareaInputProps {
    */
   error?: ReactNode;
   /**
+   * Additional clarifying text to help describe the input
+   */
+  helpText?: ReactNode;
+  /**
    * Visually hide the label.
    */
   hideLabel?: boolean;
@@ -94,6 +98,7 @@ const TextareaInput: FC<TextareaInputProps> = ({
   autoFocus = false,
   className = undefined,
   error = false,
+  helpText,
   hideLabel = false,
   isDisabled = false,
   isRequired = false,
@@ -134,6 +139,7 @@ const TextareaInput: FC<TextareaInputProps> = ({
     isFieldRequired: isRequired,
     inputId: id,
     hasError: !!error,
+    helpText,
     className: styles['textarea-input-label'],
     isDisabled,
   };

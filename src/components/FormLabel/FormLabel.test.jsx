@@ -35,4 +35,9 @@ describe('FormLabel', () => {
     const labelElement = screen.getByText('my label');
     expect(labelElement).toHaveAttribute('id', 'myIdLabel');
   });
+
+  test('renders help text if provided', () => {
+    const { getByText } = render(<FormLabel inputId="myId" helpText="i am help text">my label</FormLabel>);
+    expect(getByText('i am help text')).toBeDefined();
+  });
 });
