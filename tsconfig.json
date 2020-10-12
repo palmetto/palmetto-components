@@ -16,7 +16,7 @@
     "isolatedModules": true,
     "resolveJsonModule": true,
     "lib": [
-      "ES6",
+      "es2019",
       "DOM"
     ]
   },

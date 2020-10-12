@@ -2,6 +2,7 @@
 import React, { FC } from 'react';
 import { withA11y } from '@storybook/addon-a11y';
 import { PALMETTO_COLOR_VALUES, ColorEntry, ColorVariation } from '../../lib/tokens';
+import { TokenColors } from '../../types';
 import styles from './Colors.module.scss';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -60,6 +61,15 @@ export const brand: FC = () => (
     <h1>Extended Brand Palette</h1>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(brandColors).map(renderColorPalette)}
+    </div>
+  </>
+);
+
+export const blerg: FC = () => (
+  <>
+    <h1 className="m-bottom-md">Blerg</h1>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      {TokenColors.map(color => <p key={color}>{color}</p>)}
     </div>
   </>
 );
