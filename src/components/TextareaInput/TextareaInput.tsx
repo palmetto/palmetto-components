@@ -1,26 +1,14 @@
 import React, {
-  FC,
-  ChangeEvent,
-  MouseEvent,
-  KeyboardEvent,
-  FocusEvent,
-  ReactNode,
+  FC, ChangeEvent, FocusEvent, ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import Cleave from 'cleave.js/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { UnknownPropertiesObjType } from '../../lib/types';
-import * as InputMasks from './TextInputMasks';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
-import styles from './TextInput.module.scss';
+import styles from './TextareaInput.module.scss';
 
-type inputMaskType = ('phone' | 'creditCard') | UnknownPropertiesObjType;
-
-interface TextInputProps {
+interface TextareaInputProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -32,7 +20,7 @@ interface TextInputProps {
   /**
    * Callback function to call on change event.
    */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   /**
    * The text value of the input. Required since our Input is a controlled component.
    */
@@ -59,12 +47,6 @@ interface TextInputProps {
    */
   hideLabel?: boolean;
   /**
-   * Pass a value to apply a mask to the input value.
-   * Can be one of the existing present strings, or a custom object with options.
-   * For options object formats See https://github.com/nosir/cleave.js.
-   */
-  inputMask?: inputMaskType;
-  /**
    * The input's disabled attribute
    */
   isDisabled?: boolean;
@@ -84,29 +66,26 @@ interface TextInputProps {
   /**
    * Callback function to call on blur event.
    */
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
-  /**
-   * Callback function to call when input us cleared. When this is passed,
-   * the input will display an icon on the right side, for triggering this callback.
-   */
-  onClear?: (
-    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>,
-  ) => void;
+  onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
   /**
    * Callback function to call on focus event.
    */
-  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void;
   /**
    * The input placeholder attribute.
    */
   placeholder?: string;
   /**
-   * The input 'type' value. Defaults to type 'text'.
+   * Textarea resize behavior
    */
-  type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
+  resize?: 'vertical' | 'horizontal' | 'none' | 'both';
+  /**
+   * number of visible text lines for the control.
+   */
+  rows?: number;
 }
 
-const TextInput: FC<TextInputProps> = ({
+const TextareaInput: FC<TextareaInputProps> = ({
   id,
   label,
   onChange,
@@ -116,59 +95,20 @@ const TextInput: FC<TextInputProps> = ({
   className = undefined,
   error = false,
   hideLabel = false,
-  inputMask = undefined,
   isDisabled = false,
   isRequired = false,
   maxLength = undefined,
-  name = '',
+  name = undefined,
   onBlur = undefined,
-  onClear = undefined,
   onFocus = undefined,
   placeholder = '',
-  type = 'text',
+  resize = 'vertical',
+  rows = 3,
 }) => {
-  const getInputMask = (
-    mask: inputMaskType,
-    availableInputMasks: {
-      phone: {
-        numericOnly: boolean;
-        blocks: number[];
-        delimiters: string[];
-      };
-      creditCard: {
-        creditCard: boolean;
-      };
-    },
-  ) => {
-    if (typeof mask === 'string') {
-      return availableInputMasks[mask];
-    }
-
-    return mask;
-  };
-
-  const inputWrapperClasses = classNames(styles['text-input-wrapper'], {
+  const inputWrapperClasses = classNames(styles['textarea-input-wrapper'], {
     [styles.error]: error,
     [styles.disabled]: isDisabled,
   });
-
-  const renderClearIcon = (): ReactNode => {
-    const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
-      if (event.keyCode === 13 && onClear) onClear(event);
-    };
-
-    return (
-      <button
-        type="button"
-        onClick={onClear}
-        onKeyUp={handleKeyPress}
-        className={styles['clear-button']}
-        data-testid="text-input-clear-button"
-      >
-        <FontAwesomeIcon icon={faTimes} className={styles['clear-icon']} />
-      </button>
-    );
-  };
 
   const inputProps = {
     'aria-required': isRequired,
@@ -177,6 +117,7 @@ const TextInput: FC<TextInputProps> = ({
     'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
     autoComplete: getAutoCompleteValue(autoComplete),
     autoFocus,
+    className: classNames(styles[`textarea-resize-${resize}`]),
     disabled: isDisabled,
     id,
     maxLength,
@@ -185,7 +126,7 @@ const TextInput: FC<TextInputProps> = ({
     onChange,
     onFocus,
     placeholder,
-    type,
+    rows,
     value,
   };
 
@@ -193,7 +134,7 @@ const TextInput: FC<TextInputProps> = ({
     isFieldRequired: isRequired,
     inputId: id,
     hasError: !!error,
-    className: styles['text-input-label'],
+    className: styles['textarea-input-label'],
     isDisabled,
   };
 
@@ -201,21 +142,11 @@ const TextInput: FC<TextInputProps> = ({
     <Box width="100%" className={className}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       <div className={inputWrapperClasses}>
-        {!inputMask ? (
-          <input {...inputProps} />
-        ) : (
-          <Cleave
-            {...inputProps}
-            options={getInputMask(inputMask, InputMasks)}
-          />
-        )}
-        {!!onClear && !!value && renderClearIcon()}
+        <textarea {...inputProps} />
       </div>
-      {error && error !== true && (
-        <InputValidationMessage>{error}</InputValidationMessage>
-      )}
+      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </Box>
   );
 };
 
-export default TextInput;
+export default TextareaInput;
