@@ -127,7 +127,9 @@ const CheckboxInput: FC<CheckboxInputProps> = ({
   return (
     <Box className={className}>
       <div className={wrapperClasses}>
-        <input {...inputProps} />
+        <div>
+          <input {...inputProps} />
+        </div>
         {label && !hideLabel && (
           <FormLabel {...labelProps}>
             {label}
