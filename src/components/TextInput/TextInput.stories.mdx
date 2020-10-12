@@ -55,6 +55,27 @@ Use the `isRequired` prop to mark the input as required.
   </Story>
 </Canvas>
 
+## With Help Text
+
+Use the `helpText` prop to add clarifying text beneath the input label.
+
+<Canvas>
+  <Story name="Help Text">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <TextInput
+          id="helpText"
+          value={value}
+          label="Mobile Phone"
+          helpText="We willl use this phone number to contact you via text"
+          onChange={event => setValue(event.target.value)}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Placeholder
 
 Use the `placeholder` prop to add a custom placeholder.

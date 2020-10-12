@@ -40,6 +40,7 @@ describe('CheckboxInput', () => {
         label="test checkbox"
         onChange={() => null}
         isChecked={false}
+        helpText="i am help text"
       />,
     );
     expect(getByLabelText('test checkbox')).toBeDefined();
@@ -47,9 +48,10 @@ describe('CheckboxInput', () => {
     expect(FormLabel).toHaveBeenCalledWith({
       inputId: 'testCheckbox',
       hasError: false,
+      helpText: 'i am help text',
       isFieldRequired: false,
       children: 'test checkbox',
-      className: undefined,
+      className: 'checkbox-label',
       isDisabled: false,
     }, {});
   });
@@ -69,9 +71,10 @@ describe('CheckboxInput', () => {
     expect(FormLabel).toHaveBeenCalledWith({
       inputId: 'testCheckbox',
       hasError: false,
+      helpText: undefined,
       isFieldRequired: true,
       children: 'test checkbox',
-      className: undefined,
+      className: 'checkbox-label',
       isDisabled: false,
     }, {});
   });
@@ -142,9 +145,10 @@ describe('CheckboxInput', () => {
       expect(FormLabel).toHaveBeenCalledWith({
         inputId: 'testCheckbox',
         hasError: true,
+        helpText: undefined,
         isFieldRequired: false,
         children: 'test checkbox',
-        className: undefined,
+        className: 'checkbox-label',
         isDisabled: false,
       }, {});
     });
@@ -163,9 +167,10 @@ describe('CheckboxInput', () => {
       expect(FormLabel).toHaveBeenCalledWith({
         inputId: 'testCheckbox',
         hasError: true,
+        helpText: undefined,
         isFieldRequired: false,
         children: 'test checkbox',
-        className: undefined,
+        className: 'checkbox-label',
         isDisabled: false,
       }, {});
     });
@@ -185,9 +190,10 @@ describe('CheckboxInput', () => {
     expect(FormLabel).toHaveBeenCalledWith({
       inputId: 'testCheckbox',
       hasError: false,
+      helpText: undefined,
       isFieldRequired: false,
       children: 'test checkbox',
-      className: undefined,
+      className: 'checkbox-label',
       isDisabled: true,
     }, {});
   });

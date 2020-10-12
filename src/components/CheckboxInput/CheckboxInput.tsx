@@ -7,6 +7,7 @@ import React, {
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
+import Box from '../Box/Box';
 import styles from './CheckboxInput.module.scss';
 
 interface CheckboxInputProps {
@@ -40,6 +41,10 @@ interface CheckboxInputProps {
    */
   error?: ReactNode;
   /**
+   * Additional clarifying text to help describe the input
+   */
+  helpText?: ReactNode;
+  /**
    * Determines if the label is not shown for stylistic reasons.
    * Note the label is still a required prop and will be used as the aria-label for accessibility reasons.
    */
@@ -71,6 +76,7 @@ const CheckboxInput: FC<CheckboxInputProps> = ({
   displayInline = false,
   error = false,
   hideLabel = false,
+  helpText,
   isDisabled = false,
   isRequired = false,
   onBlur = undefined,
@@ -111,13 +117,15 @@ const CheckboxInput: FC<CheckboxInputProps> = ({
 
   const labelProps = {
     isFieldRequired: isRequired,
+    className: styles['checkbox-label'],
     inputId: id,
     hasError: !!error,
+    helpText,
     isDisabled,
   };
 
   return (
-    <>
+    <Box className={className}>
       <div className={wrapperClasses}>
         <input {...inputProps} />
         {label && !hideLabel && (
@@ -127,7 +135,7 @@ const CheckboxInput: FC<CheckboxInputProps> = ({
         )}
       </div>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
-    </>
+    </Box>
   );
 };
 

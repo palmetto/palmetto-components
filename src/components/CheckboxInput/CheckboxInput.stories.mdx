@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import CheckboxInput from './CheckboxInput';
+import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 
-<Meta
-  title="Components/Form Inputs/CheckboxInput"
-  component={CheckboxInput}
-/>
+<Meta title="Components/Form Inputs/CheckboxInput" component={CheckboxInput} />
 
 # CheckboxInput
 
@@ -49,6 +47,28 @@ Use the `isRequired` prop to mark the input as required.
         <CheckboxInput
           id="requiredCheckboxIsUnchecked"
           label="Label"
+          isChecked={value}
+          onChange={event => setValue(event.target.checked)}
+          isRequired
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Help Text
+
+Use the `helpText` prop to add clarifying text beneath the input label.
+
+<Canvas>
+  <Story name="Help Text">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <CheckboxInput
+          id="requiredCheckboxIsUnchecked"
+          label="Checkbox with help text"
+          helpText="More helpful text about this checkbox"
           isChecked={value}
           onChange={event => setValue(event.target.checked)}
           isRequired
@@ -111,21 +131,26 @@ and append your own. Feel free to use the `FormLabel` component to keep the base
     {() => {
       const [value, setValue] = useState(null);
       return (
-          <>
-            <CheckboxInput
-              id="customLabel"
-              label="This label is custom"
-              hideLabel
-              onChange={value => setValue(event.target.checked)}
-              isChecked={value}
-              displayInline
-            />
-            <div style={{ display: 'inline-flex', verticalAlign: 'super' }}>
-              <FormLabel inputId="customLabel">
-                This is custom, look at this <a href="https://palmetto.com" onClick={() => alert('hey you clicked me!')} target="_blank">Link</a>
-              </FormLabel>
-            </div>
-          </>
+        <Box direction="row" alignItems="center">
+          <CheckboxInput
+            id="customLabel"
+            label="This label is custom"
+            hideLabel
+            onChange={value => setValue(event.target.checked)}
+            isChecked={value}
+            displayInline
+          />
+          <FormLabel inputId="customLabel">
+            This is custom, look at this{' '}
+            <a
+              href="https://palmetto.com"
+              onClick={() => alert('hey you clicked me!')}
+              target="_blank"
+            >
+              Link
+            </a>
+          </FormLabel>
+        </Box>
       );
     }}
   </Story>
