@@ -66,7 +66,7 @@ const FormLabel: FC<FormLabelProps> = ({
       {children}
       {isFieldRequired && <span>&nbsp;*</span>}
       {helpText && (
-        <Box as="p" fontSize="sm" color="grey" className={styles['help-text']}>
+        <Box as="p" display="block" fontSize="sm" color="grey" className={styles['help-text']}>
           {helpText}
         </Box>
       )}

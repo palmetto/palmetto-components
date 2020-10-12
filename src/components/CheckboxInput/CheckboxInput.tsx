@@ -96,7 +96,6 @@ const CheckboxInput: FC<CheckboxInputProps> = ({
 
   const wrapperClasses = classNames(
     styles.checkbox,
-    className,
     { [styles.disabled]: isDisabled },
     { [styles.inline]: displayInline },
   );
@@ -125,7 +124,7 @@ const CheckboxInput: FC<CheckboxInputProps> = ({
   };
 
   return (
-    <Box className={className}>
+    <Box className={wrapperClasses}>
       <div className={wrapperClasses}>
         <div>
           <input {...inputProps} />
