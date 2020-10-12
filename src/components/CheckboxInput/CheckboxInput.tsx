@@ -124,7 +124,7 @@ const CheckboxInput: FC<CheckboxInputProps> = ({
   };
 
   return (
-    <Box className={wrapperClasses}>
+    <Box className={className}>
       <div className={wrapperClasses}>
         <div>
           <input {...inputProps} />
