@@ -1,39 +1,74 @@
 const fs = require('fs');
 const colorTokens = require('@palmetto/palmetto-design-tokens/build/json/variables-color.json');
+const sizeTokens = require('@palmetto/palmetto-design-tokens/build/json/variables-size.json');
 
+/**
+ * COLORS
+ */
 const brandColors = colorTokens.color.brand;
 const fontColors = colorTokens.color.font;
-// type ColorName = keyof typeof brandColors;
-// type ColorGrade = keyof typeof brandColors.primary;
 
-const brandColorTokens = Object.keys(brandColors)
+const brandColorOptions = Object.keys(brandColors)
   .map(colorName => (
     Object.keys(brandColors[colorName])
       .map(colorGrade => `${colorName}-${colorGrade}`)
   )).flat();
 
-const fontColorTokens = Object.keys(fontColors)
+const fontColorOptions = Object.keys(fontColors)
   .map(colorName => (
     Object.keys(brandColors[colorName])
       .map(colorGrade => `${colorName}-${colorGrade}`)
   )).flat();
 
-let myFile = '';
+/**
+ * SIZES
+ */
+const { size } = sizeTokens;
+const spacingSizeOptions = Object.keys(size.spacing);
+const fontSizeOptions = Object.keys(size.font);
 
+/**
+ * UTILITY FUNCTIONS
+ */
 const writeArray = (array, arrayName) => {
-  let string = `const ${arrayName} = [`;
+  let result = `const ${arrayName} = [`;
+
   array.forEach(element => {
-    string = `${string}\n  '${element}',`;
+    result = `${result}\n  '${element}',`;
   });
-  return `${string}\n];`;
+
+  return `${result}\n];\n\n`;
 };
 
 const writeExport = string => 'export '.concat(string);
 
-myFile = myFile.concat(writeExport(writeArray(brandColorTokens, 'BRAND_COLORS')));
-myFile = myFile.concat('\n');
-myFile = myFile.concat(writeExport(writeArray(fontColorTokens, 'FONT_COLORS')));
+/**
+ * TOKEN CREATION
+ */
+const createColorTokens = currentFile => {
+  let result = currentFile;
 
-(() => {
-  fs.writeFileSync(`${__dirname}/tokens.ts`, myFile);
-})();
+  result = result.concat(writeExport(writeArray(brandColorOptions, 'BRAND_COLORS')));
+  result = result.concat(writeExport(writeArray(fontColorOptions, 'FONT_COLORS')));
+
+  return result;
+};
+
+const createSizeTokens = currentFile => {
+  let result = currentFile;
+
+  result = result.concat(writeExport(writeArray(spacingSizeOptions, 'SPACING_SIZES')));
+  result = result.concat(writeExport(writeArray(fontSizeOptions, 'FONT_SIZES')));
+
+  return result;
+};
+
+/**
+ * WRITE FILE
+ */
+let tokensData = '';
+
+tokensData = createColorTokens(tokensData);
+tokensData = createSizeTokens(tokensData);
+
+fs.writeFileSync(`${__dirname}/tokens.ts`, tokensData);

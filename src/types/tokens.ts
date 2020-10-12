@@ -144,6 +144,7 @@ export const BRAND_COLORS = [
   'primary-darker',
   'primary-darkest',
 ];
+
 export const FONT_COLORS = [
   'white-500',
   'white-base',
@@ -290,3 +291,35 @@ export const FONT_COLORS = [
   'primary-darker',
   'primary-darkest',
 ];
+
+export const SPACING_SIZES = [
+  '0',
+  'auto',
+  'inherit',
+  'base',
+  '5xl',
+  '4xl',
+  '3xl',
+  '2xl',
+  'xl',
+  'lg',
+  'md',
+  'sm',
+  'xs',
+  '2xs',
+];
+
+export const FONT_SIZES = [
+  'inherit',
+  'base',
+  '5xl',
+  '4xl',
+  '3xl',
+  '2xl',
+  'xl',
+  'lg',
+  'md',
+  'sm',
+  'xs',
+];
+
