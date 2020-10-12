@@ -68,14 +68,14 @@ The `resize` prop accepts `horizontal`, `vertical`, `both` or `none` to control 
       return (
         <Box childGap="md">
           <TextareaInput
-            id="required"
+            id="resizeBoth"
             value={value1}
             label="Resize Me Vertically and Horizontally"
             onChange={event => setValue1(event.target.value)}
             resize="both"
           />
           <TextareaInput
-            id="required"
+            id="resizeNone"
             value={value2}
             label="Can't resize me"
             onChange={event => setValue2(event.target.value)}
