@@ -56,6 +56,27 @@ Use the `isRequired` prop to mark the input as required.
   </Story>
 </Canvas>
 
+## Help Text
+
+Use the `helpText` prop to add clarifying text beneath the input label.
+
+<Canvas>
+  <Story name="Help Text">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <TextareaInput
+          id="helpText"
+          value={value}
+          label="Design Notes"
+          helpText="Add any design requirements or aesthetic choices that the solar system designer should know"
+          onChange={event => setValue(event.target.value)}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Resize
 
 The `resize` prop accepts `horizontal`, `vertical`, `both` or `none` to control the users ability to resize the input.

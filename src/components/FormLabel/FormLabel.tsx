@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
+import Box from '../Box/Box';
 import styles from './FormLabel.module.scss';
 
 interface FormLabelProps {
@@ -24,6 +25,10 @@ interface FormLabelProps {
    */
   hasError?: boolean;
   /**
+   * Additional clarifying text to that helps describe the field
+   */
+  helpText?: ReactNode;
+  /**
    * Mark the label has disabled
    */
   isDisabled?: boolean;
@@ -43,30 +48,28 @@ const FormLabel: FC<FormLabelProps> = ({
   className = '',
   displayInline = false,
   hasError = false,
+  helpText,
   isDisabled = false,
   isFieldRequired = false,
   isRadioInputLabel = false,
 }) => {
-  const labelClasses = classNames(
-    styles.label,
-    className,
-    {
-      [styles.disabled]: isDisabled,
-      [styles.error]: hasError,
-      [styles.disabled]: isDisabled,
-      [styles.inline]: displayInline,
-      [styles['radio-input-label']]: isRadioInputLabel,
-    },
-  );
+  const labelClasses = classNames(styles.label, className, {
+    [styles.disabled]: isDisabled,
+    [styles.error]: hasError,
+    [styles.disabled]: isDisabled,
+    [styles.inline]: displayInline,
+    [styles['radio-input-label']]: isRadioInputLabel,
+  });
 
   return (
-    <label
-      id={`${inputId}Label`}
-      className={labelClasses}
-      htmlFor={inputId}
-    >
+    <label id={`${inputId}Label`} className={labelClasses} htmlFor={inputId}>
       {children}
       {isFieldRequired && <span>&nbsp;*</span>}
+      {helpText && (
+        <Box as="p" display="block" fontSize="sm" color="grey" className={styles['help-text']}>
+          {helpText}
+        </Box>
+      )}
     </label>
   );
 };

@@ -25,4 +25,9 @@
       color: var(--color-brand-danger-lighter);
     }
   }
+
+  .help-text {
+    margin-top: var(--form-control-help-margin);
+    font-weight: 400;
+  }
 }
