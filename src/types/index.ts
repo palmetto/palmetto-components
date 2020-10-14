@@ -3,7 +3,7 @@ import {
   BreakpointSize,
   WidthSize,
   HeightSize,
-} from '@palmetto/palmetto-design-tokens/build/types';
+} from '@palmetto/palmetto-design-tokens/build/types'; // eslint-disable-line
 
 export type {
   BrandColor,
@@ -19,6 +19,11 @@ export type {
   WidthSize,
   ZIndexSize,
   ColorName,
+} from '@palmetto/palmetto-design-tokens/build/types'; // eslint-disable-line
+
+export {
+  BRAND_COLORS,
+  FONT_COLORS,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type BreakpointSizeWithBase = BreakpointSize | 'base';

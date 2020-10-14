@@ -5,9 +5,8 @@ import '@testing-library/jest-dom/extend-expect';
 import {
   FONT_COLOR_OPTIONS,
   FONT_SIZE_OPTIONS,
-  BACKGROUND_COLOR_OPTIONS,
-  BORDER_COLOR_OPTIONS,
-  SPACING_SIZE_OPTIONS,
+  BRAND_COLOR_OPTIONS,
+  SPACING_OPTIONS,
 } from '../../lib/tokens';
 import Box from './Box';
 
@@ -18,7 +17,7 @@ describe('Box', () => {
   });
 
   test('background color token classes are applied', () => {
-    [...BACKGROUND_COLOR_OPTIONS].forEach((color, i) => {
+    [...BRAND_COLOR_OPTIONS].forEach((color, i) => {
       const { queryAllByText } = render(<Box background={color} key={i}>Test Box</Box>);
       expect(queryAllByText('Test Box')[i].classList).toContain(`background-color-${color}`);
     });
@@ -39,7 +38,7 @@ describe('Box', () => {
   });
 
   test('border color token classes are applied', () => {
-    [...BORDER_COLOR_OPTIONS].forEach((color, i) => {
+    [...BRAND_COLOR_OPTIONS].forEach((color, i) => {
       const { queryAllByText } = render(<Box border={color} key={i}>Test Box</Box>);
       expect(queryAllByText('Test Box')[i].classList).toContain(`border-color-${color}`);
     });
@@ -64,7 +63,7 @@ describe('Box', () => {
   });
 
   test('childGap margin classes are applied for horizontal layout', () => {
-    [...SPACING_SIZE_OPTIONS].forEach((value, optionIndex) => {
+    [...SPACING_OPTIONS].forEach((value, optionIndex) => {
       const { container } = render(
         <Box childGap={value} key={optionIndex}>
           <Box className="foo" key={`child1${optionIndex}`}>child 1</Box>
@@ -84,7 +83,7 @@ describe('Box', () => {
   });
 
   test('childGap margin classes are applied for vertical layout', () => {
-    [...SPACING_SIZE_OPTIONS].forEach((value, optionIndex) => {
+    [...SPACING_OPTIONS].forEach((value, optionIndex) => {
       const { container } = render(
         <Box childGap={value} key={optionIndex} direction="row">
           <Box className="foo" key={`child1${optionIndex}`}>child 1</Box>

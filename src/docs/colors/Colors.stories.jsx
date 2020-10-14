@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { FC } from 'react';
+import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
-import { BRAND_COLORS, ColorEntry, ColorVariation } from '../../lib/tokens';
+import { BRAND_COLOR_VALUES } from '../../lib/tokens';
 import styles from './Colors.module.scss';
 
 export default {
@@ -9,7 +9,7 @@ export default {
   decorators: [withA11y],
 };
 
-const renderColorBlock = (colorEntry: [string, ColorEntry]) => {
+const renderColorBlock = colorEntry => {
   const [colorName, colorVariations] = colorEntry;
 
   return (
@@ -20,10 +20,10 @@ const renderColorBlock = (colorEntry: [string, ColorEntry]) => {
   );
 };
 
-const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => {
+const renderColorPalette = (colorEntry, index) => {
   const [colorName, colorVariations] = colorEntry;
 
-  const getFontColor = (colorVariation: ColorVariation) => (
+  const getFontColor = colorVariation => (
     colorVariation && colorVariation.attributes && colorVariation.attributes.font === 'base' ? 'black' : 'white'
   );
 
@@ -51,7 +51,7 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
   );
 };
 
-export const brand: FC = () => (
+export const brand = () => (
   <>
     <h1 className="m-bottom-md">Brand Colors</h1>
     <div
@@ -60,7 +60,7 @@ export const brand: FC = () => (
         flexWrap: 'wrap',
       }}
     >
-      {Object.entries(BRAND_COLORS).map(renderColorBlock)}
+      {Object.entries(BRAND_COLOR_VALUES).map(renderColorBlock)}
     </div>
     <h1>Extended Brand Palette</h1>
     <div
@@ -69,7 +69,7 @@ export const brand: FC = () => (
         flexWrap: 'wrap',
       }}
     >
-      {Object.entries(BRAND_COLORS).map(renderColorPalette)}
+      {Object.entries(BRAND_COLOR_VALUES).map(renderColorPalette)}
     </div>
   </>
 );

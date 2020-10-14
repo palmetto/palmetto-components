@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import Box from '../../../Box/Box';
 import styles from '../../Card.module.scss';
-import { DisplayType } from '../../../../lib/types';
+import { DisplayType } from '../../../../types';
 
 export interface CardFooterProps {
   /**
