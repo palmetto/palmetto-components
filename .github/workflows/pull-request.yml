@@ -7,8 +7,6 @@ name: Pull Request
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-  push:
-    branches: [develop, main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -27,6 +25,21 @@ jobs:
         run: yarn
       - name: type check
         run: yarn type-check
+  build:
+    name: tbuild
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: install dependencies
+        run: yarn
+      - name: build
+        run: yarn build
   lint-js:
     name: lint js
     runs-on: ubuntu-latest
