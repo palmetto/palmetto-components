@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
+    "baseUrl": "./src", // This must be specified if "paths" is.
+    "paths": {
+      "@palmetto/palmetto-design/tokens": ["../node_modules/@palmetto/palmetto-design-tokens"] // This mapping is relative to "baseUrl"
+    },
     "declaration": true,
     "declarationDir": "dist",
     "emitDeclarationOnly": true,
@@ -22,6 +26,7 @@
   },
   "include": [
     "./src",
-    "./types", "index.d.ts"
+    "./types",
+    "index.d.ts"
   ]
 }

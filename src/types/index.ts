@@ -103,9 +103,13 @@ export type CssDisplayValue = 'flex' | 'inline-flex' | 'block' | 'inline-block' 
 
 export type BaseSpacing = SpacingSize | string | undefined;
 
-export type ResponsiveProp<T> = { [breakpoint in BreakpointSizeWithBase]?: T };
+export declare type ResponsiveProp<T> = { [breakpoint in BreakpointSizeWithBase]?: T };
 
-export type Column = {
+export type Row = UnknownPropertiesObjType;
+
+export type Cell = string | number | { [key: string]: unknown; } | unknown[];
+
+export declare type Column = {
   /**
    * Text alignment for column cells (including header alignment). Cells will default to left if not defined.
    */
@@ -154,10 +158,6 @@ export type Column = {
    */
   width?: number;
 }
-
-export type Row = UnknownPropertiesObjType;
-
-export type Cell = string | number | { [key: string]: unknown; } | unknown[];
 
 export type EventWithColumnKey =
   (

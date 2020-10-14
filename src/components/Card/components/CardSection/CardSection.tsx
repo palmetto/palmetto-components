@@ -33,7 +33,7 @@ export interface CardSectionProps {
   title?: ReactNode;
 }
 
-export const CardSection: FC<CardSectionProps> = ({
+const CardSection: FC<CardSectionProps> = ({
   children = null,
   childGap = undefined,
   className = undefined,
