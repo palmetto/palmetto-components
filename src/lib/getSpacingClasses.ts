@@ -17,7 +17,10 @@ function isValidSpacingValue(value?: BaseSpacing | ResponsiveProp<BaseSpacing>):
   return true;
 }
 
-function generateBaseClasses(attribute: CssSpacingAbbreviationAbbreviation, value: BaseSpacing | ResponsiveProp<BaseSpacing>): string[] {
+function generateBaseClasses(
+  attribute: CssSpacingAbbreviationAbbreviation,
+  value: BaseSpacing | ResponsiveProp<BaseSpacing>,
+): string[] {
   if (typeof value !== 'string') return [];
 
   const classes: string[] = [];
@@ -43,7 +46,10 @@ function generateBaseClasses(attribute: CssSpacingAbbreviationAbbreviation, valu
   return classes;
 }
 
-function getSpacingClasses(attribute: CssSpacingAbbreviationAbbreviation, value?: BaseSpacing | ResponsiveProp<BaseSpacing>): string[] {
+function getSpacingClasses(
+  attribute: CssSpacingAbbreviationAbbreviation,
+  value?: BaseSpacing | ResponsiveProp<BaseSpacing>,
+): string[] {
   if (!isValidSpacingValue(value)) return [];
 
   const classes: string[] = [];
