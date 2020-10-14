@@ -5,6 +5,7 @@ import FormikTextInput from './FormikTextInput/FormikTextInput';
 import FormikCheckboxInput from './FormikCheckboxInput/FormikCheckboxInput';
 import FormikSelectInput from './FormikSelectInput/FormikSelectInput';
 import FormikRadioGroup from './FormikRadioGroup/FormikRadioGroup';
+import FormikTextareaInput from './FormikTextareaInput/FormikTextareaInput';
 import Button from '../Button/Button';
 
 <Meta
@@ -164,6 +165,14 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                 </div>
                 <div style={{ marginBottom: '1.25rem' }}>
                   <Field
+                    label="Describe your perfect meal"
+                    name="meal"
+                    id="meal"
+                    component={FormikTextareaInput}
+                  />
+                </div>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <Field
                     title="Sizes"
                     name="sizes"
                     options={sizeOptions}
@@ -180,7 +189,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                     isRequired
                   />
                 </div>
-                <Button type="submit" isLoading={isSubmitting}>Submit</Button>
+                <Button type="submit" className="m-bottom-md"isLoading={isSubmitting}>Submit</Button>
                 <pre>
                   {JSON.stringify(formatOutput(values, isSubmitting), undefined, 2)}
                 </pre>
