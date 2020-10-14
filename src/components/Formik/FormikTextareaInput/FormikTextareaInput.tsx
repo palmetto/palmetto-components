@@ -17,7 +17,7 @@ interface FormikTextareaInputProps {
   label: string;
 }
 
-const FormikTextInput: FC<FormikTextareaInputProps> = ({
+const FormikTextareaInput: FC<FormikTextareaInputProps> = ({
   field: {
     name,
     onBlur,
@@ -41,4 +41,4 @@ const FormikTextInput: FC<FormikTextareaInputProps> = ({
   />
 );
 
-export default FormikTextInput;
+export default FormikTextareaInput;
