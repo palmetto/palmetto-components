@@ -59,6 +59,10 @@ interface SelectInputProps {
    */
   error?: ReactNode;
   /**
+   * Additional clarifying text to help describe the input
+   */
+  helpText?: ReactNode;
+  /**
    * Visually hide the label.
    */
   hideLabel?: boolean;
@@ -105,6 +109,7 @@ const SelectInput: FC<SelectInputProps> = ({
   autoFocus = false,
   className = '',
   error = false,
+  helpText,
   hideLabel = false,
   isClearable = false,
   isDisabled = false,
@@ -144,6 +149,7 @@ const SelectInput: FC<SelectInputProps> = ({
     isFieldRequired: isRequired,
     inputId: id,
     hasError: !!error,
+    helpText,
     className: styles['select-input-label'],
     isDisabled,
   };

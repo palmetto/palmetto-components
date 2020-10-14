@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import { PALMETTO_BRAND_COLOR_VALUES, PALMETTO_COLORS } from '../../lib/tokens';
+import { BRAND_COLORS } from '../../lib/tokens';
+import { ColorName } from '../../types';
 import styles from './Spinner.module.scss';
 
 interface SpinnerProps {
@@ -11,7 +12,7 @@ interface SpinnerProps {
   /**
    * Spinner variant (color), pass down one of the options from the Palmetto 'brand' palette.
    */
-  variant?: PALMETTO_COLORS;
+  variant?: ColorName;
   /**
    * Size of the spinner.
    */
@@ -45,9 +46,9 @@ const Spinner: FC<SpinnerProps> = ({
         data-testid="spinner-testid"
       >
         <title>circle</title>
-        <g fill={`${PALMETTO_BRAND_COLOR_VALUES[variant].base.value}`}>
+        <g fill={`${BRAND_COLORS[variant].base.value}`}>
           <path
-            fill={`${PALMETTO_BRAND_COLOR_VALUES[variant].base.value}`}
+            fill={`${BRAND_COLORS[variant].base.value}`}
             d="M8,16c-1.199,0-2.352-0.259-3.428-0.77l0.857-1.807C6.235,13.806,7.1,14,8,14c3.309,0,6-2.691,6-6 s-2.691-6-6-6S2,4.691,2,8c0,0.901,0.194,1.766,0.578,2.572l-1.806,0.859C0.26,10.354,0,9.2,0,8c0-4.411,3.589-8,8-8s8,3.589,8,8 S12.411,16,8,16z" /* eslint-disable-line max-len */
           />
         </g>

@@ -3,15 +3,14 @@ import classNames from 'classnames';
 import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
 import styles from '../../Card.module.scss';
-import { PALMETTO_SPACING } from '../../../../lib/tokens';
-import { DisplayType } from '../../../../lib/types';
+import { CssDisplayValue, SpacingSize } from '../../../../types';
 
 export interface CardSectionProps {
   /**
    * The amount of spacing between child elements.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
    */
-  childGap?: PALMETTO_SPACING;
+  childGap?: SpacingSize;
   /**
    * Elements to be rendered.
    */
@@ -23,7 +22,7 @@ export interface CardSectionProps {
   /**
    * Display property. Only select values supported.
    */
-  display?: DisplayType;
+  display?: CssDisplayValue;
   /**
    * visually subdued the appearance of the section
    */
@@ -34,7 +33,7 @@ export interface CardSectionProps {
   title?: ReactNode;
 }
 
-export const CardSection: FC<CardSectionProps> = ({
+const CardSection: FC<CardSectionProps> = ({
   children = null,
   childGap = undefined,
   className = undefined,

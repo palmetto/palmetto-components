@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
-import { PALMETTO_HEIGHT_OPTIONS, PALMETTO_HEIGHT_VALUES } from '../lib/tokens';
+import { HEIGHT_OPTIONS, HEIGHT_VALUES } from '../lib/tokens';
 
 <Meta
   title="Design Tokens/Height"
@@ -23,13 +23,13 @@ Rem based values will scale when adjusting the root font size. Pixel values are 
     </tr>
   </thead>
   <tbody>
-    {PALMETTO_HEIGHT_OPTIONS.map((height, i) => (
+    {HEIGHT_OPTIONS.map((height, i) => (
       <tr key={i}>
         <td><code>{`size-height-${height}`}</code></td>
         <td><code>{height}</code></td>
-        <td>{PALMETTO_HEIGHT_VALUES[i].value}</td>
-        <td>{height === 'base' ? '16' : PALMETTO_HEIGHT_VALUES[i].value.includes('%') ? '' : PALMETTO_HEIGHT_VALUES[i].original.value * 16}</td>
-        <td>{PALMETTO_HEIGHT_VALUES[i].original.comment}</td>
+        <td>{HEIGHT_VALUES[i].value}</td>
+        <td>{height === 'base' ? '16' : HEIGHT_VALUES[i].value.includes('%') ? '' : HEIGHT_VALUES[i].original.value * 16}</td>
+        <td>{HEIGHT_VALUES[i].original.comment}</td>
       </tr>
     ))}
   </tbody>

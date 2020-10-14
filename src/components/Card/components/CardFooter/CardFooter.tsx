@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import Box from '../../../Box/Box';
 import styles from '../../Card.module.scss';
-import { DisplayType } from '../../../../lib/types';
+import { CssDisplayValue } from '../../../../types';
 
 export interface CardFooterProps {
   /**
@@ -16,7 +16,7 @@ export interface CardFooterProps {
   /**
    * Display property. Only select values supported.
    */
-  display?: DisplayType;
+  display?: CssDisplayValue;
 }
 
 const CardFooter: FC<CardFooterProps> = ({

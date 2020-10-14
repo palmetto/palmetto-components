@@ -1,7 +1,7 @@
 import getDimensionCss from './getDimensionCss';
 import {
-  PALMETTO_HEIGHT_OPTIONS,
-  PALMETTO_WIDTH_OPTIONS,
+  HEIGHT_OPTIONS,
+  WIDTH_OPTIONS,
 } from './tokens';
 
 describe('getDimensionCss', () => {
@@ -50,7 +50,7 @@ describe('getDimensionCss', () => {
   });
 
   describe('width', () => {
-    PALMETTO_WIDTH_OPTIONS.map(token => (
+    WIDTH_OPTIONS.map(token => (
       test(`returns expected css object if ${token} width value is passed`, () => {
         const spacingCss = getDimensionCss('w', token);
 
@@ -63,7 +63,7 @@ describe('getDimensionCss', () => {
   });
 
   describe('height', () => {
-    PALMETTO_HEIGHT_OPTIONS.map(token => (
+    HEIGHT_OPTIONS.map(token => (
       test(`returns expected css object if ${token} width value is passed`, () => {
         const spacingCss = getDimensionCss('h', token);
 
@@ -76,7 +76,7 @@ describe('getDimensionCss', () => {
   });
 
   describe('max width', () => {
-    PALMETTO_WIDTH_OPTIONS.map(token => (
+    WIDTH_OPTIONS.map(token => (
       test(`returns expected css object if ${token} max width value is passed`, () => {
         const spacingCss = getDimensionCss('mw', token);
 
@@ -89,7 +89,7 @@ describe('getDimensionCss', () => {
   });
 
   describe('max height', () => {
-    PALMETTO_HEIGHT_OPTIONS.map(token => (
+    HEIGHT_OPTIONS.map(token => (
       test(`returns expected css object if ${token} max height value is passed`, () => {
         const spacingCss = getDimensionCss('mh', token);
 

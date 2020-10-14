@@ -1,11 +1,16 @@
-import { CssStylesAndClasses, CssDimension, ResponsiveProp } from './types';
-import { PalmettoTokensDimension } from './tokens';
+import { CSSProperties } from 'react';
+import {
+  StylesAndClasses,
+  CssDimensionAbbreviationAbbreviation,
+  ResponsiveProp,
+  DimensionSize,
+} from '../types';
 import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
 import generateResponsiveClasses from './generateResponsiveClasses';
 
 function getDimensionStyles(
-  dimension: CssDimension,
-  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
+  dimension: CssDimensionAbbreviationAbbreviation,
+  value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): { [key: string]: string; } | undefined {
   if (value === undefined) return value;
 
@@ -30,8 +35,8 @@ function getDimensionStyles(
 }
 
 function getDimensionClasses(
-  dimension: CssDimension,
-  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
+  dimension: CssDimensionAbbreviationAbbreviation,
+  value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): string[] | undefined {
   if (value === undefined) return value;
 
@@ -47,13 +52,13 @@ function getDimensionClasses(
 }
 /**
  * Returns an object of styles and class names that correspond with the given value
- * @param {CssDimension} dimension width or height
+ * @param {CssDimensionAbbreviationAbbreviation} dimension width or height
  * @param {string} [value] value of the dimension
  */
 function getDimensionCss(
-  dimension: CssDimension,
-  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
-): CssStylesAndClasses {
+  dimension: CssDimensionAbbreviationAbbreviation,
+  value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
+): StylesAndClasses<CSSProperties> {
   return ({
     styles: getDimensionStyles(dimension, value),
     classes: getDimensionClasses(dimension, value),

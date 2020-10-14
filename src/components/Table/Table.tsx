@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import { Column, Row, EventWithColumnKey } from './TableTypes';
+import { Column, Row, EventWithColumnKey } from '../../types';
 import Spinner from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 import TableBody from './TableBody/TableBody';

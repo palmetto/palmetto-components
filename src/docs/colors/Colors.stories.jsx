@@ -1,18 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React, { FC } from 'react';
+import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
-import { PALMETTO_COLOR_VALUES, ColorEntry, ColorVariation } from '../../lib/tokens';
+import { BRAND_COLORS } from '../../lib/tokens';
 import styles from './Colors.module.scss';
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
 
 export default {
   title: 'Design Tokens/Colors',
   decorators: [withA11y],
 };
 
-const renderColorBlock = (colorEntry: [string, ColorEntry]) => {
+const renderColorBlock = colorEntry => {
   const [colorName, colorVariations] = colorEntry;
 
   return (
@@ -23,10 +20,10 @@ const renderColorBlock = (colorEntry: [string, ColorEntry]) => {
   );
 };
 
-const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => {
+const renderColorPalette = (colorEntry, index) => {
   const [colorName, colorVariations] = colorEntry;
 
-  const getFontColor = (colorVariation: ColorVariation) => (
+  const getFontColor = colorVariation => (
     colorVariation && colorVariation.attributes && colorVariation.attributes.font === 'base' ? 'black' : 'white'
   );
 
@@ -40,7 +37,10 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
             // eslint-disable-next-line react/no-array-index-key
             key={i}
             className={styles['palette-item']}
-            style={{ backgroundColor: `${colorVariation.value}`, color: `${getFontColor(colorVariation)}` }}
+            style={{
+              backgroundColor: `${colorVariation.value}`,
+              color: `${getFontColor(colorVariation)}`,
+            }}
           >
             <small style={{ display: 'block' }}>{colorVariationName}</small>
             <small>{colorVariation.value}</small>
@@ -51,15 +51,25 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
   );
 };
 
-export const brand: FC = () => (
+export const brand = () => (
   <>
     <h1 className="m-bottom-md">Brand Colors</h1>
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {Object.entries(brandColors).map(renderColorBlock)}
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+      }}
+    >
+      {Object.entries(BRAND_COLORS).map(renderColorBlock)}
     </div>
     <h1>Extended Brand Palette</h1>
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {Object.entries(brandColors).map(renderColorPalette)}
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+      }}
+    >
+      {Object.entries(BRAND_COLORS).map(renderColorPalette)}
     </div>
   </>
 );

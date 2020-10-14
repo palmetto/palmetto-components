@@ -1,6 +1,6 @@
 import Spinner from './Spinner';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { PALMETTO_BRAND_COLOR_OPTIONS } from '../../lib/tokens';
+import { BRAND_COLOR_NAMES } from '../../lib/tokens';
 
 
 <Meta
@@ -64,7 +64,7 @@ Set the color variations of the spinner
 <Canvas>
   <Story name="Colors">
     <>
-      {PALMETTO_BRAND_COLOR_OPTIONS.map(color => (
+      {BRAND_COLOR_NAMES.map(color => (
         <div style={{ marginBottom: '1rem'}}>
           <div style={{ marginBottom: '0.25rem'}}>{color}</div>
           <Spinner variant={color} />

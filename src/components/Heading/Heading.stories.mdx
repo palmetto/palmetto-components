@@ -2,7 +2,7 @@ import Heading from './Heading';
 import { v4 as uuid } from 'uuid';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_FONT_COLOR_OPTIONS } from '../../lib/tokens';
+import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 
 <Meta
   title="Components/Heading"
@@ -50,7 +50,7 @@ The default size of the Heading can overridden as xs-5xl so that it's appropriat
 <Canvas>
   <Story name="Sizes">
     <>
-      {[...PALMETTO_FONT_SIZE_OPTIONS].reverse().map(fontSize => (
+      {[...FONT_SIZE_OPTIONS].reverse().map(fontSize => (
         <Heading size={fontSize} key={uuid()}>
           {`Size ${fontSize}`}
         </Heading>
@@ -66,7 +66,7 @@ The variant of the heading is inherited from its parent, but can be set to brand
 <Canvas>
   <Story name="Colors">
     <>
-      {PALMETTO_FONT_COLOR_OPTIONS.map(variant => (
+      {FONT_COLOR_OPTIONS.map(variant => (
         <Heading variant={variant} key={uuid()}>
           {variant}
         </Heading>

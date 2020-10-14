@@ -15,6 +15,7 @@ import RadioGroup from './RadioGroup/RadioGroup';
 import SelectInput from './SelectInput/SelectInput';
 import Table from './Table/Table';
 import TextInput from './TextInput/TextInput';
+import TextareaInput from './TextareaInput/TextareaInput';
 import TextLink from './TextLink/TextLink';
 
 export {
@@ -35,5 +36,6 @@ export {
   SelectInput,
   Table,
   TextInput,
+  TextareaInput,
   TextLink,
 };

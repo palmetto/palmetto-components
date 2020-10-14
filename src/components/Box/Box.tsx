@@ -8,25 +8,23 @@ import {
 } from 'react';
 import classNames from 'classnames';
 import {
-  PALMETTO_FONT_SIZES,
-  PALMETTO_FONT_COLORS,
-  PALMETTO_COLORS,
-  PALMETTO_SPACING,
-  PalmettoTokensRadius,
-  PalmettoTokensDimension,
-  BreakpointOption,
-} from '../../lib/tokens';
-import {
-  DisplayType,
-  CssJustifyContent,
-  CssAlignContent,
-  CssAlignItems,
+  FontSize,
+  FontColor,
+  BrandColor,
+  SpacingSize,
+  BorderRadiusSize,
+  DimensionSize,
+  BreakpointSizeWithBase,
+  CssDisplayValue,
+  CssJustifyContentValueValue,
+  CssAlignContentValueValue,
+  CssAlignItemsValueValue,
   BaseSpacing,
-  CssFlexDirection,
-  CssOverflow,
+  CssFlexValueDirectionValueValue,
+  CssOverflowValueValue,
   ResponsiveProp,
-  CssFlex,
-} from '../../lib/types';
+  CssFlexValueValue,
+} from '../../types';
 import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingClasses from '../../lib/getSpacingClasses';
 import getElementType from '../../lib/getElementType';
@@ -40,25 +38,25 @@ export interface BoxProps {
   /**
    * How to align the contents along the cross axis.
    */
-  alignItems?: CssAlignItems | ResponsiveProp<CssAlignItems>;
+  alignItems?: CssAlignItemsValueValue | ResponsiveProp<CssAlignItemsValueValue>;
   /**
    * How to align the contents when there is extra space in the cross axis.
    * This property has no effect when there is only one line of flex items.
    */
-  alignContent?: CssAlignContent | ResponsiveProp<CssAlignContent>;
+  alignContent?: CssAlignContentValueValue | ResponsiveProp<CssAlignContentValueValue>;
   /**
    * How to align along the cross axis when contained in a Box.
    * This allows the default alignment (or the one specified by `align`) to be overridden for the individual Box.
    */
-  alignSelf?: CssAlignItems | ResponsiveProp<CssAlignItems>;
+  alignSelf?: CssAlignItemsValueValue | ResponsiveProp<CssAlignItemsValueValue>;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
-  background?: PALMETTO_COLORS;
+  background?: BrandColor;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
    */
-  border?: PALMETTO_COLORS;
+  border?: BrandColor;
   /**
    * Additional class names to add
    */
@@ -67,7 +65,7 @@ export interface BoxProps {
    * The amount of spacing between child elements.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
    */
-  childGap?: PALMETTO_SPACING | ResponsiveProp<PALMETTO_SPACING>;
+  childGap?: SpacingSize | ResponsiveProp<SpacingSize>;
   /**
    * The box's contents
    */
@@ -75,32 +73,32 @@ export interface BoxProps {
   /**
    * A color token identifier to use for the text color.
    */
-  color?: PALMETTO_FONT_COLORS;
+  color?: FontColor;
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
-  direction?: CssFlexDirection | ResponsiveProp<CssFlexDirection>;
+  direction?: CssFlexValueDirectionValueValue | ResponsiveProp<CssFlexValueDirectionValueValue>;
   /**
    * Display property. Only select values supported.
    */
-  display?: DisplayType | ResponsiveProp<DisplayType>;
+  display?: CssDisplayValue | ResponsiveProp<CssDisplayValue>;
   /**
    * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
    */
-  flex?: CssFlex | ResponsiveProp<CssFlex>;
+  flex?: CssFlexValueValue | ResponsiveProp<CssFlexValueValue>;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
-  fontSize?: PALMETTO_FONT_SIZES | ResponsiveProp<PALMETTO_FONT_SIZES>;
+  fontSize?: FontSize | ResponsiveProp<FontSize>;
   /**
    * The height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
    */
-  height?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string;
+  height?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
-  justifyContent?: CssJustifyContent | ResponsiveProp<CssJustifyContent>;
+  justifyContent?: CssJustifyContentValueValue | ResponsiveProp<CssJustifyContentValueValue>;
   /**
    * Amount of space around the element.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
@@ -113,18 +111,18 @@ export interface BoxProps {
    * The maximum height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
    */
-  maxHeight?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string;
+  maxHeight?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
    * The maximum width of the element. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/docs/design-tokens-width--page)
    */
-  maxWidth?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string;
+  maxWidth?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
    * The overflow property is specified as one or two keywords.
    * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
    * Otherwise, both overflow-x and overflow-y are set to the same value.
    */
-  overflow?: CssOverflow | ResponsiveProp<CssOverflow>;
+  overflow?: CssOverflowValueValue | ResponsiveProp<CssOverflowValueValue>;
   /**
    * Amount of space within the element around the Box contents.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
@@ -136,7 +134,7 @@ export interface BoxProps {
   /**
    * Set the radius of all corners
    */
-  radius?: PalmettoTokensRadius | ResponsiveProp<PalmettoTokensRadius>;
+  radius?: BorderRadiusSize | ResponsiveProp<BorderRadiusSize>;
   /**
    * Set the radius of all corners
    */
@@ -150,7 +148,7 @@ export interface BoxProps {
    * The width of the element. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/docs/design-tokens-width--page)
    */
-  width?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string;
+  width?: DimensionSize | ResponsiveProp<DimensionSize> | string;
 }
 
 /**
@@ -235,7 +233,7 @@ const Box: FC<BoxProps> = ({
   const generateChildGapDirection = (): ResponsiveProp<string> => {
     let childGapDirection = {};
 
-    const getChildGapMarginDirection = (d: CssFlexDirection) => {
+    const getChildGapMarginDirection = (d: CssFlexValueDirectionValueValue) => {
       let marginDirection = '';
       if (d?.includes('row')) marginDirection = 'right';
       else if (d?.includes('column')) marginDirection = 'bottom';
@@ -248,7 +246,7 @@ const Box: FC<BoxProps> = ({
     } else if (typeof direction === 'object' && direction !== null) {
       childGapDirection = Object.keys(direction).reduce((acc, curr) => ({
         ...acc,
-        [curr]: getChildGapMarginDirection(direction[curr as BreakpointOption]),
+        [curr]: getChildGapMarginDirection(direction[curr as BreakpointSizeWithBase]),
       }), {});
     }
 
@@ -260,7 +258,7 @@ const Box: FC<BoxProps> = ({
    * so that we can cross-reference values between direction and childGap values to generate
    * responsive classes.
    */
-  const generateChildGap = (): ResponsiveProp<PALMETTO_SPACING> => {
+  const generateChildGap = (): ResponsiveProp<SpacingSize> => {
     let childGapObj = {};
 
     if (typeof childGap === 'string') {
@@ -277,10 +275,10 @@ const Box: FC<BoxProps> = ({
   if (childGap && direction) {
     const childGapDirection = generateChildGapDirection();
     const childGapValues = generateChildGap();
-    const breakpoints: BreakpointOption[] = ['hd', 'desktop', 'tablet', 'base'];
+    const breakpoints: BreakpointSizeWithBase[] = ['hd', 'desktop', 'tablet', 'base'];
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const findMatchingBreakpoint = (responsiveObj: ResponsiveProp<any>, key: BreakpointOption): string => {
+    const findMatchingBreakpoint = (responsiveObj: ResponsiveProp<any>, key: BreakpointSizeWithBase): string => {
       const index = breakpoints.findIndex(breakpoint => breakpoint === key);
       let value = '';
 
@@ -292,8 +290,8 @@ const Box: FC<BoxProps> = ({
     };
 
     breakpoints.forEach(breakpoint => {
-      const foundDirection = findMatchingBreakpoint(childGapDirection, breakpoint as BreakpointOption);
-      const foundChildGap = findMatchingBreakpoint(childGapValues, breakpoint as BreakpointOption);
+      const foundDirection = findMatchingBreakpoint(childGapDirection, breakpoint as BreakpointSizeWithBase);
+      const foundChildGap = findMatchingBreakpoint(childGapValues, breakpoint as BreakpointSizeWithBase);
 
       const classSuffix = breakpoint === 'base' ? '' : `-${breakpoint}`;
       const oppositeDirection = foundDirection === 'bottom' ? 'right' : 'bottom';
