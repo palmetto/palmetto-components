@@ -1,5 +1,4 @@
-import { BreakpointOption } from './tokens';
-import { ResponsiveProp } from './types';
+import { ResponsiveProp, BreakpointSizeWithBase } from '../types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function generateResponsiveClasses(classRoot: string, value: ResponsiveProp<any> | string | undefined): string[] {
@@ -9,7 +8,7 @@ function generateResponsiveClasses(classRoot: string, value: ResponsiveProp<any>
 
   if (typeof value === 'object') {
     Object.keys(value).forEach(key => {
-      const baseClass = `${classRoot}-${value[key as BreakpointOption]}`;
+      const baseClass = `${classRoot}-${value[key as BreakpointSizeWithBase]}`;
       const responsiveClass = key === 'base' ? baseClass : `${baseClass}-${key}`;
 
       classes.push(responsiveClass);

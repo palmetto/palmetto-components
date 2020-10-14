@@ -2,11 +2,10 @@ import Box from './Box';
 import useBreakpoint from '../../hooks/useBreakpoint';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import {
-  PALMETTO_FONT_SIZE_OPTIONS,
-  PALMETTO_FONT_COLOR_OPTIONS,
-  PALMETTO_BACKGROUND_COLOR_OPTIONS,
-  PALMETTO_BORDER_COLOR_OPTIONS,
-  PALMETTO_SPACING_SIZE_OPTIONS,
+  FONT_SIZE_OPTIONS,
+  FONT_COLOR_OPTIONS,
+  BRAND_COLOR_NAMES,
+  SPACING_OPTIONS,
 } from '../../lib/tokens';
 
 <Meta title="Components/Box" component={Box} />
@@ -84,7 +83,7 @@ All background colors
 <Canvas>
   <Story name="all background colors">
     <Box flex="auto" direction="row" fontSize="sm">
-      {[...PALMETTO_BACKGROUND_COLOR_OPTIONS].map((color, i) => {
+      {BRAND_COLOR_NAMES.map((color, i) => {
         if (color.includes('inherit')) return;
         else if (color === 'dark'
           || color === 'light'
@@ -152,7 +151,7 @@ All border colors.
 <Canvas>
   <Story name="all border colors">
      <Box direction="row" childGap="xs" fontSize="sm">
-      {[...PALMETTO_BORDER_COLOR_OPTIONS].map((color, i) => {
+      {[...BRAND_COLOR_NAMES].map((color, i) => {
         if (color.includes('inherit')) return;
         else if (color === 'dark'
           || color === 'light'
@@ -223,7 +222,7 @@ All child gap options.
 
 <Canvas>
   <Story name="all child gap">
-    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+    {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box childGap={spacing} direction="row" padding="sm" key={i}>
         <Box width="20%" background="primary-light" padding="sm">{spacing}</Box>
         <Box width="20%" background="primary-light" padding="sm">{spacing}</Box>
@@ -468,7 +467,7 @@ Use the `color` prop to set the color of the text
 
 <Canvas>
   <Story name="color">
-     {[...PALMETTO_FONT_COLOR_OPTIONS].map((color, i) => (
+     {[...FONT_COLOR_OPTIONS].map((color, i) => (
       <Box color={color} background={color === 'inverse' ? 'grey-darker' : null} key={i}>
         {`${color}`}
       </Box>
@@ -482,7 +481,7 @@ Set the `fontSize` prop with a [font size](/?path=/story/design-tokens-font-size
 
 <Canvas>
   <Story name="fontSize">
-    {[...PALMETTO_FONT_SIZE_OPTIONS].reverse().map((fontSize, i) => (
+    {[...FONT_SIZE_OPTIONS].reverse().map((fontSize, i) => (
       <Box fontSize={fontSize} key={i}>
         {`${fontSize} font size`}
       </Box>
@@ -515,7 +514,7 @@ A single `margin` value will apply an equal amount of space around the outside o
 
 <Canvas>
   <Story name="single margin">
-    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+    {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box margin={spacing} background="primary-lighter" key={i}>
         {`${spacing} margin`}
       </Box>
@@ -527,7 +526,7 @@ A single `margin` value will apply an equal amount of space around the outside o
 
 <Canvas>
   <Story name="margin horizontal">
-    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+    {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box margin={`0 ${spacing}`} background="primary-lighter" key={i}>
         {`${spacing} horizontal margin`}
       </Box>
@@ -539,7 +538,7 @@ A single `margin` value will apply an equal amount of space around the outside o
 
 <Canvas>
   <Story name="margin vertical">
-    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+    {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box margin={`${spacing} 0`} background="primary-lighter" key={i}>
         {`${spacing} vertical margin`}
       </Box>
@@ -572,7 +571,7 @@ A single `padding` value will apply an equal amount of space around the contents
 
 <Canvas>
   <Story name="single padding">
-    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+    {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box padding={spacing} background="primary-lighter" margin="xs 0" key={i}>
         {`${spacing} padding`}
       </Box>
@@ -586,7 +585,7 @@ A single `padding` value will apply an equal amount of space around the contents
 
 <Canvas>
   <Story name="padding horizontal">
-    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+    {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box padding={`0 ${spacing}`} background="primary-lighter" margin="xs 0" key={i}>
         {`${spacing} horizontal padding`}
       </Box>
@@ -598,7 +597,7 @@ A single `padding` value will apply an equal amount of space around the contents
 
 <Canvas>
   <Story name="padding vertical">
-    {[...PALMETTO_SPACING_SIZE_OPTIONS].map((spacing, i) => (
+    {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box padding={`${spacing} 0`} background="primary-lighter" margin="xs 0" key={i}>
         {`${spacing} vertical padding`}
       </Box>

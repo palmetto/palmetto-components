@@ -1,10 +1,11 @@
 import { FC, createElement, ReactNode } from 'react';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
+
 import {
-  PALMETTO_FONT_SIZES,
-  PALMETTO_FONT_COLORS,
-} from '../../lib/tokens';
+  FontColor,
+  FontSize,
+} from '../../types';
 import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
 import styles from './Heading.module.scss';
 
@@ -26,14 +27,14 @@ interface HeadingProps {
    * A variant token identifier to use for the text variant. Available variants found:
    * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/variant/font.json).
    */
-  variant?: PALMETTO_FONT_COLORS;
+  variant?: FontColor;
   /**
    * By default, size is determined by the chosen tag (e.g. h1 is bigger than h2).
    * However, size can be set independently so that its size is appropriate for the surrounding content.
    * Available sizes found:
    * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json).
    */
-  size?: PALMETTO_FONT_SIZES;
+  size?: FontSize;
 }
 
 const Heading: FC<HeadingProps> = ({

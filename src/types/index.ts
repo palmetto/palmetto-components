@@ -1,0 +1,167 @@
+import {
+  Key,
+  ReactNode,
+  MouseEvent,
+  KeyboardEvent,
+} from 'react';
+
+import {
+  SpacingSize,
+  BreakpointSize,
+  WidthSize,
+  HeightSize,
+} from '@palmetto/palmetto-design-tokens/build/types';
+
+export type {
+  BrandColor,
+  FontColor,
+  BorderSize,
+  BorderRadiusSize,
+  BoxShadowSize,
+  FontSize,
+  HeightSize,
+  LineHeightSize,
+  OpacitySize,
+  SpacingSize,
+  WidthSize,
+  ZIndexSize,
+  ColorName,
+} from '@palmetto/palmetto-design-tokens/build/types';
+
+export type BreakpointSizeWithBase = BreakpointSize | 'base';
+
+export type Breakpoint = {
+  name: BreakpointSizeWithBase;
+  minWidth: number; // min width in pixels
+}
+
+export type DimensionSize = WidthSize | HeightSize;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type UnknownPropertiesObjType = { [key: string]: any; };
+
+export interface FlexProperty {
+  flexGrow?: number | string;
+  flexShrink?: number | string;
+  flexBasis?: number | string;
+  flex?: number | string;
+}
+
+export type StylesAndClasses<T> = {
+  styles?: T;
+  classes?: string[];
+}
+
+export type CssDimensionAbbreviationAbbreviation = 'h' | 'w' | 'mw' | 'mh';
+
+export type CssSpacingAbbreviationAbbreviation = 'm' | 'p';
+
+export type CssJustifyContentValueValue =
+  'space-around' |
+  'space-between' |
+  'center' |
+  'flex-end' |
+  'space-evenly' |
+  'flex-start' |
+  'stretch';
+
+export type CssAlignContentValueValue =
+  'flex-start' |
+  'flex-end' |
+  'center' |
+  'stretch' |
+  'space-between' |
+  'space-around';
+
+export type CssFlexValueDirectionValueValue = 'column' | 'column-reverse' | 'row' | 'row-reverse' | undefined;
+
+export type CssAlignItemsValueValue =
+  'flex-start' |
+  'flex-end' |
+  'center' |
+  'baseline' |
+  'stretch';
+
+export type CssFlexValueValue =
+  'auto' |
+  'initial' |
+  'none' |
+  'inherit' |
+  'unset';
+
+export type CssOverflowValueValue =
+  'visible' |
+  'hidden' |
+  'clip' |
+  'scroll' |
+  'auto' |
+  'inherit' |
+  'initial' |
+  'unset';
+
+export type CssDisplayValue = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
+
+export type BaseSpacing = SpacingSize | string | undefined;
+
+export declare type ResponsiveProp<T> = { [breakpoint in BreakpointSizeWithBase]?: T };
+
+export type Row = UnknownPropertiesObjType;
+
+export type Cell = string | number | { [key: string]: unknown; } | unknown[];
+
+export declare type Column = {
+  /**
+   * Text alignment for column cells (including header alignment). Cells will default to left if not defined.
+   */
+  align?: 'left' | 'right' | 'center';
+  /**
+   * CSS Class to be applied uniformly to all individual cells in a column.
+   */
+  cellClassName?: string;
+  /**
+   * The key value to be rendered based on the table `rows`.
+   */
+  dataKey?: string;
+  /**
+   * Placeholder for empty cells Applies only to the cells of the particular column with this prop.
+   */
+  emptyCellPlaceholder?: string | number | undefined;
+  /**
+   * The heading/title text of a column.
+   */
+  heading?: string;
+  /**
+   * CSS Class to be applied to the column header cell.
+   */
+  headerClassName?: string;
+  /**
+   * A custom key to be used when rendering the column array.
+   * Not required as our table auto-generates static, but unique column keys if not passed in.
+   */
+  key?: Key;
+  /**
+   * Whether the column data is sortable. Controls whether sorting controls should be displayed.
+   */
+  isSortable?: boolean;
+  /**
+   * Render method for column cell data. Provides ability to render any aspect of the cell/row with custom
+   * markup.
+   */
+  render?: (cell?: Cell, row?: Row, rowIndex?: number) => ReactNode;
+  /**
+   * Whether long text should be truncated based on column width. Use in tandem with column width as well as
+   * `useFixedWidthColumns` prop in the parent table.
+   */
+  truncateOverflow?: boolean;
+  /**
+   * Specific width of the column. Use in tandem with `useFixedWidthColumns` in the parent table.
+   */
+  width?: number;
+}
+
+export type EventWithColumnKey =
+  (
+    MouseEvent<HTMLTableHeaderCellElement> |
+    KeyboardEvent<HTMLTableHeaderCellElement>
+  )
+  & { sortedKey: Key | undefined; };

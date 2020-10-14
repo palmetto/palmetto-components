@@ -1,5 +1,9 @@
-import { CssSpacing, BaseSpacing, ResponsiveProp } from './types';
-import { BreakpointOption } from './tokens';
+import {
+  CssSpacingAbbreviationAbbreviation,
+  BaseSpacing,
+  ResponsiveProp,
+  BreakpointSizeWithBase,
+} from '../types';
 
 function isValidSpacingValue(value?: BaseSpacing | ResponsiveProp<BaseSpacing>): boolean {
   if (
@@ -13,7 +17,10 @@ function isValidSpacingValue(value?: BaseSpacing | ResponsiveProp<BaseSpacing>):
   return true;
 }
 
-function generateBaseClasses(attribute: CssSpacing, value: BaseSpacing | ResponsiveProp<BaseSpacing>): string[] {
+function generateBaseClasses(
+  attribute: CssSpacingAbbreviationAbbreviation,
+  value: BaseSpacing | ResponsiveProp<BaseSpacing>,
+): string[] {
   if (typeof value !== 'string') return [];
 
   const classes: string[] = [];
@@ -39,14 +46,17 @@ function generateBaseClasses(attribute: CssSpacing, value: BaseSpacing | Respons
   return classes;
 }
 
-function getSpacingClasses(attribute: CssSpacing, value?: BaseSpacing | ResponsiveProp<BaseSpacing>): string[] {
+function getSpacingClasses(
+  attribute: CssSpacingAbbreviationAbbreviation,
+  value?: BaseSpacing | ResponsiveProp<BaseSpacing>,
+): string[] {
   if (!isValidSpacingValue(value)) return [];
 
   const classes: string[] = [];
 
   if (typeof value === 'object') {
     Object.keys(value).forEach(key => {
-      const baseClasses = generateBaseClasses(attribute, value[key as BreakpointOption]);
+      const baseClasses = generateBaseClasses(attribute, value[key as BreakpointSizeWithBase]);
       const responsiveClasses = baseClasses?.map(baseClass => (key === 'base' ? baseClass : `${baseClass}-${key}`));
       classes.push(...responsiveClasses);
     });

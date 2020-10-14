@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
-import { PALMETTO_BREAKPOINT_OPTIONS, PALMETTO_BREAKPOINT_VALUES } from '../lib/tokens';
+import { BREAKPOINT_OPTIONS, BREAKPOINT_VALUES } from '../lib/tokens';
 
 <Meta
   title="Design Tokens/Breakpoints"
@@ -21,11 +21,11 @@ The following breakpoints are used in utility classes, but you can use them to m
     </tr>
   </thead>
   <tbody>
-    {PALMETTO_BREAKPOINT_OPTIONS.map((radius, i) => (
+    {BREAKPOINT_OPTIONS.map((radius, i) => (
       <tr key={i}>
         <td><code>{`size-breakpoint-${radius}`}</code></td>
-        <td>{PALMETTO_BREAKPOINT_VALUES[i].value}</td>
-        <td>{PALMETTO_BREAKPOINT_VALUES[i].original.comment}</td>
+        <td>{BREAKPOINT_VALUES[i].value}</td>
+        <td>{BREAKPOINT_VALUES[i].original.comment}</td>
       </tr>
     ))}
   </tbody>
