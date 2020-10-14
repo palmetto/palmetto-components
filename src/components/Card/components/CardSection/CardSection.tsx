@@ -3,15 +3,14 @@ import classNames from 'classnames';
 import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
 import styles from '../../Card.module.scss';
-import { PALMETTO_SPACING } from '../../../../lib/tokens';
-import { DisplayType } from '../../../../lib/types';
+import { DisplayType, SpacingSize } from '../../../../types';
 
 export interface CardSectionProps {
   /**
    * The amount of spacing between child elements.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
    */
-  childGap?: PALMETTO_SPACING;
+  childGap?: SpacingSize;
   /**
    * Elements to be rendered.
    */
@@ -48,7 +47,7 @@ export const CardSection: FC<CardSectionProps> = ({
   const renderTitle = typeof title === 'string'
     ? (
       <Box className="m-bottom-md">
-        <Heading as="h4" size="sm" variant="grey">
+        <Heading as="h4" size="sm" variant="grey-base">
           {title}
         </Heading>
       </Box>

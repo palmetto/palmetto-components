@@ -1,12 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { FC } from 'react';
 import { withA11y } from '@storybook/addon-a11y';
-import { PALMETTO_COLOR_VALUES, ColorEntry, ColorVariation } from '../../lib/tokens';
-import { TokenColors } from '../../types';
+import { BRAND_COLORS, ColorEntry, ColorVariation } from '../../lib/tokens';
 import styles from './Colors.module.scss';
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const [baseColors, brandColors] = PALMETTO_COLOR_VALUES;
 
 export default {
   title: 'Design Tokens/Colors',
@@ -41,7 +37,10 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
             // eslint-disable-next-line react/no-array-index-key
             key={i}
             className={styles['palette-item']}
-            style={{ backgroundColor: `${colorVariation.value}`, color: `${getFontColor(colorVariation)}` }}
+            style={{
+              backgroundColor: `${colorVariation.value}`,
+              color: `${getFontColor(colorVariation)}`,
+            }}
           >
             <small style={{ display: 'block' }}>{colorVariationName}</small>
             <small>{colorVariation.value}</small>
@@ -55,21 +54,22 @@ const renderColorPalette = (colorEntry: [string, ColorEntry], index: number) => 
 export const brand: FC = () => (
   <>
     <h1 className="m-bottom-md">Brand Colors</h1>
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {Object.entries(brandColors).map(renderColorBlock)}
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+      }}
+    >
+      {Object.entries(BRAND_COLORS).map(renderColorBlock)}
     </div>
     <h1>Extended Brand Palette</h1>
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {Object.entries(brandColors).map(renderColorPalette)}
-    </div>
-  </>
-);
-
-export const blerg: FC = () => (
-  <>
-    <h1 className="m-bottom-md">Blerg</h1>
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {TokenColors.map(color => <p key={color}>{color}</p>)}
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+      }}
+    >
+      {Object.entries(BRAND_COLORS).map(renderColorPalette)}
     </div>
   </>
 );

@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
-import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_FONT_SIZE_VALUES } from '../lib/tokens';
+import { FONT_SIZE_OPTIONS, FONT_SIZE_VALUES } from '../lib/tokens';
 
 <Meta
   title="Design Tokens/Font Size"
@@ -21,14 +21,15 @@ Use these tokens for `font-size`. They are defined in `rem`, which means they wi
     </tr>
   </thead>
   <tbody>
-    {PALMETTO_FONT_SIZE_OPTIONS.map((size, i) => (
+    {FONT_SIZE_OPTIONS}
+    {/* {FONT_SIZE_OPTIONS.map((size, i) => (
       <tr key={i}>
         <td><code>{`size-font-${size}`}</code></td>
         <td><code>{size}</code></td>
-        <td>{PALMETTO_FONT_SIZE_VALUES[i].value}</td>
-        <td>{size === 'base' ? '16' : PALMETTO_FONT_SIZE_VALUES[i].original.value * 16}</td>
-        <td>{PALMETTO_FONT_SIZE_VALUES[i].original.comment}</td>
+        <td>{FONT_SIZE_VALUES[i].value}</td>
+        <td>{size === 'base' ? '16' : FONT_SIZE_VALUES[i].original.value * 16}</td>
+        <td>{FONT_SIZE_VALUES[i].original.comment}</td>
       </tr>
-    ))}
+    ))} */}
   </tbody>
 </table>

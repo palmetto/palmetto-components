@@ -3,11 +3,11 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import {
-  PALMETTO_FONT_COLOR_OPTIONS,
-  PALMETTO_FONT_SIZE_OPTIONS,
-  PALMETTO_BACKGROUND_COLOR_OPTIONS,
-  PALMETTO_BORDER_COLOR_OPTIONS,
-  PALMETTO_SPACING_SIZE_OPTIONS,
+  FONT_COLOR_OPTIONS,
+  FONT_SIZE_OPTIONS,
+  BACKGROUND_COLOR_OPTIONS,
+  BORDER_COLOR_OPTIONS,
+  SPACING_SIZE_OPTIONS,
 } from '../../lib/tokens';
 import Box from './Box';
 
@@ -18,28 +18,28 @@ describe('Box', () => {
   });
 
   test('background color token classes are applied', () => {
-    [...PALMETTO_BACKGROUND_COLOR_OPTIONS].forEach((color, i) => {
+    [...BACKGROUND_COLOR_OPTIONS].forEach((color, i) => {
       const { queryAllByText } = render(<Box background={color} key={i}>Test Box</Box>);
       expect(queryAllByText('Test Box')[i].classList).toContain(`background-color-${color}`);
     });
   });
 
   test('font size token classes are applied', () => {
-    [...PALMETTO_FONT_SIZE_OPTIONS].forEach((fontSize, i) => {
+    [...FONT_SIZE_OPTIONS].forEach((fontSize, i) => {
       const { queryAllByText } = render(<Box fontSize={fontSize} key={i}>Test Box</Box>);
       expect(queryAllByText('Test Box')[i].classList).toContain(`font-size-${fontSize}`);
     });
   });
 
   test('text color token classes are applied', () => {
-    [...PALMETTO_FONT_COLOR_OPTIONS].forEach((color, i) => {
+    [...FONT_COLOR_OPTIONS].forEach((color, i) => {
       const { queryAllByText } = render(<Box color={color} key={i}>Test Box</Box>);
       expect(queryAllByText('Test Box')[i].classList).toContain(`font-color-${color}`);
     });
   });
 
   test('border color token classes are applied', () => {
-    [...PALMETTO_BORDER_COLOR_OPTIONS].forEach((color, i) => {
+    [...BORDER_COLOR_OPTIONS].forEach((color, i) => {
       const { queryAllByText } = render(<Box border={color} key={i}>Test Box</Box>);
       expect(queryAllByText('Test Box')[i].classList).toContain(`border-color-${color}`);
     });
@@ -64,7 +64,7 @@ describe('Box', () => {
   });
 
   test('childGap margin classes are applied for horizontal layout', () => {
-    [...PALMETTO_SPACING_SIZE_OPTIONS].forEach((value, optionIndex) => {
+    [...SPACING_SIZE_OPTIONS].forEach((value, optionIndex) => {
       const { container } = render(
         <Box childGap={value} key={optionIndex}>
           <Box className="foo" key={`child1${optionIndex}`}>child 1</Box>
@@ -84,7 +84,7 @@ describe('Box', () => {
   });
 
   test('childGap margin classes are applied for vertical layout', () => {
-    [...PALMETTO_SPACING_SIZE_OPTIONS].forEach((value, optionIndex) => {
+    [...SPACING_SIZE_OPTIONS].forEach((value, optionIndex) => {
       const { container } = render(
         <Box childGap={value} key={optionIndex} direction="row">
           <Box className="foo" key={`child1${optionIndex}`}>child 1</Box>

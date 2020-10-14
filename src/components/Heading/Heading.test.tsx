@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { screen, render } from '@testing-library/react';
-import { PALMETTO_FONT_SIZE_OPTIONS, PALMETTO_FONT_COLOR_OPTIONS } from '../../lib/tokens';
+import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 import { HEADING_LEVELS } from './Heading.constants';
 import Heading from './Heading';
 
@@ -14,7 +14,7 @@ const headingComponentLevels = (
 );
 
 const headingComponentSizes = (
-  PALMETTO_FONT_SIZE_OPTIONS.map(fontSize => (
+  FONT_SIZE_OPTIONS.map(fontSize => (
     <Heading size={fontSize} key={uuid()}>
       {fontSize}
     </Heading>
@@ -22,7 +22,7 @@ const headingComponentSizes = (
 );
 
 const headingComponentColors = (
-  PALMETTO_FONT_COLOR_OPTIONS.map(variant => (
+  FONT_COLOR_OPTIONS.map(variant => (
     <Heading variant={variant} key={uuid()}>
       {variant}
     </Heading>
@@ -46,20 +46,20 @@ describe('Heading', () => {
 
   describe('Sizes', () => {
     headingComponentSizes.forEach((headingComponent, index) => {
-      test(`it renders the specified size ${PALMETTO_FONT_SIZE_OPTIONS[index]}`, () => {
+      test(`it renders the specified size ${FONT_SIZE_OPTIONS[index]}`, () => {
         render(headingComponent);
-        expect(screen.getByText(PALMETTO_FONT_SIZE_OPTIONS[index]).classList)
-          .toContain(`font-size-${PALMETTO_FONT_SIZE_OPTIONS[index]}`);
+        expect(screen.getByText(FONT_SIZE_OPTIONS[index]).classList)
+          .toContain(`font-size-${FONT_SIZE_OPTIONS[index]}`);
       });
     });
   });
 
   describe('Colors', () => {
     headingComponentColors.forEach((headingComponent, index) => {
-      test(`it renders the specified variant ${PALMETTO_FONT_COLOR_OPTIONS[index]}`, () => {
+      test(`it renders the specified variant ${FONT_COLOR_OPTIONS[index]}`, () => {
         render(headingComponent);
-        expect(screen.getByText(PALMETTO_FONT_COLOR_OPTIONS[index]).classList)
-          .toContain(`font-color-${PALMETTO_FONT_COLOR_OPTIONS[index]}`);
+        expect(screen.getByText(FONT_COLOR_OPTIONS[index]).classList)
+          .toContain(`font-color-${FONT_COLOR_OPTIONS[index]}`);
       });
     });
   });

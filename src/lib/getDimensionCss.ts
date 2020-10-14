@@ -1,11 +1,15 @@
-import { CssStylesAndClasses, CssDimension, ResponsiveProp } from './types';
-import { PalmettoTokensDimension } from './tokens';
+import {
+  CssStylesAndClasses,
+  CssDimension,
+  ResponsiveProp,
+  DimensionSize,
+} from '../types';
 import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
 import generateResponsiveClasses from './generateResponsiveClasses';
 
 function getDimensionStyles(
   dimension: CssDimension,
-  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
+  value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): { [key: string]: string; } | undefined {
   if (value === undefined) return value;
 

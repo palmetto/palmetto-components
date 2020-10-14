@@ -1,9 +1,9 @@
 import getSpacingClasses from './getSpacingClasses';
-import { PALMETTO_SPACING_OPTIONS } from './tokens';
+import { SPACING_OPTIONS } from './tokens';
 
 describe('getSpacingClasses', () => {
   describe('token values', () => {
-    PALMETTO_SPACING_OPTIONS.map(token => (
+    SPACING_OPTIONS.map(token => (
       test(`returns expected css object if token ${token} is passed`, () => {
         const spacingClasses = getSpacingClasses('p', token);
 

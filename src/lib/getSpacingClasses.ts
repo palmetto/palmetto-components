@@ -1,5 +1,9 @@
-import { CssSpacing, BaseSpacing, ResponsiveProp } from './types';
-import { BreakpointOption } from './tokens';
+import {
+  CssSpacing,
+  BaseSpacing,
+  ResponsiveProp,
+  BreakpointSizeWithBase,
+} from '../types';
 
 function isValidSpacingValue(value?: BaseSpacing | ResponsiveProp<BaseSpacing>): boolean {
   if (
@@ -46,7 +50,7 @@ function getSpacingClasses(attribute: CssSpacing, value?: BaseSpacing | Responsi
 
   if (typeof value === 'object') {
     Object.keys(value).forEach(key => {
-      const baseClasses = generateBaseClasses(attribute, value[key as BreakpointOption]);
+      const baseClasses = generateBaseClasses(attribute, value[key as BreakpointSizeWithBase]);
       const responsiveClasses = baseClasses?.map(baseClass => (key === 'base' ? baseClass : `${baseClass}-${key}`));
       classes.push(...responsiveClasses);
     });
