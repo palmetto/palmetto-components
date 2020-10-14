@@ -1,4 +1,4 @@
-import { FlexStylesAndClasses, FlexProperty, ResponsiveProp } from './types';
+import { FlexStylesAndClasses, FlexProperty, ResponsiveProp } from '../types';
 import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
 
 const flexValues = ['initial', 'auto', 'unset', 'none', 'inherit'];

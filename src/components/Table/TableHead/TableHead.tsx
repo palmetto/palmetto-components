@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import { Column, EventWithColumnKey } from '../TableTypes';
+import { Column, EventWithColumnKey } from '../../../types';
 import TableRow from '../TableRow/TableRow';
 
 interface TableHeadProps {

@@ -1,5 +1,5 @@
 import { Key } from 'react';
-import { Column } from '../components/Table/TableTypes';
+import { Column } from '../types';
 
 const getColumnKeys = (columns: Column[]): Key[] => {
   const INTERNAL_KEY_PREFIX = 'columnKeyPrefix';

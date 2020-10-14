@@ -35,7 +35,7 @@ function getDimensionStyles(
 
 function getDimensionClasses(
   dimension: CssDimension,
-  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
+  value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): string[] | undefined {
   if (value === undefined) return value;
 
@@ -56,7 +56,7 @@ function getDimensionClasses(
  */
 function getDimensionCss(
   dimension: CssDimension,
-  value?: PalmettoTokensDimension | ResponsiveProp<PalmettoTokensDimension> | string,
+  value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): CssStylesAndClasses {
   return ({
     styles: getDimensionStyles(dimension, value),

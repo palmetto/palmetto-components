@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
-import { DisplayType } from '../../../../lib/types';
+import { DisplayType } from '../../../../types';
 
 export interface CardHeaderProps {
   /**

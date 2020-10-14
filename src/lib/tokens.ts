@@ -27,7 +27,7 @@ export const BREAKPOINTS = [...Object.entries(size.breakpoint), ['base', { origi
     minWidth: parseInt(entry[1].original.value, 10),
   })) as Breakpoint[];
 
-export const BRAND_COLOR_OPTIONS = Object.keys(color.brand)
+export const BRAND_COLOR_OPTIONS = (Object.keys(color.brand) as ColorName[])
   .map(colorName => (
     Object.keys(color.brand[colorName])
       .map(colorGrade => (colorGrade === 'base' ? colorName : `${colorName}-${colorGrade}`))

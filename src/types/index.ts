@@ -1,9 +1,16 @@
 import {
+  Key,
+  ReactNode,
+  MouseEvent,
+  KeyboardEvent,
+} from 'react';
+
+import {
   SpacingSize,
   BreakpointSize,
   WidthSize,
   HeightSize,
-} from '@palmetto/palmetto-design-tokens/build/types'; // eslint-disable-line
+} from '@palmetto/palmetto-design-tokens/build/types';
 
 export type {
   BrandColor,
@@ -19,11 +26,6 @@ export type {
   WidthSize,
   ZIndexSize,
   ColorName,
-} from '@palmetto/palmetto-design-tokens/build/types'; // eslint-disable-line
-
-export {
-  BRAND_COLORS,
-  FONT_COLORS,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type BreakpointSizeWithBase = BreakpointSize | 'base';
@@ -44,23 +46,17 @@ export interface FlexProperty {
   flexBasis?: number | string;
   flex?: number | string;
 }
-export interface CssStylesAndClasses {
-  styles?: {
-    [key: string]: string;
-  };
+
+export type StylesAndClasses<T> = {
+  styles?: T;
   classes?: string[];
 }
 
-export interface FlexStylesAndClasses {
-  styles?: FlexProperty;
-  classes?: string[];
-}
+export type CssDimensionAbbreviation = 'h' | 'w' | 'mw' | 'mh';
 
-export type CssDimension = 'h' | 'w' | 'mw' | 'mh';
+export type CssSpacingAbbreviation = 'm' | 'p';
 
-export type CssSpacing = 'm' | 'p';
-
-export type CssJustifyContent =
+export type CssJustifyContentValue =
   'space-around' |
   'space-between' |
   'center' |
@@ -69,7 +65,7 @@ export type CssJustifyContent =
   'flex-start' |
   'stretch';
 
-export type CssAlignContent =
+export type CssAlignContentValue =
   'flex-start' |
   'flex-end' |
   'center' |
@@ -77,23 +73,23 @@ export type CssAlignContent =
   'space-between' |
   'space-around';
 
-export type CssFlexDirection = 'column' | 'column-reverse' | 'row' | 'row-reverse' | undefined;
+export type CssFlexDirectionValue = 'column' | 'column-reverse' | 'row' | 'row-reverse' | undefined;
 
-export type CssAlignItems =
+export type CssAlignItemsValue =
   'flex-start' |
   'flex-end' |
   'center' |
   'baseline' |
   'stretch';
 
-export type CssFlex =
+export type CssFlexValue =
   'auto' |
   'initial' |
   'none' |
   'inherit' |
   'unset';
 
-export type CssOverflow =
+export type CssOverflowValue =
   'visible' |
   'hidden' |
   'clip' |
@@ -103,8 +99,69 @@ export type CssOverflow =
   'initial' |
   'unset';
 
-export type DisplayType = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
+export type CssDisplayValue = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
 
 export type BaseSpacing = SpacingSize | string | undefined;
 
 export type ResponsiveProp<T> = { [breakpoint in BreakpointSizeWithBase]?: T };
+
+export type Column = {
+  /**
+   * Text alignment for column cells (including header alignment). Cells will default to left if not defined.
+   */
+  align?: 'left' | 'right' | 'center';
+  /**
+   * CSS Class to be applied uniformly to all individual cells in a column.
+   */
+  cellClassName?: string;
+  /**
+   * The key value to be rendered based on the table `rows`.
+   */
+  dataKey?: string;
+  /**
+   * Placeholder for empty cells Applies only to the cells of the particular column with this prop.
+   */
+  emptyCellPlaceholder?: string | number | undefined;
+  /**
+   * The heading/title text of a column.
+   */
+  heading?: string;
+  /**
+   * CSS Class to be applied to the column header cell.
+   */
+  headerClassName?: string;
+  /**
+   * A custom key to be used when rendering the column array.
+   * Not required as our table auto-generates static, but unique column keys if not passed in.
+   */
+  key?: Key;
+  /**
+   * Whether the column data is sortable. Controls whether sorting controls should be displayed.
+   */
+  isSortable?: boolean;
+  /**
+   * Render method for column cell data. Provides ability to render any aspect of the cell/row with custom
+   * markup.
+   */
+  render?: (cell?: Cell, row?: Row, rowIndex?: number) => ReactNode;
+  /**
+   * Whether long text should be truncated based on column width. Use in tandem with column width as well as
+   * `useFixedWidthColumns` prop in the parent table.
+   */
+  truncateOverflow?: boolean;
+  /**
+   * Specific width of the column. Use in tandem with `useFixedWidthColumns` in the parent table.
+   */
+  width?: number;
+}
+
+export type Row = UnknownPropertiesObjType;
+
+export type Cell = string | number | { [key: string]: unknown; } | unknown[];
+
+export type EventWithColumnKey =
+  (
+    MouseEvent<HTMLTableHeaderCellElement> |
+    KeyboardEvent<HTMLTableHeaderCellElement>
+  )
+  & { sortedKey: Key | undefined; };

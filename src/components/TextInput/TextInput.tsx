@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { UnknownPropertiesObjType } from '../../lib/types';
+import { UnknownPropertiesObjType } from '../../types';
 import * as InputMasks from './TextInputMasks';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
