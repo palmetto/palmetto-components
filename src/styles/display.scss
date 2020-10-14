@@ -9,10 +9,10 @@
 .display-none { display: none; }
 
 @media (min-width: $size-breakpoint-tablet) {
-  .display-inherit { display: inherit; }
-  .display-inline { display: inline; }
-  .display-block { display: block; }
-  .display-inline-block { display: inline-block; }
+  .display-inherit-tablet { display: inherit; }
+  .display-inline-tablet { display: inline; }
+  .display-block-tablet { display: block; }
+  .display-inline-block-tablet { display: inline-block; }
   .display-flex-tablet { display: flex; }
   .display-inline-flex-tablet { display: inline-flex; }
   .display-none-tablet { display: none; }
