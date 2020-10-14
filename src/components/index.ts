@@ -10,6 +10,7 @@ import FormikCheckboxInput from './Formik/FormikCheckboxInput/FormikCheckboxInpu
 import FormikRadioGroup from './Formik/FormikRadioGroup/FormikRadioGroup';
 import FormikSelectInput from './Formik/FormikSelectInput/FormikSelectInput';
 import FormikTextInput from './Formik/FormikTextInput/FormikTextInput';
+import FormikTextareaInput from './Formik/FormikTextareaInput/FormiktextareaInput';
 import Heading from './Heading/Heading';
 import RadioGroup from './RadioGroup/RadioGroup';
 import SelectInput from './SelectInput/SelectInput';
@@ -30,6 +31,7 @@ export {
   FormikCheckboxInput,
   FormikRadioGroup,
   FormikSelectInput,
+  FormikTextareaInput,
   FormikTextInput,
   Heading,
   RadioGroup,
