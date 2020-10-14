@@ -52,11 +52,11 @@ export type StylesAndClasses<T> = {
   classes?: string[];
 }
 
-export type CssDimensionAbbreviation = 'h' | 'w' | 'mw' | 'mh';
+export type CssDimensionAbbreviationAbbreviation = 'h' | 'w' | 'mw' | 'mh';
 
-export type CssSpacingAbbreviation = 'm' | 'p';
+export type CssSpacingAbbreviationAbbreviation = 'm' | 'p';
 
-export type CssJustifyContentValue =
+export type CssJustifyContentValueValue =
   'space-around' |
   'space-between' |
   'center' |
@@ -65,7 +65,7 @@ export type CssJustifyContentValue =
   'flex-start' |
   'stretch';
 
-export type CssAlignContentValue =
+export type CssAlignContentValueValue =
   'flex-start' |
   'flex-end' |
   'center' |
@@ -73,23 +73,23 @@ export type CssAlignContentValue =
   'space-between' |
   'space-around';
 
-export type CssFlexDirectionValue = 'column' | 'column-reverse' | 'row' | 'row-reverse' | undefined;
+export type CssFlexValueDirectionValueValue = 'column' | 'column-reverse' | 'row' | 'row-reverse' | undefined;
 
-export type CssAlignItemsValue =
+export type CssAlignItemsValueValue =
   'flex-start' |
   'flex-end' |
   'center' |
   'baseline' |
   'stretch';
 
-export type CssFlexValue =
+export type CssFlexValueValue =
   'auto' |
   'initial' |
   'none' |
   'inherit' |
   'unset';
 
-export type CssOverflowValue =
+export type CssOverflowValueValue =
   'visible' |
   'hidden' |
   'clip' |

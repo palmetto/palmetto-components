@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
 import styles from '../../Card.module.scss';
-import { DisplayType, SpacingSize } from '../../../../types';
+import { CssDisplayValue, SpacingSize } from '../../../../types';
 
 export interface CardSectionProps {
   /**
@@ -22,7 +22,7 @@ export interface CardSectionProps {
   /**
    * Display property. Only select values supported.
    */
-  display?: DisplayType;
+  display?: CssDisplayValue;
   /**
    * visually subdued the appearance of the section
    */

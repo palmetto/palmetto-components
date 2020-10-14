@@ -15,15 +15,15 @@ import {
   BorderRadiusSize,
   DimensionSize,
   BreakpointSizeWithBase,
-  DisplayType,
-  CssJustifyContent,
-  CssAlignContent,
-  CssAlignItems,
+  CssDisplayValue,
+  CssJustifyContentValueValue,
+  CssAlignContentValueValue,
+  CssAlignItemsValueValue,
   BaseSpacing,
-  CssFlexDirection,
-  CssOverflow,
+  CssFlexValueDirectionValueValue,
+  CssOverflowValueValue,
   ResponsiveProp,
-  CssFlex,
+  CssFlexValueValue,
 } from '../../types';
 import getDimensionCss from '../../lib/getDimensionCss';
 import getSpacingClasses from '../../lib/getSpacingClasses';
@@ -38,17 +38,17 @@ export interface BoxProps {
   /**
    * How to align the contents along the cross axis.
    */
-  alignItems?: CssAlignItems | ResponsiveProp<CssAlignItems>;
+  alignItems?: CssAlignItemsValueValue | ResponsiveProp<CssAlignItemsValueValue>;
   /**
    * How to align the contents when there is extra space in the cross axis.
    * This property has no effect when there is only one line of flex items.
    */
-  alignContent?: CssAlignContent | ResponsiveProp<CssAlignContent>;
+  alignContent?: CssAlignContentValueValue | ResponsiveProp<CssAlignContentValueValue>;
   /**
    * How to align along the cross axis when contained in a Box.
    * This allows the default alignment (or the one specified by `align`) to be overridden for the individual Box.
    */
-  alignSelf?: CssAlignItems | ResponsiveProp<CssAlignItems>;
+  alignSelf?: CssAlignItemsValueValue | ResponsiveProp<CssAlignItemsValueValue>;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
@@ -77,15 +77,15 @@ export interface BoxProps {
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
-  direction?: CssFlexDirection | ResponsiveProp<CssFlexDirection>;
+  direction?: CssFlexValueDirectionValueValue | ResponsiveProp<CssFlexValueDirectionValueValue>;
   /**
    * Display property. Only select values supported.
    */
-  display?: DisplayType | ResponsiveProp<DisplayType>;
+  display?: CssDisplayValue | ResponsiveProp<CssDisplayValue>;
   /**
    * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
    */
-  flex?: CssFlex | ResponsiveProp<CssFlex>;
+  flex?: CssFlexValueValue | ResponsiveProp<CssFlexValueValue>;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
@@ -98,7 +98,7 @@ export interface BoxProps {
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
-  justifyContent?: CssJustifyContent | ResponsiveProp<CssJustifyContent>;
+  justifyContent?: CssJustifyContentValueValue | ResponsiveProp<CssJustifyContentValueValue>;
   /**
    * Amount of space around the element.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
@@ -122,7 +122,7 @@ export interface BoxProps {
    * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
    * Otherwise, both overflow-x and overflow-y are set to the same value.
    */
-  overflow?: CssOverflow | ResponsiveProp<CssOverflow>;
+  overflow?: CssOverflowValueValue | ResponsiveProp<CssOverflowValueValue>;
   /**
    * Amount of space within the element around the Box contents.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
@@ -233,7 +233,7 @@ const Box: FC<BoxProps> = ({
   const generateChildGapDirection = (): ResponsiveProp<string> => {
     let childGapDirection = {};
 
-    const getChildGapMarginDirection = (d: CssFlexDirection) => {
+    const getChildGapMarginDirection = (d: CssFlexValueDirectionValueValue) => {
       let marginDirection = '';
       if (d?.includes('row')) marginDirection = 'right';
       else if (d?.includes('column')) marginDirection = 'bottom';

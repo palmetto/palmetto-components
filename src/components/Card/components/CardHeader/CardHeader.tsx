@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import Box from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
-import { DisplayType } from '../../../../types';
+import { CssDisplayValue } from '../../../../types';
 
 export interface CardHeaderProps {
   /**
@@ -15,7 +15,7 @@ export interface CardHeaderProps {
   /**
    * Display property. Only select values supported.
    */
-  display?: DisplayType;
+  display?: CssDisplayValue;
   /**
    * The title of the card
    */
