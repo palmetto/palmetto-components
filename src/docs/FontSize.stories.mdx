@@ -21,8 +21,7 @@ Use these tokens for `font-size`. They are defined in `rem`, which means they wi
     </tr>
   </thead>
   <tbody>
-    {FONT_SIZE_OPTIONS}
-    {/* {FONT_SIZE_OPTIONS.map((size, i) => (
+    {FONT_SIZE_OPTIONS.map((size, i) => (
       <tr key={i}>
         <td><code>{`size-font-${size}`}</code></td>
         <td><code>{size}</code></td>
@@ -30,6 +29,6 @@ Use these tokens for `font-size`. They are defined in `rem`, which means they wi
         <td>{size === 'base' ? '16' : FONT_SIZE_VALUES[i].original.value * 16}</td>
         <td>{FONT_SIZE_VALUES[i].original.comment}</td>
       </tr>
-    ))} */}
+    ))}
   </tbody>
 </table>
