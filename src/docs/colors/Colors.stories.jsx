@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
-import { BRAND_COLOR_VALUES } from '../../lib/tokens';
+import { BRAND_COLORS } from '../../lib/tokens';
 import styles from './Colors.module.scss';
 
 export default {
@@ -60,7 +60,7 @@ export const brand = () => (
         flexWrap: 'wrap',
       }}
     >
-      {Object.entries(BRAND_COLOR_VALUES).map(renderColorBlock)}
+      {Object.entries(BRAND_COLORS).map(renderColorBlock)}
     </div>
     <h1>Extended Brand Palette</h1>
     <div
@@ -69,7 +69,7 @@ export const brand = () => (
         flexWrap: 'wrap',
       }}
     >
-      {Object.entries(BRAND_COLOR_VALUES).map(renderColorPalette)}
+      {Object.entries(BRAND_COLORS).map(renderColorPalette)}
     </div>
   </>
 );
