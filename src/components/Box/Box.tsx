@@ -60,9 +60,9 @@ export interface BoxProps {
    */
   borderColor?: BrandColor | ResponsiveProp<BrandColor>;
   /**
-   * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
+   * Any valid BorderSize token or reponsive prop with BorderSize in each breakpoint.
    */
-  borderWidth?: BorderSize;
+  borderWidth?: BorderSize | ResponsiveProp<BorderSize>;
   /**
    * Additional class names to add
    */
