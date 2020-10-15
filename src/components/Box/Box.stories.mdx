@@ -202,10 +202,10 @@ Borders on specific sides
       <Box borderColor="grey-lighter" borderWidth="xs sm" padding="xs">
         grey-lighter
       </Box>
-      <Box borderColor="danger" borderWidth="sm none" padding="xs">
+      <Box borderColor="danger" borderWidth="sm 0" padding="xs">
         danger
       </Box>
-      <Box borderColor="primary-darker" borderWidth="none none sm xs" padding="xs">
+      <Box borderColor="primary-darker" borderWidth="0 0 sm xs" padding="xs">
         primary-darker
       </Box>
     </Box>
@@ -981,7 +981,7 @@ This box will have different border width values for each of its base, tablet, d
   <Story name="responsive border width">
     {() => {
       const activeBreakpoint = useBreakpoint();
-      const borderWidth = { base: 'sm', tablet: 'xs', desktop: 'sm xs none sm', hd: 'none none sm sm' };
+      const borderWidth = { base: 'sm', tablet: 'xs', desktop: 'sm xs 0 sm', hd: '0 0 sm sm' };
       return (
         <Box
           padding="sm"
