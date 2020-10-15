@@ -39,7 +39,7 @@ describe('Box', () => {
 
   test('border color token classes are applied', () => {
     [...BRAND_COLOR_OPTIONS].forEach((color, i) => {
-      const { queryAllByText } = render(<Box border={color} key={i}>Test Box</Box>);
+      const { queryAllByText } = render(<Box borderColor={color} key={i}>Test Box</Box>);
       expect(queryAllByText('Test Box')[i].classList).toContain(`border-color-${color}`);
     });
   });

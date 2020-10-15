@@ -1,11 +1,9 @@
 import {
-  CssSpacingAbbreviationAbbreviation,
-  BaseSpacing,
   ResponsiveProp,
   BreakpointSizeWithBase,
 } from '../types';
 
-function isValidSpacingValue(value?: BaseSpacing | ResponsiveProp<BaseSpacing>): boolean {
+function isValidSpacingValue(value?: string | ResponsiveProp<string | undefined>): boolean {
   if (
     value === undefined
     || value === null
@@ -18,8 +16,8 @@ function isValidSpacingValue(value?: BaseSpacing | ResponsiveProp<BaseSpacing>):
 }
 
 function generateBaseClasses(
-  attribute: CssSpacingAbbreviationAbbreviation,
-  value: BaseSpacing | ResponsiveProp<BaseSpacing>,
+  attribute: string | undefined,
+  value?: string | ResponsiveProp<string | undefined>,
 ): string[] {
   if (typeof value !== 'string') return [];
 
@@ -46,9 +44,9 @@ function generateBaseClasses(
   return classes;
 }
 
-function getSpacingClasses(
-  attribute: CssSpacingAbbreviationAbbreviation,
-  value?: BaseSpacing | ResponsiveProp<BaseSpacing>,
+function cssShorthandToClasses(
+  attribute: string,
+  value?: string | ResponsiveProp<string | undefined>,
 ): string[] {
   if (!isValidSpacingValue(value)) return [];
 
@@ -67,4 +65,4 @@ function getSpacingClasses(
   return classes;
 }
 
-export default getSpacingClasses;
+export default cssShorthandToClasses;
