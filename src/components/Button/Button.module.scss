@@ -14,6 +14,10 @@
   font-size: var(--button-size-md-font-size);
   font-weight: 700;
 
+  &:hover {
+    text-decoration: none;
+  }
+
   &:disabled {
     opacity: 0.65;
     cursor: not-allowed;
@@ -137,7 +141,8 @@
     font-size: var(--button-size-sm-font-size);
 
     &.outline {
-      padding: calc(var(--button-size-sm-padding-vertical) - 1px) calc(var(--button-size-sm-padding-horizontal) - 1px);
+      padding: calc(var(--button-size-sm-padding-vertical) - 1px)
+        calc(var(--button-size-sm-padding-horizontal) - 1px);
     }
   }
 
@@ -148,7 +153,8 @@
     font-size: var(--button-size-md-font-size);
 
     &.outline {
-      padding: calc(var(--button-size-md-padding-vertical) - 1px) calc(var(--button-size-md-padding-horizontal) - 1px);
+      padding: calc(var(--button-size-md-padding-vertical) - 1px)
+        calc(var(--button-size-md-padding-horizontal) - 1px);
     }
   }
 
@@ -160,7 +166,8 @@
     font-size: var(--button-size-lg-font-size);
 
     &.outline {
-      padding: calc(var(--button-size-lg-padding-vertical) - 1px) calc(var(--button-size-lg-padding-horizontal) - 1px);
+      padding: calc(var(--button-size-lg-padding-vertical) - 1px)
+        calc(var(--button-size-lg-padding-horizontal) - 1px);
     }
   }
 
