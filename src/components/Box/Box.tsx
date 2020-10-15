@@ -16,17 +16,18 @@ import {
   DimensionSize,
   BreakpointSizeWithBase,
   CssDisplayValue,
-  CssJustifyContentValueValue,
-  CssAlignContentValueValue,
-  CssAlignItemsValueValue,
+  CssJustifyContentValue,
+  CssAlignContentValue,
+  CssAlignItemsValue,
   BaseSpacing,
-  CssFlexValueDirectionValueValue,
-  CssOverflowValueValue,
+  CssFlexDirectionValue,
+  CssOverflowValue,
   ResponsiveProp,
-  CssFlexValueValue,
+  CssFlexValue,
+  BorderSize,
 } from '../../types';
 import getDimensionCss from '../../lib/getDimensionCss';
-import getSpacingClasses from '../../lib/getSpacingClasses';
+import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
 import getElementType from '../../lib/getElementType';
 import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
 
@@ -38,25 +39,30 @@ export interface BoxProps {
   /**
    * How to align the contents along the cross axis.
    */
-  alignItems?: CssAlignItemsValueValue | ResponsiveProp<CssAlignItemsValueValue>;
+  alignItems?: CssAlignItemsValue | ResponsiveProp<CssAlignItemsValue>;
   /**
    * How to align the contents when there is extra space in the cross axis.
    * This property has no effect when there is only one line of flex items.
    */
-  alignContent?: CssAlignContentValueValue | ResponsiveProp<CssAlignContentValueValue>;
+  alignContent?: CssAlignContentValue | ResponsiveProp<CssAlignContentValue>;
   /**
    * How to align along the cross axis when contained in a Box.
    * This allows the default alignment (or the one specified by `align`) to be overridden for the individual Box.
    */
-  alignSelf?: CssAlignItemsValueValue | ResponsiveProp<CssAlignItemsValueValue>;
+  alignSelf?: CssAlignItemsValue | ResponsiveProp<CssAlignItemsValue>;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
   background?: BrandColor;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
+   * Or a responsive prop with BrandColor for each breakpoint.
    */
-  border?: BrandColor;
+  borderColor?: BrandColor | ResponsiveProp<BrandColor>;
+  /**
+   * Any valid BorderSize token or reponsive prop with BorderSize in each breakpoint.
+   */
+  borderWidth?: BorderSize | ResponsiveProp<BorderSize>;
   /**
    * Additional class names to add
    */
@@ -77,7 +83,7 @@ export interface BoxProps {
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
-  direction?: CssFlexValueDirectionValueValue | ResponsiveProp<CssFlexValueDirectionValueValue>;
+  direction?: CssFlexDirectionValue | ResponsiveProp<CssFlexDirectionValue>;
   /**
    * Display property. Only select values supported.
    */
@@ -85,7 +91,7 @@ export interface BoxProps {
   /**
    * Can be used as shorthand for the flexbox css properties `flex-grow`, `flex-shrink`, `flex-basis`
    */
-  flex?: CssFlexValueValue | ResponsiveProp<CssFlexValueValue>;
+  flex?: CssFlexValue | ResponsiveProp<CssFlexValue>;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
    */
@@ -98,7 +104,7 @@ export interface BoxProps {
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
-  justifyContent?: CssJustifyContentValueValue | ResponsiveProp<CssJustifyContentValueValue>;
+  justifyContent?: CssJustifyContentValue | ResponsiveProp<CssJustifyContentValue>;
   /**
    * Amount of space around the element.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
@@ -122,7 +128,7 @@ export interface BoxProps {
    * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
    * Otherwise, both overflow-x and overflow-y are set to the same value.
    */
-  overflow?: CssOverflowValueValue | ResponsiveProp<CssOverflowValueValue>;
+  overflow?: CssOverflowValue | ResponsiveProp<CssOverflowValue>;
   /**
    * Amount of space within the element around the Box contents.
    * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
@@ -161,7 +167,8 @@ const Box: FC<BoxProps> = ({
   alignContent = undefined,
   alignSelf = undefined,
   background = undefined,
-  border = undefined,
+  borderColor = undefined,
+  borderWidth = undefined,
   children = undefined,
   childGap = undefined,
   className = '',
@@ -193,8 +200,8 @@ const Box: FC<BoxProps> = ({
   const boxClasses = classNames(
     className,
     wrapClass,
-    getSpacingClasses('m', margin),
-    getSpacingClasses('p', padding),
+    cssShorthandToClasses('m', margin),
+    cssShorthandToClasses('p', padding),
     heightCss.classes,
     maxHeightCss.classes,
     maxWidthCss.classes,
@@ -210,11 +217,10 @@ const Box: FC<BoxProps> = ({
     generateResponsiveClasses('border-radius', radius),
     generateResponsiveClasses('flex-direction', direction),
     generateResponsiveClasses('flex', flex),
-    {
-      [`background-color-${background}`]: background,
-      [`border-color-${border}`]: border,
-      [`font-color-${color}`]: color,
-    },
+    generateResponsiveClasses('background-color', background),
+    cssShorthandToClasses('border-width', borderWidth),
+    generateResponsiveClasses('border-color', borderColor),
+    generateResponsiveClasses('font-color', color),
   );
 
   const boxStyles = {
@@ -223,7 +229,7 @@ const Box: FC<BoxProps> = ({
     ...maxHeightCss.styles,
     ...maxWidthCss.styles,
     ...widthCss.styles,
-    ...border && { borderWidth: '1px', borderStyle: 'solid' },
+    ...borderWidth && { borderStyle: 'solid' },
   };
 
   /**
@@ -233,7 +239,7 @@ const Box: FC<BoxProps> = ({
   const generateChildGapDirection = (): ResponsiveProp<string> => {
     let childGapDirection = {};
 
-    const getChildGapMarginDirection = (d: CssFlexValueDirectionValueValue) => {
+    const getChildGapMarginDirection = (d: CssFlexDirectionValue) => {
       let marginDirection = '';
       if (d?.includes('row')) marginDirection = 'right';
       else if (d?.includes('column')) marginDirection = 'bottom';

@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import {
   StylesAndClasses,
-  CssDimensionAbbreviationAbbreviation,
+  CssDimensionAbbreviation,
   ResponsiveProp,
   DimensionSize,
 } from '../types';
@@ -9,7 +9,7 @@ import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
 import generateResponsiveClasses from './generateResponsiveClasses';
 
 function getDimensionStyles(
-  dimension: CssDimensionAbbreviationAbbreviation,
+  dimension: CssDimensionAbbreviation,
   value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): { [key: string]: string; } | undefined {
   if (value === undefined) return value;
@@ -35,7 +35,7 @@ function getDimensionStyles(
 }
 
 function getDimensionClasses(
-  dimension: CssDimensionAbbreviationAbbreviation,
+  dimension: CssDimensionAbbreviation,
   value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): string[] | undefined {
   if (value === undefined) return value;
@@ -52,11 +52,11 @@ function getDimensionClasses(
 }
 /**
  * Returns an object of styles and class names that correspond with the given value
- * @param {CssDimensionAbbreviationAbbreviation} dimension width or height
+ * @param {CssDimensionAbbreviation} dimension width or height
  * @param {string} [value] value of the dimension
  */
 function getDimensionCss(
-  dimension: CssDimensionAbbreviationAbbreviation,
+  dimension: CssDimensionAbbreviation,
   value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): StylesAndClasses<CSSProperties> {
   return ({

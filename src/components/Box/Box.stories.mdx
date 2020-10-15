@@ -22,7 +22,7 @@ A `<Box>` is a layout component to build UIs with consistent padding and spacing
   <Box childGap="md">
     <Box
       padding="xl"
-      border="primary-light"
+      borderColor="primary-light"
       background="primary-lightest"
       radius="md"
       fontSize="xl"
@@ -133,13 +133,13 @@ Use the `border` prop to set the color of the border.
 <Canvas>
   <Story name="border color">
     <Box childGap="xs">
-      <Box border="grey-lighter"padding="xs">
+      <Box borderColor="grey-lighter" borderWidth="xs" padding="xs">
         grey-lighter
       </Box>
-      <Box border="danger" padding="xs">
+      <Box borderColor="danger" borderWidth="xs" padding="xs">
         danger
       </Box>
-      <Box border="primary-darker" padding="xs">
+      <Box borderColor="primary-darker" borderWidth="xs" padding="xs">
         primary-darker
       </Box>
     </Box>
@@ -159,37 +159,55 @@ All border colors.
           || color === 'white'
         ) {
           return (
-            <Box border={color} padding="xs" key={i}>
+            <Box borderColor={color} borderWidth="xs" padding="xs" key={i}>
               {`${color}`}
             </Box>
           );
         }
         return (
           <Box childGap="xs" key={i}>
-            <Box flex="auto" border={`${color}-lightest`} padding="xs">
+            <Box flex="auto" borderColor={`${color}-lightest`} borderWidth="xs" padding="xs">
               {`${color}-lightest`}
             </Box>
-            <Box flex="auto" border={`${color}-lighter`} padding="xs">
+            <Box flex="auto" borderColor={`${color}-lighter`} borderWidth="xs" padding="xs">
               {`${color}-lighter`}
             </Box>
-            <Box flex="auto" border={`${color}-light`} padding="xs">
+            <Box flex="auto" borderColor={`${color}-light`} borderWidth="xs" padding="xs">
               {`${color}-light`}
             </Box>
-            <Box flex="auto" border={color} padding="xs">
+            <Box flex="auto" borderColor={color} borderWidth="xs" padding="xs">
               {`${color}`}
             </Box>
-            <Box flex="auto" border={`${color}-dark`} padding="xs">
+            <Box flex="auto" borderColor={`${color}-dark`} borderWidth="xs" padding="xs">
               {`${color}-dark`}
             </Box>
-            <Box flex="auto" border={`${color}-darker`} padding="xs">
+            <Box flex="auto" borderColor={`${color}-darker`} borderWidth="xs" padding="xs">
               {`${color}-darker`}
             </Box>
-            <Box flex="auto" border={`${color}-darkest`} padding="xs">
+            <Box flex="auto" borderColor={`${color}-darkest`} borderWidth="xs" padding="xs">
               {`${color}-darkest`}
             </Box>
           </Box>
         )
       })}
+    </Box>
+  </Story>
+</Canvas>
+
+Borders on specific sides
+
+<Canvas>
+  <Story name="border sides">
+    <Box childGap="xs">
+      <Box borderColor="grey-lighter" borderWidth="xs sm" padding="xs">
+        grey-lighter
+      </Box>
+      <Box borderColor="danger" borderWidth="sm 0" padding="xs">
+        danger
+      </Box>
+      <Box borderColor="primary-darker" borderWidth="0 0 sm xs" padding="xs">
+        primary-darker
+      </Box>
     </Box>
   </Story>
 </Canvas>
@@ -777,7 +795,7 @@ Set the overlfow behavior of the Box with `overflow`
 
 <Canvas>
   <Story name="overflow">
-    <Box overflow="auto" padding="md" childGap="md" flex="auto" background="primary-lighter" border="grey" height="100px">
+    <Box overflow="auto" padding="md" childGap="md" flex="auto" background="primary-lighter" borderColor="grey" height="100px">
       <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
       <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
       <p>Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in national tax credits and local rebates and incentives, and you can save even more. Like many things in life though, these discounts won’t be around forever, so take advantage of them while you can.</p>
@@ -818,7 +836,8 @@ The box will have different margin and padding values for at the base, tablet, a
       childGap="md"
       flex="auto"
       background="primary-lighter"
-      border="grey"
+      borderColor="grey"
+      borderWidth="xs"
     >
       <p>Most homeowners are stuck with a single option for their power company, and that utility just keeps increasing rates year after year. With solar, you take back control over where your energy comes from, how much it costs, and what you can do with it. Use it, store it, or sell it, all on your own terms.</p>
       <p>Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and maintenance, all under one roof. Plus, you can monitor your entire system from the palm of your hand, and we have an award-winning customer service team standing by to help you with anything you might need.</p>
@@ -870,11 +889,107 @@ This box will have different fontSize values for each of its base, tablet, deskt
         <Box
           padding="sm"
           background="primary-lighter"
-          border="grey"
+          borderColor="grey"
+          borderWidth="xs"
           fontSize={fontSize}
         >
           <p>Breakpoint: {activeBreakpoint.name}</p>
           <p>fontSize: {fontSize[activeBreakpoint.name]}</p>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+#### Font Color
+
+This box will have different fontColor values for each of its base, tablet, desktop, and hd breakpoints.
+
+<Canvas>
+  <Story name="responsive font color">
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const fontColor = { base: 'primary', tablet: 'warning', desktop: 'danger', hd: 'secondary' };
+      return (
+        <Box
+          padding="sm"
+          background="primary-lighter"
+          borderColor="grey"
+          borderWidth="xs"
+          color={fontColor}
+        >
+          <p>Breakpoint: {activeBreakpoint.name}</p>
+          <p>fontColor: {fontColor[activeBreakpoint.name]}</p>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+#### Background color
+
+This box will have different backgroundColor values for each of its base, tablet, desktop, and hd breakpoints.
+
+<Canvas>
+  <Story name="responsive background color">
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const backgroundColor = { base: 'primary-lighter', tablet: 'warning-lighter', desktop: 'danger-lighter', hd: 'secondary-lighter' };
+      return (
+        <Box
+          padding="sm"
+          background={backgroundColor}
+          borderColor="grey"
+          borderWidth="xs"
+        >
+          <p>Breakpoint: {activeBreakpoint.name}</p>
+          <p>backgroundColor: {backgroundColor[activeBreakpoint.name]}</p>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+#### Border Color
+
+This box will have different backgroundColor values for each of its base, tablet, desktop, and hd breakpoints.
+
+<Canvas>
+  <Story name="responsive border color">
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const borderColor = { base: 'primary', tablet: 'warning', desktop: 'danger', hd: 'secondary' };
+      return (
+        <Box
+          padding="sm"
+          borderColor={borderColor}
+          borderWidth="xs"
+        >
+          <p>Breakpoint: {activeBreakpoint.name}</p>
+          <p>borderColor: {borderColor[activeBreakpoint.name]}</p>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+#### Border Width
+
+This box will have different border width values for each of its base, tablet, desktop, and hd breakpoints.
+
+<Canvas>
+  <Story name="responsive border width">
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const borderWidth = { base: 'sm', tablet: 'xs', desktop: 'sm xs 0 sm', hd: '0 0 sm sm' };
+      return (
+        <Box
+          padding="sm"
+          borderColor="secondary"
+          borderWidth={borderWidth}
+        >
+          <p>Breakpoint: {activeBreakpoint.name}</p>
+          <p>borderWidth: {borderWidth[activeBreakpoint.name]}</p>
         </Box>
       );
     }}
@@ -895,7 +1010,8 @@ This box will have different width and height values for each of its base, table
         <Box
           padding="sm"
           background="primary-lighter"
-          border="grey"
+          borderColor="grey"
+          borderWidth="xs"
           height={height}
           width={width}
         >
@@ -957,7 +1073,8 @@ This box will have different border radius based on the breakpoint
           padding="sm"
           margin="md"
           background="primary-lighter"
-          border="grey"
+          borderColor="grey"
+          borderWidth="xs"
           radius={radius}
         >
           <p>{radius[activeBreakpoint.name]}</p>
