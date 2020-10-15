@@ -1,8 +1,9 @@
 .table-header-cell {
   border-bottom: 1px solid var(--table-border-color);
-  padding: var(--size-spacing-sm);
+  padding: var(--table-padding-header-vertical) var(--table-padding-horizontal);
   text-align: left;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   white-space: nowrap;
   color: var(--table-header-color);
   font-size: var(--table-header-font-size);
