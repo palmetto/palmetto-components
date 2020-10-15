@@ -1,8 +1,9 @@
 :root {
   --table-border-color: var(--color-brand-grey-lighter);
 
-  --table-padding-horizontal: var(--size-spacing-sm);
-  --table-padding-vertical: var(--size-spacing-sm);
+  --table-padding-horizontal: var(--size-spacing-lg);
+  --table-padding-vertical: var(--size-spacing-md);
+  --table-padding-header-vertical: var(--size-spacing-md);
   --table-padding-horizontal-compact: var(--size-spacing-xs);
   --table-padding-vertical-compact: var(--size-spacing-xs);
 
