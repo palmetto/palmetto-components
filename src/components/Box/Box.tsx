@@ -56,8 +56,9 @@ export interface BoxProps {
   background?: BrandColor;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
+   * Or a responsive prop with BrandColor for each breakpoint.
    */
-  borderColor?: BrandColor;
+  borderColor?: BrandColor | ResponsiveProp<BrandColor>;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
    */
