@@ -83,6 +83,8 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
               firstName: '',
               lastName: '',
               email: '',
+              phone: '',
+              creditCard: '',
               areTermsChecked: false,
               flavor: null,
               flavor2: null,
@@ -125,6 +127,28 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                     id="email"
                     component={FormikTextInput}
                     isRequired
+                  />
+                </div>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <Field
+                    label="Phone"
+                    name="phone"
+                    id="phone"
+                    component={FormikTextInput}
+                    inputMask="phone"
+                    type="tel"
+                    onChange={event => { setFieldValue('phone', event.target.rawValue); }}
+                  />
+                </div>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <Field
+                    label="Credit Card"
+                    name="creditCard"
+                    id="creditCard"
+                    component={FormikTextInput}
+                    type="tel" 
+                    inputMask="creditCard"
+                    onChange={event => { setFieldValue('creditCard', event.target.rawValue); }}
                   />
                 </div>
                 <div style={{ marginBottom: '1.25rem' }}>
