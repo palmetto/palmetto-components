@@ -12,7 +12,7 @@
   line-height: 1.25;
   letter-spacing: 0.2px;
   font-size: var(--button-size-md-font-size);
-  font-weight: 700;
+  font-weight: var(--button-font-weight);
 
   &:hover {
     text-decoration: none;

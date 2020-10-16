@@ -54,7 +54,7 @@
   .close-icon {
     justify-content: flex-end;
     margin-left: auto;
-    font-weight: 700;
+    font-weight: var(--size-font-weight-bold);
 
     > button {
       /* Reset default button styles */

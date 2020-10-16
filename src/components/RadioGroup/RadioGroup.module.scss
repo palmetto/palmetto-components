@@ -11,8 +11,7 @@
       line-height: 1.25;
       color: var(--form-control-font-color);
       font-size: var(--form-control-size-md-label-size);
-      font-weight: 700;
-
+      font-weight: var(--form-control-legend-font-weight);
 
       .description {
         margin-top: var(--form-control-radio-group-description-spacing);
@@ -24,6 +23,5 @@
         color: var(--form-control-error-color);
       }
     }
-
   }
 }
