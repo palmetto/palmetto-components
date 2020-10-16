@@ -1,10 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-// import { ResponsiveProp } from '../../types';
 import Box from '../Box/Box';
 import Button from '../Button/Button';
-import { number } from 'prop-types';
-
 // import SelectInput from '../SelectInput/SelectInput';
 
 interface PaginationProps {
