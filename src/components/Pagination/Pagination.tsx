@@ -96,31 +96,10 @@ const Pagination: FC<PaginationProps> = ({
     let startingPage = 1;
     let endingPage = getPageRange();
 
-    const PageButton = ({
-      pageNumber,
-      buttonClassName,
-      isPage = true,
-    }: {
-      pageNumber: number;
-      buttonClassName?: string; // eslint-disable-line react/require-default-props
-      isPage?: boolean; // eslint-disable-line react/require-default-props
-    }) => (
-      <Button
-        onClick={() => onChange(pageNumber)}
-        isOutlined={activePage !== pageNumber}
-        size={isCompact ? 'sm' : 'md'}
-        style={{
-          minWidth: isCompact ? '33px' : '42px',
-          borderRadius: 0,
-          border: 0,
-        }}
-        className={buttonClassName}
-      >
-        {isPage ? pageNumber : '...'}
-      </Button>
-    );
-
-    if (activePage + numberOfPagesDisplayed > pageTotal) {
+    if (pageTotal <= getPageRange()) {
+      startingPage = 1;
+      endingPage = getPageRange();
+    } else if (activePage + numberOfPagesDisplayed > pageTotal) {
       startingPage = pageTotal - (numberOfPagesDisplayed - 1);
       endingPage = startingPage + (numberOfPagesDisplayed - 1);
     } else if (activePage > numberOfPagesDisplayed && (activePage + numberOfPagesDisplayed) <= pageTotal) {
@@ -145,6 +124,30 @@ const Pagination: FC<PaginationProps> = ({
         { pageNumber: activePage - numberOfPagesDisplayed, isPage: false },
       );
     }
+
+    const PageButton = ({
+      pageNumber,
+      buttonClassName,
+      isPage = true,
+    }: {
+      pageNumber: number;
+      buttonClassName?: string; // eslint-disable-line react/require-default-props
+      isPage?: boolean; // eslint-disable-line react/require-default-props
+    }) => (
+      <Button
+        onClick={() => onChange(pageNumber)}
+        isOutlined={activePage !== pageNumber}
+        size={isCompact ? 'sm' : 'md'}
+        style={{
+          minWidth: isCompact ? '33px' : '42px',
+          borderRadius: 0,
+          border: 0,
+        }}
+        className={buttonClassName}
+      >
+        {isPage ? pageNumber : '...'}
+      </Button>
+    );
 
     return pages.map(page => (
       <PageButton {...page} />
