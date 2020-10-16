@@ -19,6 +19,7 @@ export type {
   BorderRadiusSize,
   BoxShadowSize,
   FontSize,
+  FontWeight,
   HeightSize,
   LineHeightSize,
   OpacitySize,

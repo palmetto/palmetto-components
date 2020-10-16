@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
+import { FONT_WEIGHT_OPTIONS, FONT_WEIGHT_VALUES } from '../lib/tokens';
+
+<Meta title="Design Tokens/Font Weight" />
+
+# Font Weight
+
+Use these tokens for `font-weight`.
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>value</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {FONT_WEIGHT_OPTIONS.map((value, i) => (
+      <tr key={i}>
+        <td>
+          <code>{`font-weight-${value}`}</code>
+        </td>
+        <td>{FONT_WEIGHT_VALUES[i].value}</td>
+        <td>{FONT_WEIGHT_VALUES[i].original.comment}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
