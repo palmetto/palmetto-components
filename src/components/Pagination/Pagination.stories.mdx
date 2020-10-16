@@ -30,7 +30,7 @@ Use pagination to improve user scanning, as well as load times, for large collec
           itemsPerPage={20}
           onChange={setActivePage}
           totalItemsCount={87}
-          pageRangeDisplayed={0}
+          numberOfPagesDisplayed={0}
         />
       );
     }}
@@ -49,6 +49,26 @@ Use pagination to improve user scanning, as well as load times, for large collec
           onChange={pageNumber => alert(`clicked page ${pageNumber}`)}
           totalItemsCount={100}
           isCompact
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Interactive Page Numbers
+
+<Canvas>
+  <Story name="Page Numbers">
+    {() => {
+      const [activePage, setActivePage] = useState(1);
+      return (
+        <Pagination
+          activePage={activePage}
+          itemsPerPage={20}
+          onChange={setActivePage}
+          totalItemsCount={2000}
+          isCompact
+          arePagesVisible
         />
       );
     }}

@@ -1,6 +1,10 @@
 import React, { FC, ReactNode } from 'react';
+import classNames from 'classnames';
+// import { ResponsiveProp } from '../../types';
 import Box from '../Box/Box';
 import Button from '../Button/Button';
+import { number } from 'prop-types';
+
 // import SelectInput from '../SelectInput/SelectInput';
 
 interface PaginationProps {
@@ -21,13 +25,23 @@ interface PaginationProps {
    */
   totalItemsCount: number;
   /**
-   * Boolean to determine if individual page buttons (or dropdown are visible).
+   * Boolean to determine if individual page buttons (or dropdown are visible). Takes a `ResponsiveProp`
+   * if you want to render it differently at different breakpoints
    */
   arePagesVisible?: boolean;
+  /**
+   * Custom class to pass down to the pagination container.
+   */
+  className?: boolean;
   /**
    * Pass true to render a version of Pagination with smaller buttons.
    */
   isCompact?: boolean;
+  /**
+   * Boolean to determine if the list totals (and current range) are visible.
+   * NOTE: these are hidden on mobile regardless of this prop value.
+   */
+  isTotalVisible?: boolean;
   /**
    * The text (or react node) to pass to the NEXT page button.
    */
@@ -35,7 +49,7 @@ interface PaginationProps {
   /**
    * Range of pages in paginator, not including navigation blocks (prev, next, first, last pages)
    */
-  pageRangeDisplayed?: number;
+  numberOfPagesDisplayed?: number;
   /**
    * The text (or react node) to pass to the PREVIOUS page button.
    */
@@ -48,20 +62,22 @@ const Pagination: FC<PaginationProps> = ({
   onChange,
   totalItemsCount,
   arePagesVisible = false,
-  nextPageText = 'Next',
-  pageRangeDisplayed = 5,
-  prevPageText = 'Previous',
+  className = undefined,
   isCompact = false,
+  isTotalVisible = true,
+  nextPageText = 'Next',
+  numberOfPagesDisplayed = 5,
+  prevPageText = 'Previous',
 }) => {
   const getPageRange = () => (
-    pageRangeDisplayed > Math.ceil(totalItemsCount / itemsPerPage)
+    numberOfPagesDisplayed > Math.ceil(totalItemsCount / itemsPerPage)
       ? Math.ceil(totalItemsCount / itemsPerPage)
-      : pageRangeDisplayed
+      : numberOfPagesDisplayed
   );
 
   const pageTotal = Math.ceil(totalItemsCount / itemsPerPage);
 
-  const getActivePageRange = () => {
+  const getActiveListRange = () => {
     const activePageRange: { first?: number; last?: number; } = {};
 
     if (activePage === 1) {
@@ -80,24 +96,61 @@ const Pagination: FC<PaginationProps> = ({
 
   const renderPages = () => {
     const pages = [];
-    for (let i = 1; i <= getPageRange(); i += 1) {
-      pages.push(i);
-    }
+    let startingPage = 1;
+    let endingPage = getPageRange();
 
-    return pages.map(pageNumber => (
+    const PageButton = ({
+      pageNumber,
+      buttonClassName,
+      isPage = true,
+    }: {
+      pageNumber: number;
+      buttonClassName?: string; // eslint-disable-line react/require-default-props
+      isPage?: boolean; // eslint-disable-line react/require-default-props
+    }) => (
       <Button
         onClick={() => onChange(pageNumber)}
         isOutlined={activePage !== pageNumber}
         size={isCompact ? 'sm' : 'md'}
-        // variant={activePage !== pageNumber ? 'light' : 'primary'}
         style={{
           minWidth: isCompact ? '33px' : '42px',
           borderRadius: 0,
-          ...pageNumber !== pageTotal && { borderRight: '0' },
+          border: 0,
         }}
+        className={buttonClassName}
       >
-        {pageNumber}
+        {isPage ? pageNumber : '...'}
       </Button>
+    );
+
+    if (activePage + numberOfPagesDisplayed > pageTotal) {
+      startingPage = pageTotal - (numberOfPagesDisplayed - 1);
+      endingPage = startingPage + (numberOfPagesDisplayed - 1);
+    } else if (activePage > numberOfPagesDisplayed && (activePage + numberOfPagesDisplayed) <= pageTotal) {
+      startingPage = activePage - (Math.floor(numberOfPagesDisplayed / 2));
+      endingPage = startingPage + (numberOfPagesDisplayed - 1);
+    }
+
+    for (let i = startingPage; i <= endingPage; i += 1) {
+      pages.push({ pageNumber: i });
+    }
+
+    if (pageTotal > pages[pages.length - 1].pageNumber) {
+      pages.push(
+        { pageNumber: activePage + numberOfPagesDisplayed, isPage: false },
+        { pageNumber: pageTotal },
+      );
+    }
+
+    if (activePage > numberOfPagesDisplayed) {
+      pages.unshift(
+        { pageNumber: 1 },
+        { pageNumber: activePage - numberOfPagesDisplayed, isPage: false },
+      );
+    }
+
+    return pages.map(page => (
+      <PageButton {...page} />
     ));
   };
 
@@ -108,6 +161,7 @@ const Pagination: FC<PaginationProps> = ({
       alignItems="center"
       justifyContent="space-between"
       padding="lg"
+      className={classNames(className)}
     >
       <Box
         direction="row"
@@ -144,7 +198,9 @@ const Pagination: FC<PaginationProps> = ({
           tablet: 'block',
         }}
       >
-        {`Showing ${getActivePageRange().first}-${getActivePageRange().last} of ${totalItemsCount}`}
+        {isTotalVisible && (
+          `Showing ${getActiveListRange().first}-${getActiveListRange().last} of ${totalItemsCount}`
+        )}
       </Box>
     </Box>
   );
