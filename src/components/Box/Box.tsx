@@ -9,6 +9,7 @@ import {
 import classNames from 'classnames';
 import {
   FontSize,
+  FontWeight,
   FontColor,
   BrandColor,
   SpacingSize,
@@ -93,9 +94,14 @@ export interface BoxProps {
    */
   flex?: CssFlexValue | ResponsiveProp<CssFlexValue>;
   /**
-   * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box text
+   * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box's text
    */
   fontSize?: FontSize | ResponsiveProp<FontSize>;
+
+  /**
+   * The [font weight token](/?path=/story/design-tokens-font-weight--page) identifier for the Box's text
+   */
+  fontWeight?: FontWeight | ResponsiveProp<FontWeight>;
   /**
    * The height of the element. Can be given a standard css value (px, rem, em, %),
    * or a [height token](/?path=/docs/design-tokens-height--page)
@@ -177,6 +183,7 @@ const Box: FC<BoxProps> = ({
   direction = 'column',
   flex = undefined,
   fontSize = 'inherit',
+  fontWeight = undefined,
   height = undefined,
   justifyContent = undefined,
   margin = undefined,
@@ -221,6 +228,7 @@ const Box: FC<BoxProps> = ({
     cssShorthandToClasses('border-width', borderWidth),
     generateResponsiveClasses('border-color', borderColor),
     generateResponsiveClasses('font-color', color),
+    generateResponsiveClasses('font-weight', fontWeight),
   );
 
   const boxStyles = {
