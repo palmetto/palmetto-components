@@ -1,0 +1,36 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Pagination from './Pagination';
+// import Heading from '../Heading/Heading';
+// import Button from '../Button/Button';
+
+<Meta
+  title="Components/Pagination"
+  component={Pagination}
+/>
+
+# Pagination
+
+Use pagination to improve user scanning, as well as load times, for large collections or lists.
+
+## Props
+
+<ArgsTable of={Pagination} />
+
+## Default
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      return (
+        <Pagination
+          activePage={1}
+          itemsPerPage={20}
+          onChange={pageNumber => alert(`clicked page ${pageNumber}`)}
+          totalItemsCount={100}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
