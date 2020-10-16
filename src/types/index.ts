@@ -19,6 +19,7 @@ export type {
   BorderRadiusSize,
   BoxShadowSize,
   FontSize,
+  FontWeight,
   HeightSize,
   LineHeightSize,
   OpacitySize,
@@ -52,11 +53,11 @@ export type StylesAndClasses<T> = {
   classes?: string[];
 }
 
-export type CssDimensionAbbreviationAbbreviation = 'h' | 'w' | 'mw' | 'mh';
+export type CssDimensionAbbreviation = 'h' | 'w' | 'mw' | 'mh';
 
-export type CssSpacingAbbreviationAbbreviation = 'm' | 'p';
+export type CssSpacingAbbreviation = 'm' | 'p';
 
-export type CssJustifyContentValueValue =
+export type CssJustifyContentValue =
   'space-around' |
   'space-between' |
   'center' |
@@ -65,7 +66,7 @@ export type CssJustifyContentValueValue =
   'flex-start' |
   'stretch';
 
-export type CssAlignContentValueValue =
+export type CssAlignContentValue =
   'flex-start' |
   'flex-end' |
   'center' |
@@ -73,23 +74,23 @@ export type CssAlignContentValueValue =
   'space-between' |
   'space-around';
 
-export type CssFlexValueDirectionValueValue = 'column' | 'column-reverse' | 'row' | 'row-reverse' | undefined;
+export type CssFlexDirectionValue = 'column' | 'column-reverse' | 'row' | 'row-reverse' | undefined;
 
-export type CssAlignItemsValueValue =
+export type CssAlignItemsValue =
   'flex-start' |
   'flex-end' |
   'center' |
   'baseline' |
   'stretch';
 
-export type CssFlexValueValue =
+export type CssFlexValue =
   'auto' |
   'initial' |
   'none' |
   'inherit' |
   'unset';
 
-export type CssOverflowValueValue =
+export type CssOverflowValue =
   'visible' |
   'hidden' |
   'clip' |

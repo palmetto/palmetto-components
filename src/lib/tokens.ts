@@ -7,6 +7,7 @@ import {
   BreakpointSizeWithBase,
   FontSize,
   FontColor,
+  FontWeight,
   SpacingSize,
   Breakpoint,
   BrandColor,
@@ -43,6 +44,9 @@ export const FONT_COLOR_VALUES = Object.values(color.font);
 
 export const FONT_SIZE_OPTIONS = Object.keys(size.font) as FontSize[];
 export const FONT_SIZE_VALUES = Object.values(size.font);
+
+export const FONT_WEIGHT_OPTIONS = Object.keys(size['font-weight']) as FontWeight[];
+export const FONT_WEIGHT_VALUES = Object.values(size['font-weight']);
 
 export const SPACING_OPTIONS = Object.keys(size.spacing) as SpacingSize[];
 export const SPACING_VALUES = Object.values(size.spacing);
