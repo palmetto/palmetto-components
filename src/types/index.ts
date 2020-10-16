@@ -100,7 +100,7 @@ export type CssOverflowValue =
   'initial' |
   'unset';
 
-export type CssDisplayValue = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
+export type CssDisplayValue = 'none' | 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
 
 export type BaseSpacing = SpacingSize | string | undefined;
 

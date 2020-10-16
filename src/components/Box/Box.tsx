@@ -321,8 +321,6 @@ const Box: FC<BoxProps> = ({
   const decorateChildren = (child: ReactElement, i: number, childrenArr: ReactElement[]) => {
     if (i === childrenArr.length - 1 || !child) return child; // Not gap if child is last element.
 
-    console.log(child);
-
     const childClasses = classNames(child.props.className, [...new Set(childGapClasses)]);
 
     return cloneElement(child, {
@@ -332,7 +330,7 @@ const Box: FC<BoxProps> = ({
   };
 
   const flattenedChildren = Array.isArray(children) ? children.flat() : children;
-  let decoratedChildren;
+  let decoratedChildren = flattenedChildren;
 
   if (childGapClasses && Array.isArray(children)) {
     decoratedChildren = (flattenedChildren as ReactElement[]).map(decorateChildren);
