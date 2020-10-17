@@ -6,6 +6,11 @@ import {
 } from 'react';
 
 import {
+  ValueType,
+  OptionTypeBase,
+} from 'react-select';
+
+import {
   SpacingSize,
   BreakpointSize,
   WidthSize,
@@ -100,7 +105,7 @@ export type CssOverflowValue =
   'initial' |
   'unset';
 
-export type CssDisplayValue = 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
+export type CssDisplayValue = 'none' | 'flex' | 'inline-flex' | 'block' | 'inline-block' | 'inline' | 'inherit';
 
 export type BaseSpacing = SpacingSize | string | undefined;
 
@@ -166,3 +171,10 @@ export type EventWithColumnKey =
     KeyboardEvent<HTMLTableHeaderCellElement>
   )
   & { sortedKey: Key | undefined; };
+
+export type SimulatedEventPayloadType = {
+  target: {
+    name: string;
+    value: ValueType<OptionTypeBase>;
+  };
+};
