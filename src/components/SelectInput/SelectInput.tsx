@@ -2,24 +2,18 @@ import React, { FC, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import Select, {
   components,
-  ValueType,
-  OptionTypeBase,
   FocusEventHandler,
   IndicatorProps,
+  OptionTypeBase,
+  ValueType,
 } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { SimulatedEventPayloadType } from '../../types';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
-
-type SimulatedEventPayloadType = {
-  target: {
-    name: string;
-    value: ValueType<OptionTypeBase>;
-  };
-};
 
 interface SelectInputProps {
   /**

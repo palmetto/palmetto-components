@@ -2,7 +2,6 @@ import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import Box from '../Box/Box';
 import Button from '../Button/Button';
-// import SelectInput from '../SelectInput/SelectInput';
 
 interface PaginationProps {
   /**
@@ -29,7 +28,7 @@ interface PaginationProps {
   /**
    * Custom class to pass down to the pagination container.
    */
-  className?: boolean;
+  className?: string;
   /**
    * Pass true to render a version of Pagination with smaller buttons.
    */
@@ -179,7 +178,6 @@ const Pagination: FC<PaginationProps> = ({
         </Button>
         {arePagesVisible && (
           <Box direction="row">
-            {/* <SelectInput  */}
             {renderPages()}
           </Box>
         )}
@@ -193,10 +191,12 @@ const Pagination: FC<PaginationProps> = ({
         </Button>
       </Box>
       <Box
+        as="p"
         display={{
           base: 'none',
           tablet: 'block',
         }}
+        fontSize={isCompact ? 'sm' : 'md'}
       >
         {isTotalVisible && (
           `Showing ${getActiveListRange().first}-${getActiveListRange().last} of ${totalItemsCount}`
