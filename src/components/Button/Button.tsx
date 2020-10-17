@@ -3,8 +3,6 @@ import React, {
   ReactNode,
   MouseEvent,
   FocusEvent,
-  ButtonHTMLAttributes,
-  AnchorHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
