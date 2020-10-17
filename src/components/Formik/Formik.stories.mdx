@@ -83,6 +83,10 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
               firstName: '',
               lastName: '',
               email: '',
+              phoneInputMask: '',
+              phoneInputMaskWithUnformattedValue: '',
+              creditCardInputMask: '',
+              creditCardInputMaskWithUnformattedValue: '',
               areTermsChecked: false,
               flavor: null,
               flavor2: null,
@@ -129,7 +133,49 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                 </div>
                 <div style={{ marginBottom: '1.25rem' }}>
                   <Field
-                    label="Flavor with custom onChange"
+                    label="Phone Input Mask Returning a Formatted Value"
+                    name="phoneInputMask"
+                    id="phoneInputMask"
+                    component={FormikTextInput}
+                    inputMask="phone"
+                    type="tel"
+                  />
+                </div>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <Field
+                    label="Phone Input Mask Returning an Unformatted Value"
+                    name="phoneInputMaskWithUnformattedValue"
+                    id="phoneInputMaskWithUnformattedValue"
+                    component={FormikTextInput}
+                    inputMask="phone"
+                    type="tel"
+                    onChange={event => { setFieldValue('phoneInputMaskWithUnformattedValue', event.target.rawValue); }}
+                  />
+                </div>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <Field
+                    label="Credit Card Input Mask Returning a Formatted Value"
+                    name="creditCardInputMask"
+                    id="creditCardInputMask"
+                    component={FormikTextInput}
+                    inputMask="creditCard"
+                    type="tel"
+                  />
+                </div>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <Field
+                    label="Credit Card Input Mask Returning an Unformatted Value"
+                    name="creditCardInputMaskWithUnformattedValue"
+                    id="creditCardInputMaskWithUnformattedValue"
+                    component={FormikTextInput}
+                    inputMask="creditCard"
+                    type="tel"
+                    onChange={event => { setFieldValue('creditCardInputMaskWithUnformattedValue', event.target.rawValue); }}
+                  />
+                </div>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <Field
+                    label="Flavor with Custom onChange"
                     name="flavor"
                     id="flavor"
                     options={flavorOptions}
