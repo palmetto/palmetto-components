@@ -70,6 +70,10 @@ interface ButtonProps {
    * The color variant of the button
    */
   variant?: 'primary' | 'success' | 'danger' | 'light' | 'dark';
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 const Button: FC<ButtonProps> = ({
