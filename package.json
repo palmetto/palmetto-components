@@ -24,7 +24,7 @@
   "peerDependencies": {
     "prop-types": ">=15.0.0",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "scripts": {
     "build": "BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js && tsc",
