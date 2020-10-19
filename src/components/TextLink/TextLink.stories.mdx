@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TextLink from './TextLink';
@@ -41,14 +41,14 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
 
 ## With React Router
 
-If you're doing in-app navigation and need to render a [React Router Link](https://reactrouter.com/web/api/Link) component, pass a `to`
-attribute as opposed to an href. NOTE: DO NOT pass these props simultaneously. The API for
+If you're doing in-app navigation and need to render a [React Router Link](https://reactrouter.com/web/api/Link) component,
+simply use React Router's `component` prop on the `Link` component. All Link props will be passed down to the anchor tag.
 
 <Canvas>
   <Story name="With React Router" decorators={[Story => <BrowserRouter><Story /></BrowserRouter>]}>
     {() => {
       return (
-        <TextLink to="/">Click me!</TextLink>
+        <Link to="/" component={TextLink}>Click me!</Link>
       );
     }}
   </Story>
@@ -75,7 +75,7 @@ APIs for each option
   <Story name="With Link props" decorators={[Story => <BrowserRouter><Story /></BrowserRouter>]}>
     {() => {
       return (
-        <TextLink to="/" replace>I will replace the current history entry</TextLink>
+        <Link to="/" replace component={TextLink}>I will replace the current history entry</Link>
       );
     }}
   </Story>
