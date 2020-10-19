@@ -14,7 +14,7 @@ interface ButtonProps {
   /**
    * Contents of the button.
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * HTML element that will be rendered.
    */
@@ -54,8 +54,10 @@ interface ButtonProps {
   tabIndex?: number;
   /**
    * The Button's type.
+   * NOTE: this is not restricted to button types since we allow
+   * rendering a button as a different HTML element than a button (`<a>` or `<input>`).
    */
-  type?: 'button' | 'submit' | 'reset';
+  type?: 'submit' | 'reset' | 'button' | string;
   /**
    * Callback when Button is pressed.
    */
@@ -83,7 +85,7 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({
-  children,
+  children = null,
   as = 'button',
   className = '',
   fullWidth = false,
@@ -148,7 +150,7 @@ const Button: FC<ButtonProps> = ({
     id,
     href,
     className: buttonClasses,
-    children: buttonContent,
+    ...children && { children: buttonContent },
     disabled,
     onBlur: handleBlur,
     onClick: handleClick,
