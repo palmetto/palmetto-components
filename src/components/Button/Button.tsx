@@ -3,8 +3,10 @@ import React, {
   ReactNode,
   MouseEvent,
   FocusEvent,
+  createElement,
 } from 'react';
 import classNames from 'classnames';
+import getElementType from '../../lib/getElementType';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
@@ -13,6 +15,10 @@ interface ButtonProps {
    * Contents of the button.
    */
   children: ReactNode;
+  /**
+   * HTML element that will be rendered.
+   */
+  as?: 'button' | 'a' | 'input';
   /**
    * Additional ClassNames to add to button.
    */
@@ -78,6 +84,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = ({
   children,
+  as = 'button',
   className = '',
   fullWidth = false,
   id = undefined,
@@ -126,7 +133,7 @@ const Button: FC<ButtonProps> = ({
     return variant === 'light' ? 'grey' : 'white';
   };
 
-  const content = (
+  const buttonContent = (
     <>
       {isLoading && (
         <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
@@ -135,37 +142,21 @@ const Button: FC<ButtonProps> = ({
     </>
   );
 
-  return (
-    href ? (
-      <a
-        href={href}
-        className={buttonClasses}
-        id={id}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        tabIndex={tabIndex}
-        {...restProps}
-      >
-        {content}
-      </a>
-    ) : (
-      <button
-        id={id}
-        type={type} // eslint-disable-line react/button-has-type
-        disabled={disabled}
-        className={buttonClasses}
-        onClick={handleClick}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        tabIndex={tabIndex}
-        aria-label={isLoading ? 'Loading' : undefined}
-        aria-busy={isLoading}
-        {...restProps}
-      >
-        {content}
-      </button>
-    )
-  );
+  const buttonElement = getElementType(Button, { as });
+
+  return createElement(buttonElement, {
+    id,
+    href,
+    className: buttonClasses,
+    children: buttonContent,
+    disabled,
+    onBlur: handleBlur,
+    onClick: handleClick,
+    onFocus: handleFocus,
+    type,
+    tabIndex,
+    ...restProps,
+  });
 };
 
 export default Button;

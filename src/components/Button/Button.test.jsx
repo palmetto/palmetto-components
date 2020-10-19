@@ -142,9 +142,9 @@ describe('Button', () => {
         expect(buttonElement).toBeInTheDocument();
       });
 
-      test('it renders an anchor tag if an href attribute is passed as a prop', () => {
+      test('it renders an anchor tag if as prop `a` is passed', () => {
         render(
-          <Button href="http://palmetto.com">
+          <Button href="http://palmetto.com" as="a">
             hey there
           </Button>,
         );
