@@ -1,5 +1,5 @@
 import React, { FC, AnchorHTMLAttributes } from 'react';
-import { Link, LinkProps } from 'react-router-dom';
+import { LinkProps } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './TextLink.module.scss';
 
@@ -20,9 +20,11 @@ interface TextLinkAnchorProps extends TextLinkBaseProps, AnchorHTMLAttributes<HT
    */
   href: string;
   /**
-   * Target URL (React Router)
+   * `navigate` prop which is passed when using the `component` prop in a react router `Link`.
+   * This needs to be documented in the component interface but will be stripped out automatically
+   * from the anchor tag.
    */
-  to?: never;
+  navigate: any // eslint-disable-line
 }
 
 interface TextLinkRouterProps extends TextLinkBaseProps, LinkProps {
@@ -30,6 +32,10 @@ interface TextLinkRouterProps extends TextLinkBaseProps, LinkProps {
    * Target URL
    */
   href?: never;
+  /**
+   * `navigate` prop which is passed when using the `component` prop in a react router `Link`.
+   */
+  navigate: any; // eslint-disable-line
 }
 
 type TextLinkProps = TextLinkAnchorProps | TextLinkRouterProps;
@@ -38,8 +44,7 @@ const TextLink: FC<TextLinkProps> = ({
   children,
   className = null,
   variant = 'primary',
-  href = null,
-  to = '',
+  navigate, // eslint-disable-line
   ...restProps
 }) => {
   const linkClasses = classNames(
@@ -49,15 +54,9 @@ const TextLink: FC<TextLinkProps> = ({
   );
 
   return (
-    href ? (
-      <a href={href} className={linkClasses} {...restProps}>
-        {children}
-      </a>
-    ) : (
-      <Link to={to} className={linkClasses} {...restProps}>
-        {children}
-      </Link>
-    )
+    <a className={linkClasses} {...restProps}>
+      {children}
+    </a>
   );
 };
 
