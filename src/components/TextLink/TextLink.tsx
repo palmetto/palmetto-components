@@ -24,7 +24,7 @@ interface TextLinkAnchorProps extends TextLinkBaseProps, AnchorHTMLAttributes<HT
    * This needs to be documented in the component interface but will be stripped out automatically
    * from the anchor tag.
    */
-  navigate: any // eslint-disable-line
+  navigate?: any // eslint-disable-line
 }
 
 interface TextLinkRouterProps extends TextLinkBaseProps, LinkProps {
@@ -32,10 +32,7 @@ interface TextLinkRouterProps extends TextLinkBaseProps, LinkProps {
    * Target URL
    */
   href?: never;
-  /**
-   * `navigate` prop which is passed when using the `component` prop in a react router `Link`.
-   */
-  navigate: any; // eslint-disable-line
+  navigate?: any; // eslint-disable-line
 }
 
 type TextLinkProps = TextLinkAnchorProps | TextLinkRouterProps;
@@ -43,8 +40,8 @@ type TextLinkProps = TextLinkAnchorProps | TextLinkRouterProps;
 const TextLink: FC<TextLinkProps> = ({
   children,
   className = null,
+  navigate = null, // eslint-disable-line
   variant = 'primary',
-  navigate, // eslint-disable-line
   ...restProps
 }) => {
   const linkClasses = classNames(
