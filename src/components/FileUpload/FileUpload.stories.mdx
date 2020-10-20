@@ -149,4 +149,28 @@ HTML accept prop on the input element. [Read more](https://developer.mozilla.org
   </Story>
 </Canvas>
 
+## Multiple Files
+
+Upload multiple files with the `multiple` prop, note user is expected to select multiple files
+in their finder/explorer. It will not work properly if the user clicks the button multiple times.
+
+<Canvas>
+  <Story name="Multiple files">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
+      return (
+        <FileUpload
+          labelText="My File"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          multiple
+          buttonText="Upload Many Files"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 

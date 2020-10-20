@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudUploadAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
-import Button, { ButtonVariant, ButtonSize } from '../Button/Button';
+import Button, { ButtonSize } from '../Button/Button';
 
 interface FileUploadProps {
   /**
@@ -20,6 +20,10 @@ interface FileUploadProps {
    */
   labelText: string;
   /**
+   * Name attribute for input element.
+   */
+  name: string;
+  /**
    * Callback fired when there is a change event on the file input.
    * Files can be accessed from this change event as `event.target.files`;
    */
@@ -30,10 +34,10 @@ interface FileUploadProps {
    */
   accept?: string;
   /**
-   * Text to be rendered in file input button.
+   * Props for file upload button styles.
    */
   buttonProps?: {
-    variant?: ButtonVariant;
+    variant?: 'light' | 'dark';
     className?: string;
     size?: ButtonSize;
     fullWidth?: boolean;
@@ -43,10 +47,6 @@ interface FileUploadProps {
    * Text to be rendered in file input button.
    */
   buttonText?: ReactNode;
-  /**
-   * Controls whether an upload icon is shown in the button.
-   */
-  hasIcon?: boolean;
   /**
    * The max number of characters displayed in file names.
    * The component will preserve the the first n / 2 characters and the last n / 2 characters,
@@ -59,6 +59,18 @@ interface FileUploadProps {
    */
   files?: FileList;
   /**
+   * Controls whether an upload icon is shown in the button.
+   */
+  hasIcon?: boolean;
+  /**
+   * Whether the file upload is disabled.
+   */
+  isDisabled?: boolean;
+  /**
+   * Input `multiple` attribute, pass `true` if you wish to upload multiple files.
+   */
+  multiple?: boolean;
+  /**
    * Additional props to be spread to rendered element
    */
   [x: string]: any; // eslint-disable-line
@@ -67,13 +79,18 @@ interface FileUploadProps {
 const FileUpload: FC<FileUploadProps> = ({
   id,
   labelText,
+  name,
   onChange,
   accept = undefined,
-  buttonProps = {},
+  buttonProps = {
+    variant: 'light',
+  },
   buttonText = 'Upload File',
-  hasIcon = true,
   fileNameMaxLength = null,
   files = null,
+  hasIcon = true,
+  isDisabled = false,
+  multiple = false,
   ...restProps
 }) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
@@ -88,12 +105,30 @@ const FileUpload: FC<FileUploadProps> = ({
     return `${fileName.substr(0, half)}...${fileName.substr(fileName.length - half, fileName.length)}`;
   };
 
+  const renderFiles = () => (
+    files && (
+      <Box>
+        {[...Array.from(files)].map((file: File) => (
+          <p key={file.name} className="font-size-sm m-top-xs">
+            <FontAwesomeIcon icon={faPaperclip} className="font-color-grey-light m-right-xs" />
+            {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
+          </p>
+        ))}
+      </Box>
+    )
+  );
+
   return (
     <>
       <FormLabel inputId={id} className="display-none">
         {labelText}
       </FormLabel>
-      <Button onClick={handleClick} {...buttonProps} aria-controls="fileupload">
+      <Button
+        onClick={handleClick}
+        aria-controls="fileupload"
+        isDisabled={isDisabled}
+        {...buttonProps}
+      >
         {hasIcon && <FontAwesomeIcon icon={faCloudUploadAlt} className="m-right-xs" />}
         {buttonText}
         <input
@@ -101,22 +136,15 @@ const FileUpload: FC<FileUploadProps> = ({
           className="display-none"
           type="file"
           id={id}
-          name="hmmm"
+          name={name}
           accept={accept}
           onChange={onChange}
+          multiple={multiple}
+          disabled={isDisabled}
           {...restProps}
         />
       </Button>
-      {files && (
-        <Box>
-          {[...Array.from(files)].map((file: File) => (
-            <p key={file.name} className="font-size-sm m-top-xs">
-              <FontAwesomeIcon icon={faPaperclip} className="font-color-grey-light m-right-xs" />
-              {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
-            </p>
-          ))}
-        </Box>
-      )}
+      {renderFiles()}
     </>
   );
 };
