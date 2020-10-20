@@ -10,6 +10,9 @@ import getElementType from '../../lib/getElementType';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
+export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark';
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
 interface ButtonProps {
   /**
    * Contents of the button.
@@ -73,11 +76,11 @@ interface ButtonProps {
   /**
    * The size of the button.
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: ButtonSize;
   /**
    * The color variant of the button
    */
-  variant?: 'primary' | 'success' | 'danger' | 'light' | 'dark';
+  variant?: ButtonVariant;
   /**
    * Additional props to be spread to rendered element
    */

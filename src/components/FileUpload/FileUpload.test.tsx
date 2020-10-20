@@ -5,9 +5,9 @@ import FileUpload from './FileUpload';
 describe('FileUpload', () => {
   describe('Default', () => {
     it('renders a file upload input with default props', () => {
-      render(<FileUpload label="file-input" id="file-input" />);
+      render(<FileUpload id="file-input" labelText="myFileUpload" onChange={() => null} />);
 
-      const fileInput = screen.getByLabelText('file-input');
+      const fileInput = screen.getByLabelText('myFileUpload');
 
       expect(fileInput).toBeInTheDocument();
     });

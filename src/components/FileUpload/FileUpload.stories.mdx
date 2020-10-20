@@ -10,9 +10,9 @@ import FileUpload from './FileUpload';
   component={FileUpload}
 />
 
-# Pagination
+# File Upload
 
-Use pagination to improve user scanning, as well as load times, for large collections or lists.
+Use File Upload to capture file uploads in forms or elsewhere.
 
 ## Props
 
@@ -23,9 +23,127 @@ Use pagination to improve user scanning, as well as load times, for large collec
 <Canvas>
   <Story name="Default">
     {() => {
-      {/* const [activePage, setActivePage] = useState(1); */}
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
       return (
-        <FileUpload label="My File" id="myFile" />
+        <FileUpload labelText="My File" id="myFile" onChange={handleChange} files={files} />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Truncated File Names
+
+In cases where a file name is excessive it can be helpful to truncate it for display in a form, however, it is valuable
+to keep file extensions intact so the user is clear on what they're uploading. In this case, we add ellipsis,
+in the middle of the text, while preserving the beginning and end of the uploaded file name. This example showcases
+a max length of 20 characters for the file name.
+
+<Canvas>
+  <Story name="Truncated File Name">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
+      return (
+        <FileUpload labelText="My File" id="myFile" onChange={handleChange} files={files} fileNameMaxLength={20} />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Button Variations
+
+The input can be rendered with all the same variations as the underlying `Button` component, simply
+by passing these props to the `buttonProps` object. Not all button props are exposed, since some need to be
+explicitly used for the input, but all standard styling props are available.
+
+<Canvas>
+  <Story name="Button Variations">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
+      return (
+        <FileUpload
+          labelText="My File"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          buttonProps={{
+            variant: 'danger',
+            size: 'lg',
+            isOutlined: true,
+            className: 'my-custom-class',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Custom Button Text
+
+You can pass down custom text to be displayed in the button
+
+<Canvas>
+  <Story name="Button text">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
+      return (
+        <FileUpload
+          labelText="My File"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          buttonText="Upload Your Power Bill"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With No Icon
+
+Hide the icon with the boolean `hasIcon`
+
+<Canvas>
+  <Story name="Hidden Icon">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
+      return (
+        <FileUpload
+          labelText="My File"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          buttonText="Upload Your Power Bill"
+          hasIcon={false}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Specify File Types
+
+Use the `accept` prop to specify which file types the user can upload. This uses the native
+HTML accept prop on the input element. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept)
+
+<Canvas>
+  <Story name="File Types">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
+      return (
+        <FileUpload
+          labelText="My File"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          buttonText="Upload Only Images"
+          accept="image/*"
+        />
       );
     }}
   </Story>
