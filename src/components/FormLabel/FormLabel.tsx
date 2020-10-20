@@ -64,7 +64,7 @@ const FormLabel: FC<FormLabelProps> = ({
   return (
     <label id={`${inputId}Label`} className={labelClasses} htmlFor={inputId}>
       {children}
-      {isFieldRequired && <span>&nbsp;*</span>}
+      {isFieldRequired && <>&nbsp;*</>}
       {helpText && (
         <Box as="p" display="block" fontSize="sm" color="grey" className={styles['help-text']}>
           {helpText}
