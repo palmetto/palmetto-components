@@ -136,9 +136,9 @@ describe('FormikTextInput', () => {
       test('Input correctly passes props to dependency label component', async () => {
         const { getByText } = render(renderForm('', { isRequired: true }));
         const submitButton = getByText('submit');
-        const labelElement = getByText(testLabelName);
+        const labelElement = getByText(`${testLabelName} *`);
         expect(labelElement).toHaveAttribute('for', testLabelName);
-        expect(labelElement).toHaveTextContent('*');
+        expect(labelElement).toBeInTheDocument();
 
         fireEvent.click(submitButton);
         await waitFor(() => {
