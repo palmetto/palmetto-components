@@ -1019,8 +1019,8 @@ This box will have different width and height values for each of its base, table
   <Story name="responsive width and height">
     {() => {
       const activeBreakpoint = useBreakpoint();
-      const width = { base: '50%', tablet: '60%', desktop: '70%', hd: '100%' };
-      const height = { base: '100px', tablet: '200px', desktop: '300px', hd: '400px' };
+      const width = { base: '50', tablet: '60', desktop: '70', hd: '100' };
+      const height = { base: 'md', tablet: 'lg', desktop: 'xl', hd: '2xl' };
       return (
         <Box
           padding="sm"
