@@ -33,6 +33,7 @@ describe('Button', () => {
       { name: 'Small', class: 'sm' },
       { name: 'Medium', class: '' },
       { name: 'Large', class: 'lg' },
+      { name: 'XSmall', class: 'xs' },
     ];
 
     sizes.map(size => (
