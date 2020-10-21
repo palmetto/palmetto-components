@@ -1,0 +1,79 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale3d(0.3, 0.3, 0.3);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  z-index: 100;
+  background-color: rgba(77, 82, 79, 0.5);
+  overflow: hidden;
+
+  @media (min-width: $size-breakpoint-tablet) {
+    grid-template-rows: minmax(40px, 1fr) auto minmax(40px, 1fr);
+    grid-template-columns: 40px auto 40px;
+    align-items: center;
+  }
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  grid-row: 1;
+  grid-column: 1;
+  z-index: 101;
+  margin: 0;
+  background-color: white;
+  padding: 0;
+  width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+  animation: slideInUp 0.4s ease-in-out;
+
+  @media (min-width: $size-breakpoint-tablet) {
+    position: unset;
+    grid-row: 2;
+    grid-column: 2;
+    margin: auto;
+    outline: none;
+    border-radius: var(--size-border-radius-md);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05),
+      0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 50vw;
+    min-height: unset;
+    max-height: calc(100vh - 80px);
+    animation: zoomIn 0.2s ease-out;
+  }
+}
