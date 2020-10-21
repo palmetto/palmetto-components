@@ -3,10 +3,10 @@ import React, {
   FC,
   ReactNode,
   ChangeEvent,
-  ClickEvent,
+  MouseEvent,
 } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudUploadAlt, faPaperclip, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCloudUploadAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -82,7 +82,7 @@ interface FileUploadProps {
   /**
    * Input `multiple` attribute, pass `true` if you wish to upload multiple files.
    */
-  onClearFiles?: (event: ClickEvent<HTMLButtonElement>) => void;
+  onClearFiles?: (event: MouseEvent<HTMLButtonElement>) => void;
   /**
    * Size of component. Matches Button sizes.
    */

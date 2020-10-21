@@ -7,7 +7,7 @@ import classNames from 'classnames';
 
 interface InputValidationMessageProps {
   children: ReactNode;
-  size: 'xs' | 'sm' | 'md';
+  size?: 'xs' | 'sm' | 'md';
 }
 
 const InputValidationMessage: FC<InputValidationMessageProps> = ({
