@@ -120,6 +120,31 @@ describe('FileUpload', () => {
 
       expect(mockedHandleChange).toHaveBeenCalledTimes(1);
     });
+
+    it('fires the onClear callback when clear button is clicked', () => {
+      const mockedHandleClear = jest.fn();
+      const file = new File(['(⌐□_□)'], 'super-duper--duper-long-file-name.png', { type: 'image/png' });
+      const fileList: any = []; // eslint-disable-line
+      fileList[0] = file;
+      fileList.item = (index: number) => fileList[index];
+
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          files={fileList}
+          onClearFiles={mockedHandleClear}
+        />,
+      );
+
+      const clearButton = screen.getByText('Clear');
+
+      expect(clearButton).toBeInTheDocument();
+      fireEvent.click(clearButton);
+      expect(mockedHandleClear).toBeCalledTimes(1);
+    });
   });
 
   describe('Open File Reader', () => {
@@ -178,6 +203,58 @@ describe('FileUpload', () => {
       const fileName = screen.getByText('super...e.png');
 
       expect(fileName).toBeInTheDocument();
+    });
+  });
+
+  describe('Validation', () => {
+    it('is marked as required input when isRequired prop is passed', () => {
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          isRequired
+        />,
+      );
+
+      const fileInput = screen.getByLabelText('myFileUpload');
+
+      expect(fileInput).toHaveAttribute('required');
+    });
+
+    it('is shows an error when prop is passed', () => {
+      interface Props { size?: 'sm' | 'md' | 'lg'; }
+      const UploadComponent: FC<Props> = ({ size = 'md' }) => (
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          error="you did something wrong"
+          size={size}
+        />
+      );
+      const { rerender } = render(<UploadComponent />);
+      let error;
+      error = screen.getByText('you did something wrong');
+
+      expect(error).toBeInTheDocument();
+      expect(error).toHaveClass('font-size-sm');
+
+      rerender(<UploadComponent size="sm" />);
+
+      error = screen.getByText('you did something wrong');
+
+      expect(error).toBeInTheDocument();
+      expect(error).toHaveClass('font-size-xs');
+
+      rerender(<UploadComponent size="lg" />);
+
+      error = screen.getByText('you did something wrong');
+
+      expect(error).toBeInTheDocument();
+      expect(error).toHaveClass('font-size-md');
     });
   });
 });

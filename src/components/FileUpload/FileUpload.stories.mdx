@@ -6,6 +6,7 @@ import { faCloudUploadAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons
 import FileUpload from './FileUpload';
 import Heading from '../Heading/Heading';
 import Box from '../Box/Box';
+import Button from '../Button/Button';
 
 <Meta
   title="Components/Form Inputs/FileUpload"
@@ -135,6 +136,37 @@ some specific variations have been removed, providing a stricter subset for usag
   </Story>
 </Canvas>
 
+## Clearing Files
+
+Pass a callback function `onClearFiles` to handle the click event for clearing all files from the input.
+NOTE: since this is a controlled input, the callback itself will not clear any files, it is expected that 
+they are cleared at the top level where the `files` prop is emptied.
+
+<Canvas>
+  <Story name="Clear">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => {
+        setFiles(event.target.files);
+      };
+      const handleClear = (event) => {
+        setFiles(null);
+      }
+      return (
+        <Box childGap="md" direction="row">
+          <FileUpload
+            labelText="My File"
+            id="myFile"
+            onChange={handleChange}
+            files={files}
+            onClearFiles={handleClear}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Multiple Files
 
 Pass the `multiple` prop to let users select multiple files to upload.
@@ -250,6 +282,52 @@ Pass the `isDisabled` prop to render a disabled FileUpload.
           files={files}
           isDisabled
         />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Required
+
+Pass the `isRequired` prop to make the `input` required. Combine with the `error` prop to
+display a proper error when necessary.
+
+<Canvas>
+  <Story name="Required">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const [error, setError] = useState(null);
+      const handleChange = (event) => {
+        setFiles(event.target.files);
+        if (event.target.files.length > 0) {
+          setError(null);
+        }
+      };
+      const handleSubmit = (event) => {
+        if (files.length === 0) {
+          setError('This field is required');
+        } else {
+          alert('submitted successfully!');
+        }
+      };
+      return (
+        <Box childGap="md" direction="row">
+          <FileUpload
+            labelText="My File"
+            id="myFile"
+            onChange={handleChange}
+            files={files}
+            isRequired
+            size="sm"
+            error={error}
+            fileNameMaxLength={14}
+          />
+          <div>
+            <Button onClick={handleSubmit} size="sm">
+              Submit with no files to see error.
+            </Button>
+          </div>
+        </Box>
       );
     }}
   </Story>

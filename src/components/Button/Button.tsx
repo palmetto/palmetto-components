@@ -11,7 +11,7 @@ import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
 export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 
 interface ButtonProps {
   /**

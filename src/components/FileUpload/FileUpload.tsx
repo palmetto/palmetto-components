@@ -3,11 +3,13 @@ import React, {
   FC,
   ReactNode,
   ChangeEvent,
+  ClickEvent,
 } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudUploadAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import { faCloudUploadAlt, faPaperclip, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
+import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import Button, { ButtonSize } from '../Button/Button';
 
 interface FileUploadProps {
@@ -42,6 +44,11 @@ interface FileUploadProps {
    */
   className?: string;
   /**
+   * Mark the input field as invalid and display a validation message.
+   * Pass a string or node to render a validation message below the input.
+   */
+  error?: ReactNode;
+  /**
    * The max number of characters displayed in file names.
    * The component will preserve the the first n / 2 characters and the last n / 2 characters,
    * including the file extension. It will only truncate characters in the middle, following
@@ -65,9 +72,17 @@ interface FileUploadProps {
    */
   isDisabled?: boolean;
   /**
+   * Determines if input is required or not. (Label will have an asterisk if required).
+   */
+  isRequired?: boolean;
+  /**
    * Input `multiple` attribute, pass `true` if you wish to upload multiple files.
    */
   multiple?: boolean;
+  /**
+   * Input `multiple` attribute, pass `true` if you wish to upload multiple files.
+   */
+  onClearFiles?: (event: ClickEvent<HTMLButtonElement>) => void;
   /**
    * Size of component. Matches Button sizes.
    */
@@ -92,12 +107,15 @@ const FileUpload: FC<FileUploadProps> = ({
   accept = undefined,
   buttonText = 'Upload File',
   className = undefined,
+  error = null,
   fileNameMaxLength = null,
   files = null,
   fullWidth = false,
   hasIcon = true,
   isDisabled = false,
+  isRequired = false,
   multiple = false,
+  onClearFiles = undefined,
   size = 'md',
   variant = 'light',
   ...restProps
@@ -114,11 +132,22 @@ const FileUpload: FC<FileUploadProps> = ({
     return `${fileName.substr(0, half)}...${fileName.substr(fileName.length - half, fileName.length)}`;
   };
 
+  const messageFontSize = () => {
+    let fontSize: 'xs' | 'sm' | 'md' = 'sm';
+    if (size === 'sm') {
+      fontSize = 'xs';
+    } else if (size === 'lg') {
+      fontSize = 'md';
+    }
+
+    return fontSize;
+  };
+
   const renderFiles = () => (
     files && (
       <Box>
         {[...Array.from(files)].map((file: File) => (
-          <p key={file.name} className="font-size-sm m-top-xs">
+          <p key={file.name} className={`font-size-${messageFontSize()} m-top-xs`}>
             <FontAwesomeIcon icon={faPaperclip} className="font-color-grey-light m-right-xs" />
             {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
           </p>
@@ -148,6 +177,7 @@ const FileUpload: FC<FileUploadProps> = ({
           />
         )}
         {buttonText}
+        {isRequired && <>&nbsp;*</>}
         <input
           ref={hiddenFileInput}
           className="display-none"
@@ -159,10 +189,19 @@ const FileUpload: FC<FileUploadProps> = ({
           multiple={multiple}
           disabled={isDisabled}
           aria-disabled={isDisabled}
+          required={isRequired}
           {...restProps}
         />
       </Button>
+      {error && error !== true && (
+        <InputValidationMessage size={messageFontSize()}>{error}</InputValidationMessage>
+      )}
       {renderFiles()}
+      {files && onClearFiles && (
+        <Button variant="light" isOutlined size="xs" onClick={onClearFiles} className="m-top-xs">
+          Clear
+        </Button>
+      )}
     </Box>
   );
 };
