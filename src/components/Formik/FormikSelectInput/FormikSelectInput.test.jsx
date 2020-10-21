@@ -116,8 +116,7 @@ describe('SelectInput', () => {
       test('it renders an asterisk in the label', () => {
         render(renderForm([], { isRequired: true }));
 
-        expect(screen.getByText(testLabelName)).toBeInTheDocument();
-        expect(screen.getByText('*')).toBeInTheDocument();
+        expect(screen.getByText(`${testLabelName} *`)).toBeInTheDocument();
       });
     });
 

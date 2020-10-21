@@ -128,14 +128,19 @@ describe('Box', () => {
   });
 
   describe('wrap', () => {
-    test('box renders with wrap class is wrap is true', () => {
+    test('box renders with wrap class if wrap is true', () => {
       const { getByText } = render(<Box wrap>Hello</Box>);
       expect(getByText('Hello')).toHaveClass('flex-wrap');
     });
 
-    test('box renders with nowrap class is wrap is false', () => {
-      const { getByText } = render(<Box>Hello</Box>);
+    test('box renders with nowrap class if wrap is false', () => {
+      const { getByText } = render(<Box wrap={false}>Hello</Box>);
       expect(getByText('Hello')).toHaveClass('flex-nowrap');
+    });
+
+    test('box will not add wrap class if display is not flex', () => {
+      const { getByText } = render(<Box display="block" wrap>Hello</Box>);
+      expect(getByText('Hello')).not.toHaveClass('flex-wrap');
     });
   });
 

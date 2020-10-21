@@ -203,11 +203,8 @@ const Box: FC<BoxProps> = ({
   const maxHeightCss = getDimensionCss('mh', maxHeight);
   const maxWidthCss = getDimensionCss('mw', maxWidth);
 
-  const wrapClass = typeof display === 'string' && display.includes('flex') && wrap ? 'flex-wrap' : 'flex-nowrap';
-
   const boxClasses = classNames(
     className,
-    wrapClass,
     cssShorthandToClasses('m', margin),
     cssShorthandToClasses('p', padding),
     heightCss.classes,
@@ -230,6 +227,10 @@ const Box: FC<BoxProps> = ({
     generateResponsiveClasses('border-color', borderColor),
     generateResponsiveClasses('font-color', color),
     generateResponsiveClasses('font-weight', fontWeight),
+    {
+      'flex-wrap': typeof display === 'string' && display.includes('flex') && wrap,
+      'flex-nowrap': typeof display === 'string' && display.includes('flex') && wrap === false,
+    },
   );
 
   const boxStyles = {

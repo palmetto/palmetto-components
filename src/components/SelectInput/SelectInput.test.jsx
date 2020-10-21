@@ -206,8 +206,7 @@ describe('SelectInput', () => {
           />,
         );
 
-        expect(screen.getByText('Select Label')).toBeInTheDocument();
-        expect(screen.getByText('*')).toBeInTheDocument();
+        expect(screen.getByText('Select Label *')).toBeInTheDocument();
       });
     });
 

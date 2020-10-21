@@ -116,9 +116,9 @@ describe('TextareaInput', () => {
       test("it's label renders an asterisk indicating that it's required", () => {
         render(<TextareaInput {...baseProps} isRequired />);
 
-        const labelElement = screen.getByText(baseProps.label);
+        const labelElement = screen.getByText(`${baseProps.label} *`);
 
-        expect(labelElement).toHaveTextContent('*');
+        expect(labelElement).toBeInTheDocument();
       });
     });
 
