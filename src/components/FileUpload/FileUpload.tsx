@@ -34,19 +34,13 @@ interface FileUploadProps {
    */
   accept?: string;
   /**
-   * Props for file upload button styles.
-   */
-  buttonProps?: {
-    variant?: 'light' | 'dark';
-    className?: string;
-    size?: ButtonSize;
-    fullWidth?: boolean;
-    isOutlined?: boolean;
-  };
-  /**
    * Text to be rendered in file input button.
    */
   buttonText?: ReactNode;
+  /**
+   * Custom classname to apply to component wrapper.
+   */
+  className?: string;
   /**
    * The max number of characters displayed in file names.
    * The component will preserve the the first n / 2 characters and the last n / 2 characters,
@@ -58,6 +52,10 @@ interface FileUploadProps {
    * File list array-like
    */
   files?: FileList;
+  /**
+   * Whether to render the button with 100% width.
+   */
+  fullWidth?: boolean;
   /**
    * Controls whether an upload icon is shown in the button.
    */
@@ -71,7 +69,17 @@ interface FileUploadProps {
    */
   multiple?: boolean;
   /**
-   * Additional props to be spread to rendered element
+   * Size of component. Matches Button sizes.
+   */
+  size?: ButtonSize;
+  /**
+   * Color for button component. Matches a curated subset of button variants.
+   */
+  variant?: 'light' | 'dark';
+  /**
+   * Additional props to be spread. IMPORTANT: these will be spread ONLY to the
+   * `input` element in the component since it is the actual semantic file input
+   * present.
    */
   [x: string]: any; // eslint-disable-line
 }
@@ -82,15 +90,16 @@ const FileUpload: FC<FileUploadProps> = ({
   name,
   onChange,
   accept = undefined,
-  buttonProps = {
-    variant: 'light',
-  },
   buttonText = 'Upload File',
+  className = undefined,
   fileNameMaxLength = null,
   files = null,
+  fullWidth = false,
   hasIcon = true,
   isDisabled = false,
   multiple = false,
+  size = 'md',
+  variant = 'light',
   ...restProps
 }) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
@@ -119,7 +128,7 @@ const FileUpload: FC<FileUploadProps> = ({
   );
 
   return (
-    <>
+    <Box display="inline-block" className={className} width={fullWidth ? '100' : undefined}>
       <FormLabel inputId={id} className="display-none">
         {labelText}
       </FormLabel>
@@ -127,9 +136,17 @@ const FileUpload: FC<FileUploadProps> = ({
         onClick={handleClick}
         aria-controls="fileupload"
         isDisabled={isDisabled}
-        {...buttonProps}
+        variant={variant}
+        size={size}
+        fullWidth={fullWidth}
       >
-        {hasIcon && <FontAwesomeIcon icon={faCloudUploadAlt} className="m-right-xs" />}
+        {hasIcon && (
+          <FontAwesomeIcon
+            icon={faCloudUploadAlt}
+            className="m-right-xs"
+            data-testid="file-upload__upload-icon"
+          />
+        )}
         {buttonText}
         <input
           ref={hiddenFileInput}
@@ -141,11 +158,12 @@ const FileUpload: FC<FileUploadProps> = ({
           onChange={onChange}
           multiple={multiple}
           disabled={isDisabled}
+          aria-disabled={isDisabled}
           {...restProps}
         />
       </Button>
       {renderFiles()}
-    </>
+    </Box>
   );
 };
 

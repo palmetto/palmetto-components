@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCloudUploadAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import FileUpload from './FileUpload';
-// import Heading from '../Heading/Heading';
-// import Button from '../Button/Button';
+import Heading from '../Heading/Heading';
+import Box from '../Box/Box';
 
 <Meta
   title="Components/Form Inputs/FileUpload"
@@ -26,54 +28,11 @@ Use File Upload to capture file uploads in forms or elsewhere.
       const [files, setFiles] = useState(null);
       const handleChange = (event) => { setFiles(event.target.files) };
       return (
-        <FileUpload labelText="My File" id="myFile" onChange={handleChange} files={files} />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## With Truncated File Names
-
-In cases where a file name is excessive it can be helpful to truncate it for display in a form, however, it is valuable
-to keep file extensions intact so the user is clear on what they're uploading. In this case, we add ellipsis,
-in the middle of the text, while preserving the beginning and end of the uploaded file name. This example showcases
-a max length of 20 characters for the file name.
-
-<Canvas>
-  <Story name="Truncated File Name">
-    {() => {
-      const [files, setFiles] = useState(null);
-      const handleChange = (event) => { setFiles(event.target.files) };
-      return (
-        <FileUpload labelText="My File" id="myFile" onChange={handleChange} files={files} fileNameMaxLength={20} />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Button Variations
-
-The input can be rendered with all the same variations as the underlying `Button` component, simply
-by passing these props to the `buttonProps` object. Not all button props are exposed, since some need to be
-explicitly used for the input, but all standard styling props are available.
-
-<Canvas>
-  <Story name="Button Variations">
-    {() => {
-      const [files, setFiles] = useState(null);
-      const handleChange = (event) => { setFiles(event.target.files) };
-      return (
         <FileUpload
           labelText="My File"
           id="myFile"
           onChange={handleChange}
           files={files}
-          buttonProps={{
-            variant: 'danger',
-            size: 'lg',
-            isOutlined: true,
-            className: 'my-custom-class',
-          }}
         />
       );
     }}
@@ -102,12 +61,12 @@ You can pass down custom text to be displayed in the button
   </Story>
 </Canvas>
 
-## With No Icon
+## With no Icon
 
-Hide the icon with the boolean `hasIcon`
+Remove the icon on the button with the handy `hasIcon` boolean.
 
 <Canvas>
-  <Story name="Hidden Icon">
+  <Story name="No Icon">
     {() => {
       const [files, setFiles] = useState(null);
       const handleChange = (event) => { setFiles(event.target.files) };
@@ -117,8 +76,84 @@ Hide the icon with the boolean `hasIcon`
           id="myFile"
           onChange={handleChange}
           files={files}
-          buttonText="Upload Your Power Bill"
           hasIcon={false}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Button Variations
+
+The file upload for the most part has the same options as a traditional button, although
+some specific variations have been removed, providing a stricter subset for usage.
+
+<Canvas>
+  <Story name="Button Variations">
+    {() => {
+      const sizes = [
+        { label: 'Small', value: 'sm' },
+        { label: 'Medium (default)', value: 'md' },
+        { label: 'Large', value: 'lg' },
+      ];
+      const colors = [
+        { label: 'Light (default)', value: 'light' },
+        { label: 'Dark', value: 'dark' },
+      ];
+      const handleChange = (event) => { alert(`You picked this file: ${event.target.files[0].name}`) };
+      return (
+        <Box childGap="sm">
+          <Heading size="md">Sizes</Heading>
+          <Box direction="row" childGap="sm">
+            {sizes.map(size => (
+              <FileUpload
+                key={size.label}
+                labelText={size.label}
+                id={size.label}
+                onChange={handleChange}
+                size={size.value}
+                buttonText={size.label}
+              />
+            ))}
+          </Box>
+          <Heading size="md">Colors</Heading>
+          <Box direction="row" childGap="sm">
+            {colors.map(color => (
+              <FileUpload
+                key={color.label}
+                labelText={color.label}
+                id={color.label}
+                onChange={handleChange}
+                variant={color.value}
+                buttonText={color.label}
+              />
+            ))}
+          </Box>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Multiple Files
+
+Pass the `multiple` prop to let users select multiple files to upload.
+NOTE: just like a native file input, users will be expected to select multiple files in their finder/explorer
+window in one go, if they simply click the button numerous times, the file input will be overwritten every time.
+
+<Canvas>
+  <Story name="Multiple Files">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
+      return (
+        <FileUpload
+          labelText="My File"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          multiple
+          buttonText="Upload Multiple Files"
         />
       );
     }}
@@ -127,8 +162,10 @@ Hide the icon with the boolean `hasIcon`
 
 ## Specify File Types
 
-Use the `accept` prop to specify which file types the user can upload. This uses the native
-HTML accept prop on the input element. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept)
+Specify the type of files accepted in the input with the `accept` prop. This is a direct passthrough to the
+input's accept prop so it follows its standard behavor.
+[Read More](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept)
+The example below only accepts image files.
 
 <Canvas>
   <Story name="File Types">
@@ -141,21 +178,23 @@ HTML accept prop on the input element. [Read more](https://developer.mozilla.org
           id="myFile"
           onChange={handleChange}
           files={files}
-          buttonText="Upload Only Images"
           accept="image/*"
+          buttonText="Upload Images"
         />
       );
     }}
   </Story>
 </Canvas>
 
-## Multiple Files
+## Truncate File Name
 
-Upload multiple files with the `multiple` prop, note user is expected to select multiple files
-in their finder/explorer. It will not work properly if the user clicks the button multiple times.
+It is helpful in some UIs to shorten the display of long file names, however, it is
+also good to let the user know what file they are uploading by leaving the file extension intact.
+To accomplish this we simply truncate excess characters in the middle of the file name, based on the
+`fileNameMaxLength` prop. Try it with a long file name, the one below is capped at 16 characters.
 
 <Canvas>
-  <Story name="Multiple files">
+  <Story name="Truncated File Names">
     {() => {
       const [files, setFiles] = useState(null);
       const handleChange = (event) => { setFiles(event.target.files) };
@@ -165,12 +204,31 @@ in their finder/explorer. It will not work properly if the user clicks the butto
           id="myFile"
           onChange={handleChange}
           files={files}
-          multiple
-          buttonText="Upload Many Files"
+          fileNameMaxLength={16}
         />
       );
     }}
   </Story>
 </Canvas>
 
+## FullWidth
 
+Pass the `fullWidth` prop to have your FileUpload button take up the entire width of its container.
+
+<Canvas>
+  <Story name="Full Width">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
+      return (
+        <FileUpload
+          labelText="My File"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          fullWidth
+        />
+      );
+    }}
+  </Story>
+</Canvas>
