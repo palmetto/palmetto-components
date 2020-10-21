@@ -82,6 +82,23 @@ describe('FileUpload', () => {
       expect(button).toHaveClass('full-width');
       expect(container.children[0]).toHaveClass('w-100');
     });
+
+    it('renders a disabled input/button when prop is passed', () => {
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          isDisabled
+        />,
+      );
+
+      const button = screen.getByText('Upload File').closest('button');
+      const fileInput = screen.getByLabelText('myFileUpload');
+      expect(button).toHaveAttribute('disabled', '');
+      expect(fileInput).toHaveAttribute('disabled', '');
+    });
   });
 
   describe('Callback Handling', () => {

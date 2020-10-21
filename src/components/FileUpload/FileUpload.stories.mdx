@@ -232,3 +232,25 @@ Pass the `fullWidth` prop to have your FileUpload button take up the entire widt
     }}
   </Story>
 </Canvas>
+
+## Disabled
+
+Pass the `isDisabled` prop to render a disabled FileUpload.
+
+<Canvas>
+  <Story name="Disabled">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = (event) => { setFiles(event.target.files) };
+      return (
+        <FileUpload
+          labelText="My File"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          isDisabled
+        />
+      );
+    }}
+  </Story>
+</Canvas>
