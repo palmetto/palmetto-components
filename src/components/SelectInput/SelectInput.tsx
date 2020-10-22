@@ -15,7 +15,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
-interface SelectInputProps {
+export interface SelectInputProps {
   /**
    * The id attribute of the input.
    */
