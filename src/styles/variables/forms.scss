@@ -9,6 +9,11 @@
 
   /* --SIZES-- */
 
+  /* x-small */
+  --form-control-size-xs-border-radius: var(--size-border-radius-sm);
+  --form-control-size-xs-font-size: var(--size-font-xs);
+  --form-control-size-xs-padding: var(--size-spacing-2xs);
+
   /* small */
   --form-control-size-sm-border-radius: var(--size-border-radius-sm);
   --form-control-size-sm-font-size: var(--size-font-sm);
