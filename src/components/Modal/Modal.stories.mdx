@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Modal from './Modal';
-import Box from '../Box/Box';
 import Button from '../Button/Button';
 
 <Meta title="Components/Modal" component={Modal} />
@@ -14,12 +13,18 @@ These are specifically great for presenting new flows while preserving the state
 The default behavior of a Modal is to focus on the first focusable item.
 Therefore, you should ensure that the first focusable item is non-destructive, such as a "cancel" or close button.
 
+Modal consists of three child components that are automatically included with the `<Card />`:
+
+1. `<Modal.Header />` - a standard header of a Modal, which may contain a title for the Modal's contents and a close button
+1. `<Modal.Body />` - for the body of the Modal
+1. `<Modal.Footer />` - a place for primary actions for the Modals's contents
+
 ## Basic Usage
 
-In order to hide andshow the Modal, set the Modal's `isOpen` prop to true or false.
+In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `false`.
 
 <Canvas>
-  <Story name="Example">
+  <Story name="Basic Usage">
     {() => {
       const [showModal, setShowModal] = React.useState(false);
       const open = () => setShowModal(true);
@@ -30,8 +35,8 @@ In order to hide andshow the Modal, set the Modal's `isOpen` prop to true or fal
             Show Modal
           </Button>
           <Modal isOpen={showModal} onDismiss={close}>
-            <Modal.Header title="The Modal Title" />
-            <Box padding="lg">Modal content</Box>
+            <Modal.Header title="The Modal Title" closeButton />
+            <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>
                 Cancel
@@ -49,7 +54,33 @@ In order to hide andshow the Modal, set the Modal's `isOpen` prop to true or fal
 
 <ArgsTable of={Modal} />
 
-### Close button
+## Body and Footer
+
+Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These components simply wrap your content in consistent padding, otherwise you can pass whatever you want as content.
+
+<Canvas>
+  <Story name="Body and Footer">
+    {() => {
+      const [showModal, setShowModal] = React.useState(false);
+      const open = () => setShowModal(true);
+      const close = () => setShowModal(false);
+      return (
+        <div>
+          <Button variant="light" onClick={open}>
+            Show Modal
+          </Button>
+          <Modal isOpen={showModal} onDismiss={close}>
+            <Modal.Header title="The Modal Title" closeButton />
+            <Modal.Body>Modal body content</Modal.Body>
+            <Modal.Footer>This is content in the modal footer</Modal.Footer>
+          </Modal>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Close button
 
 Set the `closeButton` prop to true to automatically add a close button in the `<Modal.Header />`.
 Note that the callback to close the Modal is assigned on the Modal component itself, not `<Modal.Header />`.
@@ -66,9 +97,8 @@ Note that the callback to close the Modal is assigned on the Modal component its
             Show Modal
           </Button>
           <Modal isOpen={showModal} onDismiss={close}>
-            <Modal.Header title="The Modal Title" closeButton />
-            <p>content</p>
-            <button onClick={close}>Close</button>
+            <Modal.Header closeButton />
+            <Modal.Body>Modal content</Modal.Body>
           </Modal>
         </div>
       );
@@ -76,9 +106,9 @@ Note that the callback to close the Modal is assigned on the Modal component its
   </Story>
 </Canvas>
 
-### Without a title
+## Without a Header
 
-When a `<Modal.Header/>` isn't provided, a header isn't rendered.
+Omit `<Modal.Header/>` to render a minimal modal without a header.
 
 <Canvas>
   <Story name="Without Header">
@@ -92,7 +122,38 @@ When a `<Modal.Header/>` isn't provided, a header isn't rendered.
             Show Modal
           </Button>
           <Modal isOpen={showModal} onDismiss={close}>
-            <Box padding="lg">Modal content</Box>
+            <Modal.Body>Modal content</Modal.Body>
+            <Modal.Footer>
+              <Button variant="light" onClick={close}>
+                Cancel
+              </Button>
+              <Button variant="primary">Primary Action</Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Fullscreen on mobile
+
+Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
+
+<Canvas>
+  <Story name="Fullscreen Mobile">
+    {() => {
+      const [showModal, setShowModal] = React.useState(false);
+      const open = () => setShowModal(true);
+      const close = () => setShowModal(false);
+      return (
+        <div>
+          <Button variant="light" onClick={open}>
+            Show Modal
+          </Button>
+          <Modal fullScreenMobile isOpen={showModal} onDismiss={close}>
+            <Modal.Header title="Fullscreen Modal on Mobile" closeButton />
+            <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>
                 Cancel

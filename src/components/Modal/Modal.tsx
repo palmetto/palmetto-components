@@ -1,11 +1,7 @@
-import React, { FC, ReactNode, RefObject, createContext, useContext } from 'react';
+import React, { FC, ReactNode, RefObject, createContext } from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
-import Box from '../Box/Box';
-import Button from '../Button/Button';
-import '@reach/dialog/styles.css';
+import { ModalFooter, ModalHeader, ModalBody } from './components';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -22,6 +18,10 @@ interface ModalProps {
    * Additional ClassNames to add to button.
    */
   className?: string;
+  /**
+   * At mobile viewport widths, the modal will take up the fullscreen
+   */
+  fullScreenMobile: boolean;
   /**
    * By default the first focusable element will receive focus when the dialog
    * opens but you can provide a ref to focus instead.
@@ -45,13 +45,21 @@ type ContextProps = {
 
 export const ModalContext = createContext<Partial<ContextProps>>({});
 
-const Modal: FC<ModalProps> = ({
+const Modal: FC<ModalProps> & {
+  Body: typeof ModalBody;
+  Footer: typeof ModalFooter;
+  Header: typeof ModalHeader;
+} = ({
   allowPinchZoom = false,
   children,
   className,
+  fullScreenMobile = false,
   isOpen,
   onDismiss,
 }) => {
+  const overylayClassnames = classNames(styles.overlay, {
+    fullscreen: fullScreenMobile,
+  });
   const contentClassnames = classNames(styles['modal-content'], className);
 
   const modalContextData = {
@@ -61,7 +69,7 @@ const Modal: FC<ModalProps> = ({
   return (
     <ModalContext.Provider value={modalContextData}>
       <DialogOverlay
-        className={styles.overlay}
+        className={overylayClassnames}
         allowPinchZoom={allowPinchZoom}
         isOpen={isOpen}
         onDismiss={onDismiss}
@@ -72,74 +80,8 @@ const Modal: FC<ModalProps> = ({
   );
 };
 
-interface ModalHeaderProps {
-  /**
-   * Modal's header title
-   */
-  title?: string;
-  /**
-   * display a close button in the Modal header
-   */
-  closeButton: boolean;
-}
-
-const Header: FC<ModalHeaderProps> = ({ closeButton = false, title }) => {
-  const { onDismiss } = useContext(ModalContext);
-
-  return (
-    <Box
-      padding="lg"
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
-      borderWidth="0 0 xs 0"
-      borderColor="grey-lighter"
-      style={{
-        flexShrink: 0,
-      }}
-      height="lg"
-    >
-      {title && (
-        <Box as="h4" fontSize={{ base: 'md', tablet: 'lg' }}>
-          {title}
-        </Box>
-      )}
-      {onDismiss && closeButton && (
-        <button type="button" className={styles['modal-close']} onClick={onDismiss}>
-          <FontAwesomeIcon icon={faTimes} size="lg" />
-        </button>
-      )}
-    </Box>
-  );
-};
-
-interface ModalFooterProps {
-  /**
-   * Modal footer content, usually a containing a primary action button, and a seondary action button
-   */
-  children?: ReactNode;
-}
-
-const Footer: FC<ModalFooterProps> = ({ children }) => {
-  return (
-    <Box
-      padding="lg"
-      direction="row"
-      alignItems="center"
-      justifyContent="flex-end"
-      borderWidth="xs 0 0 0"
-      borderColor="grey-lighter"
-      childGap="sm"
-      style={{
-        flexShrink: 0,
-      }}
-    >
-      {children}
-    </Box>
-  );
-};
-
-Modal.Footer = Footer;
-Modal.Header = Header;
+Modal.Body = ModalBody;
+Modal.Footer = ModalFooter;
+Modal.Header = ModalHeader;
 
 export default Modal;
