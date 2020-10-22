@@ -6,6 +6,7 @@ import {
   BrandColor,
   Breakpoint,
   BreakpointSizeWithBase,
+  BoxShadowSize,
   ColorName,
   FontColor,
   FontSize,
@@ -60,3 +61,6 @@ export const HEIGHT_VALUES = Object.values(size.height);
 
 export const Z_INDEX_OPTIONS = Object.keys(size['z-index']) as ZIndexSize[];
 export const Z_INDEX_VALUES = Object.values(size['z-index']);
+
+export const BOX_SHADOW_OPTIONS = Object.keys(size['box-shadow']) as BoxShadowSize[];
+export const BOX_SHADOW_VALUES = Object.values(size['box-shadow']);
