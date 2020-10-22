@@ -7,18 +7,24 @@ import classNames from 'classnames';
 
 interface InputValidationMessageProps {
   children: ReactNode;
+  size?: 'xs' | 'sm' | 'md';
 }
 
-const classes = classNames(
-  'font-color-danger',
-  'font-size-sm',
-  'm-top-xs',
-);
+const InputValidationMessage: FC<InputValidationMessageProps> = ({
+  children,
+  size = 'sm',
+}) => {
+  const classes = classNames(
+    'font-color-danger',
+    `font-size-${size}`,
+    'm-top-xs',
+  );
 
-const InputValidationMessage: FC<InputValidationMessageProps> = ({ children }) => (
-  <div className={classes}>
-    {children}
-  </div>
-);
+  return (
+    <div className={classes}>
+      {children}
+    </div>
+  );
+};
 
 export default InputValidationMessage;
