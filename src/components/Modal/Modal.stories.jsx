@@ -11,7 +11,7 @@ export default {
 };
 
 export const BasicExample = () => (
-  <Modal isOpen={true} onDismiss={() => null}>
+  <Modal isOpen onDismiss={() => null}>
     <Modal.Header title="The Modal Title" onDismiss={() => null} />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
