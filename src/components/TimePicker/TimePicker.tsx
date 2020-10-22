@@ -3,17 +3,29 @@ import SelectInput, { SelectInputProps } from '../SelectInput/SelectInput';
 
 interface TimePickerProps extends SelectInputProps {
   /**
+   * Options to govern the display of the option labels in the select.
+   * This is a direct passthrough to the second argument of JS `toLocaleTimeString`.
+   * [More](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString)
+   */
+  dateDisplayOptions?: Intl.DateTimeFormatOptions;
+  /**
+   * End hour and minute
+   */
+  endTime?: { hour: number; minute: number; };
+  /**
    * Interval of displayed times (in minutes). Defaults to 15 minutes.
    */
   interval?: number;
   /**
-   * Start hour and minute
+   * Locale(s) to be passed down in order to format the label values in the select.
+   * This corresponds to the first argument of JS `toLocaleTimeString`.
+   * [More](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString)
    */
-  startTime?: { hour: number; minute: number; };
+  locales?: string | string[];
   /**
    * Start hour and minute
    */
-  endTime?: { hour: number; minute: number; };
+  startTime?: { hour: number; minute: number; };
 }
 
 const TimePicker: FC<TimePickerProps> = ({
@@ -22,8 +34,10 @@ const TimePicker: FC<TimePickerProps> = ({
   label,
   onChange,
   value,
+  dateDisplayOptions = { hour: '2-digit', minute: '2-digit' },
   endTime = undefined,
   interval = 900,
+  locales = 'en-US',
   placeholder = 'HH:MM',
   startTime = undefined,
   ...restProps
@@ -45,7 +59,7 @@ const TimePicker: FC<TimePickerProps> = ({
     while (currentTime < last) {
       timeOptions.push({
         value: currentTime.toISOString(),
-        label: currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+        label: currentTime.toLocaleTimeString(locales, dateDisplayOptions),
       });
       currentTime.setSeconds(first.getSeconds() + interval);
     }

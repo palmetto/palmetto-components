@@ -93,3 +93,32 @@ See example below where we want to show 15 minute increments starting at 9:00AM 
     }}
   </Story>
 </Canvas>
+
+## With Custom Date Display
+
+The labels for the dropdwon options are governed by JS `toLocaleTimeString`, and as such
+options are available to customize these.
+
+NOTE: that the option values are always returned as ISO strings regardless of the label display option.
+
+The example below is shown in military (24-hour) time.
+
+<Canvas>
+  <Story name="With Custom Date">
+    {() => {
+      return (
+        <Box height="360px">
+          <TimePicker
+            id="myTimePicker"
+            name="TimePickerName"
+            onChange={() => {}}
+            label="Pick a Time"
+            startTime={{ hour: 9, minute: 0 }}
+            endTime={{ hour: 15, minute: 31 }}
+            dateDisplayOptions={{ hour12: false, hour: '2-digit', minute: '2-digit' }}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

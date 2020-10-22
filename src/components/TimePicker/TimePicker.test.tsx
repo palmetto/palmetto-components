@@ -78,4 +78,36 @@ describe('TimePicker', () => {
       });
     });
   });
+
+  describe('Custom Date Display', () => {
+    it('renders the times based on the options provided', () => {
+      render(
+        <TimePicker
+          name="timePicker"
+          id="timePicker"
+          onChange={() => null}
+          value={null}
+          label="Select Time"
+          menuIsOpen
+          maxMenuHeight={2000}
+          dateDisplayOptions={{ hour12: false }}
+          startTime={{ hour: 13, minute: 0 }}
+          endTime={{ hour: 15, minute: 1 }}
+          interval={3600}
+        />,
+      );
+
+      const timePicker = screen.getByLabelText('Select Time');
+
+      const expectedTimes = [
+        '13:00:00',
+        '14:00:00',
+        '15:00:00',
+      ];
+      expect(timePicker).toBeInTheDocument();
+      expectedTimes.forEach(time => {
+        expect(screen.queryByText(time)).toBeInTheDocument();
+      });
+    });
+  });
 });
