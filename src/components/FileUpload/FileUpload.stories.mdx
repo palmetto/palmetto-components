@@ -304,7 +304,7 @@ display a proper error when necessary.
         }
       };
       const handleSubmit = (event) => {
-        if (files.length === 0) {
+        if (!files || files.length === 0) {
           setError('This field is required');
         } else {
           alert('submitted successfully!');
