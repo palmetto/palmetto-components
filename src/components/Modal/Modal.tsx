@@ -8,7 +8,7 @@ interface ModalProps {
   /**
    * Handle zoom/pinch gestures on iOS devices when scroll locking is enabled.
    */
-  allowPinchZoom: boolean;
+  allowPinchZoom?: boolean;
   /**
    * Contents of the button.
    */
@@ -20,7 +20,7 @@ interface ModalProps {
   /**
    * At mobile viewport widths, the modal will take up the fullscreen
    */
-  fullScreenMobile: boolean;
+  fullScreenMobile?: boolean;
   /**
    * By default the first focusable element will receive focus when the dialog
    * opens but you can provide a ref to focus instead.
