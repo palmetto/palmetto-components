@@ -10,17 +10,6 @@
   }
 }
 
-@keyframes slideInUp {
-  from {
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 @keyframes zoomIn {
   from {
     transform: scale3d(0.3, 0.3, 0.3);
@@ -61,6 +50,7 @@
     display: grid;
     grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
     grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
+    align-content: center;
     align-items: center;
     overflow: hidden;
   }
@@ -77,7 +67,7 @@
   padding: 0;
   width: 100%;
   overflow: hidden;
-  animation: slideInUp 0.4s ease-in-out;
+  animation: fadeIn 0.3s;
 
   @media (min-width: $size-breakpoint-tablet) {
     grid-row: 2;
@@ -99,11 +89,19 @@
   grid-template-columns: 1fr;
   align-items: stretch;
 
+  [data-reach-dialog-content] {
+    height: 100vh;
+  }
+
   @media (min-width: $size-breakpoint-tablet) {
     display: grid;
     grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
     grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
     align-items: center;
     overflow: hidden;
+
+    [data-reach-dialog-content] {
+      height: unset;
+    }
   }
 }
