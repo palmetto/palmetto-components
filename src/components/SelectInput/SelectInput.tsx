@@ -6,6 +6,8 @@ import Select, {
   IndicatorProps,
   OptionTypeBase,
   ValueType,
+  GroupedOptionsType,
+  OptionsType,
 } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -25,16 +27,9 @@ export interface SelectInputProps {
    */
   label: string;
   /**
-   * Callback function to call on change event.
-   */
-  onChange: (event: SimulatedEventPayloadType) => void;
-  /**
    * Options for dropdown list.
    */
-  options?: {
-    value: string;
-    label: string;
-  }[];
+  options?: GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
   /**
    * The value(s) of select.
    */
