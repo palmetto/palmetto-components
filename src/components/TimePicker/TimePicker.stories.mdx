@@ -1,0 +1,95 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import TimePicker from './TimePicker';
+import Box from '../Box/Box'
+
+<Meta
+  title="Components/Form Inputs/TimePicker"
+  component={TimePicker}
+/>
+
+# TimePicker
+
+Use a TimePicker when you want users to select from a list of a available times agnostic of date.
+
+*NOTE:* This component is abstracted from the [SelectInput](?path=/docs/components-form-inputs-selectinput--default-story)
+and as such includes the same underlying props interface with an added method for generating the time options automatically.
+
+## Props
+
+<ArgsTable of={TimePicker} />
+
+## Default
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <Box height="360px">
+          <TimePicker
+            id="myTimePicker"
+            name="TimePickerName"
+            onChange={event => { setValue(event.target.value) }}
+            label="Pick a Time"
+            value={value}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With A Specific Interval
+
+Pass an `interval` (seconds) value to determine how many times get generated as options.
+The example below uses `3600` --> 1 Hour Intervals
+
+<Canvas>
+  <Story name="With Interval">
+    {() => {
+      return (
+        <Box height="360px">
+          <TimePicker
+            id="myTimePicker"
+            name="TimePickerName"
+            onChange={() => {}}
+            label="Pick a Time"
+            interval={3600}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Min and Max Times
+
+You can determine the range of times to be shown by capping the start and end times.
+Use `startTime` and `endTime` for this. The expected values for `hour` and `minute` properties 
+are `0-24` and `0-60` respectively.
+
+IMPORTANT: `startTime` is inclusive, and `endTime` is exclusive. This is to avoid
+the options showing the startTime twice when using a 24-hour cycle.
+
+See example below where we want to show 15 minute increments starting at 9:00AM and ending at 3:30PM.
+
+<Canvas>
+  <Story name="With Start and End">
+    {() => {
+      return (
+        <Box height="360px">
+          <TimePicker
+            id="myTimePicker"
+            name="TimePickerName"
+            onChange={() => {}}
+            label="Pick a Time"
+            startTime={{ hour: 9, minute: 0 }}
+            endTime={{ hour: 15, minute: 31 }}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
