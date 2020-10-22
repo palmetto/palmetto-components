@@ -35,11 +35,11 @@
 .modal-close {
   border: none;
   background: transparent;
-  padding: var(--size-spacing-xs);
-  color: var(--color-brand-grey-500);
+  padding: var(--modal-close-button-padding);
+  color: var(--modal-close-button-color);
 
   &:hover {
-    color: var(--color-brand-grey-600);
+    color: var(--modal-close-button-color-hover);
   }
 }
 
@@ -51,7 +51,7 @@
   bottom: 0;
   left: 0;
   align-items: flex-end;
-  z-index: 100;
+  z-index: var(--size-z-index-overlay);
   background: hsla(0, 0%, 0%, 0.33);
   background-color: rgba(77, 82, 79, 0.5);
   overflow: hidden;
@@ -59,8 +59,8 @@
 
   @media (min-width: $size-breakpoint-tablet) {
     display: grid;
-    grid-template-rows: minmax(40px, 1fr) auto minmax(40px, 1fr);
-    grid-template-columns: 40px auto 40px;
+    grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
+    grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
     align-items: center;
     overflow: hidden;
   }
@@ -71,9 +71,9 @@
   flex-direction: column;
   grid-row: 1;
   grid-column: 1;
-  z-index: 101;
+  z-index: var(--size-z-index-modal);
   margin: 0;
-  background-color: var(--color-brand-white-500);
+  background-color: var(--modal-background-color);
   padding: 0;
   width: 100%;
   overflow: hidden;
@@ -84,9 +84,8 @@
     grid-column: 2;
     margin: auto;
     outline: none;
-    border-radius: var(--size-border-radius-md);
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05),
-      0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: var(--modal-border-radius);
+    box-shadow: var(--size-box-shadow-sm);
     width: 50vw;
     min-height: unset;
     max-height: calc(100vh - 80px);
@@ -102,8 +101,8 @@
 
   @media (min-width: $size-breakpoint-tablet) {
     display: grid;
-    grid-template-rows: minmax(40px, 1fr) auto minmax(40px, 1fr);
-    grid-template-columns: 40px auto 40px;
+    grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
+    grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
     align-items: center;
     overflow: hidden;
   }

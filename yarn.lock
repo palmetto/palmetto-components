@@ -3024,10 +3024,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@palmetto/palmetto-design-tokens@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.16.0.tgz#0c4f5ba0d6aaeea0d885d6cfdd98e0eac8c97ae8"
-  integrity sha512-JePMcdHtIQGu+1AGA+HuS8iSz0+gBcRdvwCQRRCTrE+L1YMJu2jTr+NzrSmvikUe3JfwQ29civN03Ryv1OxGWQ==
+"@palmetto/palmetto-design-tokens@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.17.0.tgz#948f4404573162a3a75b683ba12301b89e061cc7"
+  integrity sha512-8QbToyH/YdaXYpnLlpvoaMwucCnhfQCaoWrLVfAtrJ/Apar9WfVowZ1tx8zuHspw32mTOVbZhHOMGa2v+gc4XA==
 
 "@reach/dialog@^0.11.2":
   version "0.11.2"
