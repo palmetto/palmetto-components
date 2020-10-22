@@ -10,99 +10,55 @@ export default {
   },
 };
 
-export const BasicExample = () => {
-  const [showModal, setShowModal] = React.useState(true);
-  const close = () => setShowModal(false);
-  return (
-    <Modal isOpen={showModal} onDismiss={close}>
-      <Modal.Header title="The Modal Title" onDismiss={close} />
-      <Modal.Body>Modal content</Modal.Body>
-      <Modal.Footer>
-        <Button variant="light" onClick={close}>
-          Cancel
-        </Button>
-        <Button variant="primary">Primary Action</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-};
-
-export const BodyAndFooter = () => {
-  const [showModal, setShowModal] = React.useState(true);
-  const open = () => setShowModal(true);
-  const close = () => setShowModal(false);
-  return (
-    <div>
-      <Button variant="light" onClick={open}>
-        Show Modal
+export const BasicExample = () => (
+  <Modal isOpen={true} onDismiss={() => null}>
+    <Modal.Header title="The Modal Title" onDismiss={() => null} />
+    <Modal.Body>Modal content</Modal.Body>
+    <Modal.Footer>
+      <Button variant="light" onClick={() => {}}>
+        Cancel
       </Button>
-      <Modal isOpen={showModal} onDismiss={close}>
-        <Modal.Header title="The Modal Title" onDismiss={close} />
-        <Modal.Body>Modal body content</Modal.Body>
-        <Modal.Footer>This is content in the modal footer</Modal.Footer>
-      </Modal>
-    </div>
-  );
-};
+      <Button variant="primary">Primary Action</Button>
+    </Modal.Footer>
+  </Modal>
+);
 
-export const CloseButton = () => {
-  const [showModal, setShowModal] = React.useState(true);
-  const open = () => setShowModal(true);
-  const close = () => setShowModal(false);
-  return (
-    <div>
-      <Button variant="light" onClick={open}>
-        Show Modal
-      </Button>
-      <Modal isOpen={showModal} onDismiss={close}>
-        <Modal.Header onDismiss={close} />
-        <Modal.Body>Modal content</Modal.Body>
-      </Modal>
-    </div>
-  );
-};
+export const BodyAndFooter = () => (
+  <Modal isOpen onDismiss={() => null}>
+    <Modal.Header title="The Modal Title" onDismiss={() => null} />
+    <Modal.Body>Modal body content</Modal.Body>
+    <Modal.Footer>This is content in the modal footer</Modal.Footer>
+  </Modal>
+);
 
-export const WithoutHeader = () => {
-  const [showModal, setShowModal] = React.useState(true);
-  const open = () => setShowModal(true);
-  const close = () => setShowModal(false);
-  return (
-    <div>
-      <Button variant="light" onClick={open}>
-        Show Modal
-      </Button>
-      <Modal isOpen={showModal} onDismiss={close}>
-        <Modal.Body>Modal content</Modal.Body>
-        <Modal.Footer>
-          <Button variant="light" onClick={close}>
-            Cancel
-          </Button>
-          <Button variant="primary">Primary Action</Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  );
-};
+export const CloseButton = () => (
+  <Modal isOpen onDismiss={() => null}>
+    <Modal.Header onDismiss={() => null} />
+    <Modal.Body>Modal content</Modal.Body>
+  </Modal>
+);
 
-export const FuillscreenOnMobile = () => {
-  const [showModal, setShowModal] = React.useState(true);
-  const open = () => setShowModal(true);
-  const close = () => setShowModal(false);
-  return (
-    <div>
-      <Button variant="light" onClick={open}>
-        Show Modal
+export const WithoutHeader = () => (
+  <Modal isOpen onDismiss={() => null}>
+    <Modal.Body>Modal content</Modal.Body>
+    <Modal.Footer>
+      <Button variant="light" onClick={() => {}}>
+        Cancel
       </Button>
-      <Modal fullScreenMobile isOpen={showModal} onDismiss={close}>
-        <Modal.Header title="Fullscreen Modal on Mobile" onDismiss={close} />
-        <Modal.Body>Modal content</Modal.Body>
-        <Modal.Footer>
-          <Button variant="light" onClick={close}>
-            Cancel
-          </Button>
-          <Button variant="primary">Primary Action</Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  );
-};
+      <Button variant="primary">Primary Action</Button>
+    </Modal.Footer>
+  </Modal>
+);
+
+export const FuillscreenOnMobile = () => (
+  <Modal fullScreenMobile isOpen onDismiss={() => null}>
+    <Modal.Header title="Fullscreen Modal on Mobile" onDismiss={() => null} />
+    <Modal.Body>Modal content</Modal.Body>
+    <Modal.Footer>
+      <Button variant="light" onClick={() => {}}>
+        Cancel
+      </Button>
+      <Button variant="primary">Primary Action</Button>
+    </Modal.Footer>
+  </Modal>
+);
