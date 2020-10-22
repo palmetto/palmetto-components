@@ -1,28 +1,29 @@
 import {
   Key,
-  ReactNode,
-  MouseEvent,
   KeyboardEvent,
+  MouseEvent,
+  ReactNode,
 } from 'react';
 
 import {
-  ValueType,
   OptionTypeBase,
+  ValueType,
 } from 'react-select';
 
 import {
-  SpacingSize,
   BreakpointSize,
-  WidthSize,
   HeightSize,
+  SpacingSize,
+  WidthSize,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type {
-  BrandColor,
-  FontColor,
-  BorderSize,
   BorderRadiusSize,
+  BorderSize,
   BoxShadowSize,
+  BrandColor,
+  ColorName,
+  FontColor,
   FontSize,
   FontWeight,
   HeightSize,
@@ -31,7 +32,6 @@ export type {
   SpacingSize,
   WidthSize,
   ZIndexSize,
-  ColorName,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type BreakpointSizeWithBase = BreakpointSize | 'base';
