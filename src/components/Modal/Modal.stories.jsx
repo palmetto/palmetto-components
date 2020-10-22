@@ -6,7 +6,7 @@ export default {
   title: 'Components/Modal/For Chromatic',
   component: Modal,
   parameters: {
-    chromatic: { delay: 300 },
+    chromatic: { delay: 1000 },
   },
 };
 
