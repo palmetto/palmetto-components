@@ -1,11 +1,10 @@
-import React, { FC, ReactNode, RefObject, createContext } from 'react';
+import React, { FC, ReactNode, RefObject } from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
 import { ModalFooter, ModalHeader, ModalBody } from './components';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
-  Header: ReactNode;
   /**
    * Handle zoom/pinch gestures on iOS devices when scroll locking is enabled.
    */
@@ -39,17 +38,6 @@ interface ModalProps {
   onDismiss: (event?: React.SyntheticEvent) => void;
 }
 
-type ContextProps = {
-  onDismiss: (event?: React.SyntheticEvent) => void;
-};
-
-export const ModalContext = createContext<Partial<ContextProps>>({});
-
-export const ModalContextProvider: FC<{ value: ContextProps; children: ReactNode; }> = ({
-  value,
-  children,
-}) => <ModalContext.Provider value={value}>{children}</ModalContext.Provider>;
-
 const Modal: FC<ModalProps> & {
   Body: typeof ModalBody;
   Footer: typeof ModalFooter;
@@ -67,21 +55,15 @@ const Modal: FC<ModalProps> & {
   });
   const contentClassnames = classNames(styles['modal-content'], className);
 
-  const modalContextData = {
-    onDismiss,
-  };
-
   return (
-    <ModalContextProvider value={modalContextData}>
-      <DialogOverlay
-        className={overylayClassnames}
-        allowPinchZoom={allowPinchZoom}
-        isOpen={isOpen}
-        onDismiss={onDismiss}
-      >
-        <DialogContent className={contentClassnames}>{children}</DialogContent>
-      </DialogOverlay>
-    </ModalContextProvider>
+    <DialogOverlay
+      className={overylayClassnames}
+      allowPinchZoom={allowPinchZoom}
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+    >
+      <DialogContent className={contentClassnames}>{children}</DialogContent>
+    </DialogOverlay>
   );
 };
 

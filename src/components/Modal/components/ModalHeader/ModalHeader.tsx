@@ -1,8 +1,7 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Box from '../../../Box/Box';
-import { ModalContext } from '../../Modal';
 import styles from '../../Modal.module.scss';
 
 type ModalHeaderProps = {
@@ -11,15 +10,13 @@ type ModalHeaderProps = {
    */
   title?: string;
   /**
-   * display a close button in the Modal header
+   * If defined, will render a 'x' close button on the right side of the ModalHeader
    */
-  closeButton: boolean;
+  onDismiss?: (event?: React.SyntheticEvent) => void;
 };
 
-const ModalHeader: FC<ModalHeaderProps> = ({ closeButton = false, title = undefined }) => {
-  const { onDismiss } = useContext(ModalContext);
-
-  const justifyContentValue = title === undefined && closeButton ? 'flex-end' : 'space-between';
+const ModalHeader: FC<ModalHeaderProps> = ({ onDismiss, title = undefined }) => {
+  const justifyContentValue = title === undefined && onDismiss ? 'flex-end' : 'space-between';
 
   return (
     <Box
@@ -39,8 +36,13 @@ const ModalHeader: FC<ModalHeaderProps> = ({ closeButton = false, title = undefi
           {title}
         </Box>
       )}
-      {onDismiss && closeButton && (
-        <button type="button" className={styles['modal-close']} onClick={onDismiss}>
+      {onDismiss && (
+        <button
+          aria-label="close"
+          type="button"
+          className={styles['modal-close']}
+          onClick={onDismiss}
+        >
           <FontAwesomeIcon icon={faTimes} size="lg" />
         </button>
       )}

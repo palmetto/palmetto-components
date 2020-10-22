@@ -35,7 +35,7 @@ In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `
             Show Modal
           </Button>
           <Modal isOpen={showModal} onDismiss={close}>
-            <Modal.Header title="The Modal Title" closeButton />
+            <Modal.Header title="The Modal Title" onDismiss={close} />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>
@@ -70,7 +70,7 @@ Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These co
             Show Modal
           </Button>
           <Modal isOpen={showModal} onDismiss={close}>
-            <Modal.Header title="The Modal Title" closeButton />
+            <Modal.Header title="The Modal Title" onDismiss={close} />
             <Modal.Body>Modal body content</Modal.Body>
             <Modal.Footer>This is content in the modal footer</Modal.Footer>
           </Modal>
@@ -82,8 +82,7 @@ Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These co
 
 ## Close button
 
-Set the `closeButton` prop to true to automatically add a close button in the `<Modal.Header />`.
-Note that the callback to close the Modal is assigned on the Modal component itself, not `<Modal.Header />`.
+Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a close button.
 
 <Canvas>
   <Story name="Close button">
@@ -97,7 +96,7 @@ Note that the callback to close the Modal is assigned on the Modal component its
             Show Modal
           </Button>
           <Modal isOpen={showModal} onDismiss={close}>
-            <Modal.Header closeButton />
+            <Modal.Header onDismiss={close} />
             <Modal.Body>Modal content</Modal.Body>
           </Modal>
         </div>
@@ -152,7 +151,7 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
             Show Modal
           </Button>
           <Modal fullScreenMobile isOpen={showModal} onDismiss={close}>
-            <Modal.Header title="Fullscreen Modal on Mobile" closeButton />
+            <Modal.Header title="Fullscreen Modal on Mobile" onDismiss={close} />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>
