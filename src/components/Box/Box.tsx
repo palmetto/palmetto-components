@@ -62,8 +62,10 @@ export interface BoxProps {
   borderColor?: BrandColor | ResponsiveProp<BrandColor>;
   /**
    * Any valid BorderSize token or reponsive prop with BorderSize in each breakpoint.
+   * You can use CSS shorthand format in this prop, with any of the available values.
+   * E.G: "0 sm xs 0" --> top: 0, right: sm, bottom: xs, left: 0;
    */
-  borderWidth?: BorderSize | ResponsiveProp<BorderSize>;
+  borderWidth?: BorderSize | string | ResponsiveProp<BorderSize | string>;
   /**
    * Additional class names to add
    */
