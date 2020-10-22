@@ -12,7 +12,7 @@ interface ModalProps {
   /**
    * Contents of the button.
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * Additional ClassNames to add to button.
    */
