@@ -19,6 +19,7 @@ import Table from './Table/Table';
 import TextInput from './TextInput/TextInput';
 import TextareaInput from './TextareaInput/TextareaInput';
 import TextLink from './TextLink/TextLink';
+import TimePicker from './TimePicker/TimePicker';
 
 export {
   Alert,
@@ -42,4 +43,5 @@ export {
   TextInput,
   TextareaInput,
   TextLink,
+  TimePicker,
 };

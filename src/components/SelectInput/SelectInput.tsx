@@ -31,7 +31,7 @@ export interface SelectInputProps {
   /**
    * Options for dropdown list.
    */
-  options: {
+  options?: {
     value: string;
     label: string;
   }[];

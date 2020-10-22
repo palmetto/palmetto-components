@@ -8,7 +8,13 @@ import TimePicker from './TimePicker';
 describe('TimePicker', () => {
   describe('Default', () => {
     it('Renders a TimePicker (select) with default props', () => {
-      render(<TimePicker label="Select Time" />);
+      render(<TimePicker
+        name="timePicker"
+        id="timePicker"
+        onChange={() => null}
+        value={null}
+        label="Select Time"
+      />);
 
       const timePicker = screen.getByLabelText('Select Time');
 
