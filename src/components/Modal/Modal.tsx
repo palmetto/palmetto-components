@@ -45,6 +45,11 @@ type ContextProps = {
 
 export const ModalContext = createContext<Partial<ContextProps>>({});
 
+export const ModalContextProvider: FC<{ value: ContextProps; children: ReactNode; }> = ({
+  value,
+  children,
+}) => <ModalContext.Provider value={value}>{children}</ModalContext.Provider>;
+
 const Modal: FC<ModalProps> & {
   Body: typeof ModalBody;
   Footer: typeof ModalFooter;
@@ -67,7 +72,7 @@ const Modal: FC<ModalProps> & {
   };
 
   return (
-    <ModalContext.Provider value={modalContextData}>
+    <ModalContextProvider value={modalContextData}>
       <DialogOverlay
         className={overylayClassnames}
         allowPinchZoom={allowPinchZoom}
@@ -76,7 +81,7 @@ const Modal: FC<ModalProps> & {
       >
         <DialogContent className={contentClassnames}>{children}</DialogContent>
       </DialogOverlay>
-    </ModalContext.Provider>
+    </ModalContextProvider>
   );
 };
 
