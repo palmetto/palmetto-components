@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
+import { BOX_SHADOW_OPTIONS, BOX_SHADOW_VALUES } from '../lib/tokens';
+
+<Meta title="Design Tokens/Box-Shadow" />
+
+# Box Shadow
+
+Used these tokens to set the box-shadow of an element.
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>value</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {BOX_SHADOW_OPTIONS.map((value, i) => (
+      <tr key={i}>
+        <td>
+          <code>{`size-box-shadow-${value}`}</code>
+        </td>
+        <td>{BOX_SHADOW_VALUES[i].value}</td>
+        <td>{BOX_SHADOW_VALUES[i].original.comment}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

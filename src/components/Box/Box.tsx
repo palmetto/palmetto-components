@@ -164,6 +164,10 @@ export interface BoxProps {
    * or a [width token](/?path=/docs/design-tokens-width--page)
    */
   width?: DimensionSize | ResponsiveProp<DimensionSize> | string;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 /**
@@ -241,7 +245,7 @@ const Box: FC<BoxProps> = ({
     ...maxHeightCss.styles,
     ...maxWidthCss.styles,
     ...widthCss.styles,
-    ...borderWidth && { borderStyle: 'solid' },
+    ...(borderWidth && { borderStyle: 'solid' }),
   };
 
   /**
@@ -262,10 +266,13 @@ const Box: FC<BoxProps> = ({
     if (typeof direction === 'string') {
       childGapDirection = { base: getChildGapMarginDirection(direction) };
     } else if (typeof direction === 'object' && direction !== null) {
-      childGapDirection = Object.keys(direction).reduce((acc, curr) => ({
-        ...acc,
-        [curr]: getChildGapMarginDirection(direction[curr as BreakpointSizeWithBase]),
-      }), {});
+      childGapDirection = Object.keys(direction).reduce(
+        (acc, curr) => ({
+          ...acc,
+          [curr]: getChildGapMarginDirection(direction[curr as BreakpointSizeWithBase]),
+        }),
+        {},
+      );
     }
 
     return childGapDirection;
@@ -296,7 +303,8 @@ const Box: FC<BoxProps> = ({
     const breakpoints: BreakpointSizeWithBase[] = ['hd', 'desktop', 'tablet', 'base'];
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const findMatchingBreakpoint = (responsiveObj: ResponsiveProp<any>, key: BreakpointSizeWithBase): string => {
+    const findMatchingBreakpoint = (responsiveObj: ResponsiveProp<any>,
+      key: BreakpointSizeWithBase): string => {
       const index = breakpoints.findIndex(breakpoint => breakpoint === key);
       let value = '';
 
@@ -308,8 +316,14 @@ const Box: FC<BoxProps> = ({
     };
 
     breakpoints.forEach(breakpoint => {
-      const foundDirection = findMatchingBreakpoint(childGapDirection, breakpoint as BreakpointSizeWithBase);
-      const foundChildGap = findMatchingBreakpoint(childGapValues, breakpoint as BreakpointSizeWithBase);
+      const foundDirection = findMatchingBreakpoint(
+        childGapDirection,
+        breakpoint as BreakpointSizeWithBase,
+      );
+      const foundChildGap = findMatchingBreakpoint(
+        childGapValues,
+        breakpoint as BreakpointSizeWithBase,
+      );
 
       const classSuffix = breakpoint === 'base' ? '' : `-${breakpoint}`;
       const oppositeDirection = foundDirection === 'bottom' ? 'right' : 'bottom';
@@ -325,7 +339,7 @@ const Box: FC<BoxProps> = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const decorateChildren = (child: ReactElement<any>, i: number) => {
     if (
-      i === (Children.count(children) - 1)
+      i === Children.count(children) - 1
       || !child
       || typeof child === 'string'
       || typeof child === 'number'
