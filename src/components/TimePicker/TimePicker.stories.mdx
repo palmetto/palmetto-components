@@ -16,6 +16,9 @@ Use a TimePicker when you want users to select from a list of a available times 
 *NOTE:* This component is abstracted from the [SelectInput](?path=/docs/components-form-inputs-selectinput--default-story)
 and as such includes the same underlying props interface with an added method for generating the time options automatically.
 
+*ABOUT TIME FORMAT:* While the `value` prop technicall returns `{ label: string; value: string; }` the value returned will always
+be a JS ISO date string, like this: `2016-07-13T18:46:01.933Z`.
+
 ## Props
 
 <ArgsTable of={TimePicker} />
