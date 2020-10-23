@@ -2,6 +2,12 @@
   --button-color-background-disabled: var(--color-brand-primary-light);
   --button-font-weight: var(--size-font-weight-bold);
 
+  /* x-small */
+  --button-size-xs-border-radius: var(--form-control-size-sm-border-radius);
+  --button-size-xs-font-size: var(--form-control-size-xs-font-size);
+  --button-size-xs-padding-vertical: var(--size-spacing-2xs);
+  --button-size-xs-padding-horizontal: var(--size-spacing-xs);
+
   /* small */
   --button-size-sm-border-radius: var(--form-control-size-sm-border-radius);
   --button-size-sm-font-size: var(--form-control-size-sm-font-size);

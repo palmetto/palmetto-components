@@ -5,6 +5,7 @@ import {
   ReactNode,
   ReactElement,
   CSSProperties,
+  Children,
 } from 'react';
 import classNames from 'classnames';
 import {
@@ -321,8 +322,16 @@ const Box: FC<BoxProps> = ({
   /**
    * Shallow merges existing classes of child node with a className based on the childGap value.
    */
-  const decorateChildren = (child: ReactElement, i: number, childrenArr: ReactElement[]) => {
-    if (i === childrenArr.length - 1 || !child) return child; // Not gap if child is last element.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const decorateChildren = (child: ReactElement<any>, i: number) => {
+    if (
+      i === (Children.count(children) - 1)
+      || !child
+      || typeof child === 'string'
+      || typeof child === 'number'
+    ) {
+      return child; // Not gap if child is last element or if the children are strings or numbers.
+    }
 
     const childClasses = classNames(child.props.className, [...new Set(childGapClasses)]);
 
@@ -332,11 +341,11 @@ const Box: FC<BoxProps> = ({
     });
   };
 
-  const flattenedChildren = Array.isArray(children) ? children.flat() : children;
-  let decoratedChildren = flattenedChildren;
+  let decoratedChildren = Children.map(children, child => child);
 
-  if (childGapClasses && Array.isArray(children)) {
-    decoratedChildren = (flattenedChildren as ReactElement[]).map(decorateChildren);
+  if (childGapClasses && Children.count(children) > 1) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    decoratedChildren = Children.map(children as ReactElement<any>[], decorateChildren);
   }
 
   const element = getElementType(Box, { as });
