@@ -13,7 +13,7 @@ interface TimePickerProps extends BaseSelectInputProps {
    */
   endTime?: { hour: number; minute: number; };
   /**
-   * Interval of displayed times (in minutes). Defaults to 15 minutes.
+   * Interval of displayed times (in seconds). Defaults to 900 seconds (15 minutes).
    */
   interval?: number;
   /**
