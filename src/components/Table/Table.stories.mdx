@@ -21,7 +21,49 @@ Lastly use tables when you need the ability to sort, filter and/or paginate data
 
 <ArgsTable of={Table} />
 
-## Column
+# Scrollable with Fixed Column
+
+<Canvas>
+  <Story name="Scrollable with Fixed Column">
+    {() => {
+      const containerStyle = {
+        padding: '3px 5px',
+        borderRadius: '3px',
+        border: '1px solid #EEEEEE',
+        width: '300px',
+      };
+      const columnConfig = [
+        { heading: 'ID', dataKey: 'id', width: 65 },
+        { heading: 'Color', dataKey: 'color' },
+        { heading: 'Flavor', dataKey: 'flavor' },
+        { heading: 'Brightness', dataKey: 'brightness' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },
+        { id: 2, color: 'blue', flavor: 'chocolate', brightness: 'medium' },
+        { id: 3, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 4, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 5, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 6, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 7, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+      ];
+      return (
+        <div style={containerStyle}>
+          <Table
+            rowKey="id"
+            columns={columnConfig}
+            rows={tableData}
+            scr
+            isScrollable={{ x: true, y: false }}
+            firstColumnIsSticky
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<!-- ## Column
 The column object allows you to configure each table column header as well as some aspects about its underlying cells.
 You will pass an array of columns to your table, where each column is an object with the following properties.
 NOTE: all properties in a column object are optional, but we highly recommend including a `heading` in every column.
@@ -855,4 +897,4 @@ in the column config.
       );
     }}
   </Story>
-</Canvas>
+</Canvas> -->

@@ -9,6 +9,13 @@
   font-size: var(--table-header-font-size);
   font-weight: 600;
 
+  &.sticky {
+    position: absolute;
+    top: auto;
+    left: 0;
+    border-right: 2px solid var(--table-border-color);
+  }
+
   &.sortable {
     cursor: pointer;
   }

@@ -26,6 +26,10 @@ interface TableHeaderCellProps {
    */
   className?: string;
   /**
+   * Column is fixed to left-hand side of table.
+   */
+  columnIsSticky?: boolean;
+  /**
    * Key of corresponding data value in the table.
    */
   dataKey?: Key;
@@ -70,6 +74,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   column,
   align = 'left',
   className = undefined,
+  columnIsSticky = false,
   dataKey = undefined,
   isBorderless = false,
   isCompact = false,
@@ -132,6 +137,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
+      [styles.sticky]: columnIsSticky,
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },

@@ -18,6 +18,10 @@ interface TableHeadProps {
    */
   className?: string;
   /**
+   * If table is scrollable, fix the first column in place, so that it's always visible.
+   */
+  firstColumnIsSticky?: boolean;
+  /**
    * Whether the table has borders or not.
    */
   isBorderless?: boolean;
@@ -47,6 +51,7 @@ const TableHead: FC<TableHeadProps> = ({
   columns,
   align = 'left',
   className = '',
+  firstColumnIsSticky = false,
   isBorderless = false,
   isCompact = false,
   onSort = undefined,
@@ -66,6 +71,7 @@ const TableHead: FC<TableHeadProps> = ({
         onSort={onSort}
         sortedColumn={sortedColumn}
         truncateOverflow={truncateOverflow}
+        firstColumnIsSticky={firstColumnIsSticky}
       />
     </thead>
   );

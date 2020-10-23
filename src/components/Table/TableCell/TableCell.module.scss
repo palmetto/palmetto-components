@@ -3,6 +3,14 @@
   padding: var(--table-padding-vertical) var(--table-padding-horizontal);
   font-size: var(--table-cell-font-size);
 
+  &.sticky {
+    position: absolute;
+    top: auto;
+    left: 0;
+    margin-top: 1px;
+    border-right: 2px solid var(--table-border-color);
+  }
+
   &.borderless {
     border: 0;
   }

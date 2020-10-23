@@ -17,6 +17,10 @@ interface TableCellProps {
    */
   className?: string;
   /**
+   * Column is fixed to left-hand side of table.
+   */
+  columnIsSticky?: boolean;
+  /**
    * Remove borders around td elements.
    */
   isBorderless?: boolean;
@@ -45,6 +49,7 @@ const TableCell: FC<TableCellProps> = ({
   align = 'left',
   children = null,
   className = '',
+  columnIsSticky = false,
   emptyCellPlaceholder = null,
   isBorderless = false,
   isCompact = false,
@@ -57,6 +62,7 @@ const TableCell: FC<TableCellProps> = ({
       [styles.compact]: isCompact,
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
+      [styles.sticky]: columnIsSticky,
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },

@@ -35,6 +35,10 @@ interface TableProps {
    */
   emptyCellPlaceholder?: string | number | undefined;
   /**
+   * If table is scrollable, fix the first column in place, so that it's always visible.
+   */
+  firstColumnIsSticky?: boolean;
+  /**
    * Enable a hover state on table rows.
    */
   hoverableRows?: boolean;
@@ -93,6 +97,7 @@ const Table: FC<TableProps> = ({
   align = 'left',
   className = undefined,
   emptyCellPlaceholder = undefined,
+  firstColumnIsSticky = false,
   hoverableRows = false,
   isBorderless = false,
   isCompact = false,
@@ -138,7 +143,7 @@ const Table: FC<TableProps> = ({
           <Spinner size="xl" />
         </div>
       )}
-      <div className={scrollContainerClasses} data-testid="tableContainerDiv-testid">
+      <div className={scrollContainerClasses} style={{ marginLeft: `${columns[0].width}px` }} data-testid="tableContainerDiv-testid">
         <table className={tableClasses}>
           <TableHead
             columns={columns}
@@ -148,6 +153,7 @@ const Table: FC<TableProps> = ({
             isCompact={isCompact}
             sortedColumn={sortedColumn}
             truncateOverflow={truncateOverflow}
+            firstColumnIsSticky={firstColumnIsSticky}
           />
           <TableBody
             rows={rows}
@@ -160,6 +166,7 @@ const Table: FC<TableProps> = ({
             truncateOverflow={truncateOverflow}
             isBorderless={isBorderless}
             isCompact={isCompact}
+            firstColumnIsSticky={firstColumnIsSticky}
           />
         </table>
       </div>

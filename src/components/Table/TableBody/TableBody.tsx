@@ -32,6 +32,10 @@ interface TableBodyProps {
    */
   emptyCellPlaceholder?: string | number | undefined;
   /**
+   * If table is scrollable, fix the first column in place, so that it's always visible.
+   */
+  firstColumnIsSticky?: boolean;
+  /**
    * Enable a hover state on table rows.
    */
   hoverableRows?: boolean;
@@ -61,6 +65,7 @@ const TableBody: FC<TableBodyProps> = ({
   align = 'left',
   className = '',
   emptyCellPlaceholder = '',
+  firstColumnIsSticky = false,
   hoverableRows = false,
   isBorderless = false,
   isCompact = false,
@@ -89,6 +94,7 @@ const TableBody: FC<TableBodyProps> = ({
           truncateOverflow={truncateOverflow}
           isBorderless={isBorderless}
           isCompact={isCompact}
+          firstColumnIsSticky={firstColumnIsSticky}
         />
       ))}
     </tbody>

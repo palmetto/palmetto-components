@@ -26,6 +26,10 @@ interface TableRowProps {
    */
   emptyCellPlaceholder?: string | number | undefined;
   /**
+   * If table is scrollable, fix the first column in place, so that it's always visible.
+   */
+  firstColumnIsSticky?: boolean;
+  /**
    * Whether the table has borders or not.
    */
   isBorderless?: boolean;
@@ -72,6 +76,7 @@ const TableRow: FC<TableRowProps> = ({
   align = 'left',
   className = '',
   emptyCellPlaceholder = '',
+  firstColumnIsSticky = false,
   isBorderless = false,
   isCompact = false,
   isHoverable = false,
@@ -114,6 +119,7 @@ const TableRow: FC<TableRowProps> = ({
             sortedColumn={sortedColumn}
             truncateOverflow={column.truncateOverflow || truncateOverflow}
             width={column.width}
+            columnIsSticky={firstColumnIsSticky && columnIndex === 0}
           />
         ) : (
           <TableCell
@@ -125,6 +131,7 @@ const TableRow: FC<TableRowProps> = ({
             isBorderless={isBorderless}
             isCompact={isCompact}
             width={column.width}
+            columnIsSticky={firstColumnIsSticky && columnIndex === 0}
           >
             {renderCellContent(column)}
           </TableCell>
