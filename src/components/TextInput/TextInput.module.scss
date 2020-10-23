@@ -17,11 +17,9 @@
   border-radius: var(--form-control-size-md-border-radius);
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
   background-color: var(--form-control-background-color);
-  padding: calc(var(--form-control-size-md-padding) - 1px); /* Subtract 1 pixel here to account for nested input */
   width: 100%;
   line-height: var(--form-control-line-height);
   color: var(--form-control-font-color);
-  font-size: var(--form-control-size-md-font-size);
 
   &:focus-within {
     outline: none;
