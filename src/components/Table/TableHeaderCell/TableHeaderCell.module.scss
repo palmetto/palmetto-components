@@ -1,5 +1,6 @@
 .table-header-cell {
   border-bottom: 1px solid var(--table-border-color);
+  background-color: var(--table-background-color);
   padding: var(--table-padding-header-vertical) var(--table-padding-horizontal);
   text-align: left;
   text-transform: uppercase;
@@ -25,6 +26,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  &.sticky {
+    position: sticky;
+    left: 0;
   }
 
   &.align-right {

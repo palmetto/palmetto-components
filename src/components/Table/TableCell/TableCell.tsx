@@ -25,6 +25,10 @@ interface TableCellProps {
    */
   isCompact?: boolean;
   /**
+   * Will stick to left side of table during horizontal scroll.
+   */
+  isSticky?: boolean;
+  /**
    * Truncates the cell contents based on width established by `Column`
    * NOTE: Truncate only on cells with primitive data types.
    */
@@ -48,6 +52,7 @@ const TableCell: FC<TableCellProps> = ({
   emptyCellPlaceholder = null,
   isBorderless = false,
   isCompact = false,
+  isSticky = false,
   truncateOverflow = false,
   width = undefined,
 }) => {
@@ -57,6 +62,7 @@ const TableCell: FC<TableCellProps> = ({
       [styles.compact]: isCompact,
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
+      [styles.sticky]: isSticky,
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
@@ -64,12 +70,25 @@ const TableCell: FC<TableCellProps> = ({
   );
 
   return (
-    <td
-      className={tableCellClasses}
-      style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
-    >
-      {(children === null || typeof children === 'undefined' || children === '') ? emptyCellPlaceholder : children}
-    </td>
+    <>
+      {isSticky
+        ? (
+          <th
+            className={tableCellClasses}
+            style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
+          >
+            {(children === null || typeof children === 'undefined' || children === '') ? emptyCellPlaceholder : children}
+          </th>
+        ) : (
+          <td
+            className={tableCellClasses}
+            style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
+          >
+            {(children === null || typeof children === 'undefined' || children === '') ? emptyCellPlaceholder : children}
+          </td>
+        )
+      }
+    </>
   );
 };
 

@@ -43,6 +43,10 @@ interface TableHeaderCellProps {
    */
   isSortable?: boolean;
   /**
+   * Will stick to left side of table during horizontal scroll.
+   */
+  isSticky?: boolean;
+  /**
    * Callback function to execute when a sortable column's header is clicked.
    * Column can be sorted without providing an onSort method, it means that the arrows
    * will not be clickable, but they will still represent the sort state
@@ -74,6 +78,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   isBorderless = false,
   isCompact = false,
   isSortable = false,
+  isSticky = false,
   onSort = undefined,
   sortedColumn = undefined,
   truncateOverflow = false,
@@ -132,6 +137,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
+      [styles.sticky]: isSticky,
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
