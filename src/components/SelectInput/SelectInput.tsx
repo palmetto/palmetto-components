@@ -6,6 +6,8 @@ import Select, {
   IndicatorProps,
   OptionTypeBase,
   ValueType,
+  GroupedOptionsType,
+  OptionsType,
 } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +17,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
-interface SelectInputProps {
+export interface BaseSelectInputProps {
   /**
    * The id attribute of the input.
    */
@@ -28,13 +30,6 @@ interface SelectInputProps {
    * Callback function to call on change event.
    */
   onChange: (event: SimulatedEventPayloadType) => void;
-  /**
-   * Options for dropdown list.
-   */
-  options: {
-    value: string;
-    label: string;
-  }[];
   /**
    * The value(s) of select.
    */
@@ -92,6 +87,18 @@ interface SelectInputProps {
    * Placeholder for input.
    */
   placeholder?: string;
+  /**
+   * Additional props to be spread. These will be applied specifically to
+   * the `react-select` component that powers the select. For full docs on
+   * react-select props, [Click Here](https://react-select.com/props)
+   */
+  [x: string]: any; // eslint-disable-line
+}
+interface SelectInputProps extends BaseSelectInputProps {
+  /**
+   * Options for dropdown list.
+   */
+  options: GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
 }
 
 const SelectInput: FC<SelectInputProps> = ({
@@ -113,6 +120,7 @@ const SelectInput: FC<SelectInputProps> = ({
   onFocus = null,
   onBlur = null,
   placeholder = undefined,
+  ...restProps
 }) => {
   const handleChange = (values: ValueType<OptionTypeBase>) => {
     const simulatedEventPayloadType: SimulatedEventPayloadType = {
@@ -158,6 +166,7 @@ const SelectInput: FC<SelectInputProps> = ({
     <Box width="100%" className={wrapperClasses}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       <Select
+        {...restProps}
         inputId={id}
         aria-label={label}
         components={{ ClearIndicator }}
