@@ -156,7 +156,7 @@ describe('TimePicker', () => {
   describe('Callback Handling', () => {
     describe('onChange', () => {
       test('Custom onChange event fires callback function, overwriting Formik\'s onChange', async () => {
-        let value: Option[] = [];
+        let value: Option | undefined;
         const mockedHandleChange = jest.fn(event => { value = event.target.value; });
 
         const { getByLabelText, container, getByText } = render(renderForm(value, { onChange: mockedHandleChange }));
@@ -175,7 +175,7 @@ describe('TimePicker', () => {
         const option = await waitFor(() => getByText('12:00 AM'), { container });
         fireEvent.click(option);
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
-        expect(value.label).toEqual('12:00 AM');
+        expect(value?.label).toEqual('12:00 AM');
       });
 
       test('it fires onChange callback on change', async () => {
