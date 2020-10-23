@@ -18,6 +18,7 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextInput.module.scss';
 
+
 type inputMaskType = ('phone' | 'creditCard') | UnknownPropertiesObjType;
 
 interface TextInputProps {
@@ -108,6 +109,10 @@ interface TextInputProps {
    * The input 'type' value. Defaults to type 'text'.
    */
   type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
+  /**
+   * The size of the text input.
+   */
+  size?: 'sm' | 'md' | 'lg';
 }
 
 const TextInput: FC<TextInputProps> = ({
@@ -131,6 +136,7 @@ const TextInput: FC<TextInputProps> = ({
   onFocus = undefined,
   placeholder = '',
   type = 'text',
+  size = 'md',
 }) => {
   const getInputMask = (
     mask: inputMaskType,
@@ -152,10 +158,14 @@ const TextInput: FC<TextInputProps> = ({
     return mask;
   };
 
-  const inputWrapperClasses = classNames(styles['text-input-wrapper'], {
-    [styles.error]: error,
-    [styles.disabled]: isDisabled,
-  });
+  const inputWrapperClasses = classNames(
+    styles['text-input-wrapper'],
+    styles[size],
+    {
+      [styles.error]: error,
+      [styles.disabled]: isDisabled,
+    }
+  );
 
   const renderClearIcon = (): ReactNode => {
     const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
@@ -167,7 +177,7 @@ const TextInput: FC<TextInputProps> = ({
         type="button"
         onClick={onClear}
         onKeyUp={handleKeyPress}
-        className={styles['clear-button']}
+        className={styles['clear-button md']}
         data-testid="text-input-clear-button"
       >
         <FontAwesomeIcon icon={faTimes} className={styles['clear-icon']} />
@@ -192,6 +202,7 @@ const TextInput: FC<TextInputProps> = ({
     placeholder,
     type,
     value,
+    size,
   };
 
   const labelProps = {

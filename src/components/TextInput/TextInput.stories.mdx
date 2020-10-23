@@ -435,3 +435,52 @@ Use the `className` prop to add a custom class, or classes to an input.
     }}
   </Story>
 </Canvas>
+
+## Sizes
+
+Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
+
+<Canvas>
+  <Story name="Size">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value1, setValue1] = useState('');
+      const [value2, setValue2] = useState('');
+      return (
+        <Box
+          direction={{
+            base: 'column',
+          }}
+          childGap={{
+            base: 'sm',
+            tablet: 'md',
+            desktop: 'lg',
+            hd: 'lg',
+          }}
+          width="100%"
+        >
+          <TextInput
+            id="default"
+            value={value}
+            label="Label - Small"
+            size="sm"
+            onChange={event => setValue(event.target.value)}
+          />
+          <TextInput
+            id="default"
+            value={value1}
+            label="Label - Medium"
+            onChange={event => setValue1(event.target.value)}
+          />
+          <TextInput
+            id="default"
+            value={value2}
+            label="Label - Large"
+            size="lg"
+            onChange={event => setValue2(event.target.value)}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

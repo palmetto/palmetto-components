@@ -63,6 +63,21 @@
       background-color: var(--form-control-background-color);
     }
   }
+
+  &.sm {
+    font-size: var(--form-control-size-sm-font-size);
+    padding: calc(var(--form-control-size-sm-padding) - 1px);
+  }
+
+  &.md {
+    font-size: var(--form-control-size-md-font-size);
+    padding: calc(var(--form-control-size-md-padding) - 1px);
+  }
+
+  &.lg {
+    font-size: var(--form-control-size-lg-font-size);
+    padding: calc(var(--form-control-size-lg-padding) - 1px);
+  }
 }
 
 .text-input-label {

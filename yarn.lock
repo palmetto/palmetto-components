@@ -3017,6 +3017,18 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@palmetto/palmetto-components@^0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-components/-/palmetto-components-0.24.0.tgz#91fd87fa4778604a22c4d1fd6efe0399f10b677e"
+  integrity sha512-Ksoj0JrKnQ5Mn/lj1q7RjmQ8H64nKEKsYrzSZnNn2JeUvQ+SE/rz0gRoQx/l35SfvblQDUwzvnanobgymoZjHg==
+  dependencies:
+    "@fortawesome/fontawesome-svg-core" "^1.2.30"
+    "@fortawesome/free-solid-svg-icons" "^5.14.0"
+    "@fortawesome/react-fontawesome" "^0.1.11"
+    "@palmetto/palmetto-design-tokens" "^0.16.0"
+    "@types/cleave.js" "^1.4.3"
+    react-select "^3.1.0"
+
 "@palmetto/palmetto-design-tokens@^0.16.0":
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.16.0.tgz#0c4f5ba0d6aaeea0d885d6cfdd98e0eac8c97ae8"
