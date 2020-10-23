@@ -17,7 +17,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
-export interface SelectInputProps {
+export interface BaseSelectInputProps {
   /**
    * The id attribute of the input.
    */
@@ -27,9 +27,9 @@ export interface SelectInputProps {
    */
   label: string;
   /**
-   * Options for dropdown list.
+   * Callback function to call on change event.
    */
-  options?: GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
+  onChange: (event: SimulatedEventPayloadType) => void;
   /**
    * The value(s) of select.
    */
@@ -93,6 +93,12 @@ export interface SelectInputProps {
    * react-select props, [Click Here](https://react-select.com/props)
    */
   [x: string]: any; // eslint-disable-line
+}
+interface SelectInputProps extends BaseSelectInputProps {
+  /**
+   * Options for dropdown list.
+   */
+  options: GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
 }
 
 const SelectInput: FC<SelectInputProps> = ({
