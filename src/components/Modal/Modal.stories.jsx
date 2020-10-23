@@ -3,7 +3,7 @@ import Modal from './Modal';
 import Button from '../Button/Button';
 
 export default {
-  title: 'Components/Modal/For Chromatic',
+  title: 'Components/Modal/ForChromatic',
   component: Modal,
   parameters: {
     chromatic: { delay: 1000 },
