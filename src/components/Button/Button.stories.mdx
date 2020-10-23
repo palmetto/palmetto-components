@@ -79,11 +79,25 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
 
 ## Sizes
 
-Set the size of the button to `sm`, `md` or `lg`. `md` is the default size.
+Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size.
 
 <Canvas>
   <Story name="Size">
     <Box childGap="md">
+      <Box childGap="sm" direction="row">
+        <Button size="xs" variant="primary">x-Small Primary</Button>
+        <Button size="xs" variant="success">x-Small Success</Button>
+        <Button size="xs" variant="danger">x-Small Danger</Button>
+        <Button size="xs" variant="light">x-Small Light</Button>
+        <Button size="xs" variant="dark">x-Small Dark</Button>
+      </Box>
+      <Box childGap="sm" direction="row">
+        <Button size="xs" variant="primary" isOutlined>x-Small Primary</Button>
+        <Button size="xs" variant="success" isOutlined>x-Small Success</Button>
+        <Button size="xs" variant="danger" isOutlined>x-Small Danger</Button>
+        <Button size="xs" variant="light" isOutlined>x-Small Light</Button>
+        <Button size="xs" variant="dark" isOutlined>x-Small Dark</Button>
+      </Box>
       <Box childGap="sm" direction="row">
         <Button size="sm" variant="primary">Small Primary</Button>
         <Button size="sm" variant="success">Small Success</Button>
@@ -266,12 +280,12 @@ Callback functions can be passed to `onClick`, `onBlur`, and `onFocus` events.
 
 ## As an Anchor
 
-You can render an anchor tag with the style of a button by passing an href attribute.
-The props API when using an anchor will be the same as a standard HTML anchor.
+You can render an anchor tag with the style of a button by using the `as` prop. You
+can render buttons as one of `button`, `a`, and `input`.
 
 <Canvas>
   <Story name="As an Anchor">
-    <Button href="https://ux.palmetto.com" target="_blank">
+    <Button as="a" href="https://ux.palmetto.com" target="_blank">
       I'm an anchor tag
     </Button>
   </Story>
