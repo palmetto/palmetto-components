@@ -10,13 +10,14 @@ interface ModalProps {
    */
   allowPinchZoom?: boolean;
   /**
-   * Each modal needs to be properly labeled to provide context for users with assistive technology such as screen readers.
-   * If a modal is announced to the user without a label, it can be confusing and difficult to navigate.
+   * Each modal needs to be properly labeled to provide context for users with
+   * assistive technology such as screen readers. If a modal is announced to
+   * the user without a label, it can be confusing and difficult to navigate.
    */
   ariaLabel?: string;
   /**
-   * Each modal needs to be properly labeled to provide context for users with assistive technology such as screen readers.
-   * If a modal is announced to the user without a label, it can be confusing and difficult to navigate.
+   * The id of the element that should be used as the Modal's label by assistive
+   * technologies like screen readers. Usually the id is set on the `Modal.Header`
    */
   ariaLabelledBy?: string;
   /**

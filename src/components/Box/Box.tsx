@@ -303,10 +303,8 @@ const Box: FC<BoxProps> = ({
     const breakpoints: BreakpointSizeWithBase[] = ['hd', 'desktop', 'tablet', 'base'];
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const findMatchingBreakpoint = (
-      responsiveObj: ResponsiveProp<any>,
-      key: BreakpointSizeWithBase,
-    ): string => {
+    const findMatchingBreakpoint = (responsiveObj: ResponsiveProp<any>,
+      key: BreakpointSizeWithBase): string => {
       const index = breakpoints.findIndex(breakpoint => breakpoint === key);
       let value = '';
 
@@ -341,10 +339,10 @@ const Box: FC<BoxProps> = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const decorateChildren = (child: ReactElement<any>, i: number) => {
     if (
-      i === Children.count(children) - 1 ||
-      !child ||
-      typeof child === 'string' ||
-      typeof child === 'number'
+      i === Children.count(children) - 1
+      || !child
+      || typeof child === 'string'
+      || typeof child === 'number'
     ) {
       return child; // Not gap if child is last element or if the children are strings or numbers.
     }
