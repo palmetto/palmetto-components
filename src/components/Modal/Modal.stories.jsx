@@ -11,16 +11,18 @@ export default {
 };
 
 export const BasicExample = () => (
-  <Modal isOpen onDismiss={() => null}>
-    <Modal.Header title="The Modal Title" onDismiss={() => null} />
-    <Modal.Body>Modal content</Modal.Body>
-    <Modal.Footer>
-      <Button variant="light" onClick={() => {}}>
-        Cancel
-      </Button>
-      <Button variant="primary">Primary Action</Button>
-    </Modal.Footer>
-  </Modal>
+  <div style={{ width: '500px', height: '500px' }}>
+    <Modal isOpen onDismiss={() => null}>
+      <Modal.Header title="The Modal Title" onDismiss={() => null} />
+      <Modal.Body>Modal content</Modal.Body>
+      <Modal.Footer>
+        <Button variant="light" onClick={() => {}}>
+          Cancel
+        </Button>
+        <Button variant="primary">Primary Action</Button>
+      </Modal.Footer>
+    </Modal>
+  </div>
 );
 
 export const BodyAndFooter = () => (
