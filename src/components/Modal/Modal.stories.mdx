@@ -34,8 +34,8 @@ In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `
           <Button variant="light" onClick={open}>
             Show Modal
           </Button>
-          <Modal isOpen={showModal} onDismiss={close}>
-            <Modal.Header title="The Modal Title" onDismiss={close} />
+          <Modal ariaLabelledBy="titleBasic" isOpen={showModal} onDismiss={close}>
+            <Modal.Header id="titleBasic" title="The Modal Title" onDismiss={close} />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>
@@ -69,8 +69,8 @@ Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These co
           <Button variant="light" onClick={open}>
             Show Modal
           </Button>
-          <Modal isOpen={showModal} onDismiss={close}>
-            <Modal.Header title="The Modal Title" onDismiss={close} />
+          <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={close}>
+            <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={close} />
             <Modal.Body>Modal body content</Modal.Body>
             <Modal.Footer>This is content in the modal footer</Modal.Footer>
           </Modal>
@@ -95,7 +95,7 @@ Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a cl
           <Button variant="light" onClick={open}>
             Show Modal
           </Button>
-          <Modal isOpen={showModal} onDismiss={close}>
+          <Modal ariaLabel="modal with close button" isOpen={showModal} onDismiss={close}>
             <Modal.Header onDismiss={close} />
             <Modal.Body>Modal content</Modal.Body>
           </Modal>
@@ -120,7 +120,7 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
           <Button variant="light" onClick={open}>
             Show Modal
           </Button>
-          <Modal isOpen={showModal} onDismiss={close}>
+          <Modal ariaLabel="Modal without a header" isOpen={showModal} onDismiss={close}>
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>
@@ -150,8 +150,17 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
           <Button variant="light" onClick={open}>
             Show Modal
           </Button>
-          <Modal fullScreenMobile isOpen={showModal} onDismiss={close}>
-            <Modal.Header title="Fullscreen Modal on Mobile" onDismiss={close} />
+          <Modal
+            ariaLabelledBy="titleFullscreen"
+            fullScreenMobile
+            isOpen={showModal}
+            onDismiss={close}
+          >
+            <Modal.Header
+              id="titleFullscreen"
+              title="Fullscreen Modal on Mobile"
+              onDismiss={close}
+            />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>

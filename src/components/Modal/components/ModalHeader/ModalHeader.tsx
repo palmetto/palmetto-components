@@ -6,6 +6,10 @@ import styles from '../../Modal.module.scss';
 
 type ModalHeaderProps = {
   /**
+   * id of the element containing the title, used by the Modal `aria-labelledby` prop
+   */
+  id: string;
+  /**
    * Modal's header title
    */
   title?: string;
@@ -15,7 +19,7 @@ type ModalHeaderProps = {
   onDismiss?: (event?: React.SyntheticEvent) => void;
 };
 
-const ModalHeader: FC<ModalHeaderProps> = ({ onDismiss, title = undefined }) => {
+const ModalHeader: FC<ModalHeaderProps> = ({ id, onDismiss, title = undefined }) => {
   const justifyContentValue = title === undefined && onDismiss ? 'flex-end' : 'space-between';
 
   return (
@@ -32,7 +36,7 @@ const ModalHeader: FC<ModalHeaderProps> = ({ onDismiss, title = undefined }) => 
       height="lg"
     >
       {title && (
-        <Box as="h4" fontSize={{ base: 'md', tablet: 'lg' }}>
+        <Box as="h4" fontSize={{ base: 'md', tablet: 'lg' }} id={id}>
           {title}
         </Box>
       )}

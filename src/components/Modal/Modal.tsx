@@ -10,6 +10,16 @@ interface ModalProps {
    */
   allowPinchZoom?: boolean;
   /**
+   * Each modal needs to be properly labeled to provide context for users with assistive technology such as screen readers.
+   * If a modal is announced to the user without a label, it can be confusing and difficult to navigate.
+   */
+  ariaLabel?: string;
+  /**
+   * Each modal needs to be properly labeled to provide context for users with assistive technology such as screen readers.
+   * If a modal is announced to the user without a label, it can be confusing and difficult to navigate.
+   */
+  ariaLabelledBy?: string;
+  /**
    * Contents of the button.
    */
   children?: ReactNode;
@@ -43,10 +53,13 @@ const Modal: FC<ModalProps> & {
   Footer: typeof ModalFooter;
   Header: typeof ModalHeader;
 } = ({
+  ariaLabel,
+  ariaLabelledBy,
   allowPinchZoom = false,
   children,
   className,
   fullScreenMobile = false,
+  initialFocusRef,
   isOpen,
   onDismiss,
 }) => {
@@ -61,8 +74,15 @@ const Modal: FC<ModalProps> & {
       allowPinchZoom={allowPinchZoom}
       isOpen={isOpen}
       onDismiss={onDismiss}
+      initialFocusRef={initialFocusRef}
     >
-      <DialogContent className={contentClassnames}>{children}</DialogContent>
+      <DialogContent
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
+        className={contentClassnames}
+      >
+        {children}
+      </DialogContent>
     </DialogOverlay>
   );
 };
