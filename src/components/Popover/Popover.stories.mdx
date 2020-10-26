@@ -1,0 +1,36 @@
+import { useState } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Popover from './Popover';
+import Card from '../Card/Card';
+import Button from '../Button/Button';
+
+<Meta
+  title="Components/Popover"
+  component={Popover}
+/>
+
+# Popover
+
+Use popovers to show content (lists, menus, etc.) behind the context of a specific trigger.
+
+## Props
+
+<ArgsTable of={Popover} />
+
+## Default
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(false);
+      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+      return (
+        <div style={{ height: '300px' }}>
+          <Popover render={() => <Card>hey!</Card>} isOpen={isPopoverOpen}><Button onClick={handleOpenPopover}>Click me!</Button></Popover>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
