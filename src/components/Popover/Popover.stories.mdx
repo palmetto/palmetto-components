@@ -27,7 +27,7 @@ Use popovers to show content (lists, menus, etc.) behind the context of a specif
       const [isPopoverOpen, setPopoverOpen] = useState(false);
       const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
       return (
-        <div style={{ height: '300px' }}>
+        <div style={{ height: '300px', margin: '10rem' }}>
           <Popover render={() => <Card>hey!</Card>} isOpen={isPopoverOpen}><Button onClick={handleOpenPopover}>Click me!</Button></Popover>
         </div>
       );
