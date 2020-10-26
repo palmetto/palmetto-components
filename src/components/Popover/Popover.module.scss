@@ -1,0 +1,50 @@
+.popover-container {
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.3s;
+  z-index: 9999;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 0.4rem;
+}
+
+.css-x1w4jc[data-popper-placement^='right'] > [data-popper-arrow] {
+  left: -4px;
+}
+
+.popover-arrow, .popover-arrow::before {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  z-index: -1;
+}
+
+.popover-arrow::before {
+  -webkit-transition: -webkit-transform 0.2s ease-out,visibility 0.2s ease-out;
+  -webkit-transition: transform 0.2s ease-out,visibility 0.2s ease-out;
+  transition: transform 0.2s ease-out,visibility 0.2s ease-out;
+  visibility: visible;
+  -webkit-transform: translateX(0px) rotate(45deg);
+  -ms-transform: translateX(0px) rotate(45deg);
+  transform: translateX(0px) rotate(45deg);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+.popover-arrow::before {
+  content: '';
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background: #fff;
+  top: 0;
+  left: 0;
+}
+.popover-arrow, .popover-arrow::before {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  z-index: -1;
+}

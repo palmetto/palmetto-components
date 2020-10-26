@@ -5,6 +5,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Popover from './Popover';
 import Card from '../Card/Card';
 import Button from '../Button/Button';
+import Box from '../Box/Box';
 
 <Meta
   title="Components/Popover"
@@ -26,9 +27,21 @@ Use popovers to show content (lists, menus, etc.) behind the context of a specif
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
       const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const cardContent = (
+        <Box background="white">
+          Hello!
+        </Box>
+      );
       return (
-        <div style={{ height: '300px', margin: '10rem' }}>
-          <Popover render={() => <Card>hey!</Card>} isOpen={isPopoverOpen}><Button onClick={handleOpenPopover}>Click me!</Button></Popover>
+        <div style={{ height: '200px' }}>
+          <Popover
+            content={cardContent}
+            isOpen={isPopoverOpen}
+            isPortal
+            placement="right"
+          >
+            <Button onClick={handleOpenPopover}>Click me!</Button>
+          </Popover>
         </div>
       );
     }}
