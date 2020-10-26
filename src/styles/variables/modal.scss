@@ -1,0 +1,10 @@
+:root {
+  --modal-background-color: var(--color-brand-white-500);
+  --modal-border-radius: var(--size-border-radius-md);
+  --modal-overlay-padding: var(--size-spacing-2xl);
+
+  /* Close Button */
+  --modal-close-button-padding: var(--size-spacing-xs);
+  --modal-close-button-color: var(--color-brand-grey-500);
+  --modal-close-button-color-hover: var(--color-brand-grey-600);
+}

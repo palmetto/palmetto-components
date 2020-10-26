@@ -13,6 +13,7 @@ import FormikSelectInput from './Formik/FormikSelectInput/FormikSelectInput';
 import FormikTextInput from './Formik/FormikTextInput/FormikTextInput';
 import FormikTextareaInput from './Formik/FormikTextareaInput/FormikTextareaInput';
 import Heading from './Heading/Heading';
+import Modal from './Modal/Modal';
 import Pagination from './Pagination/Pagination';
 import RadioGroup from './RadioGroup/RadioGroup';
 import SelectInput from './SelectInput/SelectInput';
@@ -38,6 +39,7 @@ export {
   FormikTextareaInput,
   FormikTextInput,
   Heading,
+  Modal,
   Pagination,
   RadioGroup,
   SelectInput,

@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
+import { Z_INDEX_OPTIONS, Z_INDEX_VALUES } from '../lib/tokens';
+
+<Meta title="Design Tokens/Z-Index" />
+
+# Z-Index
+
+Used these tokens to set the z-index order of layering elements.
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>value</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {Z_INDEX_OPTIONS.map((value, i) => (
+      <tr key={i}>
+        <td>
+          <code>{`size-z-index-${value}`}</code>
+        </td>
+        <td>{Z_INDEX_VALUES[i].value}</td>
+        <td>{Z_INDEX_VALUES[i].original.comment}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
