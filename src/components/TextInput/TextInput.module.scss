@@ -18,7 +18,6 @@
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
   background-color: var(--form-control-background-color);
   width: 100%;
-  line-height: var(--form-control-line-height);
   color: var(--form-control-font-color);
 
   &:focus-within {
@@ -34,7 +33,7 @@
     border: none;
     background-color: inherit;
     width: 100%;
-    line-height: var(--form-control-line-height);
+    padding: 0px;
 
     &::placeholder {
       /* Override lower placeholder opacity in Firefox */
@@ -65,16 +64,20 @@
   &.sm {
     font-size: var(--form-control-size-sm-font-size);
     padding: calc(var(--form-control-size-sm-padding) - 1px);
+    line-height: 1.2;
   }
 
   &.md {
     font-size: var(--form-control-size-md-font-size);
     padding: calc(var(--form-control-size-md-padding) - 1px);
+    line-height: var(--form-control-line-height);
+    
   }
 
   &.lg {
     font-size: var(--form-control-size-lg-font-size);
     padding: calc(var(--form-control-size-lg-padding) - 1px);
+    line-height: 1;
   }
 }
 

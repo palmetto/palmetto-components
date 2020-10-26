@@ -1,0 +1,92 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Box from '../Box/Box';
+import Button from '../Button/Button';
+import TextInput from '../TextInput/TextInput';
+
+
+<Meta
+  title="Patterns/Text Input : Button Size"
+/>
+
+## Text Input Button Size
+
+Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
+
+<Canvas>
+  <Story name="TextInputButtonSize">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value1, setValue1] = useState('');
+      const [value2, setValue2] = useState('');
+      return (
+        <div>
+          <Box
+            display="flex"
+            direction="row"
+            justify="between"
+            overflow="hidden"
+            alignItems="flex-end"
+          >
+            <Box>
+              <TextInput
+                id="default"
+                value={value}
+                placeholder="Small"
+                size="sm"
+                onChange={event => setValue(event.target.value)}
+              />
+            </Box>
+            <Box>
+              <Button size="sm">Small Button</Button>
+            </Box>
+          </Box>
+          <Box
+            display="flex"
+            direction="row"
+            justify="between"
+            overflow="hidden"
+            alignItems="flex-end"
+          >
+            <Box>
+              <TextInput
+                id="default"
+                value={value1}
+                placeholder="Medium"
+                onChange={event => setValue1(event.target.value)}
+              />
+            </Box>
+            <Box>
+              <Button>
+                Medium Button
+              </Button>
+            </Box>
+          </Box>
+          <Box
+            display="flex"
+            direction="row"
+            justify="between"
+            overflow="hidden"
+            alignItems="flex-end"
+          >
+            <Box>
+              <TextInput
+                id="default"
+                value={value2}
+                placeholder="Large"
+                size="lg"
+                onChange={event => setValue2(event.target.value)}
+              />
+            </Box>
+            <Box>
+              <Button size="lg">
+                Large Button
+              </Button>
+            </Box>
+          </Box>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
