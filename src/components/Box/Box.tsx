@@ -133,9 +133,7 @@ export interface BoxProps {
    */
   maxWidth?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
-   * The overflow property is specified as one or two keywords.
-   * If two keywords are specified, the first applies to overflow-x and the second to overflow-y.
-   * Otherwise, both overflow-x and overflow-y are set to the same value.
+   * The css overflow behavior of the Box
    */
   overflow?: CssOverflowValue | ResponsiveProp<CssOverflowValue>;
   /**

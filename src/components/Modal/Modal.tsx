@@ -2,6 +2,7 @@ import React, { FC, ReactNode, RefObject } from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
 import { ModalFooter, ModalHeader, ModalBody } from './components';
+import { CssOverflowValue } from '../../types';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -47,6 +48,10 @@ interface ModalProps {
    * Function that is called whenever the user hits "Esacape" key or clicks outside the modal.
    */
   onDismiss: (event?: React.SyntheticEvent) => void;
+  /**
+   * The css overflow behavior of the Modal
+   */
+  overflow?: CssOverflowValue;
 }
 
 const Modal: FC<ModalProps> & {
@@ -63,11 +68,14 @@ const Modal: FC<ModalProps> & {
   initialFocusRef,
   isOpen,
   onDismiss,
+  overflow = 'hidden',
 }) => {
   const overylayClassnames = classNames(styles.overlay, {
     fullscreen: fullScreenMobile,
   });
-  const contentClassnames = classNames(styles['modal-content'], className);
+  const contentClassnames = classNames(styles['modal-content'], className, {
+    [`overflow-${overflow}`]: overflow,
+  });
 
   return (
     <DialogOverlay
