@@ -18,4 +18,15 @@ export const parameters = {
     options: {},
     manual: false,
   },
+  options: {
+    storySort: {
+      order: [
+        'About',
+        ['Introduction', 'Get Started', 'Contributing'],
+        'Components',
+        'Patterns',
+        'Design Tokens',
+      ],
+    },
+  },
 };
