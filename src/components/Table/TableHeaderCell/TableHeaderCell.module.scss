@@ -33,7 +33,7 @@
     top: 0;
 
     &.sticky-column {
-      z-index: 2;
+      z-index: var(--size-z-index-sticky);
     }
   }
 
