@@ -28,7 +28,16 @@
     white-space: nowrap;
   }
 
-  &.sticky {
+  &.sticky-header {
+    position: sticky;
+    top: 0;
+
+    &.sticky-column {
+      z-index: 2;
+    }
+  }
+
+  &.sticky-column {
     position: sticky;
     left: 0;
   }

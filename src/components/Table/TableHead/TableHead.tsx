@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import classNames from 'classnames';
 import { Column, EventWithColumnKey } from '../../../types';
 import TableRow from '../TableRow/TableRow';
-import styles from './TableHead.module.scss';
 
 interface TableHeadProps {
   /**
@@ -59,10 +58,7 @@ const TableHead: FC<TableHeadProps> = ({
   sortedColumn = undefined,
   truncateOverflow = false,
 }) => {
-  const tableHeadClasses = classNames(
-    { [styles.sticky]: isHeaderSticky },
-    className,
-  );
+  const tableHeadClasses = classNames(className);
 
   return (
     <thead className={tableHeadClasses}>
@@ -75,6 +71,7 @@ const TableHead: FC<TableHeadProps> = ({
         onSort={onSort}
         sortedColumn={sortedColumn}
         truncateOverflow={truncateOverflow}
+        isHeaderSticky={isHeaderSticky}
       />
     </thead>
   );

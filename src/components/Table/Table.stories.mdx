@@ -432,10 +432,10 @@ with the second column having a fixed width of 300 pixels.
   </Story>
 </Canvas>
 
-## Scrollable with Sticky Column
+## Scrollable with Sticky First Column
 
 <Canvas>
-  <Story name="Scrollable with Sticky Column">
+  <Story name="Scrollable with Sticky First Column">
     {() => {
       const containerStyle = {
         borderRadius: '3px',
@@ -473,7 +473,7 @@ with the second column having a fixed width of 300 pixels.
   </Story>
 </Canvas>
 
-## Scrollable with Sticky Header and Column
+## Scrollable with Sticky Header and First Column
 
 <Canvas>
   <Story name="Scrollable with Sticky Header and Column">
@@ -489,6 +489,48 @@ with the second column having a fixed width of 300 pixels.
         { heading: 'Color', dataKey: 'color', width: 300 },
         { heading: 'Flavor', dataKey: 'flavor', width: 100 },
         { heading: 'Brightness', dataKey: 'brightness', width: 150 },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },
+        { id: 2, color: 'blue', flavor: 'chocolate', brightness: 'medium' },
+        { id: 3, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 4, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 5, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 6, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+        { id: 7, color: 'green', flavor: 'strawberry', brightness: 'dark' },
+      ];
+      return (
+        <div style={containerStyle}>
+          <Table
+            rowKey="id"
+            columns={columnConfig}
+            rows={tableData}
+            scr
+            isScrollable={{ x: true, y: true }}
+            isHeaderSticky
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Scrollable with Sticky Header and Nth Column
+
+<Canvas>
+  <Story name="Scrollable with Sticky Header and Nth Column">
+    {() => {
+      const containerStyle = {
+        borderRadius: '3px',
+        border: '1px solid #EEEEEE',
+        width: '300px',
+        height: '300px',
+      };
+      const columnConfig = [
+        { heading: 'ID', dataKey: 'id' },
+        { heading: 'Color', dataKey: 'color', width: 50, sticky: true },
+        { heading: 'Flavor', dataKey: 'flavor', width: 100 },
+        { heading: 'Brightness', dataKey: 'brightness', width: 400 },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },

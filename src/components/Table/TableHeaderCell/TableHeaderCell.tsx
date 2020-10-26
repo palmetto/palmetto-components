@@ -34,18 +34,22 @@ interface TableHeaderCellProps {
    */
   isBorderless?: boolean;
   /**
+   * Will stick to left side of table during horizontal scroll.
+   */
+  isColumnSticky?: boolean;
+  /**
    * Determines if table header cells should render as compact (less padding);
    */
   isCompact?: boolean;
+  /**
+   * If table scrolls vertically, header will remain stuck to the top of the table, and not scroll away.
+   */
+  isHeaderSticky?: boolean;
   /**
    * Boolean to mark if a column is sortable. This will show the sorting icons. Use
    * in conjunction with the `sortDirection` prop to determine which icon is shown.
    */
   isSortable?: boolean;
-  /**
-   * Will stick to left side of table during horizontal scroll.
-   */
-  isSticky?: boolean;
   /**
    * Callback function to execute when a sortable column's header is clicked.
    * Column can be sorted without providing an onSort method, it means that the arrows
@@ -76,9 +80,10 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   className = undefined,
   dataKey = undefined,
   isBorderless = false,
+  isColumnSticky = false,
   isCompact = false,
+  isHeaderSticky = false,
   isSortable = false,
-  isSticky = false,
   onSort = undefined,
   sortedColumn = undefined,
   truncateOverflow = false,
@@ -137,7 +142,8 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
-      [styles.sticky]: isSticky,
+      [styles['sticky-header']]: isHeaderSticky,
+      [styles['sticky-column']]: isColumnSticky,
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
