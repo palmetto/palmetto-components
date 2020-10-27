@@ -25,15 +25,16 @@
 
 ### 2. Import Global CSS
 
-```
+```jsx
 @import '@palmetto/palmetto-components/dist/css/utilities.css';
 @import '@palmetto/palmetto-components/dist/css/variables.css';
 ```
 
-Not required but we also recommend importing our global reset in order to properly maintain the
-look of all components.
-```
-@import '@palmetto/palmetto-components/dist/css/reset.scss'
+We recommend importing our global reset in order to maintain a consistent
+look of all components across applications.
+
+```jsx
+@import '@palmetto/palmetto-components/dist/css/reset.css'
 ```
 
 ### 3. Usage
