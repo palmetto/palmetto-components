@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  FC,
-  ReactNode,
-  ChangeEvent,
-  MouseEvent,
-} from 'react';
+import React, { useRef, FC, ReactNode, ChangeEvent, MouseEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudUploadAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import Box from '../Box/Box';
@@ -68,6 +62,10 @@ interface FileUploadProps {
    */
   hasIcon?: boolean;
   /**
+   * Additional clarifying text to help describe the type of acceptable files
+   */
+  helpText?: ReactNode;
+  /**
    * Whether the file upload is disabled.
    */
   isDisabled?: boolean;
@@ -112,6 +110,7 @@ const FileUpload: FC<FileUploadProps> = ({
   files = null,
   fullWidth = false,
   hasIcon = true,
+  helpText,
   isDisabled = false,
   isRequired = false,
   multiple = false,
@@ -129,7 +128,10 @@ const FileUpload: FC<FileUploadProps> = ({
   const truncateFileName = (fileName: string, maxLength: number): string => {
     const half = Math.floor(maxLength / 2);
 
-    return `${fileName.substr(0, half)}...${fileName.substr(fileName.length - half, fileName.length)}`;
+    return `${fileName.substr(0, half)}...${fileName.substr(
+      fileName.length - half,
+      fileName.length,
+    )}`;
   };
 
   const messageFontSize = () => {
@@ -143,7 +145,7 @@ const FileUpload: FC<FileUploadProps> = ({
     return fontSize;
   };
 
-  const renderFiles = () => (
+  const renderFiles = () =>
     files && (
       <Box>
         {[...Array.from(files)].map((file: File) => (
@@ -153,46 +155,50 @@ const FileUpload: FC<FileUploadProps> = ({
           </p>
         ))}
       </Box>
-    )
-  );
+    );
 
   return (
     <Box display="inline-block" className={className} width={fullWidth ? '100' : undefined}>
       <FormLabel inputId={id} className="display-none">
         {labelText}
       </FormLabel>
-      <Button
-        onClick={handleClick}
-        aria-controls="fileupload"
-        isDisabled={isDisabled}
-        variant={variant}
-        size={size}
-        fullWidth={fullWidth}
-      >
-        {hasIcon && (
-          <FontAwesomeIcon
-            icon={faCloudUploadAlt}
-            className="m-right-xs"
-            data-testid="file-upload__upload-icon"
+      <Box childGap="sm" alignItems="center" direction="row">
+        <Button
+          onClick={handleClick}
+          aria-controls={id}
+          isDisabled={isDisabled}
+          variant={variant}
+          size={size}
+          fullWidth={fullWidth}
+        >
+          {hasIcon && (
+            <FontAwesomeIcon
+              icon={faCloudUploadAlt}
+              className="m-right-xs align-self-center"
+              data-testid="file-upload__upload-icon"
+            />
+          )}
+          {buttonText}
+          {isRequired && <>&nbsp;*</>}
+          <input
+            ref={hiddenFileInput}
+            className="display-none"
+            type="file"
+            id={id}
+            name={name}
+            accept={accept}
+            onChange={onChange}
+            multiple={multiple}
+            disabled={isDisabled}
+            aria-disabled={isDisabled}
+            required={isRequired}
+            {...restProps}
           />
-        )}
-        {buttonText}
-        {isRequired && <>&nbsp;*</>}
-        <input
-          ref={hiddenFileInput}
-          className="display-none"
-          type="file"
-          id={id}
-          name={name}
-          accept={accept}
-          onChange={onChange}
-          multiple={multiple}
-          disabled={isDisabled}
-          aria-disabled={isDisabled}
-          required={isRequired}
-          {...restProps}
-        />
-      </Button>
+        </Button>
+        <Box as="p" display="block" fontSize="sm" color="grey">
+          {helpText}
+        </Box>
+      </Box>
       {error && error !== true && (
         <InputValidationMessage size={messageFontSize()}>{error}</InputValidationMessage>
       )}
