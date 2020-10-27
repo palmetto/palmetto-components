@@ -7,15 +7,15 @@ import TextInput from '../TextInput/TextInput';
 
 
 <Meta
-  title="Patterns/Form Control Sizes"
+  title="Patterns/Form Control"
 />
 
-## Form Control Sizes
+## Sizes
 
 Sizes for form controls likes inputs and buttons, should match so that they can be placed inline.
 
 <Canvas>
-  <Story name="TextInputButtonSize">
+  <Story name="Sizes">
     {() => {
       const [value, setValue] = useState('');
       const [value1, setValue1] = useState('');
@@ -60,6 +60,211 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <Button size="lg">
               Large Button
             </Button>
+          </Box>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Sizes with Error States
+
+Inline form sizes with error states.
+
+<Canvas>
+  <Story name="Sizes wtih Error State">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value1, setValue1] = useState('');
+      const [value2, setValue2] = useState('');
+      return (
+        <div>
+          <Box direction="row" childGap="sm" padding="sm" display="flex">
+            <Box width="30">
+              <TextInput
+                id="default"
+                value={value}
+                placeholder="Small"
+                size="sm"
+                error="This is an error message."
+                onChange={event => setValue(event.target.value)}
+              />
+            </Box>
+            <Box alignItems="flex-start" direction="row">
+              <Button size="sm">
+                Small Button
+              </Button>
+            </Box>
+          </Box>
+          <Box direction="row" childGap="sm" padding="sm" display="flex">
+            <Box width="30">
+              <TextInput
+                id="default"
+                value={value1}
+                placeholder="Medium"
+                error="This is an error message."
+                onChange={event => setValue1(event.target.value)}
+              />
+            </Box>
+            <Box alignItems="flex-start" direction="row">
+              <Button>
+                Medium Button
+              </Button>
+            </Box>
+          </Box>
+          <Box direction="row" childGap="sm" display="flex" padding="sm">
+            <Box width="30">
+              <TextInput
+                id="default"
+                value={value2}
+                placeholder="Large"
+                size="lg"
+                error="This is an error message."
+                onChange={event => setValue2(event.target.value)}
+              />
+            </Box>
+            <Box alignItems="flex-start" direction="row">
+              <Button size="lg">
+                Large Button
+              </Button>
+            </Box>
+          </Box>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Sizes with Labels
+
+Inline form sizes with labels.
+
+<Canvas>
+  <Story name="Sizes with Labels">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value1, setValue1] = useState('');
+      const [value2, setValue2] = useState('');
+      return (
+        <div>
+          <Box direction="row" childGap="sm" padding="sm" display="flex">
+            <Box width="30">
+              <TextInput
+                id="default"
+                value={value}
+                placeholder="Small"
+                size="sm"
+                label="Label"
+                onChange={event => setValue(event.target.value)}
+              />
+            </Box>
+            <Box alignItems="flex-end" direction="row">
+              <Button size="sm">Small Button</Button>
+            </Box>
+          </Box>
+          <Box direction="row" childGap="sm" padding="sm" display="flex">
+            <Box width="30">
+              <TextInput
+                id="default"
+                value={value1}
+                placeholder="Medium"
+                label="Label"
+                onChange={event => setValue1(event.target.value)}
+              />
+            </Box>
+            <Box alignItems="flex-end" direction="row">
+              <Button>
+                Medium Button
+              </Button>
+            </Box>
+          </Box>
+          <Box direction="row" childGap="sm" display="flex" padding="sm">
+            <Box width="30">
+              <TextInput
+                id="default"
+                value={value2}
+                placeholder="Large"
+                size="lg"
+                label="Label"
+                onChange={event => setValue2(event.target.value)}
+              />
+            </Box>
+            <Box alignItems="flex-end" direction="row">
+              <Button size="lg">
+                Large Button
+              </Button>
+            </Box>
+          </Box>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Sizes with Labels and Error States
+
+Inline form sizes with labels and error states.
+
+<Canvas>
+  <Story name="Sizes wtih Labels and Error State">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value1, setValue1] = useState('');
+      const [value2, setValue2] = useState('');
+      return (
+        <div>
+          <Box direction="row" childGap="sm" padding="sm" display="flex">
+            <Box width="30">
+              <TextInput
+                id="default"
+                value={value}
+                placeholder="Small"
+                size="sm"
+                label="Label"
+                error="This is an error message."
+                onChange={event => setValue(event.target.value)}
+              />
+            </Box>
+            <Box alignItems="center" direction="row">
+              <Button size="sm">
+                Small Button
+              </Button>
+            </Box>
+          </Box>
+          <Box direction="row" childGap="sm" padding="sm" display="flex">
+            <Box width="30">
+              <TextInput
+                id="default"
+                value={value1}
+                placeholder="Medium"
+                label="Label"
+                error="This is an error message."
+                onChange={event => setValue1(event.target.value)}
+              />
+            </Box>
+            <Box alignItems="center" direction="row">
+              <Button>
+                Medium Button
+              </Button>
+            </Box>
+          </Box>
+          <Box direction="row" childGap="sm" display="flex" padding="sm">
+            <Box width="30">
+              <TextInput
+                id="default"
+                value={value2}
+                placeholder="Large"
+                size="lg"
+                label="Label"
+                error="This is an error message."
+                onChange={event => setValue2(event.target.value)}
+              />
+            </Box>
+            <Box alignItems="center" direction="row">
+              <Button size="lg">
+                Large Button
+              </Button>
+            </Box>
           </Box>
         </div>
       );

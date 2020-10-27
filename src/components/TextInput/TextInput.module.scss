@@ -25,6 +25,7 @@
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
     border: 1px solid var(--form-control-border-color);
     background-color: var(--form-control-background-color);
+    line-height: 1.1;
     width: 100%;
     color: var(--form-control-font-color);
 
@@ -36,6 +37,8 @@
 
     &:focus {
       outline: none;
+      border-color: var(--form-control-focus-border-color);
+      background-color: var(--form-control-background-color);
     }
 
     &:disabled {
@@ -44,13 +47,16 @@
   }
 
   &.error {
-    border-color: var(--form-control-error-border-color);
-    background-color: var(--form-control-error-background-color);
 
-    &:focus {
-      outline: none;
-      border-color: var(--form-control-focus-border-color);
-      background-color: var(--form-control-background-color);
+    > input {
+      border-color: var(--form-control-error-border-color);
+      background-color: var(--form-control-error-background-color);
+
+      &:focus {
+        outline: none;
+        border-color: var(--form-control-focus-border-color);
+        background-color: var(--form-control-background-color);
+      }
     }
   }
 
@@ -59,7 +65,6 @@
       border-radius: var(--form-control-size-sm-border-radius);
       box-shadow: var(--form-control-size-sm-box-shadow);
       padding: calc(var(--form-control-size-sm-padding) - 1px);
-      line-height: 1.2;
       font-size: var(--form-control-size-sm-font-size);
     }
   }
@@ -69,7 +74,6 @@
       border-radius: var(--form-control-size-md-border-radius);
       box-shadow: var(--form-control-size-md-box-shadow);
       padding: calc(var(--form-control-size-md-padding) - 1px);
-      line-height: var(--form-control-line-height);
       font-size: var(--form-control-size-md-font-size);
     }
   }
@@ -79,7 +83,6 @@
       border-radius: var(--form-control-size-lg-border-radius);
       box-shadow: var(--form-control-size-lg-box-shadow);
       padding: calc(var(--form-control-size-lg-padding) - 1px);
-      line-height: 1;
       font-size: var(--form-control-size-lg-font-size);
     }
   }
