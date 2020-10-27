@@ -1,0 +1,107 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale3d(0.3, 0.3, 0.3);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: var(--modal-close-button-padding);
+  color: var(--modal-close-button-color);
+
+  &:hover {
+    color: var(--modal-close-button-color-hover);
+  }
+}
+
+:global([data-reach-dialog-overlay]) {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: flex-end;
+  z-index: var(--size-z-index-overlay);
+  background: hsla(0, 0%, 0%, 0.33);
+  background-color: rgba(77, 82, 79, 0.5);
+  overflow: hidden;
+  animation: fadeIn 0.2s;
+
+  @media (min-width: $size-breakpoint-tablet) {
+    display: grid;
+    grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
+    grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+}
+
+:global([data-reach-dialog-content]) {
+  display: flex;
+  flex-direction: column;
+  grid-row: 1;
+  grid-column: 1;
+  z-index: var(--size-z-index-modal);
+  margin: 0;
+  background-color: var(--modal-background-color);
+  padding: 0;
+  width: 100%;
+  animation: fadeIn 0.3s;
+
+  @media (min-width: $size-breakpoint-tablet) {
+    grid-row: 2;
+    grid-column: 2;
+    margin: auto;
+    outline: none;
+    border-radius: var(--modal-border-radius);
+    box-shadow: var(--size-box-shadow-sm);
+    width: 50vw;
+    min-height: unset;
+    max-height: calc(100vh - 80px);
+    animation: zoomIn 0.2s ease-out;
+  }
+}
+
+:global([data-reach-dialog-overlay].fullscreen) {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+
+  [data-reach-dialog-content] {
+    height: 100vh;
+  }
+
+  @media (min-width: $size-breakpoint-tablet) {
+    display: grid;
+    grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
+    grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
+    align-items: center;
+    overflow: hidden;
+
+    [data-reach-dialog-content] {
+      height: unset;
+    }
+  }
+}

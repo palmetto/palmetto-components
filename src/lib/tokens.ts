@@ -2,18 +2,20 @@ import { size } from '@palmetto/palmetto-design-tokens/build/json/variables-size
 import { color } from '@palmetto/palmetto-design-tokens/build/json/variables-color.json';
 
 import {
-  UnknownPropertiesObjType,
   BorderRadiusSize,
-  BreakpointSizeWithBase,
-  FontSize,
-  FontColor,
-  FontWeight,
-  SpacingSize,
-  Breakpoint,
   BrandColor,
-  WidthSize,
-  HeightSize,
+  Breakpoint,
+  BreakpointSizeWithBase,
+  BoxShadowSize,
   ColorName,
+  FontColor,
+  FontSize,
+  FontWeight,
+  HeightSize,
+  SpacingSize,
+  UnknownPropertiesObjType,
+  WidthSize,
+  ZIndexSize,
 } from '../types';
 
 export const BORDER_RADIUS_OPTIONS = Object.keys(size['border-radius']) as BorderRadiusSize[];
@@ -56,3 +58,9 @@ export const WIDTH_VALUES = Object.values(size.width);
 
 export const HEIGHT_OPTIONS = Object.keys(size.height) as HeightSize[];
 export const HEIGHT_VALUES = Object.values(size.height);
+
+export const Z_INDEX_OPTIONS = Object.keys(size['z-index']) as ZIndexSize[];
+export const Z_INDEX_VALUES = Object.values(size['z-index']);
+
+export const BOX_SHADOW_OPTIONS = Object.keys(size['box-shadow']) as BoxShadowSize[];
+export const BOX_SHADOW_VALUES = Object.values(size['box-shadow']);

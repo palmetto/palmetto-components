@@ -6,6 +6,7 @@ import FormikCheckboxInput from './FormikCheckboxInput/FormikCheckboxInput';
 import FormikSelectInput from './FormikSelectInput/FormikSelectInput';
 import FormikRadioGroup from './FormikRadioGroup/FormikRadioGroup';
 import FormikTextareaInput from './FormikTextareaInput/FormikTextareaInput';
+import FormikTimePicker from './FormikTimePicker/FormikTimePicker';
 import Button from '../Button/Button';
 import Box from '../Box/Box';
 
@@ -42,6 +43,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         { id: 'large', value: 'large', label: 'Large' },
       ];
       const handleValidation = values => {
+        console.log(values);
         const errors = {};
         if (!values.areTermsChecked) {
           errors.areTermsChecked = 'Checkbox is required';
@@ -58,6 +60,9 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         }
         if (!values.sizes) {
           errors.sizes = 'Size is required';
+        }
+        if (!values.timePicker) {
+          errors.timePicker = 'Time is required';
         }
         return errors;
       };
@@ -95,6 +100,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
               flavor2: null,
               colors: [],
               sizes: null,
+              timePicker: null,
             }}
             validate={handleValidation}
             onSubmit={handleSubmit}
@@ -232,7 +238,6 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                     id="flavor2"
                     options={flavorOptions}
                     component={FormikSelectInput}
-                    isRequired
                   />
                 </div>
                 <div style={{ marginBottom: '1.25rem' }}>
@@ -259,6 +264,14 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                     name="sizes"
                     options={sizeOptions}
                     component={FormikRadioGroup}
+                    isRequired
+                  />
+                </div>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <Field
+                    label="Select Time"
+                    name="timePicker"
+                    component={FormikTimePicker}
                     isRequired
                   />
                 </div>
