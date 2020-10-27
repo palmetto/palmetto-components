@@ -25,8 +25,8 @@
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
     border: 1px solid var(--form-control-border-color);
     background-color: var(--form-control-background-color);
-    line-height: 1.1;
     width: 100%;
+    line-height: 1.1;
     color: var(--form-control-font-color);
 
     &::placeholder {
@@ -43,20 +43,6 @@
 
     &:disabled {
       @extend %disabled-base;
-    }
-  }
-
-  &.error {
-
-    > input {
-      border-color: var(--form-control-error-border-color);
-      background-color: var(--form-control-error-background-color);
-
-      &:focus {
-        outline: none;
-        border-color: var(--form-control-focus-border-color);
-        background-color: var(--form-control-background-color);
-      }
     }
   }
 
@@ -86,6 +72,20 @@
       font-size: var(--form-control-size-lg-font-size);
     }
   }
+  
+  &.error {
+    > input {
+      border-color: var(--form-control-error-border-color);
+      background-color: var(--form-control-error-background-color);
+
+      &:focus {
+        outline: none;
+        border-color: var(--form-control-focus-border-color);
+        background-color: var(--form-control-background-color);
+      }
+    }
+  }
+
 }
 
 .text-input-label {
