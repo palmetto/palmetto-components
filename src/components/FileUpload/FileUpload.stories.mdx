@@ -126,32 +126,37 @@ some specific variations have been removed, providing a stricter subset for usag
         alert(`You picked this file: ${event.target.files[0].name}`);
       };
       return (
-        <Box childGap="sm">
-          <Heading size="md">Sizes</Heading>
-          <Box direction="row" childGap="sm">
-            {sizes.map(size => (
-              <FileUpload
-                key={size.label}
-                labelText={size.label}
-                id={size.label}
-                onChange={handleChange}
-                size={size.value}
-                buttonText={size.label}
-              />
-            ))}
+        <Box childGap="lg" direction="row">
+          <Box childGap="sm">
+            <Heading size="md">Sizes</Heading>
+            <Box childGap="sm">
+              {sizes.map(size => (
+                <FileUpload
+                  key={size.label}
+                  labelText={size.label}
+                  id={size.label}
+                  onChange={handleChange}
+                  size={size.value}
+                  buttonText={size.label}
+                  helpText="helpful text"
+                />
+              ))}
+            </Box>
           </Box>
-          <Heading size="md">Colors</Heading>
-          <Box direction="row" childGap="sm">
-            {colors.map(color => (
-              <FileUpload
-                key={color.label}
-                labelText={color.label}
-                id={color.label}
-                onChange={handleChange}
-                variant={color.value}
-                buttonText={color.label}
-              />
-            ))}
+          <Box childGap="sm">
+            <Heading size="md">Colors</Heading>
+            <Box childGap="sm">
+              {colors.map(color => (
+                <FileUpload
+                  key={color.label}
+                  labelText={color.label}
+                  id={color.label}
+                  onChange={handleChange}
+                  variant={color.value}
+                  buttonText={color.label}
+                />
+              ))}
+            </Box>
           </Box>
         </Box>
       );

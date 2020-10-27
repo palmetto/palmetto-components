@@ -162,7 +162,7 @@ const FileUpload: FC<FileUploadProps> = ({
       <FormLabel inputId={id} className="display-none">
         {labelText}
       </FormLabel>
-      <Box childGap="sm" alignItems="center" direction="row">
+      <Box childGap="xs" alignItems="center" direction="row">
         <Button
           onClick={handleClick}
           aria-controls={id}
