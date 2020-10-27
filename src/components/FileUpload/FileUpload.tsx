@@ -116,7 +116,7 @@ const FileUpload: FC<FileUploadProps> = ({
   files = null,
   fullWidth = false,
   hasIcon = true,
-  helpText,
+  helpText = undefined,
   isDisabled = false,
   isRequired = false,
   multiple = false,
@@ -200,9 +200,11 @@ const FileUpload: FC<FileUploadProps> = ({
             {...restProps}
           />
         </Button>
-        <Box as="p" display="block" fontSize="sm" color="grey">
-          {helpText}
-        </Box>
+        {helpText && (
+          <Box as="p" display="block" fontSize="sm" color="grey">
+            {helpText}
+          </Box>
+        )}
       </Box>
       {error && error !== true && (
         <InputValidationMessage size={messageFontSize()}>{error}</InputValidationMessage>
