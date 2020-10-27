@@ -86,17 +86,20 @@ const TableCell: FC<TableCellProps> = ({
             style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
             scope="row"
           >
-            {(children === null || typeof children === 'undefined' || children === '') ? emptyCellPlaceholder : children}
+            {(children === null || typeof children === 'undefined' || children === '')
+              ? emptyCellPlaceholder
+              : children}
           </th>
         ) : (
           <td
             className={tableCellClasses}
             style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
           >
-            {(children === null || typeof children === 'undefined' || children === '') ? emptyCellPlaceholder : children}
+            {(children === null || typeof children === 'undefined' || children === '')
+              ? emptyCellPlaceholder
+              : children}
           </td>
-        )
-      }
+        )}
     </>
   );
 };
