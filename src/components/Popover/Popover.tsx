@@ -9,9 +9,16 @@ import React, {
 import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core';
+import classNames from 'classnames';
+import { BrandColor } from '../../types';
 import styles from './Popover.module.scss';
+import Box, { BoxProps } from '../Box/Box';
 
 interface PopoverProps {
+  /**
+   * Color of the arrow background.
+   */
+  arrowColor: BrandColor;
   /**
    * Content of the tooltip. Can be any JSX node, but should be a single node, so it can be assigned a ref.
    */
@@ -21,35 +28,47 @@ interface PopoverProps {
    */
   isOpen: boolean;
   /**
+   * Padding for the tooltip content. This has a default value
+   * in order to avoid content overlap with the popover arrow.
+   */
+  contentContainerProps?: BoxProps;
+  /**
+   * The placement of the Popover relative to its trigger.
+   */
+  placement?: Placement;
+  /**
+   * The target element where the Popover will be portaled to, when `withPortal === true`.
+   */
+  portalTarget?: HTMLElement;
+  /**
    * Whether the element should be rendered outside its DOM structure
    * for reasons of placement. Use this when the element is being cut-off or
    * re-positioned due to lack of space in the parent container.
    * NOTE: use `portalTarget` to render the element onto a custom container,
    * otherwise it will be rendered to the `body` element by default.
    */
-  isPortal?: boolean;
+  withPortal?: boolean;
   /**
-   * Distance (in pixels) of popover from target element.
+   * Additional props to be spread to rendered element
    */
-  offsetDistance?: number;
-  /**
-   * The placement of the Popover relative to its trigger.
-   */
-  placement?: Placement;
-  /**
-   * The target element where the Popover will be portaled to, when `isPortal === true`.
-   */
-  portalTarget?: HTMLElement;
+  [x: string]: any; // eslint-disable-line
 }
 
+const contentContainerDefaults: BoxProps = {
+  background: 'white',
+  padding: 'sm',
+};
+
 const Popover: FC<PopoverProps> = ({
+  arrowColor = undefined,
   children,
   content,
+  contentContainerProps = { ...contentContainerDefaults },
   isOpen,
-  isPortal = false,
-  offsetDistance = 8,
   placement,
   portalTarget = document.body,
+  withPortal = false,
+  ...restProps
 }) => {
   const triggerRef = useRef(null);
   const popperRef = useRef(null);
@@ -67,7 +86,7 @@ const Popover: FC<PopoverProps> = ({
         {
           name: 'offset',
           options: {
-            offset: [0, offsetDistance],
+            offset: [0, 8],
           },
         },
       ],
@@ -75,7 +94,6 @@ const Popover: FC<PopoverProps> = ({
   );
 
   const childrenWithRef = React.Children.map(children, child => {
-    // checking isValidElement is the safe way and avoids a typescript error too
     const props = { ref: triggerRef };
     if (isValidElement(child)) {
       return cloneElement(child, props);
@@ -83,24 +101,42 @@ const Popover: FC<PopoverProps> = ({
     return child;
   });
 
+  const containerBoxProps = {
+    ...contentContainerDefaults,
+    ...contentContainerProps,
+  };
+
+  const computedArrowColor = arrowColor || containerBoxProps.background;
+
+  const arrowClasses = classNames(
+    styles['popover-arrow'],
+    `background-color-${computedArrowColor}`,
+  );
+
   const popperContent = (
-    <div
+    <Box
       ref={popperRef}
-      className={styles['popover-container']}
+      className={styles.popover}
       style={popperStyles.popper}
-      data-placement={placement}
-      {...attributes}
+      {...containerBoxProps}
+      {...attributes.popper}
+      {...restProps}
     >
-      <div ref={setArrowElement} style={popperStyles.arrow} className={styles['popover-arrow']} data-popper-arrow />
+      <div
+        ref={setArrowElement}
+        style={popperStyles.arrow}
+        className={arrowClasses}
+        data-popper-arrow
+      />
       {content}
-    </div>
+    </Box>
   );
 
   return (
     <>
       {childrenWithRef}
       {isOpen && (
-        isPortal ? createPortal(popperContent, portalTarget) : popperContent
+        withPortal ? createPortal(popperContent, portalTarget) : popperContent
       )}
     </>
   );

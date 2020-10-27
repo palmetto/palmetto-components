@@ -2,6 +2,7 @@ import {
   createElement,
   cloneElement,
   FC,
+  forwardRef,
   ReactNode,
   ReactElement,
   CSSProperties,
@@ -172,36 +173,39 @@ export interface BoxProps {
  * A `<Box>` is a layout component to build UIs with consistent padding and spacing between
  * elements.
  */
-const Box: FC<BoxProps> = ({
-  as = 'div',
-  alignItems = undefined,
-  alignContent = undefined,
-  alignSelf = undefined,
-  background = undefined,
-  borderColor = undefined,
-  borderWidth = undefined,
-  children = undefined,
-  childGap = undefined,
-  className = '',
-  color = undefined,
-  display = 'flex',
-  direction = 'column',
-  flex = undefined,
-  fontSize = 'inherit',
-  fontWeight = undefined,
-  height = undefined,
-  justifyContent = undefined,
-  margin = undefined,
-  maxHeight = undefined,
-  maxWidth = undefined,
-  overflow = undefined,
-  padding = undefined,
-  radius = undefined,
-  style = {},
-  wrap = undefined,
-  width = undefined,
-  ...restProps
-}) => {
+const Box: FC<BoxProps> = forwardRef((
+  {
+    as = 'div',
+    alignItems = undefined,
+    alignContent = undefined,
+    alignSelf = undefined,
+    background = undefined,
+    borderColor = undefined,
+    borderWidth = undefined,
+    children = undefined,
+    childGap = undefined,
+    className = '',
+    color = undefined,
+    display = 'flex',
+    direction = 'column',
+    flex = undefined,
+    fontSize = 'inherit',
+    fontWeight = undefined,
+    height = undefined,
+    justifyContent = undefined,
+    margin = undefined,
+    maxHeight = undefined,
+    maxWidth = undefined,
+    overflow = undefined,
+    padding = undefined,
+    radius = undefined,
+    style = {},
+    wrap = undefined,
+    width = undefined,
+    ...restProps
+  },
+  ref,
+) => {
   const heightCss = getDimensionCss('h', height);
   const widthCss = getDimensionCss('w', width);
   const maxHeightCss = getDimensionCss('mh', maxHeight);
@@ -364,9 +368,14 @@ const Box: FC<BoxProps> = ({
 
   return createElement(
     element,
-    { className: boxClasses, style: boxStyles, ...restProps },
+    {
+      className: boxClasses,
+      style: boxStyles,
+      ref,
+      ...restProps,
+    },
     decoratedChildren,
   );
-};
+});
 
 export default Box;

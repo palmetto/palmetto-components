@@ -6,6 +6,7 @@ import Popover from './Popover';
 import Card from '../Card/Card';
 import Button from '../Button/Button';
 import Box from '../Box/Box';
+import Heading from '../Heading/Heading';
 
 <Meta
   title="Components/Popover"
@@ -27,21 +28,129 @@ Use popovers to show content (lists, menus, etc.) behind the context of a specif
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
       const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
-      const cardContent = (
-        <Box background="white">
-          Hello!
-        </Box>
-      );
+      const cardContent = (<>Hello!</>);
       return (
-        <div style={{ height: '200px' }}>
+        <div>
           <Popover
             content={cardContent}
             isOpen={isPopoverOpen}
             placement="right"
+            contentContainerProps={{
+              padding: 'sm',
+            }}
           >
-            <Button onClick={handleOpenPopover}>Click me!</Button>
+            <Button onClick={handleOpenPopover} variant="light">Click me!</Button>
           </Popover>
         </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Placement
+
+<Canvas>
+  <Story name="Placement">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState({
+        'auto': false,
+        'auto-start': false,
+        'auto-end': false,
+        'top': false,
+        'bottom': false,
+        'right': false,
+        'left': false,
+        'top-start': false,
+        'top-end': false,
+        'bottom-start': false,
+        'bottom-end': false,
+        'right-start': false,
+        'right-end': false,
+        'left-start': false,
+        'left-end': false,
+      });
+      const handleOpenPopover = (key) => {
+        setPopoverOpen({ ...isPopoverOpen, [key]: !isPopoverOpen[key] });
+      };
+      const positions = [
+        'auto',
+        'auto-start',
+        'auto-end',
+        'top',
+        'bottom',
+        'right',
+        'left',
+        'top-start',
+        'top-end',
+        'bottom-start',
+        'bottom-end',
+        'right-start',
+        'right-end',
+        'left-start',
+        'left-end',
+      ];
+      return (
+        <Box direction="row" childGap="md" wrap>
+          {positions.map(position => (
+            <Box
+              height="100px"
+              padding="5xl"
+              display="inline-block"
+              key={position}
+            >
+              <Popover
+                content={<>{position}</>}
+                isOpen={isPopoverOpen[position]}
+                placement={position}
+                contentContainerProps={{
+                  padding: 'sm',
+                  background: 'white',
+                }}
+              >
+                <Button
+                  onClick={() => handleOpenPopover(position)}
+                  variant="light"
+                >
+                  {position}
+                </Button>
+              </Popover>
+            </Box>
+          ))}
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With a Portal
+
+<Canvas>
+  <Story name="With a Portal">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(false);
+      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const popoverContent = (
+        <>
+          <Heading style={{ marginBottom: '0.5rem' }}>I am living in the body element!</Heading>
+          <p>That's why I can break out of my container without getting cut off</p>
+        </>
+      );
+      return (
+        <Box display="inline-block">
+          <Popover
+            content={popoverContent}
+            isOpen={isPopoverOpen}
+            placement="top-start"
+            contentContainerProps={{
+              padding: 'md',
+              background: 'secondary',
+              color: 'white',
+            }}
+            withPortal
+          >
+            <Button onClick={handleOpenPopover} variant="light">Click me!</Button>
+          </Popover>
+        </Box>
       );
     }}
   </Story>
