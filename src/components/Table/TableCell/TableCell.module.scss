@@ -18,9 +18,17 @@
     white-space: nowrap;
   }
 
-  &.sticky {
+  &.sticky-column-left {
     position: sticky;
     left: 0;
+    z-index: calc(var(--size-z-index-sticky) - 1);
+    box-shadow: var(--size-box-shadow-sm);
+    font-size: var(--table-header-font-size);
+  }
+
+  &.sticky-column-right {
+    position: sticky;
+    right: 0;
     z-index: calc(var(--size-z-index-sticky) - 1);
     box-shadow: var(--size-box-shadow-sm);
     font-size: var(--table-header-font-size);

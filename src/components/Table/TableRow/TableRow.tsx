@@ -120,7 +120,8 @@ const TableRow: FC<TableRowProps> = ({
             truncateOverflow={column.truncateOverflow || truncateOverflow}
             width={column.width}
             isHeaderSticky={isHeaderSticky}
-            isColumnSticky={column.sticky}
+            isColumnStickyLeft={column.stickyLeft}
+            isColumnStickyRight={column.stickyRight}
           />
         ) : (
           <TableCell
@@ -132,7 +133,8 @@ const TableRow: FC<TableRowProps> = ({
             isBorderless={isBorderless}
             isCompact={isCompact}
             width={column.width}
-            isColumnSticky={column.sticky}
+            isColumnStickyLeft={column.stickyLeft}
+            isColumnStickyRight={column.stickyRight}
           >
             {renderCellContent(column)}
           </TableCell>

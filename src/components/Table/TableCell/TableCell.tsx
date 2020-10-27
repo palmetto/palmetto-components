@@ -27,7 +27,11 @@ interface TableCellProps {
   /**
    * Will stick to left side of table during horizontal scroll.
    */
-  isColumnSticky?: boolean;
+  isColumnStickyLeft?: boolean;
+  /**
+   * Will stick to right side of table during horizontal scroll.
+   */
+  isColumnStickyRight?: boolean;
   /**
    * Truncates the cell contents based on width established by `Column`
    * NOTE: Truncate only on cells with primitive data types.
@@ -52,7 +56,8 @@ const TableCell: FC<TableCellProps> = ({
   emptyCellPlaceholder = null,
   isBorderless = false,
   isCompact = false,
-  isColumnSticky = false,
+  isColumnStickyLeft = false,
+  isColumnStickyRight = false,
   truncateOverflow = false,
   width = undefined,
 }) => {
@@ -62,7 +67,8 @@ const TableCell: FC<TableCellProps> = ({
       [styles.compact]: isCompact,
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
-      [styles.sticky]: isColumnSticky,
+      [styles['sticky-column-left']]: isColumnStickyLeft,
+      [styles['sticky-column-right']]: isColumnStickyRight,
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
@@ -71,7 +77,7 @@ const TableCell: FC<TableCellProps> = ({
 
   return (
     <>
-      {isColumnSticky
+      {(isColumnStickyLeft || isColumnStickyRight)
         ? (
           <th
             className={tableCellClasses}

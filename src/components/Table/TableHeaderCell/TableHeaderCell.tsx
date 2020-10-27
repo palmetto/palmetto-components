@@ -36,7 +36,11 @@ interface TableHeaderCellProps {
   /**
    * Will stick to left side of table during horizontal scroll.
    */
-  isColumnSticky?: boolean;
+  isColumnStickyLeft?: boolean;
+  /**
+   * Will stick to right side of table during horizontal scroll.
+   */
+  isColumnStickyRight?: boolean;
   /**
    * Determines if table header cells should render as compact (less padding);
    */
@@ -80,7 +84,8 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   className = undefined,
   dataKey = undefined,
   isBorderless = false,
-  isColumnSticky = false,
+  isColumnStickyLeft = false,
+  isColumnStickyRight = false,
   isCompact = false,
   isHeaderSticky = false,
   isSortable = false,
@@ -143,7 +148,8 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
       [styles['sticky-header']]: isHeaderSticky,
-      [styles['sticky-column']]: isColumnSticky,
+      [styles['sticky-column-left']]: isColumnStickyLeft,
+      [styles['sticky-column-right']]: isColumnStickyRight,
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
