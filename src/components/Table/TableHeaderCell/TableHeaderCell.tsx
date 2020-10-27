@@ -158,6 +158,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       tabIndex={isSortable ? 0 : undefined}
       onClick={handleSort}
       onKeyDown={handleKeyPress}
+      scope="col"
     >
       <div className={styles.heading}>
         {column.heading}

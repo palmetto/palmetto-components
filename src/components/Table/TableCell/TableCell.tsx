@@ -76,6 +76,7 @@ const TableCell: FC<TableCellProps> = ({
           <th
             className={tableCellClasses}
             style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
+            scope="row"
           >
             {(children === null || typeof children === 'undefined' || children === '') ? emptyCellPlaceholder : children}
           </th>
