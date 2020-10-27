@@ -2,21 +2,18 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TimePicker from './TimePicker';
-import Box from '../Box/Box'
+import Box from '../Box/Box';
 
-<Meta
-  title="Components/Form Inputs/TimePicker"
-  component={TimePicker}
-/>
+<Meta title="Components/Form Inputs/TimePicker" component={TimePicker} />
 
 # TimePicker
 
 Use a TimePicker when you want users to select from a list of a available times agnostic of date.
 
-*NOTE:* This component is abstracted from the [SelectInput](?path=/docs/components-form-inputs-selectinput--default-story)
+_NOTE:_ This component is abstracted from the [SelectInput](?path=/docs/components-form-inputs-selectinput--default-story)
 and as such includes the same underlying props interface with an added method for generating the time options automatically.
 
-*ABOUT TIME FORMAT:* While the `value` prop technicall returns `{ label: string; value: string; }` the value returned will always
+_ABOUT TIME FORMAT:_ While the `value` prop technicall returns `{ label: string; value: string; }` the value returned will always
 be a JS ISO date string, like this: `2016-07-13T18:46:01.933Z`.
 
 ## Props
@@ -34,7 +31,9 @@ be a JS ISO date string, like this: `2016-07-13T18:46:01.933Z`.
           <TimePicker
             id="myTimePicker"
             name="TimePickerName"
-            onChange={event => { setValue(event.target.value) }}
+            onChange={event => {
+              setValue(event.target.value);
+            }}
             label="Pick a Time"
             value={value}
           />
@@ -70,7 +69,7 @@ The example below uses `3600` --> 1 Hour Intervals
 ## With Min and Max Times
 
 You can determine the range of times to be shown by capping the start and end times.
-Use `startTime` and `endTime` for this. The expected values for `hour` and `minute` properties 
+Use `startTime` and `endTime` for this. The expected values for `hour` and `minute` properties
 are `0-24` and `0-60` respectively.
 
 IMPORTANT: `startTime` is inclusive, and `endTime` is exclusive. This is to avoid
@@ -140,13 +139,39 @@ via our UI visual snapshot testing (Chromatic).
           <TimePicker
             id="myTimePicker"
             name="TimePickerName"
-            onChange={event => { setValue(event.target.value) }}
+            onChange={event => {
+              setValue(event.target.value);
+            }}
             label="Pick a Time"
             value={value}
             menuIsOpen
             interval={3600}
             startTime={{ hour: 9, minute: 0 }}
             endTime={{ hour: 13, minute: 1 }}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Help Text
+
+<Canvas>
+  <Story name="Help Text">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <Box height="360px">
+          <TimePicker
+            id="myTimePicker"
+            name="TimePickerName"
+            onChange={event => {
+              setValue(event.target.value);
+            }}
+            label="Pick a Time"
+            value={value}
+            helpText="pick a time, any time..."
           />
         </Box>
       );
