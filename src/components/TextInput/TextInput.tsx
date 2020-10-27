@@ -201,7 +201,6 @@ const TextInput: FC<TextInputProps> = ({
     placeholder,
     type,
     value,
-    size,
   };
 
   const labelProps = {
