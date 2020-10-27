@@ -224,7 +224,6 @@ const Box: FC<BoxProps> = ({
     generateResponsiveClasses('font-size', fontSize),
     generateResponsiveClasses('overflow', overflow),
     generateResponsiveClasses('border-radius', radius),
-    generateResponsiveClasses('flex-direction', direction),
     generateResponsiveClasses('flex', flex),
     generateResponsiveClasses('background-color', background),
     cssShorthandToClasses('border-width', borderWidth),
