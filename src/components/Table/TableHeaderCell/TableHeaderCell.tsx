@@ -148,6 +148,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
       [styles['sticky-header']]: isHeaderSticky,
+      [styles['sticky-column']]: isColumnStickyLeft || isColumnStickyRight,
       [styles['sticky-column-left']]: isColumnStickyLeft,
       [styles['sticky-column-right']]: isColumnStickyRight,
       [styles['align-right']]: align === 'right',
