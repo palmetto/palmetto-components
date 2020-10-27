@@ -18,7 +18,6 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextInput.module.scss';
 
-
 type inputMaskType = ('phone' | 'creditCard') | UnknownPropertiesObjType;
 
 interface TextInputProps {
@@ -164,7 +163,7 @@ const TextInput: FC<TextInputProps> = ({
     {
       [styles.error]: error,
       [styles.disabled]: isDisabled,
-    }
+    },
   );
 
   const renderClearIcon = (): ReactNode => {
