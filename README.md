@@ -41,6 +41,7 @@ look of all components across applications.
 
 ```jsx
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Button } from '@palmetto/palmetto-components';
 
 function App() {
