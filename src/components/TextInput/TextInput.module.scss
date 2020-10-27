@@ -8,18 +8,6 @@
 }
 
 .text-input-wrapper {
-  box-sizing: border-box;
-  display: flex;
-  transition-duration: 300ms;
-  transition-property: border, background-color;
-  transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
-  border: 1px solid var(--form-control-border-color);
-  border-radius: var(--form-control-size-md-border-radius);
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
-  background-color: var(--form-control-background-color);
-  width: 100%;
-  color: var(--form-control-font-color);
-
   &:focus-within {
     outline: none;
     border-color: var(--form-control-focus-border-color);
@@ -30,10 +18,15 @@
   }
 
   > input {
-    border: none;
-    background-color: inherit;
+    box-sizing: border-box;
+    display: flex;
+    transition-duration: 300ms;
+    transition-property: border, background-color;
+    transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
+    border: 1px solid var(--form-control-border-color);
+    background-color: var(--form-control-background-color);
     width: 100%;
-    padding: 0px;
+    color: var(--form-control-font-color);
 
     &::placeholder {
       /* Override lower placeholder opacity in Firefox */
@@ -62,22 +55,33 @@
   }
 
   &.sm {
-    font-size: var(--form-control-size-sm-font-size);
-    padding: calc(var(--form-control-size-sm-padding) - 1px);
-    line-height: 1.2;
+    > input {
+      border-radius: var(--form-control-size-sm-border-radius);
+      box-shadow: var(--form-control-size-sm-box-shadow);
+      padding: calc(var(--form-control-size-sm-padding) - 1px);
+      line-height: 1.2;
+      font-size: var(--form-control-size-sm-font-size);
+    }
   }
 
   &.md {
-    font-size: var(--form-control-size-md-font-size);
-    padding: calc(var(--form-control-size-md-padding) - 1px);
-    line-height: var(--form-control-line-height);
-    
+    > input {
+      border-radius: var(--form-control-size-md-border-radius);
+      box-shadow: var(--form-control-size-md-box-shadow);
+      padding: calc(var(--form-control-size-md-padding) - 1px);
+      line-height: var(--form-control-line-height);
+      font-size: var(--form-control-size-md-font-size);
+    }
   }
 
   &.lg {
-    font-size: var(--form-control-size-lg-font-size);
-    padding: calc(var(--form-control-size-lg-padding) - 1px);
-    line-height: 1;
+    > input {
+      border-radius: var(--form-control-size-lg-border-radius);
+      box-shadow: var(--form-control-size-lg-box-shadow);
+      padding: calc(var(--form-control-size-lg-padding) - 1px);
+      line-height: 1;
+      font-size: var(--form-control-size-lg-font-size);
+    }
   }
 }
 

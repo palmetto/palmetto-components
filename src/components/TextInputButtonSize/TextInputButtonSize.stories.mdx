@@ -7,12 +7,12 @@ import TextInput from '../TextInput/TextInput';
 
 
 <Meta
-  title="Patterns/Text Input : Button Size"
+  title="Patterns/Form Control Sizes"
 />
 
-## Text Input Button Size
+## Form Control Sizes
 
-Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
+Sizes for form controls likes inputs and buttons, should match so that they can be placed inline.
 
 <Canvas>
   <Story name="TextInputButtonSize">
@@ -22,14 +22,8 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
       const [value2, setValue2] = useState('');
       return (
         <div>
-          <Box
-            display="flex"
-            direction="row"
-            justify="between"
-            overflow="hidden"
-            alignItems="flex-end"
-          >
-            <Box>
+          <Box direction="row" childGap="sm" padding="sm" display="flex">
+            <Box width="30">
               <TextInput
                 id="default"
                 value={value}
@@ -38,18 +32,10 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
                 onChange={event => setValue(event.target.value)}
               />
             </Box>
-            <Box>
-              <Button size="sm">Small Button</Button>
-            </Box>
+            <Button size="sm">Small Button</Button>
           </Box>
-          <Box
-            display="flex"
-            direction="row"
-            justify="between"
-            overflow="hidden"
-            alignItems="flex-end"
-          >
-            <Box>
+          <Box direction="row" childGap="sm" padding="sm" display="flex">
+            <Box width="30">
               <TextInput
                 id="default"
                 value={value1}
@@ -57,20 +43,12 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
                 onChange={event => setValue1(event.target.value)}
               />
             </Box>
-            <Box>
-              <Button>
-                Medium Button
-              </Button>
-            </Box>
+            <Button>
+              Medium Button
+            </Button>
           </Box>
-          <Box
-            display="flex"
-            direction="row"
-            justify="between"
-            overflow="hidden"
-            alignItems="flex-end"
-          >
-            <Box>
+          <Box direction="row" childGap="sm" display="flex" padding="sm">
+            <Box width="30">
               <TextInput
                 id="default"
                 value={value2}
@@ -79,11 +57,9 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
                 onChange={event => setValue2(event.target.value)}
               />
             </Box>
-            <Box>
-              <Button size="lg">
-                Large Button
-              </Button>
-            </Box>
+            <Button size="lg">
+              Large Button
+            </Button>
           </Box>
         </div>
       );

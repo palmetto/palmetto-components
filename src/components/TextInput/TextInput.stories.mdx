@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TextInput from './TextInput';
 import Box from '../Box/Box';
-import Button from '../Button/Button'
 
 <Meta title="Components/Form Inputs/TextInput" component={TextInput} />
 
@@ -459,18 +458,12 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
             size="sm"
             onChange={event => setValue(event.target.value)}
           />
-          <Button size="sm">
-            Small Button
-          </Button>
           <TextInput
             id="default"
             value={value1}
             label="Label - Medium"
             onChange={event => setValue1(event.target.value)}
           />
-          <Button>
-            Medium Button
-          </Button>
           <TextInput
             id="default"
             value={value2}
@@ -478,9 +471,6 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
             size="lg"
             onChange={event => setValue2(event.target.value)}
           />
-          <Button size="lg">
-            Large Button
-          </Button>
         </Box>
       );
     }}
