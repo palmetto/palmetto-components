@@ -1,4 +1,10 @@
-import React, { useRef, FC, ReactNode, ChangeEvent, MouseEvent } from 'react';
+import React, {
+  useRef,
+  FC,
+  ReactNode,
+  ChangeEvent,
+  MouseEvent,
+} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudUploadAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import Box from '../Box/Box';
@@ -145,17 +151,16 @@ const FileUpload: FC<FileUploadProps> = ({
     return fontSize;
   };
 
-  const renderFiles = () =>
-    files && (
-      <Box>
-        {[...Array.from(files)].map((file: File) => (
-          <p key={file.name} className={`font-size-${messageFontSize()} m-top-xs`}>
-            <FontAwesomeIcon icon={faPaperclip} className="font-color-grey-light m-right-xs" />
-            {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
-          </p>
-        ))}
-      </Box>
-    );
+  const renderFiles = () => files && (
+    <Box>
+      {[...Array.from(files)].map((file: File) => (
+        <p key={file.name} className={`font-size-${messageFontSize()} m-top-xs`}>
+          <FontAwesomeIcon icon={faPaperclip} className="font-color-grey-light m-right-xs" />
+          {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
+        </p>
+      ))}
+    </Box>
+  );
 
   return (
     <Box display="inline-block" className={className} width={fullWidth ? '100' : undefined}>
