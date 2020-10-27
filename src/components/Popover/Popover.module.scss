@@ -1,50 +1,63 @@
-.popover-container {
-  display: flex;
-  flex-direction: column;
-  transition: opacity 0.3s;
-  z-index: 9999;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
-  padding: 0.4rem;
-}
-
-.css-x1w4jc[data-popper-placement^='right'] > [data-popper-arrow] {
-  left: -4px;
-}
-
-.popover-arrow, .popover-arrow::before {
-  width: 10px;
-  height: 10px;
+/* stylelint-disable */
+.popover-arrow {
   position: absolute;
-  z-index: -1;
-}
-
-.popover-arrow::before {
-  -webkit-transition: -webkit-transform 0.2s ease-out,visibility 0.2s ease-out;
-  -webkit-transition: transform 0.2s ease-out,visibility 0.2s ease-out;
-  transition: transform 0.2s ease-out,visibility 0.2s ease-out;
-  visibility: visible;
-  -webkit-transform: translateX(0px) rotate(45deg);
-  -ms-transform: translateX(0px) rotate(45deg);
-  transform: translateX(0px) rotate(45deg);
-  -webkit-transform-origin: center;
-  -ms-transform-origin: center;
-  transform-origin: center;
-}
-.popover-arrow::before {
-  content: '';
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-  background: #fff;
-  top: 0;
-  left: 0;
+  width: 1rem;
+  height: 1rem;
+
+  &::before {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    z-index: -1;
+    position: absolute;
+  }
 }
-.popover-arrow, .popover-arrow::before {
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  z-index: -1;
+
+[data-placement*='bottom'] {
+  margin-top: 0.6rem;
+
+  .popover-arrow {
+    margin-top: -0.4rem;
+
+    &::before {
+      box-shadow: rgba(0, 0, 0, 0.07) -1px -1px 1px 0px;
+    }
+  }
+}
+
+[data-placement*='top'] {
+  margin-bottom: 0.6rem;
+
+  .popover-arrow {
+    bottom: -0.5rem;
+
+    &::before {
+      box-shadow: rgba(0, 0, 0, 0.07) 1px 1px 1px 0px;
+    }
+  }
+}
+
+[data-placement*='left'] {
+  margin-right: 0.6rem;
+
+  .popover-arrow {
+    right: -0.5rem;
+
+    &::before {
+      box-shadow: rgba(0, 0, 0, 0.07) 1px -1px 1px 0;
+    }
+  }
+}
+
+[data-placement*='right'] {
+  margin-left: 0.6rem;
+
+  .popover-arrow {
+    left: -0.5rem;
+
+    &::before {
+      box-shadow: rgba(0, 0, 0, 0.07) -1px 1px 1px 0;
+    }
+  }
 }

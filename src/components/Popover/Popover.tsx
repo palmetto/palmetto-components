@@ -29,6 +29,10 @@ interface PopoverProps {
    */
   isPortal?: boolean;
   /**
+   * Distance (in pixels) of popover from target element.
+   */
+  offsetDistance?: number;
+  /**
    * The placement of the Popover relative to its trigger.
    */
   placement?: Placement;
@@ -43,6 +47,7 @@ const Popover: FC<PopoverProps> = ({
   content,
   isOpen,
   isPortal = false,
+  offsetDistance = 8,
   placement,
   portalTarget = document.body,
 }) => {
@@ -57,12 +62,12 @@ const Popover: FC<PopoverProps> = ({
       modifiers: [
         {
           name: 'arrow',
-          options: { element: arrowElement, padding: 10 },
+          options: { element: arrowElement },
         },
         {
           name: 'offset',
           options: {
-            offset: [0, 20],
+            offset: [0, offsetDistance],
           },
         },
       ],
@@ -79,7 +84,13 @@ const Popover: FC<PopoverProps> = ({
   });
 
   const popperContent = (
-    <div ref={popperRef} className={styles['popover-container']} style={popperStyles.popper} {...attributes}>
+    <div
+      ref={popperRef}
+      className={styles['popover-container']}
+      style={popperStyles.popper}
+      data-placement={placement}
+      {...attributes}
+    >
       <div ref={setArrowElement} style={popperStyles.arrow} className={styles['popover-arrow']} data-popper-arrow />
       {content}
     </div>
