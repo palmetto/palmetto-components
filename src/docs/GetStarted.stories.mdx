@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="About/Get Started" />
+
+# Get Started
+
+### 1. Install
+
+`yarn add @palmetto/palmetto-components`
+
+or
+
+`npm install @palmetto/palmetto-components`
+
+### 2. Import Global CSS
+
+```jsx
+@import '@palmetto/palmetto-components/dist/css/utilities.css';
+@import '@palmetto/palmetto-components/dist/css/variables.css';
+```
+
+We recommend importing our global reset in order to maintain a consistent
+look of all components across applications.
+
+```jsx
+@import '@palmetto/palmetto-components/dist/css/reset.css'
+```
+
+### 3. Usage
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Button } from '@palmetto/palmetto-components';
+
+function App() {
+  return <Button>Hello World</Button>;
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'));
+```

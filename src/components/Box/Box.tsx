@@ -224,7 +224,6 @@ const Box: FC<BoxProps> = ({
     generateResponsiveClasses('font-size', fontSize),
     generateResponsiveClasses('overflow', overflow),
     generateResponsiveClasses('border-radius', radius),
-    generateResponsiveClasses('flex-direction', direction),
     generateResponsiveClasses('flex', flex),
     generateResponsiveClasses('background-color', background),
     cssShorthandToClasses('border-width', borderWidth),
@@ -335,9 +334,9 @@ const Box: FC<BoxProps> = ({
    * Shallow merges existing classes of child node with a className based on the childGap value.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const decorateChildren = (child: ReactElement<any>, i: number) => {
+  const decorateChildren = (child: string | number | ReactElement<any>, i: number, array: ReactElement<any>[]) => {
     if (
-      i === Children.count(children) - 1
+      i === array.length - 1
       || !child
       || typeof child === 'string'
       || typeof child === 'number'
@@ -353,11 +352,15 @@ const Box: FC<BoxProps> = ({
     });
   };
 
-  let decoratedChildren = Children.map(children, child => child);
+  let decoratedChildren = Children.toArray(children).filter(child => child !== null);
 
-  if (childGapClasses && Children.count(children) > 1) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    decoratedChildren = Children.map(children as ReactElement<any>[], decorateChildren);
+  if (childGapClasses && decoratedChildren.length > 1) {
+    decoratedChildren = decoratedChildren
+      .map((value, index, array) => decorateChildren(
+        value as string | number | ReactElement<any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+        index,
+        array as ReactElement<any>[], // eslint-disable-line @typescript-eslint/no-explicit-any
+      ));
   }
 
   const element = getElementType(Box, { as });
