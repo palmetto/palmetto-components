@@ -56,13 +56,14 @@ const TableCell: FC<TableCellProps> = ({
   truncateOverflow = false,
   width = undefined,
 }) => {
+  const stickyColumn = columnIsSticky === 'left' || columnIsSticky === 'right';
   const tableCellClasses = classNames(
     styles['table-cell'],
     {
       [styles.compact]: isCompact,
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
-      [styles['sticky-column']]: columnIsSticky === 'left' || columnIsSticky === 'right',
+      [styles['sticky-column']]: stickyColumn,
       [styles['sticky-column-left']]: columnIsSticky === 'left',
       [styles['sticky-column-right']]: columnIsSticky === 'right',
       [styles['align-right']]: align === 'right',
@@ -73,7 +74,7 @@ const TableCell: FC<TableCellProps> = ({
 
   return (
     <>
-      {columnIsSticky
+      {stickyColumn
         ? (
           <th
             className={tableCellClasses}
