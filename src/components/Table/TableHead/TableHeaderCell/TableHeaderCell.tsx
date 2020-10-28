@@ -26,10 +26,6 @@ interface TableHeaderCellProps {
    */
   className?: string;
   /**
-   * Will stick to either the left or right side of a table during horizontal scroll.
-   */
-  columnIsSticky?: 'left' | 'right';
-  /**
    * Key of corresponding data value in the table.
    */
   dataKey?: Key;
@@ -65,6 +61,10 @@ interface TableHeaderCellProps {
     sortDirection: 'none' | 'ascending' | 'descending' | undefined;
   };
   /**
+   * Will stick to either the left or right side of a table during horizontal scroll.
+   */
+  sticky?: 'left' | 'right';
+  /**
    * Whether the text should be cut off with ellipsis if it exceeds the width of the column.
    */
   truncateOverflow?: boolean;
@@ -78,7 +78,6 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   column,
   align = 'left',
   className = undefined,
-  columnIsSticky = undefined,
   dataKey = undefined,
   isBorderless = false,
   isCompact = false,
@@ -86,6 +85,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   isSortable = false,
   onSort = undefined,
   sortedColumn = undefined,
+  sticky = undefined,
   truncateOverflow = false,
   width = undefined,
 }) => {
@@ -143,9 +143,9 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
       [styles['sticky-header']]: isHeaderSticky,
-      [styles['sticky-column']]: columnIsSticky === 'left' || columnIsSticky === 'right',
-      [styles['sticky-column-left']]: columnIsSticky === 'left',
-      [styles['sticky-column-right']]: columnIsSticky === 'right',
+      [styles['sticky-column']]: sticky === 'left' || sticky === 'right',
+      [styles['sticky-column-left']]: sticky === 'left',
+      [styles['sticky-column-right']]: sticky === 'right',
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
