@@ -36,7 +36,7 @@ interface TableRowProps {
   /**
    * If table scrolls vertically, header will remain stuck to the top of the table, and not scroll away.
    */
-  isHeaderSticky?: boolean;
+  hasStickyHeader?: boolean;
   /**
    * Determine whether row is hoverable
    */
@@ -78,7 +78,7 @@ const TableRow: FC<TableRowProps> = ({
   emptyCellPlaceholder = '',
   isBorderless = false,
   isCompact = false,
-  isHeaderSticky = false,
+  hasStickyHeader = false,
   isHoverable = false,
   isTableHead = false,
   onSort = undefined,
@@ -119,7 +119,7 @@ const TableRow: FC<TableRowProps> = ({
             sortedColumn={sortedColumn}
             truncateOverflow={column.truncateOverflow || truncateOverflow}
             width={column.width}
-            isHeaderSticky={isHeaderSticky}
+            hasStickyHeader={hasStickyHeader}
             sticky={column.sticky}
           />
         ) : (

@@ -28,7 +28,7 @@ interface TableHeadProps {
   /**
    * If table scrolls vertically, header will remain stuck to the top of the table, and not scroll away.
    */
-  isHeaderSticky?: boolean;
+  hasStickyHeader?: boolean;
   /**
    * Callback function to fire on sorting one of the table headers.
    */
@@ -53,7 +53,7 @@ const TableHead: FC<TableHeadProps> = ({
   className = '',
   isBorderless = false,
   isCompact = false,
-  isHeaderSticky = false,
+  hasStickyHeader = false,
   onSort = undefined,
   sortedColumn = undefined,
   truncateOverflow = false,
@@ -71,7 +71,7 @@ const TableHead: FC<TableHeadProps> = ({
         onSort={onSort}
         sortedColumn={sortedColumn}
         truncateOverflow={truncateOverflow}
-        isHeaderSticky={isHeaderSticky}
+        hasStickyHeader={hasStickyHeader}
       />
     </thead>
   );

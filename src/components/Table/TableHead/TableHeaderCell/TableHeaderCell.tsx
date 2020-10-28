@@ -40,7 +40,7 @@ interface TableHeaderCellProps {
   /**
    * If table scrolls vertically, header will remain stuck to the top of the table, and not scroll away.
    */
-  isHeaderSticky?: boolean;
+  hasStickyHeader?: boolean;
   /**
    * Boolean to mark if a column is sortable. This will show the sorting icons. Use
    * in conjunction with the `sortDirection` prop to determine which icon is shown.
@@ -81,7 +81,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   dataKey = undefined,
   isBorderless = false,
   isCompact = false,
-  isHeaderSticky = false,
+  hasStickyHeader = false,
   isSortable = false,
   onSort = undefined,
   sortedColumn = undefined,
@@ -142,7 +142,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
-      [styles['sticky-header']]: isHeaderSticky,
+      [styles['sticky-header']]: hasStickyHeader,
       [styles['sticky-column']]: sticky === 'left' || sticky === 'right',
       [styles['sticky-column-left']]: sticky === 'left',
       [styles['sticky-column-right']]: sticky === 'right',

@@ -391,7 +391,7 @@ with the second column having a fixed width of 300 pixels.
 
 ## Scrollable with Sticky Header
 
-Pass `isHeaderSticky` as a prop to stick the header to the top of the table, and prevent it from scrolling away.
+Pass `hasStickyHeader` as a prop to stick the header to the top of the table, and prevent it from scrolling away.
 
 <Canvas>
   <Story name="Scrollable with Sticky Header">
@@ -424,7 +424,7 @@ Pass `isHeaderSticky` as a prop to stick the header to the top of the table, and
             columns={columnConfig}
             rows={tableData}
             isScrollable={{ x: true, y: true }}
-            isHeaderSticky
+            hasStickyHeader
           />
         </div>
       );
@@ -560,7 +560,7 @@ To stick the last, or any, column to the right of the table when it scrolls hori
 
 ## Scrollable with Sticky Header and First Column Stuck to Left
 
-To stick the header to the top, and the first column to the left, pass `isHeaderSticky` as a prop, and add `sticky: 'left'` to the column's config.
+To stick the header to the top, and the first column to the left, pass `hasStickyHeader` as a prop, and add `sticky: 'left'` to the column's config.
 
 <Canvas>
   <Story name="Scrollable with Sticky Header and First Column Stuck to Left">
@@ -593,7 +593,7 @@ To stick the header to the top, and the first column to the left, pass `isHeader
             columns={columnConfig}
             rows={tableData}
             isScrollable={{ x: true, y: true }}
-            isHeaderSticky
+            hasStickyHeader
           />
         </div>
       );
