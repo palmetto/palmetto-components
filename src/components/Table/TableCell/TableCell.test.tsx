@@ -14,7 +14,7 @@ describe('TableCell', () => {
       expect(tableCell).toBeInTheDocument();
     });
 
-    test('td element is rendered with specific width style atrtibute based on width prop', () => {
+    test('td element is rendered with specific width style attribute based on width prop', () => {
       render(<TableCell width={200}>ID</TableCell>);
 
       const tableCell = screen.getByText('ID');
@@ -55,6 +55,38 @@ describe('TableCell', () => {
 
       const tableCell = screen.getByRole('cell');
       expect(tableCell).toHaveClass('my-custom-class');
+    });
+
+    describe('Sticky', () => {
+      test('it renders as a <th> element if isColumnStickyLeft is passed as a prop', () => {
+        render(
+          <TableCell
+            isColumnStickyLeft
+          />,
+        );
+
+        const tableRowHeader = screen.getByRole('rowheader');
+
+        expect(tableRowHeader).toBeInTheDocument();
+        expect(tableRowHeader).toHaveAttribute('scope', 'row');
+        expect(tableRowHeader).toHaveClass('sticky-column');
+        expect(tableRowHeader).toHaveClass('sticky-column-left');
+      });
+
+      test('it renders as a <th> element if isColumnStickyRight is passed as a prop', () => {
+        render(
+          <TableCell
+            isColumnStickyRight
+          />,
+        );
+
+        const tableRowHeader = screen.getByRole('rowheader');
+
+        expect(tableRowHeader).toBeInTheDocument();
+        expect(tableRowHeader).toHaveAttribute('scope', 'row');
+        expect(tableRowHeader).toHaveClass('sticky-column');
+        expect(tableRowHeader).toHaveClass('sticky-column-right');
+      });
     });
   });
 });
