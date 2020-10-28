@@ -1,6 +1,4 @@
-import {
-  create
-} from '@storybook/theming/create';
+import { create } from '@storybook/theming/create';
 
 export default create({
   base: 'light',
@@ -34,6 +32,6 @@ export default create({
   // inputBorderRadius: 4,
 
   brandTitle: 'Palmetto Component Library',
-  brandUrl: 'https://palmetto.com',
+  brandUrl: 'https://ux.palmetto.com',
   brandImage: 'https://app.palmetto.com/static/media/logo.4d85ce48.svg',
 });
