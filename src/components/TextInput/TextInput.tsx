@@ -166,6 +166,11 @@ const TextInput: FC<TextInputProps> = ({
     },
   );
 
+  const clearBtnClasses = classNames(
+    styles['clear-button'],
+    styles.md,
+  );
+
   const renderClearIcon = (): ReactNode => {
     const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
       if (event.keyCode === 13 && onClear) onClear(event);
@@ -176,7 +181,7 @@ const TextInput: FC<TextInputProps> = ({
         type="button"
         onClick={onClear}
         onKeyUp={handleKeyPress}
-        className={styles['clear-button md']}
+        className={clearBtnClasses}
         data-testid="text-input-clear-button"
       >
         <FontAwesomeIcon icon={faTimes} className={styles['clear-icon']} />
