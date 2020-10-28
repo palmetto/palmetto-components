@@ -391,6 +391,8 @@ with the second column having a fixed width of 300 pixels.
 
 ## Scrollable with Sticky Header
 
+Pass `isHeaderSticky` as a prop to stick the header to the top of the table, and prevent it from scrolling away.
+
 <Canvas>
   <Story name="Scrollable with Sticky Header">
     {() => {
@@ -432,6 +434,8 @@ with the second column having a fixed width of 300 pixels.
 
 ## Scrollable with First Column Stuck to Left
 
+To stick the first, or any, column to the left of the table when it scrolls horizontally, add `stickLeft: true` to the column's config.
+
 <Canvas>
   <Story name="Scrollable with First Column Stuck to Left">
     {() => {
@@ -471,6 +475,8 @@ with the second column having a fixed width of 300 pixels.
 </Canvas>
 
 ## Scrollable with Last Column Stuck to Right
+
+To stick the last, or any, column to the right of the table when it scrolls horizontally, add `stickRight: true` to the column's config.
 
 <Canvas>
   <Story name="Scrollable with Last Column Stuck to Right">
@@ -512,6 +518,8 @@ with the second column having a fixed width of 300 pixels.
 
 ## Scrollable with Sticky Header and First Column Stuck to Left
 
+To stick the header to the top, and the first column to the left, pass `isHeaderSticky` as a prop, and add `stickLeft: true` to the column's config.
+
 <Canvas>
   <Story name="Scrollable with Sticky Header and First Column Stuck to Left">
     {() => {
@@ -551,7 +559,9 @@ with the second column having a fixed width of 300 pixels.
   </Story>
 </Canvas>
 
-## Scrollable with Sticky Header and Nth Column Stuck to Left
+## Scrollable with Nth Column Stuck to Left
+
+Add `stickLeft: true` to any column to stick it to the left of the table when it scrolls horizontally.
 
 <Canvas>
   <Story name="Scrollable with Sticky Header and Nth Column Stuck to Left">
@@ -584,7 +594,6 @@ with the second column having a fixed width of 300 pixels.
             columns={columnConfig}
             rows={tableData}
             isScrollable={{ x: true, y: true }}
-            isHeaderSticky
           />
         </div>
       );
