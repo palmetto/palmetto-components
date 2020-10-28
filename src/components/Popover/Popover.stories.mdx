@@ -2,12 +2,26 @@ import { useState } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faAddressCard,
+  faBars,
+  faCog,
+  faChartBar,
+  faListAlt,
+  faBook,
+  faMapMarked,
+  faBox,
+  faQuestionCircle,
+} from '@fortawesome/free-solid-svg-icons';
 import Popover from './Popover';
 import Card from '../Card/Card';
 import Button from '../Button/Button';
 import Box from '../Box/Box';
 import Heading from '../Heading/Heading';
 import TextInput from '../TextInput/TextInput';
+import TextLink from '../TextLink/TextLink';
+import SelectInput from '../SelectInput/SelectInput';
 
 <Meta
   title="Components/Popover"
@@ -22,29 +36,132 @@ of uses for a popover include:
 2. Tooltips
 3. Context Menus
 
-## Props
-
-<ArgsTable of={Popover} />
-
-## Default
-
 <Canvas>
-  <Story name="Default">
+  <Story name="Demo">
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
       const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
-      const cardContent = (<>Hello!</>);
+      const NavItem = ({ children, className, iconName }) => (
+        <Box
+          as="li"
+          color="grey-500"
+          style={{
+            flexShrink: 0,
+          }}
+          className={className}
+        >
+          <Box direction="row" childGap="md" alignItems="center">
+            {iconName && (
+              <Box color="grey-300">
+                <FontAwesomeIcon className="nav-item-icon" size="lg" icon={iconName} />
+              </Box>
+            )}
+            <Box style={{ fontWeight: 500 }}>{children}</Box>
+          </Box>
+        </Box>
+      );
+      const popoverContent = (
+        <>
+          <Box
+            as="nav"
+            fontSize="sm"
+            className="main-nav"
+            background="white"
+            padding={{
+              base: '3xl 0 0 0',
+              desktop: '0',
+            }}
+            style={{
+              flexShrink: 0,
+            }}
+          >
+            <Box as="ul" childGap="xs" padding="md md sm md">
+              <Box direction="row" childGap="sm" alignItems="center">
+                <Box fontSize="xs" color="white" radius="sm" background="primary-light" padding="2xs">
+                  JC
+                </Box>
+                <Box display="block" className="truncate">
+                  Johnny Cash
+                </Box>
+              </Box>
+            </Box>
+            <Box flex="auto" overflow="auto" padding="sm md lg md" childGap="lg">
+              <Box
+                as="ul"
+                childGap="sm"
+                style={{
+                  flexShrink: 0,
+                }}
+              >
+                <NavItem iconName={faAddressCard}>Contacts</NavItem>
+                <NavItem iconName={faChartBar}>Reports</NavItem>
+                <NavItem iconName={faListAlt}>Design Queue</NavItem>
+                <NavItem iconName={faBook}>Certifications</NavItem>
+                <NavItem iconName={faCog}>Settings</NavItem>
+              </Box>
+              <Box
+                childGap="sm"
+                padding="lg 0 0 0"
+                borderWidth="xs 0 0 0"
+                borderColor="grey-lighter"
+                style={{ flexShrink: 0 }}
+              >
+                <Heading size="sm" as="h4" variant="grey">
+                  Favorites
+                </Heading>
+                <Box childGap="xs">
+                  <Box fontSize="xs" color="grey">
+                    Favorite contacts or reports by clicking the star
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                childGap="sm"
+                padding="lg 0 0 0"
+                borderWidth="xs 0 0 0"
+                borderColor="grey-lighter"
+                style={{ flex: '1 0 auto' }}
+              >
+                <Heading size="sm" as="h4" variant="grey">
+                  Palmetto Adminstration
+                </Heading>
+                <Box as="ul" childGap="sm">
+                  <NavItem iconName={faMapMarked}>Markets</NavItem>
+                  <NavItem iconName={faBox}>Products</NavItem>
+                </Box>
+              </Box>
+              <Box
+                childGap="sm"
+                padding="lg 0 0 0"
+                borderWidth="xs 0 0 0"
+                borderColor="grey-lighter"
+                style={{ flex: '1 0 auto' }}
+              >
+                <Box as="ul" childGap="sm">
+                  <NavItem iconName={faQuestionCircle}>Feedback</NavItem>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </>
+      );
       return (
         <div>
           <Popover
-            content={cardContent}
+            content={popoverContent}
             isOpen={isPopoverOpen}
-            placement="right"
+            placement="bottom-start"
             contentContainerProps={{
-              padding: 'sm',
+              padding: 'md',
+              direction: 'column',
             }}
+            withPortal
           >
-            <Button onClick={handleOpenPopover} variant="light">Click me!</Button>
+            <Button onClick={handleOpenPopover} variant="light" size="sm">
+              <FontAwesomeIcon icon={faBars} />
+              &nbsp;
+              Popover Menu
+            </Button>
           </Popover>
         </div>
       );
@@ -52,7 +169,129 @@ of uses for a popover include:
   </Story>
 </Canvas>
 
+## Props
+
+<ArgsTable of={Popover} />
+
+## Default
+
+The popover requires a `children` node that will act as a trigger, as well as a `content` prop that has the contents of the Popover. 
+
+Use the `isOpen` prop to govern the state of the Popover. This is done by attaching a `onClick` event to the trigger element.
+
+By default the Popover will render with placement === `right` as well as a white background, and some base padding on the container. All of these
+items, however are fully customizable.
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(false);
+      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const popoverContent = (<>Hello!</>);
+      return (
+        <div>
+          <Popover
+            content={popoverContent}
+            isOpen={isPopoverOpen}
+            placement="right"
+            contentContainerProps={{
+              padding: 'sm',
+            }}
+          >
+            <Button onClick={handleOpenPopover} variant="light">Toggle Popover</Button>
+          </Popover>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Popover Styling
+
+Because the rendered Popover is powered by our `Box` component ([Read More](/?path=/docs/components-popover--page)) you
+can use all known box props to style it. The below example includes some of the basics, but is not representative of
+the entire gamut of styling options.
+
+<Canvas>
+  <Story name="styling">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(true);
+      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const [popoverBackground, setPopoverBackground] = useState({ value: 'white', label: 'White' });
+      const [popoverFontColor, setPopoverFontColor] = useState({ value: 'dark', label: 'Dark' });
+      const [popoverRadius, setPopoverRadius] = useState({ value: 'sm', label: 'Small' });
+      const backgroundOptions = [
+        { value: 'white', label: 'White' },
+        { value: 'primary', label: 'Primary' },
+        { value: 'secondary', label: 'Secondary' },
+        { value: 'tertiary', label: 'Tertiary' },
+        { value: 'warning', label: 'Warning' },
+        { value: 'grey-light', label: 'Grey Light' },
+        { value: 'grey-dark', label: 'Grey Dark' },
+      ];
+      const fontColorOptions = [
+        { value: 'white', label: 'White' },
+        { value: 'dark', label: 'Dark' },
+      ];
+      const borderRadiusOptions = [
+        { value: 'sm', label: 'Small' },
+        { value: 'md', label: 'Medium' },
+        { value: 'lg', label: 'Large' },
+      ];
+      return (
+        <Box height="400px">
+          <Box direction="row" childGap="md" wrap>
+            <Popover
+              content={<><p>Hello world!</p><p>Style me any way you want</p></>}
+              isOpen={isPopoverOpen}
+              placement={'right'}
+              contentContainerProps={{
+                padding: 'sm',
+                background: popoverBackground.value,
+                color: popoverFontColor.value,
+                radius: popoverRadius.value
+              }}
+            >
+              <Button onClick={handleOpenPopover} variant="light">Toggle Popover</Button>
+            </Popover>
+          </Box>
+          <Box direction="row" childGap="sm" wrap margin="3xl 0 0 0">
+            <Box width="200px">
+              <SelectInput
+                options={backgroundOptions}
+                onChange={(event) => { setPopoverBackground(event.target.value); }}
+                value={popoverBackground}
+                label="Background Color"
+              />
+            </Box>
+            <Box width="200px">
+              <SelectInput
+                options={fontColorOptions}
+                onChange={(event) => { setPopoverFontColor(event.target.value); }}
+                value={popoverFontColor}
+                label="Font Color"
+              />
+            </Box>
+            <Box width="200px">
+              <SelectInput
+                options={borderRadiusOptions}
+                onChange={(event) => { setPopoverRadius(event.target.value); }}
+                value={popoverRadius}
+                label="Border Radius"
+              />
+            </Box>
+          </Box>
+        </Box>
+      )
+    }}
+  </Story>
+</Canvas>
+
 ## Placement
+
+Based on layout, it is beneficial to place the popover in a variety of positions relative to its trigger element.
+Note that in case where the popover is in danger of overflowing, the component will fallback to `auto` in order to 
+prevent the content from getting cut off.
 
 <Canvas>
   <Story name="Placement">
@@ -130,6 +369,16 @@ of uses for a popover include:
 
 ## With a Portal
 
+Popovers in lots of cases need to break away from the HTML structure of their parent elements
+in order to maintain semantic order on the page. This can also help with z-index conflicts
+and ensure content isn't cut off in certain cases by the popover's parent container.
+
+To render the Popover outside in an element other than its parent container, we
+use a (React Portal)[https://reactjs.org/docs/portals.html].
+
+By default the element is portaled into the document `body` but you can use the `portalTarget` prop
+in order to render the element anywhere on the page.
+
 <Canvas>
   <Story name="With a Portal">
     {() => {
@@ -164,6 +413,12 @@ of uses for a popover include:
 
 
 ## Hover Trigger
+
+In cases where small amounts of additional context are needed for a particular item,
+it might be beneficial to trigger the Popover on hover. Since the component is fully controlled
+this can be done easily by attaching mouse events to the trigger element as show below.
+
+NOTE: this should be use sparingly since context dependent on hover, isn't an optimal experience for mobile users.
 
 <Canvas>
   <Story name="Hover">
@@ -205,6 +460,16 @@ of uses for a popover include:
 
 ## Respond to Outside Clicks
 
+Since Popovers are by nature rendered on top of existing content, it
+is beneficial in most cases to close the Popover when a user clicks any item outside
+the trigger and popover content. 
+
+Our component provides a `onClickOutside` prop that fires a callback whenever there is a click
+event outside the Popover content. You can use the callback to set `isOpen` to false. 
+
+NOTE: the click event is attached to the `document.body`, but will not bubble up the event
+in cases where the click target includes the Popover trigger or content nodes.
+
 <Canvas>
   <Story name="Outside Clicks">
     {() => {
@@ -243,6 +508,12 @@ of uses for a popover include:
 </Canvas>
 
 ## Trapping Focus
+
+Trapping focus in a Popover is valuable in many cases to preserve accessibility. It consists
+of constraining the items available for focusing to ONLY the content of the Popover, hence preventing
+users from focusing on elements that might be behind or outside the Popover content.
+
+Use the `trapFocus` prop to constrain focus to popover content elements.
 
 <Canvas>
   <Story name="Trapping Focus">

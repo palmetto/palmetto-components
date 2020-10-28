@@ -79,14 +79,14 @@ const contentContainerDefaults: BoxProps = {
 };
 
 const Popover: FC<PopoverProps> = ({
-  arrowColor = undefined,
+  isOpen,
   children,
   content,
+  arrowColor = undefined,
   contentContainerProps = { ...contentContainerDefaults },
-  isOpen,
   offsetFromTarget = 12,
   onClickOutside = undefined,
-  placement,
+  placement = 'right',
   portalTarget = document.body,
   trapFocus = false,
   withPortal = false,
