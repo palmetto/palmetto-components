@@ -14,10 +14,6 @@
     cursor: pointer;
   }
 
-  &.compact {
-    padding: var(--table-padding-vertical-compact) var(--table-padding-horizontal-compact);
-  }
-
   &.borderless {
     border: 0;
   }
@@ -67,6 +63,12 @@
       .sort-icon {
         margin-left: var(--table-header-sort-icon-spacing);
       }
+    }
+  }
+
+  &.compact {
+    .custom-class-container {
+      padding: var(--table-padding-vertical-compact) var(--table-padding-horizontal-compact);
     }
   }
 }
