@@ -5,7 +5,6 @@ import {
   waitFor,
   fireEvent,
 } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { Placement } from '@popperjs/core';
 import Popover from './Popover';
 
@@ -100,8 +99,6 @@ describe('Popover', () => {
       );
 
       const popoverContent = screen.getByText('hello');
-      // eslint-disable-next-line
-      userEvent.tab(); // @ts-ignore
       await waitFor(() => expect(popoverContent).toHaveFocus());
     });
   });
