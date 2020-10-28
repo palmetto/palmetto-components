@@ -6,6 +6,7 @@
   --form-control-line-height: 1.25;
   --form-control-label-font-weight: var(--size-font-weight-bold);
   --form-control-legend-font-weight: var(--size-font-weight-bold);
+  --form-control-size-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
 
   /* --SIZES-- */
 
@@ -18,20 +19,17 @@
   --form-control-size-sm-border-radius: var(--size-border-radius-sm);
   --form-control-size-sm-font-size: var(--size-font-sm);
   --form-control-size-sm-padding: var(--size-spacing-xs);
-  --form-control-size-sm-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
 
   /* medium (default) */
   --form-control-size-md-label-size: var(--size-font-sm);
   --form-control-size-md-border-radius: var(--size-border-radius-md);
   --form-control-size-md-font-size: var(--size-font-md);
   --form-control-size-md-padding: var(--size-spacing-sm);
-  --form-control-size-md-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
 
   /* large */
   --form-control-size-lg-border-radius: var(--size-border-radius-md);
   --form-control-size-lg-font-size: var(--size-font-lg);
   --form-control-size-lg-padding: var(--size-spacing-md);
-  --form-control-size-lg-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05);
 
   /* --COLORS-- */
   --form-control-background-color: var(--color-brand-white-base);

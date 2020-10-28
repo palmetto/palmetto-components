@@ -26,6 +26,7 @@
     transition-property: border, background-color;
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
     border: 1px solid var(--form-control-border-color);
+    box-shadow: var(--form-control-size-box-shadow);
     background-color: var(--form-control-background-color);
     width: 100%;
     line-height: var(--form-control-text-line-height);
@@ -51,7 +52,6 @@
   &.sm {
     > input {
       border-radius: var(--form-control-size-sm-border-radius);
-      box-shadow: var(--form-control-size-sm-box-shadow);
       padding: calc(var(--form-control-size-sm-padding) - 1px) var(--form-control-size-sm-padding);
       font-size: var(--form-control-size-sm-font-size);
     }
@@ -60,7 +60,6 @@
   &.md {
     > input {
       border-radius: var(--form-control-size-md-border-radius);
-      box-shadow: var(--form-control-size-md-box-shadow);
       padding: calc(var(--form-control-size-md-padding) - 1px) var(--form-control-size-md-padding);
       font-size: var(--form-control-size-md-font-size);
     }
@@ -69,7 +68,6 @@
   &.lg {
     > input {
       border-radius: var(--form-control-size-lg-border-radius);
-      box-shadow: var(--form-control-size-lg-box-shadow);
       padding: calc(var(--form-control-size-lg-padding) - 1px) var(--form-control-size-lg-padding);
       font-size: var(--form-control-size-lg-font-size);
     }
