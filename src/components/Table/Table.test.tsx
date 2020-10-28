@@ -394,7 +394,7 @@ describe('Table', () => {
     describe('Sticky Column', () => {
       test('if a column is sticky, it renders the row header elements', () => {
         const columnConfigStickyColumn = [
-          { heading: 'ID', dataKey: 'id', stickyLeft: true },
+          { heading: 'ID', dataKey: 'id', sticky: 'left' },
           { heading: 'Color', dataKey: 'color' },
           { heading: 'Flavor', dataKey: 'flavor' },
         ];

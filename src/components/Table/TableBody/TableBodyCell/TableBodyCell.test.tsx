@@ -58,10 +58,10 @@ describe('TableCell', () => {
     });
 
     describe('Sticky', () => {
-      test('it renders as a <th> element if isColumnStickyLeft is passed as a prop', () => {
+      test('it renders as a <th> element if columnIsSticky is passed as a prop with "left" as its value', () => {
         render(
           <TableCell
-            isColumnStickyLeft
+            columnIsSticky="left"
           />,
         );
 
@@ -73,10 +73,10 @@ describe('TableCell', () => {
         expect(tableRowHeader).toHaveClass('sticky-column-left');
       });
 
-      test('it renders as a <th> element if isColumnStickyRight is passed as a prop', () => {
+      test('it renders as a <th> element if columnIsSticky is passed as a prop with "right" as its value', () => {
         render(
           <TableCell
-            isColumnStickyRight
+            columnIsSticky="right"
           />,
         );
 
