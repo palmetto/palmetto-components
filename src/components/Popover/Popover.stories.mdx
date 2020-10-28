@@ -7,6 +7,7 @@ import Card from '../Card/Card';
 import Button from '../Button/Button';
 import Box from '../Box/Box';
 import Heading from '../Heading/Heading';
+import TextInput from '../TextInput/TextInput';
 
 <Meta
   title="Components/Popover"
@@ -15,7 +16,11 @@ import Heading from '../Heading/Heading';
 
 # Popover
 
-Use popovers to show content (lists, menus, etc.) behind the context of a specific trigger.
+Use popovers to show content of any kind behind the context of a specific trigger, some examples
+of uses for a popover include: 
+1. Dropdowns
+2. Tooltips
+3. Context Menus
 
 ## Props
 
@@ -104,7 +109,8 @@ Use popovers to show content (lists, menus, etc.) behind the context of a specif
                 placement={position}
                 contentContainerProps={{
                   padding: 'sm',
-                  background: 'white',
+                  background: 'secondary',
+                  color: 'white',
                 }}
               >
                 <Button
@@ -140,7 +146,7 @@ Use popovers to show content (lists, menus, etc.) behind the context of a specif
           <Popover
             content={popoverContent}
             isOpen={isPopoverOpen}
-            placement="top-start"
+            placement="right-start"
             contentContainerProps={{
               padding: 'md',
               background: 'secondary',
@@ -149,6 +155,131 @@ Use popovers to show content (lists, menus, etc.) behind the context of a specif
             withPortal
           >
             <Button onClick={handleOpenPopover} variant="light">Click me!</Button>
+          </Popover>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+## Hover Trigger
+
+<Canvas>
+  <Story name="Hover">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(false);
+      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const popoverContent = (
+        <>
+          <Heading style={{ marginBottom: '0.5rem' }}>I just appeared on hover!</Heading>
+          <p>My visibility can easily be managed by attaching listeners to the trigger element</p>
+        </>
+      );
+      return (
+        <Box display="inline-block">
+          <Popover
+            content={popoverContent}
+            isOpen={isPopoverOpen}
+            placement="right-start"
+            contentContainerProps={{
+              padding: 'md',
+              background: 'primary-light'
+            }}
+            withPortal
+          >
+            <Button
+              onMouseOver={() => setPopoverOpen(true)}
+              onMouseOut={() => setPopoverOpen(false)}
+              variant="light"
+            >
+              Click me!
+            </Button>
+          </Popover>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+## Respond to Outside Clicks
+
+<Canvas>
+  <Story name="Outside Clicks">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(false);
+      const handleTogglePopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const popoverContent = (
+        <>
+          <Heading style={{ marginBottom: '0.5rem' }}>I will close if you click outside!</Heading>
+          <p>The event listener is attached to the document body.</p>
+        </>
+      );
+      return (
+        <Box display="inline-block">
+          <Popover
+            content={popoverContent}
+            isOpen={isPopoverOpen}
+            placement="right-start"
+            contentContainerProps={{
+              padding: 'md',
+              background: 'primary-light'
+            }}
+            withPortal
+            onClickOutside={() => setPopoverOpen(false)}
+          >
+            <Button
+              onClick={handleTogglePopover}
+              variant="light"
+            >
+              Click to Open
+            </Button>
+          </Popover>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Trapping Focus
+
+<Canvas>
+  <Story name="Trapping Focus">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(false);
+      const [inputValue, setInputValue] = useState('');
+      const handleTogglePopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const handleInputChange = (event) => { setInputValue(event.target.value); };
+      const popoverContent = (
+        <>
+          <Box direction="column" childGap="sm">
+            <Heading>Only the elements on this Popover can be tabbed into</Heading>
+            <TextInput onChange={handleInputChange} value={inputValue} />
+            <Button>Submit</Button>
+          </Box>
+        </>
+      );
+      return (
+        <Box display="inline-block">
+          <Popover
+            content={popoverContent}
+            isOpen={isPopoverOpen}
+            placement="right-start"
+            contentContainerProps={{
+              padding: 'md',
+              background: 'grey-lighter'
+            }}
+            withPortal
+            onClickOutside={() => setPopoverOpen(false)}
+            trapFocus
+          >
+            <Button
+              onClick={handleTogglePopover}
+              variant="light"
+            >
+              Click to Open
+            </Button>
           </Popover>
         </Box>
       );
