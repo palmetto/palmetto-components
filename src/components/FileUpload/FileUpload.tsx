@@ -68,6 +68,10 @@ interface FileUploadProps {
    */
   hasIcon?: boolean;
   /**
+   * Additional clarifying text to help describe the type of acceptable files
+   */
+  helpText?: ReactNode;
+  /**
    * Whether the file upload is disabled.
    */
   isDisabled?: boolean;
@@ -112,6 +116,7 @@ const FileUpload: FC<FileUploadProps> = ({
   files = null,
   fullWidth = false,
   hasIcon = true,
+  helpText = undefined,
   isDisabled = false,
   isRequired = false,
   multiple = false,
@@ -129,7 +134,10 @@ const FileUpload: FC<FileUploadProps> = ({
   const truncateFileName = (fileName: string, maxLength: number): string => {
     const half = Math.floor(maxLength / 2);
 
-    return `${fileName.substr(0, half)}...${fileName.substr(fileName.length - half, fileName.length)}`;
+    return `${fileName.substr(0, half)}...${fileName.substr(
+      fileName.length - half,
+      fileName.length,
+    )}`;
   };
 
   const messageFontSize = () => {
@@ -143,17 +151,15 @@ const FileUpload: FC<FileUploadProps> = ({
     return fontSize;
   };
 
-  const renderFiles = () => (
-    files && (
-      <Box>
-        {[...Array.from(files)].map((file: File) => (
-          <p key={file.name} className={`font-size-${messageFontSize()} m-top-xs`}>
-            <FontAwesomeIcon icon={faPaperclip} className="font-color-grey-light m-right-xs" />
-            {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
-          </p>
-        ))}
-      </Box>
-    )
+  const renderFiles = () => files && (
+    <Box>
+      {[...Array.from(files)].map((file: File) => (
+        <p key={file.name} className={`font-size-${messageFontSize()} m-top-xs`}>
+          <FontAwesomeIcon icon={faPaperclip} className="font-color-grey-light m-right-xs" />
+          {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
+        </p>
+      ))}
+    </Box>
   );
 
   return (
@@ -161,38 +167,45 @@ const FileUpload: FC<FileUploadProps> = ({
       <FormLabel inputId={id} className="display-none">
         {labelText}
       </FormLabel>
-      <Button
-        onClick={handleClick}
-        aria-controls="fileupload"
-        isDisabled={isDisabled}
-        variant={variant}
-        size={size}
-        fullWidth={fullWidth}
-      >
-        {hasIcon && (
-          <FontAwesomeIcon
-            icon={faCloudUploadAlt}
-            className="m-right-xs"
-            data-testid="file-upload__upload-icon"
+      <Box childGap="xs" alignItems="center" direction="row">
+        <Button
+          onClick={handleClick}
+          aria-controls={id}
+          isDisabled={isDisabled}
+          variant={variant}
+          size={size}
+          fullWidth={fullWidth}
+        >
+          {hasIcon && (
+            <FontAwesomeIcon
+              icon={faCloudUploadAlt}
+              className="m-right-xs align-self-center"
+              data-testid="file-upload__upload-icon"
+            />
+          )}
+          {buttonText}
+          {isRequired && <>&nbsp;*</>}
+          <input
+            ref={hiddenFileInput}
+            className="display-none"
+            type="file"
+            id={id}
+            name={name}
+            accept={accept}
+            onChange={onChange}
+            multiple={multiple}
+            disabled={isDisabled}
+            aria-disabled={isDisabled}
+            required={isRequired}
+            {...restProps}
           />
+        </Button>
+        {helpText && (
+          <Box as="p" display="block" fontSize="sm" color="grey">
+            {helpText}
+          </Box>
         )}
-        {buttonText}
-        {isRequired && <>&nbsp;*</>}
-        <input
-          ref={hiddenFileInput}
-          className="display-none"
-          type="file"
-          id={id}
-          name={name}
-          accept={accept}
-          onChange={onChange}
-          multiple={multiple}
-          disabled={isDisabled}
-          aria-disabled={isDisabled}
-          required={isRequired}
-          {...restProps}
-        />
-      </Button>
+      </Box>
       {error && error !== true && (
         <InputValidationMessage size={messageFontSize()}>{error}</InputValidationMessage>
       )}
