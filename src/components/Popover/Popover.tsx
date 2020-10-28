@@ -35,6 +35,10 @@ interface PopoverProps {
    */
   contentContainerProps?: BoxProps;
   /**
+   * Whether the arrow is included.
+   */
+  hasArrow?: boolean;
+  /**
    * How far (in pixels) the Popover element will be from the target.
    * Note that this is from the edge of the target to the edge of the popover content,
    * and it DOES NOT include the arrow element.
@@ -84,6 +88,7 @@ const Popover: FC<PopoverProps> = ({
   content,
   arrowColor = undefined,
   contentContainerProps = { ...contentContainerDefaults },
+  hasArrow = true,
   offsetFromTarget = 12,
   onClickOutside = undefined,
   placement = 'right',
@@ -163,10 +168,13 @@ const Popover: FC<PopoverProps> = ({
   const arrowClasses = classNames(
     styles['popover-arrow'],
     `background-color-${computedArrowColor}`,
+    {
+      'display-none': !hasArrow,
+    },
   );
 
   const renderPopperContent = () => {
-    const popperBox = (
+    const renderPopperBox = () => (
       <Box
         ref={popperRef}
         className={styles.popover}
@@ -192,10 +200,10 @@ const Popover: FC<PopoverProps> = ({
           clickOutsideDeactivates: true,
         }}
       >
-        {popperBox}
+        {renderPopperBox()}
       </FocusTrap>
     ) : (
-      popperBox
+      renderPopperBox()
     );
   };
 

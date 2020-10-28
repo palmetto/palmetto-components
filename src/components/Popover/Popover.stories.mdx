@@ -179,7 +179,7 @@ The popover requires a `children` node that will act as a trigger, as well as a 
 
 Use the `isOpen` prop to govern the state of the Popover. This is done by attaching a `onClick` event to the trigger element.
 
-By default the Popover will render with placement === `right` as well as a white background, and some base padding on the container. All of these
+By default the Popover will render with placement on the right, as well as a white background and some base padding on the container. All of these
 items, however are fully customizable.
 
 <Canvas>
@@ -403,7 +403,7 @@ in order to render the element anywhere on the page.
             }}
             withPortal
           >
-            <Button onClick={handleOpenPopover} variant="light">Click me!</Button>
+            <Button onClick={handleOpenPopover} variant="light">Toggle Popover</Button>
           </Popover>
         </Box>
       );
@@ -448,7 +448,7 @@ NOTE: this should be use sparingly since context dependent on hover, isn't an op
               onMouseOut={() => setPopoverOpen(false)}
               variant="light"
             >
-              Click me!
+              Toggle Popover
             </Button>
           </Popover>
         </Box>
@@ -498,7 +498,7 @@ in cases where the click target includes the Popover trigger or content nodes.
               onClick={handleTogglePopover}
               variant="light"
             >
-              Click to Open
+              Toggle Popover
             </Button>
           </Popover>
         </Box>
@@ -549,10 +549,120 @@ Use the `trapFocus` prop to constrain focus to popover content elements.
               onClick={handleTogglePopover}
               variant="light"
             >
-              Click to Open
+              Toggle Popover
             </Button>
           </Popover>
         </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With No Arrow
+
+Render the popover with no arrow by passing `hasArrow` false.
+
+<Canvas>
+  <Story name="Hide Arrow">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(false);
+      const [inputValue, setInputValue] = useState('');
+      const handleTogglePopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const handleInputChange = (event) => { setInputValue(event.target.value); };
+      const popoverContent = (
+        <>
+          <Box direction="column" childGap="sm">
+            <Heading>With no arrow</Heading>
+            <p>I am floating in space</p>
+          </Box>
+        </>
+      );
+      return (
+        <Box display="inline-block">
+          <Popover
+            content={popoverContent}
+            isOpen={isPopoverOpen}
+            placement="right-start"
+            contentContainerProps={{
+              padding: 'md',
+              background: 'grey-lightest'
+            }}
+            withPortal
+            onClickOutside={() => setPopoverOpen(false)}
+            hasArrow={false}
+          >
+            <Button
+              onClick={handleTogglePopover}
+              variant="light"
+            >
+              Toggle Popover
+            </Button>
+          </Popover>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Offset Distance
+
+Place the popover closer or farther from its trigger with the `offsetFromTarget`.
+
+<Canvas>
+  <Story name="Offset Distance">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(true);
+      const [offset, setOffset] = useState(12);
+      const handleTogglePopoverNear = () => { setPopoverOpen(!isPopoverOpen); };
+      const handleInputChange = (event) => { setInputValue(event.target.value); };
+      const popoverContent = (
+        <>
+          <Box direction="column" childGap="sm">
+            <Heading>Custom Offset</Heading>
+            <p>Near, far, wherever your are...</p>
+          </Box>
+        </>
+      );
+      return (
+        <>
+          <Box display="inline-block">
+            <Popover
+              content={popoverContent}
+              isOpen={isPopoverOpen}
+              placement="right-start"
+              contentContainerProps={{
+                padding: 'md',
+                background: 'grey-lightest',
+              }}
+              withPortal
+              onClickOutside={() => setPopoverOpen(false)}
+              hasArrow={false}
+              offsetFromTarget={offset}
+            >
+              <Button
+                onClick={handleTogglePopoverNear}
+                variant="light"
+              >
+                Toggle Popover
+              </Button>
+            </Popover>
+          </Box>
+          <Box margin="2xl 0 0 0" maxWidth="300px">
+            <label htmlFor="offset" style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Offset</label>
+            <input
+              type="range"
+              id="offset"
+              name="offset"
+              min="0"
+              max="24"
+              step="1"
+              value={offset}
+              onChange={event => { setOffset(event.target.value); }}
+              style={{ marginBottom: '0.25rem' }}
+            />
+            <span style={{ display: 'inline' }}>Value: {offset}</span>
+          </Box>
+        </>
       );
     }}
   </Story>
