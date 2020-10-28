@@ -1,10 +1,10 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './TableRow.module.scss';
-import { Column, EventWithColumnKey, Row } from '../../../types';
-import getColumnKeys from '../../../lib/getColumnKeys';
-import TableCell from '../TableCell/TableCell';
-import TableHeaderCell from '../TableHeaderCell/TableHeaderCell';
+import { Column, EventWithColumnKey, Row } from '../../../../types';
+import getColumnKeys from '../../../../lib/getColumnKeys';
+import TableCell from '../../TableBody/TableBodyCell/TableBodyCell';
+import TableHeaderCell from '../../TableHead/TableHeaderCell/TableHeaderCell';
 
 interface TableRowProps {
   /**

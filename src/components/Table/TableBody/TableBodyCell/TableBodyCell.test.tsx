@@ -3,7 +3,7 @@ import {
   render,
   screen,
 } from '@testing-library/react';
-import TableCell from './TableCell';
+import TableCell from './TableBodyCell';
 
 describe('TableCell', () => {
   describe('States', () => {

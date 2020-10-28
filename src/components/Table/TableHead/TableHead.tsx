@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
 import { Column, EventWithColumnKey } from '../../../types';
-import TableRow from '../TableRow/TableRow';
+import TableRow from '../common/TableRow/TableRow';
 
 interface TableHeadProps {
   /**

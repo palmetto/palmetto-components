@@ -8,7 +8,7 @@ import React, {
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
-import { Column, EventWithColumnKey } from '../../../types';
+import { Column, EventWithColumnKey } from '../../../../types';
 import styles from './TableHeaderCell.module.scss';
 
 interface TableHeaderCellProps {

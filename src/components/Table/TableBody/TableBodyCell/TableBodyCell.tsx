@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import styles from './TableCell.module.scss';
+import styles from './TableBodyCell.module.scss';
 
 interface TableCellProps {
   /**
