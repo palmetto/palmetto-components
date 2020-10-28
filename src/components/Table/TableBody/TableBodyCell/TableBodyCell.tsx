@@ -17,6 +17,10 @@ interface TableCellProps {
    */
   className?: string;
   /**
+   * Will stick to either the left or right side of a table during horizontal scroll.
+   */
+  columnIsSticky?: 'left' | 'right';
+  /**
    * Remove borders around td elements.
    */
   isBorderless?: boolean;
@@ -24,14 +28,6 @@ interface TableCellProps {
    * Reduces padding inside table cells.
    */
   isCompact?: boolean;
-  /**
-   * Will stick to left side of table during horizontal scroll.
-   */
-  isColumnStickyLeft?: boolean;
-  /**
-   * Will stick to right side of table during horizontal scroll.
-   */
-  isColumnStickyRight?: boolean;
   /**
    * Truncates the cell contents based on width established by `Column`
    * NOTE: Truncate only on cells with primitive data types.
@@ -53,24 +49,22 @@ const TableCell: FC<TableCellProps> = ({
   align = 'left',
   children = null,
   className = '',
+  columnIsSticky = undefined,
   emptyCellPlaceholder = null,
   isBorderless = false,
   isCompact = false,
-  isColumnStickyLeft = false,
-  isColumnStickyRight = false,
   truncateOverflow = false,
   width = undefined,
 }) => {
-  const columnIsSticky = isColumnStickyLeft || isColumnStickyRight;
   const tableCellClasses = classNames(
     styles['table-cell'],
     {
       [styles.compact]: isCompact,
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
-      [styles['sticky-column']]: columnIsSticky,
-      [styles['sticky-column-left']]: isColumnStickyLeft,
-      [styles['sticky-column-right']]: isColumnStickyRight,
+      [styles['sticky-column']]: columnIsSticky === 'left' || columnIsSticky === 'right',
+      [styles['sticky-column-left']]: columnIsSticky === 'left',
+      [styles['sticky-column-right']]: columnIsSticky === 'right',
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },

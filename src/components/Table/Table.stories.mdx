@@ -434,7 +434,7 @@ Pass `isHeaderSticky` as a prop to stick the header to the top of the table, and
 
 ## Scrollable with First Column Stuck to Left
 
-To stick the first, or any, column to the left of the table when it scrolls horizontally, add `stickLeft: true` to the column's config.
+To stick the first column to the left of the table when it scrolls horizontally, add `sticky: 'left` to the column's config.
 
 <Canvas>
   <Story name="Scrollable with First Column Stuck to Left">
@@ -446,7 +446,7 @@ To stick the first, or any, column to the left of the table when it scrolls hori
         height: '300px',
       };
       const columnConfig = [
-        { heading: 'ID', dataKey: 'id', stickyLeft: true },
+        { heading: 'ID', dataKey: 'id', sticky: 'left' },
         { heading: 'Color', dataKey: 'color', width: 300 },
         { heading: 'Flavor', dataKey: 'flavor', width: 100 },
         { heading: 'Brightness', dataKey: 'brightness', width: 150 },
@@ -476,7 +476,7 @@ To stick the first, or any, column to the left of the table when it scrolls hori
 
 ## Scrollable with Nth Column Stuck to Left
 
-Add `stickLeft: true` to any column to stick it to the left of the table when it scrolls horizontally.
+Add `sticky: 'left` to any column to stick it to the left of the table when it scrolls horizontally.
 
 <Canvas>
   <Story name="Scrollable with Sticky Header and Nth Column Stuck to Left">
@@ -489,7 +489,7 @@ Add `stickLeft: true` to any column to stick it to the left of the table when it
       };
       const columnConfig = [
         { heading: 'ID', dataKey: 'id' },
-        { heading: 'Color', dataKey: 'color', width: 50, stickyLeft: true },
+        { heading: 'Color', dataKey: 'color', width: 50, sticky: 'left' },
         { heading: 'Flavor', dataKey: 'flavor', width: 100 },
         { heading: 'Brightness', dataKey: 'brightness', width: 400 },
       ];
@@ -518,7 +518,7 @@ Add `stickLeft: true` to any column to stick it to the left of the table when it
 
 ## Scrollable with Last Column Stuck to Right
 
-To stick the last, or any, column to the right of the table when it scrolls horizontally, add `stickRight: true` to the column's config.
+To stick the last, or any, column to the right of the table when it scrolls horizontally, add `sticky: 'right'` to the column's config.
 
 <Canvas>
   <Story name="Scrollable with Last Column Stuck to Right">
@@ -533,7 +533,7 @@ To stick the last, or any, column to the right of the table when it scrolls hori
         { heading: 'ID', dataKey: 'id' },
         { heading: 'Color', dataKey: 'color', width: 300 },
         { heading: 'Flavor', dataKey: 'flavor', width: 100 },
-        { heading: 'Brightness', dataKey: 'brightness', width: 150, stickyRight: true },
+        { heading: 'Brightness', dataKey: 'brightness', width: 150, sticky: 'right' },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },
@@ -560,7 +560,7 @@ To stick the last, or any, column to the right of the table when it scrolls hori
 
 ## Scrollable with Sticky Header and First Column Stuck to Left
 
-To stick the header to the top, and the first column to the left, pass `isHeaderSticky` as a prop, and add `stickLeft: true` to the column's config.
+To stick the header to the top, and the first column to the left, pass `isHeaderSticky` as a prop, and add `sticky: 'left'` to the column's config.
 
 <Canvas>
   <Story name="Scrollable with Sticky Header and First Column Stuck to Left">
@@ -572,7 +572,7 @@ To stick the header to the top, and the first column to the left, pass `isHeader
         height: '300px',
       };
       const columnConfig = [
-        { heading: 'ID', dataKey: 'id', stickyLeft: true },
+        { heading: 'ID', dataKey: 'id', sticky: 'left' },
         { heading: 'Color', dataKey: 'color', width: 300 },
         { heading: 'Flavor', dataKey: 'flavor', width: 100 },
         { heading: 'Brightness', dataKey: 'brightness', width: 150 },

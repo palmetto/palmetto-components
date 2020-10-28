@@ -26,6 +26,10 @@ interface TableHeaderCellProps {
    */
   className?: string;
   /**
+   * Will stick to either the left or right side of a table during horizontal scroll.
+   */
+  columnIsSticky?: 'left' | 'right';
+  /**
    * Key of corresponding data value in the table.
    */
   dataKey?: Key;
@@ -33,14 +37,6 @@ interface TableHeaderCellProps {
    * Remove borders around th elements.
    */
   isBorderless?: boolean;
-  /**
-   * Will stick to left side of table during horizontal scroll.
-   */
-  isColumnStickyLeft?: boolean;
-  /**
-   * Will stick to right side of table during horizontal scroll.
-   */
-  isColumnStickyRight?: boolean;
   /**
    * Determines if table header cells should render as compact (less padding);
    */
@@ -82,10 +78,9 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   column,
   align = 'left',
   className = undefined,
+  columnIsSticky = undefined,
   dataKey = undefined,
   isBorderless = false,
-  isColumnStickyLeft = false,
-  isColumnStickyRight = false,
   isCompact = false,
   isHeaderSticky = false,
   isSortable = false,
@@ -148,9 +143,9 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
       [styles['sticky-header']]: isHeaderSticky,
-      [styles['sticky-column']]: isColumnStickyLeft || isColumnStickyRight,
-      [styles['sticky-column-left']]: isColumnStickyLeft,
-      [styles['sticky-column-right']]: isColumnStickyRight,
+      [styles['sticky-column']]: columnIsSticky === 'left' || columnIsSticky === 'right',
+      [styles['sticky-column-left']]: columnIsSticky === 'left',
+      [styles['sticky-column-right']]: columnIsSticky === 'right',
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
