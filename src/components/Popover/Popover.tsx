@@ -18,6 +18,14 @@ import Box, { BoxProps } from '../Box/Box';
 
 interface PopoverProps {
   /**
+   * The trigger element
+   */
+  children: ReactNode;
+  /**
+   * Content of the tooltip. Can be any JSX node.
+   */
+  content: ReactNode;
+  /**
    * The Popover is a controlled input, and will be shown when `isOpen === true`.
    */
   isOpen: boolean;
@@ -27,10 +35,6 @@ interface PopoverProps {
    * by passing a specific value here.
    */
   arrowColor?: BrandColor;
-  /**
-   * Content of the tooltip. Can be any JSX node.
-   */
-  content?: ReactNode;
   /**
    * An object matching the interface of the `Box` component props.
    * This is useful for styling the tooltip container using all the options available in
@@ -46,7 +50,7 @@ interface PopoverProps {
    * Note that this is from the edge of the target to the edge of the popover content,
    * and it DOES NOT include the arrow element.
    */
-  offsetFromTarget: number;
+  offsetFromTarget?: number;
   /**
    * Callback function to handle when a user clicks outside the Popover
    */
