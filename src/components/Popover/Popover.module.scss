@@ -1,10 +1,20 @@
-/* stylelint-disable */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .popover {
+  z-index: var(--size-z-index-popover);
   box-shadow:
     0 1px 5px 0 rgba(0, 0, 0, 0.05),
     0 1px 2px rgba(0, 0, 0, 0.05),
     0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: var(--size-z-index-popover)
+  animation: fadeIn 0.2s;
 }
 
 .popover-arrow {
@@ -13,64 +23,56 @@
   height: 0.8rem;
 
   &::before {
-    content: '';
+    position: absolute;
     transform: rotate(45deg);
+    z-index: -1;
+    background-color: inherit;
     width: 0.8rem;
     height: 0.8rem;
-    z-index: -1;
-    position: absolute;
-    background-color: inherit;
+    content: '';
   }
 }
 
 [data-popper-placement*='bottom'] {
-  margin-top: 0.6rem;
-
   .popover-arrow {
     top: -0.1rem;
 
     &::before {
-      box-shadow: rgba(0, 0, 0, 0.05) -1px -1px 1px 0;
       bottom: 0.25rem;
+      box-shadow: rgba(0, 0, 0, 0.05) -1px -1px 1px 0;
     }
   }
 }
 
 [data-popper-placement*='top'] {
-  margin-bottom: 0.6rem;
-
   .popover-arrow {
     bottom: -0.1rem;
 
     &::before {
-      box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 3px 0;
       top: 0.25rem;
+      box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 3px 0;
     }
   }
 }
 
 [data-popper-placement*='left'] {
-  margin-right: 0.6rem;
-
   .popover-arrow {
     right: -0.1rem;
 
     &::before {
-      box-shadow: rgba(0, 0, 0, 0.08) 1px -1px 1px 0;
       left: 0.25rem;
+      box-shadow: rgba(0, 0, 0, 0.08) 1px -1px 1px 0;
     }
   }
 }
 
 [data-popper-placement*='right'] {
-  margin-left: 0.6rem;
-
   .popover-arrow {
     left: -0.1rem;
 
     &::before {
-      box-shadow: rgba(0, 0, 0, 0.05) -2px 2px 2px 0;
       right: 0.25rem;
+      box-shadow: rgba(0, 0, 0, 0.05) -2px 2px 2px 0;
     }
   }
 }

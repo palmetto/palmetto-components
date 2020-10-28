@@ -35,6 +35,12 @@ interface PopoverProps {
    */
   contentContainerProps?: BoxProps;
   /**
+   * How far (in pixels) the Popover element will be from the target.
+   * Note that this is from the edge of the target to the edge of the popover content,
+   * and it DOES NOT include the arrow element.
+   */
+  offsetFromTarget: number;
+  /**
    * Callback function to handle when a user clicks outside the Popover
    */
   onClickOutside?: () => void;
@@ -69,6 +75,7 @@ interface PopoverProps {
 const contentContainerDefaults: BoxProps = {
   background: 'white',
   padding: 'sm',
+  radius: 'sm',
 };
 
 const Popover: FC<PopoverProps> = ({
@@ -77,6 +84,7 @@ const Popover: FC<PopoverProps> = ({
   content,
   contentContainerProps = { ...contentContainerDefaults },
   isOpen,
+  offsetFromTarget = 12,
   onClickOutside = undefined,
   placement,
   portalTarget = document.body,
@@ -130,7 +138,7 @@ const Popover: FC<PopoverProps> = ({
         {
           name: 'offset',
           options: {
-            offset: [0, 8],
+            offset: [0, offsetFromTarget],
           },
         },
       ],
