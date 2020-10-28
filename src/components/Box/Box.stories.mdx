@@ -844,7 +844,10 @@ Try resizing the browser to see the responsive properties in action.
 The box will have different margin and padding values for at the base, tablet, and desktop breakpoints.
 
 <Canvas>
-  <Story name="responsive padding and margin">
+  <Story
+    name="responsive padding and margin" 
+    parameters={{ chromatic: { viewports: [320, 1200] } }}
+  >
     <Box
       padding={{ base: 'sm 2xs', tablet: '2xl lg', desktop: '5xl 3xl'}}
       margin={{ base: 'sm xs', tablet: 'md sm', desktop: 'lg md'}}
