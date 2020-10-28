@@ -9,7 +9,7 @@
 
 .text-input-wrapper {
   position: relative;
-  
+
   &:focus-within {
     outline: none;
     border-color: var(--form-control-focus-border-color);
@@ -28,7 +28,7 @@
     border: 1px solid var(--form-control-border-color);
     background-color: var(--form-control-background-color);
     width: 100%;
-    line-height: 1.1;
+    line-height: var(--form-control-text-line-height);
     color: var(--form-control-font-color);
 
     &::placeholder {
@@ -52,7 +52,7 @@
     > input {
       border-radius: var(--form-control-size-sm-border-radius);
       box-shadow: var(--form-control-size-sm-box-shadow);
-      padding: calc(var(--form-control-size-sm-padding) - 1px);
+      padding: calc(var(--form-control-size-sm-padding) - 1px) var(--form-control-size-sm-padding);
       font-size: var(--form-control-size-sm-font-size);
     }
   }
@@ -61,7 +61,7 @@
     > input {
       border-radius: var(--form-control-size-md-border-radius);
       box-shadow: var(--form-control-size-md-box-shadow);
-      padding: calc(var(--form-control-size-md-padding) - 1px);
+      padding: calc(var(--form-control-size-md-padding) - 1px) var(--form-control-size-md-padding);
       font-size: var(--form-control-size-md-font-size);
     }
   }
@@ -70,11 +70,11 @@
     > input {
       border-radius: var(--form-control-size-lg-border-radius);
       box-shadow: var(--form-control-size-lg-box-shadow);
-      padding: calc(var(--form-control-size-lg-padding) - 1px);
+      padding: calc(var(--form-control-size-lg-padding) - 1px) var(--form-control-size-lg-padding);
       font-size: var(--form-control-size-lg-font-size);
     }
   }
-  
+
   &.error {
     > input {
       border-color: var(--form-control-error-border-color);
@@ -87,7 +87,7 @@
       }
     }
   }
-  
+
   .clear-button {
     /* Reset default button styles */
     position: absolute;
@@ -102,19 +102,18 @@
     color: inherit;
     font-style: inherit;
   }
-  
+
   .clear-icon {
     transition-duration: 0.2s;
     transition-property: color;
     cursor: pointer;
     color: var(--form-control-icon-color);
     font-size: var(--form-control-text-clear-icon-font-size);
-  
+
     &:hover {
       color: var(--form-control-icon-hover-color);
     }
   }
-
 }
 
 .text-input-label {

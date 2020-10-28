@@ -5,10 +5,7 @@ import Box from '../Box/Box';
 import Button from '../Button/Button';
 import TextInput from '../TextInput/TextInput';
 
-
-<Meta
-  title="Patterns/Form Control"
-/>
+<Meta title="Patterns/Form Control" />
 
 ## Sizes
 
@@ -21,9 +18,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
       return (
-        <div>
-          <Box direction="row" childGap="sm" padding="sm" display="flex">
-            <Box width="30">
+        <Box direction="row" childGap="xs">
+          <Box childGap="sm" width="30">
+            <Box display="block">
               <TextInput
                 id="default"
                 value={value}
@@ -32,10 +29,7 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 onChange={event => setValue(event.target.value)}
               />
             </Box>
-            <Button size="sm">Small Button</Button>
-          </Box>
-          <Box direction="row" childGap="sm" padding="sm" display="flex">
-            <Box width="30">
+            <Box display="block">
               <TextInput
                 id="default"
                 value={value1}
@@ -43,12 +37,7 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 onChange={event => setValue1(event.target.value)}
               />
             </Box>
-            <Button>
-              Medium Button
-            </Button>
-          </Box>
-          <Box direction="row" childGap="sm" display="flex" padding="sm">
-            <Box width="30">
+            <Box>
               <TextInput
                 id="default"
                 value={value2}
@@ -57,11 +46,19 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 onChange={event => setValue2(event.target.value)}
               />
             </Box>
-            <Button size="lg">
-              Large Button
-            </Button>
           </Box>
-        </div>
+          <Box childGap="sm">
+            <Box display="block">
+              <Button size="sm">Small Button</Button>
+            </Box>
+            <Box display="block">
+              <Button size="md">Medium Button</Button>
+            </Box>
+            <Box display="block">
+              <Button size="lg">Large Button</Button>
+            </Box>
+          </Box>
+        </Box>
       );
     }}
   </Story>
@@ -91,9 +88,7 @@ Inline form sizes with error states.
               />
             </Box>
             <Box alignItems="flex-start" direction="row">
-              <Button size="sm">
-                Small Button
-              </Button>
+              <Button size="sm">Small Button</Button>
             </Box>
           </Box>
           <Box direction="row" childGap="sm" padding="sm" display="flex">
@@ -107,9 +102,7 @@ Inline form sizes with error states.
               />
             </Box>
             <Box alignItems="flex-start" direction="row">
-              <Button>
-                Medium Button
-              </Button>
+              <Button>Medium Button</Button>
             </Box>
           </Box>
           <Box direction="row" childGap="sm" display="flex" padding="sm">
@@ -124,9 +117,7 @@ Inline form sizes with error states.
               />
             </Box>
             <Box alignItems="flex-start" direction="row">
-              <Button size="lg">
-                Large Button
-              </Button>
+              <Button size="lg">Large Button</Button>
             </Box>
           </Box>
         </div>
@@ -173,9 +164,7 @@ Inline form sizes with labels.
               />
             </Box>
             <Box alignItems="flex-end" direction="row">
-              <Button>
-                Medium Button
-              </Button>
+              <Button>Medium Button</Button>
             </Box>
           </Box>
           <Box direction="row" childGap="sm" display="flex" padding="sm">
@@ -190,9 +179,7 @@ Inline form sizes with labels.
               />
             </Box>
             <Box alignItems="flex-end" direction="row">
-              <Button size="lg">
-                Large Button
-              </Button>
+              <Button size="lg">Large Button</Button>
             </Box>
           </Box>
         </div>
@@ -226,9 +213,7 @@ Inline form sizes with labels and error states.
               />
             </Box>
             <Box alignItems="center" direction="row">
-              <Button size="sm">
-                Small Button
-              </Button>
+              <Button size="sm">Small Button</Button>
             </Box>
           </Box>
           <Box direction="row" childGap="sm" padding="sm" display="flex">
@@ -243,9 +228,7 @@ Inline form sizes with labels and error states.
               />
             </Box>
             <Box alignItems="center" direction="row">
-              <Button>
-                Medium Button
-              </Button>
+              <Button>Medium Button</Button>
             </Box>
           </Box>
           <Box direction="row" childGap="sm" display="flex" padding="sm">
@@ -261,9 +244,7 @@ Inline form sizes with labels and error states.
               />
             </Box>
             <Box alignItems="center" direction="row">
-              <Button size="lg">
-                Large Button
-              </Button>
+              <Button size="lg">Large Button</Button>
             </Box>
           </Box>
         </div>

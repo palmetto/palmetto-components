@@ -9,7 +9,7 @@
   padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
   text-align: center;
   text-decoration: none;
-  line-height: 1.1;
+  line-height: var(--button-line-height);
   letter-spacing: 0.2px;
   font-size: var(--button-size-md-font-size);
   font-weight: var(--button-font-weight);
