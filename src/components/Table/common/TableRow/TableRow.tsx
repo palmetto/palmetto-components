@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './TableRow.module.scss';
 import { Column, EventWithColumnKey, Row } from '../../../../types';
 import getColumnKeys from '../../../../lib/getColumnKeys';
-import TableCell from '../../TableBody/TableBodyCell/TableBodyCell';
+import TableBodyCell from '../../TableBody/TableBodyCell/TableBodyCell';
 import TableHeaderCell from '../../TableHead/TableHeaderCell/TableHeaderCell';
 
 interface TableRowProps {
@@ -123,7 +123,7 @@ const TableRow: FC<TableRowProps> = ({
             columnIsSticky={column.sticky}
           />
         ) : (
-          <TableCell
+          <TableBodyCell
             align={column.align || align}
             className={column.cellClassName}
             emptyCellPlaceholder={column.emptyCellPlaceholder || emptyCellPlaceholder}
@@ -135,7 +135,7 @@ const TableRow: FC<TableRowProps> = ({
             columnIsSticky={column.sticky}
           >
             {renderCellContent(column)}
-          </TableCell>
+          </TableBodyCell>
         )
       ))}
     </tr>

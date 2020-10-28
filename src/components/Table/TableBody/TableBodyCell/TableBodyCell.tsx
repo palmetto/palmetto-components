@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './TableBodyCell.module.scss';
 
-interface TableCellProps {
+interface TableBodyCellProps {
   /**
    * Text alignment for all table cells. Can be superseded by passing the same prop into the `Column` object
    * for a specific column.
@@ -45,7 +45,7 @@ interface TableCellProps {
   width?: number;
 }
 
-const TableCell: FC<TableCellProps> = ({
+const TableBodyCell: FC<TableBodyCellProps> = ({
   align = 'left',
   children = null,
   className = '',
@@ -99,4 +99,4 @@ const TableCell: FC<TableCellProps> = ({
   );
 };
 
-export default TableCell;
+export default TableBodyCell;
