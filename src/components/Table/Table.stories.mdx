@@ -474,7 +474,7 @@ To stick the first column to the left of the table when it scrolls horizontally,
   </Story>
 </Canvas>
 
-## Scrollable with Nth Column Stuck to Left
+## Scrollable with Sticky Header and Nth Column Stuck to Left
 
 Add `sticky: 'left` to any column to stick it to the left of the table when it scrolls horizontally.
 
@@ -509,6 +509,7 @@ Add `sticky: 'left` to any column to stick it to the left of the table when it s
             columns={columnConfig}
             rows={tableData}
             isScrollable={{ x: true, y: true }}
+            hasStickyHeader
           />
         </div>
       );
