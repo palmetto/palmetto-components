@@ -22,20 +22,23 @@ interface PopoverProps {
    */
   isOpen: boolean;
   /**
-   * Color of the arrow background.
+   * Color of the arrow background. NOTE: That the arrowColor will default to the
+   * `background` color applied in the `contentContainerProps`, but can be overwritten
+   * by passing a specific value here.
    */
   arrowColor?: BrandColor;
   /**
-   * Content of the tooltip. Can be any JSX node, but should be a single node, so it can be assigned a ref.
+   * Content of the tooltip. Can be any JSX node.
    */
   content?: ReactNode;
   /**
-   * Padding for the tooltip content. This has a default value
-   * in order to avoid content overlap with the popover arrow.
+   * An object matching the interface of the `Box` component props.
+   * This is useful for styling the tooltip container using all the options available in
+   * a `Box`.
    */
   contentContainerProps?: BoxProps;
   /**
-   * Whether the arrow is included.
+   * Whether the arrow is shown.
    */
   hasArrow?: boolean;
   /**
@@ -49,7 +52,7 @@ interface PopoverProps {
    */
   onClickOutside?: () => void;
   /**
-   * The placement of the Popover relative to its trigger.
+   * The placement (position) of the Popover relative to its trigger.
    */
   placement?: Placement;
   /**
