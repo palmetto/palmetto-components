@@ -161,14 +161,6 @@ const Popover: FC<PopoverProps> = ({
     },
   );
 
-  const childrenWithRef = React.Children.map(children, child => {
-    const props = { ref: triggerRef };
-    if (isValidElement(child)) {
-      return cloneElement(child, props);
-    }
-    return child;
-  });
-
   const containerBoxProps = {
     ...contentContainerDefaults,
     ...contentContainerProps,
@@ -190,6 +182,8 @@ const Popover: FC<PopoverProps> = ({
         ref={popperRef}
         className={styles.popover}
         style={popperStyles.popper}
+        role="dialog"
+        aria-hidden={!isOpen}
         {...containerBoxProps}
         {...attributes.popper}
         {...restProps}
@@ -217,6 +211,21 @@ const Popover: FC<PopoverProps> = ({
       renderPopperBox()
     );
   };
+
+  const childrenWithRef = React.Children.map(children, child => {
+    const props = {
+      ref: triggerRef,
+      role: 'button',
+      'aria-expanded': isOpen,
+      'aria-haspopup': true,
+    };
+
+    if (isValidElement(child)) {
+      return cloneElement(child, props);
+    }
+
+    return child;
+  });
 
   return (
     <>
