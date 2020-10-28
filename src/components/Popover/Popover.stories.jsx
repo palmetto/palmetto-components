@@ -20,7 +20,7 @@ export default {
   title: 'Components/Popover/ForChromatic',
   component: Popover,
   parameters: {
-    chromatic: { delay: 1000 },
+    chromatic: { delay: 1000, pauseAnimationAtEnd: true },
   },
 };
 
@@ -284,9 +284,7 @@ export const HideArrow = () => {
 
 export const Offset = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const [offset, setOffset] = useState(12);
   const handleTogglePopoverNear = () => { setPopoverOpen(!isPopoverOpen); };
-  const handleInputChange = (event) => { setInputValue(event.target.value); };
   const popoverContent = (
     <>
       <Box direction="column" childGap="sm">
@@ -308,7 +306,7 @@ export const Offset = () => {
           }}
           withPortal
           hasArrow={false}
-          offsetFromTarget={offset}
+          offsetFromTarget={20}
         >
           <Button
             onClick={handleTogglePopoverNear}
@@ -317,21 +315,6 @@ export const Offset = () => {
             Toggle Popover
           </Button>
         </Popover>
-      </Box>
-      <Box margin="2xl 0 0 0" maxWidth="300px">
-        <label htmlFor="offset" style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Offset</label>
-        <input
-          type="range"
-          id="offset"
-          name="offset"
-          min="0"
-          max="24"
-          step="1"
-          value={offset}
-          onChange={event => { setOffset(event.target.value); }}
-          style={{ marginBottom: '0.25rem' }}
-        />
-        <span style={{ display: 'inline' }}>Value: {offset}</span>
       </Box>
     </>
   );
