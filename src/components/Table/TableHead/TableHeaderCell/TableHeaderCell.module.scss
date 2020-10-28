@@ -1,7 +1,7 @@
 .table-header-cell {
   border-bottom: 1px solid var(--table-border-color);
   background-color: var(--table-background-color);
-  padding: var(--table-padding-header-vertical) var(--table-padding-horizontal);
+  padding: 0;
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -58,11 +58,15 @@
     text-align: center;
   }
 
-  .heading {
-    white-space: nowrap;
+  .custom-class-container {
+    padding: var(--table-padding-header-vertical) var(--table-padding-horizontal);
 
-    .sort-icon {
-      margin-left: var(--table-header-sort-icon-spacing);
+    .heading {
+      white-space: nowrap;
+  
+      .sort-icon {
+        margin-left: var(--table-header-sort-icon-spacing);
+      }
     }
   }
 }

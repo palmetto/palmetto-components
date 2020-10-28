@@ -62,14 +62,26 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
     {
       [styles.compact]: isCompact,
       [styles.borderless]: isBorderless,
-      [styles.truncated]: truncateOverflow,
       [styles['sticky-column']]: columnIsSticky,
       [styles['sticky-column-left']]: sticky === 'left',
       [styles['sticky-column-right']]: sticky === 'right',
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
+  );
+
+  const customClassContainerClasses = classNames(
+    styles['custom-class-container'],
+    { [styles.truncated]: truncateOverflow },
     className,
+  );
+
+  const renderCellContent = () => (
+    <div className={customClassContainerClasses}>
+      {(children === null || typeof children === 'undefined' || children === '')
+        ? emptyCellPlaceholder
+        : children}
+    </div>
   );
 
   return (
@@ -81,18 +93,14 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
             style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
             scope="row"
           >
-            {(children === null || typeof children === 'undefined' || children === '')
-              ? emptyCellPlaceholder
-              : children}
+            {renderCellContent()}
           </th>
         ) : (
           <td
             className={tableCellClasses}
             style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
           >
-            {(children === null || typeof children === 'undefined' || children === '')
-              ? emptyCellPlaceholder
-              : children}
+            {renderCellContent()}
           </td>
         )}
     </>

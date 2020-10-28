@@ -149,6 +149,10 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
+  );
+
+  const customClassContainerClasses = classNames(
+    styles['custom-class-container'],
     className,
   );
 
@@ -162,9 +166,11 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       onKeyDown={handleKeyPress}
       scope="col"
     >
-      <div className={styles.heading}>
-        {column.heading}
-        {isSortable && renderIcon()}
+      <div className={customClassContainerClasses}>
+        <div className={styles.heading}>
+          {column.heading}
+          {isSortable && renderIcon()}
+        </div>
       </div>
     </th>
   );
