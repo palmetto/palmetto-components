@@ -465,7 +465,8 @@ is beneficial in most cases to close the Popover when a user clicks any item out
 the trigger and popover content. 
 
 Our component provides a `onClickOutside` prop that fires a callback whenever there is a click
-event outside the Popover content. You can use the callback to set `isOpen` to false. 
+event outside the Popover content, OR, when the user taps the `Escape` key.
+You can use the callback to set `isOpen` to false.
 
 NOTE: the click event is attached to the `document.body`, but will not bubble up the event
 in cases where the click target includes the Popover trigger or content nodes.

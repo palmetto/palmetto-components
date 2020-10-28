@@ -122,13 +122,21 @@ const Popover: FC<PopoverProps> = ({
       }
     };
 
+    const handleKeyUp = (event: KeyboardEvent) => {
+      if (event.code === 'Escape') {
+        if (onClickOutside) onClickOutside();
+      }
+    };
+
     if (onClickOutside) {
       document.body.addEventListener('click', handleClickOutside, false);
+      document.body.addEventListener('keyup', handleKeyUp);
     }
 
     return () => {
       if (onClickOutside) {
         document.body.removeEventListener('click', handleClickOutside, false);
+        document.body.removeEventListener('keyup', handleKeyUp);
       }
     };
   }, [onClickOutside]);
