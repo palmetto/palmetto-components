@@ -89,7 +89,7 @@ Use the `helpText` prop to add clarifying text beneath the input label.
       return (
         <div style={{ height: '200px' }}>
           <SelectInput
-            id="customPlaceholder"
+            id="helpText"
             label="Flavor"
             helpText="Choose your favorite flavor"
             onChange={event => setValue(event.target.value)}
@@ -206,7 +206,7 @@ Use the `isMulti` prop combined with passing one or more options in an array to 
       return (
         <div style={{ height: '200px' }}>
           <SelectInput
-            id="multiSelect"
+            id="preSelectMultiSelect"
             label="Label"
             value={value}
             onChange={event => setValue(event.target.value)}
@@ -323,7 +323,7 @@ to the `onChange` handler.
       return (
         <div style={{ height: '85px' }}>
           <SelectInput
-            id="disabled"
+            id="clearable"
             label="Label"
             value={value}
             name="myClearableSelect"
@@ -353,7 +353,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
       return (
         <div style={{ height: '200px' }}>
           <SelectInput
-            id="disabled"
+            id="error"
             label="Label"
             value={value}
             onChange={event => setValue(event.target.value)}
