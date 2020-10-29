@@ -44,14 +44,10 @@ const TimePicker: FC<TimePickerProps> = ({
 }) => {
   const generateTimes = () => {
     const first = new Date();
-    first.setHours(startTime?.hour || 0);
-    first.setMinutes(startTime?.minute || 0);
-    first.setSeconds(0);
+    first.setHours(startTime?.hour || 0, startTime?.minute || 0, 0, 0);
 
     const last = new Date();
-    last.setHours(endTime?.hour || first.getHours() + 24);
-    last.setMinutes(endTime?.minute || 0);
-    last.setSeconds(0);
+    last.setHours(endTime?.hour || first.getHours() + 24, endTime?.minute || 0, 0, 0);
 
     const timeOptions = [];
     const currentTime: Date = new Date(first);

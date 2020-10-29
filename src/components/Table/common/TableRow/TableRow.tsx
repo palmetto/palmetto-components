@@ -1,10 +1,10 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './TableRow.module.scss';
-import { Column, EventWithColumnKey, Row } from '../../../types';
-import getColumnKeys from '../../../lib/getColumnKeys';
-import TableCell from '../TableCell/TableCell';
-import TableHeaderCell from '../TableHeaderCell/TableHeaderCell';
+import { Column, EventWithColumnKey, Row } from '../../../../types';
+import getColumnKeys from '../../../../lib/getColumnKeys';
+import TableBodyCell from '../../TableBody/TableBodyCell/TableBodyCell';
+import TableHeaderCell from '../../TableHead/TableHeaderCell/TableHeaderCell';
 
 interface TableRowProps {
   /**
@@ -33,6 +33,10 @@ interface TableRowProps {
    * Whether the table rows have smaller padding
    */
   isCompact?: boolean;
+  /**
+   * If table scrolls vertically, header will remain stuck to the top of the table, and not scroll away.
+   */
+  hasStickyHeader?: boolean;
   /**
    * Determine whether row is hoverable
    */
@@ -74,6 +78,7 @@ const TableRow: FC<TableRowProps> = ({
   emptyCellPlaceholder = '',
   isBorderless = false,
   isCompact = false,
+  hasStickyHeader = false,
   isHoverable = false,
   isTableHead = false,
   onSort = undefined,
@@ -114,9 +119,11 @@ const TableRow: FC<TableRowProps> = ({
             sortedColumn={sortedColumn}
             truncateOverflow={column.truncateOverflow || truncateOverflow}
             width={column.width}
+            hasStickyHeader={hasStickyHeader}
+            sticky={column.sticky}
           />
         ) : (
-          <TableCell
+          <TableBodyCell
             align={column.align || align}
             className={column.cellClassName}
             emptyCellPlaceholder={column.emptyCellPlaceholder || emptyCellPlaceholder}
@@ -125,9 +132,10 @@ const TableRow: FC<TableRowProps> = ({
             isBorderless={isBorderless}
             isCompact={isCompact}
             width={column.width}
+            sticky={column.sticky}
           >
             {renderCellContent(column)}
-          </TableCell>
+          </TableBodyCell>
         )
       ))}
     </tr>

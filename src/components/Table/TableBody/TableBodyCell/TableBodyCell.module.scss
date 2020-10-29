@@ -1,5 +1,6 @@
 .table-cell {
   border-bottom: 1px solid var(--table-border-color);
+  background-color: var(--table-background-color);
   padding: var(--table-padding-vertical) var(--table-padding-horizontal);
   font-size: var(--table-cell-font-size);
 
@@ -15,6 +16,21 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  &.sticky-column {
+    position: sticky;
+    z-index: calc(var(--size-z-index-sticky) - 1);
+    box-shadow: var(--size-box-shadow-sm);
+    font-size: var(--table-header-font-size);
+  }
+
+  &.sticky-column-left {
+    left: 0;
+  }
+
+  &.sticky-column-right {
+    right: 0;
   }
 
   &.align-right {

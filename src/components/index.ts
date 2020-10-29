@@ -15,6 +15,7 @@ import FormikTextareaInput from './Formik/FormikTextareaInput/FormikTextareaInpu
 import Heading from './Heading/Heading';
 import Modal from './Modal/Modal';
 import Pagination from './Pagination/Pagination';
+import Popover from './Popover/Popover';
 import RadioGroup from './RadioGroup/RadioGroup';
 import SelectInput from './SelectInput/SelectInput';
 import Table from './Table/Table';
@@ -41,6 +42,7 @@ export {
   Heading,
   Modal,
   Pagination,
+  Popover,
   RadioGroup,
   SelectInput,
   Table,
