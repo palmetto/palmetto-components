@@ -47,6 +47,10 @@ interface TableProps {
    */
   isCompact?: boolean;
   /**
+   * If table scrolls vertically, header will remain stuck to the top of the table, and not scroll away.
+   */
+  hasStickyHeader?: boolean;
+  /**
    * Set to true if data is loading.
    */
   isLoading?: boolean;
@@ -96,9 +100,10 @@ const Table: FC<TableProps> = ({
   hoverableRows = false,
   isBorderless = false,
   isCompact = false,
-  isStriped = false,
+  hasStickyHeader = false,
   isLoading = false,
   isScrollable = undefined,
+  isStriped = false,
   onSort = undefined,
   sortedColumn = undefined,
   useFixedTableLayout = false,
@@ -148,6 +153,7 @@ const Table: FC<TableProps> = ({
             isCompact={isCompact}
             sortedColumn={sortedColumn}
             truncateOverflow={truncateOverflow}
+            hasStickyHeader={hasStickyHeader}
           />
           <TableBody
             rows={rows}

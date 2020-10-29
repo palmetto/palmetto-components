@@ -1,5 +1,6 @@
 .table-header-cell {
   border-bottom: 1px solid var(--table-border-color);
+  background-color: var(--table-background-color);
   padding: var(--table-padding-header-vertical) var(--table-padding-horizontal);
   text-align: left;
   text-transform: uppercase;
@@ -7,7 +8,7 @@
   white-space: nowrap;
   color: var(--table-header-color);
   font-size: var(--table-header-font-size);
-  font-weight: 600;
+  font-weight: var(--table-header-font-weight);
 
   &.sortable {
     cursor: pointer;
@@ -25,6 +26,28 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  &.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--size-z-index-sticky);
+  }
+
+  &.sticky-column {
+    position: sticky;
+    z-index: calc(var(--size-z-index-sticky) + 1);
+    box-shadow: 0 9px 0 0 var(--table-background-color), 0 -9px 0 0 var(--table-background-color),
+      2px 0 5px 0 rgba(0, 0, 0, 0.05), 1px 0 1px 0 rgba(0, 0, 0, 0.05),
+      -2px 0 5px 0 rgba(0, 0, 0, 0.05), -1px 0 1px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &.sticky-column-left {
+    left: 0;
+  }
+
+  &.sticky-column-right {
+    right: 0;
   }
 
   &.align-right {

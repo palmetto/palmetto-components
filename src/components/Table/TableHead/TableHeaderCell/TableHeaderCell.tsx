@@ -8,7 +8,7 @@ import React, {
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
-import { Column, EventWithColumnKey } from '../../../types';
+import { Column, EventWithColumnKey } from '../../../../types';
 import styles from './TableHeaderCell.module.scss';
 
 interface TableHeaderCellProps {
@@ -38,6 +38,10 @@ interface TableHeaderCellProps {
    */
   isCompact?: boolean;
   /**
+   * If table scrolls vertically, header will remain stuck to the top of the table, and not scroll away.
+   */
+  hasStickyHeader?: boolean;
+  /**
    * Boolean to mark if a column is sortable. This will show the sorting icons. Use
    * in conjunction with the `sortDirection` prop to determine which icon is shown.
    */
@@ -57,6 +61,10 @@ interface TableHeaderCellProps {
     sortDirection: 'none' | 'ascending' | 'descending' | undefined;
   };
   /**
+   * Will stick to either the left or right side of a table during horizontal scroll.
+   */
+  sticky?: 'left' | 'right';
+  /**
    * Whether the text should be cut off with ellipsis if it exceeds the width of the column.
    */
   truncateOverflow?: boolean;
@@ -73,9 +81,11 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   dataKey = undefined,
   isBorderless = false,
   isCompact = false,
+  hasStickyHeader = false,
   isSortable = false,
   onSort = undefined,
   sortedColumn = undefined,
+  sticky = undefined,
   truncateOverflow = false,
   width = undefined,
 }) => {
@@ -132,6 +142,10 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
       [styles.compact]: isCompact,
+      [styles['sticky-header']]: hasStickyHeader,
+      [styles['sticky-column']]: sticky === 'left' || sticky === 'right',
+      [styles['sticky-column-left']]: sticky === 'left',
+      [styles['sticky-column-right']]: sticky === 'right',
       [styles['align-right']]: align === 'right',
       [styles['align-center']]: align === 'center',
     },
@@ -146,6 +160,7 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
       tabIndex={isSortable ? 0 : undefined}
       onClick={handleSort}
       onKeyDown={handleKeyPress}
+      scope="col"
     >
       <div className={styles.heading}>
         {column.heading}
