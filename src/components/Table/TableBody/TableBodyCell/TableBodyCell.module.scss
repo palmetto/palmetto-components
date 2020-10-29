@@ -1,7 +1,7 @@
 .table-cell {
   border-bottom: 1px solid var(--table-border-color);
   background-color: var(--table-background-color);
-  padding: 0;
+  padding: var(--table-padding-vertical) var(--table-padding-horizontal);
   font-size: var(--table-cell-font-size);
 
   &.borderless {
@@ -10,6 +10,12 @@
 
   &.compact {
     padding: var(--table-padding-vertical-compact) var(--table-padding-horizontal-compact);
+  }
+
+  &.truncated {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &.sticky-column {
@@ -33,15 +39,5 @@
 
   &.align-center {
     text-align: center;
-  }
-
-  .custom-class-container {
-    padding: var(--table-padding-vertical) var(--table-padding-horizontal);
-
-    &.truncated {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
   }
 }

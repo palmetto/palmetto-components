@@ -1,7 +1,7 @@
 .table-header-cell {
   border-bottom: 1px solid var(--table-border-color);
   background-color: var(--table-background-color);
-  padding: 0;
+  padding: var(--table-padding-header-vertical) var(--table-padding-horizontal);
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -58,15 +58,11 @@
     text-align: center;
   }
 
-  .custom-class-container {
-    padding: var(--table-padding-header-vertical) var(--table-padding-horizontal);
+  .heading {
+    white-space: nowrap;
 
-    .heading {
-      white-space: nowrap;
-  
-      .sort-icon {
-        margin-left: var(--table-header-sort-icon-spacing);
-      }
+    .sort-icon {
+      margin-left: var(--table-header-sort-icon-spacing);
     }
   }
 }

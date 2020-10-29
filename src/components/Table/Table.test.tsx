@@ -378,19 +378,14 @@ describe('Table', () => {
         );
 
         const headerCells = screen.queryAllByRole('columnheader');
-        const headerForFirstColumn = headerCells[0];
-        const customClassContainer = headerForFirstColumn.children[0];
-
-        expect(customClassContainer).toHaveClass('header-class');
+        expect(headerCells[0]).toHaveClass('header-class'); // Header(th) for first column.
 
         const cells = screen.queryAllByRole('cell');
         // Checking cell classes based on where they are in the table.
         cells.forEach((cell, index) => {
           // Second Column
           if (index === 1 || index === 4 || index === 7) {
-            const customClassContainerTwo = cell.children[0];
-
-            expect(customClassContainerTwo).toHaveClass('cell-class');
+            expect(cell).toHaveClass('cell-class');
           }
         });
       });

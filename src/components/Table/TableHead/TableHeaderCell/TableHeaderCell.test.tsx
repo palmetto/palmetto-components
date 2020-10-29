@@ -198,9 +198,8 @@ describe('TableHeaderCell', () => {
       render(<TableHeaderCell column={column} className="my-custom-class" />);
 
       const tableHeaderCell = screen.getByRole('columnheader');
-      const customClassContainer = tableHeaderCell.children[0];
 
-      expect(customClassContainer).toHaveClass('my-custom-class');
+      expect(tableHeaderCell).toHaveClass('my-custom-class');
     });
 
     describe('Sticky', () => {

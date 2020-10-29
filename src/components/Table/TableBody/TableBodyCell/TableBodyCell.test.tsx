@@ -3,65 +3,64 @@ import {
   render,
   screen,
 } from '@testing-library/react';
-import TableBodyCell from './TableBodyCell';
+import TableCell from './TableBodyCell';
 
-describe('TableBodyCell', () => {
+describe('TableCell', () => {
   describe('States', () => {
     test('It renders an empty td when no children passed', () => {
-      render(<TableBodyCell />);
+      render(<TableCell />);
 
-      const tableBodyCell = screen.getByRole('cell');
-      expect(tableBodyCell).toBeInTheDocument();
+      const tableCell = screen.getByRole('cell');
+      expect(tableCell).toBeInTheDocument();
     });
 
     test('td element is rendered with specific width style attribute based on width prop', () => {
-      render(<TableBodyCell width={200}>ID</TableBodyCell>);
+      render(<TableCell width={200}>ID</TableCell>);
 
-      const tableBodyCell = screen.getByText('ID').parentElement;
+      const tableCell = screen.getByText('ID');
 
-      expect(tableBodyCell).toHaveStyle({ minWidth: '200px', maxWidth: '200px' });
+      expect(tableCell).toHaveStyle({ minWidth: '200px', maxWidth: '200px' });
     });
 
     test('td content is truncated if \'isTruncated\' prop is passed', () => {
       render(
-        <TableBodyCell width={50} truncateOverflow>
+        <TableCell width={50} truncateOverflow>
           Lots of long long long content
-        </TableBodyCell>,
+        </TableCell>,
       );
 
-      const tableBodyCellWithEllipsis = screen.getByRole('cell').children[0];
+      const tableCellWithEllipsis = screen.getByRole('cell');
 
-      expect(tableBodyCellWithEllipsis).toHaveClass('truncated');
+      expect(tableCellWithEllipsis).toHaveClass('truncated');
     });
 
     test('td is borderless if \'isBorderless\' prop is passed', () => {
-      render(<TableBodyCell isBorderless>ID</TableBodyCell>);
+      render(<TableCell isBorderless>ID</TableCell>);
 
-      const tableBodyCellWithEllipsis = screen.getByRole('cell');
+      const tableCellWithEllipsis = screen.getByRole('cell');
 
-      expect(tableBodyCellWithEllipsis).toHaveClass('borderless');
+      expect(tableCellWithEllipsis).toHaveClass('borderless');
     });
 
     test('td is compact if \'isCompact\' prop is passed', () => {
-      render(<TableBodyCell isCompact>ID</TableBodyCell>);
+      render(<TableCell isCompact>ID</TableCell>);
 
-      const tableBodyCellWithEllipsis = screen.getByRole('cell');
+      const tableCellWithEllipsis = screen.getByRole('cell');
 
-      expect(tableBodyCellWithEllipsis).toHaveClass('compact');
+      expect(tableCellWithEllipsis).toHaveClass('compact');
     });
 
-    test('It renders with a custom class if className is passed as prop', () => {
-      render(<TableBodyCell className="my-custom-class" />);
+    test('It renders with a custom class is passed as prop', () => {
+      render(<TableCell className="my-custom-class" />);
 
-      const tableBodyCell = screen.getByRole('cell');
-      const customClassContainer = tableBodyCell.children[0];
-      expect(customClassContainer).toHaveClass('my-custom-class');
+      const tableCell = screen.getByRole('cell');
+      expect(tableCell).toHaveClass('my-custom-class');
     });
 
     describe('Sticky', () => {
       test('it renders as a <th> element if sticky is passed as a prop with "left" as its value', () => {
         render(
-          <TableBodyCell
+          <TableCell
             sticky="left"
           />,
         );
@@ -76,7 +75,7 @@ describe('TableBodyCell', () => {
 
       test('it renders as a <th> element if sticky is passed as a prop with "right" as its value', () => {
         render(
-          <TableBodyCell
+          <TableCell
             sticky="right"
           />,
         );
