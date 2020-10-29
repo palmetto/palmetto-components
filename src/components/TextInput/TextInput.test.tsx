@@ -28,6 +28,28 @@ describe('TextInput', () => {
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
       });
 
+      test('onChange event fires callback function with masked input', () => {
+        let value = '123';
+        const mockedHandleChange = jest.fn(event => { value = event.target.value; });
+
+        const { rerender } = render(
+          <TextInput {...baseProps} value={value} onChange={mockedHandleChange} inputMask="phone" />,
+        );
+        const inputElement = screen.getByDisplayValue('(123)');
+
+        fireEvent.change(inputElement, { target: { value: 'good bye' } });
+        expect(mockedHandleChange).toHaveBeenCalledTimes(1);
+
+        rerender(<TextInput {...baseProps} value={value} onChange={mockedHandleChange} inputMask="phone" />);
+        expect((inputElement as HTMLInputElement).value).toBe('');
+
+        fireEvent.change(inputElement, { target: { value: '12381238' } });
+        expect(mockedHandleChange).toHaveBeenCalledTimes(2);
+
+        rerender(<TextInput {...baseProps} value={value} onChange={mockedHandleChange} inputMask="phone" />);
+        expect((inputElement as HTMLInputElement).value).toBe('(123) 812-38');
+      });
+
       test('Input value is updated properly when upper state changes', () => {
         let value = 'hello';
         const mockedHandleChange = jest.fn(event => { value = event.target.value; });
