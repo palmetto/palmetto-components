@@ -1,3 +1,3 @@
 .heading {
-  line-height: 1; /* @TODO -- figure out specific line-heights for each heading. */
+  line-height: var(--size-line-height-heading);
 }
