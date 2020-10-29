@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import Box from '../Box/Box';
-import Button from '../Button/Button';
-import TextInput from '../TextInput/TextInput';
+import Box from '../components/Box/Box';
+import SelectInput from '../components/SelectInput/SelectInput';
+import Button from '../components/Button/Button';
+import TextInput from '../components/TextInput/TextInput';
 
-<Meta title="Patterns/Form Control" />
+<Meta title="Patterns/Form Controls" />
 
 ## Sizes
 
@@ -17,9 +18,27 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
       const [value, setValue] = useState('');
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
+      const [value3, setValue3] = useState({
+        value: 'chocolate',
+        label: 'Chocolate',
+      });
+      const options = [
+        {
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
       return (
         <Box direction="row" childGap="xs">
-          <Box childGap="sm" width="30">
+          <Box childGap="sm" width="160px">
             <Box display="block">
               <TextInput
                 id="default"
@@ -56,6 +75,79 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             </Box>
             <Box display="block">
               <Button size="lg">Large Button</Button>
+            </Box>
+          </Box>
+          <Box childGap="sm" width="200px">
+            <Box display="block">
+              <SelectInput
+                id="smallSelect"
+                label="Label"
+                onChange={event => setValue3(event.target.value)}
+                options={options}
+                value={value3}
+                hideLabel
+                size="sm"
+              />
+            </Box>
+            <Box display="block">
+              <SelectInput
+                id="mediumSelect"
+                label="Label"
+                onChange={event => setValue3(event.target.value)}
+                options={options}
+                value={value3}
+                hideLabel
+                size="md"
+              />
+            </Box>
+            <Box display="block">
+              <SelectInput
+                id="largeSelect"
+                label="Label"
+                onChange={event => setValue3(event.target.value)}
+                options={options}
+                value={value3}
+                hideLabel
+                size="lg"
+              />
+            </Box>
+          </Box>
+          <Box childGap="sm" width="200px">
+            <Box display="block">
+              <SelectInput
+                id="smallMultiSelect"
+                label="Label"
+                onChange={event => setValue3(event.target.value)}
+                options={options}
+                value={value3}
+                hideLabel
+                isMulti
+                size="sm"
+              />
+            </Box>
+            <Box display="block">
+              <SelectInput
+                id="mediumMultiSelect"
+                label="Label"
+                onChange={event => setValue3(event.target.value)}
+                options={options}
+                value={value3}
+                hideLabel
+                isMulti
+                size="md"
+              />
+            </Box>
+            <Box display="block">
+              <SelectInput
+                id="largeMultiSelect"
+                label="Label"
+                onChange={event => setValue3(event.target.value)}
+                options={options}
+                value={value3}
+                hideLabel
+                isMulti
+                size="lg"
+              />
             </Box>
           </Box>
         </Box>
