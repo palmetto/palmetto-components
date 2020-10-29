@@ -108,6 +108,11 @@
       box-shadow: var(--button-focus-box-shadow-danger);
     }
 
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-danger-outline);
       background-color: transparent;
@@ -139,6 +144,11 @@
       box-shadow: var(--button-focus-box-shadow-dark);
     }
 
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-dark-outline);
       background-color: transparent;
@@ -168,6 +178,11 @@
     &:focus-visible {
       outline: 0;
       box-shadow: var(--button-focus-box-shadow-light);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
     }
 
     &.outline {
