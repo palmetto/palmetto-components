@@ -1,0 +1,30 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import DatePicker from './DatePicker';
+import Box from '../Box/Box';
+
+<Meta title="Components/DatePicker" component={DatePicker} />
+
+# DatePicker
+
+Use a DatePicker when a user needs to select a date and time.
+
+## Props
+
+<ArgsTable of={DatePicker} />
+
+## Default
+
+<Canvas>
+  <Story name="default">
+    {() => {
+      const [selectedDate, setSelectedDate] = useState(new Date());
+      return (
+        <Box childGap="md">
+          <DatePicker onChange={setSelectedDate} startDate={selectedDate} />
+          <p>Selected Date: {selectedDate.toISOString()}</p>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
