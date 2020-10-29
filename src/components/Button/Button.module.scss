@@ -24,6 +24,25 @@
     pointer-events: none;
   }
 
+  /* define regular focus styles for non-supporting browsers */
+  &:focus {
+    outline: 0;
+    box-shadow: var(--button-focus-box-shadow);
+  }
+
+  /* Show focus styles on keyboard focus. */
+  &:focus-visible {
+    outline: 0;
+    box-shadow: var(--button-focus-box-shadow);
+  }
+
+  /* Hide focus styles if they're not needed, for example,
+  when an element receives focus via the mouse. */
+  &:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+  }
+
   &.outline {
     border: 1px solid;
   }
@@ -79,6 +98,21 @@
       background-color: var(--button-background-hover-color-danger);
     }
 
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-danger);
+    }
+
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-danger);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-danger-outline);
       background-color: transparent;
@@ -100,6 +134,21 @@
       background-color: var(--button-background-hover-color-dark);
     }
 
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-dark);
+    }
+
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-dark);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-dark-outline);
       background-color: transparent;
@@ -119,6 +168,21 @@
 
     &:hover {
       background-color: var(--button-background-hover-color-light);
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-light);
+    }
+
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-light);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
     }
 
     &.outline {
