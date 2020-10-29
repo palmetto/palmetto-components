@@ -35,6 +35,10 @@ interface HeadingProps {
    * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json).
    */
   size?: FontSize;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 const Heading: FC<HeadingProps> = ({
@@ -43,6 +47,7 @@ const Heading: FC<HeadingProps> = ({
   className,
   variant,
   size,
+  ...restProps
 }) => {
   const element = getElementType(Heading, { as });
 
@@ -53,7 +58,7 @@ const Heading: FC<HeadingProps> = ({
     [`font-color-${variant}`]: variant,
   });
 
-  return createElement(element, { className: classes, children });
+  return createElement(element, { className: classes, children, ...restProps });
 };
 
 export default Heading;

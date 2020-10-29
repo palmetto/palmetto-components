@@ -1,0 +1,75 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.popover {
+  z-index: var(--size-z-index-popover);
+  box-shadow: var(--size-box-shadow-sm);
+  animation: fadeIn 0.2s;
+}
+
+.popover-arrow {
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+
+  &::before {
+    position: absolute;
+    transform: rotate(45deg);
+    z-index: -1;
+    background-color: inherit;
+    width: 0.8rem;
+    height: 0.8rem;
+    content: '';
+  }
+}
+
+[data-popper-placement*='bottom'] {
+  .popover-arrow {
+    top: -0.1rem;
+
+    &::before {
+      bottom: 0.25rem;
+      box-shadow: rgba(0, 0, 0, 0.05) -1px -1px 1px 0;
+    }
+  }
+}
+
+[data-popper-placement*='top'] {
+  .popover-arrow {
+    bottom: -0.1rem;
+
+    &::before {
+      top: 0.25rem;
+      box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 3px 0;
+    }
+  }
+}
+
+[data-popper-placement*='left'] {
+  .popover-arrow {
+    right: -0.1rem;
+
+    &::before {
+      left: 0.25rem;
+      box-shadow: rgba(0, 0, 0, 0.08) 1px -1px 1px 0;
+    }
+  }
+}
+
+[data-popper-placement*='right'] {
+  .popover-arrow {
+    left: -0.1rem;
+
+    &::before {
+      right: 0.25rem;
+      box-shadow: rgba(0, 0, 0, 0.05) -2px 2px 2px 0;
+    }
+  }
+}
