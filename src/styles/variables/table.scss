@@ -1,6 +1,8 @@
 :root {
   --table-border-color: var(--color-brand-grey-lighter);
 
+  --table-background-color: var(--color-brand-white-base);
+
   --table-padding-horizontal: var(--size-spacing-lg);
   --table-padding-vertical: var(--size-spacing-md);
   --table-padding-header-vertical: var(--size-spacing-md);
@@ -9,6 +11,7 @@
 
   --table-header-color: var(--color-brand-dark-base);
   --table-header-font-size: var(--size-font-xs);
+  --table-header-font-weight: var(--size-font-weight-bold);
   --table-header-sort-icon-spacing: var(--size-spacing-xs);
 
   --table-cell-font-size: var(--size-font-sm);

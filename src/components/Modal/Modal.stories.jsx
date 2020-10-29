@@ -6,7 +6,7 @@ export default {
   title: 'Components/Modal/ForChromatic',
   component: Modal,
   parameters: {
-    chromatic: { delay: 1000 },
+    chromatic: { delay: 1000, pauseAnimationAtEnd: true },
   },
   decorators: [storyFn => <div style={{ width: '1200px', height: '800px' }}>{storyFn()}</div>],
 };
