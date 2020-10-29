@@ -8,6 +8,10 @@
     border: 0;
   }
 
+  &.compact {
+    padding: var(--table-padding-vertical-compact) var(--table-padding-horizontal-compact);
+  }
+
   &.sticky-column {
     position: sticky;
     z-index: calc(var(--size-z-index-sticky) - 1);
@@ -38,12 +42,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-  }
-
-  &.compact {
-    .custom-class-container {
-      padding: var(--table-padding-vertical-compact) var(--table-padding-horizontal-compact);
     }
   }
 }
