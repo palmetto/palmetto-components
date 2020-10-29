@@ -155,6 +155,10 @@ export declare type Column = {
    */
   render?: (cell?: Cell, row?: Row, rowIndex?: number) => ReactNode;
   /**
+   * Whether the column is stuck to the left or right.
+   */
+  sticky?: 'left' | 'right';
+  /**
    * Whether long text should be truncated based on column width. Use in tandem with column width as well as
    * `useFixedWidthColumns` prop in the parent table.
    */

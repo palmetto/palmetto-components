@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   MouseEvent,
   FocusEvent,
+  forwardRef,
   createElement,
 } from 'react';
 import classNames from 'classnames';
@@ -87,25 +88,28 @@ interface ButtonProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const Button: FC<ButtonProps> = ({
-  children = null,
-  as = 'button',
-  className = '',
-  fullWidth = false,
-  id = undefined,
-  href = undefined,
-  isDisabled = false,
-  isLoading = false,
-  isOutlined = false,
-  tabIndex = undefined,
-  type = 'button',
-  onClick = undefined,
-  onFocus = undefined,
-  onBlur = undefined,
-  size = 'md',
-  variant = 'primary',
-  ...restProps
-}) => {
+const Button: FC<ButtonProps> = forwardRef((
+  {
+    children = null,
+    as = 'button',
+    className = '',
+    fullWidth = false,
+    id = undefined,
+    href = undefined,
+    isDisabled = false,
+    isLoading = false,
+    isOutlined = false,
+    tabIndex = undefined,
+    type = 'button',
+    onClick = undefined,
+    onFocus = undefined,
+    onBlur = undefined,
+    size = 'md',
+    variant = 'primary',
+    ...restProps
+  },
+  ref,
+) => {
   const disabled = isLoading || isDisabled;
 
   const buttonClasses = classNames(
@@ -158,10 +162,11 @@ const Button: FC<ButtonProps> = ({
     onBlur: handleBlur,
     onClick: handleClick,
     onFocus: handleFocus,
+    ref,
     type,
     tabIndex,
     ...restProps,
   });
-};
+});
 
 export default Button;

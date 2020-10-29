@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
 import { Column, EventWithColumnKey } from '../../../types';
-import TableRow from '../TableRow/TableRow';
+import TableRow from '../common/TableRow/TableRow';
 
 interface TableHeadProps {
   /**
@@ -26,6 +26,10 @@ interface TableHeadProps {
    */
   isCompact?: boolean;
   /**
+   * If table scrolls vertically, header will remain stuck to the top of the table, and not scroll away.
+   */
+  hasStickyHeader?: boolean;
+  /**
    * Callback function to fire on sorting one of the table headers.
    */
   onSort?: (event: EventWithColumnKey) => void;
@@ -49,6 +53,7 @@ const TableHead: FC<TableHeadProps> = ({
   className = '',
   isBorderless = false,
   isCompact = false,
+  hasStickyHeader = false,
   onSort = undefined,
   sortedColumn = undefined,
   truncateOverflow = false,
@@ -66,6 +71,7 @@ const TableHead: FC<TableHeadProps> = ({
         onSort={onSort}
         sortedColumn={sortedColumn}
         truncateOverflow={truncateOverflow}
+        hasStickyHeader={hasStickyHeader}
       />
     </thead>
   );

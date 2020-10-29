@@ -2,7 +2,7 @@ import React, { FC, Key } from 'react';
 import classNames from 'classnames';
 import styles from './TableBody.module.scss';
 import { Column, Row } from '../../../types';
-import TableRow from '../TableRow/TableRow';
+import TableRow from '../common/TableRow/TableRow';
 
 interface TableBodyProps {
   /**
