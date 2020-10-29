@@ -105,13 +105,13 @@ interface TextInputProps {
    */
   placeholder?: string;
   /**
-   * The input 'type' value. Defaults to type 'text'.
-   */
-  type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
-  /**
    * The size of the text input.
    */
   size?: 'sm' | 'md' | 'lg';
+  /**
+   * The input 'type' value. Defaults to type 'text'.
+   */
+  type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
 }
 
 const TextInput: FC<TextInputProps> = ({

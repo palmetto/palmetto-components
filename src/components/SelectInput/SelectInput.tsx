@@ -88,6 +88,10 @@ export interface BaseSelectInputProps {
    */
   placeholder?: string;
   /**
+   * The size of the text input.
+   */
+  size?: 'sm' | 'md' | 'lg';
+  /**
    * Additional props to be spread. These will be applied specifically to
    * the `react-select` component that powers the select. For full docs on
    * react-select props, [Click Here](https://react-select.com/props)
@@ -120,6 +124,7 @@ const SelectInput: FC<SelectInputProps> = ({
   onFocus = null,
   onBlur = null,
   placeholder = undefined,
+  size = 'md',
   ...restProps
 }) => {
   const handleChange = (values: ValueType<OptionTypeBase>) => {
@@ -141,7 +146,7 @@ const SelectInput: FC<SelectInputProps> = ({
     if (onBlur) onBlur(e);
   };
 
-  const wrapperClasses = classNames('select-input-wrapper', className, {
+  const wrapperClasses = classNames('select-input-wrapper', className, styles[size], {
     [styles.disabled]: isDisabled,
   });
 
