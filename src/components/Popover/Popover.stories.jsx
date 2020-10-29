@@ -20,7 +20,7 @@ export default {
   title: 'Components/Popover/ForChromatic',
   component: Popover,
   parameters: {
-    chromatic: { delay: 1000, pauseAnimationAtEnd: true },
+    chromatic: { delay: 2000, pauseAnimationAtEnd: true },
   },
 };
 
@@ -246,9 +246,7 @@ export const Placement = () => {
 
 export const HideArrow = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const [inputValue, setInputValue] = useState('');
   const handleTogglePopover = () => { setPopoverOpen(!isPopoverOpen); };
-  const handleInputChange = (event) => { setInputValue(event.target.value); };
   const popoverContent = (
     <>
       <Box direction="column" childGap="sm">
@@ -265,7 +263,7 @@ export const HideArrow = () => {
         placement="right-start"
         contentContainerProps={{
           padding: 'md',
-          background: 'grey-lightest'
+          background: 'grey-lightest',
         }}
         withPortal
         onClickOutside={() => setPopoverOpen(false)}
