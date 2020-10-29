@@ -226,6 +226,57 @@ a callback function when the clear icon is clicked, which can then be handled to
   </Story>
 </Canvas>
 
+
+## Sizes
+
+Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
+
+<Canvas>
+  <Story name="Size">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value1, setValue1] = useState('');
+      const [value2, setValue2] = useState('');
+      return (
+        <Box
+          direction={{
+            base: 'column',
+          }}
+          childGap={{
+            base: 'sm',
+            tablet: 'md',
+            desktop: 'lg',
+            hd: 'lg',
+          }}
+          width="100%"
+        >
+          <TextInput
+            id="default"
+            value={value}
+            label="Small Size"
+            size="sm"
+            onChange={event => setValue(event.target.value)}
+          />
+          <TextInput
+            id="default"
+            value={value1}
+            label="Medium Size"
+            onChange={event => setValue1(event.target.value)}
+          />
+          <TextInput
+            id="default"
+            value={value2}
+            label="Large Size"
+            size="lg"
+            onChange={event => setValue2(event.target.value)}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
 ## With Phone Mask
 
 Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to set the mask as "phone".
@@ -406,19 +457,11 @@ Use the `className` prop to add a custom class, or classes to an input.
       const [value3, setValue3] = useState('');
       return (
         <Box
-          direction={{
-            base: 'column',
-            tablet: 'row',
-            desktop: 'row',
-            hd: 'row',
-          }}
-          childGap={{
-            base: 'sm',
-            tablet: 'md',
-            desktop: 'lg',
-            hd: 'lg',
-          }}
-          width="100%"
+          display="flex"
+          direction="row"
+          justify="between"
+          overflow="hidden"
+          childGap="md"
         >
           <TextInput
             value={value1}

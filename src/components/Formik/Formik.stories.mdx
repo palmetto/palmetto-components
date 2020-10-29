@@ -8,6 +8,7 @@ import FormikRadioGroup from './FormikRadioGroup/FormikRadioGroup';
 import FormikTextareaInput from './FormikTextareaInput/FormikTextareaInput';
 import FormikTimePicker from './FormikTimePicker/FormikTimePicker';
 import Button from '../Button/Button';
+import Box from '../Box/Box';
 
 <Meta
   title="Patterns/Formik Form"
@@ -16,6 +17,8 @@ import Button from '../Button/Button';
 # Formik Form
 
 Formik Form demonstrates a pattern for integrating the input elements found in Palmetto Components with [Formik](https://formik.org/). The form is fully functional and even mock submits. Manipulate the inputs in the form and watch the state object below it update with the new values in real-time. Attempt to submit the form without filling out required inputs, and observe the error states for these inputs.
+
+
 
 <Canvas>
   <Story name="Form">
@@ -104,6 +107,39 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
             handleChange={event => action('change')(event)}
             render={({ isSubmitting, values, setFieldValue }) => (
               <Form>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <Box
+                    direction={{
+                      base: 'row',
+                      tablet: 'row',
+                      desktop: 'row',
+                      hd: 'row',
+                    }}
+                    childGap={{
+                      base: 'sm',
+                      tablet: 'md',
+                      desktop: 'lg',
+                      hd: 'lg',
+                    }}
+                    width="100%"
+                  >
+                    <Field
+                      type="text"
+                      name="search"
+                      id="search"
+                      placeholder="Search"
+                      size="sm"
+                      component={FormikTextInput}
+                    />
+                    <Button
+                      type="submit"
+                      size="sm"
+                      isLoading={isSubmitting}
+                    >
+                      Submit
+                    </Button>
+                  </Box>
+                </div>
                 <div style={{ marginBottom: '1.25rem' }}>
                   <Field
                     type="text"
