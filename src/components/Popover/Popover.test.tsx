@@ -105,7 +105,7 @@ describe('Popover', () => {
 
   describe('Portal', () => {
     it('Renders the Popover in the body if withPortal is true.', async () => {
-      const { debug } = render(
+      render(
         <>
           <div id="nest1">
             <div id="nest2">
@@ -120,7 +120,6 @@ describe('Popover', () => {
           </div>
         </>,
       );
-      debug();
 
       await waitFor(() => { expect(document.body.children[1]).toHaveAttribute('data-popper-placement', 'right'); });
     });
