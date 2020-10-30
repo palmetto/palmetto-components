@@ -3,9 +3,10 @@
 
   --form-control-label-margin: var(--size-spacing-xs);
   --form-control-help-margin: var(--size-spacing-2xs);
-  --form-control-line-height: normal;
+  --form-control-line-height: 1.25;
   --form-control-label-font-weight: var(--size-font-weight-bold);
   --form-control-legend-font-weight: var(--size-font-weight-bold);
+  --form-control-size-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
 
   /* --SIZES-- */
 
@@ -51,11 +52,14 @@
   --form-control-radio-group-options-spacing: var(--size-spacing-md);
 
   /* ----SELECT INPUT---- */
-  --form-control-select-icon-size: 34px;
+  --form-control-select-sm-icon-size: 20px;
+  --form-control-select-md-icon-size: 32px;
+  --form-control-select-lg-icon-size: 34px;
   --form-control-select-padding: var(--size-spacing-2xs);
   --form-control-select-clear-icon-margin: var(--size-spacing-xs);
 
   /* ----TEXT INPUT---- */
   --form-control-text-clear-icon-margin: var(--size-spacing-xs);
   --form-control-text-clear-icon-font-size: var(--size-font-lg);
+  --form-control-text-line-height: var(--size-line-height-input);
 }

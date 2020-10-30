@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
+import { LINE_HEIGHT_OPTIONS, LINE_HEIGHT_VALUES } from '../lib/tokens';
+
+<Meta title="Design Tokens/Line-Height" />
+
+# Line Height
+
+Used these tokens to set the line-heights of elements.
+Usually, the line-height is already set by the parent.
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>value</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {LINE_HEIGHT_OPTIONS.map((value, i) => (
+      <tr key={i}>
+        <td>
+          <code>{`size-line-height-${value}`}</code>
+        </td>
+        <td>{LINE_HEIGHT_VALUES[i].value}</td>
+        <td>{LINE_HEIGHT_VALUES[i].original.comment}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
