@@ -560,7 +560,7 @@ To stick the last, or any, column to the right of the table when it scrolls hori
   </Story>
 </Canvas>
 
-## Scrollable with Sticky Header and First Column Stuck to Left
+## Scrollable with Sticky Header and First Column Stuck to Left, Striped, and Hoverable
 
 To stick the header to the top, and the first column to the left, pass `hasStickyHeader` as a prop, and add `sticky: 'left'` to the column's config.
 
@@ -596,6 +596,8 @@ To stick the header to the top, and the first column to the left, pass `hasStick
             rows={tableData}
             isScrollable={{ x: true, y: true }}
             hasStickyHeader
+            hoverableRows
+            isStriped
           />
         </div>
       );
