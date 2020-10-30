@@ -59,6 +59,10 @@ react-select elements for which we do not own the markup */
       }
     }
 
+    :global(.react-select__menu) {
+      z-index: var(--size-z-index-popover);
+    }
+
     &.error {
       :global(.react-select__control) {
         border-color: var(--form-control-error-border-color);
