@@ -1,0 +1,36 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import DateInput from './DateInput';
+import Box from '../Box/Box';
+import Heading from '../Heading/Heading';
+
+<Meta title="Components/Form Inputs/DateInput" component={DateInput} />
+
+# DateInput
+
+Use a DateInput to allow users to select a date to place in an input field.
+
+## Props
+
+<ArgsTable of={DateInput} />
+
+## Default
+
+<Canvas>
+  <Story name="default">
+    {() => {
+      const [selectedDate, setSelectedDate] = useState(new Date());
+      return (
+        <Box childGap="md">
+          <DateInput
+            onChange={setSelectedDate}
+            datePickerProps={{
+              selected: selectedDate,
+            }}
+          />
+          <p>Selected Date: {selectedDate.toISOString()}</p>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

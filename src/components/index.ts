@@ -6,6 +6,7 @@ import CardHeader from './Card/components/CardHeader/CardHeader';
 import CardSection from './Card/components/CardSection/CardSection';
 import CardFooter from './Card/components/CardFooter/CardFooter';
 import CheckboxInput from './CheckboxInput/CheckboxInput';
+import DatePicker from './DatePicker/DatePicker';
 import FileUpload from './FileUpload/FileUpload';
 import FormikCheckboxInput from './Formik/FormikCheckboxInput/FormikCheckboxInput';
 import FormikRadioGroup from './Formik/FormikRadioGroup/FormikRadioGroup';
@@ -33,6 +34,7 @@ export {
   CardSection,
   CardFooter,
   CheckboxInput,
+  DatePicker,
   FileUpload,
   FormikCheckboxInput,
   FormikRadioGroup,

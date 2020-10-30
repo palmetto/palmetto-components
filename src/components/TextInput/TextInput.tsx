@@ -1,6 +1,7 @@
 import React, {
   FC,
   ChangeEvent,
+  forwardRef,
   MouseEvent,
   KeyboardEvent,
   FocusEvent,
@@ -20,7 +21,7 @@ import styles from './TextInput.module.scss';
 
 type inputMaskType = ('phone' | 'creditCard') | UnknownPropertiesObjType;
 
-interface TextInputProps {
+export interface TextInputProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -108,30 +109,38 @@ interface TextInputProps {
    * The input 'type' value. Defaults to type 'text'.
    */
   type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
-const TextInput: FC<TextInputProps> = ({
-  id,
-  label,
-  onChange,
-  value,
-  autoComplete = false,
-  autoFocus = false,
-  className = undefined,
-  error = false,
-  helpText,
-  hideLabel = false,
-  inputMask = undefined,
-  isDisabled = false,
-  isRequired = false,
-  maxLength = undefined,
-  name = '',
-  onBlur = undefined,
-  onClear = undefined,
-  onFocus = undefined,
-  placeholder = '',
-  type = 'text',
-}) => {
+const TextInput: FC<TextInputProps> = forwardRef((
+  {
+    id,
+    label,
+    onChange,
+    value,
+    autoComplete = false,
+    autoFocus = false,
+    className = undefined,
+    error = false,
+    helpText,
+    hideLabel = false,
+    inputMask = undefined,
+    isDisabled = false,
+    isRequired = false,
+    maxLength = undefined,
+    name = '',
+    onBlur = undefined,
+    onClear = undefined,
+    onFocus = undefined,
+    placeholder = '',
+    type = 'text',
+    ...restProps
+  },
+  ref,
+) => {
   const getInputMask = (
     mask: inputMaskType,
     availableInputMasks: {
@@ -190,8 +199,10 @@ const TextInput: FC<TextInputProps> = ({
     onChange,
     onFocus,
     placeholder,
+    ref,
     type,
     value,
+    ...restProps,
   };
 
   const labelProps = {
@@ -222,6 +233,6 @@ const TextInput: FC<TextInputProps> = ({
       )}
     </Box>
   );
-};
+});
 
 export default TextInput;

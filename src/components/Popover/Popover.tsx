@@ -16,7 +16,7 @@ import { BrandColor } from '../../types';
 import styles from './Popover.module.scss';
 import Box, { BoxProps } from '../Box/Box';
 
-interface PopoverProps {
+export interface PopoverProps {
   /**
    * The trigger element
    */
