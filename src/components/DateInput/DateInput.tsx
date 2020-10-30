@@ -3,25 +3,37 @@ import classNames from 'classnames';
 import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker';
 import TextInput, { TextInputProps } from '../TextInput/TextInput';
 import Popover, { PopoverProps } from '../Popover/Popover';
+import { PopperProps } from 'react-popper';
 
 interface DateInputProps {
-  datePickerProps?: DatePickerProps;
+  datePickerProps?: Omit<DatePickerProps, 'onChange'>;
   textInputProps?: TextInputProps;
-  popoverProps?: PopoverProps;
+  popoverProps?: Omit<PopoverProps, 'children' | 'content' | 'isOpen'>;
   onChange: (date: Date | [Date, Date] | null, event: React.SyntheticEvent<any> | undefined) => void;
 }
 
+const defaultDatePickerProps: Omit<DatePickerProps, 'onChange'> = {
+  selected: null,
+  selectsRange: false,
+};
+
+const defaultPopoverProps: Omit<PopoverProps, 'children' | 'content' | 'isOpen'> = {
+  placement: 'bottom',
+};
+
 const DateInput: FC<DateInputProps> = ({
   onChange,
-  datePickerProps = {
-    selected: null,
-    onChange: undefined,
-  },
-  popoverProps = {
-    placement: 'bottom',
-  },
+  datePickerProps = { ...defaultDatePickerProps },
+  popoverProps = { ...defaultPopoverProps },
 }) => {
-  const textInputValue = datePickerProps.selected?.toISOString() || '';
+  const getTextInputValue = () => {
+    if (datePickerProps.selectsRange) {
+      return `${datePickerProps?.startDate?.toISOString() || ''} - ${datePickerProps?.endDate?.toISOString() || ''}`;
+    }
+
+    return datePickerProps.selected?.toISOString() || '';
+  };
+
   const [isPopoverOpen, setPopoverOpen] = useState(false);
 
   const handleInputChange = (event) => {
@@ -29,17 +41,29 @@ const DateInput: FC<DateInputProps> = ({
     console.log('hello');
   };
 
+  const mergedDatePickerProps = {
+    ...defaultDatePickerProps,
+    ...datePickerProps,
+  };
+
   const renderDatePicker = () => (
     <DatePicker
+      {...mergedDatePickerProps}
       onChange={onChange}
       selected={datePickerProps.selected}
+      selectsRange={datePickerProps.selectsRange}
     />
   );
 
+  const mergedPopoverProps = {
+    ...defaultPopoverProps,
+    ...popoverProps,
+  };
+
   return (
     <Popover
+      {...mergedPopoverProps}
       isOpen={isPopoverOpen}
-      placement={popoverProps.placement}
       content={renderDatePicker()}
       withPortal
       onClickOutside={() => setPopoverOpen(false)}
@@ -48,7 +72,7 @@ const DateInput: FC<DateInputProps> = ({
         id="test"
         name="test"
         label="Choose Date"
-        value={textInputValue}
+        value={getTextInputValue()}
         onChange={handleInputChange}
         onClick={setPopoverOpen}
       />
