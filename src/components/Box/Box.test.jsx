@@ -117,6 +117,7 @@ describe('Box', () => {
         'inline-block',
         'inline',
         'inherit',
+        'grid',
       ];
 
       displayValues.forEach((value, i) => {
