@@ -13,9 +13,11 @@ react-select elements for which we do not own the markup */
     :global(.react-select__control) {
       line-height: var(--form-control-line-height);
       border-color: var(--form-control-border-color);
-      border-radius: var(--form-control-size-md-border-radius);
       box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
-      padding: var(--form-control-select-padding);
+
+      :global(.react-select__value-container) {
+        padding: 0;
+      }
 
       :global(.react-select__placeholder) {
         color: var(--form-control-placeholder-color);
@@ -39,15 +41,6 @@ react-select elements for which we do not own the markup */
         }
       }
 
-      :global(.react-select__dropdown-indicator) {
-        @extend .react-select-icon;
-
-        svg {
-          width: var(--form-control-select-icon-size);
-          height: var(--form-control-select-icon-size);
-        }
-      }
-
       :global(.react-select__clear-indicator) {
         @extend .react-select-icon;
 
@@ -66,6 +59,10 @@ react-select elements for which we do not own the markup */
       }
     }
 
+    :global(.react-select__menu) {
+      z-index: var(--size-z-index-popover);
+    }
+
     &.error {
       :global(.react-select__control) {
         border-color: var(--form-control-error-border-color);
@@ -76,6 +73,92 @@ react-select elements for which we do not own the markup */
           border-color: var(--form-control-border-color);
           background-color: var(--form-control-background-color);
         }
+      }
+    }
+  }
+
+  &.sm {
+    :global(.react-select__control) {
+      border-radius: var(--form-control-size-sm-border-radius);
+      padding: 0 8px;
+      min-height: 32px;
+    }
+
+    :global(.react-select__single-value) {
+      font-size: var(--form-control-size-sm-font-size);
+    }
+
+    :global(.react-select__multi-value__label) {
+      font-size: var(--form-control-size-sm-font-size);
+    }
+
+    :global(.react-select__dropdown-indicator) {
+      padding: 0;
+    }
+
+    :global(.react-select__dropdown-indicator) {
+      @extend .react-select-icon;
+
+      svg {
+        width: var(--form-control-select-sm-icon-size);
+        height: var(--form-control-select-sm-icon-size);
+      }
+    }
+  }
+
+  &.md {
+    :global(.react-select__control) {
+      border-radius: var(--form-control-size-md-border-radius);
+      padding: 4px 8px;
+    }
+
+    :global(.react-select__single-value) {
+      font-size: var(--form-control-size-md-font-size);
+    }
+
+    :global(.react-select__multi-value__label) {
+      font-size: var(--form-control-size-md-font-size);
+    }
+
+    :global(.react-select__dropdown-indicator) {
+      padding: 0;
+    }
+
+    :global(.react-select__dropdown-indicator) {
+      @extend .react-select-icon;
+
+      svg {
+        width: var(--form-control-select-md-icon-size);
+        height: var(--form-control-select-md-icon-size);
+      }
+    }
+  }
+
+  &.lg {
+    :global(.react-select__control) {
+      padding: 9px 8px 10px;
+      border-radius: var(--form-control-size-md-border-radius);
+    }
+
+    :global(.react-select__single-value) {
+      font-size: var(--form-control-size-lg-font-size);
+    }
+
+    :global(.react-select__multi-value__label) {
+      font-size: var(--form-control-size-lg-font-size);
+      padding: 2px 6px 3px;
+    }
+
+    :global(.react-select__dropdown-indicator) {
+      padding: 0;
+    }
+
+    :global(.react-select__dropdown-indicator) {
+      @extend .react-select-icon;
+
+      svg {
+        width: var(--form-control-select-lg-icon-size);
+        height: var(--form-control-select-lg-icon-size);
       }
     }
   }

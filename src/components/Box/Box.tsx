@@ -211,6 +211,9 @@ const Box: FC<BoxProps> = forwardRef((
   const maxHeightCss = getDimensionCss('mh', maxHeight);
   const maxWidthCss = getDimensionCss('mw', maxWidth);
 
+  const isFlexBox = typeof display === 'string' && display.includes('flex');
+  const flexDirectionClasses = isFlexBox ? generateResponsiveClasses('flex-direction', direction) : null;
+
   const boxClasses = classNames(
     className,
     cssShorthandToClasses('m', margin),
@@ -219,8 +222,8 @@ const Box: FC<BoxProps> = forwardRef((
     maxHeightCss.classes,
     maxWidthCss.classes,
     widthCss.classes,
+    flexDirectionClasses,
     generateResponsiveClasses('display', display),
-    generateResponsiveClasses('flex-direction', direction),
     generateResponsiveClasses('justify-content', justifyContent),
     generateResponsiveClasses('align-items', alignItems),
     generateResponsiveClasses('align-content', alignContent),
@@ -235,8 +238,8 @@ const Box: FC<BoxProps> = forwardRef((
     generateResponsiveClasses('font-color', color),
     generateResponsiveClasses('font-weight', fontWeight),
     {
-      'flex-wrap': typeof display === 'string' && display.includes('flex') && wrap,
-      'flex-nowrap': typeof display === 'string' && display.includes('flex') && wrap === false,
+      'flex-wrap': isFlexBox && wrap,
+      'flex-nowrap': isFlexBox && wrap === false,
     },
   );
 

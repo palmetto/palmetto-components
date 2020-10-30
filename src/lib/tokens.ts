@@ -12,6 +12,7 @@ import {
   FontSize,
   FontWeight,
   HeightSize,
+  LineHeightSize,
   SpacingSize,
   UnknownPropertiesObjType,
   WidthSize,
@@ -49,6 +50,9 @@ export const FONT_SIZE_VALUES = Object.values(size.font);
 
 export const FONT_WEIGHT_OPTIONS = Object.keys(size['font-weight']) as FontWeight[];
 export const FONT_WEIGHT_VALUES = Object.values(size['font-weight']);
+
+export const LINE_HEIGHT_OPTIONS = Object.keys(size['line-height']) as LineHeightSize[];
+export const LINE_HEIGHT_VALUES = Object.values(size['line-height']);
 
 export const SPACING_OPTIONS = Object.keys(size.spacing) as SpacingSize[];
 export const SPACING_VALUES = Object.values(size.spacing);

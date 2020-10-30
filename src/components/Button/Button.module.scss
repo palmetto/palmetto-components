@@ -9,7 +9,7 @@
   padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
   text-align: center;
   text-decoration: none;
-  line-height: 1.25;
+  line-height: var(--button-line-height);
   letter-spacing: 0.2px;
   font-size: var(--button-size-md-font-size);
   font-weight: var(--button-font-weight);
@@ -22,6 +22,25 @@
     opacity: 0.65;
     cursor: not-allowed;
     pointer-events: none;
+  }
+
+  /* define regular focus styles for non-supporting browsers */
+  &:focus {
+    outline: 0;
+    box-shadow: var(--button-focus-box-shadow);
+  }
+
+  /* Show focus styles on keyboard focus. */
+  &:focus-visible {
+    outline: 0;
+    box-shadow: var(--button-focus-box-shadow);
+  }
+
+  /* Hide focus styles if they're not needed, for example,
+  when an element receives focus via the mouse. */
+  &:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
   }
 
   &.outline {
@@ -79,6 +98,21 @@
       background-color: var(--button-background-hover-color-danger);
     }
 
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-danger);
+    }
+
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-danger);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-danger-outline);
       background-color: transparent;
@@ -98,6 +132,21 @@
 
     &:hover {
       background-color: var(--button-background-hover-color-dark);
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-dark);
+    }
+
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-dark);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
     }
 
     &.outline {
@@ -121,6 +170,21 @@
       background-color: var(--button-background-hover-color-light);
     }
 
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-light);
+    }
+
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-focus-box-shadow-light);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
+    }
+
     &.outline {
       border-color: var(--button-border-hover-color-light-outline);
       background-color: transparent;
@@ -137,7 +201,6 @@
   &.xs {
     border-radius: var(--button-size-xs-border-radius);
     padding: var(--button-size-xs-padding-vertical) var(--button-size-xs-padding-horizontal);
-    line-height: 1.2;
     font-size: var(--button-size-xs-font-size);
 
     &.outline {
@@ -149,7 +212,6 @@
   &.sm {
     border-radius: var(--button-size-sm-border-radius);
     padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
-    line-height: 1.2;
     font-size: var(--button-size-sm-font-size);
 
     &.outline {
@@ -161,7 +223,6 @@
   &.md {
     border-radius: var(--button-size-md-border-radius);
     padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
-    line-height: 1.25;
     font-size: var(--button-size-md-font-size);
 
     &.outline {
@@ -173,7 +234,6 @@
   &.lg {
     border-radius: var(--button-size-lg-border-radius);
     padding: var(--button-size-lg-padding-vertical) var(--button-size-lg-padding-horizontal);
-    line-height: 1;
     letter-spacing: 1px;
     font-size: var(--button-size-lg-font-size);
 

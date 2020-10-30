@@ -106,6 +106,10 @@ export interface TextInputProps {
    */
   placeholder?: string;
   /**
+   * The size of the text input.
+   */
+  size?: 'sm' | 'md' | 'lg';
+  /**
    * The input 'type' value. Defaults to type 'text'.
    */
   type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
@@ -137,6 +141,7 @@ const TextInput: FC<TextInputProps> = forwardRef((
     onFocus = undefined,
     placeholder = '',
     type = 'text',
+    size = 'md',
     ...restProps
   },
   ref,
@@ -161,10 +166,19 @@ const TextInput: FC<TextInputProps> = forwardRef((
     return mask;
   };
 
-  const inputWrapperClasses = classNames(styles['text-input-wrapper'], {
-    [styles.error]: error,
-    [styles.disabled]: isDisabled,
-  });
+  const inputWrapperClasses = classNames(
+    styles['text-input-wrapper'],
+    styles[size],
+    {
+      [styles.error]: error,
+      [styles.disabled]: isDisabled,
+    },
+  );
+
+  const clearBtnClasses = classNames(
+    styles['clear-button'],
+    styles.md,
+  );
 
   const renderClearIcon = (): ReactNode => {
     const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
@@ -176,7 +190,7 @@ const TextInput: FC<TextInputProps> = forwardRef((
         type="button"
         onClick={onClear}
         onKeyUp={handleKeyPress}
-        className={styles['clear-button']}
+        className={clearBtnClasses}
         data-testid="text-input-clear-button"
       >
         <FontAwesomeIcon icon={faTimes} className={styles['clear-icon']} />

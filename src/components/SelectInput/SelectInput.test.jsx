@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  screen,
-} from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import selectEvent from 'react-select-event';
 import SelectInput from './SelectInput';
 
@@ -95,12 +91,9 @@ describe('SelectInput', () => {
     test('does not assign "aria-labelledby" attribute when a label is hidden', () => {
       const mockedHandleChange = jest.fn();
 
-      render(<SelectInput
-        id="testInput"
-        label="hidden label"
-        hideLabel
-        onChange={mockedHandleChange}
-      />);
+      render(
+        <SelectInput id="testInput" label="hidden label" hideLabel onChange={mockedHandleChange} />,
+      );
       const inputElement = screen.getByLabelText('hidden label');
       expect(inputElement).not.toHaveAttribute('aria-labelledby');
     });
@@ -178,10 +171,7 @@ describe('SelectInput', () => {
             label="Select Label"
             options={selectOptions}
             isMulti
-            value={[
-              selectOptions[0],
-              selectOptions[2],
-            ]}
+            value={[selectOptions[0], selectOptions[2]]}
           />,
         );
 
@@ -280,6 +270,55 @@ describe('SelectInput', () => {
 
         expect(container.querySelector('.react-select__clear-indicator')).toBeInTheDocument();
       });
+    });
+  });
+
+  describe('Sizes', () => {
+    const mockedHandleChange = jest.fn();
+
+    test('it has a sm class applied to it', () => {
+      const { container } = render(
+        <SelectInput
+          id="testId"
+          onChange={mockedHandleChange}
+          options={selectOptions}
+          value={selectOptions[0]}
+          size="sm"
+          label="Small"
+        />,
+      );
+
+      expect(container.children[0].getAttribute('class')).toContain('sm');
+    });
+
+    test('it has a md class applied to it', () => {
+      const { container } = render(
+        <SelectInput
+          id="testId"
+          onChange={mockedHandleChange}
+          options={selectOptions}
+          value={selectOptions[0]}
+          size="md"
+          label="Medium"
+        />,
+      );
+
+      expect(container.children[0].getAttribute('class')).toContain('md');
+    });
+
+    test('it has a lg class applied to it', () => {
+      const { container } = render(
+        <SelectInput
+          id="testId"
+          onChange={mockedHandleChange}
+          options={selectOptions}
+          value={selectOptions[0]}
+          size="lg"
+          label="Large"
+        />,
+      );
+
+      expect(container.children[0].getAttribute('class')).toContain('lg');
     });
   });
 });

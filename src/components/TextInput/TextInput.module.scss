@@ -8,20 +8,7 @@
 }
 
 .text-input-wrapper {
-  box-sizing: border-box;
-  display: flex;
-  transition-duration: 300ms;
-  transition-property: border, background-color;
-  transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
-  border: 1px solid var(--form-control-border-color);
-  border-radius: var(--form-control-size-md-border-radius);
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
-  background-color: var(--form-control-background-color);
-  padding: calc(var(--form-control-size-md-padding) - 1px); /* Subtract 1 pixel here to account for nested input */
-  width: 100%;
-  line-height: var(--form-control-line-height);
-  color: var(--form-control-font-color);
-  font-size: var(--form-control-size-md-font-size);
+  position: relative;
 
   &:focus-within {
     outline: none;
@@ -33,10 +20,17 @@
   }
 
   > input {
-    border: none;
-    background-color: inherit;
+    box-sizing: border-box;
+    display: flex;
+    transition-duration: 300ms;
+    transition-property: border, background-color;
+    transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
+    border: 1px solid var(--form-control-border-color);
+    box-shadow: var(--form-control-size-box-shadow);
+    background-color: var(--form-control-background-color);
     width: 100%;
-    line-height: var(--form-control-line-height);
+    line-height: var(--form-control-text-line-height);
+    color: var(--form-control-font-color);
 
     &::placeholder {
       /* Override lower placeholder opacity in Firefox */
@@ -46,6 +40,8 @@
 
     &:focus {
       outline: none;
+      border-color: var(--form-control-focus-border-color);
+      background-color: var(--form-control-background-color);
     }
 
     &:disabled {
@@ -53,41 +49,70 @@
     }
   }
 
-  &.error {
-    border-color: var(--form-control-error-border-color);
-    background-color: var(--form-control-error-background-color);
+  &.sm {
+    > input {
+      border-radius: var(--form-control-size-sm-border-radius);
+      padding: calc(var(--form-control-size-sm-padding) - 1px) var(--form-control-size-sm-padding);
+      font-size: var(--form-control-size-sm-font-size);
+    }
+  }
 
-    &:focus {
-      outline: none;
-      border-color: var(--form-control-focus-border-color);
-      background-color: var(--form-control-background-color);
+  &.md {
+    > input {
+      border-radius: var(--form-control-size-md-border-radius);
+      padding: calc(var(--form-control-size-md-padding) - 1px) var(--form-control-size-md-padding);
+      font-size: var(--form-control-size-md-font-size);
+    }
+  }
+
+  &.lg {
+    > input {
+      border-radius: var(--form-control-size-lg-border-radius);
+      padding: calc(var(--form-control-size-lg-padding) - 1px) var(--form-control-size-lg-padding);
+      font-size: var(--form-control-size-lg-font-size);
+    }
+  }
+
+  &.error {
+    > input {
+      border-color: var(--form-control-error-border-color);
+      background-color: var(--form-control-error-background-color);
+
+      &:focus {
+        outline: none;
+        border-color: var(--form-control-focus-border-color);
+        background-color: var(--form-control-background-color);
+      }
+    }
+  }
+
+  .clear-button {
+    /* Reset default button styles */
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    border: 0;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
+    font-style: inherit;
+  }
+
+  .clear-icon {
+    transition-duration: 0.2s;
+    transition-property: color;
+    cursor: pointer;
+    color: var(--form-control-icon-color);
+    font-size: var(--form-control-text-clear-icon-font-size);
+
+    &:hover {
+      color: var(--form-control-icon-hover-color);
     }
   }
 }
 
 .text-input-label {
   margin-bottom: var(--form-control-label-margin);
-}
-
-.clear-button {
-  /* Reset default button styles */
-  border: 0;
-  background: none;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  color: inherit;
-  font-style: inherit;
-}
-
-.clear-icon {
-  transition-duration: 0.2s;
-  transition-property: color;
-  cursor: pointer;
-  color: var(--form-control-icon-color);
-  font-size: var(--form-control-text-clear-icon-font-size);
-
-  &:hover {
-    color: var(--form-control-icon-hover-color);
-  }
 }
