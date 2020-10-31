@@ -98,13 +98,10 @@
     padding: 0;
     color: inherit;
     font-style: inherit;
-
-    svg {
-      display: block;
-    }
   }
 
   .clear-icon {
+    display: block;
     transition-duration: 0.2s;
     transition-property: color;
     cursor: pointer;
