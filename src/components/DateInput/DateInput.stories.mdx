@@ -19,14 +19,17 @@ Use a DateInput to allow users to select a date to place in an input field.
 <Canvas>
   <Story name="default">
     {() => {
-      const [selectedDate, setSelectedDate] = useState(new Date());
+      const [selectedDate, setSelectedDate] = useState(null);
       return (
         <Box childGap="md">
           <Box height="300px" width="300px">
             <DateInput
-              onChange={setSelectedDate}
               datePickerProps={{
                 selected: selectedDate,
+                onChange: setSelectedDate,
+              }}
+              textInputProps={{
+                placeholder: '2020-11-02',
               }}
             />
           </Box>
@@ -51,8 +54,8 @@ Use a DateInput to allow users to select a date to place in an input field.
         <Box childGap="md">
           <Box height="300px" width="500px">
             <DateInput
-              onChange={setDate}
               datePickerProps={{
+                onChange: setDate,
                 selected: startDate,
                 selectsRange: true,
                 startDate,
