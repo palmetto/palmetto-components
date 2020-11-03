@@ -303,8 +303,8 @@
   .react-datepicker__time-name {
     /*     color: $datepicker__text-color; */
     display: inline-block;
-    width: 1.7rem;
-    line-height: 1.7rem;
+    width: 2rem;
+    line-height: 2rem;
     text-align: center;
     margin: 0 var(--size-spacing-2xs);
   }
@@ -350,6 +350,8 @@
 
     &--today {
       font-weight: bold;
+      border-radius: var(--size-border-radius-lg);
+      background-color: var(--color-brand-grey-lighter);
     }
 
     &--highlighted {
