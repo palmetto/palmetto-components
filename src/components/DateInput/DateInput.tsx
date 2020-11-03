@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import format from 'date-fns/format';
 import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker';
 import TextInput, { TextInputBaseProps } from '../TextInput/TextInput';
@@ -27,12 +27,7 @@ const defaultPopoverProps: Omit<PopoverProps, 'children' | 'content' | 'isOpen'>
   placement: 'bottom',
 };
 
-const defaultTextInputProps: Omit<TextInputProps,
-  'value' |
-  'onChange' |
-  'id' |
-  'name'
-> = {
+const defaultTextInputProps: Omit<TextInputBaseProps, 'id'> = {
   label: 'Select Date',
 };
 

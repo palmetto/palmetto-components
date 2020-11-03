@@ -6,6 +6,7 @@ import React, {
   KeyboardEvent,
   FocusEvent,
   ReactNode,
+  Component,
 } from 'react';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
@@ -121,7 +122,7 @@ export interface TextInputProps extends TextInputBaseProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const TextInput: FC<TextInputProps> = forwardRef((
+const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, TextInputProps>((
   {
     id,
     label,
@@ -215,7 +216,6 @@ const TextInput: FC<TextInputProps> = forwardRef((
     onChange,
     onFocus,
     placeholder,
-    ref,
     type,
     value,
     ...restProps,
@@ -235,7 +235,7 @@ const TextInput: FC<TextInputProps> = forwardRef((
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       <div className={inputWrapperClasses}>
         {!inputMask ? (
-          <input {...inputProps} />
+          <input {...inputProps} ref={ref} />
         ) : (
           <Cleave
             {...inputProps}
