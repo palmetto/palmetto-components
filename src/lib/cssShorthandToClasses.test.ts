@@ -22,7 +22,7 @@ describe('cssShorthandToClasses', () => {
     test('returns expected css object if vertical and horizontal are set to 0', () => {
       const spacingClasses = cssShorthandToClasses('p', '0 0');
 
-      expect(spacingClasses).toEqual([]);
+      expect(spacingClasses).toEqual(['p-v-0', 'p-h-0']);
     });
   });
 
@@ -36,7 +36,11 @@ describe('cssShorthandToClasses', () => {
     test('returns expected css object if top, horizontal and bottom spacing values are set to 0', () => {
       const spacingClasses = cssShorthandToClasses('p', '0 0 0');
 
-      expect(spacingClasses).toEqual([]);
+      expect(spacingClasses).toEqual([
+        'p-top-0',
+        'p-h-0',
+        'p-bottom-0',
+      ]);
     });
   });
 
@@ -50,7 +54,12 @@ describe('cssShorthandToClasses', () => {
     test('returns expected css object if top, right, bottom, left spacing values are set to 0', () => {
       const spacingClasses = cssShorthandToClasses('p', '0 0 0 0');
 
-      expect(spacingClasses).toEqual([]);
+      expect(spacingClasses).toEqual([
+        'p-top-0',
+        'p-right-0',
+        'p-bottom-0',
+        'p-left-0',
+      ]);
     });
   });
 
@@ -65,6 +74,17 @@ describe('cssShorthandToClasses', () => {
         'p-right-md-tablet',
         'p-bottom-lg-tablet',
         'p-left-xl-tablet',
+      ]);
+    });
+
+    test('returns expected css object if an object is passed with spacing 0 for particular breakpoints', () => {
+      const spacingClasses = cssShorthandToClasses('p', { base: '3xl 0', desktop: '0 3xl' });
+
+      expect(spacingClasses).toEqual([
+        'p-v-3xl',
+        'p-h-0',
+        'p-v-0-desktop',
+        'p-h-3xl-desktop',
       ]);
     });
   });
