@@ -16,10 +16,22 @@ Use a DateInput to allow users to select a date to place in an input field.
 
 ## Default
 
+The DateInput is composed of 3 components which each can be stylized based on their props. They are:
+
+1. [DatePicker](?path=/docs/components-datepicker--default-story)
+2. [Popover](?path=/docs/components-popover--demo)
+3. [TextInput](http://localhost:6006/?path=/docs/components-form-inputs-textinput--default-story)
+
+The `DateInput` uses sensible defaults for these to allow for very straightforward ergonomics that allow users to
+select dates with minimal work.
+
 <Canvas>
   <Story name="default">
     {() => {
       const [selectedDate, setSelectedDate] = useState(null);
+      const handleClear = () => {
+        setSelectedDate(null);
+      };
       return (
         <Box childGap="md">
           <Box height="300px" width="300px">
@@ -29,7 +41,11 @@ Use a DateInput to allow users to select a date to place in an input field.
                 onChange: setSelectedDate,
               }}
               textInputProps={{
-                placeholder: '2020-11-02',
+                placeholder: '11/02/2020',
+                onClear: handleClear,
+                id: 'myDatePicker',
+                name: 'selectDate',
+                label: 'Select Date',
               }}
             />
           </Box>
@@ -44,12 +60,16 @@ Use a DateInput to allow users to select a date to place in an input field.
 <Canvas>
   <Story name="range">
     {() => {
-      const [startDate, setStartDate] = useState(new Date());
+      const [startDate, setStartDate] = useState(null);
       const [endDate, setEndDate] = useState(null);
       const setDate = ([startDate, endDate]) => {
         setStartDate(startDate);
         setEndDate(endDate);
-      }
+      };
+      const handleClear = () => {
+        setStartDate(null);
+        setEndDate(null);
+      };
       return (
         <Box childGap="md">
           <Box height="300px" width="500px">
@@ -61,7 +81,52 @@ Use a DateInput to allow users to select a date to place in an input field.
                 startDate,
                 endDate,
               }}
+              textInputProps={{
+                placeholder: '11/02/2020',
+                onClear: handleClear,
+              }}
             />
+          </Box>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With custom date format
+
+You can manipulate the format on the input field by using the `dateFormat` and `dateOptions`
+props. Under the hood our component uses the [date-fns `format` function](https://date-fns.org/v2.16.1/docs/format)
+to generate a string based on these options.
+
+<Canvas>
+  <Story name="Custom date format">
+    {() => {
+      const [selectedDate, setSelectedDate] = useState(null);
+      const [inputValue, setInputValue] = useState('');
+      const handleClear = () => {
+        setSelectedDate(null);
+      };
+      return (
+        <Box childGap="md">
+          <Box height="300px" width="300px">
+            <DateInput
+              dateFormat={'M/d/yy'}
+              datePickerProps={{
+                selected: selectedDate,
+                onChange: setSelectedDate,
+              }}
+              textInputProps={{
+                placeholder: '11/02/20',
+                onClear: handleClear,
+                id: 'myDatePicker',
+                name: 'selectDate',
+                label: 'Select Date',
+              }}
+            />
+          </Box>
+          <Box>
+            <p>Selected Date (as ISO String): {selectedDate ? selectedDate.toISOString() : null}</p>
           </Box>
         </Box>
       );

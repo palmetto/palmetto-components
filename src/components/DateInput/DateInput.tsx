@@ -1,12 +1,20 @@
 import React, { ChangeEvent, FC, useState } from 'react';
-import classNames from 'classnames';
+import format from 'date-fns/format';
 import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker';
-import TextInput, { TextInputProps } from '../TextInput/TextInput';
+import TextInput, { TextInputBaseProps } from '../TextInput/TextInput';
 import Popover, { PopoverProps } from '../Popover/Popover';
 
 interface DateInputProps {
-  datePickerProps?: DatePickerProps;
-  textInputProps?: TextInputProps;
+  datePickerProps: DatePickerProps;
+  textInputProps: TextInputBaseProps;
+  dateFormat?: string;
+  dateOptions?: {
+    locale?: globalThis.Locale | undefined;
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined;
+    firstWeekContainsDate?: number | undefined;
+    useAdditionalWeekYearTokens?: boolean | undefined;
+    useAdditionalDayOfYearTokens?: boolean | undefined;
+  };
   popoverProps?: Omit<PopoverProps, 'children' | 'content' | 'isOpen'>;
 }
 
@@ -29,9 +37,11 @@ const defaultTextInputProps: Omit<TextInputProps,
 };
 
 const DateInput: FC<DateInputProps> = ({
-  datePickerProps = { ...defaultDatePickerProps },
+  datePickerProps,
+  textInputProps,
+  dateFormat = 'MM/dd/yyyy',
+  dateOptions = undefined,
   popoverProps = { ...defaultPopoverProps },
-  textInputProps = { ...defaultTextInputProps },
 }) => {
   const mergedDatePickerProps = {
     ...defaultDatePickerProps,
@@ -49,9 +59,6 @@ const DateInput: FC<DateInputProps> = ({
   };
 
   const getTextInputValue = () => {
-    const { value } = mergedTextInputProps;
-    if (value) return value;
-
     const {
       selectsRange,
       startDate,
@@ -59,20 +66,18 @@ const DateInput: FC<DateInputProps> = ({
       selected,
     } = mergedDatePickerProps;
 
-    if (selectsRange && (startDate || endDate)) {
-      return `${startDate?.toISOString() || ''} - ${endDate?.toISOString() || ''}`;
+    const formattedStartDate = startDate ? format(startDate, dateFormat, dateOptions) : '';
+    const formattedEndDate = endDate ? format(endDate, dateFormat, dateOptions) : '';
+    const formattedSelectedDate = selected ? format(selected, dateFormat, dateOptions) : '';
+
+    if (selectsRange && (formattedStartDate || formattedEndDate)) {
+      return `${formattedStartDate} - ${formattedEndDate}`;
     }
 
-    return selected?.toISOString() || '';
+    return formattedSelectedDate;
   };
 
   const [isPopoverOpen, setPopoverOpen] = useState(false);
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (mergedTextInputProps.onChange) {
-      mergedTextInputProps.onChange(event);
-    }
-  };
 
   const renderDatePicker = () => (
     <DatePicker
@@ -97,7 +102,7 @@ const DateInput: FC<DateInputProps> = ({
         name={mergedTextInputProps.name}
         label={mergedTextInputProps.label}
         value={getTextInputValue()}
-        onChange={handleInputChange}
+        onChange={() => null}
         onClick={setPopoverOpen}
       />
     </Popover>
