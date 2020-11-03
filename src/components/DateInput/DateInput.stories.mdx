@@ -43,7 +43,7 @@ select dates with minimal work.
               textInputProps={{
                 placeholder: '11/02/2020',
                 onClear: handleClear,
-                id: 'myDatePicker',
+                id: 'defaultDatePicker',
                 name: 'selectDate',
                 label: 'Select Date',
               }}
@@ -84,6 +84,7 @@ select dates with minimal work.
               textInputProps={{
                 placeholder: '11/02/2020',
                 onClear: handleClear,
+                id: 'withDateRange'
               }}
             />
           </Box>
@@ -111,15 +112,15 @@ to generate a string based on these options.
         <Box childGap="md">
           <Box height="300px" width="300px">
             <DateInput
-              dateFormat={'M/d/yy'}
+              dateFormat={'MMMM dd, yyyy'}
               datePickerProps={{
                 selected: selectedDate,
                 onChange: setSelectedDate,
               }}
               textInputProps={{
-                placeholder: '11/02/20',
+                placeholder: 'November 02, 2020',
                 onClear: handleClear,
-                id: 'myDatePicker',
+                id: 'withCustomDateFormat',
                 name: 'selectDate',
                 label: 'Select Date',
               }}
