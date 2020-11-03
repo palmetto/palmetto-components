@@ -65,7 +65,7 @@ const DateInput: FC<DateInputProps> = ({
     const formattedEndDate = endDate ? format(endDate, dateFormat, dateOptions) : '';
     const formattedSelectedDate = selected ? format(selected, dateFormat, dateOptions) : '';
 
-    if (selectsRange && (formattedStartDate || formattedEndDate)) {
+    if (selectsRange) {
       return `${formattedStartDate} - ${formattedEndDate}`;
     }
 

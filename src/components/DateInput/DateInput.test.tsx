@@ -50,6 +50,31 @@ describe('DateInput', () => {
       const popoverContainer = screen.getByRole('dialog');
       await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
     });
+
+    it('closes popover when user clicks outside', async () => {
+      const { container } = render(
+        <DateInput
+          dateFormat="yyyy/MM/dd"
+          textInputProps={{
+            id: 'myInput',
+            label: 'Select Date',
+          }}
+          datePickerProps={{
+            onChange: () => null,
+          }}
+        />,
+      );
+
+      const input = screen.getByLabelText('Select Date');
+      fireEvent.click(input);
+
+      const popoverContainer = screen.getByRole('dialog');
+      await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
+
+      fireEvent.click(container);
+      const popover = screen.queryByRole('dialog');
+      expect(popover).toBeNull();
+    });
   });
 
   describe('Date Formatting', () => {
@@ -74,55 +99,76 @@ describe('DateInput', () => {
       expect(input).toBeInTheDocument();
       expect(input).toHaveAttribute('value', '1995/12/14');
     });
-  });
 
-  it('formats both dates when range is being selected', async () => {
-    const dateOne = new Date(1995, 11, 14);
-    const dateTwo = new Date(1995, 11, 16);
-    render(
-      <DateInput
-        dateFormat="yyyy/MM/dd"
-        textInputProps={{
-          id: 'myInput',
-          label: 'Select Date',
-        }}
-        datePickerProps={{
-          onChange: () => null,
-          openToDate: dateOne,
-          startDate: dateOne,
-          endDate: dateTwo,
-          selectsRange: true,
-        }}
-      />,
-    );
+    it('formats both dates when range is being selected', async () => {
+      const dateOne = new Date(1995, 11, 14);
+      const dateTwo = new Date(1995, 11, 16);
+      render(
+        <DateInput
+          dateFormat="yyyy/MM/dd"
+          textInputProps={{
+            id: 'myInput',
+            label: 'Select Date',
+          }}
+          datePickerProps={{
+            onChange: () => null,
+            openToDate: dateOne,
+            startDate: dateOne,
+            endDate: dateTwo,
+            selectsRange: true,
+          }}
+        />,
+      );
 
-    const input = screen.getByLabelText('Select Date');
-    expect(input).toBeInTheDocument();
-    expect(input).toHaveAttribute('value', '1995/12/14 - 1995/12/16');
-  });
+      const input = screen.getByLabelText('Select Date');
+      expect(input).toBeInTheDocument();
+      expect(input).toHaveAttribute('value', '1995/12/14 - 1995/12/16');
+    });
 
-  it('formats one date if selecting range', async () => {
-    const dateOne = null;
-    const dateTwo = new Date(1995, 11, 16);
-    render(
-      <DateInput
-        dateFormat="yyyy/MM/dd"
-        textInputProps={{
-          id: 'myInput',
-          label: 'Select Date',
-        }}
-        datePickerProps={{
-          onChange: () => null,
-          openToDate: dateTwo,
-          startDate: dateOne,
-          endDate: dateTwo,
-          selectsRange: true,
-        }}
-      />,
-    );
+    it('formats one date if selecting range', async () => {
+      const dateOne = null;
+      const dateTwo = new Date(1995, 11, 16);
+      const { rerender } = render(
+        <DateInput
+          dateFormat="yyyy/MM/dd"
+          textInputProps={{
+            id: 'myInput',
+            label: 'Select Date',
+          }}
+          datePickerProps={{
+            onChange: () => null,
+            openToDate: dateTwo,
+            startDate: dateOne,
+            endDate: dateTwo,
+            selectsRange: true,
+          }}
+        />,
+      );
 
-    const input = screen.getByLabelText('Select Date');
-    expect(input).toBeInTheDocument();
-    expect(input).toHaveAttribute('value', ' - 1995/12/16');
+      const input = screen.getByLabelText('Select Date');
+      expect(input).toBeInTheDocument();
+      expect(input).toHaveAttribute('value', ' - 1995/12/16');
+
+      rerender(
+        <DateInput
+          dateFormat="yyyy/MM/dd"
+          textInputProps={{
+            id: 'myInput',
+            label: 'Select Date',
+          }}
+          datePickerProps={{
+            onChange: () => null,
+            openToDate: dateTwo,
+            startDate: dateTwo,
+            endDate: dateOne,
+            selectsRange: true,
+          }}
+        />,
+      );
+
+      const inputTwo = screen.getByLabelText('Select Date');
+      expect(inputTwo).toBeInTheDocument();
+      expect(inputTwo).toHaveAttribute('value', '1995/12/16 - ');
+    });
   });
 });
