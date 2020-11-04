@@ -33,10 +33,7 @@ function generateBaseClasses(
     const sides = value.split(' ');
 
     sides.forEach((v, index) => {
-      // Exception for border width since we want to default borders to zero.
-      if (v !== '0' || attribute === 'border-width') {
-        classes.push(`${attribute}-${shorthand[sides.length][index]}-${v}`);
-      }
+      classes.push(`${attribute}-${shorthand[sides.length][index]}-${v}`);
     });
   } else {
     classes.push(`${attribute}-${value}`);
