@@ -104,7 +104,7 @@ to generate a string based on these options.
 <Canvas>
   <Story name="Custom Date Format">
     {() => {
-      const [selectedDate, setSelectedDate] = useState(null);
+      const [selectedDate, setSelectedDate] = useState(new Date());
       const [inputValue, setInputValue] = useState('');
       const handleClear = () => {
         setSelectedDate(null);
