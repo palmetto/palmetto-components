@@ -26,7 +26,7 @@ The `DateInput` uses sensible defaults for these to allow for very straightforwa
 select dates with minimal work.
 
 <Canvas>
-  <Story name="default">
+  <Story name="Basic Usage">
     {() => {
       const [selectedDate, setSelectedDate] = useState(null);
       const handleClear = () => {
@@ -41,7 +41,7 @@ select dates with minimal work.
                 onChange: setSelectedDate,
               }}
               textInputProps={{
-                placeholder: '11/02/2020',
+                placeholder: 'e.g. 11/02/2020',
                 onClear: handleClear,
                 id: 'defaultDatePicker',
                 name: 'selectDate',
@@ -58,7 +58,7 @@ select dates with minimal work.
 ## Date Range
 
 <Canvas>
-  <Story name="range">
+  <Story name="Date Range">
     {() => {
       const [startDate, setStartDate] = useState(null);
       const [endDate, setEndDate] = useState(null);
@@ -82,9 +82,10 @@ select dates with minimal work.
                 endDate,
               }}
               textInputProps={{
-                placeholder: '11/02/2020',
                 onClear: handleClear,
-                id: 'withDateRange'
+                id: 'myDateRangePicker',
+                name: 'myDateRangePicker',
+                label: 'Select Date Range',
               }}
             />
           </Box>
@@ -94,14 +95,14 @@ select dates with minimal work.
   </Story>
 </Canvas>
 
-## With custom date format
+## Custom Date Format
 
 You can manipulate the format on the input field by using the `dateFormat` and `dateOptions`
 props. Under the hood our component uses the [date-fns `format` function](https://date-fns.org/v2.16.1/docs/format)
 to generate a string based on these options.
 
 <Canvas>
-  <Story name="Custom date format">
+  <Story name="Custom Date Format">
     {() => {
       const [selectedDate, setSelectedDate] = useState(null);
       const [inputValue, setInputValue] = useState('');
