@@ -24,9 +24,15 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Remove default padding */
+/* Standardize list styles on ul, ol elements */
 ul, ol { /* stylelint-disable-line */
-  padding: 0;
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 40px;
 }
 
 /* Remove default margin */
@@ -69,11 +75,6 @@ dd { /* stylelint-enable */
 /* Sensible line-height for text */
 p {
   line-height: 1.5;
-}
-
-/* Remove list styles on ul, ol elements with a class attribute */
-ul, ol { /* stylelint-disable-line */
-  list-style: none;
 }
 
 /* A elements that don't have a class get default styles */
