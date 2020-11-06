@@ -21,6 +21,7 @@ import Pagination from './Pagination/Pagination';
 import Popover from './Popover/Popover';
 import RadioGroup from './RadioGroup/RadioGroup';
 import SelectInput from './SelectInput/SelectInput';
+import Spinner from './Spinner/Spinner';
 import Table from './Table/Table';
 import TextInput from './TextInput/TextInput';
 import TextareaInput from './TextareaInput/TextareaInput';
@@ -51,6 +52,7 @@ export {
   Popover,
   RadioGroup,
   SelectInput,
+  Spinner,
   Table,
   TextInput,
   TextareaInput,
