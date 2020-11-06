@@ -16,6 +16,10 @@ interface DateInputProps {
     useAdditionalDayOfYearTokens?: boolean | undefined;
   };
   popoverProps?: Omit<PopoverProps, 'children' | 'content' | 'isOpen'>;
+  /**
+   * Additional props to be spread to the `TextInput` element.
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 const defaultDatePickerProps: Omit<DatePickerProps, 'onChange'> = {
@@ -37,6 +41,7 @@ const DateInput: FC<DateInputProps> = ({
   dateFormat = 'MM/dd/yyyy',
   dateOptions = undefined,
   popoverProps = { ...defaultPopoverProps },
+  ...restProps
 }) => {
   const mergedDatePickerProps = {
     ...defaultDatePickerProps,
@@ -99,6 +104,7 @@ const DateInput: FC<DateInputProps> = ({
         value={getTextInputValue()}
         onChange={() => null}
         onClick={setPopoverOpen}
+        {...restProps}
       />
     </Popover>
   );
