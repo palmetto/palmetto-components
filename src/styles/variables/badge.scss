@@ -1,0 +1,41 @@
+:root {
+  /* Sizes */
+  --badge-font-size: var(--size-font-xs);
+  --badge-font-weight: var(--size-font-weight-bold);
+  --badge-border-radius: var(--size-border-radius-sm);
+  --badge-size-md-padding-vertical: var(--size-spacing-2xs);
+  --badge-size-md-padding-horizontal: var(--size-spacing-xs);
+  --badge-padding-compact: var(--size-spacing-xs);
+  --badge-icon-margin: var(--size-spacing-xs);
+  --badge-margin: var(--size-spacing-sm);
+  --badge-title-margin: var(--size-spacing-2xs);
+
+  /* small */
+  --badge-size-sm-font-size: var(--size-font-2xs);
+  --badge-size-sm-padding-horizontal: var(--size-spacing-2xs);
+
+  /* medium (default) */
+  --badge-size-md-font-size: var(--size-font-xs);
+
+  /* large */
+  --badge-size-lg-font-size: var(--size-font-sm);
+
+  /* x-large */
+  --badge-size-xl-font-size: var(--size-font-md);
+
+  /* Colors */
+  --badge-background-color-default: var(--color-brand-grey-lighter);
+  --badge-background-color-info: var(--color-brand-secondary-lighter);
+  --badge-background-color-tertiary: var(--color-brand-tertiary-lighter);
+  --badge-background-color-success: var(--color-brand-success-light);
+  --badge-background-color-warning: var(--color-brand-warning-lighter);
+  --badge-background-color-danger: var(--color-brand-danger-lighter);
+
+  --badge-font-color: var(--color-brand-dark-base);
+  --badge-icon-color-default: var(--color-brand-dark-base);
+  --badge-icon-color-info: var(--color-brand-dark-base);
+  --badge-icon-color-tertiary: var(--color-brand-tertiary-base);
+  --badge-icon-color-success: var(--color-brand-dark-base);
+  --badge-icon-color-warning: var(--color-brand-dark-base);
+  --badge-icon-color-danger: var(--color-brand-dark-base);
+}

@@ -1,59 +1,83 @@
 .badge {
   display: flex;
-  border-radius: var(--alert-border-radius);
-  background-color: var(--alert-background-color-default);
-  padding: var(--alert-padding-default);
-  color: var(--alert-font-color-default);
-  font-size: var(--alert-font-size);
+  border-radius: var(--badge-border-radius);
+  background-color: var(--badge-background-color-default);
+  padding: var(--badge-size-md-padding-vertical) var(--badge-size-md-padding-horizontal);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--badge-font-color-default);
+  font-weight: var(--badge-font-weight);
+
+  &:not(:last-child) {
+    margin-right: var(--badge-margin);
+  }
 
   &.info {
-    background-color: var(--alert-background-color-info);
-    color: var(--alert-font-color-info);
+    background-color: var(--badge-background-color-info);
+    color: var(--badge-font-color-info);
+  }
+
+  &.tertiary {
+    background-color: var(--badge-background-color-tertiary);
+    color: var(--badge-font-color-tertiary);
   }
 
   &.success {
-    background-color: var(--alert-background-color-success);
-    color: var(--alert-font-color-success);
+    background-color: var(--badge-background-color-success);
+    color: var(--badge-font-color-success);
   }
 
   &.warning {
-    background-color: var(--alert-background-color-warning);
-    color: var(--alert-font-color-warning);
+    background-color: var(--badge-background-color-warning);
+    color: var(--badge-font-color-warning);
   }
 
   &.danger {
-    background-color: var(--alert-background-color-danger);
-    color: var(--alert-font-color-danger);
+    background-color: var(--badge-background-color-danger);
+    color: var(--badge-font-color-danger);
   }
 
-  &.compact {
-    padding: var(--alert-padding-compact);
+  &.sm {
+    padding: 0 var(--badge-size-sm-padding-horizontal);
+    font-size: var(--badge-size-sm-font-size);
+  }
+
+  &.md {
+    font-size: var(--badge-size-md-font-size);
+  }
+
+  &.lg {
+    font-size: var(--badge-size-lg-font-size);
+  }
+
+  &.xl {
+    font-size: var(--badge-size-xl-font-size);
   }
 
   .type-icon {
-    margin-right: var(--alert-icon-margin);
-    color: var(--alert-icon-color-default);
+    margin-right: var(--badge-icon-margin);
+    color: var(--badge-icon-color-default);
 
     &.info {
-      color: var(--alert-icon-color-info);
+      color: var(--badge-icon-color-info);
     }
 
     &.success {
-      color: var(--alert-icon-color-success);
+      color: var(--badge-icon-color-success);
     }
 
     &.warning {
-      color: var(--alert-icon-color-warning);
+      color: var(--badge-icon-color-warning);
     }
 
     &.danger {
-      color: var(--alert-icon-color-danger);
+      color: var(--badge-icon-color-danger);
     }
   }
 
   .close-icon {
     justify-content: flex-end;
-    margin-left: auto;
+    margin-left: var(--size-spacing-xs);
     font-weight: var(--size-font-weight-bold);
 
     > button {
@@ -71,15 +95,9 @@
     }
   }
 
-  .badge-title {
-    &:not(:last-child) {
-      margin-bottom: var(--alert-title-margin);
-    }
-  }
-
   .badge-message {
     &:not(:last-child) {
-      margin-right: var(--alert-message-margin);
+      margin-right: var(--badge-message-margin);
     }
 
     > p {

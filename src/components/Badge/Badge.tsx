@@ -1,23 +1,20 @@
 import React, {
   FC,
   ReactNode,
-  MouseEvent,
-  KeyboardEvent,
 } from 'react';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faExclamationCircle,
   faExclamationTriangle,
+  faUser,
   faInfoCircle,
   faTimesCircle,
   faCheckCircle,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
-// import getElementType from '../../lib/getElementType';
 import styles from './Badge.module.scss';
 
-// export type BadgeVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark';
 export type BadgeSize = 'xs' | 'sm' | 'md' | 'lg';
 
 interface BadgeProps {
@@ -39,10 +36,6 @@ interface BadgeProps {
    */
   isClosable?: boolean;
   /**
-   * Renders a version of the badge with smaller padding.
-   */
-  isCompact?: boolean;
-  /**
    * The text message or ReactNode to be rendered in the badge.
    */
   message?: string | ReactNode;
@@ -55,10 +48,6 @@ interface BadgeProps {
    * A render function that returns JSX if preferred over a static ReactNode or string.
    */
   render?: () => ReactNode;
-  /**
-   * The title for the badge.
-   */
-  title?: string;
   /**
    * The size of the button.
    */
@@ -73,13 +62,12 @@ const Badge: FC<BadgeProps> = ({
   className = '',
   closeText = '',
   hasIcon = false,
-  isCompact = false,
   isClosable = false,
   message = '',
   onClose = undefined,
   render = undefined,
-  title = '',
   variant = 'default',
+  size = 'md',
 }) => {
   const handleClose = (event: (MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>)): void => {
     if (!onClose) return;
@@ -91,6 +79,7 @@ const Badge: FC<BadgeProps> = ({
     const icons = {
       default: faExclamationCircle,
       info: faInfoCircle,
+      tertiary: faUser,
       success: faCheckCircle,
       warning: faExclamationTriangle,
       danger: faTimesCircle,
@@ -99,11 +88,12 @@ const Badge: FC<BadgeProps> = ({
     const iconClasses = classNames(
       styles['type-icon'],
       styles[variant],
+      styles[size]
     );
 
     return (
       <div className={iconClasses}>
-        <FontAwesomeIcon icon={icons[variant]} data-testid={`alert-icon-${variant}-test-id`} />
+        <FontAwesomeIcon icon={icons[variant]} data-testid={`badge-icon-${variant}-test-id`} />
       </div>
     );
   };
@@ -125,7 +115,7 @@ const Badge: FC<BadgeProps> = ({
           onClick={handleClose}
           onKeyUp={handleCloseKeyPress}
         >
-          {closeText || <FontAwesomeIcon icon={faTimes} data-testid="alert-close-icon-test-id" />}
+          {closeText || <FontAwesomeIcon icon={faTimes} data-testid="badge-close-icon-test-id" />}
         </button>
       </div>
     );
@@ -134,21 +124,18 @@ const Badge: FC<BadgeProps> = ({
   const badgeContainerClasses: string = classNames(
     styles.badge,
     styles[variant],
-    { [styles.compact]: isCompact },
+    styles[size],
     className,
   );
 
   return (
-    <div className={badgeContainerClasses} role="alert">
+    <div className={badgeContainerClasses}>
       {hasIcon && renderBadgeIcon()}
       <div className={styles['badge-message']}>
         {render ? render() : (
-          <>
-            {title && <Heading as="h4" size="md" className={styles['badge-title']}>{title}</Heading>}
-            {message && (
-              typeof message === 'string' ? <p>{message}</p> : message
-            )}
-          </>
+          message && (
+            typeof message === 'string' ? <p>{message}</p> : message
+          )
         )}
       </div>
       {isClosable && renderCloseIcon()}

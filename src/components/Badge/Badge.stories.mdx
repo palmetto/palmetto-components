@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Badge from './Badge';
-import Heading from '../Heading/Heading';
+import Box from '../Box/Box';
 import Button from '../Button/Button';
 
 <Meta
@@ -12,28 +12,21 @@ import Button from '../Button/Button';
 
 # Badge
 
-Use alerts to display feedback for users about specific actions, or states of an application.
+Use badge to display feedback for users about specific actions, or states of an application. All that is required to render a basic version of an Badge is a `message` prop which will contain text
+or a ReactNode to be rendered.
+
+<Canvas isExpanded>
+  <Box direction="row">
+    <Badge
+      message="Hello world!"
+    />
+  </Box>
+</Canvas>
 
 ## Props
 
 <ArgsTable of={Badge} />
 
-## Default
-
-All that is required to render a basic version of an Badge is a `message` prop which will contain text
-or a ReactNode to be rendered.
-
-<Canvas>
-  <Story name="Default">
-    {() => {
-      return (
-        <Badge
-          message="Hello world!"
-        />
-      );
-    }}
-  </Story>
-</Canvas>
 
 ## Variants
 
@@ -45,39 +38,53 @@ Badges come in different variants based on the kind of feedback being delivered 
       const variants = [
         'default',
         'info',
+        'tertiary',
         'success',
         'warning',
         'danger',
       ];
       return (
-        <>
-         {variants.map(variant => <Badge message={variant} variant={variant} className="m-bottom-md" />)}
-        </>
+        <Box direction="row">
+         {variants.map(variant => <Badge message={variant} variant={variant} />)}
+        </Box>
       );
     }}
   </Story>
 </Canvas>
 
-## With Title
-
-Pass a string to the `title` prop to create a natural visual text hierarchy.
+## Sizes
 
 <Canvas>
-  <Story name="With Title">
+  <Story name="Sizes">
     {() => {
       return (
         <>
-          <Badge
-            title="Proposal Archived"
-            message="The proposal was archived on Sept 9, 2020 at 5:31pm?"
-            className="m-bottom-md"
-          />
-          <Badge
-            variant="danger"
-            title="Contact Deleted"
-          />
+          <Box direction="row" className="m-bottom-md">
+            <Badge
+              message="Small"
+              size="sm"
+            />
+          </Box>
+          <Box direction="row" className="m-bottom-md">
+            <Badge
+              message="Base"
+              size="md"
+            />
+          </Box>
+          <Box direction="row" className="m-bottom-md">
+            <Badge
+              message="Large"
+              size="lg"
+            />
+          </Box>
+          <Box direction="row">
+            <Badge
+              message="X-Large"
+              size="xl"
+            />
+          </Box>
         </>
-      );
+      )
     }}
   </Story>
 </Canvas>
@@ -85,17 +92,19 @@ Pass a string to the `title` prop to create a natural visual text hierarchy.
 
 ## Custom Class
 
-You can apply a custom class to your alert with the `className` prop. Here we have added a 3xl bottom margin.
+You can apply a custom class to your badge with the `className` prop. Here we have added a 3xl bottom margin.
 
 <Canvas>
   <Story name="Custom Class">
     {() => {
       return (
-        <Badge
-          message="Hello world!"
-          variant="success"
-          className="m-bottom-3xl"
-        />
+        <Box direction="row">
+          <Badge
+            message="Hello world!"
+            variant="success"
+            className="m-bottom-3xl"
+          />
+        </Box>
       );
     }}
   </Story>
@@ -111,26 +120,29 @@ You can choose to display a standard icon for each variant of notification, base
       const variants = [
         'default',
         'info',
+        'tertiary',
         'success',
         'warning',
         'danger',
       ];
       const message = (variant) => `
-        This is a ${variant} alert. It also has longer text to see what these alerts
+        This is a ${variant} badge. It also has longer text to see what these badge
         can look like when broken into multiple lines. This one will definitely
         break into multiple lines in most standard screen resolutions.
       `;
       return (
         <>
-         {variants.map((variant, index) => (
-            <Badge
-              message={message(variant)}
-              key={variant}
-              title={index % 2  ? variant.charAt(0).toUpperCase() + variant.slice(1) : ''}
-              variant={variant}
-              hasIcon
-              className="m-bottom-md"
-            />
+          {variants.map((variant, index) => (
+            <Box childGap="sm" direction="row">
+              <Badge
+                message={message(variant)}
+                key={variant}
+                title={index % 2  ? variant.charAt(0).toUpperCase() + variant.slice(1) : ''}
+                variant={variant}
+                hasIcon
+                className="m-bottom-md"
+              />
+            </Box>
           ))}
         </>
       );
@@ -140,23 +152,21 @@ You can choose to display a standard icon for each variant of notification, base
 
 ## With Custom JSX in the message
 
-The alert can display any custom JSX that is passed into the `message` prop, not just a string variant.
+The badge can display any custom JSX that is passed into the `message` prop, not just a string variant.
 
 <Canvas>
   <Story name="With Custom JSX Message">
     {() => {
       const myMessage = (
-        <>
-          <Heading as="h3" size="xl">Oops!</Heading>
-          <p>Looks like something went wrong.</p>
-          <Button size="sm" className="m-top-sm">Click this button to fix it!</Button>
-        </>
+        <p>Looks like something went wrong.</p>
       );
       return (
-        <Badge
-          message={myMessage}
-          variant="danger"
-        />
+        <Box direction="row">
+          <Badge
+            message={myMessage}
+            variant="danger"
+          />
+        </Box>
       );
     }}
   </Story>
@@ -164,7 +174,7 @@ The alert can display any custom JSX that is passed into the `message` prop, not
 
 ## With Render Function
 
-If you prefer to pass a render function to the alert rather than a static `ReactNode`, you can pass a function
+If you prefer to pass a render function to the badge rather than a static `ReactNode`, you can pass a function
 that returns a `ReactNode` to the `render` prop.
 
 IMPORTANT: The `render` prop, will supersede the `message` prop, if both are present.
@@ -173,17 +183,15 @@ IMPORTANT: The `render` prop, will supersede the `message` prop, if both are pre
   <Story name="With Render Function">
     {() => {
       const renderMyMessage = () => (
-        <>
-          <Heading as="h3" size="xl">Oops!</Heading>
-          <p>Looks like something went wrong. But I'm using a render function.</p>
-          <Button size="sm" className="m-top-sm">Click this button to fix it!</Button>
-        </>
+        <p>Looks like something went wrong. But I'm using a render function.</p>
       );
       return (
-        <Badge
-          render={renderMyMessage}
-          variant="danger"
-        />
+        <Box direction="row">
+          <Badge
+            render={renderMyMessage}
+            variant="danger"
+          />
+        </Box>
       );
     }}
   </Story>
@@ -191,7 +199,7 @@ IMPORTANT: The `render` prop, will supersede the `message` prop, if both are pre
 
 ## Closable
 
-The alert can be made closable by passing the `isClosable` prop. Note that this only controls the prescence of
+The badge can be made closable by passing the `isClosable` prop. Note that this only controls the prescence of
 the close icon, but closing actually happens programmatically with a callback passed to the `onClose` prop.
 If you need custom close text, pass it in the `closeText` prop.
 
@@ -202,57 +210,45 @@ If you need custom close text, pass it in the `closeText` prop.
       const [isBadgeThreeShowing, setBadgeThreeShowing] = useState(true);
       return (
         <>
-          <Badge
-            message="Closable, but with no onClose callback so nothing happens when clicked."
-            variant="warning"
-            isClosable
-            className="m-bottom-md"
-          />
-          {isBadgeTwoShowing ? (
+          <Box direction="row">
             <Badge
-              message="This one works!"
-              variant="info"
+              message="Closable, but with no onClose callback so nothing happens when clicked."
+              variant="warning"
               isClosable
-              onClose={() => setBadgeTwoShowing(false)}
               className="m-bottom-md"
             />
+          </Box>
+          {isBadgeTwoShowing ? (
+            <Box direction="row">
+              <Badge
+                message="This one works!"
+                variant="info"
+                isClosable
+                onClose={() => setBadgeTwoShowing(false)}
+                className="m-bottom-md"
+              />
+            </Box>
           ) : (
             <div className="m-bottom-md">
-              <Button onClick={() => setBadgeTwoShowing(true)} size="sm">Give me the second alert back!</Button>
+              <Button onClick={() => setBadgeTwoShowing(true)} size="sm">Give me the second badge back!</Button>
             </div>
           )}
           {isBadgeThreeShowing ? (
-            <Badge
-              message="With custom close text!"
-              variant="info"
-              isClosable
-              onClose={() => setBadgeThreeShowing(false)}
-              closeText="Close me!"
-            />
+            <Box direction="row">
+              <Badge
+                message="With custom close text!"
+                variant="info"
+                isClosable
+                onClose={() => setBadgeThreeShowing(false)}
+                closeText="Close me!"
+              />
+            </Box>
           ) : (
             <div className="m-bottom-md">
-              <Button onClick={() => setBadgeThreeShowing(true)} size="sm">Give me the third alert back!</Button>
+              <Button onClick={() => setBadgeThreeShowing(true)} size="sm">Give me the third badge back!</Button>
             </div>
           )}
         </>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Compact
-
-Renders a version of the banner with less padding.
-
-<Canvas>
-  <Story name="Compact">
-    {() => {
-      return (
-        <Badge
-          message="Compact Badges have less padding"
-          variant="info"
-          isCompact
-        />
       );
     }}
   </Story>
