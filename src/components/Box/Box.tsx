@@ -157,7 +157,7 @@ export interface BoxProps {
   /**
    * the alignment of the text
    */
-  textAlign?: CssTextAlignValue | ResponsiveProp<CssTextAlignValue>
+  textAlign?: CssTextAlignValue | ResponsiveProp<CssTextAlignValue>;
   /**
    * By default, a Box's items will all try to fit onto one line.
    * Change that and allow the items to wrap as needed wrap
