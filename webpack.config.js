@@ -62,6 +62,20 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
       exclude: /node_modules/,
     },
   );
+  rules.push(
+    {
+      test: /\.(woff(2)?|otf|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: '/fonts/',
+          },
+        },
+      ],
+    },
+  );
 }
 
 module.exports = {
@@ -70,6 +84,7 @@ module.exports = {
   entry: {
     index: [path.join(__dirname, 'src/components/index.ts')], // React components
     utilities: [path.join(__dirname, 'src/styles/utilities.scss')], // Utilities CSS only.
+    fonts: [path.join(__dirname, 'src/styles/fonts.scss')], // Fonts CSS only.
     variables: [path.join(__dirname, 'src/styles/variables/index.scss')], // Variables CSS only.
     reset: [path.join(__dirname, 'src/styles/reset.scss')], // CSS Reset only.
   },
