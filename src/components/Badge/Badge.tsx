@@ -2,14 +2,19 @@ import React, {
   FC,
 } from 'react';
 import classNames from 'classnames';
-import { BrandColor, FontColor, FontSize, BaseSpacing } from '../../types';
+import {
+  BrandColor,
+  FontColor,
+  FontSize,
+  BaseSpacing,
+} from '../../types';
 import styles from './Badge.module.scss';
 import Box from '../Box/Box';
 
 export type BadgeSize = 'sm' | 'md' | 'lg' | 'xl';
 export type BadgeVariant = 'info' | 'primary' | 'success' | 'secondary' | 'tertiary' | 'warning' | 'danger' | 'default';
-export type BadgeColorAttributes = { font: FontColor, background: BrandColor };
-export type BadgeSizeAttributes = { fontSize: FontSize, padding: BaseSpacing };
+export type BadgeColorAttributes = { font: FontColor; background: BrandColor; };
+export type BadgeSizeAttributes = { fontSize: FontSize; padding: BaseSpacing; };
 
 interface BadgeProps {
   /**
