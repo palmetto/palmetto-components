@@ -37,15 +37,23 @@ Badges come in different variants based on the kind of feedback being delivered 
     {() => {
       const variants = [
         'default',
-        'info',
+        'primary',
+        'secondary',
         'tertiary',
+        'info',
         'success',
         'warning',
         'danger',
       ];
       return (
         <Box direction="row">
-         {variants.map(variant => <Badge message={variant} variant={variant} />)}
+          {variants.map(variant => 
+            <Badge 
+              message={variant}
+              variant={variant}
+              className="m-right-sm"
+            />
+          )}
         </Box>
       );
     }}
@@ -59,28 +67,32 @@ Badges come in different variants based on the kind of feedback being delivered 
     {() => {
       return (
         <>
-          <Box direction="row" className="m-bottom-md">
+          <Box direction="row">
             <Badge
-              message="Small"
               size="sm"
-            />
-          </Box>
-          <Box direction="row" className="m-bottom-md">
-            <Badge
-              message="Base"
-              size="md"
-            />
-          </Box>
-          <Box direction="row" className="m-bottom-md">
-            <Badge
-              message="Large"
-              size="lg"
+              message="Small"
+              className="m-bottom-md"
             />
           </Box>
           <Box direction="row">
             <Badge
-              message="X-Large"
+              size="md"
+              message="Base"
+              className="m-bottom-md"
+            />
+          </Box>
+          <Box direction="row">
+            <Badge
+              size="lg"
+              message="Large"
+              className="m-bottom-md"
+            />
+          </Box>
+          <Box direction="row">
+            <Badge
               size="xl"
+              message="X-Large"
+              className="m-bottom-md"
             />
           </Box>
         </>
@@ -92,7 +104,7 @@ Badges come in different variants based on the kind of feedback being delivered 
 
 ## Custom Class
 
-You can apply a custom class to your badge with the `className` prop. Here we have added a 3xl bottom margin.
+You can apply a custom class to your badge with the `className` prop. Here we have added a 3xl margin.
 
 <Canvas>
   <Story name="Custom Class">
@@ -102,153 +114,9 @@ You can apply a custom class to your badge with the `className` prop. Here we ha
           <Badge
             message="Hello world!"
             variant="success"
-            className="m-bottom-3xl"
+            className="m-3xl"
           />
         </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## With Icon
-
-You can choose to display a standard icon for each variant of notification, based on their nature.
-
-<Canvas>
-  <Story name="With Icon">
-    {() => {
-      const variants = [
-        'default',
-        'info',
-        'tertiary',
-        'success',
-        'warning',
-        'danger',
-      ];
-      const message = (variant) => `
-        This is a ${variant} badge. It also has longer text to see what these badge
-        can look like when broken into multiple lines. This one will definitely
-        break into multiple lines in most standard screen resolutions.
-      `;
-      return (
-        <>
-          {variants.map((variant, index) => (
-            <Box childGap="sm" direction="row">
-              <Badge
-                message={message(variant)}
-                key={variant}
-                title={index % 2  ? variant.charAt(0).toUpperCase() + variant.slice(1) : ''}
-                variant={variant}
-                hasIcon
-                className="m-bottom-md"
-              />
-            </Box>
-          ))}
-        </>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## With Custom JSX in the message
-
-The badge can display any custom JSX that is passed into the `message` prop, not just a string variant.
-
-<Canvas>
-  <Story name="With Custom JSX Message">
-    {() => {
-      const myMessage = (
-        <p>Looks like something went wrong.</p>
-      );
-      return (
-        <Box direction="row">
-          <Badge
-            message={myMessage}
-            variant="danger"
-          />
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## With Render Function
-
-If you prefer to pass a render function to the badge rather than a static `ReactNode`, you can pass a function
-that returns a `ReactNode` to the `render` prop.
-
-IMPORTANT: The `render` prop, will supersede the `message` prop, if both are present.
-
-<Canvas>
-  <Story name="With Render Function">
-    {() => {
-      const renderMyMessage = () => (
-        <p>Looks like something went wrong. But I'm using a render function.</p>
-      );
-      return (
-        <Box direction="row">
-          <Badge
-            render={renderMyMessage}
-            variant="danger"
-          />
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Closable
-
-The badge can be made closable by passing the `isClosable` prop. Note that this only controls the prescence of
-the close icon, but closing actually happens programmatically with a callback passed to the `onClose` prop.
-If you need custom close text, pass it in the `closeText` prop.
-
-<Canvas>
-  <Story name="Closable">
-    {() => {
-      const [isBadgeTwoShowing, setBadgeTwoShowing] = useState(true);
-      const [isBadgeThreeShowing, setBadgeThreeShowing] = useState(true);
-      return (
-        <>
-          <Box direction="row">
-            <Badge
-              message="Closable, but with no onClose callback so nothing happens when clicked."
-              variant="warning"
-              isClosable
-              className="m-bottom-md"
-            />
-          </Box>
-          {isBadgeTwoShowing ? (
-            <Box direction="row">
-              <Badge
-                message="This one works!"
-                variant="info"
-                isClosable
-                onClose={() => setBadgeTwoShowing(false)}
-                className="m-bottom-md"
-              />
-            </Box>
-          ) : (
-            <div className="m-bottom-md">
-              <Button onClick={() => setBadgeTwoShowing(true)} size="sm">Give me the second badge back!</Button>
-            </div>
-          )}
-          {isBadgeThreeShowing ? (
-            <Box direction="row">
-              <Badge
-                message="With custom close text!"
-                variant="info"
-                isClosable
-                onClose={() => setBadgeThreeShowing(false)}
-                closeText="Close me!"
-              />
-            </Box>
-          ) : (
-            <div className="m-bottom-md">
-              <Button onClick={() => setBadgeThreeShowing(true)} size="sm">Give me the third badge back!</Button>
-            </div>
-          )}
-        </>
       );
     }}
   </Story>

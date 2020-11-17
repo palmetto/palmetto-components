@@ -1,21 +1,15 @@
 import React, {
   FC,
-  ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faExclamationCircle,
-  faExclamationTriangle,
-  faUser,
-  faInfoCircle,
-  faTimesCircle,
-  faCheckCircle,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
+import { BrandColor, FontColor, FontSize, BaseSpacing } from '../../types';
 import styles from './Badge.module.scss';
+import Box from '../Box/Box';
 
-export type BadgeSize = 'xs' | 'sm' | 'md' | 'lg';
+export type BadgeSize = 'sm' | 'md' | 'lg' | 'xl';
+export type BadgeVariant = 'info' | 'primary' | 'success' | 'secondary' | 'tertiary' | 'warning' | 'danger' | 'default';
+export type BadgeColorAttributes = { font: FontColor, background: BrandColor };
+export type BadgeSizeAttributes = { fontSize: FontSize, padding: BaseSpacing };
 
 interface BadgeProps {
   /**
@@ -23,31 +17,9 @@ interface BadgeProps {
    */
   className?: string;
   /**
-   * Custom text to use as a close button.
-   */
-  closeText?: string;
-  /**
-   * Whether the badge as an icon that corresponds to its variant (Success, warning, etc.).
-   */
-  hasIcon?: boolean;
-  /**
-   * Deterimines whether the badge can be closed by the user. If `true` it will render
-   * the 'close' icon on the right hand side of the badge.
-   */
-  isClosable?: boolean;
-  /**
    * The text message or ReactNode to be rendered in the badge.
    */
-  message?: string | ReactNode;
-  /**
-   * Deterimines whether the badge can be closed by the user. If `true` it will render
-   * the 'close' icon on the right hand side of the badge.
-   */
-  onClose?: (event: (MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>)) => void;
-  /**
-   * A render function that returns JSX if preferred over a static ReactNode or string.
-   */
-  render?: () => ReactNode;
+  message?: string;
   /**
    * The size of the button.
    */
@@ -55,91 +27,57 @@ interface BadgeProps {
   /**
    * The type/color of the badge to show.
    */
-  variant?: 'info' | 'success' | 'warning' | 'danger' | 'default';
+  variant?: BadgeVariant;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 const Badge: FC<BadgeProps> = ({
   className = '',
-  closeText = '',
-  hasIcon = false,
-  isClosable = false,
   message = '',
-  onClose = undefined,
-  render = undefined,
   variant = 'default',
   size = 'md',
+  ...restProps
 }) => {
-  const handleClose = (event: (MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>)): void => {
-    if (!onClose) return;
-
-    onClose(event);
-  };
-
-  const renderBadgeIcon = (): ReactNode => {
-    const icons = {
-      default: faExclamationCircle,
-      info: faInfoCircle,
-      tertiary: faUser,
-      success: faCheckCircle,
-      warning: faExclamationTriangle,
-      danger: faTimesCircle,
-    };
-
-    const iconClasses = classNames(
-      styles['type-icon'],
-      styles[variant],
-      styles[size]
-    );
-
-    return (
-      <div className={iconClasses}>
-        <FontAwesomeIcon icon={icons[variant]} data-testid={`badge-icon-${variant}-test-id`} />
-      </div>
-    );
-  };
-
-  const renderCloseIcon = (): ReactNode => {
-    const closeIconClasses: string = classNames(
-      styles['close-icon'],
-      { [styles.clickable]: !!onClose },
-    );
-
-    const handleCloseKeyPress = (event: KeyboardEvent<HTMLSpanElement>): void => {
-      if (event.keyCode === 13) handleClose(event);
-    };
-
-    return (
-      <div className={closeIconClasses}>
-        <button
-          type="button"
-          onClick={handleClose}
-          onKeyUp={handleCloseKeyPress}
-        >
-          {closeText || <FontAwesomeIcon icon={faTimes} data-testid="badge-close-icon-test-id" />}
-        </button>
-      </div>
-    );
-  };
-
-  const badgeContainerClasses: string = classNames(
+  const badgeClasses: string = classNames(
     styles.badge,
-    styles[variant],
-    styles[size],
     className,
   );
 
+  const colorMap: { [variant in BadgeVariant]: BadgeColorAttributes } = {
+    info: { font: 'dark-500', background: 'info-100' },
+    primary: { font: 'dark-500', background: 'primary-100' },
+    success: { font: 'dark-500', background: 'success-100' },
+    secondary: { font: 'dark-500', background: 'secondary-100' },
+    warning: { font: 'dark-500', background: 'warning-100' },
+    tertiary: { font: 'dark-500', background: 'tertiary-100' },
+    danger: { font: 'dark-500', background: 'danger-100' },
+    default: { font: 'dark-500', background: 'grey-100' },
+  };
+
+  const sizeMap: { [size in BadgeSize]: BadgeSizeAttributes} = {
+    sm: { fontSize: '2xs', padding: '2xs 2xs' },
+    md: { fontSize: 'xs', padding: '2xs xs' },
+    lg: { fontSize: 'sm', padding: '2xs xs' },
+    xl: { fontSize: 'md', padding: 'xs sm' },
+  };
+
   return (
-    <div className={badgeContainerClasses}>
-      {hasIcon && renderBadgeIcon()}
-      <div className={styles['badge-message']}>
-        {render ? render() : (
-          message && (
-            typeof message === 'string' ? <p>{message}</p> : message
-          )
-        )}
-      </div>
-      {isClosable && renderCloseIcon()}
-    </div>
+    <Box
+      className={badgeClasses}
+      display="flex"
+      radius="sm"
+      background={colorMap[variant].background}
+      color={colorMap[variant].font}
+      fontWeight="bold"
+      fontSize={sizeMap[size].fontSize}
+      padding={sizeMap[size].padding}
+      {...restProps}
+    >
+      {message}
+    </Box>
   );
 };
 
