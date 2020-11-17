@@ -1,10 +1,12 @@
 import React, {
   FC,
   ChangeEvent,
+  forwardRef,
   MouseEvent,
   KeyboardEvent,
   FocusEvent,
   ReactNode,
+  Component,
 } from 'react';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
@@ -20,7 +22,7 @@ import styles from './TextInput.module.scss';
 
 type inputMaskType = ('phone' | 'creditCard') | UnknownPropertiesObjType;
 
-interface TextInputProps {
+export interface TextInputBaseProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -29,14 +31,6 @@ interface TextInputProps {
    * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
    */
   label: string;
-  /**
-   * Callback function to call on change event.
-   */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  /**
-   * The text value of the input. Required since our Input is a controlled component.
-   */
-  value: string;
   /**
    * The input's 'autocomplete' attribute.
    */
@@ -113,30 +107,48 @@ interface TextInputProps {
    */
   type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
 }
+export interface TextInputProps extends TextInputBaseProps {
+  /**
+   * Callback function to call on change event.
+   */
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  /**
+   * The text value of the input. Required since our Input is a controlled component.
+   */
+  value: string;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
+}
 
-const TextInput: FC<TextInputProps> = ({
-  id,
-  label,
-  onChange,
-  value,
-  autoComplete = false,
-  autoFocus = false,
-  className = undefined,
-  error = false,
-  helpText,
-  hideLabel = false,
-  inputMask = undefined,
-  isDisabled = false,
-  isRequired = false,
-  maxLength = undefined,
-  name = '',
-  onBlur = undefined,
-  onClear = undefined,
-  onFocus = undefined,
-  placeholder = '',
-  type = 'text',
-  size = 'md',
-}) => {
+const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, TextInputProps>((
+  {
+    id,
+    label,
+    onChange,
+    value,
+    autoComplete = false,
+    autoFocus = false,
+    className = undefined,
+    error = false,
+    helpText,
+    hideLabel = false,
+    inputMask = undefined,
+    isDisabled = false,
+    isRequired = false,
+    maxLength = undefined,
+    name = '',
+    onBlur = undefined,
+    onClear = undefined,
+    onFocus = undefined,
+    placeholder = '',
+    type = 'text',
+    size = 'md',
+    ...restProps
+  },
+  ref,
+) => {
   const getInputMask = (
     mask: inputMaskType,
     availableInputMasks: {
@@ -206,6 +218,7 @@ const TextInput: FC<TextInputProps> = ({
     placeholder,
     type,
     value,
+    ...restProps,
   };
 
   const labelProps = {
@@ -222,7 +235,7 @@ const TextInput: FC<TextInputProps> = ({
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       <div className={inputWrapperClasses}>
         {!inputMask ? (
-          <input {...inputProps} />
+          <input {...inputProps} ref={ref} />
         ) : (
           <Cleave
             {...inputProps}
@@ -236,6 +249,6 @@ const TextInput: FC<TextInputProps> = ({
       )}
     </Box>
   );
-};
+});
 
 export default TextInput;

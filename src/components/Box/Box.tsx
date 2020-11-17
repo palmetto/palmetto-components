@@ -10,24 +10,25 @@ import {
 } from 'react';
 import classNames from 'classnames';
 import {
-  FontSize,
-  FontWeight,
-  FontColor,
-  BrandColor,
-  SpacingSize,
+  BaseSpacing,
   BorderRadiusSize,
-  DimensionSize,
+  BorderSize,
+  BrandColor,
   BreakpointSizeWithBase,
-  CssDisplayValue,
-  CssJustifyContentValue,
   CssAlignContentValue,
   CssAlignItemsValue,
-  BaseSpacing,
+  CssDisplayValue,
   CssFlexDirectionValue,
-  CssOverflowValue,
-  ResponsiveProp,
   CssFlexValue,
-  BorderSize,
+  CssJustifyContentValue,
+  CssOverflowValue,
+  CssTextAlignValue,
+  DimensionSize,
+  FontColor,
+  FontSize,
+  FontWeight,
+  ResponsiveProp,
+  SpacingSize,
 } from '../../types';
 import getDimensionCss from '../../lib/getDimensionCss';
 import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
@@ -154,6 +155,10 @@ export interface BoxProps {
    */
   style?: CSSProperties;
   /**
+   * the alignment of the text
+   */
+  textAlign?: CssTextAlignValue | ResponsiveProp<CssTextAlignValue>;
+  /**
    * By default, a Box's items will all try to fit onto one line.
    * Change that and allow the items to wrap as needed wrap
    */
@@ -200,6 +205,7 @@ const Box: FC<BoxProps> = forwardRef((
     padding = undefined,
     radius = undefined,
     style = {},
+    textAlign = undefined,
     wrap = undefined,
     width = undefined,
     ...restProps
@@ -237,6 +243,7 @@ const Box: FC<BoxProps> = forwardRef((
     generateResponsiveClasses('border-color', borderColor),
     generateResponsiveClasses('font-color', color),
     generateResponsiveClasses('font-weight', fontWeight),
+    generateResponsiveClasses('text-align', textAlign),
     {
       'flex-wrap': isFlexBox && wrap,
       'flex-nowrap': isFlexBox && wrap === false,

@@ -115,6 +115,11 @@ export type CssDisplayValue =
   'inherit' |
   'grid';
 
+export type CssTextAlignValue =
+  'left' |
+  'center' |
+  'right';
+
 export type BaseSpacing = SpacingSize | string | undefined;
 
 export declare type ResponsiveProp<T> = { [breakpoint in BreakpointSizeWithBase]?: T };

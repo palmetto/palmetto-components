@@ -522,6 +522,31 @@ Set the `fontWeight` prop with a [font weight](/?path=/story/design-tokens-font-
   </Story>
 </Canvas>
 
+## Text Align
+
+Set the `textAlign` prop to set the alignment of the text in the Box.
+
+<Canvas>
+  <Story name="textAlign">
+    <Box display="block">
+      <Box display="block" textAlign="left">left</Box>
+      <Box display="block" textAlign="center">center</Box>
+      <Box display="block" textAlign="right">right</Box>
+    </Box>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story 
+    name="responsive textAlign"
+    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+  >
+    <Box display="block">
+      <Box display="block" textAlign={{ base: 'right', tablet: 'left', desktop: 'center'}}>base: right, tablet: left, desktop: center</Box>
+    </Box>
+  </Story>
+</Canvas>
+
 ## Margin
 
 The `margin` prop accepts a single [spacing](/?path=/story/design-tokens-spacing--page) value or a set of spacing values that correspond with css shorthand syntax. Margin values can be set on the horizontal or vertical axis, or the top, right, bottom and left sides of a Box.
