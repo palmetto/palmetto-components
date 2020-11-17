@@ -51,7 +51,7 @@ const Badge: FC<BadgeProps> = ({
     className,
   );
 
-  const colorMap: { [variant in BadgeVariant]: BadgeColorAttributes } = {
+  const colorMap: { [key in BadgeVariant]: BadgeColorAttributes } = {
     info: { font: 'dark-500', background: 'info-100' },
     primary: { font: 'dark-500', background: 'primary-100' },
     success: { font: 'dark-500', background: 'success-100' },
@@ -62,7 +62,7 @@ const Badge: FC<BadgeProps> = ({
     default: { font: 'dark-500', background: 'grey-100' },
   };
 
-  const sizeMap: { [size in BadgeSize]: BadgeSizeAttributes} = {
+  const sizeMap: { [key in BadgeSize]: BadgeSizeAttributes} = {
     sm: { fontSize: '2xs', padding: '2xs 2xs' },
     md: { fontSize: 'xs', padding: '2xs xs' },
     lg: { fontSize: 'sm', padding: '2xs xs' },
