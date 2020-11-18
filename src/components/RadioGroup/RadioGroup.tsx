@@ -1,4 +1,6 @@
-import React, { FC, ChangeEvent, FocusEvent, ReactNode } from 'react';
+import React, {
+  FC, ChangeEvent, FocusEvent, ReactNode,
+} from 'react';
 import classNames from 'classnames';
 import Box from '../Box/Box';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';

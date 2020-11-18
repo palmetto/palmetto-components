@@ -1,4 +1,6 @@
-import React, { FC, ChangeEvent, FocusEvent, ReactNode } from 'react';
+import React, {
+  FC, ChangeEvent, FocusEvent, ReactNode,
+} from 'react';
 import classNames from 'classnames';
 import FormLabel from '../../FormLabel/FormLabel';
 import styles from './RadioInput.module.scss';
