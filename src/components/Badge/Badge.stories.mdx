@@ -45,12 +45,11 @@ Badges come in different variants based on the kind of message being delivered t
         'danger',
       ];
       return (
-        <Box direction="row">
+        <Box direction="row" childGap="sm">
           {variants.map(variant => 
             <Badge 
               message={variant}
               variant={variant}
-              className="m-right-sm"
             />
           )}
         </Box>
@@ -66,32 +65,22 @@ Badges come in different variants based on the kind of message being delivered t
     {() => {
       return (
         <>
-          <Box direction="row">
+          <Box direction="column" alignItems="flex-start" childGap="md">
             <Badge
               size="sm"
               message="Small"
-              className="m-bottom-md"
             />
-          </Box>
-          <Box direction="row">
             <Badge
               size="md"
               message="Base"
-              className="m-bottom-md"
             />
-          </Box>
-          <Box direction="row">
             <Badge
               size="lg"
               message="Large"
-              className="m-bottom-md"
             />
-          </Box>
-          <Box direction="row">
             <Badge
               size="xl"
               message="X-Large"
-              className="m-bottom-md"
             />
           </Box>
         </>
