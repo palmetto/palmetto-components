@@ -1,10 +1,6 @@
-import React, {
-  FC,
-  ChangeEvent,
-  FocusEvent,
-  ReactNode,
-} from 'react';
+import React, { FC, ChangeEvent, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
+import Box from '../Box/Box';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import RadioInput from './RadioInput/RadioInput';
 import styles from './RadioGroup.module.scss';
@@ -35,6 +31,10 @@ interface RadioGroupProps {
    * Description to be displayed below the title, and above the RadioGroup.
    */
   description?: ReactNode;
+  /**
+   * Whether the radios should be aligned in a row or in a column
+   */
+  direction?: 'row' | 'column';
   /**
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
@@ -72,6 +72,7 @@ const RadioGroup: FC<RadioGroupProps> = ({
   options,
   className = '',
   description = undefined,
+  direction = 'column',
   error = false,
   isDisabled = false,
   isRequired = false,
@@ -80,19 +81,13 @@ const RadioGroup: FC<RadioGroupProps> = ({
   title = undefined,
   value = undefined,
 }) => {
-  const groupClasses = classNames(
-    className,
-    {
-      [styles.loading]: error,
-    },
-  );
+  const groupClasses = classNames(className, {
+    [styles.loading]: error,
+  });
 
-  const legendClasses = classNames(
-    styles.legend,
-    {
-      [styles.error]: error,
-    },
-  );
+  const legendClasses = classNames(styles.legend, {
+    [styles.error]: error,
+  });
 
   return (
     <div className={classNames(styles['radio-group'], groupClasses)}>
@@ -104,23 +99,26 @@ const RadioGroup: FC<RadioGroupProps> = ({
             {description && <div className={styles.description}>{description}</div>}
           </legend>
         )}
-        <div className={styles.options}>
-          {options && options.map(option => (
-            <RadioInput
-              key={option.id}
-              name={name}
-              onChange={onChange}
-              option={option}
-              error={error}
-              isDisabled={isDisabled || option.disabled || false}
-              isSelected={value === option.value}
-              onBlur={onBlur}
-              onFocus={onFocus}
-            />
-          ))}
-        </div>
+        <Box direction={direction} childGap="sm" className={styles.options}>
+          {options &&
+            options.map(option => (
+              <RadioInput
+                key={option.id}
+                name={name}
+                onChange={onChange}
+                option={option}
+                error={error}
+                isDisabled={isDisabled || option.disabled || false}
+                isSelected={value === option.value}
+                onBlur={onBlur}
+                onFocus={onFocus}
+              />
+            ))}
+        </Box>
       </fieldset>
-      {error && typeof error !== 'boolean' && <InputValidationMessage>{error}</InputValidationMessage>}
+      {error && typeof error !== 'boolean' && (
+        <InputValidationMessage>{error}</InputValidationMessage>
+      )}
     </div>
   );
 };

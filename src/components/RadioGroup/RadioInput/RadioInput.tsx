@@ -1,9 +1,5 @@
-import React, {
-  FC,
-  ChangeEvent,
-  FocusEvent,
-  ReactNode,
-} from 'react';
+import React, { FC, ChangeEvent, FocusEvent, ReactNode } from 'react';
+import classNames from 'classnames';
 import FormLabel from '../../FormLabel/FormLabel';
 import styles from './RadioInput.module.scss';
 
@@ -25,6 +21,10 @@ interface RadioInputProps {
     label: string;
     disabled?: boolean | null;
   };
+  /**
+   * Additional classes to add.
+   */
+  className?: string;
   /**
    * Mark the radio group as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
@@ -52,6 +52,7 @@ const RadioInput: FC<RadioInputProps> = ({
   name,
   onChange,
   option,
+  className = '',
   error = false,
   isDisabled = false,
   isSelected = false,
@@ -66,6 +67,8 @@ const RadioInput: FC<RadioInputProps> = ({
     if (onBlur) onBlur(event);
   };
 
+  const radioClasses = classNames(className, styles.option);
+
   const labelProps = {
     inputId: option.id,
     isDisabled,
@@ -77,7 +80,7 @@ const RadioInput: FC<RadioInputProps> = ({
   return (
     <>
       {option && (
-        <div className={styles.option} key={option.id}>
+        <div className={radioClasses} key={option.id}>
           <input
             id={option.id}
             type="radio"
