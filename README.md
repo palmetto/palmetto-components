@@ -28,6 +28,7 @@
 ```jsx
 @import '@palmetto/palmetto-components/dist/css/utilities.css';
 @import '@palmetto/palmetto-components/dist/css/variables.css';
+@import '@palmetto/palmetto-components/dist/css/fonts.css';
 ```
 
 We recommend importing our global reset in order to maintain a consistent
