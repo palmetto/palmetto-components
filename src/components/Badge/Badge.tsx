@@ -72,7 +72,7 @@ const Badge: FC<BadgeProps> = ({
   return (
     <Box
       className={badgeClasses}
-      display="flex"
+      display="inline-block"
       radius="sm"
       background={colorMap[variant].background}
       color={colorMap[variant].font}
