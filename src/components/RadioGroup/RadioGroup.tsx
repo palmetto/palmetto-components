@@ -100,8 +100,8 @@ const RadioGroup: FC<RadioGroupProps> = ({
           </legend>
         )}
         <Box direction={direction} childGap="sm" className={styles.options}>
-          {options &&
-            options.map(option => (
+          {options
+            && options.map(option => (
               <RadioInput
                 key={option.id}
                 name={name}
