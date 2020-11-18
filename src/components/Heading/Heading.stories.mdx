@@ -4,25 +4,19 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 
-<Meta
-  title="Components/Heading"
-  component={Heading}
-/>
+<Meta title="Components/Heading" component={Heading} />
 
 # Heading
 
- Use `Headings` as labels for pages or sections of a page that make up an interface. `Headings` can label an entire page, or sections of related content.
- The `Heading` component allows you to specify an appropriate semantic element (h1-h6) and independently set its size so that it is appropriate for the surrounding content.
- If no size is specified, a default size will be applied.
+Use `Headings` as labels for pages or sections of a page that make up an interface. `Headings` can label an entire page, or sections of related content.
+The `Heading` component allows you to specify an appropriate semantic element (h1-h6) and independently set its size so that it is appropriate for the surrounding content.
+If no size is specified, a default size will be applied.
 
 <Canvas isExpanded>
-  <Heading as="h1">
-    Lead the world towards a clean energy future
-  </Heading>
+  <Heading as="h1">Lead the world towards a clean energy future</Heading>
 </Canvas>
 
 ## Props
-
 
 <ArgsTable of={Heading} />
 
@@ -51,7 +45,7 @@ The default size of the Heading can overridden as xs-5xl so that it's appropriat
   <Story name="Sizes">
     <>
       {[...FONT_SIZE_OPTIONS].reverse().map(fontSize => (
-        <Heading size={fontSize} key={uuid()}>
+        <Heading as="h3" size={fontSize} key={uuid()}>
           {`Size ${fontSize}`}
         </Heading>
       ))}
@@ -67,7 +61,7 @@ The variant of the heading is inherited from its parent, but can be set to brand
   <Story name="Colors">
     <>
       {FONT_COLOR_OPTIONS.map(variant => (
-        <Heading variant={variant} key={uuid()}>
+        <Heading as="h3" variant={variant} key={uuid()}>
           {variant}
         </Heading>
       ))}
