@@ -3,11 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import RadioGroup from './RadioGroup';
 
-
-<Meta
-  title="Components/Form Inputs/RadioGroup"
-  component={RadioGroup}
-/>
+<Meta title="Components/Form Inputs/RadioGroup" component={RadioGroup} />
 
 # RadioGroup
 
@@ -25,21 +21,23 @@ All that is required to render a basic version of the RadioGroup is the group's 
   <Story name="Default">
     {() => {
       const [value, setValue] = useState(null);
-      const options = [{
-        id: 'chocolate',
-        value: 'chocolate',
-        label: 'Chocolate',
-      },
-      {
-        id: 'strawberry',
-        value: 'strawberry',
-        label: 'Strawberry',
-      },
-      {
-        id: 'vanilla',
-        value: 'vanilla',
-        label: 'Vanilla',
-      }];
+      const options = [
+        {
+          id: 'chocolate',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
       return (
         <RadioGroup
           name="noTitleOrDescription"
@@ -60,21 +58,23 @@ Use the `title` prop to add a title.
   <Story name="Title">
     {() => {
       const [value, setValue] = useState(null);
-      const options = [{
-        id: 'purple',
-        value: 'purple',
-        label: 'Purple',
-      },
-      {
-        id: 'green',
-        value: 'green',
-        label: 'Green',
-      },
-      {
-        id: 'blue',
-        value: 'blue',
-        label: 'Blue',
-      }];
+      const options = [
+        {
+          id: 'purple',
+          value: 'purple',
+          label: 'Purple',
+        },
+        {
+          id: 'green',
+          value: 'green',
+          label: 'Green',
+        },
+        {
+          id: 'blue',
+          value: 'blue',
+          label: 'Blue',
+        },
+      ];
       return (
         <RadioGroup
           title="Title"
@@ -96,16 +96,18 @@ Use the `title` and `description` props to add a title and description.
   <Story name="Title and Description">
     {() => {
       const [value, setValue] = useState(null);
-      const options = [{
-        id: 'light',
-        value: 'light',
-        label: 'Light',
-      },
-      {
-        id: 'dark',
-        value: 'dark',
-        label: 'Dark',
-      }];
+      const options = [
+        {
+          id: 'light',
+          value: 'light',
+          label: 'Light',
+        },
+        {
+          id: 'dark',
+          value: 'dark',
+          label: 'Dark',
+        },
+      ];
       return (
         <RadioGroup
           title="Title"
@@ -128,16 +130,18 @@ Use the `isRequired` prop to mark the group as required.
   <Story name="Required">
     {() => {
       const [value, setValue] = useState(null);
-      const options = [{
-        id: 'cat',
-        value: 'cat',
-        label: 'Cat',
-      },
-      {
-        id: 'dog',
-        value: 'dog',
-        label: 'Dog',
-      }];
+      const options = [
+        {
+          id: 'cat',
+          value: 'cat',
+          label: 'Cat',
+        },
+        {
+          id: 'dog',
+          value: 'dog',
+          label: 'Dog',
+        },
+      ];
       return (
         <RadioGroup
           title="Title"
@@ -159,21 +163,23 @@ Use the `value` prop to pre-select an option.
 <Canvas>
   <Story name="Pre-Selected Option">
     {() => {
-      const options = [{
-        id: 'car',
-        value: 'car',
-        label: 'Car',
-      },
-      {
-        id: 'truck',
-        value: 'truck',
-        label: 'Truck',
-      },
-      {
-        id: 'motorcycle',
-        value: 'motorcycle',
-        label: 'Motorcycle',
-      }];
+      const options = [
+        {
+          id: 'car',
+          value: 'car',
+          label: 'Car',
+        },
+        {
+          id: 'truck',
+          value: 'truck',
+          label: 'Truck',
+        },
+        {
+          id: 'motorcycle',
+          value: 'motorcycle',
+          label: 'Motorcycle',
+        },
+      ];
       const [value, setValue] = useState(options[1].value);
       return (
         <RadioGroup
@@ -196,22 +202,24 @@ An individual option, or multiple options can be disabled by marking them as dis
   <Story name="Disabled Option">
     {() => {
       const [value, setValue] = useState(null);
-      const options = [{
-        id: 'short',
-        value: 'short',
-        label: 'Short',
-      },
-      {
-        id: 'tall',
-        value: 'tall',
-        label: 'Tall',
-      },
-      {
-        id: 'gigantic',
-        value: 'gigantic',
-        label: 'Gigantic',
-        disabled: true,
-      }];
+      const options = [
+        {
+          id: 'short',
+          value: 'short',
+          label: 'Short',
+        },
+        {
+          id: 'tall',
+          value: 'tall',
+          label: 'Tall',
+        },
+        {
+          id: 'gigantic',
+          value: 'gigantic',
+          label: 'Gigantic',
+          disabled: true,
+        },
+      ];
       return (
         <RadioGroup
           title="Title"
@@ -233,22 +241,24 @@ A group can be fully disabled by using the `isDisabled` prop.
   <Story name="Disabled Group">
     {() => {
       const [value, setValue] = useState(null);
-      const options = [{
-        id: 'react',
-        value: 'react',
-        label: 'React',
-      },
-      {
-        id: 'angular',
-        value: 'angular',
-        label: 'Angular',
-      },
-      {
-        id: 'vue',
-        value: 'vue',
-        label: 'Vue',
-        disabled: true,
-      }];
+      const options = [
+        {
+          id: 'react',
+          value: 'react',
+          label: 'React',
+        },
+        {
+          id: 'angular',
+          value: 'angular',
+          label: 'Angular',
+        },
+        {
+          id: 'vue',
+          value: 'vue',
+          label: 'Vue',
+          disabled: true,
+        },
+      ];
       return (
         <RadioGroup
           title="Title"
@@ -271,22 +281,24 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
   <Story name="Error">
     {() => {
       const [value, setValue] = useState(null);
-      const options = [{
-        id: 'apple',
-        value: 'apple',
-        label: 'Apple',
-      },
-      {
-        id: 'orange',
-        value: 'orange',
-        label: 'Orange',
-      },
-      {
-        id: 'banana',
-        value: 'banana',
-        label: 'Banana',
-        disabled: true,
-      }];
+      const options = [
+        {
+          id: 'apple',
+          value: 'apple',
+          label: 'Apple',
+        },
+        {
+          id: 'orange',
+          value: 'orange',
+          label: 'Orange',
+        },
+        {
+          id: 'banana',
+          value: 'banana',
+          label: 'Banana',
+          disabled: true,
+        },
+      ];
       return (
         <RadioGroup
           title="Title"
@@ -302,6 +314,46 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
   </Story>
 </Canvas>
 
+## Horizontally Aligned
+
+Use the `direction` prop change the alignment of the radio inputs.
+
+<Canvas>
+  <Story name="Row">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        {
+          id: 'one',
+          value: 'one',
+          label: 'One',
+        },
+        {
+          id: 'two',
+          value: 'two',
+          label: 'Two',
+        },
+        {
+          id: 'three',
+          value: 'three',
+          label: 'Three',
+        },
+      ];
+      return (
+        <RadioGroup
+          title="Horizontal"
+          direction="row"
+          name="horizontal"
+          onChange={event => setValue(event.target.value)}
+          value={value}
+          options={options}
+          isRequired
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Custom Classes
 
 Use the `className` prop to add a custom class, or classes to a RadioGroup.
@@ -310,22 +362,24 @@ Use the `className` prop to add a custom class, or classes to a RadioGroup.
   <Story name="Custom Classes">
     {() => {
       const [value, setValue] = useState(null);
-      const options = [{
-        id: 'apple',
-        value: 'apple',
-        label: 'Apple',
-      },
-      {
-        id: 'orange',
-        value: 'orange',
-        label: 'Orange',
-      },
-      {
-        id: 'banana',
-        value: 'banana',
-        label: 'Banana',
-        disabled: true,
-      }];
+      const options = [
+        {
+          id: 'apple',
+          value: 'apple',
+          label: 'Apple',
+        },
+        {
+          id: 'orange',
+          value: 'orange',
+          label: 'Orange',
+        },
+        {
+          id: 'banana',
+          value: 'banana',
+          label: 'Banana',
+          disabled: true,
+        },
+      ];
       return (
         <RadioGroup
           title="Title"
@@ -339,6 +393,3 @@ Use the `className` prop to add a custom class, or classes to a RadioGroup.
     }}
   </Story>
 </Canvas>
-
-
-
