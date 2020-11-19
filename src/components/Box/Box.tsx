@@ -256,7 +256,6 @@ const Box: FC<BoxProps> = forwardRef((
     ...maxHeightCss.styles,
     ...maxWidthCss.styles,
     ...widthCss.styles,
-    ...(borderWidth && { borderStyle: 'solid' }),
   };
 
   /**
