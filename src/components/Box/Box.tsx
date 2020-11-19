@@ -64,9 +64,12 @@ export interface BoxProps {
    */
   borderColor?: BrandColor | ResponsiveProp<BrandColor>;
   /**
-   * Any valid BorderSize token or reponsive prop with BorderSize in each breakpoint.
-   * You can use CSS shorthand format in this prop, with any of the available values.
-   * E.G: "0 sm xs 0" --> top: 0, right: sm, bottom: xs, left: 0;
+   * Width of the Box's border
+   * Can be a single [border width token](/?path=/docs/design-tokens-border-width--page).
+   * Can also be a string of [border width tokens](/?path=/docs/design-tokens-border-width--page)
+   * that models itself after the css shorthand property,
+   * where you can set the border width on all four sides of an element.
+   * e.g: "0 sm xs 0" --> top: 0, right: sm, bottom: xs, left: 0;
    */
   borderWidth?: BorderSize | string | ResponsiveProp<BorderSize | string>;
   /**
@@ -75,7 +78,7 @@ export interface BoxProps {
   className?: string;
   /**
    * The amount of spacing between child elements.
-   * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
+   * Can be a single [spacing value](/?path=/docs/design-tokens-spacing--page).
    */
   childGap?: SpacingSize | ResponsiveProp<SpacingSize>;
   /**
@@ -140,8 +143,8 @@ export interface BoxProps {
   overflow?: CssOverflowValue | ResponsiveProp<CssOverflowValue>;
   /**
    * Amount of space within the element around the Box contents.
-   * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
-   * Can also be a string of [spacing value](?path=/docs/design-tokens-spacing--page)
+   * Can be a single [spacing value](/?path=/docs/design-tokens-spacing--page).
+   * Can also be a string of [spacing value](/?path=/docs/design-tokens-spacing--page)
    * that models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
    */
@@ -256,7 +259,6 @@ const Box: FC<BoxProps> = forwardRef((
     ...maxHeightCss.styles,
     ...maxWidthCss.styles,
     ...widthCss.styles,
-    ...(borderWidth && { borderStyle: 'solid' }),
   };
 
   /**
