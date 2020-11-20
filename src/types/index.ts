@@ -195,3 +195,6 @@ export type SimulatedEventPayloadType = {
     value: ValueType<OptionTypeBase>;
   };
 };
+
+export type IconName =
+  'user';
