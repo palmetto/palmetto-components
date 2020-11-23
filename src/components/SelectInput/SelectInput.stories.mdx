@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Box from '../Box/Box';
+import Card from '../Card/Card';
 import SelectInput from './SelectInput';
 
 <Meta title="Components/Form Inputs/SelectInput" component={SelectInput} />
@@ -409,6 +410,36 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
             size="lg"
           />
         </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Portal
+
+In many cases it is helpful to render the select dropdown in a portal to avoid cutoff from a smaller container.
+We maintain the react-select API here where the `menuPortalTarget` prop is used. This is a ref to the element
+being portaled to. In the example below we would see our dropdown menu be cutoff by the storybook story container,
+if we did not portal it to the body element.
+
+<Canvas>
+  <Story name="Portal">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <SelectInput
+          id="portal"
+          label="Flavors"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+          menuPortalTarget={document.body}
+        />
       );
     }}
   </Story>
