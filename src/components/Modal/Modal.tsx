@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, RefObject, forwardRef, Component } from 'react';
+import React, { ReactNode, RefObject, forwardRef } from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
 import { ModalFooter, ModalHeader, ModalBody } from './components';
