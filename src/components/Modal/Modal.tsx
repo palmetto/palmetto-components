@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, RefObject } from 'react';
+import React, { FC, ReactNode, RefObject, forwardRef, Component } from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
 import { ModalFooter, ModalHeader, ModalBody } from './components';
@@ -53,23 +53,29 @@ interface ModalProps {
    */
   overflow?: CssOverflowValue;
 }
+interface ModalPropsWithSubcomponents extends
+  ModalProps,
+  React.ForwardRefExoticComponent<ModalProps & React.RefAttributes<HTMLInputElement>> {
+    Body: typeof ModalBody;
+    Footer: typeof ModalFooter;
+    Header: typeof ModalHeader;
+  }
 
-const Modal: FC<ModalProps> & {
-  Body: typeof ModalBody;
-  Footer: typeof ModalFooter;
-  Header: typeof ModalHeader;
-} = ({
-  ariaLabel,
-  ariaLabelledBy,
-  allowPinchZoom = false,
-  children,
-  className,
-  fullScreenMobile = false,
-  initialFocusRef,
-  isOpen,
-  onDismiss,
-  overflow = 'hidden',
-}) => {
+const Modal = forwardRef<HTMLDivElement, ModalPropsWithSubcomponents>((
+  {
+    ariaLabel,
+    ariaLabelledBy,
+    allowPinchZoom = false,
+    children,
+    className,
+    fullScreenMobile = false,
+    initialFocusRef,
+    isOpen,
+    onDismiss,
+    overflow = 'hidden',
+  },
+  ref,
+) => {
   const overylayClassnames = classNames(styles.overlay, {
     fullscreen: fullScreenMobile,
   });
@@ -84,6 +90,7 @@ const Modal: FC<ModalProps> & {
       isOpen={isOpen}
       onDismiss={onDismiss}
       initialFocusRef={initialFocusRef}
+      ref={ref}
     >
       <DialogContent
         aria-label={ariaLabel}
@@ -94,7 +101,7 @@ const Modal: FC<ModalProps> & {
       </DialogContent>
     </DialogOverlay>
   );
-};
+}) as ModalPropsWithSubcomponents;
 
 Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;

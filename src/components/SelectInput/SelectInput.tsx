@@ -12,6 +12,7 @@ import Select, {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { SimulatedEventPayloadType } from '../../types';
+import { Z_INDEX_VALUES } from '../../lib/tokens';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
@@ -76,6 +77,11 @@ export interface BaseSelectInputProps {
    */
   name?: string;
   /**
+   * A ref to portal the dropdown menu to. This is useful when the dropdown is located in a smaller container
+   * and we want to avoid cutting off the menu.
+   */
+  menuPortalTarget?: HTMLElement;
+  /**
    * Callback function to call on blur event.
    */
   onBlur?: (event: FocusEvent<HTMLElement>) => void;
@@ -120,6 +126,7 @@ const SelectInput: FC<SelectInputProps> = ({
   isDisabled = false,
   isMulti = false,
   isRequired = false,
+  menuPortalTarget = null,
   name = '',
   onFocus = null,
   onBlur = null,
@@ -182,12 +189,14 @@ const SelectInput: FC<SelectInputProps> = ({
         isClearable={isClearable}
         isDisabled={isDisabled}
         isMulti={isMulti}
+        menuPortalTarget={menuPortalTarget}
         name={name}
         autoFocus={autoFocus}
         options={options}
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        styles={{ menuPortal: base => ({ ...base, zIndex: Number(Z_INDEX_VALUES.popover.value) }) }}
         value={value}
       />
       {error && typeof error !== 'boolean' && (

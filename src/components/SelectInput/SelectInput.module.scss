@@ -2,6 +2,10 @@
 react-select elements for which we do not own the markup */
 
 /* stylelint-disable */
+:global(.react-select__menu) {
+  z-index: var(--size-z-index-popover);
+}
+
 :global(.select-input-wrapper) {
   :global(.react-select) {
     &:hover {
@@ -57,10 +61,6 @@ react-select elements for which we do not own the markup */
           color: var(--form-control-placeholder-color);
         }
       }
-    }
-
-    :global(.react-select__menu) {
-      z-index: var(--size-z-index-popover);
     }
 
     &.error {
