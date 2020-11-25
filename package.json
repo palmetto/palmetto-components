@@ -57,6 +57,7 @@
   "browserslist": {
     "production": [
       ">0.2%",
+      "not ie 11",
       "not dead",
       "not op_mini all"
     ],
@@ -80,7 +81,7 @@
     "@storybook/addon-links": "^6.0.27",
     "@storybook/addon-viewport": "^6.0.27",
     "@storybook/addons": "^6.0.27",
-    "@storybook/react": "^6.0.27",
+    "@storybook/react": "^6.1.0",
     "@storybook/storybook-deployer": "^2.8.6",
     "@svgr/webpack": "^5.4.0",
     "@testing-library/jest-dom": "^5.5.0",
