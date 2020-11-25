@@ -6,7 +6,7 @@
     "stylelint-config-concentric-order"
   ],
   "rules": {
-    "declaration-property-value-blacklist": null,
+    "declaration-property-value-disallowed-list": null,
     "max-nesting-depth": null,
     "order/properties-alphabetical-order": null,
     "selector-max-compound-selectors": 4,
