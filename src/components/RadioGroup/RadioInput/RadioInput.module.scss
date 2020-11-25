@@ -2,10 +2,6 @@
   display: flex;
   align-items: center;
 
-  &:not(:last-child) {
-    margin-bottom: var(--form-control-radio-group-option-spacing);
-  }
-
   .input {
     margin-top: 0;
     margin-right: var(--size-spacing-xs);

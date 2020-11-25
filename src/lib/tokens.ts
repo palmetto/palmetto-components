@@ -3,6 +3,7 @@ import { color } from '@palmetto/palmetto-design-tokens/build/json/variables-col
 
 import {
   BorderRadiusSize,
+  BorderSize,
   BrandColor,
   Breakpoint,
   BreakpointSizeWithBase,
@@ -21,6 +22,9 @@ import {
 
 export const BORDER_RADIUS_OPTIONS = Object.keys(size['border-radius']) as BorderRadiusSize[];
 export const BORDER_RADIUS_VALUES = Object.values(size['border-radius']);
+
+export const BORDER_SIZE_OPTIONS = Object.keys(size.border) as BorderSize[];
+export const BORDER_SIZE_VALUES = Object.values(size.border);
 
 export const BREAKPOINT_OPTIONS = Object.keys(size.breakpoint) as BreakpointSizeWithBase[];
 export const BREAKPOINT_VALUES = Object.values(size.breakpoint);
@@ -64,7 +68,7 @@ export const HEIGHT_OPTIONS = Object.keys(size.height) as HeightSize[];
 export const HEIGHT_VALUES = Object.values(size.height);
 
 export const Z_INDEX_OPTIONS = Object.keys(size['z-index']) as ZIndexSize[];
-export const Z_INDEX_VALUES = Object.values(size['z-index']);
+export const Z_INDEX_VALUES = size['z-index'];
 
 export const BOX_SHADOW_OPTIONS = Object.keys(size['box-shadow']) as BoxShadowSize[];
 export const BOX_SHADOW_VALUES = Object.values(size['box-shadow']);
