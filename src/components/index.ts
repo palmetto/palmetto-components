@@ -17,6 +17,7 @@ import FormikTextareaInput from './Formik/FormikTextareaInput/FormikTextareaInpu
 import FormikTimePicker from './Formik/FormikTimePicker/FormikTimePicker';
 import FormLabel from './FormLabel/FormLabel';
 import Heading from './Heading/Heading';
+import Icon from './Icon/Icon';
 import Modal from './Modal/Modal';
 import Pagination from './Pagination/Pagination';
 import Popover from './Popover/Popover';
@@ -49,6 +50,7 @@ export {
   FormikTimePicker,
   FormLabel,
   Heading,
+  Icon,
   Modal,
   Pagination,
   Popover,

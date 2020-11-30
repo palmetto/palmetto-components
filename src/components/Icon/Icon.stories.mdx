@@ -8,7 +8,8 @@ import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 
 <Meta title="Components/Icon" component={Icon} />
 
-# Icon
+# Icon (BETA)
+#### Not production ready.
 
 ## Props
 
@@ -18,8 +19,8 @@ import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 
 <Canvas>
   <Story name="default">
-    <Box childGap="md">
-      <Icon name="user" className="font-size-2xl" />
+    <Box childGap="md" direction="row">
+      <Icon name="user" />
     </Box>
   </Story>
 </Canvas>
@@ -48,5 +49,59 @@ Similarly to sizing, icons inherit their color from the font-color.
     <Box childGap="md" alignItems="flex-start">
       <Heading size="xl" as="h2" variant="primary"><Icon name="user" />&nbsp;&nbsp;Primary</Heading>
     </Box>
+  </Story>
+</Canvas>
+
+# Icons
+
+<Canvas>
+  <Story name="icons">
+    {() => {
+      const iconNames = [
+        'user',
+        'alpha-order',
+        'chevron-down',
+        'chevron-up',
+        'chevron-left',
+        'chevron-right',
+        'search',
+      ];
+      return (
+        <Box childGap="sm" direction="row" wrap>
+          {iconNames.map(name => (
+            <Box borderWidth="xs" borderColor="grey-lighter" key={name} padding="md" radius="md" margin="md 0 0 0">
+              <Heading size="lg" style={{ textAlign: 'center' }} className="m-bottom-sm">
+                <Icon name={name} className="font-size-2xl"/>
+              </Heading>
+              <p>{name}</p>
+            </Box>
+          ))}
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Fallback
+
+If the icon name is not found in the dictionary, we'll display `N/A` as a fallback, as well as log an error to the console.
+<Canvas>
+  <Story name="fallback">
+    {() => {
+      return (
+        <Box
+          borderWidth="xs"
+          width="200px"
+          borderColor="grey-lighter"
+          padding="md"
+          radius="md"
+        >
+          <Heading size="lg" style={{ textAlign: 'center' }} className="m-bottom-sm">
+            <Icon name="does-not-exist" className="font-size-2xl"/>
+          </Heading>
+          <p style={{ textAlign: 'center' }}>does-not-exist</p>
+        </Box>  
+      );
+    }}
   </Story>
 </Canvas>

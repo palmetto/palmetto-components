@@ -32,6 +32,7 @@ export type {
   SpacingSize,
   WidthSize,
   ZIndexSize,
+  IconName,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type BreakpointSizeWithBase = BreakpointSize | 'base';
@@ -195,6 +196,3 @@ export type SimulatedEventPayloadType = {
     value: ValueType<OptionTypeBase>;
   };
 };
-
-export type IconName =
-  'user';

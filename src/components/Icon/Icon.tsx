@@ -1,8 +1,6 @@
 import React, { FC, forwardRef } from 'react';
-import classNames from 'classnames';
+import icons from '@palmetto/palmetto-design-tokens/build/icons/react';
 import { IconName } from '../../types';
-import icons from '../../icons';
-import styles from './Icon.module.scss';
 
 interface IconProps {
   className?: string;
@@ -21,20 +19,21 @@ const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>((
   },
   ref,
 ) => {
-  const iconClasses = classNames(styles.icon, className);
   const IconComponent = icons[name];
 
+  if (!IconComponent) console.error(`Icon '${name}' not found`); // eslint-disable-line no-console
+
   return (
-    <svg
-      className={iconClasses}
-      ref={ref}
-      fill="currentColor"
-      viewBox="0 0 32 32"
-      {...restProps}
-    >
-      <title id="title">{`${name}-icon`}</title>
-      <IconComponent />
-    </svg>
+    IconComponent ? (
+      <IconComponent
+        className={className}
+        ref={ref}
+        data-testid={`icon-testid--${name}`}
+        {...restProps}
+      />
+    ) : (
+      <span>N/A</span>
+    )
   );
 });
 

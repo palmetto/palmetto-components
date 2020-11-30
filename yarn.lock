@@ -3024,10 +3024,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@palmetto/palmetto-design-tokens@^0.19.3":
-  version "0.19.3"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.19.3.tgz#e372368f8c84f1a436d54bee0fad8909acc4bed5"
-  integrity sha512-bnE59DFtMMH/KO6/HQIBowDKjU79vuGW66VlyCMZHntUVy7YE3oXcJhf4X+KkvDuYpB1RJAY1Jw6RxKkIHNQFA==
+"@palmetto/palmetto-design-tokens@^0.20.1":
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.20.1.tgz#ac827128baccda1b594a33f1bafa0562b10dc0da"
+  integrity sha512-5OMXomH1qIWlgV8HMR8tgPykeJw99XEDFwLwBPrO2As2B6f5PLN2pMhfcN0qGjOUn3oQpxbENT3qaZ+2quqdWQ==
 
 "@popperjs/core@^2.5.3":
   version "2.5.3"
