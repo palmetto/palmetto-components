@@ -53,6 +53,10 @@ interface ButtonProps {
    */
   isOutlined?: boolean;
   /**
+   * Render the button with no styles of its own, other than a pointer cursor.
+   */
+  isNaked?: boolean;
+  /**
    * Specify the tabIndex of the button.
    */
   tabIndex?: number;
@@ -99,6 +103,7 @@ const Button: FC<ButtonProps> = forwardRef((
     isDisabled = false,
     isLoading = false,
     isOutlined = false,
+    isNaked = false,
     tabIndex = undefined,
     type = 'button',
     onClick = undefined,
@@ -114,12 +119,13 @@ const Button: FC<ButtonProps> = forwardRef((
 
   const buttonClasses = classNames(
     styles.button,
-    styles[variant],
-    styles[size],
     className,
     {
-      [styles.outline]: isOutlined,
+      [styles.outline]: isOutlined && !isNaked,
       [styles.loading]: isLoading,
+      [styles.naked]: isNaked,
+      [styles[variant]]: variant && !isNaked,
+      [styles[size]]: size && !isNaked,
       [styles['full-width']]: fullWidth,
     },
   );
