@@ -179,6 +179,22 @@ describe('Button', () => {
       });
     });
 
+    describe('Naked', () => {
+      test('it has no styles appliedo there than the .naked class', () => {
+        render(
+          <Button isNaked>
+            Naked
+          </Button>,
+        );
+
+        const nakedButton = screen.getByText('Naked').closest('button');
+
+        expect(nakedButton.getAttribute('class')).toContain('naked');
+        expect(nakedButton.getAttribute('class')).not.toContain('md');
+        expect(nakedButton.getAttribute('class')).not.toContain('primary');
+      });
+    });
+
     describe('Custom ClassName', () => {
       test('if a ClassName is provided, its added to the button', () => {
         render(
