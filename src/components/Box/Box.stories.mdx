@@ -1,6 +1,7 @@
 import Box from './Box';
 import useBreakpoint from '../../hooks/useBreakpoint';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { RESPONSIVE_STORY } from '../../../.storybook/constants';
 import {
   FONT_SIZE_OPTIONS,
   FONT_COLOR_OPTIONS,
@@ -539,7 +540,7 @@ Set the `textAlign` prop to set the alignment of the text in the Box.
 <Canvas>
   <Story 
     name="responsive textAlign"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     <Box display="block">
       <Box display="block" textAlign={{ base: 'right', tablet: 'left', desktop: 'center'}}>base: right, tablet: left, desktop: center</Box>
@@ -871,7 +872,7 @@ The box will have different margin and padding values for at the base, tablet, a
 <Canvas>
   <Story
     name="responsive padding and margin" 
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     <Box
       padding={{ base: 'sm 2xs', tablet: '2xl lg', desktop: '5xl 3xl'}}
@@ -894,7 +895,7 @@ The box will have different margin and padding values for at the base, tablet, a
 <Canvas>
   <Story
     name="responsive direction"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     {() => {
       const activeBreakpoint = useBreakpoint();
@@ -929,7 +930,7 @@ This box will have different fontSize values for each of its base, tablet, deskt
 <Canvas>
   <Story
     name="responsive font size"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     {() => {
       const activeBreakpoint = useBreakpoint();
@@ -957,7 +958,7 @@ This box will have different fontColor values for each of its base, tablet, desk
 <Canvas>
   <Story
     name="responsive font color"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     {() => {
       const activeBreakpoint = useBreakpoint();
@@ -985,7 +986,7 @@ This box will have different backgroundColor values for each of its base, tablet
 <Canvas>
   <Story
     name="responsive background color"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     {() => {
       const activeBreakpoint = useBreakpoint();
@@ -1012,7 +1013,7 @@ This box will have different backgroundColor values for each of its base, tablet
 <Canvas>
   <Story
     name="responsive border color"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     {() => {
       const activeBreakpoint = useBreakpoint();
@@ -1038,7 +1039,7 @@ This box will have different border width values for each of its base, tablet, d
 <Canvas>
   <Story
     name="responsive border width"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     {() => {
       const activeBreakpoint = useBreakpoint();
@@ -1065,7 +1066,7 @@ This box will have different width and height values for each of its base, table
 <Canvas>
   <Story
     name="responsive width and height"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     {() => {
       const activeBreakpoint = useBreakpoint();
@@ -1096,7 +1097,7 @@ The childGap in these boxes will change based on the active breakpoint
 <Canvas>
   <Story
     name="responsive gaps"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}
+    parameters={{ ...RESPONSIVE_STORY }}
   >
     {() => {
       const activeBreakpoint = useBreakpoint();
@@ -1133,7 +1134,7 @@ This box will have different border radius based on the breakpoint
 
 <Canvas>
   <Story name="responsive radius"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}>
+    parameters={{ ...RESPONSIVE_STORY }}>
     {() => {
       const activeBreakpoint = useBreakpoint();
       const radius = { base: 'circle', tablet: 'sm', desktop: 'md', hd: 'lg' };
@@ -1161,7 +1162,7 @@ For example the following has padding at the `desktop` breakpoint and wider.
 
 <Canvas>
   <Story name="responsive padding lg"
-    parameters={{ chromatic: { viewports: [320, 700, 1012, 1300] } }}>
+    parameters={{ ...RESPONSIVE_STORY }}>
     <Box
       padding={{ desktop: 'lg'}}
       background="primary-lighter"
