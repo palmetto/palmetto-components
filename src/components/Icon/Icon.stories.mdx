@@ -12,19 +12,15 @@ import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 
 #### Not production ready.
 
+<Canvas isExpanded>
+  <Box childGap="md" direction="row">
+    <Icon name="user" />
+  </Box>
+</Canvas>
+
 ## Props
 
 <ArgsTable of={Icon} />
-
-## Default
-
-<Canvas>
-  <Story name="default">
-    <Box childGap="md" direction="row">
-      <Icon name="user" />
-    </Box>
-  </Story>
-</Canvas>
 
 ## Sizing
 
@@ -52,10 +48,20 @@ Similarly to sizing, icons inherit their color from the font-color.
   </Story>
 </Canvas>
 
-## Icons
+## Unknown Icon
+
+If a given icon name is not found in the dictionary, a red box with question marks will be displayed, as well as log an error to the console.
 
 <Canvas>
-  <Story name="icons">
+  <Story name="unknown icon">
+    <Icon name="does-not-exist" className="font-size-2xl" />
+  </Story>
+</Canvas>
+
+## Available Icons
+
+<Canvas>
+  <Story name="all icons">
     {() => {
       const iconNames = [
         'user',
@@ -86,15 +92,5 @@ Similarly to sizing, icons inherit their color from the font-color.
         </Box>
       );
     }}
-  </Story>
-</Canvas>
-
-## Fallback
-
-If the icon name is not found in the dictionary, we'll display `N/A` as a fallback, as well as log an error to the console.
-
-<Canvas>
-  <Story name="fallback">
-    <Icon name="does-not-exist" className="font-size-2xl" />
   </Story>
 </Canvas>

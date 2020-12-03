@@ -1,6 +1,7 @@
 import React, { FC, forwardRef } from 'react';
 import icons from '@palmetto/palmetto-design-tokens/build/icons/react';
 import { IconName } from '../../types';
+import Box from '../Box/Box';
 
 interface IconProps {
   className?: string;
@@ -11,20 +12,13 @@ interface IconProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>((
-  {
-    className = undefined,
-    name,
-    ...restProps
-  },
-  ref,
-) => {
-  const IconComponent = icons[name];
+const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
+  ({ className = undefined, name, ...restProps }, ref) => {
+    const IconComponent = icons[name];
 
-  if (!IconComponent) console.error(`Icon '${name}' not found`); // eslint-disable-line no-console
+    if (!IconComponent) console.error(`Icon '${name}' not found`); // eslint-disable-line no-console
 
-  return (
-    IconComponent ? (
+    return IconComponent ? (
       <IconComponent
         className={className}
         ref={ref}
@@ -32,9 +26,18 @@ const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>((
         {...restProps}
       />
     ) : (
-      <span>N/A</span>
-    )
-  );
-});
+      <Box
+        fontWeight="bold"
+        background="danger"
+        color="white"
+        padding="2xs"
+        fontSize="sm"
+        display="inline"
+      >
+        ???
+      </Box>
+    );
+  },
+);
 
 export default Icon;
