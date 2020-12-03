@@ -9,13 +9,14 @@ import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 <Meta title="Components/Icon" component={Icon} />
 
 # Icon (BETA)
+
 #### Not production ready.
 
 ## Props
 
 <ArgsTable of={Icon} />
 
-# Default
+## Default
 
 <Canvas>
   <Story name="default">
@@ -25,34 +26,33 @@ import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
   </Story>
 </Canvas>
 
-# Sizing
+## Sizing
 
-The size of the icon is inherited from the font-size. This allows for easy inline placement inside of other components, text, etc.
+The size of the icon is inherited from its parent's font-size. This allows for easy inline placement inside of other components, text, etc.
 If you wish to size your icon independent of its container, you can pass it a utility class, (E.G: `font-size-md`) or declare the font
 size as a style object.
 
 <Canvas>
   <Story name="Sizing">
-    <Box childGap="md" alignItems="flex-start">
-      <Button><Icon name="user" />&nbsp;&nbsp;Inside a button</Button>
-      <Heading size="xl" as="h2"><Icon name="user" />&nbsp;&nbsp;In a heading</Heading>
+    <Box as="p" alignItems="center" direction="row" childGap="xs" fontSize="xl">
+      <Icon name="user" /> font size xl
     </Box>
   </Story>
 </Canvas>
 
-# Colors
+## Color
 
-Similarly to sizing, icons inherit their color from the font-color. 
+Similarly to sizing, icons inherit their color from the font-color.
 
 <Canvas>
   <Story name="Colors">
-    <Box childGap="md" alignItems="flex-start">
-      <Heading size="xl" as="h2" variant="primary"><Icon name="user" />&nbsp;&nbsp;Primary</Heading>
+    <Box as="p" alignItems="center" direction="row" childGap="xs" color="secondary-500">
+      <Icon name="user" /> font color secondary-500
     </Box>
   </Story>
 </Canvas>
 
-# Icons
+## Icons
 
 <Canvas>
   <Story name="icons">
@@ -69,9 +69,16 @@ Similarly to sizing, icons inherit their color from the font-color.
       return (
         <Box childGap="sm" direction="row" wrap>
           {iconNames.map(name => (
-            <Box borderWidth="xs" borderColor="grey-lighter" key={name} padding="md" radius="md" margin="md 0 0 0">
+            <Box
+              borderWidth="xs"
+              borderColor="grey-lighter"
+              key={name}
+              padding="md"
+              radius="md"
+              margin="md 0 0 0"
+            >
               <Heading size="lg" style={{ textAlign: 'center' }} className="m-bottom-sm">
-                <Icon name={name} className="font-size-2xl"/>
+                <Icon name={name} className="font-size-2xl" />
               </Heading>
               <p>{name}</p>
             </Box>
@@ -82,26 +89,12 @@ Similarly to sizing, icons inherit their color from the font-color.
   </Story>
 </Canvas>
 
-# Fallback
+## Fallback
 
 If the icon name is not found in the dictionary, we'll display `N/A` as a fallback, as well as log an error to the console.
+
 <Canvas>
   <Story name="fallback">
-    {() => {
-      return (
-        <Box
-          borderWidth="xs"
-          width="200px"
-          borderColor="grey-lighter"
-          padding="md"
-          radius="md"
-        >
-          <Heading size="lg" style={{ textAlign: 'center' }} className="m-bottom-sm">
-            <Icon name="does-not-exist" className="font-size-2xl"/>
-          </Heading>
-          <p style={{ textAlign: 'center' }}>does-not-exist</p>
-        </Box>  
-      );
-    }}
+    <Icon name="does-not-exist" className="font-size-2xl" />
   </Story>
 </Canvas>
