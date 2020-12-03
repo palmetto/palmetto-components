@@ -20,6 +20,8 @@ import {
   ZIndexSize,
 } from '../types';
 
+export { ICON_NAMES } from '@palmetto/palmetto-design-tokens/build/icons';
+
 export const BORDER_RADIUS_OPTIONS = Object.keys(size['border-radius']) as BorderRadiusSize[];
 export const BORDER_RADIUS_VALUES = Object.values(size['border-radius']);
 

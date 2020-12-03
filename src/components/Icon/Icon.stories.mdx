@@ -4,18 +4,16 @@ import Box from '../Box/Box';
 import Button from '../Button/Button';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
+import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS, ICON_NAMES } from '../../lib/tokens';
 
 <Meta title="Components/Icon" component={Icon} />
 
-# Icon (BETA)
+# Icon
 
 #### Not production ready.
 
 <Canvas isExpanded>
-  <Box childGap="md" direction="row">
-    <Icon name="user" />
-  </Box>
+  <Icon name="star" />
 </Canvas>
 
 ## Props
@@ -29,9 +27,38 @@ If you wish to size your icon independent of its container, you can pass it a ut
 size as a style object.
 
 <Canvas>
-  <Story name="Sizing">
-    <Box as="p" alignItems="center" direction="row" childGap="xs" fontSize="xl">
-      <Icon name="user" /> font size xl
+  <Story name="size">
+    <Box direction="row" childGap="xs">
+      <Box fontSize="2xs">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="xs">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="sm">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="md">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="lg">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="xl">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="2xl">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="3xl">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="4xl">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="5xl">
+        <Icon name="star" />
+      </Box>
     </Box>
   </Story>
 </Canvas>
@@ -41,9 +68,15 @@ size as a style object.
 Similarly to sizing, icons inherit their color from the font-color.
 
 <Canvas>
-  <Story name="Colors">
+  <Story name="color">
+    <Box as="p" alignItems="center" direction="row" childGap="xs" color="primary-500">
+      <Icon name="star" /> primary-500
+    </Box>
     <Box as="p" alignItems="center" direction="row" childGap="xs" color="secondary-500">
-      <Icon name="user" /> font color secondary-500
+      <Icon name="star" /> secondary-500
+    </Box>
+    <Box as="p" alignItems="center" direction="row" childGap="xs" color="tertiary-500">
+      <Icon name="star" /> tertiary-500
     </Box>
   </Story>
 </Canvas>
@@ -63,30 +96,28 @@ If a given icon name is not found in the dictionary, a red box with question mar
 <Canvas>
   <Story name="all icons">
     {() => {
-      const iconNames = [
-        'user',
-        'alpha-order',
-        'chevron-down',
-        'chevron-up',
-        'chevron-left',
-        'chevron-right',
-        'search',
-      ];
       return (
-        <Box childGap="sm" direction="row" wrap>
-          {iconNames.map(name => (
+        <Box
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill,minmax(6rem,1fr))',
+            gridAutoRows: '6rem',
+            gap: '1rem',
+          }}
+        >
+          {ICON_NAMES.map(name => (
             <Box
-              borderWidth="xs"
-              borderColor="grey-lighter"
               key={name}
-              padding="md"
-              radius="md"
-              margin="md 0 0 0"
+              fontSize="lg"
+              textAlign="center"
+              alignItems="center"
+              justifyContent="center"
+              childGap="sm"
             >
-              <Heading size="lg" style={{ textAlign: 'center' }} className="m-bottom-sm">
-                <Icon name={name} className="font-size-2xl" />
-              </Heading>
-              <p>{name}</p>
+              <Icon className="neutral-500" name={name} />
+              <Box as="p" color="grey-500" fontSize="sm">
+                {name}
+              </Box>
             </Box>
           ))}
         </Box>
