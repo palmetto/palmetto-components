@@ -1,4 +1,6 @@
-import React, { FC, ReactNode, MouseEvent, KeyboardEvent } from 'react';
+import React, {
+  FC, ReactNode, MouseEvent, KeyboardEvent,
+} from 'react';
 import classNames from 'classnames';
 import Heading from '../Heading/Heading';
 import Box from '../Box/Box';
@@ -7,7 +9,7 @@ import styles from './Alert.module.scss';
 import { BrandColor, FontColor, IconName } from '../../types';
 
 export type AlertVariant = 'default' | 'info' | 'success' | 'warning' | 'danger';
-export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor };
+export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
 interface AlertProps {
   /**
    * Custom class to apply to the alert.
