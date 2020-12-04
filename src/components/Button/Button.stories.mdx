@@ -29,7 +29,7 @@ Actions almost always occur on the same page.
 The `variant` prop determines which color variant to render.
 
 <Canvas>
-  <Story name="Variants">
+  <Story name="variants">
     <Box childGap="sm" direction="row">
       <Button variant="primary">
         Primary
@@ -56,7 +56,7 @@ Use `isOutlined` to render an outline button. This is helpful for adding a secon
 the color of the primary CTA but makes the hierarchy clear. The background is transparent in the default state.
 
 <Canvas>
-  <Story name="Outlined">
+  <Story name="outlined">
     <Box childGap="sm" direction="row">
       <Button variant="primary" isOutlined>
         Primary
@@ -82,7 +82,7 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
 Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size.
 
 <Canvas>
-  <Story name="Size">
+  <Story name="size">
     <Box childGap="md">
       <Box childGap="sm" direction="row">
         <Button size="xs" variant="primary">xs Primary</Button>
@@ -146,13 +146,15 @@ Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size
 
 ## Naked
 
-When you need a button with no styles.
+When you need a button with no styles but want to use utility classes.
 
 <Canvas>
-  <Story name="Naked">
+  <Story name="naked">
+    <Box display="block" fontSize="sm" color="secondary-500">
     <Button isNaked>
-      Naked
+      Naked Button
     </Button>
+    </Box>
   </Story>
 </Canvas>
 
@@ -161,7 +163,7 @@ When you need a button with no styles.
 Use the `fullWidth` prop to allow the button to grow to its container's full width.
 
 <Canvas>
-  <Story name="Full Width">
+  <Story name="full width">
     <Box childGap="md">
       <Button fullWidth>
         Full Width
@@ -170,6 +172,58 @@ Use the `fullWidth` prop to allow the button to grow to its container's full wid
         Full Width
       </Button>
     </Box>
+  </Story>
+</Canvas>
+
+## Icons
+
+Add an icon to the left or right inside the Button using the `iconPrefix` and `iconSuffix` props respectively.
+<Canvas>
+  <Story name="with icons">
+    <Box childGap="md" display="block">
+      <Box direction="row" childGap="md">
+        <Button variant="primary" iconPrefix="mail">
+          Email
+        </Button>
+        <Button variant="primary" isOutlined iconSuffix="chat">
+          Chat Now
+        </Button>
+      </Box>
+      <Box direction="row" childGap="md">
+        <Button variant="light" iconPrefix="nav-left">
+          back
+        </Button>
+        <Button variant="light" iconSuffix="nav-right">
+          next
+        </Button>
+      </Box>
+      <Box direction="row" childGap="md">
+        <Button size="sm" variant="light" iconPrefix="nav-left">
+          back
+        </Button>
+        <Button size="sm" variant="light" iconSuffix="nav-right">
+          next
+        </Button>
+      </Box>
+      <Box direction="row" childGap="md">
+        <Button size="xs" variant="light" iconPrefix="nav-left">
+          back
+        </Button>
+        <Button size="xs" variant="light" iconSuffix="nav-right">
+          next
+        </Button>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Icon Only Button
+
+Use a combination of `isNaked` and an named icon to make an icon a button. Be sure to include an `aria-label` for screen readers to know what action the button will perform when pressed.
+
+<Canvas>
+  <Story name="icon button">
+    <Button iconPrefix="remove" isNaked  aria-label="remove" />
   </Story>
 </Canvas>
 
