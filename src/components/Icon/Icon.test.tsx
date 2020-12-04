@@ -11,7 +11,7 @@ describe('Icon', () => {
 
   test('fallback', () => {
     render(<Icon name={'does-not-exist' as 'user'} />);
-    const icon = screen.getByText('N/A');
+    const icon = screen.getByText('???');
     expect(icon).toBeInTheDocument();
   });
 });

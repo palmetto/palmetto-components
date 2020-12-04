@@ -4,103 +4,123 @@ import Box from '../Box/Box';
 import Button from '../Button/Button';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
+import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS, ICON_NAMES } from '../../lib/tokens';
 
 <Meta title="Components/Icon" component={Icon} />
 
-# Icon (BETA)
+# Icon
+
 #### Not production ready.
+
+<Canvas isExpanded>
+  <Icon name="star" />
+</Canvas>
 
 ## Props
 
 <ArgsTable of={Icon} />
 
-# Default
+## Sizing
 
-<Canvas>
-  <Story name="default">
-    <Box childGap="md" direction="row">
-      <Icon name="user" />
-    </Box>
-  </Story>
-</Canvas>
-
-# Sizing
-
-The size of the icon is inherited from the font-size. This allows for easy inline placement inside of other components, text, etc.
+The size of the icon is inherited from its parent's font-size. This allows for easy inline placement inside of other components, text, etc.
 If you wish to size your icon independent of its container, you can pass it a utility class, (E.G: `font-size-md`) or declare the font
 size as a style object.
 
 <Canvas>
-  <Story name="Sizing">
-    <Box childGap="md" alignItems="flex-start">
-      <Button><Icon name="user" />&nbsp;&nbsp;Inside a button</Button>
-      <Heading size="xl" as="h2"><Icon name="user" />&nbsp;&nbsp;In a heading</Heading>
+  <Story name="size">
+    <Box direction="row" childGap="xs">
+      <Box fontSize="2xs">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="xs">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="sm">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="md">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="lg">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="xl">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="2xl">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="3xl">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="4xl">
+        <Icon name="star" />
+      </Box>
+      <Box fontSize="5xl">
+        <Icon name="star" />
+      </Box>
     </Box>
   </Story>
 </Canvas>
 
-# Colors
+## Color
 
-Similarly to sizing, icons inherit their color from the font-color. 
+Similarly to sizing, icons inherit their color from the font-color.
 
 <Canvas>
-  <Story name="Colors">
-    <Box childGap="md" alignItems="flex-start">
-      <Heading size="xl" as="h2" variant="primary"><Icon name="user" />&nbsp;&nbsp;Primary</Heading>
+  <Story name="color">
+    <Box as="p" alignItems="center" direction="row" childGap="xs" color="primary-500">
+      <Icon name="star" /> primary-500
+    </Box>
+    <Box as="p" alignItems="center" direction="row" childGap="xs" color="secondary-500">
+      <Icon name="star" /> secondary-500
+    </Box>
+    <Box as="p" alignItems="center" direction="row" childGap="xs" color="tertiary-500">
+      <Icon name="star" /> tertiary-500
     </Box>
   </Story>
 </Canvas>
 
-# Icons
+## Unknown Icon
+
+If a given icon name is not found in the dictionary, a red box with question marks will be displayed, as well as log an error to the console.
 
 <Canvas>
-  <Story name="icons">
-    {() => {
-      const iconNames = [
-        'user',
-        'alpha-order',
-        'chevron-down',
-        'chevron-up',
-        'chevron-left',
-        'chevron-right',
-        'search',
-      ];
-      return (
-        <Box childGap="sm" direction="row" wrap>
-          {iconNames.map(name => (
-            <Box borderWidth="xs" borderColor="grey-lighter" key={name} padding="md" radius="md" margin="md 0 0 0">
-              <Heading size="lg" style={{ textAlign: 'center' }} className="m-bottom-sm">
-                <Icon name={name} className="font-size-2xl"/>
-              </Heading>
-              <p>{name}</p>
-            </Box>
-          ))}
-        </Box>
-      );
-    }}
+  <Story name="unknown icon">
+    <Icon name="does-not-exist" className="font-size-2xl" />
   </Story>
 </Canvas>
 
-# Fallback
+## Available Icons
 
-If the icon name is not found in the dictionary, we'll display `N/A` as a fallback, as well as log an error to the console.
 <Canvas>
-  <Story name="fallback">
+  <Story name="all icons">
     {() => {
       return (
         <Box
-          borderWidth="xs"
-          width="200px"
-          borderColor="grey-lighter"
-          padding="md"
-          radius="md"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill,minmax(6rem,1fr))',
+            gridAutoRows: '6rem',
+            gap: '1rem',
+          }}
         >
-          <Heading size="lg" style={{ textAlign: 'center' }} className="m-bottom-sm">
-            <Icon name="does-not-exist" className="font-size-2xl"/>
-          </Heading>
-          <p style={{ textAlign: 'center' }}>does-not-exist</p>
-        </Box>  
+          {ICON_NAMES.map(name => (
+            <Box
+              key={name}
+              fontSize="lg"
+              textAlign="center"
+              alignItems="center"
+              justifyContent="center"
+              childGap="sm"
+            >
+              <Icon className="neutral-500" name={name} />
+              <Box as="p" color="grey-500" fontSize="sm">
+                {name}
+              </Box>
+            </Box>
+          ))}
+        </Box>
       );
     }}
   </Story>
