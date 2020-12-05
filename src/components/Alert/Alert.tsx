@@ -1,25 +1,18 @@
 import React, {
-  FC,
-  ReactNode,
-  MouseEvent,
-  KeyboardEvent,
+  FC, ReactNode, MouseEvent, KeyboardEvent,
 } from 'react';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faExclamationCircle,
-  faExclamationTriangle,
-  faInfoCircle,
-  faTimesCircle,
-  faCheckCircle,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
 import Heading from '../Heading/Heading';
+import Box from '../Box/Box';
+import Icon from '../Icon/Icon';
 import styles from './Alert.module.scss';
+import { BrandColor, FontColor, IconName } from '../../types';
 
+export type AlertVariant = 'default' | 'info' | 'success' | 'warning' | 'danger';
+export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
 interface AlertProps {
   /**
-   * Custom class to apply to the alert container div.
+   * Custom class to apply to the alert.
    */
   className?: string;
   /**
@@ -31,7 +24,7 @@ interface AlertProps {
    */
   hasIcon?: boolean;
   /**
-   * Deterimines whether the alert can be closed by the user. If `true` it will render
+   * Whether the alert can be closed by the user. If `true` it will render
    * the 'close' icon on the right hand side of the alert.
    */
   isClosable?: boolean;
@@ -44,10 +37,10 @@ interface AlertProps {
    */
   message?: string | ReactNode;
   /**
-   * Deterimines whether the alert can be closed by the user. If `true` it will render
+   * Whether the alert can be closed by the user. If `true` it will render
    * the 'close' icon on the right hand side of the alert.
    */
-  onClose?: (event: (MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>)) => void;
+  onClose?: (event: MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>) => void;
   /**
    * A render function that returns JSX if preferred over a static ReactNode or string.
    */
@@ -73,78 +66,73 @@ const Alert: FC<AlertProps> = ({
   title = '',
   variant = 'default',
 }) => {
-  const handleClose = (event: (MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>)): void => {
+  const attributes: { [key in AlertVariant]: AlertAttributes } = {
+    default: { icon: 'c-warning', color: 'grey-600', background: 'grey-lighter' },
+    info: { icon: 'c-info', color: 'info-500', background: 'secondary-lightest' },
+    success: { icon: 'c-check', color: 'success-500', background: 'success-lightest' },
+    warning: { icon: 't-warning', color: 'warning-500', background: 'warning-lightest' },
+    danger: { icon: 'c-remove', color: 'danger-500', background: 'danger-lightest' },
+  };
+
+  const handleClose = (
+    event: MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>,
+  ): void => {
     if (!onClose) return;
 
     onClose(event);
   };
 
-  const renderAlertIcon = (): ReactNode => {
-    const icons = {
-      default: faExclamationCircle,
-      info: faInfoCircle,
-      success: faCheckCircle,
-      warning: faExclamationTriangle,
-      danger: faTimesCircle,
-    };
-
-    const iconClasses = classNames(
-      styles['type-icon'],
-      styles[variant],
-    );
-
-    return (
-      <div className={iconClasses}>
-        <FontAwesomeIcon icon={icons[variant]} data-testid={`alert-icon-${variant}-test-id`} />
-      </div>
-    );
-  };
+  const renderAlertIcon = (): ReactNode => (
+    <Box fontSize="lg" color={attributes[variant].color}>
+      <Icon name={attributes[variant].icon} data-testid={`alert-icon-${variant}-test-id`} />
+    </Box>
+  );
 
   const renderCloseIcon = (): ReactNode => {
-    const closeIconClasses: string = classNames(
-      styles['close-icon'],
-      { [styles.clickable]: !!onClose },
-    );
-
     const handleCloseKeyPress = (event: KeyboardEvent<HTMLSpanElement>): void => {
       if (event.keyCode === 13) handleClose(event);
     };
 
     return (
-      <div className={closeIconClasses}>
-        <button
-          type="button"
-          onClick={handleClose}
-          onKeyUp={handleCloseKeyPress}
-        >
-          {closeText || <FontAwesomeIcon icon={faTimes} data-testid="alert-close-icon-test-id" />}
+      <Box margin="0 0 0 auto" color="grey-500" className={styles['close-icon']}>
+        <button type="button" onClick={handleClose} onKeyUp={handleCloseKeyPress}>
+          {closeText || <Icon name="remove" data-testid="alert-close-icon-test-id" />}
         </button>
-      </div>
+      </Box>
     );
   };
 
-  const alertContainerClasses: string = classNames(
-    styles.alert,
-    styles[variant],
-    { [styles.compact]: isCompact },
-    className,
-  );
+  const alertContainerClasses: string = classNames(styles.alert, className);
 
   return (
-    <div className={alertContainerClasses} role="alert">
+    <Box
+      alignItems="flex-start"
+      background={attributes[variant].background}
+      childGap="sm"
+      className={alertContainerClasses}
+      direction="row"
+      padding={isCompact ? 'xs' : 'md'}
+      radius="md"
+      role="alert"
+      fontSize="sm"
+    >
       {hasIcon && renderAlertIcon()}
-      <div className={styles['alert-message']}>
-        {render ? render() : (
-          <>
-            {title && <Heading as="h4" size="md" className={styles['alert-title']}>{title}</Heading>}
-            {message && (
-              typeof message === 'string' ? <p>{message}</p> : message
+      <div>
+        {render ? (
+          render()
+        ) : (
+          <Box display="block" childGap={message && title ? '2xs' : undefined}>
+            {title && (
+              <Heading as="h4" size="md">
+                {title}
+              </Heading>
             )}
-          </>
+            {message && (typeof message === 'string' ? <p>{message}</p> : message)}
+          </Box>
         )}
       </div>
       {isClosable && renderCloseIcon()}
-    </div>
+    </Box>
   );
 };
 

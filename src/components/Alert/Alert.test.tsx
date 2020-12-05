@@ -15,27 +15,6 @@ describe('Alert', () => {
     });
   });
 
-  describe('Types', () => {
-    test('It renders with specific classes based on the type prop', () => {
-      const message = 'Hello world!';
-      const variants = [
-        'info' as const,
-        'success' as const,
-        'warning' as const,
-        'danger' as const,
-      ];
-
-      const { rerender } = render(<Alert message={message} />);
-
-      variants.forEach(variant => {
-        rerender(<Alert message={message} variant={variant} />);
-        const alert = screen.getByRole('alert');
-        expect(alert).toBeInTheDocument();
-        expect(alert).toHaveClass(variant);
-      });
-    });
-  });
-
   describe('Custom Class', () => {
     test('It renders with a custom class if provided', () => {
       const message = 'Hello world!';
@@ -49,12 +28,7 @@ describe('Alert', () => {
   describe('With Icon', () => {
     test('It shows a relevant icon when passed the `hasIcon` prop', () => {
       const message = 'Hello world!';
-      const variants = [
-        'info' as const,
-        'success' as const,
-        'warning' as const,
-        'danger' as const,
-      ];
+      const variants = ['info' as const, 'success' as const, 'warning' as const, 'danger' as const];
 
       const { rerender } = render(<Alert message={message} />);
 
@@ -175,7 +149,7 @@ describe('Alert', () => {
       render(<Alert message={message} isCompact />);
 
       const alert = screen.getByRole('alert');
-      expect(alert).toHaveClass('compact');
+      expect(alert).toHaveClass('p-xs');
     });
   });
 });
