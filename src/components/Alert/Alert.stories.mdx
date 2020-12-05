@@ -32,9 +32,7 @@ or a ReactNode to be rendered.
 
 <Canvas>
   <Story name="Default">
-    {() => {
-      return <Alert message="Hello world!" />;
-    }}
+    <Alert message="Hello world!" />
   </Story>
 </Canvas>
 
@@ -49,7 +47,7 @@ Alerts come in different variants based on the kind of feedback being delivered 
       return (
         <>
           {variants.map(variant => (
-            <Alert message={variant} variant={variant} className="m-bottom-md" />
+            <Alert key={variant} message={variant} variant={variant} className="m-bottom-md" />
           ))}
         </>
       );
@@ -63,18 +61,12 @@ Pass a string to the `title` prop to create a natural visual text hierarchy.
 
 <Canvas>
   <Story name="With Title">
-    {() => {
-      return (
-        <>
-          <Alert
-            title="Proposal Archived"
-            message="The proposal was archived on Sept 9, 2020 at 5:31pm?"
-            className="m-bottom-md"
-          />
-          <Alert variant="danger" title="Contact Deleted" />
-        </>
-      );
-    }}
+    <Alert
+      title="Proposal Archived"
+      message="The proposal was archived on Sept 9, 2020 at 5:31pm?"
+      className="m-bottom-md"
+    />
+    <Alert variant="danger" title="Contact Deleted" />
   </Story>
 </Canvas>
 
@@ -84,9 +76,7 @@ You can apply a custom class to your alert with the `className` prop. Here we ha
 
 <Canvas>
   <Story name="Custom Class">
-    {() => {
-      return <Alert message="Hello world!" variant="success" className="m-bottom-3xl" />;
-    }}
+    <Alert message="Hello world!" variant="success" className="m-bottom-3xl" />;
   </Story>
 </Canvas>
 
@@ -105,7 +95,7 @@ You can choose to display a standard icon for each variant of notification, base
       `;
       return (
         <>
-          {variants.map((variant, index) => (
+          {variants.map(variant => (
             <Alert
               message={message(variant)}
               key={variant}
@@ -233,8 +223,6 @@ Renders a version of the banner with less padding.
 
 <Canvas>
   <Story name="Compact">
-    {() => {
-      return <Alert message="Compact Alerts have less padding" variant="info" isCompact />;
-    }}
+    <Alert message="Compact Alerts have less padding" variant="info" isCompact />;
   </Story>
 </Canvas>
