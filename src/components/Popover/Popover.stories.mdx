@@ -2,36 +2,23 @@ import { useState } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faAddressCard,
-  faBars,
-  faCog,
-  faChartBar,
-  faListAlt,
-  faBook,
-  faMapMarked,
-  faBox,
-  faQuestionCircle,
-} from '@fortawesome/free-solid-svg-icons';
 import Popover from './Popover';
 import Card from '../Card/Card';
 import Button from '../Button/Button';
 import Box from '../Box/Box';
 import Heading from '../Heading/Heading';
+import Icon from '../Icon/Icon';
 import TextInput from '../TextInput/TextInput';
 import TextLink from '../TextLink/TextLink';
 import SelectInput from '../SelectInput/SelectInput';
 
-<Meta
-  title="Components/Popover"
-  component={Popover}
-/>
+<Meta title="Components/Popover" component={Popover} />
 
 # Popover
 
 Use popovers to show content of any kind behind the context of a specific trigger, some examples
-of uses for a popover include: 
+of uses for a popover include:
+
 1. Dropdowns
 2. Tooltips
 3. Context Menus
@@ -40,7 +27,9 @@ of uses for a popover include:
   <Story name="Demo">
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
-      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const handleOpenPopover = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
       const NavItem = ({ children, className, iconName }) => (
         <Box
           as="li"
@@ -52,8 +41,8 @@ of uses for a popover include:
         >
           <Box direction="row" childGap="md" alignItems="center">
             {iconName && (
-              <Box color="grey-300">
-                <FontAwesomeIcon className="nav-item-icon" size="lg" icon={iconName} />
+              <Box color="grey-300" fontSize="lg">
+                <Icon className="nav-item-icon" name={iconName} />
               </Box>
             )}
             <Box style={{ fontWeight: 500 }}>{children}</Box>
@@ -77,7 +66,13 @@ of uses for a popover include:
           >
             <Box as="ul" childGap="xs" padding="md md sm md">
               <Box direction="row" childGap="sm" alignItems="center">
-                <Box fontSize="xs" color="white" radius="sm" background="primary-light" padding="2xs">
+                <Box
+                  fontSize="xs"
+                  color="white"
+                  radius="sm"
+                  background="primary-light"
+                  padding="2xs"
+                >
                   JC
                 </Box>
                 <Box display="block" className="truncate">
@@ -93,11 +88,11 @@ of uses for a popover include:
                   flexShrink: 0,
                 }}
               >
-                <NavItem iconName={faAddressCard}>Contacts</NavItem>
-                <NavItem iconName={faChartBar}>Reports</NavItem>
-                <NavItem iconName={faListAlt}>Design Queue</NavItem>
-                <NavItem iconName={faBook}>Certifications</NavItem>
-                <NavItem iconName={faCog}>Settings</NavItem>
+                <NavItem iconName="contact">Contacts</NavItem>
+                <NavItem iconName="chart-bar">Reports</NavItem>
+                <NavItem iconName="list">Design Queue</NavItem>
+                <NavItem iconName="book">Certifications</NavItem>
+                <NavItem iconName="settings">Settings</NavItem>
               </Box>
               <Box
                 childGap="sm"
@@ -122,23 +117,8 @@ of uses for a popover include:
                 borderColor="grey-lighter"
                 style={{ flex: '1 0 auto' }}
               >
-                <Heading size="sm" as="h4" variant="grey">
-                  Palmetto Adminstration
-                </Heading>
                 <Box as="ul" childGap="sm">
-                  <NavItem iconName={faMapMarked}>Markets</NavItem>
-                  <NavItem iconName={faBox}>Products</NavItem>
-                </Box>
-              </Box>
-              <Box
-                childGap="sm"
-                padding="lg 0 0 0"
-                borderWidth="xs 0 0 0"
-                borderColor="grey-lighter"
-                style={{ flex: '1 0 auto' }}
-              >
-                <Box as="ul" childGap="sm">
-                  <NavItem iconName={faQuestionCircle}>Feedback</NavItem>
+                  <NavItem iconName="c-question">Feedback</NavItem>
                 </Box>
               </Box>
             </Box>
@@ -158,9 +138,8 @@ of uses for a popover include:
             withPortal
           >
             <Button onClick={handleOpenPopover} variant="light" size="sm">
-              <FontAwesomeIcon icon={faBars} />
-              &nbsp;
-              Popover Menu
+              Popover Menu &nbsp;
+              <Icon name="menu" />
             </Button>
           </Popover>
         </div>
@@ -175,7 +154,7 @@ of uses for a popover include:
 
 ## Default
 
-The popover requires a `children` node that will act as a trigger, as well as a `content` prop that has the contents of the Popover. 
+The popover requires a `children` node that will act as a trigger, as well as a `content` prop that has the contents of the Popover.
 
 Use the `isOpen` prop to govern the state of the Popover. This is done by attaching a `onClick` event to the trigger element.
 
@@ -186,8 +165,10 @@ items, however are fully customizable.
   <Story name="Default">
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
-      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
-      const popoverContent = (<>Hello!</>);
+      const handleOpenPopover = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
+      const popoverContent = <>Hello!</>;
       return (
         <div>
           <Popover
@@ -198,7 +179,9 @@ items, however are fully customizable.
               padding: 'sm',
             }}
           >
-            <Button onClick={handleOpenPopover} variant="light">Toggle Popover</Button>
+            <Button onClick={handleOpenPopover} variant="light">
+              Toggle Popover
+            </Button>
           </Popover>
         </div>
       );
@@ -216,8 +199,13 @@ the entire gamut of styling options.
   <Story name="styling">
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(true);
-      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
-      const [popoverBackground, setPopoverBackground] = useState({ value: 'white', label: 'White' });
+      const handleOpenPopover = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
+      const [popoverBackground, setPopoverBackground] = useState({
+        value: 'white',
+        label: 'White',
+      });
       const [popoverFontColor, setPopoverFontColor] = useState({ value: 'dark', label: 'Dark' });
       const [popoverRadius, setPopoverRadius] = useState({ value: 'sm', label: 'Small' });
       const backgroundOptions = [
@@ -242,24 +230,33 @@ the entire gamut of styling options.
         <Box height="400px">
           <Box direction="row" childGap="md" wrap>
             <Popover
-              content={<><p>Hello world!</p><p>Style me any way you want</p></>}
+              content={
+                <>
+                  <p>Hello world!</p>
+                  <p>Style me any way you want</p>
+                </>
+              }
               isOpen={isPopoverOpen}
               placement={'right'}
               contentContainerProps={{
                 padding: 'sm',
                 background: popoverBackground.value,
                 color: popoverFontColor.value,
-                radius: popoverRadius.value
+                radius: popoverRadius.value,
               }}
             >
-              <Button onClick={handleOpenPopover} variant="light">Toggle Popover</Button>
+              <Button onClick={handleOpenPopover} variant="light">
+                Toggle Popover
+              </Button>
             </Popover>
           </Box>
           <Box direction="row" childGap="sm" wrap margin="3xl 0 0 0">
             <Box width="200px">
               <SelectInput
                 options={backgroundOptions}
-                onChange={(event) => { setPopoverBackground(event.target.value); }}
+                onChange={event => {
+                  setPopoverBackground(event.target.value);
+                }}
                 value={popoverBackground}
                 label="Background Color"
               />
@@ -267,7 +264,9 @@ the entire gamut of styling options.
             <Box width="200px">
               <SelectInput
                 options={fontColorOptions}
-                onChange={(event) => { setPopoverFontColor(event.target.value); }}
+                onChange={event => {
+                  setPopoverFontColor(event.target.value);
+                }}
                 value={popoverFontColor}
                 label="Font Color"
               />
@@ -275,14 +274,16 @@ the entire gamut of styling options.
             <Box width="200px">
               <SelectInput
                 options={borderRadiusOptions}
-                onChange={(event) => { setPopoverRadius(event.target.value); }}
+                onChange={event => {
+                  setPopoverRadius(event.target.value);
+                }}
                 value={popoverRadius}
                 label="Border Radius"
               />
             </Box>
           </Box>
         </Box>
-      )
+      );
     }}
   </Story>
 </Canvas>
@@ -290,20 +291,20 @@ the entire gamut of styling options.
 ## Placement
 
 Based on layout, it is beneficial to place the popover in a variety of positions relative to its trigger element.
-Note that in case where the popover is in danger of overflowing, the component will fallback to `auto` in order to 
+Note that in case where the popover is in danger of overflowing, the component will fallback to `auto` in order to
 prevent the content from getting cut off.
 
 <Canvas>
   <Story name="Placement">
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState({
-        'auto': false,
+        auto: false,
         'auto-start': false,
         'auto-end': false,
-        'top': false,
-        'bottom': false,
-        'right': false,
-        'left': false,
+        top: false,
+        bottom: false,
+        right: false,
+        left: false,
         'top-start': false,
         'top-end': false,
         'bottom-start': false,
@@ -313,7 +314,7 @@ prevent the content from getting cut off.
         'left-start': false,
         'left-end': false,
       });
-      const handleOpenPopover = (key) => {
+      const handleOpenPopover = key => {
         setPopoverOpen({ ...isPopoverOpen, [key]: !isPopoverOpen[key] });
       };
       const positions = [
@@ -336,12 +337,7 @@ prevent the content from getting cut off.
       return (
         <Box direction="row" childGap="md" wrap>
           {positions.map(position => (
-            <Box
-              height="100px"
-              padding="5xl"
-              display="inline-block"
-              key={position}
-            >
+            <Box height="100px" padding="5xl" display="inline-block" key={position}>
               <Popover
                 content={<>{position}</>}
                 isOpen={isPopoverOpen[position]}
@@ -352,10 +348,7 @@ prevent the content from getting cut off.
                   color: 'white',
                 }}
               >
-                <Button
-                  onClick={() => handleOpenPopover(position)}
-                  variant="light"
-                >
+                <Button onClick={() => handleOpenPopover(position)} variant="light">
                   {position}
                 </Button>
               </Popover>
@@ -383,7 +376,9 @@ in order to render the element anywhere on the page.
   <Story name="With a Portal">
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
-      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const handleOpenPopover = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
       const popoverContent = (
         <>
           <Heading style={{ marginBottom: '0.5rem' }}>I am living in the body element!</Heading>
@@ -403,14 +398,15 @@ in order to render the element anywhere on the page.
             }}
             withPortal
           >
-            <Button onClick={handleOpenPopover} variant="light">Toggle Popover</Button>
+            <Button onClick={handleOpenPopover} variant="light">
+              Toggle Popover
+            </Button>
           </Popover>
         </Box>
       );
     }}
   </Story>
 </Canvas>
-
 
 ## Hover Trigger
 
@@ -424,7 +420,9 @@ NOTE: this should be use sparingly since context dependent on hover, isn't an op
   <Story name="Hover">
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
-      const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const handleOpenPopover = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
       const popoverContent = (
         <>
           <Heading style={{ marginBottom: '0.5rem' }}>I just appeared on hover!</Heading>
@@ -439,7 +437,7 @@ NOTE: this should be use sparingly since context dependent on hover, isn't an op
             placement="right-start"
             contentContainerProps={{
               padding: 'md',
-              background: 'primary-light'
+              background: 'primary-light',
             }}
             withPortal
           >
@@ -457,12 +455,11 @@ NOTE: this should be use sparingly since context dependent on hover, isn't an op
   </Story>
 </Canvas>
 
-
 ## Respond to Outside Clicks
 
 Since Popovers are by nature rendered on top of existing content, it
 is beneficial in most cases to close the Popover when a user clicks any item outside
-the trigger and popover content. 
+the trigger and popover content.
 
 Our component provides a `onClickOutside` prop that fires a callback whenever there is a click
 event outside the Popover content, OR, when the user taps the `Escape` key.
@@ -475,7 +472,9 @@ in cases where the click target includes the Popover trigger or content nodes.
   <Story name="Outside Clicks">
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
-      const handleTogglePopover = () => { setPopoverOpen(!isPopoverOpen); };
+      const handleTogglePopover = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
       const popoverContent = (
         <>
           <Heading style={{ marginBottom: '0.5rem' }}>I will close if you click outside!</Heading>
@@ -490,15 +489,12 @@ in cases where the click target includes the Popover trigger or content nodes.
             placement="right-start"
             contentContainerProps={{
               padding: 'md',
-              background: 'primary-light'
+              background: 'primary-light',
             }}
             withPortal
             onClickOutside={() => setPopoverOpen(false)}
           >
-            <Button
-              onClick={handleTogglePopover}
-              variant="light"
-            >
+            <Button onClick={handleTogglePopover} variant="light">
               Toggle Popover
             </Button>
           </Popover>
@@ -521,8 +517,12 @@ Use the `trapFocus` prop to constrain focus to popover content elements.
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
       const [inputValue, setInputValue] = useState('');
-      const handleTogglePopover = () => { setPopoverOpen(!isPopoverOpen); };
-      const handleInputChange = (event) => { setInputValue(event.target.value); };
+      const handleTogglePopover = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
+      const handleInputChange = event => {
+        setInputValue(event.target.value);
+      };
       const popoverContent = (
         <>
           <Box direction="column" childGap="sm">
@@ -540,16 +540,13 @@ Use the `trapFocus` prop to constrain focus to popover content elements.
             placement="right-start"
             contentContainerProps={{
               padding: 'md',
-              background: 'grey-lightest'
+              background: 'grey-lightest',
             }}
             withPortal
             onClickOutside={() => setPopoverOpen(false)}
             trapFocus
           >
-            <Button
-              onClick={handleTogglePopover}
-              variant="light"
-            >
+            <Button onClick={handleTogglePopover} variant="light">
               Toggle Popover
             </Button>
           </Popover>
@@ -568,8 +565,12 @@ Render the popover with no arrow by passing `hasArrow` false.
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
       const [inputValue, setInputValue] = useState('');
-      const handleTogglePopover = () => { setPopoverOpen(!isPopoverOpen); };
-      const handleInputChange = (event) => { setInputValue(event.target.value); };
+      const handleTogglePopover = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
+      const handleInputChange = event => {
+        setInputValue(event.target.value);
+      };
       const popoverContent = (
         <>
           <Box direction="column" childGap="sm">
@@ -586,16 +587,13 @@ Render the popover with no arrow by passing `hasArrow` false.
             placement="right-start"
             contentContainerProps={{
               padding: 'md',
-              background: 'grey-lightest'
+              background: 'grey-lightest',
             }}
             withPortal
             onClickOutside={() => setPopoverOpen(false)}
             hasArrow={false}
           >
-            <Button
-              onClick={handleTogglePopover}
-              variant="light"
-            >
+            <Button onClick={handleTogglePopover} variant="light">
               Toggle Popover
             </Button>
           </Popover>
@@ -614,8 +612,12 @@ Place the popover closer or farther from its trigger with the `offsetFromTarget`
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(true);
       const [offset, setOffset] = useState(12);
-      const handleTogglePopoverNear = () => { setPopoverOpen(!isPopoverOpen); };
-      const handleInputChange = (event) => { setInputValue(event.target.value); };
+      const handleTogglePopoverNear = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
+      const handleInputChange = event => {
+        setInputValue(event.target.value);
+      };
       const popoverContent = (
         <>
           <Box direction="column" childGap="sm">
@@ -639,16 +641,15 @@ Place the popover closer or farther from its trigger with the `offsetFromTarget`
               hasArrow={false}
               offsetFromTarget={offset}
             >
-              <Button
-                onClick={handleTogglePopoverNear}
-                variant="light"
-              >
+              <Button onClick={handleTogglePopoverNear} variant="light">
                 Toggle Popover
               </Button>
             </Popover>
           </Box>
           <Box margin="2xl 0 0 0" maxWidth="300px">
-            <label htmlFor="offset" style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Offset</label>
+            <label htmlFor="offset" style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>
+              Offset
+            </label>
             <input
               type="range"
               id="offset"
@@ -657,7 +658,9 @@ Place the popover closer or farther from its trigger with the `offsetFromTarget`
               max="24"
               step="1"
               value={offset}
-              onChange={event => { setOffset(event.target.value); }}
+              onChange={event => {
+                setOffset(event.target.value);
+              }}
               style={{ marginBottom: '0.25rem' }}
             />
             <span style={{ display: 'inline' }}>Value: {offset}</span>

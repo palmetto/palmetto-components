@@ -9,11 +9,10 @@ import Select, {
   GroupedOptionsType,
   OptionsType,
 } from 'react-select';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { SimulatedEventPayloadType } from '../../types';
 import { Z_INDEX_VALUES } from '../../lib/tokens';
 import Box from '../Box/Box';
+import Icon from '../Icon/Icon';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
@@ -170,7 +169,7 @@ const SelectInput: FC<SelectInputProps> = ({
 
   const ClearIndicator = (props: IndicatorProps<OptionTypeBase>) => (
     <components.ClearIndicator {...props}>
-      <FontAwesomeIcon icon={faTimes} size="lg" />
+      <Icon name="remove" />
     </components.ClearIndicator>
   );
 
