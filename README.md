@@ -26,16 +26,17 @@
 ### 2. Import Global CSS
 
 ```jsx
-@import '@palmetto/palmetto-components/dist/css/utilities.css';
-@import '@palmetto/palmetto-components/dist/css/variables.css';
-@import '@palmetto/palmetto-components/dist/css/fonts.css';
+@import '@palmetto/palmetto-components/dist/css/utilities.css'; // Utility classes -- REQUIRED
+@import '@palmetto/palmetto-components/dist/css/variables.css'; // CSS Variables -- REQUIRED
+@import '@palmetto/palmetto-components/dist/css/index.css'; // Component CSS -- REQUIRED
+@import '@palmetto/palmetto-components/dist/css/fonts.css'; // Included Font files -- OPTIONAL BUT ENCOURAGED
 ```
 
 We recommend importing our global reset in order to maintain a consistent
 look of all components across applications.
 
 ```jsx
-@import '@palmetto/palmetto-components/dist/css/reset.css'
+@import '@palmetto/palmetto-components/dist/css/reset.css' // A Basic CSS Reset -- OPTIONAL BUT ENCOURAGED.
 ```
 
 ### 3. Usage
