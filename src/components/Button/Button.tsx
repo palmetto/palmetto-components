@@ -1,4 +1,6 @@
-import React, { FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement } from 'react';
+import React, {
+  FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement,
+} from 'react';
 import classNames from 'classnames';
 import { IconName } from '../../types';
 import Box from '../Box/Box';
