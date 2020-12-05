@@ -1,13 +1,9 @@
 import React, {
-  FC,
-  Key,
-  KeyboardEvent,
-  MouseEvent,
-  ReactNode,
+  FC, Key, KeyboardEvent, MouseEvent, ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import Box from '../../../Box/Box';
+import Icon from '../../../Icon/Icon';
 import { Column, EventWithColumnKey } from '../../../../types';
 import styles from './TableHeaderCell.module.scss';
 
@@ -89,31 +85,33 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   truncateOverflow = false,
   width = undefined,
 }) => {
-  const isColumnSorted = (columnDataKey: Key | undefined): boolean => (
-    !!sortedColumn && sortedColumn.dataKey === columnDataKey
-  );
+  const isColumnSorted = (columnDataKey: Key | undefined): boolean => !!sortedColumn && sortedColumn.dataKey === columnDataKey;
 
-  const getSortDirection = (): ('ascending' | 'descending' | 'none' | undefined) => (
+  const getSortDirection = (): 'ascending' | 'descending' | 'none' | undefined => (
     sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'
   );
 
   const renderIcon = (): ReactNode => {
     const renderArrows = (): ReactNode => {
       if (getSortDirection() === 'ascending') {
-        return <FontAwesomeIcon icon={faSortUp} data-testid="tableHeaderCellSortAsc-testid" />;
+        return <Icon name="caret-sm-up" data-testid="tableHeaderCellSortAsc-testid" />;
       }
       if (getSortDirection() === 'descending') {
-        return <FontAwesomeIcon icon={faSortDown} data-testid="tableHeaderCellSortDesc-testid" />;
+        return <Icon name="caret-sm-down" data-testid="tableHeaderCellSortDesc-testid" />;
       }
 
-      return <FontAwesomeIcon icon={faSort} data-testid="tableHeaderCellSortNone-testid" />;
+      return (
+        <Box
+          display="inline-block"
+          width="12px"
+          height="12px"
+          aria-hidden="true"
+          data-testid="tableHeaderCellSortNone-testid"
+        />
+      );
     };
 
-    return (
-      <span className={styles['sort-icon']}>
-        {renderArrows()}
-      </span>
-    );
+    return <span className={styles['sort-icon']}>{renderArrows()}</span>;
   };
 
   const handleKeyPress = (event: KeyboardEvent<HTMLTableHeaderCellElement>): void => {
@@ -156,7 +154,9 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
     <th
       className={tableHeaderClasses}
       style={{ width: `${width}px` }}
-      aria-sort={sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'}
+      aria-sort={
+        sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'
+      }
       tabIndex={isSortable ? 0 : undefined}
       onClick={handleSort}
       onKeyDown={handleKeyPress}
