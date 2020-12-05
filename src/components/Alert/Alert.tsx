@@ -121,7 +121,7 @@ const Alert: FC<AlertProps> = ({
         {render ? (
           render()
         ) : (
-          <Box display="block" childGap="2xs">
+          <Box display="block" childGap={message && title ? '2xs' : undefined}>
             {title && (
               <Heading as="h4" size="md">
                 {title}
