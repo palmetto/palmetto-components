@@ -10,11 +10,10 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { UnknownPropertiesObjType } from '../../types';
 import * as InputMasks from './TextInputMasks';
 import Box from '../Box/Box';
+import Icon from '../Icon/Icon';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
@@ -87,9 +86,7 @@ export interface TextInputBaseProps {
    * Callback function to call when input us cleared. When this is passed,
    * the input will display an icon on the right side, for triggering this callback.
    */
-  onClear?: (
-    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>,
-  ) => void;
+  onClear?: (event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>) => void;
   /**
    * Callback function to call on focus event.
    */
@@ -122,133 +119,123 @@ export interface TextInputProps extends TextInputBaseProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, TextInputProps>((
-  {
-    id,
-    label,
-    onChange,
-    value,
-    autoComplete = false,
-    autoFocus = false,
-    className = undefined,
-    error = false,
-    helpText,
-    hideLabel = false,
-    inputMask = undefined,
-    isDisabled = false,
-    isRequired = false,
-    maxLength = undefined,
-    name = '',
-    onBlur = undefined,
-    onClear = undefined,
-    onFocus = undefined,
-    placeholder = '',
-    type = 'text',
-    size = 'md',
-    ...restProps
-  },
-  ref,
-) => {
-  const getInputMask = (
-    mask: inputMaskType,
-    availableInputMasks: {
-      phone: {
-        numericOnly: boolean;
-        blocks: number[];
-        delimiters: string[];
-      };
-      creditCard: {
-        creditCard: boolean;
-      };
-    },
-  ) => {
-    if (typeof mask === 'string') {
-      return availableInputMasks[mask];
-    }
-
-    return mask;
-  };
-
-  const inputWrapperClasses = classNames(
-    styles['text-input-wrapper'],
-    styles[size],
+const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, TextInputProps>(
+  (
     {
+      id,
+      label,
+      onChange,
+      value,
+      autoComplete = false,
+      autoFocus = false,
+      className = undefined,
+      error = false,
+      helpText,
+      hideLabel = false,
+      inputMask = undefined,
+      isDisabled = false,
+      isRequired = false,
+      maxLength = undefined,
+      name = '',
+      onBlur = undefined,
+      onClear = undefined,
+      onFocus = undefined,
+      placeholder = '',
+      type = 'text',
+      size = 'md',
+      ...restProps
+    },
+    ref,
+  ) => {
+    const getInputMask = (
+      mask: inputMaskType,
+      availableInputMasks: {
+        phone: {
+          numericOnly: boolean;
+          blocks: number[];
+          delimiters: string[];
+        };
+        creditCard: {
+          creditCard: boolean;
+        };
+      },
+    ) => {
+      if (typeof mask === 'string') {
+        return availableInputMasks[mask];
+      }
+
+      return mask;
+    };
+
+    const inputWrapperClasses = classNames(styles['text-input-wrapper'], styles[size], {
       [styles.error]: error,
       [styles.disabled]: isDisabled,
-    },
-  );
+    });
 
-  const clearBtnClasses = classNames(
-    styles['clear-button'],
-    styles.md,
-  );
+    const clearBtnClasses = classNames(styles['clear-button'], styles.md);
 
-  const renderClearIcon = (): ReactNode => {
-    const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
-      if (event.keyCode === 13 && onClear) onClear(event);
+    const renderClearIcon = (): ReactNode => {
+      const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
+        if (event.keyCode === 13 && onClear) onClear(event);
+      };
+
+      return (
+        <button
+          type="button"
+          onClick={onClear}
+          onKeyUp={handleKeyPress}
+          className={clearBtnClasses}
+          data-testid="text-input-clear-button"
+        >
+          <Icon name="remove" className={styles['clear-icon']} />
+        </button>
+      );
+    };
+
+    const inputProps = {
+      'aria-required': isRequired,
+      'aria-invalid': !!error,
+      'aria-label': label,
+      'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
+      autoComplete: getAutoCompleteValue(autoComplete),
+      autoFocus,
+      disabled: isDisabled,
+      id,
+      maxLength,
+      name,
+      onBlur,
+      onChange,
+      onFocus,
+      placeholder,
+      type,
+      value,
+      ...restProps,
+    };
+
+    const labelProps = {
+      isFieldRequired: isRequired,
+      inputId: id,
+      hasError: !!error,
+      helpText,
+      className: styles['text-input-label'],
+      isDisabled,
     };
 
     return (
-      <button
-        type="button"
-        onClick={onClear}
-        onKeyUp={handleKeyPress}
-        className={clearBtnClasses}
-        data-testid="text-input-clear-button"
-      >
-        <FontAwesomeIcon icon={faTimes} className={styles['clear-icon']} />
-      </button>
+      <Box width="100%" className={className}>
+        {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
+        <div className={inputWrapperClasses}>
+          {!inputMask ? (
+            <input {...inputProps} ref={ref} />
+          ) : (
+            <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+          )}
+          {!!onClear && !!value && renderClearIcon()}
+        </div>
+        {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
+      </Box>
     );
-  };
-
-  const inputProps = {
-    'aria-required': isRequired,
-    'aria-invalid': !!error,
-    'aria-label': label,
-    'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
-    autoComplete: getAutoCompleteValue(autoComplete),
-    autoFocus,
-    disabled: isDisabled,
-    id,
-    maxLength,
-    name,
-    onBlur,
-    onChange,
-    onFocus,
-    placeholder,
-    type,
-    value,
-    ...restProps,
-  };
-
-  const labelProps = {
-    isFieldRequired: isRequired,
-    inputId: id,
-    hasError: !!error,
-    helpText,
-    className: styles['text-input-label'],
-    isDisabled,
-  };
-
-  return (
-    <Box width="100%" className={className}>
-      {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
-      <div className={inputWrapperClasses}>
-        {!inputMask ? (
-          <input {...inputProps} ref={ref} />
-        ) : (
-          <Cleave
-            {...inputProps}
-            options={getInputMask(inputMask, InputMasks)}
-          />
-        )}
-        {!!onClear && !!value && renderClearIcon()}
-      </div>
-      {error && error !== true && (
-        <InputValidationMessage>{error}</InputValidationMessage>
-      )}
-    </Box>
-  );
-});
+  },
+);
 
 export default TextInput;

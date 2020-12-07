@@ -1,20 +1,9 @@
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faAddressCard,
-  faBars,
-  faCog,
-  faChartBar,
-  faListAlt,
-  faBook,
-  faMapMarked,
-  faBox,
-  faQuestionCircle,
-} from '@fortawesome/free-solid-svg-icons';
 import Popover from './Popover';
 import Button from '../Button/Button';
 import Box from '../Box/Box';
 import Heading from '../Heading/Heading';
+import Icon from '../Icon/Icon';
 
 export default {
   title: 'Components/Popover/ForChromatic',
@@ -26,7 +15,9 @@ export default {
 
 export const Demo = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
+  const handleOpenPopover = () => {
+    setPopoverOpen(!isPopoverOpen);
+  };
   const NavItem = ({ children, className, iconName }) => (
     <Box
       as="li"
@@ -38,8 +29,8 @@ export const Demo = () => {
     >
       <Box direction="row" childGap="md" alignItems="center">
         {iconName && (
-          <Box color="grey-300">
-            <FontAwesomeIcon className="nav-item-icon" size="lg" icon={iconName} />
+          <Box color="grey-300" fontSize="lg">
+            <Icon className="nav-item-icon" name={iconName} />
           </Box>
         )}
         <Box style={{ fontWeight: 500 }}>{children}</Box>
@@ -79,11 +70,11 @@ export const Demo = () => {
               flexShrink: 0,
             }}
           >
-            <NavItem iconName={faAddressCard}>Contacts</NavItem>
-            <NavItem iconName={faChartBar}>Reports</NavItem>
-            <NavItem iconName={faListAlt}>Design Queue</NavItem>
-            <NavItem iconName={faBook}>Certifications</NavItem>
-            <NavItem iconName={faCog}>Settings</NavItem>
+            <NavItem iconName="contact">Contacts</NavItem>
+            <NavItem iconName="chart-bar">Reports</NavItem>
+            <NavItem iconName="list">Design Queue</NavItem>
+            <NavItem iconName="book">Certifications</NavItem>
+            <NavItem iconName="settings">Settings</NavItem>
           </Box>
           <Box
             childGap="sm"
@@ -108,23 +99,8 @@ export const Demo = () => {
             borderColor="grey-lighter"
             style={{ flex: '1 0 auto' }}
           >
-            <Heading size="sm" as="h4" variant="grey">
-              Palmetto Adminstration
-            </Heading>
             <Box as="ul" childGap="sm">
-              <NavItem iconName={faMapMarked}>Markets</NavItem>
-              <NavItem iconName={faBox}>Products</NavItem>
-            </Box>
-          </Box>
-          <Box
-            childGap="sm"
-            padding="lg 0 0 0"
-            borderWidth="xs 0 0 0"
-            borderColor="grey-lighter"
-            style={{ flex: '1 0 auto' }}
-          >
-            <Box as="ul" childGap="sm">
-              <NavItem iconName={faQuestionCircle}>Feedback</NavItem>
+              <NavItem iconName="c-question">Feedback</NavItem>
             </Box>
           </Box>
         </Box>
@@ -144,9 +120,8 @@ export const Demo = () => {
         withPortal
       >
         <Button onClick={handleOpenPopover} variant="light" size="sm">
-          <FontAwesomeIcon icon={faBars} />
-          &nbsp;
-          Popover Menu
+          Popover Menu &nbsp;
+          <Icon name="menu" />
         </Button>
       </Popover>
     </div>
@@ -155,8 +130,10 @@ export const Demo = () => {
 
 export const Default = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const handleOpenPopover = () => { setPopoverOpen(!isPopoverOpen); };
-  const popoverContent = (<>Hello!</>);
+  const handleOpenPopover = () => {
+    setPopoverOpen(!isPopoverOpen);
+  };
+  const popoverContent = <>Hello!</>;
   return (
     <div>
       <Popover
@@ -167,7 +144,9 @@ export const Default = () => {
           padding: 'sm',
         }}
       >
-        <Button onClick={handleOpenPopover} variant="light">Toggle Popover</Button>
+        <Button onClick={handleOpenPopover} variant="light">
+          Toggle Popover
+        </Button>
       </Popover>
     </div>
   );
@@ -175,13 +154,13 @@ export const Default = () => {
 
 export const Placement = () => {
   const [isPopoverOpen, setPopoverOpen] = useState({
-    'auto': true,
+    auto: true,
     'auto-start': true,
     'auto-end': true,
-    'top': true,
-    'bottom': true,
-    'right': true,
-    'left': true,
+    top: true,
+    bottom: true,
+    right: true,
+    left: true,
     'top-start': true,
     'top-end': true,
     'bottom-start': true,
@@ -191,7 +170,7 @@ export const Placement = () => {
     'left-start': true,
     'left-end': true,
   });
-  const handleOpenPopover = (key) => {
+  const handleOpenPopover = key => {
     setPopoverOpen({ ...isPopoverOpen, [key]: !isPopoverOpen[key] });
   };
   const positions = [
@@ -214,13 +193,7 @@ export const Placement = () => {
   return (
     <Box direction="row" childGap="md" wrap>
       {positions.map(position => (
-        <Box
-          height="100px"
-          width="300px"
-          padding="5xl"
-          display="inline-block"
-          key={position}
-        >
+        <Box height="100px" width="300px" padding="5xl" display="inline-block" key={position}>
           <Popover
             content={<>{position}</>}
             isOpen={isPopoverOpen[position]}
@@ -231,10 +204,7 @@ export const Placement = () => {
               color: 'white',
             }}
           >
-            <Button
-              onClick={() => handleOpenPopover(position)}
-              variant="light"
-            >
+            <Button onClick={() => handleOpenPopover(position)} variant="light">
               {position}
             </Button>
           </Popover>
@@ -246,7 +216,9 @@ export const Placement = () => {
 
 export const HideArrow = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const handleTogglePopover = () => { setPopoverOpen(!isPopoverOpen); };
+  const handleTogglePopover = () => {
+    setPopoverOpen(!isPopoverOpen);
+  };
   const popoverContent = (
     <>
       <Box direction="column" childGap="sm">
@@ -269,20 +241,19 @@ export const HideArrow = () => {
         onClickOutside={() => setPopoverOpen(false)}
         hasArrow={false}
       >
-        <Button
-          onClick={handleTogglePopover}
-          variant="light"
-        >
+        <Button onClick={handleTogglePopover} variant="light">
           Toggle Popover
         </Button>
       </Popover>
     </Box>
   );
-}
+};
 
 export const Offset = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const handleTogglePopoverNear = () => { setPopoverOpen(!isPopoverOpen); };
+  const handleTogglePopoverNear = () => {
+    setPopoverOpen(!isPopoverOpen);
+  };
   const popoverContent = (
     <>
       <Box direction="column" childGap="sm">
@@ -306,10 +277,7 @@ export const Offset = () => {
           hasArrow={false}
           offsetFromTarget={20}
         >
-          <Button
-            onClick={handleTogglePopoverNear}
-            variant="light"
-          >
+          <Button onClick={handleTogglePopoverNear} variant="light">
             Toggle Popover
           </Button>
         </Popover>

@@ -1,13 +1,8 @@
 import React, {
-  useRef,
-  FC,
-  ReactNode,
-  ChangeEvent,
-  MouseEvent,
+  useRef, FC, ReactNode, ChangeEvent, MouseEvent,
 } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudUploadAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import Box from '../Box/Box';
+import Icon from '../Icon/Icon';
 import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import Button, { ButtonSize } from '../Button/Button';
@@ -152,14 +147,14 @@ const FileUpload: FC<FileUploadProps> = ({
   };
 
   const renderFiles = () => files && (
-    <Box>
-      {[...Array.from(files)].map((file: File) => (
-        <p key={file.name} className={`font-size-${messageFontSize()} m-top-xs`}>
-          <FontAwesomeIcon icon={faPaperclip} className="font-color-grey-light m-right-xs" />
-          {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
-        </p>
-      ))}
-    </Box>
+  <Box>
+    {[...Array.from(files)].map((file: File) => (
+      <p key={file.name} className={`font-size-${messageFontSize()} m-top-xs`}>
+        <Icon name="paperclip" className="font-color-grey-light m-right-xs" />
+        {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
+      </p>
+    ))}
+  </Box>
   );
 
   return (
@@ -177,8 +172,8 @@ const FileUpload: FC<FileUploadProps> = ({
           fullWidth={fullWidth}
         >
           {hasIcon && (
-            <FontAwesomeIcon
-              icon={faCloudUploadAlt}
+            <Icon
+              name="upload"
               className="m-right-xs align-self-center"
               data-testid="file-upload__upload-icon"
             />
