@@ -16,39 +16,62 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // Common module rules shared between storybook and production builds.
-const rules = [
-  // Process all SCSS modules which will be compiled inside the main JS bundle.
-  {
-    test: /\.scss$/,
-    use: [
-      'style-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          modules: {
-            localIdentName: '[local]__[hash:base64:5]',
-          },
-          sourceMap: true,
-        },
-      },
-      'sass-loader',
-      'postcss-loader',
-    ],
-    include: /\.module\.scss$/,
-  },
-];
+const rules = [];
 
-// Check environment; customize plugins and module rules based on this.
-if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
-  // Process all global SCSS files (and export them to css)
+if (process.env.NODE_ENV === 'development') {
   rules.push(
+    // Process all SCSS modules which will be compiled inside the main JS bundle.
     {
       test: /\.scss$/,
       use: [
         'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: '[local]__[hash:base64:5]',
+            },
+            sourceMap: true,
+          },
+        },
+        'sass-loader',
+        'postcss-loader',
+      ],
+      include: /\.module\.scss$/,
+    },
+  );
+}
+
+if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
+  rules.push(
+    {
+      test: /\.scss$/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+            modules: {
+              localIdentName: '[local]__[hash:base64:5]',
+            },
+          },
+        },
+        'sass-loader',
+        'postcss-loader',
+      ],
+      include: /\.module\.scss$/,
+    },
+  );
+  rules.push(
+    // Process all SCSS modules which will be compiled inside the main JS bundle.
+    {
+      test: /\.scss$/,
+      use: [
         MiniCssExtractPlugin.loader,
         'css-loader',
         'sass-loader',
+        'postcss-loader',
       ],
       exclude: /\.module\.scss$/,
     },
@@ -59,7 +82,9 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
       use: [
         'babel-loader',
       ],
-      exclude: /node_modules/,
+      exclude: [
+        /node_modules/,
+      ],
     },
   );
   rules.push(
@@ -107,6 +132,7 @@ module.exports = {
     filename: '[name].js',
     path: path.join(__dirname, 'dist'),
     libraryTarget: 'umd',
+    globalObject: 'this',
   },
   plugins: [
     // Add Typescript type checking on build.
