@@ -152,6 +152,11 @@ module.exports = {
     // If multiple files share the same name but have different extensions,
     // webpack will resolve the one with the extension listed first in the array and skip the rest.
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
+    alias: {
+      'react-select': require.resolve(
+        'react-select/dist/react-select.cjs.prod.js',
+      ),
+    },
   },
   // Exclude 'react' 'react-dom' and 'prop-types' from being bundled with our components.
   externals: {
