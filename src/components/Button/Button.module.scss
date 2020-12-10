@@ -1,6 +1,8 @@
 .button {
-  border: 0;
+  border: none;
+  background: none;
   cursor: pointer;
+  padding: 0;
 
   &:not(.naked) {
     position: relative;
@@ -46,14 +48,6 @@
 
   &.outline {
     border: 1px solid;
-  }
-
-  &.naked {
-    background-color: transparent;
-    padding: 0;
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
   }
 
   &.primary {
