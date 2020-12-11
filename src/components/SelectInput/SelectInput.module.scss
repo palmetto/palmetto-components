@@ -84,6 +84,7 @@ react-select elements for which we do not own the markup */
       min-height: 32px;
     }
 
+    :global(.react-select__placeholder),
     :global(.react-select__single-value) {
       font-size: var(--form-control-size-sm-font-size);
     }
@@ -140,6 +141,7 @@ react-select elements for which we do not own the markup */
       border-radius: var(--form-control-size-md-border-radius);
     }
 
+    :global(.react-select__placeholder),
     :global(.react-select__single-value) {
       font-size: var(--form-control-size-lg-font-size);
     }
