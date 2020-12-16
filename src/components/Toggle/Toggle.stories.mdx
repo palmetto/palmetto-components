@@ -1,0 +1,139 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Toggle from './Toggle';
+import Box from '../Box/Box';
+
+<Meta title="Components/Toggle" component={Toggle} />
+
+A `Toggle` switch is like a digital on/off switch. They prompt users to choose between two mutually exclusive options and always have a default value.
+Toggles should provide immediate results and should not require the user to Save or Submit to apply the new state.
+
+<Canvas isExpanded>
+  <Toggle id="example" label="toggle label" isChecked onChange={() => {}} />
+</Canvas>
+
+## Props
+
+<ArgsTable of={Toggle} />
+
+<Canvas isExpanded>
+  <Story name="default">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <Toggle
+          id="defaultStateIsUnchecked"
+          label="toggle label"
+          onChange={event => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### hidden label
+
+<Canvas>
+  <Story name="hidden label">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <Toggle
+          id="hiddenLabelToggle"
+          label="Hidden Label"
+          hideLabel
+          onChange={event => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Sizes
+
+<Canvas>
+  <Story name="size">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <Box childGap="lg">
+          <Toggle
+            id="smToggle"
+            label="small toggle"
+            onChange={event => setValue(event.target.checked)}
+            isChecked={value}
+            size="sm"
+          />
+          <Toggle
+            id="mediumToggle"
+            label="medium toggle"
+            onChange={event => setValue(event.target.checked)}
+            isChecked={value}
+            size="md"
+          />
+          <Toggle
+            id="largeToggle"
+            label="large toggle"
+            onChange={event => setValue(event.target.checked)}
+            isChecked={value}
+            size="lg"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Disabled
+
+<Canvas>
+  <Story name="disabled">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <Toggle
+          id="disabledToggle"
+          label="Label"
+          onChange={event => setValue(event.target.checked)}
+          isChecked={value}
+          isDisabled
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Error
+
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
+
+<Canvas>
+  <Story name="Error">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <Box childGap="lg">
+          <Toggle
+            id="invalidToggle"
+            label="Label"
+            isChecked={value}
+            onChange={value => setValue(event.target.checked)}
+            isRequired
+            error="You must accept the Terms and Conditions"
+          />
+          <Toggle
+            id="invalidToggleHiddenLabel"
+            label="Hidden Label"
+            hideLabel
+            isChecked={value}
+            onChange={value => setValue(event.target.checked)}
+            isRequired
+            error="You must accept the Terms and Conditions"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

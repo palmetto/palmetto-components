@@ -29,6 +29,7 @@ import TextInput from './TextInput/TextInput';
 import TextareaInput from './TextareaInput/TextareaInput';
 import TextLink from './TextLink/TextLink';
 import TimePicker from './TimePicker/TimePicker';
+import Toggle from './Toggle/Toggle';
 
 export {
   Alert,
@@ -62,4 +63,5 @@ export {
   TextareaInput,
   TextLink,
   TimePicker,
+  Toggle,
 };

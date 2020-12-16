@@ -5,6 +5,7 @@ import Box from '../components/Box/Box';
 import SelectInput from '../components/SelectInput/SelectInput';
 import Button from '../components/Button/Button';
 import TextInput from '../components/TextInput/TextInput';
+import Toggle from '../components/Toggle/Toggle';
 
 <Meta title="Patterns/Form Controls" />
 
@@ -22,6 +23,7 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
         value: 'chocolate',
         label: 'Chocolate',
       });
+      const [value4, setValue4] = useState();
       const options = [
         {
           value: 'chocolate',
@@ -150,6 +152,38 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
               />
             </Box>
           </Box>
+          <Box childGap="sm" width="160px">
+            <Box height="32px" justifyContent="center">
+              <Toggle
+                id="smToggle"
+                label="small toggle"
+                hideLabel
+                onChange={event => setValue4(event.target.checked)}
+                isChecked={value4}
+                size="sm"
+              />
+            </Box>
+            <Box height="42px" justifyContent="center">
+              <Toggle
+                id="mdToggle"
+                label="medium toggle"
+                hideLabel
+                onChange={event => setValue4(event.target.checked)}
+                isChecked={value4}
+                size="md"
+              />
+            </Box>
+            <Box height="55px" justifyContent="center">
+              <Toggle
+                id="lgToggle"
+                label="largeg toggle"
+                hideLabel
+                onChange={event => setValue4(event.target.checked)}
+                isChecked={value4}
+                size="lg"
+              />
+            </Box>
+          </Box>
         </Box>
       );
     }}
@@ -167,6 +201,7 @@ Inline form sizes with labels.
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
       const [value3, setValue3] = useState('');
+      const [value4, setValue4] = useState();
       const options = [
         {
           value: 'chocolate',
@@ -203,7 +238,16 @@ Inline form sizes with labels.
                 label="Label"
                 onChange={event => setValue3(event.target.value)}
                 options={options}
-                value={value3}
+                value={value}
+                size="sm"
+              />
+            </Box>
+            <Box justifyContent="center">
+              <Toggle
+                id="smToggleLabel"
+                label="small toggle"
+                onChange={event => setValue4(event.target.checked)}
+                isChecked={value4}
                 size="sm"
               />
             </Box>
@@ -231,6 +275,15 @@ Inline form sizes with labels.
                 size="md"
               />
             </Box>
+            <Box justifyContent="center">
+              <Toggle
+                id="mdToggleLabel"
+                label="medium toggle"
+                onChange={event => setValue4(event.target.checked)}
+                isChecked={value4}
+                size="md"
+              />
+            </Box>
           </Box>
           <Box direction="row" childGap="sm" display="flex" padding="sm">
             <Box width="30">
@@ -253,6 +306,15 @@ Inline form sizes with labels.
                 onChange={event => setValue3(event.target.value)}
                 options={options}
                 value={value3}
+                size="lg"
+              />
+            </Box>
+            <Box justifyContent="center">
+              <Toggle
+                id="lgToggleLabel"
+                label="large toggle"
+                onChange={event => setValue4(event.target.checked)}
+                isChecked={value4}
                 size="lg"
               />
             </Box>
