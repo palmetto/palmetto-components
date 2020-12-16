@@ -1,0 +1,103 @@
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.toggle-thumb {
+  display: block;
+  transition: transform 0.25s ease;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+  background-color: var(--color-brand-white-base);
+  width: calc(var(--size-spacing-lg) - 4px);
+  height: calc(var(--size-spacing-lg) - 4px);
+}
+
+.thumb-sm {
+  width: calc(var(--size-spacing-md) - 4px);
+  height: calc(var(--size-spacing-md) - 4px);
+}
+
+.thumb-lg {
+  width: calc(var(--size-spacing-xl) - 4px);
+  height: calc(var(--size-spacing-xl) - 4px);
+}
+
+.toggle-track {
+  display: block;
+  transition: background-color 0.25s ease;
+  border-radius: 9999em;
+  background-color: var(--color-brand-grey-200);
+  cursor: pointer;
+  padding: 2px;
+  width: 2.5rem;
+  height: var(--size-spacing-lg);
+
+  &.error {
+    background-color: var(--form-control-error-background-color);
+  }
+}
+
+.track-sm {
+  width: 1.5rem;
+  height: var(--size-spacing-md);
+}
+
+.track-lg {
+  width: 3.5rem;
+  height: var(--size-spacing-xl);
+}
+
+.toggle-input {
+  /* Hide the checkbox input (only needed for `:checked` property) */
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:checked + .toggle-track {
+    background-color: var(--color-brand-primary-400);
+  }
+
+  &:checked + .toggle-track .toggle-thumb.thumb-sm {
+    transform: translateX(0.5rem);
+  }
+
+  &:checked + .toggle-track .toggle-thumb {
+    transform: translateX(1rem);
+  }
+
+  &:checked + .toggle-track .toggle-thumb.thumb-lg {
+    transform: translateX(1.5rem);
+  }
+
+  /* define regular focus styles for non-supporting browsers */
+  &:focus + .toggle-track {
+    outline: 0;
+    box-shadow: var(--input-focus-box-shadow);
+  }
+
+  /* Show focus styles on keyboard focus. */
+  &:focus-visible + .toggle-track {
+    outline: 0;
+    box-shadow: var(--input-focus-box-shadow);
+  }
+
+  /* Hide focus styles if they're not needed, for example,
+  when an element receives focus via the mouse. */
+  &:focus:not(:focus-visible) + .toggle-track {
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+.toggle-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
