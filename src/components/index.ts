@@ -1,4 +1,5 @@
 import Alert from './Alert/Alert';
+import Badge from './Badge/Badge';
 import Box from './Box/Box';
 import Button from './Button/Button';
 import Card from './Card/Card';
@@ -32,6 +33,7 @@ import TimePicker from './TimePicker/TimePicker';
 
 export {
   Alert,
+  Badge,
   Box,
   Button,
   Card,
