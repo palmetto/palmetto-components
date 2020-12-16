@@ -15,6 +15,7 @@ import FormikSelectInput from './Formik/FormikSelectInput/FormikSelectInput';
 import FormikTextInput from './Formik/FormikTextInput/FormikTextInput';
 import FormikTextareaInput from './Formik/FormikTextareaInput/FormikTextareaInput';
 import FormikTimePicker from './Formik/FormikTimePicker/FormikTimePicker';
+import FormikToggle from './Formik/FormikToggle/FormikToggle';
 import FormLabel from './FormLabel/FormLabel';
 import Heading from './Heading/Heading';
 import Icon from './Icon/Icon';
@@ -29,6 +30,7 @@ import TextInput from './TextInput/TextInput';
 import TextareaInput from './TextareaInput/TextareaInput';
 import TextLink from './TextLink/TextLink';
 import TimePicker from './TimePicker/TimePicker';
+import Toggle from './Toggle/Toggle';
 
 export {
   Alert,
@@ -48,6 +50,7 @@ export {
   FormikTextareaInput,
   FormikTextInput,
   FormikTimePicker,
+  FormikToggle,
   FormLabel,
   Heading,
   Icon,
@@ -62,4 +65,5 @@ export {
   TextareaInput,
   TextLink,
   TimePicker,
+  Toggle,
 };
