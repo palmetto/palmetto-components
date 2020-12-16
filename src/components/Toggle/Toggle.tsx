@@ -96,7 +96,7 @@ const Toggle: FC<ToggleProps> = ({
   const inputProps = {
     'aria-invalid': !!error,
     'aria-label': label,
-    'aria-labelledby': label ? `${id}Label` : undefined,
+    'aria-labelledby': `${id}Label`,
     id,
     checked: !!isChecked,
     disabled: isDisabled,

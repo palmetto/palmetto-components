@@ -176,7 +176,7 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <Box height="55px" justifyContent="center">
               <Toggle
                 id="lgToggle"
-                label="largeg toggle"
+                label="large toggle"
                 hideLabel
                 onChange={event => setValue4(event.target.checked)}
                 isChecked={value4}
@@ -201,7 +201,7 @@ Inline form sizes with labels.
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
       const [value3, setValue3] = useState('');
-      const [value4, setValue4] = useState();
+      const [valueLabel4, setValueLabel4] = useState();
       const options = [
         {
           value: 'chocolate',
@@ -238,7 +238,7 @@ Inline form sizes with labels.
                 label="Label"
                 onChange={event => setValue3(event.target.value)}
                 options={options}
-                value={value}
+                value={value3}
                 size="sm"
               />
             </Box>
@@ -246,8 +246,8 @@ Inline form sizes with labels.
               <Toggle
                 id="smToggleLabel"
                 label="small toggle"
-                onChange={event => setValue4(event.target.checked)}
-                isChecked={value4}
+                onChange={event => setValueLabel4(event.target.checked)}
+                isChecked={valueLabel4}
                 size="sm"
               />
             </Box>
@@ -279,8 +279,8 @@ Inline form sizes with labels.
               <Toggle
                 id="mdToggleLabel"
                 label="medium toggle"
-                onChange={event => setValue4(event.target.checked)}
-                isChecked={value4}
+                onChange={event => setValueLabel4(event.target.checked)}
+                isChecked={valueLabel4}
                 size="md"
               />
             </Box>
@@ -313,8 +313,8 @@ Inline form sizes with labels.
               <Toggle
                 id="lgToggleLabel"
                 label="large toggle"
-                onChange={event => setValue4(event.target.checked)}
-                isChecked={value4}
+                onChange={event => setValueLabel4(event.target.checked)}
+                isChecked={valueLabel4}
                 size="lg"
               />
             </Box>
