@@ -1,4 +1,5 @@
 import Alert from './Alert/Alert';
+import Badge from './Badge/Badge';
 import Box from './Box/Box';
 import Button from './Button/Button';
 import Card from './Card/Card';
@@ -34,6 +35,7 @@ import Toggle from './Toggle/Toggle';
 
 export {
   Alert,
+  Badge,
   Box,
   Button,
   Card,
