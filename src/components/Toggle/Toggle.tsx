@@ -114,7 +114,6 @@ const Toggle: FC<ToggleProps> = ({
     className: styles['toggle-label'],
     inputId: id,
     hasError: !!error,
-    helpText,
     isDisabled,
   };
 
@@ -126,7 +125,16 @@ const Toggle: FC<ToggleProps> = ({
           <span aria-hidden="true" className={trackClasses}>
             <span className={thumbClasses} />
           </span>
-          {label && !hideLabel && <div className="m-left-xs">{label}</div>}
+          {!hideLabel && (
+            <Box childGap="2xs" margin="0 0 0 xs">
+              {label && <div>{label}</div>}
+              {helpText && (
+                <Box as="p" display="block" fontSize="sm" fontWeight="regular" color="grey">
+                  {helpText}
+                </Box>
+              )}
+            </Box>
+          )}
         </FormLabel>
       </Box>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}

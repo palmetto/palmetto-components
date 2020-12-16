@@ -16,6 +16,8 @@ Toggles should provide immediate results and should not require the user to Save
 
 <ArgsTable of={Toggle} />
 
+### Basic Example
+
 <Canvas isExpanded>
   <Story name="default">
     {() => {
@@ -32,7 +34,28 @@ Toggles should provide immediate results and should not require the user to Save
   </Story>
 </Canvas>
 
-### hidden label
+### Help Text
+
+<Canvas isExpanded>
+  <Story name="with help text">
+    {() => {
+      const [value, setValue] = useState(null);
+      return (
+        <Toggle
+          id="helpText"
+          label="toggle label"
+          helpText="descriptive help text"
+          onChange={event => setValue(event.target.checked)}
+          isChecked={value}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Hidden Label
+
+Use the `hideLabel` prop to not render the label, however a `label` is still required for accessability purposes.
 
 <Canvas>
   <Story name="hidden label">
@@ -42,6 +65,7 @@ Toggles should provide immediate results and should not require the user to Save
         <Toggle
           id="hiddenLabelToggle"
           label="Hidden Label"
+          helpText="hidden help text too"
           hideLabel
           onChange={event => setValue(event.target.checked)}
           isChecked={value}
@@ -53,12 +77,14 @@ Toggles should provide immediate results and should not require the user to Save
 
 ### Sizes
 
-<Canvas>
+Set the size of the `toggle` to `sm`, `md` or `lg`. `md` is the default size.
+
+<Canvas isExpanded>
   <Story name="size">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState(true);
       return (
-        <Box childGap="lg">
+        <Box childGap="md">
           <Toggle
             id="smToggle"
             label="small toggle"
@@ -110,29 +136,18 @@ Toggles should provide immediate results and should not require the user to Save
 Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
 
 <Canvas>
-  <Story name="Error">
+  <Story name="error">
     {() => {
       const [value, setValue] = useState(null);
       return (
-        <Box childGap="lg">
-          <Toggle
-            id="invalidToggle"
-            label="Label"
-            isChecked={value}
-            onChange={value => setValue(event.target.checked)}
-            isRequired
-            error="You must accept the Terms and Conditions"
-          />
-          <Toggle
-            id="invalidToggleHiddenLabel"
-            label="Hidden Label"
-            hideLabel
-            isChecked={value}
-            onChange={value => setValue(event.target.checked)}
-            isRequired
-            error="You must accept the Terms and Conditions"
-          />
-        </Box>
+        <Toggle
+          id="invalidToggle"
+          label="Label"
+          isChecked={value}
+          onChange={value => setValue(event.target.checked)}
+          isRequired
+          error="You must accept the Terms and Conditions"
+        />
       );
     }}
   </Story>

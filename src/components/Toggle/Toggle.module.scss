@@ -13,6 +13,16 @@
   height: calc(var(--size-spacing-lg) - 4px);
 }
 
+.thumb-sm {
+  width: calc(var(--size-spacing-md) - 4px);
+  height: calc(var(--size-spacing-md) - 4px);
+}
+
+.thumb-lg {
+  width: calc(var(--size-spacing-xl) - 4px);
+  height: calc(var(--size-spacing-xl) - 4px);
+}
+
 .toggle-track {
   display: block;
   transition: background-color 0.25s ease;
@@ -32,16 +42,6 @@
 .track-lg {
   width: 3.5rem;
   height: var(--size-spacing-xl);
-}
-
-.thumb-sm {
-  width: calc(var(--size-spacing-md) - 4px);
-  height: calc(var(--size-spacing-md) - 4px);
-}
-
-.thumb-lg {
-  width: calc(var(--size-spacing-xl) - 4px);
-  height: calc(var(--size-spacing-xl) - 4px);
 }
 
 .toggle-input {
@@ -71,8 +71,27 @@
   &:checked + .toggle-track .toggle-thumb.thumb-lg {
     transform: translateX(1.5rem);
   }
+
+  /* define regular focus styles for non-supporting browsers */
+  &:focus + .toggle-track {
+    outline: 0;
+    box-shadow: var(--button-focus-box-shadow);
+  }
+
+  /* Show focus styles on keyboard focus. */
+  &:focus-visible + .toggle-track {
+    outline: 0;
+    box-shadow: var(--button-focus-box-shadow);
+  }
+
+  /* Hide focus styles if they're not needed, for example,
+  when an element receives focus via the mouse. */
+  &:focus:not(:focus-visible) + .toggle-track {
+    outline: 0;
+    box-shadow: none;
+  }
 }
-/* Switch */
+
 .toggle-label {
   display: flex;
   flex-direction: row;
