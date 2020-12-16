@@ -336,6 +336,7 @@ Inline form sizes with error states.
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
       const [value3, setValue3] = useState();
+      const [valueError4, setValueError4] = useState();
       const options = [
         {
           value: 'chocolate',
@@ -379,6 +380,17 @@ Inline form sizes with error states.
                 error={errorMsg}
               />
             </Box>
+            <Box justifyContent="center">
+              <Toggle
+                id="smToggleError"
+                label="small toggle"
+                onChange={event => setValueError4(event.target.checked)}
+                isChecked={valueError4}
+                size="sm"
+                hideLabel
+                error={errorMsg}
+              />
+            </Box>
           </Box>
           <Box direction="row" childGap="sm" padding="sm" display="flex">
             <Box width="30">
@@ -400,6 +412,17 @@ Inline form sizes with error states.
                 onChange={event => setValue3(event.target.value)}
                 options={options}
                 value={value3}
+                hideLabel
+                error={errorMsg}
+              />
+            </Box>
+            <Box justifyContent="center">
+              <Toggle
+                id="mdToggleError"
+                label="small toggle"
+                onChange={event => setValueError4(event.target.checked)}
+                isChecked={valueError4}
+                size="md"
                 hideLabel
                 error={errorMsg}
               />
@@ -432,6 +455,17 @@ Inline form sizes with error states.
                 error={errorMsg}
               />
             </Box>
+            <Box justifyContent="center">
+              <Toggle
+                id="lgToggleError"
+                label="large toggle"
+                onChange={event => setValueError4(event.target.checked)}
+                isChecked={valueError4}
+                size="lg"
+                hideLabel
+                error={errorMsg}
+              />
+            </Box>
           </Box>
         </div>
       );
@@ -450,6 +484,7 @@ Inline form sizes with labels and error states.
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
       const [value3, setValue3] = useState('');
+      const [valueErrorLabel4, setValueErrorLabel4] = useState();
       const options = [
         {
           value: 'chocolate',
@@ -493,6 +528,16 @@ Inline form sizes with labels and error states.
                 error={errorMsg}
               />
             </Box>
+            <Box justifyContent="center">
+              <Toggle
+                id="smToggleErrorLabel"
+                label="small toggle"
+                onChange={event => setValueErrorLabel4(event.target.checked)}
+                isChecked={valueErrorLabel4}
+                size="sm"
+                error={errorMsg}
+              />
+            </Box>
           </Box>
           <Box direction="row" childGap="sm" padding="sm" display="flex">
             <Box width="30">
@@ -515,6 +560,16 @@ Inline form sizes with labels and error states.
                 onChange={event => setValue3(event.target.value)}
                 options={options}
                 value={value3}
+                size="md"
+                error={errorMsg}
+              />
+            </Box>
+            <Box justifyContent="center">
+              <Toggle
+                id="mdToggleErrorLabel"
+                label="medium toggle"
+                onChange={event => setValueErrorLabel4(event.target.checked)}
+                isChecked={valueErrorLabel4}
                 size="md"
                 error={errorMsg}
               />
@@ -542,6 +597,16 @@ Inline form sizes with labels and error states.
                 onChange={event => setValue3(event.target.value)}
                 options={options}
                 value={value3}
+                size="lg"
+                error={errorMsg}
+              />
+            </Box>
+            <Box justifyContent="center">
+              <Toggle
+                id="lgToggleErrorLabel"
+                label="large toggle"
+                onChange={event => setValueErrorLabel4(event.target.checked)}
+                isChecked={valueErrorLabel4}
                 size="lg"
                 error={errorMsg}
               />
