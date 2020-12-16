@@ -32,6 +32,10 @@
   padding: 2px;
   width: 2.5rem;
   height: var(--size-spacing-lg);
+
+  &.error {
+    background-color: var(--form-control-error-background-color);
+  }
 }
 
 .track-sm {
@@ -75,13 +79,13 @@
   /* define regular focus styles for non-supporting browsers */
   &:focus + .toggle-track {
     outline: 0;
-    box-shadow: var(--button-focus-box-shadow);
+    box-shadow: var(--input-focus-box-shadow);
   }
 
   /* Show focus styles on keyboard focus. */
   &:focus-visible + .toggle-track {
     outline: 0;
-    box-shadow: var(--button-focus-box-shadow);
+    box-shadow: var(--input-focus-box-shadow);
   }
 
   /* Hide focus styles if they're not needed, for example,

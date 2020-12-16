@@ -1,6 +1,4 @@
-import React, {
-  FC, ChangeEvent, FocusEvent, ReactNode,
-} from 'react';
+import React, { FC, ChangeEvent, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import FormLabel from '../FormLabel/FormLabel';
@@ -92,7 +90,9 @@ const Toggle: FC<ToggleProps> = ({
   };
 
   const wrapperClasses = classNames({ [styles.disabled]: isDisabled });
-  const trackClasses = classNames(styles['toggle-track'], styles[`track-${size}`]);
+  const trackClasses = classNames(styles['toggle-track'], styles[`track-${size}`], {
+    [styles.error]: error,
+  });
   const thumbClasses = classNames(styles['toggle-thumb'], styles[`thumb-${size}`]);
 
   const inputProps = {
