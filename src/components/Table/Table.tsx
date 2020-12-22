@@ -6,7 +6,7 @@ import styles from './Table.module.scss';
 import TableBody from './TableBody/TableBody';
 import TableHead from './TableHead/TableHead';
 
-interface TableProps {
+export interface TableProps {
   /**
    * Columns for the table. See Column definition below for details.
    */

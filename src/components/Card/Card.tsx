@@ -21,7 +21,7 @@ type BoxPropsShallow = Omit<BoxProps,
   'display'
 >;
 
-interface CardProps extends BoxPropsShallow {
+export interface CardProps extends BoxPropsShallow {
   /**
    * visually subdued the appearance of the entire card
    */

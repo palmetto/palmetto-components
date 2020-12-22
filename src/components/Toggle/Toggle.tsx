@@ -7,7 +7,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import Box from '../Box/Box';
 import styles from './Toggle.module.scss';
 
-interface ToggleProps {
+export interface ToggleProps {
   /**
    * The id attribute of the input.
    */

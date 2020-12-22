@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Box from '../Box/Box';
 import Button from '../Button/Button';
 
-interface PaginationProps {
+export interface PaginationProps {
   /**
    * The current page number being displayed.
    */

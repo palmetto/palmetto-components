@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './TableBodyCell.module.scss';
 
-interface TableBodyCellProps {
+export interface TableBodyCellProps {
   /**
    * Text alignment for all table cells. Can be superseded by passing the same prop into the `Column` object
    * for a specific column.

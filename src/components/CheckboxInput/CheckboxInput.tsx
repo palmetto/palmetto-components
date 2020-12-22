@@ -10,7 +10,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import Box from '../Box/Box';
 import styles from './CheckboxInput.module.scss';
 
-interface CheckboxInputProps {
+export interface CheckboxInputProps {
   /**
    * The id attribute of the input.
    */

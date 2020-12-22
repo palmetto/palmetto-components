@@ -5,7 +5,7 @@ import { ModalFooter, ModalHeader, ModalBody } from './components';
 import { CssOverflowValue } from '../../types';
 import styles from './Modal.module.scss';
 
-interface ModalProps {
+export interface ModalProps {
   /**
    * Handle zoom/pinch gestures on iOS devices when scroll locking is enabled.
    */

@@ -14,7 +14,7 @@ import styles from './Button.module.scss';
 export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 
-interface ButtonProps {
+export interface ButtonProps {
   /**
    * Contents of the button.
    */

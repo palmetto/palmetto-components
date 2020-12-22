@@ -9,7 +9,7 @@ import {
 import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
 import styles from './Heading.module.scss';
 
-interface HeadingProps {
+export interface HeadingProps {
   /**
    * The DOM tag or react component to use for the element.
    * Select the appropriate semantic element (h1-h6).
