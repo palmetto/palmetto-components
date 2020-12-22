@@ -31,18 +31,18 @@ describe('Button', () => {
     });
 
     test('Renders an icon suffix if specified', () => {
-      render(<Button iconPrefix="alarm">Alarm Button</Button>);
+      render(<Button iconSuffix="alarm">Alarm Button</Button>);
       expect(screen.getByTestId('suffixIcon')).toHaveLength(1);
     });
 
     test('Renders icon prefix and suffix if specified', () => {
       render(
         <Button iconPrefix="alarm" iconSuffix="check">
-          Alarm Button
+          Suffix Prefix Icon Button
         </Button>,
       );
-      expect(screen.getByTestId('prefixIcon')).toHaveLength(1);
-      expect(screen.getByTestId('suffixIcon')).toHaveLength(1);
+      expect(screen.getByTestId('prefixIcon')).toBeInTheDocument();
+      expect(screen.getByTestId('suffixIcon')).toBeInTheDocument();
     });
   });
 
@@ -216,6 +216,11 @@ describe('Button', () => {
     describe('Loading', () => {
       test('it renders the spinning loading indicator', () => {
         render(<Button isLoading>Button is loading</Button>);
+        expect(document.getElementsByClassName('spinner')[0]).toBeInTheDocument();
+      });
+
+      test('it renders the spinning loading indicator with outline button', () => {
+        render(<Button isLoading isOutlined>Outline button is loading</Button>);
         expect(document.getElementsByClassName('spinner')[0]).toBeInTheDocument();
       });
 
