@@ -17,7 +17,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@palmetto/palmetto-design-tokens": "^0.22.0",
+    "@palmetto/palmetto-design-tokens": "^0.27.0",
     "@popperjs/core": "^2.5.3",
     "@reach/dialog": "^0.11.2",
     "@types/cleave.js": "^1.4.3",
@@ -34,7 +34,7 @@
   },
   "scripts": {
     "build": "BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js && tsc",
-    "build-storybook": "BABEL_ENV=storybook build-storybook",
+    "build-storybook": "BABEL_ENV=storybook NODE_ENV=development build-storybook",
     "deploy-storybook": "rm -fr storybook-static && npm run build-storybook && echo 'ux.palmetto.com' > 'storybook-static/CNAME' && storybook-to-ghpages --existing-output-dir=storybook-static",
     "chromatic": "chromatic --project-token=x8ffq4qv9tq",
     "generate-docs": "yarn doctoc docs/CONTRIBUTING.md",

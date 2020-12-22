@@ -7,18 +7,15 @@ import FormikSelectInput from './FormikSelectInput/FormikSelectInput';
 import FormikRadioGroup from './FormikRadioGroup/FormikRadioGroup';
 import FormikTextareaInput from './FormikTextareaInput/FormikTextareaInput';
 import FormikTimePicker from './FormikTimePicker/FormikTimePicker';
+import FormikToggle from './FormikToggle/FormikToggle';
 import Button from '../Button/Button';
 import Box from '../Box/Box';
 
-<Meta
-  title="Patterns/Formik Form"
-/>
+<Meta title="Patterns/Formik Form" />
 
 # Formik Form
 
 Formik Form demonstrates a pattern for integrating the input elements found in Palmetto Components with [Formik](https://formik.org/). The form is fully functional and even mock submits. Manipulate the inputs in the form and watch the state object below it update with the new values in real-time. Attempt to submit the form without filling out required inputs, and observe the error states for these inputs.
-
-
 
 <Canvas>
   <Story name="Form">
@@ -48,11 +45,12 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         if (!values.areTermsChecked) {
           errors.areTermsChecked = 'Checkbox is required';
         }
+        if (!values.areTermsChecked2) {
+          errors.areTermsChecked2 = 'Toggle is required';
+        }
         if (!values.email) {
           errors.email = 'Required';
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-        ) {
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
           errors.email = 'Invalid email address';
         }
         if (!values.flavor) {
@@ -70,7 +68,8 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         // Make API calls here
         setTimeout(() => {
           setSubmitting(false);
-          alert( // eslint-disable-line no-alert
+          alert(
+            // eslint-disable-line no-alert
             `Submitted Successfully ->  ${JSON.stringify(values, null, 2)}`,
           );
         }, 2000);
@@ -79,13 +78,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         return { ...values, isSubmitting };
       };
       return (
-        <div
-          style={{
-            maxWidth: '400px',
-            margin: 'auto',
-          }}
-          className="App-header"
-        >
+        <Box maxWidth="500px" margin="lg auto">
           <Formik
             initialValues={{
               firstName: '',
@@ -96,6 +89,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
               creditCardInputMask: '',
               creditCardInputMaskWithUnformattedValue: '',
               areTermsChecked: false,
+              areTermsChecked2: false,
               flavor: null,
               flavor2: null,
               colors: [],
@@ -107,191 +101,205 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
             handleChange={event => action('change')(event)}
             render={({ isSubmitting, values, setFieldValue }) => (
               <Form>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Box
-                    direction={{
-                      base: 'row',
-                      tablet: 'row',
-                      desktop: 'row',
-                      hd: 'row',
-                    }}
-                    childGap={{
-                      base: 'sm',
-                      tablet: 'md',
-                      desktop: 'lg',
-                      hd: 'lg',
-                    }}
-                    width="100%"
-                  >
+                <Box childGap="lg">
+                  <div>
+                    <Box
+                      direction={{
+                        base: 'row',
+                        tablet: 'row',
+                        desktop: 'row',
+                        hd: 'row',
+                      }}
+                      childGap={{
+                        base: 'sm',
+                        tablet: 'md',
+                        desktop: 'lg',
+                        hd: 'lg',
+                      }}
+                      width="100%"
+                    >
+                      <Field
+                        type="text"
+                        name="search"
+                        id="search"
+                        placeholder="Search"
+                        size="sm"
+                        component={FormikTextInput}
+                      />
+                      <Button type="submit" size="sm" isLoading={isSubmitting}>
+                        Submit
+                      </Button>
+                    </Box>
+                  </div>
+                  <div>
                     <Field
                       type="text"
-                      name="search"
-                      id="search"
-                      placeholder="Search"
-                      size="sm"
+                      label="First Name"
+                      name="firstName"
+                      id="firstName"
+                      component={FormikTextInput}
+                      // With a custom onChange.
+                      // We preserve Formik's convention and relegate state form management back to the user.
+                      onChange={event => {
+                        action('change')(event);
+                        setFieldValue('firstName', event.target.value);
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      type="text"
+                      label="Last Name"
+                      name="lastName"
+                      id="lastName"
                       component={FormikTextInput}
                     />
-                    <Button
-                      type="submit"
-                      size="sm"
-                      isLoading={isSubmitting}
-                    >
-                      Submit
-                    </Button>
-                  </Box>
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    type="text"
-                    label="First Name"
-                    name="firstName"
-                    id="firstName"
-                    component={FormikTextInput}
-                    // With a custom onChange.
-                    // We preserve Formik's convention and relegate state form management back to the user.
-                    onChange={event => {
-                      action('change')(event);
-                      setFieldValue('firstName', event.target.value);
-                    }}
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    type="text"
-                    label="Last Name"
-                    name="lastName"
-                    id="lastName"
-                    component={FormikTextInput}
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Email"
-                    name="email"
-                    id="email"
-                    component={FormikTextInput}
-                    isRequired
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Phone Input Mask Returning a Formatted Value"
-                    name="phoneInputMask"
-                    id="phoneInputMask"
-                    component={FormikTextInput}
-                    inputMask="phone"
-                    type="tel"
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Phone Input Mask Returning an Unformatted Value"
-                    name="phoneInputMaskWithUnformattedValue"
-                    id="phoneInputMaskWithUnformattedValue"
-                    component={FormikTextInput}
-                    inputMask="phone"
-                    type="tel"
-                    onChange={event => { setFieldValue('phoneInputMaskWithUnformattedValue', event.target.rawValue); }}
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Credit Card Input Mask Returning a Formatted Value"
-                    name="creditCardInputMask"
-                    id="creditCardInputMask"
-                    component={FormikTextInput}
-                    inputMask="creditCard"
-                    type="tel"
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Credit Card Input Mask Returning an Unformatted Value"
-                    name="creditCardInputMaskWithUnformattedValue"
-                    id="creditCardInputMaskWithUnformattedValue"
-                    component={FormikTextInput}
-                    inputMask="creditCard"
-                    type="tel"
-                    onChange={event => { setFieldValue('creditCardInputMaskWithUnformattedValue', event.target.rawValue); }}
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Flavor with Custom onChange"
-                    name="flavor"
-                    id="flavor"
-                    options={flavorOptions}
-                    component={FormikSelectInput}
-                    // With a custom onChange.
-                    // We preserve Formik's convention and relegate form state management back to the user.
-                    onChange={event => {
-                      action('change')(event.target.value);
-                      setFieldValue('flavor', event.target.value);
-                    }}
-                    isRequired
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Flavor without custom onChange"
-                    name="flavor2"
-                    id="flavor2"
-                    options={flavorOptions}
-                    component={FormikSelectInput}
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Colors"
-                    name="colors"
-                    id="colors"
-                    isMulti
-                    options={colorOptions}
-                    component={FormikSelectInput}
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Describe your perfect meal"
-                    name="meal"
-                    id="meal"
-                    component={FormikTextareaInput}
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    title="Sizes"
-                    name="sizes"
-                    options={sizeOptions}
-                    component={FormikRadioGroup}
-                    isRequired
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Select Time"
-                    name="timePicker"
-                    component={FormikTimePicker}
-                    isRequired
-                  />
-                </div>
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <Field
-                    label="Terms and Conditions"
-                    name="areTermsChecked"
-                    id="areTermsChecked"
-                    component={FormikCheckboxInput}
-                    isRequired
-                  />
-                </div>
-                <Button type="submit" className="m-bottom-md"isLoading={isSubmitting}>Submit</Button>
-                <pre>
-                  {JSON.stringify(formatOutput(values, isSubmitting), undefined, 2)}
-                </pre>
+                  </div>
+                  <div>
+                    <Field
+                      label="Email"
+                      name="email"
+                      id="email"
+                      component={FormikTextInput}
+                      isRequired
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Phone Input Mask Returning a Formatted Value"
+                      name="phoneInputMask"
+                      id="phoneInputMask"
+                      component={FormikTextInput}
+                      inputMask="phone"
+                      type="tel"
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Phone Input Mask Returning an Unformatted Value"
+                      name="phoneInputMaskWithUnformattedValue"
+                      id="phoneInputMaskWithUnformattedValue"
+                      component={FormikTextInput}
+                      inputMask="phone"
+                      type="tel"
+                      onChange={event => {
+                        setFieldValue('phoneInputMaskWithUnformattedValue', event.target.rawValue);
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Credit Card Input Mask Returning a Formatted Value"
+                      name="creditCardInputMask"
+                      id="creditCardInputMask"
+                      component={FormikTextInput}
+                      inputMask="creditCard"
+                      type="tel"
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Credit Card Input Mask Returning an Unformatted Value"
+                      name="creditCardInputMaskWithUnformattedValue"
+                      id="creditCardInputMaskWithUnformattedValue"
+                      component={FormikTextInput}
+                      inputMask="creditCard"
+                      type="tel"
+                      onChange={event => {
+                        setFieldValue(
+                          'creditCardInputMaskWithUnformattedValue',
+                          event.target.rawValue,
+                        );
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Flavor with Custom onChange"
+                      name="flavor"
+                      id="flavor"
+                      options={flavorOptions}
+                      component={FormikSelectInput}
+                      // With a custom onChange.
+                      // We preserve Formik's convention and relegate form state management back to the user.
+                      onChange={event => {
+                        action('change')(event.target.value);
+                        setFieldValue('flavor', event.target.value);
+                      }}
+                      isRequired
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Flavor without custom onChange"
+                      name="flavor2"
+                      id="flavor2"
+                      options={flavorOptions}
+                      component={FormikSelectInput}
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Colors"
+                      name="colors"
+                      id="colors"
+                      isMulti
+                      options={colorOptions}
+                      component={FormikSelectInput}
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Describe your perfect meal"
+                      name="meal"
+                      id="meal"
+                      component={FormikTextareaInput}
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      title="Sizes"
+                      name="sizes"
+                      options={sizeOptions}
+                      component={FormikRadioGroup}
+                      isRequired
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Select Time"
+                      name="timePicker"
+                      component={FormikTimePicker}
+                      isRequired
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Terms and Conditions"
+                      name="areTermsChecked"
+                      id="areTermsChecked"
+                      component={FormikCheckboxInput}
+                      isRequired
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Terms and Conditions Toggle"
+                      name="areTermsChecked2"
+                      id="areTermsChecked2"
+                      component={FormikToggle}
+                      isRequired
+                    />
+                  </div>
+                  <Button type="submit" className="m-bottom-md" isLoading={isSubmitting}>
+                    Submit
+                  </Button>
+                  <pre>{JSON.stringify(formatOutput(values, isSubmitting), undefined, 2)}</pre>
+                </Box>
               </Form>
             )}
           />
-        </div>
+        </Box>
       );
     }}
   </Story>

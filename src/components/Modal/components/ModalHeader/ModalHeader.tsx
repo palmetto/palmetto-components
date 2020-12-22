@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Box from '../../../Box/Box';
+import Icon from '../../../Icon/Icon';
 import styles from '../../Modal.module.scss';
 
 type ModalHeaderProps = {
@@ -47,7 +46,7 @@ const ModalHeader: FC<ModalHeaderProps> = ({ id, onDismiss, title = undefined })
           className={styles['modal-close']}
           onClick={onDismiss}
         >
-          <FontAwesomeIcon icon={faTimes} size="lg" />
+          <Icon name="remove" />
         </button>
       )}
     </Box>
