@@ -44,6 +44,11 @@ describe('Button', () => {
       expect(screen.getByTestId('prefixIcon')).toBeInTheDocument();
       expect(screen.getByTestId('suffixIcon')).toBeInTheDocument();
     });
+
+    test('Renders smaller gap between icon and text for xs sized buttons', () => {
+      render(<Button size="xs" iconSuffix="alarm">Alarm Button</Button>);
+      expect(screen.getByText('Alarm Button').classList).toContain('m-right-2xs');
+    });
   });
 
   describe('Sizes', () => {
