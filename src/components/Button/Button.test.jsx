@@ -54,17 +54,15 @@ describe('Button', () => {
       { name: 'XSmall', class: 'xs' },
     ];
 
-    sizes.map(size =>
-      describe(`${size.name}`, () => {
-        test(`it has a ${size.class} class applied to it`, () => {
-          render(<Button size={size.class}>{`${size.name} Button`}</Button>);
+    sizes.map(size => describe(`${size.name}`, () => {
+      test(`it has a ${size.class} class applied to it`, () => {
+        render(<Button size={size.class}>{`${size.name} Button`}</Button>);
 
-          const btn = screen.getByText(`${size.name} Button`).closest('button');
+        const btn = screen.getByText(`${size.name} Button`).closest('button');
 
-          expect(btn.getAttribute('class')).toContain(size.class);
-        });
-      }),
-    );
+        expect(btn.getAttribute('class')).toContain(size.class);
+      });
+    }));
   });
 
   describe('Callback Handling', () => {
