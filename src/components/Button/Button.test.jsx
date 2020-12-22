@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  screen,
-} from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import Button from './Button';
 
 describe('Button', () => {
@@ -28,6 +24,28 @@ describe('Button', () => {
     });
   });
 
+  describe('with Icon', () => {
+    test('Renders an icon prefix if specified', () => {
+      render(<Button iconPrefix="alarm">Alarm Button</Button>);
+      expect(screen.getByTestId('prefixIcon')).toHaveLength(1);
+    });
+
+    test('Renders an icon suffix if specified', () => {
+      render(<Button iconPrefix="alarm">Alarm Button</Button>);
+      expect(screen.getByTestId('suffixIcon')).toHaveLength(1);
+    });
+
+    test('Renders icon prefix and suffix if specified', () => {
+      render(
+        <Button iconPrefix="alarm" iconSuffix="check">
+          Alarm Button
+        </Button>,
+      );
+      expect(screen.getByTestId('prefixIcon')).toHaveLength(1);
+      expect(screen.getByTestId('suffixIcon')).toHaveLength(1);
+    });
+  });
+
   describe('Sizes', () => {
     const sizes = [
       { name: 'Small', class: 'sm' },
@@ -36,7 +54,7 @@ describe('Button', () => {
       { name: 'XSmall', class: 'xs' },
     ];
 
-    sizes.map(size => (
+    sizes.map(size =>
       describe(`${size.name}`, () => {
         test(`it has a ${size.class} class applied to it`, () => {
           render(<Button size={size.class}>{`${size.name} Button`}</Button>);
@@ -45,8 +63,8 @@ describe('Button', () => {
 
           expect(btn.getAttribute('class')).toContain(size.class);
         });
-      })
-    ));
+      }),
+    );
   });
 
   describe('Callback Handling', () => {
@@ -120,11 +138,7 @@ describe('Button', () => {
   describe('States', () => {
     describe('Default', () => {
       test('it renders the button with simple text', () => {
-        render(
-          <Button>
-            Button!
-          </Button>,
-        );
+        render(<Button>Button!</Button>);
         const buttonElement = screen.getByText('Button!');
 
         expect(buttonElement).toBeInTheDocument();
@@ -155,11 +169,7 @@ describe('Button', () => {
       });
 
       test('it does not have a disabled attribute', () => {
-        render(
-          <Button>
-            Not Disabled Button
-          </Button>,
-        );
+        render(<Button>Not Disabled Button</Button>);
 
         expect(screen.getByText('Not Disabled Button').closest('button')).not.toBeDisabled();
       });
@@ -167,11 +177,7 @@ describe('Button', () => {
 
     describe('Full Width', () => {
       test('it has a fullWidth class applied to it', () => {
-        render(
-          <Button fullWidth>
-            Full Width Button
-          </Button>,
-        );
+        render(<Button fullWidth>Full Width Button</Button>);
 
         const fullWidthBtn = screen.getByText('Full Width Button').closest('button');
 
@@ -181,11 +187,7 @@ describe('Button', () => {
 
     describe('Naked', () => {
       test('it has no styles appliedo there than the .naked class', () => {
-        render(
-          <Button isNaked>
-            Naked
-          </Button>,
-        );
+        render(<Button isNaked>Naked</Button>);
 
         const nakedButton = screen.getByText('Naked').closest('button');
 
@@ -197,11 +199,7 @@ describe('Button', () => {
 
     describe('Custom ClassName', () => {
       test('if a ClassName is provided, its added to the button', () => {
-        render(
-          <Button className="custom-class">
-            Custom ClassName
-          </Button>,
-        );
+        render(<Button className="custom-class">Custom ClassName</Button>);
 
         const customClassNameBtn = screen.getByText('Custom ClassName').closest('button');
 
@@ -211,11 +209,7 @@ describe('Button', () => {
 
     describe('Disabled', () => {
       test('it has a disabled attribute', () => {
-        render(
-          <Button isDisabled>
-            Disabled Button
-          </Button>,
-        );
+        render(<Button isDisabled>Disabled Button</Button>);
 
         expect(screen.getByText('Disabled Button').closest('button')).toBeDisabled();
       });
@@ -223,20 +217,12 @@ describe('Button', () => {
 
     describe('Loading', () => {
       test('it renders the spinning loading indicator', () => {
-        render(
-          <Button isLoading>
-            Button is loading
-          </Button>,
-        );
+        render(<Button isLoading>Button is loading</Button>);
         expect(document.getElementsByClassName('spinner')[0]).toBeInTheDocument();
       });
 
       test('it keeps the button text in the dom so the button width does not change', () => {
-        render(
-          <Button isLoading>
-            Button is loading
-          </Button>,
-        );
+        render(<Button isLoading>Button is loading</Button>);
         expect(screen.getByText('Button is loading')).toBeInTheDocument();
       });
     });
@@ -255,11 +241,7 @@ describe('Button', () => {
 
     describe('Color Variations', () => {
       test('Renders button with default variant primary', () => {
-        render(
-          <Button>
-            primary
-          </Button>,
-        );
+        render(<Button>primary</Button>);
 
         expect(screen.getByText('primary').closest('button')).toHaveClass('primary');
       });
@@ -267,11 +249,7 @@ describe('Button', () => {
       const variants = ['primary', 'success', 'danger', 'light', 'dark'];
       variants.forEach(variant => {
         test(`It renders component with variant: ${variant} when passed`, () => {
-          render(
-            <Button variant={variant}>
-              {variant}
-            </Button>,
-          );
+          render(<Button variant={variant}>{variant}</Button>);
           expect(screen.getByText(variant).closest('button')).toHaveClass(variant);
         });
       });
@@ -279,11 +257,7 @@ describe('Button', () => {
 
     describe('Outlined', () => {
       test('Renders button with outline class if prop passed', () => {
-        render(
-          <Button isOutlined>
-            primary
-          </Button>,
-        );
+        render(<Button isOutlined>primary</Button>);
 
         expect(screen.getByText('primary').closest('button')).toHaveClass('outline');
       });

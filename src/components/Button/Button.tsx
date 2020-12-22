@@ -158,9 +158,13 @@ const Button: FC<ButtonProps> = forwardRef(
         {isLoading && (
           <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
         )}
-        {iconPrefix && <Icon name={iconPrefix} />}
+        {iconPrefix && (
+          <Icon name={iconPrefix} aria-hidden="true" focusable="false" data-testid="prefixIcon" />
+        )}
         {children && <span className={styles.label}>{children}</span>}
-        {iconSuffix && <Icon name={iconSuffix} />}
+        {iconSuffix && (
+          <Icon name={iconSuffix} aria-hidden="true" focusable="false" data-testid="suffixIcon" />
+        )}
       </Box>
     );
 
