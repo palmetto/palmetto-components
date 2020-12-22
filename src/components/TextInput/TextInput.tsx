@@ -10,6 +10,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
+import { ChangeEvent as CleaveChangeEvent } from 'cleave.js/react/props';
 import { UnknownPropertiesObjType } from '../../types';
 import * as InputMasks from './TextInputMasks';
 import Box from '../Box/Box';
@@ -108,7 +109,7 @@ export interface TextInputProps extends TextInputBaseProps {
   /**
    * Callback function to call on change event.
    */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement> | CleaveChangeEvent<HTMLInputElement>) => void;
   /**
    * The text value of the input. Required since our Input is a controlled component.
    */
