@@ -19,7 +19,7 @@ Use a DatePicker when a user needs to select a date and time.
 <Canvas>
   <Story name="Basic Example">
     {() => {
-      const [selectedDate, setSelectedDate] = useState(new Date(2020, 11, 3));
+      const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
       return (
         <Box childGap="md">
           <DatePicker onChange={setSelectedDate} selected={selectedDate} />
@@ -35,8 +35,8 @@ Use a DatePicker when a user needs to select a date and time.
 <Canvas>
   <Story name="date range">
     {() => {
-      const [startDate, setStartDate] = useState(new Date(2020, 11, 3));
-      const [endDate, setEndDate] = useState(new Date(2020, 11, 28));
+      const [startDate, setStartDate] = useState(new Date(2019, 11, 3));
+      const [endDate, setEndDate] = useState(new Date(2019, 11, 28));
       const setDate = ([startDate, endDate]) => {
         setStartDate(startDate);
         setEndDate(endDate);
@@ -66,10 +66,10 @@ Use a DatePicker when a user needs to select a date and time.
 <Canvas>
   <Story name="Min/max dates">
     {() => {
-      const [startDate, setStartDate] = useState(new Date(2020, 11, 18));
-      const min = new Date(2020, 11, 18);
+      const [startDate, setStartDate] = useState(new Date(2019, 11, 18));
+      const min = new Date(2019, 11, 18);
       min.setDate(min.getDate() - 5);
-      const max = new Date(2020, 11, 18);
+      const max = new Date(2019, 11, 18);
       max.setDate(max.getDate() + 5);
       return (
         <Box childGap="md">
@@ -86,9 +86,9 @@ Use a DatePicker when a user needs to select a date and time.
 <Canvas>
   <Story name="month picker">
     {() => {
-      const [startDateOne, setStartDateOne] = useState(new Date(2020, 10));
-      const [startDateTwo, setStartDateTwo] = useState(new Date(2020, 10));
-      const [startDateThree, setStartDateThree] = useState(new Date(2020, 10));
+      const [startDateOne, setStartDateOne] = useState(new Date(2019, 10));
+      const [startDateTwo, setStartDateTwo] = useState(new Date(2019, 10));
+      const [startDateThree, setStartDateThree] = useState(new Date(2019, 10));
       return (
         <Box display="flex" direction="row" childGap="md">
           <Box childGap="md" display="flex" direction="column" alignItems="center" width="33">
@@ -131,8 +131,8 @@ Use a DatePicker when a user needs to select a date and time.
 <Canvas>
   <Story name="Multiple Months">
     {() => {
-      const [startDate, setStartDate] = useState(new Date(2020, 11, 3));
-      const [endDate, setEndDate] = useState(new Date(2020, 12, 20));
+      const [startDate, setStartDate] = useState(new Date(2019, 11, 3));
+      const [endDate, setEndDate] = useState(new Date(2019, 12, 20));
       const setDate = ([startDate, endDate]) => {
         console.log(startDate, endDate);
         setStartDate(startDate);
@@ -203,7 +203,7 @@ Use a DatePicker when a user needs to select a date and time.
 <Canvas>
   <Story name="with children">
     {() => {
-      const [selectedDate, setSelectedDate] = useState(new Date(2020, 11, 3));
+      const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
       return (
         <Box childGap="md">
           <DatePicker onChange={setSelectedDate} selected={selectedDate}>
@@ -223,7 +223,7 @@ Use a DatePicker when a user needs to select a date and time.
 <Canvas>
   <Story name="day classname">
     {() => {
-      const [selectedDate, setSelectedDate] = useState(new Date(2020, 11, 3));
+      const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
       return (
         <Box childGap="md">
           <DatePicker
