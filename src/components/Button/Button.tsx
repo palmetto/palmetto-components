@@ -154,7 +154,7 @@ const Button: FC<ButtonProps> = forwardRef(
     };
 
     const buttonContent = (
-      <Box display="inline-flex" direction="row" alignItems="center" childGap="xs">
+      <Box display="inline-flex" direction="row" alignItems="center" childGap={size === 'xs' ? '2xs' : 'xs'}>
         {isLoading && (
           <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
         )}
