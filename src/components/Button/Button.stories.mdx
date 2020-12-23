@@ -3,10 +3,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Button from './Button';
 import Box from '../Box/Box';
 
-<Meta
-  title="Components/Button"
-  component={Button}
-/>
+<Meta title="Components/Button" component={Button} />
 
 # Button
 
@@ -15,9 +12,7 @@ They are used in forms, toolbars, modal dialogs and as stand-alone action trigge
 Actions almost always occur on the same page.
 
 <Canvas isExpanded>
-  <Button onClick={() => alert('clicked')}>
-    Button
-  </Button>
+  <Button onClick={() => alert('clicked')}>Button</Button>
 </Canvas>
 
 ## Props
@@ -29,23 +24,13 @@ Actions almost always occur on the same page.
 The `variant` prop determines which color variant to render.
 
 <Canvas>
-  <Story name="Variants">
+  <Story name="variants">
     <Box childGap="sm" direction="row">
-      <Button variant="primary">
-        Primary
-      </Button>
-      <Button variant="success">
-        Success
-      </Button>
-      <Button variant="danger">
-        Danger
-      </Button>
-      <Button variant="light">
-        Light
-      </Button>
-      <Button variant="dark">
-        Dark
-      </Button>
+      <Button variant="primary">Primary</Button>
+      <Button variant="success">Success</Button>
+      <Button variant="danger">Danger</Button>
+      <Button variant="light">Light</Button>
+      <Button variant="dark">Dark</Button>
     </Box>
   </Story>
 </Canvas>
@@ -56,7 +41,7 @@ Use `isOutlined` to render an outline button. This is helpful for adding a secon
 the color of the primary CTA but makes the hierarchy clear. The background is transparent in the default state.
 
 <Canvas>
-  <Story name="Outlined">
+  <Story name="outlined">
     <Box childGap="sm" direction="row">
       <Button variant="primary" isOutlined>
         Primary
@@ -82,63 +67,143 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
 Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size.
 
 <Canvas>
-  <Story name="Size">
+  <Story name="size">
     <Box childGap="md">
       <Box childGap="sm" direction="row">
-        <Button size="xs" variant="primary">xs Primary</Button>
-        <Button size="xs" variant="success">xs Success</Button>
-        <Button size="xs" variant="danger">xs Danger</Button>
-        <Button size="xs" variant="light">xs Light</Button>
-        <Button size="xs" variant="dark">xs Dark</Button>
+        <Button size="xs" variant="primary">
+          xs Primary
+        </Button>
+        <Button size="xs" variant="success">
+          xs Success
+        </Button>
+        <Button size="xs" variant="danger">
+          xs Danger
+        </Button>
+        <Button size="xs" variant="light">
+          xs Light
+        </Button>
+        <Button size="xs" variant="dark">
+          xs Dark
+        </Button>
       </Box>
       <Box childGap="sm" direction="row">
-        <Button size="xs" variant="primary" isOutlined>xs Primary</Button>
-        <Button size="xs" variant="success" isOutlined>xs Success</Button>
-        <Button size="xs" variant="danger" isOutlined>xs Danger</Button>
-        <Button size="xs" variant="light" isOutlined>xs Light</Button>
-        <Button size="xs" variant="dark" isOutlined>xs Dark</Button>
+        <Button size="xs" variant="primary" isOutlined>
+          xs Primary
+        </Button>
+        <Button size="xs" variant="success" isOutlined>
+          xs Success
+        </Button>
+        <Button size="xs" variant="danger" isOutlined>
+          xs Danger
+        </Button>
+        <Button size="xs" variant="light" isOutlined>
+          xs Light
+        </Button>
+        <Button size="xs" variant="dark" isOutlined>
+          xs Dark
+        </Button>
       </Box>
       <Box childGap="sm" direction="row">
-        <Button size="sm" variant="primary">sm Primary</Button>
-        <Button size="sm" variant="success">sm Success</Button>
-        <Button size="sm" variant="danger">sm Danger</Button>
-        <Button size="sm" variant="light">sm Light</Button>
-        <Button size="sm" variant="dark">sm Dark</Button>
+        <Button size="sm" variant="primary">
+          sm Primary
+        </Button>
+        <Button size="sm" variant="success">
+          sm Success
+        </Button>
+        <Button size="sm" variant="danger">
+          sm Danger
+        </Button>
+        <Button size="sm" variant="light">
+          sm Light
+        </Button>
+        <Button size="sm" variant="dark">
+          sm Dark
+        </Button>
       </Box>
       <Box childGap="sm" direction="row">
-        <Button size="sm" variant="primary" isOutlined>sm Primary</Button>
-        <Button size="sm" variant="success" isOutlined>sm Success</Button>
-        <Button size="sm" variant="danger" isOutlined>sm Danger</Button>
-        <Button size="sm" variant="light" isOutlined>sm Light</Button>
-        <Button size="sm" variant="dark" isOutlined>sm Dark</Button>
+        <Button size="sm" variant="primary" isOutlined>
+          sm Primary
+        </Button>
+        <Button size="sm" variant="success" isOutlined>
+          sm Success
+        </Button>
+        <Button size="sm" variant="danger" isOutlined>
+          sm Danger
+        </Button>
+        <Button size="sm" variant="light" isOutlined>
+          sm Light
+        </Button>
+        <Button size="sm" variant="dark" isOutlined>
+          sm Dark
+        </Button>
       </Box>
       <Box childGap="sm" direction="row">
-        <Button size="md" variant="primary">md Primary</Button>
-        <Button size="md" variant="success">md Success</Button>
-        <Button size="md" variant="danger">md Danger</Button>
-        <Button size="md" variant="light">md Light</Button>
-        <Button size="md" variant="dark">md Dark</Button>
+        <Button size="md" variant="primary">
+          md Primary
+        </Button>
+        <Button size="md" variant="success">
+          md Success
+        </Button>
+        <Button size="md" variant="danger">
+          md Danger
+        </Button>
+        <Button size="md" variant="light">
+          md Light
+        </Button>
+        <Button size="md" variant="dark">
+          md Dark
+        </Button>
       </Box>
       <Box childGap="sm" direction="row">
-        <Button size="md" variant="primary" isOutlined>md Primary</Button>
-        <Button size="md" variant="success" isOutlined>md Success</Button>
-        <Button size="md" variant="danger" isOutlined>md Danger</Button>
-        <Button size="md" variant="light" isOutlined>md Light</Button>
-        <Button size="md" variant="dark" isOutlined>md Dark</Button>
+        <Button size="md" variant="primary" isOutlined>
+          md Primary
+        </Button>
+        <Button size="md" variant="success" isOutlined>
+          md Success
+        </Button>
+        <Button size="md" variant="danger" isOutlined>
+          md Danger
+        </Button>
+        <Button size="md" variant="light" isOutlined>
+          md Light
+        </Button>
+        <Button size="md" variant="dark" isOutlined>
+          md Dark
+        </Button>
       </Box>
       <Box childGap="sm" direction="row">
-        <Button size="lg" variant="primary">lg Primary</Button>
-        <Button size="lg" variant="success">lg Success</Button>
-        <Button size="lg" variant="danger">lg Danger</Button>
-        <Button size="lg" variant="light">lg Light</Button>
-        <Button size="lg" variant="dark">lg Dark</Button>
+        <Button size="lg" variant="primary">
+          lg Primary
+        </Button>
+        <Button size="lg" variant="success">
+          lg Success
+        </Button>
+        <Button size="lg" variant="danger">
+          lg Danger
+        </Button>
+        <Button size="lg" variant="light">
+          lg Light
+        </Button>
+        <Button size="lg" variant="dark">
+          lg Dark
+        </Button>
       </Box>
       <Box childGap="sm" direction="row">
-        <Button size="lg" variant="primary" isOutlined>lg Primary</Button>
-        <Button size="lg" variant="success" isOutlined>lg Success</Button>
-        <Button size="lg" variant="danger" isOutlined>lg Danger</Button>
-        <Button size="lg" variant="light" isOutlined>lg Light</Button>
-        <Button size="lg" variant="dark" isOutlined>lg Dark</Button>
+        <Button size="lg" variant="primary" isOutlined>
+          lg Primary
+        </Button>
+        <Button size="lg" variant="success" isOutlined>
+          lg Success
+        </Button>
+        <Button size="lg" variant="danger" isOutlined>
+          lg Danger
+        </Button>
+        <Button size="lg" variant="light" isOutlined>
+          lg Light
+        </Button>
+        <Button size="lg" variant="dark" isOutlined>
+          lg Dark
+        </Button>
       </Box>
     </Box>
   </Story>
@@ -146,13 +211,13 @@ Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size
 
 ## Naked
 
-When you need a button with no styles.
+When you need a button with no styles but want to use utility classes.
 
 <Canvas>
-  <Story name="Naked">
-    <Button isNaked>
-      Naked
-    </Button>
+  <Story name="naked">
+    <Box display="block" fontSize="sm" color="secondary-500">
+      <Button isNaked>Naked Button</Button>
+    </Box>
   </Story>
 </Canvas>
 
@@ -161,15 +226,76 @@ When you need a button with no styles.
 Use the `fullWidth` prop to allow the button to grow to its container's full width.
 
 <Canvas>
-  <Story name="Full Width">
+  <Story name="full width">
     <Box childGap="md">
-      <Button fullWidth>
-        Full Width
-      </Button>
+      <Button fullWidth>Full Width</Button>
       <Button fullWidth isOutlined>
         Full Width
       </Button>
     </Box>
+  </Story>
+</Canvas>
+
+## Icons
+
+Add an icon to the left or right inside the Button using the `iconPrefix` and `iconSuffix` props respectively.
+
+<Canvas>
+  <Story name="with icons">
+    <Box childGap="md" display="block">
+      <Box direction="row" childGap="md">
+        <Button variant="primary" iconPrefix="mail">
+          Email
+        </Button>
+        <Button variant="primary" isOutlined iconSuffix="chat">
+          Chat Now
+        </Button>
+      </Box>
+      <Box direction="row" childGap="md">
+        <Button variant="light" iconPrefix="caret-left">
+          back
+        </Button>
+        <Button variant="light" iconSuffix="caret-right">
+          next
+        </Button>
+      </Box>
+      <Box direction="row" childGap="md">
+        <Button size="sm" variant="light" iconPrefix="caret-left">
+          back
+        </Button>
+        <Button size="sm" variant="light" iconSuffix="caret-right">
+          next
+        </Button>
+      </Box>
+      <Box direction="row" childGap="md">
+        <Button size="xs" variant="light" iconPrefix="caret-left">
+          back
+        </Button>
+        <Button size="xs" variant="light" iconSuffix="caret-right">
+          next
+        </Button>
+      </Box>
+      <Box>
+        <Button fullWidth variant="primary" iconPrefix="check">
+          check
+        </Button>
+      </Box>
+      <Box>
+        <Button fullWidth variant="primary" isOutlined iconSuffix="check">
+          check
+        </Button>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Icon Only Button
+
+Use a combination of `isNaked` and an named icon to make an icon a button. Be sure to include an `aria-label` for screen readers to know what action the button will perform when pressed.
+
+<Canvas>
+  <Story name="icon button">
+    <Button iconPrefix="remove" isNaked aria-label="remove" />
   </Story>
 </Canvas>
 
@@ -233,8 +359,7 @@ The width of the button will remain consistent to prevent content from shifting.
         </Button>
       </Box>
       <Button isLoading>
-        Button with a really long name.
-        Width will not decrease when loading indicator is rendered.
+        Button with a really long name. Width will not decrease when loading indicator is rendered.
       </Button>
       <Button fullWidth isLoading>
         Full Width Loading Button
@@ -252,18 +377,38 @@ The interface should make it clear why the button is disabled and what needs to 
   <Story name="Disabled">
     <Box childGap="md">
       <Box childGap="sm" direction="row">
-        <Button isDisabled variant="primary">Primary</Button>
-        <Button isDisabled variant="success">Success</Button>
-        <Button isDisabled variant="danger">Danger</Button>
-        <Button isDisabled variant="light">Light</Button>
-        <Button isDisabled variant="dark">Dark</Button>
+        <Button isDisabled variant="primary">
+          Primary
+        </Button>
+        <Button isDisabled variant="success">
+          Success
+        </Button>
+        <Button isDisabled variant="danger">
+          Danger
+        </Button>
+        <Button isDisabled variant="light">
+          Light
+        </Button>
+        <Button isDisabled variant="dark">
+          Dark
+        </Button>
       </Box>
       <Box childGap="sm" direction="row">
-        <Button isDisabled variant="primary" isOutlined>Primary</Button>
-        <Button isDisabled variant="success" isOutlined>Success</Button>
-        <Button isDisabled variant="danger" isOutlined>Danger</Button>
-        <Button isDisabled variant="light" isOutlined>Light</Button>
-        <Button isDisabled variant="dark" isOutlined>Dark</Button>
+        <Button isDisabled variant="primary" isOutlined>
+          Primary
+        </Button>
+        <Button isDisabled variant="success" isOutlined>
+          Success
+        </Button>
+        <Button isDisabled variant="danger" isOutlined>
+          Danger
+        </Button>
+        <Button isDisabled variant="light" isOutlined>
+          Light
+        </Button>
+        <Button isDisabled variant="dark" isOutlined>
+          Dark
+        </Button>
       </Box>
       <div style={{ marginBottom: '1rem' }}>
         <Button fullWidth isDisabled>
@@ -280,11 +425,7 @@ Callback functions can be passed to `onClick`, `onBlur`, and `onFocus` events.
 
 <Canvas>
   <Story name="Event Callbacks">
-    <Button
-      onBlur={action('blur')}
-      onClick={action('click')}
-      onFocus={action('focus')}
-    >
+    <Button onBlur={action('blur')} onClick={action('click')} onFocus={action('focus')}>
       click, focus, blur events
     </Button>
   </Story>
