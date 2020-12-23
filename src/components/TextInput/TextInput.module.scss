@@ -9,6 +9,9 @@
 
 .text-input-wrapper {
   position: relative;
+  border: 1px solid var(--form-control-border-color);
+  box-shadow: var(--form-control-size-box-shadow);
+  background-color: var(--form-control-background-color);
 
   &:focus-within {
     outline: none;
@@ -25,9 +28,8 @@
     transition-duration: 300ms;
     transition-property: border, background-color;
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
-    border: 1px solid var(--form-control-border-color);
-    box-shadow: var(--form-control-size-box-shadow);
-    background-color: var(--form-control-background-color);
+    border: none;
+    background: none;
     width: 100%;
     line-height: var(--form-control-text-line-height);
     color: var(--form-control-font-color);
@@ -50,63 +52,60 @@
   }
 
   &.sm {
-    > input {
-      border-radius: var(--form-control-size-sm-border-radius);
-      padding: calc(var(--form-control-size-sm-padding) - 1px) var(--form-control-size-sm-padding);
-      font-size: var(--form-control-size-sm-font-size);
+    border-radius: var(--form-control-size-sm-border-radius);
+    padding: 0 var(--form-control-size-sm-padding);
+    font-size: var(--form-control-size-sm-font-size);
+
+    > * {
+      padding-top: calc(var(--form-control-size-sm-padding) - 1px);
+      padding-bottom: calc(var(--form-control-size-sm-padding) - 1px);
     }
   }
 
   &.md {
-    > input {
-      border-radius: var(--form-control-size-md-border-radius);
-      padding: calc(var(--form-control-size-md-padding) - 1px) var(--form-control-size-md-padding);
-      font-size: var(--form-control-size-md-font-size);
+    border-radius: var(--form-control-size-md-border-radius);
+    padding: 0 var(--form-control-size-md-padding);
+    font-size: var(--form-control-size-md-font-size);
+
+    > * {
+      padding-top: calc(var(--form-control-size-md-padding) - 1px);
+      padding-bottom: calc(var(--form-control-size-md-padding) - 1px);
     }
   }
 
   &.lg {
-    > input {
-      border-radius: var(--form-control-size-lg-border-radius);
-      padding: calc(var(--form-control-size-lg-padding) - 1px) var(--form-control-size-lg-padding);
-      font-size: var(--form-control-size-lg-font-size);
+    border-radius: var(--form-control-size-lg-border-radius);
+    padding: 0 var(--form-control-size-lg-padding);
+    font-size: var(--form-control-size-lg-font-size);
+
+    > * {
+      padding-top: calc(var(--form-control-size-lg-padding) - 1px);
+      padding-bottom: calc(var(--form-control-size-lg-padding) - 1px);
     }
   }
 
   &.error {
-    > input {
-      border-color: var(--form-control-error-border-color);
-      background-color: var(--form-control-error-background-color);
+    border-color: var(--form-control-error-border-color);
+    background-color: var(--form-control-error-background-color);
 
-      &:focus {
-        outline: none;
-        border-color: var(--form-control-focus-border-color);
-        background-color: var(--form-control-background-color);
-      }
+    input:focus {
+      outline: none;
+      border-color: var(--form-control-focus-border-color);
+      background-color: transparent;
     }
   }
 
   .clear-button {
     /* Reset default button styles */
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    border: 0;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    color: inherit;
-    font-style: inherit;
-  }
-
-  .clear-icon {
-    display: block;
     transition-duration: 0.2s;
     transition-property: color;
+    border: 0;
+    border-radius: 0;
+    background: none;
     cursor: pointer;
+    padding-left: 0;
     color: var(--form-control-icon-color);
-    font-size: var(--form-control-text-clear-icon-font-size);
+    font-style: inherit;
 
     &:hover {
       color: var(--form-control-icon-hover-color);

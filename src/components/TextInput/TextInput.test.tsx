@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  screen,
-} from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import TextInput from './TextInput';
 
 const baseProps = {
@@ -30,30 +26,55 @@ describe('TextInput', () => {
 
       test('onChange event fires callback function with masked input', () => {
         let value = '123';
-        const mockedHandleChange = jest.fn(event => { value = event.target.value; });
+        const mockedHandleChange = jest.fn(event => {
+          value = event.target.value;
+        });
 
         const { rerender } = render(
-          <TextInput {...baseProps} value={value} onChange={mockedHandleChange} inputMask="phone" />,
+          <TextInput
+            {...baseProps}
+            value={value}
+            onChange={mockedHandleChange}
+            inputMask="phone"
+          />,
         );
         const inputElement = screen.getByDisplayValue('(123)');
 
         fireEvent.change(inputElement, { target: { value: 'good bye' } });
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
 
-        rerender(<TextInput {...baseProps} value={value} onChange={mockedHandleChange} inputMask="phone" />);
+        rerender(
+          <TextInput
+            {...baseProps}
+            value={value}
+            onChange={mockedHandleChange}
+            inputMask="phone"
+          />,
+        );
         expect((inputElement as HTMLInputElement).value).toBe('');
 
         fireEvent.change(inputElement, { target: { value: '12381238' } });
         expect(mockedHandleChange).toHaveBeenCalledTimes(2);
 
-        rerender(<TextInput {...baseProps} value={value} onChange={mockedHandleChange} inputMask="phone" />);
+        rerender(
+          <TextInput
+            {...baseProps}
+            value={value}
+            onChange={mockedHandleChange}
+            inputMask="phone"
+          />,
+        );
         expect((inputElement as HTMLInputElement).value).toBe('(123) 812-38');
       });
 
       test('Input value is updated properly when upper state changes', () => {
         let value = 'hello';
-        const mockedHandleChange = jest.fn(event => { value = event.target.value; });
-        const { rerender } = render(<TextInput {...baseProps} value={value} onChange={mockedHandleChange} />);
+        const mockedHandleChange = jest.fn(event => {
+          value = event.target.value;
+        });
+        const { rerender } = render(
+          <TextInput {...baseProps} value={value} onChange={mockedHandleChange} />,
+        );
 
         const inputElement = screen.getByDisplayValue('hello') as HTMLInputElement;
         expect(inputElement.value).toBe('hello');
@@ -138,17 +159,13 @@ describe('TextInput', () => {
       });
 
       test('Input correctly assigns autocomplete value of "off" when bool false is provided', () => {
-        render(
-          <TextInput {...baseProps} autoComplete={false} />,
-        );
+        render(<TextInput {...baseProps} autoComplete={false} />);
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'off');
       });
 
       test('Input correctly assigns autocomplete specific value when provided', () => {
-        render(
-          <TextInput {...baseProps} autoComplete="email" />,
-        );
+        render(<TextInput {...baseProps} autoComplete="email" />);
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'email');
       });
@@ -163,7 +180,7 @@ describe('TextInput', () => {
         expect(inputElement).toHaveAttribute('aria-required', 'true');
       });
 
-      test('it\'s label renders an asterisk indicating that it\'s required', () => {
+      test("it's label renders an asterisk indicating that it's required", () => {
         render(<TextInput {...baseProps} isRequired />);
 
         const labelElement = screen.getByText(`${baseProps.label} *`);
@@ -193,9 +210,7 @@ describe('TextInput', () => {
 
     describe('Max Length', () => {
       test('Input correctly passes maxlength property if prop is passed', async () => {
-        render(
-          <TextInput {...baseProps} value="" maxLength={3} />,
-        );
+        render(<TextInput {...baseProps} value="" maxLength={3} />);
 
         const inputElement = screen.getByLabelText(baseProps.label);
         expect(inputElement).toBeInTheDocument();
@@ -217,15 +232,25 @@ describe('TextInput', () => {
         const inputElement = screen.getByLabelText(baseProps.label);
         expect(inputElement).not.toHaveAttribute('aria-labelledby');
       });
+
+      describe('Prefix and Suffix', () => {
+        test('renders the prefix if specified', () => {
+          render(<TextInput {...baseProps} prefix="prefixValue" />);
+          expect(screen.getByText('prefixValue')).toBeInTheDocument();
+        });
+
+        test('renders the suffix if specified', () => {
+          render(<TextInput {...baseProps} suffix="suffixValue" />);
+          expect(screen.getByText('suffixValue')).toBeInTheDocument();
+        });
+      });
     });
 
     // NOTE: due to an unknown bug in the Cleave implementation, we are unable to test change events,
     // but we can at least confirm that the component renders an input when an inputMask is passed.
     describe('Masked', () => {
       test('Properly renders an input when inputMask is passed', () => {
-        render(
-          <TextInput {...baseProps} inputMask="phone" placeholder="phone" />,
-        );
+        render(<TextInput {...baseProps} inputMask="phone" placeholder="phone" />);
         const inputElement = screen.getByPlaceholderText('phone');
         expect(inputElement).toBeInTheDocument();
       });

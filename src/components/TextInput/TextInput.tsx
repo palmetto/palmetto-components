@@ -97,9 +97,18 @@ export interface TextInputBaseProps {
    */
   placeholder?: string;
   /**
+   * An input helper rendered before the input field value
+   */
+  prefix?: ReactNode;
+  /**
    * The size of the text input.
    */
   size?: 'sm' | 'md' | 'lg';
+
+  /**
+   * An input helper rendered after the input field value
+   */
+  suffix?: ReactNode;
   /**
    * The input 'type' value. Defaults to type 'text'.
    */
@@ -141,9 +150,11 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
       onBlur = undefined,
       onClear = undefined,
       onFocus = undefined,
+      prefix = undefined,
       placeholder = '',
-      type = 'text',
+      suffix = undefined,
       size = 'md',
+      type = 'text',
       ...restProps
     },
     ref,
@@ -187,8 +198,9 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
           onKeyUp={handleKeyPress}
           className={clearBtnClasses}
           data-testid="text-input-clear-button"
+          aria-label="clear input"
         >
-          <Icon name="remove" className={styles['clear-icon']} />
+          <Icon name="remove" className="display-block" />
         </button>
       );
     };
@@ -200,6 +212,11 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
       'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
       autoComplete: getAutoCompleteValue(autoComplete),
       autoFocus,
+      className: classNames({
+        'p-left-xs': prefix,
+        'p-right-xs': suffix,
+        'p-h-0': !suffix && !prefix,
+      }),
       disabled: isDisabled,
       id,
       maxLength,
@@ -225,14 +242,16 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
     return (
       <Box width="100%" className={className}>
         {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
-        <div className={inputWrapperClasses}>
+        <Box direction="row" className={inputWrapperClasses}>
+          {prefix && <Box color="grey-400">{prefix}</Box>}
           {!inputMask ? (
             <input {...inputProps} ref={ref} />
           ) : (
             <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
           )}
           {!!onClear && !!value && renderClearIcon()}
-        </div>
+          {suffix && <Box color="grey-400">{suffix}</Box>}
+        </Box>
         {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
       </Box>
     );

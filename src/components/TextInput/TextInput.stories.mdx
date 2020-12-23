@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TextInput from './TextInput';
 import Box from '../Box/Box';
+import Icon from '../Icon/Icon';
 
 <Meta title="Components/Form Inputs/TextInput" component={TextInput} />
 
@@ -139,6 +140,57 @@ Use the `hideLabel` prop to not render the label.
   </Story>
 </Canvas>
 
+## Prefix and Suffix
+
+All that is required to render a basic version of the TextInput is a unique `id`, `label`, `value`, and an onchange event handler passed to the `onChange` prop.
+
+<Canvas>
+  <Story name="With Prefix and Suffix">
+    {() => {
+      const [prefixValue1, setPrefixValue1] = useState('palmettosolar');
+      const [prefixValue2, setPrefixValue2] = useState('49');
+      const [prefixValue3, setPrefixValue3] = useState('');
+      const [prefixValue4, setPrefixValue4] = useState('Pre-populated Value');
+      return (
+        <Box childGap="md" display="block">
+          <TextInput
+            id="prefixSuffix1"
+            value={prefixValue1}
+            label="Prefix"
+            onChange={event => setPrefixValue1(event.target.value)}
+            prefix="@"
+          />
+          <TextInput
+            id="prefixSuffix2"
+            value={prefixValue2}
+            label="Prefix and Suffix"
+            onChange={event => setPrefixValue2(event.target.value)}
+            prefix="$"
+            suffix=".99"
+          />
+          <TextInput
+            id="prefixSuffix3"
+            value={prefixValue3}
+            label="Suffix"
+            placeholder="Contact name"
+            onChange={event => setPrefixValue3(event.target.value)}
+            suffix={<Icon name="book" />}
+          />
+          <TextInput
+            id="prefixSuffix4"
+            value={prefixValue4}
+            label="Suffix with Clear"
+            placeholder="Contact name"
+            onChange={event => setPrefixValue4(event.target.value)}
+            onClear={event => setPrefixValue4('')}
+            suffix={<Icon name="search" />}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Disabled
 
 Use the `isDisabled` prop to mark the input as disabled.
@@ -226,7 +278,6 @@ a callback function when the clear icon is clicked, which can then be handled to
   </Story>
 </Canvas>
 
-
 ## Sizes
 
 Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
@@ -251,20 +302,20 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
           width="100%"
         >
           <TextInput
-            id="default"
+            id="sizeSmall"
             value={value}
             label="Small Size"
             size="sm"
             onChange={event => setValue(event.target.value)}
           />
           <TextInput
-            id="default"
+            id="sizeMedium"
             value={value1}
             label="Medium Size"
             onChange={event => setValue1(event.target.value)}
           />
           <TextInput
-            id="default"
+            id="sizeLarge"
             value={value2}
             label="Large Size"
             size="lg"
@@ -275,7 +326,6 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
     }}
   </Story>
 </Canvas>
-
 
 ## With Phone Mask
 
@@ -456,19 +506,15 @@ Use the `className` prop to add a custom class, or classes to an input.
       const [value2, setValue2] = useState('');
       const [value3, setValue3] = useState('');
       return (
-        <Box
-          display="flex"
-          direction="row"
-          justify="between"
-          overflow="hidden"
-          childGap="md"
-        >
+        <Box display="flex" direction="row" justify="between" overflow="hidden" childGap="md">
           <TextInput
+            id="adjacent1"
             value={value1}
             label="input 1"
             onChange={event => setValue1(event.target.value)}
           />
           <TextInput
+            id="adjacent2"
             value={value2}
             label="input 2"
             onChange={event => setValue2(event.target.value)}
