@@ -2,11 +2,9 @@ import { FC, createElement, ReactNode } from 'react';
 import classNames from 'classnames';
 import getElementType from '../../lib/getElementType';
 
-import {
-  FontColor,
-  FontSize,
-} from '../../types';
+import { FontColor, FontSize, ResponsiveProp } from '../../types';
 import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
+import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
 import styles from './Heading.module.scss';
 
 export interface HeadingProps {
@@ -34,7 +32,7 @@ export interface HeadingProps {
    * Available sizes found:
    * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json).
    */
-  size?: FontSize;
+  size?: FontSize | ResponsiveProp<FontSize>;
   /**
    * Additional props to be spread to rendered element
    */
@@ -56,8 +54,8 @@ const Heading: FC<HeadingProps> = ({
   const classes = classNames(
     styles.heading,
     className,
+    generateResponsiveClasses('font-size', headingSize),
     {
-      [`font-size-${headingSize}`]: headingSize,
       [`font-color-${variant}`]: variant,
     },
   );
