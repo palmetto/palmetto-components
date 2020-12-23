@@ -3,7 +3,7 @@ import Box from '../../../Box/Box';
 import Icon from '../../../Icon/Icon';
 import styles from '../../Modal.module.scss';
 
-type ModalHeaderProps = {
+export type ModalHeaderProps = {
   /**
    * id of the element containing the title, used by the Modal `aria-labelledby` prop
    */

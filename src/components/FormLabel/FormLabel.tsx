@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Box from '../Box/Box';
 import styles from './FormLabel.module.scss';
 
-interface FormLabelProps {
+export interface FormLabelProps {
   /**
    * Content to be rendered inside the label.
    */

@@ -3,7 +3,7 @@ import { LinkProps } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './TextLink.module.scss';
 
-interface TextLinkBaseProps {
+export interface TextLinkBaseProps {
   /**
    * Custom class to be passed to the link.
    */

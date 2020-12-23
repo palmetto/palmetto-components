@@ -4,7 +4,7 @@ import { BRAND_COLORS } from '../../lib/tokens';
 import { ColorName } from '../../types';
 import styles from './Spinner.module.scss';
 
-interface SpinnerProps {
+export interface SpinnerProps {
   /**
    * Custom className to be applied to spinner container div element.
    */

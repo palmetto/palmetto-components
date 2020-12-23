@@ -16,7 +16,7 @@ export type BadgeVariant = 'info' | 'primary' | 'success' | 'secondary' | 'terti
 export type BadgeColorAttributes = { font: FontColor; background: BrandColor; };
 export type BadgeSizeAttributes = { fontSize: FontSize; padding: BaseSpacing; };
 
-interface BadgeProps {
+export interface BadgeProps {
   /**
    * Custom class to apply to the badge container div.
    */

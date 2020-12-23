@@ -5,7 +5,7 @@ import classNames from 'classnames';
  * Used by form inputs such as TextInput, to display a validation message for an invalid input.
  */
 
-interface InputValidationMessageProps {
+export interface InputValidationMessageProps {
   children: ReactNode;
   size?: 'xs' | 'sm' | 'md';
 }

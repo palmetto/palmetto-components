@@ -7,7 +7,7 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import RadioInput from './RadioInput/RadioInput';
 import styles from './RadioGroup.module.scss';
 
-interface RadioGroupProps {
+export interface RadioGroupProps {
   /**
    * Radio group name.
    */

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Column, EventWithColumnKey } from '../../../types';
 import TableRow from '../common/TableRow/TableRow';
 
-interface TableHeadProps {
+export interface TableHeadProps {
   /**
    * The table columns to be rendered
    */

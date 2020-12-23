@@ -4,7 +4,7 @@ import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker';
 import TextInput, { TextInputBaseProps } from '../TextInput/TextInput';
 import Popover, { PopoverProps } from '../Popover/Popover';
 
-interface DateInputProps {
+export interface DateInputProps {
   datePickerProps: DatePickerProps;
   textInputProps: TextInputBaseProps;
   dateFormat?: string;

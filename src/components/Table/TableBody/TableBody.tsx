@@ -4,7 +4,7 @@ import styles from './TableBody.module.scss';
 import { Column, Row } from '../../../types';
 import TableRow from '../common/TableRow/TableRow';
 
-interface TableBodyProps {
+export interface TableBodyProps {
   /**
    * The table columns to be rendered
    */

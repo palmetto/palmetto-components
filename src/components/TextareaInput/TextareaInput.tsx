@@ -8,7 +8,7 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextareaInput.module.scss';
 
-interface TextareaInputProps {
+export interface TextareaInputProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
