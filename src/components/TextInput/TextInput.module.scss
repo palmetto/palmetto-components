@@ -97,21 +97,15 @@
 
   .clear-button {
     /* Reset default button styles */
+    transition-duration: 0.2s;
+    transition-property: color;
     border: 0;
-    border-radius: none;
+    border-radius: 0;
     background: none;
     cursor: pointer;
     padding-left: 0;
-    color: inherit;
-    font-style: inherit;
-  }
-
-  .clear-icon {
-    display: block;
-    transition-duration: 0.2s;
-    transition-property: color;
-    cursor: pointer;
     color: var(--form-control-icon-color);
+    font-style: inherit;
 
     &:hover {
       color: var(--form-control-icon-hover-color);

@@ -199,7 +199,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
           data-testid="text-input-clear-button"
           aria-label="clear input"
         >
-          <Icon name="remove" className={styles['clear-icon']} />
+          <Icon name="remove" className="display-block" />
         </button>
       );
     };
