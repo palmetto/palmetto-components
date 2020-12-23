@@ -96,9 +96,18 @@ export interface TextInputBaseProps {
    */
   placeholder?: string;
   /**
+   * An input helper rendered before the input field value
+   */
+  prefix?: ReactNode;
+  /**
    * The size of the text input.
    */
   size?: 'sm' | 'md' | 'lg';
+
+  /**
+   * An input helper rendered after the input field value
+   */
+  suffix?: ReactNode;
   /**
    * The input 'type' value. Defaults to type 'text'.
    */
@@ -140,9 +149,11 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
       onBlur = undefined,
       onClear = undefined,
       onFocus = undefined,
+      prefix = undefined,
       placeholder = '',
-      type = 'text',
+      suffix = undefined,
       size = 'md',
+      type = 'text',
       ...restProps
     },
     ref,
@@ -186,6 +197,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
           onKeyUp={handleKeyPress}
           className={clearBtnClasses}
           data-testid="text-input-clear-button"
+          aria-label="clear input"
         >
           <Icon name="remove" className={styles['clear-icon']} />
         </button>
@@ -224,14 +236,24 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
     return (
       <Box width="100%" className={className}>
         {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
-        <div className={inputWrapperClasses}>
+        <Box direction="row" className={inputWrapperClasses}>
+          {prefix && (
+            <Box justifyContent="center" color="grey-400" margin="0 xs 0 0">
+              {prefix}
+            </Box>
+          )}
           {!inputMask ? (
             <input {...inputProps} ref={ref} />
           ) : (
             <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
           )}
           {!!onClear && !!value && renderClearIcon()}
-        </div>
+          {suffix && (
+            <Box justifyContent="center" color="grey-400" margin="0 0 0 xs">
+              {suffix}
+            </Box>
+          )}
+        </Box>
         {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
       </Box>
     );

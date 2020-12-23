@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TextInput from './TextInput';
 import Box from '../Box/Box';
+import Icon from '../Icon/Icon';
 
 <Meta title="Components/Form Inputs/TextInput" component={TextInput} />
 
@@ -139,6 +140,135 @@ Use the `hideLabel` prop to not render the label.
   </Story>
 </Canvas>
 
+## Prefix and Suffix
+
+All that is required to render a basic version of the TextInput is a unique `id`, `label`, `value`, and an onchange event handler passed to the `onChange` prop.
+
+<Canvas>
+  <Story name="with prefix and suffix">
+    {() => {
+      const [prefixValue, setPrefixValue] = useState('palmettosolar');
+      const [value, setValue] = useState('49');
+      const [value2, setValue2] = useState('');
+      const [value3, setValue3] = useState('Pre-populated Value');
+      return (
+        <Box childGap="lg" direction="row">
+          <Box childGap="md" maxWidth="3xl">
+            <TextInput
+              id="prefix1"
+              value={prefixValue}
+              label="Prefix"
+              onChange={event => setPrefixValue(event.target.value)}
+              prefix="@"
+              size="sm"
+            />
+            <TextInput
+              id="prefixSuffix1"
+              value={value}
+              label="Prefix and Suffix"
+              onChange={event => setValue(event.target.value)}
+              prefix="$"
+              suffix=".99"
+              size="sm"
+            />
+            <TextInput
+              id="prefixSuffix2"
+              value={value2}
+              label="Suffix"
+              placeholder="Contact name"
+              onChange={event => setValue2(event.target.value)}
+              suffix={<Icon name="book" />}
+              size="sm"
+            />
+            <TextInput
+              id="prefixSuffix3"
+              value={value3}
+              label="Suffix with Clear"
+              placeholder="Contact name"
+              onChange={event => setValue3(event.target.value)}
+              onClear={event => setValue3('')}
+              suffix={<Icon name="search" />}
+              size="sm"
+            />
+          </Box>
+          <Box childGap="md" maxWidth="3xl">
+            <TextInput
+              id="prefix2"
+              value={prefixValue}
+              label="Prefix"
+              onChange={event => setPrefixValue(event.target.value)}
+              prefix="@"
+            />
+            <TextInput
+              id="prefixSuffix4"
+              value={value}
+              label="Prefix and Suffix"
+              onChange={event => setValue(event.target.value)}
+              prefix="$"
+              suffix=".99"
+            />
+            <TextInput
+              id="prefixSuffix5"
+              value={value2}
+              label="Suffix"
+              placeholder="Contact name"
+              onChange={event => setValue2(event.target.value)}
+              suffix={<Icon name="book" />}
+            />
+            <TextInput
+              id="prefixSuffix6"
+              value={value3}
+              label="Suffix with Clear"
+              placeholder="Contact name"
+              onChange={event => setValue3(event.target.value)}
+              onClear={event => setValue3('')}
+              suffix={<Icon name="search" />}
+            />
+          </Box>
+          <Box childGap="md" maxWidth="3xl">
+            <TextInput
+              id="prefix3"
+              value={prefixValue}
+              label="Prefix"
+              onChange={event => setPrefixValue(event.target.value)}
+              prefix="@"
+              size="lg"
+            />
+            <TextInput
+              id="prefixSuffix7"
+              value={value}
+              label="Prefix and Suffix"
+              onChange={event => setValue(event.target.value)}
+              prefix="$"
+              suffix=".99"
+              size="lg"
+            />
+            <TextInput
+              id="prefixSuffix8"
+              value={value2}
+              label="Suffix"
+              placeholder="Contact name"
+              onChange={event => setValue2(event.target.value)}
+              suffix={<Icon name="book" />}
+              size="lg"
+            />
+            <TextInput
+              id="prefixSuffix9"
+              value={value3}
+              label="Suffix with Clear"
+              placeholder="Contact name"
+              onChange={event => setValue3(event.target.value)}
+              onClear={event => setValue3('')}
+              suffix={<Icon name="search" />}
+              size="lg"
+            />
+          </Box>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Disabled
 
 Use the `isDisabled` prop to mark the input as disabled.
@@ -226,7 +356,6 @@ a callback function when the clear icon is clicked, which can then be handled to
   </Story>
 </Canvas>
 
-
 ## Sizes
 
 Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
@@ -251,20 +380,20 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
           width="100%"
         >
           <TextInput
-            id="default"
+            id="sizeSmall"
             value={value}
             label="Small Size"
             size="sm"
             onChange={event => setValue(event.target.value)}
           />
           <TextInput
-            id="default"
+            id="sizeMedium"
             value={value1}
             label="Medium Size"
             onChange={event => setValue1(event.target.value)}
           />
           <TextInput
-            id="default"
+            id="sizeLarge"
             value={value2}
             label="Large Size"
             size="lg"
@@ -275,7 +404,6 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
     }}
   </Story>
 </Canvas>
-
 
 ## With Phone Mask
 
@@ -456,19 +584,15 @@ Use the `className` prop to add a custom class, or classes to an input.
       const [value2, setValue2] = useState('');
       const [value3, setValue3] = useState('');
       return (
-        <Box
-          display="flex"
-          direction="row"
-          justify="between"
-          overflow="hidden"
-          childGap="md"
-        >
+        <Box display="flex" direction="row" justify="between" overflow="hidden" childGap="md">
           <TextInput
+            id="adjacent1"
             value={value1}
             label="input 1"
             onChange={event => setValue1(event.target.value)}
           />
           <TextInput
+            id="adjacent2"
             value={value2}
             label="input 2"
             onChange={event => setValue2(event.target.value)}
