@@ -53,8 +53,12 @@
 
   &.sm {
     border-radius: var(--form-control-size-sm-border-radius);
-    padding: calc(var(--form-control-size-sm-padding) - 1px) var(--form-control-size-sm-padding);
+    padding: 0 var(--form-control-size-sm-padding);
     font-size: var(--form-control-size-sm-font-size);
+
+    > input {
+      padding: calc(var(--form-control-size-sm-padding) - 1px);
+    }
   }
 
   &.md {
@@ -69,8 +73,12 @@
 
   &.lg {
     border-radius: var(--form-control-size-lg-border-radius);
-    padding: calc(var(--form-control-size-lg-padding) - 1px) var(--form-control-size-lg-padding);
+    padding: 0 var(--form-control-size-lg-padding);
     font-size: var(--form-control-size-lg-font-size);
+
+    > input {
+      padding: calc(var(--form-control-size-lg-padding) - 1px);
+    }
   }
 
   &.error {
