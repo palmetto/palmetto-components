@@ -152,8 +152,8 @@ All that is required to render a basic version of the TextInput is a unique `id`
       const [value2, setValue2] = useState('');
       const [value3, setValue3] = useState('Pre-populated Value');
       return (
-        <Box childGap="lg" direction="row">
-          <Box childGap="md" maxWidth="3xl">
+        <Box childGap="xl" direction="row">
+          <Box childGap="md" width="33">
             <TextInput
               id="prefix1"
               value={prefixValue}
@@ -191,7 +191,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
               size="sm"
             />
           </Box>
-          <Box childGap="md" maxWidth="3xl">
+          <Box childGap="md" width="33">
             <TextInput
               id="prefix2"
               value={prefixValue}
@@ -225,7 +225,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
               suffix={<Icon name="search" />}
             />
           </Box>
-          <Box childGap="md" maxWidth="3xl">
+          <Box childGap="md" width="33">
             <TextInput
               id="prefix3"
               value={prefixValue}

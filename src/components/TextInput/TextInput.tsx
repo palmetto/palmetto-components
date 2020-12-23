@@ -211,6 +211,11 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
       'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
       autoComplete: getAutoCompleteValue(autoComplete),
       autoFocus,
+      className: classNames({
+        'p-left-xs': prefix,
+        'p-right-xs': suffix,
+        'p-h-0': !suffix && !prefix,
+      }),
       disabled: isDisabled,
       id,
       maxLength,
@@ -238,7 +243,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
         {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
         <Box direction="row" className={inputWrapperClasses}>
           {prefix && (
-            <Box justifyContent="center" color="grey-400" margin="0 xs 0 0">
+            <Box justifyContent="center" color="grey-400">
               {prefix}
             </Box>
           )}
@@ -249,7 +254,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
           )}
           {!!onClear && !!value && renderClearIcon()}
           {suffix && (
-            <Box justifyContent="center" color="grey-400" margin="0 0 0 xs">
+            <Box justifyContent="center" color="grey-400">
               {suffix}
             </Box>
           )}
