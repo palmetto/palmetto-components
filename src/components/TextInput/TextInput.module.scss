@@ -56,7 +56,7 @@
     padding: 0 var(--form-control-size-sm-padding);
     font-size: var(--form-control-size-sm-font-size);
 
-    > input {
+    > * {
       padding-top: calc(var(--form-control-size-sm-padding) - 1px);
       padding-bottom: calc(var(--form-control-size-sm-padding) - 1px);
     }
@@ -67,7 +67,7 @@
     padding: 0 var(--form-control-size-md-padding);
     font-size: var(--form-control-size-md-font-size);
 
-    > input {
+    > * {
       padding-top: calc(var(--form-control-size-md-padding) - 1px);
       padding-bottom: calc(var(--form-control-size-md-padding) - 1px);
     }
@@ -78,7 +78,7 @@
     padding: 0 var(--form-control-size-lg-padding);
     font-size: var(--form-control-size-lg-font-size);
 
-    > input {
+    > * {
       padding-top: calc(var(--form-control-size-lg-padding) - 1px);
       padding-bottom: calc(var(--form-control-size-lg-padding) - 1px);
     }
@@ -98,9 +98,10 @@
   .clear-button {
     /* Reset default button styles */
     border: 0;
+    border-radius: none;
     background: none;
     cursor: pointer;
-    padding: 0;
+    padding-left: 0;
     color: inherit;
     font-style: inherit;
   }
