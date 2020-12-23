@@ -103,7 +103,7 @@ export interface BaseSelectInputProps {
    */
   [x: string]: any; // eslint-disable-line
 }
-interface SelectInputProps extends BaseSelectInputProps {
+export interface SelectInputProps extends BaseSelectInputProps {
   /**
    * Options for dropdown list.
    */

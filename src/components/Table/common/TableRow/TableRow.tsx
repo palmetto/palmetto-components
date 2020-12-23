@@ -6,7 +6,7 @@ import getColumnKeys from '../../../../lib/getColumnKeys';
 import TableBodyCell from '../../TableBody/TableBodyCell/TableBodyCell';
 import TableHeaderCell from '../../TableHead/TableHeaderCell/TableHeaderCell';
 
-interface TableRowProps {
+export interface TableRowProps {
   /**
    * The table columns to be rendered
    */

@@ -7,7 +7,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import Button, { ButtonSize } from '../Button/Button';
 
-interface FileUploadProps {
+export interface FileUploadProps {
   /**
    * Id for the file input element.
    */

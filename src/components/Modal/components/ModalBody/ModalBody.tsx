@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Box, { BoxProps } from '../../../Box/Box';
 
-type ModalBodyProps = Omit<BoxProps, 'as' | 'radius'>;
+export type ModalBodyProps = Omit<BoxProps, 'as' | 'radius'>;
 
 const ModalBody: FC<ModalBodyProps> = ({
   children,

@@ -3,7 +3,7 @@ import icons from '@palmetto/palmetto-design-tokens/build/icons/react';
 import { IconName } from '../../types';
 import Box from '../Box/Box';
 
-interface IconProps {
+export interface IconProps {
   className?: string;
   name: IconName;
   /**

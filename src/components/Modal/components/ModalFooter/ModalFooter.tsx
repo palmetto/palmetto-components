@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Box, { BoxProps } from '../../../Box/Box';
 
-type ModalFooterProps = Omit<
+export type ModalFooterProps = Omit<
   BoxProps,
   'as' | 'background' | 'borderColor' | 'borderWidth' | 'radius'
 >;

@@ -10,7 +10,7 @@ import { BrandColor, FontColor, IconName } from '../../types';
 
 export type AlertVariant = 'default' | 'info' | 'success' | 'warning' | 'danger';
 export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
-interface AlertProps {
+export interface AlertProps {
   /**
    * Custom class to apply to the alert.
    */
