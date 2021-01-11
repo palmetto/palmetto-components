@@ -243,14 +243,22 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
       <Box width="100%" className={className}>
         {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
         <Box direction="row" className={inputWrapperClasses}>
-          {prefix && <Box color="grey-400">{prefix}</Box>}
+          {prefix && (
+            <Box color="grey-400" className="ws-nowrap">
+              {prefix}
+            </Box>
+          )}
           {!inputMask ? (
             <input {...inputProps} ref={ref} />
           ) : (
             <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
           )}
           {!!onClear && !!value && renderClearIcon()}
-          {suffix && <Box color="grey-400">{suffix}</Box>}
+          {suffix && (
+            <Box color="grey-400" className="ws-nowrap">
+              {suffix}
+            </Box>
+          )}
         </Box>
         {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
       </Box>
