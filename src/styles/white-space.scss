@@ -1,0 +1,22 @@
+
+.ws-normal { white-space: normal; }
+.ws-nowrap { white-space: nowrap; }
+.ws-pre { white-space: pre; }
+
+@media (min-width: $size-breakpoint-tablet) {
+  .ws-normal-tablet { white-space: normal; }
+  .ws-nowrap-tablet { white-space: nowrap; }
+  .ws-pre-tablet { white-space: pre; }
+}
+
+@media (min-width: $size-breakpoint-desktop) {
+  .ws-normal-desktop { white-space: normal; }
+  .ws-nowrap-desktop { white-space: nowrap; }
+  .ws-pre-desktop { white-space: pre; }
+}
+
+@media (min-width: $size-breakpoint-hd) {
+  .ws-normal-hd { white-space: normal; }
+  .ws-nowrap-hd { white-space: nowrap; }
+  .ws-pre-hd { white-space: pre; }
+}
