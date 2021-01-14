@@ -691,6 +691,41 @@ Set the `radius` prop with a [radius token](/?path=/docs/design-tokens-border-ra
   </Story>
 </Canvas>
 
+## Shadow
+
+Set the `shadow` prop with a [shadow token](/?path=/docs/design-tokens-box-shadow--page) to set the outer shadow of the box.
+
+<Canvas>
+  <Story name="shadow">
+    <Box background="grey-50" padding="3xl" childGap="3xl">
+      <Box shadow="0" alignItems="center" justifyContent="center" background="white" radius="md" padding="sm" height="lg">
+        0
+      </Box>
+      <Box shadow="2xs" alignItems="center" justifyContent="center" background="white" radius="md" padding="sm" height="lg">
+        2xs
+      </Box>
+      <Box shadow="xs" alignItems="center" justifyContent="center" background="white" radius="md" padding="sm" height="lg">
+        xs
+      </Box>
+      <Box shadow="sm" alignItems="center" justifyContent="center" background="white" radius="md" padding="sm" height="lg">
+        sm
+      </Box>
+      <Box shadow="md" alignItems="center" justifyContent="center" background="white" radius="md" padding="sm" height="lg">
+        md
+      </Box>
+      <Box shadow="lg" alignItems="center" justifyContent="center" background="white" radius="md" padding="sm" height="lg">
+        lg
+      </Box>
+      <Box shadow="xl" alignItems="center" justifyContent="center" background="white" radius="md" padding="sm" height="lg">
+        xl
+      </Box>
+      <Box shadow="2xl" alignItems="center" justifyContent="center" background="white" radius="md" padding="sm" height="lg">
+        2xl
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
 ## Width
 
 Width can be set to any CSS unit value (px, rem, em, %).
@@ -1154,6 +1189,31 @@ This box will have different border radius based on the breakpoint
   </Story>
 </Canvas>
 
+#### Shadow
+
+This box will have an our shadow based on the breakpoint
+
+<Canvas>
+  <Story name="responsive shadow"
+    parameters={{ ...RESPONSIVE_STORY }}>
+    {() => {
+      const activeBreakpoint = useBreakpoint();
+      const shadow = { base: '0', tablet: 'lg', desktop: 'xl', hd: '2xl' };
+      return (
+        <Box padding="3xl" background="grey-50">
+          <Box
+            padding="sm"
+            margin="md"
+            background="white"
+            shadow={shadow}
+          >
+            <p>{shadow[activeBreakpoint.name]}</p>
+          </Box>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
 
 #### Omitting Keys
 
