@@ -21,7 +21,7 @@
   &.sticky-column {
     position: sticky;
     z-index: calc(var(--size-z-index-sticky) - 1);
-    box-shadow: var(--size-box-shadow-sm);
+    box-shadow: var(--size-box-shadow-md);
     font-size: var(--table-header-font-size);
   }
 

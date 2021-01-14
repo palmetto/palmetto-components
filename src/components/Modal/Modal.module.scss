@@ -75,7 +75,7 @@
     margin: auto;
     outline: none;
     border-radius: var(--modal-border-radius);
-    box-shadow: var(--size-box-shadow-sm);
+    box-shadow: var(--modal-box-shadow);
     width: 70vw;
     min-height: unset;
     max-height: calc(100vh - 80px);
@@ -111,7 +111,7 @@
       margin: auto;
       outline: none;
       border-radius: var(--modal-border-radius);
-      box-shadow: var(--size-box-shadow-sm);
+      box-shadow: var(--modal-box-shadow);
       width: 70vw;
       min-height: unset;
       max-height: calc(100vh - 80px);

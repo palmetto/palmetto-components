@@ -1957,10 +1957,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@palmetto/palmetto-design-tokens@^0.30.0":
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.30.0.tgz#5d74e8b8cad542e0b95b555dd613b0da0e9dcdde"
-  integrity sha512-09u7GnU+5ixxCJ7CQ4N9Oiahd6nxZ9kfLeEeL2frcSXyaV9pt0dS8cSrr/HOo2TUpTlBwhbJwAqZFHCVTf1ITQ==
+"@palmetto/palmetto-design-tokens@^0.31.0":
+  version "0.31.0"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.31.0.tgz#c7798b5f88d30063d8156b11fcee5ffeada76d94"
+  integrity sha512-KAyYCGM9Q5GJLkKbc9a8bZs6HnA/IWLbLgu/I3loLkt404olV7lNpVFf9wxzkEec6IUIqWxNbw13yBA4yt2g+w==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.4.2":
   version "0.4.3"
