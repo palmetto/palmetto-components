@@ -1,8 +1,6 @@
 import React from 'react';
-import classNames from 'classnames';
 import Box, { BoxProps } from '../Box/Box';
 import { CardFooter, CardHeader, CardSection } from './components';
-import styles from './Card.module.scss';
 
 type BoxPropsShallow = Omit<BoxProps,
   'as' |
@@ -43,22 +41,16 @@ class Card extends React.Component<CardProps> {
       ...restProps
     } = this.props;
 
-    const cardClasses = classNames(
-      {
-        [styles.card]: !subdued,
-      },
-      className,
-    );
-
     const backgroundColor = subdued ? 'grey-lightest' : 'white';
 
     return (
       <Box
         background={backgroundColor}
         radius="md"
-        className={cardClasses}
+        className={className}
         overflow="hidden"
         display="block"
+        shadow={subdued ? undefined : 'md'}
         width="100%"
         {...restProps}
       >
