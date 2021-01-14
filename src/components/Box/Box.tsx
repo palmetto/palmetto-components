@@ -13,6 +13,7 @@ import {
   BaseSpacing,
   BorderRadiusSize,
   BorderSize,
+  BoxShadowSize,
   BrandColor,
   BreakpointSizeWithBase,
   CssAlignContentValue,
@@ -154,6 +155,10 @@ export interface BoxProps {
    */
   radius?: BorderRadiusSize | ResponsiveProp<BorderRadiusSize>;
   /**
+   * The size of the drop shadow applied to the Box
+   */
+  shadow?: BoxShadowSize | ResponsiveProp<BoxShadowSize>;
+  /**
    * Set the radius of all corners
    */
   style?: CSSProperties;
@@ -207,6 +212,7 @@ const Box: FC<BoxProps> = forwardRef((
     overflow = undefined,
     padding = undefined,
     radius = undefined,
+    shadow = undefined,
     style = {},
     textAlign = undefined,
     wrap = undefined,
@@ -240,6 +246,7 @@ const Box: FC<BoxProps> = forwardRef((
     generateResponsiveClasses('font-size', fontSize),
     generateResponsiveClasses('overflow', overflow),
     generateResponsiveClasses('border-radius', radius),
+    generateResponsiveClasses('shadow', shadow),
     generateResponsiveClasses('flex', flex),
     generateResponsiveClasses('background-color', background),
     cssShorthandToClasses('border-width', borderWidth),
