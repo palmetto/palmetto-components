@@ -77,6 +77,7 @@
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@storybook/addon-a11y": "^6.0.27",
     "@storybook/addon-actions": "^6.0.27",
+    "@storybook/addon-controls": "^6.1.14",
     "@storybook/addon-docs": "^6.0.27",
     "@storybook/addon-links": "^6.0.27",
     "@storybook/addon-viewport": "^6.0.27",

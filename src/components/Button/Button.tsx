@@ -20,7 +20,7 @@ export interface ButtonProps {
   /**
    * HTML element that will be rendered.
    */
-  as?: 'button' | 'a' | 'input';
+  as?: 'button' | 'a';
   /**
    * Additional ClassNames to add to button.
    */
