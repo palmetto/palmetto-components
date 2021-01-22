@@ -671,7 +671,7 @@ Set the `radius` prop with a [radius token](/?path=/docs/design-tokens-border-ra
 
 <Canvas>
   <Story name="radius">
-    <Box childGap="xs">
+    <Box childGap="md">
       <Box radius="xs" background="secondary-light" padding="sm">
         sm radius
       </Box>
@@ -686,6 +686,21 @@ Set the `radius` prop with a [radius token](/?path=/docs/design-tokens-border-ra
       </Box>
       <Box radius="circle" background="secondary-light" padding="sm">
         circle radius
+      </Box>
+      <Box radius="sm lg" background="secondary-light" padding="sm">
+        sm lg
+      </Box>
+      <Box radius="sm md lg" background="secondary-light" padding="sm">
+        sm md lg
+      </Box>
+      <Box radius="xs sm md lg" background="secondary-light" padding="sm">
+        xs sm md lg
+      </Box>
+      <Box radius="0 0 md md" background="secondary-light" padding="sm">
+        0 0 md md
+      </Box>
+      <Box radius="md md 0 0" background="secondary-light" padding="sm">
+        md md 0 0
       </Box>
     </Box>
   </Story>
@@ -1172,7 +1187,7 @@ This box will have different border radius based on the breakpoint
     parameters={{ ...RESPONSIVE_STORY }}>
     {() => {
       const activeBreakpoint = useBreakpoint();
-      const radius = { base: 'circle', tablet: 'sm', desktop: 'md', hd: 'lg' };
+      const radius = { base: 'circle', tablet: 'sm sm 0 0', desktop: '0 0 md md', hd: 'lg' };
       return (
         <Box
           padding="sm"

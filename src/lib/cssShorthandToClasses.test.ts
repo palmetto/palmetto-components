@@ -24,6 +24,12 @@ describe('cssShorthandToClasses', () => {
 
       expect(spacingClasses).toEqual(['p-v-0', 'p-h-0']);
     });
+
+    test('returns expected css object if border radius are set to sm lg', () => {
+      const classes = cssShorthandToClasses('br', 'sm lg');
+
+      expect(classes).toEqual(['br-top-left-sm', 'br-bottom-right-sm', 'br-top-right-lg', 'br-bottom-left-lg']);
+    });
   });
 
   describe('3 values', () => {
@@ -41,6 +47,12 @@ describe('cssShorthandToClasses', () => {
         'p-h-0',
         'p-bottom-0',
       ]);
+    });
+
+    test('returns expected css object if border radius are set to sm lg', () => {
+      const classes = cssShorthandToClasses('br', 'sm md lg');
+
+      expect(classes).toEqual(['br-top-left-sm', 'br-top-right-md', 'br-bottom-left-md', 'br-bottom-right-lg']);
     });
   });
 
@@ -60,6 +72,12 @@ describe('cssShorthandToClasses', () => {
         'p-bottom-0',
         'p-left-0',
       ]);
+    });
+
+    test('returns expected css object if border radius are set to xs sm md lg', () => {
+      const classes = cssShorthandToClasses('br', 'xs sm md lg');
+
+      expect(classes).toEqual(['br-top-left-xs', 'br-top-right-sm', 'br-bottom-right-md', 'br-bottom-left-lg']);
     });
   });
 
