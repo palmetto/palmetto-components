@@ -11,7 +11,7 @@ export default {
 const buttonVariants = ['primary', 'success', 'danger', 'light', 'dark'] as const;
 const buttonSizes = ['xs', 'sm', 'md', 'lg'] as const;
 
-const Template: Story<ButtonProps> = args => (
+const Template: Story<ButtonProps> = (args, showIconButton) => (
   <Box childGap="xl">
     {buttonSizes.map(size => (
       <Box childGap="sm" key={size}>
@@ -21,6 +21,18 @@ const Template: Story<ButtonProps> = args => (
               {`${size} ${variant}`}
             </Button>
           ))}
+          {showIconButton && (
+            <Button
+              {...args}
+              iconPrefix="circle"
+              iconSuffix="property-agreement"
+              size={size}
+              variant="primary"
+              key={`${size}-icon`}
+            >
+              {`${size} icon`}
+            </Button>
+          )}
         </Box>
         <Box childGap="sm" direction="row" key={size}>
           {buttonVariants.map(variant => (
@@ -34,6 +46,19 @@ const Template: Story<ButtonProps> = args => (
               {`${size} ${variant}`}
             </Button>
           ))}
+          {showIconButton && (
+            <Button
+              {...args}
+              iconPrefix="circle"
+              iconSuffix="property-agreement"
+              size={size}
+              isOutlined
+              variant="primary"
+              key={`${size}-icon`}
+            >
+              {`${size} icon`}
+            </Button>
+          )}
         </Box>
       </Box>
     ))}
@@ -47,12 +72,13 @@ const Template: Story<ButtonProps> = args => (
 );
 
 export const Sizes = Template.bind({});
+Sizes.args = { showIconButton: true };
 
 export const Loading = Template.bind({});
-Loading.args = { isLoading: true };
+Loading.args = { isLoading: true, showIconButton: true };
 
 export const Disabled = Template.bind({});
-Disabled.args = { isDisabled: true };
+Disabled.args = { isDisabled: true, showIconButton: true };
 
 export const WithIcons = Template.bind({});
 WithIcons.args = { iconPrefix: 'mail', iconSuffix: 'chat' };
