@@ -4,7 +4,7 @@ import Button, { ButtonProps } from './Button';
 import Box from '../Box/Box';
 
 export default {
-  title: 'Components/Button/For Chromatic',
+  title: 'Components/Button/Visual Regression Tests',
   component: Button,
 } as Meta;
 

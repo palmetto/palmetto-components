@@ -7,7 +7,7 @@ const buttonVariants = ['primary', 'danger', 'light', 'dark', 'success'] as cons
 const buttonSizes = ['xs', 'sm', 'md', 'lg'] as const;
 
 export default {
-  title: 'Components/Button/Controls Playground',
+  title: 'Components/Button/Playground',
   component: Button,
   argTypes: {
     children: {
