@@ -10,8 +10,8 @@ export default {
   title: 'Components/Button/Controls Playground',
   component: Button,
   argTypes: {
-    label: {
-      type: { control: 'text' },
+    children: {
+      control: 'text',
     },
     variant: {
       control: {
@@ -79,10 +79,10 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = ({ label, ...args }) => <Button {...args}>{label}</Button>;
+const Template: Story<ButtonProps> = ({ ...args }) => <Button {...args} />;
 
 export const Playground = Template.bind({});
 Playground.args = {
   variant: 'primary',
-  label: 'Playground Button',
+  children: 'Playground Button',
 };
