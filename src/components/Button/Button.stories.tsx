@@ -21,6 +21,16 @@ const Template: Story<ButtonProps> = args => (
               {`${size} ${variant}`}
             </Button>
           ))}
+          <Button
+            {...args}
+            iconPrefix="circle"
+            iconSuffix="property-agreement"
+            size={size}
+            variant="primary"
+            key={`${size}-icon`}
+          >
+            {`${size} icon`}
+          </Button>
         </Box>
         <Box childGap="sm" direction="row" key={size}>
           {buttonVariants.map(variant => (
