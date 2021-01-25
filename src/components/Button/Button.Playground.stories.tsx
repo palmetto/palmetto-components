@@ -1,10 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { ICON_NAMES } from '../../lib/tokens';
-import Button, { ButtonProps } from './Button';
-
-const buttonVariants = ['primary', 'danger', 'light', 'dark', 'success'] as const;
-const buttonSizes = ['xs', 'sm', 'md', 'lg'] as const;
+import Button, { ButtonProps, ButtonSizes, ButtonVariants } from './Button';
 
 export default {
   title: 'Components/Button/Playground',
@@ -16,13 +13,13 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: buttonVariants,
+        options: ButtonVariants,
       },
     },
     size: {
       control: {
         type: 'select',
-        options: buttonSizes,
+        options: ButtonSizes,
       },
     },
     isNaked: {

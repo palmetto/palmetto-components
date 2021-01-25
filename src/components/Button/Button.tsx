@@ -11,7 +11,8 @@ import styles from './Button.module.scss';
 
 export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
-
+export const ButtonVariants = ['primary', 'danger', 'light', 'dark', 'success'] as const;
+export const ButtonSizes = ['xs', 'sm', 'md', 'lg'] as const;
 export interface ButtonProps {
   /**
    * Contents of the button.
