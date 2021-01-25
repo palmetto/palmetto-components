@@ -26,8 +26,8 @@ module.exports = {
   addons: [
     '@storybook/addon-actions/register',
     '@storybook/addon-a11y',
-    '@storybook/addon-controls',
     '@storybook/addon-docs',
+    '@storybook/addon-controls',
     '@storybook/addon-links/register',
   ],
   webpackFinal: config => {
