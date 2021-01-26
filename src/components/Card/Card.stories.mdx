@@ -9,15 +9,12 @@ import Button from '../Button/Button';
 import Table from '../Table/Table';
 import TextInput from '../TextInput/TextInput';
 
-
-<Meta
-  title="Components/Card"
-  component={Card}
-/>
+<Meta title="Components/Card/Overview" component={Card} />
 
 # Card
 
-A card is a styled container to group related information and actions together. It consists of three child components that are automatically included with the `<Card />`:
+A card is a stylized Box component that acts as a container to group related information and actions.
+It consists of three child components that are automatically included with the `<Card />`:
 
 1. `<Card.Header />` - should contain a descriptive title for the Card's contents
 1. `<Card.Section />` - for the body of the card, and can consists of many sections
@@ -26,8 +23,10 @@ A card is a styled container to group related information and actions together. 
 <Canvas>
   <Box background="grey-lightest" padding="2xl">
     <Card>
-      <Card.Header title="Card Demo">
-        <Box as="p" color="grey" fontSize="sm">subtitle</Box>
+      <Card.Header title="Profile Card Example">
+        <Box as="p" color="grey" fontSize="sm">
+          Personal and Contact Details
+        </Box>
       </Card.Header>
       <Box overflow="hidden" height="130px">
         <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
@@ -36,25 +35,35 @@ A card is a styled container to group related information and actions together. 
         <Box direction="row" childGap="lg">
           <Box flex="auto" childGap="lg">
             <Box childGap="2xs">
-              <Box fontSize="sm" color="grey">Full Name</Box>
+              <Box fontSize="sm" color="grey">
+                Full Name
+              </Box>
               <Box>Jessica Ramirez</Box>
             </Box>
             <Box childGap="2xs">
-              <Box fontSize="sm" color="grey">Email</Box>
+              <Box fontSize="sm" color="grey">
+                Email
+              </Box>
               <Box>jw1416@palmetto.com</Box>
             </Box>
             <Box childGap="2xs">
-              <Box fontSize="sm" color="grey">Phone</Box>
+              <Box fontSize="sm" color="grey">
+                Phone
+              </Box>
               <Box>(123) 555-5555</Box>
             </Box>
           </Box>
           <Box flex="auto" childGap="lg">
             <Box childGap="2xs">
-              <Box fontSize="sm" color="grey">Preferred Language</Box>
+              <Box fontSize="sm" color="grey">
+                Preferred Language
+              </Box>
               <Box>English</Box>
             </Box>
             <Box childGap="2xs">
-              <Box fontSize="sm" color="grey">Country</Box>
+              <Box fontSize="sm" color="grey">
+                Country
+              </Box>
               <Box>United States</Box>
             </Box>
           </Box>
@@ -67,18 +76,18 @@ A card is a styled container to group related information and actions together. 
         </Box>
       </Card.Section>
       <Card.Footer>
-        <Box
-          display="flex"
-          direction="row"
-          justify="between"
-          overflow="hidden"
-          childGap="md"
-        >
+        <Box display="flex" direction="row" justify="between" overflow="hidden" childGap="md">
           <Box direction="row" childGap="sm">
-            <Button size="sm" variant="light">Edit</Button>
-            <Button size="sm" variant="light">Remove</Button>
+            <Button size="sm" variant="light">
+              Edit
+            </Button>
+            <Button size="sm" variant="light">
+              Remove
+            </Button>
           </Box>
-          <Button variant="danger" isOutlined size="sm">Delete</Button>
+          <Button variant="danger" isOutlined size="sm">
+            Delete
+          </Button>
         </Box>
       </Card.Footer>
     </Card>
@@ -197,11 +206,9 @@ A single section can be visually subdued using the `subdued` prop at the `<Card.
   </Story>
 </Canvas>
 
-
 ## Card Footer
 
 The footer of the card should contain primary actions related to the card's contents.
-
 
 See [Card.Footer props](#cardfooter-props)
 
@@ -216,34 +223,51 @@ See [Card.Footer props](#cardfooter-props)
   </Story>
 </Canvas>
 
-
-
 ## Examples
 
 Here are some common use cases of `<Card />`.
 
 ### Sign Up Form
+
 <Canvas>
   <Story name="Example - Sign Up Form">
     <Box alignItems="center" alignContent="center" padding="2xl" background="grey-lightest">
-        <Card maxWidth="4xl">
-          <Card.Section padding="3xl">
-            <Box childGap="xl">
-              <Box childGap="sm" alignItems="center">
-                <Heading as="h1" size="xl">Sign Up</Heading>
-                <Box as="p" color="grey" fontSize="sm">Create your account to create leads and proposals</Box>
-              </Box>
-              <Box childGap="lg">
-                <TextInput id="email" value="" label="Email Address" onChange={() => null} />
-                <TextInput id="password" type="password" value="" label="Password" onChange={() => null} />
-                <Button fullWidth variant="primary">Sign Up</Button>
-              </Box>
-              <Box alignItems="center" fontSize="sm" color="grey">
-                <p>Already have an account? <a href="#" className="font-color-primary">Log in</a>.</p>
+      <Card maxWidth="4xl">
+        <Card.Section padding="3xl">
+          <Box childGap="xl">
+            <Box childGap="sm" alignItems="center">
+              <Heading as="h1" size="xl">
+                Sign Up
+              </Heading>
+              <Box as="p" color="grey" fontSize="sm">
+                Create your account to create leads and proposals
               </Box>
             </Box>
-          </Card.Section>
-        </Card>
+            <Box childGap="lg">
+              <TextInput id="email" value="" label="Email Address" onChange={() => null} />
+              <TextInput
+                id="password"
+                type="password"
+                value=""
+                label="Password"
+                onChange={() => null}
+              />
+              <Button fullWidth variant="primary">
+                Sign Up
+              </Button>
+            </Box>
+            <Box alignItems="center" fontSize="sm" color="grey">
+              <p>
+                Already have an account?{' '}
+                <a href="#" className="font-color-primary">
+                  Log in
+                </a>
+                .
+              </p>
+            </Box>
+          </Box>
+        </Card.Section>
+      </Card>
     </Box>
   </Story>
 </Canvas>
@@ -267,11 +291,7 @@ Here are some common use cases of `<Card />`.
         <Card>
           <Card.Header title="Flavor Table" />
           <Card.Section padding="0">
-          <Table
-            rowKey="id"
-            columns={columnConfig}
-            rows={tableData}
-          />
+            <Table rowKey="id" columns={columnConfig} rows={tableData} />
           </Card.Section>
         </Card>
       );
@@ -296,7 +316,6 @@ Here are some common use cases of `<Card />`.
     </Box>
   </Story>
 </Canvas>
-
 
 ## Child Component Props
 
