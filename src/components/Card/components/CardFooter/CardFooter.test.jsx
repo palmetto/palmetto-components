@@ -7,7 +7,7 @@ import CardFooter from './CardFooter';
 describe('Card/CardFooter', () => {
   test('grey-lightest background color class is applied by default', () => {
     const { getByText } = render(<CardFooter>Test Box</CardFooter>);
-    expect(getByText('Test Box').classList).toContain('background-color-grey-lightest');
+    expect(getByText('Test Box').classList).toContain('background-color-grey-50');
   });
 
   test('lg padding class is applied by default', () => {

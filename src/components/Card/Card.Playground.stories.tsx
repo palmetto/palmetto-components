@@ -34,7 +34,7 @@ const Template: Story<CardProps> = ({
 }) => {
   const sections = [];
 
-  for (let i = 0; i < sectionCount; i++) {
+  for (let i = 0; i < sectionCount; i += 1) {
     sections.push(
       <Card.Section title={sectionTitle} key={i}>
         {sectionContent}
