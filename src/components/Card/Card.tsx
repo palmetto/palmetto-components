@@ -50,7 +50,7 @@ class Card extends React.Component<CardProps> {
         overflow="hidden"
         display="block"
         shadow={subdued ? undefined : 'sm'}
-        width="100%"
+        width="100"
         {...restProps}
       >
         {children}
