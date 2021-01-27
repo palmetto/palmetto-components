@@ -19,7 +19,7 @@ module.exports = {
       //   allowSyntheticDefaultImports: false,
       //   esModuleInterop: false,
       // },
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      propFilter: prop => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
   },
   stories: ['../src/**/*.stories.@([tj]sx|mdx)'],
@@ -27,18 +27,16 @@ module.exports = {
     '@storybook/addon-actions/register',
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
+    '@storybook/addon-controls',
     '@storybook/addon-links/register',
   ],
-  webpackFinal: (config) => {
+  webpackFinal: config => {
     return {
       ...config,
-      module: { 
+      module: {
         ...config.module,
-        rules: [
-          ...config.module.rules,
-          ...webpackConfig.module.rules
-        ],
+        rules: [...config.module.rules, ...webpackConfig.module.rules],
       },
-    }
+    };
   },
 };

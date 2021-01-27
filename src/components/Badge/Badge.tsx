@@ -1,20 +1,34 @@
-import React, {
-  FC,
-} from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 import {
-  BrandColor,
-  FontColor,
-  FontSize,
-  BaseSpacing,
+  BrandColor, FontColor, FontSize, BaseSpacing,
 } from '../../types';
 import styles from './Badge.module.scss';
 import Box from '../Box/Box';
 
 export type BadgeSize = 'sm' | 'md' | 'lg' | 'xl';
-export type BadgeVariant = 'info' | 'primary' | 'success' | 'secondary' | 'tertiary' | 'warning' | 'danger' | 'default';
+export type BadgeVariant =
+  | 'info'
+  | 'primary'
+  | 'success'
+  | 'secondary'
+  | 'tertiary'
+  | 'warning'
+  | 'danger'
+  | 'default';
 export type BadgeColorAttributes = { font: FontColor; background: BrandColor; };
 export type BadgeSizeAttributes = { fontSize: FontSize; padding: BaseSpacing; };
+export const BadgeSizes = ['sm', 'md', 'lg', 'xl'] as const;
+export const BadgeVariants = [
+  'info',
+  'primary',
+  'success',
+  'danger',
+  'warning',
+  'tertiary',
+  'secondary',
+  'default',
+] as const;
 
 export interface BadgeProps {
   /**
@@ -46,10 +60,7 @@ const Badge: FC<BadgeProps> = ({
   size = 'md',
   ...restProps
 }) => {
-  const badgeClasses: string = classNames(
-    styles.badge,
-    className,
-  );
+  const badgeClasses: string = classNames(styles.badge, className);
 
   const colorMap: { [key in BadgeVariant]: BadgeColorAttributes } = {
     info: { font: 'dark-500', background: 'info-100' },
@@ -62,7 +73,7 @@ const Badge: FC<BadgeProps> = ({
     default: { font: 'dark-500', background: 'grey-100' },
   };
 
-  const sizeMap: { [key in BadgeSize]: BadgeSizeAttributes} = {
+  const sizeMap: { [key in BadgeSize]: BadgeSizeAttributes } = {
     sm: { fontSize: '2xs', padding: '2xs 2xs' },
     md: { fontSize: 'xs', padding: '2xs xs' },
     lg: { fontSize: 'sm', padding: '2xs xs' },

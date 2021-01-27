@@ -5,27 +5,19 @@ import Badge from './Badge';
 import Box from '../Box/Box';
 import Button from '../Button/Button';
 
-<Meta
-  title="Components/Badge"
-  component={Badge}
-/>
+<Meta title="Components/Badge/Overview" component={Badge} />
 
 # Badge
 
 Badges are used to display the status of an object or of an action that’s been taken.
 
 <Canvas isExpanded>
-  <Box direction="row">
-    <Badge
-      message="Hello world!"
-    />
-  </Box>
+  <Badge variant="default" message="Hello world!" />
 </Canvas>
 
 ## Props
 
 <ArgsTable of={Badge} />
-
 
 ## Variants
 
@@ -46,12 +38,9 @@ Badges come in different variants based on the kind of message being delivered t
       ];
       return (
         <Box direction="row" childGap="sm">
-          {variants.map(variant => 
-            <Badge 
-              message={variant}
-              variant={variant}
-            />
-          )}
+          {variants.map(variant => (
+            <Badge message={variant} variant={variant} />
+          ))}
         </Box>
       );
     }}
@@ -68,29 +57,16 @@ Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size.
       return (
         <>
           <Box direction="column" alignItems="flex-start" childGap="md">
-            <Badge
-              size="sm"
-              message="Small"
-            />
-            <Badge
-              size="md"
-              message="Base"
-            />
-            <Badge
-              size="lg"
-              message="Large"
-            />
-            <Badge
-              size="xl"
-              message="X-Large"
-            />
+            <Badge size="sm" message="Small" />
+            <Badge size="md" message="Base" />
+            <Badge size="lg" message="Large" />
+            <Badge size="xl" message="X-Large" />
           </Box>
         </>
-      )
+      );
     }}
   </Story>
 </Canvas>
-
 
 ## Custom Class
 
@@ -101,11 +77,7 @@ You can apply a custom class to your badge with the `className` prop. Here we ha
     {() => {
       return (
         <Box direction="row">
-          <Badge
-            message="Hello world!"
-            variant="success"
-            className="m-3xl"
-          />
+          <Badge message="Hello world!" variant="success" className="m-3xl" />
         </Box>
       );
     }}

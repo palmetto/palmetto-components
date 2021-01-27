@@ -12,7 +12,7 @@ export interface CardSectionProps {
    */
   childGap?: SpacingSize;
   /**
-   * Elements to be rendered.
+   * Contents of the Section.
    */
   children?: ReactNode;
   /**
@@ -24,11 +24,11 @@ export interface CardSectionProps {
    */
   display?: CssDisplayValue;
   /**
-   * visually subdued the appearance of the section
+   * Visually subdued the appearance of the section.
    */
   subdued?: boolean;
   /**
-   * title for the section
+   * Title for the section.
    */
   title?: ReactNode;
 }
@@ -44,19 +44,17 @@ const CardSection: FC<CardSectionProps> = ({
 }) => {
   const backgroundColor = subdued ? 'grey-lightest' : undefined;
 
-  const renderTitle = typeof title === 'string'
-    ? (
-      <Box className="m-bottom-md">
-        <Heading as="h4" size="sm" variant="grey">
-          {title}
-        </Heading>
-      </Box>
-    ) : title;
-
-  const sectionClasses = classNames(
-    styles['card-section'],
-    className,
+  const renderTitle = typeof title === 'string' ? (
+    <Box className="m-bottom-md">
+      <Heading as="h4" size="sm" variant="grey">
+        {title}
+      </Heading>
+    </Box>
+  ) : (
+    title
   );
+
+  const sectionClasses = classNames(styles['card-section'], className);
 
   return (
     <Box
@@ -67,9 +65,7 @@ const CardSection: FC<CardSectionProps> = ({
       {...restProps}
     >
       {renderTitle}
-      <Box childGap={childGap}>
-        {children}
-      </Box>
+      <Box childGap={childGap}>{children}</Box>
     </Box>
   );
 };

@@ -1,27 +1,32 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Box, { BoxProps } from '../Box/Box';
 import { CardFooter, CardHeader, CardSection } from './components';
 
-type BoxPropsShallow = Omit<BoxProps,
-  'as' |
-  'align' |
-  'alignContent' |
-  'justifyContent' |
-  'alignSelf' |
-  'background' |
-  'direction' |
-  'flex' |
-  'fontSize' |
-  'justify' |
-  'radius' |
-  'wrap' |
-  'childGap' |
-  'display'
+type BoxPropsShallow = Omit<
+  BoxProps,
+  | 'as'
+  | 'align'
+  | 'alignContent'
+  | 'justifyContent'
+  | 'alignSelf'
+  | 'background'
+  | 'direction'
+  | 'flex'
+  | 'fontSize'
+  | 'justify'
+  | 'radius'
+  | 'wrap'
+  | 'childGap'
+  | 'display'
 >;
 
 export interface CardProps extends BoxPropsShallow {
   /**
-   * visually subdued the appearance of the entire card
+   * The Card's contents.
+   */
+  children?: ReactNode;
+  /**
+   * visually subdue the appearance of the entire card.
    */
   subdued?: boolean;
 }
@@ -34,12 +39,7 @@ class Card extends React.Component<CardProps> {
   static Footer = CardFooter;
 
   render(): React.ReactNode {
-    const {
-      className,
-      children,
-      subdued,
-      ...restProps
-    } = this.props;
+    const { children, subdued, ...restProps } = this.props;
 
     const backgroundColor = subdued ? 'grey-lightest' : 'white';
 
@@ -47,11 +47,10 @@ class Card extends React.Component<CardProps> {
       <Box
         background={backgroundColor}
         radius="md"
-        className={className}
         overflow="hidden"
         display="block"
         shadow={subdued ? undefined : 'sm'}
-        width="100%"
+        width="100"
         {...restProps}
       >
         {children}

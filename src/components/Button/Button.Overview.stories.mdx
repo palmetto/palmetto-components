@@ -3,7 +3,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import Button from './Button';
 import Box from '../Box/Box';
 
-<Meta title="Components/Button" component={Button} />
+<Meta title="Components/Button/Overview" component={Button} />
 
 # Button
 
@@ -14,10 +14,6 @@ Actions almost always occur on the same page.
 <Canvas isExpanded>
   <Button onClick={() => alert('clicked')}>Button</Button>
 </Canvas>
-
-## Props
-
-<ArgsTable of={Button} />
 
 ## Color Variants
 
@@ -185,3 +181,7 @@ can render buttons as one of `button`, `a`, and `input`.
     </Button>
   </Story>
 </Canvas>
+
+## Props
+
+<ArgsTable of={Button} />

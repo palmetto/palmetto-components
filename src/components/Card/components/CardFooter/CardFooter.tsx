@@ -1,45 +1,29 @@
 import React, { FC, ReactNode } from 'react';
-import classNames from 'classnames';
 import Box from '../../../Box/Box';
-import styles from '../../Card.module.scss';
 import { CssDisplayValue } from '../../../../types';
 
 export interface CardFooterProps {
   /**
-   * Elements to be rendered.
+   * Contents of the Footer.
    */
   children?: ReactNode;
-  /**
-   * Custom class to be applied to footer container.
-   */
-  className?: string;
   /**
    * Display property. Only select values supported.
    */
   display?: CssDisplayValue;
 }
 
-const CardFooter: FC<CardFooterProps> = ({
-  children,
-  className,
-  display = 'block',
-  ...restProps
-}) => {
-  const footerClasses = classNames(
-    styles['card-footer'],
-    className,
-  );
-  return (
-    <Box
-      background="grey-lightest"
-      className={footerClasses}
-      display={display}
-      padding="md lg"
-      {...restProps}
-    >
-      {children}
-    </Box>
-  );
-};
+const CardFooter: FC<CardFooterProps> = ({ children, display = 'block', ...restProps }) => (
+  <Box
+    background="grey-50"
+    display={display}
+    padding="md lg"
+    borderColor="grey-100"
+    borderWidth="xs 0 0 0"
+    {...restProps}
+  >
+    {children}
+  </Box>
+);
 
 export default CardFooter;

@@ -1,22 +1,19 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Button, { ButtonProps } from './Button';
+import Button, { ButtonProps, ButtonSizes, ButtonVariants } from './Button';
 import Box from '../Box/Box';
 
 export default {
-  title: 'Components/Button/For Chromatic',
+  title: 'Components/Button/Visual Regression Tests',
   component: Button,
 } as Meta;
 
-const buttonVariants = ['primary', 'success', 'danger', 'light', 'dark'] as const;
-const buttonSizes = ['xs', 'sm', 'md', 'lg'] as const;
-
 const Template: Story<ButtonProps> = (args, showIconButton) => (
   <Box childGap="xl">
-    {buttonSizes.map(size => (
+    {ButtonSizes.map(size => (
       <Box childGap="sm" key={size}>
         <Box childGap="sm" direction="row">
-          {buttonVariants.map(variant => (
+          {ButtonVariants.map(variant => (
             <Button {...args} size={size} variant={variant} key={`${size}-${variant}`}>
               {`${size} ${variant}`}
             </Button>
@@ -35,7 +32,7 @@ const Template: Story<ButtonProps> = (args, showIconButton) => (
           )}
         </Box>
         <Box childGap="sm" direction="row" key={size}>
-          {buttonVariants.map(variant => (
+          {ButtonVariants.map(variant => (
             <Button
               {...args}
               size={size}
