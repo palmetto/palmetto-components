@@ -220,7 +220,9 @@ Each Component consists of the following files:
 Component
 │   Component.tsx
 │   Component.module.scss
-│   Component.stories.mdx
+│   Component.Overview.stories.mdx
+│   Component.Playground.stories.tsx
+│   Component.VisualTests.stories.tsx
 │   Component.test.jsx
 │   ComponentTypes.ts (if necessary)
 │
