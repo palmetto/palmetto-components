@@ -656,6 +656,9 @@ The `margin` prop accepts a single [spacing](/?path=/story/design-tokens-spacing
 
 <Canvas>
   <Story name="margin">
+    <Box margin="lg" background="primary-lighter">
+      lg margin
+    </Box>
     <Box margin="lg md" background="primary-lighter">
       lg vertical and md horizontal
     </Box>
@@ -671,48 +674,15 @@ The `margin` prop accepts a single [spacing](/?path=/story/design-tokens-spacing
   </Story>
 </Canvas>
 
-A single `margin` value will apply an equal amount of space around the outside of a Box.
-
-<Canvas>
-  <Story name="single margin">
-    {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box margin={spacing} background="primary-lighter" key={i}>
-        {`${spacing} margin`}
-      </Box>
-    ))}
-  </Story>
-</Canvas>
-
-### Horizontal Margin
-
-<Canvas>
-  <Story name="margin horizontal">
-    {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box margin={`0 ${spacing}`} background="primary-lighter" key={i}>
-        {`${spacing} horizontal margin`}
-      </Box>
-    ))}
-  </Story>
-</Canvas>
-
-### Vertical Margin
-
-<Canvas>
-  <Story name="margin vertical">
-    {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box margin={`${spacing} 0`} background="primary-lighter" key={i}>
-        {`${spacing} vertical margin`}
-      </Box>
-    ))}
-  </Story>
-</Canvas>
-
 ## Padding
 
 The `padding` prop accepts a single [spacing](/?path=/story/design-tokens-spacing--page) value or a set of spacing values that correspond with css shorthand syntax. Padding values can be set on the horizontal or vertical axis, or the top, right, bottom and left sides of a Box.
 
 <Canvas>
   <Story name="padding">
+    <Box padding="lg" margin="sm 0" background="primary-lighter">
+      lg padding
+    </Box>
     <Box padding="lg md" margin="sm 0" background="primary-lighter">
       lg vertical and md horizontal
     </Box>
@@ -725,42 +695,6 @@ The `padding` prop accepts a single [spacing](/?path=/story/design-tokens-spacin
     <Box padding="sm lg 2xl 0" margin="sm 0" background="primary-lighter">
       sm top, lg right, 2xl bottom, 0 left
     </Box>
-  </Story>
-</Canvas>
-
-A single `padding` value will apply an equal amount of space around the contents of a Box.
-
-<Canvas>
-  <Story name="single padding">
-    {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box padding={spacing} background="primary-lighter" margin="xs 0" key={i}>
-        {`${spacing} padding`}
-      </Box>
-    ))}
-  </Story>
-</Canvas>
-
-### Horizontal Padding
-
-<Canvas>
-  <Story name="padding horizontal">
-    {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box padding={`0 ${spacing}`} background="primary-lighter" margin="xs 0" key={i}>
-        {`${spacing} horizontal padding`}
-      </Box>
-    ))}
-  </Story>
-</Canvas>
-
-### Vertical Padding
-
-<Canvas>
-  <Story name="padding vertical">
-    {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box padding={`${spacing} 0`} background="primary-lighter" margin="xs 0" key={i}>
-        {`${spacing} vertical padding`}
-      </Box>
-    ))}
   </Story>
 </Canvas>
 

@@ -181,3 +181,63 @@ export const AllFontSizes: React.FunctionComponent<BoxProps> = () => (
     ))}
   </>
 );
+
+export const AllMargin: React.FunctionComponent<BoxProps> = () => (
+  <>
+    {[...SPACING_OPTIONS].map((spacing, i) => (
+      <Box margin={spacing} background="primary-lighter" key={i}>
+        {`${spacing} margin`}
+      </Box>
+    ))}
+  </>
+);
+
+export const AllHorizontalMargin: React.FunctionComponent<BoxProps> = () => (
+  <>
+    {[...SPACING_OPTIONS].map((spacing, i) => (
+      <Box margin={`0 ${spacing}`} background="primary-lighter" key={i}>
+        {`${spacing} horizontal margin`}
+      </Box>
+    ))}
+  </>
+);
+
+export const AllVerticalMargin: React.FunctionComponent<BoxProps> = () => (
+  <>
+    {[...SPACING_OPTIONS].map((spacing, i) => (
+      <Box margin={`${spacing} 0`} background="primary-lighter" key={i}>
+        {`${spacing} vertical margin`}
+      </Box>
+    ))}
+  </>
+);
+
+export const AllPadding: React.FunctionComponent<BoxProps> = () => (
+  <>
+    {[...SPACING_OPTIONS].map((spacing, i) => (
+      <Box padding={spacing} background="primary-lighter" margin="xs 0" key={i}>
+        {`${spacing} padding`}
+      </Box>
+    ))}
+  </>
+);
+
+export const AllHorizontalPadding: React.FunctionComponent<BoxProps> = () => (
+  <>
+    {[...SPACING_OPTIONS].map((spacing, i) => (
+      <Box padding={`0 ${spacing}`} background="primary-lighter" margin="xs 0" key={i}>
+        {`${spacing} horizontal padding`}
+      </Box>
+    ))}
+  </>
+);
+
+export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
+  <>
+    {[...SPACING_OPTIONS].map((spacing, i) => (
+      <Box padding={`${spacing} 0`} background="primary-lighter" margin="xs 0" key={i}>
+        {`${spacing} vertical padding`}
+      </Box>
+    ))}
+  </>
+);
