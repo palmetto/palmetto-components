@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-else-return */
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
@@ -8,6 +9,7 @@ import {
   BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
 } from '../../lib/tokens';
+import { BrandColor } from '../../types';
 
 export default {
   title: 'Components/Box/Visual Regression Tests',
@@ -27,34 +29,34 @@ export const AllBackgroundColors: React.FunctionComponent<BoxProps> = () => (
       } else {
         return (
           <Box flex="auto" key={`${color}-${index}`}>
-            <Box flex="auto" padding="xs" background="{`${color}-50`}">
+            <Box flex="auto" padding="xs" background={`${color}-50` as BrandColor}>
               {`${color}-50`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-100`}>
+            <Box flex="auto" padding="xs" background={`${color}-100` as BrandColor}>
               {`${color}-100`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-200`}>
+            <Box flex="auto" padding="xs" background={`${color}-200` as BrandColor}>
               {`${color}-200`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-300`}>
+            <Box flex="auto" padding="xs" background={`${color}-300` as BrandColor}>
               {`${color}-300`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-400`}>
+            <Box flex="auto" padding="xs" background={`${color}-400` as BrandColor}>
               {`${color}-400`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-500`}>
+            <Box flex="auto" padding="xs" background={`${color}-500` as BrandColor}>
               {`${color}-500`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-600`}>
+            <Box flex="auto" padding="xs" background={`${color}-600` as BrandColor}>
               {`${color}-600`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-700`}>
+            <Box flex="auto" padding="xs" background={`${color}-700` as BrandColor}>
               {`${color}-700`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-800`}>
+            <Box flex="auto" padding="xs" background={`${color}-800` as BrandColor}>
               {`${color}-800`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-900`}>
+            <Box flex="auto" padding="xs" background={`${color}-900` as BrandColor}>
               {`${color}-900`}
             </Box>
           </Box>
@@ -77,34 +79,84 @@ export const AllBorderColors: React.FunctionComponent<BoxProps> = () => (
       } else {
         return (
           <Box flex="auto" key={`${color}-${index}`}>
-            <Box flex="auto" borderColor={`${color}-50`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-50` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-50`}
             </Box>
-            <Box flex="auto" borderColor={`${color}-100`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-100` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-100`}
             </Box>
-            <Box flex="auto" borderColor={`${color}-200`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-200` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-200`}
             </Box>
-            <Box flex="auto" borderColor={`${color}-300`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-300` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-300`}
             </Box>
-            <Box flex="auto" borderColor={`${color}-400`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-400` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-400`}
             </Box>
-            <Box flex="auto" borderColor={`${color}-500`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-500` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-500`}
             </Box>
-            <Box flex="auto" borderColor={`${color}-600`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-600` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-600`}
             </Box>
-            <Box flex="auto" borderColor={`${color}-700`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-700` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-700`}
             </Box>
-            <Box flex="auto" borderColor={`${color}-800`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-800` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-800`}
             </Box>
-            <Box flex="auto" borderColor={`${color}-900`} borderWidth="sm" padding="xs">
+            <Box
+              flex="auto"
+              borderColor={`${color}-900` as BrandColor}
+              borderWidth="sm"
+              padding="xs"
+            >
               {`${color}-900`}
             </Box>
           </Box>
@@ -165,7 +217,7 @@ export const AllColumnChildGap: React.FunctionComponent<BoxProps> = () => (
 export const AllFontColors: React.FunctionComponent<BoxProps> = () => (
   <>
     {[...FONT_COLOR_OPTIONS].map((color, i) => (
-      <Box color={color} background={color === 'inverse' ? 'grey-darker' : null} key={i}>
+      <Box color={color} key={i}>
         {`${color}`}
       </Box>
     ))}
