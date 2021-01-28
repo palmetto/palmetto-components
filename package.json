@@ -43,7 +43,7 @@
     "lint-styles": "stylelint '**/*.{css,scss,sass}'",
     "lint-styles:fix": "stylelint '**/*.{css,scss,sass}' --fix",
     "prepublishOnly": "yarn build",
-    "storybook": "BABEL_ENV=storybook NODE_ENV=development start-storybook -p 6006",
+    "storybook": "BABEL_ENV=storybook NODE_ENV=development start-storybook -s ./public -p 6006",
     "semantic-release": "semantic-release",
     "generate-readme-toc": "yarn doctoc docs/CONTRIBUTING.md",
     "test": "BABEL_ENV=test jest",
