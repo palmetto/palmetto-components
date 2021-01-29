@@ -9,14 +9,7 @@ import {
   BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
 } from '../../lib/tokens';
-import {
-  BoxShadowSize,
-  BorderRadiusSize,
-  BrandColor,
-  FontSize,
-  FontColor,
-  ResponsiveProp,
-} from '../../types';
+import { BrandColor } from '../../types';
 import { RESPONSIVE_STORY } from '../../../.storybook/constants';
 import useBreakpoint from '../../hooks/useBreakpoint';
 
@@ -303,17 +296,17 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
   </>
 );
 
-const Template: Story<BoxProps> = ({ propertyName, ...args }) => {
+const BoxTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
   const activeBreakpoint = useBreakpoint();
   return (
-    <Box {...args} padding="sm">
+    <Box {...args}>
       <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
       <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
     </Box>
   );
 };
 
-export const ResponsiveBackground = Template.bind({});
+export const ResponsiveBackground = BoxTemplate.bind({});
 ResponsiveBackground.args = {
   propertyName: 'background',
   background: {
@@ -321,11 +314,12 @@ ResponsiveBackground.args = {
     tablet: 'warning-lighter',
     desktop: 'danger-lighter',
     hd: 'secondary-lighter',
-  } as ResponsiveProp<BrandColor>,
+  },
+  padding: 'sm',
 };
 ResponsiveBackground.parameters = RESPONSIVE_STORY;
 
-export const ResponsiveFontSize = Template.bind({});
+export const ResponsiveFontSize = BoxTemplate.bind({});
 ResponsiveFontSize.args = {
   propertyName: 'fontSize',
   fontSize: {
@@ -333,11 +327,12 @@ ResponsiveFontSize.args = {
     tablet: 'lg',
     desktop: 'xl',
     hd: '4xl',
-  } as ResponsiveProp<FontSize>,
+  },
+  padding: 'sm',
 };
 ResponsiveFontSize.parameters = RESPONSIVE_STORY;
 
-export const ResponsiveFontColor = Template.bind({});
+export const ResponsiveFontColor = BoxTemplate.bind({});
 ResponsiveFontColor.args = {
   propertyName: 'color',
   color: {
@@ -345,25 +340,171 @@ ResponsiveFontColor.args = {
     tablet: 'warning',
     desktop: 'danger',
     hd: 'secondary',
-  } as ResponsiveProp<FontColor>,
+  },
+  padding: 'sm',
 };
 ResponsiveFontColor.parameters = RESPONSIVE_STORY;
 
-export const ResponsiveRadius = Template.bind({});
+export const ResponsiveRadius = BoxTemplate.bind({});
 ResponsiveRadius.args = {
   propertyName: 'radius',
   radius: {
     base: 'circle', tablet: 'sm sm 0 0', desktop: '0 0 md md', hd: 'lg',
-  } as ResponsiveProp<BorderRadiusSize>,
+  },
   background: 'info-100',
+  padding: 'sm',
 };
 ResponsiveRadius.parameters = RESPONSIVE_STORY;
 
-export const ResponsiveShadow = Template.bind({});
+export const ResponsiveShadow = BoxTemplate.bind({});
 ResponsiveShadow.args = {
   propertyName: 'shadow',
   shadow: {
     base: '0', tablet: 'lg', desktop: 'xl', hd: '2xl',
-  } as ResponsiveProp<BoxShadowSize>,
+  },
+  padding: 'sm',
 };
 ResponsiveShadow.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveTextAlign = BoxTemplate.bind({});
+ResponsiveTextAlign.args = {
+  propertyName: 'textAlign',
+  textAlign: {
+    base: 'right', tablet: 'left', desktop: 'center',
+  },
+  padding: 'sm',
+  background: 'info-100',
+};
+ResponsiveTextAlign.parameters = RESPONSIVE_STORY;
+
+
+export const ResponsiveBorderColor = BoxTemplate.bind({});
+ResponsiveBorderColor.args = {
+  propertyName: 'borderColor',
+  borderWidth: 'sm',
+  borderColor: {
+    base: 'primary',
+    tablet: 'warning',
+    desktop: 'danger',
+    hd: 'secondary',
+  },
+  padding: 'sm',
+};
+ResponsiveBorderColor.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveBorderWidth = BoxTemplate.bind({});
+ResponsiveBorderWidth.args = {
+  propertyName: 'borderWidth',
+  borderWidth: {
+    base: 'sm', tablet: 'xs', desktop: 'sm xs 0 sm', hd: '0 0 sm sm',
+  },
+  borderColor: 'secondary-500',
+  padding: 'sm',
+};
+ResponsiveBorderWidth.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveWidth = BoxTemplate.bind({});
+ResponsiveWidth.args = {
+  propertyName: 'width',
+  width: {
+    base: '2xl', tablet: '60', desktop: '5xl', hd: '100',
+  },
+  height: '3xl',
+  background: 'info-100',
+  padding: 'sm',
+};
+ResponsiveWidth.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveHeight = BoxTemplate.bind({});
+ResponsiveHeight.args = {
+  propertyName: 'height',
+  height: {
+    base: 'md', tablet: 'lg', desktop: 'xl', hd: '2xl',
+  },
+  width: '3xl',
+  background: 'info-100',
+  padding: 'sm',
+};
+ResponsiveHeight.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveMargin = BoxTemplate.bind({});
+ResponsiveMargin.args = {
+  propertyName: 'margin',
+  margin: {
+    base: '3xl', tablet: '2xl lg', desktop: '5xl 3xl sm', hd: '3xl 0 2xl lg',
+  },
+  width: '3xl',
+  background: 'info-100',
+};
+ResponsiveMargin.parameters = RESPONSIVE_STORY;
+
+export const ResponsivePadding = BoxTemplate.bind({});
+ResponsivePadding.args = {
+  propertyName: 'padding',
+  padding: {
+    base: '3xl', tablet: '2xl lg', desktop: '5xl 3xl 4xl', hd: '3xl 0 2xl lg',
+  },
+  width: '3xl',
+  background: 'info-100',
+};
+ResponsivePadding.parameters = RESPONSIVE_STORY;
+
+const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
+  const activeBreakpoint = useBreakpoint();
+  return (
+    <Box {...args}>
+      <Box
+        flex="auto"
+        radius="md"
+        background="info-100"
+        height="lg"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+      </Box>
+      <Box
+        flex="auto"
+        radius="md"
+        background="info-100"
+        height="lg"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+      </Box>
+      <Box
+        flex="auto"
+        radius="md"
+        background="info-100"
+        height="lg"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+      </Box>
+    </Box>
+  );
+};
+
+export const ResponsiveDirection = BoxChildrenTemplate.bind({});
+ResponsiveDirection.args = {
+  propertyName: 'direction',
+  direction: {
+    base: 'column', tablet: 'row', desktop: 'column', hd: 'row',
+  },
+  childGap: 'lg',
+};
+ResponsiveDirection.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveChildGap = BoxChildrenTemplate.bind({});
+ResponsiveChildGap.args = {
+  propertyName: 'childGap',
+  childGap: {
+    base: 'xs', tablet: 'lg', desktop: '3xl', hd: '5xl',
+  },
+};
+ResponsiveChildGap.parameters = RESPONSIVE_STORY;
