@@ -9,7 +9,14 @@ import {
   BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
 } from '../../lib/tokens';
-import { BrandColor, FontSize, FontColor, ResponsiveProp } from '../../types';
+import {
+  BoxShadowSize,
+  BorderRadiusSize,
+  BrandColor,
+  FontSize,
+  FontColor,
+  ResponsiveProp,
+} from '../../types';
 import { RESPONSIVE_STORY } from '../../../.storybook/constants';
 import useBreakpoint from '../../hooks/useBreakpoint';
 
@@ -296,12 +303,6 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
   </>
 );
 
-// type ResponsiveBoxProps = BoxProps & { parameters: { [key: string]: { [key: string]: number[]; }; }; };
-
-// interface ResponsiveBoxProps extends BoxProps {
-//   parameters: { chromatic: { viewports: number[] } };
-// }
-
 const Template: Story<BoxProps> = ({ propertyName, ...args }) => {
   const activeBreakpoint = useBreakpoint();
   return (
@@ -321,15 +322,20 @@ ResponsiveBackground.args = {
     desktop: 'danger-lighter',
     hd: 'secondary-lighter',
   } as ResponsiveProp<BrandColor>,
-  parameters: RESPONSIVE_STORY,
 };
+ResponsiveBackground.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveFontSize = Template.bind({});
 ResponsiveFontSize.args = {
   propertyName: 'fontSize',
-  fontSize: { base: 'md', tablet: 'lg', desktop: 'xl', hd: '4xl' } as ResponsiveProp<FontSize>,
-  parameters: RESPONSIVE_STORY,
+  fontSize: {
+    base: 'md',
+    tablet: 'lg',
+    desktop: 'xl',
+    hd: '4xl',
+  } as ResponsiveProp<FontSize>,
 };
+ResponsiveFontSize.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveFontColor = Template.bind({});
 ResponsiveFontColor.args = {
@@ -340,5 +346,24 @@ ResponsiveFontColor.args = {
     desktop: 'danger',
     hd: 'secondary',
   } as ResponsiveProp<FontColor>,
-  parameters: RESPONSIVE_STORY,
 };
+ResponsiveFontColor.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveRadius = Template.bind({});
+ResponsiveRadius.args = {
+  propertyName: 'radius',
+  radius: {
+    base: 'circle', tablet: 'sm sm 0 0', desktop: '0 0 md md', hd: 'lg',
+  } as ResponsiveProp<BorderRadiusSize>,
+  background: 'info-100',
+};
+ResponsiveRadius.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveShadow = Template.bind({});
+ResponsiveShadow.args = {
+  propertyName: 'shadow',
+  shadow: {
+    base: '0', tablet: 'lg', desktop: 'xl', hd: '2xl',
+  } as ResponsiveProp<BoxShadowSize>,
+};
+ResponsiveShadow.parameters = RESPONSIVE_STORY;
