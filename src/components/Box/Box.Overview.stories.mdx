@@ -1391,50 +1391,6 @@ The box will have different margin and padding values for at the base, tablet, a
   </Story>
 </Canvas>
 
-#### Font Size
-
-This box will have different fontSize values for each of its base, tablet, desktop, and hd breakpoints.
-
-<Canvas>
-  <Story name="responsive font size" parameters={{ ...RESPONSIVE_STORY }}>
-    {() => {
-      const activeBreakpoint = useBreakpoint();
-      const fontSize = { base: 'md', tablet: 'lg', desktop: 'xl', hd: '4xl' };
-      return (
-        <Box
-          padding="sm"
-          background="primary-lighter"
-          borderColor="grey"
-          borderWidth="xs"
-          fontSize={fontSize}
-        >
-          <p>Breakpoint: {activeBreakpoint.name}</p>
-          <p>fontSize: {fontSize[activeBreakpoint.name]}</p>
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
-#### Font Color
-
-This box will have different fontColor values for each of its base, tablet, desktop, and hd breakpoints.
-
-<Canvas>
-  <Story name="responsive font color" parameters={{ ...RESPONSIVE_STORY }}>
-    {() => {
-      const activeBreakpoint = useBreakpoint();
-      const fontColor = { base: 'primary', tablet: 'warning', desktop: 'danger', hd: 'secondary' };
-      return (
-        <Box padding="sm" background="white" borderColor="grey" borderWidth="xs" color={fontColor}>
-          <p>Breakpoint: {activeBreakpoint.name}</p>
-          <p>fontColor: {fontColor[activeBreakpoint.name]}</p>
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
 #### Border Color
 
 This box will have different backgroundColor values for each of its base, tablet, desktop, and hd breakpoints.
@@ -1567,51 +1523,6 @@ The childGap in these boxes will change based on the active breakpoint
             alignItems="center"
           >
             {childGap[activeBreakpoint.name]}
-          </Box>
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
-#### Radius
-
-This box will have different border radius based on the breakpoint
-
-<Canvas>
-  <Story name="responsive radius" parameters={{ ...RESPONSIVE_STORY }}>
-    {() => {
-      const activeBreakpoint = useBreakpoint();
-      const radius = { base: 'circle', tablet: 'sm sm 0 0', desktop: '0 0 md md', hd: 'lg' };
-      return (
-        <Box
-          padding="sm"
-          margin="md"
-          background="primary-lighter"
-          borderColor="grey"
-          borderWidth="xs"
-          radius={radius}
-        >
-          <p>{radius[activeBreakpoint.name]}</p>
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
-#### Shadow
-
-This box will have an our shadow based on the breakpoint
-
-<Canvas>
-  <Story name="responsive shadow" parameters={{ ...RESPONSIVE_STORY }}>
-    {() => {
-      const activeBreakpoint = useBreakpoint();
-      const shadow = { base: '0', tablet: 'lg', desktop: 'xl', hd: '2xl' };
-      return (
-        <Box padding="3xl" background="grey-50">
-          <Box padding="sm" margin="md" background="white" shadow={shadow}>
-            <p>{shadow[activeBreakpoint.name]}</p>
           </Box>
         </Box>
       );
