@@ -1435,30 +1435,6 @@ This box will have different fontColor values for each of its base, tablet, desk
   </Story>
 </Canvas>
 
-#### Background color
-
-This box will have different backgroundColor values for each of its base, tablet, desktop, and hd breakpoints.
-
-<Canvas>
-  <Story name="responsive background color" parameters={{ ...RESPONSIVE_STORY }}>
-    {() => {
-      const activeBreakpoint = useBreakpoint();
-      const backgroundColor = {
-        base: 'primary-lighter',
-        tablet: 'warning-lighter',
-        desktop: 'danger-lighter',
-        hd: 'secondary-lighter',
-      };
-      return (
-        <Box padding="sm" background={backgroundColor} borderColor="grey" borderWidth="xs">
-          <p>Breakpoint: {activeBreakpoint.name}</p>
-          <p>backgroundColor: {backgroundColor[activeBreakpoint.name]}</p>
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
 #### Border Color
 
 This box will have different backgroundColor values for each of its base, tablet, desktop, and hd breakpoints.

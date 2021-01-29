@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-else-return */
 import React from 'react';
-import { Meta } from '@storybook/react/types-6-0';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import Box, { BoxProps } from './Box';
 import {
   FONT_SIZE_OPTIONS,
@@ -9,7 +9,7 @@ import {
   BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
 } from '../../lib/tokens';
-import { BrandColor, ResponsiveProp } from '../../types';
+import { BrandColor, FontSize, FontColor, ResponsiveProp } from '../../types';
 import { RESPONSIVE_STORY } from '../../../.storybook/constants';
 import useBreakpoint from '../../hooks/useBreakpoint';
 
@@ -298,26 +298,47 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
 
 // type ResponsiveBoxProps = BoxProps & { parameters: { [key: string]: { [key: string]: number[]; }; }; };
 
-interface ResponsiveBoxProps extends BoxProps {
-  parameters: { chromatic: { viewports: number[] } };
-}
+// interface ResponsiveBoxProps extends BoxProps {
+//   parameters: { chromatic: { viewports: number[] } };
+// }
 
-export const ResponsiveBackground: React.FunctionComponent<ResponsiveBoxProps> = () => {
+const Template: Story<BoxProps> = ({ propertyName, ...args }) => {
   const activeBreakpoint = useBreakpoint();
-  const backgroundColor = {
-    base: 'primary-lighter',
-    tablet: 'warning-lighter',
-    desktop: 'danger-lighter',
-    hd: 'secondary-lighter',
-  };
   return (
-    <Box padding="sm" background={backgroundColor as ResponsiveProp<BrandColor>}>
+    <Box {...args} padding="sm">
       <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-      <p>{`backgroundColor: ${backgroundColor[activeBreakpoint.name]}`}</p>
+      <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
     </Box>
   );
 };
 
-ResponsiveBackground.parameters = {
-  ...RESPONSIVE_STORY,
+export const ResponsiveBackground = Template.bind({});
+ResponsiveBackground.args = {
+  propertyName: 'background',
+  background: {
+    base: 'primary-lighter',
+    tablet: 'warning-lighter',
+    desktop: 'danger-lighter',
+    hd: 'secondary-lighter',
+  } as ResponsiveProp<BrandColor>,
+  parameters: RESPONSIVE_STORY,
+};
+
+export const ResponsiveFontSize = Template.bind({});
+ResponsiveFontSize.args = {
+  propertyName: 'fontSize',
+  fontSize: { base: 'md', tablet: 'lg', desktop: 'xl', hd: '4xl' } as ResponsiveProp<FontSize>,
+  parameters: RESPONSIVE_STORY,
+};
+
+export const ResponsiveFontColor = Template.bind({});
+ResponsiveFontColor.args = {
+  propertyName: 'color',
+  color: {
+    base: 'primary',
+    tablet: 'warning',
+    desktop: 'danger',
+    hd: 'secondary',
+  } as ResponsiveProp<FontColor>,
+  parameters: RESPONSIVE_STORY,
 };
