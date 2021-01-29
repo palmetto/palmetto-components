@@ -159,7 +159,7 @@ export interface BoxProps {
    */
   shadow?: BoxShadowSize | ResponsiveProp<BoxShadowSize>;
   /**
-   * Set the radius of all corners
+   * CSS Style object
    */
   style?: CSSProperties;
   /**
