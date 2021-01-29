@@ -9,7 +9,9 @@ import {
   BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
 } from '../../lib/tokens';
-import { BrandColor } from '../../types';
+import { BrandColor, ResponsiveProp } from '../../types';
+import { RESPONSIVE_STORY } from '../../../.storybook/constants';
+import useBreakpoint from '../../hooks/useBreakpoint';
 
 export default {
   title: 'Components/Box/Visual Regression Tests',
@@ -293,3 +295,29 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
     ))}
   </>
 );
+
+// type ResponsiveBoxProps = BoxProps & { parameters: { [key: string]: { [key: string]: number[]; }; }; };
+
+interface ResponsiveBoxProps extends BoxProps {
+  parameters: { chromatic: { viewports: number[] } };
+}
+
+export const ResponsiveBackground: React.FunctionComponent<ResponsiveBoxProps> = () => {
+  const activeBreakpoint = useBreakpoint();
+  const backgroundColor = {
+    base: 'primary-lighter',
+    tablet: 'warning-lighter',
+    desktop: 'danger-lighter',
+    hd: 'secondary-lighter',
+  };
+  return (
+    <Box padding="sm" background={backgroundColor as ResponsiveProp<BrandColor>}>
+      <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+      <p>{`backgroundColor: ${backgroundColor[activeBreakpoint.name]}`}</p>
+    </Box>
+  );
+};
+
+ResponsiveBackground.parameters = {
+  ...RESPONSIVE_STORY,
+};
