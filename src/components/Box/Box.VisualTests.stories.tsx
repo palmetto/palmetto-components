@@ -464,7 +464,7 @@ export const ResponsivePadding = BoxTemplate.bind({});
 ResponsivePadding.args = {
   propertyName: 'padding',
   padding: {
-    base: '3xl',
+    base: 'md',
     tablet: '2xl lg',
     desktop: '5xl 3xl 4xl',
     hd: '3xl 0 2xl lg',
