@@ -58,7 +58,7 @@ export interface BoxProps {
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
-  background?: BrandColor;
+  background?: BrandColor | ResponsiveProp<BrandColor>;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
    * Or a responsive prop with BrandColor for each breakpoint.
@@ -89,7 +89,7 @@ export interface BoxProps {
   /**
    * A color token identifier to use for the text color.
    */
-  color?: FontColor;
+  color?: FontColor | ResponsiveProp<FontColor>;
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
@@ -159,7 +159,7 @@ export interface BoxProps {
    */
   shadow?: BoxShadowSize | ResponsiveProp<BoxShadowSize>;
   /**
-   * Set the radius of all corners
+   * CSS Style object
    */
   style?: CSSProperties;
   /**
