@@ -299,9 +299,11 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
 const BoxTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
   const activeBreakpoint = useBreakpoint();
   return (
-    <Box {...args}>
-      <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-      <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+    <Box padding="lg" background="grey-50">
+      <Box {...args}>
+        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+      </Box>
     </Box>
   );
 };
@@ -349,7 +351,10 @@ export const ResponsiveRadius = BoxTemplate.bind({});
 ResponsiveRadius.args = {
   propertyName: 'radius',
   radius: {
-    base: 'circle', tablet: 'sm sm 0 0', desktop: '0 0 md md', hd: 'lg',
+    base: 'circle',
+    tablet: 'sm sm 0 0',
+    desktop: '0 0 md md',
+    hd: 'lg',
   },
   background: 'info-100',
   padding: 'sm',
@@ -360,9 +365,13 @@ export const ResponsiveShadow = BoxTemplate.bind({});
 ResponsiveShadow.args = {
   propertyName: 'shadow',
   shadow: {
-    base: '0', tablet: 'lg', desktop: 'xl', hd: '2xl',
+    base: '0',
+    tablet: 'lg',
+    desktop: 'xl',
+    hd: '2xl',
   },
   padding: 'sm',
+  background: 'white',
 };
 ResponsiveShadow.parameters = RESPONSIVE_STORY;
 
@@ -370,7 +379,9 @@ export const ResponsiveTextAlign = BoxTemplate.bind({});
 ResponsiveTextAlign.args = {
   propertyName: 'textAlign',
   textAlign: {
-    base: 'right', tablet: 'left', desktop: 'center',
+    base: 'right',
+    tablet: 'left',
+    desktop: 'center',
   },
   padding: 'sm',
   background: 'info-100',
@@ -395,7 +406,10 @@ export const ResponsiveBorderWidth = BoxTemplate.bind({});
 ResponsiveBorderWidth.args = {
   propertyName: 'borderWidth',
   borderWidth: {
-    base: 'sm', tablet: 'xs', desktop: 'sm xs 0 sm', hd: '0 0 sm sm',
+    base: 'sm',
+    tablet: 'xs',
+    desktop: 'sm xs 0 sm',
+    hd: '0 0 sm sm',
   },
   borderColor: 'secondary-500',
   padding: 'sm',
@@ -406,7 +420,10 @@ export const ResponsiveWidth = BoxTemplate.bind({});
 ResponsiveWidth.args = {
   propertyName: 'width',
   width: {
-    base: '2xl', tablet: '60', desktop: '5xl', hd: '100',
+    base: '2xl',
+    tablet: '60',
+    desktop: '5xl',
+    hd: '100',
   },
   height: '3xl',
   background: 'info-100',
@@ -418,7 +435,10 @@ export const ResponsiveHeight = BoxTemplate.bind({});
 ResponsiveHeight.args = {
   propertyName: 'height',
   height: {
-    base: 'md', tablet: 'lg', desktop: 'xl', hd: '2xl',
+    base: 'md',
+    tablet: 'lg',
+    desktop: 'xl',
+    hd: '2xl',
   },
   width: '3xl',
   background: 'info-100',
@@ -430,7 +450,10 @@ export const ResponsiveMargin = BoxTemplate.bind({});
 ResponsiveMargin.args = {
   propertyName: 'margin',
   margin: {
-    base: '3xl', tablet: '2xl lg', desktop: '5xl 3xl sm', hd: '3xl 0 2xl lg',
+    base: '3xl',
+    tablet: '2xl lg',
+    desktop: '5xl 3xl sm',
+    hd: '3xl 0 2xl lg',
   },
   width: '3xl',
   background: 'info-100',
@@ -441,7 +464,10 @@ export const ResponsivePadding = BoxTemplate.bind({});
 ResponsivePadding.args = {
   propertyName: 'padding',
   padding: {
-    base: '3xl', tablet: '2xl lg', desktop: '5xl 3xl 4xl', hd: '3xl 0 2xl lg',
+    base: '3xl',
+    tablet: '2xl lg',
+    desktop: '5xl 3xl 4xl',
+    hd: '3xl 0 2xl lg',
   },
   width: '3xl',
   background: 'info-100',
@@ -451,7 +477,7 @@ ResponsivePadding.parameters = RESPONSIVE_STORY;
 const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
   const activeBreakpoint = useBreakpoint();
   return (
-    <Box {...args}>
+    <Box background="grey-50" padding="lg" {...args}>
       <Box
         flex="auto"
         radius="md"
@@ -493,7 +519,10 @@ export const ResponsiveDirection = BoxChildrenTemplate.bind({});
 ResponsiveDirection.args = {
   propertyName: 'direction',
   direction: {
-    base: 'column', tablet: 'row', desktop: 'column', hd: 'row',
+    base: 'column',
+    tablet: 'row',
+    desktop: 'column',
+    hd: 'row',
   },
   childGap: 'lg',
 };
@@ -503,7 +532,10 @@ export const ResponsiveChildGap = BoxChildrenTemplate.bind({});
 ResponsiveChildGap.args = {
   propertyName: 'childGap',
   childGap: {
-    base: 'xs', tablet: 'lg', desktop: '3xl', hd: '5xl',
+    base: 'xs',
+    tablet: 'lg',
+    desktop: '3xl',
+    hd: '5xl',
   },
 };
 ResponsiveChildGap.parameters = RESPONSIVE_STORY;
