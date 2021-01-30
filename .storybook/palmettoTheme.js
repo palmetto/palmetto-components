@@ -31,7 +31,7 @@ export default create({
   // inputTextColor: 'black',
   // inputBorderRadius: 4,
 
-  brandTitle: 'Palmetto Component Library',
-  brandUrl: 'https://ux.palmetto.com',
-  brandImage: 'https://app.palmetto.com/static/media/logo.4d85ce48.svg',
+  brandTitle: 'Palmetto Design System',
+  brandUrl: '/',
+  brandImage: '/images/logo-palmetto.png',
 });
