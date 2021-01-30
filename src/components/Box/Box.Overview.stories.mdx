@@ -66,37 +66,19 @@ Use the `background` prop to set the color of the background
 
 ## Border
 
-Use the `border` prop to set the color of the border.
+Use the `borderColor` prop to set the color of the border and the borderWidth to set the width. `borderWidth` also accepts css shorthand values that correspond to top, right, bottom, left.
 
 <Canvas>
-  <Story name="Border Color">
-    <Box childGap="xs">
-      <Box borderColor="grey-lighter" borderWidth="xs" padding="xs">
-        grey-lighter
+  <Story name="Border">
+    <Box childGap="sm" direction="row">
+      <Box borderColor="grey-200" borderWidth="xs md" padding="xs">
+        grey-lighter, xs md
       </Box>
-      <Box borderColor="danger" borderWidth="xs" padding="xs">
-        danger
+      <Box borderColor="danger" borderWidth="0 sm md xs" padding="xs">
+        danger, 0 sm md xs
       </Box>
-      <Box borderColor="primary-darker" borderWidth="xs" padding="xs">
-        primary-darker
-      </Box>
-    </Box>
-  </Story>
-</Canvas>
-
-Borders on specific sides with different widths.
-
-<Canvas>
-  <Story name="Border Sides">
-    <Box childGap="lg">
-      <Box borderColor="grey-lighter" borderWidth="xs md" padding="xs">
-        xs horizontal, md vertical, grey-lighter
-      </Box>
-      <Box borderColor="danger" borderWidth="sm 0" padding="xs">
-        sm horizontal, 0 vertical, danger
-      </Box>
-      <Box borderColor="primary-darker" borderWidth="0 0 sm xs" padding="xs">
-        0 top, 0 right, sm bottom, xs left, primary-darker
+      <Box borderColor="primary-100" borderWidth="md" padding="xs">
+        primary-darker, md
       </Box>
     </Box>
   </Story>
