@@ -15,27 +15,29 @@ import {
 
 A `<Box>` is a layout component to build UIs with consistent padding and spacing between elements.
 
-- It lays out it contents in a specified `direction`
+- Its content is arranged in a specified `direction`, with 'column' being the default
 - Renders a `<div />` element by default, but can be changed using `as`
 - Allows you to specify the spacing between child elements using `childGap`
+- Many props accept `ResponsiveProp` that take an object with keys that correspond to [breakpoint tokens](/?path=/docs/design-tokens-breakpoints--page).
 
 <Canvas>
   <Box childGap="md">
     <Box
       padding="xl"
-      borderColor="primary-light"
-      background="primary-lightest"
+      background="primary-100"
       radius="md"
-      fontSize="xl"
+      fontSize={{ base: 'sm', tablet: 'md', hd: 'lg' }}
+      borderWidth="sm"
+      borderColor="primary-200"
     >
       I am a box with a green background and border
     </Box>
-    <Box childGap="sm" direction="row">
-      <Box flex="auto" radius="md" background="primary" height="lg" />
-      <Box flex="auto" radius="md" background="primary" height="lg" />
-      <Box flex="auto" radius="md" background="primary" height="lg" />
-      <Box flex="auto" radius="md" background="primary" height="lg" />
-      <Box flex="auto" radius="md" background="primary" height="lg" />
+    <Box childGap={{ base: 'sm', tablet: 'md', desktop: 'lg' }} direction="row">
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" shadow="sm" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" shadow="sm" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" shadow="sm" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" shadow="sm" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" shadow="sm" />
     </Box>
   </Box>
 </Canvas>
@@ -44,29 +46,12 @@ A `<Box>` is a layout component to build UIs with consistent padding and spacing
 
 <ArgsTable of={Box} />
 
-## About Responsive Props
-
-Any properties in the table above that accept a `ResponsiveProp` will take an object with the following shape:
-
-```
-{
-  base?: prop, // breakpoint starting at 0 pixels, not scoped by media query.
-  tablet?: prop, // 608px and higher.
-  desktop?: prop, // 992px and higher.
-  hd?: prop, // 1280px and higher.
-}
-```
-
-These props will create classes that are scoped to the specific breakpoint they're assigned to. Not all breakpoints
-are required in this shape, you can pick and choose which breakpoints require different layout attributes based on a
-mobile first approach.
-
 ## Background Color
 
 Use the `background` prop to set the color of the background
 
 <Canvas>
-  <Story name="background color">
+  <Story name="Background">
     <Box background="secondary-lighter" margin="xs" padding="xs">
       secondary-lighter
     </Box>
@@ -84,7 +69,7 @@ Use the `background` prop to set the color of the background
 Use the `border` prop to set the color of the border.
 
 <Canvas>
-  <Story name="border color">
+  <Story name="Border Color">
     <Box childGap="xs">
       <Box borderColor="grey-lighter" borderWidth="xs" padding="xs">
         grey-lighter
@@ -102,7 +87,7 @@ Use the `border` prop to set the color of the border.
 Borders on specific sides with different widths.
 
 <Canvas>
-  <Story name="border sides">
+  <Story name="Border Sides">
     <Box childGap="lg">
       <Box borderColor="grey-lighter" borderWidth="xs md" padding="xs">
         xs horizontal, md vertical, grey-lighter
@@ -123,7 +108,7 @@ Set the spacing between children of the Box with `childGap`.
 The space between children will be set whether the direction of is `row` or `column`.
 
 <Canvas>
-  <Story name="child gap">
+  <Story name="Child Gap">
     <Box childGap="md" padding="sm">
       <Box flex="auto" background="primary-light" padding="sm"></Box>
       <Box flex="auto" background="primary-light" padding="sm"></Box>
@@ -150,7 +135,7 @@ The item is sized according to its width and height properties, but grows to abs
 This is equivalent to setting "flex: 1 1 auto".
 
 <Canvas>
-  <Story name="flex auto">
+  <Story name="Flex Auto">
     <Box childGap="md">
       <Box childGap="md" direction="row">
         <Box
@@ -207,7 +192,7 @@ If you need more granular flex control for properties such as `flex-grow`, `flex
 passing using a standard `style` object with the `flex` shorthand you need.
 
 <Canvas>
-  <Story name="flex grow and shrink">
+  <Story name="Flex Grow and Shrink">
     <Box childGap="md">
       <Box childGap="md" direction="row">
         <Box
@@ -260,12 +245,12 @@ passing using a standard `style` object with the `flex` shorthand you need.
   </Story>
 </Canvas>
 
-### Justify
+### Justify Content
 
 Set content alignment along the main axis
 
 <Canvas>
-  <Story name="justify">
+  <Story name="JustifyContent">
     <Box flex="auto" childGap="md">
       <Box direction="row" alignItems="center" direction="row" childGap="md">
         <Box width="70px">start</Box>
@@ -355,12 +340,12 @@ Set content alignment along the main axis
   </Story>
 </Canvas>
 
-### Alignment
+### Align Items
 
 Set content alignment along the cross axis.
 
 <Canvas>
-  <Story name="alignment">
+  <Story name="AlignItems">
     <Box flex="auto" childGap="md">
       <Box direction="row" alignItems="center" direction="row" childGap="md">
         <Box width="70px">start</Box>
@@ -447,7 +432,7 @@ Set the Box's lines within where there is extra space in the cross-axis.
 This property has no effect when there is only one line of flex items.
 
 <Canvas>
-  <Story name="alignContent">
+  <Story name="Align Content">
     <Box childGap="md">
       <Box direction="row" alignItems="center" direction="row" childGap="md">
         <Box flex="auto" width="70px">
@@ -584,7 +569,7 @@ This property has no effect when there is only one line of flex items.
 Use the `color` prop to set the color of the text
 
 <Canvas>
-  <Story name="color">
+  <Story name="Font Color">
     <Box color="danger-500">Danger 500</Box>
     <Box color="info-500">Info 500</Box>
     <Box>Default Color</Box>
@@ -596,7 +581,7 @@ Use the `color` prop to set the color of the text
 Set the `fontSize` prop with a [font size](/?path=/story/design-tokens-font-size--page) token to set the size of the text in the Box.
 
 <Canvas>
-  <Story name="fontSize">
+  <Story name="Font Size">
     {[...FONT_SIZE_OPTIONS].reverse().map((fontSize, i) => (
       <Box fontSize={fontSize} key={i}>
         {`${fontSize} font size`}
@@ -610,7 +595,7 @@ Set the `fontSize` prop with a [font size](/?path=/story/design-tokens-font-size
 Set the `fontWeight` prop with a [font weight](/?path=/story/design-tokens-font-weight--page) token to set the size of the text in the Box.
 
 <Canvas>
-  <Story name="fontWeight">
+  <Story name="Font Weight">
     <Box>
       <Box fontWeight="light">light</Box>
       <Box fontWeight="regular">regular</Box>
@@ -625,7 +610,7 @@ Set the `fontWeight` prop with a [font weight](/?path=/story/design-tokens-font-
 Set the `textAlign` prop to set the alignment of the text in the Box.
 
 <Canvas>
-  <Story name="textAlign">
+  <Story name="Text Align">
     <Box display="block">
       <Box display="block" textAlign="left">
         left
@@ -645,7 +630,7 @@ Set the `textAlign` prop to set the alignment of the text in the Box.
 The `margin` prop accepts a single [spacing](/?path=/story/design-tokens-spacing--page) value or a set of spacing values that correspond with css shorthand syntax. Margin values can be set on the horizontal or vertical axis, or the top, right, bottom and left sides of a Box.
 
 <Canvas>
-  <Story name="margin">
+  <Story name="Margin">
     <Box margin="lg" background="primary-lighter">
       lg margin
     </Box>
@@ -669,7 +654,7 @@ The `margin` prop accepts a single [spacing](/?path=/story/design-tokens-spacing
 The `padding` prop accepts a single [spacing](/?path=/story/design-tokens-spacing--page) value or a set of spacing values that correspond with css shorthand syntax. Padding values can be set on the horizontal or vertical axis, or the top, right, bottom and left sides of a Box.
 
 <Canvas>
-  <Story name="padding">
+  <Story name="Padding">
     <Box padding="lg" margin="sm 0" background="primary-lighter">
       lg padding
     </Box>
@@ -693,22 +678,22 @@ The `padding` prop accepts a single [spacing](/?path=/story/design-tokens-spacin
 Set the `radius` prop with a [radius token](/?path=/docs/design-tokens-border-radius--page) to set the corner radius of the box.
 
 <Canvas>
-  <Story name="radius">
-    <Box childGap="md">
+  <Story name="Radius">
+    <Box direction="row" childGap="2xs" justifyContent="space-between">
       <Box radius="xs" background="secondary-light" padding="sm">
-        xs radius
+        xs
       </Box>
       <Box radius="sm" background="secondary-light" padding="sm">
-        sm radius
+        sm
       </Box>
       <Box radius="md" background="secondary-light" padding="sm">
-        md radius
+        md
       </Box>
       <Box radius="lg" background="secondary-light" padding="sm">
-        lg radius
+        lg
       </Box>
       <Box radius="circle" background="secondary-light" padding="sm">
-        circle radius
+        circle
       </Box>
       <Box radius="sm lg" background="secondary-light" padding="sm">
         sm lg
@@ -734,8 +719,8 @@ Set the `radius` prop with a [radius token](/?path=/docs/design-tokens-border-ra
 Set the `shadow` prop with a [shadow token](/?path=/docs/design-tokens-box-shadow--page) to set the outer shadow of the box.
 
 <Canvas>
-  <Story name="shadow">
-    <Box background="grey-50" padding="3xl" childGap="3xl">
+  <Story name="Shadow">
+    <Box direction="row" background="grey-50" padding="2xl" justifyContent="space-between">
       <Box
         shadow="0"
         alignItems="center"
@@ -833,7 +818,7 @@ Set the `shadow` prop with a [shadow token](/?path=/docs/design-tokens-box-shado
 Width can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
-  <Story name="width">
+  <Story name="Width">
     <Box background="primary-lightest" childGap="xs">
       <Box background="primary-light" width="227px">
         227px
@@ -851,7 +836,7 @@ Width can be set to any CSS unit value (px, rem, em, %).
 [Width tokens](/?path=/docs/design-tokens-width--page) may be used to set widths as well.
 
 <Canvas>
-  <Story name="width standards">
+  <Story name="Width standards">
     <Box background="primary-lightest" childGap="xs" overflow="auto">
       <Box background="primary-light" width="sm">
         sm
@@ -884,7 +869,7 @@ Width can be set to any CSS unit value (px, rem, em, %).
 Set the width to a common percentage of the Box's parent.
 
 <Canvas>
-  <Story name="width percentage">
+  <Story name="Width Percentage">
     <Box background="primary-lightest" childGap="xs">
       <Box background="primary-light" width="10">
         10%
@@ -940,7 +925,7 @@ Set the width to a common percentage of the Box's parent.
 Set the maximum width of the Box by setting `maxWidth` to a [width token](/?path=/docs/design-tokens-width--page) or any valid css unit.
 
 <Canvas>
-  <Story name="max width">
+  <Story name="Max width">
     <Box background="primary-lightest" childGap="xs">
       <Box background="primary-light" maxWidth="2xl">
         2xl
@@ -960,7 +945,7 @@ Set the maximum width of the Box by setting `maxWidth` to a [width token](/?path
 Height can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
-  <Story name="height">
+  <Story name="Height">
     <Box background="primary-lightest" childGap="xs">
       <Box background="primary-light" height="227px" justifyContent="center" alignItems="center">
         227px
@@ -978,7 +963,7 @@ Height can be set to any CSS unit value (px, rem, em, %).
 [Width tokens](/?path=/docs/design-tokens-height--page) may be used to set height as well.
 
 <Canvas>
-  <Story name="height standards">
+  <Story name="Height standards">
     <Box background="primary-lightest" childGap="xs" height="5xl" direction="row">
       <Box
         flex="auto"
@@ -1059,7 +1044,7 @@ Height can be set to any CSS unit value (px, rem, em, %).
 Set the height to a common percentage of the Box's parent.
 
 <Canvas>
-  <Story name="height percentage">
+  <Story name="Height Percentage">
     <Box height="400px" childGap="xs" direction="row" background="primary-lightest">
       <Box
         flex="auto"
@@ -1205,7 +1190,7 @@ Set the height to a common percentage of the Box's parent.
 Set the maximum width of the Box by setting `maxHeight` to a [height token](/?path=/docs/design-tokens-height--page) or any valid css unit.
 
 <Canvas>
-  <Story name="max height">
+  <Story name="Max Height">
     <Box height="300px" background="primary-lightest" direction="row" childGap="xs">
       <Box
         maxHeight="lg"
@@ -1243,7 +1228,7 @@ Set the maximum width of the Box by setting `maxHeight` to a [height token](/?pa
 Set the overflow behavior of the Box with `overflow`
 
 <Canvas>
-  <Story name="overflow">
+  <Story name="Overflow">
     <Box
       overflow="auto"
       padding="md"
@@ -1275,7 +1260,22 @@ Set the overflow behavior of the Box with `overflow`
   </Story>
 </Canvas>
 
-## Responsive Styling
+## Responsive Props
+
+Any props that accept a `ResponsiveProp` will take an object with the following shape:
+
+```
+{
+  base?: prop, // breakpoint starting at 0 pixels, not scoped by media query.
+  tablet?: prop, // 608px and higher.
+  desktop?: prop, // 992px and higher.
+  hd?: prop, // 1280px and higher.
+}
+```
+
+These props will create classes that are scoped to the specific breakpoint they're assigned to. Not all breakpoints
+are required in this shape, you can pick and choose which breakpoints require different layout attributes based on a
+mobile first approach.
 
 Props that are responsive-enabled follow a mobile-first approach, which means that styles are applied first to smaller viewports (i.e. mobile devices).
 As the viewport size increases, new styles may be applied (styles are overridden for larger viewports).
@@ -1292,10 +1292,27 @@ Responsive enabled props take a keyed object that specifies at which [breakpoint
 >
 ```
 
-### Responsive Examples
-
 Try resizing the browser to see the responsive properties in action.
 
+<Canvas>
+  <Story name="Responsive Props" parameters={{ ...RESPONSIVE_STORY }}>
+    <Box
+      padding={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'xl' }}
+      background={{
+        base: 'white',
+        tablet: 'primary-100',
+        desktop: 'secondary-100',
+        hd: 'tertiary-100',
+      }}
+      fontSize={{ base: 'md', tablet: 'lg', desktop: 'xl', hd: '3xl' }}
+      borderColor={{ base: 'grey-300', tablet: 'primary', desktop: 'secondary' }}
+      borderWidth={{ base: 'sm', tablet: 'xs', desktop: 'md', hd: '0' }}
+      textAlign={{ base: 'center', tablet: 'right', desktop: 'left' }}
+    >
+      <p>Resize the viewport to see how my appearance changes.</p>
+    </Box>
+  </Story>
+</Canvas>
 
 #### Omitting Keys
 

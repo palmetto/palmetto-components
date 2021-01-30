@@ -377,7 +377,6 @@ ResponsiveTextAlign.args = {
 };
 ResponsiveTextAlign.parameters = RESPONSIVE_STORY;
 
-
 export const ResponsiveBorderColor = BoxTemplate.bind({});
 ResponsiveBorderColor.args = {
   propertyName: 'borderColor',
