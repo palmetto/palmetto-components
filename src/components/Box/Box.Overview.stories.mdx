@@ -1,0 +1,1310 @@
+import Box from './Box';
+import useBreakpoint from '../../hooks/useBreakpoint';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { RESPONSIVE_STORY } from '../../../.storybook/constants';
+import {
+  FONT_SIZE_OPTIONS,
+  FONT_COLOR_OPTIONS,
+  BRAND_COLOR_NAMES,
+  SPACING_OPTIONS,
+} from '../../lib/tokens';
+
+<Meta title="Components/Box/Overview" component={Box} />
+
+# Box
+
+A `<Box>` is a layout component to build UIs with consistent padding and spacing between elements.
+
+- Its content is arranged in a specified `direction`, with 'column' being the default
+- Renders a `<div />` element by default, but can be changed using `as`
+- Allows you to specify the spacing between child elements using `childGap`
+- Many props accept `ResponsiveProp` that take an object with keys that correspond to [breakpoint tokens](/?path=/docs/design-tokens-breakpoints--page).
+
+<Canvas>
+  <Box childGap="md">
+    <Box
+      padding="xl"
+      background="primary-100"
+      radius="md"
+      fontSize={{ base: 'sm', tablet: 'md', hd: 'lg' }}
+      borderWidth="sm"
+      borderColor="primary-200"
+    >
+      I am a box with a green background and border
+    </Box>
+    <Box childGap={{ base: 'sm', tablet: 'md', desktop: 'lg' }} direction="row">
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+    </Box>
+  </Box>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Box} />
+
+## Background Color
+
+Use the `background` prop to set the color of the background
+
+<Canvas>
+  <Story name="Background">
+    <Box background="secondary-lighter" margin="xs" padding="xs">
+      secondary-lighter
+    </Box>
+    <Box background="danger-lightest" margin="xs" padding="xs">
+      danger-lightest
+    </Box>
+    <Box background="primary" margin="xs" padding="xs">
+      primary
+    </Box>
+  </Story>
+</Canvas>
+
+## Border
+
+Use the `borderColor` prop to set the color of the border and the borderWidth to set the width. `borderWidth` also accepts css shorthand values that correspond to top, right, bottom, left.
+
+<Canvas>
+  <Story name="Border">
+    <Box childGap="sm" direction="row">
+      <Box borderColor="grey-200" borderWidth="xs md" padding="xs">
+        grey-lighter, xs md
+      </Box>
+      <Box borderColor="danger" borderWidth="0 sm md xs" padding="xs">
+        danger, 0 sm md xs
+      </Box>
+      <Box borderColor="primary-100" borderWidth="md" padding="xs">
+        primary-darker, md
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+### Child Gap
+
+Set the spacing between children of the Box with `childGap`.
+The space between children will be set whether the direction of is `row` or `column`.
+
+<Canvas>
+  <Story name="Child Gap">
+    <Box childGap="md" padding="sm">
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
+      <Box flex="auto" background="primary-light" padding="sm"></Box>
+    </Box>
+    <Box childGap="2xl" direction="row" padding="sm">
+      <Box width="20%" background="primary-light" padding="sm"></Box>
+      <Box width="20%" background="primary-light" padding="sm"></Box>
+      <Box width="20%" background="primary-light" padding="sm"></Box>
+      <Box width="20%" background="primary-light" padding="sm"></Box>
+      <Box width="20%" background="primary-light" padding="sm"></Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Flex Properties
+
+### Flex
+
+The most common use case is to set children of a `<Box />` to `flex="auto"`.
+The item is sized according to its width and height properties, but grows to absorb any extra free space in the parent, and shrinks to its minimum size to fit the container.
+This is equivalent to setting "flex: 1 1 auto".
+
+<Canvas>
+  <Story name="Flex Auto">
+    <Box childGap="md">
+      <Box childGap="md" direction="row">
+        <Box
+          flex="auto"
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          auto
+        </Box>
+        <Box
+          flex="auto"
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          auto
+        </Box>
+        <Box
+          flex="auto"
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          auto
+        </Box>
+        <Box
+          flex="auto"
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          auto
+        </Box>
+        <Box
+          flex="auto"
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          auto
+        </Box>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+If you need more granular flex control for properties such as `flex-grow`, `flex-shrink`, `flex-basis`, we recommend
+passing using a standard `style` object with the `flex` shorthand you need.
+
+<Canvas>
+  <Story name="Flex Grow and Shrink">
+    <Box childGap="md">
+      <Box childGap="md" direction="row">
+        <Box
+          style={{ flex: '3' }}
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          3
+        </Box>
+        <Box
+          style={{ flex: '1' }}
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          1
+        </Box>
+        <Box
+          style={{ flex: '1' }}
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          1
+        </Box>
+        <Box
+          style={{ flex: '2' }}
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          2
+        </Box>
+        <Box
+          style={{ flex: '1' }}
+          background="primary-light"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          1
+        </Box>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+### Justify Content
+
+Set content alignment along the main axis
+
+<Canvas>
+  <Story name="JustifyContent">
+    <Box flex="auto" childGap="md">
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">start</Box>
+        <Box
+          flex="auto"
+          background="primary-lighter"
+          justifyContent="flex-start"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">center</Box>
+        <Box
+          flex="auto"
+          background="primary-lighter"
+          justifyContent="center"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">end</Box>
+        <Box
+          flex="auto"
+          background="primary-lighter"
+          justifyContent="flex-end"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">between</Box>
+        <Box
+          flex="auto"
+          background="primary-lighter"
+          justifyContent="space-between"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">around</Box>
+        <Box
+          flex="auto"
+          background="primary-lighter"
+          justifyContent="space-around"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">evenly</Box>
+        <Box
+          flex="auto"
+          background="primary-lighter"
+          justifyContent="space-evenly"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+### Align Items
+
+Set content alignment along the cross axis.
+
+<Canvas>
+  <Story name="AlignItems">
+    <Box flex="auto" childGap="md">
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">start</Box>
+        <Box
+          flex="auto"
+          height="100px"
+          background="primary-lighter"
+          alignItems="flex-start"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">center</Box>
+        <Box
+          flex="auto"
+          height="100px"
+          background="primary-lighter"
+          alignItems="center"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">end</Box>
+        <Box
+          flex="auto"
+          height="100px"
+          background="primary-lighter"
+          alignItems="flex-end"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">baseline</Box>
+        <Box
+          flex="auto"
+          height="100px"
+          background="primary-lighter"
+          alignItems="baseline"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box width="70px">stretch</Box>
+        <Box
+          flex="auto"
+          height="100px"
+          background="primary-lighter"
+          alignItems="stretch"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="md" background="primary" />
+          <Box width="md" background="primary" />
+          <Box width="md" background="primary" />
+        </Box>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+### Align Content
+
+Set the Box's lines within where there is extra space in the cross-axis.
+This property has no effect when there is only one line of flex items.
+
+<Canvas>
+  <Story name="Align Content">
+    <Box childGap="md">
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box flex="auto" width="70px">
+          start
+        </Box>
+        <Box
+          flex="auto"
+          alignContent="flex-start"
+          height="200px"
+          wrap
+          childGap="md"
+          background="primary-lighter"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box flex="auto" width="70px">
+          center
+        </Box>
+        <Box
+          flex="auto"
+          alignContent="center"
+          height="200px"
+          wrap
+          childGap="md"
+          background="primary-lighter"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box flex="auto" width="70px">
+          end
+        </Box>
+        <Box
+          flex="auto"
+          alignContent="flex-end"
+          height="200px"
+          wrap
+          childGap="md"
+          background="primary-lighter"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box flex="auto" width="70px">
+          stretch
+        </Box>
+        <Box
+          flex="auto"
+          alignContent="stretch"
+          height="200px"
+          wrap
+          childGap="md"
+          background="primary-lighter"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="2xl" background="primary" />
+          <Box width="2xl" background="primary" />
+          <Box width="2xl" background="primary" />
+          <Box width="2xl" background="primary" />
+          <Box width="2xl" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box flex="auto" width="70px">
+          between
+        </Box>
+        <Box
+          flex="auto"
+          alignContent="space-between"
+          height="200px"
+          wrap
+          childGap="md"
+          background="primary-lighter"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+        </Box>
+      </Box>
+      <Box direction="row" alignItems="center" direction="row" childGap="md">
+        <Box flex="auto" width="70px">
+          around
+        </Box>
+        <Box
+          flex="auto"
+          alignContent="center"
+          height="200px"
+          wrap
+          childGap="md"
+          background="primary-lighter"
+          direction="row"
+          childGap="md"
+        >
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary" />
+        </Box>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Font Color
+
+Use the `color` prop to set the color of the text
+
+<Canvas>
+  <Story name="Font Color">
+    <Box color="danger-500">Danger 500</Box>
+    <Box color="info-500">Info 500</Box>
+    <Box>Default Color</Box>
+  </Story>
+</Canvas>
+
+## Font Size
+
+Set the `fontSize` prop with a [font size](/?path=/story/design-tokens-font-size--page) token to set the size of the text in the Box.
+
+<Canvas>
+  <Story name="Font Size">
+    {[...FONT_SIZE_OPTIONS].reverse().map((fontSize, i) => (
+      <Box fontSize={fontSize} key={i}>
+        {`${fontSize} font size`}
+      </Box>
+    ))}
+  </Story>
+</Canvas>
+
+## Font Weight
+
+Set the `fontWeight` prop with a [font weight](/?path=/story/design-tokens-font-weight--page) token to set the size of the text in the Box.
+
+<Canvas>
+  <Story name="Font Weight">
+    <Box>
+      <Box fontWeight="light">light</Box>
+      <Box fontWeight="regular">regular</Box>
+      <Box fontWeight="bold">bold</Box>
+      <Box fontWeight="black">black</Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Text Align
+
+Set the `textAlign` prop to set the alignment of the text in the Box.
+
+<Canvas>
+  <Story name="Text Align">
+    <Box display="block">
+      <Box display="block" textAlign="left">
+        left
+      </Box>
+      <Box display="block" textAlign="center">
+        center
+      </Box>
+      <Box display="block" textAlign="right">
+        right
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Margin
+
+The `margin` prop accepts a single [spacing](/?path=/story/design-tokens-spacing--page) value or a set of spacing values that correspond with css shorthand syntax. Margin values can be set on the horizontal or vertical axis, or the top, right, bottom and left sides of a Box.
+
+<Canvas>
+  <Story name="Margin">
+    <Box margin="lg" background="primary-lighter">
+      lg margin
+    </Box>
+    <Box margin="lg md" background="primary-lighter">
+      lg vertical and md horizontal
+    </Box>
+    <Box margin="0 2xl" background="primary-lighter">
+      0 vertical and 2xl horizontal
+    </Box>
+    <Box margin="sm md 2xl" background="primary-lighter">
+      sm top, md horizontal, 2xl bottom
+    </Box>
+    <Box margin="sm lg 2xl 0" background="primary-lighter">
+      sm top, lg right, 2xl bottom, 0 left
+    </Box>
+  </Story>
+</Canvas>
+
+## Padding
+
+The `padding` prop accepts a single [spacing](/?path=/story/design-tokens-spacing--page) value or a set of spacing values that correspond with css shorthand syntax. Padding values can be set on the horizontal or vertical axis, or the top, right, bottom and left sides of a Box.
+
+<Canvas>
+  <Story name="Padding">
+    <Box padding="lg" margin="sm 0" background="primary-lighter">
+      lg padding
+    </Box>
+    <Box padding="lg md" margin="sm 0" background="primary-lighter">
+      lg vertical and md horizontal
+    </Box>
+    <Box padding="0 2xl" margin="sm 0" background="primary-lighter">
+      0 vertical and 2xl horizontal
+    </Box>
+    <Box padding="sm md 2xl" margin="sm 0" background="primary-lighter">
+      sm top, md horizontal, 2xl bottom
+    </Box>
+    <Box padding="sm lg 2xl 0" margin="sm 0" background="primary-lighter">
+      sm top, lg right, 2xl bottom, 0 left
+    </Box>
+  </Story>
+</Canvas>
+
+## Radius
+
+Set the `radius` prop with a [radius token](/?path=/docs/design-tokens-border-radius--page) to set the corner radius of the box.
+
+<Canvas>
+  <Story name="Radius">
+    <Box direction="row" childGap="2xs" justifyContent="space-between">
+      <Box radius="xs" background="secondary-light" padding="sm">
+        xs
+      </Box>
+      <Box radius="sm" background="secondary-light" padding="sm">
+        sm
+      </Box>
+      <Box radius="md" background="secondary-light" padding="sm">
+        md
+      </Box>
+      <Box radius="lg" background="secondary-light" padding="sm">
+        lg
+      </Box>
+      <Box radius="circle" background="secondary-light" padding="sm">
+        circle
+      </Box>
+      <Box radius="sm lg" background="secondary-light" padding="sm">
+        sm lg
+      </Box>
+      <Box radius="sm md lg" background="secondary-light" padding="sm">
+        sm md lg
+      </Box>
+      <Box radius="xs sm md lg" background="secondary-light" padding="sm">
+        xs sm md lg
+      </Box>
+      <Box radius="0 0 md md" background="secondary-light" padding="sm">
+        0 0 md md
+      </Box>
+      <Box radius="md md 0 0" background="secondary-light" padding="sm">
+        md md 0 0
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Shadow
+
+Set the `shadow` prop with a [shadow token](/?path=/docs/design-tokens-box-shadow--page) to set the outer shadow of the box.
+
+<Canvas>
+  <Story name="Shadow">
+    <Box direction="row" background="grey-50" padding="2xl" justifyContent="space-between">
+      <Box
+        shadow="0"
+        alignItems="center"
+        justifyContent="center"
+        background="white"
+        radius="md"
+        padding="sm"
+        height="lg"
+      >
+        0
+      </Box>
+      <Box
+        shadow="2xs"
+        alignItems="center"
+        justifyContent="center"
+        background="white"
+        radius="md"
+        padding="sm"
+        height="lg"
+      >
+        2xs
+      </Box>
+      <Box
+        shadow="xs"
+        alignItems="center"
+        justifyContent="center"
+        background="white"
+        radius="md"
+        padding="sm"
+        height="lg"
+      >
+        xs
+      </Box>
+      <Box
+        shadow="sm"
+        alignItems="center"
+        justifyContent="center"
+        background="white"
+        radius="md"
+        padding="sm"
+        height="lg"
+      >
+        sm
+      </Box>
+      <Box
+        shadow="md"
+        alignItems="center"
+        justifyContent="center"
+        background="white"
+        radius="md"
+        padding="sm"
+        height="lg"
+      >
+        md
+      </Box>
+      <Box
+        shadow="lg"
+        alignItems="center"
+        justifyContent="center"
+        background="white"
+        radius="md"
+        padding="sm"
+        height="lg"
+      >
+        lg
+      </Box>
+      <Box
+        shadow="xl"
+        alignItems="center"
+        justifyContent="center"
+        background="white"
+        radius="md"
+        padding="sm"
+        height="lg"
+      >
+        xl
+      </Box>
+      <Box
+        shadow="2xl"
+        alignItems="center"
+        justifyContent="center"
+        background="white"
+        radius="md"
+        padding="sm"
+        height="lg"
+      >
+        2xl
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Width
+
+Width can be set to any CSS unit value (px, rem, em, %).
+
+<Canvas>
+  <Story name="Width">
+    <Box background="primary-lightest" childGap="xs">
+      <Box background="primary-light" width="227px">
+        227px
+      </Box>
+      <Box background="primary-light" width="10rem">
+        10rem
+      </Box>
+      <Box background="primary-light" width="50%">
+        50%
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+[Width tokens](/?path=/docs/design-tokens-width--page) may be used to set widths as well.
+
+<Canvas>
+  <Story name="Width standards">
+    <Box background="primary-lightest" childGap="xs" overflow="auto">
+      <Box background="primary-light" width="sm">
+        sm
+      </Box>
+      <Box background="primary-light" width="md">
+        md
+      </Box>
+      <Box background="primary-light" width="lg">
+        lg
+      </Box>
+      <Box background="primary-light" width="xl">
+        xl
+      </Box>
+      <Box background="primary-light" width="2xl">
+        2xl
+      </Box>
+      <Box background="primary-light" width="3xl">
+        3xl
+      </Box>
+      <Box background="primary-light" width="4xl">
+        4xl
+      </Box>
+      <Box background="primary-light" width="5xl">
+        5xl
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+Set the width to a common percentage of the Box's parent.
+
+<Canvas>
+  <Story name="Width Percentage">
+    <Box background="primary-lightest" childGap="xs">
+      <Box background="primary-light" width="10">
+        10%
+      </Box>
+      <Box background="primary-light" width="15">
+        15%
+      </Box>
+      <Box background="primary-light" width="20">
+        20%
+      </Box>
+      <Box background="primary-light" width="25">
+        25%
+      </Box>
+      <Box background="primary-light" width="30">
+        30%
+      </Box>
+      <Box background="primary-light" width="33">
+        33%
+      </Box>
+      <Box background="primary-light" width="34">
+        34%
+      </Box>
+      <Box background="primary-light" width="40">
+        40%
+      </Box>
+      <Box background="primary-light" width="50">
+        50%
+      </Box>
+      <Box background="primary-light" width="60">
+        60%
+      </Box>
+      <Box background="primary-light" width="70">
+        70%
+      </Box>
+      <Box background="primary-light" width="75">
+        75%
+      </Box>
+      <Box background="primary-light" width="80">
+        80%
+      </Box>
+      <Box background="primary-light" width="90">
+        90%
+      </Box>
+      <Box background="primary-light" width="100">
+        100%
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Max Width
+
+Set the maximum width of the Box by setting `maxWidth` to a [width token](/?path=/docs/design-tokens-width--page) or any valid css unit.
+
+<Canvas>
+  <Story name="Max width">
+    <Box background="primary-lightest" childGap="xs">
+      <Box background="primary-light" maxWidth="2xl">
+        2xl
+      </Box>
+      <Box background="primary-light" maxWidth="145px">
+        145px
+      </Box>
+      <Box background="primary-light" maxWidth="50%">
+        50%
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Height
+
+Height can be set to any CSS unit value (px, rem, em, %).
+
+<Canvas>
+  <Story name="Height">
+    <Box background="primary-lightest" childGap="xs">
+      <Box background="primary-light" height="227px" justifyContent="center" alignItems="center">
+        227px
+      </Box>
+      <Box background="primary-light" height="10rem" justifyContent="center" alignItems="center">
+        10rem
+      </Box>
+      <Box background="primary-light" height="4em" justifyContent="center" alignItems="center">
+        4em
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+[Width tokens](/?path=/docs/design-tokens-height--page) may be used to set height as well.
+
+<Canvas>
+  <Story name="Height standards">
+    <Box background="primary-lightest" childGap="xs" height="5xl" direction="row">
+      <Box
+        flex="auto"
+        background="primary-light"
+        justifyContent="center"
+        alignItems="center"
+        height="sm"
+      >
+        sm
+      </Box>
+      <Box
+        flex="auto"
+        background="primary-light"
+        justifyContent="center"
+        alignItems="center"
+        height="md"
+      >
+        md
+      </Box>
+      <Box
+        flex="auto"
+        background="primary-light"
+        justifyContent="center"
+        alignItems="center"
+        height="lg"
+      >
+        lg
+      </Box>
+      <Box
+        flex="auto"
+        background="primary-light"
+        justifyContent="center"
+        alignItems="center"
+        height="xl"
+      >
+        xl
+      </Box>
+      <Box
+        flex="auto"
+        background="primary-light"
+        justifyContent="center"
+        alignItems="center"
+        height="2xl"
+      >
+        2xl
+      </Box>
+      <Box
+        flex="auto"
+        background="primary-light"
+        justifyContent="center"
+        alignItems="center"
+        height="3xl"
+      >
+        3xl
+      </Box>
+      <Box
+        flex="auto"
+        background="primary-light"
+        justifyContent="center"
+        alignItems="center"
+        height="4xl"
+      >
+        4xl
+      </Box>
+      <Box
+        flex="auto"
+        background="primary-light"
+        justifyContent="center"
+        alignItems="center"
+        height="5xl"
+      >
+        5xl
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+Set the height to a common percentage of the Box's parent.
+
+<Canvas>
+  <Story name="Height Percentage">
+    <Box height="400px" childGap="xs" direction="row" background="primary-lightest">
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="10"
+      >
+        10%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="15"
+      >
+        15%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="20"
+      >
+        20%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="25"
+      >
+        25%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="30"
+      >
+        30%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="33"
+      >
+        33%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="34"
+      >
+        34%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="40"
+      >
+        40%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="50"
+      >
+        50%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="60"
+      >
+        60%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="70"
+      >
+        70%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="75"
+      >
+        75%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="80"
+      >
+        80%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="90"
+      >
+        90%
+      </Box>
+      <Box
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+        height="100"
+      >
+        100%
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Max Height
+
+Set the maximum width of the Box by setting `maxHeight` to a [height token](/?path=/docs/design-tokens-height--page) or any valid css unit.
+
+<Canvas>
+  <Story name="Max Height">
+    <Box height="300px" background="primary-lightest" direction="row" childGap="xs">
+      <Box
+        maxHeight="lg"
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+      >
+        lg
+      </Box>
+      <Box
+        maxHeight="50px"
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+      >
+        50px
+      </Box>
+      <Box
+        maxHeight="50%"
+        flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+      >
+        50%
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+### Overflow
+
+Set the overflow behavior of the Box with `overflow`
+
+<Canvas>
+  <Story name="Overflow">
+    <Box
+      overflow="auto"
+      padding="md"
+      childGap="md"
+      flex="auto"
+      background="primary-lighter"
+      borderColor="grey"
+      height="100px"
+    >
+      <p>
+        Most homeowners are stuck with a single option for their power company, and that utility
+        just keeps increasing rates year after year. With solar, you take back control over where
+        your energy comes from, how much it costs, and what you can do with it. Use it, store it, or
+        sell it, all on your own terms.
+      </p>
+      <p>
+        Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and
+        maintenance, all under one roof. Plus, you can monitor your entire system from the palm of
+        your hand, and we have an award-winning customer service team standing by to help you with
+        anything you might need.
+      </p>
+      <p>
+        Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in
+        national tax credits and local rebates and incentives, and you can save even more. Like many
+        things in life though, these discounts won’t be around forever, so take advantage of them
+        while you can.
+      </p>
+    </Box>
+  </Story>
+</Canvas>
+
+## Responsive Props
+
+Any props that accept a `ResponsiveProp` will take an object with the following shape:
+
+```
+{
+  base?: prop, // breakpoint starting at 0 pixels, not scoped by media query.
+  tablet?: prop, // 608px and higher.
+  desktop?: prop, // 992px and higher.
+  hd?: prop, // 1280px and higher.
+}
+```
+
+These props will create classes that are scoped to the specific breakpoint they're assigned to. Not all breakpoints
+are required in this shape, you can pick and choose which breakpoints require different layout attributes based on a
+mobile first approach.
+
+Props that are responsive-enabled follow a mobile-first approach, which means that styles are applied first to smaller viewports (i.e. mobile devices).
+As the viewport size increases, new styles may be applied (styles are overridden for larger viewports).
+Responsive enabled props take a keyed object that specifies at which [breakpoints](/?path=/docs/design-tokens-breakpoints--page) to apply certain properties.
+
+```
+<Box
+  width={{
+    base: '100px' // box width is 100px
+    tablet: '200px' // box width is 200px when viewport width is greater than size-breakpoint-tablet
+    desktop: '300px' // box width is 600px when viewport width is greater than size-breakpoint-desktop
+    hd: '600px' // box width is 600px when viewport width is greater than size-breakpoint-hd
+  }}
+>
+```
+
+Try resizing the browser to see the responsive properties in action.
+
+<Canvas>
+  <Story name="Responsive Props" parameters={{ ...RESPONSIVE_STORY }}>
+    <Box
+      padding={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'xl' }}
+      background={{
+        base: 'white',
+        tablet: 'primary-100',
+        desktop: 'secondary-100',
+        hd: 'tertiary-100',
+      }}
+      fontSize={{ base: 'md', tablet: 'lg', desktop: 'xl', hd: '3xl' }}
+      borderColor={{ base: 'grey-300', tablet: 'primary', desktop: 'secondary' }}
+      borderWidth={{ base: 'sm', tablet: 'xs', desktop: 'md', hd: '0' }}
+      textAlign={{ base: 'center', tablet: 'right', desktop: 'left' }}
+    >
+      <p>Resize the viewport to see how my appearance changes.</p>
+    </Box>
+  </Story>
+</Canvas>
+
+#### Omitting Keys
+
+When passing an object, omitting a key is the same as not applying any styles.
+For example the following has padding at the `desktop` breakpoint and wider.
+
+<Canvas>
+  <Story name="Omitting Responsive Keys" parameters={{ ...RESPONSIVE_STORY }}>
+    <Box padding={{ desktop: 'lg' }} background="primary-lighter">
+      <p>This box will have no padding until the viewport reaches the desktop breakpoint. </p>
+    </Box>
+  </Story>
+</Canvas>

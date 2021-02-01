@@ -11,6 +11,7 @@ import {
 } from 'react-select';
 
 import {
+  BorderRadiusSize as BorderRadius,
   BreakpointSize,
   HeightSize,
   SpacingSize,
@@ -18,7 +19,6 @@ import {
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type {
-  BorderRadiusSize,
   BorderSize,
   BoxShadowSize,
   BrandColor,
@@ -122,6 +122,7 @@ export type CssTextAlignValue =
   'right';
 
 export type BaseSpacing = SpacingSize | string | undefined;
+export type BorderRadiusSize = BorderRadius | string | undefined;
 
 export declare type ResponsiveProp<T> = { [breakpoint in BreakpointSizeWithBase]?: T };
 
