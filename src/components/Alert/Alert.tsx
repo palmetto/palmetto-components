@@ -8,7 +8,14 @@ import Icon from '../Icon/Icon';
 import styles from './Alert.module.scss';
 import { BrandColor, FontColor, IconName } from '../../types';
 
-export type AlertVariant = 'default' | 'info' | 'success' | 'warning' | 'danger';
+export const AlertVariants = [
+  'default',
+  'info',
+  'success',
+  'warning',
+  'danger',
+] as const;
+export type AlertVariant = typeof AlertVariants[number];  // union type
 export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
 export interface AlertProps {
   /**
