@@ -134,10 +134,20 @@ export interface BoxProps {
    */
   maxHeight?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
+   * The minimum height of the element. Can be given a standard css value (px, rem, em, %),
+   * or a [height token](/?path=/docs/design-tokens-height--page)
+   */
+  minHeight?: DimensionSize | ResponsiveProp<DimensionSize> | string;
+  /**
    * The maximum width of the element. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/docs/design-tokens-width--page)
    */
   maxWidth?: DimensionSize | ResponsiveProp<DimensionSize> | string;
+  /**
+   * The minimum width of the element. Can be given a standard css value (px, rem, em, %),
+   * or a [width token](/?path=/docs/design-tokens-width--page)
+   */
+  minWidth?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
    * The css overflow behavior of the Box
    */
@@ -208,7 +218,9 @@ const Box: FC<BoxProps> = forwardRef((
     justifyContent = undefined,
     margin = undefined,
     maxHeight = undefined,
+    minHeight = undefined,
     maxWidth = undefined,
+    minWidth = undefined,
     overflow = undefined,
     padding = undefined,
     radius = undefined,
@@ -225,6 +237,8 @@ const Box: FC<BoxProps> = forwardRef((
   const widthCss = getDimensionCss('w', width);
   const maxHeightCss = getDimensionCss('mh', maxHeight);
   const maxWidthCss = getDimensionCss('mw', maxWidth);
+  const minHeightCss = getDimensionCss('minh', minHeight);
+  const minWidthCss = getDimensionCss('minw', minWidth);
 
   const isFlexBox = typeof display === 'string' && display.includes('flex');
   const flexDirectionClasses = isFlexBox ? generateResponsiveClasses('flex-direction', direction) : null;
@@ -236,7 +250,9 @@ const Box: FC<BoxProps> = forwardRef((
     cssShorthandToClasses('br', radius),
     heightCss.classes,
     maxHeightCss.classes,
+    minHeightCss.classes,
     maxWidthCss.classes,
+    minWidthCss.classes,
     widthCss.classes,
     flexDirectionClasses,
     generateResponsiveClasses('display', display),
@@ -266,6 +282,8 @@ const Box: FC<BoxProps> = forwardRef((
     ...maxHeightCss.styles,
     ...maxWidthCss.styles,
     ...widthCss.styles,
+    ...minHeightCss.styles,
+    ...minWidthCss.styles,
   };
 
   /**
