@@ -27,6 +27,12 @@ function getDimensionStyles(
       case 'mh':
         styles = { maxHeight: value };
         break;
+      case 'minw':
+        styles = { minWidth: value };
+        break;
+      case 'minh':
+        styles = { minHeight: value };
+        break;
       default:
         styles = { width: value };
     }

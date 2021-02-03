@@ -922,6 +922,26 @@ Set the maximum width of the Box by setting `maxWidth` to a [width token](/?path
   </Story>
 </Canvas>
 
+## Min Width
+
+Set the minimum width of the Box by setting `minWidth` to a [width token](/?path=/docs/design-tokens-width--page) or any valid css unit.
+
+<Canvas>
+  <Story name="Min width">
+    <Box alignItems="flex-start" background="primary-lightest" childGap="xs">
+      <Box background="primary-light" minWidth="2xl">
+        2xl
+      </Box>
+      <Box background="primary-light" minWidth="145px">
+        145px
+      </Box>
+      <Box background="primary-light" minWidth="50%">
+        50%
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
 ## Height
 
 Height can be set to any CSS unit value (px, rem, em, %).
@@ -1195,6 +1215,50 @@ Set the maximum width of the Box by setting `maxHeight` to a [height token](/?pa
       <Box
         maxHeight="50%"
         flex="auto"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+      >
+        50%
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Min Height
+
+Set the minimum width of the Box by setting `minHeight` to a [height token](/?path=/docs/design-tokens-height--page) or any valid css unit.
+
+<Canvas>
+  <Story name="Min Height">
+    <Box
+      height="300px"
+      background="primary-lightest"
+      alignItems="flex-start"
+      direction="row"
+      childGap="xs"
+    >
+      <Box
+        width="33"
+        minHeight="3xl"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+      >
+        3xl
+      </Box>
+      <Box
+        width="33"
+        minHeight="50px"
+        justifyContent="center"
+        alignItems="center"
+        background="primary-light"
+      >
+        50px
+      </Box>
+      <Box
+        width="33"
+        minHeight="50%"
         justifyContent="center"
         alignItems="center"
         background="primary-light"

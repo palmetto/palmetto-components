@@ -38,6 +38,17 @@ describe('getDimensionCss', () => {
     });
   });
 
+  test('returns expected css object if min width css value is passed', () => {
+    const spacingCss = getDimensionCss('minw', '20px');
+
+    expect(spacingCss).toEqual({
+      classes: [],
+      styles: {
+        minWidth: '20px',
+      },
+    });
+  });
+
   test('returns expected css object if max height css value is passed', () => {
     const spacingCss = getDimensionCss('mh', '42rem');
 
@@ -45,6 +56,17 @@ describe('getDimensionCss', () => {
       classes: [],
       styles: {
         maxHeight: '42rem',
+      },
+    });
+  });
+
+  test('returns expected css object if min height css value is passed', () => {
+    const spacingCss = getDimensionCss('minh', '42rem');
+
+    expect(spacingCss).toEqual({
+      classes: [],
+      styles: {
+        minHeight: '42rem',
       },
     });
   });
@@ -88,6 +110,19 @@ describe('getDimensionCss', () => {
     ));
   });
 
+  describe('min width', () => {
+    WIDTH_OPTIONS.map(token => (
+      test(`returns expected css object if ${token} min width value is passed`, () => {
+        const spacingCss = getDimensionCss('minw', token);
+
+        expect(spacingCss).toEqual({
+          classes: [`minw-${token}`],
+          styles: undefined,
+        });
+      })
+    ));
+  });
+
   describe('max height', () => {
     HEIGHT_OPTIONS.map(token => (
       test(`returns expected css object if ${token} max height value is passed`, () => {
@@ -95,6 +130,19 @@ describe('getDimensionCss', () => {
 
         expect(spacingCss).toEqual({
           classes: [`mh-${token}`],
+          styles: undefined,
+        });
+      })
+    ));
+  });
+
+  describe('min height', () => {
+    HEIGHT_OPTIONS.map(token => (
+      test(`returns expected css object if ${token} min height value is passed`, () => {
+        const spacingCss = getDimensionCss('minh', token);
+
+        expect(spacingCss).toEqual({
+          classes: [`minh-${token}`],
           styles: undefined,
         });
       })
