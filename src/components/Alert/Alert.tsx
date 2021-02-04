@@ -15,7 +15,7 @@ export const AlertVariants = [
   'warning',
   'danger',
 ] as const;
-export type AlertVariant = typeof AlertVariants[number];  // union type
+export type AlertVariant = typeof AlertVariants[number];
 export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
 export interface AlertProps {
   /**

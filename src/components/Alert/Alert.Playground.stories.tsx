@@ -40,7 +40,7 @@ export default {
     },
     title: {
       control: 'text',
-    }
+    },
   },
 } as Meta;
 
