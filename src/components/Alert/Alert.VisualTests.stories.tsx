@@ -74,7 +74,7 @@ WithMessageWithTitleWithIcon.args = {
   message: 'Hello world!',
   hasIcon: true,
 };
-WithMessageWithTitleWithIcon.storyName = 'With Message, Title, Icon'
+WithMessageWithTitleWithIcon.storyName = 'With Message, Title, Icon';
 
 export const WithMessageWithTitleWithClosable = Template.bind({});
 WithMessageWithTitleWithClosable.args = {
