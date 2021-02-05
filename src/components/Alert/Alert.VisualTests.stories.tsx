@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Alert, { AlertProps, AlertVariants } from './Alert';
+import Alert, { AlertProps, AlertVariant } from './Alert';
 import Box from '../Box/Box';
 import Heading from '../Heading/Heading';
 
@@ -9,9 +9,11 @@ export default {
   component: Alert,
 } as Meta;
 
+const alertVariants: AlertVariant[] = ['info', 'success', 'warning', 'danger', 'default'];
+
 const Template: Story<AlertProps> = args => (
   <Box>
-    {AlertVariants.map(variant => (
+    {alertVariants.map(variant => (
       <Alert
         {...args}
         className="m-bottom-md"
@@ -23,7 +25,7 @@ const Template: Story<AlertProps> = args => (
         isCompact
       </Heading>
     </Box>
-    {AlertVariants.map(variant => (
+    {alertVariants.map(variant => (
       <Alert
         {...args}
         className="m-bottom-md"
