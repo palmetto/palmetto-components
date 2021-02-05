@@ -8,14 +8,7 @@ import Icon from '../Icon/Icon';
 import styles from './Alert.module.scss';
 import { BrandColor, FontColor, IconName } from '../../types';
 
-export const AlertVariants = [
-  'default',
-  'info',
-  'success',
-  'warning',
-  'danger',
-] as const;
-export type AlertVariant = typeof AlertVariants[number];
+export type AlertVariant = 'info' | 'success' | 'warning' | 'danger' | 'default';
 export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
 export interface AlertProps {
   /**
@@ -59,7 +52,7 @@ export interface AlertProps {
   /**
    * The type/color of the alert to show.
    */
-  variant?: 'info' | 'success' | 'warning' | 'danger' | 'default';
+  variant?: AlertVariant;
 }
 const Alert: FC<AlertProps> = ({
   className = '',
