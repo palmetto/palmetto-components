@@ -59,7 +59,7 @@ export type StylesAndClasses<T> = {
   classes?: string[];
 }
 
-export type CssDimensionAbbreviation = 'h' | 'w' | 'mw' | 'mh';
+export type CssDimensionAbbreviation = 'h' | 'w' | 'mw' | 'mh' | 'minw' | 'minh';
 
 export type CssSpacingAbbreviation = 'm' | 'p';
 
