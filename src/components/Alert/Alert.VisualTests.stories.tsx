@@ -53,6 +53,14 @@ WithMessageWithClosable.args = {
 };
 WithMessageWithClosable.storyName = 'With Message, Closable';
 
+export const WithMessageWithCloseText = Template.bind({});
+WithMessageWithCloseText.args = {
+  message: 'Hello world!',
+  isClosable: true,
+  closeText: 'Close',
+};
+WithMessageWithCloseText.storyName = 'With Message, Close Text';
+
 export const WithMessageWithIconWithClosable = Template.bind({});
 WithMessageWithIconWithClosable.args = {
   message: 'Hello world!',
@@ -60,6 +68,15 @@ WithMessageWithIconWithClosable.args = {
   hasIcon: true,
 };
 WithMessageWithIconWithClosable.storyName = 'With Message, Icon, Closable';
+
+export const WithMessageWithIconWithCloseText = Template.bind({});
+WithMessageWithIconWithCloseText.args = {
+  message: 'Hello world!',
+  isClosable: true,
+  closeText: 'Close',
+  hasIcon: true,
+};
+WithMessageWithIconWithCloseText.storyName = 'With Message, Icon, Close Text';
 
 export const WithMessageWithTitle = Template.bind({});
 WithMessageWithTitle.args = {
@@ -84,6 +101,15 @@ WithMessageWithTitleWithClosable.args = {
 };
 WithMessageWithTitleWithClosable.storyName = 'With Message, Title, Closable';
 
+export const WithMessageWithTitleWithCloseText = Template.bind({});
+WithMessageWithTitleWithCloseText.args = {
+  title: 'Title',
+  message: 'Hello world!',
+  closeText: 'Close',
+  isClosable: true,
+};
+WithMessageWithTitleWithClosable.storyName = 'With Message, Title, Close Text';
+
 export const WithMessageWithTitleWithIconWithClosable = Template.bind({});
 WithMessageWithTitleWithIconWithClosable.args = {
   title: 'Title',
@@ -92,6 +118,16 @@ WithMessageWithTitleWithIconWithClosable.args = {
   isClosable: true,
 };
 WithMessageWithTitleWithIconWithClosable.storyName = 'With Message, Title, Icon, Closable';
+
+export const WithMessageWithTitleWithIconWithCloseText = Template.bind({});
+WithMessageWithTitleWithIconWithCloseText.args = {
+  title: 'Title',
+  message: 'Hello world!',
+  hasIcon: true,
+  isClosable: true,
+  closeText: 'Close',
+};
+WithMessageWithTitleWithIconWithClosable.storyName = 'With Message, Title, Icon, Close Text';
 
 export const WithTitle = Template.bind({});
 WithTitle.args = {
@@ -112,6 +148,14 @@ WithTitleWithClosable.args = {
 };
 WithTitleWithClosable.storyName = 'With Title, Closable';
 
+export const WithTitleWithCloseText = Template.bind({});
+WithTitleWithCloseText.args = {
+  title: 'Title',
+  isClosable: true,
+  closeText: 'Close',
+};
+WithTitleWithCloseText.storyName = 'With Title, Close Text';
+
 export const WithTitleWithIconWithClosable = Template.bind({});
 WithTitleWithIconWithClosable.args = {
   title: 'Title',
@@ -119,3 +163,12 @@ WithTitleWithIconWithClosable.args = {
   isClosable: true,
 };
 WithTitleWithIconWithClosable.storyName = 'With Title, Icon, Closable';
+
+export const WithTitleWithIconWithCloseText = Template.bind({});
+WithTitleWithIconWithCloseText.args = {
+  title: 'Title',
+  hasIcon: true,
+  isClosable: true,
+  closeText: 'Close',
+};
+WithTitleWithIconWithCloseText.storyName = 'With Title, Icon, Close Text';
