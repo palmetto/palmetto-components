@@ -431,6 +431,39 @@ ResponsiveWidth.args = {
 };
 ResponsiveWidth.parameters = RESPONSIVE_STORY;
 
+export const ResponsiveMaxWidth = BoxTemplate.bind({});
+ResponsiveMaxWidth.args = {
+  propertyName: 'maxWidth',
+  maxWidth: {
+    base: '2xl',
+    tablet: '50',
+    desktop: '3xl',
+    hd: '100',
+  },
+  height: '3xl',
+  background: 'info-100',
+  padding: 'sm',
+  display: 'block',
+};
+ResponsiveMaxWidth.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveMinWidth = BoxTemplate.bind({});
+ResponsiveMinWidth.args = {
+  propertyName: 'minWidth',
+  minWidth: {
+    base: '2xl',
+    tablet: '50',
+    desktop: '3xl',
+    hd: '100',
+  },
+  height: '3xl',
+  background: 'info-100',
+  padding: 'sm',
+  display: 'inline-block',
+  alignSelf: 'flex-start',
+};
+ResponsiveMinWidth.parameters = RESPONSIVE_STORY;
+
 export const ResponsiveHeight = BoxTemplate.bind({});
 ResponsiveHeight.args = {
   propertyName: 'height',
@@ -445,6 +478,38 @@ ResponsiveHeight.args = {
   padding: 'sm',
 };
 ResponsiveHeight.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveMaxHeight = BoxTemplate.bind({});
+ResponsiveMaxHeight.args = {
+  propertyName: 'maxHeight',
+  maxHeight: {
+    base: 'sm',
+    tablet: 'lg',
+    desktop: '2xl',
+    hd: '4xl',
+  },
+  height: '5xl',
+  width: '3xl',
+  background: 'info-100',
+  padding: 'sm',
+};
+ResponsiveMaxHeight.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveMinHeight = BoxTemplate.bind({});
+ResponsiveMinHeight.args = {
+  propertyName: 'minHeight',
+  minHeight: {
+    base: 'sm',
+    tablet: 'lg',
+    desktop: '2xl',
+    hd: '4xl',
+  },
+  width: '3xl',
+  background: 'info-100',
+  padding: 'sm',
+  alignSelf: 'flex-start',
+};
+ResponsiveMinHeight.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveMargin = BoxTemplate.bind({});
 ResponsiveMargin.args = {

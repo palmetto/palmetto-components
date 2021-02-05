@@ -103,10 +103,16 @@ export default {
     width: {
       control: {
         type: 'select',
-        options: [null, ...WIDTH_OPTIONS],
+        options: [undefined, ...WIDTH_OPTIONS],
       },
     },
     maxWidth: {
+      control: {
+        type: 'select',
+        options: [null, ...WIDTH_OPTIONS],
+      },
+    },
+    minWidth: {
       control: {
         type: 'select',
         options: [null, ...WIDTH_OPTIONS],
@@ -119,6 +125,12 @@ export default {
       },
     },
     maxHeight: {
+      control: {
+        type: 'select',
+        options: [null, ...WIDTH_OPTIONS],
+      },
+    },
+    minHeight: {
       control: {
         type: 'select',
         options: [null, ...WIDTH_OPTIONS],
