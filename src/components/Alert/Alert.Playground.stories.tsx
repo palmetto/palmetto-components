@@ -1,14 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Alert, { AlertProps } from './Alert';
-
-const alertVariants = [
-  'default',
-  'info',
-  'success',
-  'warning',
-  'danger',
-] as const;
+import Alert, { AlertProps, AlertVariants } from './Alert';
 
 export default {
   title: 'Components/Alert/Playground',
@@ -17,7 +9,7 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: alertVariants,
+        options: AlertVariants,
       },
     },
     message: {
