@@ -23,14 +23,14 @@ export interface HeadingProps {
   className?: string;
   /**
    * A variant token identifier to use for the text variant. Available variants found:
-   * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/variant/font.json).
+   * [here](https://github.com/palmetto/palmetto-design-tokens/blob/main/properties/color/font.json).
    */
   variant?: FontColor;
   /**
    * By default, size is determined by the chosen tag (e.g. h1 is bigger than h2).
    * However, size can be set independently so that its size is appropriate for the surrounding content.
    * Available sizes found:
-   * [here](https://github.com/palmetto/palmetto-design-tokens/blob/develop/properties/size/font.json).
+   * [here](https://github.com/palmetto/palmetto-design-tokens/blob/main/properties/size/font.json).
    */
   size?: FontSize | ResponsiveProp<FontSize>;
   /**
