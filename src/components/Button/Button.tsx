@@ -1,4 +1,6 @@
-import React, { FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement } from 'react';
+import React, {
+  FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement,
+} from 'react';
 import classNames from 'classnames';
 import { IconName } from '../../types';
 import Box from '../Box/Box';
@@ -152,45 +154,44 @@ const Button: FC<ButtonProps> = forwardRef(
       return variant === 'light' ? 'grey' : 'white';
     };
 
-    const buttonContent =
-      iconPrefix || iconSuffix ? (
-        <Box
-          display="inline-flex"
-          direction="row"
-          alignItems="center"
-          childGap={size === 'xs' ? '2xs' : 'xs'}
-        >
-          {isLoading && (
-            <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
-          )}
-          {iconPrefix && (
-            <Icon
-              className={styles.label}
-              name={iconPrefix}
-              aria-hidden="true"
-              focusable="false"
-              data-testid="prefixIcon"
-            />
-          )}
-          {children && <span className={styles.label}>{children}</span>}
-          {iconSuffix && (
-            <Icon
-              className={styles.label}
-              name={iconSuffix}
-              aria-hidden="true"
-              focusable="false"
-              data-testid="suffixIcon"
-            />
-          )}
-        </Box>
-      ) : (
-        <>
-          {isLoading && (
-            <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
-          )}
-          {children && <span className={styles.label}>{children}</span>}
-        </>
-      );
+    const buttonContent = iconPrefix || iconSuffix ? (
+      <Box
+        display="inline-flex"
+        direction="row"
+        alignItems="center"
+        childGap={size === 'xs' ? '2xs' : 'xs'}
+      >
+        {isLoading && (
+        <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
+        )}
+        {iconPrefix && (
+        <Icon
+          className={styles.label}
+          name={iconPrefix}
+          aria-hidden="true"
+          focusable="false"
+          data-testid="prefixIcon"
+        />
+        )}
+        {children && <span className={styles.label}>{children}</span>}
+        {iconSuffix && (
+        <Icon
+          className={styles.label}
+          name={iconSuffix}
+          aria-hidden="true"
+          focusable="false"
+          data-testid="suffixIcon"
+        />
+        )}
+      </Box>
+    ) : (
+      <>
+        {isLoading && (
+        <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
+        )}
+        {children && <span className={styles.label}>{children}</span>}
+      </>
+    );
 
     const buttonElement = getElementType(Button, { as });
 
