@@ -46,7 +46,11 @@ describe('Button', () => {
     });
 
     test('Renders smaller gap between icon and text for xs sized buttons', () => {
-      render(<Button size="xs" iconSuffix="alarm">Alarm Button</Button>);
+      render(
+        <Button size="xs" iconSuffix="alarm">
+          Alarm Button
+        </Button>,
+      );
       expect(screen.getByText('Alarm Button').classList).toContain('m-right-2xs');
     });
   });
@@ -59,15 +63,17 @@ describe('Button', () => {
       { name: 'XSmall', class: 'xs' },
     ];
 
-    sizes.map(size => describe(`${size.name}`, () => {
-      test(`it has a ${size.class} class applied to it`, () => {
-        render(<Button size={size.class}>{`${size.name} Button`}</Button>);
+    sizes.map(size =>
+      describe(`${size.name}`, () => {
+        test(`it has a ${size.class} class applied to it`, () => {
+          render(<Button size={size.class}>{`${size.name} Button`}</Button>);
 
-        const btn = screen.getByText(`${size.name} Button`).closest('button');
+          const btn = screen.getByText(`${size.name} Button`).closest('button');
 
-        expect(btn.getAttribute('class')).toContain(size.class);
-      });
-    }));
+          expect(btn.getAttribute('class')).toContain(size.class);
+        });
+      }),
+    );
   });
 
   describe('Callback Handling', () => {
@@ -171,6 +177,16 @@ describe('Button', () => {
         expect(buttonElement).toBeInTheDocument();
       });
 
+      test('it does not have a button type attribute if as prop `a` is passed', () => {
+        render(
+          <Button href="http://palmetto.com" as="a">
+            hey there
+          </Button>,
+        );
+        const buttonElement = screen.getByRole('link');
+
+        expect(buttonElement.getAttribute('type')).toBe(null);
+      });
       test('it does not have a disabled attribute', () => {
         render(<Button>Not Disabled Button</Button>);
 
@@ -225,7 +241,11 @@ describe('Button', () => {
       });
 
       test('it renders the spinning loading indicator with outline button', () => {
-        render(<Button isLoading isOutlined>Outline button is loading</Button>);
+        render(
+          <Button isLoading isOutlined>
+            Outline button is loading
+          </Button>,
+        );
         expect(document.getElementsByClassName('spinner')[0]).toBeInTheDocument();
       });
 

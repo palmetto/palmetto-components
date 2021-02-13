@@ -1,6 +1,4 @@
-import React, {
-  FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement,
-} from 'react';
+import React, { FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement } from 'react';
 import classNames from 'classnames';
 import { IconName } from '../../types';
 import Box from '../Box/Box';
@@ -154,8 +152,8 @@ const Button: FC<ButtonProps> = forwardRef(
       return variant === 'light' ? 'grey' : 'white';
     };
 
-    const buttonContent = iconPrefix || iconSuffix
-      ? (
+    const buttonContent =
+      iconPrefix || iconSuffix ? (
         <Box
           display="inline-flex"
           direction="row"
@@ -206,7 +204,7 @@ const Button: FC<ButtonProps> = forwardRef(
       onClick: handleClick,
       onFocus: handleFocus,
       ref,
-      type,
+      type: href ? null : type,
       tabIndex,
       ...restProps,
     });
