@@ -4,6 +4,7 @@
   line-height: 1;
 
   &:not(.naked) {
+    display: inline-block;
     position: relative;
     transition-duration: 0.2s;
     transition-property: background-color, border, box-shadow, color;
