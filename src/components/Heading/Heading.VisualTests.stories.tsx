@@ -22,7 +22,7 @@ const SizeTemplate: Story<HeadingProps> = args => (
   </Box>
 );
 
-const ColorTemplate: Story<HeadingProps> = args => (
+const VariantTemplate: Story<HeadingProps> = args => (
   <Box>
     {[...FONT_COLOR_OPTIONS].reverse().map(variant => (
       <Box>
@@ -42,7 +42,7 @@ Size.args = {
   children: 'Hello world!',
 };
 
-export const Color = ColorTemplate.bind({});
-Color.args = {
+export const Variant = VariantTemplate.bind({});
+Variant.args = {
   children: 'Hello world!',
 };
