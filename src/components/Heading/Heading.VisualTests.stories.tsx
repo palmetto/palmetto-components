@@ -2,7 +2,6 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import Box from '../Box/Box';
 import { FONT_COLOR_OPTIONS, FONT_SIZE_OPTIONS } from '../../lib/tokens';
-import { HEADING_LEVELS } from './Heading.constants';
 import Heading, { HeadingProps } from './Heading';
 
 export default {

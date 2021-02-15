@@ -41,6 +41,6 @@ export const Playground = Template.bind({});
 Playground.args = {
   as: 'h4',
   children: 'Lead the world towards a clean energy future',
-  variant: "grey-darker",
-  size: "base",
+  variant: 'grey-darker',
+  size: 'base',
 };
