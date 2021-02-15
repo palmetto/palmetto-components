@@ -10,28 +10,40 @@ export default {
   component: Heading,
 } as Meta;
 
-const Template: Story<HeadingProps> = args => (
+const SizeTemplate: Story<HeadingProps> = args => (
   <Box>
-    {[...FONT_COLOR_OPTIONS].reverse().map(variant => (
+    {[...FONT_SIZE_OPTIONS].map(size => (
       <Box>
-        {[...FONT_SIZE_OPTIONS].map(size => (
-          <Box>
-            {[...HEADING_LEVELS].map(as => (
-              <Heading
-                {...args}
-                variant={variant}
-                size={size}
-                as={as}
-              />
-            ))}
-          </Box>
-        ))}
+        <Heading
+          {...args}
+          size={size}
+        />
       </Box>
     ))}
   </Box>
 );
 
-export const Variants = Template.bind({});
-Variants.args = {
+const ColorTemplate: Story<HeadingProps> = args => (
+  <Box>
+    {[...FONT_COLOR_OPTIONS].reverse().map(variant => (
+      <Box>
+        <Box>
+          <Heading
+            {...args}
+            variant={variant}
+          />
+        </Box>
+      </Box>
+    ))}
+  </Box>
+);
+
+export const Size = SizeTemplate.bind({});
+Size.args = {
+  children: 'Hello world!',
+};
+
+export const Color = ColorTemplate.bind({});
+Color.args = {
   children: 'Hello world!',
 };

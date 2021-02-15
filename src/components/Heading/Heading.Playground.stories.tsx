@@ -39,6 +39,8 @@ const Template: Story<HeadingProps> = ({ ...args }) => <Heading {...args} />;
 
 export const Playground = Template.bind({});
 Playground.args = {
-  children: 'Lead the world towards a clean energy future',
   as: 'h4',
+  children: 'Lead the world towards a clean energy future',
+  variant: "grey-darker",
+  size: "base",
 };
