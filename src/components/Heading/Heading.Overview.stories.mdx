@@ -1,9 +1,9 @@
-import Heading from "./Heading";
-import { v4 as uuid } from "uuid";
-import { action } from "@storybook/addon-actions";
-import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs/blocks";
-import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from "../../lib/tokens";
-import { RESPONSIVE_STORY } from "../../../.storybook/constants";
+import Heading from './Heading';
+import { v4 as uuid } from 'uuid';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
+import { RESPONSIVE_STORY } from '../../../.storybook/constants';
 
 <Meta title="Components/Heading/Overview" component={Heading} />
 
@@ -45,7 +45,7 @@ The default size of the Heading can overridden as xs-5xl so that it's appropriat
 <Canvas>
   <Story name="Sizes">
     <>
-      {[...FONT_SIZE_OPTIONS].reverse().map((fontSize) => (
+      {[...FONT_SIZE_OPTIONS].reverse().map(fontSize => (
         <Heading as="h3" size={fontSize} key={uuid()}>
           {`Size ${fontSize}`}
         </Heading>
@@ -58,10 +58,7 @@ The `size` prop accepts an object where the properties correspond to [breakpoint
 
 <Canvas>
   <Story name="Responsive Sizes" parameters={{ ...RESPONSIVE_STORY }}>
-    <Heading
-      as="h3"
-      size={{ base: "sm", tablet: "lg", desktop: "xl", hd: "3xl" }}
-    >
+    <Heading as="h3" size={{ base: 'sm', tablet: 'lg', desktop: 'xl', hd: '3xl' }}>
       Leading the world towards a clean energy future
     </Heading>
   </Story>
@@ -74,7 +71,7 @@ The variant of the heading is inherited from its parent, but can be set to brand
 <Canvas>
   <Story name="Variant">
     <>
-      {FONT_COLOR_OPTIONS.map((variant) => (
+      {FONT_COLOR_OPTIONS.map(variant => (
         <Heading as="h3" variant={variant} key={uuid()}>
           {variant}
         </Heading>

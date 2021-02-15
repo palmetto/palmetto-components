@@ -13,10 +13,7 @@ const SizeTemplate: Story<HeadingProps> = args => (
   <Box>
     {[...FONT_SIZE_OPTIONS].map(size => (
       <Box>
-        <Heading
-          {...args}
-          size={size}
-        />
+        <Heading {...args} size={size} />
       </Box>
     ))}
   </Box>
@@ -27,10 +24,7 @@ const VariantTemplate: Story<HeadingProps> = args => (
     {[...FONT_COLOR_OPTIONS].reverse().map(variant => (
       <Box>
         <Box>
-          <Heading
-            {...args}
-            variant={variant}
-          />
+          <Heading {...args} variant={variant} />
         </Box>
       </Box>
     ))}
