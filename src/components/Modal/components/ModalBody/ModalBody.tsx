@@ -7,9 +7,10 @@ const ModalBody: FC<ModalBodyProps> = ({
   children,
   flex = 'auto',
   padding = 'lg',
+  overflow = 'auto',
   ...restProps
 }) => (
-  <Box padding={padding} flex={flex} {...restProps}>
+  <Box padding={padding} overflow={overflow} flex={flex} {...restProps}>
     {children}
   </Box>
 );
