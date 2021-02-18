@@ -161,14 +161,14 @@
     }
 
     &.outline {
-      border-color: var(--button-border-hover-color-dark-outline);
+      border-color: var(--button-border-color-dark-outline);
       background-color: transparent;
       color: var(--button-font-color-dark-outline);
 
       &:hover {
         border-color: var(--button-border-hover-color-dark-outline);
-        background-color: var(--button-background-hover-color-dark-outline);
-        color: var(--button-font-hover-color-dark-outline);
+        background-color: var(--color-brand-grey-50);
+        color: var(--button-font-color-dark-outline);
       }
     }
   }
@@ -197,13 +197,13 @@
     }
 
     &.outline {
-      border-color: var(--button-border-hover-color-light-outline);
+      border-color: var(--button-border-color-light-outline);
       background-color: transparent;
       color: var(--button-font-color-light-outline);
 
       &:hover {
         border-color: var(--button-border-hover-color-light-outline);
-        background-color: var(--button-background-hover-color-light-outline);
+        background-color: var(--color-brand-grey-50);
         color: var(--button-font-hover-color-light-outline);
       }
     }
