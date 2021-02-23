@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Alert, { AlertProps, AlertVariant } from './Alert';
+import Alert, { AlertProps } from './Alert';
+import { ALERT_VARIANTS } from './Alert.constants';
 import Box from '../Box/Box';
 import Heading from '../Heading/Heading';
 
@@ -9,28 +10,21 @@ export default {
   component: Alert,
 } as Meta;
 
-const alertVariants: AlertVariant[] = ['info', 'success', 'warning', 'danger', 'default'];
-
 const Template: Story<AlertProps> = args => (
   <Box>
-    {alertVariants.map(variant => (
-      <Alert
-        {...args}
-        className="m-bottom-md"
-        variant={variant}
-      />
+    {ALERT_VARIANTS.map(variant => (
+      <Alert {...args} className="m-bottom-md" variant={variant} key={variant} />
     ))}
     <Box className="m-top-xl m-bottom-md">
-      <Heading size="md">
-        isCompact
-      </Heading>
+      <Heading size="md">isCompact</Heading>
     </Box>
-    {alertVariants.map(variant => (
+    {ALERT_VARIANTS.map(variant => (
       <Alert
         {...args}
         className="m-bottom-md"
         variant={variant}
         isCompact
+        key={`compact-${variant}`}
       />
     ))}
   </Box>

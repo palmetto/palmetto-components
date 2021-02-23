@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Alert from './Alert';
+import Alert, { ALERT_ATTRIBUTES_MAP } from './Alert';
+import { ALERT_VARIANTS } from './Alert.constants';
 
 describe('Alert', () => {
   describe('Default', () => {
@@ -13,6 +14,24 @@ describe('Alert', () => {
       const alertMessage = screen.getByText(message);
       expect(alertMessage).toBeInTheDocument();
     });
+  });
+
+  describe('Variants', () => {
+    ALERT_VARIANTS.map((variant, index) => test(`renders variant background color ${ALERT_VARIANTS[index]}`, () => {
+      const { getByRole } = render(<Alert variant={variant} message={variant} key={variant} />);
+      expect(getByRole('alert').classList).toContain(
+        `background-color-${ALERT_ATTRIBUTES_MAP[variant].background}`,
+      );
+    }));
+
+    ALERT_VARIANTS.map((variant, index) => test(`renders variant Icon color ${ALERT_VARIANTS[index]}`, () => {
+      const { getByTestId } = render(
+        <Alert variant={variant} message={variant} hasIcon key={variant} />,
+      );
+      expect(getByTestId(`alert-icon-${variant}-test-id`).parentElement?.classList).toContain(
+        `font-color-${ALERT_ATTRIBUTES_MAP[variant].color}`,
+      );
+    }));
   });
 
   describe('Custom Class', () => {
