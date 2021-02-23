@@ -92,13 +92,15 @@ const Modal = forwardRef<HTMLDivElement, ModalPropsWithSubcomponents>((
       initialFocusRef={initialFocusRef}
       ref={ref}
     >
-      <DialogContent
-        aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledBy}
-        className={contentClassnames}
-      >
-        {children}
-      </DialogContent>
+      <div className={styles.container}>
+        <DialogContent
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+          className={contentClassnames}
+        >
+          {children}
+        </DialogContent>
+      </div>
     </DialogOverlay>
   );
 }) as ModalPropsWithSubcomponents;
