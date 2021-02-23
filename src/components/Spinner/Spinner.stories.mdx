@@ -1,20 +1,17 @@
 import Spinner from './Spinner';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { BRAND_COLOR_NAMES } from '../../lib/tokens';
+import Box from '../Box/Box';
 
-
-<Meta
-  title="Components/Spinner"
-  component={Spinner}
-/>
+<Meta title="Components/Spinner/Overview" component={Spinner} />
 
 # Spinner
 
-Spinners are used to show an action is in progress.
-They are used in buttons, forms, containers, pages,
-and pretty much anywhere that a 'Loading' state is necessary.
+Spinners are used to communicate a loading state to the user.
+They may be used in buttons, forms, containers, pages,
+and anywhere else a loading state is necessary.
 
-<Canvas>
+<Canvas isExpanded>
   <Spinner />
 </Canvas>
 
@@ -22,11 +19,20 @@ and pretty much anywhere that a 'Loading' state is necessary.
 
 <ArgsTable of={Spinner} />
 
-## Appearance
+## Variants
+
+Set the color variations of the spinner
 
 <Canvas>
-  <Story name="Spinner">
-     <Spinner />
+  <Story name="Variants">
+    <Box display="block" childGap="md">
+      {BRAND_COLOR_NAMES.map(color => (
+        <Box direction="row" childGap="sm">
+          <Spinner variant={color} />
+          <div>{color}</div>
+        </Box>
+      ))}
+    </Box>
   </Story>
 </Canvas>
 
@@ -36,40 +42,23 @@ Use the `size` prop on your Spinner based on what's a best fit for your layout
 
 <Canvas>
   <Story name="Sizes">
-    <>
-      <div style={{ marginBottom: '1rem'}}>
-        <div style={{ marginBottom: '0.25rem'}}>sm</div>
+    <Box direction="row" childGap="md">
+      <Box direction="row" childGap="sm">
         <Spinner size="sm" />
-      </div>
-      <div style={{ marginBottom: '1rem'}}>
-        <div style={{ marginBottom: '0.25rem'}}>md</div>
+        <div>sm</div>
+      </Box>
+      <Box direction="row" childGap="sm">
         <Spinner size="md" />
-      </div>
-      <div style={{ marginBottom: '1rem'}}>
-        <div style={{ marginBottom: '0.25rem'}}>lg</div>
+        <div>md</div>
+      </Box>
+      <Box direction="row" childGap="sm">
         <Spinner size="lg" />
-      </div>
-      <div style={{ marginBottom: '1rem'}}>
-        <div style={{ marginBottom: '0.25rem'}}>xl</div>
+        <div>lg</div>
+      </Box>
+      <Box direction="row" childGap="sm">
         <Spinner size="xl" />
-      </div>
-    </>
-  </Story>
-</Canvas>
-
-## Variants
-
-Set the color variations of the spinner
-
-<Canvas>
-  <Story name="Colors">
-    <>
-      {BRAND_COLOR_NAMES.map(color => (
-        <div style={{ marginBottom: '1rem'}}>
-          <div style={{ marginBottom: '0.25rem'}}>{color}</div>
-          <Spinner variant={color} />
-        </div>
-      ))}
-    </>
+        <div>xl</div>
+      </Box>
+    </Box>
   </Story>
 </Canvas>
