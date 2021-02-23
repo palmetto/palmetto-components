@@ -1,0 +1,21 @@
+.text-decoration-strike { text-decoration: line-through; }
+.text-decoration-none { text-decoration: none; }
+.text-decoration-underline { text-decoration: underline; }
+
+@media (min-width: $size-breakpoint-tablet) {
+  .text-decoration-strike-tablet { text-decoration: line-through; }
+  .text-decoration-none-tablet { text-decoration: none; }
+  .text-decoration-underline-tablet { text-decoration: underline; }
+}
+
+@media (min-width: $size-breakpoint-desktop) {
+  .text-decoration-strike-desktop { text-decoration: line-through; }
+  .text-decoration-none-desktop { text-decoration: none; }
+  .text-decoration-underline-desktop { text-decoration: underline; }
+}
+
+@media (min-width: $size-breakpoint-hd) {
+  .text-decoration-strike-hd { text-decoration: line-through; }
+  .text-decoration-none-hd { text-decoration: none; }
+  .text-decoration-underline-hd { text-decoration: underline; }
+}
