@@ -30,15 +30,6 @@
   :global {
     animation: fadeIn 0.2s;
   }
-
-  @media (min-width: $size-breakpoint-tablet) {
-    display: grid;
-    grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
-    grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
-    align-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
 }
 
 .container {
@@ -48,6 +39,15 @@
   bottom: 0;
   left: 0;
   width: 100%;
+
+  @media (min-width: $size-breakpoint-tablet) {
+    display: grid;
+    grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
+    grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 }
 
 :global([data-reach-dialog-content]) {
