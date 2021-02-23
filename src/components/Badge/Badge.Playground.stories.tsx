@@ -1,7 +1,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Badge, { BadgeProps } from './Badge';
-import { BADGE_SIZES, BADGE_VARIANTS } from './Badge.constants';
+import Badge, { BadgeProps, BADGE_COLOR_MAP, BADGE_SIZE_MAP } from './Badge';
+
+const badgeVariants = Object.keys(BADGE_COLOR_MAP);
+const badgeSizes = Object.keys(BADGE_SIZE_MAP);
 
 export default {
   title: 'Components/Badge/Playground',
@@ -10,13 +12,13 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: BADGE_VARIANTS,
+        options: badgeVariants,
       },
     },
     size: {
       control: {
         type: 'select',
-        options: BADGE_SIZES,
+        options: badgeSizes,
       },
     },
     message: {
