@@ -44,6 +44,24 @@ export interface BadgeProps {
   [x: string]: any; // eslint-disable-line
 }
 
+export const BADGE_COLOR_MAP: { [key in BadgeVariant]: BadgeColorAttributes } = {
+  info: { font: 'dark-500', background: 'info-100' },
+  primary: { font: 'dark-500', background: 'primary-100' },
+  success: { font: 'dark-500', background: 'success-100' },
+  secondary: { font: 'dark-500', background: 'secondary-100' },
+  warning: { font: 'dark-500', background: 'warning-100' },
+  tertiary: { font: 'dark-500', background: 'tertiary-100' },
+  danger: { font: 'dark-500', background: 'danger-100' },
+  default: { font: 'dark-500', background: 'grey-100' },
+};
+
+export const BADGE_SIZE_MAP: { [key in BadgeSize]: BadgeSizeAttributes } = {
+  sm: { fontSize: '2xs', padding: '2xs 2xs' },
+  md: { fontSize: 'xs', padding: '2xs xs' },
+  lg: { fontSize: 'sm', padding: '2xs xs' },
+  xl: { fontSize: 'md', padding: 'xs sm' },
+};
+
 const Badge: FC<BadgeProps> = ({
   className = '',
   message = '',
@@ -53,34 +71,16 @@ const Badge: FC<BadgeProps> = ({
 }) => {
   const badgeClasses: string = classNames(styles.badge, className);
 
-  const colorMap: { [key in BadgeVariant]: BadgeColorAttributes } = {
-    info: { font: 'dark-500', background: 'info-100' },
-    primary: { font: 'dark-500', background: 'primary-100' },
-    success: { font: 'dark-500', background: 'success-100' },
-    secondary: { font: 'dark-500', background: 'secondary-100' },
-    warning: { font: 'dark-500', background: 'warning-100' },
-    tertiary: { font: 'dark-500', background: 'tertiary-100' },
-    danger: { font: 'dark-500', background: 'danger-100' },
-    default: { font: 'dark-500', background: 'grey-100' },
-  };
-
-  const sizeMap: { [key in BadgeSize]: BadgeSizeAttributes } = {
-    sm: { fontSize: '2xs', padding: '2xs 2xs' },
-    md: { fontSize: 'xs', padding: '2xs xs' },
-    lg: { fontSize: 'sm', padding: '2xs xs' },
-    xl: { fontSize: 'md', padding: 'xs sm' },
-  };
-
   return (
     <Box
       className={badgeClasses}
       display="inline-block"
       radius="sm"
-      background={colorMap[variant].background}
-      color={colorMap[variant].font}
+      background={BADGE_COLOR_MAP[variant].background}
+      color={BADGE_COLOR_MAP[variant].font}
       fontWeight="bold"
-      fontSize={sizeMap[size].fontSize}
-      padding={sizeMap[size].padding}
+      fontSize={BADGE_SIZE_MAP[size].fontSize}
+      padding={BADGE_SIZE_MAP[size].padding}
       {...restProps}
     >
       {message}
