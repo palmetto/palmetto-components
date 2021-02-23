@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Button, { ButtonProps, ButtonSizes, ButtonVariants } from './Button';
+import Button, { ButtonProps } from './Button';
+import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 import Box from '../Box/Box';
 
 export default {
@@ -10,10 +11,10 @@ export default {
 
 const Template: Story<ButtonProps> = (args, showIconButton) => (
   <Box childGap="xl">
-    {ButtonSizes.map(size => (
+    {BUTTON_SIZES.map(size => (
       <Box childGap="sm" key={size}>
         <Box childGap="sm" direction="row">
-          {ButtonVariants.map(variant => (
+          {BUTTON_VARIANTS.map(variant => (
             <Button {...args} size={size} variant={variant} key={`${size}-${variant}`}>
               {`${size} ${variant}`}
             </Button>
@@ -32,7 +33,7 @@ const Template: Story<ButtonProps> = (args, showIconButton) => (
           )}
         </Box>
         <Box childGap="sm" direction="row" key={size}>
-          {ButtonVariants.map(variant => (
+          {BUTTON_VARIANTS.map(variant => (
             <Button
               {...args}
               size={size}

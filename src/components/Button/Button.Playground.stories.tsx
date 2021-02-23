@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { ICON_NAMES } from '../../lib/tokens';
-import Button, { ButtonProps, ButtonSizes, ButtonVariants } from './Button';
+import Button, { ButtonProps } from './Button';
+import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 
 export default {
   title: 'Components/Button/Playground',
@@ -13,13 +14,13 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ButtonVariants,
+        options: BUTTON_VARIANTS,
       },
     },
     size: {
       control: {
         type: 'select',
-        options: ButtonSizes,
+        options: BUTTON_SIZES,
       },
     },
     isNaked: {
