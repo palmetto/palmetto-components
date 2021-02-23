@@ -9,6 +9,6 @@ export const BADGE_VARIANTS = [
   'tertiary',
   'secondary',
   'default',
-] as BadgeVariant[];
+] as const;
 
-export const BADGE_SIZES = ['sm', 'md', 'lg', 'xl'] as BadgeSize[];
+export const BADGE_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
