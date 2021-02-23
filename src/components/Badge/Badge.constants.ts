@@ -1,3 +1,5 @@
+import { BadgeSize, BadgeVariant } from './Badge';
+
 export const BADGE_VARIANTS = [
   'info',
   'primary',
@@ -7,6 +9,6 @@ export const BADGE_VARIANTS = [
   'tertiary',
   'secondary',
   'default',
-] as const;
+] as BadgeVariant[];
 
-export const BADGE_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
+export const BADGE_SIZES = ['sm', 'md', 'lg', 'xl'] as BadgeSize[];
