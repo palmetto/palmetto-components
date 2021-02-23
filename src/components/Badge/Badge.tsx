@@ -7,6 +7,7 @@ import styles from './Badge.module.scss';
 import Box from '../Box/Box';
 
 export type BadgeSize = 'sm' | 'md' | 'lg' | 'xl';
+
 export type BadgeVariant =
   | 'info'
   | 'primary'
@@ -16,20 +17,10 @@ export type BadgeVariant =
   | 'warning'
   | 'danger'
   | 'default';
-export type BadgeColorAttributes = { font: FontColor; background: BrandColor; };
-export type BadgeSizeAttributes = { fontSize: FontSize; padding: BaseSpacing; };
-export const BadgeSizes = ['sm', 'md', 'lg', 'xl'] as const;
-export const BadgeVariants = [
-  'info',
-  'primary',
-  'success',
-  'danger',
-  'warning',
-  'tertiary',
-  'secondary',
-  'default',
-] as const;
 
+export type BadgeColorAttributes = { font: FontColor; background: BrandColor; };
+
+export type BadgeSizeAttributes = { fontSize: FontSize; padding: BaseSpacing; };
 export interface BadgeProps {
   /**
    * Custom class to apply to the badge container div.

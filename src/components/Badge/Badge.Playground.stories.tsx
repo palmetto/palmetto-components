@@ -1,18 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import Badge, { BadgeProps } from './Badge';
-
-const badgeVariants = [
-  'info',
-  'primary',
-  'success',
-  'danger',
-  'warning',
-  'tertiary',
-  'secondary',
-  'default',
-] as const;
-const badgeSizes = ['sm', 'md', 'lg', 'xl'] as const;
+import { BADGE_SIZES, BADGE_VARIANTS } from './Badge.constants';
 
 export default {
   title: 'Components/Badge/Playground',
@@ -21,13 +10,13 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: badgeVariants,
+        options: BADGE_VARIANTS,
       },
     },
     size: {
       control: {
         type: 'select',
-        options: badgeSizes,
+        options: BADGE_SIZES,
       },
     },
     message: {
