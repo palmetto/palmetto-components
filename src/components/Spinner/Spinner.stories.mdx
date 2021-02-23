@@ -29,7 +29,7 @@ Set the color variations of the spinner
       {BRAND_COLOR_NAMES.map(color => (
         <Box direction="row" childGap="sm">
           <Spinner variant={color} />
-          <div style={{ marginBottom: '0.25rem' }}>{color}</div>
+          <div>{color}</div>
         </Box>
       ))}
     </Box>
@@ -45,19 +45,19 @@ Use the `size` prop on your Spinner based on what's a best fit for your layout
     <Box direction="row" childGap="md">
       <Box direction="row" childGap="sm">
         <Spinner size="sm" />
-        <div style={{ marginBottom: '0.25rem' }}>sm</div>
+        <div>sm</div>
       </Box>
       <Box direction="row" childGap="sm">
         <Spinner size="md" />
-        <div style={{ marginBottom: '0.25rem' }}>md</div>
+        <div>md</div>
       </Box>
       <Box direction="row" childGap="sm">
         <Spinner size="lg" />
-        <div style={{ marginBottom: '0.25rem' }}>lg</div>
+        <div>lg</div>
       </Box>
       <Box direction="row" childGap="sm">
         <Spinner size="xl" />
-        <div style={{ marginBottom: '0.25rem' }}>xl</div>
+        <div>xl</div>
       </Box>
     </Box>
   </Story>
