@@ -3,7 +3,13 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import RadioGroup from './RadioGroup';
 
-<Meta title="Components/RadioGroup/Overview" component={RadioGroup} />
+<Meta
+  title="Components/RadioGroup/Overview"
+  component={RadioGroup}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
 
 # RadioGroup
 
