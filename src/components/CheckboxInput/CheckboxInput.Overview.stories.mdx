@@ -5,11 +5,15 @@ import CheckboxInput from './CheckboxInput';
 import Box from '../Box/Box';
 import FormLabel from '../FormLabel/FormLabel';
 
-<Meta title="Components/Form Inputs/CheckboxInput" component={CheckboxInput} />
+<Meta title="Components/CheckboxInput/Overview" component={CheckboxInput} />
 
 # CheckboxInput
 
 Use a CheckboxInput to allow users to make a range of selections (zero, one or many).
+
+<Canvas isExpanded>
+  <CheckboxInput id="example" label="Checkbox with a label" isChecked onChange={() => {}} />
+</Canvas>
 
 ## Props
 
@@ -38,6 +42,7 @@ All that is required to render a basic version of the CheckboxInput is a unique 
 ## Required
 
 Use the `isRequired` prop to mark the input as required.
+Ideally, the label text should also indicate that the checkbox is required.
 
 <Canvas>
   <Story name="Required">
@@ -46,7 +51,7 @@ Use the `isRequired` prop to mark the input as required.
       return (
         <CheckboxInput
           id="requiredCheckboxIsUnchecked"
-          label="Label"
+          label="Required Checkbox"
           isChecked={value}
           onChange={event => setValue(event.target.checked)}
           isRequired
@@ -58,7 +63,8 @@ Use the `isRequired` prop to mark the input as required.
 
 ## Help Text
 
-Use the `helpText` prop to add clarifying text beneath the input label.
+Use `helpText` to add additional context to the checkbox.
+This can help keep checkbox label concise.
 
 <Canvas>
   <Story name="Help Text">
@@ -121,8 +127,7 @@ populate the `aria-label` property on the input for accessibility reasons.
 
 ## Custom Label
 
-If you require a label with custom markup,
-simply hide the default label (remember to still pass a text value for the label)
+If you require a label with custom markup, hide the default label (remember to still pass a text value for the label)
 and append your own. Feel free to use the `FormLabel` component to keep the base text styles consistent.
 
 <Canvas>
@@ -213,27 +218,6 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
           onChange={value => setValue(event.target.checked)}
           isRequired
           error="You must accept the Terms and Conditions"
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Custom Classes
-
-Use the `className` prop to add a custom class, or classes to an input.
-
-<Canvas>
-  <Story name="Custom Classes">
-    {() => {
-      const [value, setValue] = useState(null);
-      return (
-        <CheckboxInput
-          id="customClasses"
-          label="Label"
-          isChecked={value}
-          onChange={value => setValue(event.target.checked)}
-          className="background-color-primary"
         />
       );
     }}
