@@ -2,15 +2,18 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import FileUpload from './FileUpload';
-import Heading from '../Heading/Heading';
 import Box from '../Box/Box';
 import Button from '../Button/Button';
 
-<Meta title="Components/Form Inputs/FileUpload" component={FileUpload} />
+<Meta title="Components/FileUpload/Overview" component={FileUpload} />
 
 # File Upload
 
-Use File Upload to capture file uploads in forms or elsewhere.
+Use FileUpload to capture files for upload in forms or elsewhere.
+
+<Canvas isExpanded>
+  <FileUpload labelText="My File" id="demoFileUpload" />
+</Canvas>
 
 ## Props
 
@@ -32,7 +35,7 @@ Use File Upload to capture file uploads in forms or elsewhere.
 
 ## Custom Button Text
 
-You can pass down custom text to be displayed in the button
+Customize the button text with `buttonText`.
 
 <Canvas>
   <Story name="Button text">
@@ -79,12 +82,12 @@ Use the `helpText` prop to add clarifying text adjacent to the file upload butto
   </Story>
 </Canvas>
 
-## With no Icon
+## Without Icon
 
 Remove the icon on the button with the handy `hasIcon` boolean.
 
 <Canvas>
-  <Story name="No Icon">
+  <Story name="Without Icon">
     {() => {
       const [files, setFiles] = useState(null);
       const handleChange = event => {
@@ -103,30 +106,62 @@ Remove the icon on the button with the handy `hasIcon` boolean.
   </Story>
 </Canvas>
 
-## Button Variations
+## Variants
 
-The file upload for the most part has the same options as a traditional button, although
-some specific variations have been removed, providing a stricter subset for usage.
+Light and dark upload button variations are available.
 
 <Canvas>
-  <Story name="Button Variations">
+  <Story name="Variants">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const [lightFiles, setLightFiles] = useState(null);
+      const handleChange = event => {
+        setFiles(event.target.files);
+      };
+      const handleLightChange = event => {
+        setLightFiles(event.target.files);
+      };
+      return (
+        <Box childGap="md">
+          <FileUpload
+            labelText="My File"
+            id="darkUpload"
+            onChange={handleChange}
+            files={files}
+            variant="dark"
+          />
+          <FileUpload
+            labelText="My File"
+            id="lightUpload"
+            onChange={handleLightChange}
+            files={lightFiles}
+            variant="light"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Sizes
+
+Set the size of the FileUpload button to `xs`, `sm`, `md` or `lg`. `md` is the default size.
+
+<Canvas>
+  <Story name="Sizes">
     {() => {
       const sizes = [
+        { label: 'Extra Small', value: 'xs' },
         { label: 'Small', value: 'sm' },
-        { label: 'Medium (default)', value: 'md' },
+        { label: 'Medium', value: 'md' },
         { label: 'Large', value: 'lg' },
-      ];
-      const colors = [
-        { label: 'Light (default)', value: 'light' },
-        { label: 'Dark', value: 'dark' },
       ];
       const handleChange = event => {
         alert(`You picked this file: ${event.target.files[0].name}`);
       };
       return (
         <Box childGap="lg" direction="row">
-          <Box childGap="sm">
-            <Heading size="md">Sizes</Heading>
+          <Box childGap="md">
             <Box childGap="sm">
               {sizes.map(size => (
                 <FileUpload
@@ -137,21 +172,6 @@ some specific variations have been removed, providing a stricter subset for usag
                   size={size.value}
                   buttonText={size.label}
                   helpText="helpful text"
-                />
-              ))}
-            </Box>
-          </Box>
-          <Box childGap="sm">
-            <Heading size="md">Colors</Heading>
-            <Box childGap="sm">
-              {colors.map(color => (
-                <FileUpload
-                  key={color.label}
-                  labelText={color.label}
-                  id={color.label}
-                  onChange={handleChange}
-                  variant={color.value}
-                  buttonText={color.label}
                 />
               ))}
             </Box>
