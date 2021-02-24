@@ -4,7 +4,7 @@ import Icon from '../Icon/Icon';
 import Box from '../Box/Box';
 
 export default {
-  title: 'Components/Form Inputs/TextInput/For Chromatic',
+  title: 'Components/TextInput/Visual Regression Tests',
   component: TextInput,
 };
 

@@ -4,7 +4,13 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TimePicker from './TimePicker';
 import Box from '../Box/Box';
 
-<Meta title="Components/Form Inputs/TimePicker" component={TimePicker} />
+<Meta
+  title="Components/TimePicker/Overview"
+  component={TimePicker}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
 
 # TimePicker
 
@@ -13,7 +19,7 @@ Use a TimePicker when you want users to select from a list of a available times 
 _NOTE:_ This component is abstracted from the [SelectInput](?path=/docs/components-form-inputs-selectinput--default-story)
 and as such includes the same underlying props interface with an added method for generating the time options automatically.
 
-_ABOUT TIME FORMAT:_ While the `value` prop technicall returns `{ label: string; value: string; }` the value returned will always
+_ABOUT TIME FORMAT:_ While the `value` prop technically returns `{ label: string; value: string; }` the value returned will always
 be a JS ISO date string, like this: `2016-07-13T18:46:01.933Z`.
 
 ## Props
