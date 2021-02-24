@@ -5,17 +5,27 @@ import TextInput from './TextInput';
 import Box from '../Box/Box';
 import Icon from '../Icon/Icon';
 
-<Meta title="Components/Form Inputs/TextInput" component={TextInput} />
+<Meta
+  title="Components/TextInput/Overview"
+  component={TextInput}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
 
 # TextInput
 
 Use TextInput to render a single-line text input. Masks can also be applied to custom format the input; currently supported masks include Credit Card and Phone.
 
+<Canvas isExpanded>
+  <TextInput id="demo" label="TextInput Label" />
+</Canvas>
+
 ## Props
 
 <ArgsTable of={TextInput} />
 
-## Default
+## Examples
 
 All that is required to render a basic version of the TextInput is a unique `id`, `label`, `value`, and an onchange event handler passed to the `onChange` prop.
 
@@ -27,7 +37,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
         <TextInput
           id="default"
           value={value}
-          label="Label"
+          label="TextInput Label"
           onChange={event => setValue(event.target.value)}
         />
       );
@@ -47,7 +57,7 @@ Use the `isRequired` prop to mark the input as required.
         <TextInput
           id="required"
           value={value}
-          label="Label"
+          label="TextInput Label"
           onChange={event => setValue(event.target.value)}
           isRequired
         />
@@ -89,7 +99,7 @@ Use the `placeholder` prop to add a custom placeholder.
         <TextInput
           id="placeholder"
           value={value}
-          label="Label"
+          label="TextInput with placeholder"
           onChange={event => setValue(event.target.value)}
           placeholder="Custom placeholder..."
         />
@@ -131,7 +141,7 @@ Use the `hideLabel` prop to not render the label.
         <TextInput
           id="hiddenLabel"
           value={value}
-          label="Label"
+          label="Hidden Label"
           onChange={event => setValue(event.target.value)}
           hideLabel
         />
