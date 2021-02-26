@@ -6,11 +6,18 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS, ICON_NAMES } from '../../lib/tokens';
 
-<Meta title="Components/Icon" component={Icon} />
+<Meta
+  title="Components/Icon/Overview"
+  component={Icon}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
 
 # Icon
 
-#### Not production ready.
+Icons are used to visually communicate product functionality and actions.
+Use an icon only when it provides additional clarity or is necessary to draw attention to an element.
 
 <Canvas isExpanded>
   <Icon name="star" />
@@ -20,63 +27,37 @@ import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS, ICON_NAMES } from '../../lib/tok
 
 <ArgsTable of={Icon} />
 
-## Sizing
+## Size
 
-The size of the icon is inherited from its parent's font-size. This allows for easy inline placement inside of other components, text, etc.
-If you wish to size your icon independent of its container, you can pass it a utility class, (E.G: `font-size-md`) or declare the font
-size as a style object.
+The size of the icon can be set on the Icon itself, or inherited from its parent's `fontSize`.
+This allows for easy placement inside of other components.
 
 <Canvas>
   <Story name="size">
-    <Box direction="row" childGap="xs">
-      <Box fontSize="2xs">
-        <Icon name="star" />
-      </Box>
-      <Box fontSize="xs">
-        <Icon name="star" />
-      </Box>
-      <Box fontSize="sm">
-        <Icon name="star" />
-      </Box>
-      <Box fontSize="md">
-        <Icon name="star" />
-      </Box>
-      <Box fontSize="lg">
-        <Icon name="star" />
-      </Box>
-      <Box fontSize="xl">
-        <Icon name="star" />
-      </Box>
-      <Box fontSize="2xl">
-        <Icon name="star" />
-      </Box>
-      <Box fontSize="3xl">
-        <Icon name="star" />
-      </Box>
-      <Box fontSize="4xl">
-        <Icon name="star" />
-      </Box>
-      <Box fontSize="5xl">
-        <Icon name="star" />
-      </Box>
+    <Box direction="row" childGap="sm" margin="0 0 md 0" fontSize="xs">
+      <Icon name="remove" color="danger-500" />
+      <Box>Size is set by the Icon's parent</Box>
+    </Box>
+    <Box direction="row" fontSize="xl" childGap="sm">
+      <Icon name="star" color="warning-400" />
+      <Box>Size is set by the Icon's parent</Box>
     </Box>
   </Story>
 </Canvas>
 
 ## Color
 
-Similarly to sizing, icons inherit their color from the font-color.
+Similar to sizing, the color of the icon can be set on the Icon itself, or inherited from its parent.
 
 <Canvas>
   <Story name="color">
-    <Box as="p" alignItems="center" direction="row" childGap="xs" color="primary-500">
-      <Icon name="star" /> primary-500
+    <Box direction="row" childGap="sm" margin="0 0 md 0">
+      <Icon name="remove" color="danger-500" />
+      <Box>Color is set at the Icon level</Box>
     </Box>
-    <Box as="p" alignItems="center" direction="row" childGap="xs" color="secondary-500">
-      <Icon name="star" /> secondary-500
-    </Box>
-    <Box as="p" alignItems="center" direction="row" childGap="xs" color="tertiary-500">
-      <Icon name="star" /> tertiary-500
+    <Box direction="row" childGap="sm" color="secondary-400">
+      <Icon name="book" />
+      <Box>Color is set by the Icon's parent</Box>
     </Box>
   </Story>
 </Canvas>
