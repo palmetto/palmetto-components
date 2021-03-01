@@ -41,6 +41,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         { id: 'large', value: 'large', label: 'Large' },
       ];
       const handleValidation = values => {
+        console.log('handle validation');
         const errors = {};
         if (!values.areTermsChecked) {
           errors.areTermsChecked = 'Checkbox is required';

@@ -6,13 +6,14 @@ import React, {
   useEffect,
   useRef,
   useState,
+  RefObject,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core';
 import FocusTrap from 'focus-trap-react';
+import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
-import { mergeRefs } from '../../lib/mergeRefs';
 import { BrandColor } from '../../types';
 import styles from './Popover.module.scss';
 import Box, { BoxProps } from '../Box/Box';
@@ -219,7 +220,7 @@ const Popover: FC<PopoverProps> = ({
 
   const childrenWithRef = React.Children.map(children, child  => {
     const childProps = {
-      ref: triggerRef,
+      ref: triggerRef as RefObject<HTMLElement> | ((instance: any) => void),
       role: 'button',
       'aria-expanded': isOpen,
       'aria-haspopup': true,
@@ -229,7 +230,7 @@ const Popover: FC<PopoverProps> = ({
     // We have to cast with `as` so TS compiler doesn't complain since ReactNode/ReactChild types don't
     // explicitly declare ref as a property in the object.
     if ((child as ReactNode & { ref: any })?.ref) {
-      childProps.ref = mergeRefs((child as ReactNode & { ref: any })?.ref, childProps.ref);
+      childProps.ref = mergeRefs([(child as ReactNode & { ref: any })?.ref, childProps.ref]);
     }
 
     if (isValidElement(child)) {

@@ -97,8 +97,8 @@ const DateInput: FC<DateInputProps> = ({
     // These events are to trigger a blur event on the input at the correct time (for form validation)
     // The input is technically blurred whenever calendar popover is interacted with but we don't want that to
     // trigger a blur so we swallow it, and only bubble the blur event back to the parent when the popover is closed
-    // which is then the user is done interacting with the component. 
-    if (prevIsPopoverOpen && !isPopoverOpen) {
+    // which is then the user is done interacting with the component.
+    if (prevIsPopoverOpen.current && !isPopoverOpen) {
       (textInputRef?.current?.children[1].children[0] as HTMLInputElement).focus();
       (textInputRef?.current?.children[1].children[0] as HTMLInputElement).blur();
     }
