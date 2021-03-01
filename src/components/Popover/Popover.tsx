@@ -12,6 +12,7 @@ import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core';
 import FocusTrap from 'focus-trap-react';
 import classNames from 'classnames';
+import { mergeRefs } from '../../lib/mergeRefs';
 import { BrandColor } from '../../types';
 import styles from './Popover.module.scss';
 import Box, { BoxProps } from '../Box/Box';
@@ -216,16 +217,23 @@ const Popover: FC<PopoverProps> = ({
     );
   };
 
-  const childrenWithRef = React.Children.map(children, child => {
-    const props = {
+  const childrenWithRef = React.Children.map(children, child  => {
+    const childProps = {
       ref: triggerRef,
       role: 'button',
       'aria-expanded': isOpen,
       'aria-haspopup': true,
     };
 
+    // Merge local ref with any ref passed originally to child component.
+    // We have to cast with `as` so TS compiler doesn't complain since ReactNode/ReactChild types don't
+    // explicitly declare ref as a property in the object.
+    if ((child as ReactNode & { ref: any })?.ref) {
+      childProps.ref = mergeRefs((child as ReactNode & { ref: any })?.ref, childProps.ref);
+    }
+
     if (isValidElement(child)) {
-      return cloneElement(child, props);
+      return cloneElement(child, childProps);
     }
 
     return child;

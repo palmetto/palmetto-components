@@ -52,6 +52,10 @@ export interface ModalProps {
    * The css overflow behavior of the Modal
    */
   overflow?: CssOverflowValue;
+  /**
+   * Allows spread props
+   */
+  [x: string]: any; // eslint-disable-line
 }
 interface ModalPropsWithSubcomponents extends
   ModalProps,
