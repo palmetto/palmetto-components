@@ -1,16 +1,11 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import Box from '../../../Box/Box';
+import Box, { BoxProps } from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
 import styles from '../../Card.module.scss';
 import { CssDisplayValue, SpacingSize } from '../../../../types';
 
-export interface CardSectionProps {
-  /**
-   * The amount of spacing between child elements.
-   * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
-   */
-  childGap?: SpacingSize;
+export interface CardSectionProps extends BoxProps {
   /**
    * Contents of the Section.
    */
@@ -20,10 +15,6 @@ export interface CardSectionProps {
    */
   className?: string;
   /**
-   * Display property. Only select values supported.
-   */
-  display?: CssDisplayValue;
-  /**
    * Visually subdued the appearance of the section.
    */
   subdued?: boolean;
@@ -31,6 +22,10 @@ export interface CardSectionProps {
    * Title for the section.
    */
   title?: ReactNode;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 const CardSection: FC<CardSectionProps> = ({

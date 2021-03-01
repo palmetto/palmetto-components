@@ -1,9 +1,9 @@
 import React, { FC, ReactNode } from 'react';
-import Box from '../../../Box/Box';
+import Box, { BoxProps } from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
 import { CssDisplayValue } from '../../../../types';
 
-export interface CardHeaderProps {
+export interface CardHeaderProps extends BoxProps {
   /**
    * contents of the Header
    */
@@ -13,13 +13,13 @@ export interface CardHeaderProps {
    */
   className?: string;
   /**
-   * Display property. Only select values supported.
-   */
-  display?: CssDisplayValue;
-  /**
    * The title of the card
    */
   title?: ReactNode;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 const CardHeader: FC<CardHeaderProps> = ({
