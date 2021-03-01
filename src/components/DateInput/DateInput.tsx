@@ -138,7 +138,6 @@ const DateInput: FC<DateInputProps> = ({
         {...restProps}
       />
     </Popover>
-    // <TextInput id="hello" name="hello" ref={textInputRef} value="" onChange={() => {}} label="hello" />
   );
 };
 
