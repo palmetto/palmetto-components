@@ -1,4 +1,10 @@
-import React, { FC, useState } from 'react';
+import React, {
+  FC,
+  useState,
+  useRef,
+  FocusEvent,
+  useEffect,
+} from 'react';
 import format from 'date-fns/format';
 import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker';
 import TextInput, { TextInputBaseProps } from '../TextInput/TextInput';
@@ -16,6 +22,7 @@ export interface DateInputProps {
     useAdditionalDayOfYearTokens?: boolean | undefined;
   };
   popoverProps?: Omit<PopoverProps, 'children' | 'content' | 'isOpen'>;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
    * Additional props to be spread to the `TextInput` element.
    */
@@ -40,6 +47,7 @@ const DateInput: FC<DateInputProps> = ({
   textInputProps,
   dateFormat = 'MM/dd/yyyy',
   dateOptions = undefined,
+  onBlur,
   popoverProps = { ...defaultPopoverProps },
   ...restProps
 }) => {
@@ -78,6 +86,35 @@ const DateInput: FC<DateInputProps> = ({
   };
 
   const [isPopoverOpen, setPopoverOpen] = useState(false);
+  const prevIsPopoverOpen = useRef(false);
+  const textInputRef = useRef<HTMLDivElement>(null);
+
+  const handleTogglePopover = (newPopoverOpenState: boolean) => {
+    setPopoverOpen(newPopoverOpenState);
+  };
+
+  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    if (mergedTextInputProps.onBlur) mergedTextInputProps.onBlur(event);
+
+    if (isPopoverOpen || !onBlur) return;
+
+    onBlur(event);
+  };
+
+  useEffect(() => {
+    // These events are to trigger a blur event on the input at the correct time (for form validation)
+    // The input is technically blurred whenever calendar popover is interacted with but we don't want that to
+    // trigger a blur so we swallow it, and only bubble the blur event back to the parent when the popover is closed
+    // which is then the user is done interacting with the component.
+    if (prevIsPopoverOpen.current && !isPopoverOpen) {
+      (textInputRef?.current?.children[1].children[0] as HTMLInputElement).focus();
+      (textInputRef?.current?.children[1].children[0] as HTMLInputElement).blur();
+    }
+
+    if (isPopoverOpen !== prevIsPopoverOpen.current) {
+      prevIsPopoverOpen.current = isPopoverOpen;
+    }
+  }, [isPopoverOpen]);
 
   const renderDatePicker = () => (
     <DatePicker
@@ -94,7 +131,7 @@ const DateInput: FC<DateInputProps> = ({
       isOpen={isPopoverOpen}
       content={renderDatePicker()}
       withPortal
-      onClickOutside={() => setPopoverOpen(false)}
+      onClickOutside={() => handleTogglePopover(false)}
     >
       <TextInput
         {...mergedTextInputProps}
@@ -103,7 +140,9 @@ const DateInput: FC<DateInputProps> = ({
         label={mergedTextInputProps.label}
         value={getTextInputValue()}
         onChange={() => null}
-        onClick={setPopoverOpen}
+        onClick={() => handleTogglePopover(true)}
+        ref={textInputRef}
+        onBlur={handleBlur}
         {...restProps}
       />
     </Popover>

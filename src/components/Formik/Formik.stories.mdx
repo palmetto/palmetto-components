@@ -7,6 +7,7 @@ import FormikSelectInput from './FormikSelectInput/FormikSelectInput';
 import FormikRadioGroup from './FormikRadioGroup/FormikRadioGroup';
 import FormikTextareaInput from './FormikTextareaInput/FormikTextareaInput';
 import FormikTimePicker from './FormikTimePicker/FormikTimePicker';
+import DateInput from '../DateInput/DateInput';
 import FormikToggle from './FormikToggle/FormikToggle';
 import Button from '../Button/Button';
 import Box from '../Box/Box';
@@ -40,7 +41,6 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         { id: 'large', value: 'large', label: 'Large' },
       ];
       const handleValidation = values => {
-        console.log(values);
         const errors = {};
         if (!values.areTermsChecked) {
           errors.areTermsChecked = 'Checkbox is required';
@@ -61,6 +61,9 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         }
         if (!values.timePicker) {
           errors.timePicker = 'Time is required';
+        }
+        if (!values.dateInput) {
+          errors.dateInput = 'Date is required';
         }
         return errors;
       };
@@ -95,11 +98,12 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
               colors: [],
               sizes: null,
               timePicker: null,
+              dateInput: '',
             }}
             validate={handleValidation}
             onSubmit={handleSubmit}
             handleChange={event => action('change')(event)}
-            render={({ isSubmitting, values, setFieldValue }) => (
+            render={({ isSubmitting, values, setFieldValue, handleBlur, errors }) => (
               <Form>
                 <Box childGap="lg">
                   <div>
@@ -291,10 +295,27 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                       isRequired
                     />
                   </div>
+                  <div>
+                    <DateInput
+                      datePickerProps={{
+                        onChange: date => { setFieldValue('dateInput', date) },
+                        selected: values.dateInput,
+                      }}
+                      textInputProps={{
+                        label: 'Date Input',
+                        name: 'dateInput',
+                        id: 'dateInput',
+                        error: errors.dateInput,
+                        isRequired: true,
+                      }}
+                      onBlur={handleBlur}
+                    />
+                  </div>
                   <Button type="submit" className="m-bottom-md" isLoading={isSubmitting}>
                     Submit
                   </Button>
                   <pre>{JSON.stringify(formatOutput(values, isSubmitting), undefined, 2)}</pre>
+                  <pre>{JSON.stringify(formatOutput(errors), undefined, 2)}</pre>
                 </Box>
               </Form>
             )}
