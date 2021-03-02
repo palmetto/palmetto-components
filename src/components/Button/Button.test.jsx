@@ -105,6 +105,17 @@ describe('Button', () => {
 
         expect(mockedHandleClick).toBeCalledTimes(0);
       });
+
+      test('it prevents default event behavior if specified by onClick', async () => {
+        const mockedHandleClick = jest.fn(event => event.preventDefault());
+        const mockedNavigate = jest.fn(() => null);
+
+        render(<Button navigate={mockedNavigate} onClick={mockedHandleClick}>Click</Button>);
+        fireEvent.click(screen.getByText('Click').closest('button'));
+
+        expect(mockedHandleClick).toBeCalledTimes(1);
+        expect(mockedNavigate).not.toBeCalled();
+      });
     });
 
     describe('onFocus', () => {
@@ -195,11 +206,20 @@ describe('Button', () => {
 
         expect(buttonElement.getAttribute('type')).toBe(null);
       });
+
       test('it does not have a disabled attribute', () => {
         render(<Button>Not Disabled Button</Button>);
 
         expect(screen.getByText('Not Disabled Button').closest('button')).not.toBeDisabled();
       });
+
+      test('it renders an empty button when no children are passed', () => {
+        render(<Button></Button>);
+        const buttonElement = screen.getByRole('button');
+
+        expect(buttonElement).toBeInTheDocument();
+        expect(buttonElement.innerText).toBe(undefined);
+      });      
     });
 
     describe('Full Width', () => {
@@ -245,7 +265,16 @@ describe('Button', () => {
     describe('Loading', () => {
       test('it renders the spinning loading indicator', () => {
         render(<Button isLoading>Button is loading</Button>);
-        expect(document.getElementsByClassName('spinner')[0]).toBeInTheDocument();
+        const spinnerElement = document.getElementsByClassName('spinner')[0];
+        expect(spinnerElement).toBeInTheDocument();
+        expect(spinnerElement).toHaveClass('font-color-white');
+      });
+
+      test('it renders the grey spinning indicator if button variant is light', () => {
+        render(<Button isLoading variant="light">Button is loading</Button>);
+        const spinnerElement = document.getElementsByClassName('spinner')[0];
+        expect(spinnerElement).toBeInTheDocument();
+        expect(spinnerElement).toHaveClass('font-color-grey');
       });
 
       test('it renders the spinning loading indicator with outline button', () => {
@@ -297,6 +326,27 @@ describe('Button', () => {
 
         expect(screen.getByText('primary').closest('button')).toHaveClass('outline');
       });
+    });
+  });
+
+
+  describe('React Router', () => {
+    it('fires navigate callback when included', () => {
+      const mockedNavigate = jest.fn(() => {});
+      render(<Button as="a" navigate={mockedNavigate} href="/">react router link</Button>);
+      
+      fireEvent.click(screen.getByText('react router link').closest('a'));
+
+      expect(mockedNavigate).toBeCalledTimes(1);
+    });
+
+    it('does not fire navigate callback if target is _blank', () => {
+      const mockedNavigate = jest.fn(() => {});
+      render(<Button as="a" navigate={mockedNavigate} href="/" target="_blank">react router link</Button>);
+      
+      fireEvent.click(screen.getByText('react router link').closest('a'));
+
+      expect(mockedNavigate).toBeCalledTimes(0);
     });
   });
 });

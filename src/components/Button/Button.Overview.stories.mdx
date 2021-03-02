@@ -1,5 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Link } from 'react-router-dom';
+import Alert from '../Alert/Alert';
 import Button from './Button';
 import Box from '../Box/Box';
 
@@ -179,6 +181,27 @@ can render buttons as one of `button`, `a`, and `input`.
     <Button as="a" href="https://ux.palmetto.com" target="_blank">
       I'm an anchor tag
     </Button>
+  </Story>
+</Canvas>
+
+## Wrapped in a React Router Link
+
+<Canvas>
+  <Story name="React Router Link">
+    <Link
+      to="/"
+      as="a"
+      component={Button}
+    >
+      React Router Link
+    </Link>
+    <Box margin="md 0 0 0">
+      <Alert
+        hasIcon
+        message="NOTE: this link will not work in storybook but the code example is correct if used in a React application with react-router-dom."
+        variant="warning"
+      />
+    </Box>
   </Story>
 </Canvas>
 

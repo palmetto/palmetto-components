@@ -81,7 +81,7 @@ export interface FileUploadProps {
   /**
    * Input `multiple` attribute, pass `true` if you wish to upload multiple files.
    */
-  onClearFiles?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClearFiles?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   /**
    * Size of component. Matches Button sizes.
    */

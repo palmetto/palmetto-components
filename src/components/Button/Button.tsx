@@ -63,19 +63,13 @@ export interface ButtonProps {
    */
   isNaked?: boolean;
   /**
-   * Specify the tabIndex of the button.
+   * Prop reserved for when component is wrapped by `<Link>` from react-router.
    */
-  tabIndex?: number;
-  /**
-   * The Button's type.
-   * NOTE: this is not restricted to button types since we allow
-   * rendering a button as a different HTML element than a button (`<a>` or `<input>`).
-   */
-  type?: 'submit' | 'reset' | 'button' | string;
+  navigate?: () => void;
   /**
    * Callback when Button is pressed.
    */
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   /**
    * Callback when focus leaves Button.
    */
@@ -84,6 +78,20 @@ export interface ButtonProps {
    * Callback when Button receives focus.
    */
   onFocus?: (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  /**
+   * Specify the tabIndex of the button.
+   */
+  tabIndex?: number;
+  /**
+   * Usefull when using button as an anchor tag.
+   */
+  target?: string;
+  /**
+   * The Button's type.
+   * NOTE: this is not restricted to button types since we allow
+   * rendering a button as a different HTML element than a button (`<a>` or `<input>`).
+   */
+  type?: 'submit' | 'reset' | 'button' | string;
   /**
    * The size of the button.
    */
@@ -101,7 +109,7 @@ export interface ButtonProps {
 const Button: FC<ButtonProps> = forwardRef(
   (
     {
-      children = null,
+      children = undefined,
       as = 'button',
       className = '',
       fullWidth = false,
@@ -113,11 +121,13 @@ const Button: FC<ButtonProps> = forwardRef(
       isLoading = false,
       isOutlined = false,
       isNaked = false,
-      tabIndex = undefined,
-      type = 'button',
+      navigate = undefined,
       onClick = undefined,
       onFocus = undefined,
       onBlur = undefined,
+      tabIndex = undefined,
+      target = undefined,
+      type = 'button',
       size = 'md',
       variant = 'primary',
       ...restProps
@@ -135,8 +145,32 @@ const Button: FC<ButtonProps> = forwardRef(
       [styles['full-width']]: fullWidth,
     });
 
-    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    const isModifiedEvent = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => (
+      !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
+    );
+
+    /**
+     * Due to react-router's handling of custom components used in RR <Link>
+     * we must add this validation that ensures the router will execute the passed `navigate`
+     * prop, thus navigating the user without triggering a refresh.
+     *
+     * SOURCES:
+     *    https://github.com/ReactTraining/react-router/issues/7727
+     *    https://github.com/ReactTraining/react-router/issues/7761
+     * */
+    const handleClick = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (onClick) onClick(event);
+
+      if (
+        !event.defaultPrevented// onClick prevented default
+        && event.button === 0 // ignore everything but left clicks
+        && (!target || target === '_self') // let browser handle "target=_blank" etc.
+        && !isModifiedEvent(event) // ignore clicks with modifier keys
+        && navigate
+      ) {
+        event.preventDefault();
+        navigate();
+      }
     };
 
     const handleFocus = (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => {
@@ -161,7 +195,7 @@ const Button: FC<ButtonProps> = forwardRef(
         childGap={size === 'xs' ? '2xs' : 'xs'}
       >
         {isLoading && (
-        <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
+          <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
         )}
         {iconPrefix && (
         <Icon
@@ -198,7 +232,7 @@ const Button: FC<ButtonProps> = forwardRef(
       id,
       href,
       className: buttonClasses,
-      ...{ children: buttonContent },
+      children: buttonContent,
       disabled,
       onBlur: handleBlur,
       onClick: handleClick,
