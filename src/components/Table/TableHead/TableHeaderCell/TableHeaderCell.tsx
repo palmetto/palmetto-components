@@ -85,7 +85,9 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
   truncateOverflow = false,
   width = undefined,
 }) => {
-  const isColumnSorted = (columnDataKey: Key | undefined): boolean => !!sortedColumn && sortedColumn.dataKey === columnDataKey;
+  const isColumnSorted = (columnDataKey: Key | undefined): boolean => (
+    !!sortedColumn && sortedColumn.dataKey === columnDataKey
+  );
 
   const getSortDirection = (): 'ascending' | 'descending' | 'none' | undefined => (
     sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'
