@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import Box, { BoxProps } from '../../../Box/Box';
 import Heading from '../../../Heading/Heading';
-import { CssDisplayValue } from '../../../../types';
 
 export interface CardHeaderProps extends BoxProps {
   /**
