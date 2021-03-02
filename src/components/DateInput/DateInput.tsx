@@ -94,6 +94,8 @@ const DateInput: FC<DateInputProps> = ({
   };
 
   const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    if (mergedTextInputProps.onBlur) mergedTextInputProps.onBlur(event);
+
     if (isPopoverOpen || !onBlur) return;
 
     onBlur(event);

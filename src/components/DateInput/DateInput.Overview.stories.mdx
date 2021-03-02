@@ -136,3 +136,46 @@ to generate a string based on these options.
     }}
   </Story>
 </Canvas>
+
+## On using onBlur event with DateInput
+The input is technically blurred whenever the calendar popover is interacted but as far as the user
+is concerned they are still interacting with the DateInput. For this reason, the DateInput component has
+a top level `onBlur` prop (NOT passed via textInputProps) which will fire when the Popover (calendar)
+has been closed after being opened. This hopefully provides consistent patterns for form validation which
+are triggered on blur events for other fields. The target of the `onBlur` event will be the input element.
+
+If you require knowledge of all blur events on the input itself, you can still pass the `onBlur` prop to the input via
+`textInputProps` and it will work as expected.
+
+<Canvas>
+  <Story name="Input Blur Event">
+    {() => {
+      const [selectedDate, setSelectedDate] = useState(new Date('2020, 11, 3'));
+      const [inputValue, setInputValue] = useState('');
+      const handleDateInputBlur = () => {
+        alert('DateInput (top-level) Blur Event');
+      };
+      const handleTextInputBlur = () => {
+        alert('TextInput Blur Event');
+      };
+      return (
+        <Box childGap="md">
+          <DateInput
+            dateFormat={'MMMM dd, yyyy'}
+            datePickerProps={{
+              selected: selectedDate,
+              onChange: setSelectedDate,
+            }}
+            textInputProps={{
+              id: 'withCustomDateFormat',
+              name: 'selectDate',
+              label: 'Select Date',
+              onBlur: handleTextInputBlur
+            }}
+            onBlur={handleDateInputBlur}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
