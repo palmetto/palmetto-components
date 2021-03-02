@@ -1,4 +1,10 @@
-import React, { FC, useState, useRef, FocusEvent, useEffect } from 'react';
+import React, {
+  FC,
+  useState,
+  useRef,
+  FocusEvent,
+  useEffect,
+} from 'react';
 import format from 'date-fns/format';
 import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker';
 import TextInput, { TextInputBaseProps } from '../TextInput/TextInput';
@@ -84,12 +90,12 @@ const DateInput: FC<DateInputProps> = ({
   const textInputRef = useRef<HTMLDivElement>(null);
 
   const handleTogglePopover = (newPopoverOpenState: boolean) => {
-    setPopoverOpen(newPopoverOpenState)
-  }
+    setPopoverOpen(newPopoverOpenState);
+  };
 
   const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
     if (isPopoverOpen || !onBlur) return;
-    
+
     onBlur(event);
   };
 
@@ -106,7 +112,7 @@ const DateInput: FC<DateInputProps> = ({
     if (isPopoverOpen !== prevIsPopoverOpen.current) {
       prevIsPopoverOpen.current = isPopoverOpen;
     }
-  }, [isPopoverOpen])
+  }, [isPopoverOpen]);
 
   const renderDatePicker = () => (
     <DatePicker

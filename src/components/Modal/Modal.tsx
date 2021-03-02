@@ -1,4 +1,8 @@
-import React, { ReactNode, RefObject, forwardRef, FC } from 'react';
+import React, {
+  ReactNode,
+  RefObject,
+  forwardRef,
+} from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
 import { ModalFooter, ModalHeader, ModalBody } from './components';
@@ -64,7 +68,9 @@ export interface ModalStatic {
   Footer: typeof ModalFooter;
 }
 
-export type ModalWithStaticComponents = React.ForwardRefExoticComponent<React.PropsWithoutRef<ModalProps>> & Partial<ModalStatic>
+export type ModalWithStaticComponents =
+  React.ForwardRefExoticComponent<React.PropsWithoutRef<ModalProps>>
+  & Partial<ModalStatic>;
 
 const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>((
   {

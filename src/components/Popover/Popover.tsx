@@ -218,8 +218,9 @@ const Popover: FC<PopoverProps> = ({
     );
   };
 
-  const childrenWithRef = React.Children.map(children, child  => {
+  const childrenWithRef = React.Children.map(children, child => {
     const childProps = {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref: triggerRef as RefObject<HTMLElement> | ((instance: any) => void),
       role: 'button',
       'aria-expanded': isOpen,
@@ -229,8 +230,9 @@ const Popover: FC<PopoverProps> = ({
     // Merge local ref with any ref passed originally to child component.
     // We have to cast with `as` so TS compiler doesn't complain since ReactNode/ReactChild types don't
     // explicitly declare ref as a property in the object.
-    if ((child as ReactNode & { ref: any })?.ref) {
-      childProps.ref = mergeRefs([(child as ReactNode & { ref: any })?.ref, childProps.ref]);
+    if ((child as ReactNode & { ref: any; })?.ref) { // eslint-disable-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      childProps.ref = mergeRefs([(child as ReactNode & { ref: any; })?.ref, childProps.ref]);
     }
 
     if (isValidElement(child)) {
