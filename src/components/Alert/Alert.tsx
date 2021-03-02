@@ -9,7 +9,17 @@ import styles from './Alert.module.scss';
 import { BrandColor, FontColor, IconName } from '../../types';
 
 export type AlertVariant = 'info' | 'success' | 'warning' | 'danger' | 'default';
+
 export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
+
+export const ALERT_ATTRIBUTES_MAP: { [key in AlertVariant]: AlertAttributes } = {
+  default: { icon: 'c-warning', color: 'grey-600', background: 'grey-lighter' },
+  info: { icon: 'c-info', color: 'info-500', background: 'secondary-lightest' },
+  success: { icon: 'c-check', color: 'success-500', background: 'success-lightest' },
+  warning: { icon: 't-warning', color: 'warning-500', background: 'warning-lightest' },
+  danger: { icon: 'c-remove', color: 'danger-500', background: 'danger-lightest' },
+};
+
 export interface AlertProps {
   /**
    * Custom class to apply to the alert.
@@ -66,14 +76,6 @@ const Alert: FC<AlertProps> = ({
   title = '',
   variant = 'default',
 }) => {
-  const attributes: { [key in AlertVariant]: AlertAttributes } = {
-    default: { icon: 'c-warning', color: 'grey-600', background: 'grey-lighter' },
-    info: { icon: 'c-info', color: 'info-500', background: 'secondary-lightest' },
-    success: { icon: 'c-check', color: 'success-500', background: 'success-lightest' },
-    warning: { icon: 't-warning', color: 'warning-500', background: 'warning-lightest' },
-    danger: { icon: 'c-remove', color: 'danger-500', background: 'danger-lightest' },
-  };
-
   const handleClose = (
     event: MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>,
   ): void => {
@@ -83,8 +85,11 @@ const Alert: FC<AlertProps> = ({
   };
 
   const renderAlertIcon = (): ReactNode => (
-    <Box fontSize="lg" color={attributes[variant].color}>
-      <Icon name={attributes[variant].icon} data-testid={`alert-icon-${variant}-test-id`} />
+    <Box fontSize="lg" color={ALERT_ATTRIBUTES_MAP[variant].color}>
+      <Icon
+        name={ALERT_ATTRIBUTES_MAP[variant].icon}
+        data-testid={`alert-icon-${variant}-test-id`}
+      />
     </Box>
   );
 
@@ -107,7 +112,7 @@ const Alert: FC<AlertProps> = ({
   return (
     <Box
       alignItems="flex-start"
-      background={attributes[variant].background}
+      background={ALERT_ATTRIBUTES_MAP[variant].background}
       childGap="sm"
       className={alertContainerClasses}
       direction="row"

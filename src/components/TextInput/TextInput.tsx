@@ -240,7 +240,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
     };
 
     return (
-      <Box width="100%" className={className}>
+      <Box width="100%" className={className} ref={ref}>
         {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
         <Box direction="row" className={inputWrapperClasses}>
           {prefix && (
@@ -249,7 +249,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
             </Box>
           )}
           {!inputMask ? (
-            <input {...inputProps} ref={ref} />
+            <input {...inputProps} />
           ) : (
             <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
           )}

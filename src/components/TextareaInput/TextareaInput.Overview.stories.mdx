@@ -4,17 +4,27 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import TextareaInput from './TextareaInput';
 import Box from '../Box/Box';
 
-<Meta title="Components/Form Inputs/TextareaInput" component={TextareaInput} />
+<Meta
+  title="Components/TextareaInput/Overview"
+  component={TextareaInput}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
 
 # TextareaInput
 
 Use TextareaInput to render a multi-line text input.
 
+<Canvas isExpanded>
+  <TextareaInput id="demo" label="Multi Line Text Input" />
+</Canvas>
+
 ## Props
 
 <ArgsTable of={TextareaInput} />
 
-## Default
+## Examples
 
 All that is required to render a basic version of the TextareaInput is a unique `id`, `label`, `value`, and an onchange event handler passed to the `onChange` prop.
 The input is vertically resizable by default.
@@ -335,7 +345,7 @@ An input does not need to be marked as required to render a validation message.
           label="TextareaInput Label"
           hideLabel
           onChange={event => setValue(event.target.value)}
-          error={true}
+          error="Helpful validation message"
         />
       );
     }}

@@ -1,25 +1,6 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
 
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale3d(0.3, 0.3, 0.3);
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
 
 .modal-close {
   border: none;
@@ -45,7 +26,19 @@
   background: hsla(0, 0%, 0%, 0.33);
   background-color: rgba(77, 82, 79, 0.5);
   overflow: hidden;
-  animation: fadeIn 0.2s;
+
+  :global {
+    animation: fadeIn 0.2s;
+  }
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 
   @media (min-width: $size-breakpoint-tablet) {
     display: grid;
@@ -59,6 +52,8 @@
 
 :global([data-reach-dialog-content]) {
   display: flex;
+  position: absolute;
+  bottom: 0;
   flex-direction: column;
   grid-row: 1;
   grid-column: 1;
@@ -67,9 +62,12 @@
   background-color: var(--modal-background-color);
   padding: 0;
   width: 100%;
-  animation: fadeIn 0.3s;
 
+  :global {
+    animation: slideInUp 0.3s;
+  }
   @media (min-width: $size-breakpoint-tablet) {
+    position: initial;
     grid-row: 2;
     grid-column: 2;
     margin: auto;
@@ -79,7 +77,10 @@
     width: 70vw;
     min-height: unset;
     max-height: calc(100vh - 80px);
-    animation: zoomIn 0.2s ease-out;
+
+    :global {
+      animation: zoomIn 0.2s ease-out;
+    }
   }
 
   @media(min-width: $size-breakpoint-desktop) {
@@ -115,7 +116,10 @@
       width: 70vw;
       min-height: unset;
       max-height: calc(100vh - 80px);
-      animation: zoomIn 0.2s ease-out;
+
+      :global {
+        animation: zoomIn 0.2s ease-out;
+      }
 
       @media(min-width: $size-breakpoint-desktop) {
         width: 50vw;

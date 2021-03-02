@@ -1,0 +1,181 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import DateInput from './DateInput';
+import Box from '../Box/Box';
+import Heading from '../Heading/Heading';
+
+<Meta title="Components/DateInput/Overview" component={DateInput} />
+
+# DateInput
+
+Use a DateInput to allow users to select a date close to today and place that date in an input field.
+Avoid using this component if the user needs to enter a date that is many years in the past (i.e. birthday) or future.
+
+<Canvas isExpanded>
+  <DateInput
+    textInputProps={{
+      id: 'exampleDateInput',
+      name: 'selectDate',
+      label: 'Select a Date',
+      placeholder: 'e.g. 11/02/2020',
+    }}
+  />
+</Canvas>
+
+## Props
+
+<ArgsTable of={DateInput} />
+
+## Default
+
+The DateInput is composed of 3 components. Each can be tailored based on their props. They are:
+
+1. [DatePicker](?path=/docs/components-datepicker--default-story)
+2. [Popover](?path=/docs/components-popover--demo)
+3. [TextInput](http://localhost:6006/?path=/docs/components-form-inputs-textinput--default-story)
+
+The `DateInput` uses sensible defaults for these to allow for very straightforward ergonomics that allow users to
+select dates with minimal work.
+
+<Canvas>
+  <Story name="Basic Usage">
+    {() => {
+      const [selectedDate, setSelectedDate] = useState(null);
+      const handleClear = () => {
+        setSelectedDate(null);
+      };
+      return (
+        <DateInput
+          datePickerProps={{
+            selected: selectedDate,
+            onChange: setSelectedDate,
+          }}
+          textInputProps={{
+            placeholder: 'e.g. 11/02/2020',
+            onClear: handleClear,
+            id: 'defaultDatePicker',
+            name: 'selectDate',
+            label: 'Select Date',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Date Range
+
+<Canvas>
+  <Story name="Date Range">
+    {() => {
+      const [startDate, setStartDate] = useState(null);
+      const [endDate, setEndDate] = useState(null);
+      const setDate = ([startDate, endDate]) => {
+        setStartDate(startDate);
+        setEndDate(endDate);
+      };
+      const handleClear = () => {
+        setStartDate(null);
+        setEndDate(null);
+      };
+      return (
+        <DateInput
+          datePickerProps={{
+            onChange: setDate,
+            selected: startDate,
+            selectsRange: true,
+            startDate,
+            endDate,
+          }}
+          textInputProps={{
+            onClear: handleClear,
+            id: 'myDateRangePicker',
+            name: 'myDateRangePicker',
+            label: 'Select Date Range',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Custom Date Format
+
+You can manipulate the format on the input field by using the `dateFormat` and `dateOptions`
+props. Under the hood our component uses the [date-fns `format` function](https://date-fns.org/v2.16.1/docs/format)
+to generate a string based on these options.
+
+<Canvas>
+  <Story name="Custom Date Format">
+    {() => {
+      const [selectedDate, setSelectedDate] = useState(new Date('2020, 11, 3'));
+      const [inputValue, setInputValue] = useState('');
+      const handleClear = () => {
+        setSelectedDate(null);
+      };
+      return (
+        <Box childGap="md">
+          <DateInput
+            dateFormat={'MMMM dd, yyyy'}
+            datePickerProps={{
+              selected: selectedDate,
+              onChange: setSelectedDate,
+            }}
+            textInputProps={{
+              onClear: handleClear,
+              id: 'withCustomDateFormat',
+              name: 'selectDate',
+              label: 'Select Date',
+            }}
+          />
+          <Box>
+            <p>Selected Date (as ISO String): {selectedDate ? selectedDate.toISOString() : null}</p>
+          </Box>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## On using onBlur event with DateInput
+The input is technically blurred whenever the calendar popover is interacted but as far as the user
+is concerned they are still interacting with the DateInput. For this reason, the DateInput component has
+a top level `onBlur` prop (NOT passed via textInputProps) which will fire when the Popover (calendar)
+has been closed after being opened. This hopefully provides consistent patterns for form validation which
+are triggered on blur events for other fields. The target of the `onBlur` event will be the input element.
+
+If you require knowledge of all blur events on the input itself, you can still pass the `onBlur` prop to the input via
+`textInputProps` and it will work as expected.
+
+<Canvas>
+  <Story name="Input Blur Event">
+    {() => {
+      const [selectedDate, setSelectedDate] = useState(new Date('2020, 11, 3'));
+      const [inputValue, setInputValue] = useState('');
+      const handleDateInputBlur = () => {
+        alert('DateInput (top-level) Blur Event');
+      };
+      const handleTextInputBlur = () => {
+        alert('TextInput Blur Event');
+      };
+      return (
+        <Box childGap="md">
+          <DateInput
+            dateFormat={'MMMM dd, yyyy'}
+            datePickerProps={{
+              selected: selectedDate,
+              onChange: setSelectedDate,
+            }}
+            textInputProps={{
+              id: 'withCustomDateFormat',
+              name: 'selectDate',
+              label: 'Select Date',
+              onBlur: handleTextInputBlur
+            }}
+            onBlur={handleDateInputBlur}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

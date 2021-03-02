@@ -1,0 +1,31 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    visibility: visible;
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale3d(0.3, 0.3, 0.3);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

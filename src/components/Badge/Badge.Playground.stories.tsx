@@ -1,18 +1,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Badge, { BadgeProps } from './Badge';
+import Badge, { BadgeProps, BADGE_COLOR_MAP, BADGE_SIZE_MAP } from './Badge';
 
-const badgeVariants = [
-  'info',
-  'primary',
-  'success',
-  'danger',
-  'warning',
-  'tertiary',
-  'secondary',
-  'default',
-] as const;
-const badgeSizes = ['sm', 'md', 'lg', 'xl'] as const;
+const badgeVariants = Object.keys(BADGE_COLOR_MAP);
+const badgeSizes = Object.keys(BADGE_SIZE_MAP);
 
 export default {
   title: 'Components/Badge/Playground',

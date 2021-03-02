@@ -39,7 +39,7 @@ Badges come in different variants based on the kind of message being delivered t
       return (
         <Box direction="row" childGap="sm">
           {variants.map(variant => (
-            <Badge message={variant} variant={variant} />
+            <Badge message={variant} variant={variant} key={variant} />
           ))}
         </Box>
       );

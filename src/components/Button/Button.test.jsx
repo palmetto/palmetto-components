@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import Button from './Button';
+import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 
 describe('Button', () => {
   describe('Type', () => {
@@ -56,21 +57,28 @@ describe('Button', () => {
   });
 
   describe('Sizes', () => {
-    const sizes = [
-      { name: 'Small', class: 'sm' },
-      { name: 'Medium', class: '' },
-      { name: 'Large', class: 'lg' },
-      { name: 'XSmall', class: 'xs' },
-    ];
+    BUTTON_SIZES.map(size =>
+      describe(`${BUTTON_SIZES}`, () => {
+        test(`it has a ${size} class applied to it`, () => {
+          render(<Button size={size}>{`${size} Button`}</Button>);
 
-    sizes.map(size =>
-      describe(`${size.name}`, () => {
-        test(`it has a ${size.class} class applied to it`, () => {
-          render(<Button size={size.class}>{`${size.name} Button`}</Button>);
+          const btn = screen.getByText(`${size} Button`).closest('button');
 
-          const btn = screen.getByText(`${size.name} Button`).closest('button');
+          expect(btn.getAttribute('class')).toContain(size);
+        });
+      }),
+    );
+  });
 
-          expect(btn.getAttribute('class')).toContain(size.class);
+  describe('Variants', () => {
+    BUTTON_VARIANTS.map(variant =>
+      describe(`${BUTTON_VARIANTS}`, () => {
+        test(`it has a ${variant} class applied to it`, () => {
+          render(<Button variant={variant}>{`${variant} Button`}</Button>);
+
+          const btn = screen.getByText(`${variant} Button`).closest('button');
+
+          expect(btn.getAttribute('class')).toContain(variant);
         });
       }),
     );

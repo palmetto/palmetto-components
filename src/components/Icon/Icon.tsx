@@ -1,10 +1,26 @@
 import React, { FC, forwardRef } from 'react';
 import icons from '@palmetto/palmetto-design-tokens/build/icons/react';
-import { IconName } from '../../types';
+import classNames from 'classnames';
+import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import {
+  FontColor, FontSize, IconName, ResponsiveProp,
+} from '../../types';
 import Box from '../Box/Box';
 
 export interface IconProps {
   className?: string;
+  /**
+   * A color token identifier to use for the text color.
+   */
+  color?: FontColor | ResponsiveProp<FontColor>;
+
+  /**
+   * A [font size token](/?path=/docs/design-tokens-font-size--page) identifier
+   */
+  size?: FontSize | ResponsiveProp<FontSize>;
+  /**
+   * Name of the icon
+   */
   name: IconName;
   /**
    * Additional props to be spread to rendered element
@@ -13,14 +29,22 @@ export interface IconProps {
 }
 
 const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ className = undefined, name, ...restProps }, ref) => {
+  ({
+    className = undefined, name, color, size, ...restProps
+  }, ref) => {
     const IconComponent = icons[name];
 
     if (!IconComponent) console.error(`Icon '${name}' not found`); // eslint-disable-line no-console
 
+    const iconClasses = classNames(
+      className,
+      generateResponsiveClasses('font-color', color),
+      generateResponsiveClasses('font-size', size),
+    );
+
     return IconComponent ? (
       <IconComponent
-        className={className}
+        className={iconClasses}
         ref={ref}
         data-testid={`icon-testid--${name}`}
         {...restProps}
