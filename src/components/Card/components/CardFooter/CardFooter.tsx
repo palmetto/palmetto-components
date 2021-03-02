@@ -1,25 +1,32 @@
 import React, { FC, ReactNode } from 'react';
-import Box from '../../../Box/Box';
-import { CssDisplayValue } from '../../../../types';
+import Box, { BoxProps } from '../../../Box/Box';
 
-export interface CardFooterProps {
+export interface CardFooterProps extends BoxProps {
   /**
    * Contents of the Footer.
    */
   children?: ReactNode;
   /**
-   * Display property. Only select values supported.
+   * Additional props to be spread to rendered element
    */
-  display?: CssDisplayValue;
+  [x: string]: any; // eslint-disable-line
 }
 
-const CardFooter: FC<CardFooterProps> = ({ children, display = 'block', ...restProps }) => (
+const CardFooter: FC<CardFooterProps> = ({
+  background = 'grey-50',
+  borderColor = 'grey-100',
+  borderWidth = 'xs 0 0 0',
+  children = null,
+  display = 'block',
+  padding = 'md lg',
+  ...restProps
+}) => (
   <Box
-    background="grey-50"
+    background={background}
     display={display}
-    padding="md lg"
-    borderColor="grey-100"
-    borderWidth="xs 0 0 0"
+    padding={padding}
+    borderColor={borderColor}
+    borderWidth={borderWidth}
     {...restProps}
   >
     {children}
