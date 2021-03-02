@@ -23,9 +23,11 @@ export interface CardHeaderProps extends BoxProps {
 }
 
 const CardHeader: FC<CardHeaderProps> = ({
+  childGap = '2xs',
   children = null,
   className = undefined,
   display = 'block',
+  padding = 'md lg',
   title = null,
   ...restProps
 }) => {
@@ -37,9 +39,9 @@ const CardHeader: FC<CardHeaderProps> = ({
 
   return (
     <Box
-      childGap="2xs"
+      childGap={childGap}
       display={display}
-      padding="md lg"
+      padding={padding}
       className={className}
       {...restProps}
     >

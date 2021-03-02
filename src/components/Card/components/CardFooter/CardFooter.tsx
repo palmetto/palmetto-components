@@ -12,13 +12,21 @@ export interface CardFooterProps extends BoxProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const CardFooter: FC<CardFooterProps> = ({ children, display = 'block', ...restProps }) => (
+const CardFooter: FC<CardFooterProps> = ({
+  background = 'grey-50',
+  borderColor = 'grey-100',
+  borderWidth = 'xs 0 0 0',
+  children = null,
+  display = 'block',
+  padding = 'md lg',
+  ...restProps
+}) => (
   <Box
-    background="grey-50"
+    background={background}
     display={display}
-    padding="md lg"
-    borderColor="grey-100"
-    borderWidth="xs 0 0 0"
+    padding={padding}
+    borderColor={borderColor}
+    borderWidth={borderWidth}
     {...restProps}
   >
     {children}
