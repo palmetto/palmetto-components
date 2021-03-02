@@ -109,7 +109,7 @@ export interface ButtonProps {
 const Button: FC<ButtonProps> = forwardRef(
   (
     {
-      children = null,
+      children = undefined,
       as = 'button',
       className = '',
       fullWidth = false,
@@ -159,12 +159,7 @@ const Button: FC<ButtonProps> = forwardRef(
      *    https://github.com/ReactTraining/react-router/issues/7761
      * */
     const handleClick = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-      try {
-        if (onClick) onClick(event);
-      } catch (ex) {
-        event.preventDefault();
-        throw ex;
-      }
+      if (onClick) onClick(event);
 
       if (
         !event.defaultPrevented// onClick prevented default
@@ -200,7 +195,7 @@ const Button: FC<ButtonProps> = forwardRef(
         childGap={size === 'xs' ? '2xs' : 'xs'}
       >
         {isLoading && (
-        <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
+          <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
         )}
         {iconPrefix && (
         <Icon
