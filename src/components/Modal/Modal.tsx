@@ -1,4 +1,4 @@
-import React, { ReactNode, RefObject, forwardRef } from 'react';
+import React, { ReactNode, RefObject, forwardRef, FC } from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
 import { ModalFooter, ModalHeader, ModalBody } from './components';
@@ -57,15 +57,16 @@ export interface ModalProps {
    */
   [x: string]: any; // eslint-disable-line
 }
-interface ModalPropsWithSubcomponents extends
-  ModalProps,
-  React.ForwardRefExoticComponent<ModalProps & React.RefAttributes<HTMLInputElement>> {
-    Body: typeof ModalBody;
-    Footer: typeof ModalFooter;
-    Header: typeof ModalHeader;
-  }
 
-const Modal = forwardRef<HTMLDivElement, ModalPropsWithSubcomponents>((
+export interface ModalStatic {
+  Body: typeof ModalBody;
+  Header: typeof ModalHeader;
+  Footer: typeof ModalFooter;
+}
+
+export type ModalWithStaticComponents = React.ForwardRefExoticComponent<React.PropsWithoutRef<ModalProps>> & Partial<ModalStatic>
+
+const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>((
   {
     ariaLabel,
     ariaLabelledBy,
@@ -107,7 +108,7 @@ const Modal = forwardRef<HTMLDivElement, ModalPropsWithSubcomponents>((
       </div>
     </DialogOverlay>
   );
-}) as ModalPropsWithSubcomponents;
+});
 
 Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;
