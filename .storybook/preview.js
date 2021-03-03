@@ -1,5 +1,4 @@
-import { addParameters, addDecorator } from '@storybook/react';
-import { MemoryRouter } from "react-router";
+import { addParameters } from '@storybook/react';
 import palmettoTheme from './palmettoTheme';
 
 import '!style-loader!css-loader!sass-loader!../src/styles/utilities.scss';
@@ -12,8 +11,6 @@ addParameters({
     theme: palmettoTheme,
   },
 });
-
-addDecorator(story => <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>);
 
 export const parameters = {
   a11y: {

@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import Alert from '../Alert/Alert';
 import Button from './Button';
 import Box from '../Box/Box';
@@ -187,7 +187,7 @@ can render buttons as one of `button`, `a`, and `input`.
 ## Wrapped in a React Router Link
 
 <Canvas>
-  <Story name="React Router Link">
+  <Story name="React Router Link" decorators={[Story => <BrowserRouter><Story /></BrowserRouter>]}>
     <Link
       to="/"
       as="a"
