@@ -1,7 +1,7 @@
 import { MouseEvent, AnchorHTMLAttributes } from 'react';
 
-const isModifiedEvent = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => (
-  !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
+const isModifiedEvent = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => (
+  !!(e.metaKey || e.altKey || e.ctrlKey || e.shiftKey)
 );
 
 /**
@@ -15,10 +15,10 @@ const isModifiedEvent = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement
  * */
 const handleClick = (
   event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
-  onClick: ((event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void) | undefined,
+  onClick: ((e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void) | undefined,
   target: AnchorHTMLAttributes<HTMLAnchorElement>['target'] | undefined,
   navigate: (() => void) | undefined,
-) => {
+): void => {
   if (onClick) onClick(event);
 
   if (

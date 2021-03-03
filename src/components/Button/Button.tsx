@@ -210,7 +210,8 @@ const Button: FC<ButtonProps> = forwardRef(
       children: buttonContent,
       disabled,
       onBlur: handleBlur,
-      onClick: (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => handleClick(event, onClick, target, navigate),
+      onClick:
+        (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => handleClick(event, onClick, target, navigate),
       onFocus: handleFocus,
       ref,
       type: href ? null : type,

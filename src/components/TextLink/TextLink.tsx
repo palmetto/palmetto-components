@@ -1,7 +1,7 @@
-import React, { FC, MouseEvent, forwardRef, MutableRefObject, RefObject } from 'react';
+import React, { FC, MouseEvent, forwardRef } from 'react';
 import classNames from 'classnames';
 import reactRouterClickHandler from '../../lib/reactRouterClickHandler';
-import styles from './TextLink.module.scss'; 
+import styles from './TextLink.module.scss';
 
 export interface TextLinkProps {
   /**
@@ -26,6 +26,10 @@ export interface TextLinkProps {
    */
   onClick?: (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
   /**
+   * HTML element tab index (defaults to 0)
+   */
+  tabIndex?: number;
+  /**
    * HTML target property
    */
   target?: string;
@@ -43,6 +47,7 @@ const TextLink: FC<TextLinkProps> = forwardRef<HTMLAnchorElement, TextLinkProps>
     onClick = undefined,
     target = undefined,
     variant = 'primary',
+    tabIndex = 0,
     ...restProps
   },
   ref,
@@ -56,10 +61,12 @@ const TextLink: FC<TextLinkProps> = forwardRef<HTMLAnchorElement, TextLinkProps>
   const handleClick = reactRouterClickHandler;
 
   return (
-    <a
+    <a // eslint-disable-line jsx-a11y/click-events-have-key-events
       className={linkClasses}
       target={target}
       onClick={(event: MouseEvent<HTMLAnchorElement>) => handleClick(event, onClick, target, navigate)}
+      role="link"
+      tabIndex={tabIndex}
       ref={ref}
       {...restProps}
     >

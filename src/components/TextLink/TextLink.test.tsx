@@ -24,7 +24,7 @@ describe('TextLink', () => {
 
   describe('With anchor attributes', () => {
     test('It renders a link with anchor attributes if passed', () => {
-      render(<TextLink {...ANCHOR_PROPS} target="_blank" >{LINK_TEXT}</TextLink>);
+      render(<TextLink {...ANCHOR_PROPS} target="_blank">{LINK_TEXT}</TextLink>);
 
       const link = screen.getByRole('link');
       expect(link).toBeInTheDocument();
@@ -77,18 +77,18 @@ describe('TextLink', () => {
 
   describe('React Router', () => {
     it('fires navigate callback when included', () => {
-      const mockedNavigate = jest.fn(() => {});
+      const mockedNavigate = jest.fn();
       render(<TextLink navigate={mockedNavigate} href="/">react router link</TextLink>);
-      
+
       fireEvent.click(screen.getByRole('link'));
 
       expect(mockedNavigate).toBeCalledTimes(1);
     });
 
     it('does not fire navigate callback if target is _blank', () => {
-      const mockedNavigate = jest.fn(() => {});
+      const mockedNavigate = jest.fn();
       render(<TextLink navigate={mockedNavigate} href="/" target="_blank">react router link</TextLink>);
-      
+
       fireEvent.click(screen.getByRole('link'));
 
       expect(mockedNavigate).toBeCalledTimes(0);
