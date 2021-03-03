@@ -1,8 +1,9 @@
 import React, {
-  FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement,
+  FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement, AnchorHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 import { IconName } from '../../types';
+import reactRouterClickHandler from '../../lib/reactRouterClickHandler';
 import Box from '../Box/Box';
 import Icon from '../Icon/Icon';
 import getElementType from '../../lib/getElementType';
@@ -85,7 +86,7 @@ export interface ButtonProps {
   /**
    * Usefull when using button as an anchor tag.
    */
-  target?: string;
+  target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
   /**
    * The Button's type.
    * NOTE: this is not restricted to button types since we allow
@@ -145,33 +146,7 @@ const Button: FC<ButtonProps> = forwardRef(
       [styles['full-width']]: fullWidth,
     });
 
-    const isModifiedEvent = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => (
-      !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
-    );
-
-    /**
-     * Due to react-router's handling of custom components used in RR <Link>
-     * we must add this validation that ensures the router will execute the passed `navigate`
-     * prop, thus navigating the user without triggering a refresh.
-     *
-     * SOURCES:
-     *    https://github.com/ReactTraining/react-router/issues/7727
-     *    https://github.com/ReactTraining/react-router/issues/7761
-     * */
-    const handleClick = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-      if (onClick) onClick(event);
-
-      if (
-        !event.defaultPrevented// onClick prevented default
-        && event.button === 0 // ignore everything but left clicks
-        && (!target || target === '_self') // let browser handle "target=_blank" etc.
-        && !isModifiedEvent(event) // ignore clicks with modifier keys
-        && navigate
-      ) {
-        event.preventDefault();
-        navigate();
-      }
-    };
+    const handleClick = reactRouterClickHandler;
 
     const handleFocus = (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (onFocus) onFocus(event);
@@ -235,7 +210,7 @@ const Button: FC<ButtonProps> = forwardRef(
       children: buttonContent,
       disabled,
       onBlur: handleBlur,
-      onClick: handleClick,
+      onClick: (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => handleClick(event, onClick, target, navigate),
       onFocus: handleFocus,
       ref,
       type: href ? null : type,

@@ -1,9 +1,9 @@
-import React, { FC, AnchorHTMLAttributes } from 'react';
-import { LinkProps } from 'react-router-dom';
+import React, { FC, MouseEvent, forwardRef, MutableRefObject, RefObject } from 'react';
 import classNames from 'classnames';
-import styles from './TextLink.module.scss';
+import reactRouterClickHandler from '../../lib/reactRouterClickHandler';
+import styles from './TextLink.module.scss'; 
 
-export interface TextLinkBaseProps {
+export interface TextLinkProps {
   /**
    * Custom class to be passed to the link.
    */
@@ -12,49 +12,60 @@ export interface TextLinkBaseProps {
    * Font color for text link.
    */
   variant?: 'primary' | 'danger';
-}
-
-interface TextLinkAnchorProps extends TextLinkBaseProps, AnchorHTMLAttributes<HTMLAnchorElement> {
-  /**
-   * Target URL (Anchor Tag)
-   */
-  href: string;
-  /**
-   * `navigate` prop which is passed when using the `component` prop in a react router `Link`.
-   * This needs to be documented in the component interface but will be stripped out automatically
-   * from the anchor tag.
-   */
-  navigate?: any // eslint-disable-line
-}
-
-interface TextLinkRouterProps extends TextLinkBaseProps, LinkProps {
   /**
    * Target URL
    */
-  href?: never;
-  navigate?: any; // eslint-disable-line
+  href?: string;
+  /**
+   * Prop reserved for when component is wrapped by `<Link>` from react-router.
+   */
+  navigate?: () => void;
+  /**
+   * Custom onClick -- Typically not necessary in an anchor but used by react-router when
+   * wrapping with a Link component.
+   */
+  onClick?: (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
+  /**
+   * HTML target property
+   */
+  target?: string;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
-type TextLinkProps = TextLinkAnchorProps | TextLinkRouterProps;
-
-const TextLink: FC<TextLinkProps> = ({
-  children,
-  className = null,
-  navigate = null, // eslint-disable-line
-  variant = 'primary',
-  ...restProps
-}) => {
+const TextLink: FC<TextLinkProps> = forwardRef<HTMLAnchorElement, TextLinkProps>((
+  {
+    children,
+    className = null,
+    navigate = undefined,
+    onClick = undefined,
+    target = undefined,
+    variant = 'primary',
+    ...restProps
+  },
+  ref,
+) => {
   const linkClasses = classNames(
     styles['text-link'],
     styles[variant],
     className,
   );
 
+  const handleClick = reactRouterClickHandler;
+
   return (
-    <a className={linkClasses} {...restProps}>
+    <a
+      className={linkClasses}
+      target={target}
+      onClick={(event: MouseEvent<HTMLAnchorElement>) => handleClick(event, onClick, target, navigate)}
+      ref={ref}
+      {...restProps}
+    >
       {children}
     </a>
   );
-};
+});
 
 export default TextLink;
