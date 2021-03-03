@@ -44,7 +44,7 @@ const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
 
     return IconComponent ? (
       <IconComponent
-        className={iconClasses}
+        className={iconClasses || null}
         ref={ref}
         data-testid={`icon-testid--${name}`}
         {...restProps}
