@@ -174,7 +174,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
           date: boolean;
           delimiter: string;
           datePattern: string[];
-        }
+        };
       },
     ) => {
       if (typeof mask === 'string') {
