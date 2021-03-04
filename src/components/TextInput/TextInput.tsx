@@ -170,6 +170,11 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
         creditCard: {
           creditCard: boolean;
         };
+        date: {
+          date: boolean;
+          delimiter: string;
+          datePattern: string[];
+        }
       },
     ) => {
       if (typeof mask === 'string') {
