@@ -7,3 +7,9 @@ export const phone = {
 export const creditCard = {
   creditCard: true,
 };
+
+export const date = {
+  date: true,
+  delimiter: '-',
+  datePattern: ['m', 'd', 'Y'],
+};

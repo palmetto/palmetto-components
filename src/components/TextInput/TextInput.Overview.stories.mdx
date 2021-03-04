@@ -381,6 +381,29 @@ Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to
   </Story>
 </Canvas>
 
+## With Date Mask
+
+Use the `type` prop to mark the input type as "tel". Use the `inputMask` prop to set the mask as "date".
+
+<Canvas>
+  <Story name="With Date Mask">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <TextInput
+          id="withDateMask"
+          value={value}
+          label="Date of Birth"
+          onChange={event => setValue(event.target.value)}
+          inputMask="date"
+          type="tel"
+          placeholder="MM-DD-YYYY"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Max Length
 
 Use the `maxLength` prop to limit the number of characters that can be entered into an input.

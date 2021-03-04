@@ -143,6 +143,7 @@ const DateInput: FC<DateInputProps> = ({
         onClick={() => handleTogglePopover(true)}
         ref={textInputRef}
         onBlur={handleBlur}
+        readOnly
         {...restProps}
       />
     </Popover>

@@ -20,7 +20,7 @@ import InputValidationMessage from '../InputValidationMessage/InputValidationMes
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextInput.module.scss';
 
-type inputMaskType = ('phone' | 'creditCard') | UnknownPropertiesObjType;
+type inputMaskType = ('phone' | 'creditCard' | 'date') | UnknownPropertiesObjType;
 
 export interface TextInputBaseProps {
   /**
@@ -169,6 +169,11 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
         };
         creditCard: {
           creditCard: boolean;
+        };
+        date: {
+          date: boolean;
+          delimiter: string;
+          datePattern: string[];
         };
       },
     ) => {
