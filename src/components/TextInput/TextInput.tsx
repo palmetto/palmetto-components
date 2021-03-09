@@ -7,6 +7,7 @@ import React, {
   FocusEvent,
   ReactNode,
   Component,
+  InputHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
@@ -31,10 +32,6 @@ export interface TextInputBaseProps {
    * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
    */
   label: string;
-  /**
-   * The input's 'autocomplete' attribute.
-   */
-  autoComplete?: boolean | string;
   /**
    * Automatically focus the input when the page is loaded.
    */
@@ -104,7 +101,6 @@ export interface TextInputBaseProps {
    * The size of the text input.
    */
   size?: 'sm' | 'md' | 'lg';
-
   /**
    * An input helper rendered after the input field value
    */
@@ -112,7 +108,7 @@ export interface TextInputBaseProps {
   /**
    * The input 'type' value. Defaults to type 'text'.
    */
-  type?: 'text' | 'password' | 'email' | 'tel' | 'url' | 'search';
+  type?: InputHTMLAttributes<HTMLInputElement>['type'];
 }
 export interface TextInputProps extends TextInputBaseProps {
   /**
