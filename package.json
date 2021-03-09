@@ -142,6 +142,7 @@
     "sass-loader": "^8.0.2",
     "sass-resources-loader": "^2.0.3",
     "semantic-release": "^17.1.1",
+    "storybook-addon-designs": "^5.4.5",
     "style-loader": "^1.2.1",
     "stylelint": "^13.6.0",
     "stylelint-config-concentric-order": "^4.0.0",

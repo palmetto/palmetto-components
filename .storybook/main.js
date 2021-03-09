@@ -29,6 +29,7 @@ module.exports = {
     '@storybook/addon-docs',
     '@storybook/addon-controls',
     '@storybook/addon-links/register',
+    'storybook-addon-designs',
   ],
   webpackFinal: config => {
     return {

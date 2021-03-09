@@ -5,7 +5,13 @@ import Alert from './Alert';
 import Heading from '../Heading/Heading';
 import Button from '../Button/Button';
 
-<Meta title="Components/Alert/Overview" component={Alert} />
+<Meta
+  title="Components/Alert/Overview"
+  component={Alert}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
 
 # Alert
 
@@ -41,7 +47,16 @@ or a ReactNode to be rendered.
 Alerts come in different variants based on the kind of feedback being delivered to the user.
 
 <Canvas>
-  <Story name="Variants">
+  <Story
+    name="Variants"
+    parameters={{
+      design: {
+        type: 'figma',
+        url:
+          'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=225%3A0',
+      },
+    }}
+  >
     {() => {
       const variants = ['default', 'info', 'success', 'warning', 'danger'];
       return (
@@ -60,7 +75,16 @@ Alerts come in different variants based on the kind of feedback being delivered 
 Pass a string to the `title` prop to create a natural visual text hierarchy.
 
 <Canvas>
-  <Story name="With Title">
+  <Story
+    name="With Title"
+    parameters={{
+      design: {
+        type: 'figma',
+        url:
+          'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=225%3A15',
+      },
+    }}
+  >
     <Alert
       title="Proposal Archived"
       message="The proposal was archived on Sept 9, 2020 at 5:31pm?"
@@ -85,7 +109,16 @@ You can apply a custom class to your alert with the `className` prop. Here we ha
 You can choose to display a standard icon for each variant of notification, based on their nature.
 
 <Canvas>
-  <Story name="With Icon">
+  <Story
+    name="With Icon"
+    parameters={{
+      design: {
+        type: 'figma',
+        url:
+          'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=225%3A51',
+      },
+    }}
+  >
     {() => {
       const variants = ['default', 'info', 'success', 'warning', 'danger'];
       const message = variant => `
@@ -167,7 +200,16 @@ the close icon, but closing actually happens programmatically with a callback pa
 If you need custom close text, pass it in the `closeText` prop.
 
 <Canvas>
-  <Story name="Closable">
+  <Story
+    name="Closable"
+    parameters={{
+      design: {
+        type: 'figma',
+        url:
+          'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=225%3A161',
+      },
+    }}
+  >
     {() => {
       const [isAlertTwoShowing, setAlertTwoShowing] = useState(true);
       const [isAlertThreeShowing, setAlertThreeShowing] = useState(true);
@@ -222,7 +264,16 @@ If you need custom close text, pass it in the `closeText` prop.
 Renders a version of the banner with less padding.
 
 <Canvas>
-  <Story name="Compact">
+  <Story
+    name="Compact"
+    parameters={{
+      design: {
+        type: 'figma',
+        url:
+          'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=225%3A326',
+      },
+    }}
+  >
     <Alert message="Compact Alerts have less padding" variant="info" isCompact />;
   </Story>
 </Canvas>

@@ -5,7 +5,13 @@ import Badge from './Badge';
 import Box from '../Box/Box';
 import Button from '../Button/Button';
 
-<Meta title="Components/Badge/Overview" component={Badge} />
+<Meta
+  title="Components/Badge/Overview"
+  component={Badge}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
 
 # Badge
 
@@ -24,7 +30,16 @@ Badges are used to display the status of an object or of an action that’s been
 Badges come in different variants based on the kind of message being delivered to the user.
 
 <Canvas>
-  <Story name="Variants">
+  <Story
+    name="Variants"
+    parameters={{
+      design: {
+        type: 'figma',
+        url:
+          'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=117%3A2228',
+      },
+    }}
+  >
     {() => {
       const variants = [
         'default',
@@ -52,7 +67,16 @@ Badges come in different variants based on the kind of message being delivered t
 Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size.
 
 <Canvas>
-  <Story name="Sizes">
+  <Story
+    name="Sizes"
+    parameters={{
+      design: {
+        type: 'figma',
+        url:
+          'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=117%3A2228',
+      },
+    }}
+  >
     {() => {
       return (
         <>
