@@ -118,7 +118,7 @@ export interface TextInputProps extends TextInputBaseProps {
   /**
    * The text value of the input. Required since our Input is a controlled component.
    */
-  value: string;
+  value: InputHTMLAttributes<HTMLInputElement>['value'];
   /**
    * Additional props to be spread to rendered element
    */
