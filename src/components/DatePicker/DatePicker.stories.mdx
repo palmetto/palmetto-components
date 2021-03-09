@@ -156,6 +156,36 @@ Use a DatePicker when a user needs to select a date and time.
   </Story>
 </Canvas>
 
+## With Year Dropdown
+
+<Canvas>
+  <Story name="With Year Dropdown">
+    {() => {
+      const [startDate, setStartDate] = useState(new Date(2019, 11, 3));
+      const [endDate, setEndDate] = useState(new Date(2019, 12, 20));
+      const setDate = ([startDate, endDate]) => {
+        console.log(startDate, endDate);
+        setStartDate(startDate);
+        setEndDate(endDate);
+      };
+      return (
+        <Box childGap="md">
+          <DatePicker
+            onChange={setDate}
+            selected={startDate}
+            startDate={startDate}
+            endDate={endDate}
+            selectsRange
+            showYearDropdown
+          />
+          Start Date: <p style={{ fontSize: '0.75rem ' }}>{startDate && startDate.toISOString()}</p>
+          End Date:<p style={{ fontSize: '0.75rem ' }}>{endDate && endDate.toISOString()}</p>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## With Time Picker
 
 <Canvas>
