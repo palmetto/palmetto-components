@@ -3,7 +3,7 @@ import {
   screen,
   render,
 } from '@testing-library/react';
-import TimePicker from './TimePicker';
+import { TimePicker } from './TimePicker';
 
 describe('TimePicker', () => {
   describe('Default', () => {

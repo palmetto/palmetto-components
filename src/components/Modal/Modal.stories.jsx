@@ -1,6 +1,6 @@
 import React from 'react';
-import Modal from './Modal';
-import Button from '../Button/Button';
+import { Modal } from './Modal';
+import { Button } from '../Button/Button';
 
 export default {
   title: 'Components/Modal/ForChromatic',

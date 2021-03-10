@@ -4,7 +4,7 @@ import {
   render,
   screen,
 } from '@testing-library/react';
-import DatePicker from './DatePicker';
+import { DatePicker } from './DatePicker';
 
 describe('DatePicker', () => {
   describe('Default', () => {

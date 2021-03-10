@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import Box, { BoxProps } from '../../../Box/Box';
+import { Box, BoxProps } from '../../../Box/Box';
 
 export interface CardFooterProps extends BoxProps {
   /**
@@ -12,7 +12,7 @@ export interface CardFooterProps extends BoxProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const CardFooter: FC<CardFooterProps> = ({
+export const CardFooter: FC<CardFooterProps> = ({
   background = 'grey-50',
   borderColor = 'grey-100',
   borderWidth = 'xs 0 0 0',
@@ -32,5 +32,3 @@ const CardFooter: FC<CardFooterProps> = ({
     {children}
   </Box>
 );
-
-export default CardFooter;

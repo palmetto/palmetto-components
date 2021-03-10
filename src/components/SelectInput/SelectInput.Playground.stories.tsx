@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import SelectInput, { SelectInputProps } from './SelectInput';
+import { SelectInput, SelectInputProps } from './SelectInput';
 
 export default {
   title: 'Components/SelectInput/Playground',

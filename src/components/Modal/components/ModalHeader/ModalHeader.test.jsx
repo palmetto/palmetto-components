@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, screen, render } from '@testing-library/react';
-import ModalHeader from './ModalHeader';
+import { ModalHeader } from './ModalHeader';
 
 describe('ModalHeader', () => {
   test('renders a title if provided', () => {

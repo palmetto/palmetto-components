@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import Box from '../Box/Box';
-import Button from '../Button/Button';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
 
 export interface PaginationProps {
   /**
@@ -52,7 +52,7 @@ export interface PaginationProps {
   prevPageText?: string | ReactNode;
 }
 
-const Pagination: FC<PaginationProps> = ({
+export const Pagination: FC<PaginationProps> = ({
   activePage,
   itemsPerPage,
   onChange,
@@ -205,5 +205,3 @@ const Pagination: FC<PaginationProps> = ({
     </Box>
   );
 };
-
-export default Pagination;

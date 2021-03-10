@@ -39,7 +39,7 @@ export interface TextLinkProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const TextLink: FC<TextLinkProps> = forwardRef<HTMLAnchorElement, TextLinkProps>((
+export const TextLink: FC<TextLinkProps> = forwardRef<HTMLAnchorElement, TextLinkProps>((
   {
     children,
     className = null,
@@ -74,5 +74,3 @@ const TextLink: FC<TextLinkProps> = forwardRef<HTMLAnchorElement, TextLinkProps>
     </a>
   );
 });
-
-export default TextLink;

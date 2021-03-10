@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import FormLabel, { FormLabelProps } from './FormLabel';
+import { FormLabel, FormLabelProps } from './FormLabel';
 
 export default {
   title: 'Components/FormLabel/Playground',

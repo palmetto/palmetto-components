@@ -1,8 +1,6 @@
 import React, { FC, SyntheticEvent, ReactNode } from 'react';
 import classNames from 'classnames';
-import ReactDatePicker/* , { ReactDatePickerProps } */ from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import ReactDatePicker from 'react-datepicker';
 import styles from './DatePicker.module.scss';
 
 export interface DatePickerProps {
@@ -82,7 +80,7 @@ export interface DatePickerProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const DatePicker: FC<DatePickerProps> = ({
+export const DatePicker: FC<DatePickerProps> = ({
   children = null,
   dayClassName = undefined,
   monthsShown = undefined,

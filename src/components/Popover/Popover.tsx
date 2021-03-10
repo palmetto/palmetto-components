@@ -16,7 +16,7 @@ import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
 import { BrandColor } from '../../types';
 import styles from './Popover.module.scss';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 export interface PopoverProps {
   /**
@@ -91,7 +91,7 @@ const contentContainerDefaults: BoxProps = {
   radius: 'sm',
 };
 
-const Popover: FC<PopoverProps> = ({
+export const Popover: FC<PopoverProps> = ({
   isOpen,
   children,
   content,
@@ -251,5 +251,3 @@ const Popover: FC<PopoverProps> = ({
     </>
   );
 };
-
-export default Popover;

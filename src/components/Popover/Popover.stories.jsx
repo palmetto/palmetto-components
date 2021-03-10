@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Popover from './Popover';
-import Button from '../Button/Button';
-import Box from '../Box/Box';
-import Heading from '../Heading/Heading';
-import Icon from '../Icon/Icon';
+import { Popover } from './Popover';
+import { Button } from '../Button/Button';
+import { Box } from '../Box/Box';
+import { Heading } from '../Heading/Heading';
+import { Icon } from '../Icon/Icon';
 
 export default {
   title: 'Components/Popover/ForChromatic',

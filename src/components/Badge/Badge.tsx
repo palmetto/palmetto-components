@@ -4,7 +4,7 @@ import {
   BrandColor, FontColor, FontSize, BaseSpacing,
 } from '../../types';
 import styles from './Badge.module.scss';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 
 export type BadgeSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -87,5 +87,3 @@ export const Badge: FC<BadgeProps> = ({
     </Box>
   );
 };
-
-export default Badge;

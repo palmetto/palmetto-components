@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import Box, { BoxProps } from '../../../Box/Box';
+import { Box, BoxProps } from '../../../Box/Box';
 
 export type ModalBodyProps = Omit<BoxProps, 'as' | 'radius'>;
 
-const ModalBody: FC<ModalBodyProps> = ({
+export const ModalBody: FC<ModalBodyProps> = ({
   children,
   flex = 'auto',
   padding = 'lg',
@@ -13,5 +13,3 @@ const ModalBody: FC<ModalBodyProps> = ({
     {children}
   </Box>
 );
-
-export default ModalBody;

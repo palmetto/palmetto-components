@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Alert, { ALERT_ATTRIBUTES_MAP } from './Alert';
+import { Alert, ALERT_ATTRIBUTES_MAP } from './Alert';
 import { ALERT_VARIANTS } from './Alert.constants';
 
 describe('Alert', () => {

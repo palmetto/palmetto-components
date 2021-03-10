@@ -4,10 +4,10 @@ import React, {
 import classNames from 'classnames';
 import { IconName } from '../../types';
 import reactRouterClickHandler from '../../lib/reactRouterClickHandler';
-import Box from '../Box/Box';
-import Icon from '../Icon/Icon';
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
 import getElementType from '../../lib/getElementType';
-import Spinner from '../Spinner/Spinner';
+import { Spinner } from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
 export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark';
@@ -107,7 +107,7 @@ export interface ButtonProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const Button: FC<ButtonProps> = forwardRef(
+export const Button: FC<ButtonProps> = forwardRef(
   (
     {
       children = undefined,
@@ -220,5 +220,3 @@ const Button: FC<ButtonProps> = forwardRef(
     });
   },
 );
-
-export default Button;

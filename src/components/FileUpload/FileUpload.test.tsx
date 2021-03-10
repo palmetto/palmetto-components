@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import FileUpload from './FileUpload';
+import { FileUpload } from './FileUpload';
 
 describe('FileUpload', () => {
   describe('Default', () => {

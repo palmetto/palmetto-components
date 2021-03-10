@@ -39,7 +39,7 @@ export interface HeadingProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const Heading: FC<HeadingProps> = ({
+export const Heading: FC<HeadingProps> = ({
   as = 'h4',
   children,
   className,
@@ -62,5 +62,3 @@ const Heading: FC<HeadingProps> = ({
 
   return createElement(element, { className: classes, children, ...restProps });
 };
-
-export default Heading;

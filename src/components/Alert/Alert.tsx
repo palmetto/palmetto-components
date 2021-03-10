@@ -2,9 +2,9 @@ import React, {
   FC, ReactNode, MouseEvent, KeyboardEvent,
 } from 'react';
 import classNames from 'classnames';
-import Heading from '../Heading/Heading';
-import Box from '../Box/Box';
-import Icon from '../Icon/Icon';
+import { Heading } from '../Heading/Heading';
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
 import styles from './Alert.module.scss';
 import { BrandColor, FontColor, IconName } from '../../types';
 
@@ -140,5 +140,3 @@ export const Alert: FC<AlertProps> = ({
     </Box>
   );
 };
-
-export default Alert;

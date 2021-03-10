@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Box, { BoxProps } from './Box';
+import { Box, BoxProps } from './Box';
 import {
   BORDER_SIZE_OPTIONS,
   BORDER_RADIUS_OPTIONS,

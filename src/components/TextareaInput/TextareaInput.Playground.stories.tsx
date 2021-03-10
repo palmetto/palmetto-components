@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import TextareaInput, { TextareaInputProps } from './TextareaInput';
+import { TextareaInput, TextareaInputProps } from './TextareaInput';
 
 export default {
   title: 'Components/TextareaInput/Playground',

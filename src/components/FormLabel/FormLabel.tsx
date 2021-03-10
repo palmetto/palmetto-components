@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 import styles from './FormLabel.module.scss';
 
 export interface FormLabelProps {
@@ -42,7 +42,7 @@ export interface FormLabelProps {
   isRadioInputLabel?: boolean;
 }
 
-const FormLabel: FC<FormLabelProps> = ({
+export const FormLabel: FC<FormLabelProps> = ({
   children,
   inputId,
   className = '',
@@ -73,5 +73,3 @@ const FormLabel: FC<FormLabelProps> = ({
     </label>
   );
 };
-
-export default FormLabel;
