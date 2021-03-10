@@ -196,7 +196,7 @@ export interface BoxProps {
  * A `<Box>` is a layout component to build UIs with consistent padding and spacing between
  * elements.
  */
-const Box: FC<BoxProps> = forwardRef((
+export const Box: FC<BoxProps> = forwardRef((
   {
     as = 'div',
     alignItems = undefined,

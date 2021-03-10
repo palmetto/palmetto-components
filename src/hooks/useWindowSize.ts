@@ -20,7 +20,7 @@ export default function useWindowSize(timeout = 100): WindowDimensions {
   });
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: any; // eslint-disable-line
     const handleResize = () => {
       // prevent execution of previous setTimeout
       clearTimeout(timeoutId);

@@ -64,7 +64,7 @@ export interface AlertProps {
    */
   variant?: AlertVariant;
 }
-const Alert: FC<AlertProps> = ({
+export const Alert: FC<AlertProps> = ({
   className = '',
   closeText = '',
   hasIcon = false,

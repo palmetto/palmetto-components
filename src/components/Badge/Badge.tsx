@@ -62,7 +62,7 @@ export const BADGE_SIZE_MAP: { [key in BadgeSize]: BadgeSizeAttributes } = {
   xl: { fontSize: 'md', padding: 'xs sm' },
 };
 
-const Badge: FC<BadgeProps> = ({
+export const Badge: FC<BadgeProps> = ({
   className = '',
   message = '',
   variant = 'default',
