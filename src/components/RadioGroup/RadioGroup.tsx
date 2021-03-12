@@ -2,7 +2,7 @@ import React, {
   FC, ChangeEvent, FocusEvent, ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import RadioInput from './RadioInput/RadioInput';
 import styles from './RadioGroup.module.scss';
@@ -68,7 +68,7 @@ export interface RadioGroupProps {
   value?: string;
 }
 
-const RadioGroup: FC<RadioGroupProps> = ({
+export const RadioGroup: FC<RadioGroupProps> = ({
   name,
   onChange,
   options,
@@ -124,5 +124,3 @@ const RadioGroup: FC<RadioGroupProps> = ({
     </div>
   );
 };
-
-export default RadioGroup;

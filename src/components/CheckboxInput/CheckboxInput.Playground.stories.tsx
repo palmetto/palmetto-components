@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import CheckboxInput, { CheckboxInputProps } from './CheckboxInput';
+import { CheckboxInput, CheckboxInputProps } from './CheckboxInput';
 
 export default {
   title: 'Components/CheckboxInput/Playground',

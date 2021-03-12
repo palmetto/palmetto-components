@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import TimePicker, { TimePickerProps } from './TimePicker';
+import { TimePicker, TimePickerProps } from './TimePicker';
 
 export default {
   title: 'Components/TimePicker/Playground',

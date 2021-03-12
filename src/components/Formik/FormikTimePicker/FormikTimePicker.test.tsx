@@ -7,8 +7,8 @@ import {
 } from '@testing-library/react';
 import selectEvent from 'react-select-event';
 import { Formik, Form, Field } from 'formik';
-import FormikTimePicker from './FormikTimePicker';
-import TimePicker from '../../TimePicker/TimePicker';
+import { FormikTimePicker } from './FormikTimePicker';
+import { TimePicker } from '../../TimePicker/TimePicker';
 
 const testLabelName = 'test select';
 

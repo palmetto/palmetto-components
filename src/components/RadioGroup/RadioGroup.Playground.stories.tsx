@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import RadioGroup, { RadioGroupProps } from './RadioGroup';
+import { RadioGroup, RadioGroupProps } from './RadioGroup';
 
 export default {
   title: 'Components/RadioGroup/Playground',

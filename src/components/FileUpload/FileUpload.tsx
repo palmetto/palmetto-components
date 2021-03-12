@@ -1,11 +1,11 @@
 import React, {
   useRef, FC, ReactNode, ChangeEvent, MouseEvent,
 } from 'react';
-import Box from '../Box/Box';
-import Icon from '../Icon/Icon';
-import FormLabel from '../FormLabel/FormLabel';
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
+import { FormLabel } from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import Button, { ButtonSize } from '../Button/Button';
+import { Button, ButtonSize } from '../Button/Button';
 
 export interface FileUploadProps {
   /**
@@ -98,7 +98,7 @@ export interface FileUploadProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const FileUpload: FC<FileUploadProps> = ({
+export const FileUpload: FC<FileUploadProps> = ({
   id,
   labelText,
   name,
@@ -213,5 +213,3 @@ const FileUpload: FC<FileUploadProps> = ({
     </Box>
   );
 };
-
-export default FileUpload;

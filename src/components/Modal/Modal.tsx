@@ -120,4 +120,4 @@ Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;
 Modal.Header = ModalHeader;
 
-export default Modal;
+export { Modal };

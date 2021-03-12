@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import TableHead from './TableHead';
+import { TableHead } from './TableHead';
 
 const columns = [
   { heading: 'ID', dataKey: 'id' },

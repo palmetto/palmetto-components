@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import Box, { BoxProps } from '../../../Box/Box';
-import Heading from '../../../Heading/Heading';
+import { Box, BoxProps } from '../../../Box/Box';
+import { Heading } from '../../../Heading/Heading';
 import styles from '../../Card.module.scss';
 
 export interface CardSectionProps extends BoxProps {
@@ -27,7 +27,7 @@ export interface CardSectionProps extends BoxProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const CardSection: FC<CardSectionProps> = ({
+export const CardSection: FC<CardSectionProps> = ({
   background = undefined,
   children = null,
   childGap = undefined,

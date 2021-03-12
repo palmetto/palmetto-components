@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import CardFooter from './CardFooter';
+import { CardFooter } from './CardFooter';
 
 describe('Card/CardFooter', () => {
   test('grey-lightest background color class is applied by default', () => {

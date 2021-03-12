@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Card, { CardProps } from './Card';
+import { Card, CardProps } from './Card';
 
 export default {
   title: 'Components/Card/Playground',

@@ -8,7 +8,7 @@ import {
   BRAND_COLOR_OPTIONS,
   SPACING_OPTIONS,
 } from '../../lib/tokens';
-import Box from './Box';
+import { Box } from './Box';
 
 describe('Box', () => {
   test('aria-label is applied if set', () => {

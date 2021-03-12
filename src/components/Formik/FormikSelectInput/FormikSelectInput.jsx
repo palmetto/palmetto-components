@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SelectInput from '../../SelectInput/SelectInput';
+import { SelectInput } from '../../SelectInput/SelectInput';
 
 const propTypes = {
   field: PropTypes.shape({
@@ -16,7 +16,7 @@ const propTypes = {
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-const FormikSelectInput = (
+export const FormikSelectInput = (
   {
     field: {
       name,
@@ -39,5 +39,3 @@ const FormikSelectInput = (
 );
 
 FormikSelectInput.propTypes = propTypes;
-
-export default FormikSelectInput;

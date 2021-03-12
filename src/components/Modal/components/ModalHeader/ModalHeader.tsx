@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import Box from '../../../Box/Box';
-import Icon from '../../../Icon/Icon';
+import { Box } from '../../../Box/Box';
+import { Icon } from '../../../Icon/Icon';
 import styles from '../../Modal.module.scss';
 
 export type ModalHeaderProps = {
@@ -18,7 +18,7 @@ export type ModalHeaderProps = {
   onDismiss?: (event?: React.SyntheticEvent) => void;
 };
 
-const ModalHeader: FC<ModalHeaderProps> = ({ id, onDismiss, title = undefined }) => {
+export const ModalHeader: FC<ModalHeaderProps> = ({ id, onDismiss, title = undefined }) => {
   const justifyContentValue = title === undefined && onDismiss ? 'flex-end' : 'space-between';
 
   return (
@@ -52,5 +52,3 @@ const ModalHeader: FC<ModalHeaderProps> = ({ id, onDismiss, title = undefined })
     </Box>
   );
 };
-
-export default ModalHeader;

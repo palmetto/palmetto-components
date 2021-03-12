@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioGroup from '../../RadioGroup/RadioGroup';
+import { RadioGroup } from '../../RadioGroup/RadioGroup';
 
 const propTypes = {
   field: PropTypes.shape({
@@ -16,7 +16,7 @@ const propTypes = {
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-const FormikRadioGroup = (
+export const FormikRadioGroup = (
   {
     field: {
       name,
@@ -39,5 +39,3 @@ const FormikRadioGroup = (
 );
 
 FormikRadioGroup.propTypes = propTypes;
-
-export default FormikRadioGroup;

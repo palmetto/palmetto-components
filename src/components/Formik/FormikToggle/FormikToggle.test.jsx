@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen, waitFor, act } from '@testing-library/react';
 import { Formik, Form, Field } from 'formik';
-import FormikToggle from './FormikToggle';
+import { FormikToggle } from './FormikToggle';
 
 const testLabelName = 'test checkbox';
 

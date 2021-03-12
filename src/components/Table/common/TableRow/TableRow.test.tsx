@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import TableRow from './TableRow';
+import { TableRow } from './TableRow';
 
 const row = { id: 1, flavor: 'vanilla' };
 const rowIndex = 1;

@@ -7,7 +7,7 @@ import {
   act,
 } from '@testing-library/react';
 import { Formik, Form, Field } from 'formik';
-import FormikCheckboxInput from './FormikCheckboxInput';
+import { FormikCheckboxInput } from './FormikCheckboxInput';
 
 const testLabelName = 'test checkbox';
 

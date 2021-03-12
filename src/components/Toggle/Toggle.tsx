@@ -3,8 +3,8 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import FormLabel from '../FormLabel/FormLabel';
-import Box from '../Box/Box';
+import { FormLabel } from '../FormLabel/FormLabel';
+import { Box } from '../Box/Box';
 import styles from './Toggle.module.scss';
 
 export interface ToggleProps {
@@ -64,7 +64,7 @@ export interface ToggleProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-const Toggle: FC<ToggleProps> = ({
+export const Toggle: FC<ToggleProps> = ({
   id,
   isChecked,
   label,
@@ -143,5 +143,3 @@ const Toggle: FC<ToggleProps> = ({
     </Box>
   );
 };
-
-export default Toggle;

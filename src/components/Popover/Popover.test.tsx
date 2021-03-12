@@ -6,7 +6,7 @@ import {
   fireEvent,
 } from '@testing-library/react';
 import { Placement } from '@popperjs/core';
-import Popover from './Popover';
+import { Popover } from './Popover';
 
 describe('Popover', () => {
   describe('Default', () => {

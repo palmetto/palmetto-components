@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import Button from './Button';
+import { Button } from './Button';
 import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 
 describe('Button', () => {

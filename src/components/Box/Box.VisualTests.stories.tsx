@@ -2,7 +2,7 @@
 /* eslint-disable no-else-return */
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Box, { BoxProps } from './Box';
+import { Box, BoxProps } from './Box';
 import {
   FONT_SIZE_OPTIONS,
   FONT_COLOR_OPTIONS,

@@ -4,7 +4,7 @@ import {
   screen,
   fireEvent,
 } from '@testing-library/react';
-import TableHeaderCell from './TableHeaderCell';
+import { TableHeaderCell } from './TableHeaderCell';
 
 const column = {
   heading: 'ID',

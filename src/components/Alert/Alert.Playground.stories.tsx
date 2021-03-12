@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Alert, { AlertProps } from './Alert';
+import { Alert, AlertProps } from './Alert';
 import { ALERT_VARIANTS } from './Alert.constants';
 
 export default {

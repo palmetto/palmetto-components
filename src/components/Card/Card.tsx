@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { CardFooter, CardHeader, CardSection } from './components';
 
 export interface CardProps extends BoxProps {
@@ -13,7 +13,7 @@ export interface CardProps extends BoxProps {
   subdued?: boolean;
 }
 
-class Card extends React.Component<CardProps> {
+export class Card extends React.Component<CardProps> {
   static Header = CardHeader;
 
   static Section = CardSection;
@@ -50,5 +50,3 @@ class Card extends React.Component<CardProps> {
     );
   }
 }
-
-export default Card;
