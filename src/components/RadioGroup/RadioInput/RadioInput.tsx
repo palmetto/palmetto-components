@@ -2,7 +2,7 @@ import React, {
   FC, ChangeEvent, FocusEvent, ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import FormLabel from '../../FormLabel/FormLabel';
+import { FormLabel } from '../../FormLabel/FormLabel';
 import styles from './RadioInput.module.scss';
 
 interface RadioInputProps {

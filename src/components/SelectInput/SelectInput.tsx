@@ -11,9 +11,9 @@ import Select, {
 } from 'react-select';
 import { SimulatedEventPayloadType } from '../../types';
 import { Z_INDEX_VALUES } from '../../lib/tokens';
-import Box from '../Box/Box';
-import Icon from '../Icon/Icon';
-import FormLabel from '../FormLabel/FormLabel';
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
+import { FormLabel } from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
@@ -110,7 +110,7 @@ export interface SelectInputProps extends BaseSelectInputProps {
   options: GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
 }
 
-const SelectInput: FC<SelectInputProps> = ({
+export const SelectInput: FC<SelectInputProps> = ({
   id,
   label,
   onChange,
@@ -204,5 +204,3 @@ const SelectInput: FC<SelectInputProps> = ({
     </Box>
   );
 };
-
-export default SelectInput;

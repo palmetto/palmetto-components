@@ -2,8 +2,8 @@ import React, {
   FC, ChangeEvent, FocusEvent, ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import Box from '../Box/Box';
-import FormLabel from '../FormLabel/FormLabel';
+import { Box } from '../Box/Box';
+import { FormLabel } from '../FormLabel/FormLabel';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextareaInput.module.scss';
@@ -89,7 +89,7 @@ export interface TextareaInputProps {
   rows?: number;
 }
 
-const TextareaInput: FC<TextareaInputProps> = ({
+export const TextareaInput: FC<TextareaInputProps> = ({
   id,
   label,
   onChange,
@@ -154,5 +154,3 @@ const TextareaInput: FC<TextareaInputProps> = ({
     </Box>
   );
 };
-
-export default TextareaInput;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import FormLabel from './FormLabel';
+import { FormLabel } from './FormLabel';
 
 beforeEach(() => {
   console.error = jest.fn(); // eslint-disable-line no-console

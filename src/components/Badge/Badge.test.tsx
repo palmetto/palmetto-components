@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Badge, {
+import {
+  Badge,
   BadgeSize,
   BadgeVariant,
   BADGE_COLOR_MAP,

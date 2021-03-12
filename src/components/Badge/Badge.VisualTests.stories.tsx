@@ -1,13 +1,14 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Badge, {
+import {
+  Badge,
   BadgeProps,
   BadgeSize,
   BadgeVariant,
   BADGE_COLOR_MAP,
   BADGE_SIZE_MAP,
 } from './Badge';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 
 export default {
   title: 'Components/Badge/Visual Regression Tests',

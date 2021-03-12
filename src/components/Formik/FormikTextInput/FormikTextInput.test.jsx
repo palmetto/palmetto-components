@@ -6,7 +6,7 @@ import {
   waitFor,
 } from '@testing-library/react';
 import { Formik, Field, Form } from 'formik';
-import FormikTextInput from './FormikTextInput';
+import { FormikTextInput } from './FormikTextInput';
 
 const testLabelName = 'textInput';
 

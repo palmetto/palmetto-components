@@ -6,8 +6,8 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
-import FormLabel from '../FormLabel/FormLabel';
-import Box from '../Box/Box';
+import { FormLabel } from '../FormLabel/FormLabel';
+import { Box } from '../Box/Box';
 import styles from './CheckboxInput.module.scss';
 
 export interface CheckboxInputProps {
@@ -67,7 +67,7 @@ export interface CheckboxInputProps {
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 }
 
-const CheckboxInput: FC<CheckboxInputProps> = ({
+export const CheckboxInput: FC<CheckboxInputProps> = ({
   id,
   isChecked,
   label,
@@ -139,5 +139,3 @@ const CheckboxInput: FC<CheckboxInputProps> = ({
     </Box>
   );
 };
-
-export default CheckboxInput;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ModalBody from './ModalBody';
+import { ModalBody } from './ModalBody';
 
 describe('ModalBody', () => {
   test('renders its children', () => {

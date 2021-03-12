@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ModalFooter from './ModalFooter';
+import { ModalFooter } from './ModalFooter';
 
 describe('ModalFooter', () => {
   test('renders its children', () => {

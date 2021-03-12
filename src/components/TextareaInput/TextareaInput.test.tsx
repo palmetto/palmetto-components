@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import TextareaInput from './TextareaInput';
+import { TextareaInput } from './TextareaInput';
 
 const baseProps = {
   name: 'firstName',

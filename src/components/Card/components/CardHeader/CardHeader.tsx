@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
-import Box, { BoxProps } from '../../../Box/Box';
-import Heading from '../../../Heading/Heading';
+import { Box, BoxProps } from '../../../Box/Box';
+import { Heading } from '../../../Heading/Heading';
 
 export interface CardHeaderProps extends BoxProps {
   /**
@@ -21,7 +21,7 @@ export interface CardHeaderProps extends BoxProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const CardHeader: FC<CardHeaderProps> = ({
+export const CardHeader: FC<CardHeaderProps> = ({
   childGap = '2xs',
   children = null,
   className = undefined,
@@ -49,5 +49,3 @@ const CardHeader: FC<CardHeaderProps> = ({
     </Box>
   );
 };
-
-export default CardHeader;

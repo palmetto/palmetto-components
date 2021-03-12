@@ -5,7 +5,7 @@ import {
   fireEvent,
   waitFor,
 } from '@testing-library/react';
-import DateInput from './DateInput';
+import { DateInput } from './DateInput';
 
 describe('DateInput', () => {
   describe('Default', () => {

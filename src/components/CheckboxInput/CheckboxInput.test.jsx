@@ -3,8 +3,8 @@ import {
   render,
   fireEvent,
 } from '@testing-library/react';
-import CheckboxInput from './CheckboxInput';
-import FormLabel from '../FormLabel/FormLabel';
+import { CheckboxInput } from './CheckboxInput';
+import { FormLabel } from '../FormLabel/FormLabel';
 
 jest.mock('../FormLabel/FormLabel');
 

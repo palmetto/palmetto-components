@@ -2,7 +2,7 @@ import React, { FC, Key } from 'react';
 import classNames from 'classnames';
 import styles from './TableBody.module.scss';
 import { Column, Row } from '../../../types';
-import TableRow from '../common/TableRow/TableRow';
+import { TableRow } from '../common/TableRow/TableRow';
 
 export interface TableBodyProps {
   /**
@@ -54,7 +54,7 @@ export interface TableBodyProps {
   truncateOverflow?: boolean;
 }
 
-const TableBody: FC<TableBodyProps> = ({
+export const TableBody: FC<TableBodyProps> = ({
   columns,
   rowKey,
   rows,
@@ -94,5 +94,3 @@ const TableBody: FC<TableBodyProps> = ({
     </tbody>
   );
 };
-
-export default TableBody;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CheckboxInput from '../../CheckboxInput/CheckboxInput';
+import { CheckboxInput } from '../../CheckboxInput/CheckboxInput';
 
 const propTypes = {
   field: PropTypes.shape({
@@ -12,7 +12,7 @@ const propTypes = {
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-const FormikCheckboxInput = (
+export const FormikCheckboxInput = (
   {
     field: {
       name,
@@ -34,5 +34,3 @@ const FormikCheckboxInput = (
 );
 
 FormikCheckboxInput.propTypes = propTypes;
-
-export default FormikCheckboxInput;

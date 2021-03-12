@@ -4,7 +4,7 @@ import styles from './TableRow.module.scss';
 import { Column, EventWithColumnKey, Row } from '../../../../types';
 import getColumnKeys from '../../../../lib/getColumnKeys';
 import TableBodyCell from '../../TableBody/TableBodyCell/TableBodyCell';
-import TableHeaderCell from '../../TableHead/TableHeaderCell/TableHeaderCell';
+import { TableHeaderCell } from '../../TableHead/TableHeaderCell/TableHeaderCell';
 
 export interface TableRowProps {
   /**
@@ -71,7 +71,7 @@ export interface TableRowProps {
   truncateOverflow?: boolean;
 }
 
-const TableRow: FC<TableRowProps> = ({
+export const TableRow: FC<TableRowProps> = ({
   columns,
   align = 'left',
   className = '',
@@ -141,5 +141,3 @@ const TableRow: FC<TableRowProps> = ({
     </tr>
   );
 };
-
-export default TableRow;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextInput from '../../TextInput/TextInput';
+import { TextInput } from '../../TextInput/TextInput';
 
 const propTypes = {
   field: PropTypes.shape({
@@ -12,7 +12,8 @@ const propTypes = {
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-const FormikTextInput = (
+// eslint-disable-line import/prefer-default-export
+export const FormikTextInput = (
   {
     field: {
       name,
@@ -35,5 +36,3 @@ const FormikTextInput = (
 );
 
 FormikTextInput.propTypes = propTypes;
-
-export default FormikTextInput;

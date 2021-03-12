@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import Box, { BoxProps } from '../../../Box/Box';
+import { Box, BoxProps } from '../../../Box/Box';
 
 export type ModalFooterProps = Omit<
   BoxProps,
   'as' | 'background' | 'borderColor' | 'borderWidth' | 'radius'
 >;
 
-const ModalFooter: FC<ModalFooterProps> = ({
+export const ModalFooter: FC<ModalFooterProps> = ({
   children,
   padding = 'lg',
   direction = 'row',
@@ -33,5 +33,3 @@ const ModalFooter: FC<ModalFooterProps> = ({
     {children}
   </Box>
 );
-
-export default ModalFooter;

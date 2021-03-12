@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Spinner, { SpinnerProps } from './Spinner';
+import { Spinner, SpinnerProps } from './Spinner';
 import { BRAND_COLOR_NAMES } from '../../lib/tokens';
 import { SPINNER_SIZES } from './Spinner.constants';
 

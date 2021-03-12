@@ -11,7 +11,7 @@ import {
   Form,
   FormikValues,
 } from 'formik';
-import FormikTextareaInput from './FormikTextareaInput';
+import { FormikTextareaInput } from './FormikTextareaInput';
 
 const testLabelName = 'textInput';
 
