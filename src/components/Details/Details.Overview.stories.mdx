@@ -1,0 +1,37 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Details } from './Details';
+
+
+<Meta title="Components/Details/Overview" component={Details} />
+
+# Details
+
+Description goes here.
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false)
+      const handleToggle = () => {
+        const newIsOpen = !isOpen;
+        setIsOpen(newIsOpen);
+      }
+      return (
+        <Details
+          isOpen={isOpen}
+        >
+          <Details.Summary
+            isDetailsOpen={isOpen}
+            onToggle={() => handleToggle()}
+          >
+            summary
+          </Details.Summary>
+          hello world!
+        </Details>
+      );
+    }}
+  </Story>
+</Canvas>

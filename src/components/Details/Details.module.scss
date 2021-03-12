@@ -1,0 +1,33 @@
+.details-reset {
+  > summary {
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.details[open] summary ~ * {
+  animation: sweep 0.5s ease-in-out;
+}
+
+@keyframes sweep {
+  0% {
+    opacity: 0;
+    margin-left: -10px;
+  }
+
+  100% {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
