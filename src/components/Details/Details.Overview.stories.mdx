@@ -3,16 +3,62 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Details } from './Details';
+import { Heading } from '../Heading/Heading';
+import { Button } from '../Button/Button';
+import { Box } from '../Box/Box';
 
 
 <Meta title="Components/Details/Overview" component={Details} />
 
 # Details
 
-Description goes here.
+The `<details>` tag specifies additional details that the user can open and close on demand. This custom component
+provides a React implementation of this semantic HTML with controlled state.
+
+It includes a child component for the details summary `<Details.Summary />`. The details themselves can be included as children
+inside `<Details>` typically following the `<Details.Summary>`.
 
 <Canvas isExpanded>
-  <Story name="Default">
+  <Story name="Demo">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false)
+      const handleToggle = () => {
+        const newIsOpen = !isOpen;
+        setIsOpen(newIsOpen);
+      }
+      return (
+        <Details
+          isOpen={isOpen}
+          reset={false}
+        >
+          <Details.Summary
+            isDetailsOpen={isOpen}
+            onToggle={() => handleToggle()}
+            display="inline"
+          >
+            Proper dipping etiquette
+          </Details.Summary>
+          <Box padding="md 0" style={{ lineHeight: '1.5'}}>
+            Did you just double dip that chip? You dipped the chip, you took a bite, and you dipped again.
+            That's like putting your whole mouth right in the dip.
+            From now on, when you take a chip, just take one dip and end it!
+          </Box>
+        </Details>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Details} />
+
+## With a custom `<summary>`.
+
+Add any custom JSX to the `<Details.Summary>` element to customize your summary trigger.
+
+<Canvas isExpanded>
+  <Story name="With custom summary">
     {() => {
       const [isOpen, setIsOpen] = useState(false)
       const handleToggle = () => {
@@ -27,9 +73,94 @@ Description goes here.
             isDetailsOpen={isOpen}
             onToggle={() => handleToggle()}
           >
+            <Heading style={{ cursor: 'pointer' }}>Do you have my reservation?</Heading>
+          </Details.Summary>
+          <Box padding="md 0" style={{ lineHeight: '1.5'}}>
+            See, you know how to take the reservation,
+            you just don’t know how to hold the reservation
+            and that’s really the most important part of the reservation, the holding.
+            Anybody can just take them.
+          </Box>
+        </Details>
+      );
+    }}
+  </Story>
+</Canvas>
+
+Since the `<Details.Summmary>` component is simply a `<Box>` it's very simple to style using all the props available. The example
+below renders the summary inline so that the trigger is an inline `<Button>`. This works well in conjunction with details that
+are more akin to widgets.
+
+<Canvas isExpanded>
+  <Story name="With a button">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false)
+      const handleToggle = () => {
+        const newIsOpen = !isOpen;
+        setIsOpen(newIsOpen);
+      }
+      return (
+        <Box height="170px">
+          <Details
+            isOpen={isOpen}
+          >
+            <Details.Summary
+              isDetailsOpen={isOpen}
+              onToggle={() => handleToggle()}
+              display="inline"
+            >
+              <Button>See Widget</Button>
+            </Details.Summary>
+            <Box
+              padding="md"
+              margin="xs 0 0 0"
+              style={{ position: 'absolute' }}
+              height="120px"
+              width="200px"
+              shadow="md"
+            >
+              <Heading size="md">I'm a widget</Heading>
+              <Box as="ul" margin="sm 0 0 0" padding="0">
+                <Box as="li" margin="xs 0 0 0">
+                  Item 1
+                </Box>
+                <Box as="li" margin="xs 0 0 0">
+                  Item 2
+                </Box>
+              </Box>
+            </Box>
+          </Details>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## The 'reset' prop
+
+The HTML `<summary>` element includes default styling in html. By default our component resets the styling of this element
+but if you require defaults, simply pass the `reset={false}` prop and it will eliminate the CSS reset.
+
+<Canvas isExpanded>
+  <Story name="No Reset">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false)
+      const handleToggle = () => {
+        const newIsOpen = !isOpen;
+        setIsOpen(newIsOpen);
+      }
+      return (
+        <Details
+          isOpen={isOpen}
+          reset={false}
+        >
+          <Details.Summary
+            isDetailsOpen={isOpen}
+            onToggle={() => handleToggle()}
+          >
             summary
           </Details.Summary>
-          hello world!
+          <Box padding="md 0">hello world!</Box>
         </Details>
       );
     }}

@@ -1,0 +1,71 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Heading } from '../Heading/Heading';
+import { Button } from '../Button/Button';
+import { Box } from '../Box/Box';
+import { Accordion } from './Accordion';
+
+
+<Meta title="Components/Accordion/Overview" component={Accordion} />
+
+# Accordion
+
+Description goes here.
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const [openPanels, setOpenPanels] = useState({
+        '1': false,
+        '2': false,
+        '3': false,
+      });
+      const panels = [
+        {
+          id: '1',
+          summary: 'Will this expand if I click it?',
+          details: 'I’m a scholar. I enjoy scholarly pursuits. Unlimited juice? This party is going to be off the hook! I’ve made a huge tiny mistake.',
+        },
+        {
+          id: '2',
+          summary: 'Here\'s another one, click it too',
+          details: 'Fried cheese… with club sauce. Excuse me while I circumvent you.' },
+        {
+          id: '3',
+          summary: 'third time\'s a charm',
+          details: 'Well excuse me, Judge Reinhold. Obviously this blue part here is the land.'
+        },
+      ];
+      const handleTogglePanels = (id) => {
+        const updatedPanels = { ...openPanels };
+        if (updatedPanels[id]) {
+          updatedPanels[id] = false;
+        } else {
+          Object.keys(updatedPanels).forEach(key => {
+            if (updatedPanels[key]) {
+              updatedPanels[key] = false;
+            }
+          });
+          updatedPanels[id] = true;
+        }
+        setOpenPanels(updatedPanels);
+      };
+      return (
+        <Accordion>
+          {panels.map(panel => (
+            <Accordion.Panel isOpen={openPanels[panel.id]} hasCaret="right">
+              <Accordion.PanelSummary hasCaret="right" onToggle={() => handleTogglePanels(panel.id)} isDetailsOpen={openPanels[panel.id]}>
+                {panel.summary}
+              </Accordion.PanelSummary>
+              <Accordion.PanelDetails>
+                {panel.details}
+              </Accordion.PanelDetails>
+            </Accordion.Panel>
+          ))}
+        </Accordion>
+      );
+    }}
+  </Story>
+</Canvas>

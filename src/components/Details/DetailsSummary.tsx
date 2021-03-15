@@ -5,10 +5,8 @@ import styles from './DetailsSummary.module.scss';
 import { Box, BoxProps } from '../Box/Box';
 
 export interface DetailsSummaryProps extends BoxProps {
-  className: string;
-  children: React.ReactNode;
   isDetailsOpen: boolean;
-  onToggle: () => void;
+  onToggle?: () => void;
 }
 
 export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
@@ -18,11 +16,11 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
   id,
   isDetailsOpen,
   onToggle,
+  ...restProps
 }) => {
   const classes = classNames(className, styles['details-summary']);
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
-    console.log('clicked');
     event.preventDefault();
     if (!onToggle) return;
 
@@ -49,6 +47,7 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
+      {...restProps}
     >
       {children}
     </Box>
