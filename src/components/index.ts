@@ -12,7 +12,7 @@ export * from './CheckboxInput/CheckboxInput';
 export * from './DateInput/DateInput';
 export * from './DatePicker/DatePicker';
 export * from './Details/Details';
-export * from './Details/DetailsSummary'
+export * from './Details/DetailsSummary';
 export * from './FileUpload/FileUpload';
 export * from './Formik/FormikCheckboxInput/FormikCheckboxInput';
 export * from './Formik/FormikRadioGroup/FormikRadioGroup';
