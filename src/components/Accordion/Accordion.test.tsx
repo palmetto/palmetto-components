@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import { Accordion } from './Accordion';
 
 describe('Accordion', () => {
@@ -15,7 +15,7 @@ describe('Accordion', () => {
               details
             </Accordion.PanelDetails>
           </Accordion.Panel>
-        </Accordion>
+        </Accordion>,
       );
 
       const details = screen.getByRole('group');
@@ -29,15 +29,15 @@ describe('Accordion', () => {
     test('It renders a default details HTML element and summary', () => {
       render(
         <Accordion>
-          <Accordion.Panel isOpen={true}>
-            <Accordion.PanelSummary isDetailsOpen={true}>
+          <Accordion.Panel isOpen>
+            <Accordion.PanelSummary isDetailsOpen>
               summary
             </Accordion.PanelSummary>
             <Accordion.PanelDetails>
               details
             </Accordion.PanelDetails>
           </Accordion.Panel>
-        </Accordion>
+        </Accordion>,
       );
 
       const details = screen.getByRole('group');
@@ -61,7 +61,7 @@ describe('Accordion', () => {
               details
             </Accordion.PanelDetails>
           </Accordion.Panel>
-        </Accordion>
+        </Accordion>,
       );
 
       const icon = screen.getByTestId('icon-testid--caret-right');
@@ -71,15 +71,15 @@ describe('Accordion', () => {
     test('It renders with the caret on the left and pointing down when open', () => {
       render(
         <Accordion>
-          <Accordion.Panel isOpen={true}>
-            <Accordion.PanelSummary isDetailsOpen={true}>
+          <Accordion.Panel isOpen>
+            <Accordion.PanelSummary isDetailsOpen>
               summary
             </Accordion.PanelSummary>
             <Accordion.PanelDetails>
               details
             </Accordion.PanelDetails>
           </Accordion.Panel>
-        </Accordion>
+        </Accordion>,
       );
 
       const icon = screen.getByTestId('icon-testid--caret-down');
@@ -97,7 +97,7 @@ describe('Accordion', () => {
               details
             </Accordion.PanelDetails>
           </Accordion.Panel>
-        </Accordion>
+        </Accordion>,
       );
 
       const icon = screen.getByTestId('icon-testid--caret-down');
@@ -107,15 +107,15 @@ describe('Accordion', () => {
     test('It renders with the caret pointing up when placed on the right and open', () => {
       render(
         <Accordion>
-          <Accordion.Panel isOpen={true}>
-            <Accordion.PanelSummary isDetailsOpen={true} hasCaret="right">
+          <Accordion.Panel isOpen>
+            <Accordion.PanelSummary isDetailsOpen hasCaret="right">
               summary
             </Accordion.PanelSummary>
             <Accordion.PanelDetails>
               details
             </Accordion.PanelDetails>
           </Accordion.Panel>
-        </Accordion>
+        </Accordion>,
       );
 
       const icon = screen.getByTestId('icon-testid--caret-up');
@@ -125,15 +125,15 @@ describe('Accordion', () => {
     test('It renders with no caret if hasCaret prop set to false', () => {
       render(
         <Accordion>
-          <Accordion.Panel isOpen={true}>
-            <Accordion.PanelSummary isDetailsOpen={true} hasCaret={false}>
+          <Accordion.Panel isOpen>
+            <Accordion.PanelSummary isDetailsOpen hasCaret={false}>
               summary
             </Accordion.PanelSummary>
             <Accordion.PanelDetails>
               details
             </Accordion.PanelDetails>
           </Accordion.Panel>
-        </Accordion>
+        </Accordion>,
       );
 
       const icon = screen.queryByTestId('icon-testid--caret-up');

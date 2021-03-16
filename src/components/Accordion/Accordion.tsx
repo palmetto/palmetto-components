@@ -4,18 +4,22 @@ import { AccordionPanel } from './AccordionPanel';
 import { AccordionPanelDetails } from './AccordionPanelDetails';
 import { AccordionPanelSummary } from './AccordionPanelSummary';
 
-export interface AccordionProps extends BoxProps {}
+export type AccordionProps = BoxProps;
 
 export class Accordion extends React.Component<AccordionProps> {
   static Panel = AccordionPanel;
+
   static PanelSummary = AccordionPanelSummary;
+
   static PanelDetails = AccordionPanelDetails;
 
-  render() {
+  render(): React.ReactNode {
+    const { children, ...restProps } = this.props;
+
     return (
-      <Box {...this.props}>
-        {this.props.children}
+      <Box {...restProps}>
+        {children}
       </Box>
-    )
+    );
   }
 }

@@ -1,5 +1,4 @@
 import React, { MouseEvent, KeyboardEvent } from 'react';
-import classNames from 'classnames';
 import * as KEYS from '../../constants/keyCodes';
 import { Box, BoxProps } from '../Box/Box';
 
@@ -15,7 +14,6 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
   onToggle,
   ...restProps
 }) => {
-
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
     if (!onToggle) return;
@@ -46,4 +44,4 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
       {children}
     </Box>
   );
-}
+};

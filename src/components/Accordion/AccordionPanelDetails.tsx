@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, BoxProps } from '../Box/Box';
 
-export interface AccordionPanelDetailsProps extends BoxProps {}
+export type AccordionPanelDetailsProps = BoxProps;
 
 export const AccordionPanelDetails: React.FC<AccordionPanelDetailsProps> = ({
   children,
@@ -20,4 +20,4 @@ export const AccordionPanelDetails: React.FC<AccordionPanelDetailsProps> = ({
   >
     {children}
   </Box>
-)
+);

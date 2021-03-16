@@ -16,18 +16,20 @@ export const AccordionPanelSummary: React.FC<AccordionPanelSummaryProps> = ({
   ...restProps
 }) => {
   const getSummaryIcon = () => {
-    if (!hasCaret) return '';
-
     if (hasCaret === 'left') {
       return isDetailsOpen ? 'caret-down' : 'caret-right';
-    } else if (hasCaret === 'right') {
+    }
+
+    if (hasCaret === 'right') {
       return isDetailsOpen ? 'caret-up' : 'caret-down';
     }
+
+    return '';
   };
 
   return (
     <DetailsSummary isDetailsOpen={isDetailsOpen} onToggle={onToggle} {...restProps}>
-      <Box direction="row" borderWidth='0 0 xs 0' borderColor="grey-100" padding="sm">
+      <Box direction="row" borderWidth="0 0 xs 0" borderColor="grey-100" padding="sm">
         {hasCaret === 'left' && (
           <Box margin="0 sm 0 0">
             <Icon name={getSummaryIcon() as IconName} />
@@ -41,6 +43,5 @@ export const AccordionPanelSummary: React.FC<AccordionPanelSummaryProps> = ({
         )}
       </Box>
     </DetailsSummary>
-  )
-}
-
+  );
+};

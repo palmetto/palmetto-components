@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 // import * as UtilitySystem from '../UtilitySystem/helpers';
 import { DetailsSummary } from './DetailsSummary';
@@ -11,16 +11,17 @@ export interface DetailsProps extends BoxProps {
    */
   isOpen: boolean;
   /**
-   * Determines whether our component resets the standard HTML style of the details/summary elements. Set to `true` by default
+   * Determines whether our component resets the standard HTML style of the details/summary elements.
+   * Set to `true` by default
    * since in most cases we will not want to use the default styling.
    */
   reset?: boolean;
-};
+}
 
 export class Details extends React.Component<DetailsProps> {
   static Summary = DetailsSummary;
 
-  render() {
+  render(): React.ReactNode {
     const {
       children,
       className,
@@ -33,7 +34,7 @@ export class Details extends React.Component<DetailsProps> {
     const detailsClasses = classNames(
       className,
       { [styles['details-reset']]: reset },
-      styles['details']
+      styles.details,
     );
 
     return (

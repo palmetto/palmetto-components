@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Details } from './Details';
 
@@ -10,7 +10,7 @@ describe('Details', () => {
           <Details.Summary isDetailsOpen={false}>
             summary
           </Details.Summary>
-        </Details>
+        </Details>,
       );
 
       const details = screen.getByRole('group');
@@ -26,8 +26,8 @@ describe('Details', () => {
         <Details isOpen={false}>
           <Details.Summary isDetailsOpen={false}>
             summary
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
 
       const details = screen.getByRole('group');
@@ -39,8 +39,8 @@ describe('Details', () => {
         <Details isOpen={false} reset={false}>
           <Details.Summary isDetailsOpen={false}>
             summary
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
 
       const details = screen.getByRole('group');
@@ -51,14 +51,14 @@ describe('Details', () => {
   describe('With open details initially', () => {
     test('It renders a default details HTML element and summary', () => {
       render(
-        <Details isOpen={true}>
-          <Details.Summary isDetailsOpen={true}>
+        <Details isOpen>
+          <Details.Summary isDetailsOpen>
             summary
           </Details.Summary>
           <div>
             details
-          </div> 
-        </Details>
+          </div>
+        </Details>,
       );
 
       const details = screen.getByRole('group');
@@ -76,8 +76,8 @@ describe('Details', () => {
         <Details isOpen={false}>
           <Details.Summary isDetailsOpen={false}>
             summary
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
 
       const summary = screen.getByRole('button');
@@ -90,25 +90,25 @@ describe('Details', () => {
         <Details isOpen={false}>
           <Details.Summary isDetailsOpen={false}>
             summary
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
 
       const summary = screen.getByText('summary');
       expect(summary).toBeInTheDocument();
-      expect(summary).toHaveAttribute('aria-expanded', "false");
+      expect(summary).toHaveAttribute('aria-expanded', 'false');
 
       rerender(
-        <Details isOpen={true}>
-          <Details.Summary isDetailsOpen={true}>
+        <Details isOpen>
+          <Details.Summary isDetailsOpen>
             summary2
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
 
       const summaryTwo = screen.getByText('summary2');
       expect(summaryTwo).toBeInTheDocument();
-      expect(summaryTwo).toHaveAttribute('aria-expanded', "true");
+      expect(summaryTwo).toHaveAttribute('aria-expanded', 'true');
     });
 
     test('The summary is tabbable', () => {
@@ -116,28 +116,28 @@ describe('Details', () => {
         <Details isOpen={false}>
           <Details.Summary isDetailsOpen={false}>
             summary
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
 
       const summary = screen.getByRole('button');
       expect(summary).toBeInTheDocument();
-      expect(summary).toHaveAttribute('tabIndex', "0");
-    });  
+      expect(summary).toHaveAttribute('tabIndex', '0');
+    });
   });
 
   describe('Events', () => {
     test('it fires an onToggle when summary is clicked', () => {
       const mockedOnToggle = jest.fn(() => null);
-  
+
       render(
         <Details isOpen={false}>
           <Details.Summary isDetailsOpen={false} onToggle={mockedOnToggle}>
             summary
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
-      
+
       const summary = screen.getByRole('button');
       fireEvent.click(summary);
       expect(mockedOnToggle).toHaveBeenCalledTimes(1);
@@ -145,36 +145,36 @@ describe('Details', () => {
 
     test('onToggle event fires with ENTER key', () => {
       const mockedOnToggle = jest.fn(() => null);
-  
+
       render(
         <Details isOpen={false}>
           <Details.Summary isDetailsOpen={false} onToggle={mockedOnToggle}>
             summary
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
-      
+
       const summary = screen.getByRole('button');
-      fireEvent.keyDown(summary,{ keyCode: 13 });
-      fireEvent.keyDown(summary,{ keyCode: 32 });
-      fireEvent.keyDown(summary,{ keyCode: 25 });
+      fireEvent.keyDown(summary, { keyCode: 13 });
+      fireEvent.keyDown(summary, { keyCode: 32 });
+      fireEvent.keyDown(summary, { keyCode: 25 });
       expect(mockedOnToggle).toHaveBeenCalledTimes(2);
     });
 
     test('Does not attempt to fire onToggle if function not passed', () => {
       const mockedOnToggle = jest.fn(() => null);
-  
+
       render(
         <Details isOpen={false}>
           <Details.Summary isDetailsOpen={false}>
             summary
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
-      
+
       const summary = screen.getByRole('button');
-      fireEvent.keyDown(summary,{ keyCode: 13 });
-      fireEvent.keyDown(summary,{ keyCode: 32 });
+      fireEvent.keyDown(summary, { keyCode: 13 });
+      fireEvent.keyDown(summary, { keyCode: 32 });
       fireEvent.click(summary);
       expect(mockedOnToggle).toHaveBeenCalledTimes(0);
     });
@@ -186,8 +186,8 @@ describe('Details', () => {
         <Details isOpen={false} className="m-bottom-md">
           <Details.Summary isDetailsOpen={false} className="m-top-lg">
             summary
-          </Details.Summary> 
-        </Details>
+          </Details.Summary>
+        </Details>,
       );
 
       const details = screen.getByRole('group');
