@@ -175,7 +175,7 @@ By default the caret is on the right. You can render the caret on the left side 
               </p>
             </Accordion.PanelDetails>
           </Accordion.Panel>
-          <Accordion.Panel isOpen={openPanels['3']}>
+          <Accordion.Panel isOpen={openPanels['3']} borderWidth="0">
             <Accordion.PanelSummary
               hasCaret="left"
               onToggle={() => handleTogglePanels('3')}
@@ -258,7 +258,7 @@ You can also choose to hide the caret altogether. Moreover, the accordion is a v
               </p>
             </Accordion.PanelDetails>
           </Accordion.Panel>
-          <Accordion.Panel isOpen={openPanels['3']}>
+          <Accordion.Panel isOpen={openPanels['3']} borderWidth="0">
             <Accordion.PanelSummary
               hasCaret={false}
               onToggle={() => handleTogglePanels('3')}
