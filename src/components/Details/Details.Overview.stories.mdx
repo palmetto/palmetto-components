@@ -8,7 +8,6 @@ import { Button } from '../Button/Button';
 import { Box } from '../Box/Box';
 import { DetailsSummary } from './DetailsSummary';
 
-
 <Meta title="Components/Details/Overview" component={Details} />
 
 # Details
@@ -19,32 +18,29 @@ provides a React implementation of this semantic HTML with controlled state.
 It includes a child component for the details summary `<Details.Summary />`. The details themselves can be included as children
 inside `<Details>` typically following the `<Details.Summary>`.
 
-NOTE: for a custom implementation of this component see the [accordion](/?path=/story/components-accordion-overview--default-story) 
+NOTE: for a custom implementation of this component see the [accordion](/?path=/story/components-accordion-overview--default-story)
 
 <Canvas isExpanded>
   <Story name="Demo">
     {() => {
-      const [isOpen, setIsOpen] = useState(false)
+      const [isOpen, setIsOpen] = useState(false);
       const handleToggle = () => {
         const newIsOpen = !isOpen;
         setIsOpen(newIsOpen);
-      }
+      };
       return (
-        <Details
-          isOpen={isOpen}
-          reset={false}
-        >
-          <Details.Summary
-            isDetailsOpen={isOpen}
-            onToggle={() => handleToggle()}
-            display="inline"
-          >
-            Proper dipping etiquette
+        <Details isOpen={isOpen}>
+          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()} display="inline">
+            What is Palmetto's Mission?
           </Details.Summary>
-          <Box padding="md 0" style={{ lineHeight: '1.5'}}>
-            Did you just double dip that chip? You dipped the chip, you took a bite, and you dipped again.
-            That's like putting your whole mouth right in the dip.
-            From now on, when you take a chip, just take one dip and end it!
+          <Box padding="md 0" childGap="sm">
+            <Heading as="h4">Leading the World Towards a Clean Energy Future</Heading>
+            <Box as="p">
+              We are on a mission to stop climate change before we reach an irreversible tipping
+              point. Yes, this requires large shifts by entire nations and entire populations. It
+              requires urgency and change on a massive scale. But technological advancements have
+              put it within reach.
+            </Box>
           </Box>
         </Details>
       );
@@ -56,32 +52,26 @@ NOTE: for a custom implementation of this component see the [accordion](/?path=/
 
 <ArgsTable of={Details} />
 
-## With a custom `<summary>`.
+## Custom `<summary>` Appearance.
 
 Add any custom JSX to the `<Details.Summary>` element to customize your summary trigger.
 
 <Canvas isExpanded>
   <Story name="With custom summary">
     {() => {
-      const [isOpen, setIsOpen] = useState(false)
+      const [isOpen, setIsOpen] = useState(false);
       const handleToggle = () => {
         const newIsOpen = !isOpen;
         setIsOpen(newIsOpen);
-      }
+      };
       return (
-        <Details
-          isOpen={isOpen}
-        >
-          <Details.Summary
-            isDetailsOpen={isOpen}
-            onToggle={() => handleToggle()}
-          >
+        <Details isOpen={isOpen}>
+          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()}>
             <Heading style={{ cursor: 'pointer' }}>Do you have my reservation?</Heading>
           </Details.Summary>
-          <Box padding="md 0" style={{ lineHeight: '1.5'}}>
-            See, you know how to take the reservation,
-            you just don’t know how to hold the reservation
-            and that’s really the most important part of the reservation, the holding.
+          <Box padding="md 0" as="p">
+            See, you know how to take the reservation, you just don’t know how to hold the
+            reservation and that’s really the most important part of the reservation, the holding.
             Anybody can just take them.
           </Box>
         </Details>
@@ -97,43 +87,56 @@ are more akin to widgets.
 <Canvas isExpanded>
   <Story name="With a button">
     {() => {
-      const [isOpen, setIsOpen] = useState(false)
+      const [isOpen, setIsOpen] = useState(false);
       const handleToggle = () => {
         const newIsOpen = !isOpen;
         setIsOpen(newIsOpen);
-      }
+      };
       return (
-        <Box height="170px">
-          <Details
-            isOpen={isOpen}
-          >
-            <Details.Summary
-              isDetailsOpen={isOpen}
-              onToggle={() => handleToggle()}
-              display="inline"
-            >
-              <Button>See Widget</Button>
-            </Details.Summary>
-            <Box
-              padding="md"
-              margin="xs 0 0 0"
-              style={{ position: 'absolute' }}
-              height="120px"
-              width="200px"
-              shadow="md"
-            >
-              <Heading size="md">I'm a widget</Heading>
-              <Box as="ul" margin="sm 0 0 0" padding="0">
-                <Box as="li" margin="xs 0 0 0">
-                  Item 1
-                </Box>
-                <Box as="li" margin="xs 0 0 0">
-                  Item 2
-                </Box>
+        <Details isOpen={isOpen}>
+          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()} display="inline">
+            <Button>See Widget</Button>
+          </Details.Summary>
+          <Box padding="md" margin="xs 0 0 0" background="grey-50" height="120px" width="200px">
+            <Heading size="md">I'm a widget</Heading>
+            <Box as="ul" margin="sm 0 0 0" padding="0">
+              <Box as="li" margin="xs 0 0 0">
+                Item 1
+              </Box>
+              <Box as="li" margin="xs 0 0 0">
+                Item 2
               </Box>
             </Box>
-          </Details>
-        </Box>
+          </Box>
+        </Details>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Start Opened
+
+Render the component with the details expanded by setting `isOpen` to `true`.
+
+<Canvas isExpanded>
+  <Story name="Opened">
+    {() => {
+      const [isOpen, setIsOpen] = useState(true);
+      const handleToggle = () => {
+        const newIsOpen = !isOpen;
+        setIsOpen(newIsOpen);
+      };
+      return (
+        <Details isOpen={isOpen}>
+          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()}>
+            <Heading style={{ cursor: 'pointer' }}>Do you have my reservation?</Heading>
+          </Details.Summary>
+          <Box padding="md 0" as="p">
+            See, you know how to take the reservation, you just don’t know how to hold the
+            reservation and that’s really the most important part of the reservation, the holding.
+            Anybody can just take them.
+          </Box>
+        </Details>
       );
     }}
   </Story>
@@ -147,20 +150,14 @@ but if you require defaults, simply pass the `reset={false}` prop and it will el
 <Canvas isExpanded>
   <Story name="No Reset">
     {() => {
-      const [isOpen, setIsOpen] = useState(false)
+      const [isOpen, setIsOpen] = useState(false);
       const handleToggle = () => {
         const newIsOpen = !isOpen;
         setIsOpen(newIsOpen);
-      }
+      };
       return (
-        <Details
-          isOpen={isOpen}
-          reset={false}
-        >
-          <Details.Summary
-            isDetailsOpen={isOpen}
-            onToggle={() => handleToggle()}
-          >
+        <Details isOpen={isOpen} reset={false}>
+          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()}>
             summary
           </Details.Summary>
           <Box padding="md 0">hello world!</Box>

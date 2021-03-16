@@ -1,5 +1,6 @@
 .details-reset {
   > summary {
+    cursor: pointer;
     list-style: none;
 
     &::-webkit-details-marker {
