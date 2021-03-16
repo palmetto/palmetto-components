@@ -13,17 +13,20 @@
     /* define regular focus styles for non-supporting browsers */
     &:focus {
       outline: 0;
+      box-shadow: 0 0 0 2px var(--color-brand-primary-light);
     }
 
     /* Show focus styles on keyboard focus. */
     &:focus-visible {
       outline: 0;
+      box-shadow: 0 0 0 2px var(--color-brand-primary-light);
     }
 
     /* Hide focus styles if they're not needed, for example,
     when an element receives focus via the mouse. */
     &:focus:not(:focus-visible) {
       outline: 0;
+      box-shadow: none;
     }
   }
 }

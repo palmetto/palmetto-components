@@ -5,13 +5,13 @@ import { DetailsSummary, DetailsSummaryProps } from '../Details/DetailsSummary';
 import { Box } from '../Box/Box';
 
 export interface AccordionPanelSummaryProps extends DetailsSummaryProps {
-  hasCaret: 'left' | 'right' | false;
+  hasCaret?: 'left' | 'right' | false;
 }
 
 export const AccordionPanelSummary: React.FC<AccordionPanelSummaryProps> = ({
   children,
   onToggle,
-  hasCaret,
+  hasCaret = 'left',
   isDetailsOpen,
   ...restProps
 }) => {

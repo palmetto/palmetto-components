@@ -12,7 +12,8 @@ import { Accordion } from './Accordion';
 
 # Accordion
 
-Description goes here.
+Accordions are useful when you want to toggle between hiding and showing additional content for multiple
+pieces of information, like in an FAQ section.
 
 <Canvas isExpanded>
   <Story name="Default">
@@ -22,22 +23,7 @@ Description goes here.
         '2': false,
         '3': false,
       });
-      const panels = [
-        {
-          id: '1',
-          summary: 'Will this expand if I click it?',
-          details: 'I’m a scholar. I enjoy scholarly pursuits. Unlimited juice? This party is going to be off the hook! I’ve made a huge tiny mistake.',
-        },
-        {
-          id: '2',
-          summary: 'Here\'s another one, click it too',
-          details: 'Fried cheese… with club sauce. Excuse me while I circumvent you.' },
-        {
-          id: '3',
-          summary: 'third time\'s a charm',
-          details: 'Well excuse me, Judge Reinhold. Obviously this blue part here is the land.'
-        },
-      ];
+      /* This logic ensures only one panel is open at a time */
       const handleTogglePanels = (id) => {
         const updatedPanels = { ...openPanels };
         if (updatedPanels[id]) {
@@ -54,18 +40,101 @@ Description goes here.
       };
       return (
         <Accordion>
-          {panels.map(panel => (
-            <Accordion.Panel isOpen={openPanels[panel.id]} hasCaret="right">
-              <Accordion.PanelSummary hasCaret="right" onToggle={() => handleTogglePanels(panel.id)} isDetailsOpen={openPanels[panel.id]}>
-                {panel.summary}
-              </Accordion.PanelSummary>
-              <Accordion.PanelDetails>
-                {panel.details}
-              </Accordion.PanelDetails>
-            </Accordion.Panel>
-          ))}
+          <Accordion.Panel isOpen={openPanels['1']}>
+            <Accordion.PanelSummary onToggle={() => handleTogglePanels('1')} isDetailsOpen={openPanels['1']}>
+              Will this expand if I click it?
+            </Accordion.PanelSummary>
+            <Accordion.PanelDetails>
+              I’m a scholar. I enjoy scholarly pursuits.
+              Unlimited juice? This party is going to be off the hook!
+              I’ve made a huge tiny mistake.
+            </Accordion.PanelDetails>
+          </Accordion.Panel>
+          <Accordion.Panel isOpen={openPanels['2']}>
+            <Accordion.PanelSummary onToggle={() => handleTogglePanels('2')} isDetailsOpen={openPanels['2']}>
+              Here's another one, click it too
+            </Accordion.PanelSummary>
+            <Accordion.PanelDetails>
+              Fried cheese… with club sauce. Excuse me while I circumvent you.
+            </Accordion.PanelDetails>
+          </Accordion.Panel>
+          <Accordion.Panel isOpen={openPanels['3']}>
+            <Accordion.PanelSummary onToggle={() => handleTogglePanels('3')} isDetailsOpen={openPanels['3']}>
+              third time's a charm
+            </Accordion.PanelSummary>
+            <Accordion.PanelDetails>
+              Well excuse me, Judge Reinhold. Obviously this blue part here is the land.
+            </Accordion.PanelDetails>
+          </Accordion.Panel>
         </Accordion>
       );
     }}
   </Story>
 </Canvas>
+
+## Caret Options
+
+By default the caret is on the left, and its closed state is pointing right and open is down. This resembles a folder structure.
+The caret can also be place on the right side, in which case, the closed state is pointing down, and open is up.
+
+This is an opinionated decision and as such you can also choose to hide the caret altogether. Moreover, the accordion is a
+very transparent custom implementation of the `<Details>` component so if more custom behavior is required, you can build your own
+custom accordions `<Details>` details as well.
+
+<Canvas isExpanded>
+  <Story name="Caret Options">
+    {() => {
+      const [openPanels, setOpenPanels] = useState({
+        '1': false,
+        '2': false,
+        '3': false,
+      });
+      /* This logic ensures only one panel is open at a time */
+      const handleTogglePanels = (id) => {
+        const updatedPanels = { ...openPanels };
+        if (updatedPanels[id]) {
+          updatedPanels[id] = false;
+        } else {
+          Object.keys(updatedPanels).forEach(key => {
+            if (updatedPanels[key]) {
+              updatedPanels[key] = false;
+            }
+          });
+          updatedPanels[id] = true;
+        }
+        setOpenPanels(updatedPanels);
+      };
+      return (
+        <Accordion>
+          <Accordion.Panel isOpen={openPanels['1']}>
+            <Accordion.PanelSummary hasCaret="left" onToggle={() => handleTogglePanels('1')} isDetailsOpen={openPanels['1']}>
+              Will this expand if I click it?
+            </Accordion.PanelSummary>
+            <Accordion.PanelDetails>
+              I’m a scholar. I enjoy scholarly pursuits.
+              Unlimited juice? This party is going to be off the hook!
+              I’ve made a huge tiny mistake.
+            </Accordion.PanelDetails>
+          </Accordion.Panel>
+          <Accordion.Panel isOpen={openPanels['2']}>
+            <Accordion.PanelSummary hasCaret="right" onToggle={() => handleTogglePanels('2')} isDetailsOpen={openPanels['2']}>
+              Here's another one, click it too
+            </Accordion.PanelSummary>
+            <Accordion.PanelDetails>
+              Fried cheese… with club sauce. Excuse me while I circumvent you.
+            </Accordion.PanelDetails>
+          </Accordion.Panel>
+          <Accordion.Panel isOpen={openPanels['3']}>
+            <Accordion.PanelSummary hasCaret={false} onToggle={() => handleTogglePanels('3')} isDetailsOpen={openPanels['3']}>
+              third time's a charm
+            </Accordion.PanelSummary>
+            <Accordion.PanelDetails>
+              Well excuse me, Judge Reinhold. Obviously this blue part here is the land.
+            </Accordion.PanelDetails>
+          </Accordion.Panel>
+        </Accordion>
+      );
+    }}
+  </Story>
+</Canvas>
+
