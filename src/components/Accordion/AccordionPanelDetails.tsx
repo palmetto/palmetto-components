@@ -5,19 +5,10 @@ export type AccordionPanelDetailsProps = BoxProps;
 
 export const AccordionPanelDetails: React.FC<AccordionPanelDetailsProps> = ({
   children,
-  padding = 'sm',
-  borderWidth = '0 0 xs 0',
-  borderColor = 'grey-100',
-  background = 'grey-50',
+  padding = '0 md lg md',
   ...restProps
 }) => (
-  <Box
-    padding={padding}
-    borderWidth={borderWidth}
-    borderColor={borderColor}
-    background={background}
-    {...restProps}
-  >
+  <Box padding={padding} {...restProps}>
     {children}
   </Box>
 );

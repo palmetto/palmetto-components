@@ -11,34 +11,42 @@ export interface AccordionPanelSummaryProps extends DetailsSummaryProps {
 export const AccordionPanelSummary: React.FC<AccordionPanelSummaryProps> = ({
   children,
   onToggle,
-  hasCaret = 'left',
+  padding = 'md',
+  fontWeight = 'bold',
+  hasCaret = 'right',
   isDetailsOpen,
   ...restProps
 }) => {
   const getSummaryIcon = () => {
     if (hasCaret === 'left') {
-      return isDetailsOpen ? 'caret-down' : 'caret-right';
+      return isDetailsOpen ? 'caret-sm-down' : 'caret-sm-right';
     }
 
     if (hasCaret === 'right') {
-      return isDetailsOpen ? 'caret-up' : 'caret-down';
+      return isDetailsOpen ? 'caret-sm-up' : 'caret-sm-down';
     }
 
     return '';
   };
 
   return (
-    <DetailsSummary isDetailsOpen={isDetailsOpen} onToggle={onToggle} {...restProps}>
-      <Box direction="row" borderWidth="0 0 xs 0" borderColor="grey-100" padding="sm">
+    <DetailsSummary
+      fontWeight={fontWeight}
+      padding={padding}
+      isDetailsOpen={isDetailsOpen}
+      onToggle={onToggle}
+      {...restProps}
+    >
+      <Box direction="row" childGap="sm">
         {hasCaret === 'left' && (
-          <Box margin="0 sm 0 0">
-            <Icon name={getSummaryIcon() as IconName} />
+          <Box>
+            <Icon name={getSummaryIcon() as IconName} color="grey-500" />
           </Box>
         )}
         {children}
         {hasCaret === 'right' && (
           <Box margin="0 0 0 auto">
-            <Icon name={getSummaryIcon() as IconName} />
+            <Icon name={getSummaryIcon() as IconName} color="grey-500" />
           </Box>
         )}
       </Box>

@@ -10,13 +10,13 @@ import { AccordionPanel } from './AccordionPanel';
 import { AccordionPanelSummary } from './AccordionPanelSummary';
 import { AccordionPanelDetails } from './AccordionPanelDetails';
 
-
 <Meta title="Components/Accordion/Overview" component={Accordion} />
 
 # Accordion
 
-Accordions are useful when you want to toggle between hiding and showing additional content for multiple
-pieces of information, like in an FAQ section.
+The accordion component delivers a large amount of information in a small amount of space through progress disclosure. It is ideally used to shorten pages or reduce scrolling when it is not critical that content be fully read.
+
+Accordions are useful when you want to toggle between hiding and showing additional content for related information, such as a Glossary or FAQ.
 
 <Canvas isExpanded>
   <Story name="Default">
@@ -27,7 +27,7 @@ pieces of information, like in an FAQ section.
         '3': false,
       });
       /* This logic ensures only one panel is open at a time */
-      const handleTogglePanels = (id) => {
+      const handleTogglePanels = id => {
         const updatedPanels = { ...openPanels };
         if (updatedPanels[id]) {
           updatedPanels[id] = false;
@@ -44,29 +44,64 @@ pieces of information, like in an FAQ section.
       return (
         <Accordion>
           <Accordion.Panel isOpen={openPanels['1']}>
-            <Accordion.PanelSummary onToggle={() => handleTogglePanels('1')} isDetailsOpen={openPanels['1']}>
-              Will this expand if I click it?
+            <Accordion.PanelSummary
+              onToggle={() => handleTogglePanels('1')}
+              isDetailsOpen={openPanels['1']}
+            >
+              What is solar energy? How do solar panels work?
             </Accordion.PanelSummary>
-            <Accordion.PanelDetails>
-              I’m a scholar. I enjoy scholarly pursuits.
-              Unlimited juice? This party is going to be off the hook!
-              I’ve made a huge tiny mistake.
+            <Accordion.PanelDetails childGap="md">
+              <p>
+                Solar panels, also called photovoltaic or PV panels, consist of solar cells that are
+                designed to capture the radiant light and heat contained in sunlight and convert it
+                into usable clean energy for your home.
+              </p>
+              <p>
+                When sunlight hits your solar panel, the photons of energy are converted into DC
+                (direct current) electricity, which is then converted into AC (alternating current)
+                electricity for use in your home. Solar panels are often grouped together to form a
+                solar grid or solar array, allowing you to capture and harness the right amount of
+                energy for your needs.
+              </p>
             </Accordion.PanelDetails>
           </Accordion.Panel>
           <Accordion.Panel isOpen={openPanels['2']}>
-            <Accordion.PanelSummary onToggle={() => handleTogglePanels('2')} isDetailsOpen={openPanels['2']}>
-              Here's another one, click it too
+            <Accordion.PanelSummary
+              onToggle={() => handleTogglePanels('2')}
+              isDetailsOpen={openPanels['2']}
+            >
+              How do I know if solar is right for me?
             </Accordion.PanelSummary>
             <Accordion.PanelDetails>
-              Fried cheese… with club sauce. Excuse me while I circumvent you.
+              <p>
+                There are several factors we can look at to determine if solar might be a good
+                solution for your needs, including roof space, home energy usage, credit health, and
+                eligibility for incentives. At Palmetto, we start by calculating a quick savings
+                estimate based on your home, location, and current utility costs. Then, we’ll
+                schedule a meeting to clarify your goals, address any questions, identify purchase
+                options, and outline the solar process. All of this happens before you pay, allowing
+                you to decide if a solar power system is right for you based on a complete
+                understanding of the potential costs and savings.
+              </p>
             </Accordion.PanelDetails>
           </Accordion.Panel>
-          <Accordion.Panel isOpen={openPanels['3']}>
-            <Accordion.PanelSummary onToggle={() => handleTogglePanels('3')} isDetailsOpen={openPanels['3']}>
-              third time's a charm
+          <Accordion.Panel isOpen={openPanels['3']} borderWidth="0">
+            <Accordion.PanelSummary
+              onToggle={() => handleTogglePanels('3')}
+              isDetailsOpen={openPanels['3']}
+            >
+              How many solar panels do I need?
             </Accordion.PanelSummary>
             <Accordion.PanelDetails>
-              Well excuse me, Judge Reinhold. Obviously this blue part here is the land.
+              <p>
+                The right solar power system for your home will depend on a variety of factors,
+                including your current energy usage, the size and layout of your roof, and your
+                preferred level of energy independence. To hone in on the right solution for your
+                home, we always begin with a personal consultation and a survey, both of which serve
+                to clarify your goals and outline available options. Should you choose to invest,
+                we’ll design a custom solution to meet your goals and maximize your savings—no
+                haggling, no upselling, just right.
+              </p>
             </Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>
@@ -81,15 +116,10 @@ pieces of information, like in an FAQ section.
 
 ## Caret Options
 
-By default the caret is on the left, and its closed state is pointing right and open is down. This resembles a folder structure.
-The caret can also be place on the right side, in which case, the closed state is pointing down, and open is up.
-
-This is an opinionated decision and as such you can also choose to hide the caret altogether. Moreover, the accordion is a
-very transparent custom implementation of the `<Details>` component so if more custom behavior is required, you can build your own
-custom accordions `<Details>` details as well.
+By default the caret is on the right. You can render the caret on the left side so the accordion has a folder structure like appearance using the `hasCaret` prop on the `Accordion.PanelSummary` component.
 
 <Canvas isExpanded>
-  <Story name="Caret Options">
+  <Story name="Left Caret">
     {() => {
       const [openPanels, setOpenPanels] = useState({
         '1': false,
@@ -97,7 +127,7 @@ custom accordions `<Details>` details as well.
         '3': false,
       });
       /* This logic ensures only one panel is open at a time */
-      const handleTogglePanels = (id) => {
+      const handleTogglePanels = id => {
         const updatedPanels = { ...openPanels };
         if (updatedPanels[id]) {
           updatedPanels[id] = false;
@@ -114,29 +144,134 @@ custom accordions `<Details>` details as well.
       return (
         <Accordion>
           <Accordion.Panel isOpen={openPanels['1']}>
-            <Accordion.PanelSummary hasCaret="left" onToggle={() => handleTogglePanels('1')} isDetailsOpen={openPanels['1']}>
-              Will this expand if I click it?
+            <Accordion.PanelSummary
+              hasCaret="left"
+              onToggle={() => handleTogglePanels('1')}
+              isDetailsOpen={openPanels['1']}
+            >
+              Consultation
             </Accordion.PanelSummary>
             <Accordion.PanelDetails>
-              I’m a scholar. I enjoy scholarly pursuits.
-              Unlimited juice? This party is going to be off the hook!
-              I’ve made a huge tiny mistake.
+              <p>
+                Together, we’ll clarify your goals, address any questions, identify purchase options
+                and incentives, and outline the solar process—placing you in the driver’s seat for
+                everything moving forward.
+              </p>
             </Accordion.PanelDetails>
           </Accordion.Panel>
           <Accordion.Panel isOpen={openPanels['2']}>
-            <Accordion.PanelSummary hasCaret="right" onToggle={() => handleTogglePanels('2')} isDetailsOpen={openPanels['2']}>
-              Here's another one, click it too
+            <Accordion.PanelSummary
+              hasCaret="left"
+              onToggle={() => handleTogglePanels('2')}
+              isDetailsOpen={openPanels['2']}
+            >
+              Survey &amp; Design
             </Accordion.PanelSummary>
             <Accordion.PanelDetails>
-              Fried cheese… with club sauce. Excuse me while I circumvent you.
+              <p>
+                Our solar specialists will take a survey of your property and define specific
+                requirements in your area. Then, we’ll design a solar energy system to maximize your
+                savings.
+              </p>
             </Accordion.PanelDetails>
           </Accordion.Panel>
           <Accordion.Panel isOpen={openPanels['3']}>
-            <Accordion.PanelSummary hasCaret={false} onToggle={() => handleTogglePanels('3')} isDetailsOpen={openPanels['3']}>
-              third time's a charm
+            <Accordion.PanelSummary
+              hasCaret="left"
+              onToggle={() => handleTogglePanels('3')}
+              isDetailsOpen={openPanels['3']}
+            >
+              Permitting
             </Accordion.PanelSummary>
             <Accordion.PanelDetails>
-              Well excuse me, Judge Reinhold. Obviously this blue part here is the land.
+              <p>
+                We work on your behalf to navigate state and municipal requirements, homeowners
+                associations, and utility paperwork—moving your project from design to install with
+                the ultimate efficiency.
+              </p>
+            </Accordion.PanelDetails>
+          </Accordion.Panel>
+        </Accordion>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### No Caret
+
+You can also choose to hide the caret altogether. Moreover, the accordion is a very transparent custom implementation of the `<Details>` component so if more custom behavior is required, you can build your own custom accordions `<Details>` details as well.
+
+<Canvas isExpanded>
+  <Story name="No Caret">
+    {() => {
+      const [openPanels, setOpenPanels] = useState({
+        '1': false,
+        '2': false,
+        '3': false,
+      });
+      /* This logic ensures only one panel is open at a time */
+      const handleTogglePanels = id => {
+        const updatedPanels = { ...openPanels };
+        if (updatedPanels[id]) {
+          updatedPanels[id] = false;
+        } else {
+          Object.keys(updatedPanels).forEach(key => {
+            if (updatedPanels[key]) {
+              updatedPanels[key] = false;
+            }
+          });
+          updatedPanels[id] = true;
+        }
+        setOpenPanels(updatedPanels);
+      };
+      return (
+        <Accordion>
+          <Accordion.Panel isOpen={openPanels['1']}>
+            <Accordion.PanelSummary
+              hasCaret={false}
+              onToggle={() => handleTogglePanels('1')}
+              isDetailsOpen={openPanels['1']}
+            >
+              Consultation
+            </Accordion.PanelSummary>
+            <Accordion.PanelDetails>
+              <p>
+                Together, we’ll clarify your goals, address any questions, identify purchase options
+                and incentives, and outline the solar process—placing you in the driver’s seat for
+                everything moving forward.
+              </p>
+            </Accordion.PanelDetails>
+          </Accordion.Panel>
+          <Accordion.Panel isOpen={openPanels['2']}>
+            <Accordion.PanelSummary
+              hasCaret={false}
+              onToggle={() => handleTogglePanels('2')}
+              isDetailsOpen={openPanels['2']}
+            >
+              Survey &amp; Design
+            </Accordion.PanelSummary>
+            <Accordion.PanelDetails>
+              <p>
+                Our solar specialists will take a survey of your property and define specific
+                requirements in your area. Then, we’ll design a solar energy system to maximize your
+                savings.
+              </p>
+            </Accordion.PanelDetails>
+          </Accordion.Panel>
+          <Accordion.Panel isOpen={openPanels['3']}>
+            <Accordion.PanelSummary
+              hasCaret={false}
+              onToggle={() => handleTogglePanels('3')}
+              isDetailsOpen={openPanels['3']}
+            >
+              Permitting
+            </Accordion.PanelSummary>
+            <Accordion.PanelDetails>
+              <p>
+                We work on your behalf to navigate state and municipal requirements, homeowners
+                associations, and utility paperwork—moving your project from design to install with
+                the ultimate efficiency.
+              </p>
             </Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>
@@ -158,4 +293,3 @@ custom accordions `<Details>` details as well.
 ### `<Accordion.PanelDetails>`
 
 <ArgsTable of={AccordionPanelDetails} />
-

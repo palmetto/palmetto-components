@@ -16,10 +16,6 @@ export class Accordion extends React.Component<AccordionProps> {
   render(): React.ReactNode {
     const { children, ...restProps } = this.props;
 
-    return (
-      <Box {...restProps}>
-        {children}
-      </Box>
-    );
+    return <Box {...restProps}>{children}</Box>;
   }
 }
