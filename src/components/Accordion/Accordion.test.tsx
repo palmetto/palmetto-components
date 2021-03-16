@@ -8,12 +8,8 @@ describe('Accordion', () => {
       render(
         <Accordion>
           <Accordion.Panel isOpen={false}>
-            <Accordion.PanelSummary isDetailsOpen={false}>
-              summary
-            </Accordion.PanelSummary>
-            <Accordion.PanelDetails>
-              details
-            </Accordion.PanelDetails>
+            <Accordion.PanelSummary isDetailsOpen={false}>summary</Accordion.PanelSummary>
+            <Accordion.PanelDetails>details</Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>,
       );
@@ -30,12 +26,8 @@ describe('Accordion', () => {
       render(
         <Accordion>
           <Accordion.Panel isOpen>
-            <Accordion.PanelSummary isDetailsOpen>
-              summary
-            </Accordion.PanelSummary>
-            <Accordion.PanelDetails>
-              details
-            </Accordion.PanelDetails>
+            <Accordion.PanelSummary isDetailsOpen>summary</Accordion.PanelSummary>
+            <Accordion.PanelDetails>details</Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>,
       );
@@ -50,75 +42,63 @@ describe('Accordion', () => {
   });
 
   describe('Caret', () => {
-    test('It renders with the caret on the left by default', () => {
+    test('It renders with the caret on the right by default', () => {
       render(
         <Accordion>
           <Accordion.Panel isOpen={false}>
-            <Accordion.PanelSummary isDetailsOpen={false}>
-              summary
-            </Accordion.PanelSummary>
-            <Accordion.PanelDetails>
-              details
-            </Accordion.PanelDetails>
+            <Accordion.PanelSummary isDetailsOpen={false}>summary</Accordion.PanelSummary>
+            <Accordion.PanelDetails>details</Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>,
       );
 
-      const icon = screen.getByTestId('icon-testid--caret-right');
+      const icon = screen.getByTestId('icon-testid--caret-sm-down');
       expect(icon).toBeInTheDocument();
     });
 
-    test('It renders with the caret on the left and pointing down when open', () => {
+    test('It renders with the caret on the right and pointing down when open', () => {
       render(
         <Accordion>
           <Accordion.Panel isOpen>
-            <Accordion.PanelSummary isDetailsOpen>
-              summary
-            </Accordion.PanelSummary>
-            <Accordion.PanelDetails>
-              details
-            </Accordion.PanelDetails>
+            <Accordion.PanelSummary isDetailsOpen>summary</Accordion.PanelSummary>
+            <Accordion.PanelDetails>details</Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>,
       );
 
-      const icon = screen.getByTestId('icon-testid--caret-down');
+      const icon = screen.getByTestId('icon-testid--caret-sm-up');
       expect(icon).toBeInTheDocument();
     });
 
-    test('It renders with the caret pointing down when placed on the right and closed', () => {
+    test('It renders with the caret pointing right when placed on the left and closed', () => {
       render(
         <Accordion>
           <Accordion.Panel isOpen={false}>
-            <Accordion.PanelSummary isDetailsOpen={false} hasCaret="right">
+            <Accordion.PanelSummary isDetailsOpen={false} hasCaret="left">
               summary
             </Accordion.PanelSummary>
-            <Accordion.PanelDetails>
-              details
-            </Accordion.PanelDetails>
+            <Accordion.PanelDetails>details</Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>,
       );
 
-      const icon = screen.getByTestId('icon-testid--caret-down');
+      const icon = screen.getByTestId('icon-testid--caret-sm-right');
       expect(icon).toBeInTheDocument();
     });
 
-    test('It renders with the caret pointing up when placed on the right and open', () => {
+    test('It renders with the caret pointing down when placed on the left and open', () => {
       render(
         <Accordion>
           <Accordion.Panel isOpen>
-            <Accordion.PanelSummary isDetailsOpen hasCaret="right">
+            <Accordion.PanelSummary isDetailsOpen hasCaret="left">
               summary
             </Accordion.PanelSummary>
-            <Accordion.PanelDetails>
-              details
-            </Accordion.PanelDetails>
+            <Accordion.PanelDetails>details</Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>,
       );
 
-      const icon = screen.getByTestId('icon-testid--caret-up');
+      const icon = screen.getByTestId('icon-testid--caret-sm-down');
       expect(icon).toBeInTheDocument();
     });
 
@@ -129,14 +109,12 @@ describe('Accordion', () => {
             <Accordion.PanelSummary isDetailsOpen hasCaret={false}>
               summary
             </Accordion.PanelSummary>
-            <Accordion.PanelDetails>
-              details
-            </Accordion.PanelDetails>
+            <Accordion.PanelDetails>details</Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>,
       );
 
-      const icon = screen.queryByTestId('icon-testid--caret-up');
+      const icon = screen.queryByTestId('icon-testid--caret-sm-up');
       expect(icon).not.toBeInTheDocument();
     });
   });

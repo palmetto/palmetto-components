@@ -26,7 +26,7 @@ export const AccordionPanelSummary: React.FC<AccordionPanelSummaryProps> = ({
       return isDetailsOpen ? 'caret-sm-up' : 'caret-sm-down';
     }
 
-    return '';
+    return null;
   };
 
   return (
