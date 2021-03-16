@@ -6,6 +6,9 @@ import { Heading } from '../Heading/Heading';
 import { Button } from '../Button/Button';
 import { Box } from '../Box/Box';
 import { Accordion } from './Accordion';
+import { AccordionPanel } from './AccordionPanel';
+import { AccordionPanelSummary } from './AccordionPanelSummary';
+import { AccordionPanelDetails } from './AccordionPanelDetails';
 
 
 <Meta title="Components/Accordion/Overview" component={Accordion} />
@@ -72,6 +75,10 @@ pieces of information, like in an FAQ section.
   </Story>
 </Canvas>
 
+## Props
+
+<ArgsTable of={Accordion} />
+
 ## Caret Options
 
 By default the caret is on the left, and its closed state is pointing right and open is down. This resembles a folder structure.
@@ -137,4 +144,18 @@ custom accordions `<Details>` details as well.
     }}
   </Story>
 </Canvas>
+
+## Sub-Components
+
+### `<Accordion.Panel>`
+
+<ArgsTable of={AccordionPanel} />
+
+### `<Accordion.PanelSummary>`
+
+<ArgsTable of={AccordionPanelSummary} />
+
+### `<Accordion.PanelDetails>`
+
+<ArgsTable of={AccordionPanelDetails} />
 

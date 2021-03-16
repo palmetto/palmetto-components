@@ -1,3 +1,7 @@
+export * from './Accordion/Accordion';
+export * from './Accordion/AccordionPanel';
+export * from './Accordion/AccordionPanelSummary';
+export * from './Accordion/AccordionPanelDetails';
 export * from './Alert/Alert';
 export * from './Badge/Badge';
 export * from './Box/Box';
@@ -7,6 +11,8 @@ export * from './Card/components';
 export * from './CheckboxInput/CheckboxInput';
 export * from './DateInput/DateInput';
 export * from './DatePicker/DatePicker';
+export * from './Details/Details';
+export * from './Details/DetailsSummary'
 export * from './FileUpload/FileUpload';
 export * from './Formik/FormikCheckboxInput/FormikCheckboxInput';
 export * from './Formik/FormikRadioGroup/FormikRadioGroup';
