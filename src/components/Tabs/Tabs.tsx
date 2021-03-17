@@ -28,6 +28,7 @@ export class Tabs extends React.Component<TabsProps> {
       isCentered = false,
       isFullWidth = false,
       onChange,
+      overflow = 'auto',
       size = { base: 'sm', tablet: 'md', desktop: 'md', hd: 'md' },
       value,
       variant = 'primary',
@@ -80,6 +81,7 @@ export class Tabs extends React.Component<TabsProps> {
         as={as}
         borderWidth={borderWidth}
         borderColor={borderColor}
+        overflow={overflow}
         {...restProps}
       >
         <Box
@@ -92,7 +94,6 @@ export class Tabs extends React.Component<TabsProps> {
            * https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
            * */
           margin={isCentered ? '0 auto' : undefined}
-          overflow="auto"
           style={{ paddingInlineStart: '0' }}
         >
           {decoratedChildren}
