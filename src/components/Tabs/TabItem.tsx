@@ -20,7 +20,7 @@ export const TabItem: React.FC<TabItemProps> = ({
 
   return (
     <Box as="li" padding={padding} style={{ ...styles }} role="presentation" {...restProps}>
-      <Button isNaked isDisabled={isDisabled}>
+      <Button isNaked isDisabled={isDisabled} style={{ whiteSpace: 'nowrap' }}>
         {children}
       </Button>
     </Box>

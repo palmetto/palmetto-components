@@ -20,34 +20,6 @@ describe('Details', () => {
     });
   });
 
-  describe('Reset', () => {
-    it('sets reset to true by default', () => {
-      render(
-        <Details isOpen={false}>
-          <Details.Summary isDetailsOpen={false}>
-            summary
-          </Details.Summary>
-        </Details>,
-      );
-
-      const details = screen.getByRole('group');
-      expect(details).toHaveClass('details-reset');
-    });
-
-    it('does not set reset class if prop is set to false', () => {
-      render(
-        <Details isOpen={false} reset={false}>
-          <Details.Summary isDetailsOpen={false}>
-            summary
-          </Details.Summary>
-        </Details>,
-      );
-
-      const details = screen.getByRole('group');
-      expect(details).not.toHaveClass('details-reset');
-    });
-  });
-
   describe('With open details initially', () => {
     test('It renders a default details HTML element and summary', () => {
       render(

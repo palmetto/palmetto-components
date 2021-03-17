@@ -142,31 +142,6 @@ Render the component with the details expanded by setting `isOpen` to `true`.
   </Story>
 </Canvas>
 
-## The 'reset' prop
-
-The HTML `<summary>` element includes default styling in html. By default our component resets the styling of this element
-but if you require defaults, simply pass the `reset={false}` prop and it will eliminate the CSS reset.
-
-<Canvas isExpanded>
-  <Story name="No Reset">
-    {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const handleToggle = () => {
-        const newIsOpen = !isOpen;
-        setIsOpen(newIsOpen);
-      };
-      return (
-        <Details isOpen={isOpen} reset={false}>
-          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()}>
-            summary
-          </Details.Summary>
-          <Box padding="md 0">hello world!</Box>
-        </Details>
-      );
-    }}
-  </Story>
-</Canvas>
-
 ## Sub-Components
 
 ### `<Details.Summary>`

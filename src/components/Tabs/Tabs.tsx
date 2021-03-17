@@ -33,6 +33,20 @@ export class Tabs extends React.Component<TabsProps> {
 
     const decoratedChildren = React.Children.map(children, (child, index) => {
       if (React.isValidElement(child)) {
+        /**
+         * Merging any existing onClick handlers with our onChange handler.
+         */
+        const onClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
+          if (child.props.onClick){ 
+            (child.props.onClick(event));
+          }
+
+          onChange(event, index);
+        };
+
+        /**
+         * Merge our custom styling with existing className in child
+         */
         const classes = classNames(
           child.props.className,
           styles['tab-item'],
@@ -42,14 +56,6 @@ export class Tabs extends React.Component<TabsProps> {
           { ['font-weight-bold']: value === index },
           { ['font-color-primary']: value === index }
         );
-
-        const onClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
-          if (child.props.onClick){ 
-            (child.props.onClick(event));
-          }
-
-          onChange(event, index);
-        };
 
         return React.cloneElement(
           child,
@@ -76,6 +82,7 @@ export class Tabs extends React.Component<TabsProps> {
           direction="row"
           role="tablist"
           justifyContent={isCentered ? 'center' : undefined}
+          overflow="auto"
           style={{ paddingInlineStart: '0' }}
         >
           {decoratedChildren}
