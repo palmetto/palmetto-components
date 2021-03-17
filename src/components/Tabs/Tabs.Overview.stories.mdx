@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Tabs } from './Tabs';
+import { TabPanels } from './TabPanels';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 
@@ -44,24 +45,22 @@ Tabs are used for navigation
     const [selectedTab, setSelectedTab] = useState(0);
     return (
       <>
-      <Tabs value={selectedTab} onChange={(event, index) => { setSelectedTab(index) }}>
-        <Tabs.Item>
-          Tab 1
-        </Tabs.Item>
-        <Tabs.Item>
-          Tab 2
-        </Tabs.Item>
-      </Tabs>
-      {selectedTab === 0 && (
-        <Box padding="lg">
-          Here's the first tab
-        </Box>
-      )}
-      {selectedTab === 1 && (
-        <Box padding="lg">
-          Here's the second tab
-        </Box>
-      )}
+        <Tabs value={selectedTab} onChange={(event, index) => { setSelectedTab(index) }}>
+          <Tabs.Item>
+            Tab 1
+          </Tabs.Item>
+          <Tabs.Item>
+            Tab 2
+          </Tabs.Item>
+        </Tabs>
+        <TabPanels value={selectedTab}>
+          <Box padding="lg">
+            Here's the first tab
+          </Box>
+          <Box padding="lg">
+            Here's the second tab
+          </Box>
+        </TabPanels>
       </>
     );
   }}
