@@ -3,13 +3,10 @@ import { Modal } from './Modal';
 import { Button } from '../Button/Button';
 
 export default {
-  title: 'Components/Modal/ForChromatic',
+  title: 'Components/Modal/Visual Regression Tests',
   component: Modal,
   parameters: {
-    chromatic: { delay: 1000,
-      pauseAnimationAtEnd: true,
-      viewports: [320, 700, 1012, 1300],
-    },
+    chromatic: { delay: 1000, pauseAnimationAtEnd: true, viewports: [320, 700, 1012, 1300] },
   },
   decorators: [storyFn => <div style={{ width: '1200px', height: '800px' }}>{storyFn()}</div>],
 };
