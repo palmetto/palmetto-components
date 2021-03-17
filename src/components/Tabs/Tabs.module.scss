@@ -1,0 +1,19 @@
+.tab-item {
+  border-bottom: 2px solid transparent;
+  font-weight: var(--size-font-weight-bold);
+
+  &:not(.disabled) {
+    &:hover {
+      border-bottom: 2px solid var(--color-brand-primary-base);
+      color: var(--color-brand-primary-base);
+    }
+  }
+
+  &--selected {
+    border-bottom: 2px solid var(--color-brand-primary-base);
+
+    &:hover {
+      color: var(--color-brand-primary-dark);
+    }
+  }
+}

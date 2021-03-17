@@ -1,0 +1,69 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Tabs } from './Tabs';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
+
+<Meta title="Components/Tabs/Overview" component={Tabs} />
+
+# Tabs
+
+Tabs are used for navigation
+
+<Canvas isExpanded>
+  <Story name="Default">
+  {() => {
+    const [selectedTab, setSelectedTab] = useState(0);
+    return (
+      <Tabs value={selectedTab} onChange={(event, index) => { setSelectedTab(index) }}>
+        <Tabs.Item>
+          Tab 1
+        </Tabs.Item>
+        <Tabs.Item>
+          Tab 2
+        </Tabs.Item>
+        <Tabs.Item isDisabled>
+          Tab 3
+        </Tabs.Item>
+      </Tabs>
+    );
+  }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Tabs} />
+
+## With Panels
+
+<Canvas isExpanded>
+  <Story name="With Panels">
+  {() => {
+    const [selectedTab, setSelectedTab] = useState(0);
+    return (
+      <>
+      <Tabs value={selectedTab} onChange={(event, index) => { setSelectedTab(index) }}>
+        <Tabs.Item>
+          Tab 1
+        </Tabs.Item>
+        <Tabs.Item>
+          Tab 2
+        </Tabs.Item>
+      </Tabs>
+      {selectedTab === 0 && (
+        <Box padding="lg">
+          Here's the first tab
+        </Box>
+      )}
+      {selectedTab === 1 && (
+        <Box padding="lg">
+          Here's the second tab
+        </Box>
+      )}
+      </>
+    );
+  }}
+  </Story>
+</Canvas>
