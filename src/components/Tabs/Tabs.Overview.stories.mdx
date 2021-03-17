@@ -134,3 +134,32 @@ Tabs are used for navigation
   }}
   </Story>
 </Canvas>
+
+## Overflow
+
+By default tabs will overflow when the content is wider than the container. NOTE: due to the nature of CSS flexbox, we advise NOT
+to use the `isCentered` prop when tabs are expected to overflow.
+
+<Canvas isExpanded>
+  <Story name="Overflow">
+  {() => {
+    const [selectedTab, setSelectedTab] = useState(0);
+    const tabs = [...new Array(10)];
+    return (
+      <>
+        <Tabs
+          value={selectedTab}
+          onChange={(event, index) => { setSelectedTab(index) }}
+          isCentered
+        >
+          {tabs.map((tab, index) => (
+            <Tabs.Item>
+              {`Overflowing Tab ${index + 1}`}
+            </Tabs.Item>
+          ))}
+        </Tabs>
+      </>
+    );
+  }}
+  </Story>
+</Canvas>

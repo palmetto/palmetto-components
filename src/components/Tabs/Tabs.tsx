@@ -81,7 +81,12 @@ export class Tabs extends React.Component<TabsProps> {
           as="ul"
           direction="row"
           role="tablist"
-          justifyContent={isCentered ? 'center' : undefined}
+          /**
+           * NOTE: we use margins instead of justify-content here in order to avoid problems when the tabs overflow.
+           * See this for details:
+           * https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
+           * */
+          margin={isCentered ? '0 auto' : undefined}
           overflow="auto"
           style={{ paddingInlineStart: '0' }}
         >
