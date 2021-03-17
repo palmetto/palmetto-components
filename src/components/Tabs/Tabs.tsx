@@ -11,6 +11,7 @@ export interface TabsProps extends BoxProps {
   value: number;
   onChange: (event: React.MouseEvent<HTMLLIElement>, index: number) => void;
   isFullWidth?: boolean;
+  isCentered?: boolean;
 }
 
 export class Tabs extends React.Component<TabsProps> {
@@ -22,6 +23,7 @@ export class Tabs extends React.Component<TabsProps> {
       borderWidth = '0 0 xs 0',
       borderColor = 'grey-100',
       children,
+      isCentered = false,
       isFullWidth = false,
       onChange,
       value,
@@ -69,7 +71,13 @@ export class Tabs extends React.Component<TabsProps> {
         borderColor={borderColor}
         {...restProps}
       >
-        <Box as="ul" direction="row" role="tablist">
+        <Box
+          as="ul"
+          direction="row"
+          role="tablist"
+          justifyContent={isCentered ? 'center' : undefined}
+          style={{ paddingInlineStart: '0' }}
+        >
           {decoratedChildren}
         </Box>
       </Box>

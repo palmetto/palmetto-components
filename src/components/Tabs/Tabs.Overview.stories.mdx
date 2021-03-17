@@ -100,3 +100,37 @@ Tabs are used for navigation
   }}
   </Story>
 </Canvas>
+
+## Centered
+
+<Canvas isExpanded>
+  <Story name="Centered">
+  {() => {
+    const [selectedTab, setSelectedTab] = useState(0);
+    return (
+      <>
+        <Tabs
+          value={selectedTab}
+          onChange={(event, index) => { setSelectedTab(index) }}
+          isCentered
+        >
+          <Tabs.Item>
+            Tab 1
+          </Tabs.Item>
+          <Tabs.Item>
+            Tab 2
+          </Tabs.Item>
+        </Tabs>
+        <TabPanels value={selectedTab}>
+          <Box padding="lg">
+            Here's the first tab
+          </Box>
+          <Box padding="lg">
+            Here's the second tab
+          </Box>
+        </TabPanels>
+      </>
+    );
+  }}
+  </Story>
+</Canvas>
