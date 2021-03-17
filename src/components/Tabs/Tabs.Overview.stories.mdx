@@ -66,3 +66,37 @@ Tabs are used for navigation
   }}
   </Story>
 </Canvas>
+
+## Full Width
+
+<Canvas isExpanded>
+  <Story name="Full Width">
+  {() => {
+    const [selectedTab, setSelectedTab] = useState(0);
+    return (
+      <>
+        <Tabs
+          value={selectedTab}
+          onChange={(event, index) => { setSelectedTab(index) }}
+          isFullWidth
+        >
+          <Tabs.Item>
+            Tab 1
+          </Tabs.Item>
+          <Tabs.Item>
+            Tab 2
+          </Tabs.Item>
+        </Tabs>
+        <TabPanels value={selectedTab}>
+          <Box padding="lg">
+            Here's the first tab
+          </Box>
+          <Box padding="lg">
+            Here's the second tab
+          </Box>
+        </TabPanels>
+      </>
+    );
+  }}
+  </Story>
+</Canvas>

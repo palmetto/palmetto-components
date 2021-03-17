@@ -10,6 +10,7 @@ export type TabsVariant = ButtonVariant;
 export interface TabsProps extends BoxProps {
   value: number;
   onChange: (event: React.MouseEvent<HTMLLIElement>, index: number) => void;
+  isFullWidth?: boolean;
 }
 
 export class Tabs extends React.Component<TabsProps> {
@@ -21,6 +22,7 @@ export class Tabs extends React.Component<TabsProps> {
       borderWidth = '0 0 xs 0',
       borderColor = 'grey-100',
       children,
+      isFullWidth = false,
       onChange,
       value,
       variant = 'primary',
@@ -52,6 +54,7 @@ export class Tabs extends React.Component<TabsProps> {
           {
             className: classes,
             onClick: onClickHandler,
+            style: { ...child.props.style, ...isFullWidth && { flex: 1 } },
           },
         );
       }
