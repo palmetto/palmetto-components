@@ -6,7 +6,7 @@ import { Heading } from '../Heading/Heading';
 import { Icon } from '../Icon/Icon';
 
 export default {
-  title: 'Components/Popover/ForChromatic',
+  title: 'Components/Popover/Visual Regression Tests',
   component: Popover,
   parameters: {
     chromatic: { delay: 2000, pauseAnimationAtEnd: true },

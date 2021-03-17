@@ -3,7 +3,9 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Toggle } from './Toggle';
 import { Box } from '../Box/Box';
 
-<Meta title="Components/Toggle" component={Toggle} />
+<Meta title="Components/Toggle/Overview" component={Toggle} />
+
+# Toggle
 
 A `Toggle` switch is like a digital on/off switch. They prompt users to choose between two mutually exclusive options and always have a default value.
 Toggles should provide immediate results and should not require the user to Save or Submit to apply the new state.
@@ -19,7 +21,7 @@ Toggles should provide immediate results and should not require the user to Save
 ### Basic Example
 
 <Canvas isExpanded>
-  <Story name="default">
+  <Story name="Default">
     {() => {
       const [value, setValue] = useState(null);
       return (
@@ -36,8 +38,10 @@ Toggles should provide immediate results and should not require the user to Save
 
 ### Help Text
 
+Use the `helpText` prop to add clarifying text beneath the toggle label.
+
 <Canvas isExpanded>
-  <Story name="with help text">
+  <Story name="With Help Text">
     {() => {
       const [value, setValue] = useState(null);
       return (
@@ -58,7 +62,7 @@ Toggles should provide immediate results and should not require the user to Save
 Use the `hideLabel` prop to not render the label, however a `label` is still required for accessability purposes.
 
 <Canvas>
-  <Story name="hidden label">
+  <Story name="Hidden Label">
     {() => {
       const [value, setValue] = useState(null);
       return (
@@ -80,7 +84,7 @@ Use the `hideLabel` prop to not render the label, however a `label` is still req
 Set the size of the `toggle` to `sm`, `md` or `lg`. `md` is the default size.
 
 <Canvas isExpanded>
-  <Story name="size">
+  <Story name="Size">
     {() => {
       const [value, setValue] = useState(true);
       return (
@@ -114,8 +118,10 @@ Set the size of the `toggle` to `sm`, `md` or `lg`. `md` is the default size.
 
 ### Disabled
 
+Disable the toggle by setting the `isDisabled` prop.
+
 <Canvas>
-  <Story name="disabled">
+  <Story name="Disabled">
     {() => {
       const [value, setValue] = useState(null);
       return (
@@ -136,7 +142,7 @@ Set the size of the `toggle` to `sm`, `md` or `lg`. `md` is the default size.
 Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
 
 <Canvas>
-  <Story name="error">
+  <Story name="Error">
     {() => {
       const [value, setValue] = useState(null);
       return (
