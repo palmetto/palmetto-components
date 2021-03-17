@@ -12,6 +12,7 @@ export interface TabsProps extends BoxProps {
   onChange: (event: React.MouseEvent<HTMLLIElement>, index: number) => void;
   isFullWidth?: boolean;
   isCentered?: boolean;
+  size?: 'md' | 'sm';
 }
 
 export class Tabs extends React.Component<TabsProps> {
@@ -26,6 +27,7 @@ export class Tabs extends React.Component<TabsProps> {
       isCentered = false,
       isFullWidth = false,
       onChange,
+      size = 'md',
       value,
       variant = 'primary',
       ...restProps
@@ -51,6 +53,7 @@ export class Tabs extends React.Component<TabsProps> {
           child.props.className,
           styles['tab-item'],
           'font-color-grey-400',
+          { [styles['tab-item--small']]: size === 'sm' },
           { [styles.disabled]: child.props.isDisabled },
           { [styles['tab-item--selected']]: value === index },
           { ['font-weight-bold']: value === index },
@@ -62,6 +65,7 @@ export class Tabs extends React.Component<TabsProps> {
           {
             className: classes,
             onClick: onClickHandler,
+            padding: size === 'sm' ? 'sm' : 'md',
             style: { ...child.props.style, ...isFullWidth && { flex: 1 } },
           },
         );

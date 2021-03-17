@@ -18,4 +18,8 @@
       color: var(--color-brand-primary-dark);
     }
   }
+
+  &--small {
+    font-size: var(--size-font-sm);
+  }
 }

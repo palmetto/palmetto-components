@@ -162,3 +162,42 @@ By default tabs will overflow when the content is wider than the container.
   }}
   </Story>
 </Canvas>
+
+## Sizes
+
+<Canvas isExpanded>
+  <Story name="Size">
+  {() => {
+    const [firstSelectedTab, setFirstSelectedTab] = useState(0);
+    const [secondSelectedTab, setSecondSelectedTab] = useState(0);
+    return (
+      <Box childGap="md">
+        <Tabs
+          value={firstSelectedTab}
+          onChange={(event, index) => { setFirstSelectedTab(index) }}
+          size="md"
+        >
+          <Tabs.Item>
+            Tab 1
+          </Tabs.Item>
+          <Tabs.Item>
+            Tab 2
+          </Tabs.Item>
+        </Tabs>
+        <Tabs
+          value={secondSelectedTab}
+          onChange={(event, index) => { setSecondSelectedTab(index) }}
+          size="sm"
+        >
+          <Tabs.Item>
+            Tab 1
+          </Tabs.Item>
+          <Tabs.Item>
+            Tab 2
+          </Tabs.Item>
+        </Tabs>
+      </Box>
+    );
+  }}
+  </Story>
+</Canvas>
