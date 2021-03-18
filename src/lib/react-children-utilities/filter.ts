@@ -1,9 +1,7 @@
-  
-import type { ReactNode } from 'react';
-import { Children } from 'react';
+import { ReactNode, Children } from 'react';
 
 export type FilterFunction = (child: ReactNode, index?: number, children?: ReactNode[]) => boolean;
 
-export const filter = (children: ReactNode, filterFn: FilterFunction): ReactNode[] => {
-  return Children.toArray(children).filter(filterFn);
-};
+export const filter = (children: ReactNode, filterFn: FilterFunction): ReactNode[] => (
+  Children.toArray(children).filter(filterFn)
+);

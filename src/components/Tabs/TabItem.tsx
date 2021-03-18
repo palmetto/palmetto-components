@@ -25,4 +25,4 @@ export const TabItem: React.FC<TabItemProps> = ({
       </Button>
     </Box>
   );
-}
+};

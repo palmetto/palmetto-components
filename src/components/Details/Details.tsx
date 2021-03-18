@@ -21,7 +21,6 @@ export class Details extends React.Component<DetailsProps> {
       className,
       display = 'block',
       isOpen,
-      reset = true,
       ...restProps
     } = this.props;
 

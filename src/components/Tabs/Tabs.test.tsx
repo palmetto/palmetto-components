@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Tabs } from './Tabs';
 import { TabPanels } from './TabPanels';
-import { ka } from 'date-fns/locale';
 
 describe('Tabs', () => {
   describe('Default', () => {
@@ -97,8 +96,9 @@ describe('Tabs', () => {
 
       const tabOne = screen.getByText('tab 1').closest('button');
       if (tabOne) fireEvent.click(tabOne);
-      
+
       expect(mockedOnChange).toHaveBeenCalledTimes(1);
+      // eslint-disable-next-line
       // @ts-ignore
       expect(mockedOnChange.mock.calls[0][1]).toBe(0);
     });
@@ -120,8 +120,9 @@ describe('Tabs', () => {
 
       const tabOne = screen.getByText('tab 1').closest('button');
       if (tabOne) fireEvent.click(tabOne);
-      
+
       expect(mockedOnChange).toHaveBeenCalledTimes(1);
+      // eslint-disable-next-line
       // @ts-ignore
       expect(mockedOnChange.mock.calls[0][1]).toBe(0);
       expect(mockedOnClick).toHaveBeenCalledTimes(1);

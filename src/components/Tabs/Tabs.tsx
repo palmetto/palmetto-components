@@ -29,9 +29,13 @@ export class Tabs extends React.Component<TabsProps> {
       isFullWidth = false,
       onChange,
       overflow = 'auto',
-      size = { base: 'sm', tablet: 'md', desktop: 'md', hd: 'md' },
+      size = {
+        base: 'sm',
+        tablet: 'md',
+        desktop: 'md',
+        hd: 'md',
+      },
       value,
-      variant = 'primary',
       ...restProps
     } = this.props;
 
@@ -41,7 +45,7 @@ export class Tabs extends React.Component<TabsProps> {
          * Merging any existing onClick handlers with our onChange handler.
          */
         const onClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
-          if (child.props.onClick){ 
+          if (child.props.onClick) {
             (child.props.onClick(event));
           }
 
@@ -57,8 +61,8 @@ export class Tabs extends React.Component<TabsProps> {
           'font-color-grey-400',
           { [styles.disabled]: child.props.isDisabled },
           { [styles['tab-item--selected']]: value === index },
-          { ['font-weight-bold']: value === index },
-          { ['font-color-primary']: value === index }
+          { 'font-weight-bold': value === index },
+          { 'font-color-primary': value === index },
         );
 
         return React.cloneElement(
@@ -72,7 +76,7 @@ export class Tabs extends React.Component<TabsProps> {
           },
         );
       }
-  
+
       return child;
     });
 
