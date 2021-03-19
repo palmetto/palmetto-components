@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, BoxProps } from '../Box/Box';
-import { Button } from '../Button/Button';
 
 export interface TabItemProps extends BoxProps {
   isDisabled?: boolean;
@@ -18,10 +17,10 @@ export const TabItem: React.FC<TabItemProps> = ({
     cursor: !isDisabled ? 'pointer' : 'not-allowed',
   };
 
-
   return (
-    <Box as="li"   style={{ ...styles }} role="presentation" {...restProps}>
-      <Box as="button"
+    <Box as="li" style={{ ...styles }} role="presentation" {...restProps}>
+      <Box
+        as="button"
         disabled={isDisabled}
         style={{ whiteSpace: 'nowrap' }}
         padding={padding}
