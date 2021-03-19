@@ -24,18 +24,18 @@
   }
 
   &--selected {
-    > button {
+    > button { /* stylelint-disable-line */
       border-bottom: 2px solid var(--color-brand-primary-base);
       color: var(--color-brand-primary-base);
 
-      &:hover {
+      &:hover { /* stylelint-disable-line */
         color: var(--color-brand-primary-dark);
       }
     }
   }
 
   &:not(.disabled) {
-    > button {
+    > button { /* stylelint-disable-line */
       &:hover {
         border-bottom: 2px solid var(--color-brand-primary-base);
         color: var(--color-brand-primary-base);
