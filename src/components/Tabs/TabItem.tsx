@@ -22,10 +22,12 @@ export const TabItem: React.FC<TabItemProps> = ({
       <Box
         as="button"
         disabled={isDisabled}
-        style={{ whiteSpace: 'nowrap' }}
+        style={{
+          background: 'transparent',
+          whiteSpace: 'nowrap',
+        }}
         padding={padding}
         borderWidth="0"
-        background="white"
         color={isDisabled ? 'grey-100' : 'grey-400'}
         direction="row"
         justifyContent="center"
