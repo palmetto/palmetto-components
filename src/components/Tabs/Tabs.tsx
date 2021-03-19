@@ -29,12 +29,7 @@ export class Tabs extends React.Component<TabsProps> {
       isFullWidth = false,
       onChange,
       overflow = 'auto',
-      size = {
-        base: 'sm',
-        tablet: 'md',
-        desktop: 'md',
-        hd: 'md',
-      },
+      size = "md",
       value,
       ...restProps
     } = this.props;
