@@ -3,7 +3,6 @@
     "stylelint-config-recommended",
     "stylelint-config-sass-guidelines",
     "stylelint-config-css-modules",
-    "stylelint-config-concentric-order"
   ],
   "rules": {
     "declaration-property-value-disallowed-list": null,

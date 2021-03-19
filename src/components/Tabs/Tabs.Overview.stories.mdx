@@ -1,0 +1,189 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Tabs } from './Tabs';
+import { TabPanels } from './TabPanels';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
+
+<Meta title="Components/Tabs/Overview" component={Tabs} />
+
+# Tabs
+
+The Tabs component allows a user to flip amongst different views within the same page. This helps users navigate related content without having to change context.
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      return (
+        <Tabs
+          value={selectedTab}
+          onChange={(event, index) => {
+            setSelectedTab(index);
+          }}
+        >
+          <Tabs.Item>Tab 1</Tabs.Item>
+          <Tabs.Item>Tab 2</Tabs.Item>
+          <Tabs.Item isDisabled>Disabled</Tabs.Item>
+        </Tabs>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Tabs} />
+
+## With Panels
+
+Use the TabPanels component to also control the visible content based on the selected tab.
+
+<Canvas isExpanded>
+  <Story name="With Panels">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      return (
+        <>
+          <Tabs
+            value={selectedTab}
+            onChange={(event, index) => {
+              setSelectedTab(index);
+            }}
+          >
+            <Tabs.Item>Tab 1</Tabs.Item>
+            <Tabs.Item>Tab 2</Tabs.Item>
+          </Tabs>
+          <TabPanels value={selectedTab}>
+            <Box padding="lg">Here's the first tab</Box>
+            <Box padding="lg">Here's the second tab</Box>
+          </TabPanels>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Full Width
+
+Use the `isFullWidth` prop to expand the tabs to the width of its parent, and size each tab evenly.
+
+<Canvas isExpanded>
+  <Story name="Full Width">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      return (
+        <>
+          <Tabs
+            value={selectedTab}
+            onChange={(event, index) => {
+              setSelectedTab(index);
+            }}
+            isFullWidth
+          >
+            <Tabs.Item>Tab 1</Tabs.Item>
+            <Tabs.Item>Tab 2</Tabs.Item>
+          </Tabs>
+          <TabPanels value={selectedTab}>
+            <Box padding="lg">Here's the first tab</Box>
+            <Box padding="lg">Here's the second tab</Box>
+          </TabPanels>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Centered
+
+<Canvas isExpanded>
+  <Story name="Centered">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      return (
+        <>
+          <Tabs
+            value={selectedTab}
+            onChange={(event, index) => {
+              setSelectedTab(index);
+            }}
+            isCentered
+          >
+            <Tabs.Item>Tab 1</Tabs.Item>
+            <Tabs.Item>Tab 2</Tabs.Item>
+          </Tabs>
+          <TabPanels value={selectedTab}>
+            <Box padding="lg">Here's the first tab</Box>
+            <Box padding="lg">Here's the second tab</Box>
+          </TabPanels>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Overflow
+
+By default, tabs will overflow when the content is wider than the container.
+
+<Canvas isExpanded>
+  <Story name="Overflow">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      const tabs = [...new Array(10)];
+      return (
+        <>
+          <Tabs
+            value={selectedTab}
+            onChange={(event, index) => {
+              setSelectedTab(index);
+            }}
+            isCentered
+          >
+            {tabs.map((tab, index) => (
+              <Tabs.Item>{`Overflowing Tab ${index + 1}`}</Tabs.Item>
+            ))}
+          </Tabs>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Sizes
+
+The `size` prop allows you to specify the size of the tab, or the size of the tabs at different breakpoints.
+
+<Canvas isExpanded>
+  <Story name="Size">
+    {() => {
+      const [firstSelectedTab, setFirstSelectedTab] = useState(0);
+      const [secondSelectedTab, setSecondSelectedTab] = useState(0);
+      return (
+        <Box childGap="md">
+          <Tabs
+            value={firstSelectedTab}
+            onChange={(event, index) => {
+              setFirstSelectedTab(index);
+            }}
+            size="md"
+          >
+            <Tabs.Item>Tab 1</Tabs.Item>
+            <Tabs.Item>Tab 2</Tabs.Item>
+          </Tabs>
+          <Tabs
+            value={secondSelectedTab}
+            onChange={(event, index) => {
+              setSecondSelectedTab(index);
+            }}
+            size="sm"
+          >
+            <Tabs.Item>Tab 1</Tabs.Item>
+            <Tabs.Item>Tab 2</Tabs.Item>
+          </Tabs>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
