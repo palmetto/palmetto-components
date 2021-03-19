@@ -28,6 +28,8 @@ export const TabItem: React.FC<TabItemProps> = ({
         borderWidth="0"
         background="white"
         color={isDisabled ? 'grey-100' : 'grey-400'}
+        direction="row"
+        justifyContent="center"
       >
         {children}
       </Box>
