@@ -2,6 +2,7 @@
   > button {
     border-bottom: 2px solid transparent;
     font-weight: var(--size-font-weight-bold);
+    transition: color 0.2s, border-color 0.2s;
 
     /* define regular focus styles for non-supporting browsers */
     &:focus {
@@ -37,8 +38,8 @@
   &:not(.disabled) {
     > button { /* stylelint-disable-line */
       &:hover {
-        border-bottom: 2px solid var(--color-brand-primary-base);
         color: var(--color-brand-primary-base);
+        cursor: pointer;
       }
     }
   }
