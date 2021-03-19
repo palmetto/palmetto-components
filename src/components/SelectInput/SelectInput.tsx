@@ -97,10 +97,6 @@ export interface BaseSelectInputProps {
    */
   size?: 'sm' | 'md' | 'lg';
   /**
-   * Use a standard browser select dropdown instead of the custom react-select component.
-   */
-  useNativeSelect: boolean;
-  /**
    * Additional props to be spread. These will be applied specifically to
    * the `react-select` component that powers the select. For full docs on
    * react-select props, [Click Here](https://react-select.com/props)
@@ -135,7 +131,6 @@ export const SelectInput: FC<SelectInputProps> = ({
   onBlur = null,
   placeholder = undefined,
   size = 'md',
-  useNativeSelect = false,
   ...restProps
 }) => {
   const handleChange = (values: ValueType<OptionTypeBase>) => {
@@ -181,39 +176,28 @@ export const SelectInput: FC<SelectInputProps> = ({
   return (
     <Box width="100%" className={wrapperClasses}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
-      {useNativeSelect ? (
-        <select
-          className={inputClasses}
-          value={value}
-        >
-          {(options as { value: string; label: string; }[]).map((option: { value: string; label: string; }) => (
-            <option value={option.value} key={option.value}>{option.label}</option>
-          ))}
-        </select>
-      ) : (
-        <Select
-          {...restProps}
-          inputId={id}
-          aria-label={label}
-          components={{ ClearIndicator }}
-          aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
-          className={inputClasses}
-          classNamePrefix="react-select"
-          placeholder={placeholder}
-          isClearable={isClearable}
-          isDisabled={isDisabled}
-          isMulti={isMulti}
-          menuPortalTarget={menuPortalTarget}
-          name={name}
-          autoFocus={autoFocus}
-          options={options}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          styles={{ menuPortal: base => ({ ...base, zIndex: Number(Z_INDEX_VALUES.popover.value) }) }}
-          value={value}
-        />
-      )}
+      <Select
+        {...restProps}
+        inputId={id}
+        aria-label={label}
+        components={{ ClearIndicator }}
+        aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
+        className={inputClasses}
+        classNamePrefix="react-select"
+        placeholder={placeholder}
+        isClearable={isClearable}
+        isDisabled={isDisabled}
+        isMulti={isMulti}
+        menuPortalTarget={menuPortalTarget}
+        name={name}
+        autoFocus={autoFocus}
+        options={options}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        styles={{ menuPortal: base => ({ ...base, zIndex: Number(Z_INDEX_VALUES.popover.value) }) }}
+        value={value}
+      />
       {error && typeof error !== 'boolean' && (
         <InputValidationMessage>{error}</InputValidationMessage>
       )}

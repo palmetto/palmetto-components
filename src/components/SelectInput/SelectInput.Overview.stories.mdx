@@ -479,30 +479,3 @@ Use the `className` prop to add a custom class, or classes to an input.
     }}
   </Story>
 </Canvas>
-
-## Native Select
-
-<Canvas>
-  <Story name="Native Select">
-    {() => {
-      const [value, setValue] = useState(null);
-      const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-      ];
-      return (
-        <div style={{ height: '200px' }}>
-          <SelectInput
-            id="singleSelectWithLabel"
-            label="Label"
-            onChange={event => setValue(event.target.value)}
-            options={options}
-            value={value}
-            useNativeSelect
-          />
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
