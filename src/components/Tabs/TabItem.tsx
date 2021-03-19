@@ -18,11 +18,19 @@ export const TabItem: React.FC<TabItemProps> = ({
     cursor: !isDisabled ? 'pointer' : 'not-allowed',
   };
 
+
   return (
-    <Box as="li" padding={padding} style={{ ...styles }} role="presentation" {...restProps}>
-      <Button isNaked isDisabled={isDisabled} style={{ whiteSpace: 'nowrap' }}>
+    <Box as="li"   style={{ ...styles }} role="presentation" {...restProps}>
+      <Box as="button"
+        disabled={isDisabled}
+        style={{ whiteSpace: 'nowrap' }}
+        padding={padding}
+        borderWidth="0"
+        background="white"
+        color={isDisabled ? 'grey-100' : 'grey-400'}
+      >
         {children}
-      </Button>
+      </Box>
     </Box>
   );
 };

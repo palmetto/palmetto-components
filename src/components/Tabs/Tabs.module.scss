@@ -1,18 +1,45 @@
 .tab-item {
-  border-bottom: 2px solid transparent;
-  font-weight: var(--size-font-weight-bold);
+  > button {
+    border-bottom: 2px solid transparent;
+    font-weight: var(--size-font-weight-bold);
 
-  &:not(.disabled) {
-    &:hover {
-      color: var(--color-brand-primary-base);
+    /* define regular focus styles for non-supporting browsers */
+    &:focus {
+      outline: 0;
+      box-shadow: inset var(--input-focus-box-shadow);
+    }
+
+    /* Show focus styles on keyboard focus. */
+    &:focus-visible {
+      outline: 0;
+      box-shadow: inset var(--input-focus-box-shadow);
+    }
+
+    /* Hide focus styles if they're not needed, for example,
+    when an element receives focus via the mouse. */
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
     }
   }
 
   &--selected {
-    border-bottom: 2px solid var(--color-brand-primary-base);
+    > button {
+      border-bottom: 2px solid var(--color-brand-primary-base);
+      color: var(--color-brand-primary-base);
 
-    &:hover {
-      color: var(--color-brand-primary-dark);
+      &:hover {
+        color: var(--color-brand-primary-dark);
+      }
+    }
+  }
+
+  &:not(.disabled) {
+    > button {
+      &:hover {
+        border-bottom: 2px solid var(--color-brand-primary-base);
+        color: var(--color-brand-primary-base);
+      }
     }
   }
 }

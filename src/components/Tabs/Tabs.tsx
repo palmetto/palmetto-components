@@ -60,11 +60,8 @@ export class Tabs extends React.Component<TabsProps> {
         const classes = classNames(
           child.props.className,
           styles['tab-item'],
-          'font-color-grey-400',
           { [styles.disabled]: child.props.isDisabled },
           { [styles['tab-item--selected']]: value === index },
-          { 'font-weight-bold': value === index },
-          { 'font-color-primary': value === index },
         );
 
         return React.cloneElement(
