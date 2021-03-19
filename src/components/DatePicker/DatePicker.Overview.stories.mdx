@@ -4,11 +4,18 @@ import { DatePicker } from './DatePicker';
 import { Box } from '../Box/Box';
 import { Heading } from '../Heading/Heading';
 
-<Meta title="Components/DatePicker" component={DatePicker} />
+<Meta title="Components/DatePicker/Overview" component={DatePicker} />
 
 # DatePicker
 
-Use a DatePicker when a user needs to select a date and time.
+The Datepicker lets users select a date by showing them a calendar.
+
+It is also used in combination with an input and popover by the [DateInput component](/?path=/docs/components-dateinput-overview--basic-usage).
+
+### It can be used for:
+
+- selecting a single date
+- selecting a start and end date
 
 ## Props
 
@@ -33,7 +40,7 @@ Use a DatePicker when a user needs to select a date and time.
 ## Date Range
 
 <Canvas>
-  <Story name="date range">
+  <Story name="Date Range">
     {() => {
       const [startDate, setStartDate] = useState(new Date(2019, 11, 3));
       const [endDate, setEndDate] = useState(new Date(2019, 11, 28));
@@ -64,7 +71,7 @@ Use a DatePicker when a user needs to select a date and time.
 ## Min/Max Dates
 
 <Canvas>
-  <Story name="Min/max dates">
+  <Story name="Min/max Dates">
     {() => {
       const [startDate, setStartDate] = useState(new Date(2019, 11, 18));
       const min = new Date(2019, 11, 18);
@@ -84,7 +91,7 @@ Use a DatePicker when a user needs to select a date and time.
 ## Month Picker
 
 <Canvas>
-  <Story name="month picker">
+  <Story name="Month Picker">
     {() => {
       const [startDateOne, setStartDateOne] = useState(new Date(2019, 10));
       const [startDateTwo, setStartDateTwo] = useState(new Date(2019, 10));
@@ -159,7 +166,7 @@ Use a DatePicker when a user needs to select a date and time.
 ## With Time Picker
 
 <Canvas>
-  <Story name="With Time picker">
+  <Story name="With Time Picker">
     {() => {
       const [startDate, setStartDate] = useState(new Date('1993/09/28'));
       return (
@@ -181,7 +188,7 @@ Use a DatePicker when a user needs to select a date and time.
 ## Open by default on a specific date
 
 <Canvas>
-  <Story name="Open on date">
+  <Story name="Open on Date">
     {() => {
       const [startDate, setStartDate] = useState(new Date('1993/09/28'));
       return (
@@ -201,7 +208,7 @@ Use a DatePicker when a user needs to select a date and time.
 ## With Children
 
 <Canvas>
-  <Story name="with children">
+  <Story name="With Children">
     {() => {
       const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
       return (
@@ -221,7 +228,7 @@ Use a DatePicker when a user needs to select a date and time.
 ## Custom Day ClassName
 
 <Canvas>
-  <Story name="day classname">
+  <Story name="Day Classname">
     {() => {
       const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
       return (

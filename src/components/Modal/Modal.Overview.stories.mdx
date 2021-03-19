@@ -4,7 +4,7 @@ import { Modal } from './Modal';
 import { Button } from '../Button/Button';
 import { SelectInput } from '../SelectInput/SelectInput';
 
-<Meta title="Components/Modal" component={Modal} />
+<Meta title="Components/Modal/Overview" component={Modal} />
 
 # Modal
 
@@ -37,9 +37,7 @@ In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `
           </Button>
           <Modal ariaLabelledBy="titleBasic" isOpen={showModal} onDismiss={close}>
             <Modal.Header id="titleBasic" title="The Modal Title" onDismiss={close} />
-            <Modal.Body>
-              Modal content
-            </Modal.Body>
+            <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>
                 Cancel
