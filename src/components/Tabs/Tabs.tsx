@@ -49,7 +49,9 @@ export class Tabs extends React.Component<TabsProps> {
             (child.props.onClick(event));
           }
 
-          onChange(event, index);
+          if (!child.props.isDisabled) {
+            onChange(event, index);
+          }
         };
 
         /**

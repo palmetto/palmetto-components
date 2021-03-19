@@ -5,14 +5,12 @@
   &:not(.disabled) {
     &:hover {
       border-bottom: 2px solid var(--color-brand-primary-base);
-      background-color: var(--color-brand-grey-50);
       color: var(--color-brand-primary-base);
     }
   }
 
   &--selected {
     border-bottom: 2px solid var(--color-brand-primary-base);
-    background-color: var(--color-brand-grey-50);
 
     &:hover {
       color: var(--color-brand-primary-dark);
