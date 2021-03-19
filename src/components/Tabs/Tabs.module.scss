@@ -4,7 +4,6 @@
 
   &:not(.disabled) {
     &:hover {
-      border-bottom: 2px solid var(--color-brand-primary-base);
       color: var(--color-brand-primary-base);
     }
   }
