@@ -35,13 +35,10 @@ const Template: Story<DetailsProps> = ({
 /**
  * Use the playground to see different results
  */
-
 export const Playground = Template.bind({});
+
 Playground.args = {
   isOpen: false,
-};
-
-Playground.args = {
   summaryText: 'Summary',
   detailsText: 'Details go here!'
 };
