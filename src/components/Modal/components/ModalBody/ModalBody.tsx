@@ -8,7 +8,6 @@ export const ModalBody: FC<ModalBodyProps> = ({
   flex = 'auto',
   padding = 'lg',
   overflow = 'auto',
-  position = 'relative',
   height = '100',
   ...restProps
 }) => (
@@ -16,8 +15,8 @@ export const ModalBody: FC<ModalBodyProps> = ({
     padding={padding}
     flex={flex}
     overflow={overflow}
-    position={position}
     height={height}
+    style={{ position: 'relative' }}
     {...restProps}
   >
     {children}
