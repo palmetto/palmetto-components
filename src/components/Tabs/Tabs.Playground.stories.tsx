@@ -15,7 +15,10 @@ export default {
       },
     },
     size: {
-      control: 'text',
+      control: {
+        type: 'select',
+        options: ['md', 'sm'],
+      },
     },
     isCentered: {
       control: {
@@ -46,13 +49,13 @@ const Template: Story<TabsProps> = ({
     <Box childGap="md">
       <Tabs value={value} size={size} {...args}>
         <Tabs.Item isDisabled={disabledTabs.includes(0)}>
-          Tab 1
+          Tab 0
         </Tabs.Item>
         <Tabs.Item isDisabled={disabledTabs.includes(1)}>
           Tab 1
         </Tabs.Item>
         <Tabs.Item isDisabled={disabledTabs.includes(2)}>
-          Tab 1
+          Tab 2
         </Tabs.Item>
       </Tabs>
       <TabPanels value={value}>
@@ -73,7 +76,7 @@ const Template: Story<TabsProps> = ({
 export const Playground = Template.bind({});
 
 Playground.args = {
-  value: 1,
+  value: 0,
   size: "md",
   disabledTabs: [],
 };
