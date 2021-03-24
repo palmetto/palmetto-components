@@ -19,18 +19,16 @@ const Template: Story<DetailsProps> = ({
   summaryText,
   detailsText,
   ...args
-}) => {
-  return (
-    <Details isOpen={isOpen} {...args}>
-      <Details.Summary isDetailsOpen={isOpen}>
-        <Button>{summaryText}</Button>
-      </Details.Summary>
-      <Box padding="lg" background="grey-50" margin="sm 0 0 0">
-        {detailsText}
-      </Box>
-    </Details>
-  );
-};
+}) => (
+  <Details isOpen={isOpen} {...args}>
+    <Details.Summary isDetailsOpen={isOpen}>
+      <Button>{summaryText}</Button>
+    </Details.Summary>
+    <Box padding="lg" background="grey-50" margin="sm 0 0 0">
+      {detailsText}
+    </Box>
+  </Details>
+);
 
 /**
  * Use the playground to see different results
@@ -40,5 +38,5 @@ export const Playground = Template.bind({});
 Playground.args = {
   isOpen: false,
   summaryText: 'Summary',
-  detailsText: 'Details go here!'
+  detailsText: 'Details go here!',
 };

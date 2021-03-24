@@ -44,40 +44,37 @@ const Template: Story<TabsProps> = ({
   size,
   disabledTabs,
   ...args
-}) => {
-  return (
-    <Box childGap="md">
-      <Tabs value={value} size={size} {...args}>
-        <Tabs.Item isDisabled={disabledTabs.includes(0)}>
-          Tab 0
-        </Tabs.Item>
-        <Tabs.Item isDisabled={disabledTabs.includes(1)}>
-          Tab 1
-        </Tabs.Item>
-        <Tabs.Item isDisabled={disabledTabs.includes(2)}>
-          Tab 2
-        </Tabs.Item>
-      </Tabs>
-      <TabPanels value={value}>
-        <Box padding="md" background="grey-50">
-          Panel 0
-        </Box>
-        <Box padding="md" background="grey-50">
-          Panel 1
-        </Box>
-        <Box padding="md" background="grey-50">
-          Panel 2
-        </Box>
-      </TabPanels>
-    </Box>
-  );
-};
+}) => (
+  <Box childGap="md">
+    <Tabs value={value} size={size} {...args}>
+      <Tabs.Item isDisabled={disabledTabs.includes(0)}>
+        Tab 0
+      </Tabs.Item>
+      <Tabs.Item isDisabled={disabledTabs.includes(1)}>
+        Tab 1
+      </Tabs.Item>
+      <Tabs.Item isDisabled={disabledTabs.includes(2)}>
+        Tab 2
+      </Tabs.Item>
+    </Tabs>
+    <TabPanels value={value}>
+      <Box padding="md" background="grey-50">
+        Panel 0
+      </Box>
+      <Box padding="md" background="grey-50">
+        Panel 1
+      </Box>
+      <Box padding="md" background="grey-50">
+        Panel 2
+      </Box>
+    </TabPanels>
+  </Box>
+);
 
 export const Playground = Template.bind({});
 
 Playground.args = {
   value: 0,
-  size: "md",
+  size: 'md',
   disabledTabs: [],
 };
-
