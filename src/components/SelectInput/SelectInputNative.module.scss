@@ -1,0 +1,83 @@
+.select-input-native {
+  line-height: var(--form-control-line-height);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+
+  &:focus {
+    border-color: var(--form-control-focus-border-color);
+  }
+
+  &.error {
+    border-color: var(--form-control-error-border-color);
+  }
+}
+/* The following styles required the :global tag since they need to be applied to
+react-select elements for which we do not own the markup */
+
+/* stylelint-disable */
+:global(.select-input-wrapper) {
+  :global(.react-select) {
+    &:hover {
+      :global(.react-select__dropdown-indicator) {
+        color: var(--form-control-focus-border-color);
+      }
+    }
+
+    :global(.react-select__control) {
+      line-height: var(--form-control-line-height);
+      border-color: var(--form-control-border-color);
+      box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+
+      :global(.react-select__value-container) {
+        padding: 0;
+      }
+
+      :global(.react-select__placeholder) {
+        color: var(--form-control-placeholder-color);
+      }
+
+      :global(.react-select__clear-indicator) {
+        padding: 7px;
+      }
+
+      :global(.react-select__indicator-separator) {
+        display: none;
+      }
+
+      .react-select-icon {
+        padding: 0;
+        padding-right: 2px;
+        color: var(--form-control-icon-color);
+
+        &:hover {
+          color: var(--form-control-icon-hover-color);
+        }
+      }
+
+      :global(.react-select__clear-indicator) {
+        @extend .react-select-icon;
+
+        margin-right: var(--form-control-select-clear-icon-margin);
+      }
+
+      &:global(.react-select__control--is-focused) {
+        border-color: var(--form-control-focus-border-color);
+        box-shadow: none;
+      }
+
+      &:global(.react-select__control--is-disabled) {
+        :global(.react-select__dropdown-indicator) {
+          color: var(--form-control-placeholder-color);
+        }
+      }
+    }
+
+    :global(.react-select__menu) {
+      z-index: var(--size-z-index-popover);
+    }
+
+    &.error {
+      border-color: var(--form-control-error-border-color);
+      background-color: var(--form-control-error-background-color);
+    }
+  }
+}

@@ -5,7 +5,7 @@ import React, {
   ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
 import styles from './CheckboxInput.module.scss';
