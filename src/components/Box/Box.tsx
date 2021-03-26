@@ -30,6 +30,7 @@ import {
   FontWeight,
   ResponsiveProp,
   SpacingSize,
+  KnownKeys,
 } from '../../types';
 import getDimensionCss from '../../lib/getDimensionCss';
 import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
@@ -418,4 +419,36 @@ export const Box: FC<BoxProps> = forwardRef((
   );
 });
 
-export default Box;
+export const boxPropsKeys: (keyof Pick<BoxProps, KnownKeys<BoxProps>>)[] = [
+  'as',
+  'alignItems',
+  'alignContent',
+  'alignSelf',
+  'background',
+  'borderColor',
+  'borderWidth',
+  'className',
+  'childGap',
+  'children',
+  'color',
+  'direction',
+  'display',
+  'flex',
+  'fontSize',
+  'fontWeight',
+  'height',
+  'justifyContent',
+  'margin',
+  'maxHeight',
+  'minHeight',
+  'maxWidth',
+  'minWidth',
+  'overflow',
+  'padding',
+  'radius',
+  'shadow',
+  'style',
+  'textAlign',
+  'wrap',
+  'width',
+];

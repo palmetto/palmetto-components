@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Accordion, AccordionProps } from './Accordion';
+import { boxPropsKeys } from '../Box/Box';
 
 export default {
   title: 'Components/Accordion/Playground',
@@ -18,6 +19,7 @@ export default {
         options: ['right', 'left', false],
       },
     },
+    ...boxPropsKeys.reduce((acc, curr) => ({ ...acc, [curr]: { table: { disable: true } } }), {}),
   },
 } as Meta;
 

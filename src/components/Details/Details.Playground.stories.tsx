@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from '../Button/Button';
-import { Box } from '../Box/Box';
+import { Box, boxPropsKeys } from '../Box/Box';
 import { Details, DetailsProps } from './Details';
 
 export default {
@@ -11,6 +11,7 @@ export default {
     isOpen: {
       control: 'boolean',
     },
+    ...boxPropsKeys.reduce((acc, curr) => ({ ...acc, [curr]: { table: { disable: true } } }), {}),
   },
 } as Meta;
 

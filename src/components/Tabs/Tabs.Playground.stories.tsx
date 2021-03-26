@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Box } from '../Box/Box';
+import { Box, boxPropsKeys } from '../Box/Box';
 import { Tabs, TabsProps } from './Tabs';
 import { TabPanels } from './TabPanels';
 
@@ -36,6 +36,12 @@ export default {
         options: [0, 1, 2],
       },
     },
+    onChange: {
+      table: {
+        disable: true,
+      },
+    },
+    ...boxPropsKeys.reduce((acc, curr) => ({ ...acc, [curr]: { table: { disable: true } } }), {}),
   },
 } as Meta;
 
