@@ -1,5 +1,7 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
+import { SpacingSize, BorderRadiusSize } from '../../types';
 
 export interface FormInputProps extends BoxProps {
   /**
@@ -13,6 +15,33 @@ export interface FormInputProps extends BoxProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
+export const inputPaddingSizes: { [key: string]: { [key: string]: SpacingSize; } } = {
+  sm: {
+    v: '2xs',
+    h: '2xs',
+  },
+  md: {
+    v: 'sm',
+    h: 'sm',
+  },
+  lg: {
+    v: 'md',
+    h: 'md',
+  },
+};
+
+export const childGapSizes: { [key: string]: SpacingSize } = {
+  sm: '2xs',
+  md: 'xs',
+  lg: 'sm',
+};
+
+export const inputRadiusSizes: {[key: string]: BorderRadiusSize } = {
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+};
+
 export const FormInput: React.FC<FormInputProps> = ({
   children,
   error,
@@ -20,27 +49,69 @@ export const FormInput: React.FC<FormInputProps> = ({
   size = 'md',
   ...restProps
 }) => {
-  const paddingMap = {
-    sm: '0 2xs',
-    md: 'xs sm',
-    lg: 'xs sm',
+  /**
+   * Shallow merges existing classes of child node with a className based on the childGap value.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const decorateChildren = (child: string | number | React.ReactElement<any>, i: number, array: React.ReactElement<any>[]) => {
+    if (!child || typeof child === 'string' || typeof child === 'number') {
+      return child;
+    }
+
+    let classes;
+
+    classes = classNames(child.props.className, `p-v-${inputPaddingSizes[size].v}`);
+  
+    if (array.length === 1) {
+      classes = classNames(classes, `p-h-${inputPaddingSizes[size].h}`);
+    }
+
+    if (array.length === 2) {
+      if (i === 0) {
+        classes = classNames(classes, `p-left-${inputPaddingSizes[size].h}`);
+      }
+
+      if (i === 1) {
+        classes = classNames(classes, `p-right-${inputPaddingSizes[size].h}`)
+      }
+    }
+
+    if (array.length > 2) {
+      if (i === 0) {
+        classes = classNames(classes, `p-left-${inputPaddingSizes[size].h}`);
+      }
+
+      if (i === array.length - 1) {
+        classes = classNames(classes, `p-right-${inputPaddingSizes[size].h}`)
+      }
+    }
+
+    return React.cloneElement(child, {
+      className: classes,
+      key: child.key ?? i,
+    });
   };
 
-  const borderRadiusMap = {
-    sm: 'sm',
-    md: 'md',
-    lg: 'md',
-  };
+  let decoratedChildren = React.Children.toArray(children).filter(child => child !== null);
+
+  decoratedChildren = decoratedChildren
+    .map((value, index, array) => decorateChildren(
+      value as string | number | React.ReactElement<any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+      index,
+      array as React.ReactElement<any>[], // eslint-disable-line @typescript-eslint/no-explicit-any
+    ));
 
   return (
     <Box
-      padding={paddingMap[size]}
-      radius={borderRadiusMap[size]}
+      radius={inputRadiusSizes[size]}
       background={error ? 'warning-100' : 'white'}
       borderColor={error ? 'warning' : 'grey-100'}
+      childGap={childGapSizes[size]}
+      borderWidth="xs"
+      shadow="2xs"
       {...restProps}
     >
-      {children}
+      {decoratedChildren}
     </Box>
   );
 }

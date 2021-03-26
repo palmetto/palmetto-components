@@ -414,7 +414,7 @@ export const Box: FC<BoxProps> = forwardRef((
       ref,
       ...restProps,
     },
-    decoratedChildren,
+    children ? decoratedChildren : null,
   );
 });
 

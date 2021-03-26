@@ -42,7 +42,6 @@ export const FormControl: React.FC<FormControlProps> = React.forwardRef(
     hideLabel,
     children,
     error,
-    className,
     isRequired,
     id,
     helpText,
@@ -62,7 +61,7 @@ export const FormControl: React.FC<FormControlProps> = React.forwardRef(
   };
 
   return (
-    <Box width={width} className={className} ref={ref} {...restProps}>
+    <Box width={width} ref={ref} {...restProps}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       {children}
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
