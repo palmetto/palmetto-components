@@ -1,13 +1,9 @@
-import React, {
-  FC,
-  ChangeEvent,
-  FocusEvent,
-  ReactNode,
-} from 'react';
+import React, { FC, ChangeEvent, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
+import { Checkbox, CheckboxSize } from './components/Checkbox';
 import styles from './CheckboxInput.module.scss';
 
 export interface CheckboxInputProps {
@@ -65,6 +61,10 @@ export interface CheckboxInputProps {
    * Callback function when input is focused.
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  /**
+   * The size of the checkbox.
+   */
+  size?: CheckboxSize;
 }
 
 export const CheckboxInput: FC<CheckboxInputProps> = ({
@@ -81,6 +81,7 @@ export const CheckboxInput: FC<CheckboxInputProps> = ({
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
+  size = 'md',
 }) => {
   const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
     if (onBlur) onBlur(event);
@@ -100,40 +101,46 @@ export const CheckboxInput: FC<CheckboxInputProps> = ({
     { [styles.inline]: displayInline },
   );
 
-  const inputProps = {
+  const checkboxProps = {
     'aria-invalid': !!error,
     'aria-label': label,
     'aria-labelledby': label ? `${id}Label` : undefined,
     id,
-    checked: !!isChecked,
-    disabled: isDisabled,
+    isChecked: !!isChecked,
+    isDisabled,
     onBlur: handleBlur,
     onChange: handleChange,
     onFocus: handleFocus,
-    type: 'checkbox',
-    className: styles.input,
+    size,
+    label,
+    className: 'm-right-xs',
+    error,
   };
+
+  let labelMargin;
+
+  if (size === 'sm') {
+    labelMargin = '0';
+  } else if (size === 'lg') {
+    labelMargin = 'xs 0 0 0';
+  } else {
+    labelMargin = '2xs 0 0 0';
+  }
 
   const labelProps = {
     isFieldRequired: isRequired,
-    className: styles['checkbox-label'],
     inputId: id,
     hasError: !!error,
     helpText,
     isDisabled,
+    margin: labelMargin,
   };
 
   return (
     <Box className={className}>
       <div className={wrapperClasses}>
-        <div>
-          <input {...inputProps} />
-        </div>
-        {label && !hideLabel && (
-          <FormLabel {...labelProps}>
-            {label}
-          </FormLabel>
-        )}
+        <Checkbox {...checkboxProps} />
+        {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       </div>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </Box>

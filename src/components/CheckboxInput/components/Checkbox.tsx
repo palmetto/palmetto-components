@@ -160,8 +160,8 @@ export const Checkbox: FC<CheckboxProps> = ({
         style={{
           position: 'absolute',
           opacity: '0',
-          width: `var(--size-font-${SIZE_KEYS[size]})`,
-          height: `var(--size-font-${SIZE_KEYS[size]})`,
+          width: SIZE_KEYS[size].height,
+          height: SIZE_KEYS[size].height,
         }}
       />
       {checkboxIcon()}
