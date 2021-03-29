@@ -6,7 +6,7 @@ import { FontColor, FontSize } from '../../../types';
 export type CheckboxSize = 'sm' | 'md' | 'lg';
 
 export interface CheckboxProps
-  extends Omit<BoxProps, 'display' | 'radius' | 'background' | 'as' | 'height'> {
+  extends Omit<BoxProps, | 'radius' | 'background' | 'as' | 'height'> {
   /**
    * The id attribute of the input.
    */
@@ -72,6 +72,7 @@ const SIZE_KEYS: { [key: string]: { iconSize: FontSize; height: string; }; } = {
 export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
   (
     {
+      display = 'inline',
       id,
       isChecked,
       label,
@@ -148,7 +149,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
     return (
       <Box
         background={isDisabled && !isChecked ? 'grey-50' : 'white'}
-        display="inline"
+        display={display}
         height={SIZE_KEYS[size].height}
         radius="sm"
         ref={ref}
