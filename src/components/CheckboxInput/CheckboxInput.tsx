@@ -1,6 +1,4 @@
-import React, {
-  FC, ChangeEvent, FocusEvent, ReactNode,
-} from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
@@ -24,7 +22,7 @@ export interface CheckboxInputProps {
   /**
    * Callback function when input is changed.
    */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /**
    * Additional classes to add.
    */
@@ -37,11 +35,11 @@ export interface CheckboxInputProps {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: ReactNode;
+  error?: React.ReactNode;
   /**
    * Additional clarifying text to help describe the input
    */
-  helpText?: ReactNode;
+  helpText?: React.ReactNode;
   /**
    * Determines if the label is not shown for stylistic reasons.
    * Note the label is still a required prop and will be used as the aria-label for accessibility reasons.
@@ -58,18 +56,18 @@ export interface CheckboxInputProps {
   /**
    * Callback function when input is blurred.
    */
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /**
    * Callback function when input is focused.
    */
-  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /**
    * The size of the checkbox.
    */
   size?: CheckboxSize;
 }
 
-export const CheckboxInput: FC<CheckboxInputProps> = ({
+export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   id,
   isChecked,
   label,
@@ -85,15 +83,15 @@ export const CheckboxInput: FC<CheckboxInputProps> = ({
   onFocus = undefined,
   size = 'md',
 }) => {
-  const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
     if (onBlur) onBlur(event);
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(event);
   };
 
-  const handleFocus = (event: FocusEvent<HTMLInputElement>): void => {
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
     if (onFocus) onFocus(event);
   };
 
