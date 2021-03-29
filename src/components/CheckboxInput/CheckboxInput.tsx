@@ -104,9 +104,6 @@ export const CheckboxInput: FC<CheckboxInputProps> = ({
   );
 
   const checkboxProps = {
-    'aria-invalid': !!error,
-    'aria-label': label,
-    'aria-labelledby': label ? `${id}Label` : undefined,
     id,
     isChecked: !!isChecked,
     isDisabled,
@@ -141,7 +138,7 @@ export const CheckboxInput: FC<CheckboxInputProps> = ({
   return (
     <Box className={className}>
       <div className={wrapperClasses}>
-        <Checkbox {...checkboxProps} />
+        <Checkbox {...checkboxProps} labelledby={label ? `${id}Label` : undefined} />
         {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       </div>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
