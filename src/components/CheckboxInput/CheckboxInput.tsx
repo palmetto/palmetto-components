@@ -1,10 +1,8 @@
 import React from 'react';
-import classNames from 'classnames';
 import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
 import { Checkbox, CheckboxSize } from './components/Checkbox';
-import styles from './CheckboxInput.module.scss';
 
 export interface CheckboxInputProps {
   /**
@@ -27,10 +25,6 @@ export interface CheckboxInputProps {
    * Additional classes to add.
    */
   className?: string;
-  /**
-   * Determines if the checkbox should be rendered with display: inline;.
-   */
-  displayInline?: boolean;
   /**
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
@@ -73,7 +67,6 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   label,
   onChange,
   className = '',
-  displayInline = false,
   error = false,
   hideLabel = false,
   helpText,
@@ -94,12 +87,6 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
     if (onFocus) onFocus(event);
   };
-
-  const wrapperClasses = classNames(
-    styles.checkbox,
-    { [styles.disabled]: isDisabled },
-    { [styles.inline]: displayInline },
-  );
 
   const checkboxProps = {
     id,
@@ -135,10 +122,13 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
 
   return (
     <Box className={className}>
-      <div className={wrapperClasses}>
+      <Box
+        alignItems="flex-start"
+        direction="row"
+      >
         <Checkbox {...checkboxProps} labelledby={label ? `${id}Label` : undefined} />
         {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
-      </div>
+      </Box>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </Box>
   );
