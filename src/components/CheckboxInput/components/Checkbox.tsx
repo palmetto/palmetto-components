@@ -1,12 +1,13 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Box, BoxProps } from '../../Box/Box';
 import { Icon } from '../../Icon/Icon';
-import { FontColor, FontSize } from '../../../types';
+import { BorderRadiusSize, FontColor, FontSize } from '../../../types';
+import styles from './Checkbox.module.scss';
 
 export type CheckboxSize = 'sm' | 'md' | 'lg';
 
-export interface CheckboxProps
-  extends Omit<BoxProps, | 'radius' | 'background' | 'as' | 'height'> {
+export interface CheckboxProps extends Omit<BoxProps, 'radius' | 'background' | 'as' | 'height'> {
   /**
    * The id attribute of the input.
    */
@@ -23,6 +24,10 @@ export interface CheckboxProps
    * Callback function when input is changed.
    */
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  /**
+   * Custom class to apply to the checkbox container.
+   */
+  className?: string;
   /**
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
@@ -54,24 +59,30 @@ export interface CheckboxProps
   size?: CheckboxSize;
 }
 
-const SIZE_KEYS: { [key: string]: { iconSize: FontSize; height: string; }; } = {
+const SIZE_KEYS: {
+  [key: string]: { iconSize: FontSize; height: string; radius: BorderRadiusSize; };
+} = {
   sm: {
     iconSize: 'lg',
     height: '20px',
+    radius: 'xs',
   },
   md: {
     iconSize: 'xl',
     height: '24px',
+    radius: 'sm',
   },
   lg: {
     iconSize: '2xl',
     height: '36px',
+    radius: 'sm',
   },
 };
 
 export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
   (
     {
+      className = '',
       display = 'inline',
       id,
       isChecked,
@@ -140,20 +151,23 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
       }
 
       return (
-        <Box display="inline-block">
+        <Box radius={SIZE_KEYS[size].radius} display="inline-block" height={SIZE_KEYS[size].height}>
           <Icon {...iconProps} size={SIZE_KEYS[size].iconSize} />
         </Box>
       );
     };
+
+    const containerClasses = classNames(styles.checkbox, className);
 
     return (
       <Box
         background={isDisabled && !isChecked ? 'grey-50' : 'white'}
         display={display}
         height={SIZE_KEYS[size].height}
-        radius="sm"
+        radius={SIZE_KEYS[size].radius}
         ref={ref}
         style={{ position: 'relative' }}
+        className={containerClasses}
         {...restProps}
       >
         <input
