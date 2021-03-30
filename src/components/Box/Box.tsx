@@ -8,6 +8,7 @@ import {
   CSSProperties,
   Children,
 } from 'react';
+import * as CSS from 'csstype';
 import classNames from 'classnames';
 import {
   BaseSpacing,
@@ -36,7 +37,9 @@ import getDimensionCss from '../../lib/getDimensionCss';
 import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
 import getElementType from '../../lib/getElementType';
 import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import styles from './Box.module.scss';
 
+export type HoverableBoxProperties = 'color' | 'borderColor' | 'shadow' | 'background';
 export interface BoxProps {
   /**
    * The element type to be rendered.
@@ -59,12 +62,12 @@ export interface BoxProps {
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
-  background?: BrandColor | ResponsiveProp<BrandColor>;
+  background?: BrandColor;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
    * Or a responsive prop with BrandColor for each breakpoint.
    */
-  borderColor?: BrandColor | ResponsiveProp<BrandColor>;
+  borderColor?: BrandColor;
   /**
    * Width of the Box's border
    * Can be a single [border width token](/?path=/docs/design-tokens-border-width--page).
@@ -90,7 +93,11 @@ export interface BoxProps {
   /**
    * A color token identifier to use for the text color.
    */
-  color?: FontColor | ResponsiveProp<FontColor>;
+  color?: FontColor;
+  /**
+   * Cursor style. Use any standard CSS value.
+   */
+  cursor?: Omit<CSS.Property.Cursor, '-moz-grab' | '-webkit-grab'>;
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
@@ -104,10 +111,17 @@ export interface BoxProps {
    */
   flex?: CssFlexValue | ResponsiveProp<CssFlexValue>;
   /**
+   * Pass style modifiers for focus states.
+   */
+  focus?: {
+    color?: BoxProps['color'];
+    borderColor?: BoxProps['borderColor'];
+    background?: BoxProps['background'];
+  };
+  /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box's text
    */
   fontSize?: FontSize | ResponsiveProp<FontSize>;
-
   /**
    * The [font weight token](/?path=/story/design-tokens-font-weight--page) identifier for the Box's text
    */
@@ -117,6 +131,14 @@ export interface BoxProps {
    * or a [height token](/?path=/docs/design-tokens-height--page)
    */
   height?: DimensionSize | ResponsiveProp<DimensionSize> | string;
+  /**
+   * Pass style modifiers for hover states.
+   */
+  hover?: {
+    color?: BoxProps['color'];
+    borderColor?: BoxProps['borderColor'];
+    background?: BoxProps['background'];
+  };
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
@@ -210,12 +232,14 @@ export const Box: FC<BoxProps> = forwardRef((
     childGap = undefined,
     className = '',
     color = undefined,
+    cursor = undefined,
     display = 'flex',
     direction = 'column',
     flex = undefined,
     fontSize = 'inherit',
     fontWeight = undefined,
     height = undefined,
+    hover = undefined,
     justifyContent = undefined,
     margin = undefined,
     maxHeight = undefined,
@@ -244,7 +268,22 @@ export const Box: FC<BoxProps> = forwardRef((
   const isFlexBox = typeof display === 'string' && display.includes('flex');
   const flexDirectionClasses = isFlexBox ? generateResponsiveClasses('flex-direction', direction) : null;
 
+  const cssPropertyMap = {
+    color: 'font-color',
+    background: 'background-color',
+    borderColor: 'border-color',
+  };
+
+  const hoverClasses = hover
+    ? Object.entries(hover).map(([key, value]) => generateResponsiveClasses(`hover:${cssPropertyMap[key as keyof BoxProps['hover']]}`, value))
+    : undefined;
+
+  const focusClasses = focus
+    ? Object.entries(focus).map(([key, value]) => generateResponsiveClasses(`focus:${cssPropertyMap[key as keyof BoxProps['focus']]}`, value))
+    : undefined;
+
   const boxClasses = classNames(
+    styles.box,
     className,
     cssShorthandToClasses('m', margin),
     cssShorthandToClasses('p', padding),
@@ -265,15 +304,18 @@ export const Box: FC<BoxProps> = forwardRef((
     generateResponsiveClasses('overflow', overflow),
     generateResponsiveClasses('shadow', shadow),
     generateResponsiveClasses('flex', flex),
-    generateResponsiveClasses('background-color', background),
     cssShorthandToClasses('border-width', borderWidth),
-    generateResponsiveClasses('border-color', borderColor),
-    generateResponsiveClasses('font-color', color),
     generateResponsiveClasses('font-weight', fontWeight),
     generateResponsiveClasses('text-align', textAlign),
+    ...(hoverClasses ? hoverClasses : []),
+    ...(focusClasses ? focusClasses : []),
     {
       'flex-wrap': isFlexBox && wrap,
       'flex-nowrap': isFlexBox && wrap === false,
+      [`background-color-${background}`]: background,
+      [`font-color-${color}`]: color,
+      [`border-color-${borderColor}`]: borderColor,
+      [`cursor-${cursor}`]: cursor,
     },
   );
 

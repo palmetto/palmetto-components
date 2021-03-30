@@ -1,0 +1,5 @@
+.box {
+  transition-duration: 0.2s;
+  transition-property: background-color, border, box-shadow, color;
+  transition-timing-function: cubic-bezier(0.67, 0.83, 0.67);
+}

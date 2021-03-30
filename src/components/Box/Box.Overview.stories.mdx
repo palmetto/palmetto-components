@@ -1372,3 +1372,22 @@ For example the following has padding at the `desktop` breakpoint and wider.
     </Box>
   </Story>
 </Canvas>
+
+## Hover States
+
+When passing an object, omitting a key is the same as not applying any styles.
+For example the following has padding at the `desktop` breakpoint and wider.
+
+<Canvas>
+  <Story name="Hover States" parameters={{ ...RESPONSIVE_STORY }}>
+    <Box
+      padding={{ desktop: 'lg' }}
+      background="primary-lighter"
+      hover={{ background: 'primary', color: 'white' }}
+      cursor="pointer"
+    >
+      <p>This box will have no padding until the viewport reaches the desktop breakpoint. </p>
+    </Box>
+  </Story>
+</Canvas>
+
