@@ -22,7 +22,13 @@ export const AllBackgroundColors: React.FunctionComponent<BoxProps> = () => (
   <Box flex="auto" direction="row" fontSize="sm">
     {BRAND_COLOR_NAMES.map((color, index) => {
       if (color.includes('inherit')) return null;
-      else if (color === 'dark' || color === 'light' || color === 'black' || color === 'white') {
+      else if (
+        color === 'dark' ||
+        color === 'light' ||
+        color === 'black' ||
+        color === 'white' ||
+        color === 'transparent'
+      ) {
         return (
           <Box flex="auto" padding="xs" background={color} key={`${color}-${index}`}>
             {`${color}`}
@@ -72,7 +78,13 @@ export const AllBorderColors: React.FunctionComponent<BoxProps> = () => (
   <Box flex="auto" direction="row" fontSize="sm">
     {BRAND_COLOR_NAMES.map((color, index) => {
       if (color.includes('inherit')) return null;
-      else if (color === 'dark' || color === 'light' || color === 'black' || color === 'white') {
+      else if (
+        color === 'dark' ||
+        color === 'light' ||
+        color === 'black' ||
+        color === 'white' ||
+        color === 'transparent'
+      ) {
         return (
           <Box borderColor={color} borderWidth="sm" padding="xs" key={`${color}-${index}`}>
             {`${color}`}
