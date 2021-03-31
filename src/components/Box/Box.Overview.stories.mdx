@@ -1609,15 +1609,10 @@ Try resizing the browser to see the responsive properties in action.
 <Canvas>
   <Story name="Responsive Props" parameters={{ ...RESPONSIVE_STORY }}>
     <Box
+      background="primary-100"
+      borderColor="grey-300"
       padding={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'xl' }}
-      background={{
-        base: 'white',
-        tablet: 'primary-100',
-        desktop: 'secondary-100',
-        hd: 'tertiary-100',
-      }}
       fontSize={{ base: 'md', tablet: 'lg', desktop: 'xl', hd: '3xl' }}
-      borderColor={{ base: 'grey-300', tablet: 'primary', desktop: 'secondary' }}
       borderWidth={{ base: 'sm', tablet: 'xs', desktop: 'md', hd: '0' }}
       textAlign={{ base: 'center', tablet: 'right', desktop: 'left' }}
     >
