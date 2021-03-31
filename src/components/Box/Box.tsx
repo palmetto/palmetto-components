@@ -111,12 +111,19 @@ export interface BoxProps {
    */
   flex?: CssFlexValue | ResponsiveProp<CssFlexValue>;
   /**
-   * Pass style modifiers for focus states.
+   * Pass style modifiers for focus states. The following properties can be modified on focus.
+   * `* background`
+   * `* borderColor`
+   * `* borderWidth`
+   * `* color`
+   * `* shadow`
    */
   focus?: {
-    color?: BoxProps['color'];
-    borderColor?: BoxProps['borderColor'];
     background?: BoxProps['background'];
+    borderColor?: BoxProps['borderColor'];
+    borderWidth?: BoxProps['borderWidth'];
+    color?: BoxProps['color'];
+    shadow?: BoxProps['shadow'];
   };
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box's text
@@ -132,12 +139,21 @@ export interface BoxProps {
    */
   height?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
-   * Pass style modifiers for hover states.
+   * Pass style modifiers for hover states. The following properties can be modified on hover:
+   * `* background`
+   * `* borderColor`
+   * `* borderWidth`
+   * `* color`
+   * `* fontSize`
+   * `* shadow`
    */
   hover?: {
-    color?: BoxProps['color'];
-    borderColor?: BoxProps['borderColor'];
     background?: BoxProps['background'];
+    borderColor?: BoxProps['borderColor'];
+    borderWidth?: BoxProps['borderWidth'];
+    color?: BoxProps['color'];
+    fontSize?: BoxProps['fontSize'];
+    shadow?: BoxProps['shadow']
   };
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
@@ -268,18 +284,23 @@ export const Box: FC<BoxProps> = forwardRef((
   const isFlexBox = typeof display === 'string' && display.includes('flex');
   const flexDirectionClasses = isFlexBox ? generateResponsiveClasses('flex-direction', direction) : null;
 
-  const cssPropertyMap = {
-    color: 'font-color',
-    background: 'background-color',
-    borderColor: 'border-color',
+  const cssPropertyMap: { [key: string]: { classPrefix: string, transformer: any }} = {
+    color: { classPrefix: 'font-color', transformer: generateResponsiveClasses },
+    background: { classPrefix: 'background-color', transformer: generateResponsiveClasses },
+    borderColor: { classPrefix: 'border-color', transformer: generateResponsiveClasses },
+    borderWidth: { classPrefix: 'border-width', transformer: cssShorthandToClasses },
+    shadow: { classPrefix: 'shadow', transformer: generateResponsiveClasses },
+    fontSize: { classPrefix: 'font-size', transformer: generateResponsiveClasses },
   };
 
   const hoverClasses = hover
-    ? Object.entries(hover).map(([key, value]) => generateResponsiveClasses(`hover:${cssPropertyMap[key as keyof BoxProps['hover']]}`, value))
+    ? Object.entries(hover).map(([key, value]) =>
+      cssPropertyMap[key].transformer(`hover:${cssPropertyMap[key as keyof BoxProps['hover']].classPrefix}`, value))
     : undefined;
 
   const focusClasses = focus
-    ? Object.entries(focus).map(([key, value]) => generateResponsiveClasses(`focus:${cssPropertyMap[key as keyof BoxProps['focus']]}`, value))
+    ? Object.entries(focus).map(([key, value]) =>
+      cssPropertyMap[key].transformer(`focus:${cssPropertyMap[key as keyof BoxProps['focus']].classPrefix}`, value))
     : undefined;
 
   const boxClasses = classNames(
