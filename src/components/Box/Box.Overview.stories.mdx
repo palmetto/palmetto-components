@@ -1502,13 +1502,13 @@ Currently our library supports hover states for:
       <Box
         padding="md"
         background="white"
-        borderColor="grey-light"
-        borderWidth="0"
+        borderColor="transparent"
+        borderWidth="xs"
         hover={{
-          borderWidth: 'xs',
+          borderColor: 'primary-500',
         }}
       >
-        adding a border
+        adding a border color
       </Box>
       <Box
         padding="md"
@@ -1519,7 +1519,7 @@ Currently our library supports hover states for:
           borderWidth: 'md',
         }}
       >
-        changing a border
+        changing a border width
       </Box>
     </Box>
   </Story>
