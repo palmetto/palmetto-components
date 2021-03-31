@@ -256,6 +256,7 @@ export const Box: FC<BoxProps> = forwardRef((
     fontWeight = undefined,
     height = undefined,
     hover = undefined,
+    focus = undefined,
     justifyContent = undefined,
     margin = undefined,
     maxHeight = undefined,
@@ -478,7 +479,7 @@ export const Box: FC<BoxProps> = forwardRef((
       ref,
       ...restProps,
     },
-    decoratedChildren,
+    children ? decoratedChildren : null,
   );
 });
 

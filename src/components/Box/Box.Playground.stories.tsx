@@ -136,6 +136,72 @@ export default {
         options: [null, ...WIDTH_OPTIONS],
       },
     },
+    hoverBackground: {
+      control: {
+        type: 'select',
+        options: [null, ...BRAND_COLOR_OPTIONS],
+      },
+    },
+    hoverBorderColor: {
+      control: {
+        type: 'select',
+        options: [null, ...BRAND_COLOR_OPTIONS],
+      },
+    },
+    hoverBorderWidth: {
+      control: {
+        type: 'select',
+        options: [null, ...BORDER_SIZE_OPTIONS],
+      },
+    },
+    hoverShadowSize: {
+      control: {
+        type: 'select',
+        options: [null, ...BOX_SHADOW_OPTIONS],
+      },
+    },
+    hoverFontSize: {
+      control: {
+        type: 'select',
+        options: [null, ...FONT_SIZE_OPTIONS],
+      },
+    },
+    hoverFontColor: {
+      control: {
+        type: 'select',
+        options: [null, ...FONT_COLOR_OPTIONS],
+      },
+    },
+    focusBackground: {
+      control: {
+        type: 'select',
+        options: [null, ...BRAND_COLOR_OPTIONS],
+      },
+    },
+    focusBorderColor: {
+      control: {
+        type: 'select',
+        options: [null, ...BRAND_COLOR_OPTIONS],
+      },
+    },
+    focusBorderWidth: {
+      control: {
+        type: 'select',
+        options: [null, ...BORDER_SIZE_OPTIONS],
+      },
+    },
+    focusShadowSize: {
+      control: {
+        type: 'select',
+        options: [null, ...BOX_SHADOW_OPTIONS],
+      },
+    },
+    focusFontColor: {
+      control: {
+        type: 'select',
+        options: [null, ...FONT_COLOR_OPTIONS],
+      },
+    },
     overflow: {
       control: {
         type: 'select',
@@ -253,6 +319,17 @@ const Template: Story<BoxProps> = ({
   childWidth,
   childHeight,
   childTextAlign,
+  hoverBackground,
+  hoverBorderColor,
+  hoverBorderWidth,
+  hoverShadowSize,
+  hoverFontColor,
+  hoverFontSize,
+  focusBackground,
+  focusBorderColor,
+  focusBorderWidth,
+  focusShadowSize,
+  focusFontColor,
   ...args
 }) => {
   const childBoxes = [];
@@ -274,7 +351,29 @@ const Template: Story<BoxProps> = ({
     );
   }
 
-  return <Box {...args}>{childBoxes}</Box>;
+  return (
+    <Box
+      {...args}
+      hover={{
+        background: hoverBackground,
+        borderColor: hoverBorderColor,
+        borderWidth: hoverBorderWidth,
+        shadow: hoverShadowSize,
+        fontSize: hoverFontSize,
+        color: hoverFontColor,
+      }}
+      focus={{
+        background: focusBackground,
+        borderColor: focusBorderColor,
+        borderWidth: focusBorderWidth,
+        shadow: focusShadowSize,
+        color: focusFontColor,
+      }}
+      tabIndex="0"
+    >
+      {childBoxes}
+    </Box>
+  );
 };
 
 export const Playground = Template.bind({});
