@@ -1957,7 +1957,7 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@palmetto/palmetto-design-tokens@^0.37.1":
+"@palmetto/palmetto-design-tokens@^0.37.0":
   version "0.37.1"
   resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.37.1.tgz#a528115fb4e692fedde9c597430a989816807e64"
   integrity sha512-BEX2k0MgF/WzSrULoYLug0EJ9DT2wYaRRQ8InuR48s5e9z1dVEopio16bOcyhJ6/OiUW/NfXiMLG63LuQBlj+g==
