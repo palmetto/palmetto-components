@@ -8,6 +8,7 @@ export * from './Box/Box';
 export * from './Button/Button';
 export * from './Card/Card';
 export * from './Card/components';
+export * from './CheckboxInput/components/Checkbox';
 export * from './CheckboxInput/CheckboxInput';
 export * from './DateInput/DateInput';
 export * from './DatePicker/DatePicker';

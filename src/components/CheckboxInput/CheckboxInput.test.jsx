@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-} from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { CheckboxInput } from './CheckboxInput';
 import { FormLabel } from '../FormLabel/FormLabel';
 
@@ -45,15 +42,18 @@ describe('CheckboxInput', () => {
     );
     expect(getByLabelText('test checkbox')).toBeDefined();
     expect(FormLabel).toHaveBeenCalledTimes(1);
-    expect(FormLabel).toHaveBeenCalledWith({
-      inputId: 'testCheckbox',
-      hasError: false,
-      helpText: 'i am help text',
-      isFieldRequired: false,
-      children: 'test checkbox',
-      className: 'checkbox-label',
-      isDisabled: false,
-    }, {});
+    expect(FormLabel).toHaveBeenCalledWith(
+      {
+        inputId: 'testCheckbox',
+        hasError: false,
+        helpText: 'i am help text',
+        isFieldRequired: false,
+        children: 'test checkbox',
+        margin: '2xs 0 0 0',
+        isDisabled: false,
+      },
+      {},
+    );
   });
 
   test('it calls FormLabel with the correct props when checkbox is required', () => {
@@ -68,25 +68,23 @@ describe('CheckboxInput', () => {
     );
     expect(getByLabelText('test checkbox')).toBeDefined();
     expect(FormLabel).toHaveBeenCalledTimes(1);
-    expect(FormLabel).toHaveBeenCalledWith({
-      inputId: 'testCheckbox',
-      hasError: false,
-      helpText: undefined,
-      isFieldRequired: true,
-      children: 'test checkbox',
-      className: 'checkbox-label',
-      isDisabled: false,
-    }, {});
+    expect(FormLabel).toHaveBeenCalledWith(
+      {
+        inputId: 'testCheckbox',
+        hasError: false,
+        helpText: undefined,
+        isFieldRequired: true,
+        children: 'test checkbox',
+        margin: '2xs 0 0 0',
+        isDisabled: false,
+      },
+      {},
+    );
   });
 
   test('input is checked when isChecked is true', () => {
     const { getByLabelText } = render(
-      <CheckboxInput
-        id="testCheckbox"
-        label="test checkbox"
-        onChange={() => null}
-        isChecked
-      />,
+      <CheckboxInput id="testCheckbox" label="test checkbox" onChange={() => null} isChecked />,
     );
     const checkbox = getByLabelText('test checkbox');
     expect(checkbox.checked).toEqual(true);
@@ -107,12 +105,7 @@ describe('CheckboxInput', () => {
 
   test('assigns the "aria-labelledby" attribute and calls FormLabel with expected props', () => {
     const { getByLabelText } = render(
-      <CheckboxInput
-        id="testInput"
-        label="test label"
-        value="hello"
-        onChange={() => null}
-      />,
+      <CheckboxInput id="testInput" label="test label" value="hello" onChange={() => null} />,
     );
     expect(getByLabelText('test label')).toHaveAttribute('aria-labelledby', 'testInputLabel');
   });
@@ -142,15 +135,18 @@ describe('CheckboxInput', () => {
         />,
       );
       expect(FormLabel).toHaveBeenCalledTimes(1);
-      expect(FormLabel).toHaveBeenCalledWith({
-        inputId: 'testCheckbox',
-        hasError: true,
-        helpText: undefined,
-        isFieldRequired: false,
-        children: 'test checkbox',
-        className: 'checkbox-label',
-        isDisabled: false,
-      }, {});
+      expect(FormLabel).toHaveBeenCalledWith(
+        {
+          inputId: 'testCheckbox',
+          hasError: true,
+          helpText: undefined,
+          isFieldRequired: false,
+          children: 'test checkbox',
+          margin: '2xs 0 0 0',
+          isDisabled: false,
+        },
+        {},
+      );
     });
 
     test('calls FormLabel with the correct properties when error is a true', () => {
@@ -164,15 +160,18 @@ describe('CheckboxInput', () => {
         />,
       );
       expect(FormLabel).toHaveBeenCalledTimes(1);
-      expect(FormLabel).toHaveBeenCalledWith({
-        inputId: 'testCheckbox',
-        hasError: true,
-        helpText: undefined,
-        isFieldRequired: false,
-        children: 'test checkbox',
-        className: 'checkbox-label',
-        isDisabled: false,
-      }, {});
+      expect(FormLabel).toHaveBeenCalledWith(
+        {
+          inputId: 'testCheckbox',
+          hasError: true,
+          helpText: undefined,
+          isFieldRequired: false,
+          children: 'test checkbox',
+          margin: '2xs 0 0 0',
+          isDisabled: false,
+        },
+        {},
+      );
     });
   });
 
@@ -187,15 +186,69 @@ describe('CheckboxInput', () => {
       />,
     );
     expect(FormLabel).toHaveBeenCalledTimes(1);
-    expect(FormLabel).toHaveBeenCalledWith({
-      inputId: 'testCheckbox',
-      hasError: false,
-      helpText: undefined,
-      isFieldRequired: false,
-      children: 'test checkbox',
-      className: 'checkbox-label',
-      isDisabled: true,
-    }, {});
+    expect(FormLabel).toHaveBeenCalledWith(
+      {
+        inputId: 'testCheckbox',
+        hasError: false,
+        helpText: undefined,
+        isFieldRequired: false,
+        children: 'test checkbox',
+        margin: '2xs 0 0 0',
+        isDisabled: true,
+      },
+      {},
+    );
+  });
+
+  describe('Size', () => {
+    test('calls FormLabel with the correct properties when size is small', () => {
+      render(
+        <CheckboxInput
+          id="testCheckbox"
+          label="test checkbox"
+          isChecked={false}
+          onChange={() => null}
+          size="sm"
+        />,
+      );
+      expect(FormLabel).toHaveBeenCalledTimes(1);
+      expect(FormLabel).toHaveBeenCalledWith(
+        {
+          inputId: 'testCheckbox',
+          hasError: false,
+          helpText: undefined,
+          isFieldRequired: false,
+          children: 'test checkbox',
+          margin: '0',
+          isDisabled: false,
+        },
+        {},
+      );
+    });
+    test('calls FormLabel with the correct properties when size is large', () => {
+      render(
+        <CheckboxInput
+          id="testCheckbox"
+          label="test checkbox"
+          isChecked={false}
+          onChange={() => null}
+          size="lg"
+        />,
+      );
+      expect(FormLabel).toHaveBeenCalledTimes(1);
+      expect(FormLabel).toHaveBeenCalledWith(
+        {
+          inputId: 'testCheckbox',
+          hasError: false,
+          helpText: undefined,
+          isFieldRequired: false,
+          children: 'test checkbox',
+          margin: 'xs 0 0 0',
+          isDisabled: false,
+        },
+        {},
+      );
+    });
   });
 
   describe('onChange', () => {
@@ -217,7 +270,9 @@ describe('CheckboxInput', () => {
 
     test('calls onChange and passes checked value in event', () => {
       let value = true;
-      const mockedHandleChange = jest.fn(event => { value = event.target.checked; });
+      const mockedHandleChange = jest.fn(event => {
+        value = event.target.checked;
+      });
 
       const { getByLabelText } = render(
         <CheckboxInput

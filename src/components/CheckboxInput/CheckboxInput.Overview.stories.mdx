@@ -61,6 +61,48 @@ Ideally, the label text should also indicate that the checkbox is required.
   </Story>
 </Canvas>
 
+## Sizes
+
+Set the size of the checkbox and label with the `size` prop.
+
+<Canvas>
+  <Story name="Sizes">
+    {() => {
+      const [sm, setSm] = useState(null);
+      const [md, setMd] = useState(null);
+      const [lg, setLg] = useState(null);
+      return (
+        <Box childGap="md">
+          <CheckboxInput
+            id="smCheckboxInput"
+            label="Small checkbox"
+            helpText="More helpful text about this checkbox"
+            isChecked={sm}
+            onChange={event => setSm(event.target.checked)}
+            size="sm"
+          />
+          <CheckboxInput
+            id="mdCheckboxInput"
+            label="Medium checkbox"
+            helpText="More helpful text about this checkbox"
+            isChecked={md}
+            onChange={event => setMd(event.target.checked)}
+            size="md"
+          />
+          <CheckboxInput
+            id="lgCheckboxInput"
+            label="Large checkbox"
+            helpText="More helpful text about this checkbox"
+            isChecked={lg}
+            onChange={event => setLg(event.target.checked)}
+            size="lg"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Help Text
 
 Use `helpText` to add additional context to the checkbox.
@@ -72,7 +114,7 @@ This can help keep checkbox label concise.
       const [value, setValue] = useState(null);
       return (
         <CheckboxInput
-          id="requiredCheckboxIsUnchecked"
+          id="helpTextCheckbox"
           label="Checkbox with help text"
           helpText="More helpful text about this checkbox"
           isChecked={value}
@@ -142,17 +184,18 @@ and append your own. Feel free to use the `FormLabel` component to keep the base
             hideLabel
             onChange={value => setValue(event.target.checked)}
             isChecked={value}
-            displayInline
           />
           <FormLabel inputId="customLabel">
-            This is custom, look at this{' '}
-            <a
-              href="https://palmetto.com"
-              onClick={() => alert('hey you clicked me!')}
-              target="_blank"
-            >
-              Link
-            </a>
+            <Box display="block" fontSize="xl" color="secondary-500">
+              This is custom, look at this{' '}
+              <a
+                href="https://palmetto.com"
+                onClick={() => alert('hey you clicked me!')}
+                target="_blank"
+              >
+                Link
+              </a>
+            </Box>
           </FormLabel>
         </Box>
       );

@@ -1,0 +1,19 @@
+.checkbox {
+  input:focus + div {
+    /* define regular focus styles for non-supporting browsers */
+    outline: 0;
+    box-shadow: var(--input-focus-box-shadow);
+  }
+  /* Show focus styles on keyboard focus. */
+  input:focus-visible + div {
+    outline: 0;
+    box-shadow: var(--input-focus-box-shadow);
+  }
+
+  /* Hide focus styles if they're not needed, for example,
+    when an element receives focus via the mouse. */
+  input:focus:not(:focus-visible) + div {
+    outline: 0;
+    box-shadow: none;
+  }
+}
