@@ -59,6 +59,10 @@ export interface CheckboxInputProps {
    * The size of the checkbox.
    */
   size?: CheckboxSize;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const CheckboxInput: React.FC<CheckboxInputProps> = ({
@@ -75,6 +79,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   onBlur = undefined,
   onFocus = undefined,
   size = 'md',
+  ...restProps
 }) => {
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
     if (onBlur) onBlur(event);
@@ -121,7 +126,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   };
 
   return (
-    <Box className={className}>
+    <Box className={className} {...restProps}>
       <Box
         alignItems="flex-start"
         direction="row"
