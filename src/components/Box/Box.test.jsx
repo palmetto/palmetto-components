@@ -325,4 +325,11 @@ describe('Box', () => {
       });
     });
   });
+
+  describe('Cursor', () => {
+    test('Renders with proper cursor utility class when prop is passed', () => {
+      const { queryAllByText } = render(<Box cursor="pointer">Test Box</Box>);
+      expect(queryAllByText('Test Box')[0].classList).toContain('cursor-pointer');
+    });
+  })
 });
