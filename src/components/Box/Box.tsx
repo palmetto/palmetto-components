@@ -153,7 +153,7 @@ export interface BoxProps {
     borderWidth?: BoxProps['borderWidth'];
     color?: BoxProps['color'];
     fontSize?: BoxProps['fontSize'];
-    shadow?: BoxProps['shadow']
+    shadow?: BoxProps['shadow'];
   };
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
@@ -285,7 +285,12 @@ export const Box: FC<BoxProps> = forwardRef((
   const isFlexBox = typeof display === 'string' && display.includes('flex');
   const flexDirectionClasses = isFlexBox ? generateResponsiveClasses('flex-direction', direction) : null;
 
-  const cssPropertyMap: { [key: string]: { classPrefix: string, transformer: any }} = {
+  const cssPropertyMap: {
+    [key: string]: {
+      classPrefix: string;
+      transformer: typeof generateResponsiveClasses | typeof cssShorthandToClasses;
+    };
+  } = {
     color: { classPrefix: 'font-color', transformer: generateResponsiveClasses },
     background: { classPrefix: 'background-color', transformer: generateResponsiveClasses },
     borderColor: { classPrefix: 'border-color', transformer: generateResponsiveClasses },
@@ -295,13 +300,15 @@ export const Box: FC<BoxProps> = forwardRef((
   };
 
   const hoverClasses = hover
-    ? Object.entries(hover).map(([key, value]) =>
-      cssPropertyMap[key].transformer(`hover:${cssPropertyMap[key as keyof BoxProps['hover']].classPrefix}`, value))
+    ? Object.entries(hover).map(([key, value]) => (
+      cssPropertyMap[key].transformer(`hover:${cssPropertyMap[key as keyof BoxProps['hover']].classPrefix}`, value)
+    ))
     : undefined;
 
   const focusClasses = focus
-    ? Object.entries(focus).map(([key, value]) =>
-      cssPropertyMap[key].transformer(`focus:${cssPropertyMap[key as keyof BoxProps['focus']].classPrefix}`, value))
+    ? Object.entries(focus).map(([key, value]) => (
+      cssPropertyMap[key].transformer(`focus:${cssPropertyMap[key as keyof BoxProps['focus']].classPrefix}`, value)
+    ))
     : undefined;
 
   const boxClasses = classNames(
@@ -329,8 +336,8 @@ export const Box: FC<BoxProps> = forwardRef((
     cssShorthandToClasses('border-width', borderWidth),
     generateResponsiveClasses('font-weight', fontWeight),
     generateResponsiveClasses('text-align', textAlign),
-    ...(hoverClasses ? hoverClasses : []),
-    ...(focusClasses ? focusClasses : []),
+    ...(hoverClasses ?? []),
+    ...(focusClasses ?? []),
     {
       'flex-wrap': isFlexBox && wrap,
       'flex-nowrap': isFlexBox && wrap === false,
