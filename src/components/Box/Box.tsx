@@ -312,7 +312,6 @@ export const Box: FC<BoxProps> = forwardRef((
     : undefined;
 
   const boxClasses = classNames(
-    styles.box,
     className,
     cssShorthandToClasses('m', margin),
     cssShorthandToClasses('p', padding),
@@ -345,6 +344,7 @@ export const Box: FC<BoxProps> = forwardRef((
       [`font-color-${color}`]: color,
       [`border-color-${borderColor}`]: borderColor,
       [`cursor-${cursor}`]: cursor,
+      [styles['box-transition']]: hover || focus,
     },
   );
 
