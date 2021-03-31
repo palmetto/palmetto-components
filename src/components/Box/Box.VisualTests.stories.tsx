@@ -308,19 +308,6 @@ const BoxTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
   );
 };
 
-export const ResponsiveBackground = BoxTemplate.bind({});
-ResponsiveBackground.args = {
-  propertyName: 'background',
-  background: {
-    base: 'primary-lighter',
-    tablet: 'warning-lighter',
-    desktop: 'danger-lighter',
-    hd: 'secondary-lighter',
-  },
-  padding: 'sm',
-};
-ResponsiveBackground.parameters = RESPONSIVE_STORY;
-
 export const ResponsiveFontSize = BoxTemplate.bind({});
 ResponsiveFontSize.args = {
   propertyName: 'fontSize',
@@ -333,19 +320,6 @@ ResponsiveFontSize.args = {
   padding: 'sm',
 };
 ResponsiveFontSize.parameters = RESPONSIVE_STORY;
-
-export const ResponsiveFontColor = BoxTemplate.bind({});
-ResponsiveFontColor.args = {
-  propertyName: 'color',
-  color: {
-    base: 'primary',
-    tablet: 'warning',
-    desktop: 'danger',
-    hd: 'secondary',
-  },
-  padding: 'sm',
-};
-ResponsiveFontColor.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveRadius = BoxTemplate.bind({});
 ResponsiveRadius.args = {
@@ -387,20 +361,6 @@ ResponsiveTextAlign.args = {
   background: 'info-100',
 };
 ResponsiveTextAlign.parameters = RESPONSIVE_STORY;
-
-export const ResponsiveBorderColor = BoxTemplate.bind({});
-ResponsiveBorderColor.args = {
-  propertyName: 'borderColor',
-  borderWidth: 'sm',
-  borderColor: {
-    base: 'primary',
-    tablet: 'warning',
-    desktop: 'danger',
-    hd: 'secondary',
-  },
-  padding: 'sm',
-};
-ResponsiveBorderColor.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveBorderWidth = BoxTemplate.bind({});
 ResponsiveBorderWidth.args = {
