@@ -1,14 +1,8 @@
-import React, {
-  FC,
-  ChangeEvent,
-  FocusEvent,
-  ReactNode,
-} from 'react';
-import classNames from 'classnames';
+import React from 'react';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
-import styles from './CheckboxInput.module.scss';
+import { Checkbox, CheckboxSize } from './components/Checkbox';
 
 export interface CheckboxInputProps {
   /**
@@ -26,24 +20,20 @@ export interface CheckboxInputProps {
   /**
    * Callback function when input is changed.
    */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /**
    * Additional classes to add.
    */
   className?: string;
   /**
-   * Determines if the checkbox should be rendered with display: inline;.
-   */
-  displayInline?: boolean;
-  /**
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: ReactNode;
+  error?: React.ReactNode;
   /**
    * Additional clarifying text to help describe the input
    */
-  helpText?: ReactNode;
+  helpText?: React.ReactNode;
   /**
    * Determines if the label is not shown for stylistic reasons.
    * Note the label is still a required prop and will be used as the aria-label for accessibility reasons.
@@ -60,20 +50,27 @@ export interface CheckboxInputProps {
   /**
    * Callback function when input is blurred.
    */
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /**
    * Callback function when input is focused.
    */
-  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  /**
+   * The size of the checkbox.
+   */
+  size?: CheckboxSize;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
-export const CheckboxInput: FC<CheckboxInputProps> = ({
+export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   id,
   isChecked,
   label,
   onChange,
   className = '',
-  displayInline = false,
   error = false,
   hideLabel = false,
   helpText,
@@ -81,60 +78,62 @@ export const CheckboxInput: FC<CheckboxInputProps> = ({
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
+  size = 'md',
+  ...restProps
 }) => {
-  const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
     if (onBlur) onBlur(event);
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(event);
   };
 
-  const handleFocus = (event: FocusEvent<HTMLInputElement>): void => {
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
     if (onFocus) onFocus(event);
   };
 
-  const wrapperClasses = classNames(
-    styles.checkbox,
-    { [styles.disabled]: isDisabled },
-    { [styles.inline]: displayInline },
-  );
-
-  const inputProps = {
-    'aria-invalid': !!error,
-    'aria-label': label,
-    'aria-labelledby': label ? `${id}Label` : undefined,
+  const checkboxProps = {
     id,
-    checked: !!isChecked,
-    disabled: isDisabled,
+    isChecked: !!isChecked,
+    isDisabled,
     onBlur: handleBlur,
     onChange: handleChange,
     onFocus: handleFocus,
-    type: 'checkbox',
-    className: styles.input,
+    size,
+    label,
+    className: 'm-right-xs',
+    error,
   };
+
+  let labelMargin;
+
+  if (size === 'sm') {
+    labelMargin = '0';
+  } else if (size === 'lg') {
+    labelMargin = 'xs 0 0 0';
+  } else {
+    labelMargin = '2xs 0 0 0';
+  }
 
   const labelProps = {
     isFieldRequired: isRequired,
-    className: styles['checkbox-label'],
     inputId: id,
     hasError: !!error,
     helpText,
     isDisabled,
+    margin: labelMargin,
   };
 
   return (
-    <Box className={className}>
-      <div className={wrapperClasses}>
-        <div>
-          <input {...inputProps} />
-        </div>
-        {label && !hideLabel && (
-          <FormLabel {...labelProps}>
-            {label}
-          </FormLabel>
-        )}
-      </div>
+    <Box className={className} {...restProps}>
+      <Box
+        alignItems="flex-start"
+        direction="row"
+      >
+        <Checkbox {...checkboxProps} labelledby={label ? `${id}Label` : undefined} />
+        {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
+      </Box>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </Box>
   );

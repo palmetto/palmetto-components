@@ -51,6 +51,7 @@ export const FormLabel: FC<FormLabelProps> = ({
   inputId,
   className = '',
   displayInline = false,
+  display = 'block',
   hasError = false,
   helpText,
   isDisabled = false,
@@ -73,6 +74,7 @@ export const FormLabel: FC<FormLabelProps> = ({
       as="label"
       id={`${inputId}Label`}
       className={labelClasses}
+      display={display}
       margin={margin}
       padding={padding}
       htmlFor={inputId}

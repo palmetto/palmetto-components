@@ -4,6 +4,10 @@
     font-weight: var(--size-font-weight-bold);
     transition: color 0.2s, border-color 0.2s;
 
+    &[disabled] { /* stylelint-disable-line */
+      cursor: not-allowed;
+    }
+
     /* define regular focus styles for non-supporting browsers */
     &:focus {
       outline: 0;
@@ -25,18 +29,28 @@
   }
 
   &--selected {
-    > button { /* stylelint-disable-line */
-      border-bottom: 2px solid var(--color-brand-primary-base);
-      color: var(--color-brand-primary-base);
+    &:not(.disabled) {
+      > button { /* stylelint-disable-line */
+        border-bottom: 2px solid var(--color-brand-primary-base);
+        color: var(--color-brand-primary-base);
+  
+        &:hover { /* stylelint-disable-line */
+          color: var(--color-brand-primary-dark);
+        }
+      }
+    }
 
-      &:hover { /* stylelint-disable-line */
-        color: var(--color-brand-primary-dark);
+    &.disabled {
+      > button { /* stylelint-disable-line */
+        border-bottom: 2px solid var(--color-brand-grey-100);
+        color: var(--color-brand-grey-100);
       }
     }
   }
 
   &:not(.disabled) {
     > button { /* stylelint-disable-line */
+
       &:hover {
         color: var(--color-brand-primary-base);
         cursor: pointer;

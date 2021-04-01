@@ -12,9 +12,6 @@ export default {
     isChecked: {
       control: 'boolean',
     },
-    displayInline: {
-      control: 'boolean',
-    },
     error: {
       control: 'boolean',
     },

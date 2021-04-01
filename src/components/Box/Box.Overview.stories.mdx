@@ -1269,7 +1269,7 @@ Set the minimum width of the Box by setting `minHeight` to a [height token](/?pa
   </Story>
 </Canvas>
 
-### Overflow
+## Overflow
 
 Set the overflow behavior of the Box with `overflow`
 
@@ -1302,6 +1302,181 @@ Set the overflow behavior of the Box with `overflow`
         things in life though, these discounts won’t be around forever, so take advantage of them
         while you can.
       </p>
+    </Box>
+  </Story>
+</Canvas>
+
+## Cursor
+
+Set the cursor for value for the element in question. Use any valid [CSS cursor value](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#values). 
+<Canvas>
+  <Story name="Cursor">
+    <Box
+      padding="md"
+      childGap="md"
+      flex="auto"
+      background="primary-lighter"
+      overflow="auto"
+    >
+      <Box cursor="pointer" padding="md" background="primary-light">
+        pointer
+      </Box>
+      <Box cursor="move" padding="md" background="primary-light">
+        move
+      </Box>
+      <Box cursor="not-allowed" padding="md" background="primary-light">
+        not-allowed
+      </Box>
+      <Box cursor="grab" padding="md" background="primary-light">
+        grab
+      </Box>
+      <Box cursor="zoom-in" padding="md" background="primary-light">
+        zoom-in
+      </Box>
+      <Box cursor="zoom-out" padding="md" background="primary-light">
+        zoom-out
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Hover States
+
+You can control the styles for the box on hover using the `hover` prop and passing token values for the relevant property.
+Hover on the elements below to see these in action.
+
+Currently our library supports hover states for:
+* `background`
+* `borderColor`
+* `borderWidth`
+* `color`
+* `fontSize`
+* `shadow`
+
+<Canvas>
+  <Story name="Hover States" parameters={{ ...RESPONSIVE_STORY }}>
+    <Box childGap="md">
+      <Box
+        padding="md"
+        background="primary"
+        color="white"
+        shadow="xs"
+        hover={{
+          background: 'primary-dark',
+        }}
+        cursor="pointer"
+      >
+        simple background color effect
+      </Box>
+      <Box
+        padding="md"
+        background="white"
+        color="primary"
+        radius="md"
+        borderWidth="xs"
+        borderColor="primary"
+        fontWeight="bold"
+        direction="row"
+        justifyContent="center"
+        hover={{
+          background: 'primary',
+          color: 'white',
+        }}
+        cursor="pointer"
+      >
+       an outlined button 
+      </Box>
+      <Box
+        padding="md"
+        radius="md"
+        background="white"
+        shadow="sm"
+        borderWidth="xs"
+        borderColor="grey-lightest"
+        hover={{
+          shadow: 'lg',
+        }}
+        cursor="grab"
+      >
+        Card shadow effect
+      </Box>
+      <Box
+        padding="md"
+        background="white"
+        hover={{
+          fontSize: 'xl',
+        }}
+      >
+        growing text
+      </Box>
+      <Box
+        padding="md"
+        background="white"
+        hover={{
+          borderWidth: 'xs',
+          borderColor: 'primary-500',
+        }}
+      >
+        adding a border
+      </Box>
+      <Box
+        padding="md"
+        background="white"
+        borderColor="grey-light"
+        borderWidth="xs"
+        hover={{
+          borderWidth: 'md',
+        }}
+      >
+        changing a border width
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+## Focus States
+
+You can control the styles for the box on hover using the `focus` prop and passing token values for the relevant property.
+Focus on the elements below to the these in action.
+
+Currently our library supports hover states for:
+* `background`
+* `borderColor`
+* `borderWidth`
+* `color`
+* `shadow`
+
+<Canvas>
+  <Story name="Focus States" parameters={{ ...RESPONSIVE_STORY }}>
+    <Box childGap="md">
+      <Box
+        as="input"
+        type="text"
+        padding="md"
+        background="white"
+        color="dark"
+        shadow="xs"
+        borderWidth="xs"
+        borderColor="grey-lighter"
+        radius="md"
+        style={{ outline: 'none' }}
+        focus={{
+          borderColor: 'grey',
+        }}
+        placeholder="useful for form inputs..."
+      />
+      <Box
+        radius="md"
+        shadow="xs"
+        padding="md"
+        focus={{
+          shadow: 'lg',
+        }}
+        tabIndex="0"
+        style={{ outline: 'none' }}
+      >
+        Card focus effect
+      </Box>
     </Box>
   </Story>
 </Canvas>
@@ -1343,15 +1518,10 @@ Try resizing the browser to see the responsive properties in action.
 <Canvas>
   <Story name="Responsive Props" parameters={{ ...RESPONSIVE_STORY }}>
     <Box
+      background="primary-100"
+      borderColor="grey-300"
       padding={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'xl' }}
-      background={{
-        base: 'white',
-        tablet: 'primary-100',
-        desktop: 'secondary-100',
-        hd: 'tertiary-100',
-      }}
       fontSize={{ base: 'md', tablet: 'lg', desktop: 'xl', hd: '3xl' }}
-      borderColor={{ base: 'grey-300', tablet: 'primary', desktop: 'secondary' }}
       borderWidth={{ base: 'sm', tablet: 'xs', desktop: 'md', hd: '0' }}
       textAlign={{ base: 'center', tablet: 'right', desktop: 'left' }}
     >
