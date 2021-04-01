@@ -27,7 +27,6 @@ export const AllBackgroundColors: React.FunctionComponent<BoxProps> = () => (
         || color === 'light'
         || color === 'black'
         || color === 'white'
-        || color === 'transparent'
       ) {
         return (
           <Box flex="auto" padding="xs" background={color} key={`${color}-${index}`}>
@@ -83,7 +82,6 @@ export const AllBorderColors: React.FunctionComponent<BoxProps> = () => (
         || color === 'light'
         || color === 'black'
         || color === 'white'
-        || color === 'transparent'
       ) {
         return (
           <Box borderColor={color} borderWidth="sm" padding="xs" key={`${color}-${index}`}>
