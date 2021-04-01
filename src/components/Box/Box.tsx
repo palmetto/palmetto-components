@@ -97,7 +97,7 @@ export interface BoxProps {
   /**
    * Cursor style. Use any standard CSS value.
    */
-  cursor?: Omit<CSS.Property.Cursor, '-moz-grab' | '-webkit-grab'>;
+  cursor?: CSS.Property.Cursor;
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
