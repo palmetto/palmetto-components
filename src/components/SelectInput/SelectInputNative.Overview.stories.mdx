@@ -18,8 +18,8 @@ import { SelectInput } from './SelectInput';
 
 Allows users to pick a value from a predefined list of options. Ideally, it should be used when there are 5 or more options, otherwise you should consider using a radio group instead.
 
-_NOTE:_ This component is build on top of `react-select` and as such you can use any available prop from that component here as well. For a full list
-of react-select props, [Click Here](https://react-select.com/props).
+_NOTE:_ This is an alternative to the `SelectInput` component, but leveraging the native platform dropdown instead of a custom one. This is useful,
+when a custom UI is not needed for a select, or the native UI is preferred (this is recommended for most cases except multi-selects).
 
 ## Props
 
@@ -27,7 +27,7 @@ of react-select props, [Click Here](https://react-select.com/props).
 
 ## Default
 
-All that is required to render a basic version of the SelectInput is a unique `id`, a `label`, a list of options passed to the `options` prop, a `value`, and an onchange event handler passed to the `onChange` prop.
+All that is required to render a basic version of the SelectInputNative is a unique `id`, a `label`, a list of options passed to the `options` prop, a `value`, and an onchange event handler passed to the `onChange` prop.
 
 <Canvas>
   <Story name="Default">
