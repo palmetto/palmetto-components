@@ -4,6 +4,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Box } from '../Box/Box';
 import Card from '../Card/Card';
 import { SelectInputNative } from './SelectInputNative';
+import { SelectInput } from './SelectInput';
 
 <Meta
   title="Components/SelectInputNative/Overview"
@@ -13,7 +14,7 @@ import { SelectInputNative } from './SelectInputNative';
   }}
 />
 
-# SelectInput
+# SelectInputNative
 
 Allows users to pick a value from a predefined list of options. Ideally, it should be used when there are 5 or more options, otherwise you should consider using a radio group instead.
 
@@ -38,14 +39,13 @@ All that is required to render a basic version of the SelectInput is a unique `i
         { value: 'vanilla', label: 'Vanilla' },
       ];
       return (
-        <div style={{ height: '200px' }}>
+        <div>
           <SelectInputNative
-            id="singleSelectWithLabel"
+            id="default Select"
             label="Label"
             onChange={event => setValue(event.target.value)}
             options={options}
             value={value}
-            placeholder="hello"
           />
         </div>
       );
@@ -53,7 +53,7 @@ All that is required to render a basic version of the SelectInput is a unique `i
   </Story>
 </Canvas>
 
-<!-- ## Pre-Selected
+## Pre-Selected
 
 Pre-select an option by passing its value to the `value` prop.
 
@@ -67,8 +67,8 @@ Pre-select an option by passing its value to the `value` prop.
       ];
       const [value, setValue] = useState(options[1]);
       return (
-        <div style={{ height: '200px' }}>
-          <SelectInput
+        <div>
+          <SelectInputNative
             id="preSelected"
             label="Label"
             onChange={event => setValue(event.target.value)}
@@ -95,15 +95,14 @@ Use the `helpText` prop to add clarifying text beneath the input label.
         { value: 'vanilla', label: 'Vanilla' },
       ];
       return (
-        <div style={{ height: '200px' }}>
-          <SelectInput
+        <div>
+          <SelectInputNative
             id="helpText"
             label="Flavor"
             helpText="Choose your favorite flavor"
             onChange={event => setValue(event.target.value)}
             options={options}
             value={value}
-            placeholder="Custom placeholder..."
           />
         </div>
       );
@@ -113,7 +112,9 @@ Use the `helpText` prop to add clarifying text beneath the input label.
 
 ## Placeholder
 
-Use the `placeholder` prop to add a custom placeholder.
+Use the `placeholder` prop to add a custom placeholder. Note that this component automatically renders the first option
+to use as a placeholder with a value of `''`. This first option is however disabled can't be selected after a user has picked
+one of the real options.
 
 <Canvas>
   <Story name="Placeholder">
@@ -125,8 +126,8 @@ Use the `placeholder` prop to add a custom placeholder.
         { value: 'vanilla', label: 'Vanilla' },
       ];
       return (
-        <div style={{ height: '200px' }}>
-          <SelectInput
+        <div>
+          <SelectInputNative
             id="customPlaceholder"
             label="Label"
             onChange={event => setValue(event.target.value)}
@@ -154,72 +155,14 @@ Use the `hideLabel` prop to not render the label.
         { value: 'vanilla', label: 'Vanilla' },
       ];
       return (
-        <div style={{ height: '175px' }}>
-          <SelectInput
+        <div>
+          <SelectInputNative
             id="labelHidden"
             label="My label is hidden"
             onChange={event => setValue(event.target.value)}
             options={options}
             value={value}
             hideLabel
-          />
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Multi-Select
-
-Use the `isMulti` prop to allow the selection of multiple options.
-
-<Canvas>
-  <Story name="Multi-Select">
-    {() => {
-      const [value, setValue] = useState(null);
-      const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-      ];
-      return (
-        <div style={{ height: '200px' }}>
-          <SelectInput
-            id="multiSelect"
-            label="Label"
-            value={value}
-            onChange={event => setValue(event.target.value)}
-            options={options}
-            isMulti
-          />
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Multi-Select and Pre-Selected
-
-Use the `isMulti` prop combined with passing one or more options in an array to the `value` prop to pre-select option(s).
-
-<Canvas>
-  <Story name="Multi-Select and Pre-Selected">
-    {() => {
-      const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-      ];
-      const [value, setValue] = useState([options[0], options[2]]);
-      return (
-        <div style={{ height: '200px' }}>
-          <SelectInput
-            id="preSelectMultiSelect"
-            label="Label"
-            value={value}
-            onChange={event => setValue(event.target.value)}
-            options={options}
-            isMulti
           />
         </div>
       );
@@ -241,8 +184,8 @@ Use the `autoFocus` prop to autofocus a SelectInput.
       ];
       const [value, setValue] = useState(null);
       return (
-        <div style={{ height: '200px' }}>
-          <SelectInput
+        <div>
+          <SelectInputNative
             id="autoFocus"
             label="Label"
             value={value}
@@ -271,7 +214,7 @@ Use the `isRequired` prop to mark the input as required.
       const [value, setValue] = useState(null);
       return (
         <div style={{ height: '200px' }}>
-          <SelectInput
+          <SelectInputNative
             id="required"
             label="Label"
             value={value}
@@ -300,44 +243,13 @@ Use the `isDisabled` prop to mark the input as disabled.
       const [value, setValue] = useState(null);
       return (
         <div style={{ height: '85px' }}>
-          <SelectInput
+          <SelectInputNative
             id="disabled"
             label="Label"
             value={value}
             onChange={event => setValue(event.target.value)}
             options={options}
             isDisabled
-          />
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Clearable
-
-Use the `isClearable` prop to allow clearing of the input selected option. NOTE: this works by passing `null`
-to the `onChange` handler.
-
-<Canvas>
-  <Story name="Clearable">
-    {() => {
-      const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-      ];
-      const [value, setValue] = useState(options[0]);
-      return (
-        <div style={{ height: '85px' }}>
-          <SelectInput
-            id="clearable"
-            label="Label"
-            value={value}
-            name="myClearableSelect"
-            onChange={event => setValue(event.target.value)}
-            options={options}
-            isClearable
           />
         </div>
       );
@@ -360,7 +272,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
       const [value, setValue] = useState(null);
       return (
         <div style={{ height: '200px' }}>
-          <SelectInput
+          <SelectInputNative
             id="error"
             label="Label"
             value={value}
@@ -391,8 +303,8 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
         { value: 'vanilla', label: 'Vanilla' },
       ];
       return (
-        <Box childGap="md" height="360px">
-          <SelectInput
+        <Box childGap="md">
+          <SelectInputNative
             id="smallSelect"
             label="Small"
             onChange={event => setValue(event.target.value)}
@@ -400,7 +312,7 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
             value={value}
             size="sm"
           />
-          <SelectInput
+          <SelectInputNative
             id="mediumSelect"
             label="Medium"
             onChange={event => setValue1(event.target.value)}
@@ -408,7 +320,7 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
             value={value1}
             size="md"
           />
-          <SelectInput
+          <SelectInputNative
             id="largeSelect"
             label="Large"
             onChange={event => setValue2(event.target.value)}
@@ -421,62 +333,3 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
     }}
   </Story>
 </Canvas>
-
-## With Portal
-
-In many cases it is helpful to render the select dropdown in a portal to avoid cutoff from a smaller container.
-We maintain the react-select API here where the `menuPortalTarget` prop is used. This is a ref to the element
-being portaled to. In the example below we would see our dropdown menu be cutoff by the storybook story container,
-if we did not portal it to the body element.
-
-<Canvas>
-  <Story name="Portal">
-    {() => {
-      const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-      ];
-      const [value, setValue] = useState(null);
-      return (
-        <SelectInput
-          id="portal"
-          label="Flavors"
-          value={value}
-          onChange={event => setValue(event.target.value)}
-          options={options}
-          menuPortalTarget={document.body}
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Custom Classes
-
-Use the `className` prop to add a custom class, or classes to an input.
-
-<Canvas>
-  <Story name="Custom Classes">
-    {() => {
-      const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-      ];
-      const [value, setValue] = useState(null);
-      return (
-        <div style={{ height: '200px' }}>
-          <SelectInput
-            id="customClasses"
-            label="Label"
-            value={value}
-            onChange={event => setValue(event.target.value)}
-            options={options}
-            className="background-color-primary"
-          />
-        </div>
-      );
-    }}
-  </Story>
-</Canvas> -->

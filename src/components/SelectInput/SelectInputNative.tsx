@@ -1,17 +1,19 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import { FormControl, FormControlProps } from '../FormControl/FormControl';
-import { FormInput } from '../FormInput/FormInput';
 import styles from './SelectInputNative.module.scss';
 
 export interface SelectInputNativeProps extends BoxProps, FormControlProps {
   options: { value: string | number; label: string | number }[],
   value: string | number;
-  onChange: (event: React.MouseEvent<HTMLSelectElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   size: 'sm' | 'md' | 'lg';
+  autoFocus: HTMLSelectElement['autofocus'],
 }
 
 export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
+  autoFocus = false,
   label,
   hideLabel,
   helpText,
@@ -31,6 +33,15 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
     ...options,
   ];
 
+  const selectWrapperClasses = classNames(
+    styles['select-input-native-wrapper'],
+    styles[size],
+    {
+      [styles.disabled]: isDisabled,
+      [styles.error]: error,
+    },
+  );
+
   return (
     <FormControl
       label={label}
@@ -40,25 +51,32 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
       helpText={helpText}
       isRequired={isRequired}
       isDisabled={isDisabled}
+      {...restProps}
     >
-      <FormInput
-        as="select"
-        value={value}
-        onChange={onChange}
-        size={size}
+      <Box
+        className={selectWrapperClasses}
       >
-        {optionsWithPlaceholder.map(option => (
-          <Box
-            as="option"
-            key={option.value}
-            value={option.value}
-            disabled={option.value === ''}
-            hidden={option.value === ''}
-          >
-            {option.label}
-          </Box>
-        ))}
-      </FormInput>
+        <Box
+          as="select"
+          value={value ?? ''}
+          onChange={onChange}
+          color={!value ? 'grey-light': 'dark'}
+          autoFocus={autoFocus}
+          disabled={isDisabled}
+        >
+          {optionsWithPlaceholder.map(option => (
+            <Box
+              as="option"
+              key={option.value}
+              value={option.value}
+              disabled={option.value === ''}
+              hidden={option.value === ''}
+            >
+              {option.label}
+            </Box>
+          ))}
+        </Box>
+      </Box>
     </FormControl>
   )
 }

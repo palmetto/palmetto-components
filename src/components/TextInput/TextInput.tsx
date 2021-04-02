@@ -17,7 +17,6 @@ import * as InputMaskTypes from './TextInputMasks';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormControl } from '../FormControl/FormControl';
-import { FormInput, inputPaddingSizes, inputRadiusSizes } from '../FormInput/FormInput';
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextInput.module.scss';
 
@@ -179,6 +178,11 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       return mask;
     };
 
+    const inputWrapperClasses = classNames(styles['text-input-wrapper'], styles[size], {
+      [styles.error]: error,
+      [styles.disabled]: isDisabled,
+    });
+
     const clearBtnClasses = classNames(styles['clear-button'], styles.md);
 
     const renderClearIcon = (): ReactNode => {
@@ -207,6 +211,11 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
       autoComplete: getAutoCompleteValue(autoComplete),
       autoFocus,
+      className: classNames({
+        'p-left-xs': prefix,
+        'p-right-xs': suffix,
+        'p-h-0': !suffix && !prefix,
+      }),
       disabled: isDisabled,
       id,
       maxLength,
@@ -231,20 +240,14 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
         ref={ref}
         {...restProps}
       >
-        <FormInput direction="row">
+        <Box direction="row" className={inputWrapperClasses}>
           {prefix && (
             <Box color="grey-400" className="ws-nowrap">
               {prefix}
             </Box>
           )}
           {!inputMask ? (
-            <Box
-              as="input"
-              borderWidth="0"
-              width="100"
-              radius={inputRadiusSizes[size]}
-              {...inputProps}
-            />
+            <input {...inputProps} />
           ) : (
             <Cleave {...inputProps} options={getInputMaskType(inputMask, InputMaskTypes)} />
           )}
@@ -254,7 +257,7 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
               {suffix}
             </Box>
           )}
-        </FormInput>
+        </Box>
       </FormControl>
     );
   },
