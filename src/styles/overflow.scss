@@ -7,7 +7,7 @@
 .overflow-initial { overflow: initial; }
 .overflow-unset { overflow: unset; }
 
-@media (min-width: var(--size-breakpoint-tablet)) {
+@media (min-width: $size-breakpoint-tablet) {
   .overflow-visible-tablet { overflow: visible; }
   .overflow-hidden-tablet { overflow: hidden; }
   .overflow-clip-tablet { overflow: clip; }
@@ -18,7 +18,7 @@
   .overflow-unset-tablet { overflow: unset; }
 }
 
-@media (min-width: var(--size-breakpoint-desktop)) {
+@media (min-width: $size-breakpoint-desktop) {
   .overflow-visible-desktop { overflow: visible; }
   .overflow-hidden-desktop { overflow: hidden; }
   .overflow-clip-desktop { overflow: clip; }
@@ -29,7 +29,7 @@
   .overflow-unset-desktop { overflow: unset; }
 }
 
-@media (min-width: var(--size-breakpoint-hd)) {
+@media (min-width: $size-breakpoint-hd) {
   .overflow-visible-hd { overflow: visible; }
   .overflow-hidden-hd { overflow: hidden; }
   .overflow-clip-hd { overflow: clip; }
