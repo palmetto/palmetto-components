@@ -4,6 +4,7 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { FormikTextInput } from './FormikTextInput/FormikTextInput';
 import { FormikCheckboxInput } from './FormikCheckboxInput/FormikCheckboxInput';
 import { FormikSelectInput } from './FormikSelectInput/FormikSelectInput';
+import { FormikSelectInputNative } from './FormikSelectInputNative/FormikSelectInputNative';
 import { FormikRadioGroup } from './FormikRadioGroup/FormikRadioGroup';
 import { FormikTextareaInput } from './FormikTextareaInput/FormikTextareaInput';
 import { FormikTimePicker } from './FormikTimePicker/FormikTimePicker';
@@ -39,6 +40,11 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         { id: 'small', value: 'small', label: 'Small' },
         { id: 'medium', value: 'medium', label: 'Medium' },
         { id: 'large', value: 'large', label: 'Large' },
+      ];
+      const songOptions = [
+        { value: 'songOfStorms', label: 'Song of Storms'},
+        { value: 'songOfTime', label: 'Song of Time'},
+        { value: 'zeldaLullaby', label: 'Zelda\'s Lullaby'},
       ];
       const handleValidation = values => {
         const errors = {};
@@ -96,6 +102,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
               flavor: null,
               flavor2: null,
               colors: [],
+              selectInputInput: '',
               sizes: null,
               timePicker: null,
               dateInput: '',
@@ -250,6 +257,15 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                       isMulti
                       options={colorOptions}
                       component={FormikSelectInput}
+                    />
+                  </div>
+                  <div>
+                    <Field
+                      label="Native select input"
+                      name="selectInputNative"
+                      id="selectInputNative"
+                      options={songOptions}
+                      component={FormikSelectInputNative}
                     />
                   </div>
                   <div>

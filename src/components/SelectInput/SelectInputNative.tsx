@@ -21,6 +21,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
   id,
   isDisabled,
   isRequired,
+  name,
   value,
   options,
   onChange,
@@ -63,6 +64,8 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
           color={!value ? 'grey-light': 'dark'}
           autoFocus={autoFocus}
           disabled={isDisabled}
+          name={name}
+          id={id}
         >
           {optionsWithPlaceholder.map(option => (
             <Box
