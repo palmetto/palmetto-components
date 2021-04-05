@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SelectInputNative } from '../../SelectInput/SelectInputNative';
+import { SelectInputNative } from '../../SelectInputNative/SelectInputNative';
 
 const propTypes = {
   field: PropTypes.shape({

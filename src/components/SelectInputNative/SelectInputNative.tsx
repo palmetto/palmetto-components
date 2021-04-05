@@ -59,6 +59,8 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
       >
         <Box
           as="select"
+          aria-label={label}
+          aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
           value={value ?? ''}
           onChange={onChange}
           color={!value ? 'grey-light': 'dark'}
