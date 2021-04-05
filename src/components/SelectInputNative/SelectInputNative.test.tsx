@@ -242,7 +242,8 @@ describe('SelectInputNative', () => {
           />,
         );
         const select = screen.getByLabelText('size test');
-        expect(select?.closest('div').getAttribute('class')).toContain(size);
+        const selectParent = select.closest('div');
+        expect(selectParent?.getAttribute('class')).toContain(size);
       });
     });
   });
