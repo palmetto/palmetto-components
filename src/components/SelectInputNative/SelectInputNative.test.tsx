@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import selectEvent from 'react-select-event';
 import { SelectInputNative } from './SelectInputNative';
 
 const selectOptions = [
@@ -21,10 +20,11 @@ describe('SelectInputNative', () => {
           placeholder="Test Placeholder"
           label="onchange test"
           options={selectOptions}
+          value={null}
         />,
       );
 
-      await selectEvent.select(getByLabelText('onchange test'), 'Vanilla');
+      await fireEvent.change(getByLabelText('onchange test'));
 
       expect(mockedHandleChange).toBeCalledTimes(1);
     });
@@ -40,10 +40,12 @@ describe('SelectInputNative', () => {
           onFocus={mockedHandleFocus}
           placeholder="Test Placeholder"
           options={selectOptions}
+          value={null}
+          label="onfocus test"
         />,
       );
-
-      fireEvent.focus(screen.getByRole('textbox'));
+      const select = screen.getByLabelText('onfocus test');
+      fireEvent.focus(select);
 
       expect(mockedHandleFocus).toBeCalledTimes(1);
     });
@@ -59,10 +61,13 @@ describe('SelectInputNative', () => {
           onBlur={mockedHandleBlur}
           placeholder="Test Placeholder"
           options={selectOptions}
+          value={null}
+          label="onblur test"
         />,
       );
-
-      fireEvent.blur(screen.getByRole('textbox'));
+      
+      const select = screen.getByLabelText('onblur test');
+      fireEvent.blur(select);
 
       expect(mockedHandleBlur).toBeCalledTimes(1);
     });
@@ -81,6 +86,7 @@ describe('SelectInputNative', () => {
             onChange={mockedHandleChange}
             placeholder="Test Placeholder"
             options={selectOptions}
+            value={null}
           />,
         );
         expect(screen.queryByText('hidden label')).toBeNull();
@@ -92,7 +98,14 @@ describe('SelectInputNative', () => {
       const mockedHandleChange = jest.fn();
 
       render(
-        <SelectInputNative id="testInput" label="hidden label" hideLabel onChange={mockedHandleChange} />,
+        <SelectInputNative
+          id="testInput"
+          label="hidden label"
+          hideLabel
+          onChange={mockedHandleChange}
+          options={selectOptions}
+          value={null}
+        />,
       );
       const inputElement = screen.getByLabelText('hidden label');
       expect(inputElement).not.toHaveAttribute('aria-labelledby');
@@ -108,6 +121,7 @@ describe('SelectInputNative', () => {
             onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
+            value={selectOptions[1]}
           />,
         );
 
@@ -116,7 +130,15 @@ describe('SelectInputNative', () => {
       });
 
       test('assigns the "aria-labelledby" attribute and renders label correct id, when a label is provided', () => {
-        render(<SelectInputNative id="testInput" label="test label" />);
+        render(
+          <SelectInputNative
+            id="testInput"
+            label="test label"
+            options={selectOptions}
+            value={null}
+            onChange={() => null}
+          />
+        );
         const inputElement = screen.getByLabelText('test label');
         expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
         expect(document.getElementById('testInputLabel')).toBeInTheDocument();
@@ -141,47 +163,6 @@ describe('SelectInputNative', () => {
       });
     });
 
-    describe('Multi select, no selection', () => {
-      test('it renders input with a label, and with a default placeholder', () => {
-        const mockedHandleChange = jest.fn();
-
-        render(
-          <SelectInputNative
-            id="testId"
-            onChange={mockedHandleChange}
-            label="Select Label"
-            options={selectOptions}
-            isMulti
-          />,
-        );
-
-        expect(screen.getByLabelText('Select Label')).toBeInTheDocument();
-        expect(screen.getByText('Select...')).toBeInTheDocument();
-      });
-    });
-
-    describe('Multi select, with multiple items selected', () => {
-      test('it renders input with a label, and with two items selected', () => {
-        const mockedHandleChange = jest.fn();
-
-        render(
-          <SelectInputNative
-            id="testId"
-            onChange={mockedHandleChange}
-            label="Select Label"
-            options={selectOptions}
-            isMulti
-            value={[selectOptions[0], selectOptions[2]]}
-          />,
-        );
-
-        expect(screen.getByLabelText('Select Label')).toBeInTheDocument();
-        expect(screen.queryByText('Select...')).toBeNull();
-        expect(screen.getByText('Chocolate')).toBeInTheDocument();
-        expect(screen.getByText('Vanilla')).toBeInTheDocument();
-      });
-    });
-
     describe('Is Required', () => {
       test('it renders an asterisk in the label', () => {
         const mockedHandleChange = jest.fn();
@@ -193,6 +174,7 @@ describe('SelectInputNative', () => {
             label="Select Label"
             options={selectOptions}
             isRequired
+            value={selectOptions[0]}
           />,
         );
 
@@ -208,13 +190,14 @@ describe('SelectInputNative', () => {
           <SelectInputNative
             id="testId"
             onChange={mockedHandleChange}
-            label="Select Label"
+            label="disabled test"
             options={selectOptions}
             isDisabled
+            value={null}
           />,
         );
-
-        expect(screen.getByRole('textbox')).toBeDisabled();
+        const select = screen.getByLabelText('disabled test');
+        expect(select).toBeDisabled();
       });
     });
 
@@ -229,46 +212,11 @@ describe('SelectInputNative', () => {
             label="Select Label"
             options={selectOptions}
             error="Helpful message"
+            value={null}
           />,
         );
 
         expect(screen.getByText('Helpful message')).toBeInTheDocument();
-      });
-    });
-
-    describe('Is Clearable', () => {
-      test('it does not render the X icon if input has value but is not clearable', () => {
-        const mockedHandleChange = jest.fn();
-
-        const { container } = render(
-          <SelectInputNative
-            id="testId"
-            onChange={mockedHandleChange}
-            label="Select Label"
-            options={selectOptions}
-            value={selectOptions[0]}
-            isClearable={false}
-          />,
-        );
-
-        expect(container.querySelector('.react-select__clear-indicator')).not.toBeInTheDocument();
-      });
-
-      test('it renders the X icon if input has value and is clearable', () => {
-        const mockedHandleChange = jest.fn();
-
-        const { container } = render(
-          <SelectInputNative
-            id="testId"
-            onChange={mockedHandleChange}
-            label="Select Label"
-            options={selectOptions}
-            value={selectOptions[0]}
-            isClearable
-          />,
-        );
-
-        expect(container.querySelector('.react-select__clear-indicator')).toBeInTheDocument();
       });
     });
   });
