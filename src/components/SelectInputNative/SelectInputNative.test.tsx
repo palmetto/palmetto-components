@@ -65,7 +65,7 @@ describe('SelectInputNative', () => {
           label="onblur test"
         />,
       );
-      
+
       const select = screen.getByLabelText('onblur test');
       fireEvent.blur(select);
 
@@ -137,7 +137,7 @@ describe('SelectInputNative', () => {
             options={selectOptions}
             value={null}
             onChange={() => null}
-          />
+          />,
         );
         const inputElement = screen.getByLabelText('test label');
         expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');

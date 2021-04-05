@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, BoxProps } from '../Box/Box';
 import { FormLabel } from '../FormLabel/FormLabel';
-import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage'; 
+import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 
 export interface FormControlProps extends BoxProps {
   /**
@@ -35,8 +35,7 @@ export interface FormControlProps extends BoxProps {
   isRequired?: boolean;
 }
 
-export const FormControl: React.FC<FormControlProps> = React.forwardRef(
-(
+export const FormControl: React.FC<FormControlProps> = React.forwardRef((
   {
     label,
     hideLabel,
