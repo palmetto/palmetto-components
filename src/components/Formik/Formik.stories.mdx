@@ -71,6 +71,9 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         if (!values.dateInput) {
           errors.dateInput = 'Date is required';
         }
+        if (!values.selectInputNative) {
+          errors.selectInputNative = 'Song is required';
+        }
         return errors;
       };
       const handleSubmit = (values, { setSubmitting }) => {
@@ -102,7 +105,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
               flavor: null,
               flavor2: null,
               colors: [],
-              selectInputInput: '',
+              selectInputNative: '',
               sizes: null,
               timePicker: null,
               dateInput: '',
@@ -266,6 +269,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                       id="selectInputNative"
                       options={songOptions}
                       component={FormikSelectInputNative}
+                      isRequired
                     />
                   </div>
                   <div>

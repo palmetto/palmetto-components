@@ -31,7 +31,7 @@ All that is required to render a basic version of the SelectInputNative is a uni
 <Canvas>
   <Story name="Default">
     {() => {
-      const [value, setValue] = useState('');
+      const [value, setValue] = useState(null);
       const options = [
         { value: 'chocolate', label: 'Chocolate' },
         { value: 'strawberry', label: 'Strawberry' },
@@ -42,7 +42,7 @@ All that is required to render a basic version of the SelectInputNative is a uni
           <SelectInputNative
             id="default Select"
             label="Label"
-            onChange={event => setValue(event.target.value)}
+            onChange={event => { setValue(event.target.value) }}
             options={options}
             value={value}
           />

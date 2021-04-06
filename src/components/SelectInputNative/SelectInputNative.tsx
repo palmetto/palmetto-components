@@ -29,8 +29,9 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
   size = 'md',
   ...restProps
 }) => {
+  const placeholderOption = { value: '', label: placeholder };
   const optionsWithPlaceholder = [
-    { value: '', label: placeholder },
+    { ...placeholderOption },
     ...options,
   ];
 
@@ -61,9 +62,9 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
           as="select"
           aria-label={label}
           aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
-          value={value?.value ?? ''}
+          value={value ?? ''}
           onChange={onChange}
-          color={!value?.value ? 'grey-light' : 'dark'}
+          color={!value ? 'grey-light' : 'dark'}
           autoFocus={autoFocus}
           disabled={isDisabled}
           name={name}
