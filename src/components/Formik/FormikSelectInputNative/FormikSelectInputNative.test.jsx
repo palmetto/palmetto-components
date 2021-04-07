@@ -7,7 +7,6 @@ import {
 } from '@testing-library/react';
 import { Formik, Form, Field } from 'formik';
 import { FormikSelectInputNative } from './FormikSelectInputNative';
-import { SelectInputNative } from '../../SelectInputNative/SelectInputNative';
 
 const testLabelName = 'test select';
 
@@ -19,35 +18,38 @@ const selectOptions = [
 
 const handleValidation = values => {
   const errors = {};
-  if (values[testLabelName].length < 1) {
+  if (!values[testLabelName] || values[testLabelName].length < 1) {
     errors[testLabelName] = 'input is required';
   }
 
   return errors;
 };
 
-const renderForm = (initialValue, props) => (
-  <Formik
-    initialValues={{
-      [testLabelName]: initialValue,
-    }}
-    validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
-  >
-    {() => (
-      <Form>
-        <Field
-          label={testLabelName}
-          name={testLabelName}
-          id={testLabelName}
-          options={selectOptions}
-          component={FormikSelectInputNative}
-          {...props}
-        />
-        <button type="submit">submit</button>
-      </Form>
-    )}
-  </Formik>
-);
+const renderForm = (initialValue, props) => {
+  console.log('PROPIS!', props);
+  return (
+    <Formik
+      initialValues={{
+        [testLabelName]: initialValue,
+      }}
+      validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
+    >
+      {() => (
+        <Form data-testid="form">
+          <Field
+            label={testLabelName}
+            name={testLabelName}
+            id={testLabelName}
+            options={selectOptions}
+            component={FormikSelectInputNative}
+            {...props}
+          />
+          <button type="submit">submit</button>
+        </Form>
+      )}
+    </Formik>
+  );
+};
 
 describe('SelectInputNative', () => {
   describe('States', () => {
@@ -110,9 +112,10 @@ describe('SelectInputNative', () => {
     describe('Is Invalid, with a helpful message', () => {
       test('it renders the helpful message', async () => {
         const { getByText } = render(renderForm(null, { isRequired: true }));
-        const submitButton = getByText('submit');
+        const form = screen.getByTestId('form');
+        // const submitButton = getByText('submit').closest('button');
 
-        fireEvent.click(submitButton);
+        fireEvent.submit(form);
         await waitFor(() => expect(screen.getByText('input is required')).toBeInTheDocument());
       });
     });

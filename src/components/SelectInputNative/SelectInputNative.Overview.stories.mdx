@@ -64,7 +64,7 @@ Pre-select an option by passing its value to the `value` prop.
         { value: 'strawberry', label: 'Strawberry' },
         { value: 'vanilla', label: 'Vanilla' },
       ];
-      const [value, setValue] = useState(options[1]);
+      const [value, setValue] = useState(options[1].value);
       return (
         <div>
           <SelectInputNative
