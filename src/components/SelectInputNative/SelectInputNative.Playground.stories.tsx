@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Box, boxPropsKeys } from '../Box/Box';
+import { boxPropsKeys } from '../Box/Box';
 import { SelectInputNative, SelectInputNativeProps } from './SelectInputNative';
 
 export default {
