@@ -30,6 +30,7 @@ export * from './Pagination/Pagination';
 export * from './Popover/Popover';
 export * from './RadioGroup/RadioGroup';
 export * from './SelectInput/SelectInput';
+export * from './SelectInputNative/SelectInputNative';
 export * from './Spinner/Spinner';
 export * from './Tabs/Tabs';
 export * from './Tabs/TabItem';

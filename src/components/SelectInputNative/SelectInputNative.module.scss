@@ -1,0 +1,166 @@
+%disabled-base {
+  background-color: var(--form-control-disabled-background-color);
+  color: var(--form-control-disabled-font-color);
+
+  &:hover {
+    cursor: not-allowed;
+  }
+
+  &::before,
+  &::after {
+    cursor: not-allowed;
+  }
+}
+
+.select-input-native-wrapper {
+  position: relative;
+  border: 1px solid var(--form-control-border-color);
+  box-shadow: var(--form-control-size-box-shadow);
+  background-color: var(--form-control-background-color);
+
+  &:focus-within {
+    outline: none;
+    border-color: var(--form-control-focus-border-color);
+  }
+  
+  &::before,
+  &::after {
+    border-radius: 100px;
+    content: '';
+    position: absolute;
+    background: var(--color-brand-grey-light);
+  }
+  
+  &::before {
+    transform-origin: 50% 50%;
+    transform: rotate(42deg);
+    z-index: 1; /* change the stacking context so this half of the chevron stays above the disabled background color. */
+  }
+
+  &::after {
+    transform-origin: 50% 50%;
+    transform: rotate(-42deg);
+  }
+
+  &.disabled {
+    @extend %disabled-base;
+  }
+
+  > select {
+    box-sizing: border-box;
+    appearance: none;
+    transition-duration: 300ms;
+    transition-property: border, background-color;
+    transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
+    border: none;
+    background: none;
+    width: 100%;
+    line-height: var(--form-control-text-line-height);
+
+    &:focus {
+      outline: none;
+      border-color: var(--form-control-focus-border-color);
+      background-color: var(--form-control-background-color);
+    }
+
+    &:disabled {
+      @extend %disabled-base;
+    }
+  }
+
+  &.sm {
+    border-radius: var(--form-control-size-sm-border-radius);
+    font-size: var(--form-control-size-sm-font-size);
+
+    > select {
+      border-radius: var(--form-control-size-lg-border-radius);
+      padding: 0 var(--form-control-size-sm-padding);
+      padding-top: calc(var(--form-control-size-sm-padding) - 1px);
+      padding-bottom: calc(var(--form-control-size-sm-padding) - 1px);
+    }
+
+    &::before,
+    &::after {
+      width: 8px;
+      height: 2px;
+      top: calc(var(--size-spacing-sm) + 3px);
+    }
+
+    &::before {
+      right: calc(var(--size-spacing-sm) + 8px);
+    }
+  
+    &::after {
+      right: calc(var(--size-spacing-sm) + 3px);
+    }
+  }
+
+  &.md {
+    border-radius: var(--form-control-size-md-border-radius);
+    font-size: var(--form-control-size-md-font-size);
+
+    > select {
+      border-radius: var(--form-control-size-lg-border-radius);
+      padding: 0 var(--form-control-size-md-padding);
+      padding-top: calc(var(--form-control-size-md-padding) - 1px);
+      padding-bottom: calc(var(--form-control-size-md-padding) - 1px);
+    }
+
+    &::before,
+    &::after {
+      width: 14px;
+      height: 4px;
+      top: calc(var(--size-spacing-md) + 3px);
+    }
+
+    &::before {
+      right: calc(var(--size-spacing-sm) + 11px);
+    }
+  
+    &::after {
+      right: calc(var(--size-spacing-sm) + 3px);
+    }
+  }
+
+  &.lg {
+    border-radius: var(--form-control-size-lg-border-radius);
+    font-size: var(--form-control-size-lg-font-size);
+
+    > select {
+      border-radius: var(--form-control-size-lg-border-radius);
+      padding: 0 var(--form-control-size-lg-padding);
+      padding-top: calc(var(--form-control-size-lg-padding) - 1px);
+      padding-bottom: calc(var(--form-control-size-lg-padding) - 1px);
+    }
+
+    &::before,
+    &::after {
+      width: 14px;
+      height: 4px;
+      top: calc(var(--size-spacing-md) + 9px);
+    }
+
+    &::before {
+      right: calc(var(--size-spacing-sm) + 11px);
+    }
+  
+    &::after {
+      right: calc(var(--size-spacing-sm) + 3px);
+    }
+  }
+
+  &.error {
+    border-color: var(--form-control-error-border-color);
+    background-color: var(--form-control-error-background-color);
+
+    select:focus {
+      outline: none;
+      border-color: var(--form-control-focus-border-color);
+      background-color: transparent;
+    }
+  }
+}
+
+.text-input-label {
+  margin-bottom: var(--form-control-label-margin);
+}

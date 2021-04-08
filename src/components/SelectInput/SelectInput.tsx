@@ -14,7 +14,7 @@ import { Z_INDEX_VALUES } from '../../lib/tokens';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormLabel } from '../FormLabel/FormLabel';
-import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
 export interface BaseSelectInputProps {

@@ -4,7 +4,7 @@ import React, {
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormLabel } from '../FormLabel/FormLabel';
-import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { Button, ButtonSize } from '../Button/Button';
 
 export interface FileUploadProps {

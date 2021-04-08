@@ -1,5 +1,5 @@
 import React from 'react';
-import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
 import { Checkbox, CheckboxSize } from './components/Checkbox';

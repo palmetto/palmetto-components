@@ -16,8 +16,7 @@ import { UnknownPropertiesObjType } from '../../types';
 import * as InputMaskTypes from './TextInputMasks';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
-import { FormLabel } from '../FormLabel/FormLabel';
-import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import { FormControl } from '../FormControl/FormControl';
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextInput.module.scss';
 
@@ -134,7 +133,6 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       value,
       autoComplete = false,
       autoFocus = false,
-      className = undefined,
       error = false,
       helpText,
       hideLabel = false,
@@ -228,21 +226,20 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       placeholder,
       type,
       value,
-      ...restProps,
-    };
-
-    const labelProps = {
-      isFieldRequired: isRequired,
-      inputId: id,
-      hasError: !!error,
-      helpText,
-      className: styles['text-input-label'],
-      isDisabled,
     };
 
     return (
-      <Box width="100%" className={className} ref={ref}>
-        {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
+      <FormControl
+        helpText={helpText}
+        error={error}
+        label={label}
+        id={id}
+        isRequired={isRequired}
+        isDisabled={isDisabled}
+        hideLabel={hideLabel}
+        ref={ref}
+        {...restProps}
+      >
         <Box direction="row" className={inputWrapperClasses}>
           {prefix && (
             <Box color="grey-400" className="ws-nowrap">
@@ -261,8 +258,7 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
             </Box>
           )}
         </Box>
-        {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
-      </Box>
+      </FormControl>
     );
   },
 );

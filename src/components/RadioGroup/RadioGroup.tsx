@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import { Box } from '../Box/Box';
-import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import RadioInput from './RadioInput/RadioInput';
 import styles from './RadioGroup.module.scss';
 

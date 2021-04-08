@@ -1,0 +1,334 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Box } from '../Box/Box';
+import Card from '../Card/Card';
+import { SelectInputNative } from './SelectInputNative';
+
+<Meta
+  title="Components/SelectInputNative/Overview"
+  component={SelectInputNative}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# SelectInputNative
+
+Allows users to pick a value from a predefined list of options. Ideally, it should be used when there are 5 or more options, otherwise you should consider using a radio group instead.
+
+_NOTE:_ This is an alternative to the `SelectInput` component, but leveraging the native platform dropdown instead of a custom one. This is useful,
+when a custom UI is not needed for a select, or the native UI is preferred (this is recommended for most cases except multi-selects).
+
+## Props
+
+<ArgsTable of={SelectInputNative} />
+
+## Default
+
+All that is required to render a basic version of the SelectInputNative is a unique `id`, a `label`, a list of options passed to the `options` prop, a `value`, and an onchange event handler passed to the `onChange` prop.
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div>
+          <SelectInputNative
+            id="default Select"
+            label="Label"
+            onChange={event => { setValue(event.target.value) }}
+            options={options}
+            value={value}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Pre-Selected
+
+Pre-select an option by passing its value to the `value` prop.
+
+<Canvas>
+  <Story name="Pre-Selected">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(options[1].value);
+      return (
+        <div>
+          <SelectInputNative
+            id="preSelected"
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Help Text
+
+Use the `helpText` prop to add clarifying text beneath the input label.
+
+<Canvas>
+  <Story name="Help Text">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div>
+          <SelectInputNative
+            id="helpText"
+            label="Flavor"
+            helpText="Choose your favorite flavor"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Placeholder
+
+Use the `placeholder` prop to add a custom placeholder. Note that this component automatically renders the first option
+to use as a placeholder with a value of `''`. This first option is however disabled can't be selected after a user has picked
+one of the real options.
+
+<Canvas>
+  <Story name="Placeholder">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div>
+          <SelectInputNative
+            id="customPlaceholder"
+            label="Label"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+            placeholder="Custom placeholder..."
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Hidden Label
+
+Use the `hideLabel` prop to not render the label.
+
+<Canvas>
+  <Story name="Hidden Label">
+    {() => {
+      const [value, setValue] = useState(null);
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <div>
+          <SelectInputNative
+            id="labelHidden"
+            label="My label is hidden"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+            hideLabel
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Autofocus
+
+Use the `autoFocus` prop to autofocus a SelectInput.
+
+<Canvas>
+  <Story name="Autofocus">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div>
+          <SelectInputNative
+            id="autoFocus"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            autoFocus
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Required
+
+Use the `isRequired` prop to mark the input as required.
+
+<Canvas>
+  <Story name="Required">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInputNative
+            id="required"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isRequired
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Disabled
+
+Use the `isDisabled` prop to mark the input as disabled.
+
+<Canvas>
+  <Story name="Disabled">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '85px' }}>
+          <SelectInputNative
+            id="disabled"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isDisabled
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Error
+
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
+
+<Canvas>
+  <Story name="Error">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInputNative
+            id="error"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isRequired
+            error="Helpful validation message"
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Sizes
+
+Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
+
+<Canvas>
+  <Story name="Size">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value1, setValue1] = useState('');
+      const [value2, setValue2] = useState('');
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <Box childGap="md">
+          <SelectInputNative
+            id="smallSelect"
+            label="Small"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            value={value}
+            size="sm"
+          />
+          <SelectInputNative
+            id="mediumSelect"
+            label="Medium"
+            onChange={event => setValue1(event.target.value)}
+            options={options}
+            value={value1}
+            size="md"
+          />
+          <SelectInputNative
+            id="largeSelect"
+            label="Large"
+            onChange={event => setValue2(event.target.value)}
+            options={options}
+            value={value2}
+            size="lg"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

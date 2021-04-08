@@ -4,7 +4,7 @@ import React, {
 import classNames from 'classnames';
 import { Box } from '../Box/Box';
 import { FormLabel } from '../FormLabel/FormLabel';
-import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextareaInput.module.scss';
 
