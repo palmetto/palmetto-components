@@ -149,7 +149,7 @@ export const Pagination: FC<PaginationProps> = ({
     );
 
     return pages.map(page => (
-      <PageButton {...page} />
+      <PageButton key={page.pageNumber} {...page} />
     ));
   };
 
