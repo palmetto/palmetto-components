@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveContext } from '../components/ResponsiveProvider/ResponsiveProvider';
+import { ResponsiveContext } from '../../components/ResponsiveProvider/ResponsiveProvider';
 
 export interface HookWindowSize {
   innerWidth?: number;

@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
-import { BREAKPOINTS } from '../lib/tokens';
-import { Breakpoint } from '../types';
-import { useWindowSize } from './useWindowSize';
+import { BREAKPOINTS } from '../../lib/tokens';
+import { Breakpoint } from '../../types';
+import { useWindowSize } from '../useWindowSize/useWindowSize';
 
 const defaultBreakpoint: Breakpoint = { name: 'base', minWidth: 0 };
 
-export interface WhichBreakpoint {
-  isMobile: boolean;
+export interface BreakpointState {
+  isPhone: boolean;
   isTablet: boolean;
   isDesktop: boolean;
   isHd: boolean;
   activeBreakpoint: Breakpoint;
 }
-export const useBreakpoint = (): WhichBreakpoint => {
+
+export const useBreakpoint = (): BreakpointState => {
   const windowSize = useWindowSize();
 
   const [breakpoint, setBreakpoint] = useState<Breakpoint>({ ...defaultBreakpoint });
@@ -26,7 +27,7 @@ export const useBreakpoint = (): WhichBreakpoint => {
   }, [windowSize.innerWidth, windowSize.innerHeight, windowSize.outerWidth, windowSize.outerHeight]);
 
   return {
-    isMobile: breakpoint.name === 'base',
+    isPhone: breakpoint.name === 'base',
     isTablet: breakpoint.name === 'tablet',
     isDesktop: breakpoint.name === 'desktop',
     isHd: breakpoint.name === 'hd',

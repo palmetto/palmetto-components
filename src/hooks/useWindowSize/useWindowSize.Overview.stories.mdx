@@ -1,0 +1,54 @@
+import { useState, useEffect } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ResponsiveProvider } from '../../components/ResponsiveProvider/ResponsiveProvider';
+import { Box } from '../../components/Box/Box';
+import { useWindowSize } from './useWindowSize';
+
+<Meta
+  title="Hooks/useWindowSize/Overview"
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# useWindowSize
+
+The `useWindowSize` returns useful states based on the window innerWidth and palmetto-component [breakpoints]().
+
+The hook will return a `BreakpointState` object with the following shape:
+
+```
+{
+  innerWidth: number,
+  innerHeight: number,
+  outerWidth: number,
+  outerHeight: number,
+}
+```
+**NOTE:** This hook relies on `ResponsiveContext`, so your app must be wrapped in the [`ResponsiveProvider`]() to provide window size context to all children components.
+
+## Basic Usage
+
+<Canvas isExpanded>
+  <Story name="Basic Usage">
+    {() => {
+      const App = () => {
+        const { innerWidth, innerHeight, outerWidth, outerHeight } = useWindowSize();
+        return (
+          <Box childGap="md">
+            <p>Inner Width: {innerWidth}</p>
+            <p>Inner Height: {innerHeight}</p>
+            <p>Outer Width: {outerWidth}</p>
+            <p>Outer Height: {outerHeight}</p>
+          </Box>
+        );
+      };     
+      return (
+        <ResponsiveProvider>
+          <App />
+        </ResponsiveProvider>
+      );
+    }}
+  </Story>
+</Canvas>

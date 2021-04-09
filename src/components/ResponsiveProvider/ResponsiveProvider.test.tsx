@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ResponsiveProvider } from './ResponsiveProvider';
-import { useWindowSize } from '../../hooks/useWindowSize';
-import { useBreakpoint } from '../../hooks/useBreakpoint';
+import { useWindowSize } from '../../hooks/useWindowSize/useWindowSize';
+import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
 
 describe('Default', () => {
   test('calls resize when initially mounted', async () => {

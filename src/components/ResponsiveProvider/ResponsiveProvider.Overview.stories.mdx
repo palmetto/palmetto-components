@@ -3,11 +3,11 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { ResponsiveProvider } from './ResponsiveProvider';
 import { Box } from '../Box/Box';
-import { useWindowSize } from '../../hooks/useWindowSize';
-import { useBreakpoint } from '../../hooks/useBreakpoint';
+import { useWindowSize } from '../../hooks/useWindowSize/useWindowSize';
+import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
 
 <Meta
-  title="Components/ResponsiveProvider/Overview"
+  title="Responsive/ResponsiveProvider/Overview"
   component={ResponsiveProvider}
   parameters={{
     controls: { hideNoControlsWarning: true },

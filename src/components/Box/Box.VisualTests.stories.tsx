@@ -11,7 +11,7 @@ import {
 } from '../../lib/tokens';
 import { BrandColor } from '../../types';
 import { RESPONSIVE_STORY } from '../../../.storybook/constants';
-import { useBreakpoint } from '../../hooks/useBreakpoint';
+import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
 
 export default {
   title: 'Components/Box/Visual Regression Tests',

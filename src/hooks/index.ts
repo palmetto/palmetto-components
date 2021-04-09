@@ -1,2 +1,2 @@
-export * from './useBreakpoint';
-export * from './useWindowSize';
+export * from './useBreakpoint/useBreakpoint';
+export * from './useWindowSize/useWindowSize';
