@@ -29,6 +29,7 @@ export * from './Modal/Modal';
 export * from './Pagination/Pagination';
 export * from './Popover/Popover';
 export * from './RadioGroup/RadioGroup';
+export * from './ResponsiveProvider/ResponsiveProvider';
 export * from './SelectInput/SelectInput';
 export * from './SelectInputNative/SelectInputNative';
 export * from './Spinner/Spinner';
