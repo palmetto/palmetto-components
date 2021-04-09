@@ -307,7 +307,7 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
 );
 
 const BoxTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
-  const activeBreakpoint = useBreakpoint();
+  const { activeBreakpoint } = useBreakpoint();
   return (
     <Box padding="lg" background="grey-50">
       <Box {...args}>
@@ -509,71 +509,71 @@ ResponsivePadding.args = {
 };
 ResponsivePadding.parameters = RESPONSIVE_STORY;
 
-// const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
-//   const activeBreakpoint = useBreakpoint();
-//   return (
-//     <Box background="grey-50" padding="lg" {...args}>
-//       <Box
-//         flex="auto"
-//         radius="md"
-//         background="info-100"
-//         height="lg"
-//         justifyContent="center"
-//         alignItems="center"
-//       >
-//         <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-//         <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-//       </Box>
-//       <Box
-//         flex="auto"
-//         radius="md"
-//         background="info-100"
-//         height="lg"
-//         justifyContent="center"
-//         alignItems="center"
-//       >
-//         <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-//         <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-//       </Box>
-//       <Box
-//         flex="auto"
-//         radius="md"
-//         background="info-100"
-//         height="lg"
-//         justifyContent="center"
-//         alignItems="center"
-//       >
-//         <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-//         <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-//       </Box>
-//     </Box>
-//   );
-// };
+const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
+  const { activeBreakpoint } = useBreakpoint();
+  return (
+    <Box background="grey-50" padding="lg" {...args}>
+      <Box
+        flex="auto"
+        radius="md"
+        background="info-100"
+        height="lg"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+      </Box>
+      <Box
+        flex="auto"
+        radius="md"
+        background="info-100"
+        height="lg"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+      </Box>
+      <Box
+        flex="auto"
+        radius="md"
+        background="info-100"
+        height="lg"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+      </Box>
+    </Box>
+  );
+};
 
-// export const ResponsiveDirection = BoxChildrenTemplate.bind({});
-// ResponsiveDirection.args = {
-//   propertyName: 'direction',
-//   direction: {
-//     base: 'column',
-//     tablet: 'row',
-//     desktop: 'column',
-//     hd: 'row',
-//   },
-//   childGap: 'lg',
-// };
-// ResponsiveDirection.parameters = RESPONSIVE_STORY;
+export const ResponsiveDirection = BoxChildrenTemplate.bind({});
+ResponsiveDirection.args = {
+  propertyName: 'direction',
+  direction: {
+    base: 'column',
+    tablet: 'row',
+    desktop: 'column',
+    hd: 'row',
+  },
+  childGap: 'lg',
+};
+ResponsiveDirection.parameters = RESPONSIVE_STORY;
 
-// export const ResponsiveChildGap = BoxChildrenTemplate.bind({});
-// ResponsiveChildGap.args = {
-//   propertyName: 'childGap',
-//   childGap: {
-//     base: 'xs',
-//     tablet: 'lg',
-//     desktop: '3xl',
-//     hd: '5xl',
-//   },
-// };
-// ResponsiveChildGap.parameters = RESPONSIVE_STORY;
+export const ResponsiveChildGap = BoxChildrenTemplate.bind({});
+ResponsiveChildGap.args = {
+  propertyName: 'childGap',
+  childGap: {
+    base: 'xs',
+    tablet: 'lg',
+    desktop: '3xl',
+    hd: '5xl',
+  },
+};
+ResponsiveChildGap.parameters = RESPONSIVE_STORY;
 
 export const AllCursorOptions: React.FunctionComponent<BoxProps> = () => (
   <Box
