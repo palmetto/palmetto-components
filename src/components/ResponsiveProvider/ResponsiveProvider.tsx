@@ -25,7 +25,6 @@ export const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children
   const [outerHeight, setOuterHeight] = useState(window.outerHeight);
 
   const handleWindowResize = () => {
-    console.log('did I call?');
     setInnerWidth(window.innerWidth);
     setInnerHeight(window.innerHeight);
     setOuterWidth(window.outerWidth);
@@ -33,18 +32,18 @@ export const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children
   };
 
   useEffect(() => {
-    // let timeoutId: any; // eslint-disable-line
-    // const throttledResize = () => {
-    //   // prevent execution of previous setTimeout
-    //   clearTimeout(timeoutId);
-    //   // change width from the state object after throttle time has elapsed.
-    //   timeoutId = setTimeout(handleWindowResize, throttle);
-    // };
+    let timeoutId: any; // eslint-disable-line
+    const throttledResize = () => {
+      // prevent execution of previous setTimeout
+      clearTimeout(timeoutId);
+      // change width from the state object after throttle time has elapsed.
+      timeoutId = setTimeout(handleWindowResize, throttle);
+    };
 
-    window.addEventListener('resize', handleWindowResize);
+    window.addEventListener('resize', throttledResize);
 
-    return () => window.removeEventListener('resize', handleWindowResize);
-  }, []);
+    return () => window.removeEventListener('resize', throttledResize);
+  }, [throttle]);
 
   return (
     <ResponsiveContext.Provider

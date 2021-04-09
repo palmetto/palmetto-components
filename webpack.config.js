@@ -107,7 +107,7 @@ module.exports = {
   mode: process.env.NODE_ENV, // Should be set in the yarn script since there is no true ENV.
   // Files to be bundled
   entry: {
-    index: [path.join(__dirname, 'src/components/index.ts')], // React components
+    index: [path.join(__dirname, 'src/index.ts')], // React components
     utilities: [path.join(__dirname, 'src/styles/utilities.scss')], // Utilities CSS only.
     fonts: [path.join(__dirname, 'src/styles/fonts.scss')], // Fonts CSS only.
     variables: [path.join(__dirname, 'src/styles/variables/index.scss')], // Variables CSS only.

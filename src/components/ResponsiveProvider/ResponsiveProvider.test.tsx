@@ -7,10 +7,10 @@ import { useBreakpoint } from '../../hooks/useBreakpoint';
 describe('Default', () => {
   test('calls resize when initially mounted', async () => {
     const mockEventListener = jest.spyOn(window, 'addEventListener');
-    mockEventListener.mockImplementation(() => {});
+    mockEventListener.mockImplementation(() => {}); // eslint-disable-line
 
     render(<ResponsiveProvider><div /></ResponsiveProvider>);
-  
+
     expect(mockEventListener.mock.calls.filter(call => call[0] === 'resize').length).toEqual(1);
   });
 });
@@ -18,12 +18,12 @@ describe('Default', () => {
 describe('Responsive hooks', () => {
   it('registers one resize handler with useWindowSize', () => {
     const mockEventListener = jest.spyOn(window, 'addEventListener');
-    mockEventListener.mockImplementation(() => {});
+    mockEventListener.mockImplementation(() => {}); // eslint-disable-line
 
     const Component = () => {
       useWindowSize();
-      return <p></p>;
-    }
+      return <p />;
+    };
 
     render(
       <ResponsiveProvider>
@@ -32,19 +32,19 @@ describe('Responsive hooks', () => {
         <Component />
         <Component />
         <Component />
-      </ResponsiveProvider>
+      </ResponsiveProvider>,
     );
     expect(mockEventListener.mock.calls.filter(call => call[0] === 'resize').length).toEqual(1);
   });
 
   it('registers one resize handler with useBreakpoint', () => {
     const mockEventListener = jest.spyOn(window, 'addEventListener');
-    mockEventListener.mockImplementation(() => {});
+    mockEventListener.mockImplementation(() => {}); // eslint-disable-line
 
     const Component = () => {
       useBreakpoint();
-      return <p></p>;
-    }
+      return <p />;
+    };
 
     render(
       <ResponsiveProvider>
@@ -53,7 +53,7 @@ describe('Responsive hooks', () => {
         <Component />
         <Component />
         <Component />
-      </ResponsiveProvider>
+      </ResponsiveProvider>,
     );
     expect(mockEventListener.mock.calls.filter(call => call[0] === 'resize').length).toEqual(1);
   });

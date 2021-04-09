@@ -22,6 +22,7 @@ export const useBreakpoint = (): WhichBreakpoint => {
     const activeBreakpoint = windowSize && sortedBreakpoints.find(b => b.minWidth < (windowSize.innerWidth as number));
 
     setBreakpoint(activeBreakpoint || { ...defaultBreakpoint });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowSize.innerWidth, windowSize.innerHeight, windowSize.outerWidth, windowSize.outerHeight]);
 
   return {
@@ -30,5 +31,5 @@ export const useBreakpoint = (): WhichBreakpoint => {
     isDesktop: breakpoint.name === 'desktop',
     isHd: breakpoint.name === 'hd',
     activeBreakpoint: breakpoint,
-  }; 
+  };
 };
