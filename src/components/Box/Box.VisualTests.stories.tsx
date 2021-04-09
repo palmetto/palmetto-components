@@ -11,6 +11,7 @@ import {
 } from '../../lib/tokens';
 import { BrandColor } from '../../types';
 import { RESPONSIVE_STORY } from '../../../.storybook/constants';
+import { ResponsiveProvider } from '../ResponsiveProvider/ResponsiveProvider';
 import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
 
 export default {
@@ -307,14 +308,21 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
 );
 
 const BoxTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
-  const { activeBreakpoint } = useBreakpoint();
-  return (
-    <Box padding="lg" background="grey-50">
-      <Box {...args}>
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+  const Component = () => {
+    const { activeBreakpoint } = useBreakpoint();
+    return (
+      <Box padding="lg" background="grey-50">
+        <Box {...args}>
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
       </Box>
-    </Box>
+    );
+  };
+  return (
+    <ResponsiveProvider>
+      <Component />
+    </ResponsiveProvider>
   );
 };
 
