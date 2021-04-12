@@ -68,10 +68,10 @@ these to any component nested under a `ResponsiveProvider`
   <Story name="Breakpoints">
     {() => {
       const App = () => {
-        const { isMobile, isTablet, isDesktop, isHd } = useBreakpoint();
+        const { isPhone, isTablet, isDesktop, isHd } = useBreakpoint();
         return (
           <Box childGap="md">
-            <p>mobile: {isMobile ? '✅' : '❌'}</p>
+            <p>mobile: {isPhone ? '✅' : '❌'}</p>
             <p>tablet: {isTablet ? '✅' : '❌'}</p>
             <p>desktop: {isDesktop ? '✅' : '❌'}</p>
             <p>hd: {isHd ? '✅' : '❌'}</p>
