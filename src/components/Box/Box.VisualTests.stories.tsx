@@ -557,13 +557,13 @@ const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
         </Box>
       </Box>
     );
-  }
+  };
 
   return (
     <ResponsiveProvider>
       <Template />
     </ResponsiveProvider>
-  )
+  );
 };
 
 export const ResponsiveDirection = BoxChildrenTemplate.bind({});
