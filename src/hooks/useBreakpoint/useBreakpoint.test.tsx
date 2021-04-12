@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import useBreakpoint from './useBreakpoint';
+import { useBreakpoint } from './useBreakpoint';
 
 const UseBreakpointExample = () => {
-  const breakpoint = useBreakpoint();
+  const { activeBreakpoint } = useBreakpoint();
 
-  return <button type="button">{breakpoint.name}</button>;
+  return <button type="button">{activeBreakpoint.name}</button>;
 };
 
 describe('initial state', () => {

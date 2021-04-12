@@ -11,7 +11,8 @@ import {
 } from '../../lib/tokens';
 import { BrandColor } from '../../types';
 import { RESPONSIVE_STORY } from '../../../.storybook/constants';
-import useBreakpoint from '../../hooks/useBreakpoint';
+import { ResponsiveProvider } from '../ResponsiveProvider/ResponsiveProvider';
+import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
 
 export default {
   title: 'Components/Box/Visual Regression Tests',
@@ -307,14 +308,21 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
 );
 
 const BoxTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
-  const activeBreakpoint = useBreakpoint();
-  return (
-    <Box padding="lg" background="grey-50">
-      <Box {...args}>
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+  const Component = () => {
+    const { activeBreakpoint } = useBreakpoint();
+    return (
+      <Box padding="lg" background="grey-50">
+        <Box {...args}>
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
       </Box>
-    </Box>
+    );
+  };
+  return (
+    <ResponsiveProvider>
+      <Component />
+    </ResponsiveProvider>
   );
 };
 
@@ -510,43 +518,51 @@ ResponsivePadding.args = {
 ResponsivePadding.parameters = RESPONSIVE_STORY;
 
 const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
-  const activeBreakpoint = useBreakpoint();
+  const Template: React.FC<Record<string, unknown>> = () => {
+    const { activeBreakpoint } = useBreakpoint();
+    return (
+      <Box background="grey-50" padding="lg" {...args}>
+        <Box
+          flex="auto"
+          radius="md"
+          background="info-100"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
+        <Box
+          flex="auto"
+          radius="md"
+          background="info-100"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
+        <Box
+          flex="auto"
+          radius="md"
+          background="info-100"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
+      </Box>
+    );
+  };
+
   return (
-    <Box background="grey-50" padding="lg" {...args}>
-      <Box
-        flex="auto"
-        radius="md"
-        background="info-100"
-        height="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-      </Box>
-      <Box
-        flex="auto"
-        radius="md"
-        background="info-100"
-        height="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-      </Box>
-      <Box
-        flex="auto"
-        radius="md"
-        background="info-100"
-        height="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-      </Box>
-    </Box>
+    <ResponsiveProvider>
+      <Template />
+    </ResponsiveProvider>
   );
 };
 

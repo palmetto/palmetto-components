@@ -37,7 +37,7 @@ We recommend importing our brand font, Nexa, for styling headings, etc.
 @import '@palmetto/palmetto-components/dist/css/fonts';
 ```
 
-### 5. Usage
+### 5. Basic Usage
 
 ```jsx
 import React from 'react';
@@ -50,3 +50,29 @@ function App() {
 
 ReactDOM.render(<App />, document.querySelector('#app'));
 ```
+
+### 6. Responsive Hooks & Window size context (Optional)
+
+`palmetto-components` provides [responsive hooks]() as well as opinionated [breakpoints]() to make custom responsive layouts
+easier to craft.
+
+In order for these hooks to work, however, they must be provided a context that feeds window size updates via a single listener (for performance reasons).
+use the [`ResponsiveProvider`]() to wrap your application and ensure that responsive hooks have access to the necessary context.
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ResponsiveProvider } from '@palmetto/palmetto-components';
+
+function App() {
+  return <div>Hello World</div>;
+}
+
+ReactDOM.render(
+  <ResponsiveProvider>
+    <App />
+  </ResponsiveProvider>,
+  document.querySelector('#app')
+);
+```
+
