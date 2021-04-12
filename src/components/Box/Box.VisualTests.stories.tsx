@@ -518,44 +518,52 @@ ResponsivePadding.args = {
 ResponsivePadding.parameters = RESPONSIVE_STORY;
 
 const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
-  const { activeBreakpoint } = useBreakpoint();
+  const Template: React.FC<{}> = () => {
+    const { activeBreakpoint } = useBreakpoint();
+    return (
+      <Box background="grey-50" padding="lg" {...args}>
+        <Box
+          flex="auto"
+          radius="md"
+          background="info-100"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
+        <Box
+          flex="auto"
+          radius="md"
+          background="info-100"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
+        <Box
+          flex="auto"
+          radius="md"
+          background="info-100"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
+      </Box>
+    );
+  }
+
   return (
-    <Box background="grey-50" padding="lg" {...args}>
-      <Box
-        flex="auto"
-        radius="md"
-        background="info-100"
-        height="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-      </Box>
-      <Box
-        flex="auto"
-        radius="md"
-        background="info-100"
-        height="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-      </Box>
-      <Box
-        flex="auto"
-        radius="md"
-        background="info-100"
-        height="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-      </Box>
-    </Box>
-  );
+    <ResponsiveProvider>
+      <Template />
+    </ResponsiveProvider>
+  )
 };
 
 export const ResponsiveDirection = BoxChildrenTemplate.bind({});
