@@ -518,7 +518,7 @@ ResponsivePadding.args = {
 ResponsivePadding.parameters = RESPONSIVE_STORY;
 
 const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
-  const Template: React.FC<{}> = () => {
+  const Template: React.FC<Record<string, unknown>> = () => {
     const { activeBreakpoint } = useBreakpoint();
     return (
       <Box background="grey-50" padding="lg" {...args}>
