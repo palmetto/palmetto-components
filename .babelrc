@@ -2,7 +2,12 @@
   "env": {
     "test": {
       "presets": [
-        ["@babel/preset-env", { "modules": "cjs" }],
+        [
+          "@babel/preset-env",
+          {
+            "modules": "cjs"
+          }
+        ],
         "@babel/preset-react",
         "@babel/preset-typescript"
       ],
@@ -20,7 +25,8 @@
       ],
       "plugins": [
         "babel-plugin-typescript-to-proptypes",
-        "@babel/plugin-proposal-class-properties"
+        "@babel/plugin-proposal-class-properties",
+        "annotate-pure-calls"
       ]
     },
     "storybook": {

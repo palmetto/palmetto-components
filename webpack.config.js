@@ -8,6 +8,7 @@
  */
 
 const path = require('path');
+const fs = require('fs');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -103,16 +104,41 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
   );
 }
 
+const entry = {
+  index: [path.join(__dirname, 'src/index.ts')], // React components
+  utilities: [path.join(__dirname, 'src/styles/utilities.scss')], // Utilities CSS only.
+  fonts: [path.join(__dirname, 'src/styles/fonts.scss')], // Fonts CSS only.
+  variables: [path.join(__dirname, 'src/styles/variables/index.scss')], // Variables CSS only.
+  reset: [path.join(__dirname, 'src/styles/reset.scss')], // CSS Reset only.
+  Box: [path.join(__dirname, 'src', 'components', 'Box', 'Box.tsx')],
+};
+
+fs.readdir(path.join(__dirname, 'src', 'components'), (err, files) => {
+  if (err) {
+    console.log(`Unable to scan directory: ${err}`);
+    return;
+  }
+
+  console.log(files);
+
+  files.forEach(file => {
+    if (file === 'index.ts' || file === 'Accordion') {
+      return;
+    }
+
+    const lowerFirst = file.charAt(0).toLowerCase() + file.slice(1);
+    entry[lowerFirst] = [path.join(__dirname, 'src', 'components', file, `${file}.tsx`)];
+  });
+
+  console.log(entry);
+});
+
+console.log(entry);
+
 module.exports = {
   mode: process.env.NODE_ENV, // Should be set in the yarn script since there is no true ENV.
   // Files to be bundled
-  entry: {
-    index: [path.join(__dirname, 'src/index.ts')], // React components
-    utilities: [path.join(__dirname, 'src/styles/utilities.scss')], // Utilities CSS only.
-    fonts: [path.join(__dirname, 'src/styles/fonts.scss')], // Fonts CSS only.
-    variables: [path.join(__dirname, 'src/styles/variables/index.scss')], // Variables CSS only.
-    reset: [path.join(__dirname, 'src/styles/reset.scss')], // CSS Reset only.
-  },
+  entry,
   optimization: {
     minimizer: [
       // Minify Javascript
