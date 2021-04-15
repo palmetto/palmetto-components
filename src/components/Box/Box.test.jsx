@@ -130,6 +130,23 @@ describe('Box', () => {
     });
   });
 
+  describe('Position', () => {
+    const positions = [
+      'relative',
+      'absolute',
+      'fixed',
+      'sticky',
+      'static'
+    ];
+
+    positions.forEach(p => {
+      test(`renders with class for position ${p}`, () => {
+        const { getByText } = render(<Box position={p}>my box</Box>);
+        expect(getByText('my box')).toHaveClass(`position-${p}`);
+      });
+    });
+  });
+
   describe('wrap', () => {
     test('box renders with wrap class if wrap is true', () => {
       const { getByText } = render(<Box wrap>Hello</Box>);
@@ -155,6 +172,13 @@ describe('Box', () => {
         desktop: 'lg',
         hd: 'xl',
       };
+
+      const position = {
+        base: 'sticky',
+        tablet: 'absolute',
+        desktop: 'relative',
+        hd: 'fixed',
+      };
       const { getByText } = render(
         <Box
           width={spacing}
@@ -164,6 +188,7 @@ describe('Box', () => {
           padding={spacing}
           margin={spacing}
           fontSize={spacing}
+          position={position}
         >
           my box
         </Box>,
@@ -199,6 +224,10 @@ describe('Box', () => {
         'font-size-md-tablet',
         'font-size-lg-desktop',
         'font-size-xl-hd',
+        'position-sticky',
+        'position-absolute-tablet',
+        'position-relative-desktop',
+        'position-fixed-hd',
       ]);
     });
 

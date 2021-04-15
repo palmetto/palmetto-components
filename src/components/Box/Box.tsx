@@ -200,6 +200,10 @@ export interface BoxProps {
    */
   padding?: BaseSpacing | ResponsiveProp<BaseSpacing>;
   /**
+   * CSS position property.
+   */
+  position?: CSS.Property.Position | ResponsiveProp<CSS.Property.Position>;
+  /**
    * Set the radius of all corners
    */
   radius?: BorderRadiusSize | ResponsiveProp<BorderRadiusSize>;
@@ -265,6 +269,7 @@ export const Box: FC<BoxProps> = forwardRef((
     minWidth = undefined,
     overflow = undefined,
     padding = undefined,
+    position = undefined,
     radius = undefined,
     shadow = undefined,
     style = {},
@@ -335,6 +340,7 @@ export const Box: FC<BoxProps> = forwardRef((
     cssShorthandToClasses('border-width', borderWidth),
     generateResponsiveClasses('font-weight', fontWeight),
     generateResponsiveClasses('text-align', textAlign),
+    generateResponsiveClasses('position', position),
     ...(hoverClasses ?? []),
     ...(focusClasses ?? []),
     {

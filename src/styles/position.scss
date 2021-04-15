@@ -1,0 +1,29 @@
+.position-absolute { position: absolute; }
+.position-fixed { position: fixed; }
+.position-relative { position: relative; }
+.position-static { position: static; }
+.position-sticky { position: sticky; }
+
+@media (min-width: $size-breakpoint-tablet) {
+  .position-absolute-tablet { position: absolute; }
+  .position-fixed-tablet { position: fixed; }
+  .position-relative-tablet { position: relative; }
+  .position-static-tablet { position: static; }
+  .position-sticky-tablet { position: sticky; }
+}
+
+@media (min-width: $size-breakpoint-desktop) {
+  .position-absolute-desktop { position: absolute; }
+  .position-fixed-desktop { position: fixed; }
+  .position-relative-desktop { position: relative; }
+  .position-static-desktop { position: static; }
+  .position-sticky-desktop { position: sticky; }
+}
+
+@media (min-width: $size-breakpoint-hd) {
+  .position-absolute-hd { position: absolute; }
+  .position-fixed-hd { position: fixed; }
+  .position-relative-hd { position: relative; }
+  .position-static-hd { position: static; }
+  .position-sticky-hd { position: sticky; }
+}
