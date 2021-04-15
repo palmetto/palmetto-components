@@ -136,6 +136,12 @@ export default {
         options: [null, ...WIDTH_OPTIONS],
       },
     },
+    position: {
+      control: {
+        type: 'select',
+        options: [null, 'absolute', 'relative', 'sticky', 'fixed', 'static'],
+      },
+    },
     cursor: {
       control: {
         type: 'select',

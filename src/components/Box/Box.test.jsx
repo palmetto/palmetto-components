@@ -136,7 +136,11 @@ describe('Box', () => {
       'absolute',
       'fixed',
       'sticky',
-      'static'
+      'static',
+      'revert',
+      'inherit',
+      'initial',
+      'unset',
     ];
 
     positions.forEach(p => {

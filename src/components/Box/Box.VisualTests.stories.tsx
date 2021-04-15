@@ -733,6 +733,18 @@ export const AllPositionOptions: React.FunctionComponent<BoxProps> = () => (
     <Box position="static" padding="md" background="primary-light">
       static
     </Box>
+    <Box position="unset" padding="md" background="primary-light">
+      unset
+    </Box>
+    <Box position="initial" padding="md" background="primary-light">
+      initial
+    </Box>
+    <Box position="inherit" padding="md" background="primary-light">
+      inherit
+    </Box>
+    <Box position="revert" padding="md" background="primary-light">
+      revert
+    </Box>
   </Box>
 );
 
