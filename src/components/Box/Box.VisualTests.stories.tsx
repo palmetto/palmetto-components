@@ -709,3 +709,53 @@ export const AllCursorOptions: React.FunctionComponent<BoxProps> = () => (
     </Box>
   </Box>
 );
+
+export const AllPositionOptions: React.FunctionComponent<BoxProps> = () => (
+  <Box
+    padding="md"
+    childGap="md"
+    flex="auto"
+    background="primary-lighter"
+    overflow="auto"
+  >
+    <Box position="absolute" padding="md" background="primary-light">
+      absolute
+    </Box>
+    <Box position="relative" padding="md" background="primary-light">
+      relative
+    </Box>
+    <Box position="sticky" padding="md" background="primary-light">
+      sticky
+    </Box>
+    <Box position="fixed" padding="md" background="primary-light">
+      fixed
+    </Box>
+    <Box position="static" padding="md" background="primary-light">
+      static
+    </Box>
+    <Box position="unset" padding="md" background="primary-light">
+      unset
+    </Box>
+    <Box position="initial" padding="md" background="primary-light">
+      initial
+    </Box>
+    <Box position="inherit" padding="md" background="primary-light">
+      inherit
+    </Box>
+    <Box position="revert" padding="md" background="primary-light">
+      revert
+    </Box>
+  </Box>
+);
+
+export const ResponsivePosition = BoxChildrenTemplate.bind({});
+ResponsivePosition.args = {
+  propertyName: 'position',
+  position: {
+    base: 'sticky',
+    tablet: 'static',
+    desktop: 'absolute',
+    hd: 'relative',
+  },
+};
+ResponsivePosition.parameters = RESPONSIVE_STORY;

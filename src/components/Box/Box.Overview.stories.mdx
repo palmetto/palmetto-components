@@ -1339,6 +1339,37 @@ Set the cursor for value for the element in question. Use any valid [CSS cursor 
   </Story>
 </Canvas>
 
+## Position
+
+Set the CSS position for the element in question. Use any valid [CSS position value](https://developer.mozilla.org/en-US/docs/Web/CSS/position#values) or a
+responsive object prop with said values. Example with `fixed` position not included. Scroll the container to see these in action.
+
+<Canvas>
+  <Story name="Position">
+    <Box
+      padding="md"
+      childGap="md"
+      display="block"
+      background="primary-lighter"
+      overflow="scroll"
+      height="300px"
+    >
+      <Box position="absolute" padding="md" background="secondary-light" style={{ zIndex: 1 }} width="100px" height="150px">
+        absolute
+      </Box>
+      <Box position="relative" padding="md" background="primary-light" textAlign="right" height="200px">
+        relative
+      </Box>
+      <Box position="sticky" padding="md" background="tertiary-light" height="50px" color="white" style={{ top: 0, zIndex: 2 }}>
+        sticky
+      </Box>
+      <Box position="static" padding="md" background="primary-light" height="400px">
+        static
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
 ## Hover States
 
 You can control the styles for the box on hover using the `hover` prop and passing token values for the relevant property.

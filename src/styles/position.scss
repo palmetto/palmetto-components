@@ -1,0 +1,45 @@
+.position-absolute { position: absolute; }
+.position-fixed { position: fixed; }
+.position-relative { position: relative; }
+.position-static { position: static; }
+.position-sticky { position: sticky; }
+.position-inherit { position: inherit; }
+.position-unset { position: unset; }
+.position-revert { position: revert; }
+.position-initial { position: initial; }
+
+@media (min-width: $size-breakpoint-tablet) {
+  .position-absolute-tablet { position: absolute; }
+  .position-fixed-tablet { position: fixed; }
+  .position-relative-tablet { position: relative; }
+  .position-static-tablet { position: static; }
+  .position-sticky-tablet { position: sticky; }
+  .position-inherit-tablet { position: inherit; }
+  .position-unset-tablet { position: unset; }
+  .position-revert-tablet { position: revert; }
+  .position-initial-tablet { position: initial; }
+}
+
+@media (min-width: $size-breakpoint-desktop) {
+  .position-absolute-desktop { position: absolute; }
+  .position-fixed-desktop { position: fixed; }
+  .position-relative-desktop { position: relative; }
+  .position-static-desktop { position: static; }
+  .position-sticky-desktop { position: sticky; }
+  .position-inherit-desktop { position: inherit; }
+  .position-unset-desktop { position: unset; }
+  .position-revert-desktop { position: revert; }
+  .position-initial-desktop { position: initial; }
+}
+
+@media (min-width: $size-breakpoint-hd) {
+  .position-absolute-hd { position: absolute; }
+  .position-fixed-hd { position: fixed; }
+  .position-relative-hd { position: relative; }
+  .position-static-hd { position: static; }
+  .position-sticky-hd { position: sticky; }
+  .position-inherit-hd { position: inherit; }
+  .position-unset-hd { position: unset; }
+  .position-revert-hd { position: revert; }
+  .position-initial-hd { position: initial; }
+}
