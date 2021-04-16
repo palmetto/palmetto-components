@@ -12,14 +12,16 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      file: packageJson.main,
+      entryFileNames: packageJson.main,
       format: 'cjs',
       sourcemap: true,
+      dir: './',
     },
     {
-      file: packageJson.module,
+      entryFileNames: packageJson.module,
       format: 'esm',
       sourcemap: true,
+      dir: './',
     },
   ],
   external: ['@palmetto/palmetto-design-tokens', 'react', 'react-dom'],
@@ -28,7 +30,11 @@ export default {
     resolve(),
     json(),
     commonjs(),
-    typescript(),
+    typescript({
+      declaration: true,
+      declarationDir: 'dist/types/',
+      rootDir: '.',
+    }),
     postcss({
       use: ['sass'],
     }),

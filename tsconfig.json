@@ -2,12 +2,13 @@
   "compilerOptions": {
     "outDir": "./dist",
     "baseUrl": "./src", // This must be specified if "paths" is.
+    // "rootDir": ".", //required for rollup typescript to generate .d.ts files
     "paths": {
-      "@palmetto/palmetto-design/tokens": ["../node_modules/@palmetto/palmetto-design-tokens"] // This mapping is relative to "baseUrl"
+      "@palmetto/palmetto-design/tokens": [
+        "../node_modules/@palmetto/palmetto-design-tokens"
+      ] // This mapping is relative to "baseUrl"
     },
-    "declaration": true,
-    "declarationDir": "dist",
-    "emitDeclarationOnly": true,
+    // "emitDeclarationOnly": true,
     "noEmit": false,
     "allowSyntheticDefaultImports": true,
     "target": "es6",
