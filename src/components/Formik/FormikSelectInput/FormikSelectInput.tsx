@@ -1,19 +1,25 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SelectInputNative } from '../../SelectInputNative/SelectInputNative';
+import { SelectInput } from '../../SelectInput/SelectInput';
 
 const propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.object),
+    ]),
   }).isRequired,
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-// eslint-disable-line import/prefer-default-export
-export const FormikSelectInputNative = (
+export const FormikSelectInput = (
   {
     field: {
       name,
@@ -25,7 +31,7 @@ export const FormikSelectInputNative = (
     ...props
   },
 ) => (
-  <SelectInputNative
+  <SelectInput
     name={name}
     onBlur={onBlur}
     onChange={onChange}
@@ -35,4 +41,4 @@ export const FormikSelectInputNative = (
   />
 );
 
-FormikSelectInputNative.propTypes = propTypes;
+FormikSelectInput.propTypes = propTypes;

@@ -1,19 +1,25 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextInput } from '../../TextInput/TextInput';
+import { RadioGroup } from '../../RadioGroup/RadioGroup';
 
 const propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.object),
+    ]),
   }).isRequired,
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-// eslint-disable-line import/prefer-default-export
-export const FormikTextInput = (
+export const FormikRadioGroup = (
   {
     field: {
       name,
@@ -25,7 +31,7 @@ export const FormikTextInput = (
     ...props
   },
 ) => (
-  <TextInput
+  <RadioGroup
     name={name}
     onBlur={onBlur}
     onChange={onChange}
@@ -35,4 +41,4 @@ export const FormikTextInput = (
   />
 );
 
-FormikTextInput.propTypes = propTypes;
+FormikRadioGroup.propTypes = propTypes;

@@ -1,36 +1,41 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CheckboxInput } from '../../CheckboxInput/CheckboxInput';
+import { SelectInputNative } from '../../SelectInputNative/SelectInputNative';
 
 const propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.bool,
+    value: PropTypes.string,
   }).isRequired,
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export const FormikCheckboxInput = (
+// eslint-disable-line import/prefer-default-export
+export const FormikSelectInputNative = (
   {
     field: {
       name,
-      onBlur, // eslint-disable-line no-unused-vars
-      onChange, // eslint-disable-line no-unused-vars
+      onBlur,
+      onChange,
       value,
     },
     form: { touched, errors },
     ...props
   },
 ) => (
-  <CheckboxInput
-    error={touched[name] && errors[name]}
-    isChecked={value}
+  <SelectInputNative
+    name={name}
     onBlur={onBlur}
-    onChange={onChange} // eslint-disable-line
+    onChange={onChange}
+    value={value}
+    error={touched[name] && errors[name]}
     {...props}
   />
 );
 
-FormikCheckboxInput.propTypes = propTypes;
+FormikSelectInputNative.propTypes = propTypes;

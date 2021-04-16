@@ -1,41 +1,39 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RadioGroup } from '../../RadioGroup/RadioGroup';
+import { CheckboxInput } from '../../CheckboxInput/CheckboxInput';
 
 const propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.object),
-    ]),
+    value: PropTypes.bool,
   }).isRequired,
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export const FormikRadioGroup = (
+export const FormikCheckboxInput = (
   {
     field: {
       name,
-      onBlur,
-      onChange,
+      onBlur, // eslint-disable-line no-unused-vars
+      onChange, // eslint-disable-line no-unused-vars
       value,
     },
     form: { touched, errors },
     ...props
   },
 ) => (
-  <RadioGroup
-    name={name}
-    onBlur={onBlur}
-    onChange={onChange}
-    value={value}
+  <CheckboxInput
     error={touched[name] && errors[name]}
+    isChecked={value}
+    onBlur={onBlur}
+    onChange={onChange} // eslint-disable-line
     {...props}
   />
 );
 
-FormikRadioGroup.propTypes = propTypes;
+FormikCheckboxInput.propTypes = propTypes;
