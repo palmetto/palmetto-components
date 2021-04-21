@@ -18,6 +18,7 @@ export * from './FileUpload/FileUpload';
 export * from './Formik/FormikCheckboxInput/FormikCheckboxInput';
 export * from './Formik/FormikRadioGroup/FormikRadioGroup';
 export * from './Formik/FormikSelectInput/FormikSelectInput';
+export * from './Formik/FormikSelectInputNative/FormikSelectInputNative';
 export * from './Formik/FormikTextInput/FormikTextInput';
 export * from './Formik/FormikTextareaInput/FormikTextareaInput';
 export * from './Formik/FormikTimePicker/FormikTimePicker';
