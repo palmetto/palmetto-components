@@ -59,10 +59,6 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
     },
   );
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange(event);
-  };
-
   return (
     <FormControl
       label={label}
@@ -82,7 +78,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
           aria-label={label}
           aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
           value={value ?? ''}
-          onChange={handleChange}
+          onChange={onChange}
           color={!value ? 'grey-light' : 'dark'}
           autoFocus={autoFocus}
           disabled={isDisabled}
