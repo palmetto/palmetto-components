@@ -5,10 +5,29 @@ import { FormControl, FormControlProps } from '../FormControl/FormControl';
 import styles from './SelectInputNative.module.scss';
 
 export interface SelectInputNativeProps extends BoxProps, FormControlProps {
+  /**
+   * List of options for the select input.
+   */
   options: { value: string | number; label: string | number; }[];
-  value: { value: string | number; label: string | number; } | null;
+  /**
+   * Value of selected option. Should match the value key in the option object.
+   */
+  value: string | null;
+  /**
+   * onChange callback from select element.
+   */
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  /**
+   * The input's 'name' attribute.
+   */
+  name?: string;
+  /**
+   * Size of the input.
+   */
   size?: 'sm' | 'md' | 'lg';
+  /**
+   * Whether the input is autofocused on initial render.
+   */
   autoFocus?: HTMLSelectElement['autofocus'];
 }
 
