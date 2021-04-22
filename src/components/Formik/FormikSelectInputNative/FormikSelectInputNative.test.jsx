@@ -26,7 +26,6 @@ const handleValidation = values => {
 };
 
 const renderForm = (initialValue, props) => {
-  console.log('PROPIS!', props);
   return (
     <Formik
       initialValues={{
