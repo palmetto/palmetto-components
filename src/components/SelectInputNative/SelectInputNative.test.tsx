@@ -145,8 +145,9 @@ describe('SelectInputNative', () => {
       });
     });
 
-    // @TODO -- This test doesn't do what we need at this time. Need to find a way to check for the selected value but react doesnt use the select attr in options.
-  
+    // @TODO -- This test doesn't do what we need at this time. Need to find a way to check for the selected value
+    // but react doesnt use the select attr in options.
+    /* eslint-disable */
     // describe('Single select, pre-selected', () => {
     //   test('it renders with value pre-selected', () => {
     //     const mockedHandleChange = jest.fn();
@@ -166,6 +167,7 @@ describe('SelectInputNative', () => {
     //     expect(option).toHaveAttribute('selected', true);
     //   });
     // });
+    /* eslint-enable */
 
     describe('Is Required', () => {
       test('it renders an asterisk in the label', () => {
