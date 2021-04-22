@@ -2,13 +2,13 @@ import React, {
   FC, ChangeEvent, FocusEvent, ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextareaInput.module.scss';
 
-export interface TextareaInputProps {
+export interface TextareaInputProps extends Omit<BoxProps, 'as' | 'width'> {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
