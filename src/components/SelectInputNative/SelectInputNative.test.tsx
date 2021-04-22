@@ -121,7 +121,7 @@ describe('SelectInputNative', () => {
             onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
-            value={selectOptions[1]}
+            value={selectOptions[1].value}
           />,
         );
 
@@ -155,7 +155,7 @@ describe('SelectInputNative', () => {
             onChange={mockedHandleChange}
             label="Select Label"
             options={selectOptions}
-            value={selectOptions[2]}
+            value={selectOptions[2].value}
           />,
         );
 
@@ -174,7 +174,7 @@ describe('SelectInputNative', () => {
             label="Select Label"
             options={selectOptions}
             isRequired
-            value={selectOptions[0]}
+            value={selectOptions[0].value}
           />,
         );
 
@@ -236,7 +236,7 @@ describe('SelectInputNative', () => {
             id="testId"
             onChange={mockedHandleChange}
             options={selectOptions}
-            value={selectOptions[0]}
+            value={selectOptions[0].value}
             size={size}
             label="size test"
           />,
