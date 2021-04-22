@@ -87,6 +87,10 @@ export interface TextareaInputProps {
    * number of visible text lines for the control.
    */
   rows?: number;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const TextareaInput: FC<TextareaInputProps> = ({
@@ -109,6 +113,7 @@ export const TextareaInput: FC<TextareaInputProps> = ({
   placeholder = '',
   resize = 'vertical',
   rows = 3,
+  ...restProps
 }) => {
   const inputWrapperClasses = classNames(styles['textarea-input-wrapper'], {
     [styles.error]: error,
@@ -145,7 +150,7 @@ export const TextareaInput: FC<TextareaInputProps> = ({
   };
 
   return (
-    <Box width="100%" className={className}>
+    <Box width="100%" className={className} {...restProps}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       <div className={inputWrapperClasses}>
         <textarea {...inputProps} />
