@@ -30,6 +30,7 @@
   background-color: var(--color-brand-grey-200);
   cursor: pointer;
   padding: 2px;
+  min-width: 2.5rem;
   width: 2.5rem;
   height: var(--size-spacing-lg);
 
@@ -39,11 +40,13 @@
 }
 
 .track-sm {
+  min-width: 1.5rem;
   width: 1.5rem;
   height: var(--size-spacing-md);
 }
 
 .track-lg {
+  min-width: 3.5rem;
   width: 3.5rem;
   height: var(--size-spacing-xl);
 }
