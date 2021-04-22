@@ -5,10 +5,25 @@ import { FormControl, FormControlProps } from '../FormControl/FormControl';
 import styles from './SelectInputNative.module.scss';
 
 export interface SelectInputNativeProps extends BoxProps, FormControlProps {
+  /**
+   * List of options for the select input.
+   */
   options: { value: string | number; label: string | number; }[];
-  value: { value: string | number; label: string | number; } | null;
+  /**
+   * Value of selected option. Should match the value key in the option object.
+   */
+  value: string | null;
+  /**
+   * onChange callback from select element.
+   */
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  /**
+   * Size of the input.
+   */
   size?: 'sm' | 'md' | 'lg';
+  /**
+   * Whether the input is autofocused on initial render.
+   */
   autoFocus?: HTMLSelectElement['autofocus'];
 }
 
@@ -44,6 +59,10 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
     },
   );
 
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    onChange(event);
+  };
+
   return (
     <FormControl
       label={label}
@@ -63,7 +82,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
           aria-label={label}
           aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
           value={value ?? ''}
-          onChange={onChange}
+          onChange={handleChange}
           color={!value ? 'grey-light' : 'dark'}
           autoFocus={autoFocus}
           disabled={isDisabled}
