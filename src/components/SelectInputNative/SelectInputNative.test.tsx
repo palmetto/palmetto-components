@@ -145,23 +145,27 @@ describe('SelectInputNative', () => {
       });
     });
 
-    describe('Single select, pre-selected', () => {
-      test('it renders with value pre-selected', () => {
-        const mockedHandleChange = jest.fn();
+    // @TODO -- This test doesn't do what we need at this time. Need to find a way to check for the selected value but react doesnt use the select attr in options.
+  
+    // describe('Single select, pre-selected', () => {
+    //   test('it renders with value pre-selected', () => {
+    //     const mockedHandleChange = jest.fn();
 
-        render(
-          <SelectInputNative
-            id="testId"
-            onChange={mockedHandleChange}
-            label="Select Label"
-            options={selectOptions}
-            value={selectOptions[2].value}
-          />,
-        );
+    //     const { debug } = render(
+    //       <SelectInputNative
+    //         id="testId"
+    //         onChange={mockedHandleChange}
+    //         label="Select Label"
+    //         options={selectOptions}
+    //         value={selectOptions[2].value}
+    //       />,
+    //     );
+    //     const selectElement = screen.getByLabelText('Select Label');
+    //     const option = screen.getByText('Vanilla');
 
-        expect(screen.getByText('Vanilla')).toBeInTheDocument();
-      });
-    });
+    //     expect(option).toHaveAttribute('selected', true);
+    //   });
+    // });
 
     describe('Is Required', () => {
       test('it renders an asterisk in the label', () => {

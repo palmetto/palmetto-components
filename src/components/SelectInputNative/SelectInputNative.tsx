@@ -18,6 +18,10 @@ export interface SelectInputNativeProps extends BoxProps, FormControlProps {
    */
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   /**
+   * The input's 'name' attribute.
+   */
+  name?: string;
+  /**
    * Size of the input.
    */
   size?: 'sm' | 'md' | 'lg';
