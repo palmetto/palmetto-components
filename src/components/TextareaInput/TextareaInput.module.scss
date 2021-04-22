@@ -43,8 +43,10 @@
   }
 
   &.error {
-    border-color: var(--form-control-error-border-color);
-    background-color: var(--form-control-error-background-color);
+    > textarea {
+      border-color: var(--form-control-error-border-color);
+      background-color: var(--form-control-error-background-color);
+    }
 
     &:focus {
       outline: none;
