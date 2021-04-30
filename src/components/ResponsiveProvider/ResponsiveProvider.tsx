@@ -31,7 +31,7 @@ export const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children
     setOuterHeight(window.outerHeight);
   };
 
-  useEffect(() => {
+  useEffect(() => { // eslint-disable-line consistent-return
     if (typeof window !== 'undefined') {
       // Set values on render if window wasn't available for useState initialization.
       handleWindowResize();
