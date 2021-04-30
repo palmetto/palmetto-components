@@ -34,14 +34,13 @@ The hook will return a `BreakpointState` object with the following shape:
   <Story name="Basic Usage">
     {() => {
       const App = () => {
-        const { isPhone } = useBreakpoint();
+        const { isPhone, isTablet, isDesktop, isHd } = useBreakpoint();
         return (
           <div>
-            {isPhone ? (
-              <p>Phone layout</p>
-            ) : (
-              <p>Layout for other breakpoints</p>
-            )}
+            {isPhone && <p>Phone layout</p>}
+            {isTablet && <p>Tablet layout</p>}
+            {isDesktop && <p>Desktop layout</p>}
+            {isHd && <p>HD layout</p>}
           </div>
         );
       };     

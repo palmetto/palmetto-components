@@ -19,10 +19,10 @@ export interface ResponsiveProviderProps {
 }
 
 export const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children = null, throttle = 50 }) => {
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-  const [innerHeight, setInnerHeight] = useState(window.innerHeight);
-  const [outerWidth, setOuterWidth] = useState(window.outerWidth);
-  const [outerHeight, setOuterHeight] = useState(window.outerHeight);
+  const [innerWidth, setInnerWidth] = useState(window?.innerWidth ?? 0);
+  const [innerHeight, setInnerHeight] = useState(window?.innerHeight ?? 0);
+  const [outerWidth, setOuterWidth] = useState(window?.outerWidth ?? 0);
+  const [outerHeight, setOuterHeight] = useState(window?.outerHeight ?? 0);
 
   const handleWindowResize = () => {
     setInnerWidth(window.innerWidth);
@@ -31,18 +31,23 @@ export const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children
     setOuterHeight(window.outerHeight);
   };
 
-  useEffect(() => {
-    let timeoutId: any; // eslint-disable-line
-    const throttledResize = () => {
-      // prevent execution of previous setTimeout
-      clearTimeout(timeoutId);
-      // change width from the state object after throttle time has elapsed.
-      timeoutId = setTimeout(handleWindowResize, throttle);
-    };
+  useEffect(() => { // eslint-disable-line consistent-return
+    if (typeof window !== 'undefined') {
+      // Set values on render if window wasn't available for useState initialization.
+      handleWindowResize();
 
-    window.addEventListener('resize', throttledResize);
+      let timeoutId: any; // eslint-disable-line
+      const throttledResize = () => {
+        // prevent execution of previous setTimeout
+        clearTimeout(timeoutId);
+        // change width from the state object after throttle time has elapsed.
+        timeoutId = setTimeout(handleWindowResize, throttle);
+      };
 
-    return () => window.removeEventListener('resize', throttledResize);
+      window.addEventListener('resize', throttledResize);
+
+      return () => window.removeEventListener('resize', throttledResize);
+    }
   }, [throttle]);
 
   return (
