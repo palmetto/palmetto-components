@@ -19,10 +19,10 @@ export interface ResponsiveProviderProps {
 }
 
 export const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children = null, throttle = 50 }) => {
-  const [innerWidth, setInnerWidth] = useState(window?.innerWidth ?? 0);
-  const [innerHeight, setInnerHeight] = useState(window?.innerHeight ?? 0);
-  const [outerWidth, setOuterWidth] = useState(window?.outerWidth ?? 0);
-  const [outerHeight, setOuterHeight] = useState(window?.outerHeight ?? 0);
+  const [innerWidth, setInnerWidth] = useState(0);
+  const [innerHeight, setInnerHeight] = useState(0);
+  const [outerWidth, setOuterWidth] = useState(0);
+  const [outerHeight, setOuterHeight] = useState(0);
 
   const handleWindowResize = () => {
     setInnerWidth(window.innerWidth);
