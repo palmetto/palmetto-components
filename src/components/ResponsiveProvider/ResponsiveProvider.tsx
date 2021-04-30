@@ -25,10 +25,10 @@ export const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children
   const [outerHeight, setOuterHeight] = useState(0);
 
   const handleWindowResize = () => {
-    setInnerWidth(window.innerWidth);
-    setInnerHeight(window.innerHeight);
-    setOuterWidth(window.outerWidth);
-    setOuterHeight(window.outerHeight);
+    setInnerWidth(window?.innerWidth ?? 0);
+    setInnerHeight(window?.innerHeight ?? 0);
+    setOuterWidth(window?.outerWidth ?? 0);
+    setOuterHeight(window?.outerHeight ?? 0);
   };
 
   useEffect(() => { // eslint-disable-line consistent-return
