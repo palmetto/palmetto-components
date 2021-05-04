@@ -195,7 +195,7 @@ export const SelectInput: FC<SelectInputProps> = ({
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        styles={{ menuPortal: base => ({ ...base, zIndex: Number(Z_INDEX_VALUES.popover.value) }) }}
+        styles={{ menuPortal: base => ({ ...base, zIndex: Number(Z_INDEX_VALUES.popover) }) }}
         value={value}
       />
       {error && typeof error !== 'boolean' && (

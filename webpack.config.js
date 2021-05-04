@@ -114,6 +114,7 @@ module.exports = {
     reset: [path.join(__dirname, 'src/styles/reset.scss')], // CSS Reset only.
   },
   optimization: {
+    usedExports: true,
     minimizer: [
       // Minify Javascript
       new TerserJSPlugin({
