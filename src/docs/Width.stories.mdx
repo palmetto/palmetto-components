@@ -1,6 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import sizes from '@palmetto/palmetto-design-tokens/build/js/variables-size';
-import { WIDTH_OPTIONS, WIDTH_VALUES } from '../lib/tokens';
+import { size } from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 
 <Meta
   title="Design Tokens/Width"
@@ -19,17 +18,15 @@ Rem based values will scale when adjusting the root font size. Pixel values are 
       <th>prop value</th>
       <th>value</th>
       <th>px</th>
-      <th>notes</th>
     </tr>
   </thead>
   <tbody>
-    {WIDTH_OPTIONS.map((width, i) => (
+    {Object.entries(size.width).map(([name, entry], i) => (
       <tr key={i}>
-        <td><code>{`size-width-${width}`}</code></td>
-        <td><code>{width}</code></td>
-        <td>{WIDTH_VALUES[i].value}</td>
-        <td>{width === 'base' ? '16' : WIDTH_VALUES[i].value.includes('%') ? '' : WIDTH_VALUES[i].original.value * 16}</td>
-        <td>{WIDTH_VALUES[i].original.comment}</td>
+        <td><code>{`size-width-${name}`}</code></td>
+        <td><code>{name}</code></td>
+        <td>{entry.value}</td>
+        <td>{name === 'base' ? '16' : (entry.value.includes('%') || ['auto', 'inherit'].includes(name)) ? '' : entry.original.value * 16}</td>
       </tr>
     ))}
   </tbody>
