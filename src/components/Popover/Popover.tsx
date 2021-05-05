@@ -76,14 +76,15 @@ export type PopoverProps = {
    * Whether the element should be rendered outside its DOM structure
    * for reasons of placement. Use this when the element is being cut-off or
    * re-positioned due to lack of space in the parent container.
-   * NOTE: use `portalTarget` to render the element onto a custom container,
-   * otherwise it will be rendered to the `body` element by default.
+   * NOTE: `portalTarget` is required if this is true.
    */
   withPortal: true;
    /**
    * The target element where the Popover will be portaled to, when `withPortal === true`.
+   * `document.body` will work for many cases, but you can also use a custom container for this.
+   * Only required if withPortal is true.
    */
-  portalTarget?: HTMLElement;
+  portalTarget: HTMLElement;
 } | {
   withPortal?: false;
   portalTarget?: never;
@@ -106,7 +107,7 @@ export const Popover: FC<PopoverProps> = ({
   onClickOutside = undefined,
   placement = 'right',
   withPortal = false,
-  portalTarget = withPortal ? document.body : undefined,
+  portalTarget,
   trapFocus = false,
   ...restProps
 }) => {
@@ -250,6 +251,7 @@ export const Popover: FC<PopoverProps> = ({
     <>
       {childrenWithRef}
       {isOpen && (
+        // portalTarget should always be defined if withPortal is true, but better safe than sorry here!
         withPortal && portalTarget ? createPortal(renderPopperContent(), portalTarget) : renderPopperContent()
       )}
     </>

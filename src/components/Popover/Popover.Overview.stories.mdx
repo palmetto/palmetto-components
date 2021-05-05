@@ -136,6 +136,7 @@ of uses for a popover include:
               direction: 'column',
             }}
             withPortal
+            portalTarget={document.body}
           >
             <Button onClick={handleOpenPopover} variant="light" size="sm">
               Popover Menu &nbsp;
@@ -397,6 +398,7 @@ in order to render the element anywhere on the page.
               color: 'white',
             }}
             withPortal
+            portalTarget={document.body}
           >
             <Button onClick={handleOpenPopover} variant="light">
               Toggle Popover
@@ -440,6 +442,7 @@ NOTE: this should be use sparingly since context dependent on hover, isn't an op
               background: 'primary-light',
             }}
             withPortal
+            portalTarget={document.body}
           >
             <Button
               onMouseOver={() => setPopoverOpen(true)}
@@ -492,6 +495,7 @@ in cases where the click target includes the Popover trigger or content nodes.
               background: 'primary-light',
             }}
             withPortal
+            portalTarget={document.body}
             onClickOutside={() => setPopoverOpen(false)}
           >
             <Button onClick={handleTogglePopover} variant="light">
@@ -543,6 +547,7 @@ Use the `trapFocus` prop to constrain focus to popover content elements.
               background: 'grey-lightest',
             }}
             withPortal
+            portalTarget={document.body}
             onClickOutside={() => setPopoverOpen(false)}
             trapFocus
           >
@@ -590,6 +595,7 @@ Render the popover with no arrow by passing `hasArrow` false.
               background: 'grey-lightest',
             }}
             withPortal
+            portalTarget={document.body}
             onClickOutside={() => setPopoverOpen(false)}
             hasArrow={false}
           >
@@ -638,6 +644,7 @@ Place the popover closer or farther from its trigger with the `offsetFromTarget`
                 background: 'grey-lightest',
               }}
               withPortal
+              portalTarget={document.body}
               hasArrow={false}
               offsetFromTarget={offset}
             >
