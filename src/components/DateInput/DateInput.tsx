@@ -131,6 +131,7 @@ export const DateInput: FC<DateInputProps> = ({
       isOpen={isPopoverOpen}
       content={renderDatePicker()}
       withPortal
+      portalTarget={document.body}
       onClickOutside={() => handleTogglePopover(false)}
     >
       <TextInput

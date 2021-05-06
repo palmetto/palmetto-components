@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { Placement as PlacementType } from '@popperjs/core';
 import { Popover } from './Popover';
 import { Button } from '../Button/Button';
 import { Box } from '../Box/Box';
 import { Heading } from '../Heading/Heading';
-import { Icon } from '../Icon/Icon';
+import { Icon, IconProps } from '../Icon/Icon';
 
 export default {
   title: 'Components/Popover/Visual Regression Tests',
@@ -11,14 +13,14 @@ export default {
   parameters: {
     chromatic: { delay: 2000, pauseAnimationAtEnd: true },
   },
-};
+} as Meta;
 
-export const Demo = () => {
+export const Demo: Story = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
   const handleOpenPopover = () => {
     setPopoverOpen(!isPopoverOpen);
   };
-  const NavItem = ({ children, className, iconName }) => (
+  const NavItem: FC<{className?: string; iconName?: IconProps['name'];}> = ({ children, className, iconName }) => (
     <Box
       as="li"
       color="grey-500"
@@ -118,6 +120,7 @@ export const Demo = () => {
           direction: 'column',
         }}
         withPortal
+        portalTarget={document.body}
       >
         <Button onClick={handleOpenPopover} variant="light" size="sm">
           Popover Menu &nbsp;
@@ -128,7 +131,7 @@ export const Demo = () => {
   );
 };
 
-export const Default = () => {
+export const Default: Story = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
   const handleOpenPopover = () => {
     setPopoverOpen(!isPopoverOpen);
@@ -152,8 +155,8 @@ export const Default = () => {
   );
 };
 
-export const Placement = () => {
-  const [isPopoverOpen, setPopoverOpen] = useState({
+export const Placement: Story = () => {
+  const [isPopoverOpen, setPopoverOpen] = useState<Record<string, boolean>>({
     auto: true,
     'auto-start': true,
     'auto-end': true,
@@ -170,10 +173,10 @@ export const Placement = () => {
     'left-start': true,
     'left-end': true,
   });
-  const handleOpenPopover = key => {
+  const handleOpenPopover = (key: string) => {
     setPopoverOpen({ ...isPopoverOpen, [key]: !isPopoverOpen[key] });
   };
-  const positions = [
+  const positions: PlacementType[] = [
     'auto',
     'auto-start',
     'auto-end',
@@ -214,7 +217,7 @@ export const Placement = () => {
   );
 };
 
-export const HideArrow = () => {
+export const HideArrow: Story = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
   const handleTogglePopover = () => {
     setPopoverOpen(!isPopoverOpen);
@@ -238,6 +241,7 @@ export const HideArrow = () => {
           background: 'grey-lightest',
         }}
         withPortal
+        portalTarget={document.body}
         onClickOutside={() => setPopoverOpen(false)}
         hasArrow={false}
       >
@@ -249,7 +253,7 @@ export const HideArrow = () => {
   );
 };
 
-export const Offset = () => {
+export const Offset: Story = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
   const handleTogglePopoverNear = () => {
     setPopoverOpen(!isPopoverOpen);
@@ -274,6 +278,7 @@ export const Offset = () => {
             background: 'grey-lightest',
           }}
           withPortal
+          portalTarget={document.body}
           hasArrow={false}
           offsetFromTarget={20}
         >

@@ -113,6 +113,7 @@ describe('Popover', () => {
                 isOpen
                 content={<button type="button" id="inside-button">hello</button>}
                 withPortal
+                portalTarget={document.body}
               >
                 <p>trigger</p>
               </Popover>

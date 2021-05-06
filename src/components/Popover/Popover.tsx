@@ -18,7 +18,7 @@ import { BrandColor } from '../../types';
 import styles from './Popover.module.scss';
 import { Box, BoxProps } from '../Box/Box';
 
-export interface PopoverProps {
+export type PopoverProps = {
   /**
    * The trigger element
    */
@@ -62,28 +62,33 @@ export interface PopoverProps {
    */
   placement?: Placement;
   /**
-   * The target element where the Popover will be portaled to, when `withPortal === true`.
-   */
-  portalTarget?: HTMLElement;
-  /**
    * Whether you want to trap focus in the Popover element when it is open.
    * Read more about focus traps:
    * [Here](https://allyjs.io/tutorials/accessible-dialog.html#trapping-focus-inside-the-dialog)
    */
   trapFocus?: boolean;
   /**
-   * Whether the element should be rendered outside its DOM structure
-   * for reasons of placement. Use this when the element is being cut-off or
-   * re-positioned due to lack of space in the parent container.
-   * NOTE: use `portalTarget` to render the element onto a custom container,
-   * otherwise it will be rendered to the `body` element by default.
-   */
-  withPortal?: boolean;
-  /**
    * Additional props to be spread to rendered element
    */
   [x: string]: any; // eslint-disable-line
-}
+} & ({
+  /**
+   * Whether the element should be rendered outside its DOM structure
+   * for reasons of placement. Use this when the element is being cut-off or
+   * re-positioned due to lack of space in the parent container.
+   * NOTE: `portalTarget` is required if this is true.
+   */
+  withPortal: true;
+   /**
+   * The target element where the Popover will be portaled to, when `withPortal === true`.
+   * `document.body` will work for many cases, but you can also use a custom container for this.
+   * Only required if withPortal is true.
+   */
+  portalTarget: HTMLElement;
+} | {
+  withPortal?: false;
+  portalTarget?: never;
+})
 
 const contentContainerDefaults: BoxProps = {
   background: 'white',
@@ -101,9 +106,9 @@ export const Popover: FC<PopoverProps> = ({
   offsetFromTarget = 12,
   onClickOutside = undefined,
   placement = 'right',
-  portalTarget = document.body,
-  trapFocus = false,
   withPortal = false,
+  portalTarget,
+  trapFocus = false,
   ...restProps
 }) => {
   const triggerRef = useRef<HTMLElement>(null);
@@ -246,7 +251,8 @@ export const Popover: FC<PopoverProps> = ({
     <>
       {childrenWithRef}
       {isOpen && (
-        withPortal ? createPortal(renderPopperContent(), portalTarget) : renderPopperContent()
+        // portalTarget should always be defined if withPortal is true, but better safe than sorry here!
+        withPortal && portalTarget ? createPortal(renderPopperContent(), portalTarget) : renderPopperContent()
       )}
     </>
   );
