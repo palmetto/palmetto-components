@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { optionCSS } from 'react-select/src/components/Option';
 import { SelectInputNative, SelectInputNativeBaseProps } from '../SelectInputNative/SelectInputNative';
 
 export interface TimePickerProps extends SelectInputNativeBaseProps {

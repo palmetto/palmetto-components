@@ -108,7 +108,7 @@ describe('TimePicker', () => {
 
   describe('Callback Handling', () => {
     it('it fires an onchange callback with the correct value', async () => {
-      const mockedHandleChange = jest.fn(() => {});
+      const mockedHandleChange = jest.fn(() => {}); // eslint-disable-line
 
       render(
         <TimePicker
