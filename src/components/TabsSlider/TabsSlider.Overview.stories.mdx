@@ -1,0 +1,104 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { TabsSlider } from './TabsSlider';
+import { TabPanels } from './TabPanels';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
+
+<Meta title="Components/TabsSlider/Overview" component={TabsSlider} />
+
+# TabsSlider
+
+The Tabs component allows a user to flip amongst different views within the same page. This helps users navigate related content without having to change context.
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      return (
+        <TabsSlider
+          value={selectedTab}
+          onChange={(event, index) => {
+            setSelectedTab(index);
+          }}
+        >
+          <TabsSlider.Item>Tab 1</TabsSlider.Item>
+          <TabsSlider.Item>Tab 2</TabsSlider.Item>
+          <TabsSlider.Item>Tab 3</TabsSlider.Item>
+          <TabsSlider.Item>Tab 4</TabsSlider.Item>
+        </TabsSlider>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={TabsSlider} />
+
+## With Panels
+
+Use the TabPanels component to also control the visible content based on the selected tab.
+
+<Canvas isExpanded>
+  <Story name="With Panels">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      return (
+        <>
+          <TabsSlider
+            value={selectedTab}
+            onChange={(event, index) => {
+              setSelectedTab(index);
+            }}
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+          </TabsSlider>
+          <TabPanels value={selectedTab}>
+            <Box padding="lg">Here's the first tab</Box>
+            <Box padding="lg">Here's the second tab</Box>
+          </TabPanels>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Sizes
+
+The `size` prop allows you to specify the size of the tab, or the size of the tabs at different breakpoints.
+
+<Canvas isExpanded>
+  <Story name="Size">
+    {() => {
+      const [firstSelectedTab, setFirstSelectedTab] = useState(0);
+      const [secondSelectedTab, setSecondSelectedTab] = useState(0);
+      return (
+        <Box childGap="md">
+          <TabsSlider
+            value={firstSelectedTab}
+            onChange={(event, index) => {
+              setFirstSelectedTab(index);
+            }}
+            size="md"
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+          </TabsSlider>
+          <TabsSlider
+            value={secondSelectedTab}
+            onChange={(event, index) => {
+              setSecondSelectedTab(index);
+            }}
+            size="sm"
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+          </TabsSlider>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
