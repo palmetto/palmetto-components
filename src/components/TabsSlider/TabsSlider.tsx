@@ -11,15 +11,21 @@ export type TabsVariant = ButtonVariant;
 export interface TabsSliderProps extends BoxProps {
   value: number;
   onChange: (event: React.MouseEvent<HTMLLIElement>, index: number) => void;
-  // isFullWidth?: boolean;
-  // isCentered?: boolean;
-  size?: 'sm' | 'md' | ResponsiveProp<'sm' | 'md'>;
+  size?: 'sm' | 'md' | 'lg' | ResponsiveProp<'xs' | 'sm' | 'md'>;
   background: 'grey-100';
   radius: 'md';
 }
 
 export class TabsSlider extends React.Component<TabsSliderProps> {
   static Item = TabItem;
+
+  static defaultProps = {
+    as: 'nav',
+    background: 'grey-100',
+    radius: 'md',
+    overflow: 'auto',
+    size: 'md',
+  }
 
   state = {
     indicatorStyle: {
@@ -46,6 +52,29 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
       || prevProps.children !== this.props.children
     ) {
       this.updateIndicatorState();
+    }
+  }
+
+  get tabFontSize() {
+    const { size } = this.props;
+
+    if (size === 'sm' || size === 'md') {
+      return 'md';
+    } else {
+      return 'lg';
+    }
+  };
+
+  get tabHeight() {
+    const { size } = this.props;
+
+    switch(size) {
+      case 'sm':
+        return '24px';
+      case 'md':
+        return '32px'
+      case 'lg':
+        return '44px';
     }
   }
 
@@ -97,8 +126,6 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
       width: tabMeta ? tabMeta.width : 0,
     };
 
-    console.log('tab width', tabMeta?.width);
-
     // IE11 support, replace with Number.isNaN
     // eslint-disable-next-line no-restricted-globals
     if (isNaN(this.state.indicatorStyle.left) || isNaN(this.state.indicatorStyle.width)) {
@@ -115,15 +142,13 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
 
   render(): React.ReactNode {
     const {
-      as = 'nav',
+      as,
       children,
-      // isCentered = false,
-      // isFullWidth = false,
-      background = 'grey-100',
-      radius = 'md',
+      background,
+      radius,
       onChange,
-      overflow = 'auto',
-      size = 'md',
+      overflow ,
+      size,
       value,
       ...restProps
     } = this.props;
@@ -159,8 +184,8 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
           {
             className: classes,
             onClick: onClickHandler,
-            fontSize: size,
-            padding: size,
+            fontSize: this.tabFontSize,
+            height: this.tabHeight,
             style: { ...child.props.style, flex: 1 },
           },
         );
@@ -186,6 +211,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
           style={{ paddingInlineStart: '0' }}
           position="relative"
           ref={this.tabListRef}
+          height={this.tabHeight}
         >
           {decoratedChildren}
           <Box

@@ -8,7 +8,6 @@ export interface TabItemProps extends BoxProps {
 export const TabItem: React.FC<TabItemProps> = ({
   children,
   isDisabled = false,
-  padding = 'md',
   style,
   ...restProps
 }) => {
@@ -26,11 +25,12 @@ export const TabItem: React.FC<TabItemProps> = ({
           background: 'transparent',
           whiteSpace: 'nowrap',
         }}
-        padding={padding}
         borderWidth="0"
-        color={isDisabled ? 'grey-100' : 'grey-400'}
+        color={isDisabled ? 'grey-300' : 'grey-400'}
         direction="row"
         justifyContent="center"
+        alignItems="center"
+        height={restProps.height}
       >
         {children}
       </Box>

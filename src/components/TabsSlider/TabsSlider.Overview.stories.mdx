@@ -26,7 +26,7 @@ The Tabs component allows a user to flip amongst different views within the same
           <TabsSlider.Item>Tab 1</TabsSlider.Item>
           <TabsSlider.Item>Tab 2</TabsSlider.Item>
           <TabsSlider.Item>Tab 3</TabsSlider.Item>
-          <TabsSlider.Item>Tab 4</TabsSlider.Item>
+          <TabsSlider.Item isDisabled>Tab 4 (disabled)</TabsSlider.Item>
         </TabsSlider>
       );
     }}
@@ -75,6 +75,7 @@ The `size` prop allows you to specify the size of the tab, or the size of the ta
     {() => {
       const [firstSelectedTab, setFirstSelectedTab] = useState(0);
       const [secondSelectedTab, setSecondSelectedTab] = useState(0);
+      const [thirdSelectedTab, setThirdSelectedTab] = useState(0);
       return (
         <Box childGap="md">
           <TabsSlider
@@ -82,7 +83,7 @@ The `size` prop allows you to specify the size of the tab, or the size of the ta
             onChange={(event, index) => {
               setFirstSelectedTab(index);
             }}
-            size="md"
+            size="sm"
           >
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>
@@ -92,7 +93,17 @@ The `size` prop allows you to specify the size of the tab, or the size of the ta
             onChange={(event, index) => {
               setSecondSelectedTab(index);
             }}
-            size="sm"
+            size="md"
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+          </TabsSlider>
+          <TabsSlider
+            value={thirdSelectedTab}
+            onChange={(event, index) => {
+              setThirdSelectedTab(index);
+            }}
+            size="lg"
           >
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>
