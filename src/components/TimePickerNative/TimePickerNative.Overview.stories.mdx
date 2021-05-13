@@ -1,30 +1,29 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { TimePicker } from './TimePicker';
+import { TimePickerNative } from './TimePickerNative';
 import { Box } from '../Box/Box';
 
 <Meta
-  title="Components/TimePicker/Overview"
-  component={TimePicker}
+  title="Components/TimePickerNative/Overview"
+  component={TimePickerNative}
   parameters={{
     controls: { hideNoControlsWarning: true },
   }}
 />
 
-# TimePicker
+# TimePickerNative
 
-Use a TimePicker when you want users to select from a list of a available times agnostic of date.
+Use a TimePickerNative when you want users to select from a list of a available times agnostic of date.
 
-_NOTE:_ This component is abstracted from the [SelectInput](?path=/docs/components-selectinput-overview--default-story)
+_NOTE:_ This component is abstracted from the [SelectInputNative](?path=/docs/components-selectinputnative-overview--default-story)
 and as such includes the same underlying props interface with an added method for generating the time options automatically.
 
-_ABOUT TIME FORMAT:_ While the `value` prop technically returns `{ label: string; value: string; }` the value returned will always
-be a JS ISO date string, like this: `2016-07-13T18:46:01.933Z`.
+_ABOUT TIME FORMAT:_ The value returned will always be a JS ISO date string, like this: `2016-07-13T18:46:01.933Z`.
 
 ## Props
 
-<ArgsTable of={TimePicker} />
+<ArgsTable of={TimePickerNative} />
 
 ## Default
 
@@ -33,11 +32,12 @@ be a JS ISO date string, like this: `2016-07-13T18:46:01.933Z`.
     {() => {
       const [value, setValue] = useState(null);
       return (
-        <Box height="360px">
-          <TimePicker
-            id="defaultTimePicker"
-            name="defaultTimePicker"
+        <Box>
+          <TimePickerNative
+            id="defaultTimePickerNative"
+            name="defaultTimePickerNative"
             onChange={event => {
+              console.log(event.target.value);
               setValue(event.target.value);
             }}
             label="Pick a Time"
@@ -57,12 +57,14 @@ The example below uses `3600` --> 1 Hour Intervals
 <Canvas>
   <Story name="With Interval">
     {() => {
+      const [value, setValue] = useState(null);
       return (
-        <Box height="360px">
-          <TimePicker
-            id="intervalTimePicker"
-            name="intervalTimePicker"
-            onChange={() => {}}
+        <Box>
+          <TimePickerNative
+            id="intervalTimePickerNative"
+            name="intervalTimePickerNative"
+            onChange={event => setValue(event.target.value)}
+            value={value}
             label="Pick a Time"
             interval={3600}
           />
@@ -86,12 +88,14 @@ See example below where we want to show 15 minute increments starting at 9:00AM 
 <Canvas>
   <Story name="With Start and End">
     {() => {
+      const [value, setValue] = useState(null);
       return (
-        <Box height="360px">
-          <TimePicker
+        <Box>
+          <TimePickerNative
             id="startEnd"
             name="startEnd"
-            onChange={() => {}}
+            onChange={event => setValue(event.target.value)}
+            value={value}
             label="Pick a Time"
             startTime={{ hour: 9, minute: 0 }}
             endTime={{ hour: 15, minute: 31 }}
@@ -114,46 +118,18 @@ The example below is shown in military (24-hour) time.
 <Canvas>
   <Story name="With Custom Date">
     {() => {
+      const [value, setValue] = useState(null);
       return (
-        <Box height="360px">
-          <TimePicker
+        <Box>
+          <TimePickerNative
             id="customDate"
             name="customDate"
-            onChange={() => {}}
+            onChange={event => setValue(event.target.value)}
+            value={value}
             label="Pick a Time"
             startTime={{ hour: 9, minute: 0 }}
             endTime={{ hour: 15, minute: 31 }}
             dateDisplayOptions={{ hour12: false, hour: '2-digit', minute: '2-digit' }}
-          />
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## With Open Menu
-
-The menu can be rendered open with the `menuIsOpen` prop. We do this here to confirm option generation
-via our UI visual snapshot testing (Chromatic).
-
-<Canvas>
-  <Story name="Open Menu">
-    {() => {
-      const [value, setValue] = useState(null);
-      return (
-        <Box height="260px">
-          <TimePicker
-            id="openMenu"
-            name="openMenu"
-            onChange={event => {
-              setValue(event.target.value);
-            }}
-            label="Pick a Time"
-            value={value}
-            menuIsOpen
-            interval={3600}
-            startTime={{ hour: 9, minute: 0 }}
-            endTime={{ hour: 13, minute: 1 }}
           />
         </Box>
       );
@@ -168,8 +144,8 @@ via our UI visual snapshot testing (Chromatic).
     {() => {
       const [value, setValue] = useState(null);
       return (
-        <Box height="360px">
-          <TimePicker
+        <Box>
+          <TimePickerNative
             id="helpText"
             name="helpText"
             onChange={event => {
@@ -196,10 +172,10 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
       const [value1, setValue1] = useState();
       const [value2, setValue2] = useState();
       return (
-        <Box childGap="md" height="360px">
-          <TimePicker
-            id="smTimePicker"
-            name="smTimePicker"
+        <Box childGap="md">
+          <TimePickerNative
+            id="smTimePickerNative"
+            name="smTimePickerNative"
             onChange={event => {
               setValue(event.target.value);
             }}
@@ -207,9 +183,9 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
             value={value}
             size="sm"
           />
-          <TimePicker
-            id="mdTimePicker"
-            name="mdTimePicker"
+          <TimePickerNative
+            id="mdTimePickerNative"
+            name="mdTimePickerNative"
             onChange={event => {
               setValue1(event.target.value);
             }}
@@ -217,9 +193,9 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
             value={value1}
             size="md"
           />
-          <TimePicker
-            id="lgTimePicker"
-            name="lgTimePicker"
+          <TimePickerNative
+            id="lgTimePickerNative"
+            name="lgTimePickerNative"
             onChange={event => {
               setValue2(event.target.value);
             }}

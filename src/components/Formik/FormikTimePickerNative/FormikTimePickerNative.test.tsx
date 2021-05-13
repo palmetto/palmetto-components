@@ -5,16 +5,14 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import selectEvent from 'react-select-event';
 import { Formik, Form, Field } from 'formik';
-import { FormikTimePicker } from './FormikTimePicker';
+import { FormikTimePickerNative } from './FormikTimePickerNative';
 
 const testLabelName = 'test select';
 
-type Option = { value: string; label: string; }
 const handleValidation = (values: { [x: string]: string; }) => {
   const errors: {[x: string]: string; } = {};
-  if (values[testLabelName].length < 1) {
+  if (!values[testLabelName] || values[testLabelName].length < 1) {
     errors[testLabelName] = 'input is required';
   }
 
@@ -22,14 +20,13 @@ const handleValidation = (values: { [x: string]: string; }) => {
 };
 
 const renderForm = (
-  initialValue: string | string[] | Option | Option[] | undefined,
+  initialValue: string | undefined | null,
   props: {
     placeholder?: string;
     hideLabel?: boolean;
-    isMulti?: boolean;
     isRequired?: unknown;
     isDisabled?: boolean;
-    onChange?: jest.Mock<void, [any]>; // eslint-disable-line
+    onChange?: jest.Mock<void, [React.ChangeEvent<HTMLSelectElement>]>; // eslint-disable-line
     interval?: number;
   },
 ) => (
@@ -46,7 +43,7 @@ const renderForm = (
           label={testLabelName}
           name={testLabelName}
           id={testLabelName}
-          component={FormikTimePicker}
+          component={FormikTimePickerNative}
           {...props}
         />
         <button type="submit">submit</button>
@@ -55,7 +52,7 @@ const renderForm = (
   </Formik>
 );
 
-describe('FormikTimePicker', () => {
+describe('FormikTimePickerNative', () => {
   describe('States', () => {
     describe('Hidden label, with a placeholder', () => {
       test('it renders input without a visual label, and with a placeholder', () => {
@@ -91,43 +88,15 @@ describe('FormikTimePicker', () => {
 
     describe('Single select, pre-selected', () => {
       test('it renders with value pre-selected', () => {
-        render(renderForm({ label: '12:00 AM', value: '2020-10-23T04:30:00.120Z' }, {}));
+        render(renderForm('2020-10-23T04:30:00.120Z', {}));
 
         expect(screen.getByText('12:00 AM')).toBeInTheDocument();
-      });
-    });
-
-    describe('Multi select, no selection', () => {
-      test('it renders input with a label, and with a default placeholder', () => {
-        render(renderForm(undefined, { isMulti: true }));
-
-        expect(screen.getByLabelText(testLabelName)).toBeInTheDocument();
-        expect(screen.getByText('HH:MM')).toBeInTheDocument();
-      });
-    });
-
-    describe('Multi select, with multiple items selected', () => {
-      test('it renders input with a label, and with two items selected', () => {
-        render(
-          renderForm(
-            [
-              { label: '12:00 AM', value: '2020-10-23T04:30:00.120Z' },
-              { label: '12:15 AM', value: '2020-10-23T04:45:00.120Z' },
-            ],
-            { isMulti: true },
-          ),
-        );
-
-        expect(screen.getByLabelText(testLabelName)).toBeInTheDocument();
-        expect(screen.queryByText('HH:MM')).toBeNull();
-        expect(screen.getByText('12:00 AM')).toBeInTheDocument();
-        expect(screen.getByText('12:15 AM')).toBeInTheDocument();
       });
     });
 
     describe('Is Required', () => {
       test('it renders an asterisk in the label', () => {
-        render(renderForm([], { isRequired: true }));
+        render(renderForm(null, { isRequired: true }));
 
         expect(screen.getByText(`${testLabelName} *`)).toBeInTheDocument();
       });
@@ -135,15 +104,15 @@ describe('FormikTimePicker', () => {
 
     describe('Is Disabled', () => {
       test('it disables the input', () => {
-        render(renderForm([], { isDisabled: true }));
+        render(renderForm(null, { isDisabled: true }));
 
-        expect(screen.getByRole('textbox')).toBeDisabled();
+        expect(screen.getByLabelText(testLabelName)).toBeDisabled();
       });
     });
 
     describe('Is Invalid, with a helpful message', () => {
       test('it renders the helpful message', async () => {
-        const { getByText } = render(renderForm([], { isRequired: true }));
+        const { getByText } = render(renderForm(null, { isRequired: true }));
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
@@ -155,34 +124,21 @@ describe('FormikTimePicker', () => {
   describe('Callback Handling', () => {
     describe('onChange', () => {
       test('Custom onChange event fires callback function, overwriting Formik\'s onChange', async () => {
-        let value: Option | undefined;
-        const mockedHandleChange = jest.fn(event => { value = event.target.value; });
+        let value: string | undefined;
+        const mockedHandleChange = jest.fn(event => { event.persist(); });
 
-        const { getByLabelText, container, getByText } = render(renderForm(value, { onChange: mockedHandleChange }));
+        const { getByLabelText } = render(renderForm(value, { onChange: mockedHandleChange }));
         const selectInput = getByLabelText(testLabelName);
-        /**
-         * This class is specific to react-select, combined with our custom classNamePrefix prop.
-         * While this is an implementation detail there appears to be
-         * no clearer path to test our own component which depends on react-select
-        */
-        const selectInputWrapper = container.querySelector('.react-select__control');
-
-        fireEvent.focus(selectInput);
-        if (selectInputWrapper) {
-          fireEvent.mouseDown(selectInputWrapper);
-        }
-        const option = await waitFor(() => getByText('12:00 AM'), { container });
-        fireEvent.click(option);
+        fireEvent.change(selectInput, { target: { value: 'hello' } });
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
-        expect(value?.label).toEqual('12:00 AM');
       });
 
       test('it fires onChange callback on change', async () => {
         const mockedHandleChange = jest.fn();
 
-        const { getByLabelText } = render(renderForm(undefined, { onChange: mockedHandleChange }));
+        const { getByLabelText } = render(renderForm(null, { onChange: mockedHandleChange }));
 
-        await selectEvent.select(getByLabelText(testLabelName), '12:00 AM');
+        await fireEvent.change(getByLabelText(testLabelName));
 
         expect(mockedHandleChange).toBeCalledTimes(1);
       });

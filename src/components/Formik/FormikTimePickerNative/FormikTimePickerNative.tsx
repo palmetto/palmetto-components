@@ -5,8 +5,9 @@ import {
   FormikValues,
   FieldAttributes,
 } from 'formik';
-import { TimePicker } from '../../TimePicker/TimePicker';
-export interface FormikTimePickerProps {
+import { TimePickerNative } from '../../TimePickerNative/TimePickerNative';
+
+export interface FormikTimePickerNativeProps {
   field: FieldAttributes<HTMLTextAreaElement>;
   form: {
     touched: FormikTouched<FormikValues>;
@@ -16,7 +17,7 @@ export interface FormikTimePickerProps {
   label: string;
 }
 
-export const FormikTimePicker: FC<FormikTimePickerProps> = (
+export const FormikTimePickerNative: FC<FormikTimePickerNativeProps> = (
   {
     field: {
       name,
@@ -28,7 +29,7 @@ export const FormikTimePicker: FC<FormikTimePickerProps> = (
     ...props
   },
 ) => (
-  <TimePicker
+  <TimePickerNative
     name={name}
     onBlur={onBlur}
     onChange={onChange}
