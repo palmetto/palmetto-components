@@ -58,23 +58,44 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
   get tabFontSize() {
     const { size } = this.props;
 
-    if (size === 'sm' || size === 'md') {
-      return 'md';
-    } else {
-      return 'lg';
-    }
+    switch(size) {
+      case 'xs':
+        return 'sm';
+      case 'sm':
+        return 'md'
+      case 'md':
+        return 'md';
+      case 'lg':
+        return 'lg';    }
   };
 
   get tabHeight() {
     const { size } = this.props;
 
     switch(size) {
+      case 'xs':
+        return '20px';
       case 'sm':
-        return '24px';
-      case 'md':
         return '32px'
+      case 'md':
+        return '42px';
       case 'lg':
-        return '44px';
+        return '55px';
+    }
+  }
+
+  get tabBorderWidth() {
+    const { size } = this.props;
+
+    switch(size) {
+      case 'xs':
+        return 'sm';
+      case 'sm':
+        return 'sm'
+      case 'md':
+        return 'sm';
+      case 'lg':
+        return 'md';
     }
   }
 
@@ -219,7 +240,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
             background="white"
             height="100"
             position="absolute"
-            borderWidth="md"
+            borderWidth={this.tabBorderWidth}
             borderColor={background}
             style={{ ...this.state.indicatorStyle }}
             className={styles['tabs-slider-indicator']}

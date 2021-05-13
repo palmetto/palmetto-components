@@ -73,40 +73,59 @@ The `size` prop allows you to specify the size of the tab, or the size of the ta
 <Canvas isExpanded>
   <Story name="Size">
     {() => {
-      const [firstSelectedTab, setFirstSelectedTab] = useState(0);
-      const [secondSelectedTab, setSecondSelectedTab] = useState(0);
-      const [thirdSelectedTab, setThirdSelectedTab] = useState(0);
+      const [xs, setXs] = useState(0);
+      const [sm, setSm] = useState(0);
+      const [md, setMd] = useState(0);
+      const [lg, setLg] = useState(0);
       return (
         <Box childGap="md">
           <TabsSlider
-            value={firstSelectedTab}
+            value={xs}
             onChange={(event, index) => {
-              setFirstSelectedTab(index);
+              setXs(index);
+            }}
+            size="xs"
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item>Tab 4</TabsSlider.Item>
+          </TabsSlider>
+          <TabsSlider
+            value={sm}
+            onChange={(event, index) => {
+              setSm(index);
             }}
             size="sm"
           >
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item>Tab 4</TabsSlider.Item>
           </TabsSlider>
           <TabsSlider
-            value={secondSelectedTab}
+            value={md}
             onChange={(event, index) => {
-              setSecondSelectedTab(index);
+              setMd(index);
             }}
             size="md"
           >
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item>Tab 4</TabsSlider.Item>
           </TabsSlider>
           <TabsSlider
-            value={thirdSelectedTab}
+            value={lg}
             onChange={(event, index) => {
-              setThirdSelectedTab(index);
+              setLg(index);
             }}
             size="lg"
           >
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item>Tab 4</TabsSlider.Item>
           </TabsSlider>
         </Box>
       );
