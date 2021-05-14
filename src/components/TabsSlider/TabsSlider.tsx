@@ -3,7 +3,7 @@ import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import { TabItem } from './TabItem';
-import { ResponsiveProp } from '../../types/';
+import { ResponsiveProp } from '../../types';
 import styles from './TabsSlider.module.scss';
 
 export const tabsSliderSizes = ['sm', 'md', 'lg'] as const;
@@ -106,34 +106,38 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     window.removeEventListener('resize', this.updateIndicatorState);
   }
 
-  generateSize = (size: TabsSliderProps['size'], propertyMap: { sm: string; md: string; lg: string; }): string | ResponsiveProp<string> => {
-    let propertySize: string | ResponsiveProp<string> = 'md';
-    if (typeof size === 'string') {
-      propertySize = propertyMap[size];
-    } else if (size !== null && typeof size === 'object') {
-      propertySize = Object.entries(size).reduce((acc, [key, value]) => ({ ...acc, [key]: propertyMap[value ?? 'md']}), {});
-    }
-
-    return propertySize;
-  };
-
-  get tabFontSize(): string | ResponsiveProp<string>  {
+  get tabFontSize(): string | ResponsiveProp<string> {
     const { size } = this.props;
 
     return this.generateSize(size, tabsSliderFontSizeMap);
   }
 
-  get tabPadding(): string | ResponsiveProp<string>  {
+  get tabPadding(): string | ResponsiveProp<string> {
     const { size } = this.props;
 
     return this.generateSize(size, tabsSliderPaddingMap);
   }
 
-  get tabBorderWidth(): string | ResponsiveProp<string>  {
+  get tabBorderWidth(): string | ResponsiveProp<string> {
     const { size } = this.props;
 
     return this.generateSize(size, tabsSliderBorderWidthMap);
   }
+
+  generateSize = (
+    size: TabsSliderProps['size'],
+    propertyMap: { sm: string; md: string; lg: string; },
+  ): string | ResponsiveProp<string> => {
+    let propertySize: string | ResponsiveProp<string> = 'md';
+    if (typeof size === 'string') {
+      propertySize = propertyMap[size];
+    } else if (size !== null && typeof size === 'object') {
+      propertySize = Object.entries(size)
+        .reduce((acc, [key, value]) => ({ ...acc, [key]: propertyMap[value ?? 'md'] }), {});
+    }
+
+    return propertySize;
+  };
 
   getTabsMeta = (): { tabsMeta: TabsMeta; tabMeta: DOMRect | undefined | null; } => {
     const tabsNode = this.tabsRef.current;
@@ -198,7 +202,6 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
       children,
       onChange,
       ref,
-      size,
       value,
       ...restProps
     } = this.props;

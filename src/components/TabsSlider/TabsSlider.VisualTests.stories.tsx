@@ -9,7 +9,7 @@ export default {
 } as Meta;
 
 export const SizeAndColor: React.FunctionComponent<TabsSliderProps> = () => (
-  <TabsSlider value={0} onChange={() => {}}>
+  <TabsSlider value={0} onChange={() => {}}> {/* eslint-disable-line */}
     <TabsSlider.Item>Tab 1</TabsSlider.Item>
     <TabsSlider.Item>Tab 2</TabsSlider.Item>
     <TabsSlider.Item isDisabled>Tab 3 (disabled)</TabsSlider.Item>
