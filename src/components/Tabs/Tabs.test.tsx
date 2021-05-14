@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Tabs } from './Tabs';
-import { TabPanels } from './TabPanels';
 
 describe('Tabs', () => {
   describe('Default', () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TabsSlider, tabsSliderSizes, tabsSliderHeightMap } from './TabsSlider';
-import { TabPanels } from './TabPanels';
 
 describe('TabsSlider', () => {
   describe('Default', () => {
@@ -134,7 +133,7 @@ describe('TabsSlider', () => {
       test(`renders with correct classes for size: ${size}`, () => {
         const mockedOnChange = jest.fn(() => null);
         const mockedOnClick = jest.fn(() => null);
-        const { getByRole, getByText } = render(
+        const { getByText } = render(
           <TabsSlider value={0} onChange={mockedOnChange} size={size}>
             <TabsSlider.Item onClick={mockedOnClick}>
               tab 1
@@ -147,8 +146,6 @@ describe('TabsSlider', () => {
 
         const button = getByText('tab 1');
         expect(button).toHaveStyle(`height: ${tabsSliderHeightMap[size]}`);
-
-        expect
       });
     });
   });

@@ -20,14 +20,26 @@ export const tabsSliderBorderWidthMap = {
   sm: 'sm',
   md: 'sm',
   lg: 'md',
-}
+};
 
 export const tabsSliderHeightMap = {
   xs: '20px',
   sm: '32px',
   md: '42px',
   lg: '55px',
-}
+};
+
+type TabsMeta = {
+  clientWidth: number;
+  scrollLeft: number;
+  scrollTop: number;
+  scrollWidth: number;
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+} | undefined;
+
 export interface TabsSliderProps extends BoxProps {
   /**
    * Value of current active tab.
@@ -62,11 +74,11 @@ export interface TabsSliderProps extends BoxProps {
 export class TabsSlider extends React.Component<TabsSliderProps> {
   static Item = TabItem;
 
-  static defaultProps = {
+  static defaultProps = { // eslint-disable-line react/static-property-placement
     size: 'md',
   }
 
-  state = {
+  state = { // eslint-disable-line react/state-in-constructor
     indicatorStyle: {
       left: 0,
       width: 0,
@@ -74,32 +86,54 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
   };
 
   tabsRef = React.createRef<HTMLElement>();
+
   tabListRef = React.createRef<HTMLUListElement>();
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.initWindowListener();
     this.updateIndicatorState();
   }
 
-  componentWillUnmount() {
-    this.cleanUpWindowListener();
-  }
-
-  componentDidUpdate(prevProps: TabsSliderProps) {
+  componentDidUpdate(prevProps: TabsSliderProps): void {
+    const { value, children } = this.props;
     if (
-      prevProps.value !== this.props.value
-      || prevProps.children !== this.props.children
+      prevProps.value !== value
+      || prevProps.children !== children
     ) {
       this.updateIndicatorState();
     }
   }
 
-  initWindowListener = () => {
+  componentWillUnmount(): void {
+    this.cleanUpWindowListener();
+  }
+
+  get tabFontSize(): string {
+    const { size } = this.props;
+
+    return tabsSliderFontSizeMap[size ?? 'md'];
+  }
+
+  get tabHeight(): string {
+    const { size } = this.props;
+
+    return tabsSliderHeightMap[size ?? 'md'];
+  }
+
+  get tabBorderWidth(): string {
+    const { size } = this.props;
+
+    return tabsSliderBorderWidthMap[size ?? 'md'];
+  }
+
+  initWindowListener = (): void => {
     if (!window && process.env.NODE_ENV !== 'production') {
-      console.error(
+      console.error( // eslint-disable-line no-console
         `
-          Palmetto Components: It looks like you\'re trying to use the SliderTabs component in a server-rendered application.
-          Without access to the window object, the selected tab indicator will not resize properly along with any window resizes.
+          Palmetto Components: It looks like you're trying to use the SliderTabs
+          component in a server-rendered application.
+          Without access to the window object, the selected tab indicator will not
+          resize properly along with any window resizes.
           To ensure this component works as intended, please import it dynamically.
           \n\n
           NextJS example:
@@ -107,39 +141,23 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
           import dynamic from 'next/dynamic';
           \n\n
           const SliderTabs = dynamic(import('@palmetto/palmetto-components').then((c) => c.SliderTabs));
-        `
+        `,
       );
     } else if (window) {
       window.addEventListener('resize', this.updateIndicatorState);
     }
   }
 
-  cleanUpWindowListener = () => {
+  cleanUpWindowListener = (): void => {
     if (window) {
       window.removeEventListener('resize', this.updateIndicatorState);
     }
   }
 
-  get tabFontSize() {
-    const { size } = this.props;
-
-    return tabsSliderFontSizeMap[size ?? 'md'];
-  };
-
-  get tabHeight() {
-    const { size } = this.props;
-
-    return tabsSliderHeightMap[size ?? 'md'];
-  }
-
-  get tabBorderWidth() {
-    const { size } = this.props;
-
-    return tabsSliderBorderWidthMap[size ?? 'md'];
-  }
-
-  getTabsMeta = () => {
+  getTabsMeta = (): { tabsMeta: TabsMeta; tabMeta: DOMRect | undefined | null; } => {
     const tabsNode = this.tabsRef.current;
+    const { value } = this.props;
+
     let tabsMeta;
     if (tabsNode) {
       const rect = tabsNode.getBoundingClientRect();
@@ -157,11 +175,11 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     }
 
     let tabMeta;
-    if (tabsNode && this.props.value !== undefined) {
+    if (tabsNode && value !== undefined) {
       const children = this.tabListRef?.current?.children;
 
       if (children && children.length > 0) {
-        const tab = children[this.props.value];
+        const tab = children[value];
 
         tabMeta = tab ? tab.getBoundingClientRect() : null;
       }
@@ -170,8 +188,9 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     return { tabsMeta, tabMeta };
   };
 
-  updateIndicatorState = () => {
+  updateIndicatorState = (): void => {
     const { tabsMeta, tabMeta } = this.getTabsMeta();
+    const { indicatorStyle } = this.state;
     let startValue = 0;
 
     if (tabMeta && tabsMeta) {
@@ -184,8 +203,8 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
       width: tabMeta ? tabMeta.width : 0,
     };
 
-    const dStart = Math.abs(this.state.indicatorStyle.left - newIndicatorStyle.left);
-    const dSize = Math.abs(this.state.indicatorStyle.width - newIndicatorStyle.width);
+    const dStart = Math.abs(indicatorStyle.left - newIndicatorStyle.left);
+    const dSize = Math.abs(indicatorStyle.width - newIndicatorStyle.width);
 
     if (dStart >= 1 || dSize >= 1) {
       this.setState({ indicatorStyle: { ...newIndicatorStyle } });
@@ -194,17 +213,16 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
 
   render(): React.ReactNode {
     const {
-      as,
       children,
-      background,
-      radius,
       onChange,
-      overflow,
       ref,
       size,
       value,
       ...restProps
     } = this.props;
+
+    const { tabBorderWidth, tabFontSize, tabHeight } = this;
+    const { indicatorStyle } = this.state;
 
     const decoratedChildren = React.Children.map(children, (child, index) => {
       let childToReturn = child;
@@ -232,13 +250,13 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
           { [styles['tab-item--selected']]: value === index },
         );
 
-        childToReturn =  React.cloneElement(
+        childToReturn = React.cloneElement(
           child,
           {
             className: classes,
             onClick: onClickHandler,
-            fontSize: this.tabFontSize,
-            height: this.tabHeight,
+            fontSize: tabFontSize,
+            height: tabHeight,
             style: { ...child.props.style, flex: 1 },
           },
         );
@@ -254,7 +272,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
         overflow="auto"
         background="grey-100"
         radius={size === 'xs' ? 'sm' : 'md'}
-        ref={mergeRefs([this.tabsRef, this.props.ref])}
+        ref={mergeRefs([this.tabsRef, ref])}
       >
         <Box
           as="ul"
@@ -271,9 +289,9 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
             background="white"
             height="100"
             position="absolute"
-            borderWidth={this.tabBorderWidth}
+            borderWidth={tabBorderWidth}
             borderColor="grey-100"
-            style={{ ...this.state.indicatorStyle }}
+            style={{ ...indicatorStyle }}
             className={styles['tabs-slider-indicator']}
           />
         </Box>
