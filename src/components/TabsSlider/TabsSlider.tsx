@@ -90,7 +90,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
   tabListRef = React.createRef<HTMLUListElement>();
 
   componentDidMount(): void {
-    this.initWindowListener();
+    window.addEventListener('resize', this.updateIndicatorState);
     this.updateIndicatorState();
   }
 
@@ -105,7 +105,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
   }
 
   componentWillUnmount(): void {
-    this.cleanUpWindowListener();
+    window.removeEventListener('resize', this.updateIndicatorState);
   }
 
   get tabFontSize(): string {
@@ -124,34 +124,6 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     const { size } = this.props;
 
     return tabsSliderBorderWidthMap[size ?? 'md'];
-  }
-
-  initWindowListener = (): void => {
-    if (!window && process.env.NODE_ENV !== 'production') {
-      console.error( // eslint-disable-line no-console
-        `
-          Palmetto Components: It looks like you're trying to use the SliderTabs
-          component in a server-rendered application.
-          Without access to the window object, the selected tab indicator will not
-          resize properly along with any window resizes.
-          To ensure this component works as intended, please import it dynamically.
-          \n\n
-          NextJS example:
-          \n
-          import dynamic from 'next/dynamic';
-          \n\n
-          const SliderTabs = dynamic(import('@palmetto/palmetto-components').then((c) => c.SliderTabs));
-        `,
-      );
-    } else if (window) {
-      window.addEventListener('resize', this.updateIndicatorState);
-    }
-  }
-
-  cleanUpWindowListener = (): void => {
-    if (window) {
-      window.removeEventListener('resize', this.updateIndicatorState);
-    }
   }
 
   getTabsMeta = (): { tabsMeta: TabsMeta; tabMeta: DOMRect | undefined | null; } => {
@@ -213,6 +185,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
 
   render(): React.ReactNode {
     const {
+      className,
       children,
       onChange,
       ref,
@@ -265,9 +238,12 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
       return childToReturn;
     });
 
+    const containerClasses = classNames(className, styles['tabs-slider-container']);
+
     return (
       <Box
         {...restProps}
+        className={containerClasses}
         as="nav"
         overflow="auto"
         background="grey-100"
