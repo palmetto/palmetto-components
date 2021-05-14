@@ -39,29 +39,18 @@ The Tabs component allows a user to flip amongst different views within the same
 
 ## Sizes
 
-The `size` prop allows you to specify the size of the slider.
+The `size` prop allows you to specify the size of the slider,
+and even make it responsive using the same `ResponsiveProp` pattern as the box, the the available size values.
 
 <Canvas isExpanded>
   <Story name="Size">
     {() => {
-      const [xs, setXs] = useState(0);
       const [sm, setSm] = useState(0);
       const [md, setMd] = useState(0);
       const [lg, setLg] = useState(0);
+      const [responsive, setResponsive] = useState(0);
       return (
         <Box childGap="md">
-          <TabsSlider
-            value={xs}
-            onChange={(event, index) => {
-              setXs(index);
-            }}
-            size="xs"
-          >
-            <TabsSlider.Item>Tab 1</TabsSlider.Item>
-            <TabsSlider.Item>Tab 2</TabsSlider.Item>
-            <TabsSlider.Item>Tab 3</TabsSlider.Item>
-            <TabsSlider.Item>Tab 4</TabsSlider.Item>
-          </TabsSlider>
           <TabsSlider
             value={sm}
             onChange={(event, index) => {
@@ -92,6 +81,21 @@ The `size` prop allows you to specify the size of the slider.
               setLg(index);
             }}
             size="lg"
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item>Tab 4</TabsSlider.Item>
+          </TabsSlider>
+          <Box>
+            This one is responsive. Change your screen size to see it in action.
+          </Box>
+          <TabsSlider
+            value={responsive}
+            onChange={(event, index) => {
+              setResponsive(index);
+            }}
+            size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}
           >
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>

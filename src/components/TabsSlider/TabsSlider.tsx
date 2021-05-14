@@ -3,30 +3,28 @@ import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import { TabItem } from './TabItem';
+import { ResponsiveProp } from '../../types/';
 import styles from './TabsSlider.module.scss';
 
-export const tabsSliderSizes = ['xs', 'sm', 'md', 'lg'] as const;
+export const tabsSliderSizes = ['sm', 'md', 'lg'] as const;
 export type TabsSliderSize = typeof tabsSliderSizes[number];
 
 export const tabsSliderFontSizeMap = {
-  xs: 'xs',
-  sm: 'md',
+  sm: 'sm',
   md: 'md',
   lg: 'lg',
 };
 
 export const tabsSliderBorderWidthMap = {
-  xs: 'sm',
   sm: 'sm',
   md: 'sm',
   lg: 'md',
 };
 
-export const tabsSliderHeightMap = {
-  xs: '20px',
-  sm: '32px',
-  md: '42px',
-  lg: '55px',
+export const tabsSliderPaddingMap = {
+  sm: 'xs 0',
+  md: 'sm 0',
+  lg: 'md 0',
 };
 
 type TabsMeta = {
@@ -52,7 +50,7 @@ export interface TabsSliderProps extends BoxProps {
   /**
    * Size of tabs
    */
-  size?: TabsSliderSize;
+  size?: TabsSliderSize | ResponsiveProp<TabsSliderSize>;
   /**
    * NOTE: This prop is locked to a value  of 'grey-100' and will not be passed down to the underlying Box
    */
@@ -108,22 +106,33 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     window.removeEventListener('resize', this.updateIndicatorState);
   }
 
-  get tabFontSize(): string {
+  generateSize = (size: TabsSliderProps['size'], propertyMap: { sm: string; md: string; lg: string; }): string | ResponsiveProp<string> => {
+    let propertySize: string | ResponsiveProp<string> = 'md';
+    if (typeof size === 'string') {
+      propertySize = propertyMap[size];
+    } else if (size !== null && typeof size === 'object') {
+      propertySize = Object.entries(size).reduce((acc, [key, value]) => ({ ...acc, [key]: propertyMap[value ?? 'md']}), {});
+    }
+
+    return propertySize;
+  };
+
+  get tabFontSize(): string | ResponsiveProp<string>  {
     const { size } = this.props;
 
-    return tabsSliderFontSizeMap[size ?? 'md'];
+    return this.generateSize(size, tabsSliderFontSizeMap);
   }
 
-  get tabHeight(): string {
+  get tabPadding(): string | ResponsiveProp<string>  {
     const { size } = this.props;
 
-    return tabsSliderHeightMap[size ?? 'md'];
+    return this.generateSize(size, tabsSliderPaddingMap);
   }
 
-  get tabBorderWidth(): string {
+  get tabBorderWidth(): string | ResponsiveProp<string>  {
     const { size } = this.props;
 
-    return tabsSliderBorderWidthMap[size ?? 'md'];
+    return this.generateSize(size, tabsSliderBorderWidthMap);
   }
 
   getTabsMeta = (): { tabsMeta: TabsMeta; tabMeta: DOMRect | undefined | null; } => {
@@ -194,7 +203,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
       ...restProps
     } = this.props;
 
-    const { tabBorderWidth, tabFontSize, tabHeight } = this;
+    const { tabBorderWidth, tabFontSize, tabPadding } = this;
     const { indicatorStyle } = this.state;
 
     const decoratedChildren = React.Children.map(children, (child, index) => {
@@ -229,7 +238,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
             className: classes,
             onClick: onClickHandler,
             fontSize: tabFontSize,
-            height: tabHeight,
+            padding: tabPadding,
             style: { ...child.props.style, flex: 1 },
           },
         );
@@ -247,7 +256,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
         as="nav"
         overflow="auto"
         background="grey-100"
-        radius={size === 'xs' ? 'sm' : 'md'}
+        radius="md"
         ref={mergeRefs([this.tabsRef, ref])}
       >
         <Box
@@ -261,7 +270,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
         >
           {decoratedChildren}
           <Box
-            radius={size === 'xs' ? 'sm' : 'md'}
+            radius="md"
             background="white"
             height="100"
             position="absolute"
