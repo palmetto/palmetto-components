@@ -17,17 +17,7 @@ export default {
     size: {
       control: {
         type: 'select',
-        options: ['md', 'sm'],
-      },
-    },
-    isCentered: {
-      control: {
-        type: 'boolean',
-      },
-    },
-    isFullWidth: {
-      control: {
-        type: 'boolean',
+        options: ['xs', 'sm', 'md', 'lg'],
       },
     },
     disabledTabs: {
