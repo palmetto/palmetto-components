@@ -37,35 +37,6 @@ The Tabs component allows a user to flip amongst different views within the same
 
 <ArgsTable of={TabsSlider} />
 
-## With Panels
-
-Use the TabPanels component to also control the visible content based on the selected tab.
-
-<Canvas isExpanded>
-  <Story name="With Panels">
-    {() => {
-      const [selectedTab, setSelectedTab] = useState(0);
-      return (
-        <>
-          <TabsSlider
-            value={selectedTab}
-            onChange={(event, index) => {
-              setSelectedTab(index);
-            }}
-          >
-            <TabsSlider.Item>Tab 1</TabsSlider.Item>
-            <TabsSlider.Item>Tab 2</TabsSlider.Item>
-          </TabsSlider>
-          <TabPanels value={selectedTab}>
-            <Box padding="lg">Here's the first tab</Box>
-            <Box padding="lg">Here's the second tab</Box>
-          </TabPanels>
-        </>
-      );
-    }}
-  </Story>
-</Canvas>
-
 ## Sizes
 
 The `size` prop allows you to specify the size of the slider.
@@ -128,6 +99,38 @@ The `size` prop allows you to specify the size of the slider.
             <TabsSlider.Item>Tab 4</TabsSlider.Item>
           </TabsSlider>
         </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Toggle Switch
+
+A common use case for the TabsSlider as a presentational toggle switch, along with the `TabPanels` component.
+
+<Canvas isExpanded>
+  <Story name="ToggleSwitch">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      return (
+        <>
+          <Box maxWidth="150px">
+            <TabsSlider
+              value={selectedTab}
+              onChange={(event, index) => {
+                setSelectedTab(index);
+              }}
+              size="sm"
+            >
+              <TabsSlider.Item>Tab 1</TabsSlider.Item>
+              <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            </TabsSlider>
+          </Box>
+          <TabPanels value={selectedTab}>
+            <Box padding="lg">Here's the first tab</Box>
+            <Box padding="lg">Here's the second tab</Box>
+          </TabPanels>
+        </>
       );
     }}
   </Story>
