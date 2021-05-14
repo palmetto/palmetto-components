@@ -266,7 +266,6 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
           style={{ paddingInlineStart: '0' }}
           position="relative"
           ref={this.tabListRef}
-          height={this.tabHeight}
         >
           {decoratedChildren}
           <Box
