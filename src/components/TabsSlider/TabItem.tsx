@@ -30,7 +30,7 @@ export const TabItem: React.FC<TabItemProps> = ({
         direction="row"
         justifyContent="center"
         alignItems="center"
-        height={restProps.height}
+        height={restProps.height} // Making sure the button the same height as the wrapper li element
       >
         {children}
       </Box>

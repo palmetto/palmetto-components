@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Box, boxPropsKeys } from '../Box/Box';
 import { Tabs, TabsProps } from './Tabs';
-import { TabPanels } from './TabPanels';
+import { TabPanels } from '../TabPanels/TabPanels';
 
 export default {
   title: 'Components/Tabs/Playground',
