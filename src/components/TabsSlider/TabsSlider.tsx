@@ -1,4 +1,5 @@
 import React from 'react';
+import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
 import { ResponsiveProp } from '../../types';
 import { ButtonVariant } from '../Button/Button';
@@ -12,8 +13,8 @@ export interface TabsSliderProps extends BoxProps {
   value: number;
   onChange: (event: React.MouseEvent<HTMLLIElement>, index: number) => void;
   size?: 'sm' | 'md' | 'lg' | ResponsiveProp<'xs' | 'sm' | 'md'>;
-  background: 'grey-100';
-  radius: 'md';
+  background?: 'grey-100';
+  radius?: 'md';
 }
 
 export class TabsSlider extends React.Component<TabsSliderProps> {
@@ -38,7 +39,23 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
   tabListRef = React.createRef<HTMLUListElement>();
 
   componentDidMount() {
-    window.addEventListener('resize', this.updateIndicatorState);
+    if (!window && process.env.NODE_ENV !== 'production') {
+      console.error(
+        `
+          Palmetto Components: It looks like you\'re trying to use the SliderTabs component in a server-rendered application.
+          Without access to the window object, the selected tab indicator will not resize properly along with any window resizes.
+          To ensure this component works as intended, please import it dynamically.
+          \n\n
+          NextJS example:
+          \n
+          import dynamic from 'next/dynamic';
+          \n\n
+          const SliderTabs = dynamic(import('@palmetto/palmetto-components').then((c) => c.SliderTabs));
+        `
+      );
+    } else if (window) {
+      window.addEventListener('resize', this.updateIndicatorState);
+    }
     this.updateIndicatorState();
   }
 
@@ -60,7 +77,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
 
     switch(size) {
       case 'xs':
-        return 'sm';
+        return 'xs';
       case 'sm':
         return 'md'
       case 'md':
@@ -168,7 +185,8 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
       background,
       radius,
       onChange,
-      overflow ,
+      overflow,
+      ref,
       size,
       value,
       ...restProps
@@ -221,8 +239,8 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
         overflow={overflow}
         background={background}
         borderColor={background}
-        radius={radius}
-        ref={this.tabsRef}
+        radius={size === 'xs' ? 'sm' : 'md'}
+        ref={mergeRefs([this.tabsRef, this.props.ref])}
         {...restProps}
       >
         <Box
@@ -236,7 +254,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
         >
           {decoratedChildren}
           <Box
-            radius="md"
+            radius={size === 'xs' ? 'sm' : 'md'}
             background="white"
             height="100"
             position="absolute"
