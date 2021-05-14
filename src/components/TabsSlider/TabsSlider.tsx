@@ -160,7 +160,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     }
 
     let tabMeta;
-    if (tabsNode && value !== undefined) {
+    if (tabsNode) {
       const children = this.tabListRef?.current?.children;
 
       if (children && children.length > 0) {

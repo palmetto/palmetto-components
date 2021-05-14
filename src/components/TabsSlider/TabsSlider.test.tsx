@@ -132,10 +132,9 @@ describe('TabsSlider', () => {
     tabsSliderSizes.forEach(size => {
       test(`renders with correct classes for size: ${size}`, () => {
         const mockedOnChange = jest.fn(() => null);
-        const mockedOnClick = jest.fn(() => null);
         const { getByText } = render(
           <TabsSlider value={0} onChange={mockedOnChange} size={size}>
-            <TabsSlider.Item onClick={mockedOnClick}>
+            <TabsSlider.Item>
               tab 1
             </TabsSlider.Item>
             <TabsSlider.Item>
@@ -147,6 +146,55 @@ describe('TabsSlider', () => {
         const liElement = getByText('tab 1').closest('li');
         expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap[size].split(' ')[0]}`);
       });
+    });
+
+    test('renders with correct classes for responsive size', () => {
+      const mockedOnChange = jest.fn(() => null);
+      const { getByText } = render(
+        <TabsSlider value={0} onChange={mockedOnChange} size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}>
+          <TabsSlider.Item>
+            tab 1
+          </TabsSlider.Item>
+          <TabsSlider.Item>
+            tab 2
+          </TabsSlider.Item>
+        </TabsSlider>,
+      );
+  
+      const liElement = getByText('tab 1').closest('li');
+      expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap.sm.split(' ')[0]}`);
+      expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap.md.split(' ')[0]}-tablet`);
+      expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap.lg.split(' ')[0]}-desktop`);
+    });
+  });
+
+  describe('States', () => {
+    test('renders without tabs', () => {
+      const mockedOnChange = jest.fn(() => null);
+      const { getByRole } = render(
+        <TabsSlider value={0} onChange={mockedOnChange} size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}>
+        </TabsSlider>,
+      );
+
+      expect(getByRole('navigation')).toBeInTheDocument();
+    });
+
+    test('updates style based on children changes', () => {
+      const mockedOnChange = jest.fn(() => null);
+      const { rerender, getByRole, getByText } = render(
+        <TabsSlider value={0} onChange={mockedOnChange} size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}>
+        </TabsSlider>,
+      );
+
+      expect(getByRole('navigation')).toBeInTheDocument();
+
+      rerender(
+        <TabsSlider value={0} onChange={mockedOnChange} size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}>
+          <TabsSlider.Item>hello</TabsSlider.Item>,
+        </TabsSlider>,
+      );
+
+      expect(getByText('hello')).toBeInTheDocument();
     });
   });
 });
