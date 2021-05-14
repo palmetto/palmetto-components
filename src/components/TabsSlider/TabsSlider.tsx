@@ -1,30 +1,68 @@
 import React from 'react';
 import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
-import { ResponsiveProp } from '../../types';
-import { ButtonVariant } from '../Button/Button';
 import { Box, BoxProps } from '../Box/Box';
 import { TabItem } from './TabItem';
 import styles from './TabsSlider.module.scss';
 
-export type TabsVariant = ButtonVariant;
+export const tabsSliderSizes = ['xs', 'sm', 'md', 'lg'] as const;
+export type TabsSliderSize = typeof tabsSliderSizes[number];
 
+export const tabsSliderFontSizeMap = {
+  xs: 'xs',
+  sm: 'md',
+  md: 'md',
+  lg: 'lg',
+};
+
+export const tabsSliderBorderWidthMap = {
+  xs: 'sm',
+  sm: 'sm',
+  md: 'sm',
+  lg: 'md',
+}
+
+export const tabsSliderHeightMap = {
+  xs: '20px',
+  sm: '32px',
+  md: '42px',
+  lg: '55px',
+}
 export interface TabsSliderProps extends BoxProps {
+  /**
+   * Value of current active tab.
+   */
   value: number;
+  /**
+   * Callback fired  when user selects a tab either via click or keyboard event.
+   */
   onChange: (event: React.MouseEvent<HTMLLIElement>, index: number) => void;
-  size?: 'sm' | 'md' | 'lg' | ResponsiveProp<'xs' | 'sm' | 'md'>;
-  background?: 'grey-100';
-  radius?: 'md';
+  /**
+   * Size of tabs
+   */
+  size?: TabsSliderSize;
+  /**
+   * NOTE: This prop is locked to a value  of 'grey-100' and will not be passed down to the underlying Box
+   */
+  background?: BoxProps['background'];
+  /**
+   * NOTE: This prop is locked to a value based on the 'size' prop and will not be passed down to the underlying Box.
+   */
+  radius?: BoxProps['radius'];
+  /**
+   * NOTE: This prop is locked to a value of 'auto' and will not be passed down to the underlying Box.
+   */
+  overflow?: BoxProps['overflow'];
+  /**
+   * NOTE: This prop is locked to a value of 'nav' and will not be passed down to the underlying Box.
+   */
+  as?: BoxProps['as'];
 }
 
 export class TabsSlider extends React.Component<TabsSliderProps> {
   static Item = TabItem;
 
   static defaultProps = {
-    as: 'nav',
-    background: 'grey-100',
-    radius: 'md',
-    overflow: 'auto',
     size: 'md',
   }
 
@@ -39,6 +77,24 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
   tabListRef = React.createRef<HTMLUListElement>();
 
   componentDidMount() {
+    this.initWindowListener();
+    this.updateIndicatorState();
+  }
+
+  componentWillUnmount() {
+    this.cleanUpWindowListener();
+  }
+
+  componentDidUpdate(prevProps: TabsSliderProps) {
+    if (
+      prevProps.value !== this.props.value
+      || prevProps.children !== this.props.children
+    ) {
+      this.updateIndicatorState();
+    }
+  }
+
+  initWindowListener = () => {
     if (!window && process.env.NODE_ENV !== 'production') {
       console.error(
         `
@@ -56,64 +112,30 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     } else if (window) {
       window.addEventListener('resize', this.updateIndicatorState);
     }
-    this.updateIndicatorState();
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateIndicatorState);
-  }
-
-  componentDidUpdate(prevProps: TabsSliderProps) {
-    if (
-      prevProps.value !== this.props.value
-      || prevProps.children !== this.props.children
-    ) {
-      this.updateIndicatorState();
+  cleanUpWindowListener = () => {
+    if (window) {
+      window.removeEventListener('resize', this.updateIndicatorState);
     }
   }
 
   get tabFontSize() {
     const { size } = this.props;
 
-    switch(size) {
-      case 'xs':
-        return 'xs';
-      case 'sm':
-        return 'md'
-      case 'md':
-        return 'md';
-      case 'lg':
-        return 'lg';    }
+    return tabsSliderFontSizeMap[size ?? 'md'];
   };
 
   get tabHeight() {
     const { size } = this.props;
 
-    switch(size) {
-      case 'xs':
-        return '20px';
-      case 'sm':
-        return '32px'
-      case 'md':
-        return '42px';
-      case 'lg':
-        return '55px';
-    }
+    return tabsSliderHeightMap[size ?? 'md'];
   }
 
   get tabBorderWidth() {
     const { size } = this.props;
 
-    switch(size) {
-      case 'xs':
-        return 'sm';
-      case 'sm':
-        return 'sm'
-      case 'md':
-        return 'sm';
-      case 'lg':
-        return 'md';
-    }
+    return tabsSliderBorderWidthMap[size ?? 'md'];
   }
 
   getTabsMeta = () => {
@@ -121,12 +143,11 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     let tabsMeta;
     if (tabsNode) {
       const rect = tabsNode.getBoundingClientRect();
-      // create a new object with ClientRect class props + scrollLeft
+
       tabsMeta = {
         clientWidth: tabsNode.clientWidth,
         scrollLeft: tabsNode.scrollLeft,
         scrollTop: tabsNode.scrollTop,
-        // scrollLeftNormalized: getNormalizedScrollLeft(tabsNode, theme.direction),
         scrollWidth: tabsNode.scrollWidth,
         top: rect.top,
         bottom: rect.bottom,
@@ -160,21 +181,14 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
 
     const newIndicatorStyle = {
       left: startValue,
-      // May be wrong until the font is loaded.
       width: tabMeta ? tabMeta.width : 0,
     };
 
-    // IE11 support, replace with Number.isNaN
-    // eslint-disable-next-line no-restricted-globals
-    if (isNaN(this.state.indicatorStyle.left) || isNaN(this.state.indicatorStyle.width)) {
-      this.setState({ indicatorStyle: { ...newIndicatorStyle } });
-    } else {
-      const dStart = Math.abs(this.state.indicatorStyle.left - newIndicatorStyle.left);
-      const dSize = Math.abs(this.state.indicatorStyle.width - newIndicatorStyle.width);
+    const dStart = Math.abs(this.state.indicatorStyle.left - newIndicatorStyle.left);
+    const dSize = Math.abs(this.state.indicatorStyle.width - newIndicatorStyle.width);
 
-      if (dStart >= 1 || dSize >= 1) {
-        this.setState({ indicatorStyle: { ...newIndicatorStyle } });
-      }
+    if (dStart >= 1 || dSize >= 1) {
+      this.setState({ indicatorStyle: { ...newIndicatorStyle } });
     }
   };
 
@@ -235,13 +249,12 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
 
     return (
       <Box
-        as={as}
-        overflow={overflow}
-        background={background}
-        borderColor={background}
+        {...restProps}
+        as="nav"
+        overflow="auto"
+        background="grey-100"
         radius={size === 'xs' ? 'sm' : 'md'}
         ref={mergeRefs([this.tabsRef, this.props.ref])}
-        {...restProps}
       >
         <Box
           as="ul"
@@ -259,7 +272,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
             height="100"
             position="absolute"
             borderWidth={this.tabBorderWidth}
-            borderColor={background}
+            borderColor="grey-100"
             style={{ ...this.state.indicatorStyle }}
             className={styles['tabs-slider-indicator']}
           />

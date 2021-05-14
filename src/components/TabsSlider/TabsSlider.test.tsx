@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { TabsSlider } from './TabsSlider';
+import { TabsSlider, tabsSliderSizes, tabsSliderHeightMap } from './TabsSlider';
 import { TabPanels } from './TabPanels';
 
 describe('TabsSlider', () => {
@@ -129,24 +129,27 @@ describe('TabsSlider', () => {
     });
   });
 
-  describe('Tab Panels', () => {
-    test('it shows the correct panel based on the selected tab', () => {
-      render(
-        <TabPanels value={1}>
-          <div>
-            tab 1
-          </div>
-          <div>
-            tab 2
-          </div>
-        </TabPanels>,
-      );
+  describe('Sizes', () => {
+    tabsSliderSizes.forEach(size => {
+      test(`renders with correct classes for size: ${size}`, () => {
+        const mockedOnChange = jest.fn(() => null);
+        const mockedOnClick = jest.fn(() => null);
+        const { getByRole, getByText } = render(
+          <TabsSlider value={0} onChange={mockedOnChange} size={size}>
+            <TabsSlider.Item onClick={mockedOnClick}>
+              tab 1
+            </TabsSlider.Item>
+            <TabsSlider.Item>
+              tab 2
+            </TabsSlider.Item>
+          </TabsSlider>,
+        );
 
-      const tabOne = screen.queryByText('tab 1');
-      const tabTwo = screen.queryByText('tab 2');
+        const button = getByText('tab 1');
+        expect(button).toHaveStyle(`height: ${tabsSliderHeightMap[size]}`);
 
-      expect(tabOne).not.toBeInTheDocument();
-      expect(tabTwo).toBeInTheDocument();
+        expect
+      });
     });
   });
 });
