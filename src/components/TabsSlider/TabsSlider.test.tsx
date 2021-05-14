@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { TabsSlider, tabsSliderSizes, tabsSliderHeightMap } from './TabsSlider';
+import { TabsSlider, tabsSliderSizes, tabsSliderPaddingMap } from './TabsSlider';
 
 describe('TabsSlider', () => {
   describe('Default', () => {
@@ -144,8 +144,8 @@ describe('TabsSlider', () => {
           </TabsSlider>,
         );
 
-        const button = getByText('tab 1');
-        expect(button).toHaveStyle(`height: ${tabsSliderHeightMap[size]}`);
+        const liElement = getByText('tab 1').closest('li');
+        expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap[size].split(' ')[0]}`);
       });
     });
   });
