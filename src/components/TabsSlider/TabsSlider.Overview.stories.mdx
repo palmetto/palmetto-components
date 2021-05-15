@@ -10,7 +10,9 @@ import { Button } from '../Button/Button';
 
 # TabsSlider
 
-The Tabs component allows a user to flip amongst different views within the same page. This helps users navigate related content without having to change context.
+The TabsSlider component is a linear set of two or more segments, each of which functions as a mutually exclusive button. Within the component, all items are equal width. This control often used to display different views under the same context.
+
+Limit the number of items to improve usability. Wider segments are easier to tap. On phones, the number of items should be limited to four or fewer segments.
 
 <Canvas isExpanded>
   <Story name="Default">
@@ -26,7 +28,7 @@ The Tabs component allows a user to flip amongst different views within the same
           <TabsSlider.Item>Tab 1</TabsSlider.Item>
           <TabsSlider.Item>Tab 2</TabsSlider.Item>
           <TabsSlider.Item>Tab 3</TabsSlider.Item>
-          <TabsSlider.Item isDisabled>Tab 4 (disabled)</TabsSlider.Item>
+          <TabsSlider.Item>Disabled</TabsSlider.Item>
         </TabsSlider>
       );
     }}
@@ -87,9 +89,7 @@ and even make it responsive using the same `ResponsiveProp` pattern as the box, 
             <TabsSlider.Item>Tab 3</TabsSlider.Item>
             <TabsSlider.Item>Tab 4</TabsSlider.Item>
           </TabsSlider>
-          <Box>
-            This one is responsive. Change your screen size to see it in action.
-          </Box>
+          <Box>This one is responsive. Change your screen size to see it in action.</Box>
           <TabsSlider
             value={responsive}
             onChange={(event, index) => {
