@@ -160,7 +160,7 @@ describe('TabsSlider', () => {
           </TabsSlider.Item>
         </TabsSlider>,
       );
-  
+
       const liElement = getByText('tab 1').closest('li');
       expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap.sm.split(' ')[0]}`);
       expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap.md.split(' ')[0]}-tablet`);
@@ -172,8 +172,7 @@ describe('TabsSlider', () => {
     test('renders without tabs', () => {
       const mockedOnChange = jest.fn(() => null);
       const { getByRole } = render(
-        <TabsSlider value={0} onChange={mockedOnChange} size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}>
-        </TabsSlider>,
+        <TabsSlider value={0} onChange={mockedOnChange} size={{ base: 'sm', tablet: 'md', desktop: 'lg' }} />,
       );
 
       expect(getByRole('navigation')).toBeInTheDocument();
@@ -182,15 +181,15 @@ describe('TabsSlider', () => {
     test('updates style based on children changes', () => {
       const mockedOnChange = jest.fn(() => null);
       const { rerender, getByRole, getByText } = render(
-        <TabsSlider value={0} onChange={mockedOnChange} size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}>
-        </TabsSlider>,
+        <TabsSlider value={0} onChange={mockedOnChange} size={{ base: 'sm', tablet: 'md', desktop: 'lg' }} />,
       );
 
       expect(getByRole('navigation')).toBeInTheDocument();
 
       rerender(
         <TabsSlider value={0} onChange={mockedOnChange} size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}>
-          <TabsSlider.Item>hello</TabsSlider.Item>,
+          <TabsSlider.Item>hello</TabsSlider.Item>
+          ,
         </TabsSlider>,
       );
 
