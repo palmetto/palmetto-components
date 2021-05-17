@@ -143,8 +143,8 @@ describe('TabsSlider', () => {
           </TabsSlider>,
         );
 
-        const liElement = getByText('tab 1').closest('li');
-        expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap[size].split(' ')[0]}`);
+        const buttonElement = getByText('tab 1');
+        expect(buttonElement).toHaveClass(`p-v-${tabsSliderPaddingMap[size].split(' ')[0]}`);
       });
     });
 
@@ -161,10 +161,10 @@ describe('TabsSlider', () => {
         </TabsSlider>,
       );
 
-      const liElement = getByText('tab 1').closest('li');
-      expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap.sm.split(' ')[0]}`);
-      expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap.md.split(' ')[0]}-tablet`);
-      expect(liElement).toHaveClass(`p-v-${tabsSliderPaddingMap.lg.split(' ')[0]}-desktop`);
+      const buttonElement = getByText('tab 1');
+      expect(buttonElement).toHaveClass(`p-v-${tabsSliderPaddingMap.sm.split(' ')[0]}`);
+      expect(buttonElement).toHaveClass(`p-v-${tabsSliderPaddingMap.md.split(' ')[0]}-tablet`);
+      expect(buttonElement).toHaveClass(`p-v-${tabsSliderPaddingMap.lg.split(' ')[0]}-desktop`);
     });
   });
 
