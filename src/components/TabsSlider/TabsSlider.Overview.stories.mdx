@@ -1,0 +1,141 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { TabsSlider } from './TabsSlider';
+import { TabPanels } from '../TabPanels/TabPanels';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
+
+<Meta title="Components/TabsSlider/Overview" component={TabsSlider} />
+
+# TabsSlider
+
+The TabsSlider component is a linear set of two or more segments, each of which functions as a mutually exclusive button. Within the component, all items are equal width. This control often used to display different views under the same context.
+
+Limit the number of items to improve usability. Wider segments are easier to tap. On phones, the number of items should be limited to four or fewer segments.
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      return (
+        <TabsSlider
+          value={selectedTab}
+          onChange={(event, index) => {
+            setSelectedTab(index);
+          }}
+        >
+          <TabsSlider.Item>Tab 1</TabsSlider.Item>
+          <TabsSlider.Item>Tab 2</TabsSlider.Item>
+          <TabsSlider.Item>Tab 3</TabsSlider.Item>
+          <TabsSlider.Item isDisabled>Disabled</TabsSlider.Item>
+        </TabsSlider>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={TabsSlider} />
+
+## Sizes
+
+The `size` prop allows you to specify the size of the slider,
+and even make it responsive using the same `ResponsiveProp` pattern as the box, the the available size values.
+
+<Canvas isExpanded>
+  <Story name="Size">
+    {() => {
+      const [sm, setSm] = useState(0);
+      const [md, setMd] = useState(0);
+      const [lg, setLg] = useState(0);
+      const [responsive, setResponsive] = useState(0);
+      return (
+        <Box childGap="md">
+          <TabsSlider
+            value={sm}
+            onChange={(event, index) => {
+              setSm(index);
+            }}
+            size="sm"
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item>Tab 4</TabsSlider.Item>
+          </TabsSlider>
+          <TabsSlider
+            value={md}
+            onChange={(event, index) => {
+              setMd(index);
+            }}
+            size="md"
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item>Tab 4</TabsSlider.Item>
+          </TabsSlider>
+          <TabsSlider
+            value={lg}
+            onChange={(event, index) => {
+              setLg(index);
+            }}
+            size="lg"
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item>Tab 4</TabsSlider.Item>
+          </TabsSlider>
+          <Box>This one is responsive. Change your screen size to see it in action.</Box>
+          <TabsSlider
+            value={responsive}
+            onChange={(event, index) => {
+              setResponsive(index);
+            }}
+            size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item>Tab 4</TabsSlider.Item>
+          </TabsSlider>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Toggle Switch
+
+A common use case for the TabsSlider as a presentational toggle switch, along with the `TabPanels` component.
+
+<Canvas isExpanded>
+  <Story name="ToggleSwitch">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      return (
+        <>
+          <Box maxWidth="150px">
+            <TabsSlider
+              value={selectedTab}
+              onChange={(event, index) => {
+                setSelectedTab(index);
+              }}
+              size="sm"
+            >
+              <TabsSlider.Item>Tab 1</TabsSlider.Item>
+              <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            </TabsSlider>
+          </Box>
+          <TabPanels value={selectedTab}>
+            <Box padding="lg">Here's the first tab</Box>
+            <Box padding="lg">Here's the second tab</Box>
+          </TabPanels>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>

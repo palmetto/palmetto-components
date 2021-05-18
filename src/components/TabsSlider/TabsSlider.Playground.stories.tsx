@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Box, boxPropsKeys } from '../Box/Box';
-import { Tabs, TabsProps } from './Tabs';
+import { TabsSlider, TabsSliderProps } from './TabsSlider';
 import { TabPanels } from '../TabPanels/TabPanels';
 
 export default {
-  title: 'Components/Tabs/Playground',
-  component: Tabs,
+  title: 'Components/TabsSlider/Playground',
+  component: TabsSlider,
   argTypes: {
     value: {
       control: {
@@ -17,17 +17,7 @@ export default {
     size: {
       control: {
         type: 'select',
-        options: ['md', 'sm'],
-      },
-    },
-    isCentered: {
-      control: {
-        type: 'boolean',
-      },
-    },
-    isFullWidth: {
-      control: {
-        type: 'boolean',
+        options: ['xs', 'sm', 'md', 'lg'],
       },
     },
     disabledTabs: {
@@ -45,24 +35,24 @@ export default {
   },
 } as Meta;
 
-const Template: Story<TabsProps> = ({
+const Template: Story<TabsSliderProps> = ({
   value,
   size,
   disabledTabs,
   ...args
 }) => (
   <Box childGap="md">
-    <Tabs value={value} size={size} {...args}>
-      <Tabs.Item isDisabled={disabledTabs.includes(0)}>
+    <TabsSlider value={value} size={size} {...args}>
+      <TabsSlider.Item isDisabled={disabledTabs.includes(0)}>
         Tab 0
-      </Tabs.Item>
-      <Tabs.Item isDisabled={disabledTabs.includes(1)}>
+      </TabsSlider.Item>
+      <TabsSlider.Item isDisabled={disabledTabs.includes(1)}>
         Tab 1
-      </Tabs.Item>
-      <Tabs.Item isDisabled={disabledTabs.includes(2)}>
+      </TabsSlider.Item>
+      <TabsSlider.Item isDisabled={disabledTabs.includes(2)}>
         Tab 2
-      </Tabs.Item>
-    </Tabs>
+      </TabsSlider.Item>
+    </TabsSlider>
     <TabPanels value={value}>
       <Box padding="md" background="grey-50">
         Panel 0
