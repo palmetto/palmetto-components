@@ -84,6 +84,7 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
     isOpen,
     onDismiss,
     overflow = 'hidden',
+    ...restProps
   },
   ref,
 ) => {
@@ -102,6 +103,7 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
       onDismiss={onDismiss}
       initialFocusRef={initialFocusRef}
       ref={ref}
+      {...restProps}
     >
       <div className={styles.container}>
         <DialogContent
