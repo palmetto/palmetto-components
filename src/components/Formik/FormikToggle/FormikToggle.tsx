@@ -1,18 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { FormikTouched, FormikErrors, FieldAttributes, FormikValues } from 'formik';
 import { Toggle } from '../../Toggle/Toggle';
 
-const propTypes = {
-  field: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.bool,
-  }).isRequired,
-  form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+export interface FormikToggleProps {
+  field: FieldAttributes<HTMLTextAreaElement>;
+  form: {
+    touched: FormikTouched<FormikValues>;
+    errors: FormikErrors<FormikValues>;
+  };
+  id: string;
+  label: string;
+}
 
-export const FormikToggle = ({
+export const FormikToggle: React.FC<FormikToggleProps> = ({
   field: {
     name,
     onBlur, // eslint-disable-line no-unused-vars
@@ -30,5 +30,3 @@ export const FormikToggle = ({
     {...props}
   />
 );
-
-FormikToggle.propTypes = propTypes;

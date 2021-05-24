@@ -1,10 +1,8 @@
-// @ts-nocheck
-
 import React from 'react';
 import { FormikTouched, FormikErrors, FieldAttributes, FormikValues } from 'formik';
-import { SelectInput } from '../../SelectInput/SelectInput';
+import { TextInput } from '../../TextInput/TextInput';
 
-export interface FormikSelectInputProps {
+export interface FormikTextInputProps {
   field: FieldAttributes<HTMLTextAreaElement>;
   form: {
     touched: FormikTouched<FormikValues>;
@@ -14,7 +12,7 @@ export interface FormikSelectInputProps {
   label: string;
 }
 
-export const FormikSelectInput: React.FC<FormikSelectInputProps> = (
+export const FormikTextInput: React.FC<FormikTextInputProps> = (
   {
     field: {
       name,
@@ -26,7 +24,7 @@ export const FormikSelectInput: React.FC<FormikSelectInputProps> = (
     ...props
   },
 ) => (
-  <SelectInput
+  <TextInput
     name={name}
     onBlur={onBlur}
     onChange={onChange}
@@ -35,5 +33,3 @@ export const FormikSelectInput: React.FC<FormikSelectInputProps> = (
     {...props}
   />
 );
-
-FormikSelectInput.propTypes = propTypes;

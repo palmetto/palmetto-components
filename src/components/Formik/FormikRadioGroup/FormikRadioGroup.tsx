@@ -1,24 +1,20 @@
 // @ts-nocheck
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import { FormikTouched, FormikErrors, FieldAttributes, FormikValues } from 'formik';
 import { RadioGroup } from '../../RadioGroup/RadioGroup';
 
-const propTypes = {
-  field: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.object),
-    ]),
-  }).isRequired,
-  form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+export interface FormikRadioGroupProps {
+  field: FieldAttributes<HTMLTextAreaElement>;
+  form: {
+    touched: FormikTouched<FormikValues>;
+    errors: FormikErrors<FormikValues>;
+  };
+  id: string;
+  label: string;
+}
 
-export const FormikRadioGroup = (
+export const FormikRadioGroup: React.FC<FormikRadioGroupProps> = (
   {
     field: {
       name,
@@ -39,5 +35,3 @@ export const FormikRadioGroup = (
     {...props}
   />
 );
-
-FormikRadioGroup.propTypes = propTypes;

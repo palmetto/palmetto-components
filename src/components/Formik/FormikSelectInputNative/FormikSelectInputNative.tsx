@@ -1,21 +1,21 @@
 // @ts-nocheck
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import { FormikTouched, FormikErrors, FieldAttributes, FormikValues } from 'formik';
 import { SelectInputNative } from '../../SelectInputNative/SelectInputNative';
 
-const propTypes = {
-  field: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
-  }).isRequired,
-  form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
 
-// eslint-disable-line import/prefer-default-export
-export const FormikSelectInputNative = (
+export interface FormikSelectInputNativeProps {
+  field: FieldAttributes<HTMLTextAreaElement>;
+  form: {
+    touched: FormikTouched<FormikValues>;
+    errors: FormikErrors<FormikValues>;
+  };
+  id: string;
+  label: string;
+}
+
+export const FormikSelectInputNative: React.FC<FormikSelectInputNativeProps> = (
   {
     field: {
       name,
