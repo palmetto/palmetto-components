@@ -1,3 +1,4 @@
+import React from 'react';
 /**
  * Returns a createElement() type based on the props of the Component.
  * Useful for calculating what type a component should render as.
@@ -7,7 +8,8 @@
  * @param {function} [getDefault] A function that returns a default element type.
  * @returns {string} A ReactElement type
  */
-function getElementType(Component, props, getDefault) {
+function getElementType(Component: React.Component | React.FC, props: { [key: string]: unknown }, getDefault?: () => string) {
+  // @ts-ignore
   const { defaultProps = {} } = Component;
 
   // ----------------------------------------

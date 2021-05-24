@@ -147,6 +147,7 @@
     "react-select-event": "^4.1.4",
     "resolve-url-loader": "^3.1.2",
     "rimraf": "^3.0.2",
+    "rollup-plugin-postcss": "https://github.com/isaacl/rollup-plugin-postcss",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "sass-resources-loader": "^2.0.3",
