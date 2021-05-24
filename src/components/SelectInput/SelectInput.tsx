@@ -17,6 +17,7 @@ import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
+export type SelectInputOptions = GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
 export interface BaseSelectInputProps {
   /**
    * The id attribute of the input.
@@ -107,7 +108,7 @@ export interface SelectInputProps extends BaseSelectInputProps {
   /**
    * Options for dropdown list.
    */
-  options: GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
+  options: SelectInputOptions;
 }
 
 export const SelectInput: FC<SelectInputProps> = ({

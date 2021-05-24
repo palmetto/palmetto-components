@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import React from 'react';
 import { FormikTouched, FormikErrors, FieldAttributes, FormikValues } from 'formik';
 import { RadioGroup } from '../../RadioGroup/RadioGroup';
@@ -12,6 +10,12 @@ export interface FormikRadioGroupProps {
   };
   id: string;
   label: string;
+  options: {
+    id: string;
+    value: string;
+    label: string;
+    disabled?: boolean | null;
+  }[];
 }
 
 export const FormikRadioGroup: React.FC<FormikRadioGroupProps> = (
@@ -23,6 +27,7 @@ export const FormikRadioGroup: React.FC<FormikRadioGroupProps> = (
       value,
     },
     form: { touched, errors },
+    options,
     ...props
   },
 ) => (
@@ -32,6 +37,7 @@ export const FormikRadioGroup: React.FC<FormikRadioGroupProps> = (
     onChange={onChange}
     value={value}
     error={touched[name] && errors[name]}
+    options={options}
     {...props}
   />
 );

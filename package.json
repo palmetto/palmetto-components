@@ -6,6 +6,7 @@
   "private": false,
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -134,7 +135,7 @@
     "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.9.0",
     "mutationobserver-shim": "^0.3.7",
-    "node-sass": "^4.14.1",
+    "node-sass": "^6.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "pre-commit": "^1.2.2",
@@ -147,7 +148,9 @@
     "react-select-event": "^4.1.4",
     "resolve-url-loader": "^3.1.2",
     "rimraf": "^3.0.2",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-postcss": "https://github.com/isaacl/rollup-plugin-postcss",
+    "rollup-plugin-styles": "^3.14.1",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "sass-resources-loader": "^2.0.3",
