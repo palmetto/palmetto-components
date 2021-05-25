@@ -10,10 +10,6 @@ export interface SelectInputNativeBaseProps extends BoxProps, FormControlProps {
    */
   value: string | null;
   /**
-   * onChange callback from select element.
-   */
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  /**
    * The input's 'name' attribute.
    */
   name?: string;
@@ -32,6 +28,10 @@ export interface SelectInputNativeProps extends SelectInputNativeBaseProps {
    * List of options for the select input.
    */
   options: { value: string | number; label: string | number; }[];
+  /**
+   * onChange callback from select element.
+   */
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
