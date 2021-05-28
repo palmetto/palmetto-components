@@ -463,7 +463,7 @@ export const Box: FC<BoxProps> = forwardRef((
       return child; // Not gap if child is last element or if the children are strings or numbers.
     }
 
-    const childClasses = classNames(child.props.className, [...new Set(childGapClasses)]);
+    const childClasses = classNames(child.props.className, [...childGapClasses]);
 
     return cloneElement(child, {
       className: childClasses,
