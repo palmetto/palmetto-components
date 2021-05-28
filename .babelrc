@@ -14,9 +14,8 @@
     },
     "build": {
       "plugins": [
-        "babel-plugin-no-side-effect-class-properties",
-        // "babel-plugin-typescript-to-proptypes",
-        // ["@babel/plugin-proposal-class-properties", { "loose": true }]
+        "babel-plugin-typescript-to-proptypes",
+        "@babel/plugin-proposal-class-properties"
       ]
     }
   }
