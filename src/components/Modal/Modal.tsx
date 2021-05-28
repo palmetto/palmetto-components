@@ -115,8 +115,8 @@ export interface ModalStatic {
 }
 
 export type ModalWithStaticComponents =
-  React.ForwardRefExoticComponent<React.PropsWithoutRef<ModalProps>>
-  & Partial<ModalStatic>;
+  typeof ModalBaseComponent
+  & ModalStatic;
 
 // Actual component is wrapped in an IIFE for the export
 // To allow tree-shaking even with static properties (subcomponents in this case).

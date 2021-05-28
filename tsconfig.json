@@ -1,42 +1,8 @@
-// {
-//   "compilerOptions": {
-//     "outDir": "./dist",
-//     "baseUrl": "./src", // This must be specified if "paths" is.
-//     "paths": {
-//       "@palmetto/palmetto-design/tokens": ["../node_modules/@palmetto/palmetto-design-tokens"] // This mapping is relative to "baseUrl"
-//     },
-//     "declaration": true,
-//     "declarationDir": "dist",
-//     "emitDeclarationOnly": true,
-//     "noEmit": false,
-//     "allowSyntheticDefaultImports": true,
-//     "target": "es6",
-//     "sourceMap": true,
-//     "module": "esnext",
-//     "moduleResolution": "node",
-//     "jsx": "react",
-//     "strict": true,
-//     "allowJs": true,
-//     "skipLibCheck": true,
-//     "esModuleInterop": true,
-//     "isolatedModules": true,
-//     "resolveJsonModule": true,
-//     "lib": [
-//       "es2019",
-//       "DOM"
-//     ]
-//   },
-//   "include": [
-//     "./src",
-//     "./types",
-//     "index.d.ts"
-//   ]
-// }
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "include": ["src", "types"],
   "compilerOptions": {
-    "baseUrl": "./src", // This must be specified if "paths" is.
+    "baseUrl": ".", // This must be specified if "paths" is.
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
@@ -69,8 +35,12 @@
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
     "noEmit": true,
     "paths": {
-      "@palmetto/palmetto-design/tokens": ["../node_modules/@palmetto/palmetto-design-tokens"] // This mapping is relative to "baseUrl"
+      "@palmetto/palmetto-design/tokens": ["./node_modules/@palmetto/palmetto-design-tokens"] // This mapping is relative to "baseUrl"
     },
+    // Downleveling is TypeScript’s term for transpiling to an older version of JavaScript.
+    // This flag is to enable support for a more accurate implementation
+    // of how modern JavaScript iterates through new concepts in older JavaScript runtimes.
+    "downlevelIteration": true,
   },
   "exclude": [
     "components/**/*.stories.tsx",

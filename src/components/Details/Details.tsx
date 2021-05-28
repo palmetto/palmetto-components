@@ -45,7 +45,7 @@ export interface DetailsStatic {
   Summary: typeof DetailsSummary;
 }
 
-export type DetailsWithStaticComponents = React.FC<DetailsProps> & Partial<DetailsStatic>;
+export type DetailsWithStaticComponents = typeof DetailsBaseComponent & DetailsStatic;
 
 // Actual component is wrapped in an IIFE for the export
 // To allow tree-shaking even with static properties (subcomponents in this case).

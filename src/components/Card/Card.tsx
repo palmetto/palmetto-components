@@ -51,9 +51,7 @@ export interface CardStatic {
   Footer: typeof CardFooter;
 }
 
-export type CardWithStaticComponents =
-  React.ForwardRefExoticComponent<React.PropsWithoutRef<CardProps>>
-  & Partial<CardStatic>;
+export type CardWithStaticComponents = typeof CardBaseComponent & CardStatic;
 
 // Actual component is wrapped in an IIFE for the export
 // To allow tree-shaking even with static properties (subcomponents in this case).

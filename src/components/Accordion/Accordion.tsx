@@ -17,8 +17,8 @@ export interface AccordionStatic {
 }
 
 export type AccordionWithStaticComponents =
-  React.ForwardRefExoticComponent<React.PropsWithoutRef<AccordionProps>>
-  & Partial<AccordionStatic>;
+  typeof AccordionBaseComponent
+  & AccordionStatic;
 
 // Actual component is wrapped in an IIFE for the export
 // To allow tree-shaking even with static properties (subcomponents in this case).

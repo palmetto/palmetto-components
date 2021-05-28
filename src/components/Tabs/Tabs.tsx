@@ -103,9 +103,7 @@ export interface TabsStatic {
   Item: typeof TabItem;
 }
 
-export type TabsWithStaticComponents =
-  React.ForwardRefExoticComponent<React.PropsWithoutRef<TabsProps>>
-  & Partial<TabsStatic>;
+export type TabsWithStaticComponents = typeof TabsBaseComponent & TabsStatic;
 
 // Actual component is wrapped in an IIFE for the export
 // To allow tree-shaking even with static properties (subcomponents in this case).
