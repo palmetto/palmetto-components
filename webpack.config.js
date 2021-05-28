@@ -18,7 +18,7 @@
  // Common module rules shared between storybook and production builds.
  const rules = [];
  
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' || process.env.STORYBOOK_BUILD) {
   rules.push(
     // Process all SCSS modules which will be compiled inside the main JS bundle.
     {
@@ -64,19 +64,19 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
       include: /\.module\.scss$/,
     },
   );
-  rules.push(
-    // Process all global CSS
-    {
-      test: /\.scss$/,
-      use: [
-        MiniCssExtractPlugin.loader,
-        'css-loader',
-        'sass-loader',
-        'postcss-loader',
-      ],
-      exclude: /\.module\.scss$/,
-    },
-  );
+  // rules.push(
+  //   // Process all global CSS
+  //   {
+  //     test: /\.scss$/,
+  //     use: [
+  //       MiniCssExtractPlugin.loader,
+  //       'css-loader',
+  //       'sass-loader',
+  //       'postcss-loader',
+  //     ],
+  //     exclude: /\.module\.scss$/,
+  //   },
+  // );
   // rules.push(
   //   {
   //     test: /\.(ts|tsx|js|jsx)?$/,
