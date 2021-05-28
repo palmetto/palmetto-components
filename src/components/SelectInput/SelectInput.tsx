@@ -134,7 +134,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   size = 'md',
   ...restProps
 }) => {
-  const handleChange = (values: ValueType<OptionTypeBase>) => {
+  const handleChange = (values: ValueType<OptionTypeBase, boolean>) => {
     const simulatedEventPayloadType: SimulatedEventPayloadType = {
       target: {
         name,
@@ -168,7 +168,7 @@ export const SelectInput: FC<SelectInputProps> = ({
     isDisabled,
   };
 
-  const ClearIndicator = (props: IndicatorProps<OptionTypeBase>) => (
+  const ClearIndicator = (props: IndicatorProps<OptionTypeBase, boolean>) => (
     <components.ClearIndicator {...props}>
       <Icon name="remove" />
     </components.ClearIndicator>
