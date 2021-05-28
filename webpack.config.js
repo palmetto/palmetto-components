@@ -7,17 +7,17 @@
  * `.storybook/main.js` to supplement Storybook's existing config.
  */
 
- const path = require('path');
- const TerserJSPlugin = require('terser-webpack-plugin');
- const MiniCssExtractPlugin = require('mini-css-extract-plugin');
- const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
- const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
- const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
- const { CleanWebpackPlugin } = require('clean-webpack-plugin');
- 
- // Common module rules shared between storybook and production builds.
- const rules = [];
- 
+const path = require('path');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+// Common module rules shared between storybook and production builds.
+const rules = [];
+
 if (process.env.NODE_ENV === 'development' || process.env.STORYBOOK_BUILD) {
   rules.push(
     // Process all SCSS modules which will be compiled inside the main JS bundle.
@@ -64,19 +64,19 @@ if (process.env.NODE_ENV === 'production' && process.env.IS_PUBLISHING) {
       include: /\.module\.scss$/,
     },
   );
-  // rules.push(
-  //   // Process all global CSS
-  //   {
-  //     test: /\.scss$/,
-  //     use: [
-  //       MiniCssExtractPlugin.loader,
-  //       'css-loader',
-  //       'sass-loader',
-  //       'postcss-loader',
-  //     ],
-  //     exclude: /\.module\.scss$/,
-  //   },
-  // );
+  rules.push(
+    // Process all global CSS
+    {
+      test: /\.scss$/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+        'sass-loader',
+        'postcss-loader',
+      ],
+      exclude: /\.module\.scss$/,
+    },
+  );
   // rules.push(
   //   {
   //     test: /\.(ts|tsx|js|jsx)?$/,
