@@ -16,87 +16,103 @@ export interface TabsProps extends BoxProps {
   size?: 'sm' | 'md' | ResponsiveProp<'sm' | 'md'>;
 }
 
-export class Tabs extends React.Component<TabsProps> {
-  static Item = TabItem;
+const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef((
+  {
+    as = 'nav',
+    borderWidth = '0 0 xs 0',
+    borderColor = 'grey-100',
+    children,
+    isCentered = false,
+    isFullWidth = false,
+    onChange,
+    overflow = 'auto',
+    size = 'md',
+    value,
+    ...restProps
+  },
+  ref,
+) => {
+  const decoratedChildren = React.Children.map(children, (child, index) => {
+    if (React.isValidElement(child)) {
+      /**
+       * Merging any existing onClick handlers with our onChange handler.
+       */
+      const onClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
+        if (child.props.onClick) {
+          (child.props.onClick(event));
+        }
 
-  render(): React.ReactNode {
-    const {
-      as = 'nav',
-      borderWidth = '0 0 xs 0',
-      borderColor = 'grey-100',
-      children,
-      isCentered = false,
-      isFullWidth = false,
-      onChange,
-      overflow = 'auto',
-      size = 'md',
-      value,
-      ...restProps
-    } = this.props;
+        if (!child.props.isDisabled && onChange) {
+          onChange(event, index);
+        }
+      };
 
-    const decoratedChildren = React.Children.map(children, (child, index) => {
-      if (React.isValidElement(child)) {
-        /**
-         * Merging any existing onClick handlers with our onChange handler.
-         */
-        const onClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
-          if (child.props.onClick) {
-            (child.props.onClick(event));
-          }
+      /**
+       * Merge our custom styling with existing className in child
+       */
+      const classes = classNames(
+        child.props.className,
+        styles['tab-item'],
+        { [styles.disabled]: child.props.isDisabled },
+        { [styles['tab-item--selected']]: value === index },
+      );
 
-          if (!child.props.isDisabled && onChange) {
-            onChange(event, index);
-          }
-        };
+      return React.cloneElement(
+        child,
+        {
+          className: classes,
+          onClick: onClickHandler,
+          fontSize: size,
+          padding: size,
+          style: { ...child.props.style, ...isFullWidth && { flex: 1 } },
+        },
+      );
+    }
 
-        /**
-         * Merge our custom styling with existing className in child
-         */
-        const classes = classNames(
-          child.props.className,
-          styles['tab-item'],
-          { [styles.disabled]: child.props.isDisabled },
-          { [styles['tab-item--selected']]: value === index },
-        );
+    return child;
+  });
 
-        return React.cloneElement(
-          child,
-          {
-            className: classes,
-            onClick: onClickHandler,
-            fontSize: size,
-            padding: size,
-            style: { ...child.props.style, ...isFullWidth && { flex: 1 } },
-          },
-        );
-      }
-
-      return child;
-    });
-
-    return (
+  return (
+    <Box
+      as={as}
+      borderWidth={borderWidth}
+      borderColor={borderColor}
+      overflow={overflow}
+      ref={ref}
+      {...restProps}
+    >
       <Box
-        as={as}
-        borderWidth={borderWidth}
-        borderColor={borderColor}
-        overflow={overflow}
-        {...restProps}
+        as="ul"
+        direction="row"
+        role="tablist"
+        /**
+         * NOTE: we use margins instead of justify-content here in order to avoid problems when the tabs overflow.
+         * See this for details:
+         * https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
+         * */
+        margin={isCentered ? '0 auto' : undefined}
+        style={{ paddingInlineStart: '0' }}
       >
-        <Box
-          as="ul"
-          direction="row"
-          role="tablist"
-          /**
-           * NOTE: we use margins instead of justify-content here in order to avoid problems when the tabs overflow.
-           * See this for details:
-           * https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
-           * */
-          margin={isCentered ? '0 auto' : undefined}
-          style={{ paddingInlineStart: '0' }}
-        >
-          {decoratedChildren}
-        </Box>
+        {decoratedChildren}
       </Box>
-    );
-  }
+    </Box>
+  );
+});
+
+export interface TabsStatic {
+  Item: typeof TabItem;
 }
+
+export type TabsWithStaticComponents =
+  React.ForwardRefExoticComponent<React.PropsWithoutRef<TabsProps>>
+  & Partial<TabsStatic>;
+
+// Actual component is wrapped in an IIFE for the export
+// To allow tree-shaking even with static properties (subcomponents in this case).
+export const Tabs = (() => {
+  const Tabs = TabsBaseComponent as TabsWithStaticComponents;
+
+  Tabs.Item = TabItem;
+
+  return Tabs;
+})();

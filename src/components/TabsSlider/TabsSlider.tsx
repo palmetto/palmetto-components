@@ -65,80 +65,24 @@ export interface TabsSliderProps extends BoxProps {
   overflow?: BoxProps['overflow'];
 }
 
-export class TabsSlider extends React.Component<TabsSliderProps> {
-  static Item = TabItem;
+const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTMLElement, TabsSliderProps>((
+  {
+    as = 'nav',
+    className,
+    children,
+    onChange,
+    size = 'md',
+    value,
+    ...restProps
+  },
+  ref,
+) => {
+  const [indicatorStyle, setIndicatorStyle] = React.useState({ left: 0, width: 0 });
+  const tabsRef = React.useRef<HTMLElement>();
+  const tabListRef = React.useRef<HTMLUListElement>();
 
-  static defaultProps = { // eslint-disable-line react/static-property-placement
-    size: 'md',
-    as: 'nav',
-  }
-
-  state = { // eslint-disable-line react/state-in-constructor
-    indicatorStyle: {
-      left: 0,
-      width: 0,
-    },
-  };
-
-  tabsRef = React.createRef<HTMLElement>();
-
-  tabListRef = React.createRef<HTMLUListElement>();
-
-  componentDidMount(): void {
-    window.addEventListener('resize', this.updateIndicatorState);
-    this.updateIndicatorState();
-  }
-
-  componentDidUpdate(prevProps: TabsSliderProps): void {
-    const { value, children } = this.props;
-    if (
-      prevProps.value !== value
-      || prevProps.children !== children
-    ) {
-      this.updateIndicatorState();
-    }
-  }
-
-  componentWillUnmount(): void {
-    window.removeEventListener('resize', this.updateIndicatorState);
-  }
-
-  get tabFontSize(): string | ResponsiveProp<string> {
-    const { size } = this.props;
-
-    return this.generateSize(size, tabsSliderFontSizeMap);
-  }
-
-  get tabPadding(): string | ResponsiveProp<string> {
-    const { size } = this.props;
-
-    return this.generateSize(size, tabsSliderPaddingMap);
-  }
-
-  get tabBorderWidth(): string | ResponsiveProp<string> {
-    const { size } = this.props;
-
-    return this.generateSize(size, tabsSliderBorderWidthMap);
-  }
-
-  generateSize = (
-    size: TabsSliderProps['size'],
-    propertyMap: { sm: string; md: string; lg: string; },
-  ): string | ResponsiveProp<string> => {
-    let propertySize: string | ResponsiveProp<string> = 'md';
-    if (typeof size === 'string') {
-      propertySize = propertyMap[size];
-    } else if (size !== null && typeof size === 'object') {
-      propertySize = Object.entries(size)
-        .reduce((acc, [key, value]) => ({ ...acc, [key]: propertyMap[value ?? 'md'] }), {});
-    }
-
-    return propertySize;
-  };
-
-  getTabsMeta = (): { tabsMeta: TabsMeta; tabMeta: DOMRect | undefined | null; } => {
-    const tabsNode = this.tabsRef.current;
-    const { value } = this.props;
+  const getTabsMeta = (): { tabsMeta: TabsMeta; tabMeta: DOMRect | undefined | null; } => {
+    const tabsNode = tabsRef.current;
 
     let tabsMeta;
     if (tabsNode) {
@@ -158,7 +102,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
 
     let tabMeta;
     if (tabsNode) {
-      const children = this.tabListRef?.current?.children;
+      const children = tabListRef?.current?.children;
 
       if (children && children.length > 0) {
         const tab = children[value];
@@ -170,9 +114,8 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     return { tabsMeta, tabMeta };
   };
 
-  updateIndicatorState = (): void => {
-    const { tabsMeta, tabMeta } = this.getTabsMeta();
-    const { indicatorStyle } = this.state;
+  const updateIndicatorState = (): void => {
+    const { tabsMeta, tabMeta } = getTabsMeta();
     let startValue = 0;
 
     if (tabMeta && tabsMeta) {
@@ -189,98 +132,137 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
     const dSize = Math.abs(indicatorStyle.width - newIndicatorStyle.width);
 
     if (dStart >= 1 || dSize >= 1) {
-      this.setState({ indicatorStyle: { ...newIndicatorStyle } });
+      setIndicatorStyle({ ...newIndicatorStyle });
     }
   };
 
-  render(): React.ReactNode {
-    const {
-      as,
-      className,
-      children,
-      onChange,
-      ref,
-      value,
-      ...restProps
-    } = this.props;
+  React.useEffect(() => {
+    window.addEventListener('resize', updateIndicatorState);
 
-    const { tabBorderWidth, tabFontSize, tabPadding } = this;
-    const { indicatorStyle } = this.state;
+    return () => { window.removeEventListener('resize', updateIndicatorState); };
+  }, [])
+  React.useEffect(() => {
+    updateIndicatorState();
+  }, [value, children]);
 
-    const decoratedChildren = React.Children.map(children, (child, index) => {
-      let childToReturn = child;
-      if (React.isValidElement(child)) {
-        /**
-         * Merging any existing onClick handlers with our onChange handler.
-         */
-        const onClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
-          if (child.props.onClick) {
-            (child.props.onClick(event));
-          }
+  const generateSize = (
+    size: TabsSliderProps['size'],
+    propertyMap: { sm: string; md: string; lg: string; },
+  ): string | ResponsiveProp<string> => {
+    let propertySize: string | ResponsiveProp<string> = 'md';
+    if (typeof size === 'string') {
+      propertySize = propertyMap[size];
+    } else if (size !== null && typeof size === 'object') {
+      propertySize = Object.entries(size)
+        .reduce((acc, [key, value]) => ({ ...acc, [key]: propertyMap[value ?? 'md'] }), {});
+    }
 
-          if (!child.props.isDisabled && onChange) {
-            onChange(event, index);
-          }
-        };
+    return propertySize;
+  };
 
-        /**
-         * Merge our custom styling with existing className in child
-         */
-        const classes = classNames(
-          child.props.className,
-          styles['tab-item'],
-          { [styles.disabled]: child.props.isDisabled },
-          { [styles['tab-item--selected']]: value === index },
-        );
-
-        childToReturn = React.cloneElement(
-          child,
-          {
-            className: classes,
-            onClick: onClickHandler,
-            fontSize: tabFontSize,
-            padding: tabPadding,
-            style: { ...child.props.style, flex: 1 },
-          },
-        );
-      }
-
-      return childToReturn;
-    });
-
-    const containerClasses = classNames(className, styles['tabs-slider-container']);
-
-    return (
-      <Box
-        {...restProps}
-        className={containerClasses}
-        as={as}
-        overflow="auto"
-        background="grey-100"
-        radius="md"
-        ref={mergeRefs([this.tabsRef, ref])}
-      >
-        <Box
-          as="ul"
-          direction="row"
-          role="tablist"
-          style={{ paddingInlineStart: '0' }}
-          position="relative"
-          ref={this.tabListRef}
-        >
-          {decoratedChildren}
-          <Box
-            radius="md"
-            background="white"
-            height="100"
-            position="absolute"
-            borderWidth={tabBorderWidth}
-            borderColor="grey-100"
-            style={{ ...indicatorStyle }}
-            className={styles['tabs-slider-indicator']}
-          />
-        </Box>
-      </Box>
-    );
+  const tabFontSize = (): string | ResponsiveProp<string> => {
+    return generateSize(size, tabsSliderFontSizeMap);
   }
+
+  const tabPadding = (): string | ResponsiveProp<string> => {  
+    return generateSize(size, tabsSliderPaddingMap);
+  }
+
+  const tabBorderWidth = (): string | ResponsiveProp<string> => {
+    return generateSize(size, tabsSliderBorderWidthMap);
+  }
+
+  const decoratedChildren = React.Children.map(children, (child, index) => {
+    let childToReturn = child;
+    if (React.isValidElement(child)) {
+      /**
+       * Merging any existing onClick handlers with our onChange handler.
+       */
+      const onClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
+        if (child.props.onClick) {
+          (child.props.onClick(event));
+        }
+
+        if (!child.props.isDisabled && onChange) {
+          onChange(event, index);
+        }
+      };
+
+      /**
+       * Merge our custom styling with existing className in child
+       */
+      const classes = classNames(
+        child.props.className,
+        styles['tab-item'],
+        { [styles.disabled]: child.props.isDisabled },
+        { [styles['tab-item--selected']]: value === index },
+      );
+
+      childToReturn = React.cloneElement(
+        child,
+        {
+          className: classes,
+          onClick: onClickHandler,
+          fontSize: tabFontSize(),
+          padding: tabPadding(),
+          style: { ...child.props.style, flex: 1 },
+        },
+      );
+    }
+
+    return childToReturn;
+  });
+
+  const containerClasses = classNames(className, styles['tabs-slider-container']);
+
+  return (
+    <Box
+      {...restProps}
+      className={containerClasses}
+      as={as}
+      overflow="auto"
+      background="grey-100"
+      radius="md"
+      ref={mergeRefs([tabsRef, ref])}
+    >
+      <Box
+        as="ul"
+        direction="row"
+        role="tablist"
+        style={{ paddingInlineStart: '0' }}
+        position="relative"
+        ref={tabListRef}
+      >
+        {decoratedChildren}
+        <Box
+          radius="md"
+          background="white"
+          height="100"
+          position="absolute"
+          borderWidth={tabBorderWidth()}
+          borderColor="grey-100"
+          style={{ ...indicatorStyle }}
+          className={styles['tabs-slider-indicator']}
+        />
+      </Box>
+    </Box>
+  );
+})
+
+export interface TabsSliderStatic {
+  Item: typeof TabItem;
 }
+
+export type TabsSliderWithStaticComponents =
+  React.ForwardRefExoticComponent<React.PropsWithoutRef<TabsSliderProps>>
+  & Partial<TabsSliderStatic>;
+
+// Actual component is wrapped in an IIFE for the export
+// To allow tree-shaking even with static properties (subcomponents in this case).
+export const TabsSlider = (() => {
+  const TabsSlider = TabsSliderBaseComponent as TabsSliderWithStaticComponents;
+
+  TabsSlider.Item = TabItem;
+
+  return TabsSlider;
+})();

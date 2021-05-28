@@ -14,12 +14,10 @@
     },
     "build": {
       "plugins": [
-        "babel-plugin-typescript-to-proptypes",
-        "@babel/plugin-proposal-class-properties"
+        "babel-plugin-no-side-effect-class-properties",
+        // "babel-plugin-typescript-to-proptypes",
+        // ["@babel/plugin-proposal-class-properties", { "loose": true }]
       ]
-    },
-    "storybook": {
-      "presets": []
     }
   }
 }

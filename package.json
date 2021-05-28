@@ -6,6 +6,7 @@
   "private": false,
   "main": "dist/index.js",
   "module": "dist/palmetto-components.esm.js",
+  "sideEffects": false,
   "typings": "dist/index.d.ts",
   "types": "dist/index.d.ts",
   "files": [
@@ -39,7 +40,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build && cross-env-shell BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js",
+    "build": "BABEL_ENV=build tsdx build && BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",

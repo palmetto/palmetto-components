@@ -2,7 +2,7 @@ const path = require('path');
 const postcss = require('rollup-plugin-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
-const copy = require('rollup-plugin-copy');
+const pkg = require('./package.json');
 
 const rollupPostCssConfig = (destination) => postcss({
   plugins: [
@@ -16,16 +16,16 @@ const rollupPostCssConfig = (destination) => postcss({
   extract: destination
 });
 
-const addPluginsToConfig = (config, plugins) => {
+const addToConfig = (config, addedItems, configKey) => {
   const updatedConfig = { ...config };
-  updatedConfig.plugins.push(...plugins);
+  updatedConfig[configKey].push(...addedItems);
 
   return updatedConfig;
-}
+};
 
 module.exports = {
   rollup(config, options) {
-    config = addPluginsToConfig(config, [rollupPostCssConfig(path.resolve('dist/css/index.css'))]);
+    config = addToConfig(config, [rollupPostCssConfig(path.resolve('dist/css/index.css'))], 'plugins');
     return config;
   },
 };

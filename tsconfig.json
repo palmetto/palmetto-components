@@ -71,5 +71,11 @@
     "paths": {
       "@palmetto/palmetto-design/tokens": ["../node_modules/@palmetto/palmetto-design-tokens"] // This mapping is relative to "baseUrl"
     },
-  }
+  },
+  "exclude": [
+    "components/**/*.stories.tsx",
+    "components/**/*.stories.mdx",
+    "components/**/*.test.tsx",
+    "components/**/*.test.jsx",
+  ]
 }
