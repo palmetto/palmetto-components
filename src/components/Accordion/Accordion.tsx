@@ -6,9 +6,9 @@ import { AccordionPanelSummary } from './AccordionPanelSummary';
 
 export type AccordionProps = BoxProps;
 
-const AccordionBaseComponent: React.FC<AccordionProps> = React.forwardRef(({ children, ...restProps }, ref) => {
-  return <Box ref={ref} {...restProps}>{children}</Box>;
-});
+const AccordionBaseComponent: React.FC<AccordionProps> = React.forwardRef(({ children, ...restProps }, ref) => (
+  <Box ref={ref} {...restProps}>{children}</Box>
+));
 
 export interface AccordionStatic {
   Panel: typeof AccordionPanel;
@@ -23,7 +23,7 @@ export type AccordionWithStaticComponents =
 // Actual component is wrapped in an IIFE for the export
 // To allow tree-shaking even with static properties (subcomponents in this case).
 export const Accordion = (() => {
-  const Accordion = AccordionBaseComponent as AccordionWithStaticComponents;
+  const Accordion = AccordionBaseComponent as AccordionWithStaticComponents; // eslint-disable-line no-shadow
 
   Accordion.Panel = AccordionPanel;
   Accordion.PanelSummary = AccordionPanelSummary;

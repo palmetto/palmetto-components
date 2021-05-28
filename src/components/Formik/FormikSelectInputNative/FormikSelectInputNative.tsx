@@ -1,7 +1,15 @@
 import React from 'react';
-import { FormikTouched, FormikErrors, FieldAttributes, FormikValues } from 'formik';
-import { SelectInputNative, SelectInputNativeBaseProps, SelectInputNativeProps } from '../../SelectInputNative/SelectInputNative';
-
+import {
+  FormikTouched,
+  FormikErrors,
+  FieldAttributes,
+  FormikValues,
+} from 'formik';
+import {
+  SelectInputNative,
+  SelectInputNativeBaseProps,
+  SelectInputNativeProps,
+} from '../../SelectInputNative/SelectInputNative';
 
 export interface FormikSelectInputNativeProps extends SelectInputNativeBaseProps {
   field: FieldAttributes<HTMLTextAreaElement>;

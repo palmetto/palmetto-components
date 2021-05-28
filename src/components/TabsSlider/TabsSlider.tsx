@@ -1,4 +1,9 @@
-import React from 'react';
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+} from 'react';
 import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
@@ -77,11 +82,11 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
   },
   ref,
 ) => {
-  const [indicatorStyle, setIndicatorStyle] = React.useState({ left: 0, width: 0 });
-  const tabsRef = React.useRef<HTMLElement>();
-  const tabListRef = React.useRef<HTMLUListElement>();
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const tabsRef = useRef<HTMLElement>();
+  const tabListRef = useRef<HTMLUListElement>();
 
-  const getTabsMeta = (): { tabsMeta: TabsMeta; tabMeta: DOMRect | undefined | null; } => {
+  const getTabsMeta = useCallback((): { tabsMeta: TabsMeta; tabMeta: DOMRect | undefined | null; } => {
     const tabsNode = tabsRef.current;
 
     let tabsMeta;
@@ -102,19 +107,19 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
 
     let tabMeta;
     if (tabsNode) {
-      const children = tabListRef?.current?.children;
+      const tabsChildren = tabListRef?.current?.children;
 
-      if (children && children.length > 0) {
-        const tab = children[value];
+      if (tabsChildren && tabsChildren.length > 0) {
+        const tab = tabsChildren[value];
 
         tabMeta = tab ? tab.getBoundingClientRect() : null;
       }
     }
 
     return { tabsMeta, tabMeta };
-  };
+  }, [value]);
 
-  const updateIndicatorState = (): void => {
+  const updateIndicatorState = useCallback((): void => {
     const { tabsMeta, tabMeta } = getTabsMeta();
     let startValue = 0;
 
@@ -134,43 +139,38 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
     if (dStart >= 1 || dSize >= 1) {
       setIndicatorStyle({ ...newIndicatorStyle });
     }
-  };
+  }, [getTabsMeta, indicatorStyle.left, indicatorStyle.width]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('resize', updateIndicatorState);
 
     return () => { window.removeEventListener('resize', updateIndicatorState); };
-  }, [])
-  React.useEffect(() => {
+  }, [updateIndicatorState]);
+
+  useEffect(() => {
     updateIndicatorState();
-  }, [value, children]);
+  }, [value, children, updateIndicatorState]);
 
   const generateSize = (
-    size: TabsSliderProps['size'],
+    sizeProp: TabsSliderProps['size'],
     propertyMap: { sm: string; md: string; lg: string; },
   ): string | ResponsiveProp<string> => {
     let propertySize: string | ResponsiveProp<string> = 'md';
-    if (typeof size === 'string') {
-      propertySize = propertyMap[size];
-    } else if (size !== null && typeof size === 'object') {
-      propertySize = Object.entries(size)
-        .reduce((acc, [key, value]) => ({ ...acc, [key]: propertyMap[value ?? 'md'] }), {});
+    if (typeof sizeProp === 'string') {
+      propertySize = propertyMap[sizeProp];
+    } else if (sizeProp !== null && typeof sizeProp === 'object') {
+      propertySize = Object.entries(sizeProp)
+        .reduce((acc, [key, sizeValue]) => ({ ...acc, [key]: propertyMap[sizeValue ?? 'md'] }), {});
     }
 
     return propertySize;
   };
 
-  const tabFontSize = (): string | ResponsiveProp<string> => {
-    return generateSize(size, tabsSliderFontSizeMap);
-  }
+  const tabFontSize = (): string | ResponsiveProp<string> => generateSize(size, tabsSliderFontSizeMap);
 
-  const tabPadding = (): string | ResponsiveProp<string> => {  
-    return generateSize(size, tabsSliderPaddingMap);
-  }
+  const tabPadding = (): string | ResponsiveProp<string> => generateSize(size, tabsSliderPaddingMap);
 
-  const tabBorderWidth = (): string | ResponsiveProp<string> => {
-    return generateSize(size, tabsSliderBorderWidthMap);
-  }
+  const tabBorderWidth = (): string | ResponsiveProp<string> => generateSize(size, tabsSliderBorderWidthMap);
 
   const decoratedChildren = React.Children.map(children, (child, index) => {
     let childToReturn = child;
@@ -247,7 +247,7 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
       </Box>
     </Box>
   );
-})
+});
 
 export interface TabsSliderStatic {
   Item: typeof TabItem;
@@ -258,7 +258,7 @@ export type TabsSliderWithStaticComponents = typeof TabsSliderBaseComponent & Ta
 // Actual component is wrapped in an IIFE for the export
 // To allow tree-shaking even with static properties (subcomponents in this case).
 export const TabsSlider = (() => {
-  const TabsSlider = TabsSliderBaseComponent as TabsSliderWithStaticComponents;
+  const TabsSlider = TabsSliderBaseComponent as TabsSliderWithStaticComponents; // eslint-disable-line no-shadow
 
   TabsSlider.Item = TabItem;
 

@@ -1,5 +1,10 @@
 import React from 'react';
-import { FormikTouched, FormikErrors, FieldAttributes, FormikValues } from 'formik';
+import {
+  FormikTouched,
+  FormikErrors,
+  FieldAttributes,
+  FormikValues,
+} from 'formik';
 import { CheckboxInput } from '../../CheckboxInput/CheckboxInput';
 
 export interface FormikCheckboxInputProps {

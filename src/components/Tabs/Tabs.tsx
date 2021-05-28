@@ -108,7 +108,7 @@ export type TabsWithStaticComponents = typeof TabsBaseComponent & TabsStatic;
 // Actual component is wrapped in an IIFE for the export
 // To allow tree-shaking even with static properties (subcomponents in this case).
 export const Tabs = (() => {
-  const Tabs = TabsBaseComponent as TabsWithStaticComponents;
+  const Tabs = TabsBaseComponent as TabsWithStaticComponents; // eslint-disable-line no-shadow
 
   Tabs.Item = TabItem;
 

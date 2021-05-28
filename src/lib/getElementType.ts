@@ -8,14 +8,19 @@ import React from 'react';
  * @param {function} [getDefault] A function that returns a default element type.
  * @returns {string} A ReactElement type
  */
-function getElementType(Component: React.Component | React.FC, props: { [key: string]: unknown }, getDefault?: () => string) {
+function getElementType(
+  Component: React.Component | React.FC,
+  props: { [key: string]: unknown; },
+  getDefault?: () => string,
+): string {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { defaultProps = {} } = Component;
 
   // ----------------------------------------
   // user defined "as" element type
 
-  if (props.as && props.as !== defaultProps.as) return props.as;
+  if (props.as && props.as !== defaultProps.as) return props.as as string;
 
   // ----------------------------------------
   // computed default element type
