@@ -14,9 +14,11 @@
     },
     "build": {
       "plugins": [
-        "babel-plugin-typescript-to-proptypes",
-        "@babel/plugin-proposal-class-properties"
+        "babel-plugin-typescript-to-proptypes"
       ]
+    },
+    "storybook": {
+      "plugins": []
     }
   }
 }
