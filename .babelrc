@@ -23,8 +23,5 @@
         "@babel/plugin-transform-spread"
       ]
     },
-    "storybook": {
-      "plugins": []
-    }
   }
 }

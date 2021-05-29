@@ -31,6 +31,7 @@
 - [Building a Component](#building-a-component)
   - [Component](#component)
     - [Example](#example)
+  - [Composing Components](#composing-components)
   - [Styles](#styles)
     - [Example](#example-1)
   - [Storybook Documentation](#storybook-documentation)
