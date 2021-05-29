@@ -14,7 +14,8 @@
     },
     "build": {
       "plugins": [
-        "babel-plugin-typescript-to-proptypes"
+        "babel-plugin-typescript-to-proptypes",
+        "@babel/plugin-transform-spread"
       ]
     },
     "storybook": {

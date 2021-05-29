@@ -12,7 +12,6 @@
     "sourceMap": true,
     // match output dir to input dir. e.g. dist/index instead of dist/src/index
     "rootDir": "./src",
-    "outDir": "./dist",
     // stricter type-checking for stronger correctness. Recommended by TS
     "strict": true,
     // linter checks for common issues
@@ -37,7 +36,11 @@
     "paths": {
       "@palmetto/palmetto-design/tokens": ["./node_modules/@palmetto/palmetto-design-tokens"] // This mapping is relative to "baseUrl"
     },
+    // Downleveling is TypeScript’s term for transpiling to an older version of JavaScript.
+    // This flag is to enable support for a more accurate implementation
+    // of how modern JavaScript iterates through new concepts in older JavaScript runtimes.
     "downlevelIteration": true,
+    "target": "es5",
   },
   "exclude": [
     "components/**/*.stories.tsx",
@@ -45,7 +48,4 @@
     "components/**/*.test.tsx",
     "components/**/*.test.jsx",
   ],
-  // Downleveling is TypeScript’s term for transpiling to an older version of JavaScript.
-    // This flag is to enable support for a more accurate implementation
-    // of how modern JavaScript iterates through new concepts in older JavaScript runtimes.
 }
