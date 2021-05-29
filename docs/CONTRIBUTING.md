@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://palmetto.com" rel="noopener" target="_blank"><img width="150" src="https://app.palmetto.com/static/media/logo.4d85ce48.svg" alt="Palmetto logo"></a></p>
+  <a href="https://palmetto.com" rel="noopener" target="_blank"><img width="150" src="https://palmetto.com/images/palmetto-logo.svg" alt="Palmetto logo"></a></p>
 </p>
 <h1 align="center" style="border-bottom: none;">Contribution Guide</h1>
 <span id="top"></span>
