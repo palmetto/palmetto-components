@@ -29,7 +29,6 @@ module.exports = {
     '@storybook/addon-docs',
     '@storybook/addon-controls',
     '@storybook/addon-links/register',
-    '@storybook/addon-postcss'
   ],
   webpackFinal: config => {
     return {
@@ -39,36 +38,6 @@ module.exports = {
         rules: [
           ...config.module.rules,
           ...webpackConfig.module.rules,
-          // {
-          //   test: /\.(scss)$/,
-          //   use: [
-          //     {
-          //       loader: 'style-loader',
-          //     },
-          //     {
-          //       loader: 'css-loader',
-          //       options: {
-          //         modules: true,
-          //       }
-          //     },
-          //     {
-          //       loader: 'postcss-loader',
-          //       options: {
-          //         postcssOptions: {
-          //           plugins: function () {
-          //             return [require('precss'), require('autoprefixer')];
-          //           },
-          //         },
-          //       },
-          //     },
-          //     {
-          //       loader: require.resolve('sass-loader'),
-          //       options: {
-          //         implementation: require('sass'),
-          //       },
-          //     },
-          //   ],
-          // },
         ],
       },
     };

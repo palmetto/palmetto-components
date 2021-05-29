@@ -39,10 +39,10 @@
     "react-dom": ">=16.8.0"
   },
   "scripts": {
-    "build": "cross-env BABEL_ENV=build tsdx build && cross-env BABEL_ENV=build NODE_ENV=production IS_PUBLISHING=true webpack --config webpack.config.js",
+    "build": "cross-env-shell BABEL_ENV=build IS_PUBLISHING=true \"tsdx build && webpack --config webpack.config.js\"",
     "test": "tsdx test --passWithNoTests",
-    "storybook": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "cross-env STORYBOOK_BUILD=true build-storybook -s ./public",
+    "storybook": "cross-env IS_STORYBOOK=true start-storybook -p 6006 -s ./public",
+    "build-storybook": "cross-env IS_STORYBOOK=true build-storybook -s ./public",
     "deploy-storybook": "rimraf storybook-static && npm run build-storybook -s ./public && echo 'ux.palmetto.com' > 'storybook-static/CNAME' && storybook-to-ghpages --existing-output-dir=storybook-static",
     "chromatic": "chromatic --project-token=x8ffq4qv9tq",
     "generate-docs": "yarn doctoc docs/CONTRIBUTING.md",
