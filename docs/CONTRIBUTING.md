@@ -375,8 +375,9 @@ In order to ensure that a new component gets included in the library, it must be
 ## Submitting a Pull Request
 [↥ back to top](#top)
 
-* The ``main`` branch is the main branch, **and the one that you will open your PRs against**.
-* Merging a PR to ``main`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
+* The `main` branch is the principal release branch, **and the one that you will open your PRs against**, unless you are working on a major release with breaking changes.
+* the `beta` branch is where we'll want code that is part of a prerelease, due to it being a large refactor, or including major breaking changes.
+* Merging a PR to `main` or `beta` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
 * Include **screenshots** or animated GIFs in your pull request whenever needed (if changes are visual in nature).
 * It's OK, and even encouraged, to make multiple small commits as you work on a feature branch (commit early, and commit often) - we have configured GitHub to automatically squash commits before merging.
 * **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and testing on your end. In general, respect [.gitignore](/.gitignore).
@@ -391,10 +392,9 @@ In order to ensure that a new component gets included in the library, it must be
 
 Palmetto Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in `package.json`, and creating a new release tag in GitHub for each release, they are automatically triggered by prefixing the commit message when merging to `main`. Upon triggering a release, the package version is bumped depending on the type specified, a release tag is created in GitHub, and the new version is automatically published to [npm](https://www.npmjs.com/).
 
-For e.g., opening a PR to main with the commit message `fix: Resolve bug`, will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`. Opening a PR with `feat(Table): Finalize tests` will trigger a feature release and bump the package's version from `0.0.0` to `0.1.0`.
+For example, opening a PR to main with the commit message `fix: Resolve bug`, will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`. Opening a PR with `feat(Table): Finalize tests` will trigger a feature release and bump the package's version from `0.0.0` to `0.1.0`.
 
 The link above provides full documentation for this workflow. However, a comprehensive list of the prefix types, and their intended uses are provide below for quick reference:
-
 ### Release Types
 Must be one of the following:
 
@@ -413,3 +413,8 @@ Must be one of the following:
 * **refactor**: Changed code structure without affecting features.
 * **docs**: Added to, or improved documentation.
 * **style**: Change in code style without affecting features.
+
+### Prereleases
+If your code includes major changes or any breaking changes to the codebase, I.E, a new major version, or a large refactor, that will require a pre-release,
+and more extensive testing. To publish a pre-release, open (and eventutally merge) your PR against the `beta` branch. This will
+publish the package with a @beta tag which can then be easily consumed and tested by other consumers locally.
