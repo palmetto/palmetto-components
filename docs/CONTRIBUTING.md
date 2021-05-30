@@ -43,6 +43,7 @@
   - [Major](#major)
   - [Minor](#minor)
   - [Patch](#patch)
+  - [Prereleases](#prereleases)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
