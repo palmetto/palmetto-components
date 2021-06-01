@@ -65,7 +65,20 @@ export const FuillscreenOnMobile = () => (
 );
 
 export const WithMaxWidth = () => (
-  <Modal ariaLabelledBy="title" maxWidth={300} isOpen onDismiss={() => null}>
+  <Modal ariaLabelledBy="title" maxWidth="300px" isOpen onDismiss={() => null}>
+    <Modal.Header id="title" title="Fullscreen Modal on Mobile" onDismiss={() => null} />
+    <Modal.Body>Modal content</Modal.Body>
+    <Modal.Footer>
+      <Button variant="light" onClick={() => null}>
+        Cancel
+      </Button>
+      <Button variant="primary">Primary Action</Button>
+    </Modal.Footer>
+  </Modal>
+);
+
+export const WithResponsiveMaxWidth = () => (
+  <Modal ariaLabelledBy="title" maxWidth={{ tablet: '3xl', desktop: '4xl', hd: '5xl' }} isOpen onDismiss={() => null}>
     <Modal.Header id="title" title="Fullscreen Modal on Mobile" onDismiss={() => null} />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
