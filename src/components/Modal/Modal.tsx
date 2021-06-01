@@ -116,7 +116,7 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
           className={contentClassnames}
-          style={{ maxWidth }}
+          style={{ ...maxWidth && { maxWidth } }}
         >
           {children}
         </DialogContent>
