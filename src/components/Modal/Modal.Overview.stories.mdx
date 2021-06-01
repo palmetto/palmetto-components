@@ -179,6 +179,8 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
 ## Max Width
 
 Use the `maxWidth` prop for modals that have minimal content or form fields that may not look right at a larger width.
+As with the `Box` component, this can be set to a specific pixel value, or any of the existing width tokens. For responsive
+maxWidth, use existing tokens only.
 
 <Canvas>
   <Story name="Max Width">
@@ -191,7 +193,7 @@ Use the `maxWidth` prop for modals that have minimal content or form fields that
             <Button variant="light" onClick={() => setShowModal(true)}>
               Show Modal
             </Button>
-            <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={() => setShowModal(false)} maxWidth="300px">
+            <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={() => setShowModal(false)} maxWidth="4xl">
               <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={() => setShowModal(false)} />
               <Modal.Body>Modal body content</Modal.Body>
               <Modal.Footer>This is content in the modal footer</Modal.Footer>
