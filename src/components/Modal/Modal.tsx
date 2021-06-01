@@ -5,8 +5,9 @@ import React, {
 } from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
-import { ModalFooter, ModalHeader, ModalBody } from './components';
 import { CssOverflowValue } from '../../types';
+import { ModalFooter, ModalHeader, ModalBody } from './components';
+import { Box } from '../Box/Box';
 import styles from './Modal.module.scss';
 
 export interface ModalProps {
@@ -49,6 +50,10 @@ export interface ModalProps {
    */
   isOpen: boolean;
   /**
+   * Max width for modal content (in pixels).
+   */
+  maxWidth: number;
+  /**
    * Function that is called whenever the user hits "Esacape" key or clicks outside the modal.
    */
   onDismiss: (event?: React.SyntheticEvent) => void;
@@ -82,6 +87,7 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
     fullScreenMobile = false,
     initialFocusRef,
     isOpen,
+    maxWidth,
     onDismiss,
     overflow = 'hidden',
     ...restProps
@@ -105,15 +111,16 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
       ref={ref}
       {...restProps}
     >
-      <div className={styles.container}>
+      <Box className={styles.container}>
         <DialogContent
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
           className={contentClassnames}
+          style={{ maxWidth }}
         >
           {children}
         </DialogContent>
-      </div>
+      </Box>
     </DialogOverlay>
   );
 });

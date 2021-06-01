@@ -175,3 +175,29 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
     }}
   </Story>
 </Canvas>
+
+## Max Width
+
+Use the `maxWidth` prop for modals that have minimal content or form fields that may not look right at a larger width.
+
+<Canvas>
+  <Story name="Max Width">
+    {() => {
+      const [showModal, setShowModal] = React.useState(false);
+      const open = () => setShowModal(true);
+      const close = () => setShowModal(false);
+      return (
+        <div>
+          <Button variant="light" onClick={open}>
+            Show Modal
+          </Button>
+          <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={close} maxWidth={300}>
+            <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={close} />
+            <Modal.Body>Modal body content</Modal.Body>
+            <Modal.Footer>This is content in the modal footer</Modal.Footer>
+          </Modal>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
