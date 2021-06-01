@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
 import { Column, EventWithColumnKey } from '../../../types';
-import TableRow from '../common/TableRow/TableRow';
+import { TableRow } from '../common/TableRow/TableRow';
 
 export interface TableHeadProps {
   /**
@@ -47,7 +47,7 @@ export interface TableHeadProps {
   truncateOverflow?: boolean;
 }
 
-const TableHead: FC<TableHeadProps> = ({
+export const TableHead: FC<TableHeadProps> = ({
   columns,
   align = 'left',
   className = '',
@@ -76,5 +76,3 @@ const TableHead: FC<TableHeadProps> = ({
     </thead>
   );
 };
-
-export default TableHead;

@@ -6,7 +6,7 @@ import {
   fireEvent,
 } from '@testing-library/react';
 import { Placement } from '@popperjs/core';
-import Popover from './Popover';
+import { Popover } from './Popover';
 
 describe('Popover', () => {
   describe('Default', () => {
@@ -113,6 +113,7 @@ describe('Popover', () => {
                 isOpen
                 content={<button type="button" id="inside-button">hello</button>}
                 withPortal
+                portalTarget={document.body}
               >
                 <p>trigger</p>
               </Popover>

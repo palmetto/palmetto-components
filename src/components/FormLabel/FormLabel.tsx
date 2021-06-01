@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 import styles from './FormLabel.module.scss';
 
 export interface FormLabelProps {
@@ -40,18 +40,26 @@ export interface FormLabelProps {
    * Apply custom styling to labels for a radio input
    */
   isRadioInputLabel?: boolean;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
-const FormLabel: FC<FormLabelProps> = ({
+export const FormLabel: FC<FormLabelProps> = ({
   children,
   inputId,
   className = '',
   displayInline = false,
+  display = 'block',
   hasError = false,
   helpText,
   isDisabled = false,
   isFieldRequired = false,
   isRadioInputLabel = false,
+  margin = '0',
+  padding = '0',
+  ...restProps
 }) => {
   const labelClasses = classNames(styles.label, className, {
     [styles.disabled]: isDisabled,
@@ -62,7 +70,16 @@ const FormLabel: FC<FormLabelProps> = ({
   });
 
   return (
-    <label id={`${inputId}Label`} className={labelClasses} htmlFor={inputId}>
+    <Box
+      as="label"
+      id={`${inputId}Label`}
+      className={labelClasses}
+      display={display}
+      margin={margin}
+      padding={padding}
+      htmlFor={inputId}
+      {...restProps}
+    >
       {children}
       {isFieldRequired && <>&nbsp;*</>}
       {helpText && (
@@ -70,8 +87,6 @@ const FormLabel: FC<FormLabelProps> = ({
           {helpText}
         </Box>
       )}
-    </label>
+    </Box>
   );
 };
-
-export default FormLabel;

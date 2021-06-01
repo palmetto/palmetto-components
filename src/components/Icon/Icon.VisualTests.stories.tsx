@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Icon, { IconProps } from './Icon';
-import Box from '../Box/Box';
+import { Icon, IconProps } from './Icon';
+import { Box } from '../Box/Box';
 import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 import { FontColor, FontSize } from '../../types';
 import { RESPONSIVE_STORY } from '../../../.storybook/constants';
@@ -42,16 +42,3 @@ ResponsiveSize.args = {
   color: 'grey-600',
 };
 ResponsiveSize.parameters = RESPONSIVE_STORY;
-
-export const ResponsiveColor = IconTemplate.bind({});
-ResponsiveColor.args = {
-  name: 'home',
-  color: {
-    base: 'grey-500',
-    tablet: 'primary-500',
-    desktop: 'danger-500',
-    hd: 'warning-500',
-  },
-  size: '5xl',
-};
-ResponsiveColor.parameters = RESPONSIVE_STORY;

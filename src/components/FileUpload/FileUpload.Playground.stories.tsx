@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import FileUpload, { FileUploadProps } from './FileUpload';
+import { FileUpload, FileUploadProps } from './FileUpload';
 import { BUTTON_SIZES } from '../Button/Button.constants';
 
 export default {

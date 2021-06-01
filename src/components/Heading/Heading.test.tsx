@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { screen, render } from '@testing-library/react';
 import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 import { HEADING_LEVELS } from './Heading.constants';
-import Heading from './Heading';
+import { Heading } from './Heading';
 
 const headingComponentLevels = (
   HEADING_LEVELS.map(level => (

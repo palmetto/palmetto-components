@@ -1,0 +1,158 @@
+import { useState } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { TextLink } from './TextLink';
+
+<Meta title="Components/TextLink/Overview" component={TextLink} />
+
+# TextLink
+
+Use links to direct a user to a new location. Can be use for in-app navigation via [React Router](https://reactrouter.com/)
+or anchor tag based links.
+
+## Props
+
+When the `href` is set, the `TextLink` accepts all valid [HTML anchor element attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a), such as `_target`.
+
+When `to` is set, the `TextLink` accepts all [React Router Link](https://reactrouter.com/web/api/Link) props.
+
+<ArgsTable of={TextLink} />
+
+## Default
+
+All that is required to render a basic version of a TextLink is `children` which will contain text
+or a ReactNode to be rendered as well as an `href` attribute. `TextLink` will render an anchor tag automatically
+when given an `href`, and you can use the same exact API as a traditional anchor, as seen here:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      return <TextLink href="http://palmetto.com">Click me!</TextLink>;
+    }}
+  </Story>
+</Canvas>
+
+## With React Router
+
+If you're doing in-app navigation and need to render a [React Router Link](https://reactrouter.com/web/api/Link) component,
+simply use React Router's `component` prop on the `Link` component. All Link props will be passed down to the anchor tag.
+
+<Canvas>
+  <Story
+    name="With React Router"
+    decorators={[
+      Story => (
+        <BrowserRouter>
+          <Story />
+        </BrowserRouter>
+      ),
+    ]}
+  >
+    {() => {
+      return (
+        <Link to="/" component={TextLink}>
+          Click me!
+        </Link>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Attributes & Other Props
+
+Whether you're using React Router or just displaying an anchor tag, you can follow the native
+APIs for each option
+
+<Canvas>
+  <Story name="With additional attributes">
+    {() => {
+      return (
+        <TextLink href="http://ux.palmetto.com" target="_blank">
+          I will open in a new tab
+        </TextLink>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="With Link props"
+    decorators={[
+      Story => (
+        <BrowserRouter>
+          <Story />
+        </BrowserRouter>
+      ),
+    ]}
+  >
+    {() => {
+      return (
+        <Link to="/" replace component={TextLink}>
+          I will replace the current history entry
+        </Link>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## In the middle of a paragraph
+
+Text links are often used to highlight clickable text inside of a larger block of copy.
+You can use our text link in this manner as well.
+
+<Canvas>
+  <Story name="Inside a paragraph">
+    {() => {
+      return (
+        <p>
+          This is a longish paragraph. Even though it says nothing of value, it does contain a link
+          so that's exciting! Can you find{' '}
+          <TextLink href="https://ux.palmetto.com">the link</TextLink> that's in here?
+        </p>
+      );
+    }}
+  </Story>
+</Canvas>
+
+The font size is inherited by its parent.
+
+<Canvas>
+  <Story name="With inherited font-size">
+    {() => {
+      return (
+        <p className="font-size-sm">
+          The link component will inherit your container's font size so you can place it anywhere
+          and it should fit in just fine. Here is{' '}
+          <TextLink href="https://ux.palmetto.com">that link</TextLink> again but inheriting a small
+          font-size.
+        </p>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Color Variations
+
+Text link is available in the standard `primary` variant as well as `danger`. Pass the `variant` prop
+to render en either of these.
+
+<Canvas>
+  <Story name="Color variations">
+    {() => {
+      return (
+        <p>
+          We've got two variations if you want to communicate that a certain link may do something
+          harmful, use the{' '}
+          <TextLink href="https://ux.palmetto.com" variant="danger">
+            danger
+          </TextLink>{' '}
+          style. Otherwise go with the default{' '}
+          <TextLink href="https://ux.palmetto.com">primary</TextLink>.
+        </p>
+      );
+    }}
+  </Story>
+</Canvas>

@@ -8,6 +8,7 @@ import {
   CSSProperties,
   Children,
 } from 'react';
+import * as CSS from 'csstype';
 import classNames from 'classnames';
 import {
   BaseSpacing,
@@ -30,12 +31,15 @@ import {
   FontWeight,
   ResponsiveProp,
   SpacingSize,
+  KnownKeys,
 } from '../../types';
 import getDimensionCss from '../../lib/getDimensionCss';
 import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
 import getElementType from '../../lib/getElementType';
 import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import styles from './Box.module.scss';
 
+export type HoverableBoxProperties = 'color' | 'borderColor' | 'shadow' | 'background';
 export interface BoxProps {
   /**
    * The element type to be rendered.
@@ -58,12 +62,12 @@ export interface BoxProps {
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
    */
-  background?: BrandColor | ResponsiveProp<BrandColor>;
+  background?: BrandColor;
   /**
    * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
    * Or a responsive prop with BrandColor for each breakpoint.
    */
-  borderColor?: BrandColor | ResponsiveProp<BrandColor>;
+  borderColor?: BrandColor;
   /**
    * Width of the Box's border
    * Can be a single [border width token](/?path=/docs/design-tokens-border-width--page).
@@ -89,7 +93,11 @@ export interface BoxProps {
   /**
    * A color token identifier to use for the text color.
    */
-  color?: FontColor | ResponsiveProp<FontColor>;
+  color?: FontColor;
+  /**
+   * Cursor style. Use any standard CSS value.
+   */
+  cursor?: CSS.Property.Cursor;
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
    */
@@ -103,10 +111,24 @@ export interface BoxProps {
    */
   flex?: CssFlexValue | ResponsiveProp<CssFlexValue>;
   /**
+   * Pass style modifiers for focus states. The following properties can be modified on focus.
+   * `* background`
+   * `* borderColor`
+   * `* borderWidth`
+   * `* color`
+   * `* shadow`
+   */
+  focus?: {
+    background?: BoxProps['background'];
+    borderColor?: BoxProps['borderColor'];
+    borderWidth?: BoxProps['borderWidth'];
+    color?: BoxProps['color'];
+    shadow?: BoxProps['shadow'];
+  };
+  /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box's text
    */
   fontSize?: FontSize | ResponsiveProp<FontSize>;
-
   /**
    * The [font weight token](/?path=/story/design-tokens-font-weight--page) identifier for the Box's text
    */
@@ -116,6 +138,23 @@ export interface BoxProps {
    * or a [height token](/?path=/docs/design-tokens-height--page)
    */
   height?: DimensionSize | ResponsiveProp<DimensionSize> | string;
+  /**
+   * Pass style modifiers for hover states. The following properties can be modified on hover:
+   * `* background`
+   * `* borderColor`
+   * `* borderWidth`
+   * `* color`
+   * `* fontSize`
+   * `* shadow`
+   */
+  hover?: {
+    background?: BoxProps['background'];
+    borderColor?: BoxProps['borderColor'];
+    borderWidth?: BoxProps['borderWidth'];
+    color?: BoxProps['color'];
+    fontSize?: BoxProps['fontSize'];
+    shadow?: BoxProps['shadow'];
+  };
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
@@ -161,6 +200,10 @@ export interface BoxProps {
    */
   padding?: BaseSpacing | ResponsiveProp<BaseSpacing>;
   /**
+   * CSS position property.
+   */
+  position?: CSS.Property.Position | ResponsiveProp<CSS.Property.Position>;
+  /**
    * Set the radius of all corners
    */
   radius?: BorderRadiusSize | ResponsiveProp<BorderRadiusSize>;
@@ -196,7 +239,7 @@ export interface BoxProps {
  * A `<Box>` is a layout component to build UIs with consistent padding and spacing between
  * elements.
  */
-const Box: FC<BoxProps> = forwardRef((
+export const Box: FC<BoxProps> = forwardRef((
   {
     as = 'div',
     alignItems = undefined,
@@ -209,12 +252,15 @@ const Box: FC<BoxProps> = forwardRef((
     childGap = undefined,
     className = '',
     color = undefined,
+    cursor = undefined,
     display = 'flex',
     direction = 'column',
     flex = undefined,
     fontSize = 'inherit',
     fontWeight = undefined,
     height = undefined,
+    hover = undefined,
+    focus = undefined,
     justifyContent = undefined,
     margin = undefined,
     maxHeight = undefined,
@@ -223,6 +269,7 @@ const Box: FC<BoxProps> = forwardRef((
     minWidth = undefined,
     overflow = undefined,
     padding = undefined,
+    position = undefined,
     radius = undefined,
     shadow = undefined,
     style = {},
@@ -242,6 +289,32 @@ const Box: FC<BoxProps> = forwardRef((
 
   const isFlexBox = typeof display === 'string' && display.includes('flex');
   const flexDirectionClasses = isFlexBox ? generateResponsiveClasses('flex-direction', direction) : null;
+
+  const cssPropertyMap: {
+    [key: string]: {
+      classPrefix: string;
+      transformer: typeof generateResponsiveClasses | typeof cssShorthandToClasses;
+    };
+  } = {
+    color: { classPrefix: 'font-color', transformer: generateResponsiveClasses },
+    background: { classPrefix: 'background-color', transformer: generateResponsiveClasses },
+    borderColor: { classPrefix: 'border-color', transformer: generateResponsiveClasses },
+    borderWidth: { classPrefix: 'border-width', transformer: cssShorthandToClasses },
+    shadow: { classPrefix: 'shadow', transformer: generateResponsiveClasses },
+    fontSize: { classPrefix: 'font-size', transformer: generateResponsiveClasses },
+  };
+
+  const hoverClasses = hover
+    ? Object.entries(hover).map(([key, value]) => (
+      cssPropertyMap[key].transformer(`hover:${cssPropertyMap[key as keyof BoxProps['hover']].classPrefix}`, value)
+    ))
+    : undefined;
+
+  const focusClasses = focus
+    ? Object.entries(focus).map(([key, value]) => (
+      cssPropertyMap[key].transformer(`focus:${cssPropertyMap[key as keyof BoxProps['focus']].classPrefix}`, value)
+    ))
+    : undefined;
 
   const boxClasses = classNames(
     className,
@@ -264,15 +337,20 @@ const Box: FC<BoxProps> = forwardRef((
     generateResponsiveClasses('overflow', overflow),
     generateResponsiveClasses('shadow', shadow),
     generateResponsiveClasses('flex', flex),
-    generateResponsiveClasses('background-color', background),
     cssShorthandToClasses('border-width', borderWidth),
-    generateResponsiveClasses('border-color', borderColor),
-    generateResponsiveClasses('font-color', color),
     generateResponsiveClasses('font-weight', fontWeight),
     generateResponsiveClasses('text-align', textAlign),
+    generateResponsiveClasses('position', position),
+    ...(hoverClasses ?? []),
+    ...(focusClasses ?? []),
     {
       'flex-wrap': isFlexBox && wrap,
       'flex-nowrap': isFlexBox && wrap === false,
+      [`background-color-${background}`]: background,
+      [`font-color-${color}`]: color,
+      [`border-color-${borderColor}`]: borderColor,
+      [`cursor-${cursor}`]: cursor,
+      [styles['box-transition']]: hover || focus,
     },
   );
 
@@ -414,8 +492,43 @@ const Box: FC<BoxProps> = forwardRef((
       ref,
       ...restProps,
     },
-    decoratedChildren,
+    children ? decoratedChildren : null,
   );
 });
 
-export default Box;
+export const boxPropsKeys: (keyof Pick<BoxProps, KnownKeys<BoxProps>>)[] = [
+  'as',
+  'alignItems',
+  'alignContent',
+  'alignSelf',
+  'background',
+  'borderColor',
+  'borderWidth',
+  'className',
+  'childGap',
+  'children',
+  'color',
+  'cursor',
+  'direction',
+  'display',
+  'flex',
+  'focus',
+  'fontSize',
+  'fontWeight',
+  'height',
+  'hover',
+  'justifyContent',
+  'margin',
+  'maxHeight',
+  'minHeight',
+  'maxWidth',
+  'minWidth',
+  'overflow',
+  'padding',
+  'radius',
+  'shadow',
+  'style',
+  'textAlign',
+  'wrap',
+  'width',
+];

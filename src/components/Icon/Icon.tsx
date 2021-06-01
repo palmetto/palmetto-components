@@ -5,7 +5,7 @@ import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
 import {
   FontColor, FontSize, IconName, ResponsiveProp,
 } from '../../types';
-import Box from '../Box/Box';
+import { Box } from '../Box/Box';
 
 export interface IconProps {
   className?: string;
@@ -28,7 +28,7 @@ export interface IconProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
+export const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   ({
     className = undefined, name, color, size, ...restProps
   }, ref) => {
@@ -63,5 +63,3 @@ const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
     );
   },
 );
-
-export default Icon;

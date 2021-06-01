@@ -7,7 +7,7 @@ import {
   act,
 } from '@testing-library/react';
 import { Formik, Form, Field } from 'formik';
-import FormikRadioGroup from './FormikRadioGroup';
+import { FormikRadioGroup } from './FormikRadioGroup';
 
 const testGroupName = 'colors';
 

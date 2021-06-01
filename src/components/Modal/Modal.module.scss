@@ -79,7 +79,7 @@
     max-height: calc(100vh - 80px);
 
     :global {
-      animation: zoomIn 0.2s ease-out;
+      animation: fadeInUp 0.2s ease-out;
     }
   }
 
@@ -118,7 +118,7 @@
       max-height: calc(100vh - 80px);
 
       :global {
-        animation: zoomIn 0.2s ease-out;
+        animation: fadeInUp 0.2s ease-out;
       }
 
       @media(min-width: $size-breakpoint-desktop) {

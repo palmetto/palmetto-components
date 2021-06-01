@@ -1,0 +1,54 @@
+import { useState, useEffect } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ResponsiveProvider } from '../../components/ResponsiveProvider/ResponsiveProvider';
+import { useBreakpoint } from './useBreakpoint';
+
+<Meta
+  title="Hooks/useBreakpoint/Overview"
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# useBreakpoint
+
+The `useBreakpoint` returns useful states based on the window innerWidth and palmetto-component [breakpoints]().
+
+The hook will return a `BreakpointState` object with the following shape:
+
+```
+{
+  isPhone: boolean,
+  isTablet: boolean,
+  isDesktop: boolean,
+  isHd: boolean,
+  activeBreakpoint: { name: BreakpointName, minWidth: number },
+}
+```
+**NOTE:** This hook relies on `ResponsiveContext`, so your app must be wrapped in the [`ResponsiveProvider`]() to provide window size context to all children components.
+
+## Basic Usage
+
+<Canvas isExpanded>
+  <Story name="Basic Usage">
+    {() => {
+      const App = () => {
+        const { isPhone, isTablet, isDesktop, isHd } = useBreakpoint();
+        return (
+          <div>
+            {isPhone && <p>Phone layout</p>}
+            {isTablet && <p>Tablet layout</p>}
+            {isDesktop && <p>Desktop layout</p>}
+            {isHd && <p>HD layout</p>}
+          </div>
+        );
+      };     
+      return (
+        <ResponsiveProvider>
+          <App />
+        </ResponsiveProvider>
+      );
+    }}
+  </Story>
+</Canvas>

@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import CardHeader from './CardHeader';
+import { CardHeader } from './CardHeader';
 
 describe('Card/CardHeader', () => {
   test('correct padding classes are applied', () => {

@@ -10,7 +10,7 @@ export interface InputValidationMessageProps {
   size?: 'xs' | 'sm' | 'md';
 }
 
-const InputValidationMessage: FC<InputValidationMessageProps> = ({
+export const InputValidationMessage: FC<InputValidationMessageProps> = ({
   children,
   size = 'sm',
 }) => {
@@ -26,5 +26,3 @@ const InputValidationMessage: FC<InputValidationMessageProps> = ({
     </div>
   );
 };
-
-export default InputValidationMessage;

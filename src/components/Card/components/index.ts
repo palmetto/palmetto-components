@@ -1,9 +1,3 @@
-import CardFooter from './CardFooter/CardFooter';
-import CardHeader from './CardHeader/CardHeader';
-import CardSection from './CardSection/CardSection';
-
-export {
-  CardFooter,
-  CardHeader,
-  CardSection,
-};
+export * from './CardFooter/CardFooter';
+export * from './CardHeader/CardHeader';
+export * from './CardSection/CardSection';

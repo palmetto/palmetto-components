@@ -6,9 +6,9 @@ import React, {
   useEffect,
 } from 'react';
 import format from 'date-fns/format';
-import DatePicker, { DatePickerProps } from '../DatePicker/DatePicker';
-import TextInput, { TextInputBaseProps } from '../TextInput/TextInput';
-import Popover, { PopoverProps } from '../Popover/Popover';
+import { DatePicker, DatePickerProps } from '../DatePicker/DatePicker';
+import { TextInput, TextInputBaseProps } from '../TextInput/TextInput';
+import { Popover, PopoverProps } from '../Popover/Popover';
 
 export interface DateInputProps {
   datePickerProps: DatePickerProps;
@@ -42,7 +42,7 @@ const defaultTextInputProps: Omit<TextInputBaseProps, 'id'> = {
   label: 'Select Date',
 };
 
-const DateInput: FC<DateInputProps> = ({
+export const DateInput: FC<DateInputProps> = ({
   datePickerProps,
   textInputProps,
   dateFormat = 'MM/dd/yyyy',
@@ -131,6 +131,7 @@ const DateInput: FC<DateInputProps> = ({
       isOpen={isPopoverOpen}
       content={renderDatePicker()}
       withPortal
+      portalTarget={document.body}
       onClickOutside={() => handleTogglePopover(false)}
     >
       <TextInput
@@ -149,5 +150,3 @@ const DateInput: FC<DateInputProps> = ({
     </Popover>
   );
 };
-
-export default DateInput;

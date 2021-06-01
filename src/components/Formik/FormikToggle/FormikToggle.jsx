@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Toggle from '../../Toggle/Toggle';
+import { Toggle } from '../../Toggle/Toggle';
 
 const propTypes = {
   field: PropTypes.shape({
@@ -12,7 +12,7 @@ const propTypes = {
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-const FormikToggle = ({
+export const FormikToggle = ({
   field: {
     name,
     onBlur, // eslint-disable-line no-unused-vars
@@ -32,5 +32,3 @@ const FormikToggle = ({
 );
 
 FormikToggle.propTypes = propTypes;
-
-export default FormikToggle;

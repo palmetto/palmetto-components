@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
-import { BRAND_COLORS } from '../../lib/tokens';
+import { color } from '@palmetto/palmetto-design-tokens/build/json/variables-color.json';
 import styles from './Colors.module.scss';
 
 export default {
@@ -11,9 +11,13 @@ export default {
 
 const renderColorBlock = colorEntry => {
   const [colorName, colorVariations] = colorEntry;
+  console.log('colorName', colorName);
 
   return (
-    <div className={styles['color-block']} style={{ backgroundColor: `${colorVariations.base.value}` }}>
+    <div
+      className={`${styles['color-block']} ${['white', 'light', 'transparent'].includes(colorName) ? 'font-color-dark' : 'font-color-white'}`}
+      style={{ backgroundColor: `${colorVariations.base.value}` }}
+    >
       <h2>{colorName}</h2>
       <p>{colorVariations.base.value}</p>
     </div>
@@ -23,9 +27,24 @@ const renderColorBlock = colorEntry => {
 const renderColorPalette = (colorEntry, index) => {
   const [colorName, colorVariations] = colorEntry;
 
-  const getFontColor = colorVariation => (
-    colorVariation && colorVariation.attributes && colorVariation.attributes.font === 'base' ? 'black' : 'white'
-  );
+  const getFontColor = (colorVariation) => {
+    const variationsWithDarkFont = [
+      'white',
+      'light',
+      'lighter',
+      'lightest',
+      'transparent',
+      '50',
+      '100',
+      '200',
+    ];
+
+    if (variationsWithDarkFont.includes(colorVariation)) {
+      return 'dark';
+    }
+
+    return 'white';
+  };
 
   return (
     <div key={index}>
@@ -39,7 +58,7 @@ const renderColorPalette = (colorEntry, index) => {
             className={styles['palette-item']}
             style={{
               backgroundColor: `${colorVariation.value}`,
-              color: `${getFontColor(colorVariation)}`,
+              color: `${getFontColor(colorVariationName)}`,
             }}
           >
             <small style={{ display: 'block' }}>{colorVariationName}</small>
@@ -60,7 +79,7 @@ export const brand = () => (
         flexWrap: 'wrap',
       }}
     >
-      {Object.entries(BRAND_COLORS).map(renderColorBlock)}
+      {Object.entries(color.brand).map(renderColorBlock)}
     </div>
     <h1>Extended Brand Palette</h1>
     <div
@@ -69,7 +88,7 @@ export const brand = () => (
         flexWrap: 'wrap',
       }}
     >
-      {Object.entries(BRAND_COLORS).map(renderColorPalette)}
+      {Object.entries(color.brand).map(renderColorPalette)}
     </div>
   </>
 );

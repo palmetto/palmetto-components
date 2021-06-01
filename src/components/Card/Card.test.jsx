@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Card from './Card';
+import { Card } from './Card';
 
 describe('Card', () => {
   test('card has white background and sm shadow by default', () => {

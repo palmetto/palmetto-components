@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import DateInput from './DateInput';
-import Box from '../Box/Box';
-import Heading from '../Heading/Heading';
+import { DateInput } from './DateInput';
+import { Box } from '../Box/Box';
+import { Heading } from '../Heading/Heading';
 
 <Meta title="Components/DateInput/Overview" component={DateInput} />
 
@@ -32,8 +32,8 @@ For entering these types of dates we recommend using the `TextInput` component w
 
 The DateInput is composed of 3 components. Each can be tailored based on their props. They are:
 
-1. [DatePicker](?path=/docs/components-datepicker--default-story)
-2. [Popover](?path=/docs/components-popover--demo)
+1. [DatePicker](?path=/docs/components-datepicker-overview--basic-example)
+2. [Popover](?path=/docs/components-popover-overview--demo)
 3. [TextInput](?path=/docs/components-textinput-overview--default-story)
 
 The `DateInput` uses sensible defaults for these to allow for very straightforward ergonomics that allow users to
@@ -140,6 +140,7 @@ to generate a string based on these options.
 </Canvas>
 
 ## On using onBlur event with DateInput
+
 The input is technically blurred whenever the calendar popover is interacted but as far as the user
 is concerned they are still interacting with the DateInput. For this reason, the DateInput component has
 a top level `onBlur` prop (NOT passed via textInputProps) which will fire when the Popover (calendar)
@@ -172,7 +173,7 @@ If you require knowledge of all blur events on the input itself, you can still p
               id: 'withCustomDateFormat',
               name: 'selectDate',
               label: 'Select Date',
-              onBlur: handleTextInputBlur
+              onBlur: handleTextInputBlur,
             }}
             onBlur={handleDateInputBlur}
           />

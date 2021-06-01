@@ -13,15 +13,14 @@ import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import { ChangeEvent as CleaveChangeEvent } from 'cleave.js/react/props';
 import { UnknownPropertiesObjType } from '../../types';
-import * as InputMasks from './TextInputMasks';
-import Box from '../Box/Box';
-import Icon from '../Icon/Icon';
-import FormLabel from '../FormLabel/FormLabel';
-import InputValidationMessage from '../InputValidationMessage/InputValidationMessage';
+import * as InputMaskTypes from './TextInputMasks';
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
+import { FormControl } from '../FormControl/FormControl';
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextInput.module.scss';
 
-type inputMaskType = ('phone' | 'creditCard' | 'date') | UnknownPropertiesObjType;
+export type InputMaskType = ('phone' | 'creditCard' | 'date') | UnknownPropertiesObjType;
 
 export interface TextInputBaseProps {
   /**
@@ -58,7 +57,7 @@ export interface TextInputBaseProps {
    * Can be one of the existing present strings, or a custom object with options.
    * For options object formats See https://github.com/nosir/cleave.js.
    */
-  inputMask?: inputMaskType;
+  inputMask?: InputMaskType;
   /**
    * The input's disabled attribute
    */
@@ -125,7 +124,7 @@ export interface TextInputProps extends TextInputBaseProps {
   [x: string]: any; // eslint-disable-line
 }
 
-const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, TextInputProps>(
+export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, TextInputProps>(
   (
     {
       id,
@@ -134,7 +133,6 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
       value,
       autoComplete = false,
       autoFocus = false,
-      className = undefined,
       error = false,
       helpText,
       hideLabel = false,
@@ -155,9 +153,9 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
     },
     ref,
   ) => {
-    const getInputMask = (
-      mask: inputMaskType,
-      availableInputMasks: {
+    const getInputMaskType = (
+      mask: InputMaskType,
+      availableInputMaskTypes: {
         phone: {
           numericOnly: boolean;
           blocks: number[];
@@ -174,7 +172,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
       },
     ) => {
       if (typeof mask === 'string') {
-        return availableInputMasks[mask];
+        return availableInputMaskTypes[mask];
       }
 
       return mask;
@@ -228,21 +226,20 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
       placeholder,
       type,
       value,
-      ...restProps,
-    };
-
-    const labelProps = {
-      isFieldRequired: isRequired,
-      inputId: id,
-      hasError: !!error,
-      helpText,
-      className: styles['text-input-label'],
-      isDisabled,
     };
 
     return (
-      <Box width="100%" className={className} ref={ref}>
-        {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
+      <FormControl
+        helpText={helpText}
+        error={error}
+        label={label}
+        id={id}
+        isRequired={isRequired}
+        isDisabled={isDisabled}
+        hideLabel={hideLabel}
+        ref={ref}
+        {...restProps}
+      >
         <Box direction="row" className={inputWrapperClasses}>
           {prefix && (
             <Box color="grey-400" className="ws-nowrap">
@@ -252,7 +249,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
           {!inputMask ? (
             <input {...inputProps} />
           ) : (
-            <Cleave {...inputProps} options={getInputMask(inputMask, InputMasks)} />
+            <Cleave {...inputProps} options={getInputMaskType(inputMask, InputMaskTypes)} />
           )}
           {!!onClear && !!value && renderClearIcon()}
           {suffix && (
@@ -261,10 +258,7 @@ const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, T
             </Box>
           )}
         </Box>
-        {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
-      </Box>
+      </FormControl>
     );
   },
 );
-
-export default TextInput;

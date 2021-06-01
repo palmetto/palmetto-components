@@ -12,6 +12,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
       - name: Install dependencies
         run: yarn
       - name: Deploy to Chromatic

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Alert, { AlertProps } from './Alert';
+import { Alert, AlertProps } from './Alert';
 import { ALERT_VARIANTS } from './Alert.constants';
-import Box from '../Box/Box';
-import Heading from '../Heading/Heading';
+import { Box } from '../Box/Box';
+import { Heading } from '../Heading/Heading';
 
 export default {
   title: 'Components/Alert/Visual Regression Tests',

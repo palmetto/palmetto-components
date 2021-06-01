@@ -3,7 +3,7 @@ import {
   render,
   screen,
 } from '@testing-library/react';
-import TableBody from './TableBody';
+import { TableBody } from './TableBody';
 
 const columns = [
   { heading: 'ID', dataKey: 'id' },

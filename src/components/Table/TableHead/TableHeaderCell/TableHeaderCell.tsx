@@ -2,12 +2,12 @@ import React, {
   FC, Key, KeyboardEvent, MouseEvent, ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import Box from '../../../Box/Box';
-import Icon from '../../../Icon/Icon';
+import { Box } from '../../../Box/Box';
+import { Icon } from '../../../Icon/Icon';
 import { Column, EventWithColumnKey } from '../../../../types';
 import styles from './TableHeaderCell.module.scss';
 
-interface TableHeaderCellProps {
+export interface TableHeaderCellProps {
   /**
    * Title to display for the column.
    */
@@ -70,7 +70,8 @@ interface TableHeaderCellProps {
   width?: number;
 }
 
-const TableHeaderCell: FC<TableHeaderCellProps> = ({
+// eslint-disable-line import/prefer-default-export
+export const TableHeaderCell: FC<TableHeaderCellProps> = ({
   column,
   align = 'left',
   className = undefined,
@@ -171,5 +172,3 @@ const TableHeaderCell: FC<TableHeaderCellProps> = ({
     </th>
   );
 };
-
-export default TableHeaderCell;

@@ -4,7 +4,7 @@ import {
   fireEvent,
   screen,
 } from '@testing-library/react';
-import RadioGroup from './RadioGroup';
+import { RadioGroup } from './RadioGroup';
 
 const groupOptions = [{
   id: 'purple',

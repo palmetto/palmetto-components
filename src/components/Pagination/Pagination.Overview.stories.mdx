@@ -1,0 +1,75 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Pagination } from './Pagination';
+// import { Heading } from '../Heading/Heading';
+// import { Button } from '../Button/Button';
+
+<Meta title="Components/Pagination/Overview" component={Pagination} />
+
+# Pagination
+
+Use pagination to improve user scanning, as well as load times, for large collections or lists.
+
+## Props
+
+<ArgsTable of={Pagination} />
+
+## Default
+
+<Canvas>
+  <Story name="Default">
+    {() => {
+      const [activePage, setActivePage] = useState(1);
+      return (
+        <Pagination
+          activePage={activePage}
+          itemsPerPage={20}
+          onChange={setActivePage}
+          totalItemsCount={87}
+          numberOfPagesDisplayed={0}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Compact
+
+<Canvas>
+  <Story name="Compact">
+    {() => {
+      const [activePage, setActivePage] = useState(1);
+      return (
+        <Pagination
+          activePage={activePage}
+          itemsPerPage={20}
+          onChange={setActivePage}
+          totalItemsCount={100}
+          isCompact
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Interactive Page Numbers
+
+<Canvas>
+  <Story name="Page Numbers">
+    {() => {
+      const [activePage, setActivePage] = useState(1);
+      return (
+        <Pagination
+          activePage={activePage}
+          itemsPerPage={20}
+          onChange={setActivePage}
+          totalItemsCount={1000}
+          isCompact
+          arePagesVisible
+          numberOfPagesDisplayed={3}
+        />
+      );
+    }}
+  </Story>
+</Canvas>

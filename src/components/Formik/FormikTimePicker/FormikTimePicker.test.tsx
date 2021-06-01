@@ -7,8 +7,7 @@ import {
 } from '@testing-library/react';
 import selectEvent from 'react-select-event';
 import { Formik, Form, Field } from 'formik';
-import FormikTimePicker from './FormikTimePicker';
-import TimePicker from '../../TimePicker/TimePicker';
+import { FormikTimePicker } from './FormikTimePicker';
 
 const testLabelName = 'test select';
 
@@ -56,7 +55,7 @@ const renderForm = (
   </Formik>
 );
 
-describe('TimePicker', () => {
+describe('FormikTimePicker', () => {
   describe('States', () => {
     describe('Hidden label, with a placeholder', () => {
       test('it renders input without a visual label, and with a placeholder', () => {
@@ -181,17 +180,9 @@ describe('TimePicker', () => {
       test('it fires onChange callback on change', async () => {
         const mockedHandleChange = jest.fn();
 
-        const { getByLabelText } = render(
-          <TimePicker
-            id="testId"
-            onChange={mockedHandleChange}
-            placeholder="Test Placeholder"
-            label="onchange test"
-            value={undefined}
-          />,
-        );
+        const { getByLabelText } = render(renderForm(undefined, { onChange: mockedHandleChange }));
 
-        await selectEvent.select(getByLabelText('onchange test'), '12:00 AM');
+        await selectEvent.select(getByLabelText(testLabelName), '12:00 AM');
 
         expect(mockedHandleChange).toBeCalledTimes(1);
       });

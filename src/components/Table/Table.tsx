@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
 import { Column, Row, EventWithColumnKey } from '../../types';
-import Spinner from '../Spinner/Spinner';
+import { Spinner } from '../Spinner/Spinner';
 import styles from './Table.module.scss';
-import TableBody from './TableBody/TableBody';
-import TableHead from './TableHead/TableHead';
+import { TableBody } from './TableBody/TableBody';
+import { TableHead } from './TableHead/TableHead';
 
 export interface TableProps {
   /**
@@ -90,7 +90,7 @@ export interface TableProps {
   truncateOverflow?: boolean;
 }
 
-const Table: FC<TableProps> = ({
+export const Table: FC<TableProps> = ({
   columns,
   rows,
   rowKey,
@@ -172,5 +172,3 @@ const Table: FC<TableProps> = ({
     </div>
   );
 };
-
-export default Table;

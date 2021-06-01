@@ -7,8 +7,10 @@ import {
   FONT_SIZE_OPTIONS,
   BRAND_COLOR_OPTIONS,
   SPACING_OPTIONS,
+  BORDER_SIZE_OPTIONS,
+  BOX_SHADOW_OPTIONS,
 } from '../../lib/tokens';
-import Box from './Box';
+import { Box } from './Box';
 
 describe('Box', () => {
   test('aria-label is applied if set', () => {
@@ -128,6 +130,27 @@ describe('Box', () => {
     });
   });
 
+  describe('Position', () => {
+    const positions = [
+      'relative',
+      'absolute',
+      'fixed',
+      'sticky',
+      'static',
+      'revert',
+      'inherit',
+      'initial',
+      'unset',
+    ];
+
+    positions.forEach(p => {
+      test(`renders with class for position ${p}`, () => {
+        const { getByText } = render(<Box position={p}>my box</Box>);
+        expect(getByText('my box')).toHaveClass(`position-${p}`);
+      });
+    });
+  });
+
   describe('wrap', () => {
     test('box renders with wrap class if wrap is true', () => {
       const { getByText } = render(<Box wrap>Hello</Box>);
@@ -153,6 +176,13 @@ describe('Box', () => {
         desktop: 'lg',
         hd: 'xl',
       };
+
+      const position = {
+        base: 'sticky',
+        tablet: 'absolute',
+        desktop: 'relative',
+        hd: 'fixed',
+      };
       const { getByText } = render(
         <Box
           width={spacing}
@@ -162,6 +192,7 @@ describe('Box', () => {
           padding={spacing}
           margin={spacing}
           fontSize={spacing}
+          position={position}
         >
           my box
         </Box>,
@@ -197,6 +228,10 @@ describe('Box', () => {
         'font-size-md-tablet',
         'font-size-lg-desktop',
         'font-size-xl-hd',
+        'position-sticky',
+        'position-absolute-tablet',
+        'position-relative-desktop',
+        'position-fixed-hd',
       ]);
     });
 
@@ -242,4 +277,92 @@ describe('Box', () => {
       ]);
     });
   });
+
+  describe('Focus States', () => {
+    test('Background Hover -- box rendered with proper background hover classes', () => {
+      [...BRAND_COLOR_OPTIONS].forEach((brandColorOption, i) => {
+        const { queryAllByText } = render(<Box hover={{ background: brandColorOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`hover\:background-color-${brandColorOption}`);
+      });
+    });
+
+    test('Border Color Hover -- box rendered with proper border color hover classes', () => {
+      [...BRAND_COLOR_OPTIONS].forEach((brandColorOption, i) => {
+        const { queryAllByText } = render(<Box hover={{ borderColor: brandColorOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`hover\:border-color-${brandColorOption}`);
+      });
+    });
+
+    test('Border Width Hover -- box rendered with proper border width hover classes', () => {
+      [...BORDER_SIZE_OPTIONS].forEach((borderSizeOption, i) => {
+        const { queryAllByText } = render(<Box hover={{ borderWidth: borderSizeOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`hover\:border-width-${borderSizeOption}`);
+      });
+    });
+
+    test('Font Size Hover -- box rendered with proper font size hover classes', () => {
+      [...FONT_SIZE_OPTIONS].forEach((fontSizeOption, i) => {
+        const { queryAllByText } = render(<Box hover={{ fontSize: fontSizeOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`hover\:font-size-${fontSizeOption}`);
+      });
+    });
+
+    test('Font Color Hover -- box rendered with proper font color hover classes', () => {
+      [...FONT_COLOR_OPTIONS].forEach((fontColorOption, i) => {
+        const { queryAllByText } = render(<Box hover={{ color: fontColorOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`hover\:font-color-${fontColorOption}`);
+      });
+    });
+
+    test('Shadow Hover -- box rendered with proper font color hover classes', () => {
+      [...BOX_SHADOW_OPTIONS].forEach((boxShadowOption, i) => {
+        const { queryAllByText } = render(<Box hover={{ shadow: boxShadowOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`hover\:shadow-${boxShadowOption}`);
+      });
+    });
+  });
+
+  describe('Focus States', () => {
+    test('Background Focus -- box rendered with proper background focus classes', () => {
+      [...BRAND_COLOR_OPTIONS].forEach((brandColorOption, i) => {
+        const { queryAllByText } = render(<Box focus={{ background: brandColorOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`focus\:background-color-${brandColorOption}`);
+      });
+    });
+
+    test('Border Color Focus -- box rendered with proper border color focus classes', () => {
+      [...BRAND_COLOR_OPTIONS].forEach((brandColorOption, i) => {
+        const { queryAllByText } = render(<Box focus={{ borderColor: brandColorOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`focus\:border-color-${brandColorOption}`);
+      });
+    });
+
+    test('Border Width Focus -- box rendered with proper border width focus classes', () => {
+      [...BORDER_SIZE_OPTIONS].forEach((borderSizeOption, i) => {
+        const { queryAllByText } = render(<Box focus={{ borderWidth: borderSizeOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`focus\:border-width-${borderSizeOption}`);
+      });
+    });
+
+    test('Font Color Focus -- box rendered with proper font color focus classes', () => {
+      [...FONT_COLOR_OPTIONS].forEach((fontColorOption, i) => {
+        const { queryAllByText } = render(<Box focus={{ color: fontColorOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`focus\:font-color-${fontColorOption}`);
+      });
+    });
+
+    test('Shadow Focus -- box rendered with proper font color focus classes', () => {
+      [...BOX_SHADOW_OPTIONS].forEach((boxShadowOption, i) => {
+        const { queryAllByText } = render(<Box focus={{ shadow: boxShadowOption }} key={i}>Test Box</Box>);
+        expect(queryAllByText('Test Box')[i].classList).toContain(`focus\:shadow-${boxShadowOption}`);
+      });
+    });
+  });
+
+  describe('Cursor', () => {
+    test('Renders with proper cursor utility class when prop is passed', () => {
+      const { queryAllByText } = render(<Box cursor="pointer">Test Box</Box>);
+      expect(queryAllByText('Test Box')[0].classList).toContain('cursor-pointer');
+    });
+  })
 });

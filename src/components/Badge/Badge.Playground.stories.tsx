@@ -1,6 +1,11 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Badge, { BadgeProps, BADGE_COLOR_MAP, BADGE_SIZE_MAP } from './Badge';
+import {
+  Badge,
+  BadgeProps,
+  BADGE_COLOR_MAP,
+  BADGE_SIZE_MAP,
+} from './Badge';
 
 const badgeVariants = Object.keys(BADGE_COLOR_MAP);
 const badgeSizes = Object.keys(BADGE_SIZE_MAP);

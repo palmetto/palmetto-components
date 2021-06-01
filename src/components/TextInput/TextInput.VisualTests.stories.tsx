@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react';
-import TextInput from './TextInput';
-import Icon from '../Icon/Icon';
-import Box from '../Box/Box';
+import { TextInput } from './TextInput';
+import { Icon } from '../Icon/Icon';
+import { Box } from '../Box/Box';
 
 export default {
   title: 'Components/TextInput/Visual Regression Tests',

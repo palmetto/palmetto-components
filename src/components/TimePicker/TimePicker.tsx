@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import SelectInput, { BaseSelectInputProps } from '../SelectInput/SelectInput';
+import { SelectInput, BaseSelectInputProps } from '../SelectInput/SelectInput';
 
 export interface TimePickerProps extends BaseSelectInputProps {
   /**
@@ -28,7 +28,7 @@ export interface TimePickerProps extends BaseSelectInputProps {
   startTime?: { hour: number; minute: number; };
 }
 
-const TimePicker: FC<TimePickerProps> = ({
+export const TimePicker: FC<TimePickerProps> = ({
   id,
   name,
   label,
@@ -76,5 +76,3 @@ const TimePicker: FC<TimePickerProps> = ({
     />
   );
 };
-
-export default TimePicker;

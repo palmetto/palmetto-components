@@ -5,9 +5,9 @@ import {
   FormikValues,
   FieldAttributes,
 } from 'formik';
-import TextareaInput from '../../TextareaInput/TextareaInput';
+import { TextareaInput } from '../../TextareaInput/TextareaInput';
 
-interface FormikTextareaInputProps {
+export interface FormikTextareaInputProps {
   field: FieldAttributes<HTMLTextAreaElement>;
   form: {
     touched: FormikTouched<FormikValues>;
@@ -17,7 +17,7 @@ interface FormikTextareaInputProps {
   label: string;
 }
 
-const FormikTextareaInput: FC<FormikTextareaInputProps> = ({
+export const FormikTextareaInput: FC<FormikTextareaInputProps> = ({
   field: {
     name,
     onBlur,
@@ -40,5 +40,3 @@ const FormikTextareaInput: FC<FormikTextareaInputProps> = ({
     {...props}
   />
 );
-
-export default FormikTextareaInput;

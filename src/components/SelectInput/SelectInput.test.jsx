@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import selectEvent from 'react-select-event';
-import SelectInput from './SelectInput';
+import { SelectInput } from './SelectInput';
 
 const selectOptions = [
   { value: 'chocolate', label: 'Chocolate' },

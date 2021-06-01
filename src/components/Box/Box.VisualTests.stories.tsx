@@ -2,7 +2,7 @@
 /* eslint-disable no-else-return */
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Box, { BoxProps } from './Box';
+import { Box, BoxProps } from './Box';
 import {
   FONT_SIZE_OPTIONS,
   FONT_COLOR_OPTIONS,
@@ -11,7 +11,8 @@ import {
 } from '../../lib/tokens';
 import { BrandColor } from '../../types';
 import { RESPONSIVE_STORY } from '../../../.storybook/constants';
-import useBreakpoint from '../../hooks/useBreakpoint';
+import { ResponsiveProvider } from '../ResponsiveProvider/ResponsiveProvider';
+import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
 
 export default {
   title: 'Components/Box/Visual Regression Tests',
@@ -22,7 +23,13 @@ export const AllBackgroundColors: React.FunctionComponent<BoxProps> = () => (
   <Box flex="auto" direction="row" fontSize="sm">
     {BRAND_COLOR_NAMES.map((color, index) => {
       if (color.includes('inherit')) return null;
-      else if (color === 'dark' || color === 'light' || color === 'black' || color === 'white') {
+      else if (
+        color === 'dark'
+        || color === 'light'
+        || color === 'black'
+        || color === 'white'
+        || color === 'transparent'
+      ) {
         return (
           <Box flex="auto" padding="xs" background={color} key={`${color}-${index}`}>
             {`${color}`}
@@ -72,7 +79,13 @@ export const AllBorderColors: React.FunctionComponent<BoxProps> = () => (
   <Box flex="auto" direction="row" fontSize="sm">
     {BRAND_COLOR_NAMES.map((color, index) => {
       if (color.includes('inherit')) return null;
-      else if (color === 'dark' || color === 'light' || color === 'black' || color === 'white') {
+      else if (
+        color === 'dark'
+        || color === 'light'
+        || color === 'black'
+        || color === 'white'
+        || color === 'transparent'
+      ) {
         return (
           <Box borderColor={color} borderWidth="sm" padding="xs" key={`${color}-${index}`}>
             {`${color}`}
@@ -297,29 +310,23 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
 );
 
 const BoxTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
-  const activeBreakpoint = useBreakpoint();
-  return (
-    <Box padding="lg" background="grey-50">
-      <Box {...args}>
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+  const Component = () => {
+    const { activeBreakpoint } = useBreakpoint();
+    return (
+      <Box padding="lg" background="grey-50">
+        <Box {...args}>
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
       </Box>
-    </Box>
+    );
+  };
+  return (
+    <ResponsiveProvider>
+      <Component />
+    </ResponsiveProvider>
   );
 };
-
-export const ResponsiveBackground = BoxTemplate.bind({});
-ResponsiveBackground.args = {
-  propertyName: 'background',
-  background: {
-    base: 'primary-lighter',
-    tablet: 'warning-lighter',
-    desktop: 'danger-lighter',
-    hd: 'secondary-lighter',
-  },
-  padding: 'sm',
-};
-ResponsiveBackground.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveFontSize = BoxTemplate.bind({});
 ResponsiveFontSize.args = {
@@ -333,19 +340,6 @@ ResponsiveFontSize.args = {
   padding: 'sm',
 };
 ResponsiveFontSize.parameters = RESPONSIVE_STORY;
-
-export const ResponsiveFontColor = BoxTemplate.bind({});
-ResponsiveFontColor.args = {
-  propertyName: 'color',
-  color: {
-    base: 'primary',
-    tablet: 'warning',
-    desktop: 'danger',
-    hd: 'secondary',
-  },
-  padding: 'sm',
-};
-ResponsiveFontColor.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveRadius = BoxTemplate.bind({});
 ResponsiveRadius.args = {
@@ -387,20 +381,6 @@ ResponsiveTextAlign.args = {
   background: 'info-100',
 };
 ResponsiveTextAlign.parameters = RESPONSIVE_STORY;
-
-export const ResponsiveBorderColor = BoxTemplate.bind({});
-ResponsiveBorderColor.args = {
-  propertyName: 'borderColor',
-  borderWidth: 'sm',
-  borderColor: {
-    base: 'primary',
-    tablet: 'warning',
-    desktop: 'danger',
-    hd: 'secondary',
-  },
-  padding: 'sm',
-};
-ResponsiveBorderColor.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveBorderWidth = BoxTemplate.bind({});
 ResponsiveBorderWidth.args = {
@@ -540,43 +520,51 @@ ResponsivePadding.args = {
 ResponsivePadding.parameters = RESPONSIVE_STORY;
 
 const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
-  const activeBreakpoint = useBreakpoint();
+  const Template: React.FC<Record<string, unknown>> = () => {
+    const { activeBreakpoint } = useBreakpoint();
+    return (
+      <Box background="grey-50" padding="lg" {...args}>
+        <Box
+          flex="auto"
+          radius="md"
+          background="info-100"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
+        <Box
+          flex="auto"
+          radius="md"
+          background="info-100"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
+        <Box
+          flex="auto"
+          radius="md"
+          background="info-100"
+          height="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
+          <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
+        </Box>
+      </Box>
+    );
+  };
+
   return (
-    <Box background="grey-50" padding="lg" {...args}>
-      <Box
-        flex="auto"
-        radius="md"
-        background="info-100"
-        height="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-      </Box>
-      <Box
-        flex="auto"
-        radius="md"
-        background="info-100"
-        height="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-      </Box>
-      <Box
-        flex="auto"
-        radius="md"
-        background="info-100"
-        height="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
-        <p>{`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}</p>
-      </Box>
-    </Box>
+    <ResponsiveProvider>
+      <Template />
+    </ResponsiveProvider>
   );
 };
 
@@ -604,3 +592,172 @@ ResponsiveChildGap.args = {
   },
 };
 ResponsiveChildGap.parameters = RESPONSIVE_STORY;
+
+export const AllCursorOptions: React.FunctionComponent<BoxProps> = () => (
+  <Box
+    padding="md"
+    childGap="md"
+    flex="auto"
+    background="primary-lighter"
+    overflow="auto"
+  >
+    <Box cursor="auto" padding="md" background="primary-light">
+      auto
+    </Box>
+    <Box cursor="default" padding="md" background="primary-light">
+      default
+    </Box>
+    <Box cursor="none" padding="md" background="primary-light">
+      none
+    </Box>
+    <Box cursor="context-menu" padding="md" background="primary-light">
+      context-menu
+    </Box>
+    <Box cursor="help" padding="md" background="primary-light">
+      help
+    </Box>
+    <Box cursor="pointer" padding="md" background="primary-light">
+      pointer
+    </Box>
+    <Box cursor="progress" padding="md" background="primary-light">
+      progress
+    </Box>
+    <Box cursor="wait" padding="md" background="primary-light">
+      wait
+    </Box>
+    <Box cursor="cell" padding="md" background="primary-light">
+      cell
+    </Box>
+    <Box cursor="crosshair" padding="md" background="primary-light">
+      crosshair
+    </Box>
+    <Box cursor="text" padding="md" background="primary-light">
+      text
+    </Box>
+    <Box cursor="vertical-text" padding="md" background="primary-light">
+      vertical-text
+    </Box>
+    <Box cursor="alias" padding="md" background="primary-light">
+      alias
+    </Box>
+    <Box cursor="copy" padding="md" background="primary-light">
+      copy
+    </Box>
+    <Box cursor="move" padding="md" background="primary-light">
+      move
+    </Box>
+    <Box cursor="no-drop" padding="md" background="primary-light">
+      no-drop
+    </Box>
+    <Box cursor="not-allowed" padding="md" background="primary-light">
+      not-allowed
+    </Box>
+    <Box cursor="grab" padding="md" background="primary-light">
+      grab
+    </Box>
+    <Box cursor="grabbing" padding="md" background="primary-light">
+      grabbing
+    </Box>
+    <Box cursor="all-scroll" padding="md" background="primary-light">
+      all-scroll
+    </Box>
+    <Box cursor="col-resize" padding="md" background="primary-light">
+      col-resize
+    </Box>
+    <Box cursor="row-resize" padding="md" background="primary-light">
+      row-resize
+    </Box>
+    <Box cursor="n-resize" padding="md" background="primary-light">
+      n-resize
+    </Box>
+    <Box cursor="e-resize" padding="md" background="primary-light">
+      e-resize
+    </Box>
+    <Box cursor="s-resize" padding="md" background="primary-light">
+      s-resize
+    </Box>
+    <Box cursor="w-resize" padding="md" background="primary-light">
+      w-resize
+    </Box>
+    <Box cursor="ne-resize" padding="md" background="primary-light">
+      ne-resize
+    </Box>
+    <Box cursor="nw-resize" padding="md" background="primary-light">
+      nw-resize
+    </Box>
+    <Box cursor="se-resize" padding="md" background="primary-light">
+      se-resize
+    </Box>
+    <Box cursor="sw-resize" padding="md" background="primary-light">
+      sw-resize
+    </Box>
+    <Box cursor="ew-resize" padding="md" background="primary-light">
+      ew-resize
+    </Box>
+    <Box cursor="ns-resize" padding="md" background="primary-light">
+      ns-resize
+    </Box>
+    <Box cursor="nesw-resize" padding="md" background="primary-light">
+      nesw-resize
+    </Box>
+    <Box cursor="nwse-resize" padding="md" background="primary-light">
+      nwse-resize
+    </Box>
+    <Box cursor="zoom-in" padding="md" background="primary-light">
+      zoom-in
+    </Box>
+    <Box cursor="zoom-out" padding="md" background="primary-light">
+      zoom-out
+    </Box>
+  </Box>
+);
+
+export const AllPositionOptions: React.FunctionComponent<BoxProps> = () => (
+  <Box
+    padding="md"
+    childGap="md"
+    flex="auto"
+    background="primary-lighter"
+    overflow="auto"
+  >
+    <Box position="absolute" padding="md" background="primary-light">
+      absolute
+    </Box>
+    <Box position="relative" padding="md" background="primary-light">
+      relative
+    </Box>
+    <Box position="sticky" padding="md" background="primary-light">
+      sticky
+    </Box>
+    <Box position="fixed" padding="md" background="primary-light">
+      fixed
+    </Box>
+    <Box position="static" padding="md" background="primary-light">
+      static
+    </Box>
+    <Box position="unset" padding="md" background="primary-light">
+      unset
+    </Box>
+    <Box position="initial" padding="md" background="primary-light">
+      initial
+    </Box>
+    <Box position="inherit" padding="md" background="primary-light">
+      inherit
+    </Box>
+    <Box position="revert" padding="md" background="primary-light">
+      revert
+    </Box>
+  </Box>
+);
+
+export const ResponsivePosition = BoxChildrenTemplate.bind({});
+ResponsivePosition.args = {
+  propertyName: 'position',
+  position: {
+    base: 'sticky',
+    tablet: 'static',
+    desktop: 'absolute',
+    hd: 'relative',
+  },
+};
+ResponsivePosition.parameters = RESPONSIVE_STORY;
