@@ -63,10 +63,6 @@ export interface TabsSliderProps extends BoxProps {
    * NOTE: This prop is locked to a value of 'auto' and will not be passed down to the underlying Box.
    */
   overflow?: BoxProps['overflow'];
-  /**
-   * NOTE: This prop is locked to a value of 'nav' and will not be passed down to the underlying Box.
-   */
-  as?: BoxProps['as'];
 }
 
 export class TabsSlider extends React.Component<TabsSliderProps> {
@@ -74,6 +70,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
 
   static defaultProps = { // eslint-disable-line react/static-property-placement
     size: 'md',
+    as: 'nav',
   }
 
   state = { // eslint-disable-line react/state-in-constructor
@@ -198,6 +195,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
 
   render(): React.ReactNode {
     const {
+      as,
       className,
       children,
       onChange,
@@ -256,7 +254,7 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
       <Box
         {...restProps}
         className={containerClasses}
-        as="nav"
+        as={as}
         overflow="auto"
         background="grey-100"
         radius="md"

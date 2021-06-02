@@ -14,6 +14,10 @@ The TabsSlider component is a linear set of two or more segments, each of which 
 
 Limit the number of items to improve usability. Wider segments are easier to tap. On phones, the number of items should be limited to four or fewer segments.
 
+**IMPORTANT**: This component uses DOM refs in order to calculate the width of the selected tab indicator. If you are rendering this inside an element with transitions
+that affect width, then it may not correctly size the selected indicator initially. In such cases you can wait until the parent element's
+transition is complete with `onTransitionEnd` or `onAnimationEnd` before rendering the `TabsSlider`.
+
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
