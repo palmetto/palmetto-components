@@ -580,7 +580,6 @@ ResponsiveDirection.args = {
 };
 ResponsiveDirection.parameters = RESPONSIVE_STORY;
 
-
 export const ResponsiveChildGap = BoxChildrenTemplate.bind({});
 ResponsiveChildGap.args = {
   propertyName: 'childGap',
