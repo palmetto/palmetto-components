@@ -178,7 +178,7 @@ Set direction of child elements in a flex container.
 
 <Canvas>
   <Story name="Flex Direction">
-    <Box margin="0 0 md 0">
+    <Box margin="0 0 md 0" fontWeight="bold">
       Row
     </Box>
     <Box childGap="md" padding="sm" direction="row">
@@ -188,7 +188,7 @@ Set direction of child elements in a flex container.
       <Box flex="auto" background="primary-light" padding="sm">4</Box>
       <Box flex="auto" background="primary-light" padding="sm">5</Box>
     </Box>
-    <Box margin="lg 0 md 0">
+    <Box margin="lg 0 md 0" fontWeight="bold">
       Column
     </Box>
     <Box childGap="md" padding="sm" direction="column">
@@ -198,25 +198,53 @@ Set direction of child elements in a flex container.
       <Box width="20%" background="primary-light" padding="sm">4</Box>
       <Box width="20%" background="primary-light" padding="sm">5</Box>
     </Box>
-    <Box margin="lg 0 md 0">
+    <Box margin="lg 0 lg 0">
+      <Box fontWeight="bold" margin="0 0 xs 0" as="p">IMPORTANT:</Box>
+      when using the reverse CSS flex direction, the childGap ceases to work correctly,
+      since it is meant to automatically add margin classes to all children elements except the last one,
+      which in this case is reversed, via CSS only, the node order remains intact.
+    </Box>
+    <Box><Box fontWeight="bold" as="span" margin="0 0 xs 0">INCORRECT</Box> usage with childGap prop</Box>
+    <Box margin="lg 0 md 0" fontWeight="bold">
       Row Reverse
     </Box>
     <Box childGap="md" padding="sm" direction="row-reverse">
-      <Box width="20%" background="primary-light" padding="sm">1</Box>
-      <Box width="20%" background="primary-light" padding="sm">2</Box>
-      <Box width="20%" background="primary-light" padding="sm">3</Box>
-      <Box width="20%" background="primary-light" padding="sm">4</Box>
-      <Box width="20%" background="primary-light" padding="sm">5</Box>
+      <Box width="20%" background="danger-light" padding="sm">1</Box>
+      <Box width="20%" background="danger-light" padding="sm">2</Box>
+      <Box width="20%" background="danger-light" padding="sm">3</Box>
+      <Box width="20%" background="danger-light" padding="sm">4</Box>
+      <Box width="20%" background="danger-light" padding="sm">5</Box>
     </Box>
-    <Box margin="lg 0 md 0">
+    <Box margin="lg 0 md 0" fontWeight="bold">
       Column Reverse
     </Box>
     <Box childGap="md" padding="sm" direction="column-reverse">
+      <Box width="20%" background="danger-light" padding="sm">1</Box>
+      <Box width="20%" background="danger-light" padding="sm">2</Box>
+      <Box width="20%" background="danger-light" padding="sm">3</Box>
+      <Box width="20%" background="danger-light" padding="sm">4</Box>
+      <Box width="20%" background="danger-light" padding="sm">5</Box>
+    </Box>
+    <Box><Box fontWeight="bold" as="span" margin="0 0 xs 0">CORRECT</Box> usage with individual margins</Box>
+    <Box margin="lg 0 md 0" fontWeight="bold">
+      Row Reverse
+    </Box>
+    <Box padding="sm" direction="row-reverse">
       <Box width="20%" background="primary-light" padding="sm">1</Box>
-      <Box width="20%" background="primary-light" padding="sm">2</Box>
-      <Box width="20%" background="primary-light" padding="sm">3</Box>
-      <Box width="20%" background="primary-light" padding="sm">4</Box>
-      <Box width="20%" background="primary-light" padding="sm">5</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">2</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">3</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">4</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">5</Box>
+    </Box>
+    <Box margin="lg 0 md 0" fontWeight="bold">
+      Column Reverse
+    </Box>
+    <Box padding="sm" direction="column-reverse">
+      <Box width="20%" background="primary-light" padding="sm">1</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">2</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">3</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">4</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">5</Box>
     </Box>
   </Story>
 </Canvas>

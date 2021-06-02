@@ -84,6 +84,7 @@ export interface BoxProps {
   /**
    * The amount of spacing between child elements.
    * Can be a single [spacing value](/?path=/docs/design-tokens-spacing--page).
+   * NOTE: this prop is incompatible with reverse flex direction values (row-reverse, column-reverse).
    */
   childGap?: SpacingSize | ResponsiveProp<SpacingSize>;
   /**
@@ -100,6 +101,7 @@ export interface BoxProps {
   cursor?: CSS.Property.Cursor;
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
+   * NOTE: reverse directions are incompatible with the `childGap` prop.
    */
   direction?: CssFlexDirectionValue | ResponsiveProp<CssFlexDirectionValue>;
   /**
