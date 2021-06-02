@@ -5,8 +5,10 @@ import React, {
 } from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
-import { ModalFooter, ModalHeader, ModalBody } from './components';
 import { CssOverflowValue } from '../../types';
+import getDimensionCss from '../../lib/getDimensionCss';
+import { Box, BoxProps } from '../Box/Box';
+import { ModalFooter, ModalHeader, ModalBody } from './components';
 import styles from './Modal.module.scss';
 
 export interface ModalProps {
@@ -49,6 +51,10 @@ export interface ModalProps {
    */
   isOpen: boolean;
   /**
+   * Max width for modal content. Uses the same maxWidth prop as the `Box` component, and as such can be responsive as well.
+   */
+  maxWidth: BoxProps['maxWidth'];
+  /**
    * Function that is called whenever the user hits "Esacape" key or clicks outside the modal.
    */
   onDismiss: (event?: React.SyntheticEvent) => void;
@@ -82,18 +88,26 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
     fullScreenMobile = false,
     initialFocusRef,
     isOpen,
+    maxWidth,
     onDismiss,
     overflow = 'hidden',
     ...restProps
   },
   ref,
 ) => {
+  const maxWidthCss = getDimensionCss('mw', maxWidth);
+
   const overylayClassnames = classNames(styles.overlay, {
     fullscreen: fullScreenMobile,
   });
-  const contentClassnames = classNames(styles['modal-content'], className, {
-    [`overflow-${overflow}`]: overflow,
-  });
+  const contentClassnames = classNames(
+    styles['modal-content'],
+    className,
+    maxWidthCss.classes,
+    {
+      [`overflow-${overflow}`]: overflow,
+    },
+  );
 
   return (
     <DialogOverlay
@@ -105,15 +119,16 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
       ref={ref}
       {...restProps}
     >
-      <div className={styles.container}>
+      <Box className={styles.container}>
         <DialogContent
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
           className={contentClassnames}
+          style={{ ...maxWidthCss.styles }}
         >
           {children}
         </DialogContent>
-      </div>
+      </Box>
     </DialogOverlay>
   );
 });

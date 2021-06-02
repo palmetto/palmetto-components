@@ -175,3 +175,47 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
     }}
   </Story>
 </Canvas>
+
+## Max Width
+
+Use the `maxWidth` prop for modals that have minimal content or form fields that may not look right at a larger width.
+As with the `Box` component, this can be set to a specific pixel value, or any of the existing width tokens. For responsive
+maxWidth, use existing tokens only.
+
+<Canvas>
+  <Story name="Max Width">
+    {() => {
+      const [showModal, setShowModal] = React.useState(false);
+      const [showResponsiveModal, setShowResponsiveModal] = React.useState(false);
+      return (
+        <>
+          <div className="m-bottom-md">
+            <Button variant="light" onClick={() => setShowModal(true)}>
+              Show Modal
+            </Button>
+            <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={() => setShowModal(false)} maxWidth="4xl">
+              <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={() => setShowModal(false)} />
+              <Modal.Body>Modal body content</Modal.Body>
+              <Modal.Footer>This is content in the modal footer</Modal.Footer>
+            </Modal>
+          </div>
+          <div>
+            <Button variant="light" onClick={() => setShowResponsiveModal(true)}>
+              This one has responsive max width
+            </Button>
+            <Modal
+              ariaLabelledBy="titleFooterBody"
+              isOpen={showResponsiveModal}
+              onDismiss={() => setShowResponsiveModal(false)}
+              maxWidth={{ tablet: '3xl', desktop: '4xl', hd: '5xl' }}
+            >
+              <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={() => setShowResponsiveModal(false)} />
+              <Modal.Body>Modal body content</Modal.Body>
+              <Modal.Footer>This is content in the modal footer</Modal.Footer>
+            </Modal>
+          </div>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
