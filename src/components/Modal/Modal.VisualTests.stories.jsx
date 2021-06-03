@@ -8,7 +8,11 @@ export default {
   parameters: {
     chromatic: { delay: 1000, pauseAnimationAtEnd: true, viewports: [320, 700, 1012, 1300] },
   },
-  decorators: [storyFn => <div style={{ width: '1200px', height: '800px' }}>{storyFn()}</div>],
+  decorators: [storyFn => <div
+    style={{
+      width: '1200px',
+      height: '800px'
+    }}>{storyFn()}</div>],
 };
 
 export const BasicExample = () => (

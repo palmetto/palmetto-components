@@ -5,16 +5,18 @@ import {
   FieldAttributes,
   FormikValues,
 } from 'formik';
-import { TextInput } from '../../TextInput/TextInput';
+import { TextInput, TextInputBaseProps } from '../../TextInput/TextInput';
 
-export interface FormikTextInputProps {
+export interface FormikTextInputProps extends TextInputBaseProps {
   field: FieldAttributes<HTMLTextAreaElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  id: string;
-  label: string;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const FormikTextInput: React.FC<FormikTextInputProps> = (

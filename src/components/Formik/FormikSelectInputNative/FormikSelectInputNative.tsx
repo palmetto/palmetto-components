@@ -8,7 +8,6 @@ import {
 import {
   SelectInputNative,
   SelectInputNativeBaseProps,
-  SelectInputNativeProps,
 } from '../../SelectInputNative/SelectInputNative';
 
 export interface FormikSelectInputNativeProps extends SelectInputNativeBaseProps {
@@ -17,10 +16,10 @@ export interface FormikSelectInputNativeProps extends SelectInputNativeBaseProps
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  id: string;
-  label: string;
-  onChange?: SelectInputNativeProps['onChange'];
-  options: SelectInputNativeProps['options'];
+  /**
+   * Additional props to be spread.
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const FormikSelectInputNative: React.FC<FormikSelectInputNativeProps> = (
@@ -32,6 +31,7 @@ export const FormikSelectInputNative: React.FC<FormikSelectInputNativeProps> = (
       value,
     },
     form: { touched, errors },
+    options,
     ...props
   },
 ) => (
@@ -41,6 +41,7 @@ export const FormikSelectInputNative: React.FC<FormikSelectInputNativeProps> = (
     value={value}
     error={touched[name] && errors[name]}
     onChange={onChange}
+    options={options}
     {...props}
   />
 );

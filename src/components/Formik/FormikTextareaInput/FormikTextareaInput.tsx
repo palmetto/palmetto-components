@@ -5,16 +5,18 @@ import {
   FormikValues,
   FieldAttributes,
 } from 'formik';
-import { TextareaInput } from '../../TextareaInput/TextareaInput';
+import { TextareaInput, TextareaInputBaseProps } from '../../TextareaInput/TextareaInput';
 
-export interface FormikTextareaInputProps {
+export interface FormikTextareaInputProps extends TextareaInputBaseProps {
   field: FieldAttributes<HTMLTextAreaElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  id: string;
-  label: string;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const FormikTextareaInput: FC<FormikTextareaInputProps> = ({

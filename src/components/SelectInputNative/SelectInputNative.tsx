@@ -32,6 +32,10 @@ export interface SelectInputNativeProps extends SelectInputNativeBaseProps {
    * onChange callback from select element.
    */
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  /**
+   * Additional props to be spread.
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const SelectInputNative: React.FC<SelectInputNativeProps> = ({

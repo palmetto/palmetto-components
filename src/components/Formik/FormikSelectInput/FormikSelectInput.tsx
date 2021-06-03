@@ -5,17 +5,19 @@ import {
   FieldAttributes,
   FormikValues,
 } from 'formik';
-import { SelectInput, SelectInputOptions } from '../../SelectInput/SelectInput';
+import { SelectInput, SelectInputOptions, SelectInputBaseProps } from '../../SelectInput/SelectInput';
 
-export interface FormikSelectInputProps {
+export interface FormikSelectInputProps extends SelectInputBaseProps {
   field: FieldAttributes<HTMLTextAreaElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  id: string;
-  label: string;
   options: SelectInputOptions;
+  /**
+   * Additional props to be spread.
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const FormikSelectInput: React.FC<FormikSelectInputProps> = (

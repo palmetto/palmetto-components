@@ -7,15 +7,11 @@ import { InputValidationMessage } from '../InputValidationMessage/InputValidatio
 import RadioInput from './RadioInput/RadioInput';
 import styles from './RadioGroup.module.scss';
 
-export interface RadioGroupProps {
+export interface RadioGroupBaseProps {
   /**
    * Radio group name.
    */
   name: string;
-  /**
-   * Callback function to call on change event.
-   */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   /**
    * Options for radio group.
    */
@@ -62,10 +58,21 @@ export interface RadioGroupProps {
    * Title to be displayed above the RadioGroup.
    */
   title?: ReactNode;
+}
+
+export interface RadioGroupProps extends RadioGroupBaseProps {
+  /**
+   * Callback function to call on change event.
+   */
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   /**
    * The value of selected radio input.
    */
   value?: string;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const RadioGroup: FC<RadioGroupProps> = ({
@@ -82,6 +89,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   onFocus = undefined,
   title = undefined,
   value = undefined,
+  ...restProps
 }) => {
   const groupClasses = classNames(className, {
     [styles.loading]: error,
@@ -92,7 +100,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   });
 
   return (
-    <div className={classNames(styles['radio-group'], groupClasses)}>
+    <div className={classNames(styles['radio-group'], groupClasses)} {...restProps}>
       <fieldset className={styles.fieldset}>
         {(title || description) && (
           <legend className={legendClasses}>

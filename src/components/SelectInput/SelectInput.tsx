@@ -18,7 +18,7 @@ import { InputValidationMessage } from '../InputValidationMessage/InputValidatio
 import styles from './SelectInput.module.scss';
 
 export type SelectInputOptions = GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
-export interface BaseSelectInputProps {
+export interface SelectInputBaseProps {
   /**
    * The id attribute of the input.
    */
@@ -27,14 +27,6 @@ export interface BaseSelectInputProps {
    * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
    */
   label: string;
-  /**
-   * Callback function to call on change event.
-   */
-  onChange: (event: SimulatedEventPayloadType) => void;
-  /**
-   * The value(s) of select.
-   */
-  value: any | any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   /**
    * Autofocus select input on render.
    */
@@ -104,11 +96,19 @@ export interface BaseSelectInputProps {
    */
   [x: string]: any; // eslint-disable-line
 }
-export interface SelectInputProps extends BaseSelectInputProps {
+export interface SelectInputProps extends SelectInputBaseProps {
   /**
    * Options for dropdown list.
    */
   options: SelectInputOptions;
+  /**
+   * Callback function to call on change event.
+   */
+  onChange: (event: SimulatedEventPayloadType) => void;
+  /**
+  * The value(s) of select.
+  */
+  value: any | any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export const SelectInput: FC<SelectInputProps> = ({

@@ -5,16 +5,14 @@ import {
   FieldAttributes,
   FormikValues,
 } from 'formik';
-import { CheckboxInput } from '../../CheckboxInput/CheckboxInput';
+import { CheckboxInput, CheckboxInputBaseProps } from '../../CheckboxInput/CheckboxInput';
 
-export interface FormikCheckboxInputProps {
+export interface FormikCheckboxInputProps extends CheckboxInputBaseProps {
   field: FieldAttributes<HTMLTextAreaElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  id: string;
-  label: string;
 }
 
 export const FormikCheckboxInput: React.FC<FormikCheckboxInputProps> = (
