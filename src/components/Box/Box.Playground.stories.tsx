@@ -52,7 +52,7 @@ export default {
     direction: {
       control: {
         type: 'select',
-        options: [null, 'column', 'row'],
+        options: [null, 'column', 'row', 'row-reverse', 'column-reverse'],
       },
     },
     alignContent: {
