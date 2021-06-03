@@ -8,7 +8,7 @@ import { InputValidationMessage } from '../InputValidationMessage/InputValidatio
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextareaInput.module.scss';
 
-export interface TextareaInputBaseProps extends Omit<BoxProps, 'as' | 'width'> {
+export interface TextareaInputProps extends Omit<BoxProps, 'as' | 'width'> {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -17,6 +17,14 @@ export interface TextareaInputBaseProps extends Omit<BoxProps, 'as' | 'width'> {
    * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
    */
   label: string;
+  /**
+   * Callback function to call on change event.
+   */
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  /**
+   * The text value of the input. Required since our Input is a controlled component.
+   */
+  value: string;
   /**
    * The input's 'autocomplete' attribute.
    */
@@ -79,17 +87,6 @@ export interface TextareaInputBaseProps extends Omit<BoxProps, 'as' | 'width'> {
    * number of visible text lines for the control.
    */
   rows?: number;
-}
-
-export interface TextareaInputProps extends TextareaInputBaseProps {
-  /**
-   * Callback function to call on change event.
-   */
-  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  /**
-  * The text value of the input. Required since our Input is a controlled component.
-  */
-  value: string;
   /**
    * Additional props to be spread to rendered element
    */

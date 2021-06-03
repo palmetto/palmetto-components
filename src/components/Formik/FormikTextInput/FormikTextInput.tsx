@@ -5,10 +5,10 @@ import {
   FieldAttributes,
   FormikValues,
 } from 'formik';
-import { TextInput, TextInputBaseProps } from '../../TextInput/TextInput';
+import { TextInput, TextInputProps } from '../../TextInput/TextInput';
 
-export interface FormikTextInputProps extends TextInputBaseProps {
-  field: FieldAttributes<HTMLTextAreaElement>;
+export interface FormikTextInputProps extends TextInputProps {
+  field: FieldAttributes<HTMLInputElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
@@ -32,11 +32,11 @@ export const FormikTextInput: React.FC<FormikTextInputProps> = (
   },
 ) => (
   <TextInput
+    {...props}
     name={name}
     onBlur={onBlur}
     onChange={onChange}
     value={value}
     error={touched[name] && errors[name]}
-    {...props}
   />
 );

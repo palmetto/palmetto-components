@@ -4,15 +4,23 @@ import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
 import { Checkbox, CheckboxSize } from './components/Checkbox';
 
-export interface CheckboxInputBaseProps {
+export interface CheckboxInputProps {
   /**
    * The id attribute of the input.
    */
   id: string;
   /**
+   * The checkbox input "checked" attribute.
+   */
+  isChecked: boolean;
+  /**
    * Custom content to be displayed to right of checkbox.
    */
   label: string;
+  /**
+   * Callback function when input is changed.
+   */
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /**
    * Additional classes to add.
    */
@@ -51,17 +59,6 @@ export interface CheckboxInputBaseProps {
    * The size of the checkbox.
    */
   size?: CheckboxSize;
-}
-
-export interface CheckboxInputProps extends CheckboxInputBaseProps {
-  /**
-   * The checkbox input "checked" attribute.
-   */
-  isChecked: boolean;
-  /**
-   * Callback function when input is changed.
-   */
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /**
    * Additional props to be spread to rendered element
    */

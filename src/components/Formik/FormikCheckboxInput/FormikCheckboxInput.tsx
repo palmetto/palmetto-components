@@ -5,10 +5,10 @@ import {
   FieldAttributes,
   FormikValues,
 } from 'formik';
-import { CheckboxInput, CheckboxInputBaseProps } from '../../CheckboxInput/CheckboxInput';
+import { CheckboxInput, CheckboxInputProps } from '../../CheckboxInput/CheckboxInput';
 
-export interface FormikCheckboxInputProps extends CheckboxInputBaseProps {
-  field: FieldAttributes<HTMLTextAreaElement>;
+export interface FormikCheckboxInputProps extends CheckboxInputProps {
+  field: FieldAttributes<HTMLInputElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
@@ -28,10 +28,10 @@ export const FormikCheckboxInput: React.FC<FormikCheckboxInputProps> = (
   },
 ) => (
   <CheckboxInput
+    {...props}
     error={touched[name] && errors[name]}
     isChecked={value}
     onBlur={onBlur}
     onChange={onChange} // eslint-disable-line
-    {...props}
   />
 );

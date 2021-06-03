@@ -7,11 +7,11 @@ import {
 } from 'formik';
 import {
   SelectInputNative,
-  SelectInputNativeBaseProps,
+  SelectInputNativeProps,
 } from '../../SelectInputNative/SelectInputNative';
 
-export interface FormikSelectInputNativeProps extends SelectInputNativeBaseProps {
-  field: FieldAttributes<HTMLTextAreaElement>;
+export interface FormikSelectInputNativeProps extends SelectInputNativeProps {
+  field: FieldAttributes<HTMLSelectElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
@@ -31,17 +31,15 @@ export const FormikSelectInputNative: React.FC<FormikSelectInputNativeProps> = (
       value,
     },
     form: { touched, errors },
-    options,
     ...props
   },
 ) => (
   <SelectInputNative
+    {...props}
     name={name}
     onBlur={onBlur}
     value={value}
     error={touched[name] && errors[name]}
     onChange={onChange}
-    options={options}
-    {...props}
   />
 );
