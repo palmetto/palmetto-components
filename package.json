@@ -50,7 +50,7 @@
     "lint-js:fix": "cross-env EXTEND_ESLINT=true eslint . --fix",
     "lint-styles": "stylelint '**/*.{css,scss,sass}'",
     "lint-styles:fix": "stylelint '**/*.{css,scss,sass}' --fix",
-    "prepublishOnly": "tsdx build",
+    "prepublishOnly": "yarn build",
     "semantic-release": "semantic-release",
     "generate-readme-toc": "yarn doctoc docs/CONTRIBUTING.md",
     "test:watch": "cross-env BABEL_ENV=test jest --watch --verbose",
