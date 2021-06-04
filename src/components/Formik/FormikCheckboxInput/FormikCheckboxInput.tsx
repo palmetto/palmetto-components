@@ -38,6 +38,6 @@ export const FormikCheckboxInput: React.FC<FormikCheckboxInputProps> = (
     error={touched[name] && errors[name]}
     isChecked={value}
     onBlur={onBlur}
-    onChange={onChange ? onChange : formikOnChange} // eslint-disable-line
+    onChange={onChange ?? formikOnChange} // eslint-disable-line
   />
 );

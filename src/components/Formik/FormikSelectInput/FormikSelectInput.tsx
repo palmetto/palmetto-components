@@ -39,7 +39,7 @@ export const FormikSelectInput: React.FC<FormikSelectInputProps> = (
     options={options}
     name={name}
     onBlur={onBlur}
-    onChange={onChange ? onChange : formikOnChange}
+    onChange={onChange ?? formikOnChange}
     value={value}
     error={touched[name] && errors[name]}
   />
