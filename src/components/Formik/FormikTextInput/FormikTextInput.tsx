@@ -1,22 +1,22 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   FormikTouched,
   FormikErrors,
-  FormikValues,
   FieldAttributes,
+  FormikValues,
 } from 'formik';
-import { TimePickerNative, TimePickerNativeProps } from '../../TimePickerNative/TimePickerNative';
+import { TextInput, TextInputProps } from '../../TextInput/TextInput';
 
-export interface FormikTimePickerNativeProps extends Omit<TimePickerNativeProps, 'onChange'> {
-  field: FieldAttributes<HTMLTextAreaElement>;
+export interface FormikTextInputProps extends Omit<TextInputProps, 'onChange'> {
+  field: FieldAttributes<HTMLInputElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  onChange: TimePickerNativeProps['onChange'];
+  onChange?: TextInputProps['onChange'];
 }
 
-export const FormikTimePickerNative: FC<FormikTimePickerNativeProps> = (
+export const FormikTextInput: React.FC<FormikTextInputProps> = (
   {
     field: {
       name,
@@ -26,11 +26,15 @@ export const FormikTimePickerNative: FC<FormikTimePickerNativeProps> = (
     },
     form: { touched, errors },
     onChange,
+    id,
+    label,
     ...props
   },
 ) => (
-  <TimePickerNative
+  <TextInput
     {...props}
+    id={id}
+    label={label}
     name={name}
     onBlur={onBlur}
     onChange={onChange ?? formikOnChange}

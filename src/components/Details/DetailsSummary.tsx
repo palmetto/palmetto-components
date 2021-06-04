@@ -1,5 +1,5 @@
 import React, { MouseEvent, KeyboardEvent } from 'react';
-import * as KEYS from '../../constants/keyCodes';
+import { ENTER, SPACE } from '../../constants/keyCodes';
 import { Box, BoxProps } from '../Box/Box';
 
 export interface DetailsSummaryProps extends BoxProps {
@@ -22,7 +22,7 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if ([KEYS.ENTER, KEYS.SPACE].indexOf(event.keyCode) !== -1) {
+    if ([ENTER, SPACE].indexOf(event.keyCode) !== -1) {
       event.preventDefault();
       if (!onToggle) return;
 

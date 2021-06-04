@@ -35,7 +35,10 @@ module.exports = {
       ...config,
       module: {
         ...config.module,
-        rules: [...config.module.rules, ...webpackConfig.module.rules],
+        rules: [
+          ...config.module.rules,
+          ...webpackConfig.module.rules,
+        ],
       },
     };
   },

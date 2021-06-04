@@ -50,7 +50,7 @@ const renderForm = (initialValue, props) => (
   </Formik>
 );
 
-describe('SelectInput', () => {
+describe('FormikSelectInput', () => {
   describe('States', () => {
     describe('Hidden label, with a placeholder', () => {
       test('it renders input without a visual label, and with a placeholder', () => {
