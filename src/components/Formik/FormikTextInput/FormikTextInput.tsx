@@ -7,16 +7,13 @@ import {
 } from 'formik';
 import { TextInput, TextInputProps } from '../../TextInput/TextInput';
 
-export interface FormikTextInputProps extends TextInputProps {
+export interface FormikTextInputProps extends Omit<TextInputProps, 'onChange'> {
   field: FieldAttributes<HTMLInputElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  /**
-   * Additional props to be spread to rendered element
-   */
-  [x: string]: any; // eslint-disable-line
+  onChange?: TextInputProps['onChange'];
 }
 
 export const FormikTextInput: React.FC<FormikTextInputProps> = (
@@ -24,18 +21,23 @@ export const FormikTextInput: React.FC<FormikTextInputProps> = (
     field: {
       name,
       onBlur,
-      onChange,
+      onChange: formikOnChange,
       value,
     },
     form: { touched, errors },
+    onChange,
+    id,
+    label,
     ...props
   },
 ) => (
   <TextInput
     {...props}
+    id={id}
+    label={label}
     name={name}
     onBlur={onBlur}
-    onChange={onChange}
+    onChange={onChange ? onChange : formikOnChange}
     value={value}
     error={touched[name] && errors[name]}
   />

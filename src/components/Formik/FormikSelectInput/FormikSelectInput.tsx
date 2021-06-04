@@ -5,15 +5,15 @@ import {
   FieldAttributes,
   FormikValues,
 } from 'formik';
-import { SelectInput, SelectInputOptions, SelectInputProps } from '../../SelectInput/SelectInput';
+import { SelectInput, SelectInputProps } from '../../SelectInput/SelectInput';
 
-export interface FormikSelectInputProps extends SelectInputProps {
+export interface FormikSelectInputProps extends Omit<SelectInputProps, 'onChange'> {
   field: FieldAttributes<HTMLSelectElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  options: SelectInputOptions;
+  onChange?: SelectInputProps['onChange'];
 }
 
 export const FormikSelectInput: React.FC<FormikSelectInputProps> = (
@@ -21,18 +21,25 @@ export const FormikSelectInput: React.FC<FormikSelectInputProps> = (
     field: {
       name,
       onBlur,
-      onChange,
+      onChange: formikOnChange,
       value,
     },
     form: { touched, errors },
+    onChange,
+    id,
+    label,
+    options,
     ...props
   },
 ) => (
   <SelectInput
     {...props}
+    id={id}
+    label={label}
+    options={options}
     name={name}
     onBlur={onBlur}
-    onChange={onChange}
+    onChange={onChange ? onChange : formikOnChange}
     value={value}
     error={touched[name] && errors[name]}
   />

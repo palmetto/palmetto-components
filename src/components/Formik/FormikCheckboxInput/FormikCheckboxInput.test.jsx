@@ -43,7 +43,7 @@ const renderForm = (initialValue, props) => (
   </Formik>
 );
 
-describe('CheckboxInput', () => {
+describe('FormikCheckboxInput', () => {
   describe('States', () => {
     describe('With default props', () => {
       test('renders not disabled, checked, or invalid by default', () => {
