@@ -53,7 +53,7 @@ export interface ModalProps {
   /**
    * Max width for modal content. Uses the same maxWidth prop as the `Box` component, and as such can be responsive as well.
    */
-  maxWidth: BoxProps['maxWidth'];
+  maxWidth?: BoxProps['maxWidth'];
   /**
    * Function that is called whenever the user hits "Esacape" key or clicks outside the modal.
    */
@@ -88,7 +88,7 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
     fullScreenMobile = false,
     initialFocusRef,
     isOpen,
-    maxWidth,
+    maxWidth = undefined,
     onDismiss,
     overflow = 'hidden',
     ...restProps
