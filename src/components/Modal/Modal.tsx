@@ -51,7 +51,8 @@ export interface ModalProps {
    */
   isOpen: boolean;
   /**
-   * Max width for modal content. Uses the same maxWidth prop as the `Box` component, and as such can be responsive as well.
+   * Max width for modal content. Uses the same maxWidth prop as the `Box` component,
+   * and as such can be responsive as well.
    */
   maxWidth?: BoxProps['maxWidth'];
   /**
