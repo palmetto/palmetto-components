@@ -52,7 +52,7 @@ export interface ButtonProps {
    */
   isDisabled?: boolean;
   /**
-   * Renders a loading spinner on the button.
+   * Replaces the button text with a loading indicator and disables the button.
    */
   isLoading?: boolean;
   /**
