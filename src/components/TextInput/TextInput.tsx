@@ -259,6 +259,8 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
           {!inputMask ? (
             <input {...computedInputProps} />
           ) : (
+            // eslint-disable-next-line
+            // @ts-ignore
             <Cleave {...computedInputProps} options={getInputMaskType(inputMask, InputMaskTypes)} />
           )}
           {!!onClear && !!value && renderClearIcon()}
