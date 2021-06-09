@@ -7,6 +7,7 @@ import React, {
   FocusEvent,
   ReactNode,
   Component,
+  HTMLProps,
   InputHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
@@ -58,6 +59,10 @@ export interface TextInputBaseProps {
    * For options object formats See https://github.com/nosir/cleave.js.
    */
   inputMask?: InputMaskType;
+  /**
+   * Props passed directly to the input element of the component
+   */
+  inputProps?: HTMLProps<HTMLInputElement>;
   /**
    * The input's disabled attribute
    */
@@ -137,6 +142,7 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       helpText,
       hideLabel = false,
       inputMask = undefined,
+      inputProps = {},
       isDisabled = false,
       isRequired = false,
       maxLength = undefined,
@@ -204,18 +210,14 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       );
     };
 
-    const inputProps = {
+    const computedInputProps = {
+      ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
       'aria-required': isRequired,
       'aria-invalid': !!error,
       'aria-label': label,
       'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
       autoComplete: getAutoCompleteValue(autoComplete),
       autoFocus,
-      className: classNames({
-        'p-left-xs': prefix,
-        'p-right-xs': suffix,
-        'p-h-0': !suffix && !prefix,
-      }),
       disabled: isDisabled,
       id,
       maxLength,
@@ -226,6 +228,14 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       placeholder,
       type,
       value,
+      className: classNames(
+        inputProps.className,
+        {
+          'p-left-xs': prefix,
+          'p-right-xs': suffix,
+          'p-h-0': !suffix && !prefix,
+        },
+      ),
     };
 
     return (
@@ -247,9 +257,11 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
             </Box>
           )}
           {!inputMask ? (
-            <input {...inputProps} />
+            <input {...computedInputProps} />
           ) : (
-            <Cleave {...inputProps} options={getInputMaskType(inputMask, InputMaskTypes)} />
+            // eslint-disable-next-line
+            // @ts-ignore
+            <Cleave {...computedInputProps} options={getInputMaskType(inputMask, InputMaskTypes)} />
           )}
           {!!onClear && !!value && renderClearIcon()}
           {suffix && (
