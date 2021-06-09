@@ -27,7 +27,7 @@ export interface ButtonProps {
    */
   className?: string;
   /**
-   * Make button take full width of container.
+   * Button takes up the full width of its parent container.
    */
   fullWidth?: boolean;
   /**
@@ -52,7 +52,7 @@ export interface ButtonProps {
    */
   isDisabled?: boolean;
   /**
-   * Button takes up the full width of its parent container.
+   * Renders a loading spinner on the button.
    */
   isLoading?: boolean;
   /**
