@@ -83,7 +83,6 @@ export class Tabs extends React.Component<TabsProps> {
         {...restProps}
       >
         <Box
-          as="ul"
           direction="row"
           role="tablist"
           /**

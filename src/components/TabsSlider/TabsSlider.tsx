@@ -261,7 +261,6 @@ export class TabsSlider extends React.Component<TabsSliderProps> {
         ref={mergeRefs([this.tabsRef, ref])}
       >
         <Box
-          as="ul"
           direction="row"
           role="tablist"
           style={{ paddingInlineStart: '0' }}
