@@ -7,7 +7,7 @@ const propTypes = {
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }).isRequired,
   form: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
