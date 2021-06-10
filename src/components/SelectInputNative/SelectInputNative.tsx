@@ -8,7 +8,7 @@ export interface SelectInputNativeBaseProps extends BoxProps, FormControlProps {
   /**
    * Value of selected option. Should match the value key in the option object.
    */
-  value: string | null;
+  value: string | number | null;
   /**
    * onChange callback from select element.
    */
