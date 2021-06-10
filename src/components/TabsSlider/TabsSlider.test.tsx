@@ -15,12 +15,12 @@ describe('TabsSlider', () => {
 
       const navElement = screen.getByRole('navigation');
       const tabListElement = screen.getByRole('tablist');
-      const tab = screen.getByText('tab 1').closest('li');
+      const tab = screen.getByText('tab 1').closest('div');
 
       expect(navElement).toBeInTheDocument();
       expect(tabListElement).toBeInTheDocument();
       expect(tab).toBeInTheDocument();
-      expect(tab).toHaveAttribute('role', 'presentation');
+      expect(tab).toHaveAttribute('role', 'tab');
     });
   });
 
@@ -37,8 +37,8 @@ describe('TabsSlider', () => {
         </TabsSlider>,
       );
 
-      const tabOne = screen.getByText('tab 1').closest('li');
-      const tabTwo = screen.getByText('tab 2').closest('li');
+      const tabOne = screen.getByText('tab 1').closest('div');
+      const tabTwo = screen.getByText('tab 2').closest('div');
 
       expect(tabOne).toHaveClass('tab-item--selected');
       expect(tabTwo).not.toHaveClass('tab-item--selected');
@@ -54,8 +54,8 @@ describe('TabsSlider', () => {
         </TabsSlider>,
       );
 
-      const tabThree = screen.getByText('tab 3').closest('li');
-      const tabFour = screen.getByText('tab 4').closest('li');
+      const tabThree = screen.getByText('tab 3').closest('div');
+      const tabFour = screen.getByText('tab 4').closest('div');
 
       expect(tabThree).not.toHaveClass('tab-item--selected');
       expect(tabFour).toHaveClass('tab-item--selected');
