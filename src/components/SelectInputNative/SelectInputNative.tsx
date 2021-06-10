@@ -99,6 +99,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
               value={option.value}
               disabled={option.value === ''}
               hidden={option.value === ''}
+              color={option.value === '' ? 'grey-light' : 'dark'}
             >
               {option.label}
             </Box>
