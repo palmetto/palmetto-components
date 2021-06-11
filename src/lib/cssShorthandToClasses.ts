@@ -22,6 +22,17 @@ function generateBaseClasses(
   if (typeof value !== 'string') return [];
 
   const trimmedValue = value.trim();
+
+  if (trimmedValue !== value) {
+    console.warn(`
+      Palmetto Components: It seems you\'ve passed an incorrect
+      shorthand value as a prop in your component. The value
+      has extra whitespace either at the beginning or the end of it.
+      We have trimmed this whitespace, but please double-check that
+      the prop value is correct.
+    `);
+  }
+
   const classes: string[] = [];
 
   const shorthand: { [key: number]: string[]; } = attribute === 'br' ? {
@@ -35,27 +46,38 @@ function generateBaseClasses(
     3: ['top', 'h', 'bottom'],
     4: ['top', 'right', 'bottom', 'left'],
   };
-
-  if (attribute === 'br' && trimmedValue.includes(' ') && trimmedValue.split(' ').length > 1) {
-    const corners = trimmedValue.split(' ');
-
-    corners.forEach((v, index) => {
-      classes.push(`${attribute}-${shorthand[corners.length][index]}-${v}`);
-
-      if (corners.length === 3 && index === 1) {
-        classes.push(`${attribute}-bottom-left-${corners[index]}`);
-      } else if (corners.length === 2 && index === 0) {
-        classes.push(`${attribute}-bottom-right-${corners[index]}`);
-      } else if (corners.length === 2 && index === 1) {
-        classes.push(`${attribute}-bottom-left-${corners[index]}`);
-      }
-    });
-  } else if (trimmedValue.includes(' ') && trimmedValue.split(' ').length > 1) {
+  if (trimmedValue.includes(' ') && trimmedValue.split(' ').length > 1) {
     const sides = trimmedValue.split(' ');
+  
+      if (sides.length > 4) {
+        console.warn(`
+          Palmetto Components: It seems you\'ve passed an incorrect
+          shorthand value as a prop in your component. The value
+          has more than four string components. While it will not break anything,
+          please double-check your prop values to ensure the expected result is correct.
+        `);
+      }
+  
+    const trimmedSides = sides.slice(0, 4);
 
-    sides.forEach((v, index) => {
-      classes.push(`${attribute}-${shorthand[sides.length][index]}-${v}`);
-    });
+    // br = border radius -- the corner logic is different than sides.
+    if (attribute === 'br') {  
+      trimmedSides.forEach((v, index) => {
+        classes.push(`${attribute}-${shorthand[trimmedSides.length][index]}-${v}`);
+  
+        if (trimmedSides.length === 3 && index === 1) {
+          classes.push(`${attribute}-bottom-left-${trimmedSides[index]}`);
+        } else if (trimmedSides.length === 2 && index === 0) {
+          classes.push(`${attribute}-bottom-right-${trimmedSides[index]}`);
+        } else if (trimmedSides.length === 2 && index === 1) {
+          classes.push(`${attribute}-bottom-left-${trimmedSides[index]}`);
+        }
+      });
+    } else {
+      trimmedSides.forEach((v, index) => {
+        classes.push(`${attribute}-${shorthand[trimmedSides.length][index]}-${v}`);
+      });
+    }
   } else {
     classes.push(`${attribute}-${trimmedValue}`);
   }
