@@ -82,7 +82,6 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef((
       {...restProps}
     >
       <Box
-        as="ul"
         direction="row"
         role="tablist"
         /**

@@ -207,5 +207,41 @@ describe('DateInput', () => {
       const popover = screen.queryByRole('dialog');
       expect(popover).toBeNull();
     });
+
+    it('fires onBlur callback even when the input label is hidden', async () => {
+      const onBlur = jest.fn(() => null);
+      const date = new Date(1995, 11, 14);
+
+      const { container } = render(
+        <DateInput
+          dateFormat="yyyy/MM/dd"
+          textInputProps={{
+            id: 'myInput',
+            label: 'Select Date',
+            hideLabel: true,
+          }}
+          datePickerProps={{
+            openToDate: date,
+            selected: date,
+            onChange: () => null,
+          }}
+          onBlur={onBlur}
+        />,
+      );
+
+      const input = screen.getByLabelText('Select Date');
+      fireEvent.click(input);
+
+      const popoverContainer = screen.getByRole('dialog');
+      await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
+      const dateButton = screen.getByText('14');
+      fireEvent.click(dateButton);
+      expect(onBlur).not.toHaveBeenCalled();
+
+      fireEvent.click(container);
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      const popover = screen.queryByRole('dialog');
+      expect(popover).toBeNull();
+    });
   });
 });

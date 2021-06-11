@@ -574,10 +574,9 @@ ResponsiveDirection.args = {
   direction: {
     base: 'column',
     tablet: 'row',
-    desktop: 'column',
-    hd: 'row',
+    desktop: 'column-reverse',
+    hd: 'row-reverse',
   },
-  childGap: 'lg',
 };
 ResponsiveDirection.parameters = RESPONSIVE_STORY;
 

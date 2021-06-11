@@ -10,13 +10,13 @@ export interface SelectInputNativeProps extends BoxProps, FormControlProps {
    */
   options: { value: string | number; label: string | number; }[];
   /**
-  * onChange callback from select element.
-  */
+   * onChange callback from select element.
+   */
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   /**
    * Value of selected option. Should match the value key in the option object.
    */
-  value: string | null;
+  value: string | number | null;
   /**
    * The input's 'name' attribute.
    */
@@ -100,6 +100,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
               value={option.value}
               disabled={option.value === ''}
               hidden={option.value === ''}
+              color={option.value === '' ? 'grey-light' : 'dark'}
             >
               {option.label}
             </Box>

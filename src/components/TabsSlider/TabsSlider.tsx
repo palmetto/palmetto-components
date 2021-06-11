@@ -226,7 +226,6 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
       ref={mergeRefs([tabsRef, ref])}
     >
       <Box
-        as="ul"
         direction="row"
         role="tablist"
         style={{ paddingInlineStart: '0' }}

@@ -115,6 +115,9 @@ The most common use case is to set children of a `<Box />` to `flex="auto"`.
 The item is sized according to its width and height properties, but grows to absorb any extra free space in the parent, and shrinks to its minimum size to fit the container.
 This is equivalent to setting "flex: 1 1 auto".
 
+If you need more granular flex control for properties such as `flex-grow`, `flex-shrink`, `flex-basis`, we recommend
+passing using a standard `style` object with the `flex` shorthand you need.
+
 <Canvas>
   <Story name="Flex Auto">
     <Box childGap="md">
@@ -169,8 +172,82 @@ This is equivalent to setting "flex: 1 1 auto".
   </Story>
 </Canvas>
 
-If you need more granular flex control for properties such as `flex-grow`, `flex-shrink`, `flex-basis`, we recommend
-passing using a standard `style` object with the `flex` shorthand you need.
+### Flex Direction
+
+Set direction of child elements in a flex container.
+
+<Canvas>
+  <Story name="Flex Direction">
+    <Box margin="0 0 md 0" fontWeight="bold">
+      Row
+    </Box>
+    <Box childGap="md" padding="sm" direction="row">
+      <Box flex="auto" background="primary-light" padding="sm">1</Box>
+      <Box flex="auto" background="primary-light" padding="sm">2</Box>
+      <Box flex="auto" background="primary-light" padding="sm">3</Box>
+      <Box flex="auto" background="primary-light" padding="sm">4</Box>
+      <Box flex="auto" background="primary-light" padding="sm">5</Box>
+    </Box>
+    <Box margin="lg 0 md 0" fontWeight="bold">
+      Column
+    </Box>
+    <Box childGap="md" padding="sm" direction="column">
+      <Box width="20%" background="primary-light" padding="sm">1</Box>
+      <Box width="20%" background="primary-light" padding="sm">2</Box>
+      <Box width="20%" background="primary-light" padding="sm">3</Box>
+      <Box width="20%" background="primary-light" padding="sm">4</Box>
+      <Box width="20%" background="primary-light" padding="sm">5</Box>
+    </Box>
+    <Box margin="lg 0 lg 0">
+      <Box fontWeight="bold" margin="0 0 xs 0" as="p">IMPORTANT:</Box>
+      when using the reverse CSS flex direction, the childGap ceases to work correctly,
+      since it is meant to automatically add margin classes to all children elements except the last one,
+      which in this case is reversed, via CSS only, the node order remains intact.
+    </Box>
+    <Box><Box fontWeight="bold" as="span" margin="0 0 xs 0">INCORRECT</Box> usage with childGap prop</Box>
+    <Box margin="lg 0 md 0" fontWeight="bold">
+      Row Reverse
+    </Box>
+    <Box childGap="md" padding="sm" direction="row-reverse">
+      <Box width="20%" background="danger-light" padding="sm">1</Box>
+      <Box width="20%" background="danger-light" padding="sm">2</Box>
+      <Box width="20%" background="danger-light" padding="sm">3</Box>
+      <Box width="20%" background="danger-light" padding="sm">4</Box>
+      <Box width="20%" background="danger-light" padding="sm">5</Box>
+    </Box>
+    <Box margin="lg 0 md 0" fontWeight="bold">
+      Column Reverse
+    </Box>
+    <Box childGap="md" padding="sm" direction="column-reverse">
+      <Box width="20%" background="danger-light" padding="sm">1</Box>
+      <Box width="20%" background="danger-light" padding="sm">2</Box>
+      <Box width="20%" background="danger-light" padding="sm">3</Box>
+      <Box width="20%" background="danger-light" padding="sm">4</Box>
+      <Box width="20%" background="danger-light" padding="sm">5</Box>
+    </Box>
+    <Box><Box fontWeight="bold" as="span" margin="0 0 xs 0">CORRECT</Box> usage with individual margins</Box>
+    <Box margin="lg 0 md 0" fontWeight="bold">
+      Row Reverse
+    </Box>
+    <Box padding="sm" direction="row-reverse">
+      <Box width="20%" background="primary-light" padding="sm">1</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">2</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">3</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">4</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">5</Box>
+    </Box>
+    <Box margin="lg 0 md 0" fontWeight="bold">
+      Column Reverse
+    </Box>
+    <Box padding="sm" direction="column-reverse">
+      <Box width="20%" background="primary-light" padding="sm">1</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">2</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">3</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">4</Box>
+      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">5</Box>
+    </Box>
+  </Story>
+</Canvas>
 
 <Canvas>
   <Story name="Flex Grow and Shrink">
