@@ -5,38 +5,38 @@ import {
   FormikValues,
   FieldAttributes,
 } from 'formik';
-import { TextareaInput, TextareaInputProps } from '../../TextareaInput/TextareaInput';
+import { TextareaInput } from '../../TextareaInput/TextareaInput';
 
-export interface FormikTextareaInputProps extends Omit<TextareaInputProps, 'onChange'> {
+export interface FormikTextareaInputProps {
   field: FieldAttributes<HTMLTextAreaElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  onChange?: TextareaInputProps['onChange'];
+  id: string;
+  label: string;
 }
 
 export const FormikTextareaInput: FC<FormikTextareaInputProps> = ({
   field: {
     name,
     onBlur,
-    onChange: formikOnChange,
+    onChange,
     value,
   },
   form: { touched, errors },
-  onChange,
   id,
   label,
   ...props
 }) => (
   <TextareaInput
-    {...props}
-    id={id}
-    label={label}
     name={name}
     onBlur={onBlur}
-    onChange={onChange ?? formikOnChange}
+    onChange={onChange}
     value={value}
     error={touched[name] && errors[name]}
+    id={id}
+    label={label}
+    {...props}
   />
 );

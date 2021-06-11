@@ -4,19 +4,15 @@ import { Box, BoxProps } from '../Box/Box';
 import { FormControl, FormControlProps } from '../FormControl/FormControl';
 import styles from './SelectInputNative.module.scss';
 
-export interface SelectInputNativeProps extends BoxProps, FormControlProps {
-  /**
-   * List of options for the select input.
-   */
-  options: { value: string | number; label: string | number; }[];
-  /**
-   * onChange callback from select element.
-   */
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+export interface SelectInputNativeBaseProps extends BoxProps, FormControlProps {
   /**
    * Value of selected option. Should match the value key in the option object.
    */
   value: string | number | null;
+  /**
+   * onChange callback from select element.
+   */
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   /**
    * The input's 'name' attribute.
    */
@@ -29,10 +25,13 @@ export interface SelectInputNativeProps extends BoxProps, FormControlProps {
    * Whether the input is autofocused on initial render.
    */
   autoFocus?: HTMLSelectElement['autofocus'];
+}
+
+export interface SelectInputNativeProps extends SelectInputNativeBaseProps {
   /**
-   * Additional props to be spread.
+   * List of options for the select input.
    */
-  [x: string]: any; // eslint-disable-line
+  options: { value: string | number; label: string | number; }[];
 }
 
 export const SelectInputNative: React.FC<SelectInputNativeProps> = ({

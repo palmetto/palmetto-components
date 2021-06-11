@@ -73,11 +73,11 @@ describe('Pagination', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const pages: any[] = [];
 
-      expectedPages.forEach((_page, i) => {
+      expectedPages.forEach((page, i) => {
         pages.push(screen.getByText(expectedPages[i]));
       });
 
-      expectedPages.forEach((_page, i) => {
+      expectedPages.forEach((page, i) => {
         expect(pages[i]).toBeInTheDocument();
       });
     });
@@ -96,11 +96,11 @@ describe('Pagination', () => {
       const expectedPageNumbers = ['1'];
       const excludedPageNumbers = ['2', '3', '4'];
 
-      expectedPageNumbers.forEach((_page, i) => {
+      expectedPageNumbers.forEach((page, i) => {
         expect(screen.getByText(expectedPageNumbers[i])).toBeInTheDocument();
       });
 
-      excludedPageNumbers.forEach((_page, i) => {
+      excludedPageNumbers.forEach((page, i) => {
         expect(screen.queryByText(excludedPageNumbers[i])).toBe(null);
       });
     });

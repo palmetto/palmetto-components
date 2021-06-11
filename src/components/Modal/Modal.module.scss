@@ -62,7 +62,6 @@
   background-color: var(--modal-background-color);
   padding: 0;
   width: 100%;
-  border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
 
   :global {
     animation: slideInUp 0.3s;
@@ -96,7 +95,6 @@
     right: 0;
     bottom: 0;
     left: 0;
-    border-radius: 0;
   }
 
   @media (min-width: $size-breakpoint-tablet) {

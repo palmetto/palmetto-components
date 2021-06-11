@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { TabsSlider, TabsSliderProps } from './TabsSlider';
-import { RESPONSIVE_STORY } from '../../docs/constants';
+import { RESPONSIVE_STORY } from '../../../.storybook/constants';
 
 export default {
   title: 'Components/TabsSlider/Visual Regression Tests',

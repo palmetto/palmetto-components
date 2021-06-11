@@ -194,7 +194,7 @@ export type EventWithColumnKey =
 export type SimulatedEventPayloadType = {
   target: {
     name: string;
-    value: ValueType<OptionTypeBase, boolean>;
+    value: ValueType<OptionTypeBase>;
   };
 };
 

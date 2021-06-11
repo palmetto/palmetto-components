@@ -7,12 +7,12 @@ import React, {
 } from 'react';
 import format from 'date-fns/format';
 import { DatePicker, DatePickerProps } from '../DatePicker/DatePicker';
-import { TextInput, TextInputProps } from '../TextInput/TextInput';
+import { TextInput, TextInputBaseProps } from '../TextInput/TextInput';
 import { Popover, PopoverProps } from '../Popover/Popover';
 
 export interface DateInputProps {
   datePickerProps: DatePickerProps;
-  textInputProps: Omit<TextInputProps, 'onChange'>;
+  textInputProps: TextInputBaseProps;
   dateFormat?: string;
   dateOptions?: {
     locale?: globalThis.Locale | undefined;
@@ -38,7 +38,7 @@ const defaultPopoverProps: Omit<PopoverProps, 'children' | 'content' | 'isOpen'>
   placement: 'bottom',
 };
 
-const defaultTextInputProps: Omit<TextInputProps, 'id'> = {
+const defaultTextInputProps: Omit<TextInputBaseProps, 'id'> = {
   label: 'Select Date',
 };
 

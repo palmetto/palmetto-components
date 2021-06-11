@@ -10,7 +10,7 @@ import {
   SPACING_OPTIONS,
 } from '../../lib/tokens';
 import { BrandColor } from '../../types';
-import { RESPONSIVE_STORY } from '../../docs/constants';
+import { RESPONSIVE_STORY } from '../../../.storybook/constants';
 import { ResponsiveProvider } from '../ResponsiveProvider/ResponsiveProvider';
 import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
 
