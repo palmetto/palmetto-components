@@ -55,7 +55,7 @@ export const WithoutHeader = () => (
   </Modal>
 );
 
-export const FuillscreenOnMobile = () => (
+export const FullScreenOnMobile = () => (
   <Modal ariaLabelledBy="title" fullScreenMobile isOpen onDismiss={() => null}>
     <Modal.Header id="title" title="Fullscreen Modal on Mobile" onDismiss={() => null} />
     <Modal.Body>Modal content</Modal.Body>

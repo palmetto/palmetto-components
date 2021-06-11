@@ -68,7 +68,7 @@ Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These co
       return (
         <div>
           <Button variant="light" onClick={open}>
-            Show Modal
+            Show Modal With Body and Footer
           </Button>
           <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={close}>
             <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={close} />
@@ -94,7 +94,7 @@ Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a cl
       return (
         <div>
           <Button variant="light" onClick={open}>
-            Show Modal
+            Show Modal With Close Button
           </Button>
           <Modal ariaLabel="modal with close button" isOpen={showModal} onDismiss={close}>
             <Modal.Header onDismiss={close} />
@@ -119,7 +119,7 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
       return (
         <div>
           <Button variant="light" onClick={open}>
-            Show Modal
+            Show Modal Without Header
           </Button>
           <Modal ariaLabel="Modal without a header" isOpen={showModal} onDismiss={close}>
             <Modal.Body>Modal content</Modal.Body>
@@ -149,7 +149,7 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
       return (
         <div>
           <Button variant="light" onClick={open}>
-            Show Modal
+            Show Fullscreen On Mobile Modal
           </Button>
           <Modal
             ariaLabelledBy="titleFullscreen"
