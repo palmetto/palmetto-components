@@ -4,7 +4,7 @@ import { Icon, IconProps } from './Icon';
 import { Box } from '../Box/Box';
 import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS } from '../../lib/tokens';
 import { FontColor, FontSize } from '../../types';
-import { RESPONSIVE_STORY } from '../../../.storybook/constants';
+import { RESPONSIVE_STORY } from '../../docs/constants';
 
 export default {
   title: 'Components/Icon/Visual Regression Tests',

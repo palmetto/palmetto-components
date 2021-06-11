@@ -23,7 +23,7 @@ import styles from './TextInput.module.scss';
 
 export type InputMaskType = ('phone' | 'creditCard' | 'date') | UnknownPropertiesObjType;
 
-export interface TextInputBaseProps {
+export interface TextInputProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -32,6 +32,14 @@ export interface TextInputBaseProps {
    * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
    */
   label: string;
+  /**
+   * Callback function to call on change event.
+   */
+  onChange: (event: ChangeEvent<HTMLInputElement> | CleaveChangeEvent<HTMLInputElement>) => void;
+  /**
+   * The text value of the input. Required since our Input is a controlled component.
+   */
+  value: InputHTMLAttributes<HTMLInputElement>['value'];
   /**
    * Automatically focus the input when the page is loaded.
    */
@@ -113,16 +121,6 @@ export interface TextInputBaseProps {
    * The input 'type' value. Defaults to type 'text'.
    */
   type?: InputHTMLAttributes<HTMLInputElement>['type'];
-}
-export interface TextInputProps extends TextInputBaseProps {
-  /**
-   * Callback function to call on change event.
-   */
-  onChange: (event: ChangeEvent<HTMLInputElement> | CleaveChangeEvent<HTMLInputElement>) => void;
-  /**
-   * The text value of the input. Required since our Input is a controlled component.
-   */
-  value: InputHTMLAttributes<HTMLInputElement>['value'];
   /**
    * Additional props to be spread to rendered element
    */
