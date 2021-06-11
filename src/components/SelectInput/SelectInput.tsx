@@ -17,7 +17,9 @@ import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
-export interface BaseSelectInputProps {
+export type SelectInputOptions = GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
+
+export interface SelectInputProps {
   /**
    * The id attribute of the input.
    */
@@ -30,6 +32,10 @@ export interface BaseSelectInputProps {
    * Callback function to call on change event.
    */
   onChange: (event: SimulatedEventPayloadType) => void;
+  /**
+   * Options for dropdown list.
+   */
+  options: SelectInputOptions;
   /**
    * The value(s) of select.
    */
@@ -103,12 +109,6 @@ export interface BaseSelectInputProps {
    */
   [x: string]: any; // eslint-disable-line
 }
-export interface SelectInputProps extends BaseSelectInputProps {
-  /**
-   * Options for dropdown list.
-   */
-  options: GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
-}
 
 export const SelectInput: FC<SelectInputProps> = ({
   id,
@@ -133,7 +133,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   size = 'md',
   ...restProps
 }) => {
-  const handleChange = (values: ValueType<OptionTypeBase>) => {
+  const handleChange = (values: ValueType<OptionTypeBase, boolean>) => {
     const simulatedEventPayloadType: SimulatedEventPayloadType = {
       target: {
         name,
@@ -167,7 +167,7 @@ export const SelectInput: FC<SelectInputProps> = ({
     isDisabled,
   };
 
-  const ClearIndicator = (props: IndicatorProps<OptionTypeBase>) => (
+  const ClearIndicator = (props: IndicatorProps<OptionTypeBase, boolean>) => (
     <components.ClearIndicator {...props}>
       <Icon name="remove" />
     </components.ClearIndicator>

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { SelectInputNative, SelectInputNativeBaseProps } from '../SelectInputNative/SelectInputNative';
+import { SelectInputNative, SelectInputNativeProps } from '../SelectInputNative/SelectInputNative';
 
-export interface TimePickerNativeProps extends SelectInputNativeBaseProps {
+export interface TimePickerNativeProps extends Omit<SelectInputNativeProps, 'options'> {
   /**
    * Options to govern the display of the option labels in the select.
    * This is a direct passthrough to the second argument of JS `toLocaleTimeString`.
@@ -29,7 +29,7 @@ export interface TimePickerNativeProps extends SelectInputNativeBaseProps {
   /**
    *  Should be ISO timestamp as returned by `onChange`, and matching value of option object.
    */
-  value: SelectInputNativeBaseProps['value'];
+  value: SelectInputNativeProps['value'];
 }
 
 export const TimePickerNative: FC<TimePickerNativeProps> = ({

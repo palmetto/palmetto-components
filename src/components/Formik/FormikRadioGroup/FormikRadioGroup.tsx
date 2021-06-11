@@ -1,22 +1,22 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   FormikTouched,
   FormikErrors,
-  FormikValues,
   FieldAttributes,
+  FormikValues,
 } from 'formik';
-import { TimePickerNative, TimePickerNativeProps } from '../../TimePickerNative/TimePickerNative';
+import { RadioGroup, RadioGroupProps } from '../../RadioGroup/RadioGroup';
 
-export interface FormikTimePickerNativeProps extends Omit<TimePickerNativeProps, 'onChange'> {
-  field: FieldAttributes<HTMLTextAreaElement>;
+export interface FormikRadioGroupProps extends Omit<RadioGroupProps, 'onChange'> {
+  field: FieldAttributes<HTMLInputElement>;
   form: {
     touched: FormikTouched<FormikValues>;
     errors: FormikErrors<FormikValues>;
   };
-  onChange: TimePickerNativeProps['onChange'];
+  onChange?: RadioGroupProps['onChange'];
 }
 
-export const FormikTimePickerNative: FC<FormikTimePickerNativeProps> = (
+export const FormikRadioGroup: React.FC<FormikRadioGroupProps> = (
   {
     field: {
       name,
@@ -29,7 +29,7 @@ export const FormikTimePickerNative: FC<FormikTimePickerNativeProps> = (
     ...props
   },
 ) => (
-  <TimePickerNative
+  <RadioGroup
     {...props}
     name={name}
     onBlur={onBlur}

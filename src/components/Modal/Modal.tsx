@@ -69,17 +69,7 @@ export interface ModalProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export interface ModalStatic {
-  Body: typeof ModalBody;
-  Header: typeof ModalHeader;
-  Footer: typeof ModalFooter;
-}
-
-export type ModalWithStaticComponents =
-  React.ForwardRefExoticComponent<React.PropsWithoutRef<ModalProps>>
-  & Partial<ModalStatic>;
-
-const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>((
+const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>((
   {
     ariaLabel,
     ariaLabelledBy,
@@ -134,8 +124,22 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
   );
 });
 
-Modal.Body = ModalBody;
-Modal.Footer = ModalFooter;
-Modal.Header = ModalHeader;
+export interface ModalStatic {
+  Body: typeof ModalBody;
+  Header: typeof ModalHeader;
+  Footer: typeof ModalFooter;
+}
 
-export { Modal };
+export type ModalWithStaticComponents =
+  typeof ModalBaseComponent
+  & ModalStatic;
+
+// Actual component is wrapped in an IIFE for the export
+// To allow tree-shaking even with static properties (subcomponents in this case).
+export const Modal = (() => {
+  const Modal = ModalBaseComponent as ModalWithStaticComponents; // eslint-disable-line no-shadow
+  Modal.Body = ModalBody;
+  Modal.Footer = ModalFooter;
+  Modal.Header = ModalHeader;
+  return Modal;
+})();
