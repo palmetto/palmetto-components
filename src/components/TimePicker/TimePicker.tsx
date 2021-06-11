@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { SelectInput, SelectInputProps } from '../SelectInput/SelectInput';
+import { SelectInput, BaseSelectInputProps } from '../SelectInput/SelectInput';
 
-export type TimePickerProps = Omit<SelectInputProps, 'options'> & {
+export interface TimePickerProps extends BaseSelectInputProps {
   /**
    * Options to govern the display of the option labels in the select.
    * This is a direct passthrough to the second argument of JS `toLocaleTimeString`.
