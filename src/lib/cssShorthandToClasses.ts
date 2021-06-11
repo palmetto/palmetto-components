@@ -21,6 +21,7 @@ function generateBaseClasses(
 ): string[] {
   if (typeof value !== 'string') return [];
 
+  const trimmedValue = value.trim();
   const classes: string[] = [];
 
   const shorthand: { [key: number]: string[]; } = attribute === 'br' ? {
@@ -35,8 +36,8 @@ function generateBaseClasses(
     4: ['top', 'right', 'bottom', 'left'],
   };
 
-  if (attribute === 'br' && value.includes(' ') && value.split(' ').length > 1) {
-    const corners = value.split(' ');
+  if (attribute === 'br' && trimmedValue.includes(' ') && trimmedValue.split(' ').length > 1) {
+    const corners = trimmedValue.split(' ');
 
     corners.forEach((v, index) => {
       classes.push(`${attribute}-${shorthand[corners.length][index]}-${v}`);
@@ -49,14 +50,14 @@ function generateBaseClasses(
         classes.push(`${attribute}-bottom-left-${corners[index]}`);
       }
     });
-  } else if (value.includes(' ') && value.split(' ').length > 1) {
-    const sides = value.split(' ');
+  } else if (trimmedValue.includes(' ') && trimmedValue.split(' ').length > 1) {
+    const sides = trimmedValue.split(' ');
 
     sides.forEach((v, index) => {
       classes.push(`${attribute}-${shorthand[sides.length][index]}-${v}`);
     });
   } else {
-    classes.push(`${attribute}-${value}`);
+    classes.push(`${attribute}-${trimmedValue}`);
   }
 
   return classes;
