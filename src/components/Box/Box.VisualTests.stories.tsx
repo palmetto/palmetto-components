@@ -8,6 +8,7 @@ import {
   FONT_COLOR_OPTIONS,
   BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
+  FONT_FAMILY_OPTIONS
 } from '../../lib/tokens';
 import { BrandColor } from '../../types';
 import { RESPONSIVE_STORY } from '../../docs/constants';
@@ -244,6 +245,16 @@ export const AllFontSizes: React.FunctionComponent<BoxProps> = () => (
     {[...FONT_SIZE_OPTIONS].reverse().map((fontSize, i) => (
       <Box fontSize={fontSize} key={i}>
         {`${fontSize} font size`}
+      </Box>
+    ))}
+  </>
+);
+
+export const AllFontFamilies: React.FunctionComponent<BoxProps> = () => (
+  <>
+    {[...FONT_FAMILY_OPTIONS].map((fontFamily, i) => (
+      <Box fontFamily={fontFamily} key={i}>
+        {`${fontFamily} font size`}
       </Box>
     ))}
   </>
