@@ -8,7 +8,7 @@ import {
   FONT_COLOR_OPTIONS,
   BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
-  FONT_FAMILY_OPTIONS
+  FONT_FAMILY_OPTIONS,
 } from '../../lib/tokens';
 import { BrandColor } from '../../types';
 import { RESPONSIVE_STORY } from '../../docs/constants';
