@@ -24,7 +24,6 @@
   &:disabled {
     opacity: 0.65;
     cursor: not-allowed;
-    pointer-events: none;
   }
 
   /* define regular focus styles for non-supporting browsers */
@@ -62,7 +61,7 @@
     background-color: var(--button-background-color-primary);
     color: var(--button-font-color-primary);
 
-    &:hover {
+    &:not(:disabled):hover {
       background-color: var(--button-background-hover-color-primary);
       color: var(--button-font-color-primary);
     }
@@ -72,7 +71,7 @@
       background-color: transparent;
       color: var(--button-font-color-primary-outline);
 
-      &:hover {
+      &:not(:disabled):hover {
         border-color: var(--button-border-hover-color-primary-outline);
         background-color: var(--button-background-hover-color-primary-outline);
         color: var(--button-font-hover-color-primary-outline);
@@ -84,7 +83,7 @@
     background-color: var(--button-background-color-success);
     color: var(--button-font-color-success);
 
-    &:hover {
+    &:not(:disabled):hover {
       background-color: var(--button-background-hover-color-success);
     }
 
@@ -93,7 +92,7 @@
       background-color: transparent;
       color: var(--button-font-color-success-outline);
 
-      &:hover {
+      &:not(:disabled):hover {
         border-color: var(--button-border-hover-color-success-outline);
         background-color: var(--button-background-hover-color-success-outline);
         color: var(--button-font-hover-color-success-outline);
@@ -105,7 +104,7 @@
     background-color: var(--button-background-color-danger);
     color: var(--button-font-color-danger);
 
-    &:hover {
+    &:not(:disabled):hover {
       background-color: var(--button-background-hover-color-danger);
     }
 
@@ -129,7 +128,7 @@
       background-color: transparent;
       color: var(--button-font-color-danger-outline);
 
-      &:hover {
+      &:not(:disabled):hover {
         border-color: var(--button-border-hover-color-danger-outline);
         background-color: var(--button-background-hover-color-danger-outline);
         color: var(--button-font-hover-color-danger-outline);
@@ -141,7 +140,7 @@
     background-color: var(--button-background-color-dark);
     color: var(--button-font-color-dark);
 
-    &:hover {
+    &:not(:disabled):hover {
       background-color: var(--button-background-hover-color-dark);
     }
 
@@ -165,7 +164,7 @@
       background-color: transparent;
       color: var(--button-font-color-dark-outline);
 
-      &:hover {
+      &:not(:disabled):hover {
         border-color: var(--button-border-hover-color-dark-outline);
         background-color: var(--color-brand-grey-50);
         color: var(--button-font-color-dark-outline);
@@ -177,7 +176,7 @@
     background-color: var(--button-background-color-light);
     color: var(--button-font-color-light);
 
-    &:hover {
+    &:not(:disabled):hover {
       background-color: var(--button-background-hover-color-light);
     }
 
@@ -201,7 +200,7 @@
       background-color: transparent;
       color: var(--button-font-color-light-outline);
 
-      &:hover {
+      &:not(:disabled):hover {
         border-color: var(--button-border-hover-color-light-outline);
         background-color: var(--color-brand-grey-50);
         color: var(--button-font-hover-color-light-outline);
