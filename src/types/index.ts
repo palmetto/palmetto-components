@@ -33,6 +33,7 @@ export type {
   WidthSize,
   ZIndexSize,
   IconName,
+  FontFamily,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type BreakpointSizeWithBase = BreakpointSize | 'base';

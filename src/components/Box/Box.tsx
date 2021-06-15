@@ -27,6 +27,7 @@ import {
   CssTextAlignValue,
   DimensionSize,
   FontColor,
+  FontFamily,
   FontSize,
   FontWeight,
   ResponsiveProp,
@@ -127,6 +128,10 @@ export interface BoxProps {
     color?: BoxProps['color'];
     shadow?: BoxProps['shadow'];
   };
+  /**
+   * The [font family token](/?path=/docs/design-tokens-font-family--page) identifier for the Box's text
+   */
+   fontFamily?: FontFamily | ResponsiveProp<FontFamily>;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box's text
    */
@@ -258,6 +263,7 @@ export const Box: FC<BoxProps> = forwardRef((
     display = 'flex',
     direction = 'column',
     flex = undefined,
+    fontFamily = undefined,
     fontSize = 'inherit',
     fontWeight = undefined,
     height = undefined,
@@ -335,6 +341,7 @@ export const Box: FC<BoxProps> = forwardRef((
     generateResponsiveClasses('align-items', alignItems),
     generateResponsiveClasses('align-content', alignContent),
     generateResponsiveClasses('align-self', alignSelf),
+    generateResponsiveClasses('font-family', fontFamily),
     generateResponsiveClasses('font-size', fontSize),
     generateResponsiveClasses('overflow', overflow),
     generateResponsiveClasses('shadow', shadow),
