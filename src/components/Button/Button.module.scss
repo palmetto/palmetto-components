@@ -104,10 +104,6 @@
     background-color: var(--button-background-color-danger);
     color: var(--button-font-color-danger);
 
-    &:not(:disabled):hover {
-      background-color: var(--button-background-hover-color-danger);
-    }
-
     &:focus {
       outline: 0;
       box-shadow: var(--button-focus-box-shadow-danger);
@@ -116,6 +112,10 @@
     &:focus-visible {
       outline: 0;
       box-shadow: var(--button-focus-box-shadow-danger);
+    }
+
+    &:not(:disabled):hover {
+      background-color: var(--button-background-hover-color-danger);
     }
 
     &:focus:not(:focus-visible) {
@@ -140,10 +140,6 @@
     background-color: var(--button-background-color-dark);
     color: var(--button-font-color-dark);
 
-    &:not(:disabled):hover {
-      background-color: var(--button-background-hover-color-dark);
-    }
-
     &:focus {
       outline: 0;
       box-shadow: var(--button-focus-box-shadow-dark);
@@ -152,6 +148,10 @@
     &:focus-visible {
       outline: 0;
       box-shadow: var(--button-focus-box-shadow-dark);
+    }
+
+    &:not(:disabled):hover {
+      background-color: var(--button-background-hover-color-dark);
     }
 
     &:focus:not(:focus-visible) {
@@ -176,10 +176,6 @@
     background-color: var(--button-background-color-light);
     color: var(--button-font-color-light);
 
-    &:not(:disabled):hover {
-      background-color: var(--button-background-hover-color-light);
-    }
-
     &:focus {
       outline: 0;
       box-shadow: var(--button-focus-box-shadow-light);
@@ -188,6 +184,10 @@
     &:focus-visible {
       outline: 0;
       box-shadow: var(--button-focus-box-shadow-light);
+    }
+
+    &:not(:disabled):hover {
+      background-color: var(--button-background-hover-color-light);
     }
 
     &:focus:not(:focus-visible) {
