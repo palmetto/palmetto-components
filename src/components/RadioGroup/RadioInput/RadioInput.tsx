@@ -1,11 +1,10 @@
-import React, {
-  FC, ChangeEvent, FocusEvent, ReactNode,
-} from 'react';
+import React, { ChangeEvent, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
+import { Box } from '../../Box/Box';
 import { FormLabel } from '../../FormLabel/FormLabel';
 import styles from './RadioInput.module.scss';
 
-interface RadioInputProps {
+export interface RadioInputProps {
   /**
    * Radio input name.
    */
@@ -37,6 +36,10 @@ interface RadioInputProps {
    */
   isDisabled?: boolean;
   /**
+   * If the radio input should be hidden to make way for a custom radio.
+   */
+  isHidden?: boolean;
+  /**
    * If the radio group should be disabled and not focusable.
    */
   isSelected?: boolean;
@@ -50,17 +53,21 @@ interface RadioInputProps {
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 }
 
-const RadioInput: FC<RadioInputProps> = ({
-  name,
-  onChange,
-  option,
-  className = '',
-  error = false,
-  isDisabled = false,
-  isSelected = false,
-  onBlur = undefined,
-  onFocus = undefined,
-}) => {
+export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
+  {
+    name,
+    onChange,
+    option,
+    className = '',
+    error = false,
+    isDisabled = false,
+    isHidden = false,
+    isSelected = false,
+    onBlur = undefined,
+    onFocus = undefined,
+  },
+  ref,
+) => {
   const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
     if (onFocus) onFocus(event);
   };
@@ -68,8 +75,6 @@ const RadioInput: FC<RadioInputProps> = ({
   const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
     if (onBlur) onBlur(event);
   };
-
-  const radioClasses = classNames(className, styles.option);
 
   const labelProps = {
     inputId: option.id,
@@ -79,27 +84,32 @@ const RadioInput: FC<RadioInputProps> = ({
     isRadioInputLabel: true,
   };
 
+  const containerClasses = classNames(
+    className,
+    styles['radio-container'],
+    { [styles.hidden]: isHidden },
+  );
+
   return (
     <>
       {option && (
-        <div className={radioClasses} key={option.id}>
-          <input
+        <Box className={containerClasses} key={option.id} direction="row" alignItems="center" ref={ref}>
+          <Box
+            as="input"
             id={option.id}
             type="radio"
             name={name}
-            className={styles.input}
             value={option.value}
             checked={isSelected}
             onChange={onChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
             disabled={isDisabled}
+            margin={isHidden ? '0' : '0 xs 0 2xs'}
           />
           {option.label && <FormLabel {...labelProps}>{option.label}</FormLabel>}
-        </div>
+        </Box>
       )}
     </>
   );
-};
-
-export default RadioInput;
+});

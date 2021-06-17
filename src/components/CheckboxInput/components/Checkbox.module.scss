@@ -1,4 +1,13 @@
 .checkbox {
+  &.hidden {
+    > input {
+      position: absolute !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+  }
+
   input:focus + div {
     /* define regular focus styles for non-supporting browsers */
     outline: 0;

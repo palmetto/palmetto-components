@@ -1,11 +1,19 @@
-.option {
-  display: flex;
-  align-items: center;
+.radio-container {
+  &.hidden {
+    > input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
 
-  .input {
-    margin-top: 0;
-    margin-right: var(--size-spacing-xs);
-    margin-bottom: 0;
-    margin-left: var(--size-spacing-2xs);
+    > label {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
   }
 }
