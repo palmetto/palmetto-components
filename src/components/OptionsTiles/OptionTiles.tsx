@@ -55,7 +55,6 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
     value,
     onChange,
     className,
-    name,
     options,
     direction = 'column',
     isFullWidth = true,
@@ -127,24 +126,24 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
 
     return (
       <Box
-        width="20px"
-        minWidth="20px"
-        height="20px"
-        minHeight="20px"
+        width="16px"
+        minWidth="16px"
+        height="16px"
+        minHeight="16px"
         radius="circle"
         borderColor={getRadioBorderColor(option)}
         borderWidth="xs"
         position="relative"
       >
         <Box
-          width="12px"
-          height="12px"
+          width="10px"
+          height="10px"
           background={getRadioBackgroundColor(option)}
           radius="circle"
           position="absolute"
           style={{
-            top: '3px',
-            left: '3px',
+            top: '2px',
+            left: '2px',
           }}
         />
       </Box>
@@ -184,7 +183,6 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
     <Box
       ref={ref}
       className={className}
-      name={name}
       width={isFullWidth ? '100' : undefined}
       {...restProps}
     >
@@ -217,7 +215,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
               {isMulti ? (
                 <Checkbox
                   id={option.id}
-                  name={name}
+                  name={option.id}
                   onChange={onChange}
                   isChecked={isOptionSelected(option)}
                   label={option.label}
@@ -228,7 +226,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
                 />
               ) : (
                 <RadioInput
-                  name={name}
+                  name={option.id}
                   onChange={onChange}
                   option={option}
                   isDisabled={option.disabled}

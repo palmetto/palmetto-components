@@ -62,7 +62,6 @@ Use a OptionTiles when a user is required to select one of five or fewer options
       const [value, setValue] = useState([]);
       const handleSetValue = (event) => {
         const selectedValue = event.target.value;
-        console.log('selectedValue', selectedValue);
         if (value.includes(selectedValue)) {
           setValue([...value].filter(v => v !== selectedValue))
         } else {
@@ -325,7 +324,16 @@ The tiles can render custom content with a `render` function passed in the optio
 <Canvas isExpanded>
   <Story name="Disabled Options">
     {() => {
-      const [value, setValue] = useState([]);
+      const [value, setValue] = useState(null);
+      const [valueMulti, setValueMulti] = useState([]);
+      const handleSetValueMulti = (event) => {
+        const selectedValue = event.target.value;
+        if (valueMulti.includes(selectedValue)) {
+          setValueMulti([...valueMulti].filter(v => v !== selectedValue))
+        } else {
+          setValueMulti([...valueMulti, selectedValue]);
+        }
+      }
       const options = [
         {
           id: 'chocolate_disabled',
@@ -344,13 +352,41 @@ The tiles can render custom content with a `render` function passed in the optio
           disabled: true,
         },
       ];
+      const optionsMulti = [
+        {
+          id: 'chocolate_disabled_multi',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_disabled_multi',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_disabled_multi',
+          value: 'vanilla',
+          label: 'Vanilla',
+          disabled: true,
+        },
+      ];
       return (
-        <OptionTiles
-          name="noTitleOrDescription"
-          value={value}
-          onChange={event => setValue(event.target.value)}
-          options={options}
-        />
+        <>
+          <OptionTiles
+            name="noTitleOrDescription"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            margin="0 0 lg 0"
+          />
+          <OptionTiles
+            name="noTitleOrDescription"
+            value={valueMulti}
+            onChange={handleSetValueMulti}
+            options={optionsMulti}
+            isMulti
+          />
+        </>
       );
     }}
   </Story>
