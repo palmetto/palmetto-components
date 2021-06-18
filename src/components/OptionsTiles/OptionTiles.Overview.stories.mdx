@@ -320,4 +320,38 @@ The tiles can render custom content with a `render` function passed in the optio
   </Story>
 </Canvas>
 
+## Disabling Options
 
+<Canvas isExpanded>
+  <Story name="Disabled Options">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_disabled',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_disabled',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_disabled',
+          value: 'vanilla',
+          label: 'Vanilla',
+          disabled: true,
+        },
+      ];
+      return (
+        <OptionTiles
+          name="noTitleOrDescription"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Canvas>

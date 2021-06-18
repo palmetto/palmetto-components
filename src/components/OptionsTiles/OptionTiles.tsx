@@ -10,12 +10,12 @@ interface Option {
   id: string;
   value: string;
   label: string;
-  disabled?: boolean | null;
+  disabled?: boolean;
   render?: (option: {
     id: string;
     value: string;
     label: string;
-    disabled?: boolean | null;
+    disabled?: boolean;
   }) => React.ReactNode;
 }
 
@@ -84,30 +84,72 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
     return value === option.value;
   };
 
-  const renderRadio = (option: Option) => (
-    <Box
-      width="20px"
-      minWidth="20px"
-      height="20px"
-      minHeight="20px"
-      radius="circle"
-      borderColor={isOptionSelected(option) ? 'primary' : 'grey-light'}
-      borderWidth="xs"
-      position="relative"
-    >
+  const getOptionBackgroundColor = (option: Option) => {
+    if (isOptionSelected(option) && !option.disabled) {
+      return 'primary-lightest';
+    } else if (option.disabled) {
+      return 'grey-lightest';
+    }
+
+    return 'white';
+  }
+
+  const getOptionBorderColor = (option: Option) => {
+    if (isOptionSelected(option) && !option.disabled) {
+      return 'primary';
+    } else if (isOptionSelected(option) && option.disabled) {
+      return 'grey-light';
+    }
+
+    return 'grey-lighter';
+  }
+
+  const renderRadio = (option: Option) => {
+    const getRadioBackgroundColor = (option: Option) => {
+      if (isOptionSelected(option) && !option.disabled) {
+        return 'primary';
+      } else if (isOptionSelected(option) && option.disabled) {
+        return 'grey-light';
+      } 
+  
+      return 'transparent';
+    };
+
+    const getRadioBorderColor = (option: Option) => {
+      if (isOptionSelected(option) && !option.disabled) {
+        return 'primary';
+      } else if (isOptionSelected(option) && option.disabled) {
+        return 'grey-light';
+      } 
+  
+      return 'grey-light';
+    };
+
+    return (
       <Box
-        width="12px"
-        height="12px"
-        background={isOptionSelected(option) ? 'primary' : 'transparent'}
+        width="20px"
+        minWidth="20px"
+        height="20px"
+        minHeight="20px"
         radius="circle"
-        position="absolute"
-        style={{
-          top: '3px',
-          left: '3px',
-        }}
-      />
-    </Box>
-  );
+        borderColor={getRadioBorderColor(option)}
+        borderWidth="xs"
+        position="relative"
+      >
+        <Box
+          width="12px"
+          height="12px"
+          background={getRadioBackgroundColor(option)}
+          radius="circle"
+          position="absolute"
+          style={{
+            top: '3px',
+            left: '3px',
+          }}
+        />
+      </Box>
+    );
+  };
 
   const renderCheckbox = (option: Option) => {
     interface CheckboxIcon {
@@ -152,8 +194,9 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
             <Box
               key={option.id}
               className={styles.option}
-              background={isOptionSelected(option) ? 'primary-lightest' : 'white'}
-              borderColor={isOptionSelected(option) ? 'primary' : 'grey-lighter'}
+              background={getOptionBackgroundColor(option)}
+              borderColor={getOptionBorderColor(option)}
+              color={!option.disabled ? 'dark' : 'grey'}
               borderWidth="xs"
               shadow="2xs"
               radius="md"
@@ -165,7 +208,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
               hover={{
                 ...!option.disabled && { borderColor: 'primary' },
               }}
-              onClick={(event: React.MouseEvent<HTMLDivElement>) => handleClick(event, index)}
+              onClick={!option.disabled ? (event: React.MouseEvent<HTMLDivElement>) => handleClick(event, index) : undefined}
             >
               {!isMulti ? renderRadio(option) : renderCheckbox(option)}
               <Box>
@@ -180,6 +223,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
                   label={option.label}
                   value={option.value}
                   isHidden
+                  isDisabled={option.disabled}
                   ref={optionsRefs.current[index]}
                 />
               ) : (
@@ -187,7 +231,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
                   name={name}
                   onChange={onChange}
                   option={option}
-                  isDisabled={option.disabled || false}
+                  isDisabled={option.disabled}
                   isSelected={isOptionSelected(option)}
                   isHidden
                   ref={optionsRefs.current[index]}

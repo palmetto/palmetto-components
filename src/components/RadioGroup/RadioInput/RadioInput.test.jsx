@@ -4,7 +4,7 @@ import {
   fireEvent,
   screen,
 } from '@testing-library/react';
-import RadioInput from './RadioInput';
+import { RadioInput } from './RadioInput';
 
 const mockOption = {
   id: 'chocolate',
@@ -128,6 +128,24 @@ describe('RadioInput', () => {
 
         const radioInputElement = screen.getByRole('radio');
         expect(radioInputElement).toBeDisabled();
+      });
+    });
+
+    describe('Hidden', () => {
+      test('the radio input is hidden', () => {
+        render(
+          <RadioInput
+            name="mockName"
+            onChange={mockedHandleChange}
+            option={mockOption}
+            isHidden
+          />,
+        );
+
+        const radioInputElement = screen.getByRole('radio');
+        const style = window.getComputedStyle(radioInputElement);
+        console.log('STYLE', style);
+        expect(style.opacity).toBe('0');
       });
     });
   });
