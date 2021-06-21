@@ -40,7 +40,7 @@ Use a OptionTiles when a user is required to select one of five or fewer options
       ];
       return (
         <OptionTiles
-          name="noTitleOrDescription"
+          name="default"
           value={value}
           onChange={event => setValue(event.target.value)}
           options={options}
@@ -87,7 +87,7 @@ Use a OptionTiles when a user is required to select one of five or fewer options
       ];
       return (
         <OptionTiles
-          name="noTitleOrDescription"
+          name="multi"
           value={value}
           onChange={handleSetValue}
           options={options}
@@ -145,7 +145,7 @@ Set the direction (flex) of the tiles. This uses the same `direction` prop as th
         <>
           <p className="m-bottom-md font-size-lg font-weight-bold">Vertical</p>
           <OptionTiles
-            name="noTitleOrDescription"
+            name="directionVertical"
             value={valueVertical}
             onChange={event => setValueVertical(event.target.value)}
             options={optionsVertical}
@@ -153,13 +153,133 @@ Set the direction (flex) of the tiles. This uses the same `direction` prop as th
           />
           <p className="m-v-md font-size-lg font-weight-bold">Horizontal</p>
           <OptionTiles
-            name="noTitleOrDescription"
+            name="directionHorizontal"
             value={valueHorizontal}
             onChange={event => setValueHorizontal(event.target.value)}
             options={optionsHorizontal}
             direction="row"
           />
         </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Title and Description
+
+Acting as the fieldset legend.
+
+<Canvas isExpanded>
+  <Story name="TItle and Description">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_title',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_title',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_title',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <OptionTiles
+          name="titleAndDescription"
+          title="Ice cream flavors"
+          description="Only if you eat all your dinner"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Required
+
+Will show an asterisk on the title (if included).
+
+<Canvas isExpanded>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_required',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_required',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_required',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <OptionTiles
+          name="required"
+          title="Ice cream flavors"
+          isRequired
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Error
+
+Pass an error (or boolean with no message) to notify a user when something isn't right. Likely paired with `isRequired` in most cases.
+
+<Canvas isExpanded>
+  <Story name="Error">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_error',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_error',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_error',
+          value: 'vanilla',
+          label: 'Vanilla',
+          disabled: true,
+        },
+      ];
+      return (
+        <OptionTiles
+          name="required"
+          title="Ice cream flavors"
+          description="Only if you eat all your dinner"
+          isRequired
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+          error="You should really select an ice cream flavor!"
+        />
       );
     }}
   </Story>
@@ -214,7 +334,7 @@ NOTE: With vertically stacked options they will be fullWidth regardless since th
         <>
           <p className="m-bottom-md font-size-lg font-weight-bold">Vertical</p>
           <OptionTiles
-            name="noTitleOrDescription"
+            name="fullWidthVertical"
             value={valueVertical}
             onChange={event => setValueVertical(event.target.value)}
             options={optionsVertical}
@@ -223,7 +343,7 @@ NOTE: With vertically stacked options they will be fullWidth regardless since th
           />
           <p className="m-v-md font-size-lg font-weight-bold">Horizontal</p>
           <OptionTiles
-            name="noTitleOrDescription"
+            name="fullWidthHorizontal"
             value={valueHorizontal}
             onChange={event => setValueHorizontal(event.target.value)}
             options={optionsHorizontal}
@@ -308,7 +428,7 @@ The tiles can render custom content with a `render` function passed in the optio
       ];
       return (
         <OptionTiles
-          name="noTitleOrDescription"
+          name="customContent"
           value={value}
           onChange={event => setValue(event.target.value)}
           options={options}
@@ -324,7 +444,7 @@ The tiles can render custom content with a `render` function passed in the optio
 <Canvas isExpanded>
   <Story name="Disabled Options">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState();
       const [valueMulti, setValueMulti] = useState([]);
       const handleSetValueMulti = (event) => {
         const selectedValue = event.target.value;
@@ -373,14 +493,14 @@ The tiles can render custom content with a `render` function passed in the optio
       return (
         <>
           <OptionTiles
-            name="noTitleOrDescription"
+            name="disabled"
             value={value}
             onChange={event => setValue(event.target.value)}
             options={options}
             margin="0 0 lg 0"
           />
           <OptionTiles
-            name="noTitleOrDescription"
+            name="disabledMulti"
             value={valueMulti}
             onChange={handleSetValueMulti}
             options={optionsMulti}

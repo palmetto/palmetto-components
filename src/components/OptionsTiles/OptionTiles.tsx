@@ -3,6 +3,7 @@ import { FontColor } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { RadioInput } from '../RadioGroup/RadioInput/RadioInput';
 import { Checkbox } from '../CheckboxInput/components/Checkbox';
+import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { Icon } from '../Icon/Icon';
 import styles from './OptionTiles.module.scss';
 
@@ -21,9 +22,9 @@ interface Option {
 
 export interface OptionTilesProps extends BoxProps {
   /**
-   * Value of selected option(s).
+   * Option group name (to be passed to either radio or checkbox inputs)
    */
-  value: string | number | (string | number)[];
+  name: string;
   /**
    * Change event.
    */
@@ -33,9 +34,21 @@ export interface OptionTilesProps extends BoxProps {
    */
   options: Option[];
   /**
+   * Value of selected option(s).
+   */
+   value: string | number | (string | number)[];
+  /**
    * Direction (flex direction) for option tiles.
    */
   direction?: BoxProps['direction'];
+  /**
+   * Description to be displayed below the title, and above the RadioGroup.
+   */
+  description?: React.ReactNode;
+  /**
+   * Error state or error message for the option group.
+   */
+  error?: boolean | string; 
   /**
    * Make tiles take up 100% of their container.
    */
@@ -45,6 +58,14 @@ export interface OptionTilesProps extends BoxProps {
    */
   isMulti?: boolean;
   /**
+   * Determines if option group is required or not. (Label will have an asterisk if required).
+   */
+  isRequired?: boolean;
+  /**
+   * Title to be displayed above the Option Group.
+   */
+  title?: React.ReactNode;
+  /**
    * Properties to spread onto root node.
    */
   [x: string]: any; // eslint-disable-line
@@ -52,13 +73,18 @@ export interface OptionTilesProps extends BoxProps {
 
 export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
   {
-    value,
+    name,
     onChange,
-    className,
     options,
+    value,
+    className = '',
+    description = '',
     direction = 'column',
+    error = undefined,
     isFullWidth = true,
     isMulti = false,
+    isRequired = false,
+    title = '',
     ...restProps
   },
   ref,
@@ -91,7 +117,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
     }
 
     return 'white';
-  }
+  };
 
   const getOptionBorderColor = (option: Option) => {
     if (isOptionSelected(option) && !option.disabled) {
@@ -101,7 +127,19 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
     }
 
     return 'grey-lighter';
-  }
+  };
+
+  const getOptionFontColor = (option: Option) => {
+    if (error && option.disabled) {
+      return 'danger-lighter';
+    } else if (error) {
+      return 'danger';
+    } else if (option.disabled) {
+      return 'grey';
+    }
+    
+    return 'dark';
+  };
 
   const renderRadio = (option: Option) => {
     const getRadioBackgroundColor = (option: Option) => {
@@ -163,7 +201,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
     };
 
     if (isOptionSelected(option) && option.disabled) {
-      iconProps.color = 'primary-200';
+      iconProps.color = 'grey-light';
       iconProps.name = 'checkbox-btn-checked';
     } else if (isOptionSelected(option) && !option.disabled) {
       iconProps.color = 'primary-500';
@@ -186,7 +224,29 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
       width={isFullWidth ? '100' : undefined}
       {...restProps}
     >
-      <Box as="fieldset" childGap="md" borderWidth="0" direction={direction} padding="0">
+      <Box
+        as="fieldset"
+        childGap="md"
+        borderWidth="0"
+        direction={direction}
+        padding="0"
+        alignItems={!isFullWidth ? 'flex-start' : undefined}
+      >
+        {(title || description) && (
+          <Box as="legend"
+            display="block"
+            margin="0 0 md 0"
+            color={error ? 'danger' : 'dark'}
+            fontSize="sm"
+            fontWeight="bold"
+          >
+            {title}
+            {isRequired && <span>&nbsp;*</span>}
+            {description && (
+              <Box margin="xs 0 0 0" fontWeight="regular">{description}</Box>
+            )}
+          </Box>
+        )}
         {options
           && options.map((option, index) => (
             <Box
@@ -194,7 +254,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
               className={styles.option}
               background={getOptionBackgroundColor(option)}
               borderColor={getOptionBorderColor(option)}
-              color={!option.disabled ? 'dark' : 'grey'}
+              color={getOptionFontColor(option)}
               borderWidth="xs"
               shadow="2xs"
               radius="md"
@@ -215,7 +275,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
               {isMulti ? (
                 <Checkbox
                   id={option.id}
-                  name={option.id}
+                  name={name}
                   onChange={onChange}
                   isChecked={isOptionSelected(option)}
                   label={option.label}
@@ -226,7 +286,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
                 />
               ) : (
                 <RadioInput
-                  name={option.id}
+                  name={name}
                   onChange={onChange}
                   option={option}
                   isDisabled={option.disabled}
@@ -238,6 +298,9 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
             </Box>
           ))}
       </Box>
+      {error && typeof error !== 'boolean' && (
+        <InputValidationMessage>{error}</InputValidationMessage>
+      )}
     </Box>
   );
 });

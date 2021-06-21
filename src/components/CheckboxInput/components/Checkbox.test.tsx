@@ -186,4 +186,24 @@ describe('Checkbox', () => {
       expect(mockedHandleBlur).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('Hidden', () => {
+    test('the radio input is hidden', () => {
+      const mockedHandleChange = jest.fn(() => {});
+
+      render(
+        <Checkbox
+          id="mockId"
+          name="mockName"
+          onChange={mockedHandleChange}
+          isHidden
+          isChecked
+          label="mockLabel"
+        />,
+      );
+
+      const checkboxInputContainer = screen.getByRole('checkbox').closest('div');
+      expect(checkboxInputContainer).toHaveClass('hidden');
+    });
+  });
 });

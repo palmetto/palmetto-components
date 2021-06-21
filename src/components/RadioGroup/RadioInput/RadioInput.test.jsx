@@ -142,10 +142,8 @@ describe('RadioInput', () => {
           />,
         );
 
-        const radioInputElement = screen.getByRole('radio');
-        const style = window.getComputedStyle(radioInputElement);
-        console.log('STYLE', style);
-        expect(style.opacity).toBe('0');
+        const radioInputContainer = screen.getByRole('radio').closest('div');
+        expect(radioInputContainer).toHaveClass('hidden');
       });
     });
   });
