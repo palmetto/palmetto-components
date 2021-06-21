@@ -48,7 +48,7 @@ export interface OptionTilesProps extends BoxProps {
   /**
    * Error state or error message for the option group.
    */
-  error?: boolean | string; 
+  error?: boolean | string;
   /**
    * Make tiles take up 100% of their container.
    */
@@ -110,9 +110,16 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
   };
 
   const getOptionBackgroundColor = (option: Option) => {
+    if (isOptionSelected(option) && !option.disabled && error) {
+      return 'danger-lightest';
+    }
+    if (isOptionSelected(option) && option.disabled && error) {
+      return 'danger-lightest';
+    }
     if (isOptionSelected(option) && !option.disabled) {
       return 'primary-lightest';
-    } else if (option.disabled) {
+    }
+    if (option.disabled) {
       return 'grey-lightest';
     }
 
@@ -120,9 +127,16 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
   };
 
   const getOptionBorderColor = (option: Option) => {
+    if (isOptionSelected(option) && !option.disabled && error) {
+      return 'danger';
+    }
+    if (isOptionSelected(option) && option.disabled && error) {
+      return 'danger-lighter';
+    }
     if (isOptionSelected(option) && !option.disabled) {
       return 'primary';
-    } else if (isOptionSelected(option) && option.disabled) {
+    }
+    if (isOptionSelected(option) && option.disabled) {
       return 'grey-light';
     }
 
@@ -132,33 +146,49 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
   const getOptionFontColor = (option: Option) => {
     if (error && option.disabled) {
       return 'danger-lighter';
-    } else if (error) {
+    }
+    if (error) {
       return 'danger';
-    } else if (option.disabled) {
+    }
+    if (option.disabled) {
       return 'grey-light';
     }
-    
+
     return 'dark';
   };
 
   const renderRadio = (option: Option) => {
-    const getRadioBackgroundColor = (option: Option) => {
+    const getRadioBackgroundColor = () => {
+      if (isOptionSelected(option) && !option.disabled && error) {
+        return 'danger';
+      }
+      if (isOptionSelected(option) && option.disabled && error) {
+        return 'danger-lighter';
+      }
       if (isOptionSelected(option) && !option.disabled) {
         return 'primary';
-      } else if (isOptionSelected(option) && option.disabled) {
+      }
+      if (isOptionSelected(option) && option.disabled) {
         return 'grey-light';
-      } 
-  
+      }
+
       return 'transparent';
     };
 
-    const getRadioBorderColor = (option: Option) => {
+    const getRadioBorderColor = () => {
+      if (isOptionSelected(option) && !option.disabled && error) {
+        return 'danger';
+      }
+      if (isOptionSelected(option) && option.disabled && error) {
+        return 'danger-lighter';
+      }
       if (isOptionSelected(option) && !option.disabled) {
         return 'primary';
-      } else if (isOptionSelected(option) && option.disabled) {
+      }
+      if (isOptionSelected(option) && option.disabled) {
         return 'grey-light';
-      } 
-  
+      }
+
       return 'grey-light';
     };
 
@@ -169,14 +199,14 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
         height="16px"
         minHeight="16px"
         radius="circle"
-        borderColor={getRadioBorderColor(option)}
+        borderColor={getRadioBorderColor()}
         borderWidth="xs"
         position="relative"
       >
         <Box
           width="10px"
           height="10px"
-          background={getRadioBackgroundColor(option)}
+          background={getRadioBackgroundColor()}
           radius="circle"
           position="absolute"
           style={{
@@ -199,8 +229,13 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
       color: 'grey-500',
       name: 'checkbox-btn',
     };
-
-    if (isOptionSelected(option) && option.disabled) {
+    if (isOptionSelected(option) && option.disabled && error) {
+      iconProps.color = 'danger-lighter';
+      iconProps.name = 'checkbox-btn-checked';
+    } else if (isOptionSelected(option) && !option.disabled && error) {
+      iconProps.color = 'danger';
+      iconProps.name = 'checkbox-btn-checked';
+    } else if (isOptionSelected(option) && option.disabled) {
       iconProps.color = 'grey-light';
       iconProps.name = 'checkbox-btn-checked';
     } else if (isOptionSelected(option) && !option.disabled) {
@@ -233,7 +268,8 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
         alignItems={!isFullWidth ? 'flex-start' : undefined}
       >
         {(title || description) && (
-          <Box as="legend"
+          <Box
+            as="legend"
             display="block"
             margin="0 0 md 0"
             color={error ? 'danger' : 'dark'}
@@ -247,56 +283,55 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
             )}
           </Box>
         )}
-        {options
-          && options.map((option, index) => (
-            <Box
-              key={option.id}
-              className={styles.option}
-              background={getOptionBackgroundColor(option)}
-              borderColor={getOptionBorderColor(option)}
-              color={getOptionFontColor(option)}
-              borderWidth="xs"
-              shadow="2xs"
-              radius="md"
-              direction="row"
-              childGap="md"
-              padding="md"
-              flex={isFullWidth ? 'auto' : 'initial'}
-              cursor={option.disabled ? 'not-allowed' : 'pointer'}
-              hover={{
-                ...!option.disabled && { borderColor: 'primary' },
-              }}
-              onClick={!option.disabled ? (event: React.MouseEvent<HTMLDivElement>) => handleClick(event, index) : undefined}
-            >
-              {!isMulti ? renderRadio(option) : renderCheckbox(option)}
-              <Box>
-                {option.render ? option.render(option) : option.label}
-              </Box>
-              {isMulti ? (
-                <Checkbox
-                  id={option.id}
-                  name={name}
-                  onChange={onChange}
-                  isChecked={isOptionSelected(option)}
-                  label={option.label}
-                  value={option.value}
-                  isHidden
-                  isDisabled={option.disabled}
-                  ref={optionsRefs.current[index]}
-                />
-              ) : (
-                <RadioInput
-                  name={name}
-                  onChange={onChange}
-                  option={option}
-                  isDisabled={option.disabled}
-                  isSelected={isOptionSelected(option)}
-                  isHidden
-                  ref={optionsRefs.current[index]}
-                />
-              )}
+        {options && options.map((option, index) => (
+          <Box
+            key={option.id}
+            className={styles.option}
+            background={getOptionBackgroundColor(option)}
+            borderColor={getOptionBorderColor(option)}
+            color={getOptionFontColor(option)}
+            borderWidth="xs"
+            shadow="2xs"
+            radius="md"
+            direction="row"
+            childGap="md"
+            padding="md"
+            flex={isFullWidth ? 'auto' : 'initial'}
+            cursor={option.disabled ? 'not-allowed' : 'pointer'}
+            hover={{
+              ...(!option.disabled && !isOptionSelected(option)) && { borderColor: 'primary' },
+            }}
+            onClick={!option.disabled ? (e: React.MouseEvent<HTMLDivElement>) => handleClick(e, index) : undefined}
+          >
+            {!isMulti ? renderRadio(option) : renderCheckbox(option)}
+            <Box>
+              {option.render ? option.render(option) : option.label}
             </Box>
-          ))}
+            {isMulti ? (
+              <Checkbox
+                id={option.id}
+                name={name}
+                onChange={onChange}
+                isChecked={isOptionSelected(option)}
+                label={option.label}
+                value={option.value}
+                isHidden
+                isDisabled={option.disabled}
+                ref={optionsRefs.current[index]}
+              />
+            ) : (
+              <RadioInput
+                name={name}
+                onChange={onChange}
+                option={option}
+                isDisabled={option.disabled}
+                isSelected={isOptionSelected(option)}
+                isHidden
+                ref={optionsRefs.current[index]}
+              />
+            )}
+          </Box>
+        ))}
       </Box>
       {error && typeof error !== 'boolean' && (
         <InputValidationMessage>{error}</InputValidationMessage>
