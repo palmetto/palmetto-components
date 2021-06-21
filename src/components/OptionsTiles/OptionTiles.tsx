@@ -36,7 +36,7 @@ export interface OptionTilesProps extends BoxProps {
   /**
    * Value of selected option(s).
    */
-  value: string | number | (string | number)[];
+  value: null | string | number | (string | number)[];
   /**
    * Direction (flex direction) for option tiles.
    */
