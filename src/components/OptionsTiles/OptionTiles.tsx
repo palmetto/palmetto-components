@@ -36,7 +36,7 @@ export interface OptionTilesProps extends BoxProps {
   /**
    * Value of selected option(s).
    */
-   value: string | number | (string | number)[];
+  value: string | number | (string | number)[];
   /**
    * Direction (flex direction) for option tiles.
    */
@@ -49,6 +49,11 @@ export interface OptionTilesProps extends BoxProps {
    * Error state or error message for the option group.
    */
   error?: boolean | string;
+  /**
+   * Whether the tile shows a radio/checkbox. Note that the true input is always hidden (accessibly). This prop
+   * hides the custom component which is the visual indicator of checked/selected state.
+   */
+  hideInput?: boolean;
   /**
    * Make tiles take up 100% of their container.
    */
@@ -81,6 +86,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
     description = '',
     direction = 'column',
     error = undefined,
+    hideInput = undefined,
     isFullWidth = true,
     isMulti = false,
     isRequired = false,
@@ -303,7 +309,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
             }}
             onClick={!option.disabled ? (e: React.MouseEvent<HTMLDivElement>) => handleClick(e, index) : undefined}
           >
-            {!isMulti ? renderRadio(option) : renderCheckbox(option)}
+            {!hideInput && (!isMulti ? renderRadio(option) : renderCheckbox(option))}
             <Box>
               {option.render ? option.render(option) : option.label}
             </Box>

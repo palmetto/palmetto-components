@@ -101,6 +101,45 @@ now being an array of values.
   </Story>
 </Canvas>
 
+## Hidden Input
+
+You can render tiles without a radio/checkbox. Note that the input elements are still underlying the component, but this will limit the visual indication
+to the selected states on the tile itself. This is likely best when paired with custom content on the tile.
+
+<Canvas isExpanded>
+  <Story name="Hidden Input">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_hidden',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_hidden',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_hidden',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <OptionTiles
+          name="hidden"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+          hideInput
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Direction
 
 Set the direction (flex) of the tiles. This uses the same `direction` prop as the `Box` component and as such can be responsive.
