@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { OptionTiles } from './OptionTiles';
 
 const options = [
@@ -76,7 +76,15 @@ describe('OptionTiles', () => {
         <OptionTiles
           name="withDisabledOptions"
           onChange={jest.fn()}
-          options={[...options, { label: 'disabled', id: 'disabled', value: 'disabled', disabled: true }]}
+          options={[
+            ...options,
+            {
+              label: 'disabled',
+              id: 'disabled',
+              value: 'disabled',
+              disabled: true,
+            },
+          ]}
           value={null}
         />,
       );
