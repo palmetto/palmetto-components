@@ -135,7 +135,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
     } else if (error) {
       return 'danger';
     } else if (option.disabled) {
-      return 'grey';
+      return 'grey-light';
     }
     
     return 'dark';

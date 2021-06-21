@@ -56,6 +56,9 @@ Use a OptionTiles when a user is required to select one of five or fewer options
 
 ## MultiSelect
 
+When a user needs to select more than one element, the underlying inputs will be checkboxes. With the `value` option
+now being an array of values.
+
 <Canvas isExpanded>
   <Story name="MultiSelect">
     {() => {
@@ -243,6 +246,81 @@ Will show an asterisk on the title (if included).
   </Story>
 </Canvas>
 
+## Disabling Options
+
+A `disabled` attribute can be passed inside the `Option` object to disable any particular option.
+
+<Canvas isExpanded>
+  <Story name="Disabled Options">
+    {() => {
+      const [value, setValue] = useState();
+      const [valueMulti, setValueMulti] = useState([]);
+      const handleSetValueMulti = (event) => {
+        const selectedValue = event.target.value;
+        if (valueMulti.includes(selectedValue)) {
+          setValueMulti([...valueMulti].filter(v => v !== selectedValue))
+        } else {
+          setValueMulti([...valueMulti, selectedValue]);
+        }
+      }
+      const options = [
+        {
+          id: 'chocolate_disabled',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_disabled',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_disabled',
+          value: 'vanilla',
+          label: 'Vanilla',
+          disabled: true,
+        },
+      ];
+      const optionsMulti = [
+        {
+          id: 'chocolate_disabled_multi',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_disabled_multi',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_disabled_multi',
+          value: 'vanilla',
+          label: 'Vanilla',
+          disabled: true,
+        },
+      ];
+      return (
+        <>
+          <OptionTiles
+            name="disabled"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            margin="0 0 lg 0"
+          />
+          <OptionTiles
+            name="disabledMulti"
+            value={valueMulti}
+            onChange={handleSetValueMulti}
+            options={optionsMulti}
+            isMulti
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Error
 
 Pass an error (or boolean with no message) to notify a user when something isn't right. Likely paired with `isRequired` in most cases.
@@ -289,7 +367,6 @@ Pass an error (or boolean with no message) to notify a user when something isn't
 ## Full Width (or lack thereof)
 
 The OptionsTile component has fullWidth (100%) enabled by default but it can be disabled if need be.
-NOTE: With vertically stacked options they will be fullWidth regardless since they are meant to be block-like elements.
 
 <Canvas isExpanded>
   <Story name="Full Width">
@@ -434,79 +511,6 @@ The tiles can render custom content with a `render` function passed in the optio
           options={options}
           direction={{ base: 'column', tablet: 'row' }}
         />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Disabling Options
-
-<Canvas isExpanded>
-  <Story name="Disabled Options">
-    {() => {
-      const [value, setValue] = useState();
-      const [valueMulti, setValueMulti] = useState([]);
-      const handleSetValueMulti = (event) => {
-        const selectedValue = event.target.value;
-        if (valueMulti.includes(selectedValue)) {
-          setValueMulti([...valueMulti].filter(v => v !== selectedValue))
-        } else {
-          setValueMulti([...valueMulti, selectedValue]);
-        }
-      }
-      const options = [
-        {
-          id: 'chocolate_disabled',
-          value: 'chocolate',
-          label: 'Chocolate',
-        },
-        {
-          id: 'strawberry_disabled',
-          value: 'strawberry',
-          label: 'Strawberry',
-        },
-        {
-          id: 'vanilla_disabled',
-          value: 'vanilla',
-          label: 'Vanilla',
-          disabled: true,
-        },
-      ];
-      const optionsMulti = [
-        {
-          id: 'chocolate_disabled_multi',
-          value: 'chocolate',
-          label: 'Chocolate',
-        },
-        {
-          id: 'strawberry_disabled_multi',
-          value: 'strawberry',
-          label: 'Strawberry',
-        },
-        {
-          id: 'vanilla_disabled_multi',
-          value: 'vanilla',
-          label: 'Vanilla',
-          disabled: true,
-        },
-      ];
-      return (
-        <>
-          <OptionTiles
-            name="disabled"
-            value={value}
-            onChange={event => setValue(event.target.value)}
-            options={options}
-            margin="0 0 lg 0"
-          />
-          <OptionTiles
-            name="disabledMulti"
-            value={valueMulti}
-            onChange={handleSetValueMulti}
-            options={optionsMulti}
-            isMulti
-          />
-        </>
       );
     }}
   </Story>
