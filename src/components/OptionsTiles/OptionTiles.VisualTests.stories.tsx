@@ -28,7 +28,7 @@ const options = [
 const Template: Story<OptionTilesProps> = args => (
   <OptionTiles
     {...args}
-    onChange={() => {}}
+    onChange={() => {}} // eslint-disable-line
   />
 );
 
@@ -347,7 +347,12 @@ export const RadioWithCustomContent = Template.bind({});
 RadioWithCustomContent.args = {
   options: [
     ...options,
-    { label: 'custom', value: 'custom', id: 'custom', render: () => <div>hello world, I am a custom node!</div>}
+    {
+      label: 'custom',
+      value: 'custom',
+      id: 'custom',
+      render: () => <div>hello world, I am a custom node!</div>,
+    },
   ],
   name: 'radioWithCustomContent',
 };
@@ -356,7 +361,12 @@ export const CheckboxWithCustomContent = Template.bind({});
 CheckboxWithCustomContent.args = {
   options: [
     ...options,
-    { label: 'custom', value: 'custom', id: 'custom', render: () => <div>hello world, I am a custom node!</div>}
+    {
+      label: 'custom',
+      value: 'custom',
+      id: 'custom',
+      render: () => <div>hello world, I am a custom node!</div>,
+    },
   ],
   name: 'checkboxWithCustomContent',
   isMulti: true,

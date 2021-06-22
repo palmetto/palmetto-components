@@ -21,7 +21,7 @@ export default {
     isMulti: {
       control: {
         type: 'boolean',
-      }
+      },
     },
     hideInput: {
       control: {
@@ -82,6 +82,6 @@ export const Playground = Template.bind({});
 
 Playground.args = {
   value: null,
-  onChange: () => {},
+  onChange: () => {}, // eslint-disable-line
   name: 'optionTilesPlayground',
 };

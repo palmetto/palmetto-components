@@ -170,11 +170,10 @@ describe('OptionTiles', () => {
 
       const selectedOptionContainer = screen.getByRole('group').children[1];
       const title = screen.getByText('title');
-      
+
       expect(title).toHaveClass('font-color-danger');
       expect(selectedOptionContainer).toHaveClass('background-color-danger-lightest');
     });
-
 
     test('multi-select with error', async () => {
       render(
@@ -185,7 +184,7 @@ describe('OptionTiles', () => {
             ...options,
           ]}
           isMulti
-          value={["chocolate"]}
+          value={['chocolate']}
           error
         />,
       );
@@ -280,7 +279,7 @@ describe('OptionTiles', () => {
             },
           ]}
           isMulti
-          value={["disabled"]}
+          value={['disabled']}
         />,
       );
 
@@ -332,7 +331,7 @@ describe('OptionTiles', () => {
             },
           ]}
           isMulti
-          value={["disabled"]}
+          value={['disabled']}
           error
         />,
       );
@@ -368,7 +367,14 @@ describe('OptionTiles', () => {
         <OptionTiles
           name="withCustomRenderedOption"
           onChange={jest.fn()}
-          options={[...options, { label: 'custom', id: 'custom', value: 'custom', render: () => <div>hello world!</div> }]}
+          options={[...options,
+            {
+              label: 'custom',
+              id: 'custom',
+              value: 'custom',
+              render: () => <div>hello world!</div>,
+            },
+          ]}
           value={null}
           isFullWidth={false}
         />,
@@ -408,9 +414,9 @@ describe('OptionTiles', () => {
           value={null}
         />,
       );
-  
+
       const firstRadio = screen.getByLabelText('chocolate');
-  
+
       fireEvent.click(firstRadio);
       expect(mockedOnChange).toBeCalledTimes(2);
     });

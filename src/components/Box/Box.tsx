@@ -312,9 +312,9 @@ export const Box: FC<BoxProps> = forwardRef((
     fontSize: { classPrefix: 'font-size', transformer: generateResponsiveClasses },
   };
 
-  const getStatefulClasses = (stateKey: 'hover' | 'focus', values: BoxProps['hover' | 'hover']) => values
+  const getStatefulClasses = (stateKey: 'hover' | 'focus', values: BoxProps['hover' | 'hover']) => values // eslint-disable-line
     ? Object.entries(values).map(([key, value]) => (
-      cssPropertyMap[key].transformer(`${stateKey}:${cssPropertyMap[key as keyof BoxProps['focus' | 'hover']].classPrefix}`, value)
+      cssPropertyMap[key].transformer(`${stateKey}:${cssPropertyMap[key as keyof BoxProps['focus' | 'hover']].classPrefix}`, value) // eslint-disable-line max-len
     ))
     : undefined;
 
