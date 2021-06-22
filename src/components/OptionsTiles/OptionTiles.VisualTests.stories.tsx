@@ -391,3 +391,18 @@ CheckboxWithHiddenCheckbox.args = {
   name: 'checkboxWithHiddenCheckbox',
   isMulti: true,
 };
+
+export const ResponsiveDirection = Template.bind({});
+ResponsiveDirection.args = {
+  options: [
+    ...options,
+  ],
+  direction: {
+    base: 'column',
+    tablet: 'row',
+    desktop: 'column',
+    hd: 'row',
+  },
+  name: 'radioWithResponsiveDirection',
+};
+ResponsiveDirection.parameters = RESPONSIVE_STORY;
