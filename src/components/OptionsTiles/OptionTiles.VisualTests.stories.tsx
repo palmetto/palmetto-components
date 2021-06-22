@@ -28,6 +28,7 @@ const options = [
 const Template: Story<OptionTilesProps> = args => (
   <OptionTiles
     {...args}
+    onChange={() => {}}
   />
 );
 
@@ -340,4 +341,42 @@ RadioWithContentWidthHorizontal.args = {
   name: 'radioWithContentWidthHorizontal',
   isFullWidth: false,
   direction: 'row',
+};
+
+export const RadioWithCustomContent = Template.bind({});
+RadioWithCustomContent.args = {
+  options: [
+    ...options,
+    { label: 'custom', value: 'custom', id: 'custom', render: () => <div>hello world, I am a custom node!</div>}
+  ],
+  name: 'radioWithCustomContent',
+};
+
+export const CheckboxWithCustomContent = Template.bind({});
+CheckboxWithCustomContent.args = {
+  options: [
+    ...options,
+    { label: 'custom', value: 'custom', id: 'custom', render: () => <div>hello world, I am a custom node!</div>}
+  ],
+  name: 'checkboxWithCustomContent',
+  isMulti: true,
+};
+
+export const RadioWithHiddenRadio = Template.bind({});
+RadioWithHiddenRadio.args = {
+  options: [
+    ...options,
+  ],
+  hideInput: true,
+  name: 'radioWithHiddenRadio',
+};
+
+export const CheckboxWithHiddenCheckbox = Template.bind({});
+CheckboxWithHiddenCheckbox.args = {
+  options: [
+    ...options,
+  ],
+  hideInput: true,
+  name: 'checkboxWithHiddenCheckbox',
+  isMulti: true,
 };

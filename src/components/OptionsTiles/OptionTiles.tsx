@@ -1,5 +1,5 @@
 import React from 'react';
-import { FontColor } from '../../types';
+import { BrandColor, FontColor } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { RadioInput } from '../RadioGroup/RadioInput/RadioInput';
 import { Checkbox } from '../CheckboxInput/components/Checkbox';
@@ -164,7 +164,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
   };
 
   const renderRadio = (option: Option) => {
-    const getRadioBackgroundColor = () => {
+    const getRadioFillColor = (defaultColor: BrandColor): BrandColor => {
       if (isOptionSelected(option) && !option.disabled && error) {
         return 'danger';
       }
@@ -178,24 +178,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
         return 'grey-light';
       }
 
-      return 'transparent';
-    };
-
-    const getRadioBorderColor = () => {
-      if (isOptionSelected(option) && !option.disabled && error) {
-        return 'danger';
-      }
-      if (isOptionSelected(option) && option.disabled && error) {
-        return 'danger-lighter';
-      }
-      if (isOptionSelected(option) && !option.disabled) {
-        return 'primary';
-      }
-      if (isOptionSelected(option) && option.disabled) {
-        return 'grey-light';
-      }
-
-      return 'grey-light';
+      return defaultColor;
     };
 
     return (
@@ -205,14 +188,14 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
         height="16px"
         minHeight="16px"
         radius="circle"
-        borderColor={getRadioBorderColor()}
+        borderColor={getRadioFillColor('grey-light')}
         borderWidth="xs"
         position="relative"
       >
         <Box
           width="10px"
           height="10px"
-          background={getRadioBackgroundColor()}
+          background={getRadioFillColor('transparent')}
           radius="circle"
           position="absolute"
           style={{

@@ -312,17 +312,14 @@ export const Box: FC<BoxProps> = forwardRef((
     fontSize: { classPrefix: 'font-size', transformer: generateResponsiveClasses },
   };
 
-  const hoverClasses = hover
-    ? Object.entries(hover).map(([key, value]) => (
-      cssPropertyMap[key].transformer(`hover:${cssPropertyMap[key as keyof BoxProps['hover']].classPrefix}`, value)
+  const getStatefulClasses = (stateKey: 'hover' | 'focus', values: BoxProps['hover' | 'hover']) => values
+    ? Object.entries(values).map(([key, value]) => (
+      cssPropertyMap[key].transformer(`${stateKey}:${cssPropertyMap[key as keyof BoxProps['focus' | 'hover']].classPrefix}`, value)
     ))
     : undefined;
 
-  const focusClasses = focus
-    ? Object.entries(focus).map(([key, value]) => (
-      cssPropertyMap[key].transformer(`focus:${cssPropertyMap[key as keyof BoxProps['focus']].classPrefix}`, value)
-    ))
-    : undefined;
+  const hoverClasses = getStatefulClasses('hover', hover);
+  const focusClasses = getStatefulClasses('focus', focus);
 
   const boxClasses = classNames(
     className,
