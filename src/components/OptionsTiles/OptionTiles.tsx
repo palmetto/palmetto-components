@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrandColor, FontColor } from '../../types';
+import { BrandColor, FontColor, ResponsiveProp } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { RadioInput } from '../RadioGroup/RadioInput/RadioInput';
 import { Checkbox } from '../CheckboxInput/components/Checkbox';
@@ -40,7 +40,7 @@ export interface OptionTilesProps extends BoxProps {
   /**
    * Direction (flex direction) for option tiles.
    */
-  direction?: BoxProps['direction'];
+  direction?: 'row' | 'column' | ResponsiveProp<'row' | 'column'>;
   /**
    * Description to be displayed below the title, and above the RadioGroup.
    */

@@ -142,64 +142,38 @@ to the selected states on the tile itself. This is likely best when paired with 
 
 ## Direction
 
-Set the direction (flex) of the tiles. This uses the same `direction` prop as the `Box` component and as such can be responsive.
+Set the direction (flex) of the tiles. It can be one of `row` or `column` but will also take a `ResponsiveProp` object with either of these values. (see example).
 
 <Canvas isExpanded>
   <Story name="Direction">
     {() => {
-      const [valueHorizontal, setValueHorizontal] = useState([]);
       const [valueVertical, setValueVertical] = useState([]);
-            const optionsVertical = [
+      const optionsVertical = [
         {
-          id: 'chocolate_direction_vertical',
+          id: 'chocolate_direction',
           value: 'chocolate',
           label: 'Chocolate',
         },
         {
-          id: 'strawberry_direction_vertical',
+          id: 'strawberry_direction',
           value: 'strawberry',
           label: 'Strawberry',
         },
         {
-          id: 'vanilla_direction_vertical',
-          value: 'vanilla',
-          label: 'Vanilla',
-        },
-      ];
-      const optionsHorizontal = [
-        {
-          id: 'chocolate_direction_horizontal',
-          value: 'chocolate',
-          label: 'Chocolate',
-        },
-        {
-          id: 'strawberry_direction_horizontal',
-          value: 'strawberry',
-          label: 'Strawberry',
-        },
-        {
-          id: 'vanilla_direction_horizontal',
+          id: 'vanilla_direction',
           value: 'vanilla',
           label: 'Vanilla',
         },
       ];
       return (
         <>
-          <p className="m-bottom-md font-size-lg font-weight-bold">Vertical</p>
+          <p className="m-bottom-md font-size-lg font-weight-bold">Responsive Direction (change your viewport to see it in action)</p>
           <OptionTiles
             name="directionVertical"
             value={valueVertical}
             onChange={event => setValueVertical(event.target.value)}
             options={optionsVertical}
-            direction="column"
-          />
-          <p className="m-v-md font-size-lg font-weight-bold">Horizontal</p>
-          <OptionTiles
-            name="directionHorizontal"
-            value={valueHorizontal}
-            onChange={event => setValueHorizontal(event.target.value)}
-            options={optionsHorizontal}
-            direction="row"
+            direction={{ base: 'column', tablet: 'row' }}
           />
         </>
       );

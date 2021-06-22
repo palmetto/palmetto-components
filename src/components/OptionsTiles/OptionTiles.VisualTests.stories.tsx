@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { RESPONSIVE_STORY } from '../../docs/constants';
 import { OptionTiles, OptionTilesProps } from './OptionTiles';
 
 export default {

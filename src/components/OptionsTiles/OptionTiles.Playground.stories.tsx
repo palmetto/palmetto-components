@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Box, boxPropsKeys } from '../Box/Box';
+import { boxPropsKeys } from '../Box/Box';
 import { OptionTiles, OptionTilesProps } from './OptionTiles';
 
 export default {
@@ -54,6 +54,12 @@ export default {
       },
     },
     ...boxPropsKeys.reduce((acc, curr) => ({ ...acc, [curr]: { table: { disable: true } } }), {}),
+    direction: {
+      control: {
+        type: 'select',
+        options: ['row', 'column'],
+      },
+    },
   },
 } as Meta;
 
@@ -63,19 +69,17 @@ const Template: Story<OptionTilesProps> = ({
   name,
   ...args
 }) => (
-  <Box childGap="md">
-    <OptionTiles
-      {...args}
-      options={[
-        { value: 'chocolate', label: 'chocolate', id: 'chocolate' },
-        { value: 'strawberry', label: 'strawberry', id: 'strawberry' },
-        { value: 'vanilla', label: 'vanilla', id: 'vanilla' },
-      ]}
-      value={value}
-      onChange={onChange}
-      name={name}
-    />
-  </Box>
+  <OptionTiles
+    {...args}
+    options={[
+      { value: 'chocolate', label: 'chocolate', id: 'chocolate' },
+      { value: 'strawberry', label: 'strawberry', id: 'strawberry' },
+      { value: 'vanilla', label: 'vanilla', id: 'vanilla' },
+    ]}
+    value={value}
+    onChange={onChange}
+    name={name}
+  />
 );
 
 export const Playground = Template.bind({});
