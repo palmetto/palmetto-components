@@ -288,7 +288,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
             flex={isFullWidth ? 'auto' : 'initial'}
             cursor={option.disabled ? 'not-allowed' : 'pointer'}
             hover={{
-              ...(!option.disabled && !isOptionSelected(option)) && { borderColor: 'primary' },
+              ...(!option.disabled && !isOptionSelected(option)) && { borderColor: 'grey-300' },
             }}
             onClick={!option.disabled ? (e: React.MouseEvent<HTMLDivElement>) => handleClick(e, index) : undefined}
           >
