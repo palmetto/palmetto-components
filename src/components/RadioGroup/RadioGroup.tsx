@@ -4,7 +4,7 @@ import React, {
 import classNames from 'classnames';
 import { Box } from '../Box/Box';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
-import RadioInput from './RadioInput/RadioInput';
+import { RadioInput } from './RadioInput/RadioInput';
 import styles from './RadioGroup.module.scss';
 
 export interface RadioGroupProps {

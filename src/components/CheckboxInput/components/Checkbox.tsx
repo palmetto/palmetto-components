@@ -42,6 +42,10 @@ export interface CheckboxProps extends Omit<BoxProps, 'radius' | 'background' | 
    */
   isDisabled?: boolean;
   /**
+   * If the radio input should be hidden to make way for a custom checkbox.
+   */
+  isHidden?: boolean;
+  /**
    * Determines if input is required or not. (Label will have an asterisk if required).
    */
   isRequired?: boolean;
@@ -57,6 +61,10 @@ export interface CheckboxProps extends Omit<BoxProps, 'radius' | 'background' | 
    * The size of the checkbox.
    */
   size?: CheckboxSize;
+  /**
+   * Value of the checkbox input element
+   */
+  value?: string | number;
 }
 
 const SIZE_KEYS: {
@@ -91,10 +99,12 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
       onChange,
       error = false,
       isDisabled = false,
+      isHidden = false,
       isRequired = false,
       onBlur = undefined,
       onFocus = undefined,
       size = 'md',
+      value = undefined,
       ...restProps
     },
     ref,
@@ -123,6 +133,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
       onFocus: handleFocus,
       required: isRequired,
       type: 'checkbox',
+      ...value && { value },
     };
 
     interface CheckboxIcon {
@@ -157,13 +168,17 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
       );
     };
 
-    const containerClasses = classNames(styles.checkbox, className);
+    const containerClasses = classNames(
+      styles.checkbox,
+      className,
+      { [styles.hidden]: isHidden },
+    );
 
     return (
       <Box
         background={isDisabled && !isChecked ? 'grey-50' : 'white'}
         display={display}
-        height={SIZE_KEYS[size].height}
+        height={!isHidden ? SIZE_KEYS[size].height : '0'}
         radius={SIZE_KEYS[size].radius}
         ref={ref}
         style={{ position: 'relative' }}
@@ -179,7 +194,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
             height: SIZE_KEYS[size].height,
           }}
         />
-        {checkboxIcon()}
+        {!isHidden && checkboxIcon()}
       </Box>
     );
   },
