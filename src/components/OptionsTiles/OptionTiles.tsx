@@ -76,7 +76,7 @@ export interface OptionTilesProps extends BoxProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
+export const OptionTiles = React.forwardRef<HTMLDivElement, OptionTilesProps>((
   {
     name,
     onChange,
