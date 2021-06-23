@@ -1,4 +1,4 @@
-import { InputMaskType } from './TextInput';
+import { InputMaskType } from './TextInput'; // eslint-disable-line import/no-cycle
 
 export type PhoneMask = {
   numericOnly: boolean;
@@ -38,7 +38,7 @@ const availableInputMaskTypes = {
   date: dateMask,
 };
 
-export const getInputMaskType = (
+export const getInputMaskType: PhoneMask | CreditCardMask | DateMask | { [key: string]: any; } = ( // eslint-disable-line
   mask: InputMaskType,
 ) => {
   if (typeof mask === 'string') {
@@ -47,4 +47,3 @@ export const getInputMaskType = (
 
   return mask;
 };
-
