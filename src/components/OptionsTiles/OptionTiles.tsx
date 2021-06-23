@@ -249,7 +249,7 @@ export const OptionTiles: React.FC<OptionTilesProps> = React.forwardRef((
       {...restProps}
     >
       <Box
-        as="fieldset"
+        role="group"
         childGap="md"
         borderWidth="0"
         direction={direction}
