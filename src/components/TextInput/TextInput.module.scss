@@ -51,39 +51,6 @@
     }
   }
 
-  &.sm {
-    border-radius: var(--form-control-size-sm-border-radius);
-    padding: 0 var(--form-control-size-sm-padding);
-    font-size: var(--form-control-size-sm-font-size);
-
-    > * {
-      padding-top: calc(var(--form-control-size-sm-padding) - 1px);
-      padding-bottom: calc(var(--form-control-size-sm-padding) - 1px);
-    }
-  }
-
-  &.md {
-    border-radius: var(--form-control-size-md-border-radius);
-    padding: 0 var(--form-control-size-md-padding);
-    font-size: var(--form-control-size-md-font-size);
-
-    > * {
-      padding-top: calc(var(--form-control-size-md-padding) - 1px);
-      padding-bottom: calc(var(--form-control-size-md-padding) - 1px);
-    }
-  }
-
-  &.lg {
-    border-radius: var(--form-control-size-lg-border-radius);
-    padding: 0 var(--form-control-size-lg-padding);
-    font-size: var(--form-control-size-lg-font-size);
-
-    > * {
-      padding-top: calc(var(--form-control-size-lg-padding) - 1px);
-      padding-bottom: calc(var(--form-control-size-lg-padding) - 1px);
-    }
-  }
-
   &.error {
     border-color: var(--form-control-error-border-color);
     background-color: var(--form-control-error-background-color);

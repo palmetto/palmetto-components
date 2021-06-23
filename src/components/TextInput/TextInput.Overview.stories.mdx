@@ -290,7 +290,8 @@ a callback function when the clear icon is clicked, which can then be handled to
 
 ## Sizes
 
-Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
+Set the size of the text input to `sm`, `md` or `lg`, but it can take these values in a `ResponsiveProp` object if it needs
+ to be sized differently for each breakpoint.
 
 <Canvas>
   <Story name="Size">
@@ -298,6 +299,7 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
       const [value, setValue] = useState('');
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
+      const [valueResponsive, setValueResponsive] = useState('');
       return (
         <Box
           direction={{
@@ -330,6 +332,13 @@ Set the size of the text input to `sm`, `md` or `lg`. `md` is the default size.
             label="Large Size"
             size="lg"
             onChange={event => setValue2(event.target.value)}
+          />
+          <TextInput
+            id="responsiveSize"
+            value={valueResponsive}
+            label="Responsive"
+            size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}
+            onChange={event => setValueResponsive(event.target.value)}
           />
         </Box>
       );
