@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { OptionTiles } from './OptionTiles';
+import { OptionTileGroup } from './OptionTileGroup';
 import { Heading } from '../Heading/Heading';
 import { Box } from '../Box/Box';
 
 <Meta
-  title="Components/OptionTiles/Overview"
-  component={OptionTiles}
+  title="Components/OptionTileGroup/Overview"
+  component={OptionTileGroup}
   parameters={{
     controls: { hideNoControlsWarning: true },
   }}
 />
 
-# OptionTiles
+# OptionTileGroup
 
-Use a OptionTiles when a user is required to select one of five or fewer options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-selectinput-overview--default-story) instead.
+Use a OptionTileGroup when a user is required to select one of five or fewer options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-selectinput-overview--default-story) instead.
 
 <Canvas isExpanded>
   <Story name="Default">
@@ -39,7 +39,7 @@ Use a OptionTiles when a user is required to select one of five or fewer options
         },
       ];
       return (
-        <OptionTiles
+        <OptionTileGroup
           name="default"
           value={value}
           onChange={event => setValue(event.target.value)}
@@ -52,7 +52,7 @@ Use a OptionTiles when a user is required to select one of five or fewer options
 
 ## Props
 
-<ArgsTable of={OptionTiles} />
+<ArgsTable of={OptionTileGroup} />
 
 ## MultiSelect
 
@@ -89,7 +89,7 @@ now being an array of values.
         },
       ];
       return (
-        <OptionTiles
+        <OptionTileGroup
           name="multi"
           value={value}
           onChange={handleSetValue}
@@ -128,7 +128,7 @@ to the selected states on the tile itself. This is likely best when paired with 
         },
       ];
       return (
-        <OptionTiles
+        <OptionTileGroup
           name="hidden"
           value={value}
           onChange={event => setValue(event.target.value)}
@@ -168,7 +168,7 @@ Set the direction (flex) of the tiles. It can be one of `row` or `column` but wi
       return (
         <>
           <p className="m-bottom-md font-size-lg font-weight-bold">Responsive Direction (change your viewport to see it in action)</p>
-          <OptionTiles
+          <OptionTileGroup
             name="directionVertical"
             value={valueVertical}
             onChange={event => setValueVertical(event.target.value)}
@@ -207,7 +207,7 @@ Acting as the fieldset legend.
         },
       ];
       return (
-        <OptionTiles
+        <OptionTileGroup
           name="titleAndDescription"
           title="Ice cream flavors"
           description="Only if you eat all your dinner"
@@ -246,7 +246,7 @@ Will show an asterisk on the title (if included).
         },
       ];
       return (
-        <OptionTiles
+        <OptionTileGroup
           name="required"
           title="Ice cream flavors"
           isRequired
@@ -314,14 +314,14 @@ A `disabled` attribute can be passed inside the `Option` object to disable any p
       ];
       return (
         <>
-          <OptionTiles
+          <OptionTileGroup
             name="disabled"
             value={value}
             onChange={event => setValue(event.target.value)}
             options={options}
             margin="0 0 lg 0"
           />
-          <OptionTiles
+          <OptionTileGroup
             name="disabledMulti"
             value={valueMulti}
             onChange={handleSetValueMulti}
@@ -361,7 +361,7 @@ Pass an error (or boolean with no message) to notify a user when something isn't
         },
       ];
       return (
-        <OptionTiles
+        <OptionTileGroup
           name="required"
           title="Ice cream flavors"
           description="Only if you eat all your dinner"
@@ -423,7 +423,7 @@ The OptionsTile component has fullWidth (100%) enabled by default but it can be 
       return (
         <>
           <p className="m-bottom-md font-size-lg font-weight-bold">Vertical</p>
-          <OptionTiles
+          <OptionTileGroup
             name="fullWidthVertical"
             value={valueVertical}
             onChange={event => setValueVertical(event.target.value)}
@@ -432,7 +432,7 @@ The OptionsTile component has fullWidth (100%) enabled by default but it can be 
             isFullWidth={false}
           />
           <p className="m-v-md font-size-lg font-weight-bold">Horizontal</p>
-          <OptionTiles
+          <OptionTileGroup
             name="fullWidthHorizontal"
             value={valueHorizontal}
             onChange={event => setValueHorizontal(event.target.value)}
@@ -517,7 +517,7 @@ The tiles can render custom content with a `render` function passed in the optio
         },
       ];
       return (
-        <OptionTiles
+        <OptionTileGroup
           name="customContent"
           value={value}
           onChange={event => setValue(event.target.value)}

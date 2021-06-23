@@ -5,7 +5,7 @@ import { RadioInput } from '../RadioGroup/RadioInput/RadioInput';
 import { Checkbox } from '../CheckboxInput/components/Checkbox';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { Icon } from '../Icon/Icon';
-import styles from './OptionTiles.module.scss';
+import styles from './OptionTileGroup.module.scss';
 
 interface Option {
   id: string;
@@ -20,7 +20,7 @@ interface Option {
   }) => React.ReactNode;
 }
 
-export interface OptionTilesProps extends BoxProps {
+export interface OptionTileGroupProps extends BoxProps {
   /**
    * Option group name (to be passed to either radio or checkbox inputs)
    */
@@ -76,7 +76,7 @@ export interface OptionTilesProps extends BoxProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const OptionTiles = React.forwardRef<HTMLDivElement, OptionTilesProps>((
+export const OptionTileGroup = React.forwardRef<HTMLDivElement, OptionTileGroupProps>((
   {
     name,
     onChange,

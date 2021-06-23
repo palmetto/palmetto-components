@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { OptionTiles } from './OptionTiles';
+import { OptionTileGroup } from './OptionTileGroup';
 
 const options = [
   { value: 'chocolate', label: 'chocolate', id: 'chocolate' },
@@ -8,11 +8,11 @@ const options = [
   { value: 'vanilla', label: 'vanilla', id: 'vanilla' },
 ];
 
-describe('OptionTiles', () => {
+describe('OptionTileGroup', () => {
   describe('Default', () => {
     test('it renders a radio group and radio inputs', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="default"
           onChange={jest.fn()}
           options={[...options]}
@@ -26,7 +26,7 @@ describe('OptionTiles', () => {
 
     test('it renders checkbox inputs if multiple elements can be selected', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="defaultMulti"
           onChange={jest.fn()}
           options={[...options]}
@@ -43,7 +43,7 @@ describe('OptionTiles', () => {
   describe('States', () => {
     test('required', () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="required"
           onChange={jest.fn()}
           options={[...options]}
@@ -59,7 +59,7 @@ describe('OptionTiles', () => {
 
     test('with option selected', () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withOptionSelected"
           onChange={jest.fn()}
           options={[...options]}
@@ -73,7 +73,7 @@ describe('OptionTiles', () => {
 
     test('multi-select with option selected', () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withOptionSelectedMulti"
           onChange={jest.fn()}
           options={[...options]}
@@ -90,7 +90,7 @@ describe('OptionTiles', () => {
 
     test('with title', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withTitle"
           onChange={jest.fn()}
           options={[...options]}
@@ -105,7 +105,7 @@ describe('OptionTiles', () => {
 
     test('with description', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withDescription"
           onChange={jest.fn()}
           options={[...options]}
@@ -120,7 +120,7 @@ describe('OptionTiles', () => {
 
     test('with boolean error state', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withBooleanError"
           onChange={jest.fn()}
           options={[
@@ -138,7 +138,7 @@ describe('OptionTiles', () => {
 
     test('with text error state', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withTextError"
           onChange={jest.fn()}
           options={[
@@ -156,7 +156,7 @@ describe('OptionTiles', () => {
 
     test('with title + error', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withTitleAndError"
           onChange={jest.fn()}
           options={[
@@ -177,7 +177,7 @@ describe('OptionTiles', () => {
 
     test('multi-select with error', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="multiWithError"
           onChange={jest.fn()}
           options={[
@@ -196,7 +196,7 @@ describe('OptionTiles', () => {
 
     test('with disabled options', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withDisabledOptions"
           onChange={jest.fn()}
           options={[
@@ -218,7 +218,7 @@ describe('OptionTiles', () => {
 
     test('multi-select with disabled options', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withDisabledOptionsMulti"
           onChange={jest.fn()}
           options={[
@@ -241,7 +241,7 @@ describe('OptionTiles', () => {
 
     test('with disabled + selected option', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withDisabledAndSelected"
           onChange={jest.fn()}
           options={[
@@ -266,7 +266,7 @@ describe('OptionTiles', () => {
 
     test('multi-select with disabled + selected option', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="multiWithDisabledOptionAndSelected"
           onChange={jest.fn()}
           options={[
@@ -292,7 +292,7 @@ describe('OptionTiles', () => {
 
     test('with disabled option + error', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withDisabledAndError"
           onChange={jest.fn()}
           options={[
@@ -318,7 +318,7 @@ describe('OptionTiles', () => {
 
     test('multi-select with disabled option + error', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="multiWithDisabledAndError"
           onChange={jest.fn()}
           options={[
@@ -345,7 +345,7 @@ describe('OptionTiles', () => {
 
     test('with content width (instead of fullWidth)', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withContentWidth"
           onChange={jest.fn()}
           options={[...options]}
@@ -364,7 +364,7 @@ describe('OptionTiles', () => {
 
     test('with custom rendered option', async () => {
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="withCustomRenderedOption"
           onChange={jest.fn()}
           options={[...options,
@@ -389,7 +389,7 @@ describe('OptionTiles', () => {
     test('if fires an onChange method when an option is clicked', () => {
       const mockedOnChange = jest.fn();
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="onClick"
           onChange={mockedOnChange}
           options={[...options]}
@@ -407,7 +407,7 @@ describe('OptionTiles', () => {
     test('if fires an onChange method input is clicked', () => {
       const mockedOnChange = jest.fn();
       render(
-        <OptionTiles
+        <OptionTileGroup
           name="onClick"
           onChange={mockedOnChange}
           options={[...options]}

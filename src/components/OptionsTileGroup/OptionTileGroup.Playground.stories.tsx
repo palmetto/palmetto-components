@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { boxPropsKeys } from '../Box/Box';
-import { OptionTiles, OptionTilesProps } from './OptionTiles';
+import { OptionTileGroup, OptionTileGroupProps } from './OptionTileGroup';
 
 export default {
-  title: 'Components/OptionTiles/Playground',
-  component: OptionTiles,
+  title: 'Components/OptionTileGroup/Playground',
+  component: OptionTileGroup,
   argTypes: {
     value: {
       control: {
@@ -63,13 +63,13 @@ export default {
   },
 } as Meta;
 
-const Template: Story<OptionTilesProps> = ({
+const Template: Story<OptionTileGroupProps> = ({
   value,
   onChange,
   name,
   ...args
 }) => (
-  <OptionTiles
+  <OptionTileGroup
     {...args}
     options={[
       { value: 'chocolate', label: 'chocolate', id: 'chocolate' },

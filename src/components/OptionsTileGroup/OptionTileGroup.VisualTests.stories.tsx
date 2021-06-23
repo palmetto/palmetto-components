@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { RESPONSIVE_STORY } from '../../docs/constants';
-import { OptionTiles, OptionTilesProps } from './OptionTiles';
+import { OptionTileGroup, OptionTileGroupProps } from './OptionTileGroup';
 
 export default {
-  title: 'Components/OptionTiles/Visual Regression Tests',
-  component: OptionTiles,
+  title: 'Components/OptionTileGroup/Visual Regression Tests',
+  component: OptionTileGroup,
 } as Meta;
 
 const options = [
@@ -26,8 +26,8 @@ const options = [
   },
 ];
 
-const Template: Story<OptionTilesProps> = args => (
-  <OptionTiles
+const Template: Story<OptionTileGroupProps> = args => (
+  <OptionTileGroup
     {...args}
     onChange={() => {}} // eslint-disable-line
   />
