@@ -1,12 +1,21 @@
 import React, { ReactElement, useState } from 'react';
-import { TextInput } from './TextInput';
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { TextInput, TextInputProps } from './TextInput';
 import { Icon } from '../Icon/Icon';
 import { Box } from '../Box/Box';
+import { RESPONSIVE_STORY } from '../../docs/constants';
 
 export default {
   title: 'Components/TextInput/Visual Regression Tests',
   component: TextInput,
-};
+} as Meta;
+
+const Template: Story<TextInputProps> = args => (
+  <TextInput
+    {...args}
+    onChange={() => {}} // eslint-disable-line
+  />
+);
 
 export const PrefixSuffixSizes: React.FC = (): ReactElement => {
   const [prefixValue, setPrefixValue] = useState('palmettosolar');
@@ -128,3 +137,14 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
     </Box>
   );
 };
+
+export const ResponsiveSize = Template.bind({});
+ResponsiveSize.args = {
+  size: {
+    base: 'sm',
+    tablet: 'md',
+    desktop: 'lg',
+    hd: 'sm',
+  },
+};
+ResponsiveSize.parameters = RESPONSIVE_STORY;
