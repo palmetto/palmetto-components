@@ -42,7 +42,7 @@ export interface CheckboxProps extends Omit<BoxProps, 'radius' | 'background' | 
    */
   isDisabled?: boolean;
   /**
-   * If the radio input should be hidden to make way for a custom radio.
+   * If the radio input should be hidden to make way for a custom checkbox.
    */
   isHidden?: boolean;
   /**
