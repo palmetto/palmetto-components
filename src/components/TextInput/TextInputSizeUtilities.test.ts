@@ -28,7 +28,12 @@ describe('TextInputSizeUtilities', () => {
   });
 
   test('It returns correct mapped responsive object props for each property', () => {
-    const size: { [key in BreakpointSizeWithBase]: TextInputSize; } = { base: 'sm', tablet: 'md', desktop: 'lg', hd: 'md' };
+    const size: { [key in BreakpointSizeWithBase]: TextInputSize; } = {
+      base: 'sm',
+      tablet: 'md',
+      desktop: 'lg',
+      hd: 'md',
+    };
 
     expect(computedResponsiveSize(size, 'radius')).toEqual({
       base: borderRadiusSizeMap[size.base],
@@ -57,5 +62,5 @@ describe('TextInputSizeUtilities', () => {
       desktop: fontSizeMap[size.desktop],
       hd: fontSizeMap[size.hd],
     });
-  })
+  });
 });

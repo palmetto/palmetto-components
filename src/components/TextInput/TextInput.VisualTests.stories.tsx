@@ -148,6 +148,6 @@ ResponsiveSize.args = {
   },
   value: 'responsive',
   suffix: '00',
-  prefix: '$'
+  prefix: '$',
 };
 ResponsiveSize.parameters = RESPONSIVE_STORY;
