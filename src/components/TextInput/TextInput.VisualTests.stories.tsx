@@ -146,5 +146,8 @@ ResponsiveSize.args = {
     desktop: 'lg',
     hd: 'sm',
   },
+  value: 'responsive',
+  suffix: '00',
+  prefix: '$'
 };
 ResponsiveSize.parameters = RESPONSIVE_STORY;
