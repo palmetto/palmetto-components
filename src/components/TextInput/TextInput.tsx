@@ -205,8 +205,8 @@ export const TextInput = forwardRef<HTMLDivElement, TextInputProps>(
         inputProps.className,
         cssShorthandToClasses('p', computedResponsiveSize(size, 'childPadding')),
         {
-          'p-left-xs': prefix,
-          'p-right-xs': suffix,
+          'p-left-xs p-left-xs-tablet p-left-xs-desktop p-left-xs-hd': prefix,
+          'p-right-xs p-right-xs-tablet p-right-xs-desktop p-right-xs-hd': suffix,
           'p-h-0': !suffix && !prefix,
         },
       ),
