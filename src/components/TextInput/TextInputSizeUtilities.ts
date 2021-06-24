@@ -45,7 +45,7 @@ export const computedResponsiveSize = ( // eslint-disable-line @typescript-eslin
   prop: 'containerPadding' | 'childPadding' | 'radius' | 'fontSize',
 ) => {
   if (size && !(typeof size === 'string') && typeof size === 'object') {
-    return Object.entries(size).reduce((acc, [key, value]) => ({ ...acc, [key]: inputSizeMaps[prop][value] }), {});
+    return Object.entries(size).reduce((acc, [key, value]) => ({ ...acc, [key]: inputSizeMaps[prop][value ?? 'md'] }), {});
   }
 
   return inputSizeMaps[prop][size ?? 'md'] as string;
