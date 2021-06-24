@@ -1,0 +1,15 @@
+.option {
+  &:focus-within {
+    border-color: var(--color-brand-primary-base);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: var(--color-brand-primary-base);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+  }
+}

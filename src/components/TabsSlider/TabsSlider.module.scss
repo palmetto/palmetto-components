@@ -1,0 +1,62 @@
+.tabs-slider-container {
+  > ul {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+}
+
+.tab-item {
+  > button {
+    z-index: 1;
+    font-weight: var(--size-font-weight-bold);
+    color: var(--color-brand-grey-500);
+
+    &[disabled] { /* stylelint-disable-line */
+      cursor: not-allowed;
+      color: var(--color-brand-grey-300);
+    }
+
+    /* define regular focus styles for non-supporting browsers */
+    &:focus {
+      outline: 0;
+      box-shadow: inset var(--input-focus-box-shadow);
+    }
+
+    /* Show focus styles on keyboard focus. */
+    &:focus-visible {
+      outline: 0;
+      box-shadow: inset var(--input-focus-box-shadow);
+    }
+
+    /* Hide focus styles if they're not needed, for example,
+    when an element receives focus via the mouse. */
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
+    }
+  }
+
+  &--selected {
+    &:not(.disabled) {
+      > button { /* stylelint-disable-line */
+        color: var(--color-brand-grey-600);
+      }
+    }
+  }
+
+  &:not(.disabled) {
+    > button { /* stylelint-disable-line */
+
+      &:hover {
+        color: var(--color-brand-grey-600);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.tabs-slider-indicator {
+  transition: left 0.2s;
+  will-change: transform;
+  transition-timing-function: cubic-bezier(0.67, 0.83, 0.67);
+}

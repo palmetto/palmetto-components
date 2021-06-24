@@ -1,11 +1,7 @@
-.option {
-  display: flex;
-  align-items: center;
+@import '../../../styles/mixins';
 
-  .input {
-    margin-top: 0;
-    margin-right: var(--size-spacing-xs);
-    margin-bottom: 0;
-    margin-left: var(--size-spacing-2xs);
+.radio-container {
+  &.hidden {
+    @include accessible-hidden-element;
   }
 }

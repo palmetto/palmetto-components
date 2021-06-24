@@ -7,6 +7,7 @@ import React, {
   FocusEvent,
   ReactNode,
   Component,
+  HTMLProps,
   InputHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
@@ -22,7 +23,7 @@ import styles from './TextInput.module.scss';
 
 export type InputMaskType = ('phone' | 'creditCard' | 'date') | UnknownPropertiesObjType;
 
-export interface TextInputBaseProps {
+export interface TextInputProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -31,6 +32,14 @@ export interface TextInputBaseProps {
    * Custom content to be displayed above the input. If the label is hidden, will be used to set aria-label attribute.
    */
   label: string;
+  /**
+   * Callback function to call on change event.
+   */
+  onChange: (event: ChangeEvent<HTMLInputElement> | CleaveChangeEvent<HTMLInputElement>) => void;
+  /**
+   * The text value of the input. Required since our Input is a controlled component.
+   */
+  value: InputHTMLAttributes<HTMLInputElement>['value'];
   /**
    * Automatically focus the input when the page is loaded.
    */
@@ -58,6 +67,10 @@ export interface TextInputBaseProps {
    * For options object formats See https://github.com/nosir/cleave.js.
    */
   inputMask?: InputMaskType;
+  /**
+   * Props passed directly to the input element of the component
+   */
+  inputProps?: HTMLProps<HTMLInputElement>;
   /**
    * The input's disabled attribute
    */
@@ -108,16 +121,6 @@ export interface TextInputBaseProps {
    * The input 'type' value. Defaults to type 'text'.
    */
   type?: InputHTMLAttributes<HTMLInputElement>['type'];
-}
-export interface TextInputProps extends TextInputBaseProps {
-  /**
-   * Callback function to call on change event.
-   */
-  onChange: (event: ChangeEvent<HTMLInputElement> | CleaveChangeEvent<HTMLInputElement>) => void;
-  /**
-   * The text value of the input. Required since our Input is a controlled component.
-   */
-  value: InputHTMLAttributes<HTMLInputElement>['value'];
   /**
    * Additional props to be spread to rendered element
    */
@@ -137,6 +140,7 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       helpText,
       hideLabel = false,
       inputMask = undefined,
+      inputProps = {},
       isDisabled = false,
       isRequired = false,
       maxLength = undefined,
@@ -204,18 +208,14 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       );
     };
 
-    const inputProps = {
+    const computedInputProps = {
+      ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
       'aria-required': isRequired,
       'aria-invalid': !!error,
       'aria-label': label,
       'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
       autoComplete: getAutoCompleteValue(autoComplete),
       autoFocus,
-      className: classNames({
-        'p-left-xs': prefix,
-        'p-right-xs': suffix,
-        'p-h-0': !suffix && !prefix,
-      }),
       disabled: isDisabled,
       id,
       maxLength,
@@ -226,6 +226,14 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       placeholder,
       type,
       value,
+      className: classNames(
+        inputProps.className,
+        {
+          'p-left-xs': prefix,
+          'p-right-xs': suffix,
+          'p-h-0': !suffix && !prefix,
+        },
+      ),
     };
 
     return (
@@ -247,9 +255,11 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
             </Box>
           )}
           {!inputMask ? (
-            <input {...inputProps} />
+            <input {...computedInputProps} />
           ) : (
-            <Cleave {...inputProps} options={getInputMaskType(inputMask, InputMaskTypes)} />
+            // eslint-disable-next-line
+            // @ts-ignore
+            <Cleave {...computedInputProps} options={getInputMaskType(inputMask, InputMaskTypes)} />
           )}
           {!!onClear && !!value && renderClearIcon()}
           {suffix && (

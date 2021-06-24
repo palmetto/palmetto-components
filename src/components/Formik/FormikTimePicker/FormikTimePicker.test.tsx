@@ -38,7 +38,7 @@ const renderForm = (
       [testLabelName]: initialValue as string,
     }}
     validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
-    onSubmit={values => {}} // eslint-disable-line
+    onSubmit={() => {}} // eslint-disable-line
   >
     {() => (
       <Form>

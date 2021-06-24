@@ -5,8 +5,10 @@ import React, {
 } from 'react';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
-import { ModalFooter, ModalHeader, ModalBody } from './components';
 import { CssOverflowValue } from '../../types';
+import getDimensionCss from '../../lib/getDimensionCss';
+import { Box, BoxProps } from '../Box/Box';
+import { ModalFooter, ModalHeader, ModalBody } from './components';
 import styles from './Modal.module.scss';
 
 export interface ModalProps {
@@ -49,6 +51,11 @@ export interface ModalProps {
    */
   isOpen: boolean;
   /**
+   * Max width for modal content. Uses the same maxWidth prop as the `Box` component,
+   * and as such can be responsive as well.
+   */
+  maxWidth?: BoxProps['maxWidth'];
+  /**
    * Function that is called whenever the user hits "Esacape" key or clicks outside the modal.
    */
   onDismiss: (event?: React.SyntheticEvent) => void;
@@ -62,17 +69,7 @@ export interface ModalProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export interface ModalStatic {
-  Body: typeof ModalBody;
-  Header: typeof ModalHeader;
-  Footer: typeof ModalFooter;
-}
-
-export type ModalWithStaticComponents =
-  React.ForwardRefExoticComponent<React.PropsWithoutRef<ModalProps>>
-  & Partial<ModalStatic>;
-
-const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>((
+const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>((
   {
     ariaLabel,
     ariaLabelledBy,
@@ -82,17 +79,26 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
     fullScreenMobile = false,
     initialFocusRef,
     isOpen,
+    maxWidth = undefined,
     onDismiss,
     overflow = 'hidden',
+    ...restProps
   },
   ref,
 ) => {
+  const maxWidthCss = getDimensionCss('mw', maxWidth);
+
   const overylayClassnames = classNames(styles.overlay, {
     fullscreen: fullScreenMobile,
   });
-  const contentClassnames = classNames(styles['modal-content'], className, {
-    [`overflow-${overflow}`]: overflow,
-  });
+  const contentClassnames = classNames(
+    styles['modal-content'],
+    className,
+    maxWidthCss.classes,
+    {
+      [`overflow-${overflow}`]: overflow,
+    },
+  );
 
   return (
     <DialogOverlay
@@ -102,22 +108,38 @@ const Modal: ModalWithStaticComponents = forwardRef<HTMLDivElement, ModalProps>(
       onDismiss={onDismiss}
       initialFocusRef={initialFocusRef}
       ref={ref}
+      {...restProps}
     >
-      <div className={styles.container}>
+      <Box className={styles.container}>
         <DialogContent
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
           className={contentClassnames}
+          style={{ ...maxWidthCss.styles }}
         >
           {children}
         </DialogContent>
-      </div>
+      </Box>
     </DialogOverlay>
   );
 });
 
-Modal.Body = ModalBody;
-Modal.Footer = ModalFooter;
-Modal.Header = ModalHeader;
+export interface ModalStatic {
+  Body: typeof ModalBody;
+  Header: typeof ModalHeader;
+  Footer: typeof ModalFooter;
+}
 
-export { Modal };
+export type ModalWithStaticComponents =
+  typeof ModalBaseComponent
+  & ModalStatic;
+
+// Actual component is wrapped in an IIFE for the export
+// To allow tree-shaking even with static properties (subcomponents in this case).
+export const Modal = (() => {
+  const Modal = ModalBaseComponent as ModalWithStaticComponents; // eslint-disable-line no-shadow
+  Modal.Body = ModalBody;
+  Modal.Footer = ModalFooter;
+  Modal.Header = ModalHeader;
+  return Modal;
+})();

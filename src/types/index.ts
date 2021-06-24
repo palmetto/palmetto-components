@@ -33,6 +33,7 @@ export type {
   WidthSize,
   ZIndexSize,
   IconName,
+  FontFamily,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type BreakpointSizeWithBase = BreakpointSize | 'base';
@@ -194,7 +195,7 @@ export type EventWithColumnKey =
 export type SimulatedEventPayloadType = {
   target: {
     name: string;
-    value: ValueType<OptionTypeBase>;
+    value: ValueType<OptionTypeBase, boolean>;
   };
 };
 

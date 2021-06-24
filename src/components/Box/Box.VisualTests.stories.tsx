@@ -8,9 +8,10 @@ import {
   FONT_COLOR_OPTIONS,
   BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
+  FONT_FAMILY_OPTIONS,
 } from '../../lib/tokens';
 import { BrandColor } from '../../types';
-import { RESPONSIVE_STORY } from '../../../.storybook/constants';
+import { RESPONSIVE_STORY } from '../../docs/constants';
 import { ResponsiveProvider } from '../ResponsiveProvider/ResponsiveProvider';
 import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
 
@@ -28,6 +29,7 @@ export const AllBackgroundColors: React.FunctionComponent<BoxProps> = () => (
         || color === 'light'
         || color === 'black'
         || color === 'white'
+        || color === 'transparent'
       ) {
         return (
           <Box flex="auto" padding="xs" background={color} key={`${color}-${index}`}>
@@ -83,6 +85,7 @@ export const AllBorderColors: React.FunctionComponent<BoxProps> = () => (
         || color === 'light'
         || color === 'black'
         || color === 'white'
+        || color === 'transparent'
       ) {
         return (
           <Box borderColor={color} borderWidth="sm" padding="xs" key={`${color}-${index}`}>
@@ -242,6 +245,16 @@ export const AllFontSizes: React.FunctionComponent<BoxProps> = () => (
     {[...FONT_SIZE_OPTIONS].reverse().map((fontSize, i) => (
       <Box fontSize={fontSize} key={i}>
         {`${fontSize} font size`}
+      </Box>
+    ))}
+  </>
+);
+
+export const AllFontFamilies: React.FunctionComponent<BoxProps> = () => (
+  <>
+    {[...FONT_FAMILY_OPTIONS].map((fontFamily, i) => (
+      <Box fontFamily={fontFamily} key={i}>
+        {`${fontFamily} font size`}
       </Box>
     ))}
   </>
@@ -572,10 +585,9 @@ ResponsiveDirection.args = {
   direction: {
     base: 'column',
     tablet: 'row',
-    desktop: 'column',
-    hd: 'row',
+    desktop: 'column-reverse',
+    hd: 'row-reverse',
   },
-  childGap: 'lg',
 };
 ResponsiveDirection.parameters = RESPONSIVE_STORY;
 

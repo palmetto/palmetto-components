@@ -6,6 +6,7 @@ import {
   BORDER_RADIUS_OPTIONS,
   BOX_SHADOW_OPTIONS,
   FONT_COLOR_OPTIONS,
+  FONT_FAMILY_OPTIONS,
   FONT_SIZE_OPTIONS,
   FONT_WEIGHT_OPTIONS,
   SPACING_OPTIONS,
@@ -52,7 +53,7 @@ export default {
     direction: {
       control: {
         type: 'select',
-        options: [null, 'column', 'row'],
+        options: [null, 'column', 'row', 'row-reverse', 'column-reverse'],
       },
     },
     alignContent: {
@@ -311,6 +312,12 @@ export default {
       control: {
         type: 'select',
         options: [null, ...FONT_SIZE_OPTIONS],
+      },
+    },
+    fontFamily: {
+      control: {
+        type: 'select',
+        options: [null, ...FONT_FAMILY_OPTIONS],
       },
     },
     fontWeight: {

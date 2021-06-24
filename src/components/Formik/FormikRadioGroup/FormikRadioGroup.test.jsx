@@ -29,12 +29,14 @@ const groupOptions = [{
 }];
 
 const handleValidation = values => {
+  console.log('did I go?');
   const errors = {};
   if (!values[testGroupName]) {
     errors[testGroupName] = 'selection is required';
   }
 
   return errors;
+  console.log('errors', errors);
 };
 
 const renderForm = (initialValue, props) => (
@@ -134,7 +136,7 @@ describe('FormikRadioGroup', () => {
 
     describe('Pre-Selected Option', () => {
       test('an option is automatically selected', () => {
-        render(renderForm(null, { value: 'green' }));
+        render(renderForm('green', {}));
 
         const greenRadioInput = screen.getByLabelText('Green');
         expect(greenRadioInput).toBeChecked();
@@ -162,11 +164,14 @@ describe('FormikRadioGroup', () => {
     });
 
     describe('Error with Validation Message', () => {
-      test('it renders a validation message', () => {
-        render(renderForm(null, { error: 'Helpful Validation Message' }));
+      test('it renders a validation message', async () => {
+        const { getByText } = render(renderForm(null, { isRequired: true }));
 
-        const validationMessage = screen.getByText('Helpful Validation Message');
-        expect(validationMessage).toBeInTheDocument();
+        const submitButton = getByText('submit');
+
+        fireEvent.click(submitButton);
+        
+        await waitFor(() => expect(getByText('selection is required')).toBeInTheDocument());
       });
     });
   });

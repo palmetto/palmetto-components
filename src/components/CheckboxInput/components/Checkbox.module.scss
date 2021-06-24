@@ -1,4 +1,10 @@
+@import '../../../styles/mixins';
+
 .checkbox {
+  &.hidden {
+    @include accessible-hidden-element;
+  }
+
   input:focus + div {
     /* define regular focus styles for non-supporting browsers */
     outline: 0;

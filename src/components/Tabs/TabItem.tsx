@@ -18,7 +18,7 @@ export const TabItem: React.FC<TabItemProps> = ({
   };
 
   return (
-    <Box as="li" style={{ ...styles }} role="presentation" {...restProps}>
+    <Box style={{ ...styles }} role="tab" {...restProps}>
       <Box
         as="button"
         disabled={isDisabled}

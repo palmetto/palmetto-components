@@ -27,6 +27,7 @@ import {
   CssTextAlignValue,
   DimensionSize,
   FontColor,
+  FontFamily,
   FontSize,
   FontWeight,
   ResponsiveProp,
@@ -84,6 +85,7 @@ export interface BoxProps {
   /**
    * The amount of spacing between child elements.
    * Can be a single [spacing value](/?path=/docs/design-tokens-spacing--page).
+   * NOTE: this prop is incompatible with reverse flex direction values (row-reverse, column-reverse).
    */
   childGap?: SpacingSize | ResponsiveProp<SpacingSize>;
   /**
@@ -100,6 +102,7 @@ export interface BoxProps {
   cursor?: CSS.Property.Cursor;
   /**
    * Sets how flex items are placed inside the Box, defining the main axis and the direction
+   * NOTE: reverse directions are incompatible with the `childGap` prop.
    */
   direction?: CssFlexDirectionValue | ResponsiveProp<CssFlexDirectionValue>;
   /**
@@ -125,6 +128,10 @@ export interface BoxProps {
     color?: BoxProps['color'];
     shadow?: BoxProps['shadow'];
   };
+  /**
+   * The [font family token](/?path=/docs/design-tokens-font-family--page) identifier for the Box's text
+   */
+   fontFamily?: FontFamily | ResponsiveProp<FontFamily>;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box's text
    */
@@ -256,6 +263,7 @@ export const Box: FC<BoxProps> = forwardRef((
     display = 'flex',
     direction = 'column',
     flex = undefined,
+    fontFamily = undefined,
     fontSize = 'inherit',
     fontWeight = undefined,
     height = undefined,
@@ -304,17 +312,14 @@ export const Box: FC<BoxProps> = forwardRef((
     fontSize: { classPrefix: 'font-size', transformer: generateResponsiveClasses },
   };
 
-  const hoverClasses = hover
-    ? Object.entries(hover).map(([key, value]) => (
-      cssPropertyMap[key].transformer(`hover:${cssPropertyMap[key as keyof BoxProps['hover']].classPrefix}`, value)
+  const getStatefulClasses = (stateKey: 'hover' | 'focus', values: BoxProps['hover' | 'hover']) => values // eslint-disable-line
+    ? Object.entries(values).map(([key, value]) => (
+      cssPropertyMap[key].transformer(`${stateKey}:${cssPropertyMap[key as keyof BoxProps['focus' | 'hover']].classPrefix}`, value) // eslint-disable-line max-len
     ))
     : undefined;
 
-  const focusClasses = focus
-    ? Object.entries(focus).map(([key, value]) => (
-      cssPropertyMap[key].transformer(`focus:${cssPropertyMap[key as keyof BoxProps['focus']].classPrefix}`, value)
-    ))
-    : undefined;
+  const hoverClasses = getStatefulClasses('hover', hover);
+  const focusClasses = getStatefulClasses('focus', focus);
 
   const boxClasses = classNames(
     className,
@@ -333,6 +338,7 @@ export const Box: FC<BoxProps> = forwardRef((
     generateResponsiveClasses('align-items', alignItems),
     generateResponsiveClasses('align-content', alignContent),
     generateResponsiveClasses('align-self', alignSelf),
+    generateResponsiveClasses('font-family', fontFamily),
     generateResponsiveClasses('font-size', fontSize),
     generateResponsiveClasses('overflow', overflow),
     generateResponsiveClasses('shadow', shadow),
@@ -515,6 +521,7 @@ export const boxPropsKeys: (keyof Pick<BoxProps, KnownKeys<BoxProps>>)[] = [
   'focus',
   'fontSize',
   'fontWeight',
+  'fontFamily',
   'height',
   'hover',
   'justifyContent',
@@ -524,6 +531,7 @@ export const boxPropsKeys: (keyof Pick<BoxProps, KnownKeys<BoxProps>>)[] = [
   'maxWidth',
   'minWidth',
   'overflow',
+  'position',
   'padding',
   'radius',
   'shadow',

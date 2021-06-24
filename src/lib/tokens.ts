@@ -1,5 +1,6 @@
 import { size } from '@palmetto/palmetto-design-tokens/build/json/values/variables-size.json';
 import { color } from '@palmetto/palmetto-design-tokens/build/json/values/variables-color.json';
+import { asset } from '@palmetto/palmetto-design-tokens/build/json/variables-asset.json';
 import { ICON_NAMES as iconNames } from '@palmetto/palmetto-design-tokens/build/icons';
 
 import {
@@ -12,6 +13,7 @@ import {
   ColorName,
   FontColor,
   FontSize,
+  FontFamily,
   FontWeight,
   HeightSize,
   LineHeightSize,
@@ -53,6 +55,9 @@ export const FONT_COLOR_VALUES = color.brand;
 
 export const FONT_SIZE_OPTIONS = Object.keys(size.font) as FontSize[];
 export const FONT_SIZE_VALUES = size.font;
+
+export const FONT_FAMILY_OPTIONS = Object.keys(asset.fonts) as FontFamily[];
+export const FONT_FAMILY_VALUES = asset.fonts;
 
 export const FONT_WEIGHT_OPTIONS = Object.keys(size['font-weight']) as FontWeight[];
 export const FONT_WEIGHT_VALUES = size['font-weight'];

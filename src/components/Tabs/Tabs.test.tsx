@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Tabs } from './Tabs';
-import { TabPanels } from './TabPanels';
 
 describe('Tabs', () => {
   describe('Default', () => {
@@ -16,12 +15,12 @@ describe('Tabs', () => {
 
       const navElement = screen.getByRole('navigation');
       const tabListElement = screen.getByRole('tablist');
-      const tab = screen.getByText('tab 1').closest('li');
+      const tab = screen.getByText('tab 1').closest('div');
 
       expect(navElement).toBeInTheDocument();
       expect(tabListElement).toBeInTheDocument();
       expect(tab).toBeInTheDocument();
-      expect(tab).toHaveAttribute('role', 'presentation');
+      expect(tab).toHaveAttribute('role', 'tab');
     });
   });
 
@@ -38,8 +37,8 @@ describe('Tabs', () => {
         </Tabs>,
       );
 
-      const tabOne = screen.getByText('tab 1').closest('li');
-      const tabTwo = screen.getByText('tab 2').closest('li');
+      const tabOne = screen.getByText('tab 1').closest('div');
+      const tabTwo = screen.getByText('tab 2').closest('div');
 
       expect(tabOne).toHaveClass('tab-item--selected');
       expect(tabTwo).not.toHaveClass('tab-item--selected');
@@ -55,8 +54,8 @@ describe('Tabs', () => {
         </Tabs>,
       );
 
-      const tabThree = screen.getByText('tab 3').closest('li');
-      const tabFour = screen.getByText('tab 4').closest('li');
+      const tabThree = screen.getByText('tab 3').closest('div');
+      const tabFour = screen.getByText('tab 4').closest('div');
 
       expect(tabThree).not.toHaveClass('tab-item--selected');
       expect(tabFour).toHaveClass('tab-item--selected');
@@ -126,27 +125,6 @@ describe('Tabs', () => {
       // @ts-ignore
       expect(mockedOnChange.mock.calls[0][1]).toBe(0);
       expect(mockedOnClick).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('Tab Panels', () => {
-    test('it shows the correct panel based on the selected tab', () => {
-      render(
-        <TabPanels value={1}>
-          <div>
-            tab 1
-          </div>
-          <div>
-            tab 2
-          </div>
-        </TabPanels>,
-      );
-
-      const tabOne = screen.queryByText('tab 1');
-      const tabTwo = screen.queryByText('tab 2');
-
-      expect(tabOne).not.toBeInTheDocument();
-      expect(tabTwo).toBeInTheDocument();
     });
   });
 });

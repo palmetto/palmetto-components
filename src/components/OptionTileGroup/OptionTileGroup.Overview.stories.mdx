@@ -1,0 +1,530 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { OptionTileGroup } from './OptionTileGroup';
+import { Heading } from '../Heading/Heading';
+import { Box } from '../Box/Box';
+
+<Meta
+  title="Components/OptionTileGroup/Overview"
+  component={OptionTileGroup}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# OptionTileGroup
+
+Use a OptionTileGroup when a user is required to select one of five or fewer options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-selectinput-overview--default-story) instead.
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_default',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_default',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_default',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <OptionTileGroup
+          name="default"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={OptionTileGroup} />
+
+## MultiSelect
+
+When a user needs to select more than one element, the underlying inputs will be checkboxes. With the `value` option
+now being an array of values.
+
+<Canvas isExpanded>
+  <Story name="MultiSelect">
+    {() => {
+      const [value, setValue] = useState([]);
+      const handleSetValue = (event) => {
+        const selectedValue = event.target.value;
+        if (value.includes(selectedValue)) {
+          setValue([...value].filter(v => v !== selectedValue))
+        } else {
+          setValue([...value, selectedValue]);
+        }
+      }
+      const options = [
+        {
+          id: 'chocolate_multi',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_multi',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_multi',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <OptionTileGroup
+          name="multi"
+          value={value}
+          onChange={handleSetValue}
+          options={options}
+          isMulti
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Hidden Input
+
+You can render tiles without a radio/checkbox. Note that the input elements are still underlying the component, but this will limit the visual indication
+to the selected states on the tile itself. This is likely best when paired with custom content on the tile.
+
+<Canvas isExpanded>
+  <Story name="Hidden Input">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_hidden',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_hidden',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_hidden',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <OptionTileGroup
+          name="hidden"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+          hideInput
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Direction
+
+Set the direction (flex) of the tiles. It can be one of `row` or `column` but will also take a `ResponsiveProp` object with either of these values. (see example).
+
+<Canvas isExpanded>
+  <Story name="Direction">
+    {() => {
+      const [valueVertical, setValueVertical] = useState([]);
+      const optionsVertical = [
+        {
+          id: 'chocolate_direction',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_direction',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_direction',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <>
+          <p className="m-bottom-md font-size-lg font-weight-bold">Responsive Direction (change your viewport to see it in action)</p>
+          <OptionTileGroup
+            name="directionVertical"
+            value={valueVertical}
+            onChange={event => setValueVertical(event.target.value)}
+            options={optionsVertical}
+            direction={{ base: 'column', tablet: 'row' }}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Title and Description
+
+Acting as the fieldset legend.
+
+<Canvas isExpanded>
+  <Story name="Title and Description">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_title',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_title',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_title',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <OptionTileGroup
+          name="titleAndDescription"
+          title="Ice cream flavors"
+          description="Only if you eat all your dinner"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Required
+
+Will show an asterisk on the title (if included).
+
+<Canvas isExpanded>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_required',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_required',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_required',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <OptionTileGroup
+          name="required"
+          title="Ice cream flavors"
+          isRequired
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Disabling Options
+
+A `disabled` attribute can be passed inside the `Option` object to disable any particular option.
+
+<Canvas isExpanded>
+  <Story name="Disabled Options">
+    {() => {
+      const [value, setValue] = useState();
+      const [valueMulti, setValueMulti] = useState([]);
+      const handleSetValueMulti = (event) => {
+        const selectedValue = event.target.value;
+        if (valueMulti.includes(selectedValue)) {
+          setValueMulti([...valueMulti].filter(v => v !== selectedValue))
+        } else {
+          setValueMulti([...valueMulti, selectedValue]);
+        }
+      }
+      const options = [
+        {
+          id: 'chocolate_disabled',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_disabled',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_disabled',
+          value: 'vanilla',
+          label: 'Vanilla',
+          disabled: true,
+        },
+      ];
+      const optionsMulti = [
+        {
+          id: 'chocolate_disabled_multi',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_disabled_multi',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_disabled_multi',
+          value: 'vanilla',
+          label: 'Vanilla',
+          disabled: true,
+        },
+      ];
+      return (
+        <>
+          <OptionTileGroup
+            name="disabled"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            margin="0 0 lg 0"
+          />
+          <OptionTileGroup
+            name="disabledMulti"
+            value={valueMulti}
+            onChange={handleSetValueMulti}
+            options={optionsMulti}
+            isMulti
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Error
+
+Pass an error (or boolean with no message) to notify a user when something isn't right. Likely paired with `isRequired` in most cases.
+
+<Canvas isExpanded>
+  <Story name="Error">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_error',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_error',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_error',
+          value: 'vanilla',
+          label: 'Vanilla',
+          disabled: true,
+        },
+      ];
+      return (
+        <OptionTileGroup
+          name="required"
+          title="Ice cream flavors"
+          description="Only if you eat all your dinner"
+          isRequired
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+          error="You should really select an ice cream flavor!"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+## Full Width (or lack thereof)
+
+The OptionsTile component has fullWidth (100%) enabled by default but it can be disabled if need be.
+
+<Canvas isExpanded>
+  <Story name="Full Width">
+    {() => {
+      const [valueHorizontal, setValueHorizontal] = useState([]);
+      const [valueVertical, setValueVertical] = useState([]);
+      const optionsVertical = [
+        {
+          id: 'chocolate_fullwidth_vertical',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_fullwidth_vertical',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_fullwidth_vertical',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      const optionsHorizontal = [
+        {
+          id: 'chocolate_fullwidth_horizontal',
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        {
+          id: 'strawberry_fullwidth_horizontal',
+          value: 'strawberry',
+          label: 'Strawberry',
+        },
+        {
+          id: 'vanilla_fullwidth_horizontal',
+          value: 'vanilla',
+          label: 'Vanilla',
+        },
+      ];
+      return (
+        <>
+          <p className="m-bottom-md font-size-lg font-weight-bold">Vertical</p>
+          <OptionTileGroup
+            name="fullWidthVertical"
+            value={valueVertical}
+            onChange={event => setValueVertical(event.target.value)}
+            options={optionsVertical}
+            direction="column"
+            isFullWidth={false}
+          />
+          <p className="m-v-md font-size-lg font-weight-bold">Horizontal</p>
+          <OptionTileGroup
+            name="fullWidthHorizontal"
+            value={valueHorizontal}
+            onChange={event => setValueHorizontal(event.target.value)}
+            options={optionsHorizontal}
+            direction="row"
+            isFullWidth={false}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Custom Content
+
+The tiles can render custom content with a `render` function passed in the option object.
+
+<Canvas isExpanded>
+  <Story name="Custom Content">
+    {() => {
+      const [value, setValue] = useState([]);
+      const options = [
+        {
+          id: 'chocolate_custom',
+          value: 'chocolate',
+          label: 'Chocolate',
+          render: option => (
+            <Box>
+              <Heading as="h3" size="lg" className="m-bottom-sm">
+                {option.label}
+              </Heading>
+              <Box
+                as="img"
+                maxWidth="120px"
+                radius="md"
+                borderWidth="md"
+                borderColor="grey-light"
+                src="https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg"
+              />
+            </Box>
+          ),
+        },
+        {
+          id: 'strawberry_custom',
+          value: 'strawberry',
+          label: 'Strawberry',
+          render: option => (
+            <Box>
+              <Heading as="h3" size="lg" className="m-bottom-sm">
+                {option.label}
+              </Heading>
+              <Box
+                as="img"
+                maxWidth="120px"
+                radius="md"
+                borderWidth="md"
+                borderColor="grey-light"
+                src="https://www.seriouseats.com/thmb/AVrcpDEKKinSsmgcHvMNxBVCdXc=/1500x844/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2015__07__20150706-strawberry-ice-cream-vicky-wasik-4-f3453966ec94404aaf44da724aef978b.jpg"
+              />
+            </Box>
+          ),
+        },
+        {
+          id: 'vanilla_custom',
+          value: 'vanilla',
+          label: 'Vanilla',
+          render: option => (
+            <Box>
+              <Heading as="h3" size="lg" className="m-bottom-sm">
+                {option.label}
+              </Heading>
+              <Box
+                as="img"
+                maxWidth="120px"
+                radius="md"
+                borderWidth="md"
+                borderColor="grey-light"
+                src="data:image/jpeg;base64,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"
+              />
+            </Box>
+          ),
+        },
+      ];
+      return (
+        <OptionTileGroup
+          name="customContent"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+          direction={{ base: 'column', tablet: 'row' }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>

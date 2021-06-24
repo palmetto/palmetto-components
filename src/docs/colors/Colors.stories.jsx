@@ -15,7 +15,7 @@ const renderColorBlock = colorEntry => {
 
   return (
     <div
-      className={`${styles['color-block']} ${['white', 'light'].includes(colorName) ? 'font-color-dark' : 'font-color-white'}`}
+      className={`${styles['color-block']} ${['white', 'light', 'transparent'].includes(colorName) ? 'font-color-dark' : 'font-color-white'}`}
       style={{ backgroundColor: `${colorVariations.base.value}` }}
     >
       <h2>{colorName}</h2>
@@ -33,6 +33,7 @@ const renderColorPalette = (colorEntry, index) => {
       'light',
       'lighter',
       'lightest',
+      'transparent',
       '50',
       '100',
       '200',

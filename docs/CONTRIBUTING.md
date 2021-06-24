@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://palmetto.com" rel="noopener" target="_blank"><img width="150" src="https://app.palmetto.com/static/media/logo.4d85ce48.svg" alt="Palmetto logo"></a></p>
+  <a href="https://palmetto.com" rel="noopener" target="_blank"><img width="150" src="https://palmetto.com/images/palmetto-logo.svg" alt="Palmetto logo"></a></p>
 </p>
 <h1 align="center" style="border-bottom: none;">Contribution Guide</h1>
 <span id="top"></span>
@@ -31,6 +31,7 @@
 - [Building a Component](#building-a-component)
   - [Component](#component)
     - [Example](#example)
+  - [Composing Components](#composing-components)
   - [Styles](#styles)
     - [Example](#example-1)
   - [Storybook Documentation](#storybook-documentation)
@@ -43,6 +44,7 @@
   - [Major](#major)
   - [Minor](#minor)
   - [Patch](#patch)
+  - [Prereleases](#prereleases)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -155,6 +157,24 @@ This library is meant to be added as a dependency to React apps. Aside from sand
 
 2) Symlink your local package into any project that consumes it. See [NPM link](https://docs.npmjs.com/cli/link) or [Yarn link](https://classic.yarnpkg.com/en/docs/cli/link/) for more details.
 
+**NOTE:** That when building and symlinking, it is necesary to expose local symlinks from your test app for `react` and `react-dom` and link them to the component library. Specific steps:
+* In Your Application, link react and react-dom:
+```
+cd node_modules/react && yarn link
+cd ../../
+cd node_modules/react-dom && yarn link
+```
+* In Your Library (palmetto-components), use linked versions of react and react-dom
+```
+yarn link react
+yarn link react-dom
+```
+* Stop your dev-server and do `yarn start` again.
+
+**NOTE:** It is rare but you may run into discrepancies between your local storybook preview and a locally built version of the library. This is due
+to a different build process for each, which while in theory should produce the same result, in some cases transpilation nuances can affect
+expected functionality. In the future we expect to eliminate this altogether by having storybook consume
+the compiled library but if you see any such issues please file a github issue and/or reach out directly to a maintainer.
 
 
 
@@ -213,6 +233,10 @@ If there are additional attributes that you feel should be included in Palmetto 
 
 ## Building a Component
 [↥ back to top](#top)
+
+Unless it is absolutely not feasible **components should be functions, NOT classes**. We have no qualms with classes 
+stylistically at all, but due to limitations in current bundling they are almost never tree-shakable as they break static
+analysis used by most bundlers. We are striving for a fully tree-shakable library.
 
 Each Component consists of the following files:
 
@@ -279,21 +303,58 @@ interface ComponentProps {
   secondOptionalProp?: string;
 }
 
-const Component: FC<ComponentProps> = ({
-  firstRequiredProp,
-  secondRequiredProp,
-  firstOptionalProp = false,
-  secondOptionalProp = undefined;
-}) => {
+// All components must forward refs.
+const Component: FC<ComponentProps> = forwardRef(
+  {
+    firstRequiredProp,
+    secondRequiredProp,
+    firstOptionalProp = false,
+    secondOptionalProp = undefined,
+  },
+  ref,
+) => {
 
   return (
-    ...
+    <div ref={ref}>hello world</div> {/* Note ref! */}
   );
-};
+});
 
 export default Component;
 ```
 
+### Composing Components
+In general we try to have a single component footprint be as small as possible, meaning that components should be separated into sub-components when it makes sense. E.G:
+
+```jsx
+import { Tabs } from '@palmetto/palmetto-components';
+
+<Tabs>
+  <Tabs.Item>
+  <Tabs.Item>
+</Tabs>
+```
+
+This allows elements to be more easily accessed and customized individually rather than having monolothic components with excessive markup, while also 
+scoping subcomponents so that they are accessible via a single import.
+
+**NOTE:** Object properties (like a subcomponent) break tree shaking in bundlers unless they are wrapped in an IIFE. When creating subcomponents please follow this pattern:
+
+```jsx
+import { SubComponent } from './SubComponent/SubComponent';
+
+const BaseComponent = ({ children }) => {
+  return <div>{children}</div>
+}
+
+// Actual component is wrapped in an IIFE for the export
+export const Component = (() => {
+  const Component = ModalBaseComponent;
+  Component.SubComponent = SubComponent;
+  return Component;
+})();
+```
+
+For examples of this see: `Modal`, `Card`, `Tabs`, among others.
 ### Styles
 
 We use [CSS Modules](https://github.com/css-modules/css-modules) to import CSS, or [Sass](https://sass-lang.com/) into our components. Regardless of the the format imported, the extension for the file must always be `.sass`.
@@ -375,8 +436,9 @@ In order to ensure that a new component gets included in the library, it must be
 ## Submitting a Pull Request
 [↥ back to top](#top)
 
-* The ``main`` branch is the main branch, **and the one that you will open your PRs against**.
-* Merging a PR to ``main`` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
+* The `main` branch is the principal release branch, **and the one that you will open your PRs against**, unless you are working on a major release with breaking changes.
+* the `beta` branch is where we'll want code that is part of a prerelease, due to it being a large refactor, or including major breaking changes.
+* Merging a PR to `main` or `beta` will **not** result in a release. Releases are triggered by following the steps outlined in the [Releases](#releases) section below.
 * Include **screenshots** or animated GIFs in your pull request whenever needed (if changes are visual in nature).
 * It's OK, and even encouraged, to make multiple small commits as you work on a feature branch (commit early, and commit often) - we have configured GitHub to automatically squash commits before merging.
 * **DO NOT** commit the ``dist`` folder, use it only for generating builds locally and testing on your end. In general, respect [.gitignore](/.gitignore).
@@ -391,10 +453,9 @@ In order to ensure that a new component gets included in the library, it must be
 
 Palmetto Components uses the [semantic-release](https://github.com/semantic-release/semantic-release) npm package to fully automate the release workflow. Instead of manually updating the release version in `package.json`, and creating a new release tag in GitHub for each release, they are automatically triggered by prefixing the commit message when merging to `main`. Upon triggering a release, the package version is bumped depending on the type specified, a release tag is created in GitHub, and the new version is automatically published to [npm](https://www.npmjs.com/).
 
-For e.g., opening a PR to main with the commit message `fix: Resolve bug`, will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`. Opening a PR with `feat(Table): Finalize tests` will trigger a feature release and bump the package's version from `0.0.0` to `0.1.0`.
+For example, opening a PR to main with the commit message `fix: Resolve bug`, will trigger a minor release and bump the package's version from `0.0.0` to `0.0.1`. Opening a PR with `feat(Table): Finalize tests` will trigger a feature release and bump the package's version from `0.0.0` to `0.1.0`.
 
 The link above provides full documentation for this workflow. However, a comprehensive list of the prefix types, and their intended uses are provide below for quick reference:
-
 ### Release Types
 Must be one of the following:
 
@@ -413,3 +474,8 @@ Must be one of the following:
 * **refactor**: Changed code structure without affecting features.
 * **docs**: Added to, or improved documentation.
 * **style**: Change in code style without affecting features.
+
+### Prereleases
+If your code includes major changes or any breaking changes to the codebase, I.E, a new major version, or a large refactor, that will require a pre-release,
+and more extensive testing. To publish a pre-release, open (and eventutally merge) your PR against the `beta` branch. This will
+publish the package with a @beta tag which can then be easily consumed and tested by other consumers locally.
