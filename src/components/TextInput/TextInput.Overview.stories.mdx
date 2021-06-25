@@ -290,8 +290,7 @@ a callback function when the clear icon is clicked, which can then be handled to
 
 ## Sizes
 
-Set the size of the text input to `sm`, `md` or `lg`, but it can take these values in a `ResponsiveProp` object if it needs
- to be sized differently for each breakpoint.
+Set the `size` of the input to `sm`, `md` or `lg`. The `size` prop is also a `ResponsiveProp`, so it can be sized differently for different breakpoints by passing an object.
 
 <Canvas>
   <Story name="Size">
@@ -336,7 +335,7 @@ Set the size of the text input to `sm`, `md` or `lg`, but it can take these valu
           <TextInput
             id="responsiveSize"
             value={valueResponsive}
-            label="Responsive"
+            label="Responsive Size"
             size={{ base: 'sm', tablet: 'md', desktop: 'lg' }}
             onChange={event => setValueResponsive(event.target.value)}
           />
