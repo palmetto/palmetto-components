@@ -8,14 +8,14 @@
 }
 
 .text-input-wrapper {
+  margin-top: 1px;
   position: relative;
-  /* border: 1px solid var(--form-control-border-color); */
-  box-shadow: var(--form-control-size-box-shadow), 0 0 0 1px var(--form-control-border-color);
+  box-shadow: var(--form-control-size-box-shadow), inset 0 0 0 1px var(--form-control-border-color);
   background-color: var(--form-control-background-color);
 
   &:focus-within {
     outline: none;
-    box-shadow: var(--form-control-size-box-shadow), 0 0 0 1px var(--form-control-focus-border-color);
+    box-shadow: var(--form-control-size-box-shadow), inset 0 0 0 1px var(--form-control-focus-border-color);
   }
 
   &.disabled {
@@ -51,7 +51,7 @@
   }
 
   &.error {
-    box-shadow: var(--form-control-size-box-shadow), 0 0 0 1px var(--form-control-error-border-color);
+    box-shadow: var(--form-control-size-box-shadow), inset 0 0 0 1px var(--form-control-error-border-color);
     background-color: var(--form-control-error-background-color);
 
     input:focus {
