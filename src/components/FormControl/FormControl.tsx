@@ -35,7 +35,7 @@ export interface FormControlProps extends BoxProps {
   isRequired?: boolean;
 }
 
-export const FormControl: React.FC<FormControlProps> = React.forwardRef((
+export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
   {
     label,
     hideLabel,
