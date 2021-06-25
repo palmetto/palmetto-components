@@ -232,7 +232,11 @@ export const TextInput = forwardRef<HTMLDivElement, TextInputProps>(
           radius={computedResponsiveSize(size, 'radius')}
         >
           {prefix && (
-            <Box color="grey-400" className="ws-nowrap" padding={computedResponsiveSize(size, 'childPadding')}>
+            <Box
+              color="grey-400"
+              className="ws-nowrap"
+              padding={computedResponsiveSize(size, 'childPadding')}
+            >
               {prefix}
             </Box>
           )}

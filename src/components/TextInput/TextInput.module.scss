@@ -12,6 +12,15 @@
   box-shadow: var(--form-control-size-box-shadow), inset 0 0 0 1px var(--form-control-border-color);
   background-color: var(--form-control-background-color);
 
+  /* Necessary so that inset shadow that we use for border does not get covered by child elements. */
+  &:not(.error) {
+    > * {
+      &:focus {
+        box-shadow: inset 0 1px 0 0 var(--form-control-focus-border-color), inset 0 -1px 0 0 var(--form-control-focus-border-color); 
+      }
+    }
+  }
+
   &:focus-within {
     outline: none;
     box-shadow: var(--form-control-size-box-shadow), inset 0 0 0 1px var(--form-control-focus-border-color);
@@ -56,6 +65,13 @@
     input:focus {
       outline: none;
       background-color: transparent;
+    }
+
+    /* Necessary so that inset shadow that we use for border does not get covered by child elements. */
+    > * { /* stylelint-disable */
+      &:focus {
+        box-shadow: inset 0 1px 0 0 var(--form-control-error-border-color), inset 0 -1px 0 0 var(--form-control-error-border-color); 
+      }
     }
   }
 
