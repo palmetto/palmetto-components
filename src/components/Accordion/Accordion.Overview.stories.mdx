@@ -28,6 +28,7 @@ Accordions are useful when you want to toggle between hiding and showing additio
       });
       /* This logic ensures only one panel is open at a time */
       const handleTogglePanels = id => {
+        console.log('did I toggle?');
         const updatedPanels = { ...openPanels };
         if (updatedPanels[id]) {
           updatedPanels[id] = false;

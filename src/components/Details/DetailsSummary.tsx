@@ -4,7 +4,7 @@ import { Box, BoxProps } from '../Box/Box';
 
 export interface DetailsSummaryProps extends BoxProps {
   isDetailsOpen: boolean;
-  onToggle?: () => void;
+  onToggle?: (event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>) => void;
 }
 
 export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
@@ -15,18 +15,28 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
   ...restProps
 }) => {
   const handleClick = (event: MouseEvent<HTMLElement>) => {
+    // Needed to avoid default `details` behavior on a click event and keep this as controlled component.
     event.preventDefault();
-    if (!onToggle) return;
 
-    onToggle();
+    if (!onToggle && !restProps?.onClick) return;
+
+    if (onToggle) {
+      onToggle(event);
+    }
+
+    if (restProps?.onClick) {
+      restProps.onClick(event);
+    }
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    // Needed to avoid default `details` behavior on a click event and keep this as controlled component.
+    event.preventDefault();
+
     if ([ENTER, SPACE].indexOf(event.keyCode) !== -1) {
-      event.preventDefault();
       if (!onToggle) return;
 
-      onToggle();
+      onToggle(event);
     }
   };
 

@@ -1,0 +1,5 @@
+@import '../../styles/mixins';
+
+.file-upload-input-element {
+  @include accessible-hidden-element;
+}
