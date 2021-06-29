@@ -1,5 +1,4 @@
 import React from 'react';
-import { IconName } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { DetailsSummary, DetailsSummaryProps } from '../Details/DetailsSummary';
 import { Box } from '../Box/Box';
