@@ -42,6 +42,7 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
 
   return (
     <Box
+      {...restProps}
       as="summary"
       display={display}
       role="button"
@@ -49,7 +50,6 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      {...restProps}
     >
       {children}
     </Box>
