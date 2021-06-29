@@ -105,29 +105,32 @@ export interface FileUploadProps extends BoxProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const FileUpload: FC<FileUploadProps> = ({
-  id,
-  labelText,
-  name,
-  onChange,
-  accept = undefined,
-  buttonText = 'Upload File',
-  className = undefined,
-  error = null,
-  fileNameMaxLength = null,
-  files = null,
-  fullWidth = false,
-  hasIcon = true,
-  helpText = undefined,
-  inputProps = undefined,
-  isDisabled = false,
-  isRequired = false,
-  multiple = false,
-  onClearFiles = undefined,
-  size = 'md',
-  variant = 'light',
-  ...restProps
-}) => {
+export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, FileUploadProps>((
+  {
+    id,
+    labelText,
+    name,
+    onChange,
+    accept = undefined,
+    buttonText = 'Upload File',
+    className = undefined,
+    error = null,
+    fileNameMaxLength = null,
+    files = null,
+    fullWidth = false,
+    hasIcon = true,
+    helpText = undefined,
+    inputProps = undefined,
+    isDisabled = false,
+    isRequired = false,
+    multiple = false,
+    onClearFiles = undefined,
+    size = 'md',
+    variant = 'light',
+    ...restProps
+  },
+  ref,
+) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
@@ -140,7 +143,7 @@ export const FileUpload: FC<FileUploadProps> = ({
     }
 
     onChange(event);
-  }
+  };
 
   const truncateFileName = (fileName: string, maxLength: number): string => {
     const half = Math.floor(maxLength / 2);
@@ -178,6 +181,7 @@ export const FileUpload: FC<FileUploadProps> = ({
       display="inline-block"
       className={className}
       width={fullWidth ? '100' : undefined}
+      ref={ref}
       {...restProps}
     >
       <FormLabel inputId={id} className="display-none">
@@ -235,4 +239,4 @@ export const FileUpload: FC<FileUploadProps> = ({
       )}
     </Box>
   );
-};
+});
