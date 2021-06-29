@@ -15,29 +15,26 @@ export const AccordionPanelSummary: React.FC<AccordionPanelSummaryProps> = ({
   hasCaret = 'right',
   isDetailsOpen,
   ...restProps
-}) => {
-
-  return (
-    <DetailsSummary
-      fontWeight={fontWeight}
-      padding={padding}
-      isDetailsOpen={isDetailsOpen}
-      onToggle={onToggle}
-      {...restProps}
-    >
-      <Box direction="row" childGap="sm">
-        {hasCaret === 'left' && (
-          <Box>
-            <Icon name={isDetailsOpen ? 'caret-sm-down' : 'caret-sm-right'} color="grey-500" />
-          </Box>
-        )}
-        {children}
-        {hasCaret === 'right' && (
-          <Box margin="0 0 0 auto">
-            <Icon name={isDetailsOpen ? 'caret-sm-up' : 'caret-sm-down'} color="grey-500" />
-          </Box>
-        )}
-      </Box>
-    </DetailsSummary>
-  );
-};
+}) => (
+  <DetailsSummary
+    fontWeight={fontWeight}
+    padding={padding}
+    isDetailsOpen={isDetailsOpen}
+    onToggle={onToggle}
+    {...restProps}
+  >
+    <Box direction="row" childGap="sm">
+      {hasCaret === 'left' && (
+        <Box>
+          <Icon name={isDetailsOpen ? 'caret-sm-down' : 'caret-sm-right'} color="grey-500" />
+        </Box>
+      )}
+      {children}
+      {hasCaret === 'right' && (
+        <Box margin="0 0 0 auto">
+          <Icon name={isDetailsOpen ? 'caret-sm-up' : 'caret-sm-down'} color="grey-500" />
+        </Box>
+      )}
+    </Box>
+  </DetailsSummary>
+);
