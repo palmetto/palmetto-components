@@ -38,6 +38,11 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
 
       onToggle(event);
     }
+
+    if (restProps?.keyDown) {
+      restProps.keyDown(event);
+    }
+
   };
 
   return (
