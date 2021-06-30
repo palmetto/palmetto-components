@@ -121,6 +121,28 @@ describe('FileUpload', () => {
       expect(mockedHandleChange).toHaveBeenCalledTimes(1);
     });
 
+    it('It fires an onChange callback via top-level props and also input props', () => {
+      const mockedHandleChange = jest.fn();
+      const mockedHandleChangeTwo = jest.fn();
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={mockedHandleChange}
+          hasIcon={false}
+          inputProps={{ onChange: mockedHandleChangeTwo }}
+        />,
+      );
+
+      const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' });
+      const fileUploadInput = screen.getByLabelText('myFileUpload');
+      fireEvent.change(fileUploadInput, { target: { files: [file] } });
+
+      expect(mockedHandleChange).toHaveBeenCalledTimes(1);
+      expect(mockedHandleChangeTwo).toHaveBeenCalledTimes(1);
+    });
+
     it('fires the onClear callback when clear button is clicked', () => {
       const mockedHandleClear = jest.fn();
       const file = new File(['(⌐□_□)'], 'super-duper--duper-long-file-name.png', { type: 'image/png' });
@@ -207,6 +229,22 @@ describe('FileUpload', () => {
   });
 
   describe('Validation', () => {
+    it('shows help text when passed', () => {
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          isRequired
+          helpText="I can help"
+        />,
+      );
+
+      const helpText = screen.getByText('I can help');
+      expect(helpText).toBeInTheDocument();
+    });
+
     it('is marked as required input when isRequired prop is passed', () => {
       render(
         <FileUpload
@@ -255,6 +293,72 @@ describe('FileUpload', () => {
 
       expect(error).toBeInTheDocument();
       expect(error).toHaveClass('font-size-md');
+    });
+  });
+
+  describe('Passing Refs', () => {
+    it('passes a ref to the root element', () => {
+      const myRef = React.createRef();
+
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          error="you did something wrong"
+          ref={myRef}
+        />,
+      );
+
+      expect(myRef.current).toBeTruthy();
+    });
+
+    it('passes a ref to the input element', () => {
+      const myRef = React.createRef<HTMLInputElement>();
+
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          error="you did something wrong"
+          inputProps={{ ref: myRef }}
+        />,
+      );
+
+      expect(myRef.current).toBeTruthy();
+    });
+  });
+
+  describe('Prop spreading', () => {
+    it('spreads props to root element', () => {
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          data-testid="hello"
+        />,
+      );
+
+      expect(screen.getByTestId('hello')).toBeInTheDocument();
+    });
+
+    it('can spread props to the input element', () => {
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          inputProps={{ 'data-testid': 'hello' }}
+        />,
+      );
+
+      expect(screen.getByLabelText('myFileUpload')).toHaveAttribute('data-testid', 'hello');
     });
   });
 });
