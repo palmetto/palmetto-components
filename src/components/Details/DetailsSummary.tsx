@@ -42,7 +42,6 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
     if (restProps?.keyDown) {
       restProps.keyDown(event);
     }
-
   };
 
   return (
