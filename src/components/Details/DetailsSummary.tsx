@@ -33,14 +33,14 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
     // Needed to avoid default `details` behavior on a click event and keep this as controlled component.
     event.preventDefault();
 
-    if ([ENTER, SPACE].indexOf(event.keyCode) !== -1) {
-      if (!onToggle) return;
+    if (!onToggle && !restProps?.onKeyDown) return;
 
+    if (onToggle && [ENTER, SPACE].indexOf(event.keyCode) !== -1) {
       onToggle(event);
     }
 
-    if (restProps?.keyDown) {
-      restProps.keyDown(event);
+    if (restProps?.onKeyDown) {
+      restProps.onKeyDown(event);
     }
   };
 

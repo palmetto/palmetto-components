@@ -167,7 +167,7 @@ describe('Details', () => {
       expect(mockedOnToggle).toHaveBeenCalledTimes(1);
     });
 
-    test('Fires onKeyDown if passed', () => {
+    test('Fires onKeyDown if passed', async  () => {
       const mockedOnToggle = jest.fn(() => null);
 
       render(
@@ -179,7 +179,8 @@ describe('Details', () => {
       );
 
       const summary = screen.getByRole('button');
-      fireEvent.click(summary);
+      await fireEvent.keyDown(summary, { keyCode: 13 });
+    
       expect(mockedOnToggle).toHaveBeenCalledTimes(1);
     });
   });
