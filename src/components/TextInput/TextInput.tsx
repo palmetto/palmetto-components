@@ -4,6 +4,7 @@ import React, {
   MouseEvent,
   KeyboardEvent,
   FocusEvent,
+  ForwardRefExoticComponent,
   ReactNode,
   HTMLProps,
   InputHTMLAttributes,
@@ -127,7 +128,7 @@ export interface TextInputProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const TextInput = forwardRef<HTMLDivElement, TextInputProps>(
+export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<HTMLDivElement, TextInputProps>(
   (
     {
       id,

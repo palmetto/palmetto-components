@@ -1,50 +1,85 @@
-import React from 'react';
-import { BrandColor, FontColor, ResponsiveProp } from '../../types';
+import React, { forwardRef, ForwardRefExoticComponent } from 'react';
+import { BrandColor, FontColor } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { RadioInput } from '../RadioGroup/RadioInput/RadioInput';
 import { Checkbox } from '../CheckboxInput/components/Checkbox';
 import { Icon } from '../Icon/Icon';
 
 export interface OptionTileProps extends BoxProps {
+  /**
+   * id attribute for radio/checkbox input.
+   */
   id: string;
-  label: string;
-  value: string;
-  name: string;
-  inputType: 'radio' | 'checkbox';
-  hideInput: boolean;
+  /**
+   * Whether the option is selected. Passed down as `checked` attribute for the underlying input.
+   */
   isSelected: boolean;
-  disabled: boolean;
+  /**
+   * label attribute for radio/checkbox input.
+   */
+  label: string;
+  /**
+   * Name attribute for parent fieldset, to be passed to radio/checkbox input.
+   */
+  name: string;
+  /**
+   * onChange callback attached to underlying input elements.
+   */
   onChange: (event: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLDivElement>) => void;
-  error: boolean;
+  /**
+   * value attribute for radio/checkbox input.
+   */
+  value: string;
+  /**
+   * Whether the option is disabled. This is passed down to the underlying input and disables onChange firing on user interactions.
+   * NOTE: that a custom onClick will still fire despite this prop being set to `true`.
+   */
+  disabled?: boolean;
+  /**
+   * Whether the input is in an error state. This is used to modify the visual radio/checkbox with the approproate error color.
+   * NOTE: this may create mismatches when using custom styling on the OptionTile.
+   */
+  error?: boolean;
+  /**
+   * The actual input on an OptionTile is already hidden and replaced
+   * with a custom div for visual interaction. This prop will hide the custom visual element.
+   * The input will continue to be accessibly hidden regardless of the value of this prop.
+   */
+  hideInput?: boolean;
+  /**
+   * Whether to render a radio or a checkbox input.
+   */
+  inputType?: 'radio' | 'checkbox';
 }
 
-export const OptionTile = React.forwardRef<HTMLDivElement, OptionTileProps>((
+export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef<HTMLDivElement, OptionTileProps>((
   {
+    children,
     id,
-    onChange,
     isSelected,
     label,
-    value,
-    disabled,
     name,
-    error,
-    hideInput = false,
-    children,
-    className = '',
-    inputType = 'radio',
+    onChange,
+    value,
     background = 'white',
     borderColor = 'grey-light',
-    color = 'dark',
     borderWidth = 'xs',
-    shadow = '2xs',
-    radius = 'md',
-    direction = 'row',
+    className = '',
     childGap = 'md',
-    padding = 'md',
-    flex = 'auto',
+    color = 'dark',
     cursor = 'pointer',
+    direction = 'row',
+    disabled = false,
+    error = false,
+    flex = 'auto',
+    hideInput = false,
     hover = undefined,
+    inputType = 'radio',
     onClick = undefined,
+    padding = 'md',
+    radius = 'md',
+    shadow = '2xs',
+    ...restProps
   },
   ref,
 ) => {
@@ -146,21 +181,21 @@ export const OptionTile = React.forwardRef<HTMLDivElement, OptionTileProps>((
 
   return (
     <Box
-      ref={ref}
-      key={id}
-      className={className}
       background={background}
       borderColor={borderColor}
-      color={color}
       borderWidth={borderWidth}
-      shadow={shadow}
-      radius={radius}
-      direction={direction}
       childGap={childGap}
-      padding={padding}
-      flex={flex}
+      className={className}
+      color={color}
       cursor={cursor}
+      direction={direction}
+      flex={flex}
       hover={hover}
+      padding={padding}
+      radius={radius}
+      ref={ref}
+      shadow={shadow}
+      {...restProps}
       onClick={handleClick}
     >
       {!hideInput && (inputType === 'checkbox' ? renderCheckbox() : renderRadio())}

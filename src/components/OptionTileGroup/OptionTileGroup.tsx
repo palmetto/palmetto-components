@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, ForwardRefExoticComponent } from 'react';
 import { ResponsiveProp } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { OptionTile } from '../OptionTile/OptionTile';
@@ -68,13 +68,9 @@ export interface OptionTileGroupProps extends BoxProps {
    * Title to be displayed above the Option Group.
    */
   title?: React.ReactNode;
-  /**
-   * Properties to spread onto root node.
-   */
-  [x: string]: any; // eslint-disable-line
 }
 
-export const OptionTileGroup = React.forwardRef<HTMLDivElement, OptionTileGroupProps>((
+export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = forwardRef<HTMLDivElement, OptionTileGroupProps>((
   {
     name,
     onChange,
@@ -93,18 +89,6 @@ export const OptionTileGroup = React.forwardRef<HTMLDivElement, OptionTileGroupP
   },
   ref,
 ) => {
-  // const optionsRefs = React.useRef<React.RefObject<HTMLDivElement>[]>(options?.map(() => React.createRef()));
-
-  // const handleClick = (event: React.MouseEvent<HTMLDivElement>, index: number) => {
-  //   const element = optionsRefs.current[index]?.current?.children[0];
-
-  //   if (element) {
-  //     event.target = element; // eslint-disable-line no-param-reassign
-  //   }
-
-  //   onChange(event);
-  // };
-
   const isOptionSelected = (option: Option) => {
     if (isMulti && value && typeof value !== 'string' && typeof value !== 'number') {
       return value.includes(option.value);
@@ -199,18 +183,11 @@ export const OptionTileGroup = React.forwardRef<HTMLDivElement, OptionTileGroupP
             background={getOptionBackgroundColor(option)}
             borderColor={getOptionBorderColor(option)}
             color={getOptionFontColor(option)}
-            borderWidth="xs"
-            shadow="2xs"
-            radius="md"
-            direction="row"
-            childGap="md"
-            padding="md"
             flex={isFullWidth ? 'auto' : 'initial'}
             cursor={option.disabled ? 'not-allowed' : 'pointer'}
             hover={{
               ...(!option.disabled && !isOptionSelected(option)) && { borderColor: 'grey-300' },
             }}
-            // onClick={!option.disabled ? (e: React.MouseEvent<HTMLDivElement>) => handleClick(e, index) : undefined}
             isSelected={isOptionSelected(option)}
             onChange={onChange}
             value={option.value}
@@ -220,6 +197,7 @@ export const OptionTileGroup = React.forwardRef<HTMLDivElement, OptionTileGroupP
             hideInput={hideInput}
             error={!!error}
             id={option.id}
+            name={name}
           >
             {option.render ? option.render(option) : option.label}
           </OptionTile>
