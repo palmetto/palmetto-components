@@ -12,9 +12,6 @@ export default {
     displayInline: {
       control: 'boolean',
     },
-    hasError: {
-      control: 'boolean',
-    },
     helpText: {
       control: 'text',
     },

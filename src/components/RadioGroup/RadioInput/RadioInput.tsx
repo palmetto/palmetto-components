@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FocusEvent, ReactNode } from 'react';
+import React, { ChangeEvent, FocusEvent } from 'react';
 import classNames from 'classnames';
 import { Box } from '../../Box/Box';
 import { FormLabel } from '../../FormLabel/FormLabel';

@@ -53,7 +53,6 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
-    hasError: !!error,
     helpText,
     margin: '0 0 xs 0',
     isDisabled,
