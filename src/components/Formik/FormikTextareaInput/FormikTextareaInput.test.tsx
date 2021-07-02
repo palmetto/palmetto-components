@@ -1,12 +1,16 @@
 import React from 'react';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import { Formik, Field, Form, FormikValues } from 'formik';
+import {
+  render, fireEvent, screen, waitFor,
+} from '@testing-library/react';
+import {
+  Formik, Field, Form, FormikValues,
+} from 'formik';
 import { FormikTextareaInput } from './FormikTextareaInput';
 
 const testLabelName = 'textInput';
 
 const handleValidation = (values: FormikValues) => {
-  const errors: { [testLabelName]?: string } = {};
+  const errors: { [testLabelName]?: string; } = {};
   if (!values[testLabelName]) {
     errors[testLabelName] = 'input is required';
   }
