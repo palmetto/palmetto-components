@@ -87,15 +87,11 @@ export const RadioGroup: FC<RadioGroupProps> = ({
     [styles.loading]: error,
   });
 
-  const legendClasses = classNames(styles.legend, {
-    [styles.error]: error,
-  });
-
   return (
     <div className={classNames(styles['radio-group'], groupClasses)}>
       <fieldset className={styles.fieldset}>
         {(title || description) && (
-          <legend className={legendClasses}>
+          <legend className={styles.legend}>
             {title}
             {isRequired && <span>&nbsp;*</span>}
             {description && <div className={styles.description}>{description}</div>}
