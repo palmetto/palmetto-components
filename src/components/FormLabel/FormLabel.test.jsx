@@ -19,15 +19,13 @@ describe('FormLabel', () => {
   });
 
   test('Label correctly renders with askterisk if field is required', () => {
-    render(<FormLabel inputId="myId" isFieldRequired>my label</FormLabel>);
+    render(
+      <FormLabel inputId="myId" isFieldRequired>
+        my label
+      </FormLabel>,
+    );
     const labelElement = screen.getByText('my label *');
     expect(labelElement).toBeInTheDocument();
-  });
-
-  test('Label correctly renders with error class if field has eror', () => {
-    render(<FormLabel inputId="myId">my label</FormLabel>);
-    const labelElement = screen.getByText('my label');
-    expect(labelElement.getAttribute('class')).toContain('error');
   });
 
   test('correctly assigns an id when given an inputId', () => {
@@ -37,7 +35,11 @@ describe('FormLabel', () => {
   });
 
   test('renders help text if provided', () => {
-    const { getByText } = render(<FormLabel inputId="myId" helpText="i am help text">my label</FormLabel>);
+    const { getByText } = render(
+      <FormLabel inputId="myId" helpText="i am help text">
+        my label
+      </FormLabel>,
+    );
     expect(getByText('i am help text')).toBeDefined();
   });
 });
