@@ -27,11 +27,6 @@ export interface RadioInputProps {
    */
   className?: string;
   /**
-   * Mark the radio group as invalid and display a validation message.
-   * Pass a string or node to render a validation message below the input.
-   */
-  error?: ReactNode;
-  /**
    * If the radio group should be disabled and not focusable.
    */
   isDisabled?: boolean;
@@ -59,7 +54,6 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
     onChange,
     option,
     className = '',
-    error = false,
     isDisabled = false,
     isHidden = false,
     isSelected = false,

@@ -109,7 +109,6 @@ export const RadioGroup: FC<RadioGroupProps> = ({
                 name={name}
                 onChange={onChange}
                 option={option}
-                error={error}
                 isDisabled={isDisabled || option.disabled || false}
                 isSelected={value === option.value}
                 onBlur={onBlur}
