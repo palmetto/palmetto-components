@@ -15,6 +15,8 @@ import { Box } from '../Box/Box';
 
 # OptionTile
 
+**Make a Radio or Checkbox look like anything!**
+
 An OptionTile is an alternative to certain radio, checkbox, or select UIs, where a user is
 presented with a more stylized version of these in the form of
 a tile, or group of tiles. The OptionTile contains an accessibly hidden input element,
@@ -185,16 +187,18 @@ Also note that these icons are only there for visual feedback, as the true input
               padding="0"
               childGap="0"
               direction="column"
+              radius="0"
               isSelected={option.value === selectedOption}
               onChange={(event) => setSelectedOption(event.target.value)}
               id={option.id}
               name={option.name}
               value={option.value}
-              background={option.value === selectedOption ? 'primary-lightest' : undefined}
-              borderColor={option.value === selectedOption ? 'primary' : undefined}
+              background={option.value === selectedOption ? 'secondary-lightest' : undefined}
+              borderColor={option.value === selectedOption ? 'secondary' : undefined}
+              hover={{ shadow: 'lg' }}
             >
               <img src={option.img} style={{ objectFit: 'cover', width: '100%', height: '100px' }} />
-              <p className="p-md">{option.label}</p>
+              <p className="p-md font-family-brand">{option.label}</p>
             </OptionTile>
           ))}
         </Box>
