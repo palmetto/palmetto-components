@@ -15,14 +15,6 @@
     color: var(--color-brand-grey-light);
   }
 
-  &.error {
-    color: var(--color-brand-danger-base);
-
-    &.disabled {
-      color: var(--color-brand-danger-lighter);
-    }
-  }
-
   .help-text {
     margin-top: var(--form-control-help-margin);
     font-weight: 400;

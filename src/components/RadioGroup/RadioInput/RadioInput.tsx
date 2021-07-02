@@ -80,7 +80,6 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
     inputId: option.id,
     isDisabled,
     displayInline: true,
-    hasError: !!error,
     isRadioInputLabel: true,
   };
 

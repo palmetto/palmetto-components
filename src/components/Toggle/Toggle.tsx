@@ -115,7 +115,6 @@ export const Toggle: FC<ToggleProps> = ({
     isFieldRequired: isRequired,
     className: styles['toggle-label'],
     inputId: id,
-    hasError: !!error,
     isDisabled,
   };
 
