@@ -62,7 +62,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
     onChange,
     value,
     background = 'white',
-    borderColor = 'grey-light',
+    borderColor = 'grey-lighter',
     borderWidth = 'xs',
     className = '',
     childGap = 'md',
@@ -127,13 +127,14 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
         minHeight="16px"
         radius="circle"
         borderColor={getRadioFillColor('grey-light')}
+        background="white"
         borderWidth="xs"
         position="relative"
       >
         <Box
           width="10px"
           height="10px"
-          background={getRadioFillColor('transparent')}
+          background={getRadioFillColor('white')}
           radius="circle"
           position="absolute"
           style={{

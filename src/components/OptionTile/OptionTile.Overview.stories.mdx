@@ -1,0 +1,204 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { OptionTile } from './OptionTile';
+import { Heading } from '../Heading/Heading';
+import { Box } from '../Box/Box';
+
+<Meta
+  title="Components/OptionTile/Overview"
+  component={OptionTile}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# OptionTile
+
+An OptionTile is an alternative to certain radio, checkbox, or select UIs, where a user is
+presented with a more stylized version of these in the form of
+a tile, or group of tiles. The OptionTile contains an accessibly hidden input element,
+that will either be a `checkbox` or a `radio` input. For a
+slightly more opinionated, and fully functional fieldset using the `OptionTile` see
+[OptionTileGroup](?path=/docs/components-optiontilegroup-overview--default-story).
+
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const [isSelected, setIsSelected] = useState(false);
+      return (
+        <OptionTile
+          isSelected={isSelected}
+          onChange={() => { let newVal = !isSelected; setIsSelected(newVal)}}
+          id="defaultOptionTile"
+          name="defaultOptionTile"
+          value="defaultOptionTile"
+        >
+          Hello world!
+        </OptionTile>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={OptionTile} />
+
+## Input Types
+
+The tile can be rendered as a radio (for single select) or a checkbox (for multi-select).
+The default is a radio.
+
+<Canvas isExpanded>
+  <Story name="Input Types">
+    {() => {
+      const [isCheckboxSelected, setIsCheckboxSelected] = useState(false);
+      const [isRadioSelected, setIsRadioSelected] = useState(false);
+      return (
+        <Box childGap="md">
+          <OptionTile
+            isSelected={isRadioSelected}
+            onChange={() => setIsRadioSelected(!isRadioSelected)}
+            id="inputTypeRadioOptionTile"
+            name="inputTypeRadioOptionTile"
+            value="inputTypeRadioOptionTile"
+            inputType="radio"
+          >
+            I'm a radio
+          </OptionTile>
+          <OptionTile
+            isSelected={isCheckboxSelected}
+            onChange={() => setIsCheckboxSelected(!isCheckboxSelected)}
+            id="inputTypeCheckboxOptionTile"
+            name="inputTypeCheckboxOptionTile"
+            value="inputTypeCheckboxOptionTile"
+            inputType="checkbox"
+          >
+            I'm a checkbox
+          </OptionTile>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+# More Styling Options
+
+Some basic styles are included by default, which can all be overwritten via props. The component uses a `Box` as a root element,
+and as such `BoxProps` can be used to style it.
+
+NOTE: We do include a selected, disabled, and error states that are hardcoded but they ONLY 
+affect the radio/checkbox icons. These elements have an opinionated style using `primary` brand color.
+If this creates a mismatch with your preferred styling, you can choose to hide them with the `hideInput`
+prop, and if necessary recreate them any way you wish via `children`.
+Also note that these icons are only there for visual feedback, as the true inputs are accessibly hidden.
+
+## Adding a hover effect
+
+<Canvas isExpanded>
+  <Story name="Hover">
+    {() => {
+      const [isSelected, setIsSelected] = useState(false);
+      return (
+        <OptionTile
+          isSelected={isSelected}
+          onChange={() => { let newVal = !isSelected; setIsSelected(newVal)}}
+          id="hoverOptionTile"
+          name="hoverOptionTile"
+          value="hoverOptionTile"
+          hover={{ borderColor: 'primary', shadow: 'lg', background: 'primary-lightest' }}
+        >
+          Hello world!
+        </OptionTile>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Conditional styling for selected option
+
+<Canvas isExpanded>
+  <Story name="Selected Styling">
+    {() => {
+      const [isSelected, setIsSelected] = useState(false);
+      return (
+        <OptionTile
+          isSelected={isSelected}
+          onChange={() => { let newVal = !isSelected; setIsSelected(newVal)}}
+          id="hoverOptionTile"
+          name="hoverOptionTile"
+          value="hoverOptionTile"
+          background={isSelected ? 'primary-lightest': undefined}
+          borderColor={isSelected ? 'primary': undefined}
+        >
+          Hello world!
+        </OptionTile>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Custom Tile Example
+
+<Canvas isExpanded>
+  <Story name="Grid">
+    {() => {
+      const [selectedOption, setSelectedOption] = useState(null);
+      const options = [
+        {
+          id: 'vanilla',
+          label: 'vanilla',
+          name: 'vanilla',
+          value: 'vanilla',
+          img: 'https://www.thespruceeats.com/thmb/u8dsSvqz5Mkt0FyP7ETzwljamSQ=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/no-cook-vanilla-ice-cream-recipe-1945802-hero-01-cbd4c64c079b4caebe3f3e9add94ff9a.jpg',
+        },
+        {
+          id: 'chocolate',
+          label: 'chocolate',
+          name: 'chocolate',
+          value: 'chocolate',
+          img: 'https://www.thespruceeats.com/thmb/KyWpKNdzCXtBXiA96QlJaAU05c0=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
+        },
+        {
+          id: 'strawberry', 
+          label: 'strawberry',
+          name: 'strawberry',
+          value: 'strawberry',
+          img: 'https://www.seriouseats.com/thmb/SYI6WMkX-fhBQFGT20B3LimaJlQ=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2015__07__20150706-strawberry-ice-cream-vicky-wasik-4-f3453966ec94404aaf44da724aef978b.jpg',
+        },
+        {
+          id: 'mint',
+          label: 'mint',
+          name: 'mint',
+          value: 'mint',
+          img: 'https://www.thespruceeats.com/thmb/qQb20E3wIirOZ8ilVfz-ImStswA=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/MintIceCreamHERO-color-corrected-df1d9b72aaeb41d38502f435fe99f65d.jpg',
+        },
+      ];
+      return (
+        <Box direction={{ base: 'column', tablet: 'row' }} childGap="md">
+          {options.map((option, index) => (
+            <OptionTile
+              key={option.id}
+              hideInput
+              padding="0"
+              childGap="0"
+              direction="column"
+              isSelected={option.value === selectedOption}
+              onChange={(event) => setSelectedOption(event.target.value)}
+              id={option.id}
+              name={option.name}
+              value={option.value}
+              background={option.value === selectedOption ? 'primary-lightest' : undefined}
+              borderColor={option.value === selectedOption ? 'primary' : undefined}
+            >
+              <img src={option.img} style={{ objectFit: 'cover', width: '100%', height: '100px' }} />
+              <p className="p-md">{option.label}</p>
+            </OptionTile>
+          ))}
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
