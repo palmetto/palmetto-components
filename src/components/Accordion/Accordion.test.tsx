@@ -56,11 +56,25 @@ describe('Accordion', () => {
       expect(icon).toBeInTheDocument();
     });
 
-    test('It renders with the caret on the right and pointing down when open', () => {
+    test('It renders with the caret on the right by default pointing down when open', () => {
       render(
         <Accordion>
           <Accordion.Panel isOpen>
             <Accordion.PanelSummary isDetailsOpen>summary</Accordion.PanelSummary>
+            <Accordion.PanelDetails>details</Accordion.PanelDetails>
+          </Accordion.Panel>
+        </Accordion>,
+      );
+
+      const icon = screen.getByTestId('icon-testid--caret-sm-up');
+      expect(icon).toBeInTheDocument();
+    });
+
+    test('It renders with the caret on the right and pointing down when open and prop passed', () => {
+      render(
+        <Accordion>
+          <Accordion.Panel isOpen>
+            <Accordion.PanelSummary isDetailsOpen hasCaret="right">summary</Accordion.PanelSummary>
             <Accordion.PanelDetails>details</Accordion.PanelDetails>
           </Accordion.Panel>
         </Accordion>,

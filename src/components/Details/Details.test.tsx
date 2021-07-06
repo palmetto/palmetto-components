@@ -150,6 +150,39 @@ describe('Details', () => {
       fireEvent.click(summary);
       expect(mockedOnToggle).toHaveBeenCalledTimes(0);
     });
+
+    test('Fires onClick if passed', () => {
+      const mockedOnToggle = jest.fn(() => null);
+
+      render(
+        <Details isOpen={false}>
+          <Details.Summary isDetailsOpen={false} onClick={mockedOnToggle}>
+            summary
+          </Details.Summary>
+        </Details>,
+      );
+
+      const summary = screen.getByRole('button');
+      fireEvent.click(summary);
+      expect(mockedOnToggle).toHaveBeenCalledTimes(1);
+    });
+
+    test('Fires onKeyDown if passed', () => {
+      const mockedOnToggle = jest.fn(() => null);
+
+      render(
+        <Details isOpen={false}>
+          <Details.Summary isDetailsOpen={false} onKeyDown={mockedOnToggle}>
+            summary
+          </Details.Summary>
+        </Details>,
+      );
+
+      const summary = screen.getByRole('button');
+      fireEvent.keyDown(summary, { keyCode: 13 });
+
+      expect(mockedOnToggle).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('Spread props', () => {
