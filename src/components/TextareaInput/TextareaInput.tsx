@@ -143,7 +143,6 @@ export const TextareaInput: FC<TextareaInputProps> = ({
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
-    hasError: !!error,
     helpText,
     className: styles['textarea-input-label'],
     isDisabled,

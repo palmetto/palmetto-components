@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FocusEvent, ReactNode } from 'react';
+import React, { ChangeEvent, FocusEvent } from 'react';
 import classNames from 'classnames';
 import { Box } from '../../Box/Box';
 import { FormLabel } from '../../FormLabel/FormLabel';
@@ -27,11 +27,6 @@ export interface RadioInputProps {
    */
   className?: string;
   /**
-   * Mark the radio group as invalid and display a validation message.
-   * Pass a string or node to render a validation message below the input.
-   */
-  error?: ReactNode;
-  /**
    * If the radio group should be disabled and not focusable.
    */
   isDisabled?: boolean;
@@ -59,7 +54,6 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
     onChange,
     option,
     className = '',
-    error = false,
     isDisabled = false,
     isHidden = false,
     isSelected = false,
@@ -80,7 +74,6 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
     inputId: option.id,
     isDisabled,
     displayInline: true,
-    hasError: !!error,
     isRadioInputLabel: true,
   };
 

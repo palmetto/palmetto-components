@@ -21,10 +21,6 @@ export interface FormLabelProps {
    */
   displayInline?: boolean;
   /**
-   * Mark the label has invalid
-   */
-  hasError?: boolean;
-  /**
    * Additional clarifying text to that helps describe the field
    */
   helpText?: ReactNode;
@@ -52,7 +48,6 @@ export const FormLabel: FC<FormLabelProps> = ({
   className = '',
   displayInline = false,
   display = 'block',
-  hasError = false,
   helpText,
   isDisabled = false,
   isFieldRequired = false,
@@ -63,7 +58,6 @@ export const FormLabel: FC<FormLabelProps> = ({
 }) => {
   const labelClasses = classNames(styles.label, className, {
     [styles.disabled]: isDisabled,
-    [styles.error]: hasError,
     [styles.disabled]: isDisabled,
     [styles.inline]: displayInline,
     [styles['radio-input-label']]: isRadioInputLabel,

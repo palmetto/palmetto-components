@@ -161,7 +161,6 @@ export const SelectInput: FC<SelectInputProps> = ({
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
-    hasError: !!error,
     helpText,
     className: styles['select-input-label'],
     isDisabled,

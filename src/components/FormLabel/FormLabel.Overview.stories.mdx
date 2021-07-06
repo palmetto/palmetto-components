@@ -13,15 +13,25 @@ import { Box } from '../Box/Box';
 
 # FormLabel
 
-FormLabel is a sub component of many of our inputs, and is meant to be paired with a form input.
+FormLabel is a sub component of many of our inputs, and is meant to be paired with a form input. In most cases, the label will have already been built into another component as a prop. However, you can use it on its own or with another component.
 
 <Canvas isExpanded>
   <FormLabel>Form Label</FormLabel>
 </Canvas>
 
+
 ## Props
 
 <ArgsTable of={FormLabel} />
+
+## Accessibility
+
+- Each label requires the `inputId` prop that equals the id of the associated input so that the `htmlFor` property can be set.
+- Don't use placeholder text as a replacement for labels. It can be used to provide an example to users, but will disappear from the field when a user enters text. It's also not broadly supported by assistive technologies and won't display in older browsers.
+- Use one of 3 ways to label a form field in order of most preferred:
+  1. Visible label with Label
+  2. Visible label that's associated to the input with aria-labelledby
+  3. Label directly using aria-label
 
 ## Examples
 
@@ -53,21 +63,6 @@ A label for an input that is required is marked with an asterisk.
     <FormLabel inputId="required" isFieldRequired>
       Required input label
     </FormLabel>
-  </Story>
-</Canvas>
-
-### Error States
-
-<Canvas>
-  <Story name="Error States">
-    <Box childGap="md">
-      <FormLabel inputId="error1" hasError helpText="This is helpful text">
-        Label with error
-      </FormLabel>
-      <FormLabel inputId="error2" hasError isFieldRequired helpText="This is helpful text">
-        Required input label has error
-      </FormLabel>
-    </Box>
   </Story>
 </Canvas>
 
