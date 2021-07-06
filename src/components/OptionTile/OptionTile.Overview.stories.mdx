@@ -110,30 +110,7 @@ Also note that these icons are only there for visual feedback, as the true input
           id="hoverOptionTile"
           name="hoverOptionTile"
           value="hoverOptionTile"
-          hover={{ borderColor: 'primary', shadow: 'lg', background: 'primary-lightest' }}
-        >
-          Hello world!
-        </OptionTile>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Conditional styling for selected option
-
-<Canvas isExpanded>
-  <Story name="Selected Styling">
-    {() => {
-      const [isSelected, setIsSelected] = useState(false);
-      return (
-        <OptionTile
-          isSelected={isSelected}
-          onChange={() => { let newVal = !isSelected; setIsSelected(newVal)}}
-          id="hoverOptionTile"
-          name="hoverOptionTile"
-          value="hoverOptionTile"
-          background={isSelected ? 'primary-lightest': undefined}
-          borderColor={isSelected ? 'primary': undefined}
+          hover={{ borderColor: 'danger', shadow: 'lg', background: 'danger-lightest' }}
         >
           Hello world!
         </OptionTile>
