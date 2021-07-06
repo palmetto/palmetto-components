@@ -28,6 +28,7 @@ export * from './FormLabel/FormLabel';
 export * from './Heading/Heading';
 export * from './Icon/Icon';
 export * from './Modal/Modal';
+export * from './OptionTile/OptionTile';
 export * from './OptionTileGroup/OptionTileGroup';
 export * from './Pagination/Pagination';
 export * from './Popover/Popover';
