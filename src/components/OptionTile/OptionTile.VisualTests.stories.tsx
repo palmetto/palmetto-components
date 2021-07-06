@@ -12,7 +12,7 @@ const Template: Story<OptionTileProps> = args => (
     {...args}
     onChange={() => {}} // eslint-disable-line
   >
-    {args.children}
+    {args.children} {/* eslint-disable-line */}
   </OptionTile>
 );
 

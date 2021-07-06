@@ -70,7 +70,7 @@ export interface OptionTileGroupProps extends BoxProps {
   title?: React.ReactNode;
 }
 
-export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = forwardRef<HTMLDivElement, OptionTileGroupProps>((
+export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = forwardRef<HTMLDivElement, OptionTileGroupProps>(( // eslint-disable-line max-len
   {
     name,
     onChange,
@@ -176,7 +176,7 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
             )}
           </Box>
         )}
-        {options && options.map((option) => (
+        {options && options.map(option => (
           <OptionTile
             key={option.id}
             className={styles.option}

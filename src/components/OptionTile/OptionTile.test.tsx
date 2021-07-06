@@ -56,7 +56,7 @@ describe('OptionTile', () => {
           value="selected"
           id="selected"
           label="selected"
-          isSelected={true}
+          isSelected
         />,
       );
 
@@ -73,7 +73,7 @@ describe('OptionTile', () => {
           value="selected"
           id="selected"
           label="selected"
-          isSelected={true}
+          isSelected
           inputType="checkbox"
         />,
       );
@@ -131,7 +131,7 @@ describe('OptionTile', () => {
           isSelected={false}
         />,
       );
-      
+
       const container = screen.getByLabelText('onChange').closest('div');
       if (container) {
         fireEvent.click(container);

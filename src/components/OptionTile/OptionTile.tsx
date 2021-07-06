@@ -31,12 +31,14 @@ export interface OptionTileProps extends BoxProps {
    */
   value: string;
   /**
-   * Whether the option is disabled. This is passed down to the underlying input and disables onChange firing on user interactions.
+   * Whether the option is disabled. This is passed down to the underlying
+   * input and disables onChange firing on user interactions.
    * NOTE: that a custom onClick will still fire despite this prop being set to `true`.
    */
   disabled?: boolean;
   /**
-   * Whether the input is in an error state. This is used to modify the visual radio/checkbox with the approproate error color.
+   * Whether the input is in an error state. This is used to modify the visual
+   * radio/checkbox with the approproate error color.
    * NOTE: this may create mismatches when using custom styling on the OptionTile.
    */
   error?: boolean;
@@ -96,7 +98,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
       if (element) {
         event.target = element; // eslint-disable-line no-param-reassign
       }
-  
+
       onChange(event);
     }
   };
@@ -231,4 +233,4 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
       )}
     </Box>
   );
-})
+});
