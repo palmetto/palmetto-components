@@ -1,26 +1,123 @@
+
+import { Box, Heading } from '../components';
+
 <Meta title="Content/Goals and Principles" />
 
-# Content Goals and Principles
+<Box childGap="lg">
 
-<div className="mw-4xl">
+<Box display="block" background="warning-50" padding="lg" as="p" fontSize={{ base: 'sm', tablet: 'md'}}>
+  These guidelines may be modified, expanded, or updated over time as new needs arise. It’s impossible to predict every possible content need, and there may be exceptions that are required to aid with legibility, branding, etc. If you have any questions about how to use this guide, or you have a content need that goes against one of these guidelines, please post that request in the <a href="https://palmetto-team.slack.com/archives/C01QE0AAT4Z">#Content Slack Channel</a> and it will be reviewed for consideration.
+</Box>
 
-With every piece of content we publish, we aim to:
 
-Empower - Help people understand clean energy by using language that informs them and encourages them to make the most of Palmetto’s products and services.
-Respect - Treat readers with the respect they deserve. Put yourself in their shoes, and don’t patronize them. Remember that they have other things to do. Be considerate and inclusive. Don’t market at people; communicate with them.
-Educate - Tell readers what they need to know, not just what we want to say. Give them the exact information they need, along with opportunities to learn more. Remember that you’re the expert, and readers don’t have access to everything you know.
-Guide - Think of yourself as a tour guide for our readers. Whether you’re leading them through our educational materials or a task in our app, communicate in a friendly and helpful way.
-Translate - Only experts can make what’s difficult look easy, and it’s our job to demystify techno-speak and actually educate.
-Speak Truth - Understand Palmetto's place in our users’ lives. Avoid dramatic storytelling and grandiose claims. Focus on our real strengths.
+<Box as="section" childGap="md" borderWidth="0 0 xs 0" borderColor="grey-100" padding={{ base: '0 0 xl 0', tablet: '0 0 2xl 0', desktop: '0 0 3xl 0'}}>
 
-In order to achieve those goals, we make sure our content is:
+<Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl'}}>Content Goals</Heading>
 
-Clear - Understand the topic you’re writing about. Use simple words and sentences. Complexity and jargon are often used to mask a lack of true understanding. If you can’t explain it to a 5-year-old, you don’t really understand it.
-Useful - Before you start writing, ask yourself: What purpose does this serve? Who is going to read it? What do they need to know?
-Genuine - We relate to customers’ challenges and passions and speak to them in a familiar, warm, and accessible way.
-Friendly - Write like a human. Don’t be afraid to break a few rules if it makes your writing more relatable. All of our content, from splashy homepage copy to system alerts, should be warm and human.
-Inclusive - Our sense of humor is straight-faced, subtle, and a touch eccentric. We’re smart but not snobbish, and never inappropriate. We prefer winking to shouting. We’re never condescending or exclusive—we always bring our customers in on the joke.
-Plainspoken - We understand the world our customers are living in: one muddled by hyperbolic language, upsells, and over-promises. We strip all that away and value clarity above all. Because homeowners come to Palmetto to take control of their energy usage, we avoid distractions like fluffy metaphors and cheap plays to emotion.
-Appropriate - Write in a way that suits the situation. Just like you do in face-to-face conversations, adapt your tone depending on who you’re writing to and what you’re writing about.
+  <Box as="h2" fontSize={{ base: 'md', tablet: 'lg'}} fontFamily="brand" fontWeight="regular">With every piece of content we publish, we aim to:</Box>
 
-</div>
+  <Box childGap={{ base: 'lg', tablet: 'xl'}}>
+    <Box width="100" childGap={{ base: 'md', tablet: '2xl'}} direction={{ base: 'column', tablet: 'row'}}>
+      <Box width={{ base: '100', tablet: '33' }} childGap="sm">
+        <Heading as="h4">Empower</Heading>
+        <Box as="ul"padding="0 0 0 lg" fontSize="sm">
+          <li>Help people understand clean energy by using language that informs them and encourages them to make the most of Palmetto’s products and services.</li>
+        </Box>
+      </Box>
+      <Box width={{ base: '100', tablet: '33' }} childGap="sm">
+        <Heading as="h4">Respect</Heading>
+        <Box as="ul"padding="0 0 0 lg" fontSize="sm">
+          <li>Treat readers with the respect they deserve.</li>
+          <li> Put yourself in their shoes, and don’t patronize them. Remember that they have other things to do. </li>
+          <li>Be considerate and inclusive.</li>
+          <li>Don’t market at people; communicate with them.</li>
+        </Box>
+      </Box>
+      <Box width={{ base: '100', tablet: '33' }} childGap="sm">
+        <Heading as="h4">Educate</Heading>
+        <Box as="ul"padding="0 0 0 lg" fontSize="sm">
+          <li>Tell readers what they need to know, not just what we want to say.</li>
+          <li>Give them the exact information they need, along with opportunities to learn more.</li>
+          <li>Remember that you’re the expert, and readers don’t have access to everything you know.</li>
+        </Box>
+      </Box>
+    </Box>
+    <Box width="100" childGap={{ base: 'md', tablet: '2xl'}} direction={{ base: 'column', tablet: 'row'}}>
+      <Box width={{ base: '100', tablet: '33' }} childGap="sm">
+        <Heading as="h4">Guide</Heading>
+        <Box as="ul"padding="0 0 0 lg" fontSize="sm">
+          <li>Think of yourself as a tour guide for our readers. Whether you’re leading them through our educational materials or a task in our app, communicate in a friendly and helpful way.</li>
+        </Box>
+      </Box>
+      <Box width={{ base: '100', tablet: '33' }} childGap="sm">
+        <Heading as="h4">Translate</Heading>
+        <Box as="ul"padding="0 0 0 lg" fontSize="sm">
+          <li>Only experts can make what’s difficult look easy, and it’s our job to demystify techno-speak and actually educate.</li>
+        </Box>
+      </Box>
+      <Box width={{ base: '100', tablet: '33' }} childGap="sm">
+        <Heading as="h4">Speak Truth</Heading>
+        <Box as="ul"padding="0 0 0 lg" fontSize="sm">
+          <li>Understand Palmetto's place in our users’ lives. Avoid dramatic storytelling and grandiose claims. Focus on our real strengths.</li>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+</Box>
+
+
+<Box as="section" childGap="md">
+
+<Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl'}}>Content Principles</Heading>
+
+
+  <Box as="h2" fontSize={{ base: 'md', tablet: 'lg'}} fontFamily="brand" fontWeight="regular">In order to achieve our content goals, we follow these principles:</Box>
+
+  <table className="w-100">
+    <tr>
+      <td className="font-weight-bold">Clear</td>
+      <td>
+        Understand the topic you’re writing about. Use simple words and sentences. Complexity and jargon are often used to mask a lack of true understanding. If you can’t explain it to a 5-year-old, you don’t really understand it.
+      </td>
+    </tr>
+    <tr>
+      <td className="font-weight-bold">Useful</td>
+      <td>
+        Before you start writing, ask yourself: What purpose does this serve? Who is going to read it? What do they need to know?
+      </td>
+    </tr>
+    <tr>
+      <td className="font-weight-bold">Genuine</td>
+      <td>
+        We relate to customers’ challenges and passions and speak to them in a familiar, warm, and accessible way.
+      </td>
+    </tr>
+    <tr>
+      <td className="font-weight-bold">Friendly</td>
+      <td>
+        Write like a human. Don’t be afraid to break a few rules if it makes your writing more relatable. All of our content, from splashy homepage copy to system alerts, should be warm and human.
+      </td>
+    </tr>
+    <tr>
+      <td className="font-weight-bold">Inclusive</td>
+      <td>
+  Our sense of humor is straight-faced, subtle, and a touch eccentric. We’re smart but not snobbish, and never inappropriate. We prefer winking to shouting. We’re never condescending or exclusive—we always bring our customers in on the joke.
+      </td>
+    </tr>
+    <tr>
+      <td className="font-weight-bold">Plainspoken</td>
+      <td>
+  We understand the world our customers are living in: one muddled by hyperbolic language, upsells, and over-promises. We strip all that away and value clarity above all. Because homeowners come to Palmetto to take control of their energy usage, we avoid distractions like fluffy metaphors and cheap plays to emotion.
+      </td>
+    </tr>
+    <tr>
+      <td className="font-weight-bold">Appropriate</td>
+      <td>
+  Write in a way that suits the situation. Just like you do in face-to-face conversations, adapt your tone depending on who you’re writing to and what you’re writing about.
+      </td>
+    </tr>
+  </table>
+</Box>
+
+
+</Box>
