@@ -1,4 +1,5 @@
-import { Box, Heading } from '../components';
+import { Box, Icon, Heading } from '../components';
+import DoDont from './DoDont';
 
 <Meta title="Content/Grammar and Mechanics" />
 
@@ -104,68 +105,126 @@ If the abbreviation or acronym is well known, like NASA or HTML, use it instead 
 
 ### Active Voice
 
-Use an active voice. Avoid a passive voice.
+<DoDont
+  doTitle="Active Voice"
+  doExample="Marti logged into the account."
+  dontTitle="Passive Voice"
+  dontExample="Marti logged into the account."
+>
 
-In an active voice, the subject of the sentence does the action. In a passive voice, the subject of the sentence has the action done to it.
+  Use an active voice. Avoid a passive voice.
 
-- Active Voice (Good): Marti logged into the account.
-- Passive Voice (Bad): The account was logged into by Marti.
+  In an active voice, the subject of the sentence does the action. In a passive voice, the subject of the sentence has the action done to it.
 
-Words like “was” and “by” may indicate that you’re writing in a passive voice. Scan for these words and rework sentences where they appear.
+  Words like “was” and “by” may indicate that you’re writing in a passive voice. Scan for these words and rework sentences where they appear.
 
-If, however, you want to emphasize the action over the subject, passive voice may be preferred.
+  If, however, you want to emphasize the action over the subject, passive voice may be preferred.
 
-Your feedback was received by our Customer Service Team.
+  Your feedback was received by our Customer Service Team.
+</DoDont>
 
 ### Capitalization
 
-When writing about Palmetto products/platform, it’s important to be consistent with capitalization so that we can reinforce the uniqueness of these offerings.
-
-- "Ambassador" should be capitalized when talking about our Ambassador Program or Ambassadors. Also, “Program” must be written with a capital P.
-  - Ambassador
-  - Ambassador Program
-  - Palmetto Ambassador Program
-  - the Palmetto Ambassador Program
-- “Mapdwell” has no capital letters other than the ‘M’.
-- “Palmetto App” should use the capital A to identify it as a specific product. Also, it should always be referred to as “Palmetto App” or “the Palmetto - App”, not App.
-
 We use a few different forms of capitalization. Title Case capitalizes the first letter of every word except articles, prepositions of four or fewer letters, and conjunctions, and should be used for all headlines, website section headers, titles, and buttons.
 
-Sentence case capitalizes the first letter of the first word, and should be used for all in-app section headers and long-form writing.
+- The use of ALL CAPS is reserved for acronyms. To emphasize content, use bold font weights.
+- Capitalize the first letter of department names or titles (example: Sales Member or Customer Care).
+- Don't capitalize Random Words in the middle of sentences.
 
-Title Case Headlines Are Good
-Only the first letter of a sentence should be capitalized when writing out longer content.
+The following words should never be capitalized in a sentence. For more, see the [Word List](?path=/story/content-word-list--page).
+
+- website
+- internet
+- online
+- email
+
+Always capitalize:
+
+- Days, months, holidays, time periods, events (not seasons)
+- Cities, countries, nationalities, languages
+
+
+
+
+
+#### Products and Feature Names
+
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Ambassador</li>
+      <li>Ambassador Program</li>
+      <li>Palmetto Ambassador Program</li>
+      <li>Mapdwell</li>
+      <li>Palmetto App</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>palmetto</li>
+      <li>palmetto ambassador</li>
+      <li>mapdwell</li>
+    </Box>
+  }
+>
+
+When writing about Palmetto products/platform, it’s important to be consistent with capitalization so that we can reinforce the uniqueness of these offerings.
+
+If a product or feature is unique to Palmetto, capitalize it. If isn't unique, don't capitalize it.
+
+</DoDont>
+
+#### Headlines
+
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Title Case Headlines Are Good</li>
+      <li>Only the first letter of a sentence should be capitalized when writing out longer content.</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>LEAD the world towards a clean energy future</li>
+    </Box>
+  }
+>
+
+Sentence case capitalizes the first letter of the first word, and should be used for all in-app section headers and long-form writing.
 
 When complete sentences are used in headers, it’s ok to only capitalize the first word of that sentence, especially if the header is a question.
 
 There are exceptions. For example, you can capitalize every word if it helps with legibility.
 
-When writing out an email address or website URL, use all lowercase.
+</DoDont>
 
-hello@palmetto.com
-palmetto.com
+#### Website URLs and Email addresses
+
+
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>palmetto.com</li>
+      <li>hello@palmetto.com</li>
+      <li>CustomerCare@palmetto.com</li>
+      <li>#PalmettoCustomersRock</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Hello@palmetto.com</li>
+      <li>#palmettocustomersrock</li>
+    </Box>
+  }
+>
+
+When writing out an email address or website URL, use all lowercase.
 
 Email addresses and #hashtags with multiple words can use CamelCase capitalization to help with legibility.
 
-CustomerCare@palmetto.com
-#PalmettoCustomersRock
+</DoDont>
 
-The use of ALL CAPS is reserved for acronyms. To emphasize content, use bold font weights.
 
-Capitalize the first letter of department names or titles (example: Sales Member or Customer Care).
-
-Don't capitalize Random Words in the middle of sentences.
-
-The following words should never be capitalized in a sentence. For more, see the Word List.
-
-website
-internet
-online
-email
-
-Always capitalize:
-Days, months, holidays, time periods, events (not seasons)
-Cities, countries, nationalities, languages
 
 ### Contractions
 
@@ -178,81 +237,181 @@ Emojis are a fun way to add humor and visual interest to your writing, but use t
 
 ### Dates
 
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Saturday, January 24, 1989</li>
+      <li>Sat, Jan. 24, 1989</li>
+      <li>Jan 24, 1989</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>December 31st</li>
+      <li>Sat, Jan. 1st, 1989</li>
+    </Box>
+  }
+>
+
 Generally, spell out the day of the week and the month. Abbreviate only if space is an issue.
 
-Saturday, January 24, 1989
-Sat., Jan. 24, 1989
-Jan. 24, 1989
+Don't use ordinal indicators, which are words representing position or rank in a sequential order (e.g. 1st, 2nd, 3rd).
+
+</DoDont>
 
 ### Decimals and Fractions
 
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>2/3</li>
+      <li>Sometimes: two-thirds</li>
+      <li>10.34 kW</li>
+      <li>Save 50% on your monthly utility bill</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>2 1/2 kW</li>
+      <li>31.43151531</li>
+    </Box>
+  }
+>
+
 Use fractions where they make the number easier to understand visually. You can also spell out the fraction or default to percentages if that aligns with the overall tone of what you’re writing.
 
-Yes: 2/3
-Sometimes: two-thirds
-Save 50% on your monthly utility bill
+For units of measurement, use decimals instead of fractions.
 
 Use decimal points for compound fractions , ex: 1.37 or 47.2. In most cases it isn’t necessary to use more than two decimal places.
 
+</DoDont>
+
+
 ### Money
+
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>$20</li>
+      <li>$19.99</li>
+      <li>$5K</li>
+      <li>$1.2M</li>
+      <li>$999 USD</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>USD$10,000</li>
+      <li>$10kUSD</li>
+    </Box>
+  }
+>
 
 When writing about US currency, use the dollar sign before the amount. Include a decimal and number of cents if more than 0.
 
-$20
-$19.99
-
 For large, round values, it’s ok to shorten and abbreviate with a symbol.
 
-$5K
-$1.2M
+When including currency with a price, the currency should come after the amount.
+
+</DoDont>
 
 
 ### Numbers
 
-Spell out a number when it begins a sentence. Spell out any whole number between zero and ten unless used to indicate age, depth, height, length, width, or distance. Otherwise, use the numeral. This includes ordinals.
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Ten new employees started on Monday, and 12 start next week.</li>
+      <li>I ate three donuts at Coffee Hour.</li>
+      <li>Meg won 1st place in last year’s Walktober contest.</li>
+      <li>We hosted a group of 8th graders who are learning to code.</li>
+      <li>She is 5 years old, 4 feet tall, and walked 8 miles to school.</li>
+      <li>6 kWh</li>
+      <li>999</li>
+      <li>1,000</li>
+      <li>150,000</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>150000</li>
+      <li>I ate 3 donuts at Coffee Hour</li>
+    </Box>
+  }
+>
 
-Ten new employees started on Monday, and 12 start next week.
-I ate three donuts at Coffee Hour.
-Meg won 1st place in last year’s Walktober contest.
-We hosted a group of 8th graders who are learning to code.
-She is 5 years old, 4 feet tall, and walked 8 miles to school.
+Spell out a number when it begins a sentence. Spell out any whole number between zero and ten unless used to indicate age, depth, height, length, width, or distance. Otherwise, use the numeral. This includes ordinals.
 
 Where numbers are linked to a unit of measurement (example: 6 kWh), use the numeral even if the number falls between zero and ten.
 
-When using an expression typically written in spelled-out numbers, leave them that way.
-
-A friendly welcome email can help you make a great first impression.
-That is a third-party integration.
-Save money with the all-in-one energy management platform that grows with you.
-After you send your newsletter, Chris will give you a high-five.
-
-Numbers over 3 digits get commas:
-
-999
-1,000
-150,000
+Numbers over 3 digits get commas
 
 Write out big numbers in full, but you can abbreviate them if there are space restraints, as in a tweet or a chart: 1k, 150k, 5m.
 
+When using an expression typically written in spelled-out numbers, leave them that way.
+
+- A friendly welcome email can help you make a great first impression.
+- That is a third-party integration.
+- Save money with the all-in-one energy management platform that grows with you.
+- After you send your newsletter, Chris will give you a high-five.
+
+</DoDont>
+
 ### Percentages
+
+<DoDont
+  doExample="89% offset"
+  dontExample="89 percent offset"
+>
 
 Use the % symbol instead of spelling out "percent”.
 
+</DoDont>
+
 ### Ranges and Spans
 
-Use a hyphen (-) to indicate a range or span of numbers. There should be no space on either side of the hyphen.
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>20-30 days</li>
+      <li>This type of solar panel was produced between 1998 and 2008.</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>20 - 30 days</li>
+      <li>This type of solar panel was produced between 1998-2008.</li>
+    </Box>
+  }
+>
 
-It takes 20-30 days.
+Use a hyphen (-) or en dash to indicate a range or span of numbers. There should be no space on either side of the hyphen.
 
 If using from or between to introduce a range, do not use a hyphen.
-This type of solar panel was produced between 1998 and 2008.
+
+</DoDont>
 
 ### Telephone Numbers
 
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>(555) 867-5309</li>
+      <li>+1 (404) 123-4567</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>1-(555)-8679</li>
+      <li>555.867.5309</li>
+    </Box>
+  }
+>
+
 Use parentheses around the area code, and dashes (without spaces) between numbers. Use a country code if your reader is in another country.
 
-(555) 867-5309
-+1 (404) 123-4567
+</DoDont>
+
 
 ### Temperature
 
@@ -571,7 +730,11 @@ Leave one space between sentences, never 2.
 
 #### Write Positively
 
+<DoDont
+  doExample="To get a donut, stand in line."
+  dontExample="You can’t get a donut if you don’t stand in line."
+>
+
 Use positive language rather than negative language. One way to detect negative language is to look for words like “can’t”, “don’t”, etc.
 
-Yes: To get a donut, stand in line.
-No: You can’t get a donut if you don’t stand in line.
+</DoDont>
