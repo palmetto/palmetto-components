@@ -10,11 +10,12 @@ import { Box, Heading } from '../components';
 </Box>
 
 
-<Box as="section" childGap="md" borderWidth="0 0 xs 0" borderColor="grey-100" padding={{ base: '0 0 xl 0', tablet: '0 0 2xl 0', desktop: '0 0 3xl 0'}}>
+<Box as="section" childGap="lg" borderWidth="0 0 xs 0" borderColor="grey-100" padding={{ base: '0 0 xl 0', tablet: '0 0 2xl 0', desktop: '0 0 3xl 0'}}>
 
-<Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl'}}>Content Goals</Heading>
-
-  <Box as="h2" fontSize={{ base: 'md', tablet: 'lg'}} fontFamily="brand" fontWeight="regular">With every piece of content we publish, we aim to:</Box>
+  <Box display="block">
+    <Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl'}}>Content Goals</Heading>
+    <Box as="p" fontSize={{ base: 'md', tablet: 'lg'}} color="grey-500">With every piece of content we publish, we aim to:</Box>
+  </Box>
 
   <Box childGap={{ base: 'lg', tablet: 'xl'}}>
     <Box width="100" childGap={{ base: 'md', tablet: '2xl'}} direction={{ base: 'column', tablet: 'row'}}>
@@ -68,10 +69,10 @@ import { Box, Heading } from '../components';
 
 <Box as="section" childGap="md">
 
-<Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl'}}>Content Principles</Heading>
-
-
-  <Box as="h2" fontSize={{ base: 'md', tablet: 'lg'}} fontFamily="brand" fontWeight="regular">In order to achieve our content goals, we follow these principles:</Box>
+  <Box>
+    <Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl'}}>Content Principles</Heading>
+    <Box as="p" fontSize={{ base: 'md', tablet: 'lg'}} color="grey-500">In order to achieve our content goals, we follow these principles:</Box>
+  </Box>
 
   <table className="w-100">
     <tr>
