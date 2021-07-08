@@ -1,68 +1,85 @@
+import { Box, Heading } from '../components';
+
 <Meta title="Content/Word List" />
 
-# Word List
+<Box display="block">
+  <Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl'}}>Word List</Heading>
+  <Box as="p" fontSize={{ base: 'md', tablet: 'lg'}} color="grey-500">A reference for standardized spelling, words to use carefully, and words to avoid in our written communications.</Box>
+</Box>
 
-<div className="mw-5xl">
+<Box margin="lg 0">
+<a href="/#standardized-spellings">Standard Spellings</a>
+<a href="/#words-to-use-carefully">Words to Use Carefully</a>
+<a href="/#words-to-avoid">Words to Avoid</a>
+</Box>
 
-#### Palmetto Capitalization
 
-When writing about Palmetto products/platform, it’s important to be consistent with capitalization so that we can reinforce the uniqueness of these offerings.
-
-- "Ambassador" should be capitalized when talking about our Ambassador Program or Ambassadors. Also, “Program” must be written with a capital P.
-  - Ambassador
-  - Ambassador Program
-  - Palmetto Ambassador Program
-  - the Palmetto Ambassador Program
-- “Mapdwell” has no capital letters other than the ‘M’.
-- “Palmetto App” should use the capital A to identify it as a specific product. Also, it should always be referred to as “Palmetto App” or “the Palmetto - App”, not App.
-
-#### Standardized Spellings
+## Standardized Spellings
 
 These words can be slippery. Here’s how we write them. (If it’s not on this list, defer to the AP Style Guide.)
 
-- add-on (noun, adjective), add on (verb)
-- back end (noun), back-end (adjective)
-- best seller (noun), best-selling (adjective)
-- beta
-- brick-and-mortar
-- checkbox
-- coworker
-- click-through rate (CTR)
-- cost per click
-- double-click
-- drop-down (noun, adjective), drop down (verb)
-- e-commerce (the industry)
-- ePub
-- email (never hyphenate, never capitalize unless it begins a sentence)
-- emoji (singular and plural)
-- front end (noun), front-end (adjective)
-- geolocation
-- hashtag
-- homepage
-- integrate
-- internet (never capitalize unless it begins a sentence)
-- login (noun, adjective), log in (verb)
-- Like (the social media activity)
-- multichannel
-- nonprofit
-- OK
-- omnichannel (use sparingly)
-- online (never capitalize unless it begins a sentence)
-- opt-in (noun, adjective), opt in (verb)
-- pay-per-click (PPC)
-- pop-up (noun, adjective), pop up (verb)
-- pre-sale
-- product-market fit
-- signup (noun, adjective), sign up (verb)
-- sync
-- third party (noun), third-party (adjective)
-- tweet, retweet
-- username
-- URL
-- website
-- WiFi
+<Box direction={{ base: 'column', desktop: 'row'}} childGap={{ base: '0', desktop: '2xl'}}>
 
-#### Words To Use Carefully
+  <Box width={{ base: '100', desktop: '33'}}>
+    <Box as="ul"padding="0 0 0 lg" fontSize="sm">
+      <li>add-on (noun, adjective), add on (verb)</li>
+      <li>back end (noun), back-end (adjective)</li>
+      <li>best seller (noun), best-selling (adjective)</li>
+      <li>beta</li>
+      <li>brick-and-mortar</li>
+      <li>checkbox</li>
+      <li>coworker</li>
+      <li>click-through rate (CTR)</li>
+      <li>cost per click</li>
+      <li>double-click</li>
+      <li>drop-down (noun, adjective), drop down (verb)</li>
+      <li>e-commerce (the industry)</li>
+      <li>ePub</li>
+      <li>email (never hyphenate, never capitalize unless it begins a </li>sentence)
+    </Box>
+  </Box>
+
+  <Box width={{ base: '100', desktop: '33'}}>
+    <Box as="ul"padding="0 0 0 lg" fontSize="sm">
+      <li>emoji (singular and plural)</li>
+      <li>front end (noun), front-end (adjective)</li>
+      <li>geolocation</li>
+      <li>hashtag</li>
+      <li>homepage</li>
+      <li>integrate</li>
+      <li>internet (never capitalize unless it begins a sentence)</li>
+      <li>login (noun, adjective), log in (verb)</li>
+      <li>Like (the social media activity)</li>
+      <li>multichannel</li>
+      <li>nonprofit</li>
+      <li>OK</li>
+      <li>omnichannel (use sparingly)</li>
+      <li>online (never capitalize unless it begins a sentence)</li>
+    </Box>
+  </Box>
+
+  <Box width={{ base: '100', desktop: '33'}}>
+    <Box as="ul"padding="0 0 0 lg" fontSize="sm">
+      <li>opt-in (noun, adjective), opt in (verb)</li>
+      <li>pay-per-click (PPC)</li>
+      <li>pop-up (noun, adjective), pop up (verb)</li>
+      <li>pre-sale</li>
+      <li>product-market fit</li>
+      <li>signup (noun, adjective), sign up (verb)</li>
+      <li>sync</li>
+      <li>third party (noun), third-party (adjective)</li>
+      <li>tweet, retweet</li>
+      <li>username</li>
+      <li>URL</li>
+      <li>website</li>
+      <li>WiFi</li>
+    </Box>
+  </Box>
+
+</Box>
+
+
+## Words To Use Carefully
 
 We use plain language, which means avoiding industry jargon. But some jargon-adjacent words can be appropriate in educational contexts. Only use these if you’re writing about solar education and have room to briefly define them.
 
@@ -79,7 +96,7 @@ We use plain language, which means avoiding industry jargon. But some jargon-adj
 - value proposition
 - permission to operate
 
-#### Words To Avoid
+## Words To Avoid
 
 - funnel, incentivize, leverage, disruption, thought leader, learnings, or other fluffy corporate terms
 - internets, interwebs, or any other variation of the word “internet”
@@ -90,5 +107,3 @@ We use plain language, which means avoiding industry jargon. But some jargon-adj
 - best-in-breed
 - Silicon Valley cliches like rise and grind, or disruptor/disruption
 - activation (when referring to our presence at an event)
-
-</div>
