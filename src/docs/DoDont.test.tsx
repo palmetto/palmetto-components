@@ -1,26 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import DoDont from './DoDont';
-import { Box } from '../components';
-
-const LINK_TEXT = 'Click me!';
-
-// const TEST_PROPS = {
-//   doExample:
-//     <Box as="ul"padding="0 0 0 lg">
-//       <li>Ambassador</li>
-//       <li>Ambassador Program</li>
-//       <li>Palmetto Ambassador Program</li>
-//       <li>Mapdwell</li>
-//       <li>Palmetto App</li>
-//     </Box>;
-//   dontExample:
-//     <Box as="ul"padding="0 0 0 lg">
-//       <li>palmetto</li>
-//       <li>palmetto ambassador</li>
-//       <li>mapdwell</li>
-//     </Box>
-// };
 
 describe('DoDont', () => {
   test("It renders the do's and don'ts on the page", () => {
