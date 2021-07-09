@@ -1,4 +1,5 @@
 import { Box, Heading } from '../components';
+import DoDont from './DoDont';
 
 <Meta title="Content/Word List" />
 
@@ -8,11 +9,39 @@ import { Box, Heading } from '../components';
 </Box>
 
 <Box margin="lg 0">
+<a href="/#palmetto-products-and-features">Palmetto Products and Features</a>
 <a href="/#standardized-spellings">Standard Spellings</a>
 <a href="/#words-to-use-carefully">Words to Use Carefully</a>
 <a href="/#words-to-avoid">Words to Avoid</a>
 </Box>
 
+
+## Palmetto Products and Features
+
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Ambassador</li>
+      <li>Ambassador Program</li>
+      <li>Palmetto Ambassador Program</li>
+      <li>Mapdwell</li>
+      <li>Palmetto App</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>palmetto</li>
+      <li>palmetto ambassador</li>
+      <li>mapdwell</li>
+    </Box>
+  }
+>
+
+When writing about Palmetto products/platform, it’s important to be consistent with capitalization so that we can reinforce the uniqueness of these offerings.
+
+If a product or feature is unique to Palmetto, capitalize it. If isn't unique, don't capitalize it.
+
+</DoDont>
 
 ## Standardized Spellings
 
