@@ -48,7 +48,6 @@ import DoDont from './DoDont';
 <a href="#quotation-marks">Quotation Marks</a>
 <a href="#semicolons">Semicolons</a>
 <a href="#slash">Slash</a>
-<a href="#time-zones">Time Zones</a>
 </Box>
 
 <Box width={{ base: '100', desktop: '33'}}>
@@ -415,59 +414,123 @@ Use parentheses around the area code, and dashes (without spaces) between number
 
 ### Temperature
 
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>98°F</li>
+      <li>3K or 3 kelvin</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>98 degrees</li>
+      <li>3° KELVIN</li>
+    </Box>
+  }
+>
+
 Use the degree symbol and the capital F abbreviation (with no space between) for Fahrenheit. Temperatures should always use Fahrenheit, not Celsius, and be written in numerals. Do not use “degree” or degree symbol with kelvin.
 
-98°F
-3K or 3 kelvin
+</DoDont>
 
-Time
+
+### Time
+
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>7:00am</li>
+      <li>7:30pm</li>
+      <li>3pm</li>
+      <li>7:00am - 10:30pm</li>
+      <li>8am - 9pm</li>
+      <li>2-4pm</li>
+      <li>7:45 - 9:00am</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>10am this morning</li>
+      <li>4 - 7pm</li>
+    </Box>
+  }
+>
+
 Use numerals with am or pm: lower case, no periods, no space in between. It is ok to write out noon and midnight.
 
-7:00am
-7:30pm
-3pm
-
-Avoid the redundant: 10am this morning
-
 Use a hyphen between times to indicate a time period. Add a space on either side of the hyphen when joining entities that are not the same. When entities are the same, you can omit both am or pm on start time and the spaces surrounding the hyphen.
-7:00am - 10:30pm
-8am - 9pm
-2-4pm
-7:45 - 9:00am
+
+</DoDont>
+
 
 ### Time Zones
 
-Specify time zones when writing about an event or something else people would need to schedule. Since Palmetto’s home is in Charleston, SC, we default to Eastern Time.
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Your appointment is schedule for 7:30pm Eastern</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Your appointment is schedule for 7:30pm</li>
+    </Box>
+  }
+>
 
-7:30pm Eastern
+- Specify time zones when writing about an event or something else people would need to schedule.
+- Since Palmetto’s home is in Charleston, SC, we default to Eastern Time.
+- When referring to international time zones, spell them out: Nepal Standard Time, Australian Eastern Time.
+- If a time zone does not have a set name, use its Coordinated Universal Time (UTC) offset.
 
 Note time zones within the continental United States as follows:
 
-Eastern Time: Eastern
-Central Time: Central
-Mountain Time: Mountain
-Pacific Time: Pacific
+- Eastern Time: Eastern
+- Central Time: Central
+- Mountain Time: Mountain
+- Pacific Time: Pacific
 
-When referring to international time zones, spell them out: Nepal Standard Time, Australian Eastern Time. If a time zone does not have a set name, use its Coordinated Universal Time (UTC) offset.
+
+</DoDont>
 
 ### Unit of Measurement
 
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>6 kWh</li>
+      <li>1,800 Watts</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>6kWh</li>
+      <li>1,800Watts</li>
+    </Box>
+  }
+>
+
 When writing out a unit of measurement, add a space between the numeral and the unit. In most cases, you can omit the space when using a number plus a unit of measurement in a table.
 
-6 kWh
-1,800 Watts
+</DoDont>
 
 ### Years and Time Periods
 
-Abbreviate decades when referring to those within the past 100 years. Do not add an apostrophe before the s.
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>the 1900s</li>
+      <li>the 1890s</li>
+      <li>the ‘00s</li>
+      <li>the ‘90s</li>
+    </Box>
+  }
+>
 
-the ‘00s
-the ‘90s
+- Abbreviate decades when referring to those within the past 100 years. Do not add an apostrophe before the s.
+- When referring to decades more than 100 years ago, be specific
 
-When referring to decades more than 100 years ago, be more specific:
-
-the 1900s
-the 1890s
+</DoDont>
 
 
 
@@ -475,81 +538,143 @@ the 1890s
 
 #### Ampersands
 
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Permits and Inspections</li>
+      <li>Ben & Jerry’s</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Permits &amp; Inspections</li>
+    </Box>
+  }
+>
+
 Don't use ampersands unless one is part of a company or brand name.
 
-Ben and Dan
-Ben & Jerry’s
+</DoDont>
+
+
+
 
 #### Apostrophes
 
 The apostrophe’s most common use is making a word possessive but there are variations on how and when it is used.
 
 Add apostrophe s to singular and plural nouns not ending in s:
-The donut thief ate Sam’s donut.
-The donut thief ate the women’s donuts.
 
-Just add an apostrophe to singular and plural nouns ending in s. If it’s a name that ends in s, it’s ok to use an apostrophe s.
-The donut thief ate Chris’s donut.
-The donut thief ate the girls’ donuts.
+- The donut thief ate Sam’s donut.
+- The donut thief ate the women’s donuts.
+
+Add an apostrophe to singular and plural nouns ending in s. If it’s a name that ends in s, it’s ok to use an apostrophe s.
+
+- The donut thief ate Chris’s donut.
+- The donut thief ate the girls’ donuts.
 
 For compound possessive or joint possessive phrases, use the rules above for the word closest to the object possessed.
-The donut thief ate the attorney general’s donut.
-The donut thief ate the world presidents’ donuts.
-The donut thief ate Lori and Jared’s donuts.
 
-Do not add an apostrophe when using possessive pronouns: its, hers, whose, ours, yours, theirs.
-Do not add an apostrophe when plurals are not possessive: All homeowners want to add solar.
+- The donut thief ate the attorney general’s donut.
+- The donut thief ate the world presidents’ donuts.
+- The donut thief ate Lori and Jared’s donuts.
+
+Do not add an apostrophe when using possessive pronouns.
+
+- its, hers, whose, ours, yours, theirs.
+
+Do not add an apostrophe when plurals are not possessive.
+- All homeowners want to add solar.
+
 Do not add an apostrophe to form plurals.
-The 2020s are going to be full of donuts.
-He received all As.
-I earned four PhDs before joining the company.
+
+- The 2020s are going to be full of donuts.
+- He received all As.
+- I earned four PhDs before joining the company.
 
 Apostrophes can also be used to denote that you’ve dropped select letters or numbers usually for brevity, humor, or emphasis. This is fine in the ‘20s, but do it sparingly. V’ry sparingly.
 
 #### Colons
 
-Use a colon (rather than an ellipsis, em dash, or comma) to offset a list.
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Erin ordered 3 kinds of donuts: glazed, chocolate, and pumpkin.</li>
+      <li>You were right: The grass is greener in North Carolina.</li>
+    </Box>
+  }
+>
 
-Erin ordered 3 kinds of donuts: glazed, chocolate, and pumpkin.
+Use a colon (rather than an ellipsis, em dash, or comma) to offset a list, but try to avoid using them in sentences.
 
 You can also use a colon to join 2 related phrases. If a complete sentence follows the colon, capitalize the 1st word.
 
-I was faced with a dilemma: I wanted a donut, but I’d just eaten a bagel.
-You were right: The grass is greener in North Carolina.
+</DoDont>
 
 #### Commas
 
-When writing a list, use the serial comma (also known as the Oxford comma).
+<DoDont
+  doExample="David admires his parents, Oprah, and Justin Timberlake."
+  dontExample="David admires his parents, Oprah and Justin Timberlake."
+>
 
-Yes: David admires his parents, Oprah, and Justin Timberlake.
-No: David admires his parents, Oprah and Justin Timberlake.
+- When writing a list, use the serial comma (also known as the Oxford comma).
 
-Use commas to enclose parenthetical expressions and before a conjunction introducing an independent clause.
-My solar energy system, installed in 2014, is producing more power today than it was five years ago.
-You may prefer fossil fuels, but solar energy is the cleanest energy source available.
+- Use commas to enclose parenthetical expressions and before a conjunction introducing an independent clause.
 
-Do not use a comma to join independent clauses. Instead, use a period, a semicolon, or a colon.
+- Do not use a comma to join independent clauses. Instead, use a period, a semicolon, or a colon.
 
-When all else fails, use common sense. If you’re unsure, read the sentence out loud. Where you find yourself taking a breath, use a comma.
+- When all else fails, use common sense. If you’re unsure, read the sentence out loud. Where you find yourself taking a breath, use a comma.
+
+</DoDont>
 
 #### Dashes and Hyphens
 
-Use a hyphen (-) without spaces on either side to link words into a single phrase, or to indicate a span or range.
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>first-time user</li>
+      <li>Monday-Friday</li>
+      <li>Palmetto Protect&mdash;just one of our new products for homeowners&mdash;can help protect your solar power system.</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>first - time user</li>
+      <li>Monday - Friday</li>
+      <li>Palmetto Protect - just one of our new products for homeowners - can help protect your solar power system.</li>
+    </Box>
+  }
+>
 
-first-time user
-Monday-Friday
+- Use a hyphen (-) without spaces on either side to link words into a single phrase, or to indicate a span or range.
+- Use an em dash (—) without spaces on either side to offset an aside. Always use a true em dash, not hyphens (- or --).
 
-Use an em dash (—) without spaces on either side to offset an aside. Always use a true em dash, not hyphens (- or --).
-
-Palmetto Protect—just one of our new products for homeowners—can help protect your solar power system.
-Austin thought Brad was the donut thief, but he was wrong—it was Lain.
+</DoDont>
 
 #### Ellipses
 
-Ellipses (...) can be used to indicate a pause in speech, or that you’re trailing off before the end of a thought. Use them sparingly. Don’t use them for emphasis or drama, and don’t use them in titles or headers. Do not add space between the periods in an ellipses
-( ... = correct / . . . = incorrect).
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>&hellip;</li>
+      <li>“Where did all those donuts go?” Christy asked. Lain said, “I don't know&hellip;”</li>
+      <li>"You know, I just think &hellip; I just think that the sun is going to power this whole planet one day."</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>. . .</li>
+    </Box>
+  }
+>
 
-“Where did all those donuts go?” Christy asked. Lain said, “I don't know...”
+Ellipses (...) can be used to indicate a pause in speech, or that you’re trailing off before the end of a thought.
+
+- Use ellipses sparingly.
+- Don’t use them for emphasis or drama, and don’t use them in titles or headers.
+- Do not add space between the periods in an ellipses
+- Use the ellipses character, not three periods
 
 Ellipses can be used to indicate a pause within a quote. When using in this way, add a space on both sides of the ellipses, but no spaces between the periods.
 
@@ -560,16 +685,25 @@ Ellipses, in brackets, can be used to show that you're omitting words in a quote
 “When in the Course of human events it becomes necessary for one people to dissolve the political bands which have connected them with another and to assume among the powers of the earth, [...] a decent respect to the opinions of mankind requires that they should declare the causes which impel them to the separation.”
 
 In short:
-... = Pause or trailing off thought
-[...] = Omission
+- ... = Pause or trailing off thought
+- [...] = Omission
+
+</DoDont>
 
 #### Exclamation Points
+
+<DoDont
+  doExample="Use exclamation points sparingly!"
+  dontExample="Too many exclamations!!!"
+>
 
 Use exclamation points sparingly! And never use more than one at a time. They’re like high-fives: A well-timed one is great, but too many can be annoying (and a misplaced exclamation point can feel like a swing and a miss).
 
 Exclamation points go inside quotation marks. Like periods and question marks, they go outside parentheses when the parenthetical is part of a larger sentence, and inside parentheses when the parenthetical stands alone.
 
 Never use exclamation points in failure messages, alerts, or buttons. When in doubt, avoid!
+
+</DoDont>
 
 #### Parenthesis
 
@@ -614,19 +748,26 @@ Slashes are sometimes useful in pairing terms (and/or, pass/fail) but can give w
 
 #### File Extensions
 
-When referring generally to a file extension type, use all uppercase without a period. Add a lowercase s to make plural.
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>GIF</li>
+      <li>PDF</li>
+      <li>HTML</li>
+      <li>JPGs</li>
+      <li>slowclap.gif</li>
+      <li>MCBenefits.pdf</li>
+      <li>ben-twitter-profile.jpg</li>
+      <li>ilovedonuts.html</li>
+    </Box>
+  }
+>
 
-GIF
-PDF
-HTML
-JPGs
+- When referring generally to a file extension type, use all uppercase without a period. Add a lowercase s to make plural.
+- When referring to a specific file, the filename should be lowercase. CamelCase should be used only if the file name contains an acronym.
 
-When referring to a specific file, the filename should be lowercase. CamelCase should be used only if the file name contains an acronym.
 
-slowclap.gif
-MCBenefits.pdf
-ben-twitter-profile.jpg
-ilovedonuts.html
+ </DoDont>
 
 #### Pronouns
 
@@ -650,24 +791,42 @@ The first time you mention a person in writing, refer to them by their first and
 
 Capitalize the names of departments and teams (including the word "Team" or "Department").
 
-Marketing Team
-Customer Experience Team
-Support Department
+- Marketing Team
+- Customer Experience Team
+- Support Department
 
 Capitalize individual job titles when referencing a specific role. Don't capitalize when referring to the role in general terms.
 
-Our new Marketing Manager starts today.
-All the managers ate donuts.
+- Our new Marketing Manager starts today.
+- All the managers ate donuts.
 
 Don't refer to someone as a “ninja,” “rockstar,” or “wizard” unless they literally are one.
 
 #### States, Cities, and Countries
 
-Spell out all city and state names. If using a city and state name together, you can abbreviate the state name if the city is well-known. Don’t abbreviate city names.
+<DoDont
+  doExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Charleston, SC</li>
+      <li>Seattle</li>
+    </Box>
+  }
+  dontExample={
+    <Box as="ul"padding="0 0 0 lg">
+      <li>Charleston</li>
+      <li>SEA</li>
+    </Box>
+  }
+>
+
+- Spell out all city and state names.
+- If using a city and state name together, you can abbreviate the state name if the city is well-known.
+- Don’t abbreviate city names.
+- On first mention, write out United States. On subsequent mentions, US is fine. The same rule applies to any other country or federation with a common abbreviation (European Union, EU; United Kingdom, UK).
 
 Per AP Style, all cities should be accompanied by their state, with the exception of: Atlanta, Baltimore, Boston, Chicago, Cincinnati, Cleveland, Dallas, Denver, Detroit, Honolulu, Houston, Indianapolis, Las Vegas, Los Angeles, Miami, Milwaukee, Minneapolis, New Orleans, New York, Oklahoma City, Philadelphia, Phoenix, Pittsburgh, St. Louis, Salt Lake City, San Antonio, San Diego, San Francisco, Seattle, Washington.
 
-On first mention, write out United States. On subsequent mentions, US is fine. The same rule applies to any other country or federation with a common abbreviation (European Union, EU; United Kingdom, UK).
+</DoDont>
 
 #### URLs and Websites
 
@@ -693,9 +852,9 @@ Essentials plan
 
 Honor companies’ own names for themselves and their products. When in doubt, go by what’s used on their official website.
 
-iPad
-YouTube
-Yahoo!
+- iPad
+- YouTube
+- Yahoo!
 
 Refer to a company or product as “it” (not “they”).
 
@@ -715,12 +874,12 @@ Avoid internet slang and acronyms: brb, asap, cool af, afaik, etc. Even if placi
 
 Use italics to indicate the title of a long work (like a book, movie, or album) or to emphasize a word.
 
-Dunston Checks In
-Brandon really loves Dunston Checks In.
+- _Dunston Checks In_
+- Brandon _really_ loves _Dunston Checks In_.
 
 Use apostrophes when referencing button and navigation labels in step-by-step instructions:
 
-When you're all done, click ‘Send’.
+- When you're all done, click ‘Send’.
 
 Don’t use underline formatting, and don’t use any combination of italic, bold, caps, and underline.
 
