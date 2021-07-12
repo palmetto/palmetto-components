@@ -1,0 +1,41 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ToastContainer, toast } from './ToastContainer';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
+
+<Meta
+  title="Components/Toast/Overview"
+  component={ToastContainer}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# Toast
+
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const handleClick = () => {
+        toast('hey oh!', {
+          position: 'bottom-right',
+        });
+      }
+      return (
+        <>
+          <ToastContainer />
+          <Button onClick={handleClick}>
+            Click to see toast
+          </Button>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={OptionTile} />
