@@ -2169,10 +2169,10 @@
   dependencies:
     "@octokit/openapi-types" "^7.2.3"
 
-"@palmetto/palmetto-design-tokens@0.44.5":
-  version "0.44.5"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.44.5.tgz#cb93b43fe190009f0a4a613a30f74cb2644f8d6d"
-  integrity sha512-iz2051dUvV4grblLMycjNFJnX9I14hIJA791KeUzKIEqvInDD+zAqHsQa0iFhB3IIPYZA06tqcdnHTcjtM1G0g==
+"@palmetto/palmetto-design-tokens@0.46.0":
+  version "0.46.0"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.46.0.tgz#d695b2eaf927dbf3641a066c9c8221c7934c5e20"
+  integrity sha512-cLqn0mjs0KnSQNGxmBxPzwaBe3YFjPFzXohVLWo7F+E2Cf8wm2yJA46vDro8SkzBAuHcn++2ZxiZ/PjxqSlyuw==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.4.3":
   version "0.4.3"
@@ -19105,7 +19105,7 @@ uuid@^7.0.3:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
   integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
-uuid@^8.2.0:
+uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
