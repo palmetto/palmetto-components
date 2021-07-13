@@ -1,4 +1,4 @@
-import { ValueOrFunction } from '../../types/';
+import { ValueOrFunction, IconName } from '../../types/';
 
 export type ToastType = 'success' | 'error' | 'loading' | 'blank' | 'custom';
 
@@ -14,7 +14,7 @@ export interface Toast {
   type: ToastType;
   id: string;
   message: ValueOrFunction<React.ReactNode, Toast>;
-  // icon?:
+  icon?: IconName;
   duration?: number;
   pauseDuration: number;
   position?: ToastPosition;

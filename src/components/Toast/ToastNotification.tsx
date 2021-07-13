@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Toast, ToastPosition } from './Toast.types';
+import { Toast, ToastPosition, ToastType } from './Toast.types';
 import { resolveValue } from '../../lib/resolveValue';
 import { prefersReducedMotion } from '../../lib/prefersReducedMotion';
 import { Box } from '../Box/Box';
@@ -43,28 +43,29 @@ const renderToastIcon = (toast: Toast) => {
   let iconColor: FontColor = 'dark';
 
   if (type === 'success') {
-    iconName = 'check'
-    iconColor = 'success';
+    iconName = 'c-check'
+    iconColor = 'success-light';
   }
   
   if (type === 'error') {
-    iconName = 'remove';
-    iconColor = 'danger';
+    iconName = 'c-warning';
+    iconColor = 'danger-light';
   }
 
   return type !== 'loading'
     ? <Icon name={iconName} color={iconColor} />
-    : <Spinner variant="dark" size="sm" />;
+    : <Spinner variant="secondary" />;
 };
+
+const toastTypesWithIcon: ToastType[] = ['error', 'success', 'loading'];
 
 export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
   ({ toast, position = 'top-center', style, children }) => {
-    console.log('class', getAnimationClass(toast.position || position, toast.visible));
     const message = (
       <Box
         direction="row"
         justifyContent="center"
-        margin="2xs sm"
+        margin={toast.icon || toastTypesWithIcon.includes(toast.type) ? "0 0 0 xs" : undefined}
         style={{
           flex: '1 1 auto', 
         }}
@@ -76,19 +77,20 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
 
     return (
       <Box
-        alignItems="center"
-        background="white"
-        color="dark"
+        alignItems="flex-start"
+        background="dark"
+        color="white"
         shadow="md"
         maxWidth="300px"
-        padding="md"
-        radius="sm"
+        padding="md lg"
+        radius="md"
         direction="row"
         className={classNames(toast.className, getAnimationClass(toast.position || position, toast.visible))}
         style={{
           ...style,
           ...toast.style,
-          ...!toast.height && { opacity: 0 },
+          ...!toast.visible && { opacity: 0 },
+          willChange: 'transform',
         }}
       >
         {typeof children === 'function' ? (

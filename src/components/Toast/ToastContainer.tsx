@@ -116,7 +116,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
               ...positionStyle,
               pointerEvents: t.visible ? 'auto' : 'inherit',
             }}
-            direction="row"
+            display="block"
           >
             {t.type === 'custom' ? (
               resolveValue(t.message, t)

@@ -11,6 +11,12 @@ import { Button } from '../Button/Button';
   parameters={{
     controls: { hideNoControlsWarning: true },
   }}
+  decorators={[storyFn => (
+    <div>
+      <ToastContainer />
+      {storyFn()}
+    </div>
+  )]}
 />
 
 # Toast
@@ -18,14 +24,9 @@ import { Button } from '../Button/Button';
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
-      const handleClick = () => {
-        toast('hey oh!', {
-          position: 'top-center',
-        });
-      }
+      const handleClick = () => toast('hey oh!');
       return (
         <>
-          <ToastContainer />
           <Button onClick={handleClick}>
             Click to see toast
           </Button>
@@ -38,3 +39,177 @@ import { Button } from '../Button/Button';
 ## Props
 
 <ArgsTable of={ToastContainer} />
+
+## Individual Toast Settings
+
+
+### Position
+
+<Canvas isExpanded>
+  <Story name="Position">
+    {() => {
+      const handleClick = position => toast('hey oh!', { position });
+      return (
+        <>
+          <Box childGap="md" direction="row">
+            <Button onClick={() => handleClick('top-right')}>
+              top right
+            </Button>
+            <Button onClick={() => handleClick('top-center')}>
+              top center
+            </Button>
+            <Button onClick={() => handleClick('topleft')}>
+              top left
+            </Button>
+            <Button onClick={() => handleClick('bottom-right')}>
+              bottom right
+            </Button>
+            <Button onClick={() => handleClick('bottom-center')}>
+              bottom center
+            </Button>
+            <Button onClick={() => handleClick('bottom-left')}>
+              bottom left
+            </Button>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Duration
+
+<Canvas isExpanded>
+  <Story name="Duration">
+    {() => {
+      const DURATION = 6000;
+      const handleClick = () => {
+        toast(`toast will close in 6 seconds`, { duration: DURATION });
+      };
+      return (
+        <>
+          <Box childGap="md" direction="row">
+            <Button onClick={handleClick}>
+              open toast with custom duration
+            </Button>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Toast Types
+
+<Canvas isExpanded>
+  <Story name="Basic Types">
+    {() => {
+      const handleClick = (type) => {
+        if (type === 'success') {
+          const successToastId = toast.success('everything is great!');
+        } else if (type === 'error') {
+          toast.error('something has gone wrong!');
+        } else if (type === 'loading') {
+          const toastId = toast.loading('This toast is waiting for something to happen.', { duration: 5000 });
+        } else {
+          toast('this is a blank toast');
+        }
+      };
+      return (
+        <>
+          <Box fontSize="lg" fontWeight="bold" margin="0 0 md 0">
+            Basic Types
+          </Box>
+          <Box childGap="md" direction="row">
+            <Button onClick={() => handleClick('blank')} variant="light">
+              blank
+            </Button>
+            <Button onClick={() => handleClick('error')} variant="danger">
+              error
+            </Button>
+            <Button onClick={() => handleClick('success')} variant="success">
+              success
+            </Button>
+            <Button onClick={() => handleClick('loading')} variant="dark">
+              loading
+            </Button>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Advanced Types
+
+<Canvas isExpanded>
+  <Story name="Advanced Types">
+    {() => {
+      const handleClick = (type) => {
+        if (type.includes('async')) {
+          const promise = new Promise((resolve, reject) => {
+            const randomNum = Math.floor(Math.random() * 2)
+            setTimeout(() => {
+              if (randomNum % 2 === 0) {
+                resolve('this is your data');
+              } else {
+                reject('bad request!');
+              }
+            }, 2000);
+          });
+          toast.async(promise, {
+            loading: 'loading',
+            success: (data) => `success! ${type.includes('data') ? data : ''}`,
+            error: (err) => `error! ${type.includes('data') ? err : ''}`,
+          });
+        } else if (type === 'jsx') {
+          toast(
+            <Box fontSize="xl" display="block">Big and <Box fontWeight="bold" display="inline">bold</Box>&nbsp;text</Box>,
+          );
+        } else if (type === 'loading') {
+          const toastId = toast.loading('This toast is waiting for something to happen.', { duration: 5000 });
+        } else {
+          toast('this is a blank toast');
+        }
+      };
+      return (
+        <>
+          <Box fontSize="lg" fontWeight="bold" margin="0 0 md 0">
+            Basic Types
+          </Box>
+          <Box childGap="md">
+            <Box childGap="sm">
+              <p>
+                With an async toast, you can pass the three states of an async op (loading, success, error)
+                to a corresponding toast state. By passing the promise itself to the
+                toast component, will will handle displaying different toast variations based on the
+                state of the passed promise.
+              </p>
+              <Button onClick={() => handleClick('async')} variant="light">
+                async toast
+              </Button>
+            </Box>
+            <Box childGap="sm">
+              <p>
+                If you need to include data or an error returned from the promise
+                you can pass a function to the toasts in question, see code example.
+              </p>
+              <Button onClick={() => handleClick('async-data')} variant="light">
+                async including promise data
+              </Button>
+            </Box>
+            <Button onClick={() => handleClick('jsx')} variant="danger">
+              custom JSX
+            </Button>
+            <Button onClick={() => handleClick('success')} variant="success">
+              success
+            </Button>
+            <Button onClick={() => handleClick('loading')} variant="dark">
+              loading
+            </Button>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
