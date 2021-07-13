@@ -46,4 +46,5 @@ export * from './TextareaInput/TextareaInput';
 export * from './TextLink/TextLink';
 export * from './TimePicker/TimePicker';
 export * from './TimePickerNative/TimePickerNative';
+export * from './Toast';
 export * from './Toggle/Toggle';

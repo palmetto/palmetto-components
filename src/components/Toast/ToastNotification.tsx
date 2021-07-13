@@ -1,8 +1,13 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Toast, ToastPosition } from './Toast.types';
-import { resolveValue } from './ToastContainer';
-// import { prefersReducedMotion } from '../core/utils';
+import { resolveValue } from '../../lib/resolveValue';
+import { prefersReducedMotion } from '../../lib/prefersReducedMotion';
 import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
+import { Spinner } from '../Spinner/Spinner';
+import { IconName, FontColor } from '../../types';
+import styles from './ToastNotification.module.scss';
 
 interface ToastNotificationProps {
   toast: Toast;
@@ -14,41 +19,54 @@ interface ToastNotificationProps {
   }) => React.ReactNode;
 }
 
-// const getAnimationStyle = (
-//   position: ToastPosition,
-//   visible: boolean
-// ): React.CSSProperties => {
-//   const top = position.includes('top');
-//   const factor = top ? 1 : -1;
+const getAnimationClass = (
+  position: ToastPosition,
+  visible: boolean
+): React.CSSProperties => {
+  const top = position.includes('top');
+  const verticalPosition = top ? 'top' : 'bottom';
+  console.log('vertical position', verticalPosition);
 
-//   const [enter, exit] = prefersReducedMotion()
-//     ? [fadeInAnimation, fadeOutAnimation]
-//     : [enterAnimation(factor), exitAnimation(factor)];
+  const [enter, exit] = prefersReducedMotion()
+    ? [styles['toast-notification-fade-in'], styles['toast-notification-fade-out']]
+    : [styles[`toast-notification-enter-${verticalPosition}`], styles[`toast-notification-exit-${verticalPosition}`]];
 
-//   return {
-//     animation: visible
-//       ? `${keyframes(enter)} 0.35s cubic-bezier(.21,1.02,.73,1) forwards`
-//       : `${keyframes(exit)} 0.4s forwards cubic-bezier(.06,.71,.55,1)`,
-//   };
-// };
+  return visible ? enter : exit;
+};
+
+const renderToastIcon = (toast: Toast) => {
+  const { type } = toast;
+  
+  if (type === 'blank') return;
+
+  let iconName: IconName = 'exclamation-mark';
+  let iconColor: FontColor = 'dark';
+
+  if (type === 'success') {
+    iconName = 'check'
+    iconColor = 'success';
+  }
+  
+  if (type === 'error') {
+    iconName = 'remove';
+    iconColor = 'danger';
+  }
+
+  return type !== 'loading'
+    ? <Icon name={iconName} color={iconColor} />
+    : <Spinner variant="dark" size="sm" />;
+};
 
 export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
-  ({ toast, position, style, children }) => {
-    // const animationStyle: React.CSSProperties = toast?.height
-    //   ? getAnimationStyle(
-    //       toast.position || position || 'top-center',
-    //       toast.visible
-    //     )
-    //   : { opacity: 0 };
-
-    // const icon = <ToastIcon toast={toast} />;
+  ({ toast, position = 'top-center', style, children }) => {
+    console.log('class', getAnimationClass(toast.position || position, toast.visible));
     const message = (
       <Box
         direction="row"
         justifyContent="center"
         margin="2xs sm"
         style={{
-          flex: '1 1 auto',
+          flex: '1 1 auto', 
         }}
         {...toast.ariaProps}
       >
@@ -65,21 +83,21 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
         maxWidth="300px"
         padding="md"
         radius="sm"
-        className={toast.className}
+        direction="row"
+        className={classNames(toast.className, getAnimationClass(toast.position || position, toast.visible))}
         style={{
-          // ...animationStyle,
           ...style,
           ...toast.style,
+          ...!toast.height && { opacity: 0 },
         }}
       >
         {typeof children === 'function' ? (
           children({
-            // icon,
             message,
           })
         ) : (
           <>
-            {/* {icon} */}
+            {renderToastIcon(toast)}
             {message}
           </>
         )}

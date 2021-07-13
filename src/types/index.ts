@@ -202,3 +202,6 @@ export type SimulatedEventPayloadType = {
 export type KnownKeys<T> = {
   [K in keyof T]: string extends K ? never : number extends K ? never : K
 } extends { [_ in keyof T]: infer U } ? U : never;
+
+export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue;
+export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>;

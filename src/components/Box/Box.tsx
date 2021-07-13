@@ -32,6 +32,7 @@ import {
   FontWeight,
   ResponsiveProp,
   SpacingSize,
+  ZIndexSize,
   KnownKeys,
 } from '../../types';
 import getDimensionCss from '../../lib/getDimensionCss';
@@ -237,6 +238,11 @@ export interface BoxProps {
    */
   width?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
+   * ZIndex value for the element. Can be one of the predetermined token values.
+   * Can be responsive.
+   */
+  zIndex?: ZIndexSize | ResponsiveProp<ZIndexSize>;
+  /**
    * Additional props to be spread to rendered element
    */
   [x: string]: any; // eslint-disable-line
@@ -284,6 +290,7 @@ export const Box: FC<BoxProps> = forwardRef((
     textAlign = undefined,
     wrap = undefined,
     width = undefined,
+    zIndex = undefined,
     ...restProps
   },
   ref,
@@ -347,6 +354,7 @@ export const Box: FC<BoxProps> = forwardRef((
     generateResponsiveClasses('font-weight', fontWeight),
     generateResponsiveClasses('text-align', textAlign),
     generateResponsiveClasses('position', position),
+    generateResponsiveClasses('z-index', zIndex),
     ...(hoverClasses ?? []),
     ...(focusClasses ?? []),
     {

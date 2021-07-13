@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Toast, ExtendedToastOptions, ToastType } from './Toast.types';
+
 const TOAST_LIMIT = 10;
 
 export enum ToastStoreActionType {
@@ -192,7 +193,6 @@ const handleEndPause: ToastStoreHandler = (state, action) => {
     })),
   };
 };
-
 
 const actionHandlers: ToastStoreHandlerMap = {
   [ToastStoreActionType.ADD_TOAST]: handleAddToast,

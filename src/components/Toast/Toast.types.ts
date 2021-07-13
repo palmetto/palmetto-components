@@ -1,5 +1,4 @@
-export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue;
-export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>;
+import { ValueOrFunction } from '../../types/';
 
 export type ToastType = 'success' | 'error' | 'loading' | 'blank' | 'custom';
 
