@@ -21,6 +21,40 @@ import { Button } from '../Button/Button';
 
 # Toast
 
+Use a toast to relay information to a user about the result of an action.
+Typically you'd reserve toasts for non-essential notifications, since they are meant to disappear automatically
+under normal circumstances.
+
+You might use a toast to tell a user whether an interaction on the page was successful.
+
+**BASIC GUIDELINES**
+1. For errors -- prefer persisted alerts over toasts. See [Alert](?path=/docs/components-alert-overview--default-story).
+2. Keep messages short. Typically if a toast results in a multiline message, that is a queue that it is likely too long.
+3. Try to avoid adding actions inside of a toast. If you include an action (other than dismiss) in a toast,
+try and have that action available somewhere else on the page.
+E.G: a `retry` action can also be triggered by re-submitting a form.
+4. The main exception that makes for a useful toast action is an `undo` button, which is unlikely to make sense
+in most pages, but is a great escape hatch for a user that wants to take back an action.
+5. DO NOT use a toast as a blocking alert or interstitial (I.E: to restrict or contextualize user actions). In these
+cases, use a [Modal](?path=/docs/components-modal-overview--default-story).
+
+
+**ON DURATION**
+
+We've included sensible defaults for the duration of a toast before it dissapears, but if you require custom duration, follow these guidelines:
+
+1. Error toasts should likely stay on the screen
+longer than success toasts, since they are arguably more important.
+2. Toasts with actions, should stay on screen for at least 10 seconds.
+3. async toasts with loading states should always included success and failure conditions,
+to avoid an infinite spinner.
+
+**DISMISSABLE TOASTS**
+1. It is almost always a good idea to have a toast be dismissable. Since it
+does not hinder the user experience, and yet provides a quick and easy
+escape hatch, should a user want to clear it out of their view.
+
+
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
