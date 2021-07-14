@@ -52,9 +52,24 @@ const renderToastIcon = (toast: Toast) => {
   }
 
   // eslint-disable-next-line consistent-return
-  return type !== 'loading'
+  const icon = type !== 'loading'
     ? <Icon name={iconName} color={iconColor} />
     : <Spinner variant="secondary" />;
+
+  return (
+    <Box
+      // as="button"
+      // borderWidth="0 0 0 xs"
+      // borderColor="grey"
+      // padding="0 0 0 sm"
+      // cursor="pointer"
+      // background="transparent"
+      // color="white"
+      height="100"
+    >
+      {icon}
+    </Box>
+  )
 };
 
 const toastTypesWithIcon: ToastType[] = ['error', 'success', 'loading'];
@@ -94,7 +109,7 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
       <Box
         direction="row"
         justifyContent="center"
-        margin={toast.icon || toastTypesWithIcon.includes(toast.type) ? '0 0 0 xs' : undefined}
+        margin={toast.icon || toastTypesWithIcon.includes(toast.type) ? '0 0 0 sm' : undefined}
         style={{
           flex: '1 1 auto',
         }}
@@ -106,7 +121,7 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
 
     return (
       <Box
-        alignItems="flex-start"
+        alignItems="center"
         background="dark"
         color="white"
         shadow="md"

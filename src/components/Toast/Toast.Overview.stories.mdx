@@ -143,9 +143,8 @@ export const SomeAppPage = () => {
 <Canvas isExpanded>
   <Story name="Duration">
     {() => {
-      const DURATION = 6000;
       const handleClick = () => {
-        toast(`toast will close in 6 seconds`, { duration: DURATION });
+        toast(`toast will close in 6 seconds`, { duration: 6000 });
       };
       return (
         <>
@@ -160,12 +159,11 @@ export const SomeAppPage = () => {
   </Story>
 </Canvas>
 
-### Duration
+### Dismissable
 
 <Canvas isExpanded>
   <Story name="Dismissable">
     {() => {
-      const DURATION = 6000;
       const handleClick = () => {
         toast(`this toast can be dismissed`, { isDismissable: true, duration: 10000 });
       };
@@ -174,6 +172,33 @@ export const SomeAppPage = () => {
           <Box childGap="md" direction="row">
             <Button onClick={handleClick}>
               open dismissable toast.
+            </Button>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Multi-Line Toast
+
+(In most cases, a multi-line toast is a sign that the message is too long,
+but in rare cases where it is necessary...)
+
+<Canvas isExpanded>
+  <Story name="Multi-Line">
+    {() => {
+      const handleClick = () => {
+        toast.success(
+          'this toast has long text that goes on and on and on for a long while, until it breaks into multiple lines',
+          { isDismissable: true, duration: 30000 }
+        );
+      };
+      return (
+        <>
+          <Box childGap="md" direction="row">
+            <Button onClick={handleClick}>
+              open multi-line toast.
             </Button>
           </Box>
         </>
@@ -193,7 +218,7 @@ export const SomeAppPage = () => {
         } else if (type === 'error') {
           toast.error('something has gone wrong!');
         } else if (type === 'loading') {
-          const toastId = toast.loading('This toast is waiting for something to happen.', { duration: 5000 });
+          const toastId = toast.loading('Loading...', { duration: 5000 });
         } else {
           toast('this is a blank toast');
         }

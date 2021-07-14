@@ -46,7 +46,7 @@ const getPositionStyle = (
   };
 };
 
-interface ToastContainerProps {
+export interface ToastContainerProps {
   position?: ToastPosition;
   toastOptions?: ExtendedToastOptions;
   reverseOrder?: boolean;
