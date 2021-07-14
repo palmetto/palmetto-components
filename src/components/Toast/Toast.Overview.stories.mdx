@@ -53,6 +53,7 @@ to avoid an infinite spinner.
 1. It is almost always a good idea to have a toast be dismissable. Since it
 does not hinder the user experience, and yet provides a quick and easy
 escape hatch, should a user want to clear it out of their view.
+For this reason our toasts are all dismissable by default, but this can be overriden if need be.
 
 
 <Canvas isExpanded>
@@ -159,19 +160,22 @@ export const SomeAppPage = () => {
   </Story>
 </Canvas>
 
-### Dismissable
+### Dismissable (or lack thereof)
+
+In cases where you'd like the toast to remain for a set amount of time 
+without the user being able to clear it, you can use `isDismissable: false`.
 
 <Canvas isExpanded>
   <Story name="Dismissable">
     {() => {
       const handleClick = () => {
-        toast(`this toast can be dismissed`, { isDismissable: true, duration: 10000 });
+        toast(`this toast can't be dismissed`, { isDismissable: false, duration: 10000 });
       };
       return (
         <>
           <Box childGap="md" direction="row">
             <Button onClick={handleClick}>
-              open dismissable toast.
+              open non-dismissable toast.
             </Button>
           </Box>
         </>

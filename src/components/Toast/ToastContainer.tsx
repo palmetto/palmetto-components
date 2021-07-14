@@ -30,7 +30,7 @@ const getPositionStyle = (
   const verticalStyle: React.CSSProperties = top ? { top: 0 } : { bottom: 0 };
   const horizontalStyle = {
     ...position.includes('center') && { justifyContent: 'center' },
-    ...(!position.includes('center') && position.includes('right')) && { justifyContent: 'right' },
+    ...(!position.includes('center') && position.includes('right')) && { justifyContent: 'flex-end' },
   };
   return {
     left: 0,

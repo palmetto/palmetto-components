@@ -29,6 +29,7 @@ const createToast = (
   pauseDuration: 0,
   ...opts,
   id: opts?.id || uuidv4(),
+  isDismissable: opts?.isDismissable === false ? false : true,
 });
 
 const createHandler = (type?: ToastType): ToastHandler => (
