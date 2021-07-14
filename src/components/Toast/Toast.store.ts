@@ -3,6 +3,7 @@ import { Toast, ExtendedToastOptions, ToastType } from './Toast.types';
 
 const TOAST_LIMIT = 10;
 
+// eslint-disable-next-line no-shadow
 export enum ToastStoreActionType {
   ADD_TOAST = 'TOAST/ADD_TOAST',
   UPDATE_TOAST = 'TOAST/UPDATE_TOAST',
@@ -79,9 +80,9 @@ const createReducer = <
   ) => ((state: TState = initialState, action: TAction) => {
     if (handlers.hasOwnProperty(action.type)) { // eslint-disable-line
       return handlers[action.type](state, action);
-    } else {
-      return state
     }
+
+    return state;
   });
 
 type ToastStoreHandler = ReducerCallback<ToastState, ToastStoreAction>;
@@ -118,9 +119,10 @@ const handleUpsertToast: ToastStoreHandler = (state, action) => {
 
   const { toast } = action.payload;
 
+  // @TODO -- refactor to avoid using recursive function before 'reducer is declared'
   return state.toasts.find(t => t.id === toast.id)
-    ? reducer(state, { type: ToastStoreActionType.UPDATE_TOAST, payload: { toast } })
-    : reducer(state, { type: ToastStoreActionType.ADD_TOAST, payload: { toast } as { toast: Toast; } });
+    ? reducer(state, { type: ToastStoreActionType.UPDATE_TOAST, payload: { toast } }) // eslint-disable-line
+    : reducer(state, { type: ToastStoreActionType.ADD_TOAST, payload: { toast } as { toast: Toast; } }); // eslint-disable-line
 };
 
 const handleDismissToast: ToastStoreHandler = (state, action) => {
@@ -138,7 +140,8 @@ const handleDismissToast: ToastStoreHandler = (state, action) => {
 
   return {
     ...state,
-    toasts: state.toasts.map(t => t.id === toastId || toastId === undefined ? { ...t, visible: false } : t), // eslint-disable-line no-confusing-arrow
+    // eslint-disable-next-line no-confusing-arrow
+    toasts: state.toasts.map(t => t.id === toastId || toastId === undefined ? { ...t, visible: false } : t),
   };
 };
 
