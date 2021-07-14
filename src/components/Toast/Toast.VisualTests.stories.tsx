@@ -5,6 +5,9 @@ import { ToastContainer, toast } from './';
 export default {
   title: 'Components/Toast/Visual Regression Tests',
   component: ToastContainer,
+  parameters: {
+    chromatic: { delay: 1000, pauseAnimationAtEnd: true, viewports: [320, 700, 1012, 1300] },
+  },
   decorators: [storyFn => (
     <div>
       <ToastContainer />
