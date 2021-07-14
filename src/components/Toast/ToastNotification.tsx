@@ -14,18 +14,17 @@ interface ToastNotificationProps {
   position?: ToastPosition;
   style?: React.CSSProperties;
   children?: (components: {
-    // icon: Renderable;
+    // icon: IconName;
     message: React.ReactNode;
   }) => React.ReactNode;
+  onDismiss?: () => void;
 }
 
 const getAnimationClass = (
   position: ToastPosition,
-  visible: boolean
+  visible: boolean,
 ): React.CSSProperties => {
-  const top = position.includes('top');
-  const verticalPosition = top ? 'top' : 'bottom';
-  console.log('vertical position', verticalPosition);
+  const verticalPosition = position.includes('top') ? 'top' : 'bottom';
 
   const [enter, exit] = prefersReducedMotion()
     ? [styles['toast-notification-fade-in'], styles['toast-notification-fade-out']]
@@ -36,22 +35,23 @@ const getAnimationClass = (
 
 const renderToastIcon = (toast: Toast) => {
   const { type } = toast;
-  
+
   if (type === 'blank') return;
 
   let iconName: IconName = 'exclamation-mark';
   let iconColor: FontColor = 'dark';
 
   if (type === 'success') {
-    iconName = 'c-check'
+    iconName = 'c-check';
     iconColor = 'success-light';
   }
-  
+
   if (type === 'error') {
     iconName = 'c-warning';
     iconColor = 'danger-light';
   }
 
+  // eslint-disable-next-line consistent-return
   return type !== 'loading'
     ? <Icon name={iconName} color={iconColor} />
     : <Spinner variant="secondary" />;
@@ -59,15 +59,44 @@ const renderToastIcon = (toast: Toast) => {
 
 const toastTypesWithIcon: ToastType[] = ['error', 'success', 'loading'];
 
+const renderDismissIcon = (toast: Toast, onDismiss: ToastNotificationProps['onDismiss']) => {
+  if (!toast.isDismissable) return;
+
+  // eslint-disable-next-line consistent-return
+  return (
+    <Box
+      as="button"
+      borderWidth="0 0 0 xs"
+      borderColor="grey"
+      margin="0 0 0 sm"
+      padding="0 0 0 sm"
+      cursor="pointer"
+      background="transparent"
+      color="white"
+      height="100"
+      onClick={onDismiss}
+    >
+      <Icon name="remove-light" />
+    </Box>
+  );
+};
+
+// eslint-disable-next-line import/prefer-default-export
 export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
-  ({ toast, position = 'top-center', style, children }) => {
+  ({
+    toast,
+    position = 'top-center',
+    style,
+    children,
+    onDismiss,
+  }) => {
     const message = (
       <Box
         direction="row"
         justifyContent="center"
-        margin={toast.icon || toastTypesWithIcon.includes(toast.type) ? "0 0 0 xs" : undefined}
+        margin={toast.icon || toastTypesWithIcon.includes(toast.type) ? '0 0 0 xs' : undefined}
         style={{
-          flex: '1 1 auto', 
+          flex: '1 1 auto',
         }}
         {...toast.ariaProps}
       >
@@ -101,9 +130,10 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
           <>
             {renderToastIcon(toast)}
             {message}
+            {renderDismissIcon(toast, onDismiss)}
           </>
         )}
       </Box>
     );
-  }
+  },
 );

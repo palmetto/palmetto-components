@@ -13,7 +13,7 @@ export enum ToastStoreActionType {
   END_PAUSE = 'TOAST/END_PAUSE',
 }
 
-type GenericAction<TActionType extends PropertyKey, TPayload extends Object> = {
+type GenericAction<TActionType extends PropertyKey, TPayload extends Record<string, unknown>> = {
   type: TActionType;
   payload: TPayload;
 }
@@ -41,9 +41,9 @@ const addToDismissedQueue = (toastId: string) => {
 
   const timeout = setTimeout(() => {
     toastTimeouts.delete(toastId);
-    dispatch({
+    dispatch({ // eslint-disable-line
       type: ToastStoreActionType.REMOVE_TOAST,
-      payload: { toastId }
+      payload: { toastId },
     });
   }, 1000);
 
@@ -60,30 +60,29 @@ const clearFromDismissedQueue = (toastId: string) => {
 type ReducerCallback<TState, TAction> = (state: TState, action: TAction) => TState;
 type HandlerMap<
   TActionTypes extends PropertyKey,
-  TAction extends GenericAction<TActionTypes, Object>,
+  TAction extends GenericAction<TActionTypes, Record<string, unknown>>,
   TState
 > = {
   [action in TActionTypes]: ReducerCallback<TState, TAction>
 };
-type ToastStoreHandlerMap = HandlerMap<ToastStoreActionType, ToastStoreAction, ToastState> 
+type ToastStoreHandlerMap = HandlerMap<ToastStoreActionType, ToastStoreAction, ToastState>
 
 const createReducer = <
   TActionTypes extends PropertyKey,
-  TAction extends GenericAction<TActionTypes, Object>,
+  TAction extends GenericAction<TActionTypes, Record<string, unknown>>,
   TState,
   THandlers extends HandlerMap<TActionTypes, TAction, TState>,
->(
-  initialState: TState,
-  handlers: THandlers
-) => {
-  return (state: TState = initialState, action: TAction) => {
-    if (handlers.hasOwnProperty(action.type)) {
-      return handlers[action.type](state, action)
+>
+  (
+    initialState: TState,
+    handlers: THandlers,
+  ) => ((state: TState = initialState, action: TAction) => {
+    if (handlers.hasOwnProperty(action.type)) { // eslint-disable-line
+      return handlers[action.type](state, action);
     } else {
       return state
     }
-  }
-};
+  });
 
 type ToastStoreHandler = ReducerCallback<ToastState, ToastStoreAction>;
 
@@ -95,7 +94,7 @@ const handleAddToast: ToastStoreHandler = (state, action) => {
   return {
     ...state,
     toasts: [toast as Toast, ...state.toasts].slice(0, TOAST_LIMIT),
-  }
+  };
 };
 
 const handleUpdateToast: ToastStoreHandler = (state, action) => {
@@ -110,9 +109,7 @@ const handleUpdateToast: ToastStoreHandler = (state, action) => {
 
   return {
     ...state,
-    toasts: state.toasts.map((t) =>
-      t.id === toast.id ? { ...t, ...toast } : t
-    ),
+    toasts: state.toasts.map(t => t.id === toast.id ? { ...t, ...toast } : t), // eslint-disable-line
   };
 };
 
@@ -120,9 +117,10 @@ const handleUpsertToast: ToastStoreHandler = (state, action) => {
   if (!('toast' in action.payload)) return state;
 
   const { toast } = action.payload;
-    return state.toasts.find((t) => t.id === toast.id)
-      ? reducer(state, { type: ToastStoreActionType.UPDATE_TOAST, payload: { toast } })
-      : reducer(state, { type: ToastStoreActionType.ADD_TOAST, payload: { toast } as { toast: Toast } });
+
+  return state.toasts.find(t => t.id === toast.id)
+    ? reducer(state, { type: ToastStoreActionType.UPDATE_TOAST, payload: { toast } })
+    : reducer(state, { type: ToastStoreActionType.ADD_TOAST, payload: { toast } as { toast: Toast; } });
 };
 
 const handleDismissToast: ToastStoreHandler = (state, action) => {
@@ -130,25 +128,17 @@ const handleDismissToast: ToastStoreHandler = (state, action) => {
 
   const { toastId } = action.payload;
 
-  // ! Side effects ! - This could be execrated into a dismissToast() action, but I'll keep it here for simplicity
   if (toastId) {
     addToDismissedQueue(toastId);
   } else {
-    state.toasts.forEach((toast) => {
+    state.toasts.forEach(toast => {
       addToDismissedQueue(toast.id);
     });
   }
 
   return {
     ...state,
-    toasts: state.toasts.map((t) =>
-      t.id === toastId || toastId === undefined
-        ? {
-            ...t,
-            visible: false,
-          }
-        : t
-    ),
+    toasts: state.toasts.map(t => t.id === toastId || toastId === undefined ? { ...t, visible: false } : t), // eslint-disable-line no-confusing-arrow
   };
 };
 
@@ -166,7 +156,7 @@ const handleRemoveToast: ToastStoreHandler = (state, action) => {
 
   return {
     ...state,
-    toasts: state.toasts.filter((t) => t.id !== toastId),
+    toasts: state.toasts.filter(t => t.id !== toastId),
   };
 };
 
@@ -187,7 +177,7 @@ const handleEndPause: ToastStoreHandler = (state, action) => {
   return {
     ...state,
     pausedAt: undefined,
-    toasts: state.toasts.map((t) => ({
+    toasts: state.toasts.map(t => ({
       ...t,
       pauseDuration: t.pauseDuration + diff,
     })),
@@ -211,7 +201,7 @@ const toastReducer = createReducer<
   ToastStoreHandlerMap
 >(
   { toasts: [], pausedAt: undefined },
-  actionHandlers
+  actionHandlers,
 );
 
 const reducer = (state: ToastState, action: ToastStoreAction) => toastReducer(state, action);
@@ -220,9 +210,9 @@ const listeners: Array<(state: ToastState) => void> = [];
 
 let memoryState: ToastState = { toasts: [], pausedAt: undefined };
 
-export const dispatch = (action: ToastStoreAction) => {
+export const dispatch = (action: ToastStoreAction): void => {
   memoryState = reducer(memoryState, action);
-  listeners.forEach((listener) => {
+  listeners.forEach(listener => {
     listener(memoryState);
   });
 };
@@ -249,15 +239,15 @@ export const useToastStore = (toastOptions: ExtendedToastOptions = {}): ToastSta
     };
   }, [state]);
 
-  const mergedToasts = state.toasts.map((t) => ({
+  const mergedToasts = state.toasts.map(t => ({
     ...toastOptions,
     ...toastOptions[t.type],
     ...t,
     duration:
-      t.duration ||
-      toastOptions[t.type]?.duration ||
-      toastOptions?.duration ||
-      defaultTimeouts[t.type],
+      t.duration
+      || toastOptions[t.type]?.duration
+      || toastOptions?.duration
+      || defaultTimeouts[t.type],
     style: {
       ...toastOptions.style,
       ...toastOptions[t.type]?.style,

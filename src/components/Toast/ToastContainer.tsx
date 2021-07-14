@@ -9,12 +9,10 @@ import {
 } from './Toast.types';
 import { ToastNotification } from './ToastNotification';
 import { useToasts } from './useToasts';
+import { toast } from './toast';
 
-// =====================================================
-// UTILS
-// =====================================================
 export const createRectRef = (onRect: (rect: DOMRect) => void) => (
-  el: HTMLElement | null
+  el: HTMLElement | null,
 ) => {
   if (el) {
     setTimeout(() => {
@@ -26,19 +24,14 @@ export const createRectRef = (onRect: (rect: DOMRect) => void) => (
 
 const getPositionStyle = (
   position: ToastPosition,
-  offset: number
+  offset: number,
 ): React.CSSProperties => {
   const top = position.includes('top');
   const verticalStyle: React.CSSProperties = top ? { top: 0 } : { bottom: 0 };
-  const horizontalStyle: React.CSSProperties = position.includes('center')
-    ? {
-        justifyContent: 'center',
-      }
-    : position.includes('right')
-    ? {
-        justifyContent: 'flex-end',
-      }
-    : {};
+  const horizontalStyle = {
+    ...position.includes('center') && { justifyContent: 'center' },
+    ...(!position.includes('center') && position.includes('right')) && { justifyContent: 'right' },
+  };
   return {
     left: 0,
     right: 0,
@@ -46,7 +39,7 @@ const getPositionStyle = (
     position: 'absolute',
     transition: prefersReducedMotion()
       ? undefined
-      : `all 230ms cubic-bezier(.21,1.02,.73,1)`,
+      : 'all 230ms cubic-bezier(.21,1.02,.73,1)',
     transform: `translateY(${offset * (top ? 1 : -1)}px)`,
     ...verticalStyle,
     ...horizontalStyle,
@@ -60,10 +53,37 @@ interface ToastContainerProps {
   gutter?: number;
   containerStyle?: React.CSSProperties;
   containerClassName?: string;
-  children?: (toast: Toast) => JSX.Element;
+  children?: (t: Toast) => JSX.Element;
 }
 
 const DEFAULT_OFFSET = 16;
+
+const renderNotification = (
+  currentToast: Toast,
+  children: ((
+    (t: Toast) => JSX.Element)
+    & (boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null)
+    ) | undefined,
+  containerPosition: ToastContainerProps['position'],
+) => {
+  const toastPosition = currentToast.position || containerPosition;
+
+  if (currentToast.type === 'custom') {
+    return resolveValue(currentToast.message, currentToast);
+  }
+
+  if (children) {
+    return children(currentToast);
+  }
+
+  return (
+    <ToastNotification
+      toast={currentToast}
+      position={toastPosition}
+      onDismiss={() => toast.dismiss(currentToast.id)}
+    />
+  );
+};
 
 export const ToastContainer: React.FC<ToastContainerProps> = ({
   reverseOrder,
@@ -83,7 +103,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
         left: DEFAULT_OFFSET,
         right: DEFAULT_OFFSET,
         bottom: DEFAULT_OFFSET,
-        pointerEvents: 'none', // ensure background elements are clickable 
+        pointerEvents: 'none', // ensure background elements are clickable
         ...containerStyle,
       }}
       position="fixed"
@@ -92,7 +112,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
       onMouseEnter={handlers.startPause}
       onMouseLeave={handlers.endPause}
     >
-      {toasts.map((t) => {
+      {toasts.map(t => {
         const toastPosition = t.position || position;
         const offset = handlers.calculateOffset(t, {
           reverseOrder,
@@ -103,9 +123,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
 
         const ref = t.height
           ? undefined
-          : createRectRef((rect) => {
-              handlers.updateHeight(t.id, rect.height);
-            });
+          : createRectRef(rect => { handlers.updateHeight(t.id, rect.height); });
 
         return (
           <Box
@@ -118,13 +136,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
             }}
             display="block"
           >
-            {t.type === 'custom' ? (
-              resolveValue(t.message, t)
-            ) : children ? (
-              children(t)
-            ) : (
-              <ToastNotification toast={t} position={toastPosition} />
-            )}
+            {renderNotification(t, children, position)}
           </Box>
         );
       })}

@@ -1,4 +1,4 @@
-import { ValueOrFunction, IconName } from '../../types/';
+import { ValueOrFunction, IconName } from '../../types';
 
 export type ToastType = 'success' | 'error' | 'loading' | 'blank' | 'custom';
 
@@ -22,6 +22,7 @@ export interface Toast {
     role: 'status' | 'alert';
     'aria-live': 'assertive' | 'off' | 'polite';
   };
+  isDismissable?: boolean;
   style?: React.CSSProperties;
   className?: string;
   createdAt: number;
@@ -38,6 +39,7 @@ export type ToastOptions = Partial<
     | 'className'
     | 'style'
     | 'position'
+    | 'isDismissable'
   >
 >;
 

@@ -1,7 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 import { resolveValue } from '../../lib/resolveValue';
 import { ValueOrFunction } from '../../types';
-import { Toast, ToastOptions, ToastType, ExtendedToastOptions } from './Toast.types';
+import {
+  Toast,
+  ToastOptions,
+  ToastType,
+  ExtendedToastOptions,
+} from './Toast.types';
 import { ToastStoreActionType, dispatch } from './Toast.store';
 
 type Message = ValueOrFunction<React.ReactNode, Toast>;
@@ -11,7 +16,7 @@ type ToastHandler = (message: Message, options?: ToastOptions) => string;
 const createToast = (
   message: Message,
   type: ToastType = 'blank',
-  opts?: ToastOptions
+  opts?: ToastOptions,
 ): Toast => ({
   createdAt: Date.now(),
   visible: true,
@@ -28,18 +33,17 @@ const createToast = (
 
 const createHandler = (type?: ToastType): ToastHandler => (
   message,
-  options
+  options,
 ) => {
   const toast = createToast(message, type, options);
   dispatch({
     type: ToastStoreActionType.UPSERT_TOAST,
-    payload: { toast }
+    payload: { toast },
   });
   return toast.id;
 };
 
-const toast = (message: Message, opts?: ToastOptions) =>
-  createHandler('blank')(message, opts);
+const toast = (message: Message, opts?: ToastOptions) => createHandler('blank')(message, opts);
 
 toast.error = createHandler('error');
 toast.success = createHandler('success');
@@ -53,34 +57,33 @@ toast.dismiss = (toastId?: string) => {
   });
 };
 
-toast.remove = (toastId?: string) =>
-  dispatch({
-    type: ToastStoreActionType.REMOVE_TOAST,
-    payload: { toastId },
-  });
+toast.remove = (toastId?: string) => dispatch({
+  type: ToastStoreActionType.REMOVE_TOAST,
+  payload: { toastId },
+});
 
-toast.async = function<T>(
+toast.async = function<T> (
   promise: Promise<T>,
-  msgs: {
+  messages: {
     loading: React.ReactNode;
     success: ValueOrFunction<React.ReactNode, T>;
-    error: ValueOrFunction<React.ReactNode, any>;
+    error: ValueOrFunction<React.ReactNode, unknown>;
   },
-  opts?: ExtendedToastOptions
+  opts?: ExtendedToastOptions,
 ) {
-  const id = toast.loading(msgs.loading, { ...opts, ...opts?.loading });
+  const id = toast.loading(messages.loading, { ...opts, ...opts?.loading });
 
   promise
-    .then((p) => {
-      toast.success(resolveValue(msgs.success, p), {
+    .then(data => {
+      toast.success(resolveValue(messages.success, data), {
         id,
         ...opts,
         ...opts?.success,
       });
-      return p;
+      return data;
     })
-    .catch((e) => {
-      toast.error(resolveValue(msgs.error, e), {
+    .catch(err => {
+      toast.error(resolveValue(messages.error, err), {
         id,
         ...opts,
         ...opts?.error,
@@ -90,4 +93,4 @@ toast.async = function<T>(
   return promise;
 };
 
-export { toast };
+export { toast }; // eslint-disable-line import/prefer-default-export

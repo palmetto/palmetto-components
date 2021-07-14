@@ -36,12 +36,39 @@ import { Button } from '../Button/Button';
   </Story>
 </Canvas>
 
-## Props
+### The Basics
+1. Include the `<ToastContainer />` in your React app. (at the highest possible level of the DOM tree);
+2. Create a toast anywhere in your app `toast('hello!')`.
+
+**NOTE:** All examples of this page exclusively showcase step 2 above, as the ToastContainer is added globally on the page.
+
+### Example
+```jsx
+// App.jsx
+import { ToastContainer } from '@palmetto/palmetto-components';
+
+export const App = () => {
+  <MyAppContainer>
+    <ToastContainer {/* custom props */} />
+    {/* Routes, other providers, etc */}
+  </MyAppContainer>
+};
+
+// SomeAppPage.jsx
+import { toast } from '@palmetto/palmetto-components';
+
+export const SomeAppPage = () => {
+  <button onClick={() => toast('hello!')}>
+    gimme a toast
+  </button>
+}
+```
+
+## Props (for `<ToastContainer />`)
 
 <ArgsTable of={ToastContainer} />
 
 ## Individual Toast Settings
-
 
 ### Position
 
@@ -99,6 +126,28 @@ import { Button } from '../Button/Button';
   </Story>
 </Canvas>
 
+### Duration
+
+<Canvas isExpanded>
+  <Story name="Dismissable">
+    {() => {
+      const DURATION = 6000;
+      const handleClick = () => {
+        toast(`this toast can be dismissed`, { isDismissable: true, duration: 10000 });
+      };
+      return (
+        <>
+          <Box childGap="md" direction="row">
+            <Button onClick={handleClick}>
+              open dismissable toast.
+            </Button>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### Toast Types
 
 <Canvas isExpanded>
@@ -140,8 +189,6 @@ import { Button } from '../Button/Button';
   </Story>
 </Canvas>
 
-### Advanced Types
-
 <Canvas isExpanded>
   <Story name="Advanced Types">
     {() => {
@@ -166,16 +213,12 @@ import { Button } from '../Button/Button';
           toast(
             <Box fontSize="xl" display="block">Big and <Box fontWeight="bold" display="inline">bold</Box>&nbsp;text</Box>,
           );
-        } else if (type === 'loading') {
-          const toastId = toast.loading('This toast is waiting for something to happen.', { duration: 5000 });
-        } else {
-          toast('this is a blank toast');
         }
       };
       return (
         <>
           <Box fontSize="lg" fontWeight="bold" margin="0 0 md 0">
-            Basic Types
+            Advanced Types
           </Box>
           <Box childGap="md">
             <Box childGap="sm">
@@ -186,7 +229,7 @@ import { Button } from '../Button/Button';
                 state of the passed promise.
               </p>
               <Button onClick={() => handleClick('async')} variant="light">
-                async toast
+                async
               </Button>
             </Box>
             <Box childGap="sm">
@@ -195,17 +238,11 @@ import { Button } from '../Button/Button';
                 you can pass a function to the toasts in question, see code example.
               </p>
               <Button onClick={() => handleClick('async-data')} variant="light">
-                async including promise data
+                async (including promise data)
               </Button>
             </Box>
-            <Button onClick={() => handleClick('jsx')} variant="danger">
+            <Button onClick={() => handleClick('jsx')} variant="light">
               custom JSX
-            </Button>
-            <Button onClick={() => handleClick('success')} variant="success">
-              success
-            </Button>
-            <Button onClick={() => handleClick('loading')} variant="dark">
-              loading
             </Button>
           </Box>
         </>

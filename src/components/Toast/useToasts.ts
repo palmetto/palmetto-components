@@ -3,7 +3,7 @@ import { ExtendedToastOptions, Toast, ToastPosition } from './Toast.types';
 import { useToastStore, dispatch, ToastStoreActionType } from './Toast.store';
 import { toast } from './toast';
 
-export const useToasts = (toastOptions?: ExtendedToastOptions) => {
+export const useToasts = (toastOptions?: ExtendedToastOptions) => { // eslint-disable-line import/prefer-default-export
   const { toasts, pausedAt } = useToastStore(toastOptions);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export const useToasts = (toastOptions?: ExtendedToastOptions) => {
     }
 
     const now = Date.now();
-    const timeouts = toasts.map((t) => {
+    const timeouts = toasts.map(t => {
       if (t.duration === Infinity) {
         return;
       }
@@ -25,11 +25,11 @@ export const useToasts = (toastOptions?: ExtendedToastOptions) => {
         }
         return;
       }
-      return setTimeout(() => toast.dismiss(t.id), durationLeft);
+      return setTimeout(() => toast.dismiss(t.id), durationLeft); // eslint-disable-line consistent-return
     });
 
-    return () => {
-      timeouts.forEach((timeout) => timeout && clearTimeout(timeout));
+    return () => { // eslint-disable-line consistent-return
+      timeouts.forEach(timeout => timeout && clearTimeout(timeout));
     };
   }, [toasts, pausedAt]);
 
@@ -49,41 +49,36 @@ export const useToasts = (toastOptions?: ExtendedToastOptions) => {
           });
         }
       },
-      updateHeight: (toastId: string, height: number) =>
-        dispatch({
-          type: ToastStoreActionType.UPDATE_TOAST,
-          payload: { toast: { id: toastId, height } },
-        }),
+      updateHeight: (toastId: string, height: number) => dispatch({
+        type: ToastStoreActionType.UPDATE_TOAST,
+        payload: { toast: { id: toastId, height } },
+      }),
       calculateOffset: (
-        toast: Toast,
+        currentToast: Toast,
         opts?: {
           reverseOrder?: boolean;
           gutter?: number;
           defaultPosition?: ToastPosition;
-        }
+        },
       ) => {
-        const { reverseOrder = false, gutter = 8, defaultPosition } =
-          opts || {};
+        const { reverseOrder = false, gutter = 8, defaultPosition } = opts || {};
 
-        const relevantToasts = toasts.filter(
-          (t) =>
-            (t.position || defaultPosition) ===
-              (toast.position || defaultPosition) && t.height
-        );
-        const toastIndex = relevantToasts.findIndex((t) => t.id === toast.id);
+        const relevantToasts = toasts
+          .filter(t => (t.position || defaultPosition) === (currentToast.position || defaultPosition) && t.height);
+        const toastIndex = relevantToasts.findIndex(t => t.id === currentToast.id);
         const toastsBefore = relevantToasts.filter(
-          (toast, i) => i < toastIndex && toast.visible
+          (t, i) => i < toastIndex && t.visible,
         ).length;
 
         const offset = relevantToasts
-          .filter((t) => t.visible)
+          .filter(t => t.visible)
           .slice(...(reverseOrder ? [toastsBefore + 1] : [0, toastsBefore]))
           .reduce((acc, t) => acc + (t.height || 0) + gutter, 0);
 
         return offset;
       },
     }),
-    [toasts, pausedAt]
+    [toasts, pausedAt],
   );
 
   return {
