@@ -1,18 +1,8 @@
 import React from 'react';
-import {
-  screen,
-  render,
-  fireEvent,
-  act,
-  waitFor,
-} from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import { ToastContainer } from './ToastContainer';
-import { ToastPosition } from './';
+import { ToastPosition } from '.';
 import { toast } from './toast';
-
-const sleep = (ms: number) => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -37,10 +27,10 @@ describe('ToastContainer', () => {
 
   test('With toasts', async () => {
     render(<ToastContainer data-testid="toast-container" />);
-  
+
     toast('test blank toast');
 
-    await expect(screen.getByText('test blank toast')).toBeInTheDocument();    
+    await expect(screen.getByText('test blank toast')).toBeInTheDocument();
   });
 
   describe('Positions', () => {
@@ -52,16 +42,16 @@ describe('ToastContainer', () => {
       'bottom-center',
       'bottom-right',
     ];
-    
+
     positions.forEach(position => {
       test(`${position}`, async () => {
         render(<ToastContainer data-testid={`toast-container-${position}`} position={position} />);
 
-        toast('test blank toast' + position);
+        toast(`test blank toast ${position}`);
 
         expect(screen.getByTestId(`toast-container-${position}`)).toBeInTheDocument();
 
-        await expect(screen.getByText('test blank toast' + position)).toBeInTheDocument();  
+        await expect(screen.getByText(`test blank toast ${position}`)).toBeInTheDocument();
 
         const verticalStyle: React.CSSProperties = position.includes('top') ? { top: 0 } : { bottom: 0 };
         const horizontalStyle = {
@@ -71,9 +61,8 @@ describe('ToastContainer', () => {
 
         expect(screen.getByTestId(`toast-container-${position}`).children[0]).toHaveStyle({
           ...verticalStyle,
-          ...horizontalStyle
+          ...horizontalStyle,
         });
-
       });
     });
   });
@@ -81,35 +70,34 @@ describe('ToastContainer', () => {
   describe('Toast Types', () => {
     test('success', async () => {
       render(<ToastContainer data-testid="toast-container" />);
-  
+
       toast.success('test success toast');
 
-      await expect(screen.getByText('test success toast')).toBeInTheDocument();  
+      await expect(screen.getByText('test success toast')).toBeInTheDocument();
     });
 
     test('error', async () => {
       render(<ToastContainer data-testid="toast-container" />);
-  
+
       toast.error('test error toast');
 
-      await expect(screen.getByText('test error toast')).toBeInTheDocument();  
+      await expect(screen.getByText('test error toast')).toBeInTheDocument();
     });
 
     test('loading', async () => {
       render(<ToastContainer data-testid="toast-container" />);
-  
+
       toast.loading('test loading toast');
 
-      await expect(screen.getByText('test loading toast')).toBeInTheDocument();  
+      await expect(screen.getByText('test loading toast')).toBeInTheDocument();
     });
 
     test('custom', async () => {
       render(<ToastContainer data-testid="toast-container" />);
-  
+
       toast.custom(<p>test custom toast</p>);
 
-      await expect(screen.getByText('test custom toast')).toBeInTheDocument();  
+      await expect(screen.getByText('test custom toast')).toBeInTheDocument();
     });
   });
 });
-
