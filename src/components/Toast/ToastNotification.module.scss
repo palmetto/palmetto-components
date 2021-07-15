@@ -1,36 +1,36 @@
 .toast-notification-enter-top {
   :global {
-    animation: toastEnterAnimationTop 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+    animation: enterTop 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
   }
 }
   
 .toast-notification-exit-top {
   :global {
-    animation: toastExitAnimationTop 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
+    animation: exitTop 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
   }
 }
 
 .toast-notification-enter-bottom {
   :global {
-    animation: toastEnterAnimationBottom 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+    animation: enterBottom 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
   }
 }
 
 .toast-notification-exit-bottom {
   :global {
-    animation: toastExitAnimationBottom 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
+    animation: exitBottom 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
   }
 }
 
 .toast-notification-exit-left {
   :global {
-    animation: toastExitAnimationLeft 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
+    animation: exitLeft 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
   }
 }
 
 .toast-notification-exit-right {
   :global {
-    animation: toastExitAnimationRight 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
+    animation: exitRight 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
   }
 }
 
