@@ -20,15 +20,15 @@ interface ToastNotificationProps {
   onDismiss?: () => void;
 }
 
-const getAnimationClass = (
-  position: ToastPosition,
-  visible: boolean,
-): React.CSSProperties => {
+const getAnimationClass = (position: ToastPosition, visible: boolean): React.CSSProperties => {
   const verticalPosition = position.includes('top') ? 'top' : 'bottom';
 
   const [enter, exit] = prefersReducedMotion()
     ? [styles['toast-notification-fade-in'], styles['toast-notification-fade-out']]
-    : [styles[`toast-notification-enter-${verticalPosition}`], styles[`toast-notification-exit-${verticalPosition}`]];
+    : [
+      styles[`toast-notification-enter-${verticalPosition}`],
+      styles[`toast-notification-exit-${verticalPosition}`],
+    ];
 
   return visible ? enter : exit;
 };
@@ -52,24 +52,13 @@ const renderToastIcon = (toast: Toast) => {
   }
 
   // eslint-disable-next-line consistent-return
-  const icon = type !== 'loading'
-    ? <Icon name={iconName} color={iconColor} />
-    : <Spinner variant="secondary" />;
+  const icon = type !== 'loading' ? <Icon name={iconName} color={iconColor} /> : <Spinner variant="grey" />;
 
   return (
-    <Box
-      // as="button"
-      // borderWidth="0 0 0 xs"
-      // borderColor="grey"
-      // padding="0 0 0 sm"
-      // cursor="pointer"
-      // background="transparent"
-      // color="white"
-      height="100"
-    >
+    <Box justifyContent="center" height="100">
       {icon}
     </Box>
-  )
+  );
 };
 
 const toastTypesWithIcon: ToastType[] = ['error', 'success', 'loading'];
@@ -81,8 +70,8 @@ const renderDismissIcon = (toast: Toast, onDismiss: ToastNotificationProps['onDi
   return (
     <Box
       as="button"
-      borderWidth="0 0 0 xs"
-      borderColor="grey"
+      borderWidth="0 0 0 sm"
+      borderColor="grey-600"
       margin="0 0 0 sm"
       padding="0 0 0 sm"
       cursor="pointer"
@@ -99,11 +88,7 @@ const renderDismissIcon = (toast: Toast, onDismiss: ToastNotificationProps['onDi
 // eslint-disable-next-line import/prefer-default-export
 export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
   ({
-    toast,
-    position = 'top-center',
-    style,
-    children,
-    onDismiss,
+    toast, position = 'top-center', style, children, onDismiss,
   }) => {
     const message = (
       <Box
@@ -122,18 +107,21 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
     return (
       <Box
         alignItems="center"
-        background="dark"
+        background="grey-800"
         color="white"
-        shadow="xs"
+        shadow="2xs"
         maxWidth="300px"
         padding="md lg"
         radius="md"
         direction="row"
-        className={classNames(toast.className, getAnimationClass(toast.position || position, toast.visible))}
+        className={classNames(
+          toast.className,
+          getAnimationClass(toast.position || position, toast.visible),
+        )}
         style={{
           ...style,
           ...toast.style,
-          ...!toast.visible && { opacity: 0 },
+          ...(!toast.visible && { opacity: 0 }),
           willChange: 'transform',
         }}
       >
