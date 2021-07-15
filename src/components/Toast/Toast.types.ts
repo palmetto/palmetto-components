@@ -41,6 +41,7 @@ export type ToastOptions = Partial<
     | 'style'
     | 'position'
     | 'canDismiss'
+    | 'isCompact'
   >
 >;
 

@@ -68,6 +68,16 @@ describe('ToastContainer', () => {
         });
       });
     });
+
+    positions.forEach(position => {
+      test(`Custom toast positions ${position}`, async () => {
+        render(<ToastContainer />);
+
+        toast(`test custom position toast ${position}`, { position });
+    
+        await expect(screen.getByText(`test custom position toast ${position}`)).toBeInTheDocument();
+      });
+    });
   });
 
   describe('Toast Types', () => {
@@ -135,5 +145,13 @@ describe('ToastContainer', () => {
 
       await expect(screen.getByText('Custom and')).toBeInTheDocument();
     });
+  });
+
+  test('compact', async () => {
+    render(<ToastContainer data-testid="toast-container" />);
+
+    toast('test compact toast', { isCompact: true });
+
+    await expect(screen.getByText('test compact toast')).toBeInTheDocument();
   });
 });
