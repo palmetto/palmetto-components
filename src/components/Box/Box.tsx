@@ -132,7 +132,7 @@ export interface BoxProps {
   /**
    * The [font family token](/?path=/docs/design-tokens-font-family--page) identifier for the Box's text
    */
-   fontFamily?: FontFamily | ResponsiveProp<FontFamily>;
+  fontFamily?: FontFamily | ResponsiveProp<FontFamily>;
   /**
    * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box's text
    */
@@ -527,9 +527,9 @@ export const boxPropsKeys: (keyof Pick<BoxProps, KnownKeys<BoxProps>>)[] = [
   'display',
   'flex',
   'focus',
+  'fontFamily',
   'fontSize',
   'fontWeight',
-  'fontFamily',
   'height',
   'hover',
   'justifyContent',
@@ -539,12 +539,13 @@ export const boxPropsKeys: (keyof Pick<BoxProps, KnownKeys<BoxProps>>)[] = [
   'maxWidth',
   'minWidth',
   'overflow',
-  'position',
   'padding',
+  'position',
   'radius',
   'shadow',
   'style',
   'textAlign',
   'wrap',
   'width',
+  'zIndex',
 ];
