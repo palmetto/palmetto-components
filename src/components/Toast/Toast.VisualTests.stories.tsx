@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { ToastContainer, toast } from './';
+import { ToastContainer, toast } from '.';
 
 export default {
   title: 'Components/Toast/Visual Regression Tests',
@@ -13,7 +13,7 @@ export default {
       <ToastContainer />
       {storyFn()}
     </div>
-  )]
+  )],
 } as Meta;
 
 export const Default = () => {
