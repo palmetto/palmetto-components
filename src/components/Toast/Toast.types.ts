@@ -14,6 +14,7 @@ export interface Toast {
   type: ToastType;
   id: string;
   message: ValueOrFunction<React.ReactNode, Toast>;
+  isCompact?: boolean;
   icon?: IconName;
   duration?: number;
   pauseDuration: number;

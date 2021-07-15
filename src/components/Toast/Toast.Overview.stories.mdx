@@ -93,10 +93,6 @@ export const SomeAppPage = () => {
 
 <ArgsTable of={ToastContainer} />
 
-## Individual Toast Settings
-
-### Position
-
 <Canvas isExpanded>
   <Story name="Position">
     {() => {
@@ -171,17 +167,36 @@ without the user being able to clear it, you can use `canDismiss: false`.
   <Story name="Dismissible">
     {() => {
       const handleClick = () => {
-<<<<<<< HEAD
         toast(`this toast can't be dismissed`, { canDismiss: false, duration: 100000 });
-=======
-        toast(`this toast can't be dismissed`, { isDismissable: false, duration: 10000 });
->>>>>>> f074530c7b8c2da248ac9fa480ffe86fd79cc64b
       };
       return (
         <>
           <Box childGap="md" direction="row">
             <Button onClick={handleClick}>
               Open non-dismissible toast
+            </Button>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Compact
+
+Use the `isCompact` prop for a toast the uses less screen real estate.
+
+<Canvas isExpanded>
+  <Story name="Compact">
+    {() => {
+      const handleClick = () => {
+        toast('This is compact', { isCompact: true });
+      };
+      return (
+        <>
+          <Box childGap="md" direction="row">
+            <Button onClick={handleClick}>
+              Open compact toast
             </Button>
           </Box>
         </>
@@ -201,11 +216,7 @@ without the user being able to clear it, you can use `canDismiss: false`.
         } else if (type === 'error') {
           toast.error('Unable to save');
         } else if (type === 'loading') {
-<<<<<<< HEAD
-          const toastId = toast.loading('Loading...', { duration: 5000000, canDismiss: false });
-=======
-          const toastId = toast.loading('Loading...', { duration: 50000, isDismissable: false });
->>>>>>> f074530c7b8c2da248ac9fa480ffe86fd79cc64b
+          const toastId = toast.loading('Loading...', { duration: 10000, canDismiss: false });
         } else {
           toast('Toast without icon');
         }
