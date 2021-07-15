@@ -38,10 +38,17 @@ in most pages, but is a great escape hatch for a user that wants to take back an
 5. DO NOT use a toast as a blocking alert or interstitial (I.E: to restrict or contextualize user actions). In these
 cases, use a [Modal](?path=/docs/components-modal-overview--default-story).
 
+## Content Guidelines
+
+Keep the contents of a toast as short as possible by placing only the most important information in it. Toasts are meant to unobtrusively provide feedback for non-critical information or feedback. In general, toast messages should be:
+
+- short and affirmative
+- Written in a pattern of noun + verb, such as "Proposal saved" or "hic_contract.pdf added".
+
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
-      const handleClick = () => toast('hey oh!');
+      const handleClick = () => toast('Proposal saved!');
       return (
         <>
           <Button onClick={handleClick}>
@@ -164,40 +171,13 @@ without the user being able to clear it, you can use `isDismissable: false`.
   <Story name="Dismissible">
     {() => {
       const handleClick = () => {
-        toast(`this toast can't be dismissed`, { isDismissable: false, duration: 10000 });
+        toast(`this toast can't be dismissed`, { isDismissable: false, duration: 100000 });
       };
       return (
         <>
           <Box childGap="md" direction="row">
             <Button onClick={handleClick}>
-              Open non-dismissible toast.
-            </Button>
-          </Box>
-        </>
-      );
-    }}
-  </Story>
-</Canvas>
-
-### Multi-Line Toast
-
-(In most cases, a multi-line toast is a sign that the message is too long,
-but in rare cases where it is necessary...)
-
-<Canvas isExpanded>
-  <Story name="Multi-Line">
-    {() => {
-      const handleClick = () => {
-        toast.success(
-          'this toast has long text that goes on and on and on for a long while, until it breaks into multiple lines',
-          { isDismissable: true, duration: 30000 }
-        );
-      };
-      return (
-        <>
-          <Box childGap="md" direction="row">
-            <Button onClick={handleClick}>
-              Open multi-line toast.
+              Open non-dismissible toast
             </Button>
           </Box>
         </>
@@ -213,13 +193,13 @@ but in rare cases where it is necessary...)
     {() => {
       const handleClick = (type) => {
         if (type === 'success') {
-          const successToastId = toast.success('everything is great!');
+          const successToastId = toast.success('Proposal saved');
         } else if (type === 'error') {
-          toast.error('something has gone wrong!');
+          toast.error('Unable to save');
         } else if (type === 'loading') {
-          const toastId = toast.loading('Loading...', { duration: 5000 });
+          const toastId = toast.loading('Loading...', { duration: 5000000, isDismissable: false });
         } else {
-          toast('this is a blank toast');
+          toast('Toast without icon');
         }
       };
       return (
@@ -278,8 +258,8 @@ but in rare cases where it is necessary...)
           <Box fontSize="lg" fontWeight="bold" margin="0 0 md 0">
             Advanced Types
           </Box>
-          <Box childGap="md">
-            <Box childGap="sm">
+          <Box display="block" childGap="md">
+            <Box display="block" childGap="sm">
               <p>
                 With an async toast, you can pass the three states of an async op (loading, success, error)
                 to a corresponding toast state. By passing the promise itself to the
@@ -290,7 +270,7 @@ but in rare cases where it is necessary...)
                 async
               </Button>
             </Box>
-            <Box childGap="sm">
+            <Box display="block" childGap="sm">
               <p>
                 If you need to include data or an error returned from the promise
                 you can pass a function to the toasts in question, see code example.
