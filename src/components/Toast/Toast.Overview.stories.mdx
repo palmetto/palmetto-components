@@ -165,13 +165,13 @@ should not hinder the user experience, but we still wish to provide a quick and 
 escape hatch, should a user want to clear it out of their view.
 
 In cases where you'd like the toast to remain for a set amount of time
-without the user being able to clear it, you can use `isDismissable: false`.
+without the user being able to clear it, you can use `canDismiss: false`.
 
 <Canvas isExpanded>
   <Story name="Dismissible">
     {() => {
       const handleClick = () => {
-        toast(`this toast can't be dismissed`, { isDismissable: false, duration: 100000 });
+        toast(`this toast can't be dismissed`, { canDismiss: false, duration: 100000 });
       };
       return (
         <>
@@ -197,7 +197,7 @@ without the user being able to clear it, you can use `isDismissable: false`.
         } else if (type === 'error') {
           toast.error('Unable to save');
         } else if (type === 'loading') {
-          const toastId = toast.loading('Loading...', { duration: 5000000, isDismissable: false });
+          const toastId = toast.loading('Loading...', { duration: 5000000, canDismiss: false });
         } else {
           toast('Toast without icon');
         }

@@ -25,7 +25,7 @@ export const Default = () => {
 
 export const Dismissable = () => {
   setTimeout(() => {
-    toast('dismissable toast', { isDismissable: true });
+    toast('dismissable toast', { canDismiss: true });
   }, 1);
   return <></>;
 };

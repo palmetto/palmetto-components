@@ -66,7 +66,7 @@ const renderToastIcon = (toast: Toast) => {
 const toastTypesWithIcon: ToastType[] = ['error', 'success', 'loading'];
 
 const renderDismissIcon = (toast: Toast, onDismiss: ToastNotificationProps['onDismiss']) => {
-  if (!toast.isDismissable) return;
+  if (!toast.canDismiss) return;
 
   // eslint-disable-next-line consistent-return
   return (
