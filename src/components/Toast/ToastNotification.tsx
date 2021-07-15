@@ -20,10 +20,7 @@ interface ToastNotificationProps {
   onDismiss?: () => void;
 }
 
-const getAnimationClass = (
-  position: ToastPosition,
-  visible: boolean,
-): React.CSSProperties => {
+const getAnimationClass = (position: ToastPosition, visible: boolean): React.CSSProperties => {
   const verticalPosition = position.includes('top') ? 'top' : 'bottom';
   const horizontalPosition = position.includes('left') ? 'left' : 'right';
   const isCentered = position.includes('center');
@@ -57,17 +54,13 @@ const renderToastIcon = (toast: Toast) => {
   }
 
   // eslint-disable-next-line consistent-return
-  const icon = type !== 'loading'
-    ? <Icon name={iconName} color={iconColor} />
-    : <Spinner variant="secondary" />;
+  const icon = type !== 'loading' ? <Icon name={iconName} color={iconColor} /> : <Spinner variant="grey" />;
 
   return (
-    <Box
-      height="100"
-    >
+    <Box justifyContent="center" height="100">
       {icon}
     </Box>
-  )
+  );
 };
 
 const toastTypesWithIcon: ToastType[] = ['error', 'success', 'loading'];
@@ -79,8 +72,8 @@ const renderDismissIcon = (toast: Toast, onDismiss: ToastNotificationProps['onDi
   return (
     <Box
       as="button"
-      borderWidth="0 0 0 xs"
-      borderColor="grey"
+      borderWidth="0 0 0 sm"
+      borderColor="grey-600"
       margin="0 0 0 sm"
       padding="0 0 0 sm"
       cursor="pointer"
@@ -97,11 +90,7 @@ const renderDismissIcon = (toast: Toast, onDismiss: ToastNotificationProps['onDi
 // eslint-disable-next-line import/prefer-default-export
 export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
   ({
-    toast,
-    position = 'top-center',
-    style,
-    children,
-    onDismiss,
+    toast, position = 'top-center', style, children, onDismiss,
   }) => {
     const message = (
       <Box
@@ -122,9 +111,9 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
     return (
       <Box
         alignItems="center"
-        background="dark"
+        background="grey-800"
         color="white"
-        shadow="md"
+        shadow="2xs"
         maxWidth="300px"
         padding="md lg"
         radius="md"
