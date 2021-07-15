@@ -75,7 +75,7 @@ export const FormLabel: FC<FormLabelProps> = ({
       {...restProps}
     >
       {children}
-      {isFieldRequired && <span className="field-required-asterisk">&nbsp;*</span>}
+      {isFieldRequired && <span> *</span>}
       {helpText && (
         <Box as="p" display="block" fontSize="sm" color="grey" className={styles['help-text']}>
           {helpText}
