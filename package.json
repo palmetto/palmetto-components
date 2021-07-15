@@ -28,6 +28,7 @@
     "cleave.js": "^1.6.0",
     "date-fns": "^2.16.1",
     "focus-trap-react": "^8.1.0",
+    "goober": "^2.0.35",
     "react-datepicker": "^3.3.0",
     "react-merge-refs": "^1.1.0",
     "react-popper": "^2.2.3",

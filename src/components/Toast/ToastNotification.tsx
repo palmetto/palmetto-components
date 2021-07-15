@@ -25,10 +25,15 @@ const getAnimationClass = (
   visible: boolean,
 ): React.CSSProperties => {
   const verticalPosition = position.includes('top') ? 'top' : 'bottom';
+  const horizontalPosition = position.includes('left') ? 'left' : 'right';
+  const isCentered = position.includes('center');
 
   const [enter, exit] = prefersReducedMotion()
     ? [styles['toast-notification-fade-in'], styles['toast-notification-fade-out']]
-    : [styles[`toast-notification-enter-${verticalPosition}`], styles[`toast-notification-exit-${verticalPosition}`]];
+    : [
+        styles[`toast-notification-enter-${verticalPosition}`],
+        styles[`toast-notification-exit-${isCentered ? verticalPosition : horizontalPosition}`]
+    ];
 
   return visible ? enter : exit;
 };
@@ -58,13 +63,6 @@ const renderToastIcon = (toast: Toast) => {
 
   return (
     <Box
-      // as="button"
-      // borderWidth="0 0 0 xs"
-      // borderColor="grey"
-      // padding="0 0 0 sm"
-      // cursor="pointer"
-      // background="transparent"
-      // color="white"
       height="100"
     >
       {icon}
@@ -119,6 +117,8 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
       </Box>
     );
 
+    const animationClass = toast?.height ? getAnimationClass(toast.position || position, toast.visible) : undefined;
+
     return (
       <Box
         alignItems="center"
@@ -129,11 +129,11 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
         padding="md lg"
         radius="md"
         direction="row"
-        className={classNames(toast.className, getAnimationClass(toast.position || position, toast.visible))}
+        className={classNames(toast.className, animationClass)}
         style={{
           ...style,
           ...toast.style,
-          ...!toast.visible && { opacity: 0 },
+          ...!toast.height && { opacity: 0 },
           willChange: 'transform',
         }}
       >
