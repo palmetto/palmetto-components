@@ -1,101 +1,47 @@
-@keyframes toastEnterAnimationTop {
-  0% {
-    transform: translate3d(0, -200%, 0);
-    opacity: 0.5;
+.toast-notification-enter-top {
+  :global {
+    animation: toastEnterAnimationTop 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
   }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
+}
+  
+.toast-notification-exit-top {
+  :global {
+    animation: toastExitAnimationTop 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
   }
 }
 
-@keyframes toastEnterAnimationBottom {
-  0% {
-    transform: translate3d(0, 200%, 0);
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
+.toast-notification-enter-bottom {
+  :global {
+    animation: toastEnterAnimationBottom 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
   }
 }
 
-@keyframes toastExitAnimationTop {
-  0% {
-    transform: translate3d(0, 0, -1px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate3d(0, -150%, -1px);
-    opacity: 0;
+.toast-notification-exit-bottom {
+  :global {
+    animation: toastExitAnimationBottom 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
   }
 }
 
-@keyframes toastExitAnimationBottom {
-  0% {
-    transform: translate3d(0, 0, -1px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate3d(0, 150%, -1px);
-    opacity: 0;
+.toast-notification-exit-left {
+  :global {
+    animation: toastExitAnimationLeft 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
   }
 }
 
-@keyframes toastExitAnimationLeft {
-  0% {
-    transform: translate3d(0, 0, -1px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate3d(-150%, 0, -1px);
-    opacity: 0;
+.toast-notification-exit-right {
+  :global {
+    animation: toastExitAnimationRight 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
   }
 }
 
-@keyframes toastExitAnimationRight {
-  0% {
-    transform: translate3d(0, 0, -1px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate3d(150%, 0, -1px);
-    opacity: 0;
+.toast-notification-fade-in {
+  :global {
+    animation: fadeIn 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
+.toast-notification-fade-out {
+  :global {
+    animation: fadeOut 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
   }
 }
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-.toast-notification-enter-top { animation: toastEnterAnimationTop 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards; }
-.toast-notification-exit-top { animation: toastExitAnimationTop 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1); }
-.toast-notification-enter-bottom { animation: toastEnterAnimationBottom 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards; }
-.toast-notification-exit-bottom { animation: toastExitAnimationBottom 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1); }
-.toast-notification-exit-left { animation: toastExitAnimationLeft 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1); }
-.toast-notification-exit-right { animation: toastExitAnimationRight 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1); }
-.toast-notification-fade-in { animation: fadeIn 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards; }
-.toast-notification-fade-out { animation: fadeOut 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1); }
-.opacity-0 { opacity: 0; }

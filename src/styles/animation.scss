@@ -41,3 +41,75 @@
     opacity: 1;
   }
 }
+
+@keyframes toastEnterAnimationTop {
+  0% {
+    transform: translate3d(0, -200%, 0);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastEnterAnimationBottom {
+  0% {
+    transform: translate3d(0, 200%, 0);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastExitAnimationTop {
+  0% {
+    transform: translate3d(0, 0, -1px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(0, -150%, -1px);
+    opacity: 0;
+  }
+}
+
+@keyframes toastExitAnimationBottom {
+  0% {
+    transform: translate3d(0, 0, -1px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(0, 150%, -1px);
+    opacity: 0;
+  }
+}
+
+@keyframes toastExitAnimationLeft {
+  0% {
+    transform: translate3d(0, 0, -1px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(-150%, 0, -1px);
+    opacity: 0;
+  }
+}
+
+@keyframes toastExitAnimationRight {
+  0% {
+    transform: translate3d(0, 0, -1px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(150%, 0, -1px);
+    opacity: 0;
+  }
+}
