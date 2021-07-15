@@ -4,9 +4,15 @@ import {
   render,
   fireEvent,
   act,
+  waitFor,
 } from '@testing-library/react';
 import { ToastContainer } from './ToastContainer';
+import { ToastPosition } from './';
 import { toast } from './toast';
+
+const sleep = (ms: number) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -23,21 +29,87 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 describe('ToastContainer', () => {
-  test('Default', async () => {
-    act(() => {
-      render(<ToastContainer />);
+  test('Default', () => {
+    render(<ToastContainer data-testid="toast-container" />);
+
+    expect(screen.getByTestId('toast-container')).toBeInTheDocument();
+  });
+
+  test('With toasts', async () => {
+    render(<ToastContainer data-testid="toast-container" />);
+  
+    toast('test blank toast');
+
+    await expect(screen.getByText('test blank toast')).toBeInTheDocument();    
+  });
+
+  describe('Positions', () => {
+    const positions: ToastPosition[] = [
+      'top-left',
+      'top-right',
+      'top-center',
+      'bottom-left',
+      'bottom-center',
+      'bottom-right',
+    ];
+    
+    positions.forEach(position => {
+      test(`${position}`, async () => {
+        render(<ToastContainer data-testid={`toast-container-${position}`} position={position} />);
+
+        toast('test blank toast' + position);
+
+        expect(screen.getByTestId(`toast-container-${position}`)).toBeInTheDocument();
+
+        await expect(screen.getByText('test blank toast' + position)).toBeInTheDocument();  
+
+        const verticalStyle: React.CSSProperties = position.includes('top') ? { top: 0 } : { bottom: 0 };
+        const horizontalStyle = {
+          ...position.includes('center') && { justifyContent: 'center' },
+          ...(!position.includes('center') && position.includes('right')) && { justifyContent: 'flex-end' },
+        };
+
+        expect(screen.getByTestId(`toast-container-${position}`).children[0]).toHaveStyle({
+          ...verticalStyle,
+          ...horizontalStyle
+        });
+
+      });
+    });
+  });
+
+  describe('Toast Types', () => {
+    test('success', async () => {
+      render(<ToastContainer data-testid="toast-container" />);
+  
+      toast.success('test success toast');
+
+      await expect(screen.getByText('test success toast')).toBeInTheDocument();  
     });
 
-    act(() => {
-      toast('blank test toast');
+    test('error', async () => {
+      render(<ToastContainer data-testid="toast-container" />);
+  
+      toast.error('test error toast');
+
+      await expect(screen.getByText('test error toast')).toBeInTheDocument();  
     });
 
-    // jest.useFakeTimers();
+    test('loading', async () => {
+      render(<ToastContainer data-testid="toast-container" />);
+  
+      toast.loading('test loading toast');
 
-    await new Promise(res => setTimeout(res, 2000));
-    expect(screen.getByText('blank test toast')).toBeInTheDocument();
+      await expect(screen.getByText('test loading toast')).toBeInTheDocument();  
+    });
 
-    // jest.runAllTimers();
-  }, 3000);
+    test('custom', async () => {
+      render(<ToastContainer data-testid="toast-container" />);
+  
+      toast.custom(<p>test custom toast</p>);
 
+      await expect(screen.getByText('test custom toast')).toBeInTheDocument();  
+    });
+  });
 });
+

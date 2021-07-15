@@ -54,6 +54,7 @@ export interface ToastContainerProps {
   containerStyle?: React.CSSProperties;
   containerClassName?: string;
   children?: (t: Toast) => JSX.Element;
+  [x: string]: unknown; // eslint-disable-line
 }
 
 const DEFAULT_OFFSET = 16;
@@ -93,6 +94,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
   children,
   containerStyle,
   containerClassName,
+  ...restProps
 }) => {
   const { toasts, handlers } = useToasts(toastOptions);
 
@@ -111,6 +113,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
       className={containerClassName}
       onMouseEnter={handlers.startPause}
       onMouseLeave={handlers.endPause}
+      {...restProps}
     >
       {toasts.map(t => {
         const toastPosition = t.position || position;
@@ -134,7 +137,6 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
               ...positionStyle,
               pointerEvents: t.visible ? 'auto' : 'inherit',
             }}
-            display="block"
           >
             {renderNotification(t, children, position)}
           </Box>
