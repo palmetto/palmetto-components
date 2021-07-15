@@ -1,9 +1,8 @@
 import React from 'react';
-import { screen, render, cleanup, within } from '@testing-library/react';
+import { screen, render, cleanup } from '@testing-library/react';
 import { ToastContainer } from './ToastContainer';
 import { ToastPosition } from '.';
 import { toast } from './toast';
-import { reject, resolve } from 'q';
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -74,7 +73,7 @@ describe('ToastContainer', () => {
         render(<ToastContainer />);
 
         toast(`test custom position toast ${position}`, { position });
-    
+
         await expect(screen.getByText(`test custom position toast ${position}`)).toBeInTheDocument();
       });
     });
@@ -120,14 +119,15 @@ describe('ToastContainer', () => {
           if (Date.now() % 2 === 0) {
             resolve('yay');
           } else {
+            // eslint-disable-next-line
             reject('oh no!');
           }
         }, 1000);
       });
       toast.async(myPromise, {
         loading: 'loading...',
-        success: (data) => `success ${data}`,
-        error: (err) => `error ${err}`,
+        success: data => `success ${data}`,
+        error: err => `error ${err}`,
       });
 
       await expect(screen.getByText('loading...')).toBeInTheDocument();
@@ -136,10 +136,11 @@ describe('ToastContainer', () => {
     test('with children function', async () => {
       render(<ToastContainer />);
 
-      toast((t) => (
+      toast(t => (
         <span>
-          Custom and <b>bold</b>
-          <button onClick={() => toast.dismiss(t.id)}>Dismiss</button>
+          Custom and
+          <b>bold</b>
+          <button type="button" onClick={() => toast.dismiss(t.id)}>Dismiss</button>
         </span>
       ));
 

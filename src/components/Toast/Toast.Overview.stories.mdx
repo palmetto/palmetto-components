@@ -266,10 +266,6 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
             success: (data) => `success! ${type.includes('data') ? data : ''}`,
             error: (err) => `error! ${type.includes('data') ? err : ''}`,
           });
-        } else if (type === 'jsx') {
-          toast(
-            <Box fontSize="xl" display="block">Big and <Box fontWeight="bold" display="inline">bold</Box>&nbsp;text</Box>,
-          );
         }
       };
       return (
@@ -298,9 +294,6 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
                 async (including promise data)
               </Button>
             </Box>
-            <Button onClick={() => handleClick('jsx')} variant="light">
-              custom JSX
-            </Button>
           </Box>
         </>
       );
