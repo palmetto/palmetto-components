@@ -137,6 +137,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
               ...positionStyle,
               pointerEvents: t.visible ? 'auto' : 'inherit',
             }}
+            display="block"
           >
             {renderNotification(t, children, position)}
           </Box>
