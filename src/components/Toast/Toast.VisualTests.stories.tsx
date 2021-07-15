@@ -50,3 +50,62 @@ export const Loading = (): React.ReactNode => {
   }, 1);
   return <></>;
 };
+
+export const Compact = (): React.ReactNode => {
+  setTimeout(() => {
+    toast('compact toast', { isCompact: true });
+  }, 1);
+  return <></>;
+};
+
+export const CannotDismiss = (): React.ReactNode => {
+  setTimeout(() => {
+    toast('cannot dismiss toast', { canDismiss: false });
+  }, 1);
+  return <></>;
+};
+
+export const TopLeft = (): React.ReactNode => {
+  setTimeout(() => {
+    toast('cannot dismiss toast', { position: 'top-left' });
+  }, 1);
+  return <></>;
+};
+
+export const TopCenter = (): React.ReactNode => {
+  setTimeout(() => {
+    toast('cannot dismiss toast', { position: 'top-center' });
+  }, 1);
+  return <></>;
+};
+
+export const TopRight = (): React.ReactNode => {
+  setTimeout(() => {
+    toast('cannot dismiss toast', { position: 'top-right' });
+  }, 1);
+  return <></>;
+};
+
+export const BottomLeft = (): React.ReactNode => {
+  setTimeout(() => {
+    toast('cannot dismiss toast', { position: 'bottom-left' });
+  }, 1);
+  return <></>;
+};
+
+export const BottomCenter = (): React.ReactNode => {
+  setTimeout(() => {
+    toast('cannot dismiss toast', { position: 'bottom-center' });
+  }, 1);
+  return <></>;
+};
+
+export const BottomRight = (): React.ReactNode => {
+  setTimeout(() => {
+    toast('cannot dismiss toast', { position: 'bottom-right' });
+  }, 1);
+  return <></>;
+};
+
+
+
