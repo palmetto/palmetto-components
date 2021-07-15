@@ -48,7 +48,7 @@ Keep the contents of a toast as short as possible by placing only the most impor
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
-      const handleClick = () => toast('Proposal saved!');
+      const handleClick = () => toast('Proposal saved!', { duration: 30000 });
       return (
         <>
           <Button onClick={handleClick}>

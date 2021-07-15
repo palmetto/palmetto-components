@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, render } from '@testing-library/react';
+import { screen, render, cleanup, within } from '@testing-library/react';
 import { ToastContainer } from './ToastContainer';
 import { ToastPosition } from '.';
 import { toast } from './toast';
@@ -17,6 +17,8 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
+
+afterEach(cleanup);
 
 describe('ToastContainer', () => {
   test('Default', () => {
@@ -69,7 +71,7 @@ describe('ToastContainer', () => {
 
   describe('Toast Types', () => {
     test('success', async () => {
-      render(<ToastContainer data-testid="toast-container" />);
+      render(<ToastContainer />);
 
       toast.success('test success toast');
 
@@ -77,7 +79,7 @@ describe('ToastContainer', () => {
     });
 
     test('error', async () => {
-      render(<ToastContainer data-testid="toast-container" />);
+      render(<ToastContainer />);
 
       toast.error('test error toast');
 
@@ -85,7 +87,7 @@ describe('ToastContainer', () => {
     });
 
     test('loading', async () => {
-      render(<ToastContainer data-testid="toast-container" />);
+      render(<ToastContainer />);
 
       toast.loading('test loading toast');
 
@@ -93,11 +95,24 @@ describe('ToastContainer', () => {
     });
 
     test('custom', async () => {
-      render(<ToastContainer data-testid="toast-container" />);
+      render(<ToastContainer />);
 
       toast.custom(<p>test custom toast</p>);
 
       await expect(screen.getByText('test custom toast')).toBeInTheDocument();
+    });
+
+    test('with children function', async () => {
+      render(<ToastContainer />);
+
+      toast((t) => (
+        <span>
+          Custom and <b>bold</b>
+          <button onClick={() => toast.dismiss(t.id)}>Dismiss</button>
+        </span>
+      ));
+
+      await expect(screen.getByText('Custom and')).toBeInTheDocument();
     });
   });
 });

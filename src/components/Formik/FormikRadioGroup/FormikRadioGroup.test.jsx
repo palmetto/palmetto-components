@@ -29,7 +29,6 @@ const groupOptions = [{
 }];
 
 const handleValidation = values => {
-  console.log('did I go?');
   const errors = {};
   if (!values[testGroupName]) {
     errors[testGroupName] = 'selection is required';
