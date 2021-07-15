@@ -3,6 +3,7 @@ import { ExtendedToastOptions, Toast, ToastPosition } from './Toast.types';
 import { useToastStore, dispatch, ToastStoreActionType } from './Toast.store';
 import { toast } from './toast';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useToasts = (toastOptions?: ExtendedToastOptions) => { // eslint-disable-line import/prefer-default-export
   const { toasts, pausedAt } = useToastStore(toastOptions);
 

@@ -16,35 +16,35 @@ export default {
   )],
 } as Meta;
 
-export const Default = () => {
+export const Default = (): React.ReactNode => {
   setTimeout(() => {
     toast('default toast');
   }, 1);
   return <></>;
 };
 
-export const Dismissable = () => {
+export const Dismissable = (): React.ReactNode => {
   setTimeout(() => {
     toast('dismissable toast', { canDismiss: true });
   }, 1);
   return <></>;
 };
 
-export const Success = () => {
+export const Success = (): React.ReactNode => {
   setTimeout(() => {
     toast.success('success toast');
   }, 1);
   return <></>;
 };
 
-export const Error = () => {
+export const Error = (): React.ReactNode => {
   setTimeout(() => {
     toast.error('error toast');
   }, 1);
   return <></>;
 };
 
-export const Loading = () => {
+export const Loading = (): React.ReactNode => {
   setTimeout(() => {
     toast.loading('error toast');
   }, 1);

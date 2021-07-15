@@ -28,8 +28,8 @@ const getAnimationClass = (position: ToastPosition, visible: boolean): React.CSS
   const [enter, exit] = prefersReducedMotion()
     ? [styles['toast-notification-fade-in'], styles['toast-notification-fade-out']]
     : [
-        styles[`toast-notification-enter-${verticalPosition}`],
-        styles[`toast-notification-exit-${isCentered ? verticalPosition : horizontalPosition}`]
+      styles[`toast-notification-enter-${verticalPosition}`],
+      styles[`toast-notification-exit-${isCentered ? verticalPosition : horizontalPosition}`],
     ];
 
   return visible ? enter : exit;
@@ -53,9 +53,9 @@ const renderToastIcon = (toast: Toast) => {
     iconColor = 'danger-light';
   }
 
-  // eslint-disable-next-line consistent-return
   const icon = type !== 'loading' ? <Icon name={iconName} color={iconColor} /> : <Spinner variant="grey" />;
 
+  // eslint-disable-next-line consistent-return
   return (
     <Box justifyContent="center" height="100">
       {icon}

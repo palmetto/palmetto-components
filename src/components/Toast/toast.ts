@@ -44,6 +44,7 @@ const createHandler = (type?: ToastType): ToastHandler => (
   return toast.id;
 };
 
+// eslint-disable-next-line
 const toast = (message: Message, opts?: ToastOptions) => createHandler('blank')(message, opts);
 
 toast.error = createHandler('error');
@@ -63,6 +64,7 @@ toast.remove = (toastId?: string) => dispatch({
   payload: { toastId },
 });
 
+// eslint-disable-next-line func-names
 toast.async = function<T> (
   promise: Promise<T>,
   messages: {

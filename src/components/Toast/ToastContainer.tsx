@@ -13,7 +13,7 @@ import { toast } from './toast';
 
 export const createRectRef = (onRect: (rect: DOMRect) => void) => (
   el: HTMLElement | null,
-) => {
+): void => {
   if (el) {
     setTimeout(() => {
       const boundingRect = el.getBoundingClientRect();
