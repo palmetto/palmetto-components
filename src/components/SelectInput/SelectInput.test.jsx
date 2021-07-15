@@ -9,6 +9,16 @@ const selectOptions = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
+function getByTextWithMarkup(text) {
+  return (content, element) => {
+    const hasText = node => node.textContent === text;
+    const elementHasText = hasText(element);
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
+
 describe('SelectInput', () => {
   describe('Callback Handling', () => {
     test('it fires onChange callback on change', async () => {
@@ -196,7 +206,7 @@ describe('SelectInput', () => {
           />,
         );
 
-        expect(screen.getByText('Select Label *')).toBeInTheDocument();
+        expect(screen.getByText(getByTextWithMarkup('Select Label *'))).toBeInTheDocument();
       });
     });
 
