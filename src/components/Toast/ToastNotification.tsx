@@ -124,6 +124,7 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
           ...toast.style,
           ...!toast.height && { opacity: 0 },
           willChange: 'transform',
+          pointerEvents: 'auto',
         }}
       >
         {typeof children === 'function' ? (

@@ -135,7 +135,6 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
             key={t.id}
             style={{
               ...positionStyle,
-              pointerEvents: t.visible ? 'auto' : 'inherit',
             }}
             display="block"
           >
