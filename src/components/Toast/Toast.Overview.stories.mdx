@@ -48,7 +48,7 @@ Keep the contents of a toast as short as possible by placing only the most impor
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
-      const handleClick = () => toast('Proposal saved!', { duration: 30000 });
+      const handleClick = () => toast('Proposal saved', { duration: 30000 });
       return (
         <>
           <Button onClick={handleClick}>
@@ -63,7 +63,7 @@ Keep the contents of a toast as short as possible by placing only the most impor
 ## Required Setup
 
 1. Include the `<ToastContainer />` in your React app. (at the highest possible level of the DOM tree);
-2. Create a toast anywhere in your app `toast('hello!')`.
+2. Create a toast anywhere in your app `toast('Hello')`.
 
 **NOTE:** All examples of this page exclusively showcase step 2 above, as the ToastContainer is added globally on the page.
 
@@ -83,7 +83,7 @@ export const App = () => {
 import { toast } from '@palmetto/palmetto-components';
 
 export const SomeAppPage = () => {
-  <button onClick={() => toast('hello!')}>
+  <button onClick={() => toast('Hello')}>
     gimme a toast
   </button>
 }
@@ -96,7 +96,7 @@ export const SomeAppPage = () => {
 <Canvas isExpanded>
   <Story name="Position">
     {() => {
-      const handleClick = position => toast('hey oh!', { position });
+      const handleClick = position => toast('Hey there', { position });
       return (
         <>
           <Box childGap="md" direction="row">
@@ -255,9 +255,9 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
             const randomNum = Math.floor(Math.random() * 2)
             setTimeout(() => {
               if (randomNum % 2 === 0) {
-                resolve('this is your data');
+                resolve('This is your data');
               } else {
-                reject('bad request!');
+                reject('Bad request');
               }
             }, 2000);
           });
