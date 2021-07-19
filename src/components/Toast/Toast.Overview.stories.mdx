@@ -25,34 +25,43 @@ Use a toast to communicate non-critical information or feedback to a user about 
 Typically you'd reserve toasts for non-essential notifications, since they are meant to disappear automatically
 under normal circumstances.
 
-You might use a toast to tell a user whether an interaction on the page was successful.
-
 ## Usage Guidelines
-1. For errors, prefer persisted Alerts over Toasts. See [Alert](?path=/docs/components-alert-overview--default-story).
-2. Keep messages short. Typically if a toast results in a multiline message, that is a queue that it is likely too long.
-3. Try to avoid adding actions inside of a toast. If you include an action (other than dismiss) in a toast,
+
+- Keep messages short. Typically if a toast results in a multiline message, than it is too long.
+- Avoid adding actions inside of a toast. If you include an action (other than dismiss) in a toast,
 try and have that action available somewhere else on the page.
 E.G: a `retry` action can also be triggered by re-submitting a form.
-4. The main exception that makes for a useful toast action is an `undo` button, which is unlikely to make sense
+- The main exception that makes for a useful toast action is an `undo` button, which is unlikely to make sense
 in most pages, but is a great escape hatch for a user that wants to take back an action.
-5. DO NOT use a toast as a blocking alert or interstitial (I.E: to restrict or contextualize user actions). In these
+
+### Toast or Alert or Modal?
+
+When to use Toast:
+
+- Confirmations, success messages, and simple notifications
+- Non-critical errors that are relevant in the moment and do not need to interrupt the user experience
+
+When not to use Toast:
+
+- Do not use toasts for error messages. Instead, use [Alert](?path=/docs/components-alert-overview--default-story) to prominently inform users of persistent errors.
+- Do not use toasts as a blocking alert or interstitial (i.e. restrict or contextualize user actions). In these
 cases, use a [Modal](?path=/docs/components-modal-overview--default-story).
 
 ## Content Guidelines
 
 Keep the contents of a toast as short as possible by placing only the most important information in it. Toasts are meant to unobtrusively provide feedback for non-critical information or feedback. In general, toast messages should be:
 
-- short and affirmative
+- Short and affirmative
 - Written in a pattern of noun + verb, such as "Proposal saved" or "hic_contract.pdf added".
 
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
-      const handleClick = () => toast('Proposal saved', { duration: 30000 });
+      const handleClick = () => toast('Proposal saved', { duration: 5000 });
       return (
         <>
           <Button onClick={handleClick}>
-            Click to see toast
+            Show toast
           </Button>
         </>
       );
@@ -156,7 +165,7 @@ to avoid an infinite spinner.
 
 ### Dismissible (or lack thereof)
 
-By default, all Toasts are dismissible since they
+By default, toasts are dismissible since they
 should not hinder the user experience, but we still wish to provide a quick and easy
 escape hatch, should a user want to clear it out of their view.
 
@@ -167,7 +176,7 @@ without the user being able to clear it, you can use `canDismiss: false`.
   <Story name="Dismissible">
     {() => {
       const handleClick = () => {
-        toast(`this toast can't be dismissed`, { canDismiss: false, duration: 100000 });
+        toast(`This toast can't be dismissed`, { duration: 5000, canDismiss: false });
       };
       return (
         <>
@@ -207,6 +216,8 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
 
 ### Toast Types
 
+To give toasts an additional visual indication of feedback, `success`, `loading`, and `error` types add a contextual icon to the toast message.
+
 <Canvas isExpanded>
   <Story name="Basic Types">
     {() => {
@@ -216,7 +227,7 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
         } else if (type === 'error') {
           toast.error('Unable to save');
         } else if (type === 'loading') {
-          const toastId = toast.loading('Loading...', { duration: 10000, canDismiss: false });
+          const toastId = toast.loading('Loading...', { canDismiss: false });
         } else {
           toast('Toast without icon');
         }
@@ -228,16 +239,16 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
           </Box>
           <Box childGap="md" direction="row">
             <Button onClick={() => handleClick('blank')} variant="light">
-              blank
+              Default
             </Button>
             <Button onClick={() => handleClick('error')} variant="danger">
-              error
+              Error
             </Button>
             <Button onClick={() => handleClick('success')} variant="success">
-              success
+              Success
             </Button>
             <Button onClick={() => handleClick('loading')} variant="dark">
-              loading
+              Loading
             </Button>
           </Box>
         </>
@@ -255,16 +266,16 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
             const randomNum = Math.floor(Math.random() * 2)
             setTimeout(() => {
               if (randomNum % 2 === 0) {
-                resolve('This is your data');
+                resolve(', data loaded');
               } else {
-                reject('Bad request');
+                reject(', bad request');
               }
             }, 2000);
           });
           toast.async(promise, {
             loading: 'loading',
-            success: (data) => `success! ${type.includes('data') ? data : ''}`,
-            error: (err) => `error! ${type.includes('data') ? err : ''}`,
+            success: (data) => `Success${type.includes('data') ? data : ''}`,
+            error: (err) => `Error${type.includes('data') ? err : ''}`,
           });
         }
       };
