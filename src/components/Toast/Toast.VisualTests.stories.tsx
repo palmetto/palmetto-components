@@ -8,12 +8,14 @@ export default {
   parameters: {
     chromatic: { delay: 1000, pauseAnimationAtEnd: true, viewports: [320, 700, 1012, 1300] },
   },
-  decorators: [storyFn => (
-    <div>
-      <ToastContainer />
-      {storyFn()}
-    </div>
-  )],
+  decorators: [
+    storyFn => (
+      <div>
+        <ToastContainer />
+        {storyFn()}
+      </div>
+    ),
+  ],
 } as Meta;
 
 export const Default = (): React.ReactNode => {
@@ -46,7 +48,7 @@ export const Error = (): React.ReactNode => {
 
 export const Loading = (): React.ReactNode => {
   setTimeout(() => {
-    toast.loading('error toast');
+    toast.loading('loading toast');
   }, 1);
   return <></>;
 };
