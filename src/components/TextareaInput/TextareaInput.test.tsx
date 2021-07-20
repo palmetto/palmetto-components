@@ -123,14 +123,6 @@ describe('TextareaInput', () => {
     });
 
     describe('Error', () => {
-      test('the label renders in an error state', () => {
-        render(<TextareaInput {...baseProps} error="You silly goose" />);
-
-        const labelElement = screen.getByText(baseProps.label);
-
-        expect(labelElement.getAttribute('class')).toContain('error');
-      });
-
       test('Input correctly displays error message if provided', () => {
         render(<TextareaInput {...baseProps} error="You silly goose" />);
 

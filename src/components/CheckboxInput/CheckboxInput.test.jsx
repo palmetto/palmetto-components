@@ -45,7 +45,6 @@ describe('CheckboxInput', () => {
     expect(FormLabel).toHaveBeenCalledWith(
       {
         inputId: 'testCheckbox',
-        hasError: false,
         helpText: 'i am help text',
         isFieldRequired: false,
         children: 'test checkbox',
@@ -71,7 +70,6 @@ describe('CheckboxInput', () => {
     expect(FormLabel).toHaveBeenCalledWith(
       {
         inputId: 'testCheckbox',
-        hasError: false,
         helpText: undefined,
         isFieldRequired: true,
         children: 'test checkbox',
@@ -138,7 +136,6 @@ describe('CheckboxInput', () => {
       expect(FormLabel).toHaveBeenCalledWith(
         {
           inputId: 'testCheckbox',
-          hasError: true,
           helpText: undefined,
           isFieldRequired: false,
           children: 'test checkbox',
@@ -163,7 +160,6 @@ describe('CheckboxInput', () => {
       expect(FormLabel).toHaveBeenCalledWith(
         {
           inputId: 'testCheckbox',
-          hasError: true,
           helpText: undefined,
           isFieldRequired: false,
           children: 'test checkbox',
@@ -189,7 +185,6 @@ describe('CheckboxInput', () => {
     expect(FormLabel).toHaveBeenCalledWith(
       {
         inputId: 'testCheckbox',
-        hasError: false,
         helpText: undefined,
         isFieldRequired: false,
         children: 'test checkbox',
@@ -215,7 +210,6 @@ describe('CheckboxInput', () => {
       expect(FormLabel).toHaveBeenCalledWith(
         {
           inputId: 'testCheckbox',
-          hasError: false,
           helpText: undefined,
           isFieldRequired: false,
           children: 'test checkbox',
@@ -239,7 +233,6 @@ describe('CheckboxInput', () => {
       expect(FormLabel).toHaveBeenCalledWith(
         {
           inputId: 'testCheckbox',
-          hasError: false,
           helpText: undefined,
           isFieldRequired: false,
           children: 'test checkbox',

@@ -31,6 +31,8 @@ function generateBaseClasses(
       has extra whitespace either at the beginning or the end of it.
       We have trimmed this whitespace, but please double-check that
       the prop value is correct.
+      attribute: "${attribute}"
+      value: "${value}"
     `);
   }
 
@@ -57,6 +59,8 @@ function generateBaseClasses(
         shorthand value as a prop in your component. The value
         has more than four string components. While it will not break anything,
         please double-check your prop values to ensure the expected result is correct.
+        attribute: "${attribute}"
+        value: "${value}"
       `);
     }
 

@@ -1,13 +1,16 @@
 import React, {
   useRef, FC, ReactNode, ChangeEvent, MouseEvent,
 } from 'react';
-import { Box } from '../Box/Box';
+import mergeRefs from 'react-merge-refs';
+import classNames from 'classnames';
+import { Box, BoxProps } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { Button, ButtonSize } from '../Button/Button';
+import styles from './FileUpload.module.scss';
 
-export interface FileUploadProps {
+export interface FileUploadProps extends BoxProps {
   /**
    * Id for the file input element.
    */
@@ -67,6 +70,10 @@ export interface FileUploadProps {
    */
   helpText?: ReactNode;
   /**
+   * Props passed directly to the input element of the component
+   */
+  inputProps?: BoxProps & React.HTMLProps<HTMLInputElement>;
+  /**
    * Whether the file upload is disabled.
    */
   isDisabled?: boolean;
@@ -98,32 +105,44 @@ export interface FileUploadProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const FileUpload: FC<FileUploadProps> = ({
-  id,
-  labelText,
-  name,
-  onChange,
-  accept = undefined,
-  buttonText = 'Upload File',
-  className = undefined,
-  error = null,
-  fileNameMaxLength = null,
-  files = null,
-  fullWidth = false,
-  hasIcon = true,
-  helpText = undefined,
-  isDisabled = false,
-  isRequired = false,
-  multiple = false,
-  onClearFiles = undefined,
-  size = 'md',
-  variant = 'light',
-  ...restProps
-}) => {
+export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, FileUploadProps>((
+  {
+    id,
+    labelText,
+    name,
+    onChange,
+    accept = undefined,
+    buttonText = 'Upload File',
+    className = undefined,
+    error = null,
+    fileNameMaxLength = null,
+    files = null,
+    fullWidth = false,
+    hasIcon = true,
+    helpText = undefined,
+    inputProps = undefined,
+    isDisabled = false,
+    isRequired = false,
+    multiple = false,
+    onClearFiles = undefined,
+    size = 'md',
+    variant = 'light',
+    ...restProps
+  },
+  ref,
+) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
     if (hiddenFileInput?.current) hiddenFileInput.current.click();
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (inputProps?.onChange) {
+      inputProps.onChange(event);
+    }
+
+    onChange(event);
   };
 
   const truncateFileName = (fileName: string, maxLength: number): string => {
@@ -158,7 +177,13 @@ export const FileUpload: FC<FileUploadProps> = ({
   );
 
   return (
-    <Box display="inline-block" className={className} width={fullWidth ? '100' : undefined}>
+    <Box
+      display="inline-block"
+      className={className}
+      width={fullWidth ? '100' : undefined}
+      ref={ref}
+      {...restProps}
+    >
       <FormLabel inputId={id} className="display-none">
         {labelText}
       </FormLabel>
@@ -180,19 +205,21 @@ export const FileUpload: FC<FileUploadProps> = ({
           )}
           {buttonText}
           {isRequired && <>&nbsp;*</>}
-          <input
-            ref={hiddenFileInput}
-            className="display-none"
+          <Box
+            // We spread props here at that top to avoid inputProps overwriting high-level component props
+            {...inputProps}
+            as="input"
+            ref={mergeRefs([hiddenFileInput, ...(inputProps?.ref ? [inputProps.ref] : [])])}
+            className={classNames(styles['file-upload-input-element'], inputProps?.className)}
             type="file"
             id={id}
             name={name}
             accept={accept}
-            onChange={onChange}
+            onChange={handleInputChange}
             multiple={multiple}
             disabled={isDisabled}
             aria-disabled={isDisabled}
             required={isRequired}
-            {...restProps}
           />
         </Button>
         {helpText && (
@@ -212,4 +239,4 @@ export const FileUpload: FC<FileUploadProps> = ({
       )}
     </Box>
   );
-};
+});

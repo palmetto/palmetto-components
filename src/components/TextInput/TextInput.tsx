@@ -1,28 +1,29 @@
 import React, {
-  FC,
   ChangeEvent,
   forwardRef,
   MouseEvent,
   KeyboardEvent,
   FocusEvent,
+  ForwardRefExoticComponent,
   ReactNode,
-  Component,
   HTMLProps,
   InputHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import { ChangeEvent as CleaveChangeEvent } from 'cleave.js/react/props';
-import { UnknownPropertiesObjType } from '../../types';
-import * as InputMaskTypes from './TextInputMasks';
-import { Box } from '../Box/Box';
+import { ResponsiveProp, UnknownPropertiesObjType } from '../../types';
+import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
+import { computedResponsiveSize } from './TextInputSizeUtilities'; // eslint-disable-line import/no-cycle
+import { getInputMaskType } from './TextInputMasks'; // eslint-disable-line import/no-cycle
+import { Box, BoxProps } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormControl } from '../FormControl/FormControl';
 import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
 import styles from './TextInput.module.scss';
 
 export type InputMaskType = ('phone' | 'creditCard' | 'date') | UnknownPropertiesObjType;
-
+export type TextInputSize = 'sm' | 'md' | 'lg';
 export interface TextInputProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
@@ -70,7 +71,7 @@ export interface TextInputProps {
   /**
    * Props passed directly to the input element of the component
    */
-  inputProps?: HTMLProps<HTMLInputElement>;
+  inputProps?: BoxProps & HTMLProps<HTMLInputElement>;
   /**
    * The input's disabled attribute
    */
@@ -112,7 +113,7 @@ export interface TextInputProps {
   /**
    * The size of the text input.
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: TextInputSize | ResponsiveProp<TextInputSize>;
   /**
    * An input helper rendered after the input field value
    */
@@ -127,7 +128,7 @@ export interface TextInputProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Component, TextInputProps>(
+export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<HTMLDivElement, TextInputProps>(
   (
     {
       id,
@@ -157,32 +158,7 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
     },
     ref,
   ) => {
-    const getInputMaskType = (
-      mask: InputMaskType,
-      availableInputMaskTypes: {
-        phone: {
-          numericOnly: boolean;
-          blocks: number[];
-          delimiters: string[];
-        };
-        creditCard: {
-          creditCard: boolean;
-        };
-        date: {
-          date: boolean;
-          delimiter: string;
-          datePattern: string[];
-        };
-      },
-    ) => {
-      if (typeof mask === 'string') {
-        return availableInputMaskTypes[mask];
-      }
-
-      return mask;
-    };
-
-    const inputWrapperClasses = classNames(styles['text-input-wrapper'], styles[size], {
+    const inputWrapperClasses = classNames(styles['text-input-wrapper'], {
       [styles.error]: error,
       [styles.disabled]: isDisabled,
     });
@@ -208,7 +184,7 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       );
     };
 
-    const computedInputProps = {
+    const computedInputProps: TextInputProps['inputProps'] = {
       ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
       'aria-required': isRequired,
       'aria-invalid': !!error,
@@ -228,9 +204,10 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
       value,
       className: classNames(
         inputProps.className,
+        cssShorthandToClasses('p', computedResponsiveSize(size, 'childPadding')),
         {
-          'p-left-xs': prefix,
-          'p-right-xs': suffix,
+          'p-left-xs p-left-xs-tablet p-left-xs-desktop p-left-xs-hd': prefix,
+          'p-right-xs p-right-xs-tablet p-right-xs-desktop p-right-xs-hd': suffix,
           'p-h-0': !suffix && !prefix,
         },
       ),
@@ -248,22 +225,32 @@ export const TextInput: FC<TextInputProps> = forwardRef<HTMLInputElement & Compo
         ref={ref}
         {...restProps}
       >
-        <Box direction="row" className={inputWrapperClasses}>
+        <Box
+          direction="row"
+          className={inputWrapperClasses}
+          padding={computedResponsiveSize(size, 'containerPadding')}
+          fontSize={computedResponsiveSize(size, 'fontSize')}
+          radius={computedResponsiveSize(size, 'radius')}
+        >
           {prefix && (
-            <Box color="grey-400" className="ws-nowrap">
+            <Box
+              color="grey-400"
+              className="ws-nowrap"
+              padding={computedResponsiveSize(size, 'childPadding')}
+            >
               {prefix}
             </Box>
           )}
           {!inputMask ? (
-            <input {...computedInputProps} />
+            <Box as="input" {...computedInputProps} />
           ) : (
             // eslint-disable-next-line
             // @ts-ignore
-            <Cleave {...computedInputProps} options={getInputMaskType(inputMask, InputMaskTypes)} />
+            <Cleave {...computedInputProps} options={getInputMaskType(inputMask)} />
           )}
           {!!onClear && !!value && renderClearIcon()}
           {suffix && (
-            <Box color="grey-400" className="ws-nowrap">
+            <Box color="grey-400" className="ws-nowrap" padding={computedResponsiveSize(size, 'childPadding')}>
               {suffix}
             </Box>
           )}

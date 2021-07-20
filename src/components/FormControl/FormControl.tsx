@@ -35,7 +35,7 @@ export interface FormControlProps extends BoxProps {
   isRequired?: boolean;
 }
 
-export const FormControl: React.FC<FormControlProps> = React.forwardRef((
+export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
   {
     label,
     hideLabel,
@@ -53,7 +53,6 @@ export const FormControl: React.FC<FormControlProps> = React.forwardRef((
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
-    hasError: !!error,
     helpText,
     margin: '0 0 xs 0',
     isDisabled,

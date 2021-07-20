@@ -1,12 +1,21 @@
 import React, { ReactElement, useState } from 'react';
-import { TextInput } from './TextInput';
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { TextInput, TextInputProps } from './TextInput';
 import { Icon } from '../Icon/Icon';
 import { Box } from '../Box/Box';
+import { RESPONSIVE_STORY } from '../../docs/constants';
 
 export default {
   title: 'Components/TextInput/Visual Regression Tests',
   component: TextInput,
-};
+} as Meta;
+
+const Template: Story<TextInputProps> = args => (
+  <TextInput
+    {...args}
+    onChange={() => {}} // eslint-disable-line
+  />
+);
 
 export const PrefixSuffixSizes: React.FC = (): ReactElement => {
   const [prefixValue, setPrefixValue] = useState('palmettosolar');
@@ -20,7 +29,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           id="prefixSuffix1"
           value={prefixValue}
           label="Prefix"
-          onChange={event => setPrefixValue(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue(event.target.value)}
           prefix="@"
           size="sm"
         />
@@ -28,7 +37,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           id="prefixSuffix2"
           value={prefixValue2}
           label="Prefix and Suffix"
-          onChange={event => setPrefixValue2(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue2(event.target.value)}
           prefix="$"
           suffix=".99"
           size="sm"
@@ -38,7 +47,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           value={prefixValue3}
           label="Suffix"
           placeholder="Contact name"
-          onChange={event => setPrefixValue3(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue3(event.target.value)}
           suffix={<Icon name="book" />}
           size="sm"
         />
@@ -47,7 +56,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           value={prefixValue4}
           label="Suffix with Clear"
           placeholder="Contact name"
-          onChange={event => setPrefixValue4(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue4(event.target.value)}
           onClear={() => setPrefixValue4('')}
           suffix={<Icon name="search" />}
           size="sm"
@@ -58,14 +67,14 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           id="prefixSuffix5"
           value={prefixValue}
           label="Prefix"
-          onChange={event => setPrefixValue(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue(event.target.value)}
           prefix="@"
         />
         <TextInput
           id="prefixSuffix6"
           value={prefixValue2}
           label="Prefix and Suffix"
-          onChange={event => setPrefixValue2(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue2(event.target.value)}
           prefix="$"
           suffix=".99"
         />
@@ -74,7 +83,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           value={prefixValue3}
           label="Suffix"
           placeholder="Contact name"
-          onChange={event => setPrefixValue3(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue3(event.target.value)}
           suffix={<Icon name="book" />}
         />
         <TextInput
@@ -82,7 +91,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           value={prefixValue4}
           label="Suffix with Clear"
           placeholder="Contact name"
-          onChange={event => setPrefixValue4(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue4(event.target.value)}
           onClear={() => setPrefixValue4('')}
           suffix={<Icon name="search" />}
         />
@@ -92,7 +101,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           id="prefixSuffix9"
           value={prefixValue}
           label="Prefix"
-          onChange={event => setPrefixValue(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue(event.target.value)}
           prefix="@"
           size="lg"
         />
@@ -100,7 +109,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           id="prefixSuffix10"
           value={prefixValue2}
           label="Prefix and Suffix"
-          onChange={event => setPrefixValue2(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue2(event.target.value)}
           prefix="$"
           suffix=".99"
           size="lg"
@@ -110,7 +119,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           value={prefixValue3}
           label="Suffix"
           placeholder="Contact name"
-          onChange={event => setPrefixValue3(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue3(event.target.value)}
           suffix={<Icon name="book" />}
           size="lg"
         />
@@ -119,7 +128,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           value={prefixValue4}
           label="Suffix with Clear"
           placeholder="Contact name"
-          onChange={event => setPrefixValue4(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue4(event.target.value)}
           onClear={() => setPrefixValue4('')}
           suffix={<Icon name="search" />}
           size="lg"
@@ -128,3 +137,17 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
     </Box>
   );
 };
+
+export const ResponsiveSize = Template.bind({});
+ResponsiveSize.args = {
+  size: {
+    base: 'sm',
+    tablet: 'md',
+    desktop: 'lg',
+    hd: 'sm',
+  },
+  value: 'responsive',
+  suffix: '00',
+  prefix: '$',
+};
+ResponsiveSize.parameters = RESPONSIVE_STORY;

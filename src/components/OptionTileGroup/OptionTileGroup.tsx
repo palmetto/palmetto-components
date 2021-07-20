@@ -1,10 +1,8 @@
-import React from 'react';
-import { BrandColor, FontColor, ResponsiveProp } from '../../types';
+import React, { forwardRef, ForwardRefExoticComponent } from 'react';
+import { ResponsiveProp } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
-import { RadioInput } from '../RadioGroup/RadioInput/RadioInput';
-import { Checkbox } from '../CheckboxInput/components/Checkbox';
+import { OptionTile } from '../OptionTile/OptionTile';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
-import { Icon } from '../Icon/Icon';
 import styles from './OptionTileGroup.module.scss';
 
 interface Option {
@@ -70,13 +68,9 @@ export interface OptionTileGroupProps extends BoxProps {
    * Title to be displayed above the Option Group.
    */
   title?: React.ReactNode;
-  /**
-   * Properties to spread onto root node.
-   */
-  [x: string]: any; // eslint-disable-line
 }
 
-export const OptionTileGroup = React.forwardRef<HTMLDivElement, OptionTileGroupProps>((
+export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = forwardRef<HTMLDivElement, OptionTileGroupProps>(( // eslint-disable-line max-len
   {
     name,
     onChange,
@@ -95,18 +89,6 @@ export const OptionTileGroup = React.forwardRef<HTMLDivElement, OptionTileGroupP
   },
   ref,
 ) => {
-  const optionsRefs = React.useRef<React.RefObject<HTMLDivElement>[]>(options?.map(() => React.createRef()));
-
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>, index: number) => {
-    const element = optionsRefs.current[index]?.current?.children[0];
-
-    if (element) {
-      event.target = element; // eslint-disable-line no-param-reassign
-    }
-
-    onChange(event);
-  };
-
   const isOptionSelected = (option: Option) => {
     if (isMulti && value && typeof value !== 'string' && typeof value !== 'number') {
       return value.includes(option.value);
@@ -163,84 +145,6 @@ export const OptionTileGroup = React.forwardRef<HTMLDivElement, OptionTileGroupP
     return 'dark';
   };
 
-  const renderRadio = (option: Option) => {
-    const getRadioFillColor = (defaultColor: BrandColor): BrandColor => {
-      if (isOptionSelected(option) && !option.disabled && error) {
-        return 'danger';
-      }
-      if (isOptionSelected(option) && option.disabled && error) {
-        return 'danger-lighter';
-      }
-      if (isOptionSelected(option) && !option.disabled) {
-        return 'primary';
-      }
-      if (isOptionSelected(option) && option.disabled) {
-        return 'grey-light';
-      }
-
-      return defaultColor;
-    };
-
-    return (
-      <Box
-        width="16px"
-        minWidth="16px"
-        height="16px"
-        minHeight="16px"
-        radius="circle"
-        borderColor={getRadioFillColor('grey-light')}
-        borderWidth="xs"
-        position="relative"
-      >
-        <Box
-          width="10px"
-          height="10px"
-          background={getRadioFillColor('transparent')}
-          radius="circle"
-          position="absolute"
-          style={{
-            top: '2px',
-            left: '2px',
-          }}
-        />
-      </Box>
-    );
-  };
-
-  const renderCheckbox = (option: Option) => {
-    interface CheckboxIcon {
-      color: FontColor;
-      name: 'checkbox-btn' | 'checkbox-btn-checked';
-      className?: string;
-    }
-
-    const iconProps: CheckboxIcon = {
-      color: 'grey-500',
-      name: 'checkbox-btn',
-    };
-    if (isOptionSelected(option) && option.disabled && error) {
-      iconProps.color = 'danger-lighter';
-      iconProps.name = 'checkbox-btn-checked';
-    } else if (isOptionSelected(option) && !option.disabled && error) {
-      iconProps.color = 'danger';
-      iconProps.name = 'checkbox-btn-checked';
-    } else if (isOptionSelected(option) && option.disabled) {
-      iconProps.color = 'grey-light';
-      iconProps.name = 'checkbox-btn-checked';
-    } else if (isOptionSelected(option) && !option.disabled) {
-      iconProps.color = 'primary-500';
-      iconProps.name = 'checkbox-btn-checked';
-    } else if (option.disabled) {
-      iconProps.color = 'grey-200';
-    }
-
-    return (
-      <Box radius="md" display="inline-block" height="16px">
-        <Icon {...iconProps} size="md" />
-      </Box>
-    );
-  };
-
   return (
     <Box
       ref={ref}
@@ -272,54 +176,31 @@ export const OptionTileGroup = React.forwardRef<HTMLDivElement, OptionTileGroupP
             )}
           </Box>
         )}
-        {options && options.map((option, index) => (
-          <Box
+        {options && options.map(option => (
+          <OptionTile
             key={option.id}
             className={styles.option}
             background={getOptionBackgroundColor(option)}
             borderColor={getOptionBorderColor(option)}
             color={getOptionFontColor(option)}
-            borderWidth="xs"
-            shadow="2xs"
-            radius="md"
-            direction="row"
-            childGap="md"
-            padding="md"
             flex={isFullWidth ? 'auto' : 'initial'}
             cursor={option.disabled ? 'not-allowed' : 'pointer'}
             hover={{
               ...(!option.disabled && !isOptionSelected(option)) && { borderColor: 'grey-300' },
             }}
-            onClick={!option.disabled ? (e: React.MouseEvent<HTMLDivElement>) => handleClick(e, index) : undefined}
+            isSelected={isOptionSelected(option)}
+            onChange={onChange}
+            value={option.value}
+            label={option.label}
+            disabled={option.disabled}
+            inputType={isMulti ? 'checkbox' : 'radio'}
+            hideInput={hideInput}
+            error={!!error}
+            id={option.id}
+            name={name}
           >
-            {!hideInput && (!isMulti ? renderRadio(option) : renderCheckbox(option))}
-            <Box>
-              {option.render ? option.render(option) : option.label}
-            </Box>
-            {isMulti ? (
-              <Checkbox
-                id={option.id}
-                name={name}
-                onChange={onChange}
-                isChecked={isOptionSelected(option)}
-                label={option.label}
-                value={option.value}
-                isHidden
-                isDisabled={option.disabled}
-                ref={optionsRefs.current[index]}
-              />
-            ) : (
-              <RadioInput
-                name={name}
-                onChange={onChange}
-                option={option}
-                isDisabled={option.disabled}
-                isSelected={isOptionSelected(option)}
-                isHidden
-                ref={optionsRefs.current[index]}
-              />
-            )}
-          </Box>
+            {option.render ? option.render(option) : option.label}
+          </OptionTile>
         ))}
       </Box>
       {error && typeof error !== 'boolean' && (

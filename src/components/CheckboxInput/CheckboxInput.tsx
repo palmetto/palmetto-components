@@ -119,7 +119,6 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
-    hasError: !!error,
     helpText,
     isDisabled,
     margin: labelMargin,
