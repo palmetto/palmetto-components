@@ -50,6 +50,16 @@ const renderForm = (initialValue, props) => {
   );
 };
 
+function getByTextWithMarkup(text) {
+  return (content, element) => {
+    const hasText = node => node.textContent === text;
+    const elementHasText = hasText(element);
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
+
 describe('SelectInputNative', () => {
   describe('States', () => {
     describe('Hidden label, with a placeholder', () => {
@@ -96,7 +106,7 @@ describe('SelectInputNative', () => {
       test('it renders an asterisk in the label', () => {
         render(renderForm(null, { isRequired: true }));
 
-        expect(screen.getByText(`${testLabelName} *`)).toBeInTheDocument();
+        expect(screen.getByText(getByTextWithMarkup(`${testLabelName} *`))).toBeInTheDocument();
       });
     });
 

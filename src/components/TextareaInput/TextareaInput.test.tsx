@@ -10,6 +10,20 @@ const baseProps = {
   onChange: () => null,
 };
 
+function getByTextWithMarkup(text: string) {
+  // eslint-disable-next-line
+  // @ts-ignore
+  return (content, element) => {
+    const hasText = (node: Element) => node.textContent === text;
+    const elementHasText = hasText(element);
+    // eslint-disable-next-line
+    // @ts-ignore
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
+
 describe('TextareaInput', () => {
   describe('Callback Handling', () => {
     describe('onChange', () => {
@@ -116,7 +130,7 @@ describe('TextareaInput', () => {
       test("it's label renders an asterisk indicating that it's required", () => {
         render(<TextareaInput {...baseProps} isRequired />);
 
-        const labelElement = screen.getByText(`${baseProps.label} *`);
+        const labelElement = screen.getByText(getByTextWithMarkup(`${baseProps.label} *`));
 
         expect(labelElement).toBeInTheDocument();
       });

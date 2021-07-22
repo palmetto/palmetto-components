@@ -2,6 +2,16 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { FormLabel } from './FormLabel';
 
+function getByTextWithMarkup(text) {
+  return (content, element) => {
+    const hasText = node => node.textContent === text;
+    const elementHasText = hasText(element);
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
+
 beforeEach(() => {
   console.error = jest.fn(); // eslint-disable-line no-console
 });
@@ -24,7 +34,9 @@ describe('FormLabel', () => {
         my label
       </FormLabel>,
     );
-    const labelElement = screen.getByText('my label *');
+
+    const labelElement = screen.getByText(getByTextWithMarkup('my label *'));
+
     expect(labelElement).toBeInTheDocument();
   });
 
