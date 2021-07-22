@@ -7,6 +7,7 @@ import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
 import styles from './Toggle.module.scss';
 
+export type ToggleSize = 'sm' | 'md' | 'lg';
 export interface ToggleProps {
   /**
    * The id attribute of the input.
@@ -61,7 +62,7 @@ export interface ToggleProps {
   /**
    * The size of the toggle.
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: ToggleSize;
 }
 
 export const Toggle: FC<ToggleProps> = ({
