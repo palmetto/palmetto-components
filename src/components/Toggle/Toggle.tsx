@@ -7,6 +7,7 @@ import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
 import styles from './Toggle.module.scss';
 
+export type ToggleSize = 'sm' | 'md' | 'lg';
 export interface ToggleProps {
   /**
    * The id attribute of the input.
@@ -61,7 +62,7 @@ export interface ToggleProps {
   /**
    * The size of the toggle.
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: ToggleSize;
 }
 
 export const Toggle: FC<ToggleProps> = ({
@@ -98,9 +99,10 @@ export const Toggle: FC<ToggleProps> = ({
   const thumbClasses = classNames(styles['toggle-thumb'], styles[`thumb-${size}`]);
 
   const inputProps = {
+    'aria-required': isRequired,
     'aria-invalid': !!error,
     'aria-label': label,
-    'aria-labelledby': `${id}Label`,
+    'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
     id,
     checked: !!isChecked,
     disabled: isDisabled,
@@ -113,30 +115,25 @@ export const Toggle: FC<ToggleProps> = ({
 
   const labelProps = {
     isFieldRequired: isRequired,
-    className: styles['toggle-label'],
     inputId: id,
     isDisabled,
+    helpText,
+    className: helpText && (size === 'md' || size === 'lg') ? 'm-top-2xs' : '',
   };
 
   return (
     <Box className={className}>
-      <Box display="inline-block" className={wrapperClasses}>
-        <FormLabel {...labelProps}>
-          <input {...inputProps} />
-          <span aria-hidden="true" className={trackClasses}>
-            <span className={thumbClasses} />
-          </span>
-          {!hideLabel && (
-            <Box childGap="2xs" margin="0 0 0 xs">
-              {label && <div>{label}</div>}
-              {helpText && (
-                <Box as="p" display="block" fontSize="sm" fontWeight="regular" color="grey">
-                  {helpText}
-                </Box>
-              )}
-            </Box>
-          )}
-        </FormLabel>
+      <Box
+        direction="row"
+        childGap="xs"
+        alignItems={helpText ? 'flex-start' : 'center'}
+        className={wrapperClasses}
+      >
+        <input {...inputProps} />
+        <span aria-hidden="true" className={trackClasses}>
+          <span className={thumbClasses} />
+        </span>
+        {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       </Box>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </Box>
