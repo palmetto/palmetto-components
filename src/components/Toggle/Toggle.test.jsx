@@ -37,6 +37,32 @@ describe('Toggle', () => {
     expect(getByLabelText('test label')).toHaveAttribute('aria-labelledby', 'testInputLabel');
   });
 
+  test('aria-label is assigned if label is hidden', () => {
+    const { getByLabelText } = render(
+      <Toggle
+        id="testInput"
+        label="hidden test label"
+        hideLabel
+        value="hello"
+        onChange={() => null}
+      />,
+    );
+    expect(getByLabelText('hidden test label')).toBeInTheDocument();
+  });
+
+  test('HelpText is rendered when set', () => {
+    const { getByText } = render(
+      <Toggle
+        id="testInput"
+        label="test label"
+        helpText="help text"
+        value="hello"
+        onChange={() => null}
+      />,
+    );
+    expect(getByText('help text')).toBeInTheDocument();
+  });
+
   describe('error states', () => {
     test('renders error message if error exists and is not true', () => {
       const { getByText } = render(

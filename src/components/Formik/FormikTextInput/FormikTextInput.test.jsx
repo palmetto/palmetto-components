@@ -36,6 +36,16 @@ const renderForm = (initialValue, props) => (
   </Formik>
 );
 
+function getByTextWithMarkup(text) {
+  return (content, element) => {
+    const hasText = node => node.textContent === text;
+    const elementHasText = hasText(element);
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
+
 describe('FormikTextInput', () => {
   describe('States', () => {
     describe('Autofocused', () => {
@@ -134,7 +144,7 @@ describe('FormikTextInput', () => {
     describe('Form Label', () => {
       test('Input correctly passes props to dependency label component', async () => {
         const { getByText } = render(renderForm('', { isRequired: true }));
-        const labelElement = getByText(`${testLabelName} *`);
+        const labelElement = getByText(getByTextWithMarkup(`${testLabelName} *`));
         expect(labelElement).toHaveAttribute('for', testLabelName);
         expect(labelElement).toBeInTheDocument();
       });

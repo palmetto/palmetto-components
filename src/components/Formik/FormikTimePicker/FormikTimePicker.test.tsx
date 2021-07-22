@@ -55,6 +55,20 @@ const renderForm = (
   </Formik>
 );
 
+function getByTextWithMarkup(text: string) {
+  // eslint-disable-next-line
+  // @ts-ignore
+  return (content, element) => {
+    const hasText = (node: Element) => node.textContent === text;
+    const elementHasText = hasText(element);
+    // eslint-disable-next-line
+    // @ts-ignore
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
+
 describe('FormikTimePicker', () => {
   describe('States', () => {
     describe('Hidden label, with a placeholder', () => {
@@ -129,7 +143,7 @@ describe('FormikTimePicker', () => {
       test('it renders an asterisk in the label', () => {
         render(renderForm([], { isRequired: true }));
 
-        expect(screen.getByText(`${testLabelName} *`)).toBeInTheDocument();
+        expect(screen.getByText(getByTextWithMarkup(`${testLabelName} *`))).toBeInTheDocument();
       });
     });
 
