@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Toggle, ToggleProps } from './Toggle';
-import { TOGGLE_SIZES } from './Toggle.constants';
+import TOGGLE_SIZES from './Toggle.constants';
 import { Box } from '../Box/Box';
 
 export default {
