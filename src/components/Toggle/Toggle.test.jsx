@@ -6,29 +6,29 @@ import TOGGLE_SIZES from './Toggle.constants';
 describe('Toggle', () => {
   test('not disabled, checked, or invalid by default', () => {
     const { getByLabelText } = render(
-      <Toggle id="testCheckbox" label="test checkbox" isChecked={false} onChange={() => null} />,
+      <Toggle id="testToggle" label="test toggle" isChecked={false} onChange={() => null} />,
     );
-    const checkbox = getByLabelText('test checkbox');
+    const toggle = getByLabelText('test toggle');
 
-    expect(checkbox.checked).toBe(false);
-    expect(checkbox.disabled).toBe(false);
-    expect(checkbox.getAttribute('aria-invalid')).toBe('false');
+    expect(toggle.checked).toBe(false);
+    expect(toggle.disabled).toBe(false);
+    expect(toggle.getAttribute('aria-invalid')).toBe('false');
   });
 
   test('input is checked when isChecked is true', () => {
     const { getByLabelText } = render(
-      <Toggle id="testCheckbox" label="test checkbox" onChange={() => null} isChecked />,
+      <Toggle id="testToggle" label="test toggle" onChange={() => null} isChecked />,
     );
-    const checkbox = getByLabelText('test checkbox');
-    expect(checkbox.checked).toEqual(true);
+    const toggle = getByLabelText('test toggle');
+    expect(toggle.checked).toEqual(true);
   });
 
   test('input is not checked when isChecked is false', () => {
     const { getByLabelText } = render(
-      <Toggle id="testCheckbox" label="test checkbox" isChecked={false} onChange={() => null} />,
+      <Toggle id="testToggle" label="test toggle" isChecked={false} onChange={() => null} />,
     );
-    const checkbox = getByLabelText('test checkbox');
-    expect(checkbox.checked).toEqual(false);
+    const toggle = getByLabelText('test toggle');
+    expect(toggle.checked).toEqual(false);
   });
 
   test('assigns the "aria-labelledby" attribute', () => {
@@ -68,8 +68,8 @@ describe('Toggle', () => {
     test('renders error message if error exists and is not true', () => {
       const { getByText } = render(
         <Toggle
-          id="testCheckbox"
-          label="test checkbox"
+          id="testToggle"
+          label="test toggle"
           isChecked={false}
           onChange={() => null}
           error="This is the error message"
@@ -85,14 +85,14 @@ describe('Toggle', () => {
 
       const { getByLabelText } = render(
         <Toggle
-          id="testCheckbox"
-          label="test checkbox"
+          id="testToggle"
+          label="test toggle"
           isChecked={false}
           onChange={mockedHandleChange}
         />,
       );
-      const checkbox = getByLabelText('test checkbox');
-      fireEvent.click(checkbox);
+      const toggle = getByLabelText('test toggle');
+      fireEvent.click(toggle);
       expect(mockedHandleChange).toHaveBeenCalledTimes(1);
     });
 
@@ -104,14 +104,14 @@ describe('Toggle', () => {
 
       const { getByLabelText } = render(
         <Toggle
-          id="testCheckbox"
-          label="test checkbox"
+          id="testToggle"
+          label="test toggle"
           onChange={mockedHandleChange}
           isChecked={value}
         />,
       );
-      const checkbox = getByLabelText('test checkbox');
-      fireEvent.click(checkbox);
+      const toggle = getByLabelText('test toggle');
+      fireEvent.click(toggle);
       expect(mockedHandleChange).toBeCalledTimes(1);
       expect(value).toBe(false);
     });
@@ -125,8 +125,8 @@ describe('Toggle', () => {
         <div>
           <button type="button">focus</button>
           <Toggle
-            id="testCheckbox"
-            label="test checkbox"
+            id="testToggle"
+            label="test toggle"
             isChecked={false}
             onChange={() => null}
             onFocus={mockedHandleFocus}
@@ -134,7 +134,7 @@ describe('Toggle', () => {
           />
         </div>,
       );
-      getByLabelText('test checkbox').focus();
+      getByLabelText('test toggle').focus();
       getByText('focus').focus();
       expect(mockedHandleFocus).toHaveBeenCalledTimes(1);
     });
@@ -148,15 +148,15 @@ describe('Toggle', () => {
         <div>
           <button type="button">focus</button>
           <Toggle
-            id="testCheckbox"
-            label="test checkbox"
+            id="testToggle"
+            label="test toggle"
             isChecked={false}
             onChange={() => null}
             onBlur={mockedHandleBlur}
           />
         </div>,
       );
-      getByLabelText('test checkbox').focus();
+      getByLabelText('test toggle').focus();
       getByText('focus').focus();
       expect(mockedHandleBlur).toHaveBeenCalledTimes(1);
     });
@@ -166,7 +166,7 @@ describe('Toggle', () => {
     TOGGLE_SIZES.map(size => test(`it has a ${size} class applied to the toggle thumb and track`, () => {
       const { getByTestId } = render(
         <Toggle
-          id="testCheckbox"
+          id="testToggle"
           label={`test ${size} toggle`}
           isChecked={false}
           onChange={() => null}
