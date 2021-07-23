@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { Toggle } from './Toggle';
+import TOGGLE_SIZES from './Toggle.constants';
 
 describe('Toggle', () => {
   test('not disabled, checked, or invalid by default', () => {
@@ -159,5 +160,23 @@ describe('Toggle', () => {
       getByText('focus').focus();
       expect(mockedHandleBlur).toHaveBeenCalledTimes(1);
     });
+  });
+
+  describe('Sizes', () => {
+    TOGGLE_SIZES.map(size => test(`it has a ${size} class applied to the toggle thumb and track`, () => {
+      const { getByTestId } = render(
+        <Toggle
+          id="testCheckbox"
+          label={`test ${size} toggle`}
+          isChecked={false}
+          onChange={() => null}
+          size={size}
+        />,
+      );
+
+      expect(getByTestId('toggleTrack').getAttribute('class')).toContain(`track-${size}`);
+      expect(getByTestId('toggleThumb').getAttribute('class')).toContain(`thumb-${size}`);
+    }),
+    );
   });
 });
