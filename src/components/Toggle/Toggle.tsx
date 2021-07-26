@@ -117,23 +117,34 @@ export const Toggle: FC<ToggleProps> = ({
     isFieldRequired: isRequired,
     inputId: id,
     isDisabled,
-    helpText,
-    className: helpText && (size === 'md' || size === 'lg') ? 'm-top-2xs' : '',
+    display: 'flex',
+    direction: 'row',
+    childGap: 'xs',
+    alignItems: helpText ? 'flex-start' : 'center',
   };
 
   return (
     <Box className={className}>
-      <Box
-        direction="row"
-        childGap="xs"
-        alignItems={helpText ? 'flex-start' : 'center'}
-        className={wrapperClasses}
-      >
-        <input {...inputProps} />
-        <span aria-hidden="true" className={trackClasses} data-testid="toggleTrack">
-          <span className={thumbClasses} data-testid="toggleThumb" />
-        </span>
-        {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
+      <Box className={wrapperClasses}>
+        <FormLabel {...labelProps}>
+          <input {...inputProps} />
+          <span aria-hidden="true" className={trackClasses} data-testid="toggleTrack">
+            <span className={thumbClasses} data-testid="toggleThumb" />
+          </span>
+          {!hideLabel && (
+            <Box
+              childGap="2xs"
+              className={helpText && (size === 'md' || size === 'lg') ? 'm-top-2xs' : ''}
+            >
+              {label && <div>{label}</div>}
+              {helpText && (
+                <Box as="p" display="block" fontSize="sm" fontWeight="regular" color="grey">
+                  {helpText}
+                </Box>
+              )}
+            </Box>
+          )}
+        </FormLabel>
       </Box>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
     </Box>

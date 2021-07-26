@@ -79,6 +79,38 @@ describe('Toggle', () => {
     });
   });
 
+  test('controlled - check and unchecked when clicked', () => {
+    const ControlledToggle = () => {
+      const [checked, setChecked] = React.useState(false);
+      return (
+        <Toggle
+          label="test toggle"
+          isChecked={checked}
+          onChange={e => {
+            setChecked(e.target.checked);
+          }}
+        />
+      );
+    };
+
+    const onChange = jest.fn();
+
+    const { getByLabelText, container } = render(<ControlledToggle onChange={onChange} />);
+
+    const input = container.querySelector('input');
+
+    expect(input).not.toBeChecked();
+
+    const toggle = getByLabelText('test toggle');
+    fireEvent.click(toggle);
+
+    expect(input).toBeChecked();
+
+    fireEvent.click(toggle);
+
+    expect(input).not.toBeChecked();
+  });
+
   describe('onChange', () => {
     test('onChange event fires callback function', () => {
       const mockedHandleChange = jest.fn(() => null);
