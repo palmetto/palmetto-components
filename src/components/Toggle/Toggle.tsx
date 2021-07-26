@@ -129,11 +129,14 @@ export const Toggle: FC<ToggleProps> = ({
       <Box className={wrapperClasses}>
         <FormLabel {...labelProps}>
           <input {...inputProps} />
-          <span aria-hidden="true" className={trackClasses}>
-            <span className={thumbClasses} />
+          <span aria-hidden="true" className={trackClasses} data-testid="toggleTrack">
+            <span className={thumbClasses} data-testid="toggleThumb" />
           </span>
           {!hideLabel && (
-            <Box childGap="2xs">
+            <Box
+              childGap="2xs"
+              className={helpText && (size === 'md' || size === 'lg') ? 'm-top-2xs' : ''}
+            >
               {label && <div>{label}</div>}
               {helpText && (
                 <Box as="p" display="block" fontSize="sm" fontWeight="regular" color="grey">
