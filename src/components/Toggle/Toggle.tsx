@@ -117,7 +117,6 @@ export const Toggle: FC<ToggleProps> = ({
     isFieldRequired: isRequired,
     inputId: id,
     isDisabled,
-    className: helpText && (size === 'md' || size === 'lg') ? 'm-top-2xs' : '',
     display: 'flex',
     direction: 'row',
     childGap: 'xs',
