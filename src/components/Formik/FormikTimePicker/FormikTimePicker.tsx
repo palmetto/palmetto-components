@@ -4,6 +4,7 @@ import {
   FormikErrors,
   FormikValues,
   FieldAttributes,
+  getIn,
 } from 'formik';
 import { TimePicker, TimePickerProps } from '../../TimePicker/TimePicker';
 
@@ -36,7 +37,7 @@ export const FormikTimePicker: FC<FormikTimePickerProps> = (
     onBlur={onBlur}
     onChange={onChange ?? formikOnChange}
     value={value}
-    error={touched[name] && errors[name]}
+    error={getIn(touched, name) && getIn(errors, name)}
     options={options}
   />
 );

@@ -6,7 +6,9 @@ import {
   waitFor,
 } from '@testing-library/react';
 import selectEvent from 'react-select-event';
-import { Formik, Form, Field } from 'formik';
+import {
+  Formik, Form, Field, getIn, setIn,
+} from 'formik';
 import { FormikSelectInput } from './FormikSelectInput';
 import { SelectInput } from '../../SelectInput/SelectInput';
 
@@ -18,28 +20,21 @@ const selectOptions = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
-const handleValidation = values => {
-  const errors = {};
-  if (values[testLabelName].length < 1) {
-    errors[testLabelName] = 'input is required';
-  }
+const handleValidation = testValueKey => values => (getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required'));
 
-  return errors;
-};
-
-const renderForm = (initialValue, props) => (
+const renderForm = (initialValue, props, testValueKey = testLabelName) => (
   <Formik
     initialValues={{
       [testLabelName]: initialValue,
     }}
-    validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
+    validate={props.isRequired ? handleValidation(testValueKey) : undefined} // eslint-disable-line
   >
     {() => (
       <Form>
         <Field
-          label={testLabelName}
-          name={testLabelName}
-          id={testLabelName}
+          label={testValueKey}
+          name={testValueKey}
+          id={testValueKey}
           options={selectOptions}
           component={FormikSelectInput}
           {...props}
@@ -141,6 +136,14 @@ describe('FormikSelectInput', () => {
     describe('Is Invalid, with a helpful message', () => {
       test('it renders the helpful message', async () => {
         const { getByText } = render(renderForm([], { isRequired: true }));
+        const submitButton = getByText('submit');
+
+        fireEvent.click(submitButton);
+        await waitFor(() => expect(screen.getByText('input is required')).toBeInTheDocument());
+      });
+
+      test('it renders errors from nested objects', async () => {
+        const { getByText } = render(renderForm({ outer: { nested: [] } }, { isRequired: true }, `${testLabelName}.outer.nested`));
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);

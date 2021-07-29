@@ -3,7 +3,7 @@ import {
   FormikTouched,
   FormikErrors,
   FieldAttributes,
-  FormikValues,
+  FormikValues, getIn,
 } from 'formik';
 import { RadioGroup, RadioGroupProps } from '../../RadioGroup/RadioGroup';
 
@@ -35,6 +35,6 @@ export const FormikRadioGroup: React.FC<FormikRadioGroupProps> = (
     onBlur={onBlur}
     onChange={onChange ?? formikOnChange}
     value={value}
-    error={touched[name] && errors[name]}
+    error={getIn(touched, name) && getIn(errors, name)}
   />
 );

@@ -6,23 +6,18 @@ import {
   waitFor,
 } from '@testing-library/react';
 import selectEvent from 'react-select-event';
-import { Formik, Form, Field } from 'formik';
+import {
+  Formik, Form, Field, FormikValues, getIn, setIn,
+} from 'formik';
 import { FormikTimePicker } from './FormikTimePicker';
 
 const testLabelName = 'test select';
 
 type Option = { value: string; label: string; }
-const handleValidation = (values: { [x: string]: string; }) => {
-  const errors: {[x: string]: string; } = {};
-  if (values[testLabelName].length < 1) {
-    errors[testLabelName] = 'input is required';
-  }
-
-  return errors;
-};
+const handleValidation = (testValueKey:string) => (values:FormikValues) => (getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required'));
 
 const renderForm = (
-  initialValue: string | string[] | Option | Option[] | undefined,
+  initialValue: any,
   props: {
     placeholder?: string;
     hideLabel?: boolean;
@@ -32,20 +27,21 @@ const renderForm = (
     onChange?: jest.Mock<void, [any]>; // eslint-disable-line
     interval?: number;
   },
+  testValueKey = testLabelName,
 ) => (
   <Formik
     initialValues={{
       [testLabelName]: initialValue as string,
     }}
-    validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
+    validate={props.isRequired ? handleValidation(testValueKey) : undefined} // eslint-disable-line
     onSubmit={() => {}} // eslint-disable-line
   >
     {() => (
       <Form>
         <Field
-          label={testLabelName}
-          name={testLabelName}
-          id={testLabelName}
+          label={testValueKey}
+          name={testValueKey}
+          id={testValueKey}
           component={FormikTimePicker}
           {...props}
         />
@@ -158,6 +154,14 @@ describe('FormikTimePicker', () => {
     describe('Is Invalid, with a helpful message', () => {
       test('it renders the helpful message', async () => {
         const { getByText } = render(renderForm([], { isRequired: true }));
+        const submitButton = getByText('submit');
+
+        fireEvent.click(submitButton);
+        await waitFor(() => expect(screen.getByText('input is required')).toBeInTheDocument());
+      });
+
+      test('it renders the error message from nested object', async () => {
+        const { getByText } = render(renderForm({ outer: { nested: [] } }, { isRequired: true }, `${testLabelName}.outer.nested`));
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);

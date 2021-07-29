@@ -6,7 +6,9 @@ import {
   waitFor,
   act,
 } from '@testing-library/react';
-import { Formik, Form, Field } from 'formik';
+import {
+  Formik, Form, Field, getIn, setIn,
+} from 'formik';
 import { FormikRadioGroup } from './FormikRadioGroup';
 
 const testGroupName = 'colors';
@@ -28,31 +30,22 @@ const groupOptions = [{
   disabled: true,
 }];
 
-const handleValidation = values => {
-  console.log('did I go?');
-  const errors = {};
-  if (!values[testGroupName]) {
-    errors[testGroupName] = 'selection is required';
-  }
+const handleValidation = testValueKey => values => (getIn(values, testValueKey) ? {} : setIn({}, testValueKey, 'selection is required'));
 
-  return errors;
-  console.log('errors', errors);
-};
-
-const renderForm = (initialValue, props) => (
+const renderForm = (initialValue, props, testValueKey = testGroupName) => (
   <Formik
     initialValues={{
       [testGroupName]: initialValue,
     }}
     onSubmit={props.handleSubmit} // eslint-disable-line
-    validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
+    validate={props.isRequired ? handleValidation(testValueKey) : undefined} // eslint-disable-line
   >
     {() => (
       <Form>
         <Field
-          label={testGroupName}
-          name={testGroupName}
-          id={testGroupName}
+          label={testValueKey}
+          name={testValueKey}
+          id={testValueKey}
           options={groupOptions}
           component={FormikRadioGroup}
           {...props}
@@ -170,7 +163,14 @@ describe('FormikRadioGroup', () => {
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
-        
+
+        await waitFor(() => expect(getByText('selection is required')).toBeInTheDocument());
+      });
+
+      test('it renders a validation message with nested value', async () => {
+        const { getByText } = render(renderForm({ outer: { nested: null } }, { isRequired: true }, `${testGroupName}.outer.nested`));
+        const submitButton = getByText('submit');
+        fireEvent.click(submitButton);
         await waitFor(() => expect(getByText('selection is required')).toBeInTheDocument());
       });
     });
