@@ -3,7 +3,7 @@ import {
   FormikTouched,
   FormikErrors,
   FieldAttributes,
-  FormikValues,
+  FormikValues, getIn,
 } from 'formik';
 import {
   SelectInputNative,
@@ -44,6 +44,6 @@ export const FormikSelectInputNative: React.FC<FormikSelectInputNativeProps> = (
     name={name}
     onBlur={onBlur}
     value={value}
-    error={touched[name] && errors[name]}
+    error={getIn(touched, name) && getIn(errors, name)}
   />
 );

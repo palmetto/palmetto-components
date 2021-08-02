@@ -6,34 +6,29 @@ import {
   waitFor,
   act,
 } from '@testing-library/react';
-import { Formik, Form, Field } from 'formik';
+import {
+  Formik, Form, Field, getIn, setIn,
+} from 'formik';
 import { FormikCheckboxInput } from './FormikCheckboxInput';
 
 const testLabelName = 'test checkbox';
 
-const handleValidation = values => {
-  const errors = {};
-  if (!values[testLabelName]) {
-    errors[testLabelName] = 'Checkbox is required';
-  }
+const handleValidation = testValueKey => values => (getIn(values, testValueKey) ? {} : setIn({}, testValueKey, 'Checkbox is required'));
 
-  return errors;
-};
-
-const renderForm = (initialValue, props) => (
+const renderForm = (initialValue, props, testValueKey = testLabelName) => (
   <Formik
     initialValues={{
       [testLabelName]: initialValue,
     }}
     onSubmit={props.handleSubmit} // eslint-disable-line
-    validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
+    validate={props.isRequired ? handleValidation(testValueKey) : undefined} // eslint-disable-line
   >
     {() => (
       <Form>
         <Field
-          label={testLabelName}
-          name={testLabelName}
-          id={testLabelName}
+          label={testValueKey}
+          name={testValueKey}
+          id={testValueKey}
           component={FormikCheckboxInput}
           {...props}
         />
@@ -91,6 +86,14 @@ describe('FormikCheckboxInput', () => {
     describe('With Error', () => {
       test('correctly renders the checkbox with an error message underneath', async () => {
         const { getByText } = render(renderForm(false, { isRequired: true }));
+        const submitButton = getByText('submit');
+
+        fireEvent.click(submitButton);
+        await waitFor(() => expect(screen.getByText('Checkbox is required')).toBeInTheDocument());
+      });
+
+      test('correctly renders the checkbox with an error message in nested object', async () => {
+        const { getByText } = render(renderForm({ outer: { nested: false } }, { isRequired: true }, `${testLabelName}.outer.nested`));
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
