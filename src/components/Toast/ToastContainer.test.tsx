@@ -1,8 +1,8 @@
+import { act, cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
-import { screen, render, cleanup } from '@testing-library/react';
-import { ToastContainer } from './ToastContainer';
 import { ToastPosition } from '.';
 import { toast } from './toast';
+import { ToastContainer } from './ToastContainer';
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -27,10 +27,12 @@ describe('ToastContainer', () => {
     expect(screen.getByTestId('toast-container')).toBeInTheDocument();
   });
 
-  test('With toasts', async () => {
+  test('With Toasts', async () => {
     render(<ToastContainer data-testid="toast-container" />);
 
-    toast('test blank toast');
+    act(() => {
+      toast('test blank toast');
+    });
 
     await expect(screen.getByText('test blank toast')).toBeInTheDocument();
   });
@@ -49,7 +51,9 @@ describe('ToastContainer', () => {
       test(`${position}`, async () => {
         render(<ToastContainer data-testid={`toast-container-${position}`} position={position} />);
 
-        toast(`test blank toast ${position}`);
+        act(() => {
+          toast(`test blank toast ${position}`);
+        });
 
         expect(screen.getByTestId(`toast-container-${position}`)).toBeInTheDocument();
 
@@ -72,7 +76,9 @@ describe('ToastContainer', () => {
       test(`Custom toast positions ${position}`, async () => {
         render(<ToastContainer />);
 
-        toast(`test custom position toast ${position}`, { position });
+        act(() => {
+          toast(`test custom position toast ${position}`, { position });
+        });
 
         await expect(screen.getByText(`test custom position toast ${position}`)).toBeInTheDocument();
       });
@@ -80,10 +86,12 @@ describe('ToastContainer', () => {
   });
 
   describe('Toast Types', () => {
-    test('success', async () => {
+    test('Success', async () => {
       render(<ToastContainer />);
 
-      toast.success('test success toast');
+      act(() => {
+        toast.success('test success toast');
+      });
 
       await expect(screen.getByText('test success toast')).toBeInTheDocument();
     });
@@ -91,28 +99,34 @@ describe('ToastContainer', () => {
     test('error', async () => {
       render(<ToastContainer />);
 
-      toast.error('test error toast');
+      act(() => {
+        toast.error('test error toast');
+      });
 
       await expect(screen.getByText('test error toast')).toBeInTheDocument();
     });
 
-    test('loading', async () => {
+    test('Loading', async () => {
       render(<ToastContainer />);
 
-      toast.loading('test loading toast');
+      act(() => {
+        toast.loading('test loading toast');
+      });
 
       await expect(screen.getByText('test loading toast')).toBeInTheDocument();
     });
 
-    test('custom', async () => {
+    test('Custom', async () => {
       render(<ToastContainer />);
 
-      toast.custom(<p>test custom toast</p>);
+      act(() => {
+        toast.custom(<p>test custom toast</p>);
+      });
 
       await expect(screen.getByText('test custom toast')).toBeInTheDocument();
     });
 
-    test('async', async () => {
+    test('Async', async () => {
       render(<ToastContainer />);
       const myPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -124,35 +138,51 @@ describe('ToastContainer', () => {
           }
         }, 1000);
       });
-      toast.async(myPromise, {
-        loading: 'loading...',
-        success: data => `success ${data}`,
-        error: err => `error ${err}`,
+
+      act(() => {
+        toast.async(myPromise, {
+          loading: 'loading...',
+          success: data => `success ${data}`,
+          error: err => `error ${err}`,
+        });
       });
 
       await expect(screen.getByText('loading...')).toBeInTheDocument();
     });
 
-    test('with children function', async () => {
+    test('With children function', async () => {
       render(<ToastContainer />);
 
-      toast(t => (
-        <span>
-          Custom and
-          <b>bold</b>
-          <button type="button" onClick={() => toast.dismiss(t.id)}>Dismiss</button>
-        </span>
-      ));
+      act(() => {
+        toast(t => (
+          <span>
+            Custom and
+            <b>bold</b>
+            <button type="button" onClick={() => toast.dismiss(t.id)}>Dismiss</button>
+          </span>
+        ));
+      });
 
       await expect(screen.getByText('Custom and')).toBeInTheDocument();
     });
   });
 
-  test('compact', async () => {
+  test('Compact', async () => {
     render(<ToastContainer data-testid="toast-container" />);
 
-    toast('test compact toast', { isCompact: true });
+    act(() => {
+      toast('test compact toast', { isCompact: true });
+    });
 
     await expect(screen.getByText('test compact toast')).toBeInTheDocument();
   });
+
+  // test('Dismissing Toast', async () => {
+  //   render(<ToastContainer data-testid="toast-container" />);
+
+  //   toast('dismissing toast');
+
+  //   const toastElement =  await screen.getByText('dismissing toast');
+  //   console.log(toastElement);
+  // });
 });
