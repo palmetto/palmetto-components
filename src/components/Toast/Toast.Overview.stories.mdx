@@ -11,13 +11,18 @@ import { Button } from '../Button/Button';
   parameters={{
     controls: { hideNoControlsWarning: true },
   }}
-  decorators={[storyFn => (
-    <div>
-      <ToastContainer />
-      {storyFn()}
-    </div>
-  )]}
+  decorators={[
+    (Story, { args, viewMode }) => (
+      <>
+        {viewMode === 'story' && <ToastContainer />}
+        <Story args={{...args}} />
+      </>
+    ),
+  ]}
 />
+
+<!-- Required for all toasts to show up on the page. -->
+<ToastContainer />
 
 # Toast
 
@@ -202,7 +207,7 @@ For these cases, you can use `toast.dismiss`.
       const [toastId, setToastId] = useState(null);
       const handleClick = () => {
         if (!toastId) {
-          const newToastId = toast(`Dismiss programmatically`, { duration: 5000, canDismiss: false });
+          const newToastId = toast(`Dismiss programmatically`, { duration: 30000, canDismiss: false });
           setToastId(newToastId);
         }
       };
