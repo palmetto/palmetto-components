@@ -191,6 +191,43 @@ without the user being able to clear it, you can use `canDismiss: false`.
   </Story>
 </Canvas>
 
+### Programmatic Dismiss
+
+In some cases you'll want to be able to dismiss a toast programmatically based on some other condition in the business logic.
+For these cases, you can use `toast.dismiss`.
+
+<Canvas isExpanded>
+  <Story name="Programmatic Dismiss">
+    {() => {
+      const [toastId, setToastId] = useState(null);
+      const handleClick = () => {
+        if (!toastId) {
+          const newToastId = toast(`Dismiss programmatically`, { duration: 5000, canDismiss: false });
+          setToastId(newToastId);
+        }
+      };
+      const handleDismiss = () => {
+        if (toastId) {
+          toast.dismiss(toastId);
+          setToastId(null)
+        }
+      };
+      return (
+        <>
+          <Box childGap="md" direction="row">
+            <Button onClick={handleClick} isDisabled={!!toastId}>
+              Show Toast
+            </Button>
+            <Button variant="light" isOutlined isDisabled={!toastId} onClick={handleDismiss}>
+              Dismiss toast
+            </Button>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### Compact
 
 Use the `isCompact` prop for a toast the uses less screen real estate.
