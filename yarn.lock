@@ -8710,15 +8710,15 @@ format@^0.2.0:
   resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
   integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
-formik@^2.2.9:
-  version "2.2.9"
-  resolved "https://registry.yarnpkg.com/formik/-/formik-2.2.9.tgz#8594ba9c5e2e5cf1f42c5704128e119fc46232d0"
-  integrity sha512-LQLcISMmf1r5at4/gyJigGn0gOwFbeEAlji+N9InZF6LIMXnFNkO42sCI8Jt84YZggpD4cPWObAZaxpEFtSzNA==
+formik@^2.1.4:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-2.2.8.tgz#986c3cd73849dde7c5154e5f6093a5568e482854"
+  integrity sha512-hDjQyTGO0ivptzCRHEyeTvfvgFVSzLeW2ptAgSk5U2jkf8pvSNtXe6oExo1RmrbKF1Bs7dmPv4P5g2JAgYnvlw==
   dependencies:
     deepmerge "^2.1.1"
     hoist-non-react-statics "^3.3.0"
-    lodash "^4.17.21"
-    lodash-es "^4.17.21"
+    lodash "^4.17.14"
+    lodash-es "^4.17.14"
     react-fast-compare "^2.0.1"
     tiny-warning "^1.0.2"
     tslib "^1.10.0"
@@ -12098,7 +12098,7 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash-es@^4.17.21:
+lodash-es@^4.17.14:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
