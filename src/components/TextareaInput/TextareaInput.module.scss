@@ -8,10 +8,6 @@
 }
 
 .textarea-input-wrapper {
-  &.disabled {
-    @extend %disabled-base;
-  }
-
   > textarea {
     transition-duration: 300ms;
     transition-property: border, background-color;
