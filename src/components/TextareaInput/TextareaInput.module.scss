@@ -1,3 +1,12 @@
+%disabled-base {
+  background-color: var(--form-control-disabled-background-color);
+  color: var(--form-control-disabled-font-color);
+
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
 .textarea-input-wrapper {
   > textarea {
     transition-duration: 300ms;
@@ -25,12 +34,7 @@
     }
 
     &:disabled {
-      background-color: var(--form-control-disabled-background-color);
-      color: var(--form-control-disabled-font-color);
-    
-      &:hover {
-        cursor: not-allowed;
-      }
+      @extend %disabled-base;
     }
   }
 
