@@ -37,6 +37,7 @@ const createHandler = (type?: ToastType): ToastHandler => (
   options,
 ) => {
   const toast = createToast(message, type, options);
+
   dispatch({
     type: ToastStoreActionType.UPSERT_TOAST,
     payload: { toast },

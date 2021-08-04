@@ -50,10 +50,15 @@ export const useToasts = (toastOptions?: ExtendedToastOptions) => { // eslint-di
           });
         }
       },
-      updateHeight: (toastId: string, height: number) => dispatch({
-        type: ToastStoreActionType.UPDATE_TOAST,
-        payload: { toast: { id: toastId, height } },
-      }),
+      updateHeight: (toastId: string, height: number) => {
+        if (toasts.find(toast => toast.id === toastId)?.height === height) {
+          return;
+        }
+        dispatch({
+          type: ToastStoreActionType.UPDATE_TOAST,
+          payload: { toast: { id: toastId, height } },
+        });
+      },
       calculateOffset: (
         currentToast: Toast,
         opts?: {

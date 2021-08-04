@@ -15,10 +15,8 @@ export const createRectRef = (onRect: (rect: DOMRect) => void) => (
   el: HTMLElement | null,
 ): void => {
   if (el) {
-    setTimeout(() => {
-      const boundingRect = el.getBoundingClientRect();
-      onRect(boundingRect);
-    });
+    const boundingRect = el.getBoundingClientRect();
+    onRect(boundingRect);
   }
 };
 

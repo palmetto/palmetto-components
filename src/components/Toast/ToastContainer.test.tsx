@@ -1,10 +1,10 @@
 import {
   act,
   cleanup,
+  fireEvent,
   render,
   screen,
   waitFor,
-  waitForElementToBeRemoved,
 } from '@testing-library/react';
 import React from 'react';
 import { ToastPosition } from '.';
@@ -25,6 +25,12 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+function wait(t: number) {
+  return new Promise(function(resolve) { 
+      window.setTimeout(resolve, t)
+  });
+}
+
 describe('ToastContainer', () => {
   afterEach(() => {
     cleanup();
@@ -36,186 +42,299 @@ describe('ToastContainer', () => {
     expect(screen.getByTestId('toast-container-default')).toBeInTheDocument();
   });
 
-  test('With Toasts', async () => {
+  test('With Toasts', () => {
     render(<ToastContainer data-testid="toast-container" />);
-    let toastId: string;
+    act(() => {
+      toast('test blank toast');
+    });
+
+    expect(screen.getByText('test blank toast')).toBeInTheDocument();
+
+    jest.useFakeTimers();
+    act(() => {
+      toast.dismiss();
+      jest.advanceTimersByTime(1000);
+    });
+  
+    expect(screen.queryByText('test blank toast')).toBe(null);
+  });
+
+  describe('Positions', () => {
+    const positions: ToastPosition[] = [
+      'top-left',
+      'top-right',
+      'top-center',
+      'bottom-left',
+      'bottom-center',
+      'bottom-right',
+    ];
+
+    positions.forEach(position => {
+      test(`${position}`, () => {
+        render(<ToastContainer data-testid={`toast-container-${position}`} position={position} />);
+
+        act(() => {
+          toast(`test position toast ${position}`);
+        });
+
+        expect(screen.getByTestId(`toast-container-${position}`)).toBeInTheDocument();
+
+        expect(screen.getByText(`test position toast ${position}`)).toBeInTheDocument();
+
+        const verticalStyle: React.CSSProperties = position.includes('top') ? { top: 0 } : { bottom: 0 };
+        const horizontalStyle = {
+          ...position.includes('center') && { justifyContent: 'center' },
+          ...(!position.includes('center') && position.includes('right')) && { justifyContent: 'flex-end' },
+        };
+
+        expect(screen.getByTestId(`toast-container-${position}`).children[0]).toHaveStyle({
+          ...verticalStyle,
+          ...horizontalStyle,
+        });
+
+        jest.useFakeTimers();
+        act(() => {
+          toast.dismiss();
+          jest.advanceTimersByTime(1000);
+        });
+
+        expect(screen.queryByText(`test position toast ${position}`)).toBe(null);
+
+      });
+    });
+
+    positions.forEach(position => {
+      test(`Custom toast positions ${position}`, () => {
+        render(<ToastContainer />);
+  
+        act(() => {
+          toast(`test custom position toast ${position}`, { position });
+        });
+
+        expect(screen.getByText(`test custom position toast ${position}`)).toBeInTheDocument();
+
+        jest.useFakeTimers();
+        act(() => {
+          toast.dismiss();
+          jest.advanceTimersByTime(1000);
+        });
+
+        expect(screen.queryByText(`test custom position toast ${position}`)).toBe(null);
+      });
+    });
+  });
+
+  describe('Toast Types', () => {
+    test('Success', () => {
+      render(<ToastContainer />);
+
+      act(() => {
+        toast.success('test success toast');
+      });
+
+      expect(screen.getByText('test success toast')).toBeInTheDocument();
+
+      jest.useFakeTimers();
+      act(() => {
+        toast.dismiss();
+        jest.advanceTimersByTime(1000);
+      });
+
+      expect(screen.queryByText('test success toast')).toBe(null);
+    });
+
+    test('error', () => {
+      render(<ToastContainer />);
+
+      act(() => {
+        toast.error('test error toast');
+      });
+
+      expect(screen.getByText('test error toast')).toBeInTheDocument();
+
+      jest.useFakeTimers();
+      act(() => {
+        toast.dismiss();
+        jest.advanceTimersByTime(1000);
+      });
+
+      expect(screen.queryByText('test error toast')).toBe(null);
+    });
+
+    test('Loading', () => {
+      render(<ToastContainer />);
+
+      act(() => {
+        toast.loading('test loading toast');
+      });
+
+      expect(screen.getByText('test loading toast')).toBeInTheDocument();
+
+      jest.useFakeTimers();
+      act(() => {
+        toast.dismiss();
+        jest.advanceTimersByTime(1000);
+      });
+
+      expect(screen.queryByText('test loading toast')).toBe(null);
+    });
+
+    test('Custom', () => {
+      render(<ToastContainer />);
+
+      act(() => {
+        toast.custom(<p>test custom toast</p>);
+      });
+
+      expect(screen.getByText('test custom toast')).toBeInTheDocument();
+
+      jest.useFakeTimers();
+      act(() => {
+        toast.dismiss();
+        jest.advanceTimersByTime(1000);
+      });
+
+      expect(screen.queryByText('test custom toast')).toBe(null);
+    });
+
+    test('Async Success', async () => {
+      render(<ToastContainer />);
+      let myPromise: Promise<string>;
+
+      myPromise = new Promise(async (resolve) => {
+        await wait(1000);
+        resolve('yay');
+      });
+
+      act(() => {
+        toast.async(myPromise, {
+          loading: 'loading...',
+          success: data => `success ${data}`,
+          error: err => `error ${err}`,
+        });
+      });
+
+      expect(screen.getByText('loading...')).toBeInTheDocument();
+
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
+
+      await waitFor(() => { expect(screen.getByText('success yay')).toBeInTheDocument() });
+    });
+
+    test('Async Error', async () => {
+      render(<ToastContainer />);
+      let myPromise: Promise<string>;
+
+      myPromise = new Promise(async (_resolve, reject) => {
+        await wait(1000);
+        reject('boo');
+      });
+
+      act(() => {
+        toast.async(myPromise, {
+          loading: 'loading...',
+          success: data => `success ${data}`,
+          error: err => `error ${err}`,
+        });
+      });
+
+      expect(screen.getByText('loading...')).toBeInTheDocument();
+
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
+
+      await waitFor(() => { expect(screen.getByText('error boo')).toBeInTheDocument() });
+    });
+
+    test('With children function', async () => {
+      render(<ToastContainer />);
+
+      act(() => {
+        toast(t => (
+          <span>
+            Custom and
+            <b>bold</b>
+            <button type="button" onClick={() => toast.dismiss(t.id)}>Dismiss</button>
+          </span>
+        ));
+      });
+
+      expect(screen.getByText('Custom and')).toBeInTheDocument();
+
+      jest.useFakeTimers();
+      act(() => {
+        toast.dismiss();
+        jest.advanceTimersByTime(1000);
+      });
+
+      expect(screen.queryByText('Custom and')).toBe(null);
+    });
+  });
+
+  test('Compact', async () => {
+    render(<ToastContainer data-testid="toast-container" />);
+
+    act(() => {
+      toast('test compact toast', { isCompact: true });
+    });
+
+    expect(screen.getByText('test compact toast')).toBeInTheDocument();
+    expect(screen.getByText('test compact toast').parentElement).toHaveClass('p-v-sm', 'p-h-md');
+
+    jest.useFakeTimers();
+    act(() => {
+      toast.dismiss();
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(screen.queryByText('test compact toast')).toBe(null);
+  });
+
+  test('Dismissing Toast', async () => {
+    render(<ToastContainer data-testid="toast-container" />);
+
+    act(() => {
+      toast('dismissing toast');
+    });
+
+    const closeIcon =  await screen.getByTestId('icon-testid--remove-light');
+    const closeButton = closeIcon.closest('button');
+    expect(closeButton).toBeInTheDocument();
+
+    jest.useFakeTimers();
+    if (closeButton) {
+      await act(async () => {
+        await fireEvent.click(closeButton);
+        jest.advanceTimersByTime(1000);
+      });
+    }
+
+    expect(screen.queryByText('dismissing toast')).toBe(null);
+  });
+
+  test('Non-dismissable toast', async() => {
+    render(<ToastContainer data-testid="toast-container" />);
   
     act(() => {
-      toastId = toast('test blank toast');
+      toast('cannot dismiss', { canDismiss: false });
     });
 
     await waitFor(() => {
-      expect(screen.getByText('test blank toast')).toBeInTheDocument();
+      expect(screen.getByText('cannot dismiss')).toBeInTheDocument();
+      expect(screen.queryByTestId('icon-testid--remove-light')).toBe(null);
     });
 
-    await act(async () => {
-      console.log('TOAST ID', toastId);
-      await toast.dismiss(toastId);
+    jest.useFakeTimers();
+    act(() => {
+      toast.dismiss();
+      jest.advanceTimersByTime(1000);
     });
+  
+    expect(screen.queryByText('cannot dismiss')).toBe(null);
+  });
 
-    await waitForElementToBeRemoved(() => screen.getByText('test blank toast'), { timeout: 15000 });
 
-    //await waitFor(() => { expect(screen.getByText('test blank toast')).not.toBeInTheDocument() });
-  }, 20000);
-
-  // describe('Positions', () => {
-  //   const positions: ToastPosition[] = [
-  //     'top-left',
-  //     'top-right',
-  //     'top-center',
-  //     'bottom-left',
-  //     'bottom-center',
-  //     'bottom-right',
-  //   ];
-
-  //   positions.forEach(position => {
-  //     test(`${position}`, async () => {
-  //       render(<ToastContainer data-testid={`toast-container-${position}`} position={position} />);
-
-  //       let toastId: string;
-
-  //       act(() => {
-  //         toastId = toast(`test position toast ${position}`);
-  //       });
-
-  //       expect(screen.getByTestId(`toast-container-${position}`)).toBeInTheDocument();
-
-  //       await expect(screen.getByText(`test position toast ${position}`)).toBeInTheDocument();
-
-  //       const verticalStyle: React.CSSProperties = position.includes('top') ? { top: 0 } : { bottom: 0 };
-  //       const horizontalStyle = {
-  //         ...position.includes('center') && { justifyContent: 'center' },
-  //         ...(!position.includes('center') && position.includes('right')) && { justifyContent: 'flex-end' },
-  //       };
-
-  //       expect(screen.getByTestId(`toast-container-${position}`).children[0]).toHaveStyle({
-  //         ...verticalStyle,
-  //         ...horizontalStyle,
-  //       });
-
-  //     //   act(() => {
-  //     //     toast.dismiss(toastId);
-  //     //   });
-
-  //     //   await expect(screen.getByText(`test blank toast ${position}`)).not.toBeInTheDocument();
-  //     });
-  //   });
-
-  //   positions.forEach(position => {
-  //     test(`Custom toast positions ${position}`, async () => {
-  //       render(<ToastContainer />);
-
-  //       act(() => {
-  //         toast(`test custom position toast ${position}`, { position });
-  //       });
-
-  //       await expect(screen.getByText(`test custom position toast ${position}`)).toBeInTheDocument();
-  //     });
-  //   });
-  // });
-
-  // describe('Toast Types', () => {
-  //   test('Success', async () => {
-  //     render(<ToastContainer />);
-
-  //     act(() => {
-  //       toast.success('test success toast');
-  //     });
-
-  //     await expect(screen.getByText('test success toast')).toBeInTheDocument();
-  //   });
-
-  //   test('error', async () => {
-  //     render(<ToastContainer />);
-
-  //     act(() => {
-  //       toast.error('test error toast');
-  //     });
-
-  //     await expect(screen.getByText('test error toast')).toBeInTheDocument();
-  //   });
-
-  //   test('Loading', async () => {
-  //     render(<ToastContainer />);
-
-  //     act(() => {
-  //       toast.loading('test loading toast');
-  //     });
-
-  //     await expect(screen.getByText('test loading toast')).toBeInTheDocument();
-  //   });
-
-  //   test('Custom', async () => {
-  //     render(<ToastContainer />);
-
-  //     act(() => {
-  //       toast.custom(<p>test custom toast</p>);
-  //     });
-
-  //     await expect(screen.getByText('test custom toast')).toBeInTheDocument();
-  //   });
-
-  //   test('Async', async () => {
-  //     render(<ToastContainer />);
-  //     const myPromise = new Promise((resolve, reject) => {
-  //       setTimeout(() => {
-  //         if (Date.now() % 2 === 0) {
-  //           resolve('yay');
-  //         } else {
-  //           // eslint-disable-next-line
-  //           reject('oh no!');
-  //         }
-  //       }, 1000);
-  //     });
-
-  //     act(() => {
-  //       toast.async(myPromise, {
-  //         loading: 'loading...',
-  //         success: data => `success ${data}`,
-  //         error: err => `error ${err}`,
-  //       });
-  //     });
-
-  //     await expect(screen.getByText('loading...')).toBeInTheDocument();
-  //   });
-
-  //   test('With children function', async () => {
-  //     render(<ToastContainer />);
-
-  //     act(() => {
-  //       toast(t => (
-  //         <span>
-  //           Custom and
-  //           <b>bold</b>
-  //           <button type="button" onClick={() => toast.dismiss(t.id)}>Dismiss</button>
-  //         </span>
-  //       ));
-  //     });
-
-  //     await expect(screen.getByText('Custom and')).toBeInTheDocument();
-  //   });
-  // });
-
-  // test('Compact', async () => {
-  //   render(<ToastContainer data-testid="toast-container" />);
-
-  //   act(() => {
-  //     toast('test compact toast', { isCompact: true });
-  //   });
-
-  //   await expect(screen.getByText('test compact toast')).toBeInTheDocument();
-  // });
-
-  // test('Dismissing Toast', async () => {
-  //   render(<ToastContainer data-testid="toast-container" />);
-
-  //   act(() => {
-  //     toast('dismissing toast');
-  //   });
-
-  //   const closeIcon =  await screen.getByTestId('icon-testid--remove-light');
-  //   const closeButton = closeIcon.closest('button');
-  //   console.log(closeButton);
-  //   console.log(screen);
-  // });
 });
