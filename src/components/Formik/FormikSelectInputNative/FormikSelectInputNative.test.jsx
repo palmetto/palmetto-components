@@ -5,7 +5,9 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import { Formik, Form, Field } from 'formik';
+import {
+  Formik, Form, Field, getIn, setIn,
+} from 'formik';
 import { FormikSelectInputNative } from './FormikSelectInputNative';
 
 const testLabelName = 'test select';
@@ -16,39 +18,30 @@ const selectOptions = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
-const handleValidation = values => {
-  const errors = {};
-  if (!values[testLabelName] || values[testLabelName].length < 1) {
-    errors[testLabelName] = 'input is required';
-  }
+const handleValidation = testValueKey => values => (getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required'));
 
-  return errors;
-};
-
-const renderForm = (initialValue, props) => {
-  return (
-    <Formik
-      initialValues={{
-        [testLabelName]: initialValue,
-      }}
-      validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
-    >
-      {() => (
-        <Form data-testid="form">
-          <Field
-            label={testLabelName}
-            name={testLabelName}
-            id={testLabelName}
-            options={selectOptions}
-            component={FormikSelectInputNative}
-            {...props}
-          />
-          <button type="submit">submit</button>
-        </Form>
-      )}
-    </Formik>
-  );
-};
+const renderForm = (initialValue, props, testValueKey = testLabelName) => (
+  <Formik
+    initialValues={{
+      [testLabelName]: initialValue,
+    }}
+    validate={props.isRequired ? handleValidation(testValueKey) : undefined}
+  >
+    {() => (
+      <Form data-testid="form">
+        <Field
+          label={testValueKey}
+          name={testValueKey}
+          id={testValueKey}
+          options={selectOptions}
+          component={FormikSelectInputNative}
+          {...props}
+        />
+        <button type="submit">submit</button>
+      </Form>
+    )}
+  </Formik>
+);
 
 function getByTextWithMarkup(text) {
   return (content, element) => {
@@ -120,7 +113,16 @@ describe('SelectInputNative', () => {
 
     describe('Is Invalid, with a helpful message', () => {
       test('it renders the helpful message', async () => {
-        const { getByText } = render(renderForm(null, { isRequired: true }));
+        render(renderForm(null, { isRequired: true }));
+        const form = screen.getByTestId('form');
+        // const submitButton = getByText('submit').closest('button');
+
+        fireEvent.submit(form);
+        await waitFor(() => expect(screen.getByText('input is required')).toBeInTheDocument());
+      });
+
+      test('it renders the error message from nested object', async () => {
+        render(renderForm({ outer: { nested: null } }, { isRequired: true }, `${testLabelName}.outer.nested`));
         const form = screen.getByTestId('form');
         // const submitButton = getByText('submit').closest('button');
 

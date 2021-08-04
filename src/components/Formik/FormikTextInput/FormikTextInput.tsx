@@ -4,6 +4,7 @@ import {
   FormikErrors,
   FieldAttributes,
   FormikValues,
+  getIn,
 } from 'formik';
 import { TextInput, TextInputProps } from '../../TextInput/TextInput';
 
@@ -39,6 +40,6 @@ export const FormikTextInput: React.FC<FormikTextInputProps> = (
     onBlur={onBlur}
     onChange={onChange ?? formikOnChange}
     value={value}
-    error={touched[name] && errors[name]}
+    error={getIn(touched, name) && getIn(errors, name)}
   />
 );

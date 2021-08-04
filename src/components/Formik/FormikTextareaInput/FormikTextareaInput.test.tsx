@@ -3,20 +3,13 @@ import {
   render, fireEvent, screen, waitFor,
 } from '@testing-library/react';
 import {
-  Formik, Field, Form, FormikValues,
+  Formik, Field, Form, FormikValues, getIn, setIn,
 } from 'formik';
 import { FormikTextareaInput } from './FormikTextareaInput';
 
 const testLabelName = 'textInput';
 
-const handleValidation = (values: FormikValues) => {
-  const errors: { [testLabelName]?: string; } = {};
-  if (!values[testLabelName]) {
-    errors[testLabelName] = 'input is required';
-  }
-
-  return errors;
-};
+const handleValidation = (testValueKey:string) => (values:FormikValues) => (getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required'));
 
 type FormProps = {
   isRequired?: boolean;
@@ -27,20 +20,20 @@ type FormProps = {
   autoFocus?: boolean;
 };
 
-const renderForm = (initialValue: string | undefined, props: FormProps) => (
+const renderForm = (initialValue: any, props: FormProps, testValueKey = testLabelName) => (
   <Formik
     initialValues={{
       [testLabelName]: initialValue,
     }}
-    validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
+    validate={props.isRequired ? handleValidation(testValueKey) : undefined} // eslint-disable-line
     onSubmit={() => {}} // eslint-disable-line
   >
     {() => (
       <Form>
         <Field
-          label={testLabelName}
-          name={testLabelName}
-          id={testLabelName}
+          label={testValueKey}
+          name={testValueKey}
+          id={testValueKey}
           component={FormikTextareaInput}
           {...props}
         />
@@ -107,6 +100,14 @@ describe('FormikTextareaInput', () => {
     describe('With Error', () => {
       test('Input correctly displays error message if provided', async () => {
         const { getByText } = render(renderForm('', { isRequired: true }));
+        const submitButton = getByText('submit');
+
+        fireEvent.click(submitButton);
+        await waitFor(() => expect(screen.getByText('input is required')).toBeInTheDocument());
+      });
+
+      test('Input correctly displays error message from nested object', async () => {
+        const { getByText } = render(renderForm({ outer: { nested: '' } }, { isRequired: true }, `${testLabelName}.outer.nested`));
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
