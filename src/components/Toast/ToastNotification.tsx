@@ -118,7 +118,7 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
         padding={toast.isCompact ? 'sm md' : 'md lg'}
         radius="md"
         direction="row"
-        className={classNames(toast.className, animationClass)}
+        className={classNames(toast.className, animationClass, { 'toast-notification--not-visible': !toast.visible })}
         style={{
           ...style,
           ...toast.style,

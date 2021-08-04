@@ -45,7 +45,14 @@ const getPositionStyle = (
 };
 
 export interface ToastContainerProps {
+  /**
+   * Global position for all toasts in container.
+   * NOTE: This can be overwritten by the position property of each individual toast.
+   */
   position?: ToastPosition;
+  /**
+   * Global options for each toast. Can be overwritten individually as needed.
+   */
   toastOptions?: ExtendedToastOptions;
   reverseOrder?: boolean;
   gutter?: number;

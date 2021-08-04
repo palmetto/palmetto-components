@@ -11,23 +11,70 @@ export type ToastPosition =
   'bottom-right';
 
 export interface Toast {
+  /**
+   * Type of toast to create.
+   */
   type: ToastType;
+  /**
+   * Unique id for the toast.
+   */
   id: string;
+  /**
+   * Toast message
+   */
   message: ValueOrFunction<React.ReactNode, Toast>;
+  /**
+   * Determine of toast layout is compact or default.
+   */
   isCompact?: boolean;
+  /**
+   * Icon to include on toast (left hand side prefix).
+   */
   icon?: IconName;
+  /**
+   * Custom duration for toast.
+   */
   duration?: number;
+  /**
+   * Amount of time the toast timeout has been paused for. 
+   * When the toast timeout is paused, its auto-dismissal will be delayed.
+   */
   pauseDuration: number;
+  /**
+   * Custom toast position, use as needed to override global position from ToastContainer.
+   */
   position?: ToastPosition;
+  /**
+   * Accessibility options
+   */
   ariaProps: {
     role: 'status' | 'alert';
     'aria-live': 'assertive' | 'off' | 'polite';
   };
+  /**
+   * Whether the toast can be dismissed (if true, the toast will include a close button)
+   */
   canDismiss?: boolean;
+  /**
+   * Custom styles.
+   */
   style?: React.CSSProperties;
+  /**
+   * Custom className
+   */
   className?: string;
+  /**
+   * Epoch timestamp
+   */
   createdAt: number;
+  /**
+   * Whether the toast is visible at the current time.
+   * Used in order to display a proper fade-out animation before the element is fully removed from the DOM.
+   */
   visible: boolean;
+  /**
+   * Height of element (calculated with getBoundingClientRect)
+   */
   height?: number;
 }
 

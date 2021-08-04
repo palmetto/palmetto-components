@@ -103,7 +103,7 @@ const handleUpdateToast: ToastStoreHandler = (state, action) => {
 
   const { toast } = action.payload;
 
-  //  ! Side effects !
+  //  @TODO -- Side effects
   if (toast.id) {
     clearFromDismissedQueue(toast.id);
   }
