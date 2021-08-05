@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Toast, ExtendedToastOptions, ToastType } from './Toast.types';
 
-const TOAST_LIMIT = 10;
+const TOAST_LIMIT = 20;
 
 // eslint-disable-next-line no-shadow
 export enum ToastStoreActionType {
