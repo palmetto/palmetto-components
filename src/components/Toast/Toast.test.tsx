@@ -58,7 +58,7 @@ describe('Toast', () => {
 
   afterEach(() => {
     cleanup();
-    jest.restoreAllMocks();
+    jest.resetModules();
   });
 
   test('Default', () => {
