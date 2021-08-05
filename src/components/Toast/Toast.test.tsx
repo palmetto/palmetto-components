@@ -32,6 +32,8 @@ function wait(t: number) {
 }
 
 describe('Toast', () => {
+  const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+
   beforeAll(() => {
     jest.useFakeTimers();
   });
@@ -58,7 +60,7 @@ describe('Toast', () => {
 
   afterEach(() => {
     cleanup();
-    jest.resetModules();
+    Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
   });
 
   test('Default', () => {
