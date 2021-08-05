@@ -10,12 +10,27 @@ import { IconName, FontColor } from '../../types';
 import styles from './ToastNotification.module.scss';
 
 interface ToastNotificationProps {
+  /**
+   * Toast object
+   */
   toast: Toast;
+  /**
+   * Custom position for toast (overrides global container toast position).
+   */
   position?: ToastPosition;
+  /**
+   * Custom styles for toast.
+   */
   style?: React.CSSProperties;
+  /**
+   * Render function to create custom toast notification.
+   */
   children?: (components: {
     message: React.ReactNode;
   }) => React.ReactNode;
+  /**
+   * Handler for when the dismiss button is pressed.
+   */
   onDismiss?: () => void;
 }
 
