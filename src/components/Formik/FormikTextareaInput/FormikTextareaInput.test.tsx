@@ -1,15 +1,25 @@
 import React from 'react';
 import {
-  render, fireEvent, screen, waitFor,
+  render,
+  fireEvent,
+  screen,
+  waitFor,
 } from '@testing-library/react';
 import {
-  Formik, Field, Form, FormikValues, getIn, setIn,
+  Formik,
+  Field,
+  Form,
+  FormikValues,
+  getIn,
+  setIn,
 } from 'formik';
 import { FormikTextareaInput } from './FormikTextareaInput';
 
 const testLabelName = 'textInput';
 
-const handleValidation = (testValueKey:string) => (values:FormikValues) => (getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required'));
+const handleValidation = (testValueKey: string) => (values: FormikValues) => (
+  getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required')
+);
 
 type FormProps = {
   isRequired?: boolean;
@@ -20,6 +30,7 @@ type FormProps = {
   autoFocus?: boolean;
 };
 
+// eslint-disable-next-line
 const renderForm = (initialValue: any, props: FormProps, testValueKey = testLabelName) => (
   <Formik
     initialValues={{
@@ -107,7 +118,9 @@ describe('FormikTextareaInput', () => {
       });
 
       test('Input correctly displays error message from nested object', async () => {
-        const { getByText } = render(renderForm({ outer: { nested: '' } }, { isRequired: true }, `${testLabelName}.outer.nested`));
+        const { getByText } = render(
+          renderForm({ outer: { nested: '' } }, { isRequired: true }, `${testLabelName}.outer.nested`),
+        );
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
