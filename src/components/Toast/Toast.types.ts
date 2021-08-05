@@ -1,4 +1,4 @@
-import { ValueOrFunction, IconName } from '../../types';
+import { ValueOrFunction } from '../../types';
 
 export type ToastType = 'success' | 'error' | 'loading' | 'blank' | 'custom';
 

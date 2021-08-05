@@ -51,7 +51,13 @@ describe('ToastContainer', () => {
   });
 
   test('With Children', () => {
-    render(<ToastContainer data-testid="toast-container-children" children={(t) => <button>{t.message}</button>}></ToastContainer>);
+    render(
+      <ToastContainer
+        data-testid="toast-container-children"
+        // eslint-disable-next-line
+        children={t => <button type="button">{t.message}</button>}
+      />,
+    );
 
     act(() => {
       toast('test with children function');
