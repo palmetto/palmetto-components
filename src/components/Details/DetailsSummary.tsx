@@ -30,11 +30,14 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if ([ENTER, SPACE].indexOf(event.keyCode) !== -1) {
+      // Needed to avoid default `details` behavior on a click event and keep this as controlled component.
+      event.preventDefault();
+    }
+
     if (!onToggle && !restProps?.onKeyDown) return;
 
     if (onToggle && [ENTER, SPACE].indexOf(event.keyCode) !== -1) {
-      // Needed to avoid default `details` behavior on a click event and keep this as controlled component.
-      event.preventDefault();
       onToggle(event);
     }
 
