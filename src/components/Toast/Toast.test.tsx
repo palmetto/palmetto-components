@@ -40,21 +40,21 @@ describe('Toast', () => {
     jest.useRealTimers();
   });
 
-  beforeEach(() => {
-    Element.prototype.getBoundingClientRect = jest.fn(() => (
-      {
-        width: 300,
-        height: 50,
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        x: 0,
-        y: 0,
-        toJSON: () => {}, // eslint-disable-line
-      }
-    ));
-  });
+  // beforeEach(() => {
+  //   Element.prototype.getBoundingClientRect = jest.fn(() => (
+  //     {
+  //       width: 300,
+  //       height: 50,
+  //       top: 0,
+  //       left: 0,
+  //       bottom: 0,
+  //       right: 0,
+  //       x: 0,
+  //       y: 0,
+  //       toJSON: () => {}, // eslint-disable-line
+  //     }
+  //   ));
+  // });
 
   afterEach(() => {
     cleanup();
