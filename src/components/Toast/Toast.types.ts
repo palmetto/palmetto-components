@@ -28,10 +28,6 @@ export interface Toast {
    */
   isCompact?: boolean;
   /**
-   * Icon to include on toast (left hand side prefix).
-   */
-  icon?: IconName;
-  /**
    * Custom duration for toast.
    */
   duration?: number;

@@ -14,7 +14,6 @@ interface ToastNotificationProps {
   position?: ToastPosition;
   style?: React.CSSProperties;
   children?: (components: {
-    // icon: IconName;
     message: React.ReactNode;
   }) => React.ReactNode;
   onDismiss?: () => void;
@@ -96,7 +95,7 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
       <Box
         direction="row"
         justifyContent="center"
-        margin={toast.icon || toastTypesWithIcon.includes(toast.type) ? '0 0 0 sm' : undefined}
+        margin={toastTypesWithIcon.includes(toast.type) ? '0 0 0 sm' : undefined}
         style={{
           flex: '1 1 auto',
         }}

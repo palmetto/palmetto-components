@@ -61,13 +61,13 @@ export const useToasts = (toastOptions?: ExtendedToastOptions) => { // eslint-di
       },
       calculateOffset: (
         currentToast: Toast,
-        opts?: {
-          reverseOrder?: boolean;
-          gutter?: number;
+        opts: {
+          reverseOrder: boolean;
+          gutter: number;
           defaultPosition?: ToastPosition;
         },
       ) => {
-        const { reverseOrder = false, gutter = 8, defaultPosition } = opts || {};
+        const { reverseOrder, gutter, defaultPosition } = opts || {};
 
         const relevantToasts = toasts
           .filter(t => (t.position || defaultPosition) === (currentToast.position || defaultPosition) && t.height);

@@ -46,19 +46,41 @@ const getPositionStyle = (
 
 export interface ToastContainerProps {
   /**
+   * Render function for each individual toast.
+   * This can be used to render custom toasts, although we recommend using the standard version,
+   * unless absolutely necessary.
+   */
+  children?: (t: Toast) => JSX.Element;
+  /**
+   * Style object for the toast container if needed.
+   */
+  containerStyle?: React.CSSProperties;
+  /**
+   * Custom classname for toast container if needed.
+   */
+  containerClassName?: string;
+  /**
+   * The vertical gap between each toast notification when multiple toasts are on screen (in pixels).
+   */
+  gutter?: number;
+  /**
    * Global position for all toasts in container.
    * NOTE: This can be overwritten by the position property of each individual toast.
    */
   position?: ToastPosition;
   /**
-   * Global options for each toast. Can be overwritten individually as needed.
+   * Display toasts in reverse order.
+   * NOTE: Reverse order in this case means that older toasts remain close to the position origin.
+   * and newer toasts appear further away from the origin.
+   */
+  reverseOrder?: boolean;
+  /**
+   * Global options for each toast. Can be overwritten for each individual toast as needed.
    */
   toastOptions?: ExtendedToastOptions;
-  reverseOrder?: boolean;
-  gutter?: number;
-  containerStyle?: React.CSSProperties;
-  containerClassName?: string;
-  children?: (t: Toast) => JSX.Element;
+  /**
+   * Props spread into main container.
+   */
   [x: string]: unknown; // eslint-disable-line
 }
 
@@ -92,13 +114,13 @@ const renderNotification = (
 };
 
 export const ToastContainer: React.FC<ToastContainerProps> = ({
-  reverseOrder,
+  children = undefined,
+  containerStyle = undefined,
+  containerClassName = undefined,
+  gutter = 8,
   position = 'top-center',
+  reverseOrder = false,
   toastOptions,
-  gutter,
-  children,
-  containerStyle,
-  containerClassName,
   ...restProps
 }) => {
   const { toasts, handlers } = useToasts(toastOptions);

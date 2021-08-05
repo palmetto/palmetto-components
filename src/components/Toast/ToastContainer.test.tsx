@@ -50,6 +50,23 @@ describe('ToastContainer', () => {
     expect(screen.getByTestId('toast-container-default')).toBeInTheDocument();
   });
 
+  test('With Children', () => {
+    render(<ToastContainer data-testid="toast-container-children" children={(t) => <button>{t.message}</button>}></ToastContainer>);
+
+    act(() => {
+      toast('test with children function');
+    });
+
+    expect(screen.getByText('test with children function').closest('button')).toBeInTheDocument();
+
+    act(() => {
+      toast.dismiss();
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(screen.queryByText('test with children function')).toBe(null);
+  });
+
   test('With Toasts', () => {
     render(<ToastContainer data-testid="toast-container" />);
     act(() => {
@@ -570,5 +587,55 @@ describe('ToastContainer', () => {
     });
 
     expect(screen.queryByText('updated to success')).toBe(null);
+  });
+
+  test('Update after dismiss', () => {
+    render(<ToastContainer />);
+    let toastId: string;
+
+    act(() => {
+      toastId = toast('update after dismiss');
+    });
+
+    expect(screen.getByText('update after dismiss')).toBeInTheDocument();
+
+    act(() => {
+      toast.dismiss(toastId);
+      jest.advanceTimersByTime(100);
+    });
+
+    act(() => {
+      toast.success('updated after dismiss to success', { id: toastId });
+    });
+
+    expect(screen.queryByText('update after dismiss')).toBe(null);
+    expect(screen.getByText('updated after dismiss to success')).toBeInTheDocument();
+
+    act(() => {
+      toast.remove();
+    });
+
+    expect(screen.queryByText('updated after dismiss to success')).toBe(null);
+  });
+
+  test('Dismiss toast that is already in dismiss queue', () => {
+    render(<ToastContainer data-testid="toast-container" />);
+    act(() => {
+      toast('dismiss twice');
+    });
+
+    expect(screen.getByText('dismiss twice')).toBeInTheDocument();
+
+    act(() => {
+      toast.dismiss();
+      jest.advanceTimersByTime(100);
+    });
+
+    act(() => {
+      toast.dismiss();
+      jest.advanceTimersByTime(900);
+    });
+
+    expect(screen.queryByText('dismiss twice')).toBe(null);
   });
 });
