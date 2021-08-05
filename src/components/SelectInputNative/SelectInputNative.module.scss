@@ -75,7 +75,8 @@
 
     > select {
       border-radius: var(--form-control-size-lg-border-radius);
-      padding: 0 var(--form-control-size-sm-padding);
+      padding-left: var(--form-control-size-sm-padding);
+      padding-right: var(--size-spacing-2xl);
       padding-top: calc(var(--form-control-size-sm-padding) - 1px);
       padding-bottom: calc(var(--form-control-size-sm-padding) - 1px);
     }
@@ -102,7 +103,8 @@
 
     > select {
       border-radius: var(--form-control-size-lg-border-radius);
-      padding: 0 var(--form-control-size-md-padding);
+      padding-left: var(--form-control-size-md-padding);
+      padding-right: var(--size-spacing-3xl);
       padding-top: calc(var(--form-control-size-md-padding) - 1px);
       padding-bottom: calc(var(--form-control-size-md-padding) - 1px);
     }
@@ -129,7 +131,8 @@
 
     > select {
       border-radius: var(--form-control-size-lg-border-radius);
-      padding: 0 var(--form-control-size-lg-padding);
+      padding-left: var(--form-control-size-lg-padding);
+      padding-right: var(--size-spacing-3xl);
       padding-top: calc(var(--form-control-size-lg-padding) - 1px);
       padding-bottom: calc(var(--form-control-size-lg-padding) - 1px);
     }
