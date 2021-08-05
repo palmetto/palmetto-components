@@ -51,7 +51,7 @@ export const useToasts = (toastOptions?: ExtendedToastOptions) => { // eslint-di
         }
       },
       updateHeight: (toastId: string, height: number) => {
-        if (toasts.find(toast => toast.id === toastId)?.height === height) {
+        if (toasts.find(t => t.id === toastId)?.height === height) {
           return;
         }
         dispatch({

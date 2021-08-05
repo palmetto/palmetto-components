@@ -9,7 +9,6 @@ import {
 import React from 'react';
 import { ToastPosition } from '.';
 import { toast } from './toast';
-import { ToastStoreActionType } from './Toast.store';
 import { ToastContainer } from './ToastContainer';
 
 Object.defineProperty(window, 'matchMedia', {
@@ -27,19 +26,19 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 function wait(t: number) {
-  return new Promise(function(resolve) { 
-      window.setTimeout(resolve, t)
+  return new Promise(resolve => {
+    window.setTimeout(resolve, t);
   });
 }
 
 describe('ToastContainer', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
-  })
+    jest.useFakeTimers();
+  });
 
   afterAll(() => {
-    jest.useRealTimers()
-  })
+    jest.useRealTimers();
+  });
 
   afterEach(() => {
     cleanup();
@@ -63,7 +62,7 @@ describe('ToastContainer', () => {
       toast.dismiss();
       jest.advanceTimersByTime(1000);
     });
-  
+
     expect(screen.queryByText('test blank toast')).toBe(null);
   });
 
@@ -106,14 +105,13 @@ describe('ToastContainer', () => {
         });
 
         expect(screen.queryByText(`test position toast ${position}`)).toBe(null);
-
       });
     });
 
     positions.forEach(position => {
       test(`Custom toast positions ${position}`, () => {
         render(<ToastContainer />);
-  
+
         act(() => {
           toast(`test custom position toast ${position}`, { position });
         });
@@ -201,9 +199,8 @@ describe('ToastContainer', () => {
 
     test('Async Success', async () => {
       render(<ToastContainer />);
-      let myPromise: Promise<string>;
 
-      myPromise = new Promise(async (resolve) => {
+      const myPromise = new Promise(async resolve => { // eslint-disable-line no-async-promise-executor
         await wait(1000);
         resolve('yay');
       });
@@ -222,16 +219,15 @@ describe('ToastContainer', () => {
         jest.advanceTimersByTime(1000);
       });
 
-      await waitFor(() => { expect(screen.getByText('success yay')).toBeInTheDocument() });
+      await waitFor(() => { expect(screen.getByText('success yay')).toBeInTheDocument(); });
     });
 
     test('Async Error', async () => {
       render(<ToastContainer />);
-      let myPromise: Promise<string>;
 
-      myPromise = new Promise(async (_resolve, reject) => {
+      const myPromise = new Promise(async (_resolve, reject) => { // eslint-disable-line no-async-promise-executor
         await wait(1000);
-        reject('boo');
+        reject('boo'); // eslint-disable-line prefer-promise-reject-errors
       });
 
       act(() => {
@@ -248,7 +244,7 @@ describe('ToastContainer', () => {
         jest.advanceTimersByTime(1000);
       });
 
-      await waitFor(() => { expect(screen.getByText('error boo')).toBeInTheDocument() });
+      await waitFor(() => { expect(screen.getByText('error boo')).toBeInTheDocument(); });
     });
 
     test('With children function', async () => {
@@ -300,7 +296,7 @@ describe('ToastContainer', () => {
       toast('dismissing toast');
     });
 
-    const closeIcon =  await screen.getByTestId('icon-testid--remove-light');
+    const closeIcon = await screen.getByTestId('icon-testid--remove-light');
     const closeButton = closeIcon.closest('button');
     expect(closeButton).toBeInTheDocument();
 
@@ -314,9 +310,9 @@ describe('ToastContainer', () => {
     expect(screen.queryByText('dismissing toast')).toBe(null);
   });
 
-  test('Non-dismissable toast', async() => {
+  test('Non-dismissable toast', async () => {
     render(<ToastContainer data-testid="toast-container" />);
-  
+
     act(() => {
       toast('cannot dismiss', { canDismiss: false });
     });
@@ -330,18 +326,20 @@ describe('ToastContainer', () => {
       toast.dismiss();
       jest.advanceTimersByTime(1000);
     });
-  
+
     expect(screen.queryByText('cannot dismiss')).toBe(null);
   });
 
   test('Dismiss a single toast', () => {
     render(<ToastContainer data-testid="toast-container" />);
-    
+
     let toastId: string;
 
     act(() => {
       toast('multiple toasts 1');
+      jest.advanceTimersByTime(1500);
       toastId = toast('multiple toasts 2');
+      jest.advanceTimersByTime(1000);
     });
 
     expect(screen.getByText('multiple toasts 1')).toBeInTheDocument();
@@ -351,10 +349,10 @@ describe('ToastContainer', () => {
       toast.dismiss(toastId);
       jest.advanceTimersByTime(1000);
     });
-    
+
     expect(screen.getByText('multiple toasts 1')).toBeInTheDocument();
     expect(screen.queryByText('multiple toasts 2')).toBe(null);
-    
+
     // cleanup -- dismiss remaining toast.
     act(() => {
       toast.dismiss();
@@ -370,82 +368,73 @@ describe('ToastContainer', () => {
     test('Default duration -- blank toast', async () => {
       render(<ToastContainer />);
 
-      act(() => { toast('default timeout blank toast') });
+      act(() => { toast('default timeout blank toast'); });
       expect(screen.getByText('default timeout blank toast')).toBeInTheDocument();
 
       // After 3000ms nothing should have changed.
-      act(() => { jest.advanceTimersByTime(3000) });
+      act(() => { jest.advanceTimersByTime(3000); });
       expect(screen.getByText('default timeout blank toast')).toBeInTheDocument();
 
       // After 4000ms (3000 + 1000) the toast should still be in the DOM,
       // but not visible. We confirm this with the `not-visible` class.
-      act(() => {
-        jest.advanceTimersByTime(1000);
-      });
-
-      expect(screen.getByText('default timeout blank toast')?.parentElement).toHaveClass('toast-notification--not-visible');
+      act(() => { jest.advanceTimersByTime(1000); });
+      expect(screen.getByText('default timeout blank toast')?.parentElement)
+        .toHaveClass('toast-notification--not-visible');
 
       // After another 1000ms the toast is cleared from the DOM completely (after animation is done).
-      act(() => {
-        jest.advanceTimersByTime(1000);
-      });
-
+      act(() => { jest.advanceTimersByTime(1000); });
       expect(screen.queryByText('default timeout blank toast')).toBe(null);
     });
 
     test('Default duration -- error toast', async () => {
       render(<ToastContainer />);
 
-      act(() => { toast.error('default timeout error toast') });
+      act(() => { toast.error('default timeout error toast'); });
       expect(screen.getByText('default timeout error toast')).toBeInTheDocument();
 
       // After 3000ms nothing should have changed.
-      act(() => { jest.advanceTimersByTime(3000) });
+      act(() => { jest.advanceTimersByTime(3000); });
       expect(screen.getByText('default timeout error toast')).toBeInTheDocument();
 
       // After 4000ms (3000 + 1000) the toast should still be in the DOM,
       // but not visible. We confirm this with the `not-visible` class.
-      act(() => {
-        jest.advanceTimersByTime(1000);
-      });
-
-      expect(screen.getByText('default timeout error toast')?.parentElement).toHaveClass('toast-notification--not-visible');
+      act(() => { jest.advanceTimersByTime(1000); });
+      expect(screen.getByText('default timeout error toast')?.parentElement)
+        .toHaveClass('toast-notification--not-visible');
 
       // After another 1000ms the toast is cleared from the DOM completely (after animation is done).
-      act(() => {
-        jest.advanceTimersByTime(1000);
-      });
+      act(() => { jest.advanceTimersByTime(1000); });
 
       expect(screen.queryByText('default timeout error toast')).toBe(null);
     });
     test('Default duration -- success toast', async () => {
       render(<ToastContainer />);
 
-      act(() => { toast.success('default timeout success toast') });
+      act(() => { toast.success('default timeout success toast'); });
       expect(screen.getByText('default timeout success toast')).toBeInTheDocument();
 
       // After 1000ms nothing should have changed.
-      act(() => { jest.advanceTimersByTime(1000) });
+      act(() => { jest.advanceTimersByTime(1000); });
       expect(screen.getByText('default timeout success toast')).toBeInTheDocument();
 
       // After 2000ms (1000 + 1000) the toast should still be in the DOM,
       // but not visible. We confirm this with the `not-visible` class.
-      act(() => { jest.advanceTimersByTime(1000) });
-      expect(screen.getByText('default timeout success toast')?.parentElement).toHaveClass('toast-notification--not-visible');
+      act(() => { jest.advanceTimersByTime(1000); });
+      expect(screen.getByText('default timeout success toast')?.parentElement)
+        .toHaveClass('toast-notification--not-visible');
 
       // After another 1000ms the toast is cleared from the DOM completely (after animation is done).
-      act(() => { jest.advanceTimersByTime(1000) });
+      act(() => { jest.advanceTimersByTime(1000); });
       expect(screen.queryByText('default timeout success toast')).toBe(null);
-
     });
     test('Default duration -- loading toast', async () => {
       render(<ToastContainer />);
 
-      act(() => { toast.loading('default timeout loading toast') });
+      act(() => { toast.loading('default timeout loading toast'); });
       expect(screen.getByText('default timeout loading toast')).toBeInTheDocument();
 
       // After any amount of time nothing should have changed.
-      act(() => { jest.advanceTimersByTime(999999) });
+      act(() => { jest.advanceTimersByTime(999999); });
       expect(screen.getByText('default timeout loading toast')).toBeInTheDocument();
 
       // Toast can be dismissed programmatically, however.
@@ -456,22 +445,130 @@ describe('ToastContainer', () => {
       expect(screen.queryByText('default timeout loading toast')).toBe(null);
     });
     test('With a custom duration on the container', async () => {
-      render(<ToastContainer toastOptions={{ duration: 10000 }}/>);
+      render(<ToastContainer toastOptions={{ duration: 10000 }} />);
 
-      act(() => { toast('custom timeout on container toast') });
+      act(() => { toast('custom timeout on container toast'); });
       expect(screen.getByText('custom timeout on container toast')).toBeInTheDocument();
 
       // After 8000ms nothing should have changed.
-      act(() => { jest.advanceTimersByTime(8000) });
+      act(() => { jest.advanceTimersByTime(8000); });
       expect(screen.getByText('custom timeout on container toast')).toBeInTheDocument();
 
       // after 10000ms toast should be in DOM but not visible.
-      act(() => { jest.advanceTimersByTime(2000) });
-      expect(screen.getByText('custom timeout on container toast')?.parentElement).toHaveClass('toast-notification--not-visible');
+      act(() => { jest.advanceTimersByTime(2000); });
+      expect(screen.getByText('custom timeout on container toast')?.parentElement)
+        .toHaveClass('toast-notification--not-visible');
 
       // after another 1000ms the toast should be removed from the DOM.
       act(() => { jest.advanceTimersByTime(1000); });
       expect(screen.queryByText('custom timeout on container toast')).toBe(null);
     });
+    test('Overriding container duration in single toast', async () => {
+      render(<ToastContainer />);
+
+      act(() => { toast('custom timeout on individual toast', { duration: 10000 }); });
+      expect(screen.getByText('custom timeout on individual toast')).toBeInTheDocument();
+
+      // After 8000ms nothing should have changed.
+      act(() => { jest.advanceTimersByTime(8000); });
+      expect(screen.getByText('custom timeout on individual toast')).toBeInTheDocument();
+
+      // after 10000ms toast should be in DOM but not visible.
+      act(() => { jest.advanceTimersByTime(2000); });
+      expect(screen.getByText('custom timeout on individual toast')?.parentElement)
+        .toHaveClass('toast-notification--not-visible');
+
+      // after another 1000ms the toast should be removed from the DOM.
+      act(() => { jest.advanceTimersByTime(1000); });
+      expect(screen.queryByText('custom timeout on individual toast')).toBe(null);
+    });
+  });
+
+  test('Removing Toast', () => {
+    render(<ToastContainer data-testid="toast-container" />);
+    let toastId: string;
+
+    act(() => {
+      toastId = toast('test remove toast');
+    });
+
+    expect(screen.getByText('test remove toast')).toBeInTheDocument();
+
+    act(() => {
+      toast.remove(toastId);
+    });
+
+    expect(screen.queryByText('test remove toast')).toBe(null);
+  });
+
+  test('Pause duration on mouseover', async () => {
+    render(<ToastContainer />);
+
+    act(() => { toast('default timeout blank toast'); });
+    expect(screen.getByText('default timeout blank toast')).toBeInTheDocument();
+
+    // Mousing over the element should delay the duration until toast is dismissed
+    await fireEvent.mouseOver(screen.getByText('default timeout blank toast'));
+
+    // Toast should still be present since user has moused over it.
+    act(() => { jest.advanceTimersByTime(99999); });
+    expect(screen.getByText('default timeout blank toast')).toBeInTheDocument();
+
+    // Mouse out should re-start timer.
+    await fireEvent.mouseOut(screen.getByText('default timeout blank toast'));
+
+    // After 3000ms nothing should have changed.
+    act(() => { jest.advanceTimersByTime(3000); });
+    expect(screen.getByText('default timeout blank toast')).toBeInTheDocument();
+
+    // After 4000ms (3000 + 1000) the toast should still be in the DOM,
+    // but not visible. We confirm this with the `not-visible` class.
+    act(() => { jest.advanceTimersByTime(1000); });
+    expect(screen.getByText('default timeout blank toast')?.parentElement)
+      .toHaveClass('toast-notification--not-visible');
+
+    // After another 1000ms the toast is cleared from the DOM completely (after animation is done).
+    act(() => { jest.advanceTimersByTime(1000); });
+    expect(screen.queryByText('default timeout blank toast')).toBe(null);
+  });
+
+  test('Toasts in reverse order', () => {
+    render(<ToastContainer data-testid="toast-container" reverseOrder />);
+    act(() => {
+      toast('test reverse order');
+    });
+
+    expect(screen.getByText('test reverse order')).toBeInTheDocument();
+
+    act(() => {
+      toast.dismiss();
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(screen.queryByText('test reverse order')).toBe(null);
+  });
+
+  test('Update Existing Toast', () => {
+    render(<ToastContainer />);
+    let toastId: string;
+
+    act(() => {
+      toastId = toast('test update toast');
+    });
+
+    expect(screen.getByText('test update toast')).toBeInTheDocument();
+
+    act(() => {
+      toast.success('updated to success', { id: toastId });
+    });
+
+    expect(screen.queryByText('test update toast')).toBe(null);
+    expect(screen.getByText('updated to success')).toBeInTheDocument();
+
+    act(() => {
+      toast.remove();
+    });
+
+    expect(screen.queryByText('updated to success')).toBe(null);
   });
 });

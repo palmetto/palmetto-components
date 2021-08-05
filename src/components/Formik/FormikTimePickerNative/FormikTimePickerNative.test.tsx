@@ -12,10 +12,12 @@ import { FormikTimePickerNative } from './FormikTimePickerNative';
 
 const testLabelName = 'test select';
 
-const handleValidation = (testValueKey:string) => (values:FormikValues) => (getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required'));
+const handleValidation = (testValueKey:string) => (values:FormikValues) => (
+  getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required')
+);
 
 const renderForm = (
-  initialValue: any,
+  initialValue: any, // eslint-disable-line
   props: {
     placeholder?: string;
     hideLabel?: boolean;
@@ -28,7 +30,7 @@ const renderForm = (
 ) => (
   <Formik
     initialValues={{
-      [testLabelName]: initialValue as string,
+      [testLabelName]: initialValue,
     }}
     validate={props.isRequired ? handleValidation(testValueKey) : undefined} // eslint-disable-line
     onSubmit={() => {}} // eslint-disable-line
@@ -106,7 +108,7 @@ describe('FormikTimePickerNative', () => {
 
     describe('Is Required', () => {
       test('it renders an asterisk in the label', () => {
-        render(renderForm(null, { isRequired: true }));
+        render(renderForm(undefined, { isRequired: true }));
 
         expect(screen.getByText(getByTextWithMarkup(`${testLabelName} *`))).toBeInTheDocument();
       });
@@ -114,7 +116,7 @@ describe('FormikTimePickerNative', () => {
 
     describe('Is Disabled', () => {
       test('it disables the input', () => {
-        render(renderForm(null, { isDisabled: true }));
+        render(renderForm(undefined, { isDisabled: true }));
 
         expect(screen.getByLabelText(testLabelName)).toBeDisabled();
       });
@@ -122,7 +124,7 @@ describe('FormikTimePickerNative', () => {
 
     describe('Is Invalid, with a helpful message', () => {
       test('it renders the helpful message', async () => {
-        const { getByText } = render(renderForm(null, { isRequired: true }));
+        const { getByText } = render(renderForm(undefined, { isRequired: true }));
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
@@ -130,7 +132,9 @@ describe('FormikTimePickerNative', () => {
       });
 
       test('it renders the error message from nested object', async () => {
-        const { getByText } = render(renderForm({ outer: { nested: [] } }, { isRequired: true }, `${testLabelName}.outer.nested`));
+        const { getByText } = render(
+          renderForm({ outer: { nested: [] } }, { isRequired: true }, `${testLabelName}.outer.nested`),
+        );
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
@@ -154,7 +158,7 @@ describe('FormikTimePickerNative', () => {
       test('it fires onChange callback on change', async () => {
         const mockedHandleChange = jest.fn();
 
-        const { getByLabelText } = render(renderForm(null, { onChange: mockedHandleChange }));
+        const { getByLabelText } = render(renderForm(undefined, { onChange: mockedHandleChange }));
 
         await fireEvent.change(getByLabelText(testLabelName));
 

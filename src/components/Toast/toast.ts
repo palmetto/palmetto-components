@@ -15,7 +15,7 @@ type ToastHandler = (message: Message, options?: ToastOptions) => string;
 
 const createToast = (
   message: Message,
-  type: ToastType = 'blank',
+  type: ToastType,
   opts?: ToastOptions,
 ): Toast => ({
   createdAt: Date.now(),
@@ -32,7 +32,7 @@ const createToast = (
   canDismiss: type !== 'loading' && opts?.canDismiss !== false,
 });
 
-const createHandler = (type?: ToastType): ToastHandler => (
+const createHandler = (type: ToastType): ToastHandler => (
   message,
   options,
 ) => {

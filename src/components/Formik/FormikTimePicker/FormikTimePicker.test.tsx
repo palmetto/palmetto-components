@@ -7,17 +7,24 @@ import {
 } from '@testing-library/react';
 import selectEvent from 'react-select-event';
 import {
-  Formik, Form, Field, FormikValues, getIn, setIn,
+  Formik,
+  Form,
+  Field,
+  FormikValues,
+  getIn,
+  setIn,
 } from 'formik';
 import { FormikTimePicker } from './FormikTimePicker';
 
 const testLabelName = 'test select';
 
 type Option = { value: string; label: string; }
-const handleValidation = (testValueKey:string) => (values:FormikValues) => (getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required'));
+const handleValidation = (testValueKey:string) => (values:FormikValues) => (
+  getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required')
+);
 
 const renderForm = (
-  initialValue: any,
+  initialValue: any, // eslint-disable-line
   props: {
     placeholder?: string;
     hideLabel?: boolean;
@@ -31,7 +38,7 @@ const renderForm = (
 ) => (
   <Formik
     initialValues={{
-      [testLabelName]: initialValue as string,
+      [testLabelName]: initialValue,
     }}
     validate={props.isRequired ? handleValidation(testValueKey) : undefined} // eslint-disable-line
     onSubmit={() => {}} // eslint-disable-line
@@ -161,7 +168,9 @@ describe('FormikTimePicker', () => {
       });
 
       test('it renders the error message from nested object', async () => {
-        const { getByText } = render(renderForm({ outer: { nested: [] } }, { isRequired: true }, `${testLabelName}.outer.nested`));
+        const { getByText } = render(
+          renderForm({ outer: { nested: [] } }, { isRequired: true }, `${testLabelName}.outer.nested`),
+        );
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
@@ -176,7 +185,9 @@ describe('FormikTimePicker', () => {
         let value: Option | undefined;
         const mockedHandleChange = jest.fn(event => { value = event.target.value; });
 
-        const { getByLabelText, container, getByText } = render(renderForm(value, { onChange: mockedHandleChange }));
+        const { getByLabelText, container, getByText } = render(
+          renderForm(value, { onChange: mockedHandleChange }),
+        );
         const selectInput = getByLabelText(testLabelName);
         /**
          * This class is specific to react-select, combined with our custom classNamePrefix prop.

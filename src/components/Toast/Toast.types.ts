@@ -36,7 +36,7 @@ export interface Toast {
    */
   duration?: number;
   /**
-   * Amount of time the toast timeout has been paused for. 
+   * Amount of time the toast timeout has been paused for.
    * When the toast timeout is paused, its auto-dismissal will be delayed.
    */
   pauseDuration: number;
