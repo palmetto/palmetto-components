@@ -99,9 +99,7 @@ const handleAddToast: ToastStoreHandler = (state, action) => {
 };
 
 const handleUpdateToast: ToastStoreHandler = (state, action) => {
-  if (!('toast' in action.payload)) return state;
-
-  const { toast } = action.payload;
+  const { toast } = action.payload as { toast: Toast; };
 
   //  @TODO -- Side effects
   if (toast.id) {
@@ -115,9 +113,7 @@ const handleUpdateToast: ToastStoreHandler = (state, action) => {
 };
 
 const handleUpsertToast: ToastStoreHandler = (state, action) => {
-  if (!('toast' in action.payload)) return state;
-
-  const { toast } = action.payload;
+  const { toast } = action.payload as { toast: Toast; };
 
   // @TODO -- refactor to avoid using recursive function before 'reducer is declared'
   return state.toasts.find(t => t.id === toast.id)
@@ -126,9 +122,7 @@ const handleUpsertToast: ToastStoreHandler = (state, action) => {
 };
 
 const handleDismissToast: ToastStoreHandler = (state, action) => {
-  if (!('toastId' in action.payload)) return state;
-
-  const { toastId } = action.payload;
+  const { toastId } = action.payload as { toastId: string; };
 
   if (toastId) {
     addToDismissedQueue(toastId);
@@ -146,9 +140,7 @@ const handleDismissToast: ToastStoreHandler = (state, action) => {
 };
 
 const handleRemoveToast: ToastStoreHandler = (state, action) => {
-  if (!('toastId' in action.payload)) return state;
-
-  const { toastId } = action.payload;
+  const { toastId } = action.payload as { toastId: string; };
 
   if (toastId === undefined) {
     return {
@@ -164,18 +156,18 @@ const handleRemoveToast: ToastStoreHandler = (state, action) => {
 };
 
 const handleStartPause: ToastStoreHandler = (state, action) => {
-  if (!('time' in action.payload)) return state;
+  const { time } = action.payload as { time: number; };
 
   return {
     ...state,
-    pausedAt: action.payload.time,
+    pausedAt: time,
   };
 };
 
 const handleEndPause: ToastStoreHandler = (state, action) => {
-  if (!('time' in action.payload)) return state;
+  const { time } = action.payload as { time: number; };
 
-  const diff = action.payload.time - (state.pausedAt || 0);
+  const diff = time - (state.pausedAt || 0);
 
   return {
     ...state,

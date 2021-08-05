@@ -31,7 +31,7 @@ function wait(t: number) {
   });
 }
 
-describe('ToastContainer', () => {
+describe('Toast', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
@@ -40,8 +40,25 @@ describe('ToastContainer', () => {
     jest.useRealTimers();
   });
 
+  beforeEach(() => {
+    Element.prototype.getBoundingClientRect = jest.fn(() => (
+      {
+        width: 300,
+        height: 50,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        x: 0,
+        y: 0,
+        toJSON: () => {}, // eslint-disable-line
+      }
+    ));
+  });
+
   afterEach(() => {
     cleanup();
+    jest.clearAllMocks();
   });
 
   test('Default', () => {
