@@ -33,8 +33,8 @@ import {
   ResponsiveProp,
   SpacingSize,
   ZIndexSize,
-  KnownKeys,
 } from '../../types';
+import { KnownKeys } from '../../types/lib.types';
 import getDimensionCss from '../../lib/getDimensionCss';
 import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
 import getElementType from '../../lib/getElementType';
