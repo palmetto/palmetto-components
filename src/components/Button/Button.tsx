@@ -84,7 +84,7 @@ export interface ButtonProps {
    */
   tabIndex?: number;
   /**
-   * Usefull when using button as an anchor tag.
+   * Useful when using button as an anchor tag.
    */
   target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
   /**
@@ -209,6 +209,7 @@ export const Button: FC<ButtonProps> = forwardRef(
       className: buttonClasses,
       children: buttonContent,
       disabled,
+      target,
       onBlur: handleBlur,
       onClick:
         (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => handleClick(event, onClick, target, navigate),
