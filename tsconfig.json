@@ -47,7 +47,7 @@
     "src/components/**/*.stories.mdx",
     "src/components/**/*.test.tsx",
     "src/components/**/*.test.jsx",
-    "src/types/",
+    "src/types/lib.types.ts",
     "src/docs/"
   ],
 }

@@ -199,7 +199,5 @@ export type SimulatedEventPayloadType = {
   };
 };
 
-export type KnownKeys<T> = keyof { [K in keyof T as string extends K ? never : K]: K }
-
 export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue;
 export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>;
