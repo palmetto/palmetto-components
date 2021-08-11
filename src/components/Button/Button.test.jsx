@@ -57,31 +57,27 @@ describe('Button', () => {
   });
 
   describe('Sizes', () => {
-    BUTTON_SIZES.map(size =>
-      describe(`${BUTTON_SIZES}`, () => {
-        test(`it has a ${size} class applied to it`, () => {
-          render(<Button size={size}>{`${size} Button`}</Button>);
+    BUTTON_SIZES.map(size => describe(`${BUTTON_SIZES}`, () => {
+      test(`it has a ${size} class applied to it`, () => {
+        render(<Button size={size}>{`${size} Button`}</Button>);
 
-          const btn = screen.getByText(`${size} Button`).closest('button');
+        const btn = screen.getByText(`${size} Button`).closest('button');
 
-          expect(btn.getAttribute('class')).toContain(size);
-        });
-      }),
-    );
+        expect(btn.getAttribute('class')).toContain(size);
+      });
+    }));
   });
 
   describe('Variants', () => {
-    BUTTON_VARIANTS.map(variant =>
-      describe(`${BUTTON_VARIANTS}`, () => {
-        test(`it has a ${variant} class applied to it`, () => {
-          render(<Button variant={variant}>{`${variant} Button`}</Button>);
+    BUTTON_VARIANTS.map(variant => describe(`${BUTTON_VARIANTS}`, () => {
+      test(`it has a ${variant} class applied to it`, () => {
+        render(<Button variant={variant}>{`${variant} Button`}</Button>);
 
-          const btn = screen.getByText(`${variant} Button`).closest('button');
+        const btn = screen.getByText(`${variant} Button`).closest('button');
 
-          expect(btn.getAttribute('class')).toContain(variant);
-        });
-      }),
-    );
+        expect(btn.getAttribute('class')).toContain(variant);
+      });
+    }));
   });
 
   describe('Callback Handling', () => {
@@ -185,28 +181,6 @@ describe('Button', () => {
         expect(buttonElement).toBeInTheDocument();
       });
 
-      test('it renders an anchor tag if as prop `a` is passed', () => {
-        render(
-          <Button href="http://palmetto.com" as="a">
-            hey there
-          </Button>,
-        );
-        const buttonElement = screen.getByRole('link');
-
-        expect(buttonElement).toBeInTheDocument();
-      });
-
-      test('it does not have a button type attribute if as prop `a` is passed', () => {
-        render(
-          <Button href="http://palmetto.com" as="a">
-            hey there
-          </Button>,
-        );
-        const buttonElement = screen.getByRole('link');
-
-        expect(buttonElement.getAttribute('type')).toBe(null);
-      });
-
       test('it does not have a disabled attribute', () => {
         render(<Button>Not Disabled Button</Button>);
 
@@ -214,12 +188,12 @@ describe('Button', () => {
       });
 
       test('it renders an empty button when no children are passed', () => {
-        render(<Button></Button>);
+        render(<Button />);
         const buttonElement = screen.getByRole('button');
 
         expect(buttonElement).toBeInTheDocument();
         expect(buttonElement.innerText).toBe(undefined);
-      });      
+      });
     });
 
     describe('Full Width', () => {
@@ -327,14 +301,73 @@ describe('Button', () => {
         expect(screen.getByText('primary').closest('button')).toHaveClass('outline');
       });
     });
-  });
 
+    describe('Anchor', () => {
+      test('it renders an anchor tag if as prop `a` is passed', () => {
+        render(
+          <Button href="http://palmetto.com" as="a">
+            hey there
+          </Button>,
+        );
+        const buttonElement = screen.getByRole('link');
+
+        expect(buttonElement).toBeInTheDocument();
+      });
+
+      test('it does not have a button type attribute if as prop `a` is passed', () => {
+        render(
+          <Button href="http://palmetto.com" as="a">
+            hey there
+          </Button>,
+        );
+        const buttonElement = screen.getByRole('link');
+
+        expect(buttonElement.getAttribute('type')).toBe(null);
+      });
+
+      test('it renders a target attribute if one is passed, the element is an anchor, and there is a href', () => {
+        render(
+          <Button href="http://palmetto.com" as="a" target="_blank">
+            hey there
+          </Button>,
+        );
+        const buttonElement = screen.getByRole('link');
+
+        expect(buttonElement).toBeInTheDocument();
+        expect(buttonElement).toHaveAttribute('target');
+      });
+
+      test('it does not render a target attribute if the element is not an anchor', () => {
+        render(
+          <Button href="http://palmetto.com" target="_blank">
+            hey there
+          </Button>,
+        );
+        const buttonElement = screen.getByRole('button');
+
+        expect(buttonElement).toBeInTheDocument();
+        expect(buttonElement).not.toHaveAttribute('target');
+      });
+
+      test('it does not render a target attribute if the element does not have an href', () => {
+        render(
+          <Button as="a" target="_blank">
+            hey there
+          </Button>,
+        );
+        const buttonElement = screen.getByText('hey there');
+
+        expect(buttonElement).toBeInTheDocument();
+        expect(buttonElement).not.toHaveAttribute('target');
+      });
+    });
+  });
 
   describe('React Router', () => {
     it('fires navigate callback when included', () => {
       const mockedNavigate = jest.fn(() => {});
       render(<Button as="a" navigate={mockedNavigate} href="/">react router link</Button>);
-      
+
       fireEvent.click(screen.getByText('react router link').closest('a'));
 
       expect(mockedNavigate).toBeCalledTimes(1);
@@ -343,7 +376,7 @@ describe('Button', () => {
     it('does not fire navigate callback if target is _blank', () => {
       const mockedNavigate = jest.fn(() => {});
       render(<Button as="a" navigate={mockedNavigate} href="/" target="_blank">react router link</Button>);
-      
+
       fireEvent.click(screen.getByText('react router link').closest('a'));
 
       expect(mockedNavigate).toBeCalledTimes(0);
