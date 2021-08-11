@@ -355,7 +355,7 @@ describe('Button', () => {
             hey there
           </Button>,
         );
-        const buttonElement = screen.getByRole('link');
+        const buttonElement = screen.getByText('hey there');
 
         expect(buttonElement).toBeInTheDocument();
         expect(buttonElement).not.toHaveAttribute('target');
