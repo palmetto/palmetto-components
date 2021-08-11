@@ -1,9 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
+import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import { ResponsiveProp } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { FormControl, FormControlProps } from '../FormControl/FormControl';
 import styles from './SelectInputNative.module.scss';
 
+export type SelectInputNativeSize = 'sm' | 'md' | 'lg';
 export interface SelectInputNativeProps extends BoxProps, FormControlProps {
   /**
    * List of options for the select input.
@@ -22,9 +25,9 @@ export interface SelectInputNativeProps extends BoxProps, FormControlProps {
    */
   name?: string;
   /**
-   * Size of the input.
+   * Size of the input. ('sm' | 'md' | 'lg')
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: SelectInputNativeSize | ResponsiveProp<SelectInputNativeSize>;
   /**
    * Whether the input is autofocused on initial render.
    */
@@ -58,9 +61,11 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
     ...options,
   ];
 
+  const responsiveClasses = generateResponsiveClasses('size', size);
+
   const selectWrapperClasses = classNames(
     styles['select-input-native-wrapper'],
-    styles[size],
+    ...responsiveClasses.map(className => (styles[className])),
     {
       [styles.disabled]: isDisabled,
       [styles.error]: error,
