@@ -43,11 +43,6 @@
     "target": "es5",
   },
   "exclude": [
-    "src/components/**/*.stories.tsx",
-    "src/components/**/*.stories.mdx",
-    "src/components/**/*.test.tsx",
-    "src/components/**/*.test.jsx",
     "src/types/lib.types.ts",
-    "src/docs/"
   ],
 }

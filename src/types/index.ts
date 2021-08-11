@@ -12,10 +12,10 @@ import {
 
 import {
   BorderRadiusSize as BorderRadius,
-  BreakpointSize,
   HeightSize,
   SpacingSize,
   WidthSize,
+  BreakpointSize,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type {
@@ -34,6 +34,7 @@ export type {
   ZIndexSize,
   IconName,
   FontFamily,
+  BreakpointSize,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type BreakpointSizeWithBase = BreakpointSize | 'base';
