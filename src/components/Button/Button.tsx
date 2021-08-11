@@ -209,7 +209,7 @@ export const Button: FC<ButtonProps> = forwardRef(
       className: buttonClasses,
       children: buttonContent,
       disabled,
-      target,
+      target: (as === 'a' && href) ? target : null,
       onBlur: handleBlur,
       onClick:
         (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => handleClick(event, onClick, target, navigate),
