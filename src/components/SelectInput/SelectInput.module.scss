@@ -164,16 +164,6 @@ react-select elements for which we do not own the markup */
         display: none;
       }
 
-      .react-select-icon {
-        padding: 0;
-        padding-right: 2px;
-        color: var(--form-control-icon-color);
-
-        &:hover {
-          color: var(--form-control-icon-hover-color);
-        }
-      }
-
       :global(.react-select__clear-indicator) {
         @extend .react-select-icon;
 
