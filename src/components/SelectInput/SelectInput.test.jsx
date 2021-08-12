@@ -285,50 +285,69 @@ describe('SelectInput', () => {
 
   describe('Sizes', () => {
     const mockedHandleChange = jest.fn();
+    const sizes = [
+      'sm',
+      'md',
+      'lg',
+    ];
 
-    test('it has a sm class applied to it', () => {
-      const { container } = render(
-        <SelectInput
-          id="testId"
-          onChange={mockedHandleChange}
-          options={selectOptions}
-          value={selectOptions[0]}
-          size="sm"
-          label="Small"
-        />,
-      );
+    const breakpoints = ['tablet', 'desktop', 'hd'];
 
-      expect(container.children[0].getAttribute('class')).toContain('sm');
+    sizes.forEach(size => {
+      test(`it has a ${size} class applied to it`, () => {
+        const { container } = render(
+          <SelectInput
+            id="testId"
+            onChange={mockedHandleChange}
+            options={selectOptions}
+            value={selectOptions[0].value}
+            size={size}
+            label="size test"
+          />,
+        );
+
+        expect(container.children[0].getAttribute('class')).toContain(size);
+      });
+
+      breakpoints.forEach(breakpoint => {
+        test(`it applies responsive classes for breakpoint: ${breakpoint} and size: ${size}`, () => {
+          const { container } = render(
+            <SelectInput
+              id="testId"
+              onChange={mockedHandleChange}
+              options={selectOptions}
+              value={selectOptions[0].value}
+              size={{ [breakpoint]: size }}
+              label="size test"
+            />,
+          );
+
+          expect(container.children[0].getAttribute('class')).toContain(`size-${size}-${breakpoint}`);
+        });
+      });
     });
 
-    test('it has a md class applied to it', () => {
+    test('It applies responsive classes when multiple are applied', () => {
       const { container } = render(
         <SelectInput
           id="testId"
           onChange={mockedHandleChange}
           options={selectOptions}
-          value={selectOptions[0]}
-          size="md"
-          label="Medium"
+          value={selectOptions[0].value}
+          size={{
+            base: 'sm',
+            tablet: 'md',
+            desktop: 'lg',
+            hd: 'sm',
+          }}
+          label="size test"
         />,
       );
 
-      expect(container.children[0].getAttribute('class')).toContain('md');
-    });
-
-    test('it has a lg class applied to it', () => {
-      const { container } = render(
-        <SelectInput
-          id="testId"
-          onChange={mockedHandleChange}
-          options={selectOptions}
-          value={selectOptions[0]}
-          size="lg"
-          label="Large"
-        />,
-      );
-
-      expect(container.children[0].getAttribute('class')).toContain('lg');
+      expect(container.children[0].getAttribute('class')).toContain('size-sm');
+      expect(container.children[0].getAttribute('class')).toContain('size-md-tablet');
+      expect(container.children[0].getAttribute('class')).toContain('size-lg-desktop');
+      expect(container.children[0].getAttribute('class')).toContain('size-sm-hd');
     });
   });
 });
