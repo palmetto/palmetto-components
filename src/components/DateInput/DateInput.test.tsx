@@ -75,6 +75,67 @@ describe('DateInput', () => {
       const popover = screen.queryByRole('dialog');
       expect(popover).toBeNull();
     });
+
+    it('closes popover when user selects a value NOT in a range', async () => {
+      const date = new Date(1995, 11, 14);
+
+      render(
+        <DateInput
+          dateFormat="yyyy/MM/dd"
+          textInputProps={{
+            id: 'myInput',
+            label: 'Select Date',
+          }}
+          datePickerProps={{
+            openToDate: date,
+            selected: null,
+            onChange: () => null,
+          }}
+        />,
+      );
+
+      const input = screen.getByLabelText('Select Date');
+      fireEvent.click(input);
+
+      const popoverContainer = screen.getByRole('dialog');
+      await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
+      const dateButton = screen.getByText('14');
+      await waitFor(() => { fireEvent.click(dateButton) });
+
+      const popover = screen.queryByRole('dialog');
+      await waitFor(() => { expect(popover).toBeNull() });
+    });
+
+    it('keeps popover open while user is selecting a Date range', async () => {
+      const date = new Date(1995, 11, 14);
+
+      render(
+        <DateInput
+          dateFormat="yyyy/MM/dd"
+          textInputProps={{
+            id: 'myInput',
+            label: 'Select Date',
+          }}
+          datePickerProps={{
+            openToDate: date,
+            selected: null,
+            onChange: () => null,
+            selectsRange: true,
+          }}
+        />,
+      );
+
+      const input = screen.getByLabelText('Select Date');
+      fireEvent.click(input);
+
+      const popoverContainer = screen.getByRole('dialog');
+      await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
+      const dateButton = screen.getByText('14');
+      await waitFor(() => { fireEvent.click(dateButton) });
+
+      const popover = screen.queryByRole('dialog');
+      await waitFor(() => { expect(popover).toHaveAttribute('data-popper-placement', 'bottom'); });
+    });
   });
 
   describe('Date Formatting', () => {
