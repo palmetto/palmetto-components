@@ -11,14 +11,44 @@ import { TextInput, TextInputProps } from '../TextInput/TextInput';
 import { Popover, PopoverProps } from '../Popover/Popover';
 
 export interface DateInputProps {
+  /**
+   * Props object for DatePicker component.
+   */
   datePickerProps: DatePickerProps;
+  /**
+   * Props object for TextInput component.
+   */
   textInputProps: Omit<TextInputProps, 'onChange'>;
+  /**
+   * Format for final date to be displayed.
+   * Relies on date-fns/format --> https://date-fns.org/v1.9.0/docs/format
+   */
   dateFormat?: string;
+  /**
+   * Additional settings for formatting date.
+   */
   dateOptions?: {
+    /**
+     * The user's locale.
+     */
     locale?: globalThis.Locale | undefined;
+    /**
+     * Start of week.
+     */
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined;
+    /**
+     * Should determine which week is week 1 of a new year.
+     */
     firstWeekContainsDate?: number | undefined;
+    /**
+     * Whether to accept unicode tokens in format.
+     * See here --> https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+     */
     useAdditionalWeekYearTokens?: boolean | undefined;
+    /**
+     * Whether to accept unicode tokens in format.
+     * See here --> https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+     */
     useAdditionalDayOfYearTokens?: boolean | undefined;
   };
   popoverProps?: Omit<PopoverProps, 'children' | 'content' | 'isOpen'>;
@@ -116,10 +146,19 @@ export const DateInput: FC<DateInputProps> = ({
     }
   }, [isPopoverOpen]);
 
+  const handleDatePickerChange = (
+    date: Date | [Date, Date] | null,
+    event: React.SyntheticEvent<any, Event> | undefined, // eslint-disable-line @typescript-eslint/no-explicit-any
+  ) => {
+    mergedDatePickerProps.onChange(date, event);
+
+    if (!mergedDatePickerProps.selectsRange && date) setPopoverOpen(false);
+  };
+
   const renderDatePicker = () => (
     <DatePicker
       {...mergedDatePickerProps}
-      onChange={mergedDatePickerProps.onChange}
+      onChange={handleDatePickerChange}
       selected={mergedDatePickerProps.selected}
       selectsRange={mergedDatePickerProps.selectsRange}
     />
