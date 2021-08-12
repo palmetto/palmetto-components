@@ -8,6 +8,7 @@ import { Box } from '../Box/Box';
 export default {
   title: 'Components/Toggle/Visual Regression Tests',
   component: Toggle,
+  parameters: RESPONSIVE_STORY,
 } as Meta;
 
 const Template: Story<ToggleProps> = ({ ...args }) => (
@@ -60,8 +61,6 @@ const Template: Story<ToggleProps> = ({ ...args }) => (
     </Box>
   </Box>
 );
-
-Template.parameters = RESPONSIVE_STORY;
 
 export const AllSizes = Template.bind({});
 AllSizes.args = { id: 'AllSizes' };
