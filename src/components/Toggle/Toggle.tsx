@@ -100,7 +100,7 @@ export const Toggle: FC<ToggleProps> = ({
     ...generateResponsiveClasses('track-size', size).map(c => (styles[c])),
     {
       [styles.error]: error,
-    }
+    },
   );
   const thumbClasses = classNames(
     styles['toggle-thumb'],
