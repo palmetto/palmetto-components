@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { RESPONSIVE_STORY } from '../../docs/constants';
 import { Toggle, ToggleProps } from './Toggle';
 import TOGGLE_SIZES from './Toggle.constants';
 import { Box } from '../Box/Box';
@@ -30,8 +31,27 @@ const Template: Story<ToggleProps> = args => (
         />
       </Box>
     ))}
+    <Box childGap="md">
+      <Toggle
+        {...args}
+        id={`${args.id}-responsive-checked`}
+        label="I agree to the Terms and Conditions and Privacy Policy"
+        isChecked
+        size={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'sm' }}
+        onChange={() => {}} // eslint-disable-line
+      />
+      <Toggle
+        {...args}
+        id={`${args.id}-responsive-unchecked`}
+        label="I agree to the Terms and Conditions and Privacy Policy"
+        size={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'sm' }}
+        onChange={() => {}} // eslint-disable-line
+      />
+    </Box>
   </Box>
 );
+
+Template.parameters = RESPONSIVE_STORY;
 
 export const AllSizes = Template.bind({});
 AllSizes.args = { id: 'AllSizes' };

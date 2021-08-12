@@ -52,30 +52,30 @@
 .track-size-lg { @extend %track-size-lg; }
 
 @media (min-width: $size-breakpoint-tablet) {
-  &.thumb-size-sm-tablet { @include thumb-size-sm; }
-  &.thumb-size-md-tablet { @include thumb-size-md; }
-  &.thumb-size-lg-tablet { @include thumb-size-lg; }
-  &.track-size-sm-tablet { @include track-size-sm; }
-  &.track-size-md-tablet { @include track-size-md; }
-  &.track-size-lg-tablet { @include track-size-lg; }
+  .thumb-size-sm-tablet { @include thumb-size-sm; }
+  .thumb-size-md-tablet { @include thumb-size-md; }
+  .thumb-size-lg-tablet { @include thumb-size-lg; }
+  .track-size-sm-tablet { @include track-size-sm; }
+  .track-size-md-tablet { @include track-size-md; }
+  .track-size-lg-tablet { @include track-size-lg; }
 }
 
 @media (min-width: $size-breakpoint-desktop) {
-  &.thumb-size-sm-desktop { @include thumb-size-sm; }
-  &.thumb-size-md-desktop { @include thumb-size-md; }
-  &.thumb-size-lg-desktop { @include thumb-size-lg; }
-  &.track-size-sm-tablet { @include track-size-sm; }
-  &.track-size-md-tablet { @include track-size-md; }
-  &.track-size-lg-tablet { @include track-size-lg; }
+  .thumb-size-sm-desktop { @include thumb-size-sm; }
+  .thumb-size-md-desktop { @include thumb-size-md; }
+  .thumb-size-lg-desktop { @include thumb-size-lg; }
+  .track-size-sm-desktop { @include track-size-sm; }
+  .track-size-md-desktop { @include track-size-md; }
+  .track-size-lg-desktop { @include track-size-lg; }
 }
 
 @media (min-width: $size-breakpoint-hd) {
-  &.thumb-size-sm-hd { @include thumb-size-sm; }
-  &.thumb-size-md-hd { @include thumb-size-md; }
-  &.thumb-size-lg-hd { @include thumb-size-lg; }
-  &.track-size-sm-tablet { @include track-size-sm; }
-  &.track-size-md-tablet { @include track-size-md; }
-  &.track-size-lg-tablet { @include track-size-lg; }
+  .thumb-size-sm-hd { @include thumb-size-sm; }
+  .thumb-size-md-hd { @include thumb-size-md; }
+  .thumb-size-lg-hd { @include thumb-size-lg; }
+  .track-size-sm-hd { @include track-size-sm; }
+  .track-size-md-hd { @include track-size-md; }
+  .track-size-lg-hd { @include track-size-lg; }
 }
 
 .disabled {
@@ -120,58 +120,34 @@
     background-color: var(--color-brand-primary-400);
   }
 
-  &:checked + .toggle-track .toggle-thumb[class*='sm'] {
+  &:checked + .toggle-track .toggle-thumb.thumb-size-sm {
     transform: translateX(0.5rem);
   }
 
-  &:checked + .toggle-track .toggle-thumb[class*='md'] {
+  &:checked + .toggle-track .toggle-thumb.thumb-size-md {
     transform: translateX(1rem);
   }
 
-  &:checked + .toggle-track .toggle-thumb[class*='lg'] {
+  &:checked + .toggle-track .toggle-thumb.thumb-size-lg {
     transform: translateX(1.5rem);
   }
 
   @media (min-width: $size-breakpoint-tablet) {
-    &:checked + .toggle-track .toggle-thumb[class*='sm-tablet'] {
-      transform: translateX(0.5rem);
-    }
-  
-    &:checked + .toggle-track .toggle-thumb[class*='md-tablet'] {
-      transform: translateX(1rem);
-    }
-  
-    &:checked + .toggle-track .toggle-thumb[class*='lg-tablet'] {
-      transform: translateX(1.5rem);
-    }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-sm-tablet { transform: translateX(0.5rem); }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-md-tablet { transform: translateX(1rem); }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-lg-tablet { transform: translateX(1.5rem); }
   }
   
   @media (min-width: $size-breakpoint-desktop) {
-    &:checked + .toggle-track .toggle-thumb[class*='sm-desktop'] {
-      transform: translateX(0.5rem);
-    }
-  
-    &:checked + .toggle-track .toggle-thumb[class*='md-desktop'] {
-      transform: translateX(1rem);
-    }
-  
-    &:checked + .toggle-track .toggle-thumb[class*='lg-desktop'] {
-      transform: translateX(1.5rem);
-    }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-sm-desktop { transform: translateX(0.5rem); }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-md-desktop { transform: translateX(1rem); }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-lg-desktop {transform: translateX(1.5rem); }
   }
   
   @media (min-width: $size-breakpoint-hd) {
-    &:checked + .toggle-track .toggle-thumb[class*='sm-hd'] {
-      transform: translateX(0.5rem);
-    }
-  
-    &:checked + .toggle-track .toggle-thumb[class*='md-hd'] {
-      transform: translateX(1rem);
-    }
-  
-    &:checked + .toggle-track .toggle-thumb[class*='lg-hd'] {
-      transform: translateX(1.5rem);
-    }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-sm-hd { transform: translateX(0.5rem); }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-md-hd { transform: translateX(1rem); }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-lg-hd { transform: translateX(1.5rem); }
   }
 
   /* define regular focus styles for non-supporting browsers */
