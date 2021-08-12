@@ -1,7 +1,140 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 /* The following styles required the :global tag since they need to be applied to
 react-select elements for which we do not own the markup */
 
+@mixin react-select-icon {
+  padding: 0;
+  padding-right: 2px;
+  color: var(--form-control-icon-color);
+
+  &:hover {
+    color: var(--form-control-icon-hover-color);
+  }
+}
+
+%react-select-icon {
+  @include react-select-icon;
+}
+
+.react-select-icon {
+  @extend %react-select-icon;
+}
+
 /* stylelint-disable */
+@mixin size-sm {
+  :global(.react-select__control) {
+    border-radius: var(--form-control-size-sm-border-radius);
+    padding: 0 8px;
+    min-height: 32px;
+  }
+
+  :global(.react-select__option),
+  :global(.react-select__placeholder),
+  :global(.react-select__single-value) {
+    font-size: var(--form-control-size-sm-font-size);
+  }
+
+  :global(.react-select__multi-value__label) {
+    font-size: var(--form-control-size-sm-font-size);
+  }
+
+  :global(.react-select__dropdown-indicator) {
+    padding: 0;
+  }
+
+  :global(.react-select__dropdown-indicator) {
+    @include react-select-icon;
+
+    svg {
+      width: var(--form-control-select-sm-icon-size);
+      height: var(--form-control-select-sm-icon-size);
+    }
+  }
+}
+
+%size-sm {
+  @include size-sm;
+}
+
+.size-sm {
+  @extend %size-sm;
+}
+
+@mixin size-md {
+  :global(.react-select__control) {
+    border-radius: var(--form-control-size-md-border-radius);
+    padding: 4px 8px;
+  }
+
+  :global(.react-select__single-value) {
+    font-size: var(--form-control-size-md-font-size);
+  }
+
+  :global(.react-select__multi-value__label) {
+    font-size: var(--form-control-size-md-font-size);
+  }
+
+  :global(.react-select__dropdown-indicator) {
+    padding: 0;
+  }
+
+  :global(.react-select__dropdown-indicator) {
+    @include react-select-icon;
+
+    svg {
+      width: var(--form-control-select-md-icon-size);
+      height: var(--form-control-select-md-icon-size);
+    }
+  }
+}
+
+%size-md {
+  @include size-md;
+}
+
+.size-md {
+  @extend %size-md;
+}
+
+@mixin size-lg {
+  :global(.react-select__control) {
+    padding: 9px 8px 10px;
+    border-radius: var(--form-control-size-md-border-radius);
+  }
+
+  :global(.react-select__option),
+  :global(.react-select__placeholder),
+  :global(.react-select__single-value) {
+    font-size: var(--form-control-size-lg-font-size);
+  }
+
+  :global(.react-select__multi-value__label) {
+    font-size: var(--form-control-size-lg-font-size);
+    padding: 2px 6px 3px;
+  }
+
+  :global(.react-select__dropdown-indicator) {
+    padding: 0;
+  }
+
+  :global(.react-select__dropdown-indicator) {
+    @include react-select-icon;
+
+    svg {
+      width: var(--form-control-select-lg-icon-size);
+      height: var(--form-control-select-lg-icon-size);
+    }
+  }
+}
+
+%size-lg {
+  @include size-lg;
+}
+
+.size-lg {
+  @extend %size-lg;
+}
+
 :global(.select-input-wrapper) {
   :global(.react-select) {
     &:hover {
@@ -29,16 +162,6 @@ react-select elements for which we do not own the markup */
 
       :global(.react-select__indicator-separator) {
         display: none;
-      }
-
-      .react-select-icon {
-        padding: 0;
-        padding-right: 2px;
-        color: var(--form-control-icon-color);
-
-        &:hover {
-          color: var(--form-control-icon-hover-color);
-        }
       }
 
       :global(.react-select__clear-indicator) {
@@ -77,94 +200,26 @@ react-select elements for which we do not own the markup */
     }
   }
 
-  &.sm {
-    :global(.react-select__control) {
-      border-radius: var(--form-control-size-sm-border-radius);
-      padding: 0 8px;
-      min-height: 32px;
-    }
+  &.size-sm { @extend %size-sm; }
+  &.size-md { @extend %size-md; }
+  &.size-lg { @extend %size-lg; }
 
-    :global(.react-select__option),
-    :global(.react-select__placeholder),
-    :global(.react-select__single-value) {
-      font-size: var(--form-control-size-sm-font-size);
-    }
-
-    :global(.react-select__multi-value__label) {
-      font-size: var(--form-control-size-sm-font-size);
-    }
-
-    :global(.react-select__dropdown-indicator) {
-      padding: 0;
-    }
-
-    :global(.react-select__dropdown-indicator) {
-      @extend .react-select-icon;
-
-      svg {
-        width: var(--form-control-select-sm-icon-size);
-        height: var(--form-control-select-sm-icon-size);
-      }
-    }
+  @media (min-width: $size-breakpoint-tablet) {
+    &.size-sm-tablet { @include size-sm; }
+    &.size-md-tablet { @include size-md; }
+    &.size-lg-tablet { @include size-lg; }
   }
 
-  &.md {
-    :global(.react-select__control) {
-      border-radius: var(--form-control-size-md-border-radius);
-      padding: 4px 8px;
-    }
-
-    :global(.react-select__single-value) {
-      font-size: var(--form-control-size-md-font-size);
-    }
-
-    :global(.react-select__multi-value__label) {
-      font-size: var(--form-control-size-md-font-size);
-    }
-
-    :global(.react-select__dropdown-indicator) {
-      padding: 0;
-    }
-
-    :global(.react-select__dropdown-indicator) {
-      @extend .react-select-icon;
-
-      svg {
-        width: var(--form-control-select-md-icon-size);
-        height: var(--form-control-select-md-icon-size);
-      }
-    }
+  @media (min-width: $size-breakpoint-desktop) {
+    &.size-sm-desktop { @include size-sm; }
+    &.size-md-desktop { @include size-md; }
+    &.size-lg-desktop { @include size-lg; }
   }
 
-  &.lg {
-    :global(.react-select__control) {
-      padding: 9px 8px 10px;
-      border-radius: var(--form-control-size-md-border-radius);
-    }
-
-    :global(.react-select__option),
-    :global(.react-select__placeholder),
-    :global(.react-select__single-value) {
-      font-size: var(--form-control-size-lg-font-size);
-    }
-
-    :global(.react-select__multi-value__label) {
-      font-size: var(--form-control-size-lg-font-size);
-      padding: 2px 6px 3px;
-    }
-
-    :global(.react-select__dropdown-indicator) {
-      padding: 0;
-    }
-
-    :global(.react-select__dropdown-indicator) {
-      @extend .react-select-icon;
-
-      svg {
-        width: var(--form-control-select-lg-icon-size);
-        height: var(--form-control-select-lg-icon-size);
-      }
-    }
+  @media (min-width: $size-breakpoint-hd) {
+    &.size-sm-hd { @include size-sm; }
+    &.size-md-hd { @include size-md; }
+    &.size-lg-hd { @include size-lg; }
   }
 
   &.disabled {
