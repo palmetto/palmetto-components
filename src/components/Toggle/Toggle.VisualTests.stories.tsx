@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { RESPONSIVE_STORY } from '../../docs/constants';
 import { Toggle, ToggleProps } from './Toggle';
 import TOGGLE_SIZES from './Toggle.constants';
 import { Box } from '../Box/Box';
@@ -7,9 +8,10 @@ import { Box } from '../Box/Box';
 export default {
   title: 'Components/Toggle/Visual Regression Tests',
   component: Toggle,
+  parameters: RESPONSIVE_STORY,
 } as Meta;
 
-const Template: Story<ToggleProps> = args => (
+const Template: Story<ToggleProps> = ({ ...args }) => (
   <Box childGap="xl">
     {TOGGLE_SIZES.map(size => (
       <Box childGap="md" key={`${args.id}-${size}`}>
@@ -30,6 +32,33 @@ const Template: Story<ToggleProps> = args => (
         />
       </Box>
     ))}
+    <Box childGap="md">
+      <Toggle
+        {...args}
+        id={`${args.id}-responsive-checked`}
+        label="I agree to the Terms and Conditions and Privacy Policy"
+        isChecked
+        size={{
+          base: 'sm',
+          tablet: 'md',
+          desktop: 'lg',
+          hd: 'sm',
+        }}
+        onChange={() => {}} // eslint-disable-line
+      />
+      <Toggle
+        {...args}
+        id={`${args.id}-responsive-unchecked`}
+        label="I agree to the Terms and Conditions and Privacy Policy"
+        size={{
+          base: 'sm',
+          tablet: 'md',
+          desktop: 'lg',
+          hd: 'sm',
+        }}
+        onChange={() => {}} // eslint-disable-line
+      />
+    </Box>
   </Box>
 );
 
