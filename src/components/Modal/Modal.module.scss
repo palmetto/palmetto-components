@@ -1,6 +1,7 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
-
+/* This line prevents @reach/dialog from throwing a warning due to not importing their CSS. */
+:root { --reach-dialog: 1; }
 
 .modal-close {
   border: none;
