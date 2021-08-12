@@ -2,6 +2,8 @@ import React, {
   FC, ChangeEvent, FocusEvent, ReactNode,
 } from 'react';
 import classNames from 'classnames';
+import { ResponsiveProp } from '../../types';
+import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
@@ -62,7 +64,7 @@ export interface ToggleProps {
   /**
    * The size of the toggle.
    */
-  size?: ToggleSize;
+  size?: ToggleSize | ResponsiveProp<ToggleSize>;
 }
 
 export const Toggle: FC<ToggleProps> = ({
@@ -93,10 +95,17 @@ export const Toggle: FC<ToggleProps> = ({
   };
 
   const wrapperClasses = classNames({ [styles.disabled]: isDisabled });
-  const trackClasses = classNames(styles['toggle-track'], styles[`track-${size}`], {
-    [styles.error]: error,
-  });
-  const thumbClasses = classNames(styles['toggle-thumb'], styles[`thumb-${size}`]);
+  const trackClasses = classNames(
+    styles['toggle-track'],
+    ...generateResponsiveClasses('track-size', size).map(c => (styles[c])),
+    {
+      [styles.error]: error,
+    }
+  );
+  const thumbClasses = classNames(
+    styles['toggle-thumb'],
+    ...generateResponsiveClasses('thumb-size', size).map(c => (styles[c])),
+  );
 
   const inputProps = {
     'aria-required': isRequired,
