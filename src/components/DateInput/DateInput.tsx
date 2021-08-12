@@ -40,12 +40,12 @@ export interface DateInputProps {
      * Should determine which week is week 1 of a new year.
      */
     firstWeekContainsDate?: number | undefined;
-    /** 
+    /**
      * Whether to accept unicode tokens in format.
      * See here --> https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
      */
     useAdditionalWeekYearTokens?: boolean | undefined;
-    /** 
+    /**
      * Whether to accept unicode tokens in format.
      * See here --> https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
      */
@@ -146,14 +146,14 @@ export const DateInput: FC<DateInputProps> = ({
     }
   }, [isPopoverOpen]);
 
-  const handleDatePickerChange = (date: Date | [Date, Date] | null, event: React.SyntheticEvent<any, Event> | undefined) => {
-
+  const handleDatePickerChange = (
+    date: Date | [Date, Date] | null,
+    event: React.SyntheticEvent<any, Event> | undefined, // eslint-disable-line @typescript-eslint/no-explicit-any
+  ) => {
     mergedDatePickerProps.onChange(date, event);
 
-    if (!mergedDatePickerProps.selectsRange && date) {
-      setPopoverOpen(false);
-    }
-  }
+    if (!mergedDatePickerProps.selectsRange && date) setPopoverOpen(false);
+  };
 
   const renderDatePicker = () => (
     <DatePicker

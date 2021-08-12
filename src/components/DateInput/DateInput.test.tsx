@@ -100,10 +100,10 @@ describe('DateInput', () => {
       const popoverContainer = screen.getByRole('dialog');
       await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
       const dateButton = screen.getByText('14');
-      await waitFor(() => { fireEvent.click(dateButton) });
+      await waitFor(() => { fireEvent.click(dateButton); });
 
       const popover = screen.queryByRole('dialog');
-      await waitFor(() => { expect(popover).toBeNull() });
+      await waitFor(() => { expect(popover).toBeNull(); });
     });
 
     it('keeps popover open while user is selecting a Date range', async () => {
@@ -131,7 +131,7 @@ describe('DateInput', () => {
       const popoverContainer = screen.getByRole('dialog');
       await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
       const dateButton = screen.getByText('14');
-      await waitFor(() => { fireEvent.click(dateButton) });
+      await waitFor(() => { fireEvent.click(dateButton); });
 
       const popover = screen.queryByRole('dialog');
       await waitFor(() => { expect(popover).toHaveAttribute('data-popper-placement', 'bottom'); });
