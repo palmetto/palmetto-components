@@ -118,6 +118,53 @@ The `resize` prop accepts `horizontal`, `vertical`, `both` or `none` to control 
   </Story>
 </Canvas>
 
+## Sizes
+
+Set the `size` of the input to `sm`, `md` or `lg`. The `size` prop is also a `ResponsiveProp`, so it can be sized differently at each [breakpoint](?path=/story/design-tokens-breakpoints--page) by passing an object.
+
+<Canvas>
+  <Story name="Sizes">
+    {() => {
+      const [valueSm, setValueSm] = useState('');
+      const [valueMd, setValueMd] = useState('');
+      const [valueLg, setValueLg] = useState('');
+      const [valueResponsive, setValueResponsive] = useState('');
+      return (
+        <Box childGap="md">
+          <TextareaInput
+            id="Small"
+            value={valueSm}
+            label="Small"
+            onChange={event => setValueSm(event.target.value)}
+            size="sm"
+          />
+          <TextareaInput
+            id="Medium"
+            value={valueMd}
+            label="Medium"
+            onChange={event => setValueMd(event.target.value)}
+            size="md"
+          />
+          <TextareaInput
+            id="Large"
+            value={valueLg}
+            label="Large"
+            onChange={event => setValueLg(event.target.value)}
+            size="lg"
+          />
+          <TextareaInput
+            id="Responsive"
+            value={valueResponsive}
+            label="Responsive"
+            onChange={event => setValueResponsive(event.target.value)}
+            size={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'sm' }}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Placeholder
 
 Use the `placeholder` prop to add a custom placeholder.
