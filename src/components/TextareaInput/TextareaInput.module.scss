@@ -13,14 +13,11 @@
     transition-property: border, background-color;
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
     border: 1px solid var(--form-control-border-color);
-    border-radius: var(--form-control-size-md-border-radius);
     box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
     background-color: var(--form-control-background-color);
-    padding: var(--form-control-size-md-padding);
     width: 100%;
     line-height: var(--form-control-line-height);
     color: var(--form-control-font-color);
-    font-size: var(--form-control-size-md-font-size);
 
     &::placeholder {
       /* Override lower placeholder opacity in Firefox */
