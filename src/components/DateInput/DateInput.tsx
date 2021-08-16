@@ -116,35 +116,10 @@ export const DateInput: FC<DateInputProps> = ({
   };
 
   const [isPopoverOpen, setPopoverOpen] = useState(false);
-  const prevIsPopoverOpen = useRef(false);
-  const textInputRef = useRef<HTMLInputElement>(null);
 
   const handleTogglePopover = (newPopoverOpenState: boolean) => {
     setPopoverOpen(newPopoverOpenState);
   };
-
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    if (mergedTextInputProps.onBlur) mergedTextInputProps.onBlur(event);
-
-    if (isPopoverOpen || !onBlur) return;
-
-    onBlur(event);
-  };
-
-  useEffect(() => {
-    // These events are to trigger a blur event on the input at the correct time (for form validation)
-    // The input is technically blurred whenever calendar popover is interacted with but we don't want that to
-    // trigger a blur so we swallow it, and only bubble the blur event back to the parent when the popover is closed
-    // which is then the user is done interacting with the component.
-    if (prevIsPopoverOpen.current && !isPopoverOpen) {
-      (textInputRef?.current as HTMLInputElement).focus();
-      (textInputRef?.current as HTMLInputElement).blur();
-    }
-
-    if (isPopoverOpen !== prevIsPopoverOpen.current) {
-      prevIsPopoverOpen.current = isPopoverOpen;
-    }
-  }, [isPopoverOpen]);
 
   const handleDatePickerChange = (
     date: Date | [Date, Date] | null,
@@ -179,13 +154,9 @@ export const DateInput: FC<DateInputProps> = ({
         name={mergedTextInputProps.name}
         label={mergedTextInputProps.label}
         value={getTextInputValue()}
-        onChange={() => null}
+        onChange={() => null} /* Empty function since we hijack the onChange event */
         onClick={() => handleTogglePopover(true)}
-        onBlur={handleBlur}
         readOnly
-        inputProps={{
-          ref: textInputRef,
-        }}
         {...restProps}
       />
     </Popover>
