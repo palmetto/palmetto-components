@@ -82,6 +82,7 @@ Use the `hideLabel` prop to not render the label, however a `label` is still req
 ### Sizes
 
 Set the size of the `toggle` to `sm`, `md` or `lg`. `md` is the default size.
+The `size` prop is also a `ResponsiveProp`, so it can be sized differently at each [breakpoint](?path=/story/design-tokens-breakpoints--page) by passing an object.
 
 <Canvas isExpanded>
   <Story name="Size">
@@ -109,6 +110,13 @@ Set the size of the `toggle` to `sm`, `md` or `lg`. `md` is the default size.
             onChange={event => setValue(event.target.checked)}
             isChecked={value}
             size="lg"
+          />
+          <Toggle
+            id="responsiveToggle"
+            label="responsive toggle"
+            onChange={event => setValue(event.target.checked)}
+            isChecked={value}
+            size={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'sm' }}
           />
         </Box>
       );

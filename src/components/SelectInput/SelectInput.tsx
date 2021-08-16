@@ -9,8 +9,9 @@ import Select, {
   GroupedOptionsType,
   OptionsType,
 } from 'react-select';
-import { SimulatedEventPayloadType } from '../../types';
+import { SimulatedEventPayloadType, ResponsiveProp } from '../../types';
 import { Z_INDEX_VALUES } from '../../lib/tokens';
+import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormLabel } from '../FormLabel/FormLabel';
@@ -101,7 +102,7 @@ export interface SelectInputProps {
   /**
    * The size of the text input.
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | ResponsiveProp<'sm' | 'md' | 'lg'>;
   /**
    * Additional props to be spread. These will be applied specifically to
    * the `react-select` component that powers the select. For full docs on
@@ -152,9 +153,16 @@ export const SelectInput: FC<SelectInputProps> = ({
     if (onBlur) onBlur(e);
   };
 
-  const wrapperClasses = classNames('select-input-wrapper', className, styles[size], {
-    [styles.disabled]: isDisabled,
-  });
+  const responsiveClasses = generateResponsiveClasses('size', size);
+
+  const wrapperClasses = classNames(
+    'select-input-wrapper',
+    className,
+    ...responsiveClasses.map(c => (styles[c])),
+    {
+      [styles.disabled]: isDisabled,
+    },
+  );
 
   const inputClasses = classNames('react-select', { [styles.error]: error });
 

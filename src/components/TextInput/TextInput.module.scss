@@ -1,6 +1,9 @@
 %disabled-base {
   background-color: var(--form-control-disabled-background-color);
   color: var(--form-control-disabled-font-color);
+  /* https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios */
+  -webkit-text-fill-color: var(--form-control-disabled-font-color);
+  opacity: 1;
 
   &:hover {
     cursor: not-allowed;

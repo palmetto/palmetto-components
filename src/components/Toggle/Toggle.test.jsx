@@ -195,20 +195,66 @@ describe('Toggle', () => {
   });
 
   describe('Sizes', () => {
-    TOGGLE_SIZES.map(size => test(`it has a ${size} class applied to the toggle thumb and track`, () => {
+    const breakpoints = ['tablet', 'desktop', 'hd'];
+
+    TOGGLE_SIZES.forEach(size => {
+      test(`it has a ${size} class applied to the toggle thumb and track`, () => {
+        const { getByTestId } = render(
+          <Toggle
+            id="testToggle"
+            label={`test ${size} toggle`}
+            isChecked={false}
+            onChange={() => null}
+            size={size}
+          />,
+        );
+
+        expect(getByTestId('toggleTrack').getAttribute('class')).toContain(`track-size-${size}`);
+        expect(getByTestId('toggleThumb').getAttribute('class')).toContain(`thumb-size-${size}`);
+      });
+
+      breakpoints.forEach(breakpoint => {
+        test(`it applies responsive classes for breakpoint: ${breakpoint} and size: ${size}`, () => {
+          const { getByTestId } = render(
+            <Toggle
+              id="testToggle"
+              label={`test ${size} toggle`}
+              isChecked={false}
+              onChange={() => null}
+              size={{ [breakpoint]: size }}
+            />,
+          );
+  
+          expect(getByTestId('toggleTrack').getAttribute('class')).toContain(`track-size-${size}-${breakpoint}`);
+          expect(getByTestId('toggleThumb').getAttribute('class')).toContain(`thumb-size-${size}-${breakpoint}`);
+        });
+      });
+    });
+
+    test('It applies responsive classes when multiple are applied', () => {
       const { getByTestId } = render(
         <Toggle
           id="testToggle"
-          label={`test ${size} toggle`}
+          label={`test toggle`}
           isChecked={false}
           onChange={() => null}
-          size={size}
+          size={{
+            base: 'sm',
+            tablet: 'md',
+            desktop: 'lg',
+            hd: 'sm',
+          }}
         />,
       );
 
-      expect(getByTestId('toggleTrack').getAttribute('class')).toContain(`track-${size}`);
-      expect(getByTestId('toggleThumb').getAttribute('class')).toContain(`thumb-${size}`);
-    }),
-    );
+      expect(getByTestId('toggleTrack').getAttribute('class')).toContain('track-size-sm');
+      expect(getByTestId('toggleTrack').getAttribute('class')).toContain('track-size-md-tablet');
+      expect(getByTestId('toggleTrack').getAttribute('class')).toContain('track-size-lg-desktop');
+      expect(getByTestId('toggleTrack').getAttribute('class')).toContain('track-size-sm-hd');
+      expect(getByTestId('toggleThumb').getAttribute('class')).toContain('thumb-size-sm');
+      expect(getByTestId('toggleThumb').getAttribute('class')).toContain('thumb-size-md-tablet');
+      expect(getByTestId('toggleThumb').getAttribute('class')).toContain('thumb-size-lg-desktop');
+      expect(getByTestId('toggleThumb').getAttribute('class')).toContain('thumb-size-sm-hd');
+    });
   });
 });
