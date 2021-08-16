@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  useState,
-  useRef,
-  FocusEvent,
-  useEffect,
-} from 'react';
+import React, { FC, useState } from 'react';
 import format from 'date-fns/format';
 import { DatePicker, DatePickerProps } from '../DatePicker/DatePicker';
 import { TextInput, TextInputProps } from '../TextInput/TextInput';
@@ -51,8 +45,10 @@ export interface DateInputProps {
      */
     useAdditionalDayOfYearTokens?: boolean | undefined;
   };
+  /**
+   * Props to pass down to the Popover component.
+   */
   popoverProps?: Omit<PopoverProps, 'children' | 'content' | 'isOpen'>;
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
    * Additional props to be spread to the `TextInput` element.
    */
@@ -77,7 +73,6 @@ export const DateInput: FC<DateInputProps> = ({
   textInputProps,
   dateFormat = 'MM/dd/yyyy',
   dateOptions = undefined,
-  onBlur,
   popoverProps = { ...defaultPopoverProps },
   ...restProps
 }) => {
