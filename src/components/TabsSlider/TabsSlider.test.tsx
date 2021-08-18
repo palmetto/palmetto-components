@@ -4,6 +4,7 @@ import { TabsSlider, tabsSliderSizes, tabsSliderPaddingMap } from './TabsSlider'
 
 // Mocking ResizeObserver since it is not available to jest runner.
 class ResizeObserver {
+  /* eslint-disable */
   observe() {
       // do nothing
   }
@@ -13,6 +14,7 @@ class ResizeObserver {
   disconnect() {
 
   }
+  /* eslint-enable */
 }
 
 window.ResizeObserver = ResizeObserver;
