@@ -2,6 +2,21 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TabsSlider, tabsSliderSizes, tabsSliderPaddingMap } from './TabsSlider';
 
+// Mocking ResizeObserver since it is not available to jest runner.
+class ResizeObserver {
+  observe() {
+      // do nothing
+  }
+  unobserve() {
+      // do nothing
+  }
+  disconnect() {
+
+  }
+}
+
+window.ResizeObserver = ResizeObserver;
+
 describe('TabsSlider', () => {
   describe('Default', () => {
     test('It renders basic tabs structure by default', () => {
