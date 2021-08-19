@@ -8,11 +8,18 @@ export default {
   component: TabsSlider,
 } as Meta;
 
-const IconTemplate: Story<TabsSliderProps> = ({ ...args }) => <TabsSlider {...args} />;
+const Template: Story<TabsSliderProps> = ({ ...args }) => (
+  <TabsSlider {...args}>
+    <TabsSlider.Item>Tab 1</TabsSlider.Item>
+    <TabsSlider.Item>Tab 2</TabsSlider.Item>
+    <TabsSlider.Item>Tab 3</TabsSlider.Item>
+    <TabsSlider.Item isDisabled>Disabled</TabsSlider.Item>
+  </TabsSlider>
+);
 
-export const ResponsiveSize = IconTemplate.bind({});
+export const ResponsiveSize = Template.bind({});
 ResponsiveSize.args = {
-  name: 'home',
+  value: 0,
   size: {
     base: 'sm',
     tablet: 'md',
