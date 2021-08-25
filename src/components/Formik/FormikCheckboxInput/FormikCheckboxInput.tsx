@@ -4,6 +4,7 @@ import {
   FormikErrors,
   FieldAttributes,
   FormikValues,
+  getIn,
 } from 'formik';
 import { CheckboxInput, CheckboxInputProps } from '../../CheckboxInput/CheckboxInput';
 
@@ -35,7 +36,7 @@ export const FormikCheckboxInput: React.FC<FormikCheckboxInputProps> = (
     {...props}
     id={id}
     label={label}
-    error={touched[name] && errors[name]}
+    error={getIn(touched, name) && getIn(errors, name)}
     isChecked={value}
     onBlur={onBlur}
     onChange={onChange ?? formikOnChange} // eslint-disable-line

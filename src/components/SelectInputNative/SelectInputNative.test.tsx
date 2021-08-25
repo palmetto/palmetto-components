@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
+import { BreakpointSize } from '../../types';
 import { SelectInputNative } from './SelectInputNative';
 
 const selectOptions = [
@@ -7,6 +8,20 @@ const selectOptions = [
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' },
 ];
+
+function getByTextWithMarkup(text: string) {
+  // eslint-disable-next-line
+  // @ts-ignore
+  return (content, element) => {
+    const hasText = (node: Element) => node.textContent === text;
+    const elementHasText = hasText(element);
+    // eslint-disable-next-line
+    // @ts-ignore
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
 
 describe('SelectInputNative', () => {
   describe('Callback Handling', () => {
@@ -184,7 +199,7 @@ describe('SelectInputNative', () => {
           />,
         );
 
-        expect(screen.getByText('Select Label *')).toBeInTheDocument();
+        expect(screen.getByText(getByTextWithMarkup('Select Label *'))).toBeInTheDocument();
       });
     });
 
@@ -235,6 +250,8 @@ describe('SelectInputNative', () => {
       'lg',
     ] as ('sm' | 'md' | 'lg')[];
 
+    const breakpoints: BreakpointSize[] = ['tablet', 'desktop', 'hd'];
+
     sizes.forEach(size => {
       test(`it has a ${size} class applied to it`, () => {
         render(
@@ -251,6 +268,50 @@ describe('SelectInputNative', () => {
         const selectParent = select.closest('div');
         expect(selectParent?.getAttribute('class')).toContain(size);
       });
+
+      breakpoints.forEach(breakpoint => {
+        test(`it applies responsive classes for breakpoint: ${breakpoint} and size: ${size}`, () => {
+          render(
+            <SelectInputNative
+              id="testId"
+              onChange={mockedHandleChange}
+              options={selectOptions}
+              value={selectOptions[0].value}
+              size={{ [breakpoint]: size }}
+              label="size test"
+            />,
+          );
+          const select = screen.getByLabelText('size test');
+          const selectParent = select.closest('div');
+
+          expect(selectParent?.getAttribute('class')).toContain(`size-${size}-${breakpoint}`);
+        });
+      });
+    });
+
+    test('It applies responsive classes when multiple are applied', () => {
+      render(
+        <SelectInputNative
+          id="testId"
+          onChange={mockedHandleChange}
+          options={selectOptions}
+          value={selectOptions[0].value}
+          size={{
+            base: 'sm',
+            tablet: 'md',
+            desktop: 'lg',
+            hd: 'sm',
+          }}
+          label="size test"
+        />,
+      );
+      const select = screen.getByLabelText('size test');
+      const selectParent = select.closest('div');
+
+      expect(selectParent?.getAttribute('class')).toContain('size-sm');
+      expect(selectParent?.getAttribute('class')).toContain('size-md-tablet');
+      expect(selectParent?.getAttribute('class')).toContain('size-lg-desktop');
+      expect(selectParent?.getAttribute('class')).toContain('size-sm-hd');
     });
   });
 });

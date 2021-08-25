@@ -1,0 +1,47 @@
+.toast-notification-enter-top {
+  :global {
+    animation: enterTop 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+  }
+}
+  
+.toast-notification-exit-top {
+  :global {
+    animation: exitTop 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
+  }
+}
+
+.toast-notification-enter-bottom {
+  :global {
+    animation: enterBottom 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+  }
+}
+
+.toast-notification-exit-bottom {
+  :global {
+    animation: exitBottom 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
+  }
+}
+
+.toast-notification-exit-left {
+  :global {
+    animation: exitLeft 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
+  }
+}
+
+.toast-notification-exit-right {
+  :global {
+    animation: exitRight 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
+  }
+}
+
+.toast-notification-fade-in {
+  :global {
+    animation: fadeIn 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+  }
+}
+
+.toast-notification-fade-out {
+  :global {
+    animation: fadeOut 0.3s forwards cubic-bezier(0.06, 0.71, 0.55, 1);
+  }
+}

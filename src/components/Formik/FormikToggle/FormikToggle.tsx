@@ -4,6 +4,7 @@ import {
   FormikErrors,
   FieldAttributes,
   FormikValues,
+  getIn,
 } from 'formik';
 import { Toggle } from '../../Toggle/Toggle';
 
@@ -28,7 +29,7 @@ export const FormikToggle: React.FC<FormikToggleProps> = ({
   ...props
 }) => (
   <Toggle
-    error={touched[name] && errors[name]}
+    error={getIn(touched, name) && getIn(errors, name)}
     isChecked={value}
     onBlur={onBlur}
     onChange={onChange} // eslint-disable-line

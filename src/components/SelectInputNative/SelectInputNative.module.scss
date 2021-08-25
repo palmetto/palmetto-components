@@ -1,3 +1,5 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
 %disabled-base {
   background-color: var(--form-control-disabled-background-color);
   color: var(--form-control-disabled-font-color);
@@ -11,6 +13,106 @@
     cursor: not-allowed;
   }
 }
+
+@mixin size-sm {
+  border-radius: var(--form-control-size-sm-border-radius);
+  font-size: var(--form-control-size-sm-font-size);
+
+  > select {
+    border-radius: var(--form-control-size-lg-border-radius);
+    padding-left: var(--form-control-size-sm-padding);
+    padding-right: var(--size-spacing-2xl);
+    padding-top: calc(var(--form-control-size-sm-padding) - 1px);
+    padding-bottom: calc(var(--form-control-size-sm-padding) - 1px);
+  }
+
+  &::before,
+  &::after {
+    width: 8px;
+    height: 2px;
+    top: calc(var(--size-spacing-sm) + 3px);
+  }
+
+  &::before {
+    right: calc(var(--size-spacing-sm) + 8px);
+  }
+
+  &::after {
+    right: calc(var(--size-spacing-sm) + 3px);
+  }
+}
+
+%size-sm {
+  @include size-sm;
+}
+
+.size-sm {
+  @extend %size-sm;
+}
+
+@mixin size-md {
+  border-radius: var(--form-control-size-md-border-radius);
+  font-size: var(--form-control-size-md-font-size);
+
+  > select {
+    border-radius: var(--form-control-size-lg-border-radius);
+    padding-left: var(--form-control-size-md-padding);
+    padding-right: var(--size-spacing-3xl);
+    padding-top: calc(var(--form-control-size-md-padding) - 1px);
+    padding-bottom: calc(var(--form-control-size-md-padding) - 1px);
+  }
+
+  &::before,
+  &::after {
+    width: 14px;
+    height: 4px;
+    top: calc(var(--size-spacing-md) + 3px);
+  }
+
+  &::before {
+    right: calc(var(--size-spacing-sm) + 11px);
+  }
+
+  &::after {
+    right: calc(var(--size-spacing-sm) + 3px);
+  }
+}
+
+%size-md { @include size-md; }
+
+.size-md { @extend %size-md; }
+
+@mixin size-lg {
+  border-radius: var(--form-control-size-lg-border-radius);
+  font-size: var(--form-control-size-lg-font-size);
+
+  > select {
+    border-radius: var(--form-control-size-lg-border-radius);
+    padding-left: var(--form-control-size-lg-padding);
+    padding-right: var(--size-spacing-3xl);
+    padding-top: calc(var(--form-control-size-lg-padding) - 1px);
+    padding-bottom: calc(var(--form-control-size-lg-padding) - 1px);
+  }
+
+  &::before,
+  &::after {
+    width: 14px;
+    height: 4px;
+    top: calc(var(--size-spacing-md) + 9px);
+  }
+
+  &::before {
+    right: calc(var(--size-spacing-sm) + 11px);
+  }
+
+  &::after {
+    right: calc(var(--size-spacing-sm) + 3px);
+  }
+}
+
+%size-lg { @include size-lg; }
+
+.size-lg { @extend %size-lg; }
 
 .select-input-native-wrapper {
   position: relative;
@@ -69,85 +171,26 @@
     }
   }
 
-  &.sm {
-    border-radius: var(--form-control-size-sm-border-radius);
-    font-size: var(--form-control-size-sm-font-size);
+  &.size-sm { @extend %size-sm; }
+  &.size-md { @extend %size-md; }
+  &.size-lg { @extend %size-lg; }
 
-    > select {
-      border-radius: var(--form-control-size-lg-border-radius);
-      padding: 0 var(--form-control-size-sm-padding);
-      padding-top: calc(var(--form-control-size-sm-padding) - 1px);
-      padding-bottom: calc(var(--form-control-size-sm-padding) - 1px);
-    }
-
-    &::before,
-    &::after {
-      width: 8px;
-      height: 2px;
-      top: calc(var(--size-spacing-sm) + 3px);
-    }
-
-    &::before {
-      right: calc(var(--size-spacing-sm) + 8px);
-    }
-  
-    &::after {
-      right: calc(var(--size-spacing-sm) + 3px);
-    }
+  @media (min-width: $size-breakpoint-tablet) {
+    &.size-sm-tablet { @include size-sm; }
+    &.size-md-tablet { @include size-md; }
+    &.size-lg-tablet { @include size-lg; }
   }
 
-  &.md {
-    border-radius: var(--form-control-size-md-border-radius);
-    font-size: var(--form-control-size-md-font-size);
-
-    > select {
-      border-radius: var(--form-control-size-lg-border-radius);
-      padding: 0 var(--form-control-size-md-padding);
-      padding-top: calc(var(--form-control-size-md-padding) - 1px);
-      padding-bottom: calc(var(--form-control-size-md-padding) - 1px);
-    }
-
-    &::before,
-    &::after {
-      width: 14px;
-      height: 4px;
-      top: calc(var(--size-spacing-md) + 3px);
-    }
-
-    &::before {
-      right: calc(var(--size-spacing-sm) + 11px);
-    }
-  
-    &::after {
-      right: calc(var(--size-spacing-sm) + 3px);
-    }
+  @media (min-width: $size-breakpoint-desktop) {
+    &.size-sm-desktop { @include size-sm; }
+    &.size-md-desktop { @include size-md; }
+    &.size-lg-desktop { @include size-lg; }
   }
 
-  &.lg {
-    border-radius: var(--form-control-size-lg-border-radius);
-    font-size: var(--form-control-size-lg-font-size);
-
-    > select {
-      border-radius: var(--form-control-size-lg-border-radius);
-      padding: 0 var(--form-control-size-lg-padding);
-      padding-top: calc(var(--form-control-size-lg-padding) - 1px);
-      padding-bottom: calc(var(--form-control-size-lg-padding) - 1px);
-    }
-
-    &::before,
-    &::after {
-      width: 14px;
-      height: 4px;
-      top: calc(var(--size-spacing-md) + 9px);
-    }
-
-    &::before {
-      right: calc(var(--size-spacing-sm) + 11px);
-    }
-  
-    &::after {
-      right: calc(var(--size-spacing-sm) + 3px);
-    }
+  @media (min-width: $size-breakpoint-hd) {
+    &.size-sm-hd { @include size-sm; }
+    &.size-md-hd { @include size-md; }
+    &.size-lg-hd { @include size-lg; }
   }
 
   &.error {

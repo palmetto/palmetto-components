@@ -75,6 +75,67 @@ describe('DateInput', () => {
       const popover = screen.queryByRole('dialog');
       expect(popover).toBeNull();
     });
+
+    it('closes popover when user selects a value NOT in a range', async () => {
+      const date = new Date(1995, 11, 14);
+
+      render(
+        <DateInput
+          dateFormat="yyyy/MM/dd"
+          textInputProps={{
+            id: 'myInput',
+            label: 'Select Date',
+          }}
+          datePickerProps={{
+            openToDate: date,
+            selected: null,
+            onChange: () => null,
+          }}
+        />,
+      );
+
+      const input = screen.getByLabelText('Select Date');
+      fireEvent.click(input);
+
+      const popoverContainer = screen.getByRole('dialog');
+      await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
+      const dateButton = screen.getByText('14');
+      await waitFor(() => { fireEvent.click(dateButton); });
+
+      const popover = screen.queryByRole('dialog');
+      await waitFor(() => { expect(popover).toBeNull(); });
+    });
+
+    it('keeps popover open while user is selecting a Date range', async () => {
+      const date = new Date(1995, 11, 14);
+
+      render(
+        <DateInput
+          dateFormat="yyyy/MM/dd"
+          textInputProps={{
+            id: 'myInput',
+            label: 'Select Date',
+          }}
+          datePickerProps={{
+            openToDate: date,
+            selected: null,
+            onChange: () => null,
+            selectsRange: true,
+          }}
+        />,
+      );
+
+      const input = screen.getByLabelText('Select Date');
+      fireEvent.click(input);
+
+      const popoverContainer = screen.getByRole('dialog');
+      await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
+      const dateButton = screen.getByText('14');
+      await waitFor(() => { fireEvent.click(dateButton); });
+
+      const popover = screen.queryByRole('dialog');
+      await waitFor(() => { expect(popover).toHaveAttribute('data-popper-placement', 'bottom'); });
+    });
   });
 
   describe('Date Formatting', () => {
@@ -169,79 +230,6 @@ describe('DateInput', () => {
       const inputTwo = screen.getByLabelText('Select Date');
       expect(inputTwo).toBeInTheDocument();
       expect(inputTwo).toHaveAttribute('value', '1995/12/16 - ');
-    });
-  });
-
-  describe('Events', () => {
-    it('fires onBlur callback when popopver goes from open to closed', async () => {
-      const onBlur = jest.fn(() => null);
-      const date = new Date(1995, 11, 14);
-
-      const { container } = render(
-        <DateInput
-          dateFormat="yyyy/MM/dd"
-          textInputProps={{
-            id: 'myInput',
-            label: 'Select Date',
-          }}
-          datePickerProps={{
-            openToDate: date,
-            selected: date,
-            onChange: () => null,
-          }}
-          onBlur={onBlur}
-        />,
-      );
-
-      const input = screen.getByLabelText('Select Date');
-      fireEvent.click(input);
-
-      const popoverContainer = screen.getByRole('dialog');
-      await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
-      const dateButton = screen.getByText('14');
-      fireEvent.click(dateButton);
-      expect(onBlur).not.toHaveBeenCalled();
-
-      fireEvent.click(container);
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      const popover = screen.queryByRole('dialog');
-      expect(popover).toBeNull();
-    });
-
-    it('fires onBlur callback even when the input label is hidden', async () => {
-      const onBlur = jest.fn(() => null);
-      const date = new Date(1995, 11, 14);
-
-      const { container } = render(
-        <DateInput
-          dateFormat="yyyy/MM/dd"
-          textInputProps={{
-            id: 'myInput',
-            label: 'Select Date',
-            hideLabel: true,
-          }}
-          datePickerProps={{
-            openToDate: date,
-            selected: date,
-            onChange: () => null,
-          }}
-          onBlur={onBlur}
-        />,
-      );
-
-      const input = screen.getByLabelText('Select Date');
-      fireEvent.click(input);
-
-      const popoverContainer = screen.getByRole('dialog');
-      await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'bottom'));
-      const dateButton = screen.getByText('14');
-      fireEvent.click(dateButton);
-      expect(onBlur).not.toHaveBeenCalled();
-
-      fireEvent.click(container);
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      const popover = screen.queryByRole('dialog');
-      expect(popover).toBeNull();
     });
   });
 });

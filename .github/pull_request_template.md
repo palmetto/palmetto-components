@@ -9,8 +9,19 @@ Please delete options that are not relevant.
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] Updating documentation.
 - [ ] Updating deployment/build pipeline.
+- [ ] Updating Project Dependencies
+- [ ] Improving or adding to Test Coverage
 
-# Checklist:
+# Completeness Checklist
+
+- [ ] TESTS: My changes maintain the baseline required test coverage, as specified by code climate analysis.
+- [ ] DOCS: All new component work is covered in that component's `Overview` docs.
+- [ ] DOCS: All new component work is covered in a component `Playground`.
+- [ ] DOCS: All new visual changes or options are covered under relevant components' `VisualTests`.
+- [ ] My code has no linting or typescript compile warnings.
+- [ ] My work is tied to a Github issue and satisfies the acceptance criteria (if applicable) of the corresponding issue.
+
+# Quality Checklist:
 
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code

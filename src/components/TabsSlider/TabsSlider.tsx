@@ -141,11 +141,26 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
     }
   }, [getTabsMeta, indicatorStyle.left, indicatorStyle.width]);
 
-  useEffect(() => {
-    window.addEventListener('resize', updateIndicatorState);
+  const observer = useRef(
+    new ResizeObserver(() => {
+      updateIndicatorState();
+    }),
+  );
 
-    return () => { window.removeEventListener('resize', updateIndicatorState); };
-  }, [updateIndicatorState]);
+  useEffect(() => {
+    const currentNode = tabsRef.current;
+    const currentObserver = observer.current;
+
+    if (currentNode) {
+      currentObserver.observe(currentNode);
+    }
+
+    return () => {
+      if (currentNode) {
+        currentObserver.unobserve(currentNode);
+      }
+    };
+  }, [tabsRef, observer]);
 
   useEffect(() => {
     updateIndicatorState();

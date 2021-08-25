@@ -6,23 +6,25 @@ import {
   waitFor,
 } from '@testing-library/react';
 import selectEvent from 'react-select-event';
-import { Formik, Form, Field } from 'formik';
+import {
+  Formik,
+  Form,
+  Field,
+  FormikValues,
+  getIn,
+  setIn,
+} from 'formik';
 import { FormikTimePicker } from './FormikTimePicker';
 
 const testLabelName = 'test select';
 
 type Option = { value: string; label: string; }
-const handleValidation = (values: { [x: string]: string; }) => {
-  const errors: {[x: string]: string; } = {};
-  if (values[testLabelName].length < 1) {
-    errors[testLabelName] = 'input is required';
-  }
-
-  return errors;
-};
+const handleValidation = (testValueKey:string) => (values:FormikValues) => (
+  getIn(values, testValueKey)?.length > 1 ? {} : setIn({}, testValueKey, 'input is required')
+);
 
 const renderForm = (
-  initialValue: string | string[] | Option | Option[] | undefined,
+  initialValue: any, // eslint-disable-line
   props: {
     placeholder?: string;
     hideLabel?: boolean;
@@ -32,20 +34,21 @@ const renderForm = (
     onChange?: jest.Mock<void, [any]>; // eslint-disable-line
     interval?: number;
   },
+  testValueKey = testLabelName,
 ) => (
   <Formik
     initialValues={{
-      [testLabelName]: initialValue as string,
+      [testLabelName]: initialValue,
     }}
-    validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
+    validate={props.isRequired ? handleValidation(testValueKey) : undefined} // eslint-disable-line
     onSubmit={() => {}} // eslint-disable-line
   >
     {() => (
       <Form>
         <Field
-          label={testLabelName}
-          name={testLabelName}
-          id={testLabelName}
+          label={testValueKey}
+          name={testValueKey}
+          id={testValueKey}
           component={FormikTimePicker}
           {...props}
         />
@@ -54,6 +57,20 @@ const renderForm = (
     )}
   </Formik>
 );
+
+function getByTextWithMarkup(text: string) {
+  // eslint-disable-next-line
+  // @ts-ignore
+  return (content, element) => {
+    const hasText = (node: Element) => node.textContent === text;
+    const elementHasText = hasText(element);
+    // eslint-disable-next-line
+    // @ts-ignore
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
 
 describe('FormikTimePicker', () => {
   describe('States', () => {
@@ -129,7 +146,7 @@ describe('FormikTimePicker', () => {
       test('it renders an asterisk in the label', () => {
         render(renderForm([], { isRequired: true }));
 
-        expect(screen.getByText(`${testLabelName} *`)).toBeInTheDocument();
+        expect(screen.getByText(getByTextWithMarkup(`${testLabelName} *`))).toBeInTheDocument();
       });
     });
 
@@ -149,6 +166,16 @@ describe('FormikTimePicker', () => {
         fireEvent.click(submitButton);
         await waitFor(() => expect(screen.getByText('input is required')).toBeInTheDocument());
       });
+
+      test('it renders the error message from nested object', async () => {
+        const { getByText } = render(
+          renderForm({ outer: { nested: [] } }, { isRequired: true }, `${testLabelName}.outer.nested`),
+        );
+        const submitButton = getByText('submit');
+
+        fireEvent.click(submitButton);
+        await waitFor(() => expect(screen.getByText('input is required')).toBeInTheDocument());
+      });
     });
   });
 
@@ -158,7 +185,9 @@ describe('FormikTimePicker', () => {
         let value: Option | undefined;
         const mockedHandleChange = jest.fn(event => { value = event.target.value; });
 
-        const { getByLabelText, container, getByText } = render(renderForm(value, { onChange: mockedHandleChange }));
+        const { getByLabelText, container, getByText } = render(
+          renderForm(value, { onChange: mockedHandleChange }),
+        );
         const selectInput = getByLabelText(testLabelName);
         /**
          * This class is specific to react-select, combined with our custom classNamePrefix prop.

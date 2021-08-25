@@ -3,7 +3,7 @@ import {
   FormikTouched,
   FormikErrors,
   FormikValues,
-  FieldAttributes,
+  FieldAttributes, getIn,
 } from 'formik';
 import { TextareaInput, TextareaInputProps } from '../../TextareaInput/TextareaInput';
 
@@ -37,6 +37,6 @@ export const FormikTextareaInput: FC<FormikTextareaInputProps> = ({
     onBlur={onBlur}
     onChange={onChange ?? formikOnChange}
     value={value}
-    error={touched[name] && errors[name]}
+    error={getIn(touched, name) && getIn(errors, name)}
   />
 );

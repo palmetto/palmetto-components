@@ -1,32 +1,29 @@
 import React from 'react';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import { Formik, Field, Form } from 'formik';
+import {
+  render, fireEvent, screen, waitFor,
+} from '@testing-library/react';
+import {
+  Formik, Field, Form, setIn, getIn,
+} from 'formik';
 import { FormikTextInput } from './FormikTextInput';
 
 const testLabelName = 'textInput';
 
-const handleValidation = values => {
-  const errors = {};
-  if (!values[testLabelName]) {
-    errors[testLabelName] = 'input is required';
-  }
+const handleValidation = testValueKey => values => (getIn(values, testValueKey) ? {} : setIn({}, testValueKey, 'input is required'));
 
-  return errors;
-};
-
-const renderForm = (initialValue, props) => (
+const renderForm = (initialValue, props, testValueKey = testLabelName) => (
   <Formik
     initialValues={{
       [testLabelName]: initialValue,
     }}
-    validate={props.isRequired ? handleValidation : undefined} // eslint-disable-line
+    validate={props.isRequired ? handleValidation(testValueKey) : undefined} // eslint-disable-line
   >
     {() => (
       <Form>
         <Field
-          label={testLabelName}
-          name={testLabelName}
-          id={testLabelName}
+          label={testValueKey}
+          name={testValueKey}
+          id={testValueKey}
           component={FormikTextInput}
           {...props}
         />
@@ -35,6 +32,16 @@ const renderForm = (initialValue, props) => (
     )}
   </Formik>
 );
+
+function getByTextWithMarkup(text) {
+  return (content, element) => {
+    const hasText = node => node.textContent === text;
+    const elementHasText = hasText(element);
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
 
 describe('FormikTextInput', () => {
   describe('States', () => {
@@ -79,6 +86,14 @@ describe('FormikTextInput', () => {
     describe('With Error', () => {
       test('Input correctly displays error message if provided', async () => {
         const { getByText } = render(renderForm('', { isRequired: true }));
+        const submitButton = getByText('submit');
+
+        fireEvent.click(submitButton);
+        await waitFor(() => expect(screen.getByText('input is required')).toBeInTheDocument());
+      });
+
+      test('Input correctly displays error message in nested object', async () => {
+        const { getByText } = render(renderForm({ outer: { nested: '' } }, { isRequired: true }, `${testLabelName}.outer.nested`));
         const submitButton = getByText('submit');
 
         fireEvent.click(submitButton);
@@ -134,7 +149,7 @@ describe('FormikTextInput', () => {
     describe('Form Label', () => {
       test('Input correctly passes props to dependency label component', async () => {
         const { getByText } = render(renderForm('', { isRequired: true }));
-        const labelElement = getByText(`${testLabelName} *`);
+        const labelElement = getByText(getByTextWithMarkup(`${testLabelName} *`));
         expect(labelElement).toHaveAttribute('for', testLabelName);
         expect(labelElement).toBeInTheDocument();
       });

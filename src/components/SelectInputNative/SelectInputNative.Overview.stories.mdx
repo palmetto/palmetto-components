@@ -289,6 +289,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
 ## Sizes
 
 Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
+The `size` prop is also a `ResponsiveProp`, so it can be sized differently at each [breakpoint](?path=/story/design-tokens-breakpoints--page) by passing an object.
 
 <Canvas>
   <Story name="Size">
@@ -296,6 +297,7 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
       const [value, setValue] = useState('');
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
+      const [value3, setValue3] = useState('');
       const options = [
         { value: 'chocolate', label: 'Chocolate' },
         { value: 'strawberry', label: 'Strawberry' },
@@ -326,6 +328,14 @@ Set the size of the input to `sm`, `md` or `lg`. `md` is the default size.
             options={options}
             value={value2}
             size="lg"
+          />
+          <SelectInputNative
+            id="responsiveSelect"
+            label="Responsive"
+            onChange={event => setValue3(event.target.value)}
+            options={options}
+            value={value3}
+            size={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'sm' }}
           />
         </Box>
       );

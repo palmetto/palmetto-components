@@ -337,8 +337,9 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                         id: 'dateInput',
                         error: errors.dateInput,
                         isRequired: true,
+                        onClear: () => { setFieldValue('dateInput', null) },
+                        onBlur: handleBlur,
                       }}
-                      onBlur={handleBlur}
                     />
                   </div>
                   <Button type="submit" className="m-bottom-md" isLoading={isSubmitting}>

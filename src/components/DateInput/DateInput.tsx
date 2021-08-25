@@ -1,28 +1,54 @@
-import React, {
-  FC,
-  useState,
-  useRef,
-  FocusEvent,
-  useEffect,
-} from 'react';
+import React, { FC, useState } from 'react';
 import format from 'date-fns/format';
 import { DatePicker, DatePickerProps } from '../DatePicker/DatePicker';
 import { TextInput, TextInputProps } from '../TextInput/TextInput';
 import { Popover, PopoverProps } from '../Popover/Popover';
 
 export interface DateInputProps {
+  /**
+   * Props object for DatePicker component.
+   */
   datePickerProps: DatePickerProps;
+  /**
+   * Props object for TextInput component.
+   */
   textInputProps: Omit<TextInputProps, 'onChange'>;
+  /**
+   * Format for final date to be displayed.
+   * Relies on date-fns/format --> https://date-fns.org/v1.9.0/docs/format
+   */
   dateFormat?: string;
+  /**
+   * Additional settings for formatting date.
+   */
   dateOptions?: {
+    /**
+     * The user's locale.
+     */
     locale?: globalThis.Locale | undefined;
+    /**
+     * Start of week.
+     */
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined;
+    /**
+     * Should determine which week is week 1 of a new year.
+     */
     firstWeekContainsDate?: number | undefined;
+    /**
+     * Whether to accept unicode tokens in format.
+     * See here --> https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+     */
     useAdditionalWeekYearTokens?: boolean | undefined;
+    /**
+     * Whether to accept unicode tokens in format.
+     * See here --> https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
+     */
     useAdditionalDayOfYearTokens?: boolean | undefined;
   };
+  /**
+   * Props to pass down to the Popover component.
+   */
   popoverProps?: Omit<PopoverProps, 'children' | 'content' | 'isOpen'>;
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
    * Additional props to be spread to the `TextInput` element.
    */
@@ -47,7 +73,6 @@ export const DateInput: FC<DateInputProps> = ({
   textInputProps,
   dateFormat = 'MM/dd/yyyy',
   dateOptions = undefined,
-  onBlur,
   popoverProps = { ...defaultPopoverProps },
   ...restProps
 }) => {
@@ -86,40 +111,24 @@ export const DateInput: FC<DateInputProps> = ({
   };
 
   const [isPopoverOpen, setPopoverOpen] = useState(false);
-  const prevIsPopoverOpen = useRef(false);
-  const textInputRef = useRef<HTMLInputElement>(null);
 
   const handleTogglePopover = (newPopoverOpenState: boolean) => {
     setPopoverOpen(newPopoverOpenState);
   };
 
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    if (mergedTextInputProps.onBlur) mergedTextInputProps.onBlur(event);
+  const handleDatePickerChange = (
+    date: Date | [Date, Date] | null,
+    event: React.SyntheticEvent<any, Event> | undefined, // eslint-disable-line @typescript-eslint/no-explicit-any
+  ) => {
+    mergedDatePickerProps.onChange(date, event);
 
-    if (isPopoverOpen || !onBlur) return;
-
-    onBlur(event);
+    if (!mergedDatePickerProps.selectsRange && date) setPopoverOpen(false);
   };
-
-  useEffect(() => {
-    // These events are to trigger a blur event on the input at the correct time (for form validation)
-    // The input is technically blurred whenever calendar popover is interacted with but we don't want that to
-    // trigger a blur so we swallow it, and only bubble the blur event back to the parent when the popover is closed
-    // which is then the user is done interacting with the component.
-    if (prevIsPopoverOpen.current && !isPopoverOpen) {
-      (textInputRef?.current as HTMLInputElement).focus();
-      (textInputRef?.current as HTMLInputElement).blur();
-    }
-
-    if (isPopoverOpen !== prevIsPopoverOpen.current) {
-      prevIsPopoverOpen.current = isPopoverOpen;
-    }
-  }, [isPopoverOpen]);
 
   const renderDatePicker = () => (
     <DatePicker
       {...mergedDatePickerProps}
-      onChange={mergedDatePickerProps.onChange}
+      onChange={handleDatePickerChange}
       selected={mergedDatePickerProps.selected}
       selectsRange={mergedDatePickerProps.selectsRange}
     />
@@ -140,13 +149,9 @@ export const DateInput: FC<DateInputProps> = ({
         name={mergedTextInputProps.name}
         label={mergedTextInputProps.label}
         value={getTextInputValue()}
-        onChange={() => null}
+        onChange={() => null} /* Empty function since we hijack the onChange event */
         onClick={() => handleTogglePopover(true)}
-        onBlur={handleBlur}
         readOnly
-        inputProps={{
-          ref: textInputRef,
-        }}
         {...restProps}
       />
     </Popover>
