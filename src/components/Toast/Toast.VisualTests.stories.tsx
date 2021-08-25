@@ -6,7 +6,7 @@ export default {
   title: 'Components/Toast/Visual Regression Tests',
   component: ToastContainer,
   parameters: {
-    chromatic: { delay: 1000, pauseAnimationAtEnd: true, viewports: [320, 700, 1012, 1300] },
+    chromatic: { delay: 500, pauseAnimationAtEnd: true, viewports: [320, 700, 1012, 1300] },
   },
   decorators: [
     storyFn => (
