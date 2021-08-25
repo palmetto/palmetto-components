@@ -21,7 +21,7 @@
     "url": "https://github.com/palmetto/palmetto-components"
   },
   "dependencies": {
-    "@palmetto/palmetto-design-tokens": "0.49.1",
+    "@palmetto/palmetto-design-tokens": "0.50.0",
     "@popperjs/core": "^2.5.3",
     "@reach/dialog": "^0.11.2",
     "classnames": "^2.2.6",
