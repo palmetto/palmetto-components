@@ -160,9 +160,10 @@ export const TableHeaderCell: FC<TableHeaderCellProps> = ({
       borderColor={TableConstants.BORDER_COLOR}
       borderWidth={isBorderless ? '0' : `0 0 ${TableConstants.BORDER_WIDTH} 0`}
       background={TableConstants.BACKGROUND_COLOR}
-      padding={isCompact
-        ? `${TableConstants.PADDING_VERTICAL_COMPACT} ${TableConstants.PADDING_HORIZONTAL_COMPACT}`
-        : `${TableConstants.PADDING_HEADER_VERTICAL} ${TableConstants.PADDING_HORIZONTAL}`
+      padding={
+        isCompact
+          ? `${TableConstants.PADDING_VERTICAL_COMPACT} ${TableConstants.PADDING_HORIZONTAL_COMPACT}`
+          : `${TableConstants.PADDING_HEADER_VERTICAL} ${TableConstants.PADDING_HORIZONTAL}`
       }
       width={`${width}px`}
       color={TableConstants.FONT_COLOR}
