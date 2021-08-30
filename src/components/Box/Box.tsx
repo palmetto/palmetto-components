@@ -486,7 +486,7 @@ export const Box: FC<BoxProps> = forwardRef((
   };
 
   let decoratedChildren = Children.toArray(children).filter(child => child !== null);
-  console.log(decoratedChildren);
+
   if (childGapClasses && decoratedChildren.length > 1) {
     decoratedChildren = decoratedChildren
       .map((value, index, array) => decorateChildren(
