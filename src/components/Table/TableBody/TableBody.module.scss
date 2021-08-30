@@ -1,9 +1,4 @@
 .table-body {
-  th,
-  td {
-    background-color: var(--table-background-color);
-  }
-
   &.striped {
     tr:nth-of-type(odd) {
       th,

@@ -116,7 +116,8 @@ export type CssDisplayValue =
   'inline-block' |
   'inline' |
   'inherit' |
-  'grid';
+  'grid' |
+  'table-cell';
 
 export type CssTextAlignValue =
   'left' |

@@ -1,5 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
+import { Box } from '../../../Box/Box';
+import * as TableConstants from '../../constants';
 import styles from './TableBodyCell.module.scss';
 
 export interface TableBodyCellProps {
@@ -60,8 +62,6 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
   const tableCellClasses = classNames(
     styles['table-cell'],
     {
-      [styles.compact]: isCompact,
-      [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
       [styles['sticky-column']]: columnIsSticky,
       [styles['sticky-column-left']]: sticky === 'left',
@@ -73,29 +73,28 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
   );
 
   return (
-    <>
-      {columnIsSticky
-        ? (
-          <th
-            className={tableCellClasses}
-            style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
-            scope="row"
-          >
-            {(children === null || typeof children === 'undefined' || children === '')
-              ? emptyCellPlaceholder
-              : children}
-          </th>
-        ) : (
-          <td
-            className={tableCellClasses}
-            style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
-          >
-            {(children === null || typeof children === 'undefined' || children === '')
-              ? emptyCellPlaceholder
-              : children}
-          </td>
-        )}
-    </>
+    <Box
+      as={columnIsSticky ? 'th' : 'td'}
+      className={tableCellClasses}
+      display="table-cell"
+      borderColor={TableConstants.BORDER_COLOR}
+      borderWidth={isBorderless ? '0' : `0 0 ${TableConstants.BORDER_WIDTH} 0`}
+      background={TableConstants.BACKGROUND_COLOR}
+      padding={isCompact
+        ? `${TableConstants.PADDING_VERTICAL_COMPACT} ${TableConstants.PADDING_HORIZONTAL_COMPACT}`
+        : `${TableConstants.PADDING_VERTICAL} ${TableConstants.PADDING_HORIZONTAL}`
+      }
+      width={`${width}px`}
+      color={TableConstants.FONT_COLOR}
+      fontSize={TableConstants.CELL_FONT_SIZE}
+      style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
+      scope="row"
+    >
+      {(children === null || typeof children === 'undefined' || children === '')
+        ? emptyCellPlaceholder
+        : children}
+    </Box>
+
   );
 };
 

@@ -1,25 +1,11 @@
 .table-header-cell {
-  border-bottom: 1px solid var(--table-border-color);
-  background-color: var(--table-background-color);
-  padding: var(--table-padding-header-vertical) var(--table-padding-horizontal);
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
-  color: var(--table-header-color);
-  font-size: var(--table-header-font-size);
-  font-weight: var(--table-header-font-weight);
 
   &.sortable {
     cursor: pointer;
-  }
-
-  &.compact {
-    padding: var(--table-padding-vertical-compact) var(--table-padding-horizontal-compact);
-  }
-
-  &.borderless {
-    border: 0;
   }
 
   &.truncated {

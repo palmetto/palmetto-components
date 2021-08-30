@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { Box } from '../../../Box/Box';
 import { Icon } from '../../../Icon/Icon';
 import { Column, EventWithColumnKey } from '../../../../types';
+import * as TableConstants from '../../constants';
 import styles from './TableHeaderCell.module.scss';
 
 export interface TableHeaderCellProps {
@@ -140,9 +141,7 @@ export const TableHeaderCell: FC<TableHeaderCellProps> = ({
     styles['table-header-cell'],
     {
       [styles.sortable]: isSortable,
-      [styles.borderless]: isBorderless,
       [styles.truncated]: truncateOverflow,
-      [styles.compact]: isCompact,
       [styles['sticky-header']]: hasStickyHeader,
       [styles['sticky-column']]: sticky === 'left' || sticky === 'right',
       [styles['sticky-column-left']]: sticky === 'left',
@@ -154,9 +153,21 @@ export const TableHeaderCell: FC<TableHeaderCellProps> = ({
   );
 
   return (
-    <th
+    <Box
+      as="th"
+      display="table-cell"
       className={tableHeaderClasses}
-      style={{ width: `${width}px` }}
+      borderColor={TableConstants.BORDER_COLOR}
+      borderWidth={isBorderless ? '0' : `0 0 ${TableConstants.BORDER_WIDTH} 0`}
+      background={TableConstants.BACKGROUND_COLOR}
+      padding={isCompact
+        ? `${TableConstants.PADDING_VERTICAL_COMPACT} ${TableConstants.PADDING_HORIZONTAL_COMPACT}`
+        : `${TableConstants.PADDING_HEADER_VERTICAL} ${TableConstants.PADDING_HORIZONTAL}`
+      }
+      width={`${width}px`}
+      color={TableConstants.FONT_COLOR}
+      fontSize={TableConstants.HEADER_FONT_SIZE}
+      fontWeight={TableConstants.HEADER_FONT_WEIGHT}
       aria-sort={
         sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'
       }
@@ -169,6 +180,6 @@ export const TableHeaderCell: FC<TableHeaderCellProps> = ({
         {column.heading}
         {isSortable && renderIcon()}
       </div>
-    </th>
+    </Box>
   );
 };

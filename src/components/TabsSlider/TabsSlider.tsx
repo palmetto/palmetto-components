@@ -175,6 +175,7 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
     propertyMap: { sm: string; md: string; lg: string; },
   ): string | ResponsiveProp<string> => {
     let propertySize: string | ResponsiveProp<string> = 'md';
+
     if (typeof sizeProp === 'string') {
       propertySize = propertyMap[sizeProp];
     } else if (sizeProp !== null && typeof sizeProp === 'object') {
