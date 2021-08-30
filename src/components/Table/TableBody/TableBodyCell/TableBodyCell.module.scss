@@ -1,17 +1,4 @@
 .table-cell {
-  border-bottom: 1px solid var(--table-border-color);
-  background-color: var(--table-background-color);
-  padding: var(--table-padding-vertical) var(--table-padding-horizontal);
-  font-size: var(--table-cell-font-size);
-
-  &.borderless {
-    border: 0;
-  }
-
-  &.compact {
-    padding: var(--table-padding-vertical-compact) var(--table-padding-horizontal-compact);
-  }
-
   &.truncated {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -22,7 +9,6 @@
     position: sticky;
     z-index: calc(var(--size-z-index-sticky) - 1);
     box-shadow: var(--size-box-shadow-md);
-    font-size: var(--table-header-font-size);
   }
 
   &.sticky-column-left {
