@@ -202,7 +202,6 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
       onClick={handleClick}
     >
       {!hideInput && (inputType === 'checkbox' ? renderCheckbox() : renderRadio())}
-      {children}
       {inputType === 'checkbox' ? (
         <Checkbox
           id={id}
@@ -231,6 +230,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
           ref={inputRef}
         />
       )}
+      {children}
     </Box>
   );
 });
