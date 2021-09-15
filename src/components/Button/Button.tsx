@@ -10,7 +10,7 @@ import getElementType from '../../lib/getElementType';
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
-export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark';
+export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark' | 'white';
 
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 export interface ButtonProps {
