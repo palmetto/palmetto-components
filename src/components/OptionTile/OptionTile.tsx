@@ -67,7 +67,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
     borderColor = isSelected ? 'primary' : 'grey-lighter',
     borderWidth = 'xs',
     className = '',
-    childGap = 'md',
+    childGap = undefined,
     color = 'dark',
     cursor = 'pointer',
     direction = 'row',
@@ -132,6 +132,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
         background="white"
         borderWidth="xs"
         position="relative"
+        margin="0 md 0 0"
       >
         <Box
           width="10px"
@@ -176,7 +177,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
     }
 
     return (
-      <Box radius="md" display="inline-block" height="16px">
+      <Box radius="md" display="inline-block" height="16px" margin="0 md 0 0">
         <Icon {...iconProps} size="md" />
       </Box>
     );
