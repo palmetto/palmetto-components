@@ -141,36 +141,41 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
     }
   }, [getTabsMeta, indicatorStyle.left, indicatorStyle.width]);
 
-  const observer = useRef(
-    new ResizeObserver(() => {
-      updateIndicatorState();
-    }),
-  );
+  const observer = useRef<ResizeObserver | null >(null);
 
-  useEffect(() => {
+  const createResizeObserver = useCallback(() => {
+    observer.current = new ResizeObserver(() => {
+      updateIndicatorState();
+    });
+  }, [updateIndicatorState]);
+
+  const attachResizeObserver = useCallback(() => {
     const currentNode = tabsRef.current;
     const currentObserver = observer.current;
 
-    if (currentNode) {
+    if (currentNode && currentObserver) {
       currentObserver.observe(currentNode);
     }
 
     return () => {
-      if (currentNode) {
+      if (currentNode && currentObserver) {
         currentObserver.unobserve(currentNode);
       }
     };
   }, [tabsRef, observer]);
 
-  useEffect(() => {
-    updateIndicatorState();
-  }, [value, children, updateIndicatorState]);
+  useEffect(createResizeObserver, [createResizeObserver]);
+
+  useEffect(attachResizeObserver, [attachResizeObserver]);
+
+  useEffect(updateIndicatorState, [value, children, updateIndicatorState]);
 
   const generateSize = (
     sizeProp: TabsSliderProps['size'],
     propertyMap: { sm: string; md: string; lg: string; },
   ): string | ResponsiveProp<string> => {
     let propertySize: string | ResponsiveProp<string> = 'md';
+
     if (typeof sizeProp === 'string') {
       propertySize = propertyMap[sizeProp];
     } else if (sizeProp !== null && typeof sizeProp === 'object') {
