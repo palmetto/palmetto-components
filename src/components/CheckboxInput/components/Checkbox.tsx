@@ -1,11 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
+import { ResponsiveProp } from '../../../types';
+import generateResponsiveClasses from '../../../lib/generateResponsiveClasses';
 import { Box, BoxProps } from '../../Box/Box';
-import { Icon } from '../../Icon/Icon';
-import { BorderRadiusSize, FontColor, FontSize } from '../../../types';
+import { CheckboxIcon } from './CheckboxIcon'; // eslint-disable-line import/no-cycle
 import styles from './Checkbox.module.scss';
 
-export type CheckboxSize = 'sm' | 'md' | 'lg';
+type BaseSize = 'sm' | 'md' | 'lg';
+export type CheckboxSize = BaseSize | ResponsiveProp<BaseSize>;
 
 export interface CheckboxProps extends Omit<BoxProps, 'radius' | 'background' | 'as' | 'height'> {
   /**
@@ -67,26 +69,6 @@ export interface CheckboxProps extends Omit<BoxProps, 'radius' | 'background' | 
   value?: string | number;
 }
 
-const SIZE_KEYS: {
-  [key: string]: { iconSize: FontSize; height: string; radius: BorderRadiusSize; };
-} = {
-  sm: {
-    iconSize: 'lg',
-    height: '20px',
-    radius: 'xs',
-  },
-  md: {
-    iconSize: 'xl',
-    height: '24px',
-    radius: 'sm',
-  },
-  lg: {
-    iconSize: '2xl',
-    height: '36px',
-    radius: 'sm',
-  },
-};
-
 export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
   (
     {
@@ -136,50 +118,21 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
       ...value && { value },
     };
 
-    interface CheckboxIcon {
-      color: FontColor;
-      name: 'checkbox-btn' | 'checkbox-btn-checked';
-      className?: string;
-    }
-
-    const checkboxIcon = () => {
-      const iconProps: CheckboxIcon = {
-        color: 'grey-500',
-        name: 'checkbox-btn',
-      };
-
-      if (isChecked && isDisabled) {
-        iconProps.color = 'secondary-200';
-        iconProps.name = 'checkbox-btn-checked';
-      } else if (isChecked && !isDisabled) {
-        iconProps.color = 'secondary-500';
-        iconProps.name = 'checkbox-btn-checked';
-      } else if (isDisabled) {
-        iconProps.color = 'grey-200';
-      }
-      if (error) {
-        iconProps.color = 'danger-500';
-      }
-
-      return (
-        <Box radius={SIZE_KEYS[size].radius} display="inline-block" height={SIZE_KEYS[size].height}>
-          <Icon {...iconProps} size={SIZE_KEYS[size].iconSize} />
-        </Box>
-      );
-    };
+    const responsiveClasses = generateResponsiveClasses('size', size);
 
     const containerClasses = classNames(
       styles.checkbox,
       className,
+      ...responsiveClasses.map(c => (styles[c])),
       { [styles.hidden]: isHidden },
     );
+
+    const iconClasses = classNames(...responsiveClasses.map(c => (styles[c])));
 
     return (
       <Box
         background={isDisabled && !isChecked ? 'grey-50' : 'white'}
         display={display}
-        height={!isHidden ? SIZE_KEYS[size].height : '0'}
-        radius={SIZE_KEYS[size].radius}
         ref={ref}
         style={{ position: 'relative' }}
         className={containerClasses}
@@ -190,11 +143,16 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
           style={{
             position: 'absolute',
             opacity: '0',
-            width: SIZE_KEYS[size].height,
-            height: SIZE_KEYS[size].height,
           }}
         />
-        {!isHidden && checkboxIcon()}
+        {!isHidden && (
+          <CheckboxIcon
+            isChecked={isChecked}
+            isDisabled={isDisabled}
+            className={iconClasses}
+            error={error}
+          />
+        )}
       </Box>
     );
   },

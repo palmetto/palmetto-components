@@ -71,6 +71,7 @@ Set the size of the checkbox and label with the `size` prop.
       const [sm, setSm] = useState(null);
       const [md, setMd] = useState(null);
       const [lg, setLg] = useState(null);
+      const [responsive, setResponsive] = useState(null);
       return (
         <Box childGap="md">
           <CheckboxInput
@@ -96,6 +97,14 @@ Set the size of the checkbox and label with the `size` prop.
             isChecked={lg}
             onChange={event => setLg(event.target.checked)}
             size="lg"
+          />
+          <CheckboxInput
+            id="responsiveCheckboxInput"
+            label="Responsive checkbox"
+            helpText="Will change sizes depending on viewport width"
+            isChecked={responsive}
+            onChange={event => setResponsive(event.target.checked)}
+            size={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'sm' }}
           />
         </Box>
       );

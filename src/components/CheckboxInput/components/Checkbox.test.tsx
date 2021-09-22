@@ -86,7 +86,7 @@ describe('Checkbox', () => {
   });
 
   describe('Invalid error', () => {
-    test('It is grey-500 when unchecked and disabled', () => {
+    test('It is danger-500 when there is an error', () => {
       render(
         <Checkbox
           isChecked={false}

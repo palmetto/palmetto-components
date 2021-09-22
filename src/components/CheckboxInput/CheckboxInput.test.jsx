@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { CheckboxInput } from './CheckboxInput';
 import { FormLabel } from '../FormLabel/FormLabel';
 
@@ -241,6 +241,71 @@ describe('CheckboxInput', () => {
         },
         {},
       );
+    });
+
+    const mockedHandleChange = jest.fn();
+    const sizes = [
+      'sm',
+      'md',
+      'lg',
+    ];
+
+    const breakpoints = ['tablet', 'desktop', 'hd'];
+
+    sizes.forEach(size => {
+      test(`it has a ${size} class applied to it`, () => {
+        render(
+          <CheckboxInput
+            id="testId"
+            onChange={mockedHandleChange}
+            size={size}
+            label="size test"
+          />,
+        );
+        const checkbox = screen.getByLabelText('size test');
+        const checkboxParent = checkbox.closest('div');
+        expect(checkboxParent?.getAttribute('class')).toContain(size);
+      });
+
+      breakpoints.forEach(breakpoint => {
+        test(`it applies responsive classes for breakpoint: ${breakpoint} and size: ${size}`, () => {
+          render(
+            <CheckboxInput
+              id="testId"
+              onChange={mockedHandleChange}
+              size={{ [breakpoint]: size }}
+              label="size test"
+            />,
+          );
+          const checkbox = screen.getByLabelText('size test');
+          const checkboxParent = checkbox.closest('div');
+
+          expect(checkboxParent?.getAttribute('class')).toContain(`size-${size}-${breakpoint}`);
+        });
+      });
+    });
+
+    test('It applies responsive classes when multiple are applied', () => {
+      render(
+        <CheckboxInput
+          id="testId"
+          onChange={mockedHandleChange}
+          size={{
+            base: 'sm',
+            tablet: 'md',
+            desktop: 'lg',
+            hd: 'sm',
+          }}
+          label="size test"
+        />,
+      );
+      const checkbox = screen.getByLabelText('size test');
+      const checkboxParent = checkbox.closest('div');
+
+      expect(checkboxParent?.getAttribute('class')).toContain('size-sm');
+      expect(checkboxParent?.getAttribute('class')).toContain('size-md-tablet');
+      expect(checkboxParent?.getAttribute('class')).toContain('size-lg-desktop');
+      expect(checkboxParent?.getAttribute('class')).toContain('size-sm-hd');
     });
   });
 
