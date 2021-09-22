@@ -1,9 +1,27 @@
 import React from 'react';
+import classNames from 'classnames';
+import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
 import { Checkbox, CheckboxSize } from './components/Checkbox';
 
+const labelMarginSizeMap = {
+  sm: '0',
+  md: '2xs 0 0 0',
+  lg: 'xs 0 0 0',
+};
+
+const computedResponsiveSize = ( // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
+  size: CheckboxInputProps['size'],
+) => {
+  if (size && !(typeof size === 'string') && typeof size === 'object') {
+    return Object.entries(size)
+      .reduce((acc, [key, value]) => ({ ...acc, [key]: labelMarginSizeMap[value || 'md'] }), {});
+  }
+
+  return labelMarginSizeMap[size || 'md'] as string;
+};
 export interface CheckboxInputProps {
   /**
    * The id attribute of the input.
@@ -106,22 +124,12 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
     error,
   };
 
-  let labelMargin;
-
-  if (size === 'sm') {
-    labelMargin = '0';
-  } else if (size === 'lg') {
-    labelMargin = 'xs 0 0 0';
-  } else {
-    labelMargin = '2xs 0 0 0';
-  }
-
   const labelProps = {
     isFieldRequired: isRequired,
     inputId: id,
     helpText,
     isDisabled,
-    margin: labelMargin,
+    className: classNames(...cssShorthandToClasses('m', computedResponsiveSize(size))),
   };
 
   return (
