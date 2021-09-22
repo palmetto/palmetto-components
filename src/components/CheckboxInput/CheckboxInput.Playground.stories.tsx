@@ -33,6 +33,10 @@ export default {
     className: {
       control: 'text',
     },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+    },
   },
 } as Meta;
 
