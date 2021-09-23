@@ -4,7 +4,7 @@ import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
-import { Checkbox, CheckboxSize } from './components/Checkbox';
+import { Checkbox, CheckboxSize, CheckboxProps } from './components/Checkbox';
 
 const labelMarginSizeMap = {
   sm: '0',
@@ -62,6 +62,11 @@ export interface CheckboxInputProps {
    */
   isDisabled?: boolean;
   /**
+   * Whether the checkbox is rendered in an indeterminate state.
+   * NOTE: this change is only visual and it does not affect the checked or unchecked state of the checkbox.
+   */
+  isIndeterminate: CheckboxProps['isIndeterminate'];
+  /**
    * Determines if input is required or not. (Label will have an asterisk if required).
    */
   isRequired?: boolean;
@@ -93,6 +98,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   hideLabel = false,
   helpText,
   isDisabled = false,
+  isIndeterminate = false,
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
@@ -115,6 +121,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
     id,
     isChecked: !!isChecked,
     isDisabled,
+    isIndeterminate,
     onBlur: handleBlur,
     onChange: handleChange,
     onFocus: handleFocus,
