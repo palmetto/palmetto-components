@@ -48,6 +48,11 @@ export interface CheckboxProps extends Omit<BoxProps, 'radius' | 'background' | 
    */
   isHidden?: boolean;
   /**
+   * Whether the checkbox is rendered in an indeterminate state.
+   * NOTE: this change is only visual and it does not affect the checked or unchecked state of the checkbox.
+   */
+  isIndeterminate?: boolean;
+  /**
    * Determines if input is required or not. (Label will have an asterisk if required).
    */
   isRequired?: boolean;
@@ -82,6 +87,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
       error = false,
       isDisabled = false,
       isHidden = false,
+      isIndeterminate = false,
       isRequired = false,
       onBlur = undefined,
       onFocus = undefined,
@@ -91,6 +97,14 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
     },
     ref,
   ) => {
+    const inputRef = React.useRef<HTMLInputElement>(null);
+
+    React.useEffect(() => {
+      if (inputRef?.current) {
+        inputRef.current.indeterminate = isIndeterminate;
+      }
+    }, [isIndeterminate]);
+
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
       if (onBlur) onBlur(event);
     };
@@ -115,6 +129,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
       onFocus: handleFocus,
       required: isRequired,
       type: 'checkbox',
+      ref: inputRef,
       ...value && { value },
     };
 
@@ -149,6 +164,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
           <CheckboxIcon
             isChecked={isChecked}
             isDisabled={isDisabled}
+            isIndeterminate={isIndeterminate}
             className={iconClasses}
             error={error}
           />

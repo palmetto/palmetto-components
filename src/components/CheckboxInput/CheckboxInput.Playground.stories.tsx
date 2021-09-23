@@ -37,6 +37,9 @@ export default {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
+    isIndeterminate: {
+      control: 'boolean',
+    },
   },
 } as Meta;
 

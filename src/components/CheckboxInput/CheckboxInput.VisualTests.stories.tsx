@@ -90,3 +90,45 @@ ResponsiveSizeThreeChecked.args = {
     hd: 'lg',
   },
 };
+
+export const ResponsiveSizeOneIndeterminate = Template.bind({});
+ResponsiveSizeOneIndeterminate.args = {
+  id: 'ResponsiveSizeOneIndeterminate',
+  label: 'ResponsiveSizeOneIndeterminate',
+  isChecked: true,
+  size: {
+    base: 'sm',
+    tablet: 'md',
+    desktop: 'lg',
+    hd: 'sm',
+  },
+  isIndeterminate: true,
+};
+
+export const ResponsiveSizeTwoIndeterminate = Template.bind({});
+ResponsiveSizeTwoIndeterminate.args = {
+  id: 'ResponsiveSizeTwoIndeterminate',
+  label: 'ResponsiveSizeTwoIndeterminate',
+  isChecked: true,
+  size: {
+    base: 'md',
+    tablet: 'lg',
+    desktop: 'sm',
+    hd: 'md',
+  },
+  isIndeterminate: true,
+};
+
+export const ResponsiveSizeThreeIndeterminate = Template.bind({});
+ResponsiveSizeThreeIndeterminate.args = {
+  id: 'ResponsiveSizeThreeIndeterminate',
+  label: 'ResponsiveSizeThreeIndeterminate',
+  isChecked: true,
+  size: {
+    base: 'lg',
+    tablet: 'sm',
+    desktop: 'md',
+    hd: 'lg',
+  },
+  isIndeterminate: true,
+};
