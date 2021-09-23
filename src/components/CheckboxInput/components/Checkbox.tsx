@@ -103,8 +103,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
       if (inputRef?.current) {
         inputRef.current.indeterminate = isIndeterminate;
       }
-  
-    }, [isIndeterminate])
+    }, [isIndeterminate]);
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
       if (onBlur) onBlur(event);
