@@ -65,7 +65,7 @@ export interface CheckboxInputProps {
    * Whether the checkbox is rendered in an indeterminate state.
    * NOTE: this change is only visual and it does not affect the checked or unchecked state of the checkbox.
    */
-  isIndeterminate: CheckboxProps['isIndeterminate'];
+  isIndeterminate?: CheckboxProps['isIndeterminate'];
   /**
    * Determines if input is required or not. (Label will have an asterisk if required).
    */
