@@ -32,13 +32,12 @@ export const RadioInputIcon: React.FC<RadioIconProps> = ({
   let color: FontColor = 'grey-500';
   let name: 'radio-btn-unchecked' | 'radio-btn-checked' = 'radio-btn-unchecked';
 
-  if (isSelected && isDisabled) {
-    color = 'secondary-200';
+  if (isSelected) {
     name = 'radio-btn-checked';
-  } else if (isSelected && !isDisabled) {
     color = 'secondary-500';
-    name = 'radio-btn-checked';
-  } else if (isDisabled) {
+  }
+
+  if (isDisabled) {
     color = 'grey-200';
   }
 
