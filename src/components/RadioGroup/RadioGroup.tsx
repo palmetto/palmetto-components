@@ -61,7 +61,7 @@ export interface RadioGroupProps {
   /**
    * Size of the radio icons in the group.
    */
-  size: RadioInputProps['size'];
+  size?: RadioInputProps['size'];
   /**
    * Title to be displayed above the RadioGroup.
    */

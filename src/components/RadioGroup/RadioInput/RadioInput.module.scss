@@ -6,7 +6,7 @@ $md-dimension: 20px;
 $lg-dimension: 24px;
 
 @mixin size-sm {
-  * {
+  *:not(label) {
     width: $sm-dimension;
     height: $sm-dimension;
   }
@@ -16,7 +16,7 @@ $lg-dimension: 24px;
 .size-sm { @extend %size-sm; }
 
 @mixin size-md {
-  * {
+  *:not(label) {
     width: $md-dimension;
     height: $md-dimension;
   }
@@ -26,7 +26,7 @@ $lg-dimension: 24px;
 .size-md { @extend %size-md; }
 
 @mixin size-lg {
-  * {
+  *:not(label) {
     width: $lg-dimension;
     height: $lg-dimension;
   }

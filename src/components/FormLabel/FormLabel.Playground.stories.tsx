@@ -9,9 +9,6 @@ export default {
     children: {
       control: 'text',
     },
-    displayInline: {
-      control: 'boolean',
-    },
     helpText: {
       control: 'text',
     },

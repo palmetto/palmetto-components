@@ -2,13 +2,14 @@ import React, { ChangeEvent, FocusEvent } from 'react';
 import classNames from 'classnames';
 import { ResponsiveProp } from '../../../types';
 import generateResponsiveClasses from '../../../lib/generateResponsiveClasses';
-import { Box } from '../../Box/Box';
+import { Box, BoxProps } from '../../Box/Box';
 import { FormLabel } from '../../FormLabel/FormLabel';
-import { RadioInputIcon } from './RadioInputIcon';
+import { RadioInputIcon } from './RadioInputIcon'; // eslint-disable-line import/no-cycle
 import styles from './RadioInput.module.scss';
 
 type BaseSize = 'sm' | 'md' | 'lg';
 export type RadioSize = BaseSize | ResponsiveProp<BaseSize>;
+
 export interface RadioInputProps {
   /**
    * Radio input name.
@@ -77,9 +78,9 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
   const labelProps = {
     inputId: option.id,
     isDisabled,
-    display: 'flex',
+    display: 'flex' as BoxProps['display'],
     isRadioInputLabel: true,
-    justifyContent: 'center',
+    justifyContent: 'center' as BoxProps['justifyContent'],
   };
 
   const containerClasses = classNames(

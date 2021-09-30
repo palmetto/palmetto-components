@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, BoxProps } from '../../Box/Box';
 import { Icon } from '../../Icon/Icon';
 import { FontColor } from '../../../types';
-import { RadioInputProps } from '../RadioInput/RadioInput'; // eslint-disable-line import/no-cycle
+import { RadioInputProps } from './RadioInput'; // eslint-disable-line import/no-cycle
 
 export interface RadioIconProps extends BoxProps {
   /**
