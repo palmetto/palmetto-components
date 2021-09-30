@@ -1,9 +1,9 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import styles from './FormLabel.module.scss';
 
-export interface FormLabelProps {
+export interface FormLabelProps extends BoxProps {
   /**
    * Content to be rendered inside the label.
    */
