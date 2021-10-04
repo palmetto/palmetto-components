@@ -334,10 +334,10 @@ Use the `size` prop to render differently sized radio icons.
         lg: null,
         responsive: null,
       });
-      const options = [
-        { id: 'purple', value: 'purple', label: 'Purple' },
-        { id: 'green', value: 'green', label: 'Green' },
-      ];
+      const options  = (id) => ([
+        { id: `purple__${id}`, value: 'purple', label: 'Purple' },
+        { id: `green__${id}`, value: 'green', label: 'Green' },
+      ]);
       const handleChange = (event, key) => {
         const value = event.target.value;
         setState(prevState => ({ ...prevState, [key]: value }));
@@ -349,7 +349,7 @@ Use the `size` prop to render differently sized radio icons.
             name="smallRadio"
             onChange={event => handleChange(event, 'sm')}
             value={state.sm}
-            options={options}
+            options={options('sm')}
             size="sm"
           />
           <RadioGroup
@@ -357,7 +357,7 @@ Use the `size` prop to render differently sized radio icons.
             name="mediumRadio"
             onChange={event => handleChange(event, 'md')}
             value={state.md}
-            options={options}
+            options={options('md')}
             size="md"
           />
           <RadioGroup
@@ -365,7 +365,7 @@ Use the `size` prop to render differently sized radio icons.
             name="largeRadio"
             onChange={event => handleChange(event, 'lg')}
             value={state.lg}
-            options={options}
+            options={options('lg')}
             size="lg"
           />
           <RadioGroup
@@ -373,7 +373,7 @@ Use the `size` prop to render differently sized radio icons.
             name="responsiveRadio"
             onChange={event => handleChange(event, 'responsive')}
             value={state.responsive}
-            options={options}
+            options={options('responsive')}
             size={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'sm' }}
           />
         </Box>

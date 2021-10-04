@@ -17,10 +17,6 @@ export interface FormLabelProps extends BoxProps {
    */
   className?: string;
   /**
-   * Display label inline with surrounding elements
-   */
-  displayInline?: boolean;
-  /**
    * Additional clarifying text to that helps describe the field
    */
   helpText?: ReactNode;
@@ -46,7 +42,6 @@ export const FormLabel: FC<FormLabelProps> = ({
   children,
   inputId,
   className = '',
-  displayInline = false,
   display = 'block',
   helpText,
   isDisabled = false,
@@ -59,7 +54,6 @@ export const FormLabel: FC<FormLabelProps> = ({
   const labelClasses = classNames(styles.label, className, {
     [styles.disabled]: isDisabled,
     [styles.disabled]: isDisabled,
-    [styles.inline]: displayInline,
     [styles['radio-input-label']]: isRadioInputLabel,
   });
 
