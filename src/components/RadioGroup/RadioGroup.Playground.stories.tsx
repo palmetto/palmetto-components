@@ -39,6 +39,10 @@ export default {
     options: {
       control: 'object',
     },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+    },
   },
 } as Meta;
 

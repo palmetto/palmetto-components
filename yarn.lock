@@ -2169,10 +2169,10 @@
   dependencies:
     "@octokit/openapi-types" "^7.2.3"
 
-"@palmetto/palmetto-design-tokens@0.54.0":
-  version "0.54.0"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.54.0.tgz#fb2033ae86bba30ceee19914bb2c0404dec48b2a"
-  integrity sha512-idMkJlkSVn6BGHVu9ArLPGJDiGxMXMu0LaQnddxpEiV6aWFh8n+UH0jCk5yFSWfqKSB1Y/ybXvVNIM518JRDSA==
+"@palmetto/palmetto-design-tokens@0.55.0":
+  version "0.55.0"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.55.0.tgz#263a2dbbf71290dfb0ef65fce3505efb78b52745"
+  integrity sha512-EBDZwuUlvwdbWzakh2Q2xLLwCV0qmw6/SlNdKBBz//YQONxQ8VdAVTnRRFdUIyeq1HySmavFhg35TLXtuIAspg==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.4.3":
   version "0.4.3"

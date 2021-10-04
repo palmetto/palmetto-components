@@ -1,9 +1,9 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import styles from './FormLabel.module.scss';
 
-export interface FormLabelProps {
+export interface FormLabelProps extends BoxProps {
   /**
    * Content to be rendered inside the label.
    */
@@ -16,10 +16,6 @@ export interface FormLabelProps {
    * Custom class to pass to label element.
    */
   className?: string;
-  /**
-   * Display label inline with surrounding elements
-   */
-  displayInline?: boolean;
   /**
    * Additional clarifying text to that helps describe the field
    */
@@ -46,7 +42,6 @@ export const FormLabel: FC<FormLabelProps> = ({
   children,
   inputId,
   className = '',
-  displayInline = false,
   display = 'block',
   helpText,
   isDisabled = false,
@@ -59,7 +54,6 @@ export const FormLabel: FC<FormLabelProps> = ({
   const labelClasses = classNames(styles.label, className, {
     [styles.disabled]: isDisabled,
     [styles.disabled]: isDisabled,
-    [styles.inline]: displayInline,
     [styles['radio-input-label']]: isRadioInputLabel,
   });
 

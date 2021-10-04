@@ -1,8 +1,14 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
 import classNames from 'classnames';
-import { Box } from '../../Box/Box';
+import { ResponsiveProp } from '../../../types';
+import generateResponsiveClasses from '../../../lib/generateResponsiveClasses';
+import { Box, BoxProps } from '../../Box/Box';
 import { FormLabel } from '../../FormLabel/FormLabel';
+import { RadioInputIcon } from './RadioInputIcon'; // eslint-disable-line import/no-cycle
 import styles from './RadioInput.module.scss';
+
+type BaseSize = 'sm' | 'md' | 'lg';
+export type RadioSize = BaseSize | ResponsiveProp<BaseSize>;
 
 export interface RadioInputProps {
   /**
@@ -46,6 +52,10 @@ export interface RadioInputProps {
    * Callback function to call on focus event.
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  /**
+   * The size of the radio icon.
+   */
+  size: RadioSize;
 }
 
 export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
@@ -59,27 +69,24 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
     isSelected = false,
     onBlur = undefined,
     onFocus = undefined,
+    size = 'md',
   },
   ref,
 ) => {
-  const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
-    if (onFocus) onFocus(event);
-  };
-
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    if (onBlur) onBlur(event);
-  };
+  const responsiveClasses = classNames(...generateResponsiveClasses('size', size).map(c => styles[c]));
 
   const labelProps = {
     inputId: option.id,
     isDisabled,
-    displayInline: true,
+    display: 'flex' as BoxProps['display'],
     isRadioInputLabel: true,
+    justifyContent: 'center' as BoxProps['justifyContent'],
   };
 
   const containerClasses = classNames(
     className,
     styles['radio-container'],
+    responsiveClasses,
     { [styles.hidden]: isHidden },
   );
 
@@ -95,11 +102,23 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
             value={option.value}
             checked={isSelected}
             onChange={onChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
+            onFocus={onFocus}
+            onBlur={onBlur}
             disabled={isDisabled}
+            position="absolute"
+            style={{ opacity: '0' }}
             margin={isHidden ? '0' : '0 xs 0 2xs'}
           />
+          {!isHidden && (
+            <RadioInputIcon
+              isSelected={isSelected}
+              isDisabled={isDisabled}
+              margin={isHidden ? '0' : '0 xs 0 2xs'}
+              className={responsiveClasses}
+              background={isDisabled && !isSelected ? 'grey-50' : 'white'}
+              radius="circle"
+            />
+          )}
           {option.label && <FormLabel {...labelProps}>{option.label}</FormLabel>}
         </Box>
       )}
