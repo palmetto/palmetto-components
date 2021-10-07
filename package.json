@@ -83,6 +83,7 @@
     "@babel/plugin-transform-spread": "^7.13.0",
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "@fullstory/browser": "^1.4.9",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@size-limit/preset-small-lib": "^4.11.0",
     "@storybook/addon-a11y": "^6.0.27",
