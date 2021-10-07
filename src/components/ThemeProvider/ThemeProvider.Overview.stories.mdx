@@ -1,0 +1,186 @@
+import { useState, useContext, useEffect } from 'react';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Box } from '../Box/Box';
+import { Toggle } from '../Toggle/Toggle';
+import { PalmettoThemeProvider, PalmettoThemeContext } from './ThemeProvider';
+
+<Meta
+  title="Components/PalmettoThemeProvider/Overview"
+  component={PalmettoThemeProvider}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# PalmettoThemeProvider
+
+The PalmettoThemeProvider is a context provider that allows you to both set the theme and get the current theme (light or dark) for your application.
+
+## Basics
+
+First off, you should place the `PalmettoThemeProvider` component at the root of your application (or as high as you need it based on your application).
+The example below wraps the entire `App` with the provider but use your own judgement if you have other high-level providers in your app.
+
+Once your app is wrapped in the provider, you will have access to the shared context `PalmettoThemeContext`, which provides three key elements:
+
+1. `theme` -- the current theme -- `'light' | 'dark'`
+2. `systemPreference` -- whether the user prefers a light or dark them in their system preferences -- `light | dark`. Note that this is separate from the 
+current theme so that you can manage either use the system preference as the basis for your app theme, or perhaps only use it as a default with the ability to
+override it as needed. The provider attaches a listener to the prefers-color-scheme: dark media query, so the value will update automatically if a user changes their
+system preference.
+3. `setTheme` -- A function that takes a new theme value as an argument and changes the them accordingly -- `(theme: 'light' | 'dark') => void`
+
+The example below utilizes the `theme` and `setTheme` values for a basic theme switcher.
+
+<Canvas isExpanded>
+  <Story name="Basics">
+    {() => {
+      const App = () => {
+        const { theme, setTheme } = useContext(PalmettoThemeContext);
+        const handleChangeTheme = (event) => {
+          const { target: { checked } } = event;
+          const newTheme = checked ? 'dark' : 'light';
+          setTheme(newTheme);
+        };
+        return (
+          <>
+            <Box direction="row" childGap="xs" alignItems="center" margin="0 0 md 0">
+              <Box fontWeight="bold" display="inline">light</Box>
+              <Toggle
+                isChecked={theme === 'dark'}
+                onChange={handleChangeTheme}
+                label="dark"
+              />
+            </Box>
+            <Box
+              padding="lg"
+              color={theme === 'light' ? 'grey-dark' : 'grey-lighter'}
+              background={theme === 'light' ? 'white' : 'grey-darker'}
+              radius="md"
+              borderWidth="xs"
+              borderColor={theme === 'light' ? 'grey-lighter' : 'grey-darker'}
+            >
+              <Box as="span" direction="row">Theme is:&nbsp;<Box fontWeight="bold" as="span">{theme}</Box></Box>
+            </Box>
+          </>
+        );
+      };
+      return (
+        <PalmettoThemeProvider>
+          <App />
+        </PalmettoThemeProvider>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+## Using the System Preference
+
+The example below using the user's system preference exclusively for determining the theme. To try this out,
+change your system (light/dark) preference to see it in action.
+
+<Canvas isExpanded>
+  <Story name="System Preference">
+    {() => {
+      const App = () => {
+        const { systemPreference } = useContext(PalmettoThemeContext);
+        return (
+          <>
+            <Box
+              padding="lg"
+              color={systemPreference === 'light' ? 'grey-dark' : 'grey-lighter'}
+              background={systemPreference === 'light' ? 'white' : 'grey-darker'}
+              radius="md"
+              borderWidth="xs"
+              borderColor={systemPreference === 'light' ? 'grey-lighter' : 'grey-darker'}
+            >
+              <Box as="span" direction="row">
+                System Preference:&nbsp;
+                <Box fontWeight="bold" as="span" style={{ color: 'inherit' }}>
+                  {systemPreference}
+                </Box>
+              </Box>
+            </Box>
+          </>
+        );
+      };
+      return (
+        <PalmettoThemeProvider>
+          <App />
+        </PalmettoThemeProvider>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Combining System Preference with Theme
+
+Now we've seen how to use both our own variable, as well as a system preference to determine the dark/light theme,
+here is an example that puts these concepts together for a more holistic approach.
+
+In the example above -- the user can change their dark mode preference using their system preference but also overrride it with our custom switcher.
+
+There are competing schools of thought here, but our recommendation is that once the user has set the dark/light preference using an
+app-specific control, that information should be stored and saved for later. We have simulated this idea with the
+`isTouched` variable, which lets us know that system preference changes should no longer affect the theme. 
+
+To try this out, use the example below as follows:
+1. change your system preference -- the them should change accordingly.
+2. now change the theme with the Toggle -- the theme should change accordingly.
+3. now try to change your system preference again, it will not work this time because the user has recorded a preference
+in your application that overrrides the system. 
+
+<Canvas isExpanded>
+  <Story name="Recommended Approach">
+    {() => {
+      const App = () => {
+        const { theme, setTheme, systemPreference } = useContext(PalmettoThemeContext);
+        const [isTouched, setIsTouched] = useState(false);
+        useEffect(() => {
+          if (!isTouched) {
+            setTheme(systemPreference);
+          }
+        }, [systemPreference]);
+        const handleChangeTheme = (event) => {
+          setIsTouched(true);
+          const { target: { checked } } = event;
+          const newTheme = checked ? 'dark' : 'light';
+          setTheme(newTheme);
+        };
+        return (
+          <>
+            <Box direction="row" childGap="xs" alignItems="center" margin="0 0 md 0">
+              <Box fontWeight="bold" display="inline">light</Box>
+              <Toggle
+                isChecked={theme === 'dark'}
+                onChange={handleChangeTheme}
+                label="dark"
+              />
+            </Box>
+            <Box
+              padding="lg"
+              color={theme === 'light' ? 'grey-dark' : 'grey-lighter'}
+              background={theme === 'light' ? 'white' : 'grey-darker'}
+              radius="md"
+              borderWidth="xs"
+              borderColor={theme === 'light' ? 'grey-lighter' : 'grey-darker'}
+            >
+              <Box as="span" direction="row">
+                System Preference:&nbsp;
+                <Box fontWeight="bold" as="span" style={{ color: 'inherit' }}>
+                  {theme}
+                </Box>
+              </Box>
+            </Box>
+          </>
+        );
+      };
+      return (
+        <PalmettoThemeProvider>
+          <App />
+        </PalmettoThemeProvider>
+      );
+    }}
+  </Story>
+</Canvas>
