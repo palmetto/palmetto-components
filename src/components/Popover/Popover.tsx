@@ -94,6 +94,7 @@ const contentContainerDefaults: BoxProps = {
   background: 'white',
   padding: 'sm',
   radius: 'sm',
+  shadow: 'md',
 };
 
 export const Popover: FC<PopoverProps> = ({
@@ -195,7 +196,6 @@ export const Popover: FC<PopoverProps> = ({
         style={popperStyles.popper}
         role="dialog"
         aria-hidden={!isOpen}
-        shadow="md"
         {...containerBoxProps}
         {...attributes.popper}
         {...restProps}
