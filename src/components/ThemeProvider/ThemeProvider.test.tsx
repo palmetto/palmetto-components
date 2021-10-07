@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { render, screen } from '@testing-library/react';
-import { PalmettoThemeContext, PalmettoThemeProvider } from './ThemeProvider';
+import { ThemeContext, ThemeProvider } from './ThemeProvider';
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -19,32 +19,32 @@ Object.defineProperty(window, 'matchMedia', {
 describe('Theme Provider', () => {
   it('provides a theme and a setter -- dark', () => {
     const Component = () => {
-      const { theme, setTheme } = useContext(PalmettoThemeContext);
+      const { theme, setTheme } = useContext(ThemeContext);
       useEffect(() => {
         setTheme('dark');
-      }, [])
+      }, [setTheme]);
       return <p>{theme}</p>;
     };
     render(
-      <PalmettoThemeProvider>
+      <ThemeProvider>
         <Component />
-      </PalmettoThemeProvider>,
+      </ThemeProvider>,
     );
     expect(screen.getByText('dark')).toBeInTheDocument();
   });
 
   it('provides a theme and a setter -- light', () => {
     const Component = () => {
-      const { theme, setTheme } = useContext(PalmettoThemeContext);
+      const { theme, setTheme } = useContext(ThemeContext);
       useEffect(() => {
         setTheme('light');
-      }, [])
+      }, [setTheme]);
       return <p>{theme}</p>;
     };
     render(
-      <PalmettoThemeProvider>
+      <ThemeProvider>
         <Component />
-      </PalmettoThemeProvider>,
+      </ThemeProvider>,
     );
     expect(screen.getByText('light')).toBeInTheDocument();
   });

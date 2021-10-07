@@ -1,4 +1,9 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useRef,
+} from 'react';
 
 export type Theme = 'light' | 'dark';
 
@@ -8,22 +13,22 @@ export interface ThemeContextShape {
   systemPreference: Theme;
 }
 
-export const PalmettoThemeContext = createContext<ThemeContextShape>({
+export const ThemeContext = createContext<ThemeContextShape>({
   theme: 'light',
-  setTheme: (_theme) => {},
+  setTheme: (_theme) => {}, // eslint-disable-line
   systemPreference: 'light',
 });
-PalmettoThemeContext.displayName = 'PalmettoThemeContext';
+ThemeContext.displayName = 'ThemeContext';
 
 export interface ThemeProviderProps {
   children?: React.ReactNode;
 }
 
-export const PalmettoThemeProvider: React.FC<ThemeProviderProps> = ({ children = null }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children = null }) => {
   const [theme, setTheme] = useState<Theme>('light');
   const [systemPreference, setSystemPreference] = useState<Theme>('light');
 
-  const prefersDark = window?.matchMedia('(prefers-color-scheme: dark)');
+  const prefersDark = useRef(window?.matchMedia('(prefers-color-scheme: dark)'));
 
   const handleThemePreferenceChange = (mediaQuery: MediaQueryListEvent | MediaQueryList) => {
     let preference: Theme;
@@ -37,17 +42,19 @@ export const PalmettoThemeProvider: React.FC<ThemeProviderProps> = ({ children =
   };
 
   useEffect(() => {
+    const currentMediaQuery = prefersDark.current;
+
     if (typeof window !== 'undefined') {
-      handleThemePreferenceChange(prefersDark);
-      prefersDark.addEventListener('change', handleThemePreferenceChange);
+      handleThemePreferenceChange(currentMediaQuery);
+      currentMediaQuery.addEventListener('change', handleThemePreferenceChange);
     }
 
-    return () => prefersDark.removeEventListener('change', handleThemePreferenceChange);
-  }, []);
+    return () => currentMediaQuery.removeEventListener('change', handleThemePreferenceChange);
+  }, [prefersDark]);
 
   return (
-    <PalmettoThemeContext.Provider value={{ theme, setTheme, systemPreference }}>
+    <ThemeContext.Provider value={{ theme, setTheme, systemPreference }}>
       {children}
-    </PalmettoThemeContext.Provider>
+    </ThemeContext.Provider>
   );
 };
