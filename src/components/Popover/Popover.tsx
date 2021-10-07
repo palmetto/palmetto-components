@@ -195,6 +195,7 @@ export const Popover: FC<PopoverProps> = ({
         style={popperStyles.popper}
         role="dialog"
         aria-hidden={!isOpen}
+        shadow="md"
         {...containerBoxProps}
         {...attributes.popper}
         {...restProps}
