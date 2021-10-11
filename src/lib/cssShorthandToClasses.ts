@@ -3,7 +3,7 @@ import {
   BreakpointSizeWithBase,
 } from '../types';
 
-function isValidSpacingValue(value?: string | ResponsiveProp<string | undefined>): boolean {
+export function isValidSpacingValue(value?: string | ResponsiveProp<string | undefined>): boolean {
   if (
     value === undefined
     || value === null
@@ -15,7 +15,7 @@ function isValidSpacingValue(value?: string | ResponsiveProp<string | undefined>
   return true;
 }
 
-function generateBaseClasses(
+export function generateBaseClasses(
   attribute: string | undefined,
   value?: string | ResponsiveProp<string | undefined>,
 ): string[] {
@@ -91,7 +91,7 @@ function generateBaseClasses(
   return classes;
 }
 
-function cssShorthandToClasses(
+export function cssShorthandToClasses(
   attribute: string,
   value?: string | ResponsiveProp<string | undefined>,
 ): string[] {

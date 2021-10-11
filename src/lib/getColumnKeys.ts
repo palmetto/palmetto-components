@@ -1,7 +1,7 @@
 import { Key } from 'react';
 import { Column } from '../types';
 
-const getColumnKeys = (columns: Column[]): Key[] => {
+export const getColumnKeys = (columns: Column[]): Key[] => {
   const INTERNAL_KEY_PREFIX = 'columnKeyPrefix';
   const columnKeys: React.Key[] = [];
   const keys: Record<React.Key, boolean> = {};

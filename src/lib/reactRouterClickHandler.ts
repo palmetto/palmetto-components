@@ -1,6 +1,6 @@
 import { MouseEvent, AnchorHTMLAttributes } from 'react';
 
-const isModifiedEvent = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => (
+export const isModifiedEvent = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => (
   !!(e.metaKey || e.altKey || e.ctrlKey || e.shiftKey)
 );
 
@@ -13,7 +13,7 @@ const isModifiedEvent = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) =
  *    https://github.com/ReactTraining/react-router/issues/7727
  *    https://github.com/ReactTraining/react-router/issues/7761
  * */
-const handleClick = (
+export const handleReactRouterClick = (
   event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
   onClick: ((e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void) | undefined,
   target: AnchorHTMLAttributes<HTMLAnchorElement>['target'] | undefined,
@@ -33,4 +33,4 @@ const handleClick = (
   }
 };
 
-export default handleClick;
+export default handleReactRouterClick;

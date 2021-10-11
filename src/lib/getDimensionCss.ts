@@ -8,7 +8,7 @@ import {
 import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
 import generateResponsiveClasses from './generateResponsiveClasses';
 
-function getDimensionStyles(
+export function getDimensionStyles(
   dimension: CssDimensionAbbreviation,
   value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): { [key: string]: string; } | undefined {
@@ -40,7 +40,7 @@ function getDimensionStyles(
   return styles;
 }
 
-function getDimensionClasses(
+export function getDimensionClasses(
   dimension: CssDimensionAbbreviation,
   value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): string[] | undefined {
@@ -61,7 +61,7 @@ function getDimensionClasses(
  * @param {CssDimensionAbbreviation} dimension width or height
  * @param {string} [value] value of the dimension
  */
-function getDimensionCss(
+export function getDimensionCss(
   dimension: CssDimensionAbbreviation,
   value?: DimensionSize | ResponsiveProp<DimensionSize> | string,
 ): StylesAndClasses<CSSProperties> {
