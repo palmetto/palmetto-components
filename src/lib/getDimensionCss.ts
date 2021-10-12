@@ -5,8 +5,8 @@ import {
   ResponsiveProp,
   DimensionSize,
 } from '../types';
-import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
-import generateResponsiveClasses from './generateResponsiveClasses';
+import { doesStringIncludeCssUnit } from './doesStringIncludeCssUnit';
+import { generateResponsiveClasses } from './generateResponsiveClasses';
 
 export function getDimensionStyles(
   dimension: CssDimensionAbbreviation,
@@ -70,5 +70,3 @@ export function getDimensionCss(
     classes: getDimensionClasses(dimension, value),
   });
 }
-
-export default getDimensionCss;

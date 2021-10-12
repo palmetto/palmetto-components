@@ -1,4 +1,4 @@
-import getAutoCompleteValue from './getAutoCompleteValue';
+import { getAutoCompleteValue } from './getAutoCompleteValue';
 
 describe('getAutoCompleteValue', () => {
   test('it returns expected value when passed on', () => {

@@ -1,6 +1,7 @@
 import { Key } from 'react';
 import { Column } from '../types';
 
+// eslint-disable-next-line import/prefer-default-export
 export const getColumnKeys = (columns: Column[]): Key[] => {
   const INTERNAL_KEY_PREFIX = 'columnKeyPrefix';
   const columnKeys: React.Key[] = [];
@@ -22,5 +23,3 @@ export const getColumnKeys = (columns: Column[]): Key[] => {
 
   return columnKeys;
 };
-
-export default getColumnKeys;

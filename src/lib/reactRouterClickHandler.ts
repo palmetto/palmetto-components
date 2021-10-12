@@ -1,6 +1,6 @@
 import { MouseEvent, AnchorHTMLAttributes } from 'react';
 
-export const isModifiedEvent = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => (
+export const isModifiedEvent = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>): boolean => (
   !!(e.metaKey || e.altKey || e.ctrlKey || e.shiftKey)
 );
 
@@ -13,6 +13,7 @@ export const isModifiedEvent = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElem
  *    https://github.com/ReactTraining/react-router/issues/7727
  *    https://github.com/ReactTraining/react-router/issues/7761
  * */
+// eslint-disable-next-line import/prefer-default-export
 export const handleReactRouterClick = (
   event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
   onClick: ((e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void) | undefined,
@@ -32,5 +33,3 @@ export const handleReactRouterClick = (
     navigate();
   }
 };
-
-export default handleReactRouterClick;

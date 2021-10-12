@@ -111,5 +111,3 @@ export function cssShorthandToClasses(
 
   return classes;
 }
-
-export default cssShorthandToClasses;

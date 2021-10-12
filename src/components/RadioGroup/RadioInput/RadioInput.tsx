@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
 import classNames from 'classnames';
 import { ResponsiveProp } from '../../../types';
-import generateResponsiveClasses from '../../../lib/generateResponsiveClasses';
+import { generateResponsiveClasses } from '../../../lib/generateResponsiveClasses';
 import { Box, BoxProps } from '../../Box/Box';
 import { FormLabel } from '../../FormLabel/FormLabel';
 import { RadioInputIcon } from './RadioInputIcon'; // eslint-disable-line import/no-cycle

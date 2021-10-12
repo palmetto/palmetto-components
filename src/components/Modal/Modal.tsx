@@ -6,7 +6,7 @@ import React, {
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
 import { CssOverflowValue } from '../../types';
-import getDimensionCss from '../../lib/getDimensionCss';
+import { getDimensionCss } from '../../lib/getDimensionCss';
 import { Box, BoxProps } from '../Box/Box';
 import { ModalFooter, ModalHeader, ModalBody } from './components';
 import styles from './Modal.module.scss';

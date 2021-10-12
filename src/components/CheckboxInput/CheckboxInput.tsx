@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
+import { cssShorthandToClasses } from '../../lib/cssShorthandToClasses';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box } from '../Box/Box';
