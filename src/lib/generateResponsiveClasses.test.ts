@@ -1,4 +1,4 @@
-import generateResponsiveClasses from './generateResponsiveClasses';
+import { generateResponsiveClasses } from './generateResponsiveClasses';
 
 describe('generateResponsiveClasses', () => {
   test('it generates a base class when passed a single string value', () => {

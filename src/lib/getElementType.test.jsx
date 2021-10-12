@@ -1,4 +1,4 @@
-import getElementType from './getElementType';
+import { getElementType } from './getElementType';
 
 const MockComponent = () => ({
   defaultProps: {

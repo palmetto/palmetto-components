@@ -1,9 +1,9 @@
 import { FC, createElement, ReactNode } from 'react';
 import classNames from 'classnames';
-import getElementType from '../../lib/getElementType';
+import { getElementType } from '../../lib/getElementType';
 import { FontColor, FontSize, ResponsiveProp } from '../../types';
 import { HEADING_LEVELS_TYPE, HEADING_DEFAULT_SIZE_MAP } from './Heading.constants';
-import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import styles from './Heading.module.scss';
 
 export interface HeadingProps {

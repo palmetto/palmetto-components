@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ResponsiveProp } from '../../../types';
-import generateResponsiveClasses from '../../../lib/generateResponsiveClasses';
+import { generateResponsiveClasses } from '../../../lib/generateResponsiveClasses';
 import { Box, BoxProps } from '../../Box/Box';
 import { CheckboxIcon } from './CheckboxIcon'; // eslint-disable-line import/no-cycle
 import styles from './Checkbox.module.scss';

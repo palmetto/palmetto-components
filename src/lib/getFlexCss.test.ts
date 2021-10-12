@@ -1,4 +1,4 @@
-import getFlexCss from './getFlexCss';
+import { getFlexCss } from './getFlexCss';
 
 describe('getFlexCss', () => {
   describe('Single value shorthand applies classes', () => {

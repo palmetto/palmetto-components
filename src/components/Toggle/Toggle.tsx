@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import { ResponsiveProp } from '../../types';
-import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box, BoxProps } from '../Box/Box';

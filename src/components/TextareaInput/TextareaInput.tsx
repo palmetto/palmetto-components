@@ -6,7 +6,7 @@ import { ResponsiveProp } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
-import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
+import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
 import { computedResponsiveSize } from './TextareaInputSizeUtilities'; // eslint-disable-line import/no-cycle
 import styles from './TextareaInput.module.scss';
 
