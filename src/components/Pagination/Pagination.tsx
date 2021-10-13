@@ -83,7 +83,7 @@ export const Pagination: FC<PaginationProps> = ({
   );
 
   const activeListRange = useMemo(
-    () => generateActiveListRange(activePage, totalItemsCount, itemsPerPage, pageTotal),
+    () => generateActiveListRange(activePage, totalItemsCount, itemsPerPage),
     [activePage, totalItemsCount, itemsPerPage, pageTotal],
   );
 
@@ -119,6 +119,7 @@ export const Pagination: FC<PaginationProps> = ({
           <Box direction="row">
             {pages.map(({ pageNumber, isPage }) => (
               <Button
+                key={pageNumber}
                 onClick={() => onChange(pageNumber)}
                 isOutlined={activePage !== pageNumber}
                 size={isCompact ? 'sm' : 'md'}

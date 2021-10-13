@@ -58,11 +58,11 @@ Use pagination to improve user scanning, as well as load times, for large collec
 <Canvas>
   <Story name="Page Numbers">
     {() => {
-      const [activePage, setActivePage] = useState(1);
+      const [activePage, setActivePage] = useState(3);
       return (
         <Pagination
           activePage={activePage}
-          itemsPerPage={20}
+          itemsPerPage={100}
           onChange={setActivePage}
           totalItemsCount={1000}
           isCompact
