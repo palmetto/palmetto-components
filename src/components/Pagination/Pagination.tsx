@@ -1,7 +1,13 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, useMemo } from 'react';
 import classNames from 'classnames';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+import {
+  generatePages,
+  generatePageRange,
+  generatePageTotal,
+  generateActiveListRange,
+} from './Pagination.utilities';
 
 export interface PaginationProps {
   /**
@@ -43,7 +49,8 @@ export interface PaginationProps {
    */
   nextPageText?: string | ReactNode;
   /**
-   * Range of pages in paginator, not including navigation blocks (prev, next, first, last pages)
+   * Number of pages shown in paginator, not including navigation blocks (prev, next), as well as first, last pages.
+   * In other words the number of pages displayed 'in the middle', that the user can navigate to.
    */
   numberOfPagesDisplayed?: number;
   /**
@@ -65,93 +72,25 @@ export const Pagination: FC<PaginationProps> = ({
   numberOfPagesDisplayed = 5,
   prevPageText = 'Previous',
 }) => {
-  const getPageRange = () => (
-    numberOfPagesDisplayed > Math.ceil(totalItemsCount / itemsPerPage)
-      ? Math.ceil(totalItemsCount / itemsPerPage)
-      : numberOfPagesDisplayed
+  const pageTotal = useMemo(
+    () => generatePageTotal(totalItemsCount, itemsPerPage),
+    [totalItemsCount, itemsPerPage]
   );
 
-  const pageTotal = Math.ceil(totalItemsCount / itemsPerPage);
+  const pageRange = useMemo(
+    () => generatePageRange(numberOfPagesDisplayed, pageTotal),
+    [numberOfPagesDisplayed, pageTotal]
+  );
 
-  const getActiveListRange = () => {
-    const activePageRange: { first?: number; last?: number; } = {};
+  const activeListRange = useMemo(
+    () => generateActiveListRange(activePage, totalItemsCount, itemsPerPage, pageTotal),
+    [activePage, totalItemsCount, itemsPerPage, pageTotal],
+  );
 
-    if (activePage === 1) {
-      activePageRange.first = 1;
-      activePageRange.last = totalItemsCount > itemsPerPage ? itemsPerPage : totalItemsCount;
-    } else if (activePage < pageTotal) {
-      activePageRange.first = (activePage * itemsPerPage) - (itemsPerPage - 1);
-      activePageRange.last = activePage * itemsPerPage;
-    } else {
-      activePageRange.first = (activePage * itemsPerPage) - (itemsPerPage - 1);
-      activePageRange.last = totalItemsCount;
-    }
-
-    return activePageRange;
-  };
-
-  const renderPages = () => {
-    const pages = [];
-    let startingPage = 1;
-    let endingPage = getPageRange();
-
-    if (pageTotal <= getPageRange()) {
-      startingPage = 1;
-      endingPage = getPageRange();
-    } else if (activePage + numberOfPagesDisplayed > pageTotal) {
-      startingPage = pageTotal - (numberOfPagesDisplayed - 1);
-      endingPage = startingPage + (numberOfPagesDisplayed - 1);
-    } else if (activePage > numberOfPagesDisplayed && (activePage + numberOfPagesDisplayed) <= pageTotal) {
-      startingPage = activePage - (Math.floor(numberOfPagesDisplayed / 2));
-      endingPage = startingPage + (numberOfPagesDisplayed - 1);
-    }
-
-    for (let i = startingPage; i <= endingPage; i += 1) {
-      pages.push({ pageNumber: i });
-    }
-
-    if (pageTotal > pages[pages.length - 1].pageNumber) {
-      pages.push(
-        { pageNumber: activePage + numberOfPagesDisplayed, isPage: false },
-        { pageNumber: pageTotal },
-      );
-    }
-
-    if (activePage > numberOfPagesDisplayed) {
-      pages.unshift(
-        { pageNumber: 1 },
-        { pageNumber: activePage - numberOfPagesDisplayed, isPage: false },
-      );
-    }
-
-    const PageButton = ({
-      pageNumber,
-      buttonClassName,
-      isPage = true,
-    }: {
-      pageNumber: number;
-      buttonClassName?: string; // eslint-disable-line react/require-default-props
-      isPage?: boolean; // eslint-disable-line react/require-default-props
-    }) => (
-      <Button
-        onClick={() => onChange(pageNumber)}
-        isOutlined={activePage !== pageNumber}
-        size={isCompact ? 'sm' : 'md'}
-        style={{
-          minWidth: isCompact ? '33px' : '42px',
-          borderRadius: 0,
-          border: 0,
-        }}
-        className={buttonClassName}
-      >
-        {isPage ? pageNumber : '...'}
-      </Button>
-    );
-
-    return pages.map(page => (
-      <PageButton key={page.pageNumber} {...page} />
-    ));
-  };
+  const pages = useMemo(
+    () => generatePages(pageRange, pageTotal, activePage, numberOfPagesDisplayed),
+    [pageRange, pageTotal, activePage, numberOfPagesDisplayed],
+  );
 
   return (
     <Box
@@ -178,7 +117,21 @@ export const Pagination: FC<PaginationProps> = ({
         </Button>
         {arePagesVisible && (
           <Box direction="row">
-            {renderPages()}
+            {pages.map(({ pageNumber, isPage }) => (
+              <Button
+                onClick={() => onChange(pageNumber)}
+                isOutlined={activePage !== pageNumber}
+                size={isCompact ? 'sm' : 'md'}
+                style={{
+                  minWidth: isCompact ? '33px' : '42px',
+                  borderRadius: 0,
+                  border: 0,
+                }}
+                className={className}
+              >
+                {isPage ? pageNumber : '...'}
+              </Button>
+            ))}
           </Box>
         )}
         <Button
@@ -199,7 +152,7 @@ export const Pagination: FC<PaginationProps> = ({
         fontSize={isCompact ? 'sm' : 'md'}
       >
         {isTotalVisible && (
-          `Showing ${getActiveListRange().first}-${getActiveListRange().last} of ${totalItemsCount}`
+          `Showing ${activeListRange.first}-${activeListRange.last} of ${totalItemsCount}`
         )}
       </Box>
     </Box>
