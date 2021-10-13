@@ -74,17 +74,17 @@ export const Pagination: FC<PaginationProps> = ({
 }) => {
   const pageTotal = useMemo(
     () => generatePageTotal(totalItemsCount, itemsPerPage),
-    [totalItemsCount, itemsPerPage]
+    [totalItemsCount, itemsPerPage],
   );
 
   const pageRange = useMemo(
     () => generatePageRange(numberOfPagesDisplayed, pageTotal),
-    [numberOfPagesDisplayed, pageTotal]
+    [numberOfPagesDisplayed, pageTotal],
   );
 
   const activeListRange = useMemo(
     () => generateActiveListRange(activePage, totalItemsCount, itemsPerPage),
-    [activePage, totalItemsCount, itemsPerPage, pageTotal],
+    [activePage, totalItemsCount, itemsPerPage],
   );
 
   const pages = useMemo(

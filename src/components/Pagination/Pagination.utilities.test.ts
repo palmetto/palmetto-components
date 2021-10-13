@@ -1,4 +1,3 @@
-import { toBindingIdentifierName } from '@babel/types';
 import {
   generatePages,
   generatePageRange,
@@ -7,7 +6,7 @@ import {
 } from './Pagination.utilities';
 
 describe('generatePageRange', () => {
-  it('returns the number of pages displayed if there are enough total pages', () =>{
+  it('returns the number of pages displayed if there are enough total pages', () => {
     const pageRange = generatePageRange(3, 50);
     expect(pageRange).toBe(3);
   });
@@ -26,13 +25,13 @@ describe('generatePageRange', () => {
 describe('generatePageTotal', () => {
   it('returns correct number of pages for a variety of inputs', () => {
     const pageTotal1 = generatePageTotal(948, 20);
-    expect(pageTotal1).toBe(48)
+    expect(pageTotal1).toBe(48);
 
     const pageTotal2 = generatePageTotal(20, 20);
     expect(pageTotal2).toBe(1);
-    
+
     const pageTotal3 = generatePageTotal(15, 20);
-    expect(pageTotal3).toBe(1)
+    expect(pageTotal3).toBe(1);
   });
 });
 
@@ -60,10 +59,10 @@ describe('generatePages', () => {
 
     expect(pages[1].isPage).toBe(true);
     expect(pages[1].pageNumber).toBe(2);
-  
+
     expect(pages[2].isPage).toBe(true);
     expect(pages[2].pageNumber).toBe(3);
-  
+
     expect(pages[3].isPage).toBe(false);
     expect(pages[3].pageNumber).toBe(6);
 
@@ -80,10 +79,10 @@ describe('generatePages', () => {
 
     expect(pages[1].isPage).toBe(false);
     expect(pages[1].pageNumber).toBe(3);
-  
+
     expect(pages[2].isPage).toBe(true);
     expect(pages[2].pageNumber).toBe(5);
-  
+
     expect(pages[3].isPage).toBe(true);
     expect(pages[3].pageNumber).toBe(6);
 
@@ -106,10 +105,10 @@ describe('generatePages', () => {
 
     expect(pages[1].isPage).toBe(false);
     expect(pages[1].pageNumber).toBe(6);
-  
+
     expect(pages[2].isPage).toBe(true);
     expect(pages[2].pageNumber).toBe(8);
-  
+
     expect(pages[3].isPage).toBe(true);
     expect(pages[3].pageNumber).toBe(9);
 

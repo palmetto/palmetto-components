@@ -51,7 +51,7 @@ export const generatePages = (
   }
 
   return [...pages];
-}
+};
 
 // Return the true page range in cases
 // where number of pages wanted for display is larger than the actual page total.
@@ -68,7 +68,6 @@ export const generatePageTotal = (totalItemsCount: number, itemsPerPage: number)
   Math.ceil(totalItemsCount / itemsPerPage)
 );
 
-
 // Returns the range of current items displayed based on the specific page.
 // E.G: if the items per page is 20 and we are on page 1, it will return:
 // { first: 1, last: 20 }
@@ -76,7 +75,7 @@ export const generateActiveListRange = (
   activePage: number,
   totalItemsCount: number,
   itemsPerPage: number,
-) => {
+): { first: number; last: number; } => {
   const activePageRange: { first?: number; last?: number; } = {};
 
   const pageTotal = generatePageTotal(totalItemsCount, itemsPerPage);
