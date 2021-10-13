@@ -75,7 +75,7 @@ export const generateActiveListRange = (
   activePage: number,
   totalItemsCount: number,
   itemsPerPage: number,
-): { first: number; last: number; } => {
+): { first?: number; last?: number; } => {
   const activePageRange: { first?: number; last?: number; } = {};
 
   const pageTotal = generatePageTotal(totalItemsCount, itemsPerPage);
