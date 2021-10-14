@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Pagination } from './Pagination';
-// import { Heading } from '../Heading/Heading';
-// import { Button } from '../Button/Button';
 
 <Meta title="Components/Pagination/Overview" component={Pagination} />
 
@@ -58,11 +56,11 @@ Use pagination to improve user scanning, as well as load times, for large collec
 <Canvas>
   <Story name="Page Numbers">
     {() => {
-      const [activePage, setActivePage] = useState(3);
+      const [activePage, setActivePage] = useState(1);
       return (
         <Pagination
           activePage={activePage}
-          itemsPerPage={100}
+          itemsPerPage={20}
           onChange={setActivePage}
           totalItemsCount={1000}
           isCompact
