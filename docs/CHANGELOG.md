@@ -1,3 +1,10 @@
+## [0.95.1](https://github.com/palmetto/palmetto-components/compare/v0.95.0...v0.95.1) (2021-10-21)
+
+
+### Bug Fixes
+
+* **release:** action name change ([#632](https://github.com/palmetto/palmetto-components/issues/632)) ([a386261](https://github.com/palmetto/palmetto-components/commit/a3862617562bf254968a6524ecc352fc126c2b10))
+
 # [0.95.0](https://github.com/palmetto/palmetto-components/compare/v0.94.2...v0.95.0) (2021-10-21)
 
 
