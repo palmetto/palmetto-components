@@ -1,3 +1,22 @@
+# [0.95.0](https://github.com/palmetto/palmetto-components/compare/v0.94.2...v0.95.0) (2021-10-21)
+
+
+### Bug Fixes
+
+* **Button:** isNaked doesn't allow any styling ([#624](https://github.com/palmetto/palmetto-components/issues/624)) ([7f7df1e](https://github.com/palmetto/palmetto-components/commit/7f7df1ecd59b1ba245e8f68885722a712928f52f))
+* **release:** add semantic release gh token ([#630](https://github.com/palmetto/palmetto-components/issues/630)) ([8b88d64](https://github.com/palmetto/palmetto-components/commit/8b88d64c5bbcff6372e7d45d4da93c2d73e04a20))
+* **release:** Fix release action ([#627](https://github.com/palmetto/palmetto-components/issues/627)) ([24ef5c7](https://github.com/palmetto/palmetto-components/commit/24ef5c79500e639fbda49c1b2a7f82569f6780ea))
+
+
+### Features
+
+* **changelog:** Publish changelog along with releases. ([#623](https://github.com/palmetto/palmetto-components/issues/623)) ([585175d](https://github.com/palmetto/palmetto-components/commit/585175dae1ddadf966ed1dbea6d50eef4c4747bf))
+
+
+### Reverts
+
+* Revert "change job name (#625)" (#626) ([bbdfaa2](https://github.com/palmetto/palmetto-components/commit/bbdfaa28aef7302184365c25c04a2ae5af838f5e)), closes [#625](https://github.com/palmetto/palmetto-components/issues/625) [#626](https://github.com/palmetto/palmetto-components/issues/626)
+
 ### Changelog
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
