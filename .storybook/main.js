@@ -26,12 +26,7 @@ module.exports = {
   addons: [
     '@storybook/addon-actions/register',
     '@storybook/addon-a11y',
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        transcludeMarkdown: true,
-      },
-    },
+    '@storybook/addon-docs',
     '@storybook/addon-controls',
     '@storybook/addon-links/register',
     './register',
