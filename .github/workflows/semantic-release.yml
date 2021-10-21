@@ -6,20 +6,6 @@ jobs:
   publish-to-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12'
-      - run: yarn install
-      - run: yarn test
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn semantic-release
-  deploy-to-chromatic:
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -29,17 +15,20 @@ jobs:
         with:
           node-version: '12'
       - name: Install dependencies
-        run: yarn
+        run: yarn install
+      - name: Unit Tests
+        run: yarn test
+      - name: Release to NPM
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn semantic-release
       - name: Deploy to Chromatic
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
-  deploy-to-github-pages:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - run: yarn
-    - run: yarn deploy-storybook --ci
-      env:
-        GH_TOKEN: palmetto:${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to Github Pages
+        run: yarn deploy-storybook --ci
+        env:
+          GH_TOKEN: palmetto:${{ secrets.GITHUB_TOKEN }}
