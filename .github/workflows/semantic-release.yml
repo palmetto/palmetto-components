@@ -3,17 +3,32 @@ on:
   push:
     branches: [main, beta]
 jobs:
-  test:
+  publish-package:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: '12'
-      - run: yarn install
-      - run: yarn test
-      - name: Release
+      - name: Install dependencies
+        run: yarn install
+      - name: Unit Tests
+        run: yarn test
+      - name: Release to NPM
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn semantic-release
+      - name: Deploy to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to Github Pages
+        run: yarn deploy-storybook --ci
+        env:
+          GH_TOKEN: palmetto:${{ secrets.GITHUB_TOKEN }}
