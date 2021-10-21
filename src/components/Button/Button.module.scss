@@ -1,7 +1,9 @@
 .button {
   border: 0;
   cursor: pointer;
-  line-height: 1;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
 
   &:not(.naked) {
     display: inline-block;
@@ -47,14 +49,6 @@
 
   &.outline {
     border: 1px solid;
-  }
-
-  &.naked {
-    background-color: transparent;
-    padding: 0;
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
   }
 
   &.primary {
