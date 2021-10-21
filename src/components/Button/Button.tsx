@@ -197,7 +197,15 @@ export const Button: FC<ButtonProps> = forwardRef(
         {isLoading && (
         <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
         )}
-        {children && <span className={styles.label}>{children}</span>}
+        {(() => {
+          if (children) {
+            if (isNaked) {
+              return children;
+            }
+            return <span className={styles.label}>{children}</span>;
+          }
+          return null;
+        })()}
       </>
     );
 
