@@ -4,6 +4,7 @@
   background-color: transparent;
   padding: 0;
   color: inherit;
+  line-height: 1;
 
   &:not(.naked) {
     display: inline-block;
@@ -13,7 +14,6 @@
     transition-timing-function: cubic-bezier(0.67, 0.83, 0.67);
     text-align: center;
     text-decoration: none;
-    line-height: 1;
     letter-spacing: 0.2px;
     font-size: var(--button-size-md-font-size);
     font-weight: var(--button-font-weight);
