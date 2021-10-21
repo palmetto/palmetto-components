@@ -3,7 +3,7 @@ on:
   push:
     branches: [main, beta]
 jobs:
-  publish-new-version:
+  publish-new-package-version:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
