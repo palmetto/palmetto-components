@@ -1,3 +1,5 @@
+## [0.95.2](https://github.com/palmetto/palmetto-components/compare/v0.95.1...v0.95.2) (2021-10-25)
+
 ## [0.95.1](https://github.com/palmetto/palmetto-components/compare/v0.95.0...v0.95.1) (2021-10-21)
 
 
