@@ -24,12 +24,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn semantic-release
-      # run checkout a second time after new changelog commit is generated.
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # 👈 Required to retrieve git history
-          token: ${{ secrets.SEMANTIC_RELEASE_GH_TOKEN }}
       - name: Deploy to Chromatic
         uses: chromaui/action@v1
         with:
