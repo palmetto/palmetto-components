@@ -1,6 +1,9 @@
 .button {
   border: 0;
   cursor: pointer;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
   line-height: 1;
 
   &:not(.naked) {
@@ -11,7 +14,6 @@
     transition-timing-function: cubic-bezier(0.67, 0.83, 0.67);
     text-align: center;
     text-decoration: none;
-    line-height: 1;
     letter-spacing: 0.2px;
     font-size: var(--button-size-md-font-size);
     font-weight: var(--button-font-weight);
@@ -47,14 +49,6 @@
 
   &.outline {
     border: 1px solid;
-  }
-
-  &.naked {
-    background-color: transparent;
-    padding: 0;
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
   }
 
   &.primary {

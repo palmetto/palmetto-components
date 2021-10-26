@@ -3,13 +3,14 @@ on:
   push:
     branches: [main, beta]
 jobs:
-  publish-package:
+  publish-new-package:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
+          token: ${{ secrets.SEMANTIC_RELEASE_GH_TOKEN }}
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
