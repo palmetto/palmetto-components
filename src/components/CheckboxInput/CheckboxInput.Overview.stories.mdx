@@ -39,6 +39,94 @@ All that is required to render a basic version of the CheckboxInput is a unique 
   </Story>
 </Canvas>
 
+## States
+
+The state of a checkbox can be `checked`, `unchecked` or `indeterminate`. For More
+details on indeterminate checkboxes [See Here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate).
+
+An important consideration is that a checkbox being `indeterminate` has no effect on the value of it's `checked` value. Accordingly
+we have kept this prop separate and affect the checkbox visually as well as the value of the indeterminate HTML attribute on the checkbox
+element. I.E: A checkbox can be indeterminate while being either checked or unchecked. The logic for such UI implementations is left
+up to the user.
+
+<Canvas>
+  <Story name="States">
+    {() => {
+      return (
+        <Box childGap="md">
+          <CheckboxInput
+            id="statesUnchecked"
+            label="Unchecked"
+            onChange={() => {}}
+            isChecked={false}
+          />
+          <CheckboxInput
+            id="statesCHecked"
+            label="Checked"
+            onChange={() => {}}
+            isChecked={true}
+          />
+          <CheckboxInput
+            id="statesUnchecked"
+            label="Indeterminate"
+            onChange={() => {}}
+            isChecked={true}
+            isIndeterminate={true}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Indeterminate Checkboxes
+
+Use cases for intermediate checkboxes can sometimes be unclear. Below is an example of when to use this UI pattern.
+
+<Canvas>
+  <Story name="Indeterminate Checkboxes">
+    {() => {
+      const [exampleOneChildOne, setExampleOneChildOne] = useState(false);
+      const [exampleOneChildTwo, setExampleOneChildTwo] = useState(true);
+      const handleParentChange = event => {
+        setExampleOneChildOne(event.target.checked);
+        setExampleOneChildTwo(event.target.checked);
+      };
+      return (
+        <Box childGap="md">
+          <Box display="block" fontWeight="bold">
+            Nested Checkboxes (select all)
+          </Box>
+          <Box childGap="sm">
+            <CheckboxInput
+              id="statesUnchecked"
+              label="Parent"
+              onChange={handleParentChange}
+              isChecked={exampleOneChildOne || exampleOneChildTwo}
+              isIndeterminate={exampleOneChildOne !== exampleOneChildTwo}
+            />
+            <Box padding="0 0 0 sm" childGap="sm">
+              <CheckboxInput
+                id="statesUnchecked"
+                label="Child One"
+                onChange={event => setExampleOneChildOne(event.target.checked)}
+                isChecked={exampleOneChildOne}
+              />
+              <CheckboxInput
+                id="statesUnchecked"
+                label="Child Two"
+                onChange={event => setExampleOneChildTwo(event.target.checked)}
+                isChecked={exampleOneChildTwo}
+              />
+            </Box>
+          </Box>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
 ## Required
 
 Use the `isRequired` prop to mark the input as required.
@@ -71,6 +159,7 @@ Set the size of the checkbox and label with the `size` prop.
       const [sm, setSm] = useState(null);
       const [md, setMd] = useState(null);
       const [lg, setLg] = useState(null);
+      const [responsive, setResponsive] = useState(null);
       return (
         <Box childGap="md">
           <CheckboxInput
@@ -96,6 +185,14 @@ Set the size of the checkbox and label with the `size` prop.
             isChecked={lg}
             onChange={event => setLg(event.target.checked)}
             size="lg"
+          />
+          <CheckboxInput
+            id="responsiveCheckboxInput"
+            label="Responsive checkbox"
+            helpText="Will change sizes depending on viewport width"
+            isChecked={responsive}
+            onChange={event => setResponsive(event.target.checked)}
+            size={{ base: 'sm', tablet: 'md', desktop: 'lg', hd: 'sm' }}
           />
         </Box>
       );

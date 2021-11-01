@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { ResponsiveProp } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { FormControl, FormControlProps } from '../FormControl/FormControl';

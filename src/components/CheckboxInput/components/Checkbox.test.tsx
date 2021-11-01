@@ -37,6 +37,38 @@ describe('Checkbox', () => {
     });
   });
 
+  describe('Indeterminate', () => {
+    test('It renders an indeterminate icon if isIndeterminate is true and checkbox is checked', () => {
+      render(
+        <Checkbox
+          id="testCheckbox"
+          label="test checkbox"
+          onChange={jest.fn(() => null)}
+          isChecked
+          isIndeterminate
+        />,
+      );
+
+      const input = screen.getByLabelText('test checkbox');
+      expect(input).toHaveAttribute('checked');
+      expect(screen.getByTestId('icon-testid--checkbox-btn-indeterminate')).toBeInTheDocument();
+    });
+
+    test('It renders an indeterminate icon if isIndeterminate is true and checkbox is unchecked', () => {
+      render(
+        <Checkbox
+          id="testCheckbox"
+          label="test checkbox"
+          onChange={jest.fn(() => null)}
+          isChecked={false}
+          isIndeterminate
+        />,
+      );
+
+      expect(screen.getByTestId('icon-testid--checkbox-btn-indeterminate')).toBeInTheDocument();
+    });
+  });
+
   describe('Disabled', () => {
     test('input element is disabled', () => {
       render(
@@ -86,7 +118,7 @@ describe('Checkbox', () => {
   });
 
   describe('Invalid error', () => {
-    test('It is grey-500 when unchecked and disabled', () => {
+    test('It is danger-500 when there is an error', () => {
       render(
         <Checkbox
           isChecked={false}

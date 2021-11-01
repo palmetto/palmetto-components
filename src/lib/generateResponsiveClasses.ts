@@ -1,7 +1,11 @@
 import { ResponsiveProp, BreakpointSizeWithBase } from '../types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function generateResponsiveClasses(classRoot: string, value: ResponsiveProp<any> | string | undefined): string[] {
+// eslint-disable-next-line
+export function generateResponsiveClasses(
+  classRoot: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  value: ResponsiveProp<any> | string | undefined,
+): string[] {
   if (value === null || (typeof value !== 'string' && typeof value !== 'object')) return [];
 
   const classes: string[] = [];
@@ -19,5 +23,3 @@ function generateResponsiveClasses(classRoot: string, value: ResponsiveProp<any>
 
   return classes;
 }
-
-export default generateResponsiveClasses;

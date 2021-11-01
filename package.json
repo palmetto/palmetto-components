@@ -21,7 +21,7 @@
     "url": "https://github.com/palmetto/palmetto-components"
   },
   "dependencies": {
-    "@palmetto/palmetto-design-tokens": "0.50.0",
+    "@palmetto/palmetto-design-tokens": "0.55.0",
     "@popperjs/core": "^2.5.3",
     "@reach/dialog": "^0.11.2",
     "classnames": "^2.2.6",
@@ -83,7 +83,10 @@
     "@babel/plugin-transform-spread": "^7.13.0",
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "@fullstory/browser": "^1.4.9",
+    "@semantic-release/changelog": "5",
     "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "9",
     "@size-limit/preset-small-lib": "^4.11.0",
     "@storybook/addon-a11y": "^6.0.27",
     "@storybook/addon-actions": "^6.0.27",

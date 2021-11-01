@@ -1,13 +1,13 @@
 import { StylesAndClasses, FlexProperty, ResponsiveProp } from '../types';
-import doesStringIncludeCssUnit from './doesStringIncludeCssUnit';
+import { doesStringIncludeCssUnit } from './doesStringIncludeCssUnit';
 
 const flexValues = ['initial', 'auto', 'unset', 'none', 'inherit'];
 
-function parsePropertyValue(value: string): string | number {
+export function parsePropertyValue(value: string): string | number {
   return Number.isNaN(Number(value)) ? value : Number(value);
 }
 
-function getFlexStyles(value?: string): FlexProperty | undefined {
+export function getFlexStyles(value?: string): FlexProperty | undefined {
   if (value === undefined) return value;
 
   const styles: FlexProperty = {};
@@ -38,7 +38,7 @@ function getFlexStyles(value?: string): FlexProperty | undefined {
   return styles;
 }
 
-function getFlexClasses(value?: string): string[] | undefined {
+export function getFlexClasses(value?: string): string[] | undefined {
   if (value === undefined || value.split(' ').length > 1) return [];
 
   const classes = [];
@@ -53,11 +53,9 @@ function getFlexClasses(value?: string): string[] | undefined {
  * Returns an object of styles and class names that correspond with the given flex value
  * @param {string} [value] spacing token value
  */
-function getFlexCss(value?: ResponsiveProp<FlexProperty> | string): StylesAndClasses<FlexProperty> {
+export function getFlexCss(value?: ResponsiveProp<FlexProperty> | string): StylesAndClasses<FlexProperty> {
   return ({
     styles: getFlexStyles(value as string),
     classes: getFlexClasses(value as string),
   });
 }
-
-export default getFlexCss;

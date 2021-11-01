@@ -44,6 +44,7 @@ export * from './Table/Table';
 export * from './TextInput/TextInput';
 export * from './TextareaInput/TextareaInput';
 export * from './TextLink/TextLink';
+export * from './ThemeProvider/ThemeProvider';
 export * from './TimePicker/TimePicker';
 export * from './TimePickerNative/TimePickerNative';
 export * from './Toast';

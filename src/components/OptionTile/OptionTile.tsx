@@ -229,6 +229,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
           isSelected={isSelected}
           isHidden
           ref={inputRef}
+          size="md"
         />
       )}
       {children}

@@ -3,10 +3,10 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import { IconName } from '../../types';
-import reactRouterClickHandler from '../../lib/reactRouterClickHandler';
+import { handleReactRouterClick } from '../../lib/reactRouterClickHandler';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
-import getElementType from '../../lib/getElementType';
+import { getElementType } from '../../lib/getElementType';
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
@@ -146,7 +146,7 @@ export const Button: FC<ButtonProps> = forwardRef(
       [styles['full-width']]: fullWidth,
     });
 
-    const handleClick = reactRouterClickHandler;
+    const handleClick = handleReactRouterClick;
 
     const handleFocus = (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (onFocus) onFocus(event);
@@ -197,7 +197,15 @@ export const Button: FC<ButtonProps> = forwardRef(
         {isLoading && (
         <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
         )}
-        {children && <span className={styles.label}>{children}</span>}
+        {(() => {
+          if (children) {
+            if (isNaked) {
+              return children;
+            }
+            return <span className={styles.label}>{children}</span>;
+          }
+          return null;
+        })()}
       </>
     );
 

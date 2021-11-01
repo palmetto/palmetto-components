@@ -1,4 +1,4 @@
-import getDimensionCss from './getDimensionCss';
+import { getDimensionCss } from './getDimensionCss';
 import {
   HEIGHT_OPTIONS,
   WIDTH_OPTIONS,

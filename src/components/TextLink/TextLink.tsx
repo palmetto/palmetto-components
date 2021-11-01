@@ -1,6 +1,6 @@
 import React, { FC, MouseEvent, forwardRef } from 'react';
 import classNames from 'classnames';
-import reactRouterClickHandler from '../../lib/reactRouterClickHandler';
+import { handleReactRouterClick } from '../../lib/reactRouterClickHandler';
 import styles from './TextLink.module.scss';
 
 export interface TextLinkProps {
@@ -58,7 +58,7 @@ export const TextLink: FC<TextLinkProps> = forwardRef<HTMLAnchorElement, TextLin
     className,
   );
 
-  const handleClick = reactRouterClickHandler;
+  const handleClick = handleReactRouterClick;
 
   return (
     <a // eslint-disable-line jsx-a11y/click-events-have-key-events

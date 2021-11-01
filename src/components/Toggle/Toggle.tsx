@@ -3,10 +3,10 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import { ResponsiveProp } from '../../types';
-import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import styles from './Toggle.module.scss';
 
 export type ToggleSize = 'sm' | 'md' | 'lg';
@@ -126,10 +126,10 @@ export const Toggle: FC<ToggleProps> = ({
     isFieldRequired: isRequired,
     inputId: id,
     isDisabled,
-    display: 'flex',
-    direction: 'row',
-    childGap: 'xs',
-    alignItems: helpText ? 'flex-start' : 'center',
+    display: 'flex' as BoxProps['display'],
+    direction: 'row' as BoxProps['direction'],
+    childGap: 'xs' as BoxProps['childGap'],
+    alignItems: helpText ? 'flex-start' : 'center' as BoxProps['alignItems'],
   };
 
   return (

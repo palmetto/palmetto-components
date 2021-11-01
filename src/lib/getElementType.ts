@@ -8,7 +8,7 @@ import React from 'react';
  * @param {function} [getDefault] A function that returns a default element type.
  * @returns {string} A ReactElement type
  */
-function getElementType(
+export function getElementType( // eslint-disable-line import/prefer-default-export
   Component: React.Component | React.FC,
   props: { [key: string]: unknown; },
   getDefault?: () => string,
@@ -40,5 +40,3 @@ function getElementType(
 
   return defaultProps.as || 'div';
 }
-
-export default getElementType;
