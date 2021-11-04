@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/OptionTileGroup/Codesandbox" />
+
+# OptionTileGroup
+
+Use a OptionTileGroup when a user is required to select one of five or fewer options. It is ideal for this scenario because the options are displayed without having to interact.
+If there are more than five options, use the [SelectInput](?path=/docs/components-selectinput-overview--default-story) instead.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { OptionTileGroup } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState([]);
+
+  const options = [
+    {
+      id: 'chocolate_default',
+      value: 'chocolate',
+      label: 'Chocolate',
+    },
+    {
+      id: 'strawberry_default',
+      value: 'strawberry',
+      label: 'Strawberry',
+    },
+    {
+      id: 'vanilla_default',
+      value: 'vanilla',
+      label: 'Vanilla',
+    },
+  ];
+
+  return (
+    <OptionTileGroup
+      name="default"
+      value={value}
+      onChange={event => setValue(event.target.value)}
+      options={options}
+      margin="md"
+    />
+  );
+};
+```

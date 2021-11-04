@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Alert/Codesandbox" />
+
+# Alert
+
+Use alerts to display feedback for users about specific actions, or states of an application.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Alert } from '@palmetto/palmetto-components';
+
+export default () => (
+  <Alert
+    title="Contact Created"
+    message="The contact was saved on December 3, 2020 at 6:10pm PDT"
+    variant="success"
+    isClosable
+    hasIcon
+  />
+);
+```
+

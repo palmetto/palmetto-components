@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/TextInput/Codesandbox" />
+
+# TextInput
+
+Use TextInput to render a single-line text input. Masks can also be applied to custom format the input; currently supported masks include Credit Card and Phone.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { TextInput } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <TextInput
+      id="default"
+      value={value}
+      label="TextInput Label"
+      onChange={event => setValue(event.target.value)}
+    />
+  );
+}
+```

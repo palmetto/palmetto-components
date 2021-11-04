@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Spinner/Codesandbox" />
+
+# Spinner
+
+Spinners are used to communicate a loading state to the user.
+They may be used in buttons, forms, containers, pages,
+and anywhere else a loading state is necessary.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Spinner } from '@palmetto/palmetto-components';
+
+export default () => <Spinner />
+```
+
+## Variants
+
+Set the color variations of the spinner
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Spinner, BRAND_COLOR_NAMES, Box } from '@palmetto/palmetto-components';
+
+export default () => (
+  <Box display="block" childGap="md">
+    {BRAND_COLOR_NAMES.map(color => (
+      <Box direction="row" childGap="sm">
+        <Spinner variant={color} />
+        <div>{color}</div>
+      </Box>
+    ))}
+  </Box>
+);
+```
+## Sizes
+
+Use the `size` prop on your Spinner based on what's a best fit for your layout
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Spinner, Box } from '@palmetto/palmetto-components';
+
+export default () => (
+  <Box direction="row" childGap="md">
+    <Box direction="row" childGap="sm">
+      <Spinner size="sm" />
+      <div>sm</div>
+    </Box>
+    <Box direction="row" childGap="sm">
+      <Spinner size="md" />
+      <div>md</div>
+    </Box>
+    <Box direction="row" childGap="sm">
+      <Spinner size="lg" />
+      <div>lg</div>
+    </Box>
+    <Box direction="row" childGap="sm">
+      <Spinner size="xl" />
+      <div>xl</div>
+    </Box>
+  </Box>
+);
+```

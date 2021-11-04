@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/TextareaInput/Codesandbox" />
+
+# TextareaInput
+
+Use TextareaInput to render a multi-line text input.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { TextareaInput } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <TextareaInput
+      id="default"
+      value={value}
+      label="TextareaInput"
+      onChange={event => setValue(event.target.value)}
+    />
+  );
+};
+```

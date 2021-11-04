@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/CheckboxInput/Codesandbox" />
+
+# CheckboxInput
+
+Use a CheckboxInput to allow users to make a range of selections (zero, one or many).
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { CheckboxInput } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState(null);
+
+  return (
+    <CheckboxInput
+      id="defaultStateIsUnchecked"
+      label="Label"
+      onChange={event => setValue(event.target.checked)}
+      isChecked={value}
+    />
+  );
+};
+```
