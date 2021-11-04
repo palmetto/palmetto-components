@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Button/Codesandbox" />
+
+# Button
+
+Buttons are used as triggers for actions.
+They are used in forms, toolbars, modal dialogs and as stand-alone action triggers.
+Actions almost always occur on the same page.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Button } from '@palmetto/palmetto-components';
+
+export default () => (
+  <Button
+    onClick={() => alert('clicked')}
+    variant="primary"
+    size="sm"
+    iconPrefix="mail"
+  >
+    Button
+  </Button>
+)
+```

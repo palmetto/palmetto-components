@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Icon/Codesandbox" />
+
+# Icon
+
+Icons are used to visually communicate product functionality and actions.
+Use an icon only when it provides additional clarity or is necessary to draw attention to an element.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Icon } from '@palmetto/palmetto-components';
+
+export default () => (<Icon name="star" />);
+```
+
+## Size
+
+The size of the icon can be set on the Icon itself, or inherited from its parent's `fontSize`.
+This allows for easy placement inside of other components.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Icon, Box } from '@palmetto/palmetto-components';
+
+export default () => (
+  <>
+    <Box direction="row" childGap="sm" margin="0 0 md 0" fontSize="xs">
+      <Icon name="remove" color="danger-500" />
+      <Box>Size is set by the Icon's parent</Box>
+    </Box>
+    <Box direction="row" fontSize="xl" childGap="sm">
+      <Icon name="star" color="warning-400" />
+      <Box>Size is set by the Icon's parent</Box>
+    </Box>
+  </>
+);
+```
+
+## Color
+
+Similar to sizing, the color of the icon can be set on the Icon itself, or inherited from its parent.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Icon, Box } from '@palmetto/palmetto-components';
+
+export default () => (
+  <>
+  <Box direction="row" childGap="sm" margin="0 0 md 0">
+    <Icon name="remove" color="danger-500" />
+    <Box>Color is set at the Icon level</Box>
+  </Box>
+  <Box direction="row" childGap="sm" color="secondary-400">
+    <Icon name="book" />
+    <Box>Color is set by the Icon's parent</Box>
+  </Box>
+  </>
+);
+```

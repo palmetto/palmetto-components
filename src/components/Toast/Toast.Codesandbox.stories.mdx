@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Toast/Codesandbox" />
+
+# Toast
+
+Use a toast to communicate non-critical information or feedback to a user about the result of an action.
+Typically you'd reserve toasts for non-essential notifications, since they are meant to disappear automatically
+under normal circumstances.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { ToastContainer, toast, Button } from '@palmetto/palmetto-components';
+
+export default () => {
+  const handleClick = () => toast('Proposal saved', { duration: 5000 });
+
+  return (
+    <>
+      <ToastContainer />
+      <Button onClick={handleClick}>
+        Show toast
+      </Button>
+    </>
+  );
+};
+```

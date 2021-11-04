@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/addon-docs/blocks';;
+
+<Meta title="Components/DateInput/Codesandbox" />
+
+# DateInput
+
+Use a DateInput to allow users to select a date close to today and place that date in an input field.
+Avoid using this component if the user needs to enter a date that is many years in the past (i.e. birthday) or future.
+For entering these types of dates we recommend using the `TextInput` component with a `date` mask. See an example here:
+[TextInput Date Example](?path=/docs/components-textinput-overview--with-date-mask)
+
+The DateInput is composed of 3 components. Each can be tailored based on their props. They are:
+
+1. [DatePicker](?path=/docs/components-datepicker-overview--basic-example)
+2. [Popover](?path=/docs/components-popover-overview--demo)
+3. [TextInput](?path=/docs/components-textinput-overview--default-story)
+
+The `DateInput` uses sensible defaults for these to allow for very straightforward ergonomics that allow users to
+select dates with minimal work.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { DateInput } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [selectedDate, setSelectedDate] = useState(null);
+  const handleClear = () => {
+    setSelectedDate(null);
+  };
+  return (
+    <DateInput
+      datePickerProps={{
+        selected: selectedDate,
+        onChange: setSelectedDate,
+      }}
+      textInputProps={{
+        placeholder: 'e.g. 11/02/2020',
+        onClear: handleClear,
+        id: 'defaultDatePicker',
+        name: 'selectDate',
+        label: 'Select Date',
+      }}
+    />
+  );
+}
+```
