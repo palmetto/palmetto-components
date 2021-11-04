@@ -1,5 +1,7 @@
 Changelog
 
+## [0.96.1](https://github.com/palmetto/palmetto-components/compare/v0.96.0...v0.96.1) (2021-11-04)
+
 # [0.96.0](https://github.com/palmetto/palmetto-components/compare/v0.95.5...v0.96.0) (2021-10-26)
 
 
