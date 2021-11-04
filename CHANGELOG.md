@@ -1,5 +1,12 @@
 Changelog
 
+# [0.96.0](https://github.com/palmetto/palmetto-components/compare/v0.95.5...v0.96.0) (2021-10-26)
+
+
+### Features
+
+* **tokens:** export tokens ([#618](https://github.com/palmetto/palmetto-components/issues/618)) ([def96e7](https://github.com/palmetto/palmetto-components/commit/def96e75eca25a0bf9de2a52ca258782ebb1fa9d))
+
 ## [0.95.5](https://github.com/palmetto/palmetto-components/compare/v0.95.4...v0.95.5) (2021-10-25)
 
 
