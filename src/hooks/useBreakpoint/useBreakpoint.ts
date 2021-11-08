@@ -20,7 +20,7 @@ export const useBreakpoint = (): BreakpointState => {
 
   useEffect(() => {
     const sortedBreakpoints = [...BREAKPOINTS].sort((a, b) => b.minWidth - a.minWidth);
-    const activeBreakpoint = windowSize && sortedBreakpoints.find(b => b.minWidth < (windowSize.innerWidth as number));
+    const activeBreakpoint = windowSize && sortedBreakpoints.find(b => b.minWidth <= (windowSize.innerWidth as number));
 
     setBreakpoint(activeBreakpoint || { ...defaultBreakpoint });
     // eslint-disable-next-line react-hooks/exhaustive-deps
