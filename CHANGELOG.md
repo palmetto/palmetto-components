@@ -1,5 +1,12 @@
 Changelog
 
+## [0.96.2](https://github.com/palmetto/palmetto-components/compare/v0.96.1...v0.96.2) (2021-11-08)
+
+
+### Bug Fixes
+
+* **useBreakpoint:** fix function to use correct breakpoint start ([#640](https://github.com/palmetto/palmetto-components/issues/640)) ([466a920](https://github.com/palmetto/palmetto-components/commit/466a9206064bcd88835c2a98fbc703b09f6ecea0))
+
 ## [0.96.1](https://github.com/palmetto/palmetto-components/compare/v0.96.0...v0.96.1) (2021-11-04)
 
 # [0.96.0](https://github.com/palmetto/palmetto-components/compare/v0.95.5...v0.96.0) (2021-10-26)
