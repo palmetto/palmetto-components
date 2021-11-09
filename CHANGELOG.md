@@ -1,5 +1,12 @@
 Changelog
 
+# [0.97.0](https://github.com/palmetto/palmetto-components/compare/v0.96.2...v0.97.0) (2021-11-09)
+
+
+### Features
+
+* **utilities:** Create component ([#639](https://github.com/palmetto/palmetto-components/issues/639)) ([3c0a5f7](https://github.com/palmetto/palmetto-components/commit/3c0a5f70dbddad951ed4e3c3f56565d7b9bc9319))
+
 ## [0.96.2](https://github.com/palmetto/palmetto-components/compare/v0.96.1...v0.96.2) (2021-11-08)
 
 
