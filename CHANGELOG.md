@@ -1,5 +1,12 @@
 Changelog
 
+# [0.98.0](https://github.com/palmetto/palmetto-components/compare/v0.97.0...v0.98.0) (2021-11-09)
+
+
+### Features
+
+* **storybook:** storybook to 6.3 ([#641](https://github.com/palmetto/palmetto-components/issues/641)) ([c40206e](https://github.com/palmetto/palmetto-components/commit/c40206e79a643cfeeaa54fd4530f2b6ddd1357a5))
+
 # [0.97.0](https://github.com/palmetto/palmetto-components/compare/v0.96.2...v0.97.0) (2021-11-09)
 
 
