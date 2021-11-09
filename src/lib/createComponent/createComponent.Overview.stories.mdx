@@ -1,0 +1,447 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Box } from '../../components/Box/Box';
+import { createComponent } from './createComponent';
+
+<Meta title="Patterns/Custom Components" />
+
+# Creating Custom Components
+
+Our library encourages usage of the `Box` component frequently due to its extensability and flexibility, and in fact most other components are based on it.
+This however can lead to markup that can be hard to read in some cases. Consider the example of this basic column layout:
+
+<Canvas isExpanded>
+  <Box
+    childGap="md"
+    direction="row"
+    shadow="sm"
+    radius="sm"
+    border="xs"
+    borderColor="grey-lighter"
+    hover={{
+      shadow: 'md',
+    }}
+    padding="md"
+    justifyContent="space-evenly"
+  >
+    <Box
+      justifyContent="center"
+      background="info-lightest"
+      padding="md"
+      hover={{
+        background: 'info-lighter',
+        shadow: 'md',
+      }}
+      radius="sm"
+      flex="auto"
+      alignItems="center"
+    >
+      Column 1
+    </Box>
+    <Box
+      justifyContent="center"
+      background="info-lightest"
+      padding="md"
+      hover={{
+        background: 'info-lighter',
+        shadow: 'md',
+      }}
+      radius="sm"
+      flex="auto"
+      alignItems="center"
+    >
+      Column 2
+    </Box>
+    <Box
+      justifyContent="center"
+      background="info-lightest"
+      padding="md"
+      hover={{
+        background: 'info-lighter',
+        shadow: 'md',
+      }}
+      radius="sm"
+      flex="auto"
+      alignItems="center"
+    >
+      Column 3
+    </Box>
+    <Box
+      justifyContent="center"
+      background="info-lightest"
+      padding="md"
+      hover={{
+        background: 'info-lighter',
+        shadow: 'md',
+      }}
+      radius="sm"
+      flex="auto"
+      alignItems="center"
+    >
+      Column 4
+    </Box>
+  </Box>
+</Canvas>
+
+The most basic markup for this would look like this:
+
+```jsx
+import { Box } from '@palmetto/palmetto-components';
+
+export const App = () => (
+  <Box
+    childGap="md"
+    direction="row"
+    shadow="sm"
+    radius="sm"
+    border="xs"
+    borderColor="grey-lighter"
+    hover={{
+      shadow: 'md',
+    }}
+    padding="md"
+    justifyContent="space-evenly"
+  >
+    <Box
+      justifyContent="center"
+      background="info-lightest"
+      padding="md"
+      hover={{
+        background: 'info-lighter',
+        shadow: 'md',
+      }}
+      radius="sm"
+      flex="auto"
+      alignItems="center"
+    >
+      Column 1
+    </Box>
+    <Box
+      justifyContent="center"
+      background="info-lightest"
+      padding="md"
+      hover={{
+        background: 'info-lighter',
+        shadow: 'md',
+      }}
+      radius="sm"
+      flex="auto"
+      alignItems="center"
+    >
+      Column 2
+    </Box>
+    <Box
+      justifyContent="center"
+      background="info-lightest"
+      padding="md"
+      hover={{
+        background: 'info-lighter',
+        shadow: 'md',
+      }}
+      radius="sm"
+      flex="auto"
+      alignItems="center"
+    >
+      Column 3
+    </Box>
+    <Box
+      justifyContent="center"
+      background="info-lightest"
+      padding="md"
+      hover={{
+        background: 'info-lighter',
+        shadow: 'md',
+      }}
+      radius="sm"
+      flex="auto"
+      alignItems="center"
+    >
+      Column 4
+    </Box>
+  </Box>
+);
+```
+
+## Improving This Code 
+The first step toward improving this code is obviously to try and remove duplicate elements so it's easier to parse. We can accomplish it like this:
+
+```jsx
+import { Box } from '@palmetto/palmetto-components';
+
+export const App = () => {
+  const columns = ['Column 1', 'Column 2', 'Column 3', 'Column 4'];
+
+  return (
+    <Box
+      childGap="md"
+      direction="row"
+      shadow="sm"
+      radius="sm"
+      border="xs"
+      borderColor="grey-lighter"
+      hover={{
+        shadow: 'md',
+      }}
+      padding="md"
+      justifyContent="space-evenly"
+    >
+      {columns.map(column) => (
+        <Box
+          key={column}
+          justifyContent="center"
+          background="info-lightest"
+          padding="md"
+          hover={{
+            background: 'info-lighter',
+            shadow: 'md',
+          }}
+          radius="sm"
+          flex="auto"
+          alignItems="center"
+        >
+          {column}
+        </Box>
+      )}
+    </Box>
+  );
+};
+```
+
+## Custom Components
+
+The above is much better off the bat but the markup still looks too charged. Here is where custom components come in. We can simplify further by abstracting
+away these containers into their own components.
+
+```jsx
+// MainContainer.jsx
+import { Box } from '@palmetto/palmetto-components';
+
+export const MainContainer = (props) => {
+  const {
+    children,
+    childGap = 'md',
+    direction = 'row',
+    shadow = 'sm',
+    radius = 'sm',
+    border = 'xs',
+    borderColor = 'grey-lighter',
+    hover = {
+      shadow: 'md',
+    },
+    padding = 'md',
+    justifyContent = 'space-evenly',
+    ...restProps,
+  } = props;
+
+  return (
+    <Box
+      childGap={childGap}
+      direction={direction}
+      shadow={shadow}
+      radius={radius}
+      border={border}
+      borderColor={borderColor}
+      hover={{ ...hover }}
+      padding={padding}
+      justifyContent={justifyContent}
+      {...restProps}
+    >
+      {children}
+    </Box>
+  );
+};
+
+// Column.jsx
+import { Box } from '@palmetto/palmetto-components';
+
+export const Column = (props) => {
+  const {
+    children,
+    justifyContent = 'center',
+    background = 'info-lightest',
+    padding = 'md',
+    hover = {
+      background: 'info-lighter',
+      shadow: 'md',
+    },
+    radius = 'sm',
+    flex = 'auto',
+    alignItems = 'center',
+    ...restProps,
+  } = props;
+
+  return (
+    <Box
+      justifyContent={justifyContent}
+      background={background}
+      padding={padding}
+      hover={{ ...hover }}
+      radius={radius}
+      flex={auto}
+      alignItems={alignItems}
+      {...restProps}
+    >
+      {children}
+    </Box>
+  );
+};
+
+// App.jsx
+import { MainContainer } from './MainContainer';
+import { Column } from './Column';
+
+export const App = () => {
+  const columns = ['Column 1', 'Column 2', 'Column 3', 'Column 4'];
+  <MainContainer>
+    {columns.map(column => (
+      <Column key={column}>
+        {column}
+      </Column>
+    ))}
+  </MainContainer>
+}
+```
+
+This is our cleanest example yet, but the process of creating these components is still not ideal as they require re-writing each custom Box and then ensuring 
+they always get the exact correct props, as well as ensuring proper spreading of other props.
+
+## Enter the `createComponent` utility
+
+The `createComponent` utility function allows you to create a custom component out of any other component, while ensuring type safety and inference of its props. Using this function
+we could re-write our code like this:
+
+```jsx
+import { Box } from '@palmetto/palmetto-components';
+
+const MainContainer = createComponent(Box)({
+  childGap: 'md',
+  direction: 'row',
+  shadow: 'sm',
+  radius: 'sm',
+  border: 'xs',
+  borderColor: 'grey-lighter',
+  hover: {
+    shadow: 'md',
+  },
+  padding: 'md',
+  justifyContent: 'space-evenly',
+});
+
+const Column = createComponent(Box)({
+  justifyContent: 'center',
+  background: 'info-lightest',
+  padding: 'md',
+  hover: {{
+    background: 'info-lighter',
+    shadow: 'md',
+  }}
+  radius: 'sm',
+  flex: 'auto',
+  alignItems: 'center',
+});
+
+export const App = () => {
+  const columns = ['Column 1', 'Column 2', 'Column 3', 'Column 4'];
+  <MainContainer>
+    {columns.map(column => (
+      <Column key={column}>
+        {column}
+      </Column>
+    ))}
+  </MainContainer>
+};
+```
+
+And here we have the same result as the original but with a much lighter markup footprint. The components in this example `MainContainer` and `Column` can also
+take any of the original `Box` props and overwrite its default style. This allows for even more complex customization such as creating custom components from other
+custom components. Read on for an example.
+ 
+<Canvas>
+  <Story name="Basic Custom Components">
+  {() => {
+    const MainContainer = createComponent(Box)({
+      childGap: 'md',
+      direction: 'row',
+      shadow: 'sm',
+      radius: 'sm',
+      border: 'xs',
+      borderColor: 'grey-lighter',
+      hover: {
+        shadow: 'md',
+      },
+      padding: 'md',
+      justifyContent: 'space-evenly',
+    });
+    const Column = createComponent(Box)({
+      justifyContent: 'center',
+      background: 'info-lightest',
+      padding: 'md',
+      hover: {
+        background: 'info-lighter',
+        shadow: 'md',
+      },
+      radius: 'sm',
+      flex: 'auto',
+      alignItems: 'center',
+      cursor: 'pointer',
+    });
+    const columns = ['Column 1', 'Column 2', 'Column 3', 'Column 4'];
+    return (
+      <MainContainer>
+        {columns.map(column => (
+          <Column key={column}>
+            {column}
+          </Column>
+        ))}
+      </MainContainer>
+    );
+  }}
+  </Story>
+</Canvas>
+
+## Wrapping Custom Components
+
+The below shows how we can create simple variations on a component with this utility.
+
+<Canvas>
+  <Story name="Component Variations">
+    {() => {
+      const Container = createComponent(Box)({
+        direction: 'row',
+        childGap: 'md',
+      });
+      const BaseColumn = createComponent(Box)({
+        padding: 'md',
+        fontSize: 'lg',
+        fontWeight: 'bold',
+        flex: 'auto',
+        cursor: 'pointer',
+        hover: { shadow: 'md' },
+      });
+      const BlueColumn = createComponent(BaseColumn)({
+        background: 'info-lightest',
+        color: 'info-dark',
+      });
+      const RedColumn = createComponent(BaseColumn)({
+        background: 'danger-lightest',
+        color: 'danger-dark',
+      });
+      return (
+        <Container>
+          <BlueColumn>
+            blue
+          </BlueColumn>
+          <RedColumn>
+            red
+          </RedColumn>
+          <BlueColumn>
+            blue
+          </BlueColumn>
+          <RedColumn>
+            red
+          </RedColumn>
+        </Container>
+      );
+    }}
+  </Story>
+</Canvas>
