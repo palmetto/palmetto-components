@@ -7,7 +7,7 @@ import { createComponent } from './createComponent';
 
 # Creating Custom Components
 
-Our library encourages usage of the `Box` component frequently due to its extensability and flexibility, and in fact most other components are based on it.
+Our library encourages usage of the `Box` component frequently due to its extensibility and flexibility, and in fact most other components are based on it.
 This however can lead to markup that can be hard to read in some cases. Consider the example of this basic column layout:
 
 <Canvas isExpanded>
@@ -16,7 +16,7 @@ This however can lead to markup that can be hard to read in some cases. Consider
     direction="row"
     shadow="sm"
     radius="sm"
-    border="xs"
+    borderWidth="xs"
     borderColor="grey-lighter"
     hover={{
       shadow: 'md',
@@ -94,7 +94,7 @@ export const App = () => (
     direction="row"
     shadow="sm"
     radius="sm"
-    border="xs"
+    borderWidth="xs"
     borderColor="grey-lighter"
     hover={{
       shadow: 'md',
@@ -177,7 +177,7 @@ export const App = () => {
       direction="row"
       shadow="sm"
       radius="sm"
-      border="xs"
+      borderWidth="xs"
       borderColor="grey-lighter"
       hover={{
         shadow: 'md',
@@ -318,7 +318,7 @@ const MainContainer = createComponent(Box)({
   direction: 'row',
   shadow: 'sm',
   radius: 'sm',
-  border: 'xs',
+  borderWidth: 'xs',
   borderColor: 'grey-lighter',
   hover: {
     shadow: 'md',
@@ -364,7 +364,7 @@ custom components. Read on for an example.
       direction: 'row',
       shadow: 'sm',
       radius: 'sm',
-      border: 'xs',
+      borderWidth: 'xs',
       borderColor: 'grey-lighter',
       hover: {
         shadow: 'md',
