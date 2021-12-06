@@ -58,7 +58,7 @@
 
     &:disabled {
       @extend %disabled-base;
-      background-color: initial;
+      background-color: transparent;
     }
   }
 
