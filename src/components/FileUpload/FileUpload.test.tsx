@@ -20,7 +20,7 @@ describe('FileUpload', () => {
 
   describe('Button Variations', () => {
     it('renders a file upload button in different styles based on props', () => {
-      interface Props { color?: 'dark' | 'light'; size?: 'sm' | 'md' | 'lg'; }
+      interface Props { color?: 'dark' | 'light' | 'primary'; size?: 'sm' | 'md' | 'lg'; }
       const UploadComponent: FC<Props> = ({ color = 'light', size = 'md' }) => (
         <FileUpload
           id="file-input"
@@ -49,6 +49,12 @@ describe('FileUpload', () => {
 
       expect(button).toBeInTheDocument();
       expect(button).toHaveClass('dark', 'lg');
+
+      rerender(<UploadComponent size="md" color="primary" />);
+      button = screen.getByText('Upload File').closest('button');
+
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveClass('primary', 'md');
     });
 
     it('renders with no icon when boolean false is passed to `hasIcon`', () => {
