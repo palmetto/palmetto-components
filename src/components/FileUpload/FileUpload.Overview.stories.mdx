@@ -114,18 +114,22 @@ Remove the icon on the button with the handy `hasIcon` boolean.
 
 ## Variants
 
-Light and dark upload button variations are available.
+Light, dark and primary upload button variations are available.
 
 <Canvas>
   <Story name="Variants">
     {() => {
       const [files, setFiles] = useState(null);
       const [lightFiles, setLightFiles] = useState(null);
+      const [primaryFiles, setPrimaryFiles] = useState(null);
       const handleChange = event => {
         setFiles(event.target.files);
       };
       const handleLightChange = event => {
         setLightFiles(event.target.files);
+      };
+      const handlePrimaryChange = event => {
+        setPrimaryFiles(event.target.files);
       };
       return (
         <Box childGap="md">
@@ -142,6 +146,13 @@ Light and dark upload button variations are available.
             onChange={handleLightChange}
             files={lightFiles}
             variant="light"
+          />
+          <FileUpload
+            labelText="My File"
+            id="primaryUpload"
+            onChange={handlePrimaryChange}
+            files={primaryFiles}
+            variant="primary"
           />
         </Box>
       );

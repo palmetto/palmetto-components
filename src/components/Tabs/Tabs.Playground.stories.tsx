@@ -37,9 +37,9 @@ export default {
       },
     },
     onChange: {
-      table: {
-        disable: true,
-      },
+      // table: {
+      //   disable: true,
+      // },
     },
     ...boxPropsKeys.reduce((acc, curr) => ({ ...acc, [curr]: { table: { disable: true } } }), {}),
   },
