@@ -96,7 +96,7 @@ export interface FileUploadProps extends BoxProps {
   /**
    * Color for button component. Matches a curated subset of button variants.
    */
-  variant?: 'light' | 'dark';
+  variant?: 'light' | 'dark' | 'primary';
   /**
    * Additional props to be spread. IMPORTANT: these will be spread ONLY to the
    * `input` element in the component since it is the actual semantic file input
