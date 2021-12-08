@@ -1,5 +1,17 @@
 Changelog
 
+# [0.99.0](https://github.com/palmetto/palmetto-components/compare/v0.98.1...v0.99.0) (2021-12-08)
+
+
+### Bug Fixes
+
+* **ci:** specify node version in all jobs ([#645](https://github.com/palmetto/palmetto-components/issues/645)) ([aace83e](https://github.com/palmetto/palmetto-components/commit/aace83e923b81d626fb814c3c84b35ffcf8b9b5c))
+
+
+### Features
+
+* **FileUpload:** Add primary variant ([#644](https://github.com/palmetto/palmetto-components/issues/644)) ([4c08e4e](https://github.com/palmetto/palmetto-components/commit/4c08e4e3d4a1df834d0234f3458424878a1af2bf))
+
 ## [0.98.1](https://github.com/palmetto/palmetto-components/compare/v0.98.0...v0.98.1) (2021-11-18)
 
 # [0.98.0](https://github.com/palmetto/palmetto-components/compare/v0.97.0...v0.98.0) (2021-11-09)
