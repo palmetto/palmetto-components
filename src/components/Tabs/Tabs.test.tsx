@@ -15,7 +15,7 @@ describe('Tabs', () => {
 
       const navElement = screen.getByRole('navigation');
       const tabListElement = screen.getByRole('tablist');
-      const tab = screen.getByText('tab 1').closest('div');
+      const tab = screen.getByText('tab 1').closest('button');
 
       expect(navElement).toBeInTheDocument();
       expect(tabListElement).toBeInTheDocument();
@@ -37,8 +37,8 @@ describe('Tabs', () => {
         </Tabs>,
       );
 
-      const tabOne = screen.getByText('tab 1').closest('div');
-      const tabTwo = screen.getByText('tab 2').closest('div');
+      const tabOne = screen.getByText('tab 1').closest('button');
+      const tabTwo = screen.getByText('tab 2').closest('button');
 
       expect(tabOne).toHaveClass('tab-item--selected');
       expect(tabTwo).not.toHaveClass('tab-item--selected');
@@ -54,8 +54,8 @@ describe('Tabs', () => {
         </Tabs>,
       );
 
-      const tabThree = screen.getByText('tab 3').closest('div');
-      const tabFour = screen.getByText('tab 4').closest('div');
+      const tabThree = screen.getByText('tab 3').closest('button');
+      const tabFour = screen.getByText('tab 4').closest('button');
 
       expect(tabThree).not.toHaveClass('tab-item--selected');
       expect(tabFour).toHaveClass('tab-item--selected');
