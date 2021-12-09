@@ -1,5 +1,12 @@
 Changelog
 
+# [0.100.0](https://github.com/palmetto/palmetto-components/compare/v0.99.0...v0.100.0) (2021-12-09)
+
+
+### Features
+
+* **Tabs:** Ability to make tabs anchor elements. ([#646](https://github.com/palmetto/palmetto-components/issues/646)) ([692ee0b](https://github.com/palmetto/palmetto-components/commit/692ee0b8f8a711fdf9dc5d10402eeb32502f945f))
+
 # [0.99.0](https://github.com/palmetto/palmetto-components/compare/v0.98.1...v0.99.0) (2021-12-08)
 
 
