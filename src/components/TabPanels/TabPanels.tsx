@@ -12,7 +12,7 @@ export const TabPanels: React.FC<TabPanelsProps> = ({
 }) => {
   const filteredChildren = filter(children, (_child, index) => index === value);
   return (
-    <Box>
+    <Box role="tabpanel">
       {filteredChildren}
     </Box>
   );
