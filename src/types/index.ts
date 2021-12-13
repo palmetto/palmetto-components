@@ -153,7 +153,7 @@ export declare type Column = {
   /**
    * The heading/title text of a column.
    */
-  heading?: string;
+  heading?: string | ReactNode;
   /**
    * CSS Class to be applied to the column header cell.
    */

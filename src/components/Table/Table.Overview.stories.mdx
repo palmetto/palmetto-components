@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Badge } from '../Badge/Badge';
 import { Button } from '../Button/Button';
 import { Table } from './Table';
 
@@ -1013,6 +1014,34 @@ in the column config.
         { id: 1, color: 'red', flavor: 'vanilla' },
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Component as Column Header
+
+You can use a ReactNode as your table header or cell.
+
+<Canvas>
+  <Story name="ReactNode as Column Header or Cell">
+    {() => {
+      const columnConfig = [
+        { heading: 'ID', dataKey: 'id' },
+        { heading: 'Color', dataKey: 'color' },
+        { heading: <Badge message="Status" />, dataKey: 'status' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', status: <Badge message="danger" variant="danger" /> },
+        { id: 2, color: 'blue', status: <Badge message="info" variant="info" /> },
+        { id: 3, color: 'green', status: <Badge message="success" variant="success" /> },
       ];
       return (
         <Table
