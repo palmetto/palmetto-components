@@ -1,5 +1,12 @@
 Changelog
 
+## [0.101.1](https://github.com/palmetto/palmetto-components/compare/v0.101.0...v0.101.1) (2021-12-14)
+
+
+### Bug Fixes
+
+* **build:** fixing nullish coalsecing error ([#649](https://github.com/palmetto/palmetto-components/issues/649)) ([fe9c3a9](https://github.com/palmetto/palmetto-components/commit/fe9c3a9ecbe78b50fff21d4f198b516202ae7f2f))
+
 # [0.101.0](https://github.com/palmetto/palmetto-components/compare/v0.100.0...v0.101.0) (2021-12-14)
 
 
