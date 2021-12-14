@@ -16,8 +16,8 @@ export const TabItem: React.FC<TabItemProps> = ({
   const styles = {
     ...style,
     cursor: !isDisabled ? 'pointer' : 'not-allowed',
-    background: style?.background ?? 'transparent',
-    whiteSpace: style?.whiteSpace ?? 'nowrap',
+    background: style?.background || 'transparent',
+    whiteSpace: style?.whiteSpace || 'nowrap',
   };
 
   return (
