@@ -1,5 +1,12 @@
 Changelog
 
+# [0.101.0](https://github.com/palmetto/palmetto-components/compare/v0.100.0...v0.101.0) (2021-12-14)
+
+
+### Features
+
+* **Table:** Support ReactNode as Column heading ([#648](https://github.com/palmetto/palmetto-components/issues/648)) ([6df546f](https://github.com/palmetto/palmetto-components/commit/6df546fc0f063bfd08513ae58ed1e7782a5afb2c))
+
 # [0.100.0](https://github.com/palmetto/palmetto-components/compare/v0.99.0...v0.100.0) (2021-12-09)
 
 
