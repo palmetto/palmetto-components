@@ -198,7 +198,8 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
           fullWidth={fullWidth}
         >
           {/* We need the onClick handler here to prevent bubbling of clicks on the inner button elements */}
-          {/* Implemented in response to Safari's handling of bubbled click events into the details element, which triggered default behavior */}
+          {/* Implemented in response to Safari's handling of bubbled click events into the details element */}
+          {/* which triggered default behavior of opening the details element on click */}
           <Box as="span" direction="row" onClick={(e: MouseEvent) => { e.preventDefault(); }}>
             {hasIcon && (
               <Icon
