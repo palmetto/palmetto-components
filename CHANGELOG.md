@@ -1,5 +1,12 @@
 Changelog
 
+## [0.101.2](https://github.com/palmetto/palmetto-components/compare/v0.101.1...v0.101.2) (2021-12-16)
+
+
+### Bug Fixes
+
+* **FileUpload:** File upload click propagation ([#652](https://github.com/palmetto/palmetto-components/issues/652)) ([fac66d4](https://github.com/palmetto/palmetto-components/commit/fac66d46e8ba273b0aa5d0aa602c5013042bb076))
+
 ## [0.101.1](https://github.com/palmetto/palmetto-components/compare/v0.101.0...v0.101.1) (2021-12-14)
 
 
