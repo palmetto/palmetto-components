@@ -117,7 +117,7 @@
   white-space: nowrap;
 
   &:checked + .toggle-track {
-    background-color: var(--color-brand-primary-400);
+    background-color: var(--color-brand-primary-500);
   }
 
   &:checked + .toggle-track .toggle-thumb.thumb-size-sm {
