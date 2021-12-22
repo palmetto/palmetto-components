@@ -41,7 +41,7 @@ export const CheckboxIcon: React.FC<CheckboxIconProps> = ({
 
   if (isChecked) name = 'checkbox-btn-checked';
   else name = 'checkbox-btn';
-  
+
   if (isIndeterminate) name = 'checkbox-btn-indeterminate';
 
   if (isChecked && isDisabled) {

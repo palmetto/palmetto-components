@@ -1,5 +1,4 @@
 import React, { forwardRef, ForwardRefExoticComponent } from 'react';
-import { BrandColor } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { RadioInput } from '../RadioGroup/RadioInput/RadioInput';
 import { Checkbox } from '../CheckboxInput/components/Checkbox';
@@ -123,23 +122,21 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
       {...restProps}
       onClick={handleClick}
     >
-      {!hideInput && (inputType === 'checkbox')
-        ? (
-          <CheckboxIcon
-            isChecked={isSelected}
-            isDisabled={disabled}
-            error={error}
-            margin="0 md 0 0"
-          />
-        ) : (
-          <RadioInputIcon
-            isSelected={isSelected}
-            isDisabled={disabled}
-            error={error}
-            margin="0 md 0 0"
-          />
-        )
-      }
+      {!hideInput && (inputType === 'checkbox') ? (
+        <CheckboxIcon
+          isChecked={isSelected}
+          isDisabled={disabled}
+          error={error}
+          margin="0 md 0 0"
+        />
+      ) : (
+        <RadioInputIcon
+          isSelected={isSelected}
+          isDisabled={disabled}
+          error={error}
+          margin="0 md 0 0"
+        />
+      )}
       {inputType === 'checkbox' ? (
         <Checkbox
           id={id}

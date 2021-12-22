@@ -3,7 +3,7 @@ import { Box, BoxProps } from '../../Box/Box';
 import { Icon } from '../../Icon/Icon';
 import { FontColor } from '../../../types';
 import { RadioInputProps } from './RadioInput'; // eslint-disable-line import/no-cycle
-import { RadioGroupProps } from '../RadioGroup';
+import { RadioGroupProps } from '../RadioGroup'; // eslint-disable-line import/no-cycle
 
 export interface RadioIconProps extends BoxProps {
   /**
