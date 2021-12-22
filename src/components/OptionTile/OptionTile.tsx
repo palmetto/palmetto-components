@@ -1,9 +1,9 @@
 import React, { forwardRef, ForwardRefExoticComponent } from 'react';
-import { BrandColor, FontColor } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { RadioInput } from '../RadioGroup/RadioInput/RadioInput';
 import { Checkbox } from '../CheckboxInput/components/Checkbox';
-import { Icon } from '../Icon/Icon';
+import { CheckboxIcon } from '../CheckboxInput/components/CheckboxIcon';
+import { RadioInputIcon } from '../RadioGroup/RadioInput/RadioInputIcon';
 
 export interface OptionTileProps extends BoxProps {
   /**
@@ -103,86 +103,6 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
     }
   };
 
-  const renderRadio = () => {
-    const getRadioFillColor = (defaultColor: BrandColor): BrandColor => {
-      if (isSelected && !disabled && error) {
-        return 'danger';
-      }
-      if (isSelected && disabled && error) {
-        return 'danger-lighter';
-      }
-      if (isSelected && !disabled) {
-        return 'primary';
-      }
-      if (isSelected && disabled) {
-        return 'grey-light';
-      }
-
-      return defaultColor;
-    };
-
-    return (
-      <Box
-        width="16px"
-        minWidth="16px"
-        height="16px"
-        minHeight="16px"
-        radius="circle"
-        borderColor={getRadioFillColor('grey-light')}
-        background="white"
-        borderWidth="xs"
-        position="relative"
-        margin="0 md 0 0"
-      >
-        <Box
-          width="10px"
-          height="10px"
-          background={getRadioFillColor('white')}
-          radius="circle"
-          position="absolute"
-          style={{
-            top: '2px',
-            left: '2px',
-          }}
-        />
-      </Box>
-    );
-  };
-
-  const renderCheckbox = () => {
-    interface CheckboxIcon {
-      color: FontColor;
-      name: 'checkbox-btn' | 'checkbox-btn-checked';
-      className?: string;
-    }
-
-    const iconProps: CheckboxIcon = {
-      color: 'grey-500',
-      name: 'checkbox-btn',
-    };
-    if (isSelected && disabled && error) {
-      iconProps.color = 'danger-lighter';
-      iconProps.name = 'checkbox-btn-checked';
-    } else if (isSelected && !disabled && error) {
-      iconProps.color = 'danger';
-      iconProps.name = 'checkbox-btn-checked';
-    } else if (isSelected && disabled) {
-      iconProps.color = 'grey-light';
-      iconProps.name = 'checkbox-btn-checked';
-    } else if (isSelected && !disabled) {
-      iconProps.color = 'primary-500';
-      iconProps.name = 'checkbox-btn-checked';
-    } else if (disabled) {
-      iconProps.color = 'grey-200';
-    }
-
-    return (
-      <Box radius="md" display="inline-block" height="16px" margin="0 md 0 0">
-        <Icon {...iconProps} size="md" />
-      </Box>
-    );
-  };
-
   return (
     <Box
       background={background}
@@ -202,7 +122,21 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
       {...restProps}
       onClick={handleClick}
     >
-      {!hideInput && (inputType === 'checkbox' ? renderCheckbox() : renderRadio())}
+      {!hideInput && (inputType === 'checkbox' ? (
+        <CheckboxIcon
+          isChecked={isSelected}
+          isDisabled={disabled}
+          error={error}
+          margin="0 md 0 0"
+        />
+      ) : (
+        <RadioInputIcon
+          isSelected={isSelected}
+          isDisabled={disabled}
+          error={error}
+          margin="0 md 0 0"
+        />
+      ))}
       {inputType === 'checkbox' ? (
         <Checkbox
           id={id}

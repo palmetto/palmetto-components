@@ -100,7 +100,7 @@ describe('Checkbox', () => {
       );
     });
 
-    test('It is secondary-200 when checked and disabled', () => {
+    test('It is primary-200 when checked and disabled', () => {
       render(
         <Checkbox
           isChecked
@@ -112,7 +112,7 @@ describe('Checkbox', () => {
       );
 
       expect(screen.getByTestId('icon-testid--checkbox-btn-checked').classList).toContain(
-        'font-color-secondary-200',
+        'font-color-primary-200',
       );
     });
   });
@@ -125,7 +125,6 @@ describe('Checkbox', () => {
           id="testCheckbox"
           label="test checkbox"
           onChange={jest.fn(() => null)}
-          isDisabled
           error="checkbox required"
         />,
       );
