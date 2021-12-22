@@ -122,7 +122,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
       {...restProps}
       onClick={handleClick}
     >
-      {!hideInput && (inputType === 'checkbox') ? (
+      {!hideInput && (inputType === 'checkbox' ? (
         <CheckboxIcon
           isChecked={isSelected}
           isDisabled={disabled}
@@ -136,7 +136,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
           error={error}
           margin="0 md 0 0"
         />
-      )}
+      ))}
       {inputType === 'checkbox' ? (
         <Checkbox
           id={id}
