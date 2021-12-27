@@ -1,5 +1,12 @@
 Changelog
 
+# [0.102.0](https://github.com/palmetto/palmetto-components/compare/v0.101.3...v0.102.0) (2021-12-27)
+
+
+### Features
+
+* **tokens:** new icon in design-tokens ([#654](https://github.com/palmetto/palmetto-components/issues/654)) ([8f9f1f5](https://github.com/palmetto/palmetto-components/commit/8f9f1f5dd3b052235e68d656e012d83b2d939a1f))
+
 ## [0.101.3](https://github.com/palmetto/palmetto-components/compare/v0.101.2...v0.101.3) (2021-12-22)
 
 
