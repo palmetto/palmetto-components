@@ -1,5 +1,12 @@
 Changelog
 
+## [0.101.3](https://github.com/palmetto/palmetto-components/compare/v0.101.2...v0.101.3) (2021-12-22)
+
+
+### Bug Fixes
+
+* Update radio and checkbox color and use Icon  ([#653](https://github.com/palmetto/palmetto-components/issues/653)) ([fda8818](https://github.com/palmetto/palmetto-components/commit/fda88189cf3fc4a7f4d568632a73af0720bc3b0c))
+
 ## [0.101.2](https://github.com/palmetto/palmetto-components/compare/v0.101.1...v0.101.2) (2021-12-16)
 
 
