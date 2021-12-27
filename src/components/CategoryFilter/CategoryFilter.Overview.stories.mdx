@@ -1,0 +1,31 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { CategoryFilter } from './CategoryFilter';
+
+<Meta title="Components/CategoryFilter/Overview" component={CategoryFilter} />
+
+# CategoryFilter
+
+The Category Filter component consists of a button with text, typically used in a design to display high level categories on page.
+
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const [isSelected, setSelected] = useState(0);
+      return (
+        <CategoryFilter
+          isSelected={isSelected}
+          onClick={() => setSelected(prevIsSelected => !prevIsSelected)}
+        >
+          Hey oh
+        </CategoryFilter>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={CategoryFilter} />
