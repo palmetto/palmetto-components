@@ -204,7 +204,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
             {hasIcon && (
               <Icon
                 name="upload"
-                className="m-right-xs align-self-center"
+                className={classNames('align-self-center', { 'm-right-xs': buttonText })}
                 data-testid="file-upload__upload-icon"
               />
             )}
