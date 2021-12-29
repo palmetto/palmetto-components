@@ -72,6 +72,22 @@ describe('FileUpload', () => {
       expect(uploadIcon).toBe(null);
     });
 
+    it('renders with no text when `null` is passed to `buttonText`', () => {
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          hasIcon={false}
+          buttonText={null}
+        />,
+      );
+
+      const uploadButtonText = screen.queryByTestId('file-upload__upload-text');
+      expect(uploadButtonText).toBe(null);
+    });
+
     it('renders a fullwidth input/button when prop is passed', () => {
       const { container } = render(
         <FileUpload

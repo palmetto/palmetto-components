@@ -208,7 +208,12 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
                 data-testid="file-upload__upload-icon"
               />
             )}
-            {buttonText}
+            {buttonText
+              && (
+                <Box data-testid="file-upload__upload-text">
+                  {buttonText}
+                </Box>
+              )}
             {isRequired && <>&nbsp;*</>}
           </Box>
           <Box
