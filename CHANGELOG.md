@@ -1,5 +1,12 @@
 Changelog
 
+## [0.102.1](https://github.com/palmetto/palmetto-components/compare/v0.102.0...v0.102.1) (2021-12-29)
+
+
+### Bug Fixes
+
+* **FileUpload:** Add case to storybook where there is no text for the FileUpload button ([#657](https://github.com/palmetto/palmetto-components/issues/657)) ([c8c7661](https://github.com/palmetto/palmetto-components/commit/c8c766109fa51db71497d72d25b79020f2b6e9a9))
+
 # [0.102.0](https://github.com/palmetto/palmetto-components/compare/v0.101.3...v0.102.0) (2021-12-27)
 
 
