@@ -21,7 +21,7 @@
     "url": "https://github.com/palmetto/palmetto-components"
   },
   "dependencies": {
-    "@palmetto/palmetto-design-tokens": "0.55.0",
+    "@palmetto/palmetto-design-tokens": "0.58.0",
     "@popperjs/core": "^2.5.3",
     "@reach/dialog": "^0.11.2",
     "classnames": "^2.2.6",
@@ -121,7 +121,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-typescript-to-proptypes": "^1.4.0",
     "babel-preset-react-app": "^9.1.2",
-    "chromatic": "^4.0.3",
+    "chromatic": "^6.0.5",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^3.6.0",
