@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { RESPONSIVE_STORY } from '../../docs/constants';
@@ -75,13 +74,23 @@ LargeSelected.args = {
 export const ResponsiveUnselected = Template.bind({});
 ResponsiveUnselected.args = {
   isSelected: false,
-  size: { base: 'xs', tablet: 'sm', desktop: 'md', hd: 'lg'},
+  size: {
+    base: 'xs',
+    tablet: 'sm',
+    desktop: 'md',
+    hd: 'lg',
+  },
 };
 
 export const ResponsiveSelected = Template.bind({});
 ResponsiveSelected.args = {
   isSelected: true,
-  size: { base: 'xs', tablet: 'sm', desktop: 'md', hd: 'lg'},
+  size: {
+    base: 'xs',
+    tablet: 'sm',
+    desktop: 'md',
+    hd: 'lg',
+  },
 };
 
 export const ExtraSmallUnselectedDisabled = Template.bind({});
@@ -144,12 +153,22 @@ export const ResponsiveUnselectedDisabled = Template.bind({});
 ResponsiveUnselectedDisabled.args = {
   isDisabled: true,
   isSelected: false,
-  size: { base: 'xs', tablet: 'sm', desktop: 'md', hd: 'lg'},
+  size: {
+    base: 'xs',
+    tablet: 'sm',
+    desktop: 'md',
+    hd: 'lg',
+  },
 };
 
 export const ResponsiveSelectedDisabled = Template.bind({});
 ResponsiveSelectedDisabled.args = {
   isDisabled: true,
   isSelected: true,
-  size: { base: 'xs', tablet: 'sm', desktop: 'md', hd: 'lg'},
+  size: {
+    base: 'xs',
+    tablet: 'sm',
+    desktop: 'md',
+    hd: 'lg',
+  },
 };
