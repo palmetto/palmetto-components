@@ -22,7 +22,7 @@ type ResponsiveCategoryFilterProps = {
 const propSizeMap: { [key in BaseCategoryFilterSize]: ResponsiveCategoryFilterProps} = {
   xs: {
     fontSize: 'xs',
-    padding: '2xs',
+    padding: '2xs xs',
     childGap: '2xs',
   },
   sm: {
