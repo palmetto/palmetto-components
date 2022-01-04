@@ -1,5 +1,12 @@
 Changelog
 
+## [0.102.2](https://github.com/palmetto/palmetto-components/compare/v0.102.1...v0.102.2) (2022-01-04)
+
+
+### Bug Fixes
+
+* [534] fix Webpack warning on named imports from json files ([#650](https://github.com/palmetto/palmetto-components/issues/650)) ([c8191aa](https://github.com/palmetto/palmetto-components/commit/c8191aacd68e62bfe5f71e1713f35fd3d147d09f))
+
 ## [0.102.1](https://github.com/palmetto/palmetto-components/compare/v0.102.0...v0.102.1) (2021-12-29)
 
 
