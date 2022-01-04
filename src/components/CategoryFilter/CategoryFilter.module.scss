@@ -1,0 +1,31 @@
+.category-filter {
+  height: max-content;
+
+  &.disabled {
+    opacity: 0.65;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: var(--button-focus-box-shadow-light);
+
+    &.selected {
+      box-shadow: 0 0 0 4px var(--color-brand-success-200);
+    }
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: var(--button-focus-box-shadow-light);
+    border-color: transparent;
+
+    &.selected {
+      box-shadow: 0 0 0 4px var(--color-brand-success-200);
+    }
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+  }
+}
