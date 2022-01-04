@@ -82,7 +82,7 @@ describe('CategoryFilter', () => {
       const lg = screen.getByText('lg');
       const responsive = screen.getByText('responsive');
 
-      expect(xs).toHaveClass('p-2xs');
+      expect(xs).toHaveClass('p-v-2xs', 'p-h-xs');
       expect(sm).toHaveClass('p-v-2xs', 'p-h-xs');
       expect(md).toHaveClass('p-v-sm', 'p-h-md');
       expect(lg).toHaveClass('p-v-sm', 'p-h-md');
