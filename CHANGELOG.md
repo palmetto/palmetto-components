@@ -1,5 +1,12 @@
 Changelog
 
+# [0.103.0](https://github.com/palmetto/palmetto-components/compare/v0.102.2...v0.103.0) (2022-01-06)
+
+
+### Features
+
+* **CategoryFilter:** add Category filter component ([#660](https://github.com/palmetto/palmetto-components/issues/660)) ([e7d25a9](https://github.com/palmetto/palmetto-components/commit/e7d25a9e3ec5a66b822bb8bd99a9aa7670e5e669))
+
 ## [0.102.2](https://github.com/palmetto/palmetto-components/compare/v0.102.1...v0.102.2) (2022-01-04)
 
 
