@@ -1,5 +1,6 @@
 .category-filter {
   height: max-content;
+  white-space: nowrap;
 
   &.disabled {
     opacity: 0.65;
