@@ -6,7 +6,6 @@ import { CategoryFilter, CategoryFilterProps } from './CategoryFilter';
 export default {
   title: 'Components/CategoryFilter/Visual Regression Tests',
   component: CategoryFilter,
-  parameters: RESPONSIVE_STORY,
 } as Meta;
 
 const Template: Story<CategoryFilterProps> = ({ ...args }) => (
@@ -81,6 +80,7 @@ ResponsiveUnselected.args = {
     hd: 'lg',
   },
 };
+ResponsiveUnselected.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSelected = Template.bind({});
 ResponsiveSelected.args = {
@@ -92,6 +92,7 @@ ResponsiveSelected.args = {
     hd: 'lg',
   },
 };
+ResponsiveSelected.parameters = RESPONSIVE_STORY;
 
 export const ExtraSmallUnselectedDisabled = Template.bind({});
 ExtraSmallUnselectedDisabled.args = {
@@ -160,6 +161,7 @@ ResponsiveUnselectedDisabled.args = {
     hd: 'lg',
   },
 };
+ResponsiveUnselectedDisabled.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSelectedDisabled = Template.bind({});
 ResponsiveSelectedDisabled.args = {
@@ -172,3 +174,4 @@ ResponsiveSelectedDisabled.args = {
     hd: 'lg',
   },
 };
+ResponsiveSelectedDisabled.parameters = RESPONSIVE_STORY;
