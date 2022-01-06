@@ -55,6 +55,7 @@ export const computedResponsiveSize = ( // eslint-disable-line @typescript-eslin
 ) => {
   if (size && !(typeof size === 'string') && typeof size === 'object') {
     return Object.entries(size)
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       .reduce((acc, [key, value]) => ({ ...acc, [key]: propSizeMap[value!][prop] }), {});
   }
 
