@@ -94,7 +94,7 @@ export const Toggle: FC<ToggleProps> = ({
     if (onFocus) onFocus(event);
   };
 
-  const wrapperClasses = classNames({ [styles.disabled]: isDisabled });
+  const wrapperClasses = classNames('palmetto-components__variables__form-control', { [styles.disabled]: isDisabled });
   const trackClasses = classNames(
     styles['toggle-track'],
     ...generateResponsiveClasses('track-size', size).map(c => (styles[c])),

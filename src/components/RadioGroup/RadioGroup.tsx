@@ -93,9 +93,13 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   value = undefined,
   ...restProps
 }) => {
-  const groupClasses = classNames(className, {
-    [styles.loading]: error,
-  });
+  const groupClasses = classNames(
+    'palmetto-components__variables__form-control',
+    className,
+    {
+      [styles.loading]: error,
+    },
+  );
 
   return (
     <div className={classNames(styles['radio-group'], groupClasses)} {...restProps}>

@@ -137,14 +137,20 @@ export const Button: FC<ButtonProps> = forwardRef(
   ) => {
     const disabled = isLoading || isDisabled;
 
-    const buttonClasses = classNames(styles.button, className, {
-      [styles.outline]: isOutlined && !isNaked,
-      [styles.loading]: isLoading,
-      [styles.naked]: isNaked,
-      [styles[variant]]: variant && !isNaked,
-      [styles[size]]: size && !isNaked,
-      [styles['full-width']]: fullWidth,
-    });
+    const buttonClasses = classNames(
+      'palmetto-components__variables__button',
+      'palmetto-components__variables__form-control',
+      styles.button,
+      className,
+      {
+        [styles.outline]: isOutlined && !isNaked,
+        [styles.loading]: isLoading,
+        [styles.naked]: isNaked,
+        [styles[variant]]: variant && !isNaked,
+        [styles[size]]: size && !isNaked,
+        [styles['full-width']]: fullWidth,
+      },
+    );
 
     const handleClick = handleReactRouterClick;
 
