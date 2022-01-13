@@ -1,5 +1,12 @@
 Changelog
 
+## [0.103.1](https://github.com/palmetto/palmetto-components/compare/v0.103.0...v0.103.1) (2022-01-13)
+
+
+### Bug Fixes
+
+* **RadioInput:** don't apply width and height to all label children ([#663](https://github.com/palmetto/palmetto-components/issues/663)) ([98be439](https://github.com/palmetto/palmetto-components/commit/98be4396eb5be9849a9fe5a5813a89dfddbfc6b6))
+
 # [0.103.0](https://github.com/palmetto/palmetto-components/compare/v0.102.2...v0.103.0) (2022-01-06)
 
 
