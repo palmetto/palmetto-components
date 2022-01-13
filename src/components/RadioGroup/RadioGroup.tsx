@@ -22,7 +22,7 @@ export interface RadioGroupProps {
   options: {
     id: string;
     value: string;
-    label: string;
+    label: ReactNode;
     disabled?: boolean | null;
   }[];
   /**
