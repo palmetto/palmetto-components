@@ -149,7 +149,7 @@ export const Button: FC<ButtonProps> = forwardRef(
         [styles[variant]]: variant && !isNaked,
         [styles[size]]: size && !isNaked,
         [styles['full-width']]: fullWidth,
-      }
+      },
     );
 
     const handleClick = handleReactRouterClick;
