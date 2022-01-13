@@ -1,5 +1,12 @@
 Changelog
 
+# [0.104.0](https://github.com/palmetto/palmetto-components/compare/v0.103.1...v0.104.0) (2022-01-13)
+
+
+### Features
+
+* **theming :** Scoped component variables ([#664](https://github.com/palmetto/palmetto-components/issues/664)) ([d1b6d3c](https://github.com/palmetto/palmetto-components/commit/d1b6d3cd6d4271e48d35c6ace984ae6348a81c32))
+
 ## [0.103.1](https://github.com/palmetto/palmetto-components/compare/v0.103.0...v0.103.1) (2022-01-13)
 
 
