@@ -51,11 +51,16 @@ export const FormLabel: FC<FormLabelProps> = ({
   padding = '0',
   ...restProps
 }) => {
-  const labelClasses = classNames(styles.label, className, {
-    [styles.disabled]: isDisabled,
-    [styles.disabled]: isDisabled,
-    [styles['radio-input-label']]: isRadioInputLabel,
-  });
+  const labelClasses = classNames(
+    'palmetto-components__variables__form-control',
+    styles.label,
+    className,
+    {
+      [styles.disabled]: isDisabled,
+      [styles.disabled]: isDisabled,
+      [styles['radio-input-label']]: isRadioInputLabel,
+    },
+  );
 
   return (
     <Box

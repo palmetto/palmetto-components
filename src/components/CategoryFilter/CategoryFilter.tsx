@@ -76,6 +76,8 @@ export const CategoryFilter: CategoryFilterComponent = forwardRef<HTMLDivElement
   ref,
 ) => {
   const classes = classNames(
+    'palmetto-components__variables__button',
+    'palmetto-components__variables__form-control',
     styles['category-filter'],
     className,
     {

@@ -158,10 +158,14 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
     },
     ref,
   ) => {
-    const inputWrapperClasses = classNames(styles['text-input-wrapper'], {
-      [styles.error]: error,
-      [styles.disabled]: isDisabled,
-    });
+    const inputWrapperClasses = classNames(
+      'palmetto-components__variables__form-control',
+      styles['text-input-wrapper'],
+      {
+        [styles.error]: error,
+        [styles.disabled]: isDisabled,
+      },
+    );
 
     const clearBtnClasses = classNames(styles['clear-button'], styles.md);
 
