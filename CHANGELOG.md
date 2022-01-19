@@ -1,5 +1,12 @@
 Changelog
 
+# [0.105.0](https://github.com/palmetto/palmetto-components/compare/v0.104.0...v0.105.0) (2022-01-19)
+
+
+### Features
+
+* **tokens:** update tokens package ([#667](https://github.com/palmetto/palmetto-components/issues/667)) ([5e0fa52](https://github.com/palmetto/palmetto-components/commit/5e0fa529be4f60bebba331286862756178105877))
+
 # [0.104.0](https://github.com/palmetto/palmetto-components/compare/v0.103.1...v0.104.0) (2022-01-13)
 
 
