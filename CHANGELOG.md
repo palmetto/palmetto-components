@@ -1,5 +1,12 @@
 Changelog
 
+# [0.106.0](https://github.com/palmetto/palmetto-components/compare/v0.105.0...v0.106.0) (2022-01-19)
+
+
+### Features
+
+* **Heading:** improve heading variables ([#669](https://github.com/palmetto/palmetto-components/issues/669)) ([1e440cd](https://github.com/palmetto/palmetto-components/commit/1e440cd2d6e38119cd1877b8a21a5d2aa0a62cec))
+
 # [0.105.0](https://github.com/palmetto/palmetto-components/compare/v0.104.0...v0.105.0) (2022-01-19)
 
 
