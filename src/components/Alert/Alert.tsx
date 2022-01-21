@@ -111,7 +111,7 @@ export const Alert: FC<AlertProps> = ({
     'palmetto-components__variables__alert',
     styles[`alert__${variant}`],
     styles.alert,
-    className
+    className,
   );
 
   return (
