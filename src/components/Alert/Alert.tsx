@@ -85,7 +85,7 @@ export const Alert: FC<AlertProps> = ({
   };
 
   const renderAlertIcon = (): ReactNode => (
-    <Box fontSize="lg">
+    <Box fontSize="lg" className={styles[`alert__icon__${variant}`]}>
       <Icon
         name={ALERT_ICONS_MAP[variant].icon}
         data-testid={`alert-icon-${variant}-test-id`}

@@ -40,3 +40,9 @@
   color: var(--alert-danger-font-color);
   background: var(--alert-danger-background-color);
 }
+
+.alert__icon__default { color: var(--alert-default-icon-color); }
+.alert__icon__info { color: var(--alert-info-icon-color); }
+.alert__icon__success { color: var(--alert-success-icon-color); }
+.alert__icon__warning { color: var(--alert-warning-icon-color); }
+.alert__icon__danger { color: var(--alert-danger-icon-color); }
