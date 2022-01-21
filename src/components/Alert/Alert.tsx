@@ -12,12 +12,12 @@ export type AlertVariant = 'info' | 'success' | 'warning' | 'danger' | 'default'
 
 export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
 
-export const ALERT_ATTRIBUTES_MAP: { [key in AlertVariant]: AlertAttributes } = {
-  default: { icon: 'c-warning', color: 'grey-600', background: 'grey-lighter' },
-  info: { icon: 'c-info', color: 'info-500', background: 'secondary-lightest' },
-  success: { icon: 'c-check', color: 'success-500', background: 'success-lightest' },
-  warning: { icon: 't-warning', color: 'warning-500', background: 'warning-lightest' },
-  danger: { icon: 'c-remove', color: 'danger-500', background: 'danger-lightest' },
+export const ALERT_ICONS_MAP: { [key in AlertVariant]: { icon: IconName; } } = {
+  default: { icon: 'c-warning' },
+  info: { icon: 'c-info' },
+  success: { icon: 'c-check' },
+  warning: { icon: 't-warning' },
+  danger: { icon: 'c-remove' },
 };
 
 export interface AlertProps {
@@ -85,9 +85,9 @@ export const Alert: FC<AlertProps> = ({
   };
 
   const renderAlertIcon = (): ReactNode => (
-    <Box fontSize="lg" color={ALERT_ATTRIBUTES_MAP[variant].color}>
+    <Box fontSize="lg" className={styles[`alert__icon__${variant}`]}>
       <Icon
-        name={ALERT_ATTRIBUTES_MAP[variant].icon}
+        name={ALERT_ICONS_MAP[variant].icon}
         data-testid={`alert-icon-${variant}-test-id`}
       />
     </Box>
@@ -107,12 +107,16 @@ export const Alert: FC<AlertProps> = ({
     );
   };
 
-  const alertContainerClasses: string = classNames(styles.alert, className);
+  const alertContainerClasses: string = classNames(
+    'palmetto-components__variables__alert',
+    styles[`alert__${variant}`],
+    styles.alert,
+    className,
+  );
 
   return (
     <Box
       alignItems="flex-start"
-      background={ALERT_ATTRIBUTES_MAP[variant].background}
       childGap="sm"
       className={alertContainerClasses}
       direction="row"
