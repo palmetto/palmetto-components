@@ -15,3 +15,28 @@
     }
   }
 }
+
+.alert__default {
+  color: var(--alert-default-font-color);
+  background: var(--alert-default-background-color);
+}
+
+.alert__info {
+  color: var(--alert-info-font-color);
+  background: var(--alert-info-background-color);
+}
+
+.alert__success {
+  color: var(--alert-success-font-color);
+  background: var(--alert-success-background-color);
+}
+
+.alert__warning {
+  color: var(--alert-warning-font-color);
+  background: var(--alert-warning-background-color);
+}
+
+.alert__danger {
+  color: var(--alert-danger-font-color);
+  background: var(--alert-danger-background-color);
+}
