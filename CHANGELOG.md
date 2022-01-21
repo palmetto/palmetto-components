@@ -1,5 +1,12 @@
 Changelog
 
+# [0.107.0](https://github.com/palmetto/palmetto-components/compare/v0.106.0...v0.107.0) (2022-01-21)
+
+
+### Features
+
+* **Alert:** refactoring alert with variables ([#671](https://github.com/palmetto/palmetto-components/issues/671)) ([6e97ac9](https://github.com/palmetto/palmetto-components/commit/6e97ac9b9799d7a784af8d8ae3eae82ebd06c57a))
+
 # [0.106.0](https://github.com/palmetto/palmetto-components/compare/v0.105.0...v0.106.0) (2022-01-19)
 
 
