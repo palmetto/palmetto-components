@@ -93,10 +93,10 @@
 :global([data-reach-dialog-overlay].fullscreen) {
   [data-reach-dialog-content] {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: env(safe-area-inset-top);
+    right: env(safe-area-inset-right);
+    bottom: env(safe-area-inset-bottom);
+    left: env(safe-area-inset-left);
     border-radius: 0;
   }
 
