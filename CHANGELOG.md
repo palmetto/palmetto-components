@@ -1,5 +1,26 @@
 Changelog
 
+# [0.107.0](https://github.com/palmetto/palmetto-components/compare/v0.106.0...v0.107.0) (2022-01-21)
+
+
+### Features
+
+* **Alert:** refactoring alert with variables ([#671](https://github.com/palmetto/palmetto-components/issues/671)) ([6e97ac9](https://github.com/palmetto/palmetto-components/commit/6e97ac9b9799d7a784af8d8ae3eae82ebd06c57a))
+
+# [0.106.0](https://github.com/palmetto/palmetto-components/compare/v0.105.0...v0.106.0) (2022-01-19)
+
+
+### Features
+
+* **Heading:** improve heading variables ([#669](https://github.com/palmetto/palmetto-components/issues/669)) ([1e440cd](https://github.com/palmetto/palmetto-components/commit/1e440cd2d6e38119cd1877b8a21a5d2aa0a62cec))
+
+# [0.105.0](https://github.com/palmetto/palmetto-components/compare/v0.104.0...v0.105.0) (2022-01-19)
+
+
+### Features
+
+* **tokens:** update tokens package ([#667](https://github.com/palmetto/palmetto-components/issues/667)) ([5e0fa52](https://github.com/palmetto/palmetto-components/commit/5e0fa529be4f60bebba331286862756178105877))
+
 # [0.104.0](https://github.com/palmetto/palmetto-components/compare/v0.103.1...v0.104.0) (2022-01-13)
 
 
