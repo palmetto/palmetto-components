@@ -1,5 +1,12 @@
 Changelog
 
+# [0.108.0](https://github.com/palmetto/palmetto-components/compare/v0.107.0...v0.108.0) (2022-01-24)
+
+
+### Features
+
+* **tokens:** updated icons ([#670](https://github.com/palmetto/palmetto-components/issues/670)) ([e8245e4](https://github.com/palmetto/palmetto-components/commit/e8245e4d14d28cf934904943dd8ee433419790c5))
+
 # [0.107.0](https://github.com/palmetto/palmetto-components/compare/v0.106.0...v0.107.0) (2022-01-21)
 
 
