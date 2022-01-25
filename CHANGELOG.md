@@ -1,5 +1,12 @@
 Changelog
 
+## [0.108.1](https://github.com/palmetto/palmetto-components/compare/v0.108.0...v0.108.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* **modal:** prevent full screen modal from overflowing beyond safe viewport area ([#673](https://github.com/palmetto/palmetto-components/issues/673)) ([622a80d](https://github.com/palmetto/palmetto-components/commit/622a80dc33c65a64b5cb39ed04dec49aca6e0d4d))
+
 # [0.108.0](https://github.com/palmetto/palmetto-components/compare/v0.107.0...v0.108.0) (2022-01-24)
 
 
