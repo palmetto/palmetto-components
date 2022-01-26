@@ -1,5 +1,12 @@
 Changelog
 
+## [0.108.2](https://github.com/palmetto/palmetto-components/compare/v0.108.1...v0.108.2) (2022-01-26)
+
+
+### Bug Fixes
+
+* **useBreakpoint:** Use useLayoutEffect on client-side environments. ([#675](https://github.com/palmetto/palmetto-components/issues/675)) ([77e1e0b](https://github.com/palmetto/palmetto-components/commit/77e1e0bd6656bce877e9fec41ddb5aad8beefe0a))
+
 ## [0.108.1](https://github.com/palmetto/palmetto-components/compare/v0.108.0...v0.108.1) (2022-01-25)
 
 
