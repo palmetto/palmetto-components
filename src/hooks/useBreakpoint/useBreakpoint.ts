@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import { BREAKPOINTS } from '../../lib/tokens';
 import { Breakpoint } from '../../types';
 import { useWindowSize } from '../useWindowSize/useWindowSize';
@@ -18,7 +18,7 @@ export const useBreakpoint = (): BreakpointState => {
 
   const [breakpoint, setBreakpoint] = useState<Breakpoint>({ ...defaultBreakpoint });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const sortedBreakpoints = [...BREAKPOINTS].sort((a, b) => b.minWidth - a.minWidth);
     const activeBreakpoint = windowSize && sortedBreakpoints.find(b => b.minWidth <= (windowSize.innerWidth as number));
 

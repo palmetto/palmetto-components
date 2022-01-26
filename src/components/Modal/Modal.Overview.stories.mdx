@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Modal } from './Modal';
 import { Button } from '../Button/Button';
+import { Box } from '../Box/Box';
 import { SelectInput } from '../SelectInput/SelectInput';
 
 <Meta title="Components/Modal/Overview" component={Modal} />
@@ -88,7 +89,7 @@ Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a cl
 <Canvas>
   <Story name="Close button">
     {() => {
-      const [showModal, setShowModal] = React.useState(false);
+      const [showModal, setShowModal] = useState(false);
       const open = () => setShowModal(true);
       const close = () => setShowModal(false);
       return (
@@ -113,7 +114,7 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
 <Canvas>
   <Story name="Without Header">
     {() => {
-      const [showModal, setShowModal] = React.useState(false);
+      const [showModal, setShowModal] = useState(false);
       const open = () => setShowModal(true);
       const close = () => setShowModal(false);
       return (
@@ -143,7 +144,7 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
 <Canvas>
   <Story name="Fullscreen Mobile">
     {() => {
-      const [showModal, setShowModal] = React.useState(false);
+      const [showModal, setShowModal] = useState(false);
       const open = () => setShowModal(true);
       const close = () => setShowModal(false);
       return (
@@ -185,8 +186,8 @@ maxWidth, use existing tokens only.
 <Canvas>
   <Story name="Max Width">
     {() => {
-      const [showModal, setShowModal] = React.useState(false);
-      const [showResponsiveModal, setShowResponsiveModal] = React.useState(false);
+      const [showModal, setShowModal] = useState(false);
+      const [showResponsiveModal, setShowResponsiveModal] = useState(false);
       return (
         <>
           <div className="m-bottom-md">
@@ -218,4 +219,73 @@ maxWidth, use existing tokens only.
       );
     }}
   </Story>
+</Canvas>
+
+## With Custom Portal Target
+
+<Canvas>
+  <Story name="With Portal">
+    {() => {
+      const [showModal, setShowModal] = useState(false);
+      const [showResponsiveModal, setShowResponsiveModal] = useState(false);
+      const container = useRef(null);
+      useEffect(() => {
+        console.log('REF', container.current);
+      }, []);
+      return (
+        <>
+          <div className="m-bottom-md" ref={container}>
+            <Button variant="light" onClick={() => setShowModal(true)}>
+              Show Modal
+            </Button>
+            <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={() => setShowModal(false)} maxWidth="4xl" portalTarget={container.current}>
+              <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={() => setShowModal(false)} />
+              <Modal.Body>Modal body content</Modal.Body>
+              <Modal.Footer>This is content in the modal footer</Modal.Footer>
+            </Modal>
+          </div>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Workaround">
+  {() => {
+    const Wrapper = ({ children }) => {
+      const ref = useRef(null);
+      useEffect(() => {
+        console.log(ref.current);
+      }, []);
+      return (
+        <>
+          <Box ref={ref} className="m-bottom-md">
+            {children({ ref })}
+          </Box>
+        </>
+      )
+    };
+    return (
+      <Wrapper>
+        {({ ref }) => {
+          const [showModal, setShowModal] = useState(false);
+          const [showResponsiveModal, setShowResponsiveModal] = useState(false);
+          return (
+            <>
+              <Button variant="light" onClick={() => setShowModal(true)}>
+                Show Modal
+              </Button>
+              <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={() => setShowModal(false)} maxWidth="4xl" portalTarget={ref.current}>
+                <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={() => setShowModal(false)} />
+                <Modal.Body>Modal body content</Modal.Body>
+                <Modal.Footer>This is content in the modal footer</Modal.Footer>
+              </Modal>
+            </>
+          );
+        }}
+      </Wrapper>
+    );
+  }}
+</Story>
 </Canvas>

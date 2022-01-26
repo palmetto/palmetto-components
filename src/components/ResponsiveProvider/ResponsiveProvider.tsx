@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useLayoutEffect, createContext } from 'react';
 
 export interface ResponsiveContextShape {
   isCreated: boolean;
@@ -31,7 +31,7 @@ export const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children
     setOuterHeight(window?.outerHeight ?? 0);
   };
 
-  useEffect(() => { // eslint-disable-line consistent-return
+  useLayoutEffect(() => { // eslint-disable-line consistent-return
     if (typeof window !== 'undefined') {
       // Set values on render if window wasn't available for useState initialization.
       handleWindowResize();
