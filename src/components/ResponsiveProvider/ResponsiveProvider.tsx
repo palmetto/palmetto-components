@@ -1,4 +1,5 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, createContext } from 'react';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect/useIsomorphicLayouEffect';
 
 export interface ResponsiveContextShape {
   isCreated: boolean;
@@ -31,7 +32,7 @@ export const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children
     setOuterHeight(window?.outerHeight ?? 0);
   };
 
-  useEffect(() => { // eslint-disable-line consistent-return
+  useIsomorphicLayoutEffect(() => { // eslint-disable-line consistent-return
     if (typeof window !== 'undefined') {
       // Set values on render if window wasn't available for useState initialization.
       handleWindowResize();
