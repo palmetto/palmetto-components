@@ -3,7 +3,6 @@ import React, {
   RefObject,
   forwardRef,
 } from 'react';
-import { createPortal } from 'react-dom';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import classNames from 'classnames';
 import { CssOverflowValue } from '../../types';
@@ -65,11 +64,6 @@ export interface ModalProps {
    */
   overflow?: CssOverflowValue;
   /**
-   * A ref to portal the dialog to. This is useful when the modal needs to be themed
-   * using CSS properties that may be scoped to specific DOM nodes.
-   */
-  portalTarget?: HTMLElement;
-  /**
    * Allows spread props
    */
   [x: string]: any; // eslint-disable-line
@@ -88,7 +82,6 @@ const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, Moda
     maxWidth = undefined,
     onDismiss,
     overflow = 'hidden',
-    portalTarget = undefined,
     ...restProps
   },
   ref,
@@ -108,52 +101,26 @@ const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, Moda
   );
 
   return (
-    portalTarget ? (
-      createPortal(
-        <DialogOverlay
-          className={overylayClassnames}
-          allowPinchZoom={allowPinchZoom}
-          isOpen={isOpen}
-          onDismiss={onDismiss}
-          initialFocusRef={initialFocusRef}
-          ref={ref}
-          {...restProps}
+    <DialogOverlay
+      className={overylayClassnames}
+      allowPinchZoom={allowPinchZoom}
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      initialFocusRef={initialFocusRef}
+      ref={ref}
+      {...restProps}
+    >
+      <Box className={styles.container}>
+        <DialogContent
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+          className={contentClassnames}
+          style={{ ...maxWidthCss.styles }}
         >
-          <Box className={styles.container}>
-            <DialogContent
-              aria-label={ariaLabel}
-              aria-labelledby={ariaLabelledBy}
-              className={contentClassnames}
-              style={{ ...maxWidthCss.styles }}
-            >
-              {children}
-            </DialogContent>
-          </Box>
-        </DialogOverlay>,
-        portalTarget,
-      )
-    ) : (
-      <DialogOverlay
-        className={overylayClassnames}
-        allowPinchZoom={allowPinchZoom}
-        isOpen={isOpen}
-        onDismiss={onDismiss}
-        initialFocusRef={initialFocusRef}
-        ref={ref}
-        {...restProps}
-      >
-        <Box className={styles.container}>
-          <DialogContent
-            aria-label={ariaLabel}
-            aria-labelledby={ariaLabelledBy}
-            className={contentClassnames}
-            style={{ ...maxWidthCss.styles }}
-          >
-            {children}
-          </DialogContent>
-        </Box>
-      </DialogOverlay>
-    )
+          {children}
+        </DialogContent>
+      </Box>
+    </DialogOverlay>
   );
 });
 
