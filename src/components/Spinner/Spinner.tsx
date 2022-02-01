@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import { BASE_BRAND_COLORS } from '../../lib/tokens';
 import { ColorName } from '../../types';
 import styles from './Spinner.module.scss';
 
