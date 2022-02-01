@@ -1,5 +1,12 @@
 Changelog
 
+# [0.110.0](https://github.com/palmetto/palmetto-components/compare/v0.109.0...v0.110.0) (2022-02-01)
+
+
+### Features
+
+* **forms:** make form control font family themable ([#677](https://github.com/palmetto/palmetto-components/issues/677)) ([0903e99](https://github.com/palmetto/palmetto-components/commit/0903e998354b4b3b0a6eddfa0f81e9d358624f29))
+
 # [0.109.0](https://github.com/palmetto/palmetto-components/compare/v0.108.2...v0.109.0) (2022-02-01)
 
 
