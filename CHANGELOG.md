@@ -1,5 +1,12 @@
 Changelog
 
+# [0.109.0](https://github.com/palmetto/palmetto-components/compare/v0.108.2...v0.109.0) (2022-02-01)
+
+
+### Features
+
+* **Spinner:** Themable spinner ([#676](https://github.com/palmetto/palmetto-components/issues/676)) ([4d52ce4](https://github.com/palmetto/palmetto-components/commit/4d52ce4ec149d30b1ccf6c5926e77e72e9adf0f1))
+
 ## [0.108.2](https://github.com/palmetto/palmetto-components/compare/v0.108.1...v0.108.2) (2022-01-26)
 
 
