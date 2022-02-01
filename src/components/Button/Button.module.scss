@@ -5,6 +5,7 @@
   padding: var(--button-size-xs-padding-vertical) var(--button-size-xs-padding-horizontal);
   min-height: 20px;
   font-size: var(--button-size-xs-font-size);
+  letter-spacing: 0.2px;
 
   &.outline {
     padding: calc(var(--button-size-xs-padding-vertical) - 1px)
@@ -20,6 +21,7 @@
   padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
   min-height: 32px;
   font-size: var(--button-size-sm-font-size);
+  letter-spacing: 0.2px;
 
   &.outline {
     padding: calc(var(--button-size-sm-padding-vertical) - 1px)
@@ -35,6 +37,7 @@
   padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
   min-height: 42px;
   font-size: var(--button-size-md-font-size);
+  letter-spacing: 0.2px;
 
   &.outline {
     padding: calc(var(--button-size-md-padding-vertical) - 1px)
@@ -77,7 +80,6 @@
     transition-timing-function: cubic-bezier(0.67, 0.83, 0.67);
     text-align: center;
     text-decoration: none;
-    letter-spacing: 0.2px;
     font-weight: var(--button-font-weight);
   }
 
