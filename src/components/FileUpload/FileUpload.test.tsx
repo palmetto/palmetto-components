@@ -13,7 +13,7 @@ describe('FileUpload', () => {
 
       expect(fileInput).toBeInTheDocument();
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('light', 'md');
+      expect(button).toHaveClass('light', 'size-md');
       expect(uploadIcon).toBeInTheDocument();
     });
   });
@@ -36,25 +36,25 @@ describe('FileUpload', () => {
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('light', 'md');
+      expect(button).toHaveClass('light', 'size-md');
 
       rerender(<UploadComponent size="sm" color="dark" />);
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('dark', 'sm');
+      expect(button).toHaveClass('dark', 'size-sm');
 
       rerender(<UploadComponent size="lg" color="dark" />);
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('dark', 'lg');
+      expect(button).toHaveClass('dark', 'size-lg');
 
       rerender(<UploadComponent size="md" color="primary" />);
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('primary', 'md');
+      expect(button).toHaveClass('primary', 'size-md');
     });
 
     it('renders with no icon when boolean false is passed to `hasIcon`', () => {

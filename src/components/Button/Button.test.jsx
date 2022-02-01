@@ -63,9 +63,24 @@ describe('Button', () => {
 
         const btn = screen.getByText(`${size} Button`).closest('button');
 
-        expect(btn.getAttribute('class')).toContain(size);
+        expect(btn.getAttribute('class')).toContain(`size-${size}`);
       });
     }));
+
+    test('It applies responsive classes', () => {
+      render(
+        <Button size={{ base: 'xs', tablet: 'sm', desktop: 'md', hd: 'lg' }}>
+          button
+        </Button>
+      );
+
+      const btn = screen.getByText('button').closest('button');
+
+      expect(btn.getAttribute('class')).toContain('size-xs');
+      expect(btn.getAttribute('class')).toContain('size-sm-tablet');
+      expect(btn.getAttribute('class')).toContain('size-md-desktop');
+      expect(btn.getAttribute('class')).toContain('size-lg-hd');
+    });
   });
 
   describe('Variants', () => {
