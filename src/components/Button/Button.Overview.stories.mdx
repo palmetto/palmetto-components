@@ -62,7 +62,8 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
 
 ## Sizes
 
-Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size.
+Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size. The button also takes a `ResponsiveProp` object
+so it can have different sizes at different breakpoints.
 
 <Canvas>
   <Story name="Size">
@@ -78,6 +79,17 @@ Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size
       </Button>
       <Button size="lg" variant="light">
         Large
+      </Button>
+      <Button
+        size={{
+          base: 'xs',
+          tablet: 'sm',
+          desktop: 'md',
+          hd: 'lg',
+        }}
+        variant="light"
+      >
+        Responsive
       </Button>
     </Box>
   </Story>

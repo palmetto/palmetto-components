@@ -1,3 +1,66 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
+@mixin size-xs {
+  border-radius: var(--button-size-xs-border-radius);
+  padding: var(--button-size-xs-padding-vertical) var(--button-size-xs-padding-horizontal);
+  min-height: 20px;
+  font-size: var(--button-size-xs-font-size);
+
+  &.outline {
+    padding: calc(var(--button-size-xs-padding-vertical) - 1px)
+      calc(var(--button-size-xs-padding-horizontal) - 1px);
+  }
+}
+
+%size-xs { @include size-xs; }
+.size-xs { @extend %size-xs; }
+
+@mixin size-sm {
+  border-radius: var(--button-size-sm-border-radius);
+  padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
+  min-height: 32px;
+  font-size: var(--button-size-sm-font-size);
+
+  &.outline {
+    padding: calc(var(--button-size-sm-padding-vertical) - 1px)
+      calc(var(--button-size-sm-padding-horizontal) - 1px);
+  }
+}
+
+%size-sm { @include size-sm; }
+.size-sm { @extend %size-sm; }
+
+@mixin size-md {
+  border-radius: var(--button-size-md-border-radius);
+  padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
+  min-height: 42px;
+  font-size: var(--button-size-md-font-size);
+
+  &.outline {
+    padding: calc(var(--button-size-md-padding-vertical) - 1px)
+      calc(var(--button-size-md-padding-horizontal) - 1px);
+  }
+}
+
+%size-md { @include size-md; }
+.size-md { @extend %size-md; }
+
+@mixin size-lg {
+  border-radius: var(--button-size-lg-border-radius);
+  padding: var(--button-size-lg-padding-vertical) var(--button-size-lg-padding-horizontal);
+  min-height: 55px;
+  letter-spacing: 1px;
+  font-size: var(--button-size-lg-font-size);
+
+  &.outline {
+    padding: calc(var(--button-size-lg-padding-vertical) - 1px)
+      calc(var(--button-size-lg-padding-horizontal) - 1px);
+  }
+}
+
+%size-lg { @include size-lg; }
+.size-lg { @extend %size-lg; }
+
 .button {
   border: 0;
   cursor: pointer;
@@ -15,7 +78,6 @@
     text-align: center;
     text-decoration: none;
     letter-spacing: 0.2px;
-    font-size: var(--button-size-md-font-size);
     font-weight: var(--button-font-weight);
   }
 
@@ -202,53 +264,30 @@
     }
   }
 
-  &.xs {
-    border-radius: var(--button-size-xs-border-radius);
-    padding: var(--button-size-xs-padding-vertical) var(--button-size-xs-padding-horizontal);
-    min-height: 20px;
-    font-size: var(--button-size-xs-font-size);
+  &.size-xs { @extend %size-xs; }
+  &.size-sm { @extend %size-sm; }
+  &.size-md { @extend %size-md; }
+  &.size-lg { @extend %size-lg; }
 
-    &.outline {
-      padding: calc(var(--button-size-xs-padding-vertical) - 1px)
-        calc(var(--button-size-xs-padding-horizontal) - 1px);
-    }
+  @media (min-width: $size-breakpoint-tablet) {
+    &.size-xs-tablet { @include size-xs; }
+    &.size-sm-tablet { @include size-sm; }
+    &.size-md-tablet { @include size-md; }
+    &.size-lg-tablet { @include size-lg; }
   }
 
-  &.sm {
-    border-radius: var(--button-size-sm-border-radius);
-    padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
-    min-height: 32px;
-    font-size: var(--button-size-sm-font-size);
-
-    &.outline {
-      padding: calc(var(--button-size-sm-padding-vertical) - 1px)
-        calc(var(--button-size-sm-padding-horizontal) - 1px);
-    }
+  @media (min-width: $size-breakpoint-desktop) {
+    &.size-xs-desktop { @include size-xs; }
+    &.size-sm-desktop { @include size-sm; }
+    &.size-md-desktop { @include size-md; }
+    &.size-lg-desktop { @include size-lg; }
   }
 
-  &.md {
-    border-radius: var(--button-size-md-border-radius);
-    padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
-    min-height: 42px;
-    font-size: var(--button-size-md-font-size);
-
-    &.outline {
-      padding: calc(var(--button-size-md-padding-vertical) - 1px)
-        calc(var(--button-size-md-padding-horizontal) - 1px);
-    }
-  }
-
-  &.lg {
-    border-radius: var(--button-size-lg-border-radius);
-    padding: var(--button-size-lg-padding-vertical) var(--button-size-lg-padding-horizontal);
-    min-height: 55px;
-    letter-spacing: 1px;
-    font-size: var(--button-size-lg-font-size);
-
-    &.outline {
-      padding: calc(var(--button-size-lg-padding-vertical) - 1px)
-        calc(var(--button-size-lg-padding-horizontal) - 1px);
-    }
+  @media (min-width: $size-breakpoint-hd) {
+    &.size-xs-hd { @include size-xs; }
+    &.size-sm-hd { @include size-sm; }
+    &.size-md-hd { @include size-md; }
+    &.size-lg-hd { @include size-lg; }
   }
 
   &.loading {
