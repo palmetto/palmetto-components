@@ -112,6 +112,30 @@ Remove the icon on the button with the handy `hasIcon` boolean.
   </Story>
 </Canvas>
 
+## Without Button Text
+
+The default button text for `FileUpload` is 'Upload File'. However, you can explicitely pass `null` to the `buttonText` prop to remove all text.
+
+<Canvas>
+  <Story name="Without Button Text">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = event => {
+        setFiles(event.target.files);
+      };
+      return (
+        <FileUpload
+          labelText="My File"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          buttonText={null}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Variants
 
 Light, dark and primary upload button variations are available.

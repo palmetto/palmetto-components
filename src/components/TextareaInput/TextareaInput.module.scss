@@ -8,6 +8,8 @@
 }
 
 .textarea-input-wrapper {
+  font-family: var(--form-control-font-family);
+
   > textarea {
     transition-duration: 300ms;
     transition-property: border, background-color;

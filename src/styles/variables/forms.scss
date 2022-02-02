@@ -1,4 +1,4 @@
-:root {
+.palmetto-components__variables__form-control {
   /* ----GLOBALS---- */
   --input-focus-box-shadow: 0 0 0 4px var(--color-brand-primary-light);
   --form-control-label-margin: var(--size-spacing-xs);
@@ -7,6 +7,7 @@
   --form-control-label-font-weight: var(--size-font-weight-bold);
   --form-control-legend-font-weight: var(--size-font-weight-bold);
   --form-control-size-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+  --form-control-font-family: var(--asset-fonts-body);
 
   /* --SIZES-- */
 

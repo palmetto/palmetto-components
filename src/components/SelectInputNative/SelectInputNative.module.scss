@@ -115,6 +115,7 @@
 .size-lg { @extend %size-lg; }
 
 .select-input-native-wrapper {
+  font-family: var(--form-control-font-family);
   position: relative;
   border: 1px solid var(--form-control-border-color);
   box-shadow: var(--form-control-size-box-shadow);
