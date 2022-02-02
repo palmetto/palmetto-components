@@ -6,19 +6,9 @@ import { Heading } from '../Heading/Heading';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import styles from './Alert.module.scss';
-import { BrandColor, FontColor, IconName } from '../../types';
-
-export type AlertVariant = 'info' | 'success' | 'warning' | 'danger' | 'default';
-
-export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
-
-export const ALERT_ICONS_MAP: { [key in AlertVariant]: { icon: IconName; } } = {
-  default: { icon: 'c-warning' },
-  info: { icon: 'c-info' },
-  success: { icon: 'c-check' },
-  warning: { icon: 't-warning' },
-  danger: { icon: 'c-remove' },
-};
+import { AlertTokens } from './Alert.tokens';
+import { AlertVariant } from './Alert.types';
+import { ALERT_ICONS_MAP } from './Alert.constants';
 
 export interface AlertProps {
   /**
@@ -63,6 +53,10 @@ export interface AlertProps {
    * The type/color of the alert to show.
    */
   variant?: AlertVariant;
+    /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 export const Alert: FC<AlertProps> = ({
   className = '',
@@ -75,6 +69,7 @@ export const Alert: FC<AlertProps> = ({
   render = undefined,
   title = '',
   variant = 'default',
+  ...restProps
 }) => {
   const handleClose = (
     event: MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>,
@@ -108,11 +103,12 @@ export const Alert: FC<AlertProps> = ({
   };
 
   const alertContainerClasses: string = classNames(
-    'palmetto-components__variables__alert',
     styles[`alert__${variant}`],
     styles.alert,
     className,
   );
+
+  const { style, ...rest } = restProps;
 
   return (
     <Box
@@ -124,6 +120,11 @@ export const Alert: FC<AlertProps> = ({
       radius="md"
       role="alert"
       fontSize="sm"
+      style={{
+        ...AlertTokens,
+        ...style,
+      }}
+      {...rest}
     >
       {hasIcon && renderAlertIcon()}
       <div>

@@ -2,7 +2,7 @@ export * from './Accordion/Accordion';
 export * from './Accordion/AccordionPanel';
 export * from './Accordion/AccordionPanelSummary';
 export * from './Accordion/AccordionPanelDetails';
-export * from './Alert/Alert';
+export * from './Alert';
 export * from './Badge/Badge';
 export * from './Box/Box';
 export * from './Button/Button';
