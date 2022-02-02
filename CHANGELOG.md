@@ -1,5 +1,12 @@
 Changelog
 
+## [0.111.2](https://github.com/palmetto/palmetto-components/compare/v0.111.1...v0.111.2) (2022-02-02)
+
+
+### Bug Fixes
+
+* **Icon:** archive icon color  ([#679](https://github.com/palmetto/palmetto-components/issues/679)) ([116f1b7](https://github.com/palmetto/palmetto-components/commit/116f1b7bf4d73f62e3bcfdd286829dd726d4cc4c))
+
 ## [0.111.1](https://github.com/palmetto/palmetto-components/compare/v0.111.0...v0.111.1) (2022-02-02)
 
 # [0.111.0](https://github.com/palmetto/palmetto-components/compare/v0.110.0...v0.111.0) (2022-02-01)
