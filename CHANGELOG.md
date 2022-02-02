@@ -1,5 +1,12 @@
 Changelog
 
+# [0.111.0](https://github.com/palmetto/palmetto-components/compare/v0.110.0...v0.111.0) (2022-02-01)
+
+
+### Features
+
+* **Button:** responsive button ([#678](https://github.com/palmetto/palmetto-components/issues/678)) ([26d3524](https://github.com/palmetto/palmetto-components/commit/26d3524d00ddf54590b40b9ca0506c8b23191475))
+
 # [0.110.0](https://github.com/palmetto/palmetto-components/compare/v0.109.0...v0.110.0) (2022-02-01)
 
 
