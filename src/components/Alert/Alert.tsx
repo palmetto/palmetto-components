@@ -6,7 +6,6 @@ import { Heading } from '../Heading/Heading';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import styles from './Alert.module.scss';
-import { AlertTokens } from './Alert.tokens';
 import { AlertVariant } from './Alert.types';
 import { ALERT_ICONS_MAP } from './Alert.constants';
 
@@ -108,8 +107,6 @@ export const Alert: FC<AlertProps> = ({
     className,
   );
 
-  const { style, ...rest } = restProps;
-
   return (
     <Box
       alignItems="flex-start"
@@ -120,11 +117,7 @@ export const Alert: FC<AlertProps> = ({
       radius="md"
       role="alert"
       fontSize="sm"
-      style={{
-        ...AlertTokens,
-        ...style,
-      }}
-      {...rest}
+      {...restProps}
     >
       {hasIcon && renderAlertIcon()}
       <div>
