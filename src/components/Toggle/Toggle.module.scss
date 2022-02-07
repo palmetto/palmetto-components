@@ -100,7 +100,7 @@
   padding: 2px;
 
   &.error {
-    background-color: var(--form-control-error-background-color);
+    background-color: var(--form-control-error-background-color, var(--INTERNAL_form-control-error-background-color));
   }
 }
 
@@ -153,13 +153,13 @@
   /* define regular focus styles for non-supporting browsers */
   &:focus + .toggle-track {
     outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
+    box-shadow: var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
   }
 
   /* Show focus styles on keyboard focus. */
   &:focus-visible + .toggle-track {
     outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
+    box-shadow: var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
   }
 
   /* Hide focus styles if they're not needed, for example,

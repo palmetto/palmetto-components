@@ -1,8 +1,8 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 %disabled-base {
-  background-color: var(--form-control-disabled-background-color);
-  color: var(--form-control-disabled-font-color);
+  background-color: var(--form-control-disabled-background-color, var(--INTERNAL_form-control-disabled-background-color));
+  color: var(--form-control-disabled-font-color, var(--INTERNAL_form-control-disabled-font-color));
 
   &:hover {
     cursor: not-allowed;
@@ -15,15 +15,15 @@
 }
 
 @mixin size-sm {
-  border-radius: var(--form-control-size-sm-border-radius);
-  font-size: var(--form-control-size-sm-font-size);
+  border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
+  font-size: var(--form-control-size-sm-font-size, var(--INTERNAL_form-control-size-sm-font-size));
 
   > select {
-    border-radius: var(--form-control-size-lg-border-radius);
-    padding-left: var(--form-control-size-sm-padding);
+    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+    padding-left: var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
     padding-right: var(--size-spacing-2xl);
-    padding-top: calc(var(--form-control-size-sm-padding) - 1px);
-    padding-bottom: calc(var(--form-control-size-sm-padding) - 1px);
+    padding-top: calc(var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)) - 1px);
+    padding-bottom: calc(var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)) - 1px);
   }
 
   &::before,
@@ -51,15 +51,15 @@
 }
 
 @mixin size-md {
-  border-radius: var(--form-control-size-md-border-radius);
-  font-size: var(--form-control-size-md-font-size);
+  border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
+  font-size: var(--form-control-size-md-font-size, var(--INTERNAL_form-control-size-md-font-size));
 
   > select {
-    border-radius: var(--form-control-size-lg-border-radius);
-    padding-left: var(--form-control-size-md-padding);
+    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+    padding-left: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
     padding-right: var(--size-spacing-3xl);
-    padding-top: calc(var(--form-control-size-md-padding) - 1px);
-    padding-bottom: calc(var(--form-control-size-md-padding) - 1px);
+    padding-top: calc(var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)) - 1px);
+    padding-bottom: calc(var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)) - 1px);
   }
 
   &::before,
@@ -83,15 +83,15 @@
 .size-md { @extend %size-md; }
 
 @mixin size-lg {
-  border-radius: var(--form-control-size-lg-border-radius);
-  font-size: var(--form-control-size-lg-font-size);
+  border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+  font-size: var(--form-control-size-lg-font-size, var(--INTERNAL_form-control-size-lg-font-size));
 
   > select {
-    border-radius: var(--form-control-size-lg-border-radius);
-    padding-left: var(--form-control-size-lg-padding);
+    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+    padding-left: var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding));
     padding-right: var(--size-spacing-3xl);
-    padding-top: calc(var(--form-control-size-lg-padding) - 1px);
-    padding-bottom: calc(var(--form-control-size-lg-padding) - 1px);
+    padding-top: calc(var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding)) - 1px);
+    padding-bottom: calc(var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding)) - 1px);
   }
 
   &::before,
@@ -115,15 +115,15 @@
 .size-lg { @extend %size-lg; }
 
 .select-input-native-wrapper {
-  font-family: var(--form-control-font-family);
+  font-family: var(--form-control-font-family, var(--INTERNAL_form-control-font-family));
   position: relative;
-  border: 1px solid var(--form-control-border-color);
-  box-shadow: var(--form-control-size-box-shadow);
-  background-color: var(--form-control-background-color);
+  border: 1px solid var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
+  box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow));
+  background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
 
   &:focus-within {
     outline: none;
-    border-color: var(--form-control-focus-border-color);
+    border-color: var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color));
   }
   
   &::before,
@@ -159,12 +159,12 @@
     border: none;
     background: none;
     width: 100%;
-    line-height: var(--form-control-text-line-height);
+    line-height: var(--form-control-text-line-height, var(--INTERNAL_form-control-text-line-height));
 
     &:focus {
       outline: none;
-      border-color: var(--form-control-focus-border-color);
-      background-color: var(--form-control-background-color);
+      border-color: var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color));
+      background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
     }
 
     &:disabled {
@@ -195,17 +195,17 @@
   }
 
   &.error {
-    border-color: var(--form-control-error-border-color);
-    background-color: var(--form-control-error-background-color);
+    border-color: var(--form-control-error-border-color, var(--INTERNAL_form-control-error-border-color));
+    background-color: var(--form-control-error-border-color, var(--INTERNAL_form-control-error-background-color));
 
     select:focus {
       outline: none;
-      border-color: var(--form-control-focus-border-color);
+      border-color: var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color));
       background-color: transparent;
     }
   }
 }
 
 .text-input-label {
-  margin-bottom: var(--form-control-label-margin);
+  margin-bottom: var(--form-control-label-margin, var(--INTERNAL_form-control-label-margin));
 }

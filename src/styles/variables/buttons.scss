@@ -3,27 +3,27 @@
   --button-font-weight: var(--size-font-weight-bold);
 
   /* x-small */
-  --button-size-xs-border-radius: var(--form-control-size-sm-border-radius);
-  --button-size-xs-font-size: var(--form-control-size-xs-font-size);
+  --button-size-xs-border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
+  --button-size-xs-font-size: var(--form-control-size-xs-font-size, var(--INTERNAL_form-control-size-xs-font-size));
   --button-size-xs-padding-vertical: var(--size-spacing-2xs);
   --button-size-xs-padding-horizontal: var(--size-spacing-xs);
 
   /* small */
-  --button-size-sm-border-radius: var(--form-control-size-sm-border-radius);
-  --button-size-sm-font-size: var(--form-control-size-sm-font-size);
-  --button-size-sm-padding-vertical: var(--form-control-size-sm-padding);
+  --button-size-sm-border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
+  --button-size-sm-font-size: var(--form-control-size-sm-font-size, var(--INTERNAL_form-control-size-sm-font-size));
+  --button-size-sm-padding-vertical: var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
   --button-size-sm-padding-horizontal: var(--size-spacing-sm);
 
   /* medium (default) */
-  --button-size-md-border-radius: var(--form-control-size-md-border-radius);
-  --button-size-md-font-size: var(--form-control-size-md-font-size);
-  --button-size-md-padding-vertical: var(--form-control-size-md-padding);
+  --button-size-md-border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
+  --button-size-md-font-size: var(--form-control-size-md-font-size, var(--INTERNAL_form-control-size-md-font-size));
+  --button-size-md-padding-vertical: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
   --button-size-md-padding-horizontal: var(--size-spacing-md);
 
   /* large */
-  --button-size-lg-border-radius: var(--form-control-size-lg-border-radius);
-  --button-size-lg-font-size: var(--form-control-size-lg-font-size);
-  --button-size-lg-padding-vertical: var(--form-control-size-lg-padding);
+  --button-size-lg-border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+  --button-size-lg-font-size: var(--form-control-size-lg-font-size, var(--INTERNAL_form-control-size-lg-font-size));
+  --button-size-lg-padding-vertical: var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding));
   --button-size-lg-padding-horizontal: var(--size-spacing-lg);
 
   /* NAKED */

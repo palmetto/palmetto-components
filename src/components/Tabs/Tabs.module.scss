@@ -10,13 +10,13 @@
   /* define regular focus styles for non-supporting browsers */
   &:focus {
     outline: 0;
-    box-shadow: inset var(--input-focus-box-shadow);
+    box-shadow: inset var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
   }
 
   /* Show focus styles on keyboard focus. */
   &:focus-visible {
     outline: 0;
-    box-shadow: inset var(--input-focus-box-shadow);
+    box-shadow: inset var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
   }
 
   &--selected {

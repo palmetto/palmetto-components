@@ -95,13 +95,13 @@
   /* define regular focus styles for non-supporting browsers */
   &:focus {
     outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
+    box-shadow: var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
   }
 
   /* Show focus styles on keyboard focus. */
   &:focus-visible {
     outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
+    box-shadow: var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
   }
 
   /* Hide focus styles if they're not needed, for example,

@@ -56,12 +56,12 @@ $lg-dimension: 36px;
   input:focus + div {
     /* define regular focus styles for non-supporting browsers */
     outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
+    box-shadow: var(form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
   }
   /* Show focus styles on keyboard focus. */
   input:focus-visible + div {
     outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
+    box-shadow: var(form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
   }
 
   /* Hide focus styles if they're not needed, for example,
