@@ -4,7 +4,6 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Alert } from './Alert';
 import { Heading } from '../Heading/Heading';
 import { Button } from '../Button/Button';
-import { AlertTokens } from './Alert.tokens';
 
 <Meta title="Components/Alert/Overview" component={Alert} />
 
@@ -26,25 +25,6 @@ Use alerts to display feedback for users about specific actions, or states of an
 
 <ArgsTable of={Alert} />
 
-## Themable Tokens
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {(() => {
-      return Object.entries(AlertTokens).map(([name, entry], i) => (
-      <tr key={i}>
-        <td><code>{name}</code></td>
-        <td><code>{entry}</code></td>
-      </tr>
-    ))})()}
-  </tbody>
-</table>
 
 ## Default
 
@@ -247,3 +227,88 @@ Renders a version of the banner with less padding.
     <Alert message="Compact Alerts have less padding" variant="info" isCompact />;
   </Story>
 </Canvas>
+
+
+## Custom Theming
+
+The Alert component can be themed by overrriding by overrriding specific CSS variables.
+
+<Canvas>
+  <Story name="With Custom Theme">
+    <>
+      <div style={{
+        '--color-brand-info-50': '#CFC5E9',
+        '--color-brand-info-500': '#603FB5',
+      }}>
+        <Alert
+          message="Here we've overwritten base token values so that the alert inherits new values."
+          title="Custom Theme"
+          variant="info"
+          hasIcon
+          className="m-bottom-md"
+        />
+      </div>
+      <div style={{
+        '--alert-info-font-color': '#603FB5',
+        '--alert-info-background-color': 'white',
+        '--alert-info-icon-color': '#603FB5',
+        '--alert-border-width': 'var(--size-border-xs)',
+        '--alert-info-border-color': 'var(--alert-info-icon-color)',
+        '--alert-box-shadow': '0 2px 4px 0 #CFC5E9, 0 1px 2px 0 #CFC5E9'
+      }}>
+        <Alert
+          message="Here we've overwritten ONLY the values for the 'info' alert variant so other components will be unaffected"
+          title="Custom Theme"
+          variant="info"
+          hasIcon
+          className="m-bottom-md"
+        />
+      </div>
+    </>
+  </Story>
+</Canvas>
+
+## Themable Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--alert-default-background-color': '--color-brand-grey-100',
+        '--alert-default-font-color': '--color-brand-grey-600',
+        '--alert-default-icon-color': '--color-brand-grey-600',
+        '--alert-default-border-color': 'transparent',
+        '--alert-info-background-color': '--color-brand-info-50',
+        '--alert-info-font-color': '--color-brand-grey-600',
+        '--alert-info-icon-color': '--color-brand-info-500',
+        '--alert-info-border-color': 'transparent',
+        '--alert-success-background-color': '--color-brand-success-50',
+        '--alert-success-font-color': '--color-brand-grey-600',
+        '--alert-success-icon-color': '--color-brand-success-500',
+        '--alert-success-border-color': 'transparent',
+        '--alert-warning-background-color': '--color-brand-warning-50',
+        '--alert-warning-font-color': '--color-brand-grey-600',
+        '--alert-warning-icon-color': '--color-brand-warning-500',
+        '--alert-warning-border-color': 'transparent',
+        '--alert-danger-background-color': '--color-brand-danger-50',
+        '--alert-danger-font-color': '--color-brand-grey-600',
+        '--alert-danger-icon-color': '--color-brand-danger-500',
+        '--alert-danger-border-color': 'transparent',
+        '--alert-border-width': '--size-border-0',
+        '--alert-border-color': 'transparent',
+        '--alert-box-shadow': '--size-box-shadow-0',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+      <tr key={i}>
+        <td><code>{name}</code></td>
+        <td><code>{entry}</code></td>
+      </tr>
+    ))})()}
+  </tbody>
+</table>

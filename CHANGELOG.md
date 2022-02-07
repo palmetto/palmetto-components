@@ -1,5 +1,12 @@
 Changelog
 
+# [0.112.0](https://github.com/palmetto/palmetto-components/compare/v0.111.2...v0.112.0) (2022-02-07)
+
+
+### Features
+
+* **Theming:** refactoring alert with fallback tokens ([#681](https://github.com/palmetto/palmetto-components/issues/681)) ([82e3a81](https://github.com/palmetto/palmetto-components/commit/82e3a812be794a8d4e30388bec4e0ed5682a32f8))
+
 ## [0.111.2](https://github.com/palmetto/palmetto-components/compare/v0.111.1...v0.111.2) (2022-02-02)
 
 
