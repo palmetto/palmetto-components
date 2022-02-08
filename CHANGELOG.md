@@ -1,5 +1,12 @@
 Changelog
 
+# [0.113.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.112.2-beta.1...v0.113.0-beta.1) (2022-02-08)
+
+
+### Features
+
+* new greens ([#687](https://github.com/palmetto/palmetto-components/issues/687)) ([c2d122b](https://github.com/palmetto/palmetto-components/commit/c2d122beb1d74ba848f0fdde83415e1a50c8dff7))
+
 ## [0.112.2-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.112.1...v0.112.2-beta.1) (2022-02-08)
 
 
