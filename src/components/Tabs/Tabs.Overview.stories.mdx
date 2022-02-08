@@ -142,7 +142,7 @@ By default, tabs will overflow when the content is wider than the container.
             isCentered
           >
             {tabs.map((tab, index) => (
-              <Tabs.Item>{`Overflowing Tab ${index + 1}`}</Tabs.Item>
+              <Tabs.Item key={index}>{`Overflowing Tab ${index + 1}`}</Tabs.Item>
             ))}
           </Tabs>
         </>
@@ -182,6 +182,41 @@ The `size` prop allows you to specify the size of the tab, or the size of the ta
             <Tabs.Item>Tab 1</Tabs.Item>
             <Tabs.Item>Tab 2</Tabs.Item>
           </Tabs>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## With Anchor elements
+
+Since each `Tab.Item` is render via a `Box` component you can pass the `as` attribute to render it as a different element than a button.
+The only other likely use case is to render each tab as an anchor. See example markup below.
+
+<Canvas isExpanded>
+  <Story name="Anchor Elements">
+    {() => {
+      const [selectedTab, setSelectedTab] = useState(0);
+      const handleClick = (event) => { event.preventDefault(); };
+      return (
+        <Box childGap="md">
+          <Tabs
+            value={selectedTab}
+            onChange={(event, index) => {
+              setSelectedTab(index);
+            }}
+          >
+            <Tabs.Item as="a" href="#firstPanel" id="tabOneAnchor" aria-controls="firstPanel" style={{ textDecoration: 'none' }} onClick={handleClick}>
+              Tab 1
+            </Tabs.Item>
+            <Tabs.Item as="a" href="#secondPanel" id="tabTwoAnchor" aria-controls="secondPanel" style={{ textDecoration: 'none' }} onClick={handleClick}>
+              Tab 2
+            </Tabs.Item>
+          </Tabs>
+           <TabPanels value={selectedTab}>
+            <Box padding="lg" id="firstPanel" aria-labelledby="tabOneAnchor">Here's the first tab</Box>
+            <Box padding="lg" id="secondPanel" aria-labelledby="tabTwoAnchor">Here's the second tab</Box>
+          </TabPanels>
         </Box>
       );
     }}

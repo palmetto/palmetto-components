@@ -1,0 +1,144 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Popover/Codesandbox" />
+
+# Popover
+
+Use popovers to show content of any kind behind the context of a specific trigger, some examples
+of uses for a popover include:
+
+1. Dropdowns
+2. Tooltips
+3. Context Menus
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { Popover, Box, Button, Icon, Heading } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [isPopoverOpen, setPopoverOpen] = useState(false);
+
+  const handleOpenPopover = () => {
+    setPopoverOpen(!isPopoverOpen);
+  };
+
+  const NavItem = ({ children, className, iconName }) => (
+    <Box
+      as="li"
+      color="grey-500"
+      style={{
+        flexShrink: 0,
+      }}
+      className={className}
+    >
+      <Box direction="row" childGap="md" alignItems="center">
+        {iconName && (
+          <Box color="grey-300" fontSize="lg">
+            <Icon className="nav-item-icon" name={iconName} />
+          </Box>
+        )}
+        <Box style={{ fontWeight: 500 }}>{children}</Box>
+      </Box>
+    </Box>
+  );
+
+  const popoverContent = (
+    <>
+      <Box
+        as="nav"
+        fontSize="sm"
+        className="main-nav"
+        background="white"
+        padding={{
+          base: '3xl 0 0 0',
+          desktop: '0',
+        }}
+        style={{
+          flexShrink: 0,
+        }}
+      >
+        <Box as="ul" childGap="xs" padding="md md sm md">
+          <Box direction="row" childGap="sm" alignItems="center">
+            <Box
+              fontSize="xs"
+              color="white"
+              radius="sm"
+              background="primary-light"
+              padding="2xs"
+            >
+              JC
+            </Box>
+            <Box display="block" className="truncate">
+              Johnny Cash
+            </Box>
+          </Box>
+        </Box>
+        <Box flex="auto" overflow="auto" padding="sm md lg md" childGap="lg">
+          <Box
+            as="ul"
+            childGap="sm"
+            style={{
+              flexShrink: 0,
+            }}
+            padding="0"
+          >
+            <NavItem iconName="contact">Contacts</NavItem>
+            <NavItem iconName="chart-bar">Reports</NavItem>
+            <NavItem iconName="list">Design Queue</NavItem>
+            <NavItem iconName="book">Certifications</NavItem>
+            <NavItem iconName="settings">Settings</NavItem>
+          </Box>
+          <Box
+            childGap="sm"
+            padding="lg 0 0 0"
+            borderWidth="xs 0 0 0"
+            borderColor="grey-lighter"
+            style={{ flexShrink: 0 }}
+          >
+            <Heading size="sm" as="h4" variant="grey">
+              Favorites
+            </Heading>
+            <Box childGap="xs">
+              <Box fontSize="xs" color="grey">
+                Favorite contacts or reports by clicking the star
+              </Box>
+            </Box>
+          </Box>
+          <Box
+            childGap="sm"
+            padding="lg 0 0 0"
+            borderWidth="xs 0 0 0"
+            borderColor="grey-lighter"
+            style={{ flex: '1 0 auto' }}
+          >
+            <Box as="ul" childGap="sm" padding="0">
+              <NavItem iconName="c-question">Feedback</NavItem>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </>
+  );
+
+  return (
+    <div>
+      <Popover
+        content={popoverContent}
+        isOpen={isPopoverOpen}
+        placement="bottom-start"
+        contentContainerProps={{
+          padding: 'md',
+          direction: 'column',
+        }}
+        withPortal
+        portalTarget={document.body}
+      >
+        <Button onClick={handleOpenPopover} variant="light" size="sm">
+          Popover Menu &nbsp;
+          <Icon name="menu" />
+        </Button>
+      </Popover>
+    </div>
+  );
+}
+```

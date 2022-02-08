@@ -1,4 +1,4 @@
-import cssShorthandToClasses from './cssShorthandToClasses';
+import { cssShorthandToClasses } from './cssShorthandToClasses';
 import { SPACING_OPTIONS } from './tokens';
 
 describe('cssShorthandToClasses', () => {

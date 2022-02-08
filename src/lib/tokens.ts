@@ -1,6 +1,6 @@
-import { size } from '@palmetto/palmetto-design-tokens/build/json/values/variables-size.json';
-import { color } from '@palmetto/palmetto-design-tokens/build/json/values/variables-color.json';
-import { asset } from '@palmetto/palmetto-design-tokens/build/json/variables-asset.json';
+import sizes from '@palmetto/palmetto-design-tokens/build/json/values/variables-size.json';
+import colors from '@palmetto/palmetto-design-tokens/build/json/values/variables-color.json';
+import assets from '@palmetto/palmetto-design-tokens/build/json/variables-asset.json';
 import { ICON_NAMES as iconNames } from '@palmetto/palmetto-design-tokens/build/icons';
 
 import {
@@ -22,6 +22,10 @@ import {
   ZIndexSize,
   IconName,
 } from '../types';
+
+const { size } = sizes;
+const { color } = colors;
+const { asset } = assets;
 
 export const ICON_NAMES = iconNames as IconName[];
 export const BORDER_RADIUS_OPTIONS = Object.keys(size['border-radius']) as BorderRadiusSize[];

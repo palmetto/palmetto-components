@@ -26,11 +26,13 @@ export const FormikRadioGroup: React.FC<FormikRadioGroupProps> = (
     },
     form: { touched, errors },
     onChange,
+    options,
     ...props
   },
 ) => (
   <RadioGroup
     {...props}
+    options={options}
     name={name}
     onBlur={onBlur}
     onChange={onChange ?? formikOnChange}

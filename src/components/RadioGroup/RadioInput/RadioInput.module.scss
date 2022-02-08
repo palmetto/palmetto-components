@@ -1,7 +1,60 @@
 @import '../../../styles/mixins';
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
+$sm-dimension: 16px;
+$md-dimension: 20px;
+$lg-dimension: 24px;
+
+@mixin size-sm {
+  > :not(label) {
+    width: $sm-dimension;
+    height: $sm-dimension;
+  }
+}
+
+%size-sm { @include size-sm; }
+.size-sm { @extend %size-sm; }
+
+@mixin size-md {
+  > :not(label) {
+    width: $md-dimension;
+    height: $md-dimension;
+  }
+}
+
+%size-md { @include size-md; }
+.size-md { @extend %size-md; }
+
+@mixin size-lg {
+  > :not(label) {
+    width: $lg-dimension;
+    height: $lg-dimension;
+  }
+}
+
+%size-lg { @include size-lg; }
+.size-lg { @extend %size-lg; } 
 
 .radio-container {
   &.hidden {
     @include accessible-hidden-element;
   }
+}
+
+@media (min-width: $size-breakpoint-tablet) {
+  .size-sm-tablet { @include size-sm; }
+  .size-md-tablet { @include size-md; }
+  .size-lg-tablet { @include size-lg; }
+}
+
+@media (min-width: $size-breakpoint-desktop) {
+  .size-sm-desktop { @include size-sm; }
+  .size-md-desktop { @include size-md; }
+  .size-lg-desktop { @include size-lg; }
+}
+
+@media (min-width: $size-breakpoint-hd) {
+  .size-sm-hd { @include size-sm; }
+  .size-md-hd { @include size-md; }
+  .size-lg-hd { @include size-lg; }
 }

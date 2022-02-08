@@ -1,0 +1,89 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Heading/Codesandbox" />
+
+# Heading
+
+Use `Headings` as labels for pages or sections of a page that make up an interface. `Headings` can label an entire page, or sections of related content.
+The `Heading` component allows you to specify an appropriate semantic element (h1-h6) and independently set its size so that it is appropriate for the surrounding content.
+If no size is specified, a default size will be applied.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Heading } from '@palmetto/palmetto-components';
+
+export default () => (
+  <Heading as="h1">Lead the world towards a clean energy future</Heading>
+);
+```
+
+## All Levels
+
+Each Heading level has a default size.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Heading } from '@palmetto/palmetto-components';
+
+export default () => (
+  <>
+    <Heading as="h1">h1 Heading</Heading>
+    <Heading as="h2">h2 Heading</Heading>
+    <Heading as="h3">h3 Heading</Heading>
+    <Heading as="h4">h4 Heading</Heading>
+    <Heading as="h5">h5 Heading</Heading>
+    <Heading as="h6">h6 Heading</Heading>
+  </>
+);
+```
+
+## Sizes
+
+The default size of the Heading can overridden as xs-5xl so that it's appropriate for its surrounding context.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Heading, FONT_SIZE_OPTIONS } from '@palmetto/palmetto-components';
+
+export default () => (
+  <>
+    {[...FONT_SIZE_OPTIONS].reverse().map(fontSize => (
+      <Heading as="h3" size={fontSize} key={fontSize}>
+        {`Size ${fontSize}`}
+      </Heading>
+    ))}
+  </>
+);
+```
+
+The `size` prop accepts an object where the properties correspond to [breakpoint tokens](/?path=/story/design-tokens-breakpoints--page).
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Heading } from '@palmetto/palmetto-components';
+
+export default () => (
+  <Heading as="h3" size={{ base: 'sm', tablet: 'lg', desktop: 'xl', hd: '3xl' }}>
+    Leading the world towards a clean energy future
+  </Heading>
+);
+```
+
+## Colors
+
+The variant of the heading is inherited from its parent, but can be set to brand variant as well.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Heading, FONT_COLOR_OPTIONS } from '@palmetto/palmetto-components';
+
+export default () => (
+  <>
+    {FONT_COLOR_OPTIONS.map(variant => (
+      <Heading as="h3" variant={variant} key={variant}>
+        {variant}
+      </Heading>
+    ))}
+  </>
+);
+```

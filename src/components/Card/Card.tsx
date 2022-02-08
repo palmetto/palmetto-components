@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import { CardFooter, CardHeader, CardSection } from './components';
 
@@ -17,6 +18,7 @@ const CardBaseComponent: React.FC<CardProps> = React.forwardRef((
   {
     children,
     subdued,
+    className = undefined,
     radius = 'md',
     overflow = 'hidden',
     display = 'block',
@@ -38,6 +40,7 @@ const CardBaseComponent: React.FC<CardProps> = React.forwardRef((
       ref={ref}
       shadow={subdued ? undefined : shadow}
       width={width}
+      className={classNames('palmetto-components__variables__card', className)}
       {...restProps}
     >
       {children}

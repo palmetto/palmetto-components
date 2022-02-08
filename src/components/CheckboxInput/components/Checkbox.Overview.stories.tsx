@@ -32,6 +32,7 @@ export const Sizes: React.ReactNode = () => {
   const [smCheckbox, setSmCheckbox] = useState(true);
   const [mdCheckbox, setMdCheckbox] = useState(true);
   const [lgCheckbox, setLgCheckbox] = useState(true);
+  const [responsiveCheckbox, setResponsiveCheckbox] = useState(true);
   return (
     <Box childGap="lg" direction="row" alignItems="flex-start">
       <Checkbox
@@ -54,6 +55,18 @@ export const Sizes: React.ReactNode = () => {
         onChange={event => setLgCheckbox(event.target.checked)}
         isChecked={lgCheckbox}
         size="lg"
+      />
+      <Checkbox
+        id="lg"
+        label="responsive"
+        onChange={event => setResponsiveCheckbox(event.target.checked)}
+        isChecked={responsiveCheckbox}
+        size={{
+          base: 'sm',
+          tablet: 'md',
+          desktop: 'lg',
+          hd: 'sm',
+        }}
       />
     </Box>
   );

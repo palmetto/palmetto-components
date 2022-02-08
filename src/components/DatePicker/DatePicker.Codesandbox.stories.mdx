@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/DatePicker/Codesandbox" />
+
+# DatePicker
+
+The Datepicker lets users select a date by showing them a calendar.
+
+It is also used in combination with an input and popover by the [DateInput component](/?path=/docs/components-dateinput-overview--basic-usage).
+
+### It can be used for:
+
+- selecting a single date
+- selecting a start and end date
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { Box, DatePicker } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
+
+  return (
+    <Box childGap="md">
+      <DatePicker onChange={setSelectedDate} selected={selectedDate} />
+      <p>Selected Date: {selectedDate.toISOString()}</p>
+    </Box>
+  );
+}
+```

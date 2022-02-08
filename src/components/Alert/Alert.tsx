@@ -6,19 +6,8 @@ import { Heading } from '../Heading/Heading';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import styles from './Alert.module.scss';
-import { BrandColor, FontColor, IconName } from '../../types';
-
-export type AlertVariant = 'info' | 'success' | 'warning' | 'danger' | 'default';
-
-export type AlertAttributes = { icon: IconName; color: FontColor; background: BrandColor; };
-
-export const ALERT_ATTRIBUTES_MAP: { [key in AlertVariant]: AlertAttributes } = {
-  default: { icon: 'c-warning', color: 'grey-600', background: 'grey-lighter' },
-  info: { icon: 'c-info', color: 'info-500', background: 'secondary-lightest' },
-  success: { icon: 'c-check', color: 'success-500', background: 'success-lightest' },
-  warning: { icon: 't-warning', color: 'warning-500', background: 'warning-lightest' },
-  danger: { icon: 'c-remove', color: 'danger-500', background: 'danger-lightest' },
-};
+import { AlertVariant } from './Alert.types';
+import { ALERT_ICONS_MAP } from './Alert.constants';
 
 export interface AlertProps {
   /**
@@ -63,6 +52,10 @@ export interface AlertProps {
    * The type/color of the alert to show.
    */
   variant?: AlertVariant;
+    /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 export const Alert: FC<AlertProps> = ({
   className = '',
@@ -75,6 +68,7 @@ export const Alert: FC<AlertProps> = ({
   render = undefined,
   title = '',
   variant = 'default',
+  ...restProps
 }) => {
   const handleClose = (
     event: MouseEvent<HTMLOrSVGElement> | KeyboardEvent<HTMLSpanElement>,
@@ -85,9 +79,9 @@ export const Alert: FC<AlertProps> = ({
   };
 
   const renderAlertIcon = (): ReactNode => (
-    <Box fontSize="lg" color={ALERT_ATTRIBUTES_MAP[variant].color}>
+    <Box fontSize="lg" className={styles[`alert__icon__${variant}`]}>
       <Icon
-        name={ALERT_ATTRIBUTES_MAP[variant].icon}
+        name={ALERT_ICONS_MAP[variant].icon}
         data-testid={`alert-icon-${variant}-test-id`}
       />
     </Box>
@@ -107,12 +101,15 @@ export const Alert: FC<AlertProps> = ({
     );
   };
 
-  const alertContainerClasses: string = classNames(styles.alert, className);
+  const alertContainerClasses: string = classNames(
+    styles[`alert__${variant}`],
+    styles.alert,
+    className,
+  );
 
   return (
     <Box
       alignItems="flex-start"
-      background={ALERT_ATTRIBUTES_MAP[variant].background}
       childGap="sm"
       className={alertContainerClasses}
       direction="row"
@@ -120,6 +117,7 @@ export const Alert: FC<AlertProps> = ({
       radius="md"
       role="alert"
       fontSize="sm"
+      {...restProps}
     >
       {hasIcon && renderAlertIcon()}
       <div>

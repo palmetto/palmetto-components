@@ -13,13 +13,13 @@ import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import { ChangeEvent as CleaveChangeEvent } from 'cleave.js/react/props';
 import { ResponsiveProp, UnknownPropertiesObjType } from '../../types';
-import cssShorthandToClasses from '../../lib/cssShorthandToClasses';
+import { cssShorthandToClasses } from '../../lib/cssShorthandToClasses';
 import { computedResponsiveSize } from './TextInputSizeUtilities'; // eslint-disable-line import/no-cycle
 import { getInputMaskType } from './TextInputMasks'; // eslint-disable-line import/no-cycle
 import { Box, BoxProps } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormControl } from '../FormControl/FormControl';
-import getAutoCompleteValue from '../../lib/getAutoCompleteValue';
+import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
 import styles from './TextInput.module.scss';
 
 export type InputMaskType = ('phone' | 'creditCard' | 'date') | UnknownPropertiesObjType;
@@ -158,10 +158,14 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
     },
     ref,
   ) => {
-    const inputWrapperClasses = classNames(styles['text-input-wrapper'], {
-      [styles.error]: error,
-      [styles.disabled]: isDisabled,
-    });
+    const inputWrapperClasses = classNames(
+      'palmetto-components__variables__form-control',
+      styles['text-input-wrapper'],
+      {
+        [styles.error]: error,
+        [styles.disabled]: isDisabled,
+      },
+    );
 
     const clearBtnClasses = classNames(styles['clear-button'], styles.md);
 

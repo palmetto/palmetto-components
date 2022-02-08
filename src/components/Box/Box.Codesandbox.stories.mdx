@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Box/Codesandbox" />
+
+# Box
+
+A `<Box>` is a layout component to build UIs with consistent padding and spacing between elements.
+
+- Its content is arranged in a specified `direction`, with 'column' being the default
+- Renders a `<div />` element by default, but can be changed using `as`
+- Allows you to specify the spacing between child elements using `childGap`
+- Many props accept `ResponsiveProp` that take an object with keys that correspond to [breakpoint tokens](/?path=/docs/design-tokens-breakpoints--page).
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Box } from '@palmetto/palmetto-components';
+
+export default () => (
+  <Box childGap="md">
+    <Box
+      padding="xl"
+      background="primary-100"
+      radius="md"
+      fontSize={{ base: 'sm', tablet: 'md', hd: 'lg' }}
+      borderWidth="sm"
+      borderColor="primary-200"
+    >
+      I am a box with a green background and border
+    </Box>
+    <Box childGap={{ base: 'sm', tablet: 'md', desktop: 'lg' }} direction="row">
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+      <Box flex="auto" radius="md" background="secondary-100" height="lg" />
+    </Box>
+  </Box>
+);
+```

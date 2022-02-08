@@ -1,8 +1,56 @@
 @import '../../../styles/mixins';
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
+$sm-dimension: 20px;
+$md-dimension: 24px;
+$lg-dimension: 36px;
+
+@mixin size-sm {
+  border-radius: var(--size-border-radius-xs);
+  height: $sm-dimension;
+  font-size: var(--size-font-size-lg);
+
+  * {
+    width: $sm-dimension;
+    height: $sm-dimension;
+  }
+}
+
+%size-sm { @include size-sm; }
+.size-sm { @extend %size-sm; }
+
+@mixin size-md {
+  border-radius: var(--size-border-radius-sm);
+  height: $md-dimension;
+  font-size: var(--size-font-size-xl);
+
+  * {
+    width: $md-dimension;
+    height: $md-dimension;
+  }
+}
+
+%size-md { @include size-md; }
+.size-md { @extend %size-md; }
+
+@mixin size-lg {
+  border-radius: var(--size-border-radius-sm);
+  height: $lg-dimension;
+  font-size: var(--size-font-size-2xl);
+
+  * {
+    width: $lg-dimension;
+    height: $lg-dimension;
+  }
+}
+
+%size-lg { @include size-lg; }
+.size-lg { @extend %size-lg; } 
 
 .checkbox {
   &.hidden {
     @include accessible-hidden-element;
+    height: 0;
   }
 
   input:focus + div {
@@ -21,5 +69,27 @@
   input:focus:not(:focus-visible) + div {
     outline: 0;
     box-shadow: none;
+  }
+
+  &.size-sm { @extend %size-sm; }
+  &.size-md { @extend %size-md; }
+  &.size-lg { @extend %size-lg; }
+
+  @media (min-width: $size-breakpoint-tablet) {
+    &.size-sm-tablet { @include size-sm; }
+    &.size-md-tablet { @include size-md; }
+    &.size-lg-tablet { @include size-lg; }
+  }
+
+  @media (min-width: $size-breakpoint-desktop) {
+    &.size-sm-desktop { @include size-sm; }
+    &.size-md-desktop { @include size-md; }
+    &.size-lg-desktop { @include size-lg; }
+  }
+
+  @media (min-width: $size-breakpoint-hd) {
+    &.size-sm-hd { @include size-sm; }
+    &.size-md-hd { @include size-md; }
+    &.size-lg-hd { @include size-lg; }
   }
 }

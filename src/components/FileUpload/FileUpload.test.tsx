@@ -13,14 +13,14 @@ describe('FileUpload', () => {
 
       expect(fileInput).toBeInTheDocument();
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('light', 'md');
+      expect(button).toHaveClass('light', 'size-md');
       expect(uploadIcon).toBeInTheDocument();
     });
   });
 
   describe('Button Variations', () => {
     it('renders a file upload button in different styles based on props', () => {
-      interface Props { color?: 'dark' | 'light'; size?: 'sm' | 'md' | 'lg'; }
+      interface Props { color?: 'dark' | 'light' | 'primary'; size?: 'sm' | 'md' | 'lg'; }
       const UploadComponent: FC<Props> = ({ color = 'light', size = 'md' }) => (
         <FileUpload
           id="file-input"
@@ -36,19 +36,25 @@ describe('FileUpload', () => {
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('light', 'md');
+      expect(button).toHaveClass('light', 'size-md');
 
       rerender(<UploadComponent size="sm" color="dark" />);
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('dark', 'sm');
+      expect(button).toHaveClass('dark', 'size-sm');
 
       rerender(<UploadComponent size="lg" color="dark" />);
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('dark', 'lg');
+      expect(button).toHaveClass('dark', 'size-lg');
+
+      rerender(<UploadComponent size="md" color="primary" />);
+      button = screen.getByText('Upload File').closest('button');
+
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveClass('primary', 'size-md');
     });
 
     it('renders with no icon when boolean false is passed to `hasIcon`', () => {
@@ -64,6 +70,22 @@ describe('FileUpload', () => {
 
       const uploadIcon = screen.queryByTestId('file-upload__upload-icon');
       expect(uploadIcon).toBe(null);
+    });
+
+    it('renders with no text when `null` is passed to `buttonText`', () => {
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+          hasIcon={false}
+          buttonText={null}
+        />,
+      );
+
+      const uploadButtonText = screen.queryByTestId('file-upload__upload-text');
+      expect(uploadButtonText).toBe(null);
     });
 
     it('renders a fullwidth input/button when prop is passed', () => {

@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/RadioGroup/Codesandbox" />
+
+# RadioGroup
+
+Use a RadioGroup when a user is required to select one of five or fewer options. It is ideal for this scenario because the options are displayed without having to interact. If there are more than five options, use the [SelectInput](?path=/docs/components-selectinput-overview--default-story) instead.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { RadioGroup } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState(null);
+
+  const options = [
+    {
+      id: 'chocolate',
+      value: 'chocolate',
+      label: 'Chocolate',
+    },
+    {
+      id: 'strawberry',
+      value: 'strawberry',
+      label: 'Strawberry',
+    },
+    {
+      id: 'vanilla',
+      value: 'vanilla',
+      label: 'Vanilla',
+    },
+  ];
+
+  return (
+    <RadioGroup
+      name="noTitleOrDescription"
+      value={value}
+      onChange={event => setValue(event.target.value)}
+      options={options}
+    />
+  );
+};
+```

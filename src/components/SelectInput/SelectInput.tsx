@@ -11,7 +11,7 @@ import Select, {
 } from 'react-select';
 import { SimulatedEventPayloadType, ResponsiveProp } from '../../types';
 import { Z_INDEX_VALUES } from '../../lib/tokens';
-import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormLabel } from '../FormLabel/FormLabel';
@@ -156,6 +156,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   const responsiveClasses = generateResponsiveClasses('size', size);
 
   const wrapperClasses = classNames(
+    'palmetto-components__variables__form-control',
     'select-input-wrapper',
     className,
     ...responsiveClasses.map(c => (styles[c])),

@@ -1,0 +1,91 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Card/Codesandbox" />
+
+# Card
+
+A card is a stylized Box component that acts as a container to group related information and actions.
+It consists of three child components that are automatically included with the `<Card />`:
+
+1. `<Card.Header />` - should contain a descriptive title for the Card's contents
+1. `<Card.Section />` - for the body of the card, and can consists of many sections
+1. `<Card.Footer />` - a place for primary actions for the card's contents
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Card, Box, Button } from '@palmetto/palmetto-components';
+
+export default () => (
+  <Box padding="md" background="grey-lighter">
+    <Card>
+      <Card.Header title="Profile Card Example">
+        <Box as="p" color="grey" fontSize="sm">
+          Personal and Contact Details
+        </Box>
+      </Card.Header>
+      <Box overflow="hidden" height="130px">
+        <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
+      </Box>
+      <Card.Section title="profile">
+        <Box direction="row" childGap="lg">
+          <Box flex="auto" childGap="lg">
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">
+                Full Name
+              </Box>
+              <Box>Jessica Ramirez</Box>
+            </Box>
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">
+                Email
+              </Box>
+              <Box>jw1416@palmetto.com</Box>
+            </Box>
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">
+                Phone
+              </Box>
+              <Box>(123) 555-5555</Box>
+            </Box>
+          </Box>
+          <Box flex="auto" childGap="lg">
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">
+                Preferred Language
+              </Box>
+              <Box>English</Box>
+            </Box>
+            <Box childGap="2xs">
+              <Box fontSize="sm" color="grey">
+                Country
+              </Box>
+              <Box>United States</Box>
+            </Box>
+          </Box>
+        </Box>
+      </Card.Section>
+      <Card.Section title="site location">
+        <Box childGap="2xs">
+          <Box>12345 Jones Rd</Box>
+          <Box>Seattle, WA 98123</Box>
+        </Box>
+      </Card.Section>
+      <Card.Footer>
+        <Box display="flex" direction="row" justify="between" overflow="hidden" childGap="md">
+          <Box direction="row" childGap="sm">
+            <Button size="sm" variant="light">
+              Edit
+            </Button>
+            <Button size="sm" variant="light">
+              Remove
+            </Button>
+          </Box>
+          <Button variant="danger" isOutlined size="sm">
+            Delete
+          </Button>
+        </Box>
+      </Card.Footer>
+    </Card>
+  </Box>
+);
+```

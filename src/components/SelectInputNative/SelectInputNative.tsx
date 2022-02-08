@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import generateResponsiveClasses from '../../lib/generateResponsiveClasses';
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { ResponsiveProp } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { FormControl, FormControlProps } from '../FormControl/FormControl';
@@ -64,6 +64,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
   const responsiveClasses = generateResponsiveClasses('size', size);
 
   const selectWrapperClasses = classNames(
+    'palmetto-components__variables__form-control',
     styles['select-input-native-wrapper'],
     ...responsiveClasses.map(className => (styles[className])),
     {

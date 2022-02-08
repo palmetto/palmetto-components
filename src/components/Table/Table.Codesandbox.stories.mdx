@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Table/Codesandbox" />
+
+# Table
+
+Use tables to render datasets.
+
+Tables display information in a way that’s easy to scan, while making it easy to interact with individual records in a data set.
+
+Lastly use tables when you need the ability to sort, filter and/or paginate data.
+
+An example showcasing the props required to render a list of customers in a table. `rows` and `columns`.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Table } from '@palmetto/palmetto-components';
+
+export default () => {
+  const columnConfig = [
+    {
+      heading: 'Customer',
+      dataKey: 'customerInfo',
+      render: (cell, row) => (
+        <div>
+          <div>{row.name}</div>
+          <div className="font-color-grey">{row.email}</div>
+        </div>
+      ),
+    },
+    { heading: 'phone', dataKey: 'phone', width: 125 },
+    { heading: 'plan', dataKey: 'plan', width: 125 },
+    { heading: 'status', dataKey: 'status', width: 125 },
+  ];
+
+  const tableData = [
+    {
+      status: 'lead captured',
+      name: 'John Smith',
+      email: 'john@palmetto.com',
+      phone: '555 555-5555',
+      plan: 'standard',
+    },
+    {
+      status: 'proposal in progress',
+      name: 'Jill Sanchez',
+      email: 'jill@palmetto.com',
+      phone: '555 555-5555',
+      plan: 'premium',
+    },
+    {
+      status: 'PTO',
+      name: 'Jin Lee',
+      email: 'jin@palmetto.com',
+      phone: '555 555-5555',
+      plan: 'standard',
+    },
+  ];
+
+  return <Table rowKey="id" columns={columnConfig} rows={tableData} />;
+};
+```

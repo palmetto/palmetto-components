@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/FileUpload/Codesandbox" />
+
+# File Upload
+
+Use FileUpload to capture files for upload in forms or elsewhere.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { FileUpload } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [files, setFiles] = useState(null);
+
+  const handleChange = event => {
+    setFiles(event.target.files);
+  };
+
+  return <FileUpload labelText="My File" id="myFile" onChange={handleChange} files={files} />;
+}
+```

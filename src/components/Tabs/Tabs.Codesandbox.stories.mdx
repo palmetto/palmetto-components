@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Tabs/Codesandbox" />
+
+# Tabs
+
+The Tabs component allows a user to flip amongst different views within the same page. This helps users navigate related content without having to change context.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { Tabs, TabPanels, Box } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [selectedTab, setSelectedTab] = useState(0);
+  return (
+    <>
+      <Tabs
+        value={selectedTab}
+        onChange={(event, index) => {
+          setSelectedTab(index);
+        }}
+      >
+        <Tabs.Item>Tab 1</Tabs.Item>
+        <Tabs.Item>Tab 2</Tabs.Item>
+      </Tabs>
+      <TabPanels value={selectedTab}>
+        <Box padding="lg">Here's the first tab</Box>
+        <Box padding="lg">Here's the second tab</Box>
+      </TabPanels>
+    </>
+  );
+}
+```
