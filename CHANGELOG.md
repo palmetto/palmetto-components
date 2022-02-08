@@ -1,5 +1,12 @@
 Changelog
 
+## [0.112.2-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.112.1...v0.112.2-beta.1) (2022-02-08)
+
+
+### Bug Fixes
+
+* update with expanded border radius options ([#684](https://github.com/palmetto/palmetto-components/issues/684)) ([51c8f03](https://github.com/palmetto/palmetto-components/commit/51c8f03bc7bcc129f0860ce0b02b18f5f870a148))
+
 ## [0.112.1](https://github.com/palmetto/palmetto-components/compare/v0.112.0...v0.112.1) (2022-02-07)
 
 # [0.112.0](https://github.com/palmetto/palmetto-components/compare/v0.111.2...v0.112.0) (2022-02-07)
