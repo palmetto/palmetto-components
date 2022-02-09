@@ -50,14 +50,14 @@
 
 @mixin size-lg {
   border-radius: var(--button-size-lg-border-radius, var(--form-control-size-lg-border-radius));
-  padding: var(--button-size-lg-padding-vertical, var(--form-control-size-lg-padding)) var(--button-size-lg-padding-horizontal,  var(--size-spacing-lg));
+  padding: var(--button-size-lg-padding-vertical, var(--form-control-size-lg-padding)) var(--button-size-lg-padding-horizontal, var(--size-spacing-lg));
   min-height: 55px;
   letter-spacing: 1px;
   font-size: var(--button-size-lg-font-size, var(--form-control-size-lg-font-size));
 
   &.outline {
     padding: calc(var(--button-size-lg-padding-vertical, var(--form-control-size-lg-padding)) - 1px)
-      calc(var(--button-size-lg-padding-horizontal,  var(--size-spacing-lg)) - 1px);
+      calc(var(--button-size-lg-padding-horizontal, var(--size-spacing-lg)) - 1px);
   }
 }
 
