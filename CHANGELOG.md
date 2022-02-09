@@ -1,5 +1,12 @@
 Changelog
 
+# [0.115.0](https://github.com/palmetto/palmetto-components/compare/v0.114.0...v0.115.0) (2022-02-09)
+
+
+### Features
+
+* **Icon:** eye, eye-slash ([#691](https://github.com/palmetto/palmetto-components/issues/691)) ([e263b90](https://github.com/palmetto/palmetto-components/commit/e263b90294a00f1946e3ee067fd63fbf782bc026))
+
 # [0.114.0](https://github.com/palmetto/palmetto-components/compare/v0.113.0...v0.114.0) (2022-02-09)
 
 
