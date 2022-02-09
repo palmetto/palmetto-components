@@ -17,6 +17,10 @@ Actions almost always occur on the same page.
   <Button onClick={() => alert('clicked')}>Button</Button>
 </Canvas>
 
+## Props
+
+<ArgsTable of={Button} />
+
 ## Color Variants
 
 The `variant` prop determines which color variant to render.
@@ -222,9 +226,33 @@ can render buttons as one of `button`, `a`, and `input`.
   </Story>
 </Canvas>
 
-## Props
+## Custom Theming
 
-<ArgsTable of={Button} />
+The Button component can be themed by base tokens, or component specific tokens. This example shows how we style our `Button` with our brand font and squared corners for use on our public marketing site.
+
+<Canvas>
+  <Story name="With Custom Theme">
+    <Box
+      childGap="sm"
+      direction="row"
+      alignItems="flex-start"
+      className="m-bottom-md"
+      style={{
+        '--button-font-family': 'var(--asset-fonts-brand)',
+        '--button-font-weight': 'var(--size-font-weight-regular)',
+        '--button-size-xs-border-radius': '0',
+        '--button-size-sm-border-radius': '0',
+        '--button-size-md-border-radius': '0',
+        '--button-size-lg-border-radius': '0',
+      }}
+    >
+      <Button size="xs">Get Solar</Button>
+      <Button size="sm">Get Solar</Button>
+      <Button size="md">Get Solar</Button>
+      <Button size="lg">Get Solar</Button>
+    </Box>
+  </Story>
+</Canvas>
 
 ## Component Tokens
 
@@ -238,7 +266,7 @@ can render buttons as one of `button`, `a`, and `input`.
   <tbody>
     {(() => {
       const tokens = {
-        '--button-font-family': '--asset-fonts-brand',
+        '--button-font-family': '--asset-fonts-body',
         '--button-font-weight': '--size-font-weight-bold',
         '--button-size-xs-border-radius': '--form-control-size-sm-border-radius',
         '--button-size-xs-font-size': '--form-control-size-xs-font-size',
