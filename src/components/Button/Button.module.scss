@@ -271,10 +271,6 @@
     }
   }
 
-  &.naked {
-    color: var(--button-naked-font-color, var(--color-brand-grey-500));
-  }
-
   &.size-xs { @extend %size-xs; }
   &.size-sm { @extend %size-sm; }
   &.size-md { @extend %size-md; }
