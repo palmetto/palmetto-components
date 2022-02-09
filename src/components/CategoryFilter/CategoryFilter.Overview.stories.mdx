@@ -23,14 +23,35 @@ The CategoryFilter component consists of a button with text, typically used in a
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
-      const [isSelected, setSelected] = useState(0);
+      const [isSelected, setIsSelected] = useState({
+        chocolate: false,
+        vanilla: true,
+        strawberry: false,
+      });
+      const handleSelect = selectedKey => {
+        setIsSelected(prevIsSelected => ({
+          ...prevIsSelected,
+          [selectedKey]: !prevIsSelected[selectedKey],
+        }));
+      };
       return (
-        <CategoryFilter
-          isSelected={isSelected}
-          onClick={() => setSelected(prevIsSelected => !prevIsSelected)}
-        >
-          My Category
-        </CategoryFilter>
+        <Box direction="row" childGap="xs">
+          <CategoryFilter
+            isSelected={isSelected.chocolate}
+            onClick={() => handleSelect('chocolate')}
+          >
+            chocolate
+          </CategoryFilter>
+          <CategoryFilter isSelected={isSelected.vanilla} onClick={() => handleSelect('vanilla')}>
+            vanilla
+          </CategoryFilter>
+          <CategoryFilter
+            isSelected={isSelected.strawberry}
+            onClick={() => handleSelect('strawberry')}
+          >
+            strawberry
+          </CategoryFilter>
+        </Box>
       );
     }}
   </Story>
@@ -69,7 +90,7 @@ The CategoryFilter can be sized with one of `xs`, `sm`, `md`, `lg`, or a `Respon
             Small
           </CategoryFilter>
           <CategoryFilter isSelected={isSelected.md} onClick={() => handleSelect('md')} size="md">
-            Medium (Default)
+            Medium
           </CategoryFilter>
           <CategoryFilter isSelected={isSelected.lg} onClick={() => handleSelect('lg')} size="lg">
             Large
@@ -108,3 +129,37 @@ Use the disabled prop to indicate the button is not clickable in its currenty st
     }}
   </Story>
 </Canvas>
+
+## Component Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--category-filter-background-color': 'transparent',
+        '--category-filter-background-color-hover': '--color-brand-grey-100',
+        '--category-filter-selected-background-color': '--color-brand-primary-500',
+        '--category-filter-selected-background-color-hover': '--color-brand-primary-600',
+        '--category-filter-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
+        '--category-filter-selected-box-shadow-focus': '0 0 0 4px --color-brand-success-200',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+
+  </tbody>
+</table>
