@@ -1,5 +1,12 @@
 Changelog
 
+# [0.113.0](https://github.com/palmetto/palmetto-components/compare/v0.112.1...v0.113.0) (2022-02-09)
+
+
+### Features
+
+* **Heading:** theme tokens ([#688](https://github.com/palmetto/palmetto-components/issues/688)) ([64be68c](https://github.com/palmetto/palmetto-components/commit/64be68ca21387c7d273d449abff3eda3a80db5f6))
+
 ## [0.112.1](https://github.com/palmetto/palmetto-components/compare/v0.112.0...v0.112.1) (2022-02-07)
 
 # [0.112.0](https://github.com/palmetto/palmetto-components/compare/v0.111.2...v0.112.0) (2022-02-07)
