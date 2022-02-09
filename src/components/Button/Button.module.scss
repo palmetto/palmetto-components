@@ -93,17 +93,6 @@
     cursor: not-allowed;
   }
 
-  /* define regular focus styles for non-supporting browsers */
-  &:focus {
-    outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
-  }
-
-  /* Show focus styles on keyboard focus. */
-  &:focus-visible {
-    outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
-  }
 
   /* Hide focus styles if they're not needed, for example,
   when an element receives focus via the mouse. */
@@ -119,6 +108,18 @@
   &.primary {
     background-color: var(--button-primary-background-color, var(--color-brand-primary-500));
     color: var(--button-primary-font-color, var(--color-brand-white-base));
+
+    /* define regular focus styles for non-supporting browsers */
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
+    }
+
+    /* Show focus styles on keyboard focus. */
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
+    }
 
     &:not(:disabled):hover {
       background-color: var(--button-primary-background-color-hover, var(--color-brand-primary-600));
@@ -141,6 +142,18 @@
   &.success {
     background-color: var(--button-success-background-color, var(--color-brand-success-500));
     color: var(--button-success-font-color, var(--color-brand-white-base));
+
+    /* define regular focus styles for non-supporting browsers */
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
+    }
+
+    /* Show focus styles on keyboard focus. */
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
+    }
 
     &:not(:disabled):hover {
       background-color: var(--button-success-background-color-hover, var(--color-brand-success-600));
