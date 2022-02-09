@@ -1,21 +1,27 @@
 .text-link {
   &.primary {
-    text-decoration-color: var(--text-link-font-color-primary);
-    color: var(--text-link-font-color-primary);
+    text-decoration-color: var(--text-link-font-color-primary, var(--color-brand-primary-500));
+    color: var(--text-link-font-color-primary, var(--color-brand-primary-500));
 
     &:hover {
-      text-decoration-color: var(--text-link-font-color-primary-hover);
-      color: var(--text-link-font-color-primary-hover);
+      text-decoration-color: var(
+        --text-link-font-color-primary-hover,
+        var(--color-brand-primary-600)
+      );
+      color: var(--text-link-font-color-primary-hover, var(--color-brand-primary-600));
     }
   }
 
   &.danger {
-    text-decoration-color: var(--text-link-font-color-danger);
-    color: var(--text-link-font-color-danger);
+    text-decoration-color: var(--text-link-font-color-danger, var(--color-brand-danger-base));
+    color: var(--text-link-font-color-danger, var(--color-brand-danger-base));
 
     &:hover {
-      text-decoration-color: var(--text-link-font-color-danger-hover);
-      color: var(--text-link-font-color-danger-hover);
+      text-decoration-color: var(
+        --text-link-font-color-danger-hover,
+        var(--color-brand-danger-600)
+      );
+      color: var(--text-link-font-color-danger-hover, var(--color-brand-danger-600));
     }
   }
 }
