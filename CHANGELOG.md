@@ -1,5 +1,12 @@
 Changelog
 
+# [0.114.0](https://github.com/palmetto/palmetto-components/compare/v0.113.0...v0.114.0) (2022-02-09)
+
+
+### Features
+
+* **TextLink:** theme tokens ([#689](https://github.com/palmetto/palmetto-components/issues/689)) ([70d92bc](https://github.com/palmetto/palmetto-components/commit/70d92bcdb23108b670f8586a611240fe0fc905d9))
+
 # [0.113.0](https://github.com/palmetto/palmetto-components/compare/v0.112.1...v0.113.0) (2022-02-09)
 
 
