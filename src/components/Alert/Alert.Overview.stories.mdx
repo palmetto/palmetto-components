@@ -229,7 +229,7 @@ Renders a version of the banner with less padding.
 
 ## Custom Theming
 
-The Alert component can be themed by overrriding by overrriding specific CSS variables.
+The Alert component can be themed by base tokens, or component specific tokens.
 
 <Canvas>
   <Story name="With Custom Theme">
@@ -255,7 +255,6 @@ The Alert component can be themed by overrriding by overrriding specific CSS var
           '--alert-info-icon-color': '#603FB5',
           '--alert-border-width': 'var(--size-border-xs)',
           '--alert-info-border-color': 'var(--alert-info-icon-color)',
-          '--alert-box-shadow': '0 2px 4px 0 #CFC5E9, 0 1px 2px 0 #CFC5E9',
         }}
       >
         <Alert
@@ -264,6 +263,12 @@ The Alert component can be themed by overrriding by overrriding specific CSS var
           variant="info"
           hasIcon
           className="m-bottom-md"
+        />
+        <Alert
+          message="An alert that uses default token values"
+          variant="warning"
+          title="Not Themed"
+          hasIcon
         />
       </div>
     </>
