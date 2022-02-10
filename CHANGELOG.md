@@ -1,5 +1,12 @@
 Changelog
 
+# [0.117.0](https://github.com/palmetto/palmetto-components/compare/v0.116.0...v0.117.0) (2022-02-10)
+
+
+### Features
+
+* **Button:** theme tokens ([#690](https://github.com/palmetto/palmetto-components/issues/690)) ([c7c241e](https://github.com/palmetto/palmetto-components/commit/c7c241e9662410d68f1ce9036bfea2e92c78bcd0))
+
 # [0.116.0](https://github.com/palmetto/palmetto-components/compare/v0.115.0...v0.116.0) (2022-02-10)
 
 
