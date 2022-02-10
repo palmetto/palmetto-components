@@ -1,5 +1,42 @@
 Changelog
 
+# [0.117.0](https://github.com/palmetto/palmetto-components/compare/v0.116.0...v0.117.0) (2022-02-10)
+
+
+### Features
+
+* **Button:** theme tokens ([#690](https://github.com/palmetto/palmetto-components/issues/690)) ([c7c241e](https://github.com/palmetto/palmetto-components/commit/c7c241e9662410d68f1ce9036bfea2e92c78bcd0))
+
+# [0.116.0](https://github.com/palmetto/palmetto-components/compare/v0.115.0...v0.116.0) (2022-02-10)
+
+
+### Features
+
+* **CategoryFilter:** theme tokens ([#692](https://github.com/palmetto/palmetto-components/issues/692)) ([45cc9d8](https://github.com/palmetto/palmetto-components/commit/45cc9d86f95bcf930dfd397685969bee0f2929a6))
+
+# [0.115.0](https://github.com/palmetto/palmetto-components/compare/v0.114.0...v0.115.0) (2022-02-09)
+
+
+### Features
+
+* **Icon:** eye, eye-slash ([#691](https://github.com/palmetto/palmetto-components/issues/691)) ([e263b90](https://github.com/palmetto/palmetto-components/commit/e263b90294a00f1946e3ee067fd63fbf782bc026))
+
+# [0.114.0](https://github.com/palmetto/palmetto-components/compare/v0.113.0...v0.114.0) (2022-02-09)
+
+
+### Features
+
+* **TextLink:** theme tokens ([#689](https://github.com/palmetto/palmetto-components/issues/689)) ([70d92bc](https://github.com/palmetto/palmetto-components/commit/70d92bcdb23108b670f8586a611240fe0fc905d9))
+
+# [0.113.0](https://github.com/palmetto/palmetto-components/compare/v0.112.1...v0.113.0) (2022-02-09)
+
+
+### Features
+
+* **Heading:** theme tokens ([#688](https://github.com/palmetto/palmetto-components/issues/688)) ([64be68c](https://github.com/palmetto/palmetto-components/commit/64be68ca21387c7d273d449abff3eda3a80db5f6))
+
+## [0.112.1](https://github.com/palmetto/palmetto-components/compare/v0.112.0...v0.112.1) (2022-02-07)
+
 # [0.112.0](https://github.com/palmetto/palmetto-components/compare/v0.111.2...v0.112.0) (2022-02-07)
 
 

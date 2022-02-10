@@ -1,15 +1,15 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 @mixin size-xs {
-  border-radius: var(--button-size-xs-border-radius);
-  padding: var(--button-size-xs-padding-vertical) var(--button-size-xs-padding-horizontal);
+  border-radius: var(--button-size-xs-border-radius, var(--form-control-size-sm-border-radius));
+  padding: var(--button-size-xs-padding-vertical, var(--size-spacing-2xs)) var(--button-size-xs-padding-horizontal, var(--size-spacing-xs));
   min-height: 20px;
-  font-size: var(--button-size-xs-font-size);
+  font-size: var(--button-size-xs-font-size, var(--form-control-size-xs-font-size));
   letter-spacing: 0.2px;
 
   &.outline {
-    padding: calc(var(--button-size-xs-padding-vertical) - 1px)
-      calc(var(--button-size-xs-padding-horizontal) - 1px);
+    padding: calc(var(--button-size-xs-padding-vertical, var(--size-spacing-2xs)) - 1px)
+      calc(var(--button-size-xs-padding-horizontal, var(--size-spacing-xs)) - 1px);
   }
 }
 
@@ -17,15 +17,15 @@
 .size-xs { @extend %size-xs; }
 
 @mixin size-sm {
-  border-radius: var(--button-size-sm-border-radius);
-  padding: var(--button-size-sm-padding-vertical) var(--button-size-sm-padding-horizontal);
+  border-radius: var(--button-size-sm-border-radius, var(--form-control-size-sm-border-radius));
+  padding: var(--button-size-sm-padding-vertical, var(--form-control-size-sm-padding)) var(--button-size-sm-padding-horizontal, var(--size-spacing-sm));
   min-height: 32px;
-  font-size: var(--button-size-sm-font-size);
+  font-size: var(--button-size-sm-font-size, var(--form-control-size-sm-font-size));
   letter-spacing: 0.2px;
 
   &.outline {
-    padding: calc(var(--button-size-sm-padding-vertical) - 1px)
-      calc(var(--button-size-sm-padding-horizontal) - 1px);
+    padding: calc(var(--button-size-sm-padding-vertical, var(--form-control-size-sm-padding)) - 1px)
+      calc(var(--button-size-sm-padding-horizontal, var(--size-spacing-sm)) - 1px);
   }
 }
 
@@ -33,15 +33,15 @@
 .size-sm { @extend %size-sm; }
 
 @mixin size-md {
-  border-radius: var(--button-size-md-border-radius);
-  padding: var(--button-size-md-padding-vertical) var(--button-size-md-padding-horizontal);
+  border-radius: var(--button-size-md-border-radius, var(--form-control-size-md-border-radius));
+  padding: var(--button-size-md-padding-vertical, var(--form-control-size-md-padding)) var(--button-size-md-padding-horizontal, var(--size-spacing-md));
   min-height: 42px;
-  font-size: var(--button-size-md-font-size);
+  font-size: var(--button-size-md-font-size, var(--form-control-size-md-font-size));
   letter-spacing: 0.2px;
 
   &.outline {
-    padding: calc(var(--button-size-md-padding-vertical) - 1px)
-      calc(var(--button-size-md-padding-horizontal) - 1px);
+    padding: calc(var(--button-size-md-padding-vertical, var(--form-control-size-md-padding)) - 1px)
+      calc(var(--button-size-md-padding-horizontal, var(--size-spacing-md)) - 1px);
   }
 }
 
@@ -49,15 +49,15 @@
 .size-md { @extend %size-md; }
 
 @mixin size-lg {
-  border-radius: var(--button-size-lg-border-radius);
-  padding: var(--button-size-lg-padding-vertical) var(--button-size-lg-padding-horizontal);
+  border-radius: var(--button-size-lg-border-radius, var(--form-control-size-lg-border-radius));
+  padding: var(--button-size-lg-padding-vertical, var(--form-control-size-lg-padding)) var(--button-size-lg-padding-horizontal, var(--size-spacing-lg));
   min-height: 55px;
   letter-spacing: 1px;
-  font-size: var(--button-size-lg-font-size);
+  font-size: var(--button-size-lg-font-size, var(--form-control-size-lg-font-size));
 
   &.outline {
-    padding: calc(var(--button-size-lg-padding-vertical) - 1px)
-      calc(var(--button-size-lg-padding-horizontal) - 1px);
+    padding: calc(var(--button-size-lg-padding-vertical, var(--form-control-size-lg-padding)) - 1px)
+      calc(var(--button-size-lg-padding-horizontal, var(--size-spacing-lg)) - 1px);
   }
 }
 
@@ -71,6 +71,7 @@
   padding: 0;
   color: inherit;
   line-height: 1;
+  font-family: var(--button-font-family, var(--asset-fonts-body));
 
   &:not(.naked) {
     display: inline-block;
@@ -80,7 +81,7 @@
     transition-timing-function: cubic-bezier(0.67, 0.83, 0.67);
     text-align: center;
     text-decoration: none;
-    font-weight: var(--button-font-weight);
+    font-weight: var(--button-font-weight, var(--size-font-weight-bold));
   }
 
   &:hover {
@@ -92,17 +93,6 @@
     cursor: not-allowed;
   }
 
-  /* define regular focus styles for non-supporting browsers */
-  &:focus {
-    outline: 0;
-    box-shadow: var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
-  }
-
-  /* Show focus styles on keyboard focus. */
-  &:focus-visible {
-    outline: 0;
-    box-shadow: var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
-  }
 
   /* Hide focus styles if they're not needed, for example,
   when an element receives focus via the mouse. */
@@ -116,64 +106,85 @@
   }
 
   &.primary {
-    background-color: var(--button-background-color-primary);
-    color: var(--button-font-color-primary);
+    background-color: var(--button-primary-background-color, var(--color-brand-primary-500));
+    color: var(--button-primary-font-color, var(--color-brand-white-base));
+
+    /* define regular focus styles for non-supporting browsers */
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
+    }
+
+    /* Show focus styles on keyboard focus. */
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
+    }
 
     &:not(:disabled):hover {
-      background-color: var(--button-background-hover-color-primary);
-      color: var(--button-font-color-primary);
+      background-color: var(--button-primary-background-color-hover, var(--color-brand-primary-600));
+      color: var(--button-primary-font-color-hover, var(--color-brand-white-base));
     }
 
     &.outline {
-      border-color: var(--button-border-hover-color-primary-outline);
-      background-color: transparent;
-      color: var(--button-font-color-primary-outline);
+      border-color: var(--button-primary-outline-border-color, var(--color-brand-primary-500));
+      background-color: var(--button-primary-outline-background-color, transparent);
+      color: var(--button-primary-outline-font-color, var(--color-brand-primary-500));
 
       &:not(:disabled):hover {
-        border-color: var(--button-border-hover-color-primary-outline);
-        background-color: var(--button-background-hover-color-primary-outline);
-        color: var(--button-font-hover-color-primary-outline);
+        border-color: var(--button-primary-outline-border-color-hover, var(--color-brand-primary-500));
+        background-color: var(--button-primary-outline-background-color-hover, var(--color-brand-primary-50));
+        color: var(--button-primary-outline-font-color-hover, var(--color-brand-primary-500));
       }
     }
   }
 
   &.success {
-    background-color: var(--button-background-color-success);
-    color: var(--button-font-color-success);
+    background-color: var(--button-success-background-color, var(--color-brand-success-500));
+    color: var(--button-success-font-color, var(--color-brand-white-base));
+
+    /* define regular focus styles for non-supporting browsers */
+    &:focus {
+      outline: 0;
+      box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
+    }
+
+    /* Show focus styles on keyboard focus. */
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
+    }
 
     &:not(:disabled):hover {
-      background-color: var(--button-background-hover-color-success);
+      background-color: var(--button-success-background-color-hover, var(--color-brand-success-600));
+      color: var(--button-success-font-color-hover, var(--color-brand-white-base));
     }
 
     &.outline {
-      border-color: var(--button-border-hover-color-success-outline);
+      border-color: var(--button-success-outline-border-color, var(--color-brand-success-500));
       background-color: transparent;
-      color: var(--button-font-color-success-outline);
+      color: var(--button-success-font-color, var(--color-brand-success-500));
 
       &:not(:disabled):hover {
-        border-color: var(--button-border-hover-color-success-outline);
-        background-color: var(--button-background-hover-color-success-outline);
-        color: var(--button-font-hover-color-success-outline);
+        border-color: var(--button-success-outline-border-color-hover, var(--color-brand-success-500));
+        background-color: var(--button-success-outline-background-color-hover, var(--color-brand-success-50));
+        color: var(--button-success-outline-font-color-hover, var(--color-brand-success-500));
       }
     }
   }
 
   &.danger {
-    background-color: var(--button-background-color-danger);
-    color: var(--button-font-color-danger);
+    background-color: var(--button-danger-background-color, var(--color-brand-danger-500));
+    color: var(--button-danger-font-color, var(--color-brand-white-base));
 
     &:focus {
       outline: 0;
-      box-shadow: var(--button-focus-box-shadow-danger);
+      box-shadow: var(--button-focus-box-shadow-danger, 0 0 0 4px var(--color-brand-danger-lighter));
     }
 
     &:focus-visible {
       outline: 0;
-      box-shadow: var(--button-focus-box-shadow-danger);
-    }
-
-    &:not(:disabled):hover {
-      background-color: var(--button-background-hover-color-danger);
+      box-shadow: var(--button-focus-box-shadow-danger, 0 0 0 4px var(--color-brand-danger-lighter));
     }
 
     &:focus:not(:focus-visible) {
@@ -181,35 +192,41 @@
       box-shadow: none;
     }
 
+    &:not(:disabled):hover {
+      background-color: var(--button-danger-background-color-hover, var(--color-brand-danger-600));
+      color: var(--button-danger-font-color-hover, var(--color-brand-white-base));
+    }
+
     &.outline {
-      border-color: var(--button-border-hover-color-danger-outline);
+      border-color: var(--button-danger-outline-border-color, var(--color-brand-danger-500));
       background-color: transparent;
-      color: var(--button-font-color-danger-outline);
+      color: var(--button-danger-font-color, var(--color-brand-danger-500));
 
       &:not(:disabled):hover {
-        border-color: var(--button-border-hover-color-danger-outline);
-        background-color: var(--button-background-hover-color-danger-outline);
-        color: var(--button-font-hover-color-danger-outline);
+        border-color: var(--button-danger-outline-border-color-hover, var(--color-brand-danger-500));
+        background-color: var(--button-danger-outline-background-color-hover, var(--color-brand-danger-50));
+        color: var(--button-danger-outline-font-color-hover, var(--color-brand-danger-500));
       }
     }
   }
 
   &.dark {
-    background-color: var(--button-background-color-dark);
-    color: var(--button-font-color-dark);
+    background-color: var(--button-dark-background-color, var(--color-brand-dark-base));
+    color: var(--button-dark-font-color, var(--color-brand-white-base));
 
     &:focus {
       outline: 0;
-      box-shadow: var(--button-focus-box-shadow-dark);
+      box-shadow: var(--button-dark-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
     }
 
     &:focus-visible {
       outline: 0;
-      box-shadow: var(--button-focus-box-shadow-dark);
+      box-shadow: var(--button-dark-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
     }
 
     &:not(:disabled):hover {
-      background-color: var(--button-background-hover-color-dark);
+      background-color: var(--button-dark-background-color-hover, var(--color-brand-black-base));
+      color: var(--button-dark-font-color-hover, var(--color-brand-white-base));
     }
 
     &:focus:not(:focus-visible) {
@@ -223,29 +240,30 @@
       color: var(--button-font-color-dark-outline);
 
       &:not(:disabled):hover {
-        border-color: var(--button-border-hover-color-dark-outline);
-        background-color: var(--color-brand-grey-50);
+        border-color: var(--button-dark-outline-border-color, var(--color-brand-dark-base));
+        background-color: var(--button-dark-outline-background-color-hover, var(--color-brand-grey-50));
         color: var(--button-font-color-dark-outline);
       }
     }
   }
 
   &.light {
-    background-color: var(--button-background-color-light);
-    color: var(--button-font-color-light);
+    background-color: var(--button-light-background-color, var(--color-brand-light-base));
+    color: var(--button-light-font-color, var(--color-brand-dark-base));
 
     &:focus {
       outline: 0;
-      box-shadow: var(--button-focus-box-shadow-light);
+      box-shadow: var(--button-light-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
     }
 
     &:focus-visible {
       outline: 0;
-      box-shadow: var(--button-focus-box-shadow-light);
+      box-shadow: var(--button-light-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
     }
 
     &:not(:disabled):hover {
-      background-color: var(--button-background-hover-color-light);
+      background-color: var(--button-light-background-color-hover, var(--color-brand-grey-200));
+      color: var(--button-light-font-color-hover, var(--color-brand-dark-base));
     }
 
     &:focus:not(:focus-visible) {
@@ -254,14 +272,14 @@
     }
 
     &.outline {
-      border-color: var(--button-border-color-light-outline);
+      border-color: var(--button-light-outline-border-color, var(--color-brand-light-base));
       background-color: transparent;
       color: var(--button-font-color-light-outline);
 
       &:not(:disabled):hover {
-        border-color: var(--button-border-hover-color-light-outline);
-        background-color: var(--color-brand-grey-50);
-        color: var(--button-font-hover-color-light-outline);
+        border-color: var(--button-light-outline-border-color-hover, var(--color-brand-grey-300));
+        background-color: var(--button-light-outline-background-color-hover, var(--color-brand-grey-50));
+        color: var(--button-font-color-light-outline);
       }
     }
   }
@@ -301,6 +319,7 @@
   &.full-width {
     width: 100%;
   }
+
 }
 
 .spinner-wrapper {

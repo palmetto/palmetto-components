@@ -25,7 +25,6 @@ Use alerts to display feedback for users about specific actions, or states of an
 
 <ArgsTable of={Alert} />
 
-
 ## Default
 
 All that is required to render a basic version of an Alert is a `message` prop which will contain text
@@ -228,18 +227,19 @@ Renders a version of the banner with less padding.
   </Story>
 </Canvas>
 
-
 ## Custom Theming
 
-The Alert component can be themed by overrriding by overrriding specific CSS variables.
+The Alert component can be themed by base tokens, or component specific tokens.
 
 <Canvas>
   <Story name="With Custom Theme">
     <>
-      <div style={{
-        '--color-brand-info-50': '#CFC5E9',
-        '--color-brand-info-500': '#603FB5',
-      }}>
+      <div
+        style={{
+          '--color-brand-info-50': '#CFC5E9',
+          '--color-brand-info-500': '#603FB5',
+        }}
+      >
         <Alert
           message="Here we've overwritten base token values so that the alert inherits new values."
           title="Custom Theme"
@@ -248,14 +248,15 @@ The Alert component can be themed by overrriding by overrriding specific CSS var
           className="m-bottom-md"
         />
       </div>
-      <div style={{
-        '--alert-info-font-color': '#603FB5',
-        '--alert-info-background-color': 'white',
-        '--alert-info-icon-color': '#603FB5',
-        '--alert-border-width': 'var(--size-border-xs)',
-        '--alert-info-border-color': 'var(--alert-info-icon-color)',
-        '--alert-box-shadow': '0 2px 4px 0 #CFC5E9, 0 1px 2px 0 #CFC5E9'
-      }}>
+      <div
+        style={{
+          '--alert-info-font-color': '#603FB5',
+          '--alert-info-background-color': 'white',
+          '--alert-info-icon-color': '#603FB5',
+          '--alert-border-width': 'var(--size-border-xs)',
+          '--alert-info-border-color': 'var(--alert-info-icon-color)',
+        }}
+      >
         <Alert
           message="Here we've overwritten ONLY the values for the 'info' alert variant so other components will be unaffected"
           title="Custom Theme"
@@ -263,12 +264,18 @@ The Alert component can be themed by overrriding by overrriding specific CSS var
           hasIcon
           className="m-bottom-md"
         />
+        <Alert
+          message="An alert that uses default token values"
+          variant="warning"
+          title="Not Themed"
+          hasIcon
+        />
       </div>
     </>
   </Story>
 </Canvas>
 
-## Themable Tokens
+## Component Tokens
 
 <table>
   <thead>
@@ -306,8 +313,12 @@ The Alert component can be themed by overrriding by overrriding specific CSS var
       };
       return Object.entries(tokens).map(([name, entry], i) => (
         <tr key={i}>
-          <td><code>{name}</code></td>
-          <td><code>{entry}</code></td>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
         </tr>
       ));
     })()}
