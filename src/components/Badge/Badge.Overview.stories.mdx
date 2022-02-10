@@ -49,7 +49,8 @@ Badges come in different variants based on the kind of message being delivered t
 
 ## Sizes
 
-Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size.
+Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size. A `ResponsiveProp` object may also be used
+so the badge can be a different size per breakpoint.
 
 <Canvas>
   <Story name="Sizes">
@@ -61,6 +62,15 @@ Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size.
             <Badge size="md" message="Medium" />
             <Badge size="lg" message="Large" />
             <Badge size="xl" message="X-Large" />
+            <Badge
+              size={{
+                base: 'sm',
+                tablet: 'md',
+                desktop: 'lg',
+                hd: 'xl',
+              }}
+              message="Responsive"
+            />
           </Box>
         </>
       );
