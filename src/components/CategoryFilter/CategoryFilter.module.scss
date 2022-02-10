@@ -16,23 +16,14 @@
   }
 
   &.selected {
-    background-color: var(
-      --category-filter-selected-background-color,
-      var(--color-brand-primary-500)
-    );
+    background-color: var(--category-filter-selected-background-color, var(--color-brand-primary-500));
 
     &:hover {
-      background-color: var(
-        --category-filter-selected-background-color-hover,
-        var(--color-brand-primary-600)
-      );
+      background-color: var(--category-filter-selected-background-color-hover, var(--color-brand-primary-600));
     }
 
     &.disabled:hover {
-      background-color: var(
-        --category-filter-selected-background-color,
-        var(--color-brand-primary-500)
-      );
+      background-color: var(--category-filter-selected-background-color, var(--color-brand-primary-500));
     }
   }
 
@@ -45,10 +36,7 @@
     box-shadow: var(--category-filter-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
 
     &.selected {
-      box-shadow: var(
-        --category-filter-selected-box-shadow-focus,
-        0 0 0 4px var(--color-brand-success-200)
-      );
+      box-shadow: var(--category-filter-selected-box-shadow-focus, 0 0 0 4px var(--color-brand-success-200));
     }
   }
 
@@ -58,10 +46,7 @@
     border-color: transparent;
 
     &.selected {
-      box-shadow: var(
-        --category-filter-selected-box-shadow-focus,
-        0 0 0 4px var(--color-brand-success-200)
-      );
+      box-shadow: var(--category-filter-selected-box-shadow-focus, 0 0 0 4px var(--color-brand-success-200));
     }
   }
 
