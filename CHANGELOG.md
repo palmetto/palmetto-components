@@ -1,5 +1,12 @@
 Changelog
 
+# [0.118.0](https://github.com/palmetto/palmetto-components/compare/v0.117.0...v0.118.0) (2022-02-10)
+
+
+### Features
+
+* **Badge:** theme tokens and responsive sizing ([#694](https://github.com/palmetto/palmetto-components/issues/694)) ([15bf5ef](https://github.com/palmetto/palmetto-components/commit/15bf5ef8299705d1a2ec7b37293bde6f19418172))
+
 # [0.117.0](https://github.com/palmetto/palmetto-components/compare/v0.116.0...v0.117.0) (2022-02-10)
 
 
