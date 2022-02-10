@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import {
-  BrandColor, FontColor, FontSize, BaseSpacing,
-} from '../../types';
+import { BrandColor, FontColor, FontSize, BaseSpacing, ResponsiveProp } from '../../types';
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import styles from './Badge.module.scss';
 import { Box } from '../Box/Box';
 
@@ -18,9 +17,9 @@ export type BadgeVariant =
   | 'danger'
   | 'default';
 
-export type BadgeColorAttributes = { font: FontColor; background: BrandColor; };
+export type BadgeColorAttributes = { font: FontColor; background: BrandColor };
 
-export type BadgeSizeAttributes = { fontSize: FontSize; padding: BaseSpacing; };
+export type BadgeSizeAttributes = { fontSize: FontSize; padding: BaseSpacing };
 export interface BadgeProps {
   /**
    * Custom class to apply to the badge container div.
@@ -33,7 +32,7 @@ export interface BadgeProps {
   /**
    * The size of the button.
    */
-  size?: BadgeSize;
+  size?: BadgeSize | ResponsiveProp<BadgeSize>;
   /**
    * The type/color of the badge to show.
    */
@@ -69,7 +68,9 @@ export const Badge: FC<BadgeProps> = ({
   size = 'md',
   ...restProps
 }) => {
-  const badgeClasses: string = classNames(styles.badge, className);
+  const responsiveClasses = generateResponsiveClasses('size', size).map(c => styles[c]);
+
+  const badgeClasses: string = classNames(styles.badge, className, responsiveClasses);
 
   return (
     <Box
@@ -78,9 +79,6 @@ export const Badge: FC<BadgeProps> = ({
       radius="sm"
       background={BADGE_COLOR_MAP[variant].background}
       color={BADGE_COLOR_MAP[variant].font}
-      fontWeight="bold"
-      fontSize={BADGE_SIZE_MAP[size].fontSize}
-      padding={BADGE_SIZE_MAP[size].padding}
       {...restProps}
     >
       {message}

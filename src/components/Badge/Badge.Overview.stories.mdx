@@ -68,18 +68,41 @@ Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size.
   </Story>
 </Canvas>
 
-## Custom Class
+## Component Tokens
 
-You can apply a custom class to your badge with the `className` prop. Here we have added a 3xl margin.
-
-<Canvas>
-  <Story name="Custom Class">
-    {() => {
-      return (
-        <Box direction="row">
-          <Badge message="Hello world!" variant="success" className="m-3xl" />
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--badge-size-sm-font-size': '--size-font-2xs',
+        '--badge-size-sm-padding-vertical': '--size-spacing-2xs',
+        '--badge-size-sm-padding-horizontal': '--size-spacing-2xs',
+        '--badge-size-md-font-size': '--size-font-xs',
+        '--badge-size-md-padding-vertical': '--size-spacing-2xs',
+        '--badge-size-md-padding-horizontal': '--size-spacing-xs',
+        '--badge-size-lg-font-size': '--size-font-sm',
+        '--badge-size-lg-padding-vertical': '--size-spacing-2xs',
+        '--badge-size-lg-padding-horizontal': '--size-spacing-xs',
+        '--badge-size-xl-font-size': '--size-font-md',
+        '--badge-size-xl-padding-vertical': '--size-spacing-xs',
+        '--badge-size-xl-padding-horizontal': '--size-spacing-sm',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+  </tbody>
+</table>
