@@ -1,5 +1,12 @@
 Changelog
 
+# [0.116.0](https://github.com/palmetto/palmetto-components/compare/v0.115.0...v0.116.0) (2022-02-10)
+
+
+### Features
+
+* **CategoryFilter:** theme tokens ([#692](https://github.com/palmetto/palmetto-components/issues/692)) ([45cc9d8](https://github.com/palmetto/palmetto-components/commit/45cc9d86f95bcf930dfd397685969bee0f2929a6))
+
 # [0.115.0](https://github.com/palmetto/palmetto-components/compare/v0.114.0...v0.115.0) (2022-02-09)
 
 
