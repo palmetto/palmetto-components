@@ -49,7 +49,8 @@ Badges come in different variants based on the kind of message being delivered t
 
 ## Sizes
 
-Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size.
+Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size. A `ResponsiveProp` object may also be used
+so the badge can be a different size per breakpoint.
 
 <Canvas>
   <Story name="Sizes">
@@ -61,6 +62,15 @@ Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size.
             <Badge size="md" message="Medium" />
             <Badge size="lg" message="Large" />
             <Badge size="xl" message="X-Large" />
+            <Badge
+              size={{
+                base: 'sm',
+                tablet: 'md',
+                desktop: 'lg',
+                hd: 'xl',
+              }}
+              message="Responsive"
+            />
           </Box>
         </>
       );
@@ -68,18 +78,59 @@ Set the size of the badge to `sm`, `md`, `lg` or `xl`. `md` is the default size.
   </Story>
 </Canvas>
 
-## Custom Class
+## Component Tokens
 
-You can apply a custom class to your badge with the `className` prop. Here we have added a 3xl margin.
-
-<Canvas>
-  <Story name="Custom Class">
-    {() => {
-      return (
-        <Box direction="row">
-          <Badge message="Hello world!" variant="success" className="m-3xl" />
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--badge-border-radius': '--size-border-radius-sm',
+        '--badge-font-weight': '--size-font-weight-bold',
+        '--badge-size-sm-font-size': '--size-font-2xs',
+        '--badge-size-sm-padding-vertical': '--size-spacing-2xs',
+        '--badge-size-sm-padding-horizontal': '--size-spacing-2xs',
+        '--badge-size-md-font-size': '--size-font-xs',
+        '--badge-size-md-padding-vertical': '--size-spacing-2xs',
+        '--badge-size-md-padding-horizontal': '--size-spacing-xs',
+        '--badge-size-lg-font-size': '--size-font-sm',
+        '--badge-size-lg-padding-vertical': '--size-spacing-2xs',
+        '--badge-size-lg-padding-horizontal': '--size-spacing-xs',
+        '--badge-size-xl-font-size': '--size-font-md',
+        '--badge-size-xl-padding-vertical': '--size-spacing-xs',
+        '--badge-size-xl-padding-horizontal': '--size-spacing-sm',
+        '--badge-primary-background-color': '--color-brand-primary-100',
+        '--badge-primary-font-color': '--color-brand-grey-700',
+        '--badge-secondary-background-color': '--color-brand-secondary-100',
+        '--badge-secondary-font-color': '--color-brand-grey-700',
+        '--badge-tertiary-background-color': '--color-brand-tertiary-100',
+        '--badge-tertiary-font-color': '--color-brand-grey-700',
+        '--badge-success-background-color': '--color-brand-success-100',
+        '--badge-success-font-color': '--color-brand-grey-700',
+        '--badge-danger-background-color': '--color-brand-danger-100',
+        '--badge-danger-font-color': '--color-brand-grey-700',
+        '--badge-info-background-color': '--color-brand-info-100',
+        '--badge-info-font-color': '--color-brand-grey-700',
+        '--badge-warning-background-color': '--color-brand-warning-100',
+        '--badge-warning-font-color': '--color-brand-grey-700',
+        '--badge-default-background-color': '--color-brand-grey-100',
+        '--badge-default-font-color': '--color-brand-grey-700',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+  </tbody>
+</table>
