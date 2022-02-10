@@ -54,6 +54,12 @@ export default {
     suffix: {
       control: 'text',
     },
+    min: {
+      control: 'number',
+    },
+    max: {
+      control: 'number',
+    },
     maxLength: {
       control: 'number',
     },

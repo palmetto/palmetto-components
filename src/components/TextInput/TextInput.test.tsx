@@ -261,5 +261,27 @@ describe('TextInput', () => {
         expect(inputElement).toBeInTheDocument();
       });
     });
+
+    describe('Maximum value', () => {
+      test('Input correctly passes max property if prop is passed', async () => {
+        render(<TextInput {...baseProps} type="number" value="1" max={3} />);
+
+        const inputElement = screen.getByLabelText(baseProps.label);
+        expect(inputElement).toBeInTheDocument();
+        expect(inputElement).toHaveAttribute('max');
+        expect(inputElement.getAttribute('max')).toBe('3');
+      });
+    });
+
+    describe('Minimum value', () => {
+      test('Input correctly passes min property if prop is passed', async () => {
+        render(<TextInput {...baseProps} type="number" value="1" min={3} />);
+
+        const inputElement = screen.getByLabelText(baseProps.label);
+        expect(inputElement).toBeInTheDocument();
+        expect(inputElement).toHaveAttribute('min');
+        expect(inputElement.getAttribute('min')).toBe('3');
+      });
+    });
   });
 });

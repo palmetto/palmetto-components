@@ -81,10 +81,18 @@ export interface TextInputProps {
    */
   isRequired?: boolean;
   /**
+   * The input's 'max' attribute.
+   */
+   max?: number;
+  /**
    * The input's 'maxlength' attribute.
    * NOTE: initializing the input with a value longer than the desired maxlength will not trim this value.
    */
   maxLength?: number;
+  /**
+   * The input's 'min' attribute.
+   */
+   min?: number;
   /**
    * The input's 'name' attribute.
    */
@@ -144,7 +152,9 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
       inputProps = {},
       isDisabled = false,
       isRequired = false,
+      max = undefined,
       maxLength = undefined,
+      min = undefined,
       name = '',
       onBlur = undefined,
       onClear = undefined,
@@ -198,7 +208,9 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
       autoFocus,
       disabled: isDisabled,
       id,
+      max,
       maxLength,
+      min,
       name,
       onBlur,
       onChange,

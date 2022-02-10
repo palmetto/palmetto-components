@@ -434,6 +434,29 @@ Use the `maxLength` prop to limit the number of characters that can be entered i
   </Story>
 </Canvas>
 
+## Minimum and Maximum Value
+
+Use the `min` and `max` props to limit the minimum and maximum value.
+
+<Canvas>
+  <Story name="Minimum and Maximum Value">
+    {() => {
+      const [value, setValue] = useState(undefined);
+      return (
+        <TextInput
+          id="minMax"
+          type="number"
+          value={value}
+          label="Minimum of 10 and Maximum of 100"
+          min="10"
+          max="100"
+          onChange={event => setValue(event.target.value)}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Required with Error
 
 Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. A `boolean` is passed in this example.
