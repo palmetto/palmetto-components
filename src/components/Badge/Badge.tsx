@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import { BrandColor, FontColor, FontSize, BaseSpacing, ResponsiveProp } from '../../types';
+import {
+  BrandColor, FontColor, FontSize, BaseSpacing, ResponsiveProp,
+} from '../../types';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import styles from './Badge.module.scss';
 import { Box } from '../Box/Box';
@@ -17,9 +19,9 @@ export type BadgeVariant =
   | 'danger'
   | 'default';
 
-export type BadgeColorAttributes = { font: FontColor; background: BrandColor };
+export type BadgeColorAttributes = { font: FontColor; background: BrandColor; };
 
-export type BadgeSizeAttributes = { fontSize: FontSize; padding: BaseSpacing };
+export type BadgeSizeAttributes = { fontSize: FontSize; padding: BaseSpacing; };
 export interface BadgeProps {
   /**
    * Custom class to apply to the badge container div.
@@ -54,13 +56,6 @@ export const BADGE_COLOR_MAP: { [key in BadgeVariant]: BadgeColorAttributes } = 
   default: { font: 'dark-500', background: 'grey-100' },
 };
 
-export const BADGE_SIZE_MAP: { [key in BadgeSize]: BadgeSizeAttributes } = {
-  sm: { fontSize: '2xs', padding: '2xs 2xs' },
-  md: { fontSize: 'xs', padding: '2xs xs' },
-  lg: { fontSize: 'sm', padding: '2xs xs' },
-  xl: { fontSize: 'md', padding: 'xs sm' },
-};
-
 export const Badge: FC<BadgeProps> = ({
   className = '',
   message = '',
@@ -70,15 +65,19 @@ export const Badge: FC<BadgeProps> = ({
 }) => {
   const responsiveClasses = generateResponsiveClasses('size', size).map(c => styles[c]);
 
-  const badgeClasses: string = classNames(styles.badge, className, responsiveClasses);
+  const badgeClasses: string = classNames(
+    styles.badge,
+    className,
+    responsiveClasses,
+    {
+      [styles[variant]]: variant,
+    },
+  );
 
   return (
     <Box
       className={badgeClasses}
       display="inline-block"
-      radius="sm"
-      background={BADGE_COLOR_MAP[variant].background}
-      color={BADGE_COLOR_MAP[variant].font}
       {...restProps}
     >
       {message}
