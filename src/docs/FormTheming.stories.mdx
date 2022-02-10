@@ -1,0 +1,332 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { useState } from 'react';
+import { TextInput } from '../components/TextInput/TextInput';
+import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
+import { SelectInput } from '../components/SelectInput/SelectInput';
+import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
+import { RadioGroup } from '../components/RadioGroup/RadioGroup';
+import { TextareaInput } from '../components/TextareaInput/TextareaInput';
+import { Toggle } from '../components/Toggle/Toggle';
+import { Button } from '../components/Button/Button';
+import { Box } from '../components/Box/Box';
+import { TimePickerNative } from '../components/TimePickerNative/TimePickerNative';
+
+<Meta
+  title="Theming/Forms"
+/>
+
+# Theming Forms
+
+Form components are unique in that they share a lot of their base variables, since form controls
+are expected to have matching base styles. To address this, form components have
+shared variables rather than only component-level variables.
+
+### Basic Form Theming
+ 
+Below is an example of a themed form where we override BASE library tokens for the primary color. You can toggle the theme on and off
+and pay special attention to the elements that use the primary color (selected radio, toggle, and checkbox).
+
+<Canvas>
+  <Story name="Basic Form Theming">
+    {() => {
+      const colorOptions = [
+        { value: 'red', label: 'red' },
+        { value: 'orange', label: 'orange' },
+        { value: 'yellow', label: 'yellow' },
+        { value: 'green', label: 'green' },
+        { value: 'blue', label: 'blue' },
+        { value: 'indigo', label: 'indigo' },
+        { value: 'violet', label: 'violet' },
+      ];
+      const beatles = [
+        { id: 'paul', value: 'paul', label: 'Paul' },
+        { id: 'john', value: 'john', label: 'John' },
+        { id: 'george', value: 'george', label: 'George' },
+        { id: 'ringo', value: 'ringo', label: 'Ringo' },
+      ];
+      const songOptions = [
+        { value: 'songOfStorms', label: 'Song of Storms'},
+        { value: 'songOfTime', label: 'Song of Time'},
+        { value: 'zeldaLullaby', label: 'Zelda\'s Lullaby'},
+      ];
+      const [isThemed, setIsThemed] = useState(false);
+      const [formFields, setFormFields] = useState({
+        firstName: '',
+        lastName: '',
+        areTermsChecked: false,
+        favoriteColor: null,
+        selectInputNative: '',
+        songs: [],
+        favoriteBeatle: null,
+        about: '',
+        preferDark: false,
+      });
+      const handleChange = (key, value) => {
+        setFormFields(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
+      return (
+        <Box childGap="xl">
+          <Toggle label="Toggle Custom Theme" isChecked={isThemed} onChange={e => setIsThemed(e.target.checked)} />
+          {(() => {
+            const customVariables = {
+              '--color-brand-primary-50': '#efe7ff',
+              '--color-brand-primary-100': '#d4c5fe',
+              '--color-brand-primary-200': '#b69eff',
+              '--color-brand-primary-300': '#9575ff',
+              '--color-brand-primary-400': '#7855ff',
+              '--color-brand-primary-500': '#5533ff',
+              '--color-brand-primary-600': '#452ff8',
+              '--color-brand-primary-700': '#2526f0',
+              '--color-brand-primary-800': '#0020ea',
+              '--color-brand-primary-900': '#0011e5',
+              '--color-brand-primary-lightest': '#efe7ff',
+              '--color-brand-primary-lighter': '#d4c5fe',
+              '--color-brand-primary-light': '#9575ff',
+              '--color-brand-primary-base': '#5533ff',
+              '--color-brand-primary-dark': '#452ff8',
+              '--color-brand-primary-darker': '#2526f0',
+              '--color-brand-primary-darkest': '#0020ea',
+            };
+            return (
+              <Box as="form" maxWidth="500px" margin="lg auto" childGap="lg" style={isThemed ? { ...customVariables } : {}}>
+                <Box direction="row" childGap="md">
+                  <TextInput
+                    id="firstName"
+                    name="First Name"
+                    label="First Name"
+                    value={formFields.firstName}
+                    onChange={e => handleChange('firstName', e.target.value)}
+                  />
+                  <TextInput
+                    id="lastName"
+                    name="Last Name"
+                    label="Last Name"
+                    value={formFields.lastName}
+                    onChange={e => handleChange('lastName', e.target.value)}
+                  />
+                </Box>
+                <Box direction="row" childGap="md">
+                  <SelectInputNative
+                    id="favoriteColor"
+                    name="Favorite Color"
+                    label="Favorite Color"
+                    value={formFields.favoriteColor}
+                    options={[...colorOptions]}
+                    onChange={e => handleChange('favoriteColor', e.target.value)}
+                  />
+                </Box>
+                <Box direction="row" childGap="md">
+                  <SelectInput
+                    id="songs"
+                    name="Songs You Like"
+                    label="Pick multiple Songs"
+                    isMulti
+                    value={formFields.songs}
+                    menuPortalTarget={document.body}
+                    options={[...songOptions]}
+                    onChange={e => handleChange('songs', e.target.value)}
+                  />
+                </Box>
+                <Box>
+                  <RadioGroup
+                    title="Pick a Favorite Beatle"
+                    name="favoriteBeatle"
+                    label="Pick multiple Songs"
+                    value={formFields.favoriteBeatle}
+                    options={[...beatles]}
+                    onChange={e => handleChange('favoriteBeatle', e.target.value)}
+                  />
+                </Box>
+                <Box>
+                  <TextareaInput
+                    label="Describe Yourself"
+                    name="about"
+                    id="about"
+                    value={formFields.about}
+                    onChange={e => handleChange('about', e.target.value)}
+                  />
+                </Box>
+                <Box direction="row" childGap="md">
+                  <Toggle
+                    id="preferDark"
+                    name="preferDark"
+                    label="Do You Prefer Dark Mode?"
+                    isChecked={formFields.preferDark}
+                    onChange={e => handleChange('preferDark', e.target.checked)}
+                  />
+                </Box>
+                <Box direction="row" childGap="md">
+                  <CheckboxInput
+                    id="areTermsChecked"
+                    name="I Agree With Terms and Conditions"
+                    label="I Agree With Terms and Conditions"
+                    isChecked={formFields.areTermsChecked}
+                    onChange={e => handleChange('areTermsChecked', e.target.checked)}
+                  />
+                </Box>
+              </Box>
+            );
+          })()}
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Advanced Form Theming
+
+Here we use form-specific tokens to change more granular style choiced of our form components.
+
+<Canvas>
+  <Story name="Advanced Form Theming">
+    {() => {
+      const colorOptions = [
+        { value: 'red', label: 'red' },
+        { value: 'orange', label: 'orange' },
+        { value: 'yellow', label: 'yellow' },
+        { value: 'green', label: 'green' },
+        { value: 'blue', label: 'blue' },
+        { value: 'indigo', label: 'indigo' },
+        { value: 'violet', label: 'violet' },
+      ];
+      const beatles = [
+        { id: 'paul', value: 'paul', label: 'Paul' },
+        { id: 'john', value: 'john', label: 'John' },
+        { id: 'george', value: 'george', label: 'George' },
+        { id: 'ringo', value: 'ringo', label: 'Ringo' },
+      ];
+      const songOptions = [
+        { value: 'songOfStorms', label: 'Song of Storms'},
+        { value: 'songOfTime', label: 'Song of Time'},
+        { value: 'zeldaLullaby', label: 'Zelda\'s Lullaby'},
+      ];
+      const [isThemed, setIsThemed] = useState(false);
+      const [formFields, setFormFields] = useState({
+        firstName: '',
+        lastName: '',
+        areTermsChecked: false,
+        favoriteColor: null,
+        selectInputNative: '',
+        songs: [],
+        favoriteBeatle: null,
+        about: '',
+        preferDark: false,
+      });
+      const handleChange = (key, value) => {
+        setFormFields(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
+      return (
+        <Box childGap="xl">
+          <Toggle label="Toggle Custom Theme" isChecked={isThemed} onChange={e => setIsThemed(e.target.checked)} />
+          {(() => {
+            const customVariables = {
+              '--color-brand-primary-50': '#efe7ff',
+              '--color-brand-primary-100': '#d4c5fe',
+              '--color-brand-primary-200': '#b69eff',
+              '--color-brand-primary-300': '#9575ff',
+              '--color-brand-primary-400': '#7855ff',
+              '--color-brand-primary-500': '#5533ff',
+              '--color-brand-primary-600': '#452ff8',
+              '--color-brand-primary-700': '#2526f0',
+              '--color-brand-primary-800': '#0020ea',
+              '--color-brand-primary-900': '#0011e5',
+              '--color-brand-primary-lightest': '#efe7ff',
+              '--color-brand-primary-lighter': '#d4c5fe',
+              '--color-brand-primary-light': '#9575ff',
+              '--color-brand-primary-base': '#5533ff',
+              '--color-brand-primary-dark': '#452ff8',
+              '--color-brand-primary-darker': '#2526f0',
+              '--color-brand-primary-darkest': '#0020ea',
+              '--form-control-size-md-border-radius': 0,
+            };
+            return (
+              <Box as="form" maxWidth="500px" margin="lg auto" childGap="lg" style={isThemed ? { ...customVariables } : {}}>
+                <Box direction="row" childGap="md">
+                  <TextInput
+                    id="firstName"
+                    name="First Name"
+                    label="First Name"
+                    value={formFields.firstName}
+                    onChange={e => handleChange('firstName', e.target.value)}
+                  />
+                  <TextInput
+                    id="lastName"
+                    name="Last Name"
+                    label="Last Name"
+                    value={formFields.lastName}
+                    onChange={e => handleChange('lastName', e.target.value)}
+                  />
+                </Box>
+                <Box direction="row" childGap="md">
+                  <SelectInputNative
+                    id="favoriteColor"
+                    name="Favorite Color"
+                    label="Favorite Color"
+                    value={formFields.favoriteColor}
+                    options={[...colorOptions]}
+                    onChange={e => handleChange('favoriteColor', e.target.value)}
+                  />
+                </Box>
+                <Box direction="row" childGap="md">
+                  <SelectInput
+                    id="songs"
+                    name="Songs You Like"
+                    label="Pick multiple Songs"
+                    isMulti
+                    value={formFields.songs}
+                    menuPortalTarget={document.body}
+                    options={[...songOptions]}
+                    onChange={e => handleChange('songs', e.target.value)}
+                  />
+                </Box>
+                <Box>
+                  <RadioGroup
+                    title="Pick a Favorite Beatle"
+                    name="favoriteBeatle"
+                    label="Pick multiple Songs"
+                    value={formFields.favoriteBeatle}
+                    options={[...beatles]}
+                    onChange={e => handleChange('favoriteBeatle', e.target.value)}
+                  />
+                </Box>
+                <Box>
+                  <TextareaInput
+                    label="Describe Yourself"
+                    name="about"
+                    id="about"
+                    value={formFields.about}
+                    onChange={e => handleChange('about', e.target.value)}
+                  />
+                </Box>
+                <Box direction="row" childGap="md">
+                  <Toggle
+                    id="preferDark"
+                    name="preferDark"
+                    label="Do You Prefer Dark Mode?"
+                    isChecked={formFields.preferDark}
+                    onChange={e => handleChange('preferDark', e.target.checked)}
+                  />
+                </Box>
+                <Box direction="row" childGap="md">
+                  <CheckboxInput
+                    id="areTermsChecked"
+                    name="I Agree With Terms and Conditions"
+                    label="I Agree With Terms and Conditions"
+                    isChecked={formFields.areTermsChecked}
+                    onChange={e => handleChange('areTermsChecked', e.target.checked)}
+                  />
+                </Box>
+              </Box>
+            );
+          })()}
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

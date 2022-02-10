@@ -305,10 +305,11 @@ The Alert component can be themed by overrriding by overrriding specific CSS var
         '--alert-box-shadow': '--size-box-shadow-0',
       };
       return Object.entries(tokens).map(([name, entry], i) => (
-      <tr key={i}>
-        <td><code>{name}</code></td>
-        <td><code>{entry}</code></td>
-      </tr>
-    ))})()}
+        <tr key={i}>
+          <td><code>{name}</code></td>
+          <td><code>{entry}</code></td>
+        </tr>
+      ));
+    })()}
   </tbody>
 </table>
