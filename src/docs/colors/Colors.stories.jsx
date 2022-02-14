@@ -15,7 +15,11 @@ const renderColorBlock = colorEntry => {
 
   return (
     <div
-      className={`${styles['color-block']} ${['white', 'light', 'transparent'].includes(colorName) ? 'font-color-dark' : 'font-color-white'}`}
+      className={`${styles['color-block']} ${
+        ['white', 'light', 'transparent'].includes(colorName)
+          ? 'font-color-dark'
+          : 'font-color-white'
+      }`}
       style={{ backgroundColor: `${colorVariations.base.value}` }}
     >
       <h2>{colorName}</h2>
@@ -27,7 +31,7 @@ const renderColorBlock = colorEntry => {
 const renderColorPalette = (colorEntry, index) => {
   const [colorName, colorVariations] = colorEntry;
 
-  const getFontColor = (colorVariation) => {
+  const getFontColor = colorVariation => {
     const variationsWithDarkFont = [
       'white',
       'light',
@@ -70,25 +74,51 @@ const renderColorPalette = (colorEntry, index) => {
   );
 };
 
-export const brand = () => (
-  <>
-    <h1 className="m-bottom-md">Brand Colors</h1>
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-      }}
-    >
-      {Object.entries(color.brand).map(renderColorBlock)}
-    </div>
-    <h1>Extended Brand Palette</h1>
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-      }}
-    >
-      {Object.entries(color.brand).map(renderColorPalette)}
-    </div>
-  </>
-);
+export const brand = () => {
+  // console.log(
+  //   Object.keys(color.brand.grey)
+  //     .filter(c => !c.includes('light') && !c.includes('dark'))
+  //     .map(g => color.brand.grey[g].value),
+  // );
+
+  const t = Object.keys(color.brand).map(c => color.brand[c]);
+
+  for (const property in color.brand) {
+    console.log(
+      Object.keys(color.brand[property]).reduce((acc, item, i) => {
+        acc[item] = Object.keys(color.brand[property]).map(g => color.brand[property][g].value)[i];
+        return acc;
+      }, {}),
+    );
+  }
+
+  // const colors = Object.keys(color.brand.grey).reduce((acc, item, i) => {
+  //   acc[item] = Object.keys(color.brand.grey).map(g => color.brand.grey[g].value)[i];
+  //   return acc;
+  // }, {});
+
+  // console.log(colors);
+
+  return (
+    <>
+      <h1 className="m-bottom-md">Brand Colors</h1>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+        }}
+      >
+        {Object.entries(color.brand).map(renderColorBlock)}
+      </div>
+      <h1>Extended Brand Palette</h1>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+        }}
+      >
+        {Object.entries(color.brand).map(renderColorPalette)}
+      </div>
+    </>
+  );
+};
