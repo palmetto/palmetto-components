@@ -15,9 +15,9 @@ export const containerPaddingSizeMap: { [key in TextInputSize]: BoxProps['paddin
 };
 
 export const childPaddingSizeMap: { [key in TextInputSize]: BoxProps['padding']; } = {
-  sm: 'xs 0',
-  md: 'sm 0',
-  lg: 'md 0',
+  sm: 'xs',
+  md: 'sm',
+  lg: 'md',
 };
 
 export const fontSizeMap: { [key in TextInputSize]: FontSize; } = {

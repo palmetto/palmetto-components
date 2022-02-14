@@ -1,3 +1,59 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
+@mixin size-sm {
+  border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
+  padding: var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)) 0;
+  font-size: var(--form-control-size-sm-font-size, var(--INTERNAL_form-control-size-sm-font-size));
+
+  > input {
+    padding: 0 var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
+  }
+}
+
+%size-sm {
+  @include size-sm;
+}
+
+.size-sm {
+  @extend %size-sm;
+}
+
+@mixin size-md {
+  border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
+  padding: 0 var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
+  font-size: var(--form-control-size-md-font-size, var(--INTERNAL_form-control-size-md-font-size));
+
+  > input {
+    padding: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)) 0;
+  }
+}
+
+%size-md {
+  @include size-md;
+}
+
+.size-md {
+  @extend %size-md;
+}
+
+@mixin size-lg {
+  border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+  padding: 0 var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding));
+  font-size: var(--form-control-size-lg-font-size, var(--INTERNAL_form-control-size-lg-font-size));
+
+  > input {
+    padding: var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding)) 0;
+  }
+}
+
+%size-lg {
+  @include size-lg;
+}
+
+.size-lg {
+  @extend %size-lg;
+}
+
 %disabled-base {
   background-color: var(--form-control-disabled-background-color, var(--INTERNAL_form-control-disabled-background-color));
   color: var(--form-control-disabled-font-color, var(--INTERNAL_form-control-disabled-font-color));
@@ -15,6 +71,28 @@
   position: relative;
   box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)), inset 0 0 0 1px var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
   background-color: var(--INTERNAL_form-control-background-color);
+
+  &.size-sm { @extend %size-sm; }
+  &.size-md { @extend %size-md; }
+  &.size-lg { @extend %size-lg; }
+
+  @media (min-width: $size-breakpoint-tablet) {
+    &.size-sm-tablet { @include size-sm; }
+    &.size-md-tablet { @include size-md; }
+    &.size-lg-tablet { @include size-lg; }
+  }
+
+  @media (min-width: $size-breakpoint-desktop) {
+    &.size-sm-desktop { @include size-sm; }
+    &.size-md-desktop { @include size-md; }
+    &.size-lg-desktop { @include size-lg; }
+  }
+
+  @media (min-width: $size-breakpoint-hd) {
+    &.size-sm-hd { @include size-sm; }
+    &.size-md-hd { @include size-md; }
+    &.size-lg-hd { @include size-lg; }
+  }
 
   /* Necessary so that inset shadow that we use for border does not get covered by child elements. */
   &:not(.error) {

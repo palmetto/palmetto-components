@@ -1,10 +1,10 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 @mixin size-xs {
-  border-radius: var(--button-size-xs-border-radius, var(--form-control-size-sm-border-radius));
+  border-radius: var(--button-size-xs-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
   padding: var(--button-size-xs-padding-vertical, var(--size-spacing-2xs)) var(--button-size-xs-padding-horizontal, var(--size-spacing-xs));
   min-height: 20px;
-  font-size: var(--button-size-xs-font-size, var(--form-control-size-xs-font-size));
+  font-size: var(--button-size-xs-font-size, var(--INTERNAL_form-control-size-xs-font-size));
   letter-spacing: 0.2px;
 
   &.outline {
@@ -17,14 +17,14 @@
 .size-xs { @extend %size-xs; }
 
 @mixin size-sm {
-  border-radius: var(--button-size-sm-border-radius, var(--form-control-size-sm-border-radius));
-  padding: var(--button-size-sm-padding-vertical, var(--form-control-size-sm-padding)) var(--button-size-sm-padding-horizontal, var(--size-spacing-sm));
+  border-radius: var(--button-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
+  padding: var(--button-size-sm-padding-vertical, var(--INTERNAL_form-control-size-sm-padding)) var(--button-size-sm-padding-horizontal, var(--size-spacing-sm));
   min-height: 32px;
-  font-size: var(--button-size-sm-font-size, var(--form-control-size-sm-font-size));
+  font-size: var(--button-size-sm-font-size, var(--INTERNAL_form-control-size-sm-font-size));
   letter-spacing: 0.2px;
 
   &.outline {
-    padding: calc(var(--button-size-sm-padding-vertical, var(--form-control-size-sm-padding)) - 1px)
+    padding: calc(var(--button-size-sm-padding-vertical, var(--INTERNAL_form-control-size-sm-padding)) - 1px)
       calc(var(--button-size-sm-padding-horizontal, var(--size-spacing-sm)) - 1px);
   }
 }
@@ -33,14 +33,14 @@
 .size-sm { @extend %size-sm; }
 
 @mixin size-md {
-  border-radius: var(--button-size-md-border-radius, var(--form-control-size-md-border-radius));
-  padding: var(--button-size-md-padding-vertical, var(--form-control-size-md-padding)) var(--button-size-md-padding-horizontal, var(--size-spacing-md));
+  border-radius: var(--button-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
+  padding: var(--button-size-md-padding-vertical, var(--INTERNAL_form-control-size-md-padding)) var(--button-size-md-padding-horizontal, var(--size-spacing-md));
   min-height: 42px;
-  font-size: var(--button-size-md-font-size, var(--form-control-size-md-font-size));
+  font-size: var(--button-size-md-font-size, var(--INTERNAL_form-control-size-md-font-size));
   letter-spacing: 0.2px;
 
   &.outline {
-    padding: calc(var(--button-size-md-padding-vertical, var(--form-control-size-md-padding)) - 1px)
+    padding: calc(var(--button-size-md-padding-vertical, var(--INTERNAL_form-control-size-md-padding)) - 1px)
       calc(var(--button-size-md-padding-horizontal, var(--size-spacing-md)) - 1px);
   }
 }
@@ -49,14 +49,14 @@
 .size-md { @extend %size-md; }
 
 @mixin size-lg {
-  border-radius: var(--button-size-lg-border-radius, var(--form-control-size-lg-border-radius));
-  padding: var(--button-size-lg-padding-vertical, var(--form-control-size-lg-padding)) var(--button-size-lg-padding-horizontal, var(--size-spacing-lg));
+  border-radius: var(--button-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+  padding: var(--button-size-lg-padding-vertical, var(--INTERNAL_form-control-size-lg-padding)) var(--button-size-lg-padding-horizontal, var(--size-spacing-lg));
   min-height: 55px;
   letter-spacing: 1px;
-  font-size: var(--button-size-lg-font-size, var(--form-control-size-lg-font-size));
+  font-size: var(--button-size-lg-font-size, var(--INTERNAL_form-control-size-lg-font-size));
 
   &.outline {
-    padding: calc(var(--button-size-lg-padding-vertical, var(--form-control-size-lg-padding)) - 1px)
+    padding: calc(var(--button-size-lg-padding-vertical, var(--INTERNAL_form-control-size-lg-padding)) - 1px)
       calc(var(--button-size-lg-padding-horizontal, var(--size-spacing-lg)) - 1px);
   }
 }
