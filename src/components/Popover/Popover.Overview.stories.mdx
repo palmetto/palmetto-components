@@ -191,6 +191,39 @@ items, however are fully customizable.
   </Story>
 </Canvas>
 
+## Custom Class
+
+You can apply a custom class to your popover with the `className` prop. Here we have added font color to the text in the popover.
+
+<Canvas>
+  <Story name="Custom Class">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(false);
+      const handleOpenPopover = () => {
+        setPopoverOpen(!isPopoverOpen);
+      };
+      const popoverContent = <>Hello!</>;
+      return (
+        <div>
+          <Popover
+            content={popoverContent}
+            isOpen={isPopoverOpen}
+            placement="right"
+            contentContainerProps={{
+              padding: 'sm',
+            }}
+            className="font-color-danger"
+          >
+            <Button onClick={handleOpenPopover} variant="light">
+              Toggle Popover
+            </Button>
+          </Popover>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Popover Styling
 
 Because the rendered Popover is powered by our `Box` component ([Read More](/?path=/docs/components-box-overview--background)) you
