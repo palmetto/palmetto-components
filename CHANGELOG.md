@@ -1,5 +1,12 @@
 Changelog
 
+# [0.119.0](https://github.com/palmetto/palmetto-components/compare/v0.118.1...v0.119.0) (2022-02-15)
+
+
+### Features
+
+* **Popover:** Add className prop to Popover to prevent overwriting .popover styles ([#699](https://github.com/palmetto/palmetto-components/issues/699)) ([d936b4f](https://github.com/palmetto/palmetto-components/commit/d936b4f884feba5402c9e749f2824b1b3e40b081))
+
 ## [0.118.1](https://github.com/palmetto/palmetto-components/compare/v0.118.0...v0.118.1) (2022-02-11)
 
 # [0.118.0](https://github.com/palmetto/palmetto-components/compare/v0.117.0...v0.118.0) (2022-02-10)
