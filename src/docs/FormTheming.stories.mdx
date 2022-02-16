@@ -244,6 +244,7 @@ Here we use form-specific tokens to change more granular style choiced of our fo
               '--color-brand-primary-darker': '#2526f0',
               '--color-brand-primary-darkest': '#0020ea',
               '--form-control-size-md-border-radius': 0,
+              '--form-control-size-md-padding': '0.5rem',
             };
             return (
               <Box as="form" maxWidth="500px" margin="lg auto" childGap="lg" style={isThemed ? { ...customVariables } : {}}>
@@ -306,7 +307,7 @@ Here we use form-specific tokens to change more granular style choiced of our fo
                 </Box>
                 <Box direction="row" childGap="md">
                   <Toggle
-                    id="preferDark"
+                    id="preferDark2"
                     name="preferDark"
                     label="Do You Prefer Dark Mode?"
                     isChecked={formFields.preferDark}

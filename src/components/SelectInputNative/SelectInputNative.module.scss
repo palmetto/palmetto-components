@@ -22,8 +22,8 @@
     border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
     padding-left: var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
     padding-right: var(--size-spacing-2xl);
-    padding-top: calc(var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)) - 1px);
-    padding-bottom: calc(var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)) - 1px);
+    padding-top: calc(var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)));
+    padding-bottom: calc(var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)));
   }
 
   &::before,
@@ -58,8 +58,8 @@
     border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
     padding-left: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
     padding-right: var(--size-spacing-3xl);
-    padding-top: calc(var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)) - 1px);
-    padding-bottom: calc(var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)) - 1px);
+    padding-top: calc(var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)));
+    padding-bottom: calc(var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)));
   }
 
   &::before,

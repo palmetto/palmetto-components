@@ -63,7 +63,7 @@ react-select elements for which we do not own the markup */
 @mixin size-md {
   :global(.react-select__control) {
     border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
-    padding: 4px 8px;
+    padding: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
   }
 
   :global(.react-select__single-value) {

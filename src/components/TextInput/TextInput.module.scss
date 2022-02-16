@@ -2,11 +2,41 @@
 
 @mixin size-sm {
   border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
-  padding: var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)) 0;
   font-size: var(--form-control-size-sm-font-size, var(--INTERNAL_form-control-size-sm-font-size));
 
   > input {
-    padding: 0 var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
+    padding: var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
+    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+  }
+
+  .prefix {
+    padding:
+      var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding))
+      0
+      var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding))
+      var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
+  }
+
+  .suffix {
+    padding:
+      var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding))
+      var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding))
+      var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding))
+      0;
+  }
+
+  .clear-button {
+    padding:
+      var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding))
+      var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding))
+      var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding))
+      0;
+  }
+
+  &:not(.is-clearable) {
+    .suffix {
+      padding: var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
+    }
   }
 }
 
@@ -20,11 +50,41 @@
 
 @mixin size-md {
   border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
-  padding: 0 var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
   font-size: var(--form-control-size-md-font-size, var(--INTERNAL_form-control-size-md-font-size));
 
   > input {
-    padding: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)) 0;
+    padding: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
+    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+  }
+
+  .prefix {
+    padding:
+      var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding))
+      0
+      var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding))
+      var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
+  }
+
+  .suffix {
+    padding:
+      var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding))
+      var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding))
+      var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding))
+      0;
+  }
+
+  .clear-button {
+    padding:
+      var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding))
+      var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding))
+      var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding))
+      0;
+  }
+
+  &:not(.is-clearable) {
+    .suffix {
+      padding: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
+    }
   }
 }
 
@@ -38,11 +98,35 @@
 
 @mixin size-lg {
   border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
-  padding: 0 var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding));
   font-size: var(--form-control-size-lg-font-size, var(--INTERNAL_form-control-size-lg-font-size));
 
   > input {
-    padding: var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding)) 0;
+    padding: var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding));
+    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+  }
+
+  .prefix {
+    padding:
+      var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding))
+      0
+      var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding))
+      var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding));
+  }
+
+  .suffix {
+    padding:
+      var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding))
+      var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding))
+      var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding))
+      0;
+  }
+
+  .clear-button {
+    padding:
+      var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding))
+      var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding))
+      var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding))
+      0;
   }
 }
 
@@ -97,9 +181,12 @@
   /* Necessary so that inset shadow that we use for border does not get covered by child elements. */
   &:not(.error) {
     > * {
+
       &:focus,
       &.disabled {
-        box-shadow: inset 0 1px 0 0 var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color)), inset 0 -1px 0 0 var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color)); 
+        &:not(input) {
+          box-shadow: inset 0 1px 0 0 var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color)), inset 0 -1px 0 0 var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color)); 
+        }
       }
     }
   }
@@ -166,7 +253,6 @@
     border-radius: 0;
     background: none;
     cursor: pointer;
-    padding-left: 0;
     color: var(--form-control-icon-color, var(--INTERNAL_form-control-icon-color));
     font-style: inherit;
 

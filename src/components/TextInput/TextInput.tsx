@@ -168,6 +168,9 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
       {
         [styles.error]: error,
         [styles.disabled]: isDisabled,
+        // [styles['has-prefix']]: prefix,
+        // [styles['has-suffix']]: suffix,
+        [styles['is-clearable']]: onClear,
       },
     );
 
@@ -239,8 +242,7 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
           {prefix && (
             <Box
               color="grey-400"
-              className="ws-nowrap"
-              padding={computedResponsiveSize(size, 'childPadding')}
+              className={classNames(styles.prefix, 'ws-nowrap')}
             >
               {prefix}
             </Box>
@@ -254,7 +256,10 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
           )}
           {!!onClear && !!value && renderClearIcon()}
           {suffix && (
-            <Box color="grey-400" className="ws-nowrap" padding={computedResponsiveSize(size, 'childPadding')}>
+            <Box
+              color="grey-400"
+              className={classNames(styles.suffix, 'ws-nowrap')}
+            >
               {suffix}
             </Box>
           )}
