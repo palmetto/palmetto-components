@@ -3,7 +3,7 @@ import React, {
   RefObject,
   forwardRef,
 } from 'react';
-import { DialogOverlay, DialogContent } from '@reach/dialog';
+import { DialogOverlay, DialogContent } from '@juanfabrega/dialog';
 import classNames from 'classnames';
 import { CssOverflowValue } from '../../types';
 import { getDimensionCss } from '../../lib/getDimensionCss';
@@ -28,13 +28,19 @@ export interface ModalProps {
    */
   ariaLabelledBy?: string;
   /**
-   * Contents of the button.
+   * Contents of the dialog.
    */
   children?: ReactNode;
   /**
-   * Additional ClassNames to add to button.
+   * Additional ClassNames to add to dialog.
    */
   className?: string;
+  /**
+   * The ref of the container where the dialog will be inserted into the DOM.
+   * By default, Modals are inserted in the document.body, but if need be they can
+   * be scoped as necessary.
+   */
+  containerRef?: React.RefObject<Node>;
   /**
    * At mobile viewport widths, the modal will take up the fullscreen
    */
@@ -76,6 +82,7 @@ const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, Moda
     allowPinchZoom = false,
     children,
     className,
+    containerRef = undefined,
     fullScreenMobile = false,
     initialFocusRef,
     isOpen,
@@ -103,6 +110,7 @@ const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, Moda
   return (
     <DialogOverlay
       className={overylayClassnames}
+      containerRef={containerRef}
       allowPinchZoom={allowPinchZoom}
       isOpen={isOpen}
       onDismiss={onDismiss}
