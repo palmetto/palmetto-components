@@ -168,7 +168,7 @@ export const Button: FC<ButtonProps> = forwardRef(
     const getSpinnerVariant = () => {
       if (isOutlined) return variant;
 
-      return variant === 'light' ? 'grey' : 'white';
+      return (variant === 'light' || variant === 'white') ? 'grey' : 'white';
     };
 
     const buttonContent = iconPrefix || iconSuffix ? (
