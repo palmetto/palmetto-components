@@ -286,7 +286,7 @@
     &.outline {
       border-color: var(--button-border-color-dark-outline);
       background-color: transparent;
-      color: var(--button-font-color-dark-outline);
+      color: var(--button-font-color-dark-outline, var(--color-brand-dark-base));
 
       &:not(:disabled):hover {
         border-color: var(--button-dark-outline-border-color, var(--color-brand-dark-base));
@@ -294,7 +294,7 @@
           --button-dark-outline-background-color-hover,
           var(--color-brand-grey-50)
         );
-        color: var(--button-font-color-dark-outline);
+        color: var(--button-font-color-dark-outline, var(--color-brand-dark-base));
       }
     }
   }
@@ -334,7 +334,7 @@
           --button-light-outline-background-color-hover,
           var(--color-brand-grey-50)
         );
-        color: var(--button-font-color-light-outline);
+        color: var(--button-font-color-light-outline-hover, var(--color-brand-dark-base));
       }
     }
   }
@@ -364,14 +364,17 @@
     }
 
     &.outline {
-      border-color: var(--button-border-color-white-outline);
+      border-color: var(--button-white-outline-border-color, var(--color-brand-white-base));
       background-color: transparent;
-      color: var(--button-font-color-white-outline);
+      color: var(--button-font-color-white-outline, var(--color-brand-white-base));
 
       &:not(:disabled):hover {
-        border-color: var(--button-border-hover-color-white-outline);
-        background-color: var(--button-background-hover-color-white-outline);
-        color: var(--button-font-color-white-outline);
+        border-color: var(--button-white-outline-border-color-hover, var(--color-brand-white-base));
+        background-color: var(
+          --button-white-outline-background-color-hover,
+          rgba(255, 255, 255, 0.1)
+        );
+        color: var(--button-font-color-white-outline-hover, var(--color-brand-white-base));
       }
     }
   }

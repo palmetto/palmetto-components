@@ -33,7 +33,9 @@ The `variant` prop determines which color variant to render.
       <Button variant="danger">Danger</Button>
       <Button variant="light">Light</Button>
       <Button variant="dark">Dark</Button>
-      <Button variant="white">White</Button>
+      <Box background="grey-500" padding="2xs">
+        <Button variant="white">White</Button>
+      </Box>
     </Box>
   </Story>
 </Canvas>
@@ -61,7 +63,7 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
       <Button variant="dark" isOutlined>
         Dark
       </Button>
-      <Box background="primary" padding="2xs">
+      <Box background="grey-500" padding="2xs">
         <Button variant="white" isOutlined>
           White
         </Button>
