@@ -1,5 +1,12 @@
 Changelog
 
+# [0.120.0](https://github.com/palmetto/palmetto-components/compare/v0.119.0...v0.120.0) (2022-02-16)
+
+
+### Features
+
+* **Modal:** Render Modal in custom portal target. ([#702](https://github.com/palmetto/palmetto-components/issues/702)) ([796e6a1](https://github.com/palmetto/palmetto-components/commit/796e6a170cf86f55ceada7520feab742facecd12))
+
 # [0.119.0](https://github.com/palmetto/palmetto-components/compare/v0.118.1...v0.119.0) (2022-02-15)
 
 
