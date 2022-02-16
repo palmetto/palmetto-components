@@ -1,5 +1,12 @@
 Changelog
 
+# [0.121.0](https://github.com/palmetto/palmetto-components/compare/v0.120.0...v0.121.0) (2022-02-16)
+
+
+### Features
+
+* **Button:** add white button variant ([#598](https://github.com/palmetto/palmetto-components/issues/598)) ([ac910d4](https://github.com/palmetto/palmetto-components/commit/ac910d4612e2c60eb7378c7dbef18a69fac0f71f))
+
 # [0.120.0](https://github.com/palmetto/palmetto-components/compare/v0.119.0...v0.120.0) (2022-02-16)
 
 
