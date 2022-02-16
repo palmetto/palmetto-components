@@ -322,7 +322,7 @@
     }
 
     &:not(:disabled):hover {
-      background-color: var(--button-white-background-color-hover, var(--color-brand-white-base));
+      background-color: var(--button-white-background-color-hover, var(--color-brand-grey-50));
       color: var(--button-white-font-color-hover, var(--color-brand-grey-700));
     }
 
@@ -427,7 +427,7 @@
     &.size-md-hd {
       @include size-md;
     }
-    
+
     &.size-lg-hd {
       @include size-lg;
     }
