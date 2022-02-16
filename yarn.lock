@@ -1954,18 +1954,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@juanfabrega/dialog@^0.16.3":
-  version "0.16.3"
-  resolved "https://registry.yarnpkg.com/@juanfabrega/dialog/-/dialog-0.16.3.tgz#a1836645fdceed1841f3cc625dcb7d9c7d381a7e"
-  integrity sha512-lJvDkvro11LDPOowCPBjGPVSESey70YkhwI5YO2vR/WsCpsR7vzSGeG73WQEZcrgK+Xj+ob0SYVuxAlVroaQuw==
-  dependencies:
-    "@reach/portal" "0.16.2"
-    "@reach/utils" "0.16.0"
-    prop-types "^15.7.2"
-    react-focus-lock "^2.5.2"
-    react-remove-scroll "^2.4.3"
-    tslib "^2.3.0"
-
 "@mdx-js/loader@^1.6.22":
   version "1.6.22"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-1.6.22.tgz#d9e8fe7f8185ff13c9c8639c048b123e30d322c4"
@@ -2277,6 +2265,18 @@
   integrity sha512-wWPSynU4oLy3i4KGyk+J1BLwRKyoeW2TwRHgwbDz17WtVFzSK2GOErGliruIx8c+MaYtHSYTx36DSmLNoNbtgA==
   dependencies:
     "@octokit/openapi-types" "^7.2.3"
+
+"@palmetto/dialog@^0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@palmetto/dialog/-/dialog-0.16.4.tgz#3f13feee6199f055f70404e94aac7a4db24d53f1"
+  integrity sha512-yqjzB8+Zy08s6D4+uRondxuL1AGL6Gj5mMt42e8C8QqD+nEmmPbR+Nbm2dvg64znAMROMI7YGq05mPbbkxL3Tw==
+  dependencies:
+    "@reach/portal" "0.16.2"
+    "@reach/utils" "0.16.0"
+    prop-types "^15.7.2"
+    react-focus-lock "^2.5.2"
+    react-remove-scroll "^2.4.3"
+    tslib "^2.3.0"
 
 "@palmetto/palmetto-design-tokens@0.61.0":
   version "0.61.0"

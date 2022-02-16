@@ -3,7 +3,7 @@ import React, {
   RefObject,
   forwardRef,
 } from 'react';
-import { DialogOverlay, DialogContent } from '@juanfabrega/dialog';
+import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
 import { CssOverflowValue } from '../../types';
 import { getDimensionCss } from '../../lib/getDimensionCss';
