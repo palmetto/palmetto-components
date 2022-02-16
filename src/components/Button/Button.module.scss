@@ -202,12 +202,12 @@
 
     &:focus {
       outline: 0;
-      box-shadow: var(--button-focus-box-shadow-danger, 0 0 0 4px var(--color-brand-danger-lighter));
+      box-shadow: var(--button-focus-box-shadow-danger, 0 0 0 4px var(--color-brand-danger-200));
     }
 
     &:focus-visible {
       outline: 0;
-      box-shadow: var(--button-focus-box-shadow-danger, 0 0 0 4px var(--color-brand-danger-lighter));
+      box-shadow: var(--button-focus-box-shadow-danger, 0 0 0 4px var(--color-brand-danger-200));
     }
 
     &:focus:not(:focus-visible) {
