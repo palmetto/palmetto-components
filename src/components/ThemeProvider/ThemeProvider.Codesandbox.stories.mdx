@@ -1,0 +1,196 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Providers/ThemeProvider/Codesandbox" />
+
+# ThemeProvider
+
+The ThemeProvider is a context provider that allows you to both set the theme and get the current theme (light or dark) for your application.
+
+## Basics
+
+First off, you should place the `ThemeProvider` component at the root of your application (or as high as you need it based on your application).
+The example below wraps the entire `App` with the provider but use your own judgement if you have other high-level providers in your app.
+
+Once your app is wrapped in the provider, you will have access to the shared context `ThemeContext`, which provides three key elements:
+
+1. `theme` -- the current theme -- `'light' | 'dark'`
+2. `systemPreference` -- whether the user prefers a light or dark them in their system preferences -- `light | dark`. Note that this is separate from the 
+current theme so that you can manage either use the system preference as the basis for your app theme, or perhaps only use it as a default with the ability to
+override it as needed. The provider attaches a listener to the prefers-color-scheme: dark media query, so the value will update automatically if a user changes their
+system preference.
+3. `setTheme` -- A function that takes a new theme value as an argument and changes the them accordingly -- `(theme: 'light' | 'dark') => void`
+
+The example below utilizes the `theme` and `setTheme` values for a basic theme switcher.
+
+```js codesandbox=palmetto-components
+import React, { useContext } from 'react';
+import { ThemeProvider, ThemeContext, Box, Toggle } from '@palmetto/palmetto-components';
+
+export default () => {
+  const App = () => {
+    const { theme, setTheme } = useContext(ThemeContext);
+    const handleChangeTheme = (event) => {
+      const { target: { checked } } = event;
+      const newTheme = checked ? 'dark' : 'light';
+      setTheme(newTheme);
+    };
+
+    return (
+      <>
+        <Box direction="row" childGap="xs" alignItems="center" margin="0 0 md 0">
+          <Box fontWeight="bold" display="inline">light</Box>
+          <Toggle
+            isChecked={theme === 'dark'}
+            onChange={handleChangeTheme}
+            label="dark"
+          />
+        </Box>
+        <Box
+          padding="lg"
+          color={theme === 'light' ? 'grey-dark' : 'grey-lighter'}
+          background={theme === 'light' ? 'white' : 'grey-darker'}
+          radius="md"
+          borderWidth="xs"
+          borderColor={theme === 'light' ? 'grey-lighter' : 'grey-darker'}
+        >
+          <Box as="span" direction="row">Theme is:&nbsp;<Box fontWeight="bold" as="span">{theme}</Box></Box>
+        </Box>
+      </>
+    );
+  };
+
+  return (
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  );
+};
+```
+
+
+## Using the System Preference
+
+The example below using the user's system preference exclusively for determining the theme. To try this out,
+change your system (light/dark) preference to see it in action.
+
+```js codesandbox=palmetto-components
+import React, { useContext } from 'react';
+import { ThemeProvider, ThemeContext, Box } from '@palmetto/palmetto-components';
+
+export default () => {
+  const App = () => {
+    const { systemPreference } = useContext(ThemeContext);
+  
+    return (
+      <>
+        <Box
+          padding="lg"
+          color={systemPreference === 'light' ? 'grey-dark' : 'grey-lighter'}
+          background={systemPreference === 'light' ? 'white' : 'grey-darker'}
+          radius="md"
+          borderWidth="xs"
+          borderColor={systemPreference === 'light' ? 'grey-lighter' : 'grey-darker'}
+        >
+          <Box as="span" direction="row">
+            System Preference:&nbsp;
+            <Box fontWeight="bold" as="span" style={{ color: 'inherit' }}>
+              {systemPreference}
+            </Box>
+          </Box>
+        </Box>
+      </>
+    );
+  };
+
+  return (
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  );
+};
+```
+
+## Combining System Preference with App Settings
+
+Now we've seen how to use both our own variable, as well as a system preference to determine the dark/light theme,
+here is an example that puts these concepts together for a more holistic approach.
+
+In the example below -- the user can decide to either use their system preference, or hardcode a setting for the app, specifically
+
+```js codesandbox=palmetto-components
+import React, { useContext, useEffect, useState } from 'react';
+import { ThemeProvider, ThemeContext, Box, RadioGroup } from '@palmetto/palmetto-components';
+
+export default () => {
+  const App = () => {
+    const { theme, setTheme, systemPreference } = useContext(ThemeContext);
+    const [userThemeSetting, setUserThemeSetting] = useState('light');
+  
+    const options = [
+      {
+        id: 'light',
+        value: 'light',
+        label: 'Light'
+      }, {
+        id: 'dark',
+        value: 'dark',
+        label: 'Dark'
+      }, {
+        id: 'systemPreference',
+        value: 'systemPreference',
+        label: 'Use System Preference'
+      }
+    ];
+  
+    useEffect(() => {
+      if (userThemeSetting !== 'systemPreference') {
+        setTheme(userThemeSetting);
+      }
+    }, [userThemeSetting]);
+  
+    const activeTheme = userThemeSetting === 'systemPreference' ? systemPreference : theme;
+  
+    return (
+      <>
+        <Box direction="row" childGap="xs" alignItems="center" margin="0 0 md 0">
+          <RadioGroup
+            name="userThemeSetting"
+            value={userThemeSetting}
+            onChange={event => setUserThemeSetting(event.target.value)}
+            options={options}
+          />
+        </Box>
+        <Box
+          padding="lg"
+          color={activeTheme === 'light' ? 'grey-dark' : 'grey-lighter'}
+          background={activeTheme === 'light' ? 'white' : 'grey-darker'}
+          radius="md"
+          borderWidth="xs"
+          borderColor={activeTheme === 'light' ? 'grey-lighter' : 'grey-darker'}
+        >
+          <Box childGap="sm">
+            <Box as="span" direction="row">
+              Active Theme:&nbsp;
+              <Box fontWeight="bold" as="span" style={{ color: 'inherit' }}>
+                {activeTheme}
+              </Box>
+            </Box>
+            <Box as="span" direction="row">
+              System Preference:&nbsp;
+              <Box fontWeight="bold" as="span" style={{ color: 'inherit' }}>
+                {systemPreference}
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </>
+    );
+  };
+
+  return (
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  );
+};
+```

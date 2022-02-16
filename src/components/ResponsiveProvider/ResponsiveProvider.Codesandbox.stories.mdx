@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Providers/ResponsiveProvider/Codesandbox" />
+
+# ResponsiveProvider
+
+Use a `ResponsiveProvider` to provide window size context to all children components. This circumvents the need
+to set up individual resize listeners per component when detailed responsive behavior is required.
+
+This component is meant to be used in conjunction with the `useWindowSize` and `useBreakpoint` hooks provided in order to write responsive
+markup without diving into CSS.
+
+## Basic Usage
+
+The `ResponsiveProvider` component can wrap any JSX component but in order to leverage the performance gains of a single context,
+it is best to use it once in an application, and placed as high as possible in the component tree (likely wrapping the App itself).
+
+The example below shows basic usage.
+
+Our library includes opinionated [breakpoints](/?path=/docs/design-tokens-breakpoints--page). The `useBreakpoint` hook exposes
+these to any component nested under a `ResponsiveProvider`
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { ResponsiveProvider, useBreakpoint, Box } from '@palmetto/palmetto-components';
+
+export default () => {
+  const ConsumerApp = () => {
+    const { isPhone, isTablet, isDesktop, isHd } = useBreakpoint();
+
+    return (
+      <Box childGap="md">
+        <p>phone: {isPhone ? '✅' : '❌'}</p>
+        <p>tablet: {isTablet ? '✅' : '❌'}</p>
+        <p>desktop: {isDesktop ? '✅' : '❌'}</p>
+        <p>hd: {isHd ? '✅' : '❌'}</p>
+      </Box>
+    );
+  };
+
+  return (
+    <ResponsiveProvider>
+      <ConsumerApp />
+    </ResponsiveProvider>
+  );
+};
+```

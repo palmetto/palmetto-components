@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box } from '../../Box/Box';
+import { Box, BoxProps } from '../../Box/Box';
 import { Icon } from '../../Icon/Icon';
 import { FontColor } from '../../../types';
 import { CheckboxProps } from './Checkbox'; // eslint-disable-line import/no-cycle
 
-export interface CheckboxIconProps {
+export interface CheckboxIconProps extends BoxProps {
   /**
    * Custom className to be applied to root node of component.
    */
@@ -34,25 +34,29 @@ export const CheckboxIcon: React.FC<CheckboxIconProps> = ({
   isChecked = false,
   isDisabled = false,
   isIndeterminate = false,
+  ...restProps
 }) => {
   let color: FontColor = 'grey-500';
   let name: 'checkbox-btn' | 'checkbox-btn-checked' | 'checkbox-btn-indeterminate' = 'checkbox-btn';
 
+  if (isChecked) name = 'checkbox-btn-checked';
+  else name = 'checkbox-btn';
+
+  if (isIndeterminate) name = 'checkbox-btn-indeterminate';
+
   if (isChecked && isDisabled) {
-    color = 'secondary-200';
-    name = 'checkbox-btn-checked';
+    color = 'primary-200';
   } else if (isChecked && !isDisabled) {
-    color = 'secondary-500';
-    name = 'checkbox-btn-checked';
+    color = 'primary-500';
   } else if (isDisabled) {
     color = 'grey-200';
   }
 
   if (error) color = 'danger-500';
-  if (isIndeterminate) name = 'checkbox-btn-indeterminate';
+  if (isDisabled && error) color = 'danger-200';
 
   return (
-    <Box className={className} display="inline-block">
+    <Box className={className} display="inline-block" {...restProps}>
       <Icon color={color} name={name} />
     </Box>
   );

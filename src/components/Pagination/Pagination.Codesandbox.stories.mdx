@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Pagination/Codesandbox" />
+
+# Pagination
+
+Use pagination to improve user scanning, as well as load times, for large collections or lists.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { Pagination } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [activePage, setActivePage] = useState(1);
+
+  return (
+    <Pagination
+      activePage={activePage}
+      itemsPerPage={20}
+      onChange={setActivePage}
+      totalItemsCount={1000}
+      isCompact
+      arePagesVisible
+      numberOfPagesDisplayed={3}
+    />
+  );
+};
+```

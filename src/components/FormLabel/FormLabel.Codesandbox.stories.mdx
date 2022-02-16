@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/FormLabel/Codesandbox" />
+
+# FormLabel
+
+FormLabel is a sub component of many of our inputs, and is meant to be paired with a form input. In most cases, the label will have already been built into another component as a prop. However, you can use it on its own or with another component.
+
+## Accessibility
+
+- Each label requires the `inputId` prop that equals the id of the associated input so that the `htmlFor` property can be set.
+- Don't use placeholder text as a replacement for labels. It can be used to provide an example to users, but will disappear from the field when a user enters text. It's also not broadly supported by assistive technologies and won't display in older browsers.
+- Use one of 3 ways to label a form field in order of most preferred:
+  1. Visible label with Label
+  2. Visible label that's associated to the input with aria-labelledby
+  3. Label directly using aria-label
+
+### Default
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { FormLabel } from '@palmetto/palmetto-components';
+
+export default () => (
+  <FormLabel>Default label</FormLabel>
+);
+```
+
+### Help Text
+
+Use `helpText` to add additional context for the FormLabel's input.
+This can help keep checkbox label concise.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { FormLabel } from '@palmetto/palmetto-components';
+
+export default () => (
+  <FormLabel inputId="required" helpText="More helpful text about the input">
+    Required input label
+  </FormLabel>
+);
+```
+
+### Required
+
+A label for an input that is required is marked with an asterisk.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { FormLabel } from '@palmetto/palmetto-components';
+
+export default () => (
+  <FormLabel inputId="required" isFieldRequired>
+    Required input label
+  </FormLabel>
+);
+```
+
+### Interactive Label
+
+FormLabels support the ability to for its text to be interactive or link to another page.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { FormLabel } from '@palmetto/palmetto-components';
+
+export default () => (
+  <>
+    <FormLabel inputId="customText">
+      This label has a span with
+      <span style={{ fontStyle: 'italic' }}>&nbsp;Italic&nbsp;</span>
+      and also a&nbsp;
+      <a href="https://palmetto.com" target="_blank">
+        Link
+      </a>
+    </FormLabel>
+  </>
+);
+```

@@ -7,7 +7,7 @@ import React, {
 import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
-import { TabItem } from './TabItem';
+import { TabItem } from '../Tabs/TabItem';
 import { ResponsiveProp } from '../../types';
 import styles from './TabsSlider.module.scss';
 
@@ -221,11 +221,16 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
       childToReturn = React.cloneElement(
         child,
         {
+          ...child.props,
           className: classes,
           onClick: onClickHandler,
           fontSize: tabFontSize(),
           padding: tabPadding(),
+          key: child.key,
           style: { ...child.props.style, flex: 1 },
+          'aria-posinset': index + 1,
+          'aria-setsize': React.Children.count(children),
+          'aria-selected': value === index,
         },
       );
     }

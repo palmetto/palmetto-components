@@ -6,13 +6,20 @@ export default {
   title: 'Components/Modal/Visual Regression Tests',
   component: Modal,
   parameters: {
-    chromatic: { delay: 1000, pauseAnimationAtEnd: true, viewports: [320, 700, 1012, 1300] },
+    chromatic: { delay: 1000, pauseAnimationAtEnd: true, viewports: [350, 700, 1012, 1300] },
   },
-  decorators: [storyFn => <div
-    style={{
-      width: '1200px',
-      height: '800px'
-    }}>{storyFn()}</div>],
+  decorators: [
+    storyFn => (
+      <div
+        style={{
+          width: '1200px',
+          height: '800px',
+        }}
+      >
+        {storyFn()}
+      </div>
+    ),
+  ],
 };
 
 export const BasicExample = () => (
@@ -82,7 +89,12 @@ export const WithMaxWidth = () => (
 );
 
 export const WithResponsiveMaxWidth = () => (
-  <Modal ariaLabelledBy="title" maxWidth={{ tablet: '3xl', desktop: '4xl', hd: '5xl' }} isOpen onDismiss={() => null}>
+  <Modal
+    ariaLabelledBy="title"
+    maxWidth={{ tablet: '3xl', desktop: '4xl', hd: '5xl' }}
+    isOpen
+    onDismiss={() => null}
+  >
     <Modal.Header id="title" title="Fullscreen Modal on Mobile" onDismiss={() => null} />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>

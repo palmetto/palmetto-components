@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button, ButtonProps } from './Button';
 import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 import { Box } from '../Box/Box';
+import { RESPONSIVE_STORY } from '../../docs/constants';
 
 export default {
   title: 'Components/Button/Visual Regression Tests',
@@ -71,6 +72,7 @@ const Template: Story<ButtonProps> = (args, showIconButton) => (
 
 export const Sizes = Template.bind({});
 Sizes.args = { showIconButton: true };
+Sizes.parameters = RESPONSIVE_STORY;
 
 export const Loading = Template.bind({});
 Loading.args = { isLoading: true, showIconButton: true };

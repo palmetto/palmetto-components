@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Toggle/Codesandbox" />
+
+# Toggle
+
+A `Toggle` switch is like a digital on/off switch. They prompt users to choose between two mutually exclusive options and always have a default value.
+Toggles should provide immediate results and should not require the user to Save or Submit to apply the new state.
+
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { Toggle } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState(null);
+
+  return (
+    <Toggle
+      id="defaultStateIsUnchecked"
+      label="toggle label"
+      onChange={event => setValue(event.target.checked)}
+      isChecked={value}
+    />
+  );
+};
+```

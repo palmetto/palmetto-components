@@ -39,7 +39,7 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef((
        */
       const onClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
         if (child.props.onClick) {
-          (child.props.onClick(event));
+          child.props.onClick(event);
         }
 
         if (!child.props.isDisabled && onChange) {
@@ -60,11 +60,16 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef((
       return React.cloneElement(
         child,
         {
+          ...child.props,
           className: classes,
           onClick: onClickHandler,
           fontSize: size,
           padding: size,
+          key: child.key,
           style: { ...child.props.style, ...isFullWidth && { flex: 1 } },
+          'aria-posinset': index + 1,
+          'aria-setsize': React.Children.count(children),
+          'aria-selected': value === index,
         },
       );
     }

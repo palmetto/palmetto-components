@@ -124,6 +124,7 @@ export const TextareaInput: FC<TextareaInputProps> = ({
   ...restProps
 }) => {
   const inputWrapperClasses = classNames(
+    'palmetto-components__variables__form-control',
     styles['textarea-input-wrapper'],
     {
       [styles.error]: error,

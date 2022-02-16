@@ -17,6 +17,10 @@ Actions almost always occur on the same page.
   <Button onClick={() => alert('clicked')}>Button</Button>
 </Canvas>
 
+## Props
+
+<ArgsTable of={Button} />
+
 ## Color Variants
 
 The `variant` prop determines which color variant to render.
@@ -68,7 +72,8 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
 
 ## Sizes
 
-Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size.
+Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size. The button also takes a `ResponsiveProp` object
+so it can have different sizes at different breakpoints.
 
 <Canvas>
   <Story name="Size">
@@ -80,10 +85,21 @@ Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size
         Small
       </Button>
       <Button size="md" variant="light">
-        Medium (default)
+        Medium
       </Button>
       <Button size="lg" variant="light">
         Large
+      </Button>
+      <Button
+        size={{
+          base: 'xs',
+          tablet: 'sm',
+          desktop: 'md',
+          hd: 'lg',
+        }}
+        variant="light"
+      >
+        Responsive
       </Button>
     </Box>
   </Story>
@@ -193,12 +209,17 @@ can render buttons as one of `button`, `a`, and `input`.
 ## Wrapped in a React Router Link
 
 <Canvas>
-  <Story name="React Router Link" decorators={[Story => <BrowserRouter><Story /></BrowserRouter>]}>
-    <Link
-      to="/"
-      as="a"
-      component={Button}
-    >
+  <Story
+    name="React Router Link"
+    decorators={[
+      Story => (
+        <BrowserRouter>
+          <Story />
+        </BrowserRouter>
+      ),
+    ]}
+  >
+    <Link to="/" as="a" component={Button}>
       React Router Link
     </Link>
     <Box margin="md 0 0 0">
@@ -211,6 +232,131 @@ can render buttons as one of `button`, `a`, and `input`.
   </Story>
 </Canvas>
 
-## Props
+## Custom Theme
 
-<ArgsTable of={Button} />
+The Button component can be themed by base tokens, or component specific tokens. This example shows how we style our `Button` with our brand font and squared corners for use on our public marketing site.
+
+<Canvas>
+  <Story name="With Custom Theme">
+    <Box
+      childGap="sm"
+      direction="row"
+      alignItems="flex-start"
+      style={{
+        '--button-font-family': 'var(--asset-fonts-brand)',
+        '--button-font-weight': 'var(--size-font-weight-regular)',
+        '--button-size-xs-border-radius': '0',
+        '--button-size-sm-border-radius': '0',
+        '--button-size-md-border-radius': '0',
+        '--button-size-lg-border-radius': '0',
+      }}
+    >
+      <Button size="xs">Get Solar</Button>
+      <Button size="sm">Get Solar</Button>
+      <Button size="md">Get Solar</Button>
+      <Button size="lg">Get Solar</Button>
+    </Box>
+  </Story>
+</Canvas>
+
+## Component Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--button-font-family': '--asset-fonts-body',
+        '--button-font-weight': '--size-font-weight-bold',
+        '--button-size-xs-border-radius': '--form-control-size-sm-border-radius',
+        '--button-size-xs-font-size': '--form-control-size-xs-font-size',
+        '--button-size-xs-padding-vertical': '--size-spacing-2xs',
+        '--button-size-xs-padding-horizontal': '--size-spacing-xs',
+        '--button-size-sm-border-radius': '--form-control-size-sm-border-radius',
+        '--button-size-sm-font-size': '--form-control-size-sm-font-size',
+        '--button-size-sm-padding-vertical': '--form-control-size-sm-padding',
+        '--button-size-sm-padding-horizontal': '--size-spacing-sm',
+        '--button-size-md-border-radius': '--form-control-size-md-border-radius',
+        '--button-size-md-font-size': '--form-control-size-md-font-size',
+        '--button-size-md-padding-vertical': '--form-control-size-md-padding',
+        '--button-size-md-padding-horizontal': '--size-spacing-md',
+        '--button-size-lg-border-radius': '--form-control-size-lg-border-radius',
+        '--button-size-lg-font-size': '--form-control-size-lg-font-size',
+        '--button-size-lg-padding-vertical': '--form-control-size-lg-padding',
+        '--button-size-lg-padding-horizontal': '--size-spacing-lg',
+        '--button-primary-background-color': '--color-brand-primary-500',
+        '--button-primary-background-color-hover': '--color-brand-primary-600',
+        '--button-primary-font-color': '--color-brand-white-base',
+        '--button-primary-font-color-hover': '--color-brand-white-base',
+        '--button-primary-outline-border-color': '--color-brand-primary-500',
+        '--button-primary-outline-border-color-hover': '--color-brand-primary-500',
+        '--button-primary-outline-background-color': 'transparent',
+        '--button-primary-outline-background-color-hover': '--color-brand-primary-50',
+        '--button-primary-outline-font-color': '--color-brand-primary-500',
+        '--button-primary-outline-font-color-hover': '--color-brand-primary-600',
+        '--button-primary-box-shadow-focus': '--input-focus-box-shadow',
+        '--button-success-background-color': '--color-brand-success-500',
+        '--button-success-background-color-hover': '--color-brand-success-600',
+        '--button-success-font-color': '--color-brand-white-base',
+        '--button-success-font-color-hover': '--color-brand-white-base',
+        '--button-success-outline-background-color': 'transparent',
+        '--button-success-outline-background-color-hover': '--color-brand-success-50',
+        '--button-success-outline-border-color': '--color-brand-success-500',
+        '--button-success-outline-border-color-hover': '--color-brand-success-500',
+        '--button-success-outline-font-color': '--color-brand-success-500',
+        '--button-success-outline-font-color-hover': '--color-brand-success-600',
+        '--button-success-box-shadow-focus': '--input-focus-box-shadow',
+        '--button-danger-background-color': '--color-brand-danger-500',
+        '--button-danger-background-color-hover': '--color-brand-danger-600',
+        '--button-danger-font-color': '--color-brand-white-base',
+        '--button-danger-font-color-hover': '--color-brand-white-base',
+        '--button-danger-outline-background-color': 'transparent',
+        '--button-danger-outline-background-color-hover': '--color-brand-danger-50',
+        '--button-danger-outline-border-color': '--color-brand-danger-500',
+        '--button-danger-outline-border-hover-color': '--color-brand-danger-500',
+        '--button-danger-outline-font-color': '--color-brand-danger-500',
+        '--button-danger-outline-font-color-hover': '--color-brand-danger-500',
+        '--button-danger-box-shadow-focus': '0 0 0 4px --color-brand-danger-lighter',
+        '--button-dark-background-color': '--color-brand-dark-base',
+        '--button-dark-background-color-hover': '--color-brand-black-base',
+        '--button-dark-font-color': '--color-brand-white-base',
+        '--button-dark-font-color-hover': '--color-brand-white-base',
+        '--button-dark-outline-background-color': 'transparent',
+        '--button-dark-outline-background-color-hover': '--color-brand-grey-50',
+        '--button-dark-outline-border-color': '--color-brand-dark-base',
+        '--button-dark-outline-border-hover-color': '--color-brand-grey-900',
+        '--button-dark-outline-font-color': '--color-brand-dark-base',
+        '--button-dark-outline-font-color-hover': '--color-brand-white-base',
+        '--button-dark-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
+        '--button-light-background-color': '--color-brand-grey-100',
+        '--button-light-background-color-hover': '--color-brand-grey-200',
+        '--button-light-font-color': '--color-brand-dark-base',
+        '--button-light-font-color-hover': '--color-brand-dark-base',
+        '--button-light-outline-background-color': 'transparent',
+        '--button-light-outline-background-color-hover': '--color-brand-grey-50',
+        '--button-light-outline-border-color': '--color-brand-light-base',
+        '--button-light-outline-border-color-hover': '--color-brand-grey-300',
+        '--button-light-outline-font-color': '--color-brand-dark-base',
+        '--button-light-outline-font-color-hover': '--color-brand-dark-base',
+        '--button-light-box-shadow-focus': '0 0 0 4px --color-brand-grey-300',
+        '--button-naked-font-color': '',
+      };
+return Object.entries(tokens).map(([name, entry], i) => (
+
+<tr key={i}>
+  <td>
+    <code>{name}</code>
+  </td>
+  <td>
+    <code>{entry}</code>
+  </td>
+</tr>
+)); })()}
+
+  </tbody>
+</table>

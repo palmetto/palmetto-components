@@ -1,12 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import {
-  Badge,
-  BadgeSize,
-  BadgeVariant,
-  BADGE_COLOR_MAP,
-  BADGE_SIZE_MAP,
-} from './Badge';
+import { Badge } from './Badge';
+import { BADGE_SIZES, BADGE_VARIANTS } from './Badge.constants';
 
 describe('Badge', () => {
   test('Label correctly renders with base props', () => {
@@ -15,24 +10,45 @@ describe('Badge', () => {
     expect(badge).toBeInTheDocument();
   });
 
-  test('Color Variants', () => {
-    Object.keys(BADGE_COLOR_MAP).forEach(color => {
-      render(<Badge variant={color as BadgeVariant} message={color} />);
-      const badge = screen.getByText(color);
-      expect(badge).toBeInTheDocument();
-      expect(badge).toHaveClass(`font-color-${BADGE_COLOR_MAP[color as BadgeVariant].font}`);
-      expect(badge).toHaveClass(`background-color-${BADGE_COLOR_MAP[color as BadgeVariant].background}`);
-    });
+  describe('Variants', () => {
+    BADGE_VARIANTS.map(variant => describe(`${BADGE_VARIANTS}`, () => {
+      test(`it has a ${variant} class applied to it`, () => {
+        render(<Badge variant={variant} message={`${variant} Badge`} />);
+        const badge = screen.getByText(`${variant} Badge`);
+
+        expect(badge.getAttribute('class')).toContain(variant);
+      });
+    }));
   });
 
-  test('Sizes', () => {
-    Object.keys(BADGE_SIZE_MAP).forEach(size => {
-      render(<Badge size={size as BadgeSize} message={size} />);
-      const badge = screen.getByText(size);
-      expect(badge).toBeInTheDocument();
-      expect(badge).toHaveClass(`p-v-${BADGE_SIZE_MAP[size as BadgeSize].padding?.split(' ')[0]}`);
-      expect(badge).toHaveClass(`p-h-${BADGE_SIZE_MAP[size as BadgeSize].padding?.split(' ')[1]}`);
-      expect(badge).toHaveClass(`font-size-${BADGE_SIZE_MAP[size as BadgeSize].fontSize}`);
+  describe('Sizes', () => {
+    BADGE_SIZES.map(size => describe(`${BADGE_SIZES}`, () => {
+      test(`it has a ${size} class applied to it`, () => {
+        render(<Badge size={size} message={`${size} Badge`} />);
+        const badge = screen.getByText(`${size} Badge`);
+
+        expect(badge.getAttribute('class')).toContain(`size-${size}`);
+      });
+    }));
+
+    test('It applies responsive size classes', () => {
+      render(
+        <Badge
+          size={{
+            base: 'sm', tablet: 'md', desktop: 'lg', hd: 'xl',
+          }}
+          message="badge"
+        >
+          button
+        </Badge>,
+      );
+
+      const badge = screen.getByText('badge');
+
+      expect(badge.getAttribute('class')).toContain('size-sm');
+      expect(badge.getAttribute('class')).toContain('size-md-tablet');
+      expect(badge.getAttribute('class')).toContain('size-lg-desktop');
+      expect(badge.getAttribute('class')).toContain('size-xl-hd');
     });
   });
 });

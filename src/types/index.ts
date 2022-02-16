@@ -151,9 +151,9 @@ export declare type Column = {
    */
   emptyCellPlaceholder?: string | number | undefined;
   /**
-   * The heading/title text of a column.
+   * The heading/title of a column.
    */
-  heading?: string;
+  heading?: ReactNode;
   /**
    * CSS Class to be applied to the column header cell.
    */

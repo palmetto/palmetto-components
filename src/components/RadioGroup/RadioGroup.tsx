@@ -4,7 +4,7 @@ import React, {
 import classNames from 'classnames';
 import { Box } from '../Box/Box';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
-import { RadioInput, RadioInputProps } from './RadioInput/RadioInput';
+import { RadioInput, RadioInputProps } from './RadioInput/RadioInput'; // eslint-disable-line import/no-cycle
 import styles from './RadioGroup.module.scss';
 
 export interface RadioGroupProps {
@@ -22,7 +22,7 @@ export interface RadioGroupProps {
   options: {
     id: string;
     value: string;
-    label: string;
+    label: ReactNode;
     disabled?: boolean | null;
   }[];
   /**
@@ -93,9 +93,13 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   value = undefined,
   ...restProps
 }) => {
-  const groupClasses = classNames(className, {
-    [styles.loading]: error,
-  });
+  const groupClasses = classNames(
+    'palmetto-components__variables__form-control',
+    className,
+    {
+      [styles.loading]: error,
+    },
+  );
 
   return (
     <div className={classNames(styles['radio-group'], groupClasses)} {...restProps}>

@@ -2,7 +2,7 @@
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-sass-guidelines",
-    "stylelint-config-css-modules",
+    "stylelint-config-css-modules"
   ],
   "rules": {
     "declaration-property-value-disallowed-list": null,
@@ -10,6 +10,7 @@
     "order/properties-alphabetical-order": null,
     "selector-max-compound-selectors": 4,
     "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true
+    "scss/at-rule-no-unknown": true,
+    "selector-class-pattern": null
   }
 }

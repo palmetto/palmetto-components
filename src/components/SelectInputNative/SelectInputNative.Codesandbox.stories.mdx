@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/SelectInputNative/Codesandbox" />
+
+# SelectInputNative
+
+Allows users to pick a value from a predefined list of options. Ideally, it should be used when there are 5 or more options, otherwise you should consider using a radio group instead.
+
+_NOTE:_ This is an alternative to the `SelectInput` component, but leveraging the native platform dropdown instead of a custom one. This is useful,
+when a custom UI is not needed for a select, or the native UI is preferred (this is recommended for most cases except multi-selects).
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { SelectInputNative } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState(null);
+
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
+
+  return (
+    <div>
+      <SelectInputNative
+        id="default Select"
+        label="Label"
+        onChange={event => { setValue(event.target.value) }}
+        options={options}
+        value={value}
+      />
+    </div>
+  );
+};
+```

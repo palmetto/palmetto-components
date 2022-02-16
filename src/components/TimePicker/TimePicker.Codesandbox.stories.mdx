@@ -1,0 +1,138 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/TimePicker/Codesandbox" />
+
+# TimePicker
+
+Use a TimePicker when you want users to select from a list of a available times agnostic of date.
+
+_NOTE:_ This component is abstracted from the [SelectInput](?path=/docs/components-selectinput-overview--default-story)
+and as such includes the same underlying props interface with an added method for generating the time options automatically.
+
+_ABOUT TIME FORMAT:_ While the `value` prop technically returns `{ label: string; value: string; }` the value returned will always
+be a JS ISO date string, like this: `2016-07-13T18:46:01.933Z`.
+
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { TimePicker, Box } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState(null);
+
+  return (
+    <Box height="360px">
+      <TimePicker
+        id="defaultTimePicker"
+        name="defaultTimePicker"
+        onChange={event => {
+          setValue(event.target.value);
+        }}
+        label="Pick a Time"
+        value={value}
+      />
+    </Box>
+  );
+};
+```
+
+## With A Specific Interval
+
+Pass an `interval` (seconds) value to determine how many times get generated as options.
+The example below uses `3600` --> 1 Hour Intervals
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react'
+import { TimePicker, Box } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState(null);
+
+  return (
+    <Box height="360px">
+      <TimePicker
+        id="intervalTimePicker"
+        name="intervalTimePicker"
+        onChange={event => {
+          setValue(event.target.value);
+        }}
+        label="Pick a Time"
+        interval={3600}
+        value={value}
+      />
+    </Box>
+  );
+};
+```
+
+## With Min and Max Times
+
+You can determine the range of times to be shown by capping the start and end times.
+Use `startTime` and `endTime` for this. The expected values for `hour` and `minute` properties
+are `0-24` and `0-60` respectively.
+
+IMPORTANT: `startTime` is inclusive, and `endTime` is exclusive. This is to avoid
+the options showing the startTime twice when using a 24-hour cycle.
+
+See example below where we want to show 15 minute increments starting at 9:00AM and ending at 3:30PM.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react'
+import { TimePicker, Box } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState(null);
+
+  return (
+    <Box height="360px">
+      <TimePicker
+        id="startEnd"
+        name="startEnd"
+        onChange={event => {
+          setValue(event.target.value);
+        }}
+        label="Pick a Time"
+        startTime={{ hour: 9, minute: 0 }}
+        endTime={{ hour: 15, minute: 31 }}
+        value={value}
+      />
+    </Box>
+  );
+};
+```
+
+## With Custom Date Display
+
+The labels for the dropdwon options are governed by JS `toLocaleTimeString`, and as such
+options are available to customize these.
+
+NOTE: that the option values are always returned as ISO strings regardless of the label display option.
+
+The example below is shown in military (24-hour) time.
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react'
+import { TimePicker, Box } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [value, setValue] = useState(null);
+
+  return (
+    <Box height="360px">
+      <TimePicker
+        id="customDate"
+        name="customDate"
+        onChange={event => {
+          setValue(event.target.value);
+        }}
+        label="Pick a Time"
+        startTime={{ hour: 9, minute: 0 }}
+        endTime={{ hour: 15, minute: 31 }}
+        dateDisplayOptions={{ hour12: false, hour: '2-digit', minute: '2-digit' }}
+        value={value}
+      />
+    </Box>
+  );
+};
+```
+

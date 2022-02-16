@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FocusEvent } from 'react';
+import React, { ChangeEvent, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import { ResponsiveProp } from '../../../types';
 import { generateResponsiveClasses } from '../../../lib/generateResponsiveClasses';
@@ -25,7 +25,7 @@ export interface RadioInputProps {
   option: {
     id: string;
     value: string;
-    label: string;
+    label: ReactNode;
     disabled?: boolean | null;
   };
   /**

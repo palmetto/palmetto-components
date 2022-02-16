@@ -49,7 +49,7 @@ export default {
     variant: {
       control: {
         type: 'radio',
-        options: ['light', 'dark'],
+        options: ['light', 'dark', 'primary'],
       },
     },
     size: {

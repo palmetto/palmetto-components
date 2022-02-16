@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/OptionTile/Codesandbox" />
+
+# OptionTile
+
+**Make a Radio or Checkbox look like anything!**
+
+An OptionTile is an alternative to certain radio, checkbox, or select UIs, where a user is
+presented with a more stylized version of these in the form of
+a tile, or group of tiles. The OptionTile contains an accessibly hidden input element,
+that will either be a `checkbox` or a `radio` input. For a
+slightly more opinionated, and fully functional fieldset using the `OptionTile` see
+[OptionTileGroup](?path=/docs/components-optiontilegroup-overview--default-story).
+
+
+```js codesandbox=palmetto-components
+import React, { useState } from 'react';
+import { OptionTile } from '@palmetto/palmetto-components';
+
+export default () => {
+  const [isSelected, setIsSelected] = useState(false);
+
+  return (
+    <OptionTile
+      isSelected={isSelected}
+      onChange={() => { let newVal = !isSelected; setIsSelected(newVal)}}
+      id="defaultOptionTile"
+      name="defaultOptionTile"
+      value="defaultOptionTile"
+      margin="md"
+    >
+      Hello world!
+    </OptionTile>
+  );
+};
+```

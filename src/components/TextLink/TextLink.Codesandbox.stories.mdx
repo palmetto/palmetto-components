@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/TextLink/Codesandbox" />
+
+# TextLink
+
+Use links to direct a user to a new location. Can be use for in-app navigation via [React Router](https://reactrouter.com/)
+or anchor tag based links.
+
+When the `href` is set, the `TextLink` accepts all valid [HTML anchor element attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a), such as `_target`.
+
+When `to` is set, the `TextLink` accepts all [React Router Link](https://reactrouter.com/web/api/Link) props.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { TextLink } from '@palmetto/palmetto-components';
+
+export default () => (
+  <TextLink href="http://ux.palmetto.com" target="_blank">
+    I will open in a new tab
+  </TextLink>
+);
+```
