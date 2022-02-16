@@ -14,13 +14,8 @@
   }
 }
 
-%size-xs {
-  @include size-xs;
-}
-
-.size-xs {
-  @extend %size-xs;
-}
+%size-xs { @include size-xs; }
+.size-xs { @extend %size-xs; }
 
 @mixin size-sm {
   border-radius: var(--button-size-sm-border-radius, var(--form-control-size-sm-border-radius));
@@ -36,13 +31,8 @@
   }
 }
 
-%size-sm {
-  @include size-sm;
-}
-
-.size-sm {
-  @extend %size-sm;
-}
+%size-sm { @include size-sm; }
+.size-sm { @extend %size-sm; }
 
 @mixin size-md {
   border-radius: var(--button-size-md-border-radius, var(--form-control-size-md-border-radius));
@@ -58,13 +48,8 @@
   }
 }
 
-%size-md {
-  @include size-md;
-}
-
-.size-md {
-  @extend %size-md;
-}
+%size-md { @include size-md; }
+.size-md { @extend %size-md; }
 
 @mixin size-lg {
   border-radius: var(--button-size-lg-border-radius, var(--form-control-size-lg-border-radius));
@@ -80,13 +65,8 @@
   }
 }
 
-%size-lg {
-  @include size-lg;
-}
-
-.size-lg {
-  @extend %size-lg;
-}
+%size-lg { @include size-lg; }
+.size-lg { @extend %size-lg; }
 
 .button {
   border: 0;
@@ -363,74 +343,30 @@
     font-size: var(--button-size-sm-font-size);
   }
 
-  &.size-xs {
-    @extend %size-xs;
-  }
-
-  &.size-sm {
-    @extend %size-sm;
-  }
-
-  &.size-md {
-    @extend %size-md;
-  }
-
-  &.size-lg {
-    @extend %size-lg;
-  }
+  &.size-xs { @extend %size-xs; }
+  &.size-sm { @extend %size-sm; }
+  &.size-md { @extend %size-md; }
+  &.size-lg { @extend %size-lg; }
 
   @media (min-width: $size-breakpoint-tablet) {
-    &.size-xs-tablet {
-      @include size-xs;
-    }
-
-    &.size-sm-tablet {
-      @include size-sm;
-    }
-
-    &.size-md-tablet {
-      @include size-md;
-    }
-
-    &.size-lg-tablet {
-      @include size-lg;
-    }
+    &.size-xs-tablet { @include size-xs; }
+    &.size-sm-tablet { @include size-sm; }
+    &.size-md-tablet { @include size-md; }
+    &.size-lg-tablet { @include size-lg; }
   }
 
   @media (min-width: $size-breakpoint-desktop) {
-    &.size-xs-desktop {
-      @include size-xs;
-    }
-
-    &.size-sm-desktop {
-      @include size-sm;
-    }
-
-    &.size-md-desktop {
-      @include size-md;
-    }
-
-    &.size-lg-desktop {
-      @include size-lg;
-    }
+    &.size-xs-desktop { @include size-xs; }
+    &.size-sm-desktop { @include size-sm; }
+    &.size-md-desktop { @include size-md; }
+    &.size-lg-desktop { @include size-lg; }
   }
 
   @media (min-width: $size-breakpoint-hd) {
-    &.size-xs-hd {
-      @include size-xs;
-    }
-
-    &.size-sm-hd {
-      @include size-sm;
-    }
-
-    &.size-md-hd {
-      @include size-md;
-    }
-
-    &.size-lg-hd {
-      @include size-lg;
-    }
+    &.size-xs-hd { @include size-xs; }
+    &.size-sm-hd { @include size-sm; }
+    &.size-md-hd {  @include size-md; }
+    &.size-lg-hd { @include size-lg; }
   }
 
   &.loading {
