@@ -9,8 +9,13 @@ import { Badge } from '../components/Badge/Badge';
 import { Box } from '../components/Box/Box';
 import { Button } from '../components/Button/Button';
 import { CategoryFilter } from '../components/CategoryFilter/CategoryFilter';
+import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { Heading } from '../components/Heading/Heading';
+import { Pagination } from '../components/Pagination/Pagination';
 import { RadioGroup } from '../components/RadioGroup/RadioGroup';
+import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
+import { Tabs } from '../components/Tabs/Tabs';
+import { TabsSlider } from '../components/TabsSlider/TabsSlider';
 import { Toggle } from '../components/Toggle/Toggle';
 import { TextInput } from '../components/TextInput/TextInput';
 
@@ -30,7 +35,6 @@ Not every possible styling option is available to be customized, as the Palmetto
 <Canvas>
   <Story name="Theme Example">
     {() => {
-      const [value, setValue] = useState(true);
       const options = [
         {
           id: 'car',
@@ -48,9 +52,13 @@ Not every possible styling option is available to be customized, as the Palmetto
           label: 'Motorcycle',
         },
       ];
+      const [value, setValue] = useState(true);
       const [radioValue, setRadioValue] = useState(options[0].value);
+      const [selectValue, setSelectValue] = useState(options[0].value);
+      const [selectedTab, setSelectedTab] = useState(0);
+      const [activePage, setActivePage] = useState(1);
       const customTheme = {
-        '--asset-fonts-brand': 'Inter',
+        '--asset-fonts-brand': 'Consolas,monaco,monospace',
         '--color-brand-primary-50': '#FAF5FF',
         '--color-brand-primary-100': '#E9D8FD',
         '--color-brand-primary-200': '#D6BCFA',
@@ -101,12 +109,12 @@ Not every possible styling option is available to be customized, as the Palmetto
         '--color-brand-grey-700': '#5F5F5F',
         '--color-brand-grey-800': '#4B4B4B',
         '--color-brand-grey-900': '#3B3B3B',
-        '--heading-font-weight': '500',
         '--alert-border-width': '2px',
         '--alert-info-border-color': '#3182CE',
         '--button-size-md-border-radius': '0',
         '--button-size-md-padding-vertical': '.5rem',
         '--button-size-md-padding-horizontal': '.5rem',
+        '--button-font-family': 'Consolas,monaco,monospace',
       };
       return (
         <Box
@@ -123,20 +131,76 @@ Not every possible styling option is available to be customized, as the Palmetto
             label="Apply Theme"
             onChange={event => setValue(event.target.checked)}
             isChecked={value}
+            size="lg"
           />
           <Box childGap="sm">
-            <Heading as="h2" size="2xl">
+            <Heading as="h2" size="xl">
               Leading the world toward a clean energy future
             </Heading>
-            <Box as="p">
-              At Palmetto, we are fueling the rapid expansion of residential solar energy across the
-              United States. How? By flipping the traditional solar industry model on its head.
-              We've developed software products that help people, like you, to instantly calculate
-              their monthly savings and put those savings within reach. Our decentralized network of
-              solar sellers and installers allows homeowners to quickly access professional service
-              and support while growing the clean energy economy in their local community.
-            </Box>
           </Box>
+          <Box direction="row" childGap="sm">
+            <Badge variant="primary" message="primary" />
+            <Badge variant="secondary" message="secondary" />
+            <Badge variant="tertiary" message="tertiary" />
+            <Badge variant="info" message="info" />
+            <Badge variant="success" message="success" />
+            <Badge variant="warning" message="warning" />
+            <Badge variant="danger" message="danger" />
+            <Badge variant="default" message="default" />
+          </Box>
+          <Box direction="row" childGap="sm">
+            <CategoryFilter>Unselected</CategoryFilter>
+            <CategoryFilter isSelected>Selected</CategoryFilter>
+          </Box>
+          <Alert hasIcon variant="info" title="Info Alert" message="This is an info alert" />
+          <TextInput id="demo" helpText="This is a themed text input" label="Text Input" />
+          <SelectInputNative
+            id="default Select"
+            label="Select Input"
+            onChange={event => {
+              setSelectValue(event.target.value);
+            }}
+            options={options}
+            value={selectValue}
+          />
+          <Box direction="row" childGap="md">
+            <CheckboxInput
+              id="checkedCheckbox"
+              label="Checked Checkbox"
+              onChange={() => {}}
+              isChecked
+            />
+            <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
+          </Box>
+          <RadioGroup
+            title="Radio Group"
+            name="radioGroup"
+            onChange={event => setRadioValue(event.target.value)}
+            value={radioValue}
+            options={options}
+            direction="row"
+          />
+          <Tabs
+            value={selectedTab}
+            onChange={(event, index) => {
+              setSelectedTab(index);
+            }}
+          >
+            <Tabs.Item>Tab 1</Tabs.Item>
+            <Tabs.Item>Tab 2</Tabs.Item>
+            <Tabs.Item>Tab 3</Tabs.Item>
+          </Tabs>
+          <TabsSlider
+            value={selectedTab}
+            onChange={(event, index) => {
+              setSelectedTab(index);
+            }}
+          >
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item isDisabled>Disabled</TabsSlider.Item>
+          </TabsSlider>
           <Box alignItems="center" childGap="sm" direction="row">
             <Button variant="primary">Primary</Button>
             <Button variant="success">Success</Button>
@@ -165,29 +229,14 @@ Not every possible styling option is available to be customized, as the Palmetto
               White
             </Button>
           </Box>
-          <Box direction="row" childGap="sm">
-            <Badge variant="primary" message="primary" />
-            <Badge variant="secondary" message="secondary" />
-            <Badge variant="tertiary" message="tertiary" />
-            <Badge variant="info" message="info" />
-            <Badge variant="success" message="success" />
-            <Badge variant="warning" message="warning" />
-            <Badge variant="danger" message="danger" />
-            <Badge variant="default" message="default" />
-          </Box>
-          <Box direction="row" childGap="sm">
-            <CategoryFilter>Unselected</CategoryFilter>
-            <CategoryFilter isSelected>Selected</CategoryFilter>
-          </Box>
-          <Alert hasIcon variant="info" title="Info" message="This is an info alert" />
-          <TextInput id="demo" helpText="This is a themed text input" label="Text Input" />
-          <RadioGroup
-            title="Radio Group"
-            description="This is a themed radio group"
-            name="radioGroup"
-            onChange={event => setRadioValue(event.target.value)}
-            value={radioValue}
-            options={options}
+          <Pagination
+            activePage={activePage}
+            itemsPerPage={20}
+            onChange={setActivePage}
+            totalItemsCount={1000}
+            isCompact
+            arePagesVisible
+            numberOfPagesDisplayed={3}
           />
         </Box>
       );
