@@ -11,6 +11,7 @@ import { Button } from '../components/Button/Button';
 import { CategoryFilter } from '../components/CategoryFilter/CategoryFilter';
 import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { Heading } from '../components/Heading/Heading';
+import { OptionTileGroup } from '../components/OptionTileGroup/OptionTileGroup';
 import { Pagination } from '../components/Pagination/Pagination';
 import { RadioGroup } from '../components/RadioGroup/RadioGroup';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
@@ -57,6 +58,7 @@ Not every possible styling option is available to be customized, as the Palmetto
       const [selectValue, setSelectValue] = useState(options[0].value);
       const [selectedTab, setSelectedTab] = useState(0);
       const [activePage, setActivePage] = useState(1);
+      const [optionTileGroupValue, setOptionTileGroupValue] = useState(options[0].value);
       const customTheme = {
         '--asset-fonts-brand': 'Consolas,monaco,monospace',
         '--color-brand-primary-50': '#FAF5FF',
@@ -178,6 +180,13 @@ Not every possible styling option is available to be customized, as the Palmetto
             name="radioGroup"
             onChange={event => setRadioValue(event.target.value)}
             value={radioValue}
+            options={options}
+            direction="row"
+          />
+          <OptionTileGroup
+            name="directionVertical"
+            value={optionTileGroupValue}
+            onChange={event => setOptionTileGroupValue(event.target.value)}
             options={options}
             direction="row"
           />
