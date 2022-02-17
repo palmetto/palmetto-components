@@ -1,5 +1,12 @@
 Changelog
 
+# [0.122.0](https://github.com/palmetto/palmetto-components/compare/v0.121.0...v0.122.0) (2022-02-17)
+
+
+### Features
+
+* **Theming:** Theming Documentation ([#704](https://github.com/palmetto/palmetto-components/issues/704)) ([91a2b3c](https://github.com/palmetto/palmetto-components/commit/91a2b3cf8c54023f8f24216b1ebda782813c876f)), closes [#435](https://github.com/palmetto/palmetto-components/issues/435)
+
 # [0.121.0](https://github.com/palmetto/palmetto-components/compare/v0.120.0...v0.121.0) (2022-02-16)
 
 
