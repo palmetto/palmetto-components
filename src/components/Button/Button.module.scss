@@ -111,17 +111,17 @@
       box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
     }
 
+    /* Show focus styles on keyboard focus. */
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
+    }
+
     /* Hide focus styles if they're not needed, for example,
     when an element receives focus via the mouse. */
     &:focus:not(:focus-visible) {
       outline: 0;
       box-shadow: none;
-    }
-    
-    /* Show focus styles on keyboard focus. */
-    &:focus-visible {
-      outline: 0;
-      box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
     }
 
     &:not(:disabled):hover {
@@ -152,17 +152,17 @@
       box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
     }
 
+    /* Show focus styles on keyboard focus. */
+    &:focus-visible {
+      outline: 0;
+      box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
+    }
+
     /* Hide focus styles if they're not needed, for example,
     when an element receives focus via the mouse. */
     &:focus:not(:focus-visible) {
       outline: 0;
       box-shadow: none;
-    }
-
-    /* Show focus styles on keyboard focus. */
-    &:focus-visible {
-      outline: 0;
-      box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
     }
 
     &:not(:disabled):hover {
