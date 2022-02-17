@@ -1,6 +1,6 @@
 .tab-item {
   z-index: 1;
-  font-weight: var(--tabs-slider-font-weight, var(--size-font-weight-bold));
+  font-weight: var(--tabs-slider-font-weight, var(--button-font-weight, var(--size-font-weight-bold)));
   color: var(--color-brand-grey-500);
   font-family: var(--tabs-slider-font-family, var(--button-font-family));
 

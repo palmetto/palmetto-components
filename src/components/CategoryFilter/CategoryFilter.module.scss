@@ -2,6 +2,8 @@
   background-color: var(--category-filter-background-color, transparent);
   border-color: var(--category-filter-border-color, var(--color-brand-grey-100));
   border-radius: var(--category-filter-border-radius, var(--size-border-radius-xl));
+  font-family: var(--category-filter-font-family, var(--button-font-family));
+  font-weight: var(--category-filter-font-weight, var(--button-font-weight, var(--size-font-weight-bold)));
   height: max-content;
   transition-duration: 0.2s;
   transition-property: background-color, border, box-shadow, color;
