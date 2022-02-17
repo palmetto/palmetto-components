@@ -1,5 +1,6 @@
 .category-filter {
   background-color: var(--category-filter-background-color, transparent);
+  border-color: var(--category-filter-border-color, var(--color-brand-grey-100));
   border-radius: var(--category-filter-border-radius, var(--size-border-radius-xl));
   height: max-content;
   transition-duration: 0.2s;
@@ -17,6 +18,7 @@
 
   &.selected {
     background-color: var(--category-filter-selected-background-color, var(--color-brand-primary-500));
+    border-color: var(--category-filter-selected-border-color, var(--color-brand-primary-500));
 
     &:hover {
       background-color: var(--category-filter-selected-background-color-hover, var(--color-brand-primary-600));
