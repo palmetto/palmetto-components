@@ -10,23 +10,45 @@ import { Box } from '../components/Box/Box';
 import { Button } from '../components/Button/Button';
 import { CategoryFilter } from '../components/CategoryFilter/CategoryFilter';
 import { Heading } from '../components/Heading/Heading';
+import { RadioGroup } from '../components/RadioGroup/RadioGroup';
 import { Toggle } from '../components/Toggle/Toggle';
+import { TextInput } from '../components/TextInput/TextInput';
 
-<Meta title="Theming/Example" />
+<Meta title="Theming/Overview" />
 
 # Theming
 
-Palmetto Components library uses Design Tokens at its core. Since all design tokens are tied to CSS variables, the underlying values can be overwritten to easily generate custom themes.
+Palmetto Components library uses design tokens at its core. Since all design tokens are tied to CSS variables, the underlying values can be overwritten to create a custom theme.
 
 There are two kinds of theming variables in our library:
 
 1. Base Tokens -- Changing these will affect the look and feel of the entire library. E.G: `--color-brand-primary-500`, or `--size-spacing-md`.
 2. Component Tokens -- Theses are scoped to specific components so altering them will apply to that component only. E.G: `--button-size-md-font-size`.
 
+Not every possible styling option is available to be customized, as the Palmetto Design System is not intended to be a fully-customizable ui library. For component-specific tokens, see docs for the specific component.
+
 <Canvas>
   <Story name="Theme Example">
     {() => {
       const [value, setValue] = useState(true);
+      const options = [
+        {
+          id: 'car',
+          value: 'car',
+          label: 'Car',
+        },
+        {
+          id: 'truck',
+          value: 'truck',
+          label: 'Truck',
+        },
+        {
+          id: 'motorcycle',
+          value: 'motorcycle',
+          label: 'Motorcycle',
+        },
+      ];
+      const [radioValue, setRadioValue] = useState(options[0].value);
       const customTheme = {
         '--asset-fonts-brand': 'Inter',
         '--color-brand-primary-50': '#FAF5FF',
@@ -83,8 +105,8 @@ There are two kinds of theming variables in our library:
         '--alert-border-width': '2px',
         '--alert-info-border-color': '#3182CE',
         '--button-size-md-border-radius': '0',
-        '--button-size-md-padding-vertical': '1rem',
-        '--button-size-md-padding-horizontal': '1rem',
+        '--button-size-md-padding-vertical': '.5rem',
+        '--button-size-md-padding-horizontal': '.5rem',
       };
       return (
         <Box
@@ -94,7 +116,6 @@ There are two kinds of theming variables in our library:
           borderColor="grey-100"
           padding="3xl"
           display="block"
-          margin="lg 0"
           style={value ? customTheme : null}
         >
           <Toggle
@@ -159,17 +180,17 @@ There are two kinds of theming variables in our library:
             <CategoryFilter isSelected>Selected</CategoryFilter>
           </Box>
           <Alert hasIcon variant="info" title="Info" message="This is an info alert" />
+          <TextInput id="demo" helpText="This is a themed text input" label="Text Input" />
+          <RadioGroup
+            title="Radio Group"
+            description="This is a themed radio group"
+            name="radioGroup"
+            onChange={event => setRadioValue(event.target.value)}
+            value={radioValue}
+            options={options}
+          />
         </Box>
       );
     }}
   </Story>
 </Canvas>
-
-### Colors
-
-Below is a table of all customizable base tokens. For component-specific variables, see docs for the specific component.
-
-NOTE: Some colors are mapped to others, so changing it is important to change both to maintain consistency.
-
-E.G: `--color-brand-primary-base` is the same as `--color-brand-primary-500`. Similarly `lighter`, `darker` (semantic variations) will correspond
-to one of the number values in the scale. E.G: `--color-brand-primary-lightest` is the same as `--color-brand-primary-50`.
