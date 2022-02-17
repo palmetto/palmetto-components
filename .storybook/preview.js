@@ -26,6 +26,7 @@ export const parameters = {
         ['Introduction', 'Get Started', 'Contributing'],
         'Content',
         ['Goals and Principles', 'Voice and Tone', 'Grammar and Mechanics', 'Word List'],
+        'Theming',
         'Components',
         'Patterns',
         'Design Tokens',

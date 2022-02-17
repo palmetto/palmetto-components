@@ -96,7 +96,6 @@ export const CategoryFilter: CategoryFilterComponent = forwardRef<HTMLDivElement
       childGap={computedResponsiveSize(size, 'childGap')}
       direction="row"
       cursor={isDisabled ? 'not-allowed' : 'pointer'}
-      borderColor={isSelected ? 'primary' : 'grey-100'}
       borderWidth="xs"
       aria-checked={isSelected}
       fontSize={computedResponsiveSize(size, 'fontSize')}

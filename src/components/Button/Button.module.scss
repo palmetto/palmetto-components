@@ -97,13 +97,6 @@
     cursor: not-allowed;
   }
 
-  /* Hide focus styles if they're not needed, for example,
-  when an element receives focus via the mouse. */
-  &:focus:not(:focus-visible) {
-    outline: 0;
-    box-shadow: none;
-  }
-
   &.outline {
     border: 1px solid;
   }
@@ -122,6 +115,13 @@
     &:focus-visible {
       outline: 0;
       box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
+    }
+
+    /* Hide focus styles if they're not needed, for example,
+    when an element receives focus via the mouse. */
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
     }
 
     &:not(:disabled):hover {
@@ -156,6 +156,13 @@
     &:focus-visible {
       outline: 0;
       box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
+    }
+
+    /* Hide focus styles if they're not needed, for example,
+    when an element receives focus via the mouse. */
+    &:focus:not(:focus-visible) {
+      outline: 0;
+      box-shadow: none;
     }
 
     &:not(:disabled):hover {
