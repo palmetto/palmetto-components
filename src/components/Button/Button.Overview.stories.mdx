@@ -27,12 +27,15 @@ The `variant` prop determines which color variant to render.
 
 <Canvas>
   <Story name="Variants">
-    <Box childGap="sm" direction="row">
+    <Box alignItems="center" childGap="sm" direction="row">
       <Button variant="primary">Primary</Button>
       <Button variant="success">Success</Button>
       <Button variant="danger">Danger</Button>
       <Button variant="light">Light</Button>
       <Button variant="dark">Dark</Button>
+      <Box background="grey-500" padding="2xs">
+        <Button variant="white">White</Button>
+      </Box>
     </Box>
   </Story>
 </Canvas>
@@ -44,7 +47,7 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
 
 <Canvas>
   <Story name="Outlined">
-    <Box childGap="sm" direction="row">
+    <Box alignItems="center" childGap="sm" direction="row">
       <Button variant="primary" isOutlined>
         Primary
       </Button>
@@ -60,6 +63,11 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
       <Button variant="dark" isOutlined>
         Dark
       </Button>
+      <Box background="grey-500" padding="2xs">
+        <Button variant="white" isOutlined>
+          White
+        </Button>
+      </Box>
     </Box>
   </Story>
 </Canvas>
@@ -315,7 +323,7 @@ The Button component can be themed by base tokens, or component specific tokens.
         '--button-danger-outline-border-hover-color': '--color-brand-danger-500',
         '--button-danger-outline-font-color': '--color-brand-danger-500',
         '--button-danger-outline-font-color-hover': '--color-brand-danger-500',
-        '--button-danger-box-shadow-focus': '0 0 0 4px --color-brand-danger-lighter',
+        '--button-danger-box-shadow-focus': '0 0 0 4px --color-brand-danger-200',
         '--button-dark-background-color': '--color-brand-dark-base',
         '--button-dark-background-color-hover': '--color-brand-black-base',
         '--button-dark-font-color': '--color-brand-white-base',
@@ -337,7 +345,18 @@ The Button component can be themed by base tokens, or component specific tokens.
         '--button-light-outline-border-color-hover': '--color-brand-grey-300',
         '--button-light-outline-font-color': '--color-brand-dark-base',
         '--button-light-outline-font-color-hover': '--color-brand-dark-base',
-        '--button-light-box-shadow-focus': '0 0 0 4px --color-brand-grey-300',
+        '--button-light-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
+        '--button-white-background-color': '--color-brand-white-base',
+        '--button-white-background-color-hover': '--color-brand-grey-50',
+        '--button-white-font-color': '--color-brand-grey-600',
+        '--button-white-font-color-hover': '--color-brand-grey-700',
+        '--button-white-outline-background-color': 'transparent',
+        '--button-white-outline-background-color-hover': 'rgba(255, 255, 255, .1)',
+        '--button-white-outline-border-color': '--color-brand-white-base',
+        '--button-white-outline-border-color-hover': '--color-brand-white-base',
+        '--button-white-outline-font-color': '--color-brand-white-base',
+        '--button-white-outline-font-color-hover': '--color-brand-white-base',
+        '--button-white-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
         '--button-naked-font-color': '',
       };
 return Object.entries(tokens).map(([name, entry], i) => (

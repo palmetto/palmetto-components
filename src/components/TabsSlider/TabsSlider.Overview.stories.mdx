@@ -178,3 +178,32 @@ The only other likely use case is to render each tab as an anchor. See example m
     }}
   </Story>
 </Canvas>
+
+## Component Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--tabs-slider-font-family': '--button-font-family',
+        '--tabs-slider-font-weight': '--button-font-weight',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+  </tbody>
+</table>

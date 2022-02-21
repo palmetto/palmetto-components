@@ -1,5 +1,33 @@
 Changelog
 
+# [0.122.0](https://github.com/palmetto/palmetto-components/compare/v0.121.0...v0.122.0) (2022-02-17)
+
+
+### Features
+
+* **Theming:** Theming Documentation ([#704](https://github.com/palmetto/palmetto-components/issues/704)) ([91a2b3c](https://github.com/palmetto/palmetto-components/commit/91a2b3cf8c54023f8f24216b1ebda782813c876f)), closes [#435](https://github.com/palmetto/palmetto-components/issues/435)
+
+# [0.121.0](https://github.com/palmetto/palmetto-components/compare/v0.120.0...v0.121.0) (2022-02-16)
+
+
+### Features
+
+* **Button:** add white button variant ([#598](https://github.com/palmetto/palmetto-components/issues/598)) ([ac910d4](https://github.com/palmetto/palmetto-components/commit/ac910d4612e2c60eb7378c7dbef18a69fac0f71f))
+
+# [0.120.0](https://github.com/palmetto/palmetto-components/compare/v0.119.0...v0.120.0) (2022-02-16)
+
+
+### Features
+
+* **Modal:** Render Modal in custom portal target. ([#702](https://github.com/palmetto/palmetto-components/issues/702)) ([796e6a1](https://github.com/palmetto/palmetto-components/commit/796e6a170cf86f55ceada7520feab742facecd12))
+
+# [0.119.0](https://github.com/palmetto/palmetto-components/compare/v0.118.1...v0.119.0) (2022-02-15)
+
+
+### Features
+
+* **Popover:** Add className prop to Popover to prevent overwriting .popover styles ([#699](https://github.com/palmetto/palmetto-components/issues/699)) ([d936b4f](https://github.com/palmetto/palmetto-components/commit/d936b4f884feba5402c9e749f2824b1b3e40b081))
+
 ## [0.118.1](https://github.com/palmetto/palmetto-components/compare/v0.118.0...v0.118.1) (2022-02-11)
 
 # [0.118.0](https://github.com/palmetto/palmetto-components/compare/v0.117.0...v0.118.0) (2022-02-10)
