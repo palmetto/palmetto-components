@@ -181,7 +181,6 @@
   /* Necessary so that inset shadow that we use for border does not get covered by child elements. */
   &:not(.error) {
     > * {
-
       &:focus,
       &.disabled {
         &:not(input) {

@@ -13,9 +13,7 @@ import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import { ChangeEvent as CleaveChangeEvent } from 'cleave.js/react/props';
 import { ResponsiveProp, UnknownPropertiesObjType } from '../../types';
-import { cssShorthandToClasses } from '../../lib/cssShorthandToClasses';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
-import { computedResponsiveSize } from './TextInputSizeUtilities'; // eslint-disable-line import/no-cycle
 import { getInputMaskType } from './TextInputMasks'; // eslint-disable-line import/no-cycle
 import { Box, BoxProps } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
