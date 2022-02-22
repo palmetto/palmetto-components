@@ -167,7 +167,7 @@
     border: none;
     background: none;
     width: 100%;
-    line-height: var(--form-control-text-line-height, var(--INTERNAL_form-control-text-line-height));
+    line-height: var(--form-control-line-height, var(--INTERNAL_form-control-line-height));
 
     &:focus {
       outline: none;
