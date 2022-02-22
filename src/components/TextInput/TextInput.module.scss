@@ -135,8 +135,8 @@
 .text-input-wrapper {
   font-family: var(--form-control-font-family, var(--INTERNAL_form-control-font-family));
   position: relative;
-  box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)), inset 0 0 0 1px var(--INTERNAL_form-control-border-color);
-  background-color: var(--INTERNAL_form-control-background-color);
+  box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)), inset 0 0 0 1px var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
+  background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
 
   &.size-sm {
     @extend %size-sm;
@@ -243,7 +243,7 @@
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
     /* border and background is set on the text-input-wrapper */
     border: none;
-    background-color: none;
+    background-color: transparent;
     width: 100%;
     line-height: var(--form-control-text-line-height, var(--INTERNAL_form-control-text-line-height));
     color: var(--form-control-font-color, var(--INTERNAL_form-control-font-color));

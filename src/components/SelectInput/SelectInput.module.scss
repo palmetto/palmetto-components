@@ -63,7 +63,7 @@ react-select elements for which we do not own the markup */
 @mixin size-md {
   :global(.react-select__control) {
     border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
-    padding: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
+    padding: 4px 8px;
   }
 
   :global(.react-select__single-value) {
@@ -137,6 +137,7 @@ react-select elements for which we do not own the markup */
 
 :global(.select-input-wrapper) {
   font-family: var(--form-control-font-family, var(--INTERNAL_form-control-font-family));
+  background-color: var(--INTERNAL_form-control-background-color);
 
   :global(.react-select) {
     &:hover {
@@ -149,6 +150,7 @@ react-select elements for which we do not own the markup */
       line-height: var(--form-control-line-height, var(--INTERNAL_form-control-line-height));
       border-color: var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
       box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+      background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
 
       :global(.react-select__value-container) {
         padding: 0;
