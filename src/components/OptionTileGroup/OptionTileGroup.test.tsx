@@ -118,24 +118,6 @@ describe('OptionTileGroup', () => {
       expect(description).toBeInTheDocument();
     });
 
-    test('with boolean error state', async () => {
-      render(
-        <OptionTileGroup
-          name="withBooleanError"
-          onChange={jest.fn()}
-          options={[
-            ...options,
-          ]}
-          value="chocolate"
-          error
-        />,
-      );
-
-      const selectedOptionContainer = screen.getByRole('group').children[0];
-
-      expect(selectedOptionContainer).toHaveClass('background-color-danger-lightest');
-    });
-
     test('with text error state', async () => {
       render(
         <OptionTileGroup
@@ -152,46 +134,6 @@ describe('OptionTileGroup', () => {
       const error = screen.getByText('something went wrong');
 
       expect(error).toBeInTheDocument();
-    });
-
-    test('with title + error', async () => {
-      render(
-        <OptionTileGroup
-          name="withTitleAndError"
-          onChange={jest.fn()}
-          options={[
-            ...options,
-          ]}
-          value="chocolate"
-          title="title"
-          error
-        />,
-      );
-
-      const selectedOptionContainer = screen.getByRole('group').children[1];
-      const title = screen.getByText('title');
-
-      expect(title).toHaveClass('font-color-danger');
-      expect(selectedOptionContainer).toHaveClass('background-color-danger-lightest');
-    });
-
-    test('multi-select with error', async () => {
-      render(
-        <OptionTileGroup
-          name="multiWithError"
-          onChange={jest.fn()}
-          options={[
-            ...options,
-          ]}
-          isMulti
-          value={['chocolate']}
-          error
-        />,
-      );
-
-      const selectedOptionContainer = screen.getByRole('group').children[0];
-
-      expect(selectedOptionContainer).toHaveClass('background-color-danger-lightest');
     });
 
     test('with disabled options', async () => {
@@ -258,10 +200,7 @@ describe('OptionTileGroup', () => {
       );
 
       const disabledOption = screen.getByLabelText('disabled');
-      const disabledOptionContainer = screen.getByRole('group').children[3];
       expect(disabledOption).toHaveAttribute('disabled');
-      expect(disabledOptionContainer).toHaveClass('background-color-grey-lightest');
-      expect(disabledOptionContainer).toHaveClass('border-color-grey-light');
     });
 
     test('multi-select with disabled + selected option', async () => {
@@ -284,10 +223,7 @@ describe('OptionTileGroup', () => {
       );
 
       const disabledOption = screen.getByLabelText('disabled');
-      const disabledOptionContainer = screen.getByRole('group').children[3];
       expect(disabledOption).toHaveAttribute('disabled');
-      expect(disabledOptionContainer).toHaveClass('background-color-grey-lightest');
-      expect(disabledOptionContainer).toHaveClass('border-color-grey-light');
     });
 
     test('with disabled option + error', async () => {
@@ -310,10 +246,8 @@ describe('OptionTileGroup', () => {
       );
 
       const disabledOptionRadio = screen.getByLabelText('disabled');
-      const disabledOptionContainer = screen.getByRole('group').children[3];
 
       expect(disabledOptionRadio).toHaveAttribute('disabled');
-      expect(disabledOptionContainer).toHaveClass('background-color-danger-lightest');
     });
 
     test('multi-select with disabled option + error', async () => {
@@ -337,10 +271,8 @@ describe('OptionTileGroup', () => {
       );
 
       const disabledOptionCheckbox = screen.getByLabelText('disabled');
-      const disabledOptionContainer = screen.getByRole('group').children[3];
 
       expect(disabledOptionCheckbox).toHaveAttribute('disabled');
-      expect(disabledOptionContainer).toHaveClass('background-color-danger-lightest');
     });
 
     test('with content width (instead of fullWidth)', async () => {
