@@ -8,7 +8,6 @@ import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
-import { computedResponsiveSize } from './TextareaInputSizeUtilities'; // eslint-disable-line import/no-cycle
 import styles from './TextareaInput.module.scss';
 
 export type TextareaInputSize = 'sm' | 'md' | 'lg';
@@ -151,7 +150,6 @@ export const TextareaInput: FC<TextareaInputProps> = ({
     onBlur,
     onChange,
     onFocus,
-    fontSize: computedResponsiveSize(size, 'fontSize'),
     placeholder,
     rows,
     value,
