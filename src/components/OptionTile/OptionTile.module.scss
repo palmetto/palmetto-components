@@ -29,7 +29,8 @@
 
     &.disabled {
       border: 1px solid var(--form-control-border-color-error-disabled, var(--INTERNAL_form-control-border-color-error-disabled));
-      color: var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error));
+      color: var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled));
+      -webkit-text-fill-color: var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled));
 
       &:hover {
         border: 1px solid var(--form-control-border-color-error-disabled, var(--INTERNAL_form-control-border-color-error-disabled));
@@ -47,7 +48,12 @@
       color: var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error));
 
       &.disabled {
-        color: var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error));
+        color: var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled));
+        -webkit-text-fill-color: var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled));
+      }
+
+      &:hover {
+        border: 1px solid var(--form-control-border-color-selected-error, var(--INTERNAL_form-control-border-color-selected-error));
       }
     }
 
