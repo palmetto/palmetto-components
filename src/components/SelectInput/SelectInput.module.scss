@@ -137,7 +137,6 @@ react-select elements for which we do not own the markup */
 
 :global(.select-input-wrapper) {
   font-family: var(--form-control-font-family, var(--INTERNAL_form-control-font-family));
-  background-color: var(--INTERNAL_form-control-background-color);
 
   :global(.react-select) {
     &:hover {
