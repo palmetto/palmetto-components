@@ -1,6 +1,6 @@
 .palmetto-components__variables__form-control {
   /* ----GLOBALS---- */
-  --INTERNAL_form-control-focus-box-shadow: 0 0 0 4px var(--color-brand-primary-light);
+  --INTERNAL_form-control-box-shadow-focus: 0 0 0 4px var(--color-brand-primary-light);
   --INTERNAL_form-control-label-margin: var(--size-spacing-xs);
   --INTERNAL_form-control-help-margin: var(--size-spacing-2xs);
   --INTERNAL_form-control-line-height: 1.25;
@@ -34,15 +34,15 @@
 
   /* --COLORS-- */
   --INTERNAL_form-control-background-color: var(--color-brand-white-base);
-  --INTERNAL_form-control-disabled-background-color: var(--color-brand-grey-lightest);
+  --INTERNAL_form-control-background-color-disabled: var(--color-brand-grey-lightest);
   --INTERNAL_form-control-error-color: var(--color-brand-danger-base);
   --INTERNAL_form-control-error-background-color: var(--color-brand-danger-lightest);
   --INTERNAL_form-control-border-color: var(--color-brand-grey-lighter);
   --INTERNAL_form-control-error-border-color: var(--color-brand-danger-lighter);
-  --INTERNAL_form-control-focus-border-color: var(--color-brand-grey-dark);
+  --INTERNAL_form-control-border-color-focus: var(--color-brand-grey-dark);
   --INTERNAL_form-control-font-color: var(--color-brand-dark-base);
   --INTERNAL_form-control-description-color: var(--color-brand-grey-dark);
-  --INTERNAL_form-control-disabled-font-color: var(--color-brand-grey-light);
+  --INTERNAL_form-control-font-color-disabled: var(--color-brand-grey-light);
   --INTERNAL_form-control-placeholder-color: var(--color-brand-grey-light);
   --INTERNAL_form-control-icon-color: var(--INTERNAL_form-control-placeholder-color);
   --INTERNAL_form-control-icon-hover-color: var(--color-brand-grey);

@@ -3,20 +3,23 @@
   font-weight: var(--tabs-font-weight, var(--size-font-weight-bold));
   transition: color 0.2s, border-color 0.2s;
 
-  &[disabled] { /* stylelint-disable-line */
+  &[disabled] {
+    /* stylelint-disable-line */
     cursor: not-allowed;
   }
 
   /* define regular focus styles for non-supporting browsers */
   &:focus {
     outline: 0;
-    box-shadow: inset var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
+    box-shadow: inset
+      var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
   /* Show focus styles on keyboard focus. */
   &:focus-visible {
     outline: 0;
-    box-shadow: inset var(--form-control-focus-box-shadow, var(--INTERNAL_form-control-focus-box-shadow));
+    box-shadow: inset
+      var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
   &--selected {
@@ -24,7 +27,8 @@
       border-bottom: 2px solid var(--tabs-selected-border-color, var(--color-brand-primary-500));
       color: var(--tabs-selected-font-color, var(--color-brand-primary-500));
 
-      &:hover { /* stylelint-disable-line */
+      &:hover {
+        /* stylelint-disable-line */
         color: var(--tabs-selected-font-color-hover, var(--color-brand-primary-600));
       }
     }

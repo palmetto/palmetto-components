@@ -99,7 +99,7 @@ react-select elements for which we do not own the markup */
 @mixin size-lg {
   :global(.react-select__control) {
     padding: 9px 8px 10px;
-    border-radius: var(--form-control-size-md-border-radius,var(--INTERNAL_form-control-size-md-border-radius));
+    border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
   }
 
   :global(.react-select__option),
@@ -141,7 +141,7 @@ react-select elements for which we do not own the markup */
   :global(.react-select) {
     &:hover {
       :global(.react-select__dropdown-indicator) {
-        color: var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color));
+        color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
       }
     }
 
@@ -173,7 +173,7 @@ react-select elements for which we do not own the markup */
       }
 
       &:global(.react-select__control--is-focused) {
-        border-color: var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color));
+        border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
         box-shadow: none;
       }
 
@@ -202,38 +202,62 @@ react-select elements for which we do not own the markup */
     }
   }
 
-  &.size-sm { @extend %size-sm; }
-  &.size-md { @extend %size-md; }
-  &.size-lg { @extend %size-lg; }
+  &.size-sm {
+    @extend %size-sm;
+  }
+  &.size-md {
+    @extend %size-md;
+  }
+  &.size-lg {
+    @extend %size-lg;
+  }
 
   @media (min-width: $size-breakpoint-tablet) {
-    &.size-sm-tablet { @include size-sm; }
-    &.size-md-tablet { @include size-md; }
-    &.size-lg-tablet { @include size-lg; }
+    &.size-sm-tablet {
+      @include size-sm;
+    }
+    &.size-md-tablet {
+      @include size-md;
+    }
+    &.size-lg-tablet {
+      @include size-lg;
+    }
   }
 
   @media (min-width: $size-breakpoint-desktop) {
-    &.size-sm-desktop { @include size-sm; }
-    &.size-md-desktop { @include size-md; }
-    &.size-lg-desktop { @include size-lg; }
+    &.size-sm-desktop {
+      @include size-sm;
+    }
+    &.size-md-desktop {
+      @include size-md;
+    }
+    &.size-lg-desktop {
+      @include size-lg;
+    }
   }
 
   @media (min-width: $size-breakpoint-hd) {
-    &.size-sm-hd { @include size-sm; }
-    &.size-md-hd { @include size-md; }
-    &.size-lg-hd { @include size-lg; }
+    &.size-sm-hd {
+      @include size-sm;
+    }
+    &.size-md-hd {
+      @include size-md;
+    }
+    &.size-lg-hd {
+      @include size-lg;
+    }
   }
 
   &.disabled {
     :global(.react-select__control--is-disabled) {
-      background-color: var(--form-control-disabled-background-color, var(--INTERNAL_form-control-disabled-background-color));
+      background-color: var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled));
     }
   }
 }
 /* stylelint-enable */
 
 .select-input-label {
-  /* while we try to avoid important statements, this one is necesary to override bootstrap utilities that are currently in use 
+  /* while we try to avoid important statements, this one is necessary to override bootstrap utilities that are currently in use
   by some of our teams */
   margin-bottom: var(--form-control-label-margin, var(--INTERNAL_form-control-label-margin)) !important;
 }

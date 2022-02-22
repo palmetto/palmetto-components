@@ -1,8 +1,8 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 %disabled-base {
-  background-color: var(--form-control-disabled-background-color, var(--INTERNAL_form-control-disabled-background-color));
-  color: var(--form-control-disabled-font-color, var(--INTERNAL_form-control-disabled-font-color));
+  background-color: var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled));
+  color: var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled));
 
   &:hover {
     cursor: not-allowed;
@@ -78,9 +78,13 @@
   }
 }
 
-%size-md { @include size-md; }
+%size-md {
+  @include size-md;
+}
 
-.size-md { @extend %size-md; }
+.size-md {
+  @extend %size-md;
+}
 
 @mixin size-lg {
   border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
@@ -110,9 +114,13 @@
   }
 }
 
-%size-lg { @include size-lg; }
+%size-lg {
+  @include size-lg;
+}
 
-.size-lg { @extend %size-lg; }
+.size-lg {
+  @extend %size-lg;
+}
 
 .select-input-native-wrapper {
   font-family: var(--form-control-font-family, var(--INTERNAL_form-control-font-family));
@@ -123,9 +131,9 @@
 
   &:focus-within {
     outline: none;
-    border-color: var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color));
+    border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
   }
-  
+
   &::before,
   &::after {
     border-radius: 100px;
@@ -134,7 +142,7 @@
     background: var(--color-brand-grey-light);
     pointer-events: none;
   }
-  
+
   &::before {
     transform-origin: 50% 50%;
     transform: rotate(42deg);
@@ -163,7 +171,7 @@
 
     &:focus {
       outline: none;
-      border-color: var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color));
+      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
       background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
     }
 
@@ -172,26 +180,58 @@
     }
   }
 
-  &.size-sm { @extend %size-sm; }
-  &.size-md { @extend %size-md; }
-  &.size-lg { @extend %size-lg; }
+  &.size-sm {
+    @extend %size-sm;
+  }
+
+  &.size-md {
+    @extend %size-md;
+  }
+
+  &.size-lg {
+    @extend %size-lg;
+  }
 
   @media (min-width: $size-breakpoint-tablet) {
-    &.size-sm-tablet { @include size-sm; }
-    &.size-md-tablet { @include size-md; }
-    &.size-lg-tablet { @include size-lg; }
+    &.size-sm-tablet {
+      @include size-sm;
+    }
+
+    &.size-md-tablet {
+      @include size-md;
+    }
+
+    &.size-lg-tablet {
+      @include size-lg;
+    }
   }
 
   @media (min-width: $size-breakpoint-desktop) {
-    &.size-sm-desktop { @include size-sm; }
-    &.size-md-desktop { @include size-md; }
-    &.size-lg-desktop { @include size-lg; }
+    &.size-sm-desktop {
+      @include size-sm;
+    }
+
+    &.size-md-desktop {
+      @include size-md;
+    }
+
+    &.size-lg-desktop {
+      @include size-lg;
+    }
   }
 
   @media (min-width: $size-breakpoint-hd) {
-    &.size-sm-hd { @include size-sm; }
-    &.size-md-hd { @include size-md; }
-    &.size-lg-hd { @include size-lg; }
+    &.size-sm-hd {
+      @include size-sm;
+    }
+
+    &.size-md-hd {
+      @include size-md;
+    }
+
+    &.size-lg-hd {
+      @include size-lg;
+    }
   }
 
   &.error {
@@ -200,7 +240,7 @@
 
     select:focus {
       outline: none;
-      border-color: var(--form-control-focus-border-color, var(--INTERNAL_form-control-focus-border-color));
+      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
       background-color: transparent;
     }
   }
