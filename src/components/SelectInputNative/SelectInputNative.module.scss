@@ -235,8 +235,8 @@
   }
 
   &.error {
-    border-color: var(--form-control-error-border-color, var(--INTERNAL_form-control-error-border-color));
-    background-color: var(--form-control-error-border-color, var(--INTERNAL_form-control-error-background-color));
+    border-color: var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error));
+    background-color: var(--form-control-border-color-error, var(--INTERNAL_form-control-background-color-error));
 
     select:focus {
       outline: none;

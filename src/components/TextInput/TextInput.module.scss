@@ -195,8 +195,8 @@
 
   &.error {
     box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)),
-      inset 0 0 0 1px var(--form-control-error-border-color, var(--INTERNAL_form-control-error-border-color));
-    background-color: var(--form-control-error-background-color, var(--INTERNAL_form-control-error-background-color));
+      inset 0 0 0 1px var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error));
+    background-color: var(--form-control-background-color-error, var(--INTERNAL_form-control-background-color-error));
 
     input:focus {
       outline: none;
@@ -207,8 +207,8 @@
     > * {
       /* stylelint-disable */
       &:focus {
-        box-shadow: inset 0 1px 0 0 var(--form-control-error-border-color, var(--INTERNAL_form-control-error-border-color)),
-          inset 0 -1px 0 0 var(--form-control-error-border-color, var(--INTERNAL_form-control-error-border-color));
+        box-shadow: inset 0 1px 0 0 var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error)),
+          inset 0 -1px 0 0 var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error));
       }
     }
   }
@@ -242,7 +242,7 @@
     transition-duration: 300ms;
     transition-property: border, background-color;
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
-    border: none;
+    border: 1px solid var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
     background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
     width: 100%;
     line-height: var(--form-control-text-line-height, var(--INTERNAL_form-control-text-line-height));
@@ -256,6 +256,7 @@
 
     &:focus {
       outline: none;
+      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
     }
 
     &:disabled {

@@ -181,7 +181,7 @@
   padding: 2px;
 
   &.error {
-    background-color: var(--form-control-error-background-color, var(--INTERNAL_form-control-error-background-color));
+    background-color: var(--form-control-background-color-error, var(--INTERNAL_form-control-background-color-error));
   }
 }
 
