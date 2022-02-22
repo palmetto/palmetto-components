@@ -26,14 +26,29 @@ import { TextInput } from '../components/TextInput/TextInput';
 
 # Theming
 
-Palmetto Components library uses design tokens at its core. Since all design tokens are tied to CSS variables, the underlying values can be overwritten to create a custom theme.
+The Palmetto Design System uses design tokens at its core. Since all design tokens are tied to CSS variables, the underlying values can be overwritten to create a custom theme.
 
-There are two kinds of theming variables in our library:
+## Design Token Types
 
-1. Base Tokens -- Changing these will affect the look and feel of the entire library. E.G: `--color-brand-primary-500`, or `--size-spacing-md`.
-2. Component Tokens -- Theses are scoped to specific components so altering them will apply to that component only. E.G: `--button-size-md-font-size`.
+There are three kinds of tokens in our library:
 
-Not every possible styling option is available to be customized, as the Palmetto Design System is not intended to be a fully-customizable ui library. For component-specific tokens, see docs for the specific component.
+### Base Tokens
+
+Base tokens are primitive values, such as color, typography, and spacing, in a design language. These can be directly used, and are inherited by all other token types. Changing these will affect the look and feel of the entire library. E.G: `--color-brand-primary-500`, or `--size-spacing-md`.
+
+### Common Tokens
+
+Also referred to as alias tokens, common tokens relate to a specific context or abstraction, and may be used across multiple tokens. E.G: `form-control-background-color` is used by TextInput, TextareaInput, SelectInput, and OptionTile components.
+
+### Component Tokens
+
+Component tokens are scoped to specific components so altering them will apply to that component only. E.G: `--button-size-md-font-size`.
+
+Not every possible property style is available to be customized, as the Palmetto Design System is not intended to be a fully-customizable ui library. Token documentation for components that are theme-able are at the bottom of each components' documentation page.
+
+## Theme Example
+
+Here is an example where all three token types are used to create a customized appearance or theme.
 
 <Canvas>
   <Story name="Theme Example">
@@ -85,6 +100,7 @@ Not every possible styling option is available to be customized, as the Palmetto
         }));
       };
       const customTheme = {
+        // Base tokens
         '--asset-fonts-brand': 'Consolas,monaco,monospace',
         '--color-brand-primary-50': '#FAF5FF',
         '--color-brand-primary-100': '#E9D8FD',
@@ -136,6 +152,12 @@ Not every possible styling option is available to be customized, as the Palmetto
         '--color-brand-grey-700': '#5F5F5F',
         '--color-brand-grey-800': '#4B4B4B',
         '--color-brand-grey-900': '#3B3B3B',
+        // Common tokens
+        '--form-control-size-md-border-radius': 0,
+        '--form-control-size-md-padding': '0.5rem',
+        '--form-control-font-family': 'Consolas,monaco,monospace',
+        '--form-control-border-color': '#805AD5',
+        // Component tokens
         '--alert-border-width': '2px',
         '--alert-info-border-color': '#3182CE',
         '--button-size-md-border-radius': '0',
@@ -143,10 +165,6 @@ Not every possible styling option is available to be customized, as the Palmetto
         '--button-size-md-padding-horizontal': '.5rem',
         '--button-primary-box-shadow-focus': '0 0 0 4px var(--color-brand-primary-200)',
         '--button-font-family': 'Consolas,monaco,monospace',
-        '--form-control-size-md-border-radius': 0,
-        '--form-control-size-md-padding': '0.5rem',
-        '--form-control-font-family': 'Consolas,monaco,monospace',
-        '--form-control-border-color': '#805AD5',
       };
       return (
         <Box
@@ -158,13 +176,7 @@ Not every possible styling option is available to be customized, as the Palmetto
           display="block"
           style={isThemed ? customTheme : null}
         >
-          <Toggle
-            id="themeToggle"
-            label="Apply Theme"
-            onChange={event => setIsThemed(event.target.checked)}
-            isChecked={isThemed}
-            size="lg"
-          />
+          <Toggle id="themeToggle" label="Apply Theme" onChange={event => setIsThemed(event.target.checked)} isChecked={isThemed} size="lg" />
           <Box childGap="sm">
             <Heading as="h2" size="xl">
               Leading the world toward a clean energy future
@@ -185,18 +197,12 @@ Not every possible styling option is available to be customized, as the Palmetto
             <CategoryFilter isSelected>Selected</CategoryFilter>
           </Box>
           <Alert hasIcon variant="info" title="Info Alert" message="This is an info alert" />
-          <Tabs
-            value={themeExampleValues.selectedTab}
-            onChange={(event, index) => handleChange('selectedTab', index)}
-          >
+          <Tabs value={themeExampleValues.selectedTab} onChange={(event, index) => handleChange('selectedTab', index)}>
             <Tabs.Item>Tab 1</Tabs.Item>
             <Tabs.Item>Tab 2</Tabs.Item>
             <Tabs.Item>Tab 3</Tabs.Item>
           </Tabs>
-          <TabsSlider
-            value={themeExampleValues.selectedTabSlider}
-            onChange={(event, index) => handleChange('selectedTabSlider', index)}
-          >
+          <TabsSlider value={themeExampleValues.selectedTabSlider} onChange={(event, index) => handleChange('selectedTabSlider', index)}>
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>
             <TabsSlider.Item>Tab 3</TabsSlider.Item>
@@ -266,17 +272,8 @@ Not every possible styling option is available to be customized, as the Palmetto
               onChange={e => handleChange('textareaValue', e.target.value)}
             />
             <Box direction="row" childGap="md">
-              <CheckboxInput
-                id="checkedCheckbox"
-                label="Checked Checkbox"
-                onChange={() => {}}
-                isChecked
-              />
-              <CheckboxInput
-                id="uncheckedCheckbox"
-                label="Unchecked Checkbox"
-                onChange={() => {}}
-              />
+              <CheckboxInput id="checkedCheckbox" label="Checked Checkbox" onChange={() => {}} isChecked />
+              <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
             </Box>
             <RadioGroup
               title="Radio Group"
