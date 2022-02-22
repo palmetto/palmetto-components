@@ -24,16 +24,15 @@
     color: var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error));
 
     &:hover {
-      border: 1px solid var(--form-control-border-color-selected-error, var(--INTERNAL_form-control-border-color-selected-error));
+      border: 1px solid var(--form-control-border-color-hover, var(--INTERNAL_form-control-border-color-hover));
     }
 
     &.disabled {
-      border: 1px solid var(--form-control-border-color-error-disabled, var(--INTERNAL_form-control-border-color-error-disabled));
       color: var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled));
       -webkit-text-fill-color: var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled));
 
       &:hover {
-        border: 1px solid var(--form-control-border-color-error-disabled, var(--INTERNAL_form-control-border-color-error-disabled));
+        border: 1px solid var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
       }
     }
   }
@@ -41,6 +40,15 @@
   &.selected {
     background-color: var(--form-control-background-color-selected, var(--INTERNAL_form-control-background-color-selected));
     border: 1px solid var(--form-control-border-color-selected, var(--INTERNAL_form-control-border-color-selected));
+
+    &.disabled {
+      background-color: var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled));
+      border: 1px solid var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
+
+      &:hover {
+        border: 1px solid var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
+      }
+    }
 
     &.error {
       border: 1px solid var(--form-control-border-color-selected-error, var(--INTERNAL_form-control-border-color-selected-error));
