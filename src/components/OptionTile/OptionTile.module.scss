@@ -7,9 +7,49 @@
     border: 1px solid var(--form-control-border-color-hover, var(--INTERNAL_form-control-border-color-hover));
   }
 
+  &.disabled {
+    background-color: var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled));
+    color: var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled));
+    /* https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios */
+    -webkit-text-fill-color: var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled));
+    opacity: 1;
+
+    &:hover {
+      cursor: not-allowed;
+      border: 1px solid var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
+    }
+  }
+
+  &.error {
+    color: var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error));
+
+    &:hover {
+      border: 1px solid var(--form-control-border-color-selected-error, var(--INTERNAL_form-control-border-color-selected-error));
+    }
+
+    &.disabled {
+      border: 1px solid var(--form-control-border-color-error-disabled, var(--INTERNAL_form-control-border-color-error-disabled));
+      color: var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error));
+
+      &:hover {
+        border: 1px solid var(--form-control-border-color-error-disabled, var(--INTERNAL_form-control-border-color-error-disabled));
+      }
+    }
+  }
+
   &.selected {
     background-color: var(--form-control-background-color-selected, var(--INTERNAL_form-control-background-color-selected));
     border: 1px solid var(--form-control-border-color-selected, var(--INTERNAL_form-control-border-color-selected));
+
+    &.error {
+      border: 1px solid var(--form-control-border-color-selected-error, var(--INTERNAL_form-control-border-color-selected-error));
+      background-color: var(--form-control-background-color-error, var(--INTERNAL_form-control-background-color-error));
+      color: var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error));
+
+      &.disabled {
+        color: var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error));
+      }
+    }
 
     &:hover {
       border: 1px solid var(--form-control-border-color-selected-hover, var(--INTERNAL_form-control-border-color-selected-hover));

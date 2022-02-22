@@ -40,7 +40,7 @@ export interface OptionTileProps extends BoxProps {
   disabled?: boolean;
   /**
    * Whether the input is in an error state. This is used to modify the visual
-   * radio/checkbox with the approproate error color.
+   * radio/checkbox with the appropriate error color.
    * NOTE: this may create mismatches when using custom styling on the OptionTile.
    */
   error?: boolean;
@@ -65,11 +65,9 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
     name,
     onChange,
     value,
-    borderColor = isSelected ? 'primary' : 'grey-lighter',
     borderWidth = 'xs',
     className = '',
     childGap = undefined,
-    color = 'dark',
     cursor = 'pointer',
     direction = 'row',
     disabled = false,
@@ -92,6 +90,8 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
     className,
     {
       [styles.selected]: isSelected,
+      [styles.disabled]: disabled,
+      [styles.error]: error,
     },
   );
 
@@ -113,11 +113,9 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
 
   return (
     <Box
-      borderColor={borderColor}
       borderWidth={borderWidth}
       childGap={childGap}
       className={classes}
-      color={color}
       cursor={cursor}
       direction={direction}
       flex={flex}
