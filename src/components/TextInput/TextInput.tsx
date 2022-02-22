@@ -166,8 +166,6 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
       {
         [styles.error]: error,
         [styles.disabled]: isDisabled,
-        // [styles['has-prefix']]: prefix,
-        // [styles['has-suffix']]: suffix,
         [styles['is-clearable']]: onClear,
       },
     );
