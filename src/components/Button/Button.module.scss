@@ -1,8 +1,12 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 @mixin size-xs {
-  border-radius: var(--button-size-xs-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
-  padding: var(--button-size-xs-padding-vertical, var(--size-spacing-2xs)) var(--button-size-xs-padding-horizontal, var(--size-spacing-xs));
+  border-radius: var(
+    --button-size-xs-border-radius,
+    var(--INTERNAL_form-control-size-sm-border-radius)
+  );
+  padding: var(--button-size-xs-padding-vertical, var(--size-spacing-2xs))
+    var(--button-size-xs-padding-horizontal, var(--size-spacing-xs));
   min-height: 20px;
   font-size: var(--button-size-xs-font-size, var(--INTERNAL_form-control-size-xs-font-size));
   letter-spacing: 0.2px;
@@ -13,56 +17,90 @@
   }
 }
 
-%size-xs { @include size-xs; }
-.size-xs { @extend %size-xs; }
+%size-xs {
+  @include size-xs;
+}
+.size-xs {
+  @extend %size-xs;
+}
 
 @mixin size-sm {
-  border-radius: var(--button-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
-  padding: var(--button-size-sm-padding-vertical, var(--INTERNAL_form-control-size-sm-padding)) var(--button-size-sm-padding-horizontal, var(--size-spacing-sm));
+  border-radius: var(
+    --button-size-sm-border-radius,
+    var(--INTERNAL_form-control-size-sm-border-radius)
+  );
+  padding: var(--button-size-sm-padding-vertical, var(--INTERNAL_form-control-size-sm-padding))
+    var(--button-size-sm-padding-horizontal, var(--size-spacing-sm));
   min-height: 32px;
   font-size: var(--button-size-sm-font-size, var(--INTERNAL_form-control-size-sm-font-size));
   letter-spacing: 0.2px;
 
   &.outline {
-    padding: calc(var(--button-size-sm-padding-vertical, var(--INTERNAL_form-control-size-sm-padding)) - 1px)
+    padding: calc(
+        var(--button-size-sm-padding-vertical, var(--INTERNAL_form-control-size-sm-padding)) - 1px
+      )
       calc(var(--button-size-sm-padding-horizontal, var(--size-spacing-sm)) - 1px);
   }
 }
 
-%size-sm { @include size-sm; }
-.size-sm { @extend %size-sm; }
+%size-sm {
+  @include size-sm;
+}
+.size-sm {
+  @extend %size-sm;
+}
 
 @mixin size-md {
-  border-radius: var(--button-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
-  padding: var(--button-size-md-padding-vertical, var(--INTERNAL_form-control-size-md-padding)) var(--button-size-md-padding-horizontal, var(--size-spacing-md));
+  border-radius: var(
+    --button-size-md-border-radius,
+    var(--INTERNAL_form-control-size-md-border-radius)
+  );
+  padding: var(--button-size-md-padding-vertical, var(--INTERNAL_form-control-size-md-padding))
+    var(--button-size-md-padding-horizontal, var(--size-spacing-md));
   min-height: 42px;
   font-size: var(--button-size-md-font-size, var(--INTERNAL_form-control-size-md-font-size));
   letter-spacing: 0.2px;
 
   &.outline {
-    padding: calc(var(--button-size-md-padding-vertical, var(--INTERNAL_form-control-size-md-padding)) - 1px)
+    padding: calc(
+        var(--button-size-md-padding-vertical, var(--INTERNAL_form-control-size-md-padding)) - 1px
+      )
       calc(var(--button-size-md-padding-horizontal, var(--size-spacing-md)) - 1px);
   }
 }
 
-%size-md { @include size-md; }
-.size-md { @extend %size-md; }
+%size-md {
+  @include size-md;
+}
+.size-md {
+  @extend %size-md;
+}
 
 @mixin size-lg {
-  border-radius: var(--button-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
-  padding: var(--button-size-lg-padding-vertical, var(--INTERNAL_form-control-size-lg-padding)) var(--button-size-lg-padding-horizontal, var(--size-spacing-lg));
+  border-radius: var(
+    --button-size-lg-border-radius,
+    var(--INTERNAL_form-control-size-lg-border-radius)
+  );
+  padding: var(--button-size-lg-padding-vertical, var(--INTERNAL_form-control-size-lg-padding))
+    var(--button-size-lg-padding-horizontal, var(--size-spacing-lg));
   min-height: 55px;
   letter-spacing: 1px;
   font-size: var(--button-size-lg-font-size, var(--INTERNAL_form-control-size-lg-font-size));
 
   &.outline {
-    padding: calc(var(--button-size-lg-padding-vertical, var(--INTERNAL_form-control-size-lg-padding)) - 1px)
+    padding: calc(
+        var(--button-size-lg-padding-vertical, var(--INTERNAL_form-control-size-lg-padding)) - 1px
+      )
       calc(var(--button-size-lg-padding-horizontal, var(--size-spacing-lg)) - 1px);
   }
 }
 
-%size-lg { @include size-lg; }
-.size-lg { @extend %size-lg; }
+%size-lg {
+  @include size-lg;
+}
+.size-lg {
+  @extend %size-lg;
+}
 
 .button {
   border: 0;
@@ -104,13 +142,19 @@
     /* define regular focus styles for non-supporting browsers */
     &:focus {
       outline: 0;
-      box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
+      box-shadow: var(
+        --button-primary-box-shadow-focus,
+        var(--INTERNAL_form-control-focus-box-shadow)
+      );
     }
 
     /* Show focus styles on keyboard focus. */
     &:focus-visible {
       outline: 0;
-      box-shadow: var(--button-primary-box-shadow-focus, var(--input-focus-box-shadow));
+      box-shadow: var(
+        --button-primary-box-shadow-focus,
+        var(--INTERNAL_form-control-focus-box-shadow)
+      );
     }
 
     /* Hide focus styles if they're not needed, for example,
@@ -121,7 +165,10 @@
     }
 
     &:not(:disabled):hover {
-      background-color: var(--button-primary-background-color-hover, var(--color-brand-primary-600));
+      background-color: var(
+        --button-primary-background-color-hover,
+        var(--color-brand-primary-600)
+      );
       color: var(--button-primary-font-color-hover, var(--color-brand-white-base));
     }
 
@@ -131,8 +178,14 @@
       color: var(--button-primary-outline-font-color, var(--color-brand-primary-500));
 
       &:not(:disabled):hover {
-        border-color: var(--button-primary-outline-border-color-hover, var(--color-brand-primary-500));
-        background-color: var(--button-primary-outline-background-color-hover, var(--color-brand-primary-50));
+        border-color: var(
+          --button-primary-outline-border-color-hover,
+          var(--color-brand-primary-500)
+        );
+        background-color: var(
+          --button-primary-outline-background-color-hover,
+          var(--color-brand-primary-50)
+        );
         color: var(--button-primary-outline-font-color-hover, var(--color-brand-primary-500));
       }
     }
@@ -145,13 +198,19 @@
     /* define regular focus styles for non-supporting browsers */
     &:focus {
       outline: 0;
-      box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
+      box-shadow: var(
+        --button-success-box-shadow-focus,
+        var(--INTERNAL_form-control-focus-box-shadow)
+      );
     }
 
     /* Show focus styles on keyboard focus. */
     &:focus-visible {
       outline: 0;
-      box-shadow: var(--button-success-box-shadow-focus, var(--input-focus-box-shadow));
+      box-shadow: var(
+        --button-success-box-shadow-focus,
+        var(--INTERNAL_form-control-focus-box-shadow)
+      );
     }
 
     /* Hide focus styles if they're not needed, for example,
@@ -162,7 +221,10 @@
     }
 
     &:not(:disabled):hover {
-      background-color: var(--button-success-background-color-hover, var(--color-brand-success-600));
+      background-color: var(
+        --button-success-background-color-hover,
+        var(--color-brand-success-600)
+      );
       color: var(--button-success-font-color-hover, var(--color-brand-white-base));
     }
 
@@ -172,8 +234,14 @@
       color: var(--button-success-font-color, var(--color-brand-success-500));
 
       &:not(:disabled):hover {
-        border-color: var(--button-success-outline-border-color-hover, var(--color-brand-success-500));
-        background-color: var(--button-success-outline-background-color-hover, var(--color-brand-success-50));
+        border-color: var(
+          --button-success-outline-border-color-hover,
+          var(--color-brand-success-500)
+        );
+        background-color: var(
+          --button-success-outline-background-color-hover,
+          var(--color-brand-success-50)
+        );
         color: var(--button-success-outline-font-color-hover, var(--color-brand-success-500));
       }
     }
@@ -209,8 +277,14 @@
       color: var(--button-danger-font-color, var(--color-brand-danger-500));
 
       &:not(:disabled):hover {
-        border-color: var(--button-danger-outline-border-color-hover, var(--color-brand-danger-500));
-        background-color: var(--button-danger-outline-background-color-hover, var(--color-brand-danger-50));
+        border-color: var(
+          --button-danger-outline-border-color-hover,
+          var(--color-brand-danger-500)
+        );
+        background-color: var(
+          --button-danger-outline-background-color-hover,
+          var(--color-brand-danger-50)
+        );
         color: var(--button-danger-outline-font-color-hover, var(--color-brand-danger-500));
       }
     }
@@ -247,7 +321,10 @@
 
       &:not(:disabled):hover {
         border-color: var(--button-dark-outline-border-color, var(--color-brand-dark-base));
-        background-color: var(--button-dark-outline-background-color-hover, var(--color-brand-grey-50));
+        background-color: var(
+          --button-dark-outline-background-color-hover,
+          var(--color-brand-grey-50)
+        );
         color: var(--button-font-color-dark-outline, var(--color-brand-dark-base));
       }
     }
@@ -284,7 +361,10 @@
 
       &:not(:disabled):hover {
         border-color: var(--button-light-outline-border-color-hover, var(--color-brand-grey-300));
-        background-color: var(--button-light-outline-background-color-hover, var(--color-brand-grey-50));
+        background-color: var(
+          --button-light-outline-background-color-hover,
+          var(--color-brand-grey-50)
+        );
         color: var(--button-font-color-light-outline-hover, var(--color-brand-dark-base));
       }
     }
@@ -321,7 +401,10 @@
 
       &:not(:disabled):hover {
         border-color: var(--button-white-outline-border-color-hover, var(--color-brand-white-base));
-        background-color: var(--button-white-outline-background-color-hover, rgba(255, 255, 255, 0.1));
+        background-color: var(
+          --button-white-outline-background-color-hover,
+          rgba(255, 255, 255, 0.1)
+        );
         color: var(--button-font-color-white-outline-hover, var(--color-brand-white-base));
       }
     }
@@ -346,30 +429,62 @@
     font-size: var(--button-size-sm-font-size);
   }
 
-  &.size-xs { @extend %size-xs; }
-  &.size-sm { @extend %size-sm; }
-  &.size-md { @extend %size-md; }
-  &.size-lg { @extend %size-lg; }
+  &.size-xs {
+    @extend %size-xs;
+  }
+  &.size-sm {
+    @extend %size-sm;
+  }
+  &.size-md {
+    @extend %size-md;
+  }
+  &.size-lg {
+    @extend %size-lg;
+  }
 
   @media (min-width: $size-breakpoint-tablet) {
-    &.size-xs-tablet { @include size-xs; }
-    &.size-sm-tablet { @include size-sm; }
-    &.size-md-tablet { @include size-md; }
-    &.size-lg-tablet { @include size-lg; }
+    &.size-xs-tablet {
+      @include size-xs;
+    }
+    &.size-sm-tablet {
+      @include size-sm;
+    }
+    &.size-md-tablet {
+      @include size-md;
+    }
+    &.size-lg-tablet {
+      @include size-lg;
+    }
   }
 
   @media (min-width: $size-breakpoint-desktop) {
-    &.size-xs-desktop { @include size-xs; }
-    &.size-sm-desktop { @include size-sm; }
-    &.size-md-desktop { @include size-md; }
-    &.size-lg-desktop { @include size-lg; }
+    &.size-xs-desktop {
+      @include size-xs;
+    }
+    &.size-sm-desktop {
+      @include size-sm;
+    }
+    &.size-md-desktop {
+      @include size-md;
+    }
+    &.size-lg-desktop {
+      @include size-lg;
+    }
   }
 
   @media (min-width: $size-breakpoint-hd) {
-    &.size-xs-hd { @include size-xs; }
-    &.size-sm-hd { @include size-sm; }
-    &.size-md-hd {  @include size-md; }
-    &.size-lg-hd { @include size-lg; }
+    &.size-xs-hd {
+      @include size-xs;
+    }
+    &.size-sm-hd {
+      @include size-sm;
+    }
+    &.size-md-hd {
+      @include size-md;
+    }
+    &.size-lg-hd {
+      @include size-lg;
+    }
   }
 
   &.loading {

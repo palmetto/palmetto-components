@@ -1,11 +1,23 @@
 .option {
+  /* define regular focus styles for non-supporting browsers */
+  &:focus {
+    outline: 0;
+    box-shadow: var(
+      --option-tile-box-shadow-focus,
+      var(--INTERNAL_form-control-focus-box-shadow)
+    );
+  }
+
   &:focus-within {
-    border-color: var(--color-brand-primary-base);
+    border-color: var(--color-brand-primary-500);
   }
 
   &:focus-visible {
     outline: 0;
-    box-shadow: var(--color-brand-primary-base);
+    box-shadow: var(
+      --option-tile-box-shadow-focus,
+      var(--INTERNAL_form-control-focus-box-shadow)
+    );
   }
 
   &:focus:not(:focus-visible) {

@@ -18,6 +18,7 @@ import { SelectInputNative } from '../components/SelectInputNative/SelectInputNa
 import { Tabs } from '../components/Tabs/Tabs';
 import { TabsSlider } from '../components/TabsSlider/TabsSlider';
 import { Toggle } from '../components/Toggle/Toggle';
+import { TextareaInput } from '../components/TextareaInput/TextareaInput';
 import { TextInput } from '../components/TextInput/TextInput';
 
 <Meta title="Theming/Overview" />
@@ -53,12 +54,23 @@ Not every possible styling option is available to be customized, as the Palmetto
           label: 'Motorcycle',
         },
       ];
-      const [value, setValue] = useState(true);
-      const [radioValue, setRadioValue] = useState(options[0].value);
-      const [selectValue, setSelectValue] = useState(options[0].value);
-      const [selectedTab, setSelectedTab] = useState(0);
-      const [activePage, setActivePage] = useState(1);
-      const [optionTileGroupValue, setOptionTileGroupValue] = useState(options[0].value);
+      const [isThemed, setIsThemed] = useState(true);
+      const [themeExampleValues, setThemeExampleValues] = useState({
+        activePage: 1,
+        optionTileGroupValue: options[0].value,
+        radioValue: options[0].value,
+        selectedTab: 0,
+        selectedTabSlider: 0,
+        selectValue: options[0].value,
+        textValue: 'hello world',
+        textareaValue: 'hello world',
+      });
+      const handleChange = (key, value) => {
+        setThemeExampleValues(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
       const customTheme = {
         '--asset-fonts-brand': 'Consolas,monaco,monospace',
         '--color-brand-primary-50': '#FAF5FF',
@@ -118,6 +130,10 @@ Not every possible styling option is available to be customized, as the Palmetto
         '--button-size-md-padding-horizontal': '.5rem',
         '--button-primary-box-shadow-focus': '0 0 0 4px var(--color-brand-primary-200)',
         '--button-font-family': 'Consolas,monaco,monospace',
+        '--form-control-size-md-border-radius': 0,
+        '--form-control-size-md-padding': '0.5rem',
+        '--form-control-font-family': 'Consolas,monaco,monospace',
+        '--form-control-border-color': '#805AD5',
       };
       return (
         <Box
@@ -127,13 +143,13 @@ Not every possible styling option is available to be customized, as the Palmetto
           borderColor="grey-100"
           padding="3xl"
           display="block"
-          style={value ? customTheme : null}
+          style={isThemed ? customTheme : null}
         >
           <Toggle
             id="themeToggle"
             label="Apply Theme"
-            onChange={event => setValue(event.target.checked)}
-            isChecked={value}
+            onChange={event => setIsThemed(event.target.checked)}
+            isChecked={isThemed}
             size="lg"
           />
           <Box childGap="sm">
@@ -156,55 +172,17 @@ Not every possible styling option is available to be customized, as the Palmetto
             <CategoryFilter isSelected>Selected</CategoryFilter>
           </Box>
           <Alert hasIcon variant="info" title="Info Alert" message="This is an info alert" />
-          <TextInput id="demo" helpText="This is a themed text input" label="Text Input" />
-          <SelectInputNative
-            id="default Select"
-            label="Select Input"
-            onChange={event => {
-              setSelectValue(event.target.value);
-            }}
-            options={options}
-            value={selectValue}
-          />
-          <Box direction="row" childGap="md">
-            <CheckboxInput
-              id="checkedCheckbox"
-              label="Checked Checkbox"
-              onChange={() => {}}
-              isChecked
-            />
-            <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
-          </Box>
-          <RadioGroup
-            title="Radio Group"
-            name="radioGroup"
-            onChange={event => setRadioValue(event.target.value)}
-            value={radioValue}
-            options={options}
-            direction="row"
-          />
-          <OptionTileGroup
-            name="directionVertical"
-            value={optionTileGroupValue}
-            onChange={event => setOptionTileGroupValue(event.target.value)}
-            options={options}
-            direction="row"
-          />
           <Tabs
-            value={selectedTab}
-            onChange={(event, index) => {
-              setSelectedTab(index);
-            }}
+            value={themeExampleValues.selectedTab}
+            onChange={(event, index) => handleChange('selectedTab', index)}
           >
             <Tabs.Item>Tab 1</Tabs.Item>
             <Tabs.Item>Tab 2</Tabs.Item>
             <Tabs.Item>Tab 3</Tabs.Item>
           </Tabs>
           <TabsSlider
-            value={selectedTab}
-            onChange={(event, index) => {
-              setSelectedTab(index);
-            }}
+            value={themeExampleValues.selectedTabSlider}
+            onChange={(event, index) => handleChange('selectedTabSlider', index)}
           >
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>
@@ -239,10 +217,64 @@ Not every possible styling option is available to be customized, as the Palmetto
               White
             </Button>
           </Box>
+          <Box background="grey-50" padding="lg" childGap="lg">
+            <Heading size="lg" as="h4">
+              Form Inputs
+            </Heading>
+            <TextInput
+              id="demo"
+              helpText="This is a themed text input"
+              label="Text Input"
+              value={themeExampleValues.textValue}
+              onChange={event => handleChange('textValue', event.target.value)}
+            />
+            <SelectInputNative
+              id="default Select"
+              label="Select Input"
+              onChange={event => handleChange('selectValue', event.target.value)}
+              options={options}
+              value={themeExampleValues.selectValue}
+            />
+            <TextareaInput
+              label="Textarea Input"
+              name="textareaInput"
+              id="textareaInput"
+              value={themeExampleValues.textareaValue}
+              onChange={e => handleChange('textareaValue', e.target.value)}
+            />
+            <Box direction="row" childGap="md">
+              <CheckboxInput
+                id="checkedCheckbox"
+                label="Checked Checkbox"
+                onChange={() => {}}
+                isChecked
+              />
+              <CheckboxInput
+                id="uncheckedCheckbox"
+                label="Unchecked Checkbox"
+                onChange={() => {}}
+              />
+            </Box>
+            <RadioGroup
+              title="Radio Group"
+              name="radioGroup"
+              onChange={event => handleChange('radioValue', event.target.value)}
+              value={themeExampleValues.radioValue}
+              options={options}
+              direction="row"
+            />
+            <OptionTileGroup
+              name="directionVertical"
+              value={themeExampleValues.optionTileGroupValue}
+              onChange={event => handleChange('optionTileGroupValue', event.target.value)}
+              options={options}
+              direction="row"
+            />
+          </Box>
           <Pagination
-            activePage={activePage}
+            activePage={themeExampleValues.activePage}
             itemsPerPage={20}
-            onChange={setActivePage}
+            onChange={index => handleChange('activePage', index)}
             totalItemsCount={1000}
             isCompact
             arePagesVisible
