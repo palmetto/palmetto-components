@@ -18,6 +18,128 @@ import { TimePickerNative } from '../components/TimePickerNative/TimePickerNativ
 
 Form controls share tokens since they are designed to have a consistent appearance (e.g. a TextInput and SelectInput look similar). Instead of redefining individual component specific tokens, the following tokens only need to be set once, and all form controls will take on their new appearance.
 
+<Canvas>
+  <Story name="Custom Theme Form">
+    {() => {
+      const options = [
+        {
+          id: 'car',
+          value: 'car',
+          label: 'Car',
+        },
+        {
+          id: 'truck',
+          value: 'truck',
+          label: 'Truck',
+        },
+        {
+          id: 'motorcycle',
+          value: 'motorcycle',
+          label: 'Motorcycle',
+        },
+      ];
+      const [isThemed, setIsThemed] = useState(true);
+      const [themeExampleValues, setThemeExampleValues] = useState({
+        multiSelectValue: [
+          {
+            id: 'motorcycle',
+            value: 'motorcycle',
+            label: 'Motorcycle',
+          },
+          {
+            id: 'truck',
+            value: 'truck',
+            label: 'Truck',
+          },
+        ],
+        optionTileGroupValue: options[0].value,
+        radioValue: options[0].value,
+        selectValue: options[0].value,
+        textValue: 'hello world',
+        textareaValue: 'hello world',
+      });
+      const handleChange = (key, value) => {
+        setThemeExampleValues(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
+      const customTheme = {
+        '--color-brand-primary-50': '#FAF5FF',
+        '--color-brand-primary-100': '#E9D8FD',
+        '--color-brand-primary-200': '#D6BCFA',
+        '--color-brand-primary-300': '#B794F4',
+        '--color-brand-primary-400': '#9F7AEA',
+        '--color-brand-primary-500': '#805AD5',
+        '--color-brand-primary-600': '#6B46C1',
+        '--color-brand-primary-700': '#553C9A',
+        '--color-brand-primary-800': '#44337A',
+        '--color-brand-primary-900': '#322659',
+        '--form-control-size-md-border-radius': 0,
+        '--form-control-size-md-padding': '0.5rem',
+        '--form-control-font-family': 'Consolas,monaco,monospace',
+        '--form-control-border-color': '#D6BCFA',
+        '--form-control-border-color-hover': '#805AD5',
+      };
+      return (
+        <Box childGap="lg" background="grey-50" padding="lg" display="block" style={isThemed ? customTheme : null}>
+          <Toggle label="Apply Custom Theme" isChecked={isThemed} onChange={e => setIsThemed(e.target.checked)} />
+          <TextInput
+            id="demo"
+            helpText="This is a themed text input"
+            label="Text Input"
+            value={themeExampleValues.textValue}
+            onChange={event => handleChange('textValue', event.target.value)}
+          />
+          <SelectInputNative
+            id="default Select"
+            label="Select Input"
+            onChange={event => handleChange('selectValue', event.target.value)}
+            options={options}
+            value={themeExampleValues.selectValue}
+          />
+          <SelectInput
+            id="multiSelect"
+            name="multiSelect"
+            label="Multi-Select Input"
+            isMulti
+            value={themeExampleValues.multiSelectValue}
+            menuPortalTarget={document.body}
+            options={options}
+            onChange={event => handleChange('multiSelectValue', event.target.value)}
+          />
+          <TextareaInput
+            label="Textarea Input"
+            name="textareaInput"
+            id="textareaInput"
+            value={themeExampleValues.textareaValue}
+            onChange={e => handleChange('textareaValue', e.target.value)}
+          />
+          <Box direction="row" childGap="md">
+            <CheckboxInput id="checkedCheckbox" label="Checked Checkbox" onChange={() => {}} isChecked />
+            <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
+          </Box>
+          <RadioGroup
+            title="Radio Group"
+            name="radioGroup"
+            onChange={event => handleChange('radioValue', event.target.value)}
+            value={themeExampleValues.radioValue}
+            options={options}
+            direction="row"
+          />
+          <OptionTileGroup
+            name="directionVertical"
+            value={themeExampleValues.optionTileGroupValue}
+            onChange={event => handleChange('optionTileGroupValue', event.target.value)}
+            options={options}
+            direction="row"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Form Control Tokens
 
 <table>
@@ -93,139 +215,3 @@ Form controls share tokens since they are designed to have a consistent appearan
     })()}
   </tbody>
 </table>
-
-<Canvas>
-  <Story name="Form Theming">
-    {() => {
-      const options = [
-        {
-          id: 'car',
-          value: 'car',
-          label: 'Car',
-        },
-        {
-          id: 'truck',
-          value: 'truck',
-          label: 'Truck',
-        },
-        {
-          id: 'motorcycle',
-          value: 'motorcycle',
-          label: 'Motorcycle',
-        },
-      ];
-      const [isThemed, setIsThemed] = useState(true);
-      const [themeExampleValues, setThemeExampleValues] = useState({
-        multiSelectValue: [
-          {
-            id: 'motorcycle',
-            value: 'motorcycle',
-            label: 'Motorcycle',
-          },
-          {
-            id: 'truck',
-            value: 'truck',
-            label: 'Truck',
-          },
-        ],
-        optionTileGroupValue: options[0].value,
-        radioValue: options[0].value,
-        selectValue: options[0].value,
-        textValue: 'hello world',
-        textareaValue: 'hello world',
-      });
-      const handleChange = (key, value) => {
-        setThemeExampleValues(prevFields => ({
-          ...prevFields,
-          [key]: value,
-        }));
-      };
-      const customTheme = {
-        '--color-brand-primary-50': '#FAF5FF',
-        '--color-brand-primary-100': '#E9D8FD',
-        '--color-brand-primary-200': '#D6BCFA',
-        '--color-brand-primary-300': '#B794F4',
-        '--color-brand-primary-400': '#9F7AEA',
-        '--color-brand-primary-500': '#805AD5',
-        '--color-brand-primary-600': '#6B46C1',
-        '--color-brand-primary-700': '#553C9A',
-        '--color-brand-primary-800': '#44337A',
-        '--color-brand-primary-900': '#322659',
-        '--form-control-size-md-border-radius': 0,
-        '--form-control-size-md-padding': '0.5rem',
-        '--form-control-font-family': 'Consolas,monaco,monospace',
-        '--form-control-border-color': '#D6BCFA',
-        '--form-control-background-color': '--color-brand-grey-100',
-        '--form-control-border-color-hover': '#805AD5',
-      };
-      return (
-        <Box
-          childGap="lg"
-          background="white"
-          borderWidth="xs"
-          borderColor="grey-100"
-          padding="3xl"
-          display="block"
-          style={isThemed ? customTheme : null}
-        >
-          <Toggle label="Toggle Custom Theme" isChecked={isThemed} onChange={e => setIsThemed(e.target.checked)} />
-          <Box background="grey-50" padding="lg" childGap="lg">
-            <Heading size="lg" as="h4">
-              Form Inputs
-            </Heading>
-            <TextInput
-              id="demo"
-              helpText="This is a themed text input"
-              label="Text Input"
-              value={themeExampleValues.textValue}
-              onChange={event => handleChange('textValue', event.target.value)}
-            />
-            <SelectInputNative
-              id="default Select"
-              label="Select Input"
-              onChange={event => handleChange('selectValue', event.target.value)}
-              options={options}
-              value={themeExampleValues.selectValue}
-            />
-            <SelectInput
-              id="multiSelect"
-              name="multiSelect"
-              label="Multi-Select Input"
-              isMulti
-              value={themeExampleValues.multiSelectValue}
-              menuPortalTarget={document.body}
-              options={options}
-              onChange={event => handleChange('multiSelectValue', event.target.value)}
-            />
-            <TextareaInput
-              label="Textarea Input"
-              name="textareaInput"
-              id="textareaInput"
-              value={themeExampleValues.textareaValue}
-              onChange={e => handleChange('textareaValue', e.target.value)}
-            />
-            <Box direction="row" childGap="md">
-              <CheckboxInput id="checkedCheckbox" label="Checked Checkbox" onChange={() => {}} isChecked />
-              <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
-            </Box>
-            <RadioGroup
-              title="Radio Group"
-              name="radioGroup"
-              onChange={event => handleChange('radioValue', event.target.value)}
-              value={themeExampleValues.radioValue}
-              options={options}
-              direction="row"
-            />
-            <OptionTileGroup
-              name="directionVertical"
-              value={themeExampleValues.optionTileGroupValue}
-              onChange={event => handleChange('optionTileGroupValue', event.target.value)}
-              options={options}
-              direction="row"
-            />
-          </Box>
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>

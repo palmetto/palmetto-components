@@ -422,42 +422,6 @@ Use the `direction` prop change the alignment of the radio inputs.
   </Story>
 </Canvas>
 
-## Custom Classes
+## Component Design Tokens
 
-Use the `className` prop to add a custom class, or classes to a RadioGroup.
-
-<Canvas>
-  <Story name="Custom Classes">
-    {() => {
-      const [value, setValue] = useState(null);
-      const options = [
-        {
-          id: 'apple',
-          value: 'apple',
-          label: 'Apple',
-        },
-        {
-          id: 'orange',
-          value: 'orange',
-          label: 'Orange',
-        },
-        {
-          id: 'banana',
-          value: 'banana',
-          label: 'Banana',
-          disabled: true,
-        },
-      ];
-      return (
-        <RadioGroup
-          title="Title"
-          name="customClasses"
-          onChange={event => setValue(event.target.value)}
-          value={value}
-          options={options}
-          className="background-color-primary-200"
-        />
-      );
-    }}
-  </Story>
-</Canvas>
+This component shares component design tokens with all form controls. For a complete list of tokens, see the [Theming Form Controls documentation](/docs/theming-form-controls--custom-theme-form).
