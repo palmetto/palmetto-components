@@ -1,0 +1,18 @@
+.option-tile {
+  background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
+  border: 1px solid var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
+  border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
+
+  &:hover {
+    border: 1px solid var(--form-control-border-color-hover, var(--INTERNAL_form-control-border-color-hover));
+  }
+
+  &.selected {
+    background-color: var(--form-control-background-color-selected, var(--INTERNAL_form-control-background-color-selected));
+    border: 1px solid var(--form-control-border-color-selected, var(--INTERNAL_form-control-border-color-selected));
+
+    &:hover {
+      border: 1px solid var(--form-control-border-color-selected-hover, var(--INTERNAL_form-control-border-color-selected-hover));
+    }
+  }
+}

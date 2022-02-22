@@ -1,9 +1,11 @@
 import React, { forwardRef, ForwardRefExoticComponent } from 'react';
+import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import { RadioInput } from '../RadioGroup/RadioInput/RadioInput';
 import { Checkbox } from '../CheckboxInput/components/Checkbox';
 import { CheckboxIcon } from '../CheckboxInput/components/CheckboxIcon';
 import { RadioInputIcon } from '../RadioGroup/RadioInput/RadioInputIcon';
+import styles from './OptionTile.module.scss';
 
 export interface OptionTileProps extends BoxProps {
   /**
@@ -63,7 +65,6 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
     name,
     onChange,
     value,
-    background = isSelected ? 'primary-lightest' : 'white',
     borderColor = isSelected ? 'primary' : 'grey-lighter',
     borderWidth = 'xs',
     className = '',
@@ -75,17 +76,24 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
     error = false,
     flex = 'auto',
     hideInput = false,
-    hover = { borderColor: isSelected ? 'primary' : 'grey-light' },
     inputType = 'radio',
     onClick = undefined,
     padding = 'md',
-    radius = 'md',
     shadow = '2xs',
     ...restProps
   },
   ref,
 ) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const classes = classNames(
+    'palmetto-components__variables__form-control',
+    styles['option-tile'],
+    className,
+    {
+      [styles.selected]: isSelected,
+    },
+  );
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (onClick) {
@@ -105,18 +113,15 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
 
   return (
     <Box
-      background={background}
       borderColor={borderColor}
       borderWidth={borderWidth}
       childGap={childGap}
-      className={className}
+      className={classes}
       color={color}
       cursor={cursor}
       direction={direction}
       flex={flex}
-      hover={hover}
       padding={padding}
-      radius={radius}
       ref={ref}
       shadow={shadow}
       {...restProps}
