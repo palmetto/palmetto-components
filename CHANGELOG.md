@@ -1,5 +1,12 @@
 Changelog
 
+# [0.124.0](https://github.com/palmetto/palmetto-components/compare/v0.123.0...v0.124.0) (2022-02-23)
+
+
+### Features
+
+* **Toast:** theme tokens ([#706](https://github.com/palmetto/palmetto-components/issues/706)) ([0d4fe4b](https://github.com/palmetto/palmetto-components/commit/0d4fe4b442db4df16cc131879feeed8ed651b3a8))
+
 # [0.123.0](https://github.com/palmetto/palmetto-components/compare/v0.122.0...v0.123.0) (2022-02-23)
 
 
