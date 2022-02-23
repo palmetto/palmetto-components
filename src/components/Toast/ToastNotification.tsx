@@ -59,12 +59,12 @@ const renderToastIcon = (toast: Toast) => {
 
   if (type === 'success') {
     iconName = 'c-check';
-    iconColor = 'success-light';
+    iconColor = 'success-300';
   }
 
   if (type === 'error') {
     iconName = 'c-warning';
-    iconColor = 'danger-light';
+    iconColor = 'danger-300';
   }
 
   const icon = type !== 'loading' ? <Icon name={iconName} color={iconColor} /> : <Spinner variant="grey" />;
@@ -87,14 +87,14 @@ const renderDismissIcon = (toast: Toast, onDismiss: ToastNotificationProps['onDi
     <Box
       as="button"
       borderWidth="0 0 0 sm"
-      borderColor="grey-600"
+      className={styles['toast-dismiss']}
       margin="0 0 0 sm"
       padding="0 0 0 sm"
       cursor="pointer"
       background="transparent"
-      color="white"
       height="100"
       onClick={onDismiss}
+      aria-label="dismiss notification"
     >
       <Icon name="remove-light" />
     </Box>
@@ -122,23 +122,26 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
 
     const animationClass = toast?.height ? getAnimationClass(toast.position || position, toast.visible) : undefined;
 
+    const classes = classNames(
+      toast.className,
+      styles['toast-notification'],
+      animationClass,
+      {
+        'toast-notification--not-visible': !toast.visible,
+      },
+    );
+
     return (
       <Box
         alignItems="center"
-        background="grey-800"
-        color="white"
-        shadow="2xs"
         maxWidth="300px"
-        padding={toast.isCompact ? 'sm md' : 'md lg'}
-        radius="md"
+        padding={toast.isCompact ? 'sm' : 'md'}
         direction="row"
-        className={classNames(toast.className, animationClass, { 'toast-notification--not-visible': !toast.visible })}
+        className={classes}
         style={{
           ...style,
           ...toast.style,
           ...!toast.height && { opacity: 0 },
-          willChange: 'transform',
-          pointerEvents: 'auto',
         }}
       >
         {typeof children === 'function' ? (
