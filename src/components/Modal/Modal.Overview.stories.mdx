@@ -219,3 +219,37 @@ maxWidth, use existing tokens only.
     }}
   </Story>
 </Canvas>
+
+
+## Component Design Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--modal-background-color': '--color-brand-white-500',
+        '--modal-border-radius': '--size-border-radius-md',
+        '--modal-box-shadow': '--size-box-shadow-md',
+        '--modal-close-button-color': '--color-brand-grey-500',
+        '--modal-close-button-color-hover': '--color-brand-grey-600',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+  </tbody>
+</table>
+

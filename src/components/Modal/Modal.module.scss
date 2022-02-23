@@ -7,11 +7,11 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  padding: var(--modal-close-button-padding);
-  color: var(--modal-close-button-color);
+  padding: var(--size-spacing-xs);
+  color: var(--modal-close-button-color, var(--color-brand-grey-500));
 
   &:hover {
-    color: var(--modal-close-button-color-hover);
+    color: var(--modal-close-button-color-hover, var(--color-brand-grey-600));
   }
 }
 
@@ -43,8 +43,8 @@
 
   @media (min-width: $size-breakpoint-tablet) {
     display: grid;
-    grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
-    grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
+    grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(var(--size-spacing-2xl), 1fr);
+    grid-template-columns: var(--size-spacing-2xl) auto var(--size-spacing-2xl);
     align-content: center;
     align-items: center;
     overflow: hidden;
@@ -60,10 +60,10 @@
   grid-column: 1;
   z-index: var(--size-z-index-modal);
   margin: 0;
-  background-color: var(--modal-background-color);
+  background-color: var(--modal-background-color, var(--color-brand-white-500));
   padding: 0;
   width: 100%;
-  border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
+  border-radius: var(--modal-border-radius, var(--size-border-radius-md)) var(--modal-border-radius, var(--size-border-radius-md)) 0 0;
 
   :global {
     animation: slideInUp 0.3s;
@@ -74,8 +74,8 @@
     grid-column: 2;
     margin: auto;
     outline: none;
-    border-radius: var(--modal-border-radius);
-    box-shadow: var(--modal-box-shadow);
+    border-radius: var(--modal-border-radius, var(--size-border-radius-md));
+    box-shadow: var(--modal-box-shadow, var(--size-box-shadow-md));
     width: 70vw;
     min-height: unset;
     max-height: calc(100vh - 80px);
@@ -102,8 +102,8 @@
 
   @media (min-width: $size-breakpoint-tablet) {
     display: grid;
-    grid-template-rows: minmax(var(--modal-overlay-padding), 1fr) auto minmax(var(--modal-overlay-padding), 1fr);
-    grid-template-columns: var(--modal-overlay-padding) auto var(--modal-overlay-padding);
+    grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(var(--size-spacing-2xl), 1fr);
+    grid-template-columns: var(--size-spacing-2xl) auto var(--size-spacing-2xl);
     align-items: center;
     overflow: hidden;
 
@@ -114,8 +114,8 @@
       grid-column: 2;
       margin: auto;
       outline: none;
-      border-radius: var(--modal-border-radius);
-      box-shadow: var(--modal-box-shadow);
+      border-radius: var(--modal-border-radius, var(--size-border-radius-md));
+      box-shadow: var(--modal-box-shadow, var(--size-box-shadow-md));
       width: 70vw;
       min-height: unset;
       max-height: calc(100vh - 80px);
