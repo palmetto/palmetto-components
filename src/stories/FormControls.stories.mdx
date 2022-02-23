@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Box } from '../components/Box/Box';
 import { SelectInput } from '../components/SelectInput/SelectInput';
+import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
 import { Button } from '../components/Button/Button';
 import { TextInput } from '../components/TextInput/TextInput';
 import { Toggle } from '../components/Toggle/Toggle';
@@ -16,14 +17,16 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
 <Canvas>
   <Story name="Sizes">
     {() => {
-      const [value, setValue] = useState('');
-      const [value1, setValue1] = useState('');
-      const [value2, setValue2] = useState('');
-      const [value3, setValue3] = useState({
-        value: 'chocolate',
-        label: 'Chocolate',
+      const [formValues, setFormValues] = useState({
+        textInputSm: '',
+        textInputMd: '',
+        textInputLg: '',
+        selectInput: {
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        toggleValue: false,
       });
-      const [value4, setValue4] = useState();
       const options = [
         {
           value: 'chocolate',
@@ -38,125 +41,142 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
           label: 'Vanilla',
         },
       ];
+      const handleChange = (key, value) => {
+        setFormValues(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
       return (
         <Box direction="row" childGap="xs">
-          <Box childGap="sm" width="160px">
+          <Box childGap="sm" width="110px">
             <Box display="block">
               <TextInput
                 id="smText"
-                value={value}
+                value={formValues.textInputSm}
                 placeholder="Small"
                 size="sm"
-                onChange={event => setValue(event.target.value)}
+                onChange={event => handleChange('textInputSm', event.target.value)}
               />
             </Box>
             <Box display="block">
               <TextInput
                 id="mdText"
-                value={value1}
+                value={formValues.textInputMd}
                 placeholder="Medium"
-                onChange={event => setValue1(event.target.value)}
+                onChange={event => handleChange('textInputMd', event.target.value)}
               />
             </Box>
             <Box>
               <TextInput
                 id="lgText"
-                value={value2}
+                value={formValues.textInputLg}
                 placeholder="Large"
                 size="lg"
-                onChange={event => setValue2(event.target.value)}
+                onChange={event => handleChange('textInputLg', event.target.value)}
               />
             </Box>
           </Box>
-          <Box childGap="sm">
-            <Box display="block">
-              <Button iconPrefix="property-agreement" size="sm">
-                Small
-              </Button>
-            </Box>
-            <Box display="block">
-              <Button iconPrefix="property-agreement" size="md">
-                Medium
-              </Button>
-            </Box>
-            <Box display="block">
-              <Button iconPrefix="property-agreement" size="lg">
-                Large
-              </Button>
-            </Box>
+          <Box childGap="sm" alignItems="flex-start" justifyContent="flex-start">
+            <Button iconPrefix="property-agreement" size="sm">
+              Small
+            </Button>
+            <Button iconPrefix="property-agreement" size="md">
+              Medium
+            </Button>
+            <Button iconPrefix="property-agreement" size="lg">
+              Large
+            </Button>
           </Box>
-          <Box childGap="sm" width="200px">
-            <Box display="block">
-              <SelectInput
-                id="smallSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                hideLabel
-                size="sm"
-              />
-            </Box>
-            <Box display="block">
-              <SelectInput
-                id="mediumSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                hideLabel
-                size="md"
-              />
-            </Box>
-            <Box display="block">
-              <SelectInput
-                id="largeSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                hideLabel
-                size="lg"
-              />
-            </Box>
+          <Box childGap="sm" width="150px" alignItems="flex-start">
+            <SelectInputNative
+              id="smallSelect"
+              label="Label"
+              onChange={event => handleChange('selectInput', event.target.value)}
+              options={options}
+              value={formValues.selectInput}
+              hideLabel
+              size="sm"
+            />
+            <SelectInputNative
+              id="mediumSelect"
+              label="Label"
+              onChange={event => handleChange('selectInput', event.target.value)}
+              options={options}
+              value={formValues.selectInput}
+              hideLabel
+              size="md"
+            />
+            <SelectInputNative
+              id="largeSelect"
+              label="Label"
+              onChange={event => handleChange('selectInput', event.target.value)}
+              options={options}
+              value={formValues.selectInput}
+              hideLabel
+              size="lg"
+            />
           </Box>
-          <Box childGap="sm" width="200px">
-            <Box display="block">
-              <SelectInput
-                id="smallMultiSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                hideLabel
-                isMulti
-                size="sm"
-              />
-            </Box>
-            <Box display="block">
-              <SelectInput
-                id="mediumMultiSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                hideLabel
-                isMulti
-                size="md"
-              />
-            </Box>
-            <Box display="block">
-              <SelectInput
-                id="largeMultiSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                hideLabel
-                isMulti
-                size="lg"
-              />
-            </Box>
+          <Box childGap="sm" width="150px" alignItems="flex-start">
+            <SelectInput
+              id="smallSelect"
+              label="Label"
+              onChange={event => handleChange('selectInput', event.target.value)}
+              options={options}
+              value={formValues.selectInput}
+              hideLabel
+              size="sm"
+            />
+            <SelectInput
+              id="mediumSelect"
+              label="Label"
+              onChange={event => handleChange('selectInput', event.target.value)}
+              options={options}
+              value={formValues.selectInput}
+              hideLabel
+              size="md"
+            />
+            <SelectInput
+              id="largeSelect"
+              label="Label"
+              onChange={event => handleChange('selectInput', event.target.value)}
+              options={options}
+              value={formValues.selectInput}
+              hideLabel
+              size="lg"
+            />
+          </Box>
+          <Box childGap="sm" width="200px" alignItems="flex-start">
+            <SelectInput
+              id="smallMultiSelect"
+              label="Label"
+              onChange={event => handleChange('selectInput', event.target.value)}
+              options={options}
+              value={formValues.selectInput}
+              hideLabel
+              isMulti
+              size="sm"
+            />
+            <SelectInput
+              id="mediumMultiSelect"
+              label="Label"
+              onChange={event => handleChange('selectInput', event.target.value)}
+              options={options}
+              value={formValues.selectInput}
+              hideLabel
+              isMulti
+              size="md"
+            />
+            <SelectInput
+              id="largeMultiSelect"
+              label="Label"
+              onChange={event => handleChange('selectInput', event.target.value)}
+              options={options}
+              value={formValues.selectInput}
+              hideLabel
+              isMulti
+              size="lg"
+            />
           </Box>
           <Box childGap="sm" width="160px">
             <Box height="32px" justifyContent="center">
@@ -164,8 +184,8 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 id="smToggle"
                 label="small toggle"
                 hideLabel
-                onChange={event => setValue4(event.target.checked)}
-                isChecked={value4}
+                onChange={event => handleChange('toggleValue', event.target.checked)}
+                isChecked={formValues.toggleValue}
                 size="sm"
               />
             </Box>
@@ -174,8 +194,8 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 id="mdToggle"
                 label="medium toggle"
                 hideLabel
-                onChange={event => setValue4(event.target.checked)}
-                isChecked={value4}
+                onChange={event => handleChange('toggleValue', event.target.checked)}
+                isChecked={formValues.toggleValue}
                 size="md"
               />
             </Box>
@@ -184,8 +204,8 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 id="lgToggle"
                 label="large toggle"
                 hideLabel
-                onChange={event => setValue4(event.target.checked)}
-                isChecked={value4}
+                onChange={event => handleChange('toggleValue', event.target.checked)}
+                isChecked={formValues.toggleValue}
                 size="lg"
               />
             </Box>
