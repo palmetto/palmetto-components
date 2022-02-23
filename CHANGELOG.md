@@ -1,5 +1,12 @@
 Changelog
 
+# [0.123.0](https://github.com/palmetto/palmetto-components/compare/v0.122.0...v0.123.0) (2022-02-23)
+
+
+### Features
+
+* **Theming:** form controls can be themed ([#682](https://github.com/palmetto/palmetto-components/issues/682)) ([fcceb95](https://github.com/palmetto/palmetto-components/commit/fcceb95f79faa00942f1bbde3dbcbdc2131a0185))
+
 # [0.122.0](https://github.com/palmetto/palmetto-components/compare/v0.121.0...v0.122.0) (2022-02-17)
 
 
