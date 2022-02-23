@@ -27,6 +27,7 @@ export const parameters = {
         'Content',
         ['Goals and Principles', 'Voice and Tone', 'Grammar and Mechanics', 'Word List'],
         'Theming',
+        ['Overview', 'Form Controls'],
         'Components',
         'Patterns',
         'Design Tokens',

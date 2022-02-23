@@ -14,24 +14,41 @@ import { Heading } from '../components/Heading/Heading';
 import { OptionTileGroup } from '../components/OptionTileGroup/OptionTileGroup';
 import { Pagination } from '../components/Pagination/Pagination';
 import { RadioGroup } from '../components/RadioGroup/RadioGroup';
+import { SelectInput } from '../components/SelectInput/SelectInput';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
 import { Tabs } from '../components/Tabs/Tabs';
 import { TabsSlider } from '../components/TabsSlider/TabsSlider';
 import { Toggle } from '../components/Toggle/Toggle';
+import { TextareaInput } from '../components/TextareaInput/TextareaInput';
 import { TextInput } from '../components/TextInput/TextInput';
 
 <Meta title="Theming/Overview" />
 
 # Theming
 
-Palmetto Components library uses design tokens at its core. Since all design tokens are tied to CSS variables, the underlying values can be overwritten to create a custom theme.
+The Palmetto Design System uses design tokens at its core. Since all design tokens are tied to CSS variables, the underlying values can be overwritten to create a custom theme.
 
-There are two kinds of theming variables in our library:
+## Design Token Types
 
-1. Base Tokens -- Changing these will affect the look and feel of the entire library. E.G: `--color-brand-primary-500`, or `--size-spacing-md`.
-2. Component Tokens -- Theses are scoped to specific components so altering them will apply to that component only. E.G: `--button-size-md-font-size`.
+There are three kinds of tokens in our library:
 
-Not every possible styling option is available to be customized, as the Palmetto Design System is not intended to be a fully-customizable ui library. For component-specific tokens, see docs for the specific component.
+### Base Tokens
+
+Base tokens are primitive values, such as color, typography, and spacing, in a design language. These can be directly used, and are inherited by all other token types. Changing these will affect the look and feel of the entire library. E.G: `--color-brand-primary-500`, or `--size-spacing-md`.
+
+### Common Tokens
+
+Also referred to as alias tokens, common tokens relate to a specific context or abstraction, and may be used across multiple tokens. E.G: `form-control-background-color` is used by TextInput, TextareaInput, SelectInput, and OptionTile components.
+
+### Component Tokens
+
+Component tokens are scoped to specific components so altering them will apply to that component only. E.G: `--button-size-md-font-size`.
+
+Not every possible property style is available to be customized, as the Palmetto Design System is not intended to be a fully-customizable ui library. Token documentation for components that are theme-able are at the bottom of each components' documentation page.
+
+## Theme Example
+
+Here is an example where all three token types are used to create a customized appearance or theme.
 
 <Canvas>
   <Story name="Theme Example">
@@ -53,13 +70,37 @@ Not every possible styling option is available to be customized, as the Palmetto
           label: 'Motorcycle',
         },
       ];
-      const [value, setValue] = useState(true);
-      const [radioValue, setRadioValue] = useState(options[0].value);
-      const [selectValue, setSelectValue] = useState(options[0].value);
-      const [selectedTab, setSelectedTab] = useState(0);
-      const [activePage, setActivePage] = useState(1);
-      const [optionTileGroupValue, setOptionTileGroupValue] = useState(options[0].value);
+      const [isThemed, setIsThemed] = useState(true);
+      const [themeExampleValues, setThemeExampleValues] = useState({
+        activePage: 1,
+        multiSelectValue: [
+          {
+            id: 'motorcycle',
+            value: 'motorcycle',
+            label: 'Motorcycle',
+          },
+          {
+            id: 'truck',
+            value: 'truck',
+            label: 'Truck',
+          },
+        ],
+        optionTileGroupValue: options[0].value,
+        radioValue: options[0].value,
+        selectedTab: 0,
+        selectedTabSlider: 0,
+        selectValue: options[0].value,
+        textValue: 'hello world',
+        textareaValue: 'hello world',
+      });
+      const handleChange = (key, value) => {
+        setThemeExampleValues(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
       const customTheme = {
+        // Base tokens
         '--asset-fonts-brand': 'Consolas,monaco,monospace',
         '--color-brand-primary-50': '#FAF5FF',
         '--color-brand-primary-100': '#E9D8FD',
@@ -111,6 +152,11 @@ Not every possible styling option is available to be customized, as the Palmetto
         '--color-brand-grey-700': '#5F5F5F',
         '--color-brand-grey-800': '#4B4B4B',
         '--color-brand-grey-900': '#3B3B3B',
+        // Common tokens
+        '--form-control-size-md-border-radius': 0,
+        '--form-control-font-family': 'Consolas,monaco,monospace',
+        '--form-control-border-color': '#805AD5',
+        // Component tokens
         '--alert-border-width': '2px',
         '--alert-info-border-color': '#3182CE',
         '--button-size-md-border-radius': '0',
@@ -127,15 +173,9 @@ Not every possible styling option is available to be customized, as the Palmetto
           borderColor="grey-100"
           padding="3xl"
           display="block"
-          style={value ? customTheme : null}
+          style={isThemed ? customTheme : null}
         >
-          <Toggle
-            id="themeToggle"
-            label="Apply Theme"
-            onChange={event => setValue(event.target.checked)}
-            isChecked={value}
-            size="lg"
-          />
+          <Toggle id="themeToggle" label="Apply Theme" onChange={event => setIsThemed(event.target.checked)} isChecked={isThemed} size="lg" />
           <Box childGap="sm">
             <Heading as="h2" size="xl">
               Leading the world toward a clean energy future
@@ -156,56 +196,12 @@ Not every possible styling option is available to be customized, as the Palmetto
             <CategoryFilter isSelected>Selected</CategoryFilter>
           </Box>
           <Alert hasIcon variant="info" title="Info Alert" message="This is an info alert" />
-          <TextInput id="demo" helpText="This is a themed text input" label="Text Input" />
-          <SelectInputNative
-            id="default Select"
-            label="Select Input"
-            onChange={event => {
-              setSelectValue(event.target.value);
-            }}
-            options={options}
-            value={selectValue}
-          />
-          <Box direction="row" childGap="md">
-            <CheckboxInput
-              id="checkedCheckbox"
-              label="Checked Checkbox"
-              onChange={() => {}}
-              isChecked
-            />
-            <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
-          </Box>
-          <RadioGroup
-            title="Radio Group"
-            name="radioGroup"
-            onChange={event => setRadioValue(event.target.value)}
-            value={radioValue}
-            options={options}
-            direction="row"
-          />
-          <OptionTileGroup
-            name="directionVertical"
-            value={optionTileGroupValue}
-            onChange={event => setOptionTileGroupValue(event.target.value)}
-            options={options}
-            direction="row"
-          />
-          <Tabs
-            value={selectedTab}
-            onChange={(event, index) => {
-              setSelectedTab(index);
-            }}
-          >
+          <Tabs value={themeExampleValues.selectedTab} onChange={(event, index) => handleChange('selectedTab', index)}>
             <Tabs.Item>Tab 1</Tabs.Item>
             <Tabs.Item>Tab 2</Tabs.Item>
             <Tabs.Item>Tab 3</Tabs.Item>
           </Tabs>
-          <TabsSlider
-            value={selectedTab}
-            onChange={(event, index) => {
-              setSelectedTab(index);
-            }}
-          >
+          <TabsSlider value={themeExampleValues.selectedTabSlider} onChange={(event, index) => handleChange('selectedTabSlider', index)}>
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>
             <TabsSlider.Item>Tab 3</TabsSlider.Item>
@@ -239,12 +235,66 @@ Not every possible styling option is available to be customized, as the Palmetto
               White
             </Button>
           </Box>
+          <Box background="grey-50" padding="lg" childGap="lg">
+            <Heading size="lg" as="h4">
+              Form Inputs
+            </Heading>
+            <TextInput
+              id="demo"
+              helpText="This is a themed text input"
+              label="Text Input"
+              value={themeExampleValues.textValue}
+              onChange={event => handleChange('textValue', event.target.value)}
+            />
+            <SelectInputNative
+              id="default Select"
+              label="Select Input"
+              onChange={event => handleChange('selectValue', event.target.value)}
+              options={options}
+              value={themeExampleValues.selectValue}
+            />
+            <SelectInput
+              id="multiSelect"
+              name="multiSelect"
+              label="Multi-Select Input"
+              isMulti
+              value={themeExampleValues.multiSelectValue}
+              menuPortalTarget={document.body}
+              options={options}
+              onChange={event => handleChange('multiSelectValue', event.target.value)}
+            />
+            <TextareaInput
+              label="Textarea Input"
+              name="textareaInput"
+              id="textareaInput"
+              value={themeExampleValues.textareaValue}
+              onChange={e => handleChange('textareaValue', e.target.value)}
+            />
+            <Box direction="row" childGap="md">
+              <CheckboxInput id="checkedCheckbox" label="Checked Checkbox" onChange={() => {}} isChecked />
+              <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
+            </Box>
+            <RadioGroup
+              title="Radio Group"
+              name="radioGroup"
+              onChange={event => handleChange('radioValue', event.target.value)}
+              value={themeExampleValues.radioValue}
+              options={options}
+              direction="row"
+            />
+            <OptionTileGroup
+              name="directionVertical"
+              value={themeExampleValues.optionTileGroupValue}
+              onChange={event => handleChange('optionTileGroupValue', event.target.value)}
+              options={options}
+              direction="row"
+            />
+          </Box>
           <Pagination
-            activePage={activePage}
+            activePage={themeExampleValues.activePage}
             itemsPerPage={20}
-            onChange={setActivePage}
-            totalItemsCount={1000}
-            isCompact
+            onChange={index => handleChange('activePage', index)}
+            totalItemsCount={100}
             arePagesVisible
             numberOfPagesDisplayed={3}
           />
