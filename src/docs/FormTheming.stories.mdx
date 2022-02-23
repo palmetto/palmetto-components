@@ -139,7 +139,9 @@ Form controls share tokens since they are designed to have a consistent appearan
   </Story>
 </Canvas>
 
-## Form Control Tokens
+## Form Control Common Tokens
+
+The following tokens are shared by all form controls to maintain a consistent appearance.
 
 <table>
   <thead>
@@ -151,7 +153,7 @@ Form controls share tokens since they are designed to have a consistent appearan
   <tbody>
     {(() => {
       const tokens = {
-        'form-control-box-shadow-focus': '0 0 0 4px --color-brand-primary-light)',
+        'form-control-box-shadow-focus': '0 0 0 4px --color-brand-primary-300',
         'form-control-label-margin': '--size-spacing-xs',
         'form-control-help-margin': '--size-spacing-2xs',
         'form-control-line-height': '--size-line-height-input',
@@ -173,23 +175,23 @@ Form controls share tokens since they are designed to have a consistent appearan
         'form-control-size-lg-font-size': '--size-font-lg',
         'form-control-size-lg-padding': '--size-spacing-md',
         'form-control-background-color': '--color-brand-white-base',
-        'form-control-background-color-disabled': '--color-brand-grey-lightest',
-        'form-control-background-color-error': '--color-brand-danger-lightest',
+        'form-control-background-color-disabled': '--color-brand-grey-50',
+        'form-control-background-color-error': '--color-brand-danger-50',
         'form-control-background-color-selected': '--color-brand-primary-50',
         'form-control-border-color': '--color-brand-grey-100',
         'form-control-border-color-error': '--color-brand-danger-100',
-        'form-control-border-color-focus': '--color-brand-grey-dark',
+        'form-control-border-color-focus': '--color-brand-grey-600',
         'form-control-border-color-hover': '--color-brand-grey-300',
         'form-control-border-color-selected': '--color-brand-primary-500',
         'form-control-border-color-selected-hover': '--color-brand-primary-500',
         'form-control-font-color': '--color-brand-dark-base',
-        'form-control-font-color-disabled': '--color-brand-grey-light',
+        'form-control-font-color-disabled': '--color-brand-grey-300',
         'form-control-font-color-error': '--color-brand-danger-base',
         'form-control-font-color-error-disabled': '--color-brand-danger-200',
-        'form-control-description-color': '--color-brand-grey-dark',
-        'form-control-icon-color': 'form-control-placeholder-color',
+        'form-control-description-color': '--color-brand-grey-600',
+        'form-control-icon-color': '--color-brand-grey-300',
         'form-control-icon-color-hover': '--color-brand-grey',
-        'form-control-placeholder-color': '--color-brand-grey-light',
+        'form-control-placeholder-color': '--color-brand-grey-300',
         'form-control-radio-group-description-spacing': '--size-spacing-xs',
         'form-control-radio-group-option-spacing': '--size-spacing-sm',
         'form-control-radio-group-options-spacing': '--size-spacing-md',
