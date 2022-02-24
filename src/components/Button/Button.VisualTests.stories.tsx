@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { userEvent, waitFor, within } from '@storybook/testing-library';
+import { within } from '@storybook/testing-library';
 import { Button, ButtonProps } from './Button';
 import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 import { Box } from '../Box/Box';
