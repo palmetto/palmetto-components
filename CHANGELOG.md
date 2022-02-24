@@ -1,5 +1,12 @@
 Changelog
 
+# [0.127.0](https://github.com/palmetto/palmetto-components/compare/v0.126.0...v0.127.0) (2022-02-24)
+
+
+### Features
+
+* **Table:** theming tokens ([#709](https://github.com/palmetto/palmetto-components/issues/709)) ([3ab6d5d](https://github.com/palmetto/palmetto-components/commit/3ab6d5d1af194008063c6402e027b58f9d4a75e1))
+
 # [0.126.0](https://github.com/palmetto/palmetto-components/compare/v0.125.0...v0.126.0) (2022-02-24)
 
 
