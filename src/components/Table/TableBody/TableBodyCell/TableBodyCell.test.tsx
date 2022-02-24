@@ -39,15 +39,7 @@ describe('TableCell', () => {
 
       const tableCellWithEllipsis = screen.getByRole('cell');
 
-      expect(tableCellWithEllipsis).toHaveClass('border-width-0');
-    });
-
-    test('td is compact if \'isCompact\' prop is passed', () => {
-      render(<TableCell isCompact>ID</TableCell>);
-
-      const tableCellWithEllipsis = screen.getByRole('cell');
-
-      expect(tableCellWithEllipsis).toHaveClass('p-v-xs', 'p-h-xs');
+      expect(tableCellWithEllipsis).toHaveClass('borderless');
     });
 
     test('It renders with a custom class is passed as prop', () => {
