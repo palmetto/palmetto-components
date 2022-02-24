@@ -3,7 +3,7 @@
   border-bottom-style: solid;
   border-width: 0 0 var(--table-header-border-width, var(--INTERNAL_table-header-border-width)) 0;
   color: var(--table-header-font-color, var(--INTERNAL_table-font-color));
-  font-size: var(--table-cell-font-size, var(--INTERNAL_table-cell-font-size));
+  font-size: var(--table-font-size, var(--INTERNAL_table-font-size));
   padding: var(--table-padding-vertical, var(--INTERNAL_table-padding-vertical))
     var(--table-padding-horizontal, var(--INTERNAL_table-padding-horizontal));
 
