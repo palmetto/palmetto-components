@@ -9,6 +9,7 @@
     position: sticky;
     z-index: calc(var(--size-z-index-sticky) - 1);
     box-shadow: var(--size-box-shadow-md);
+    background-color: var(--table-background-color, var(--INTERNAL_table-background-color));
   }
 
   &.sticky-column-left {

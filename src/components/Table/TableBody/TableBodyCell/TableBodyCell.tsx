@@ -60,6 +60,7 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
 }) => {
   const columnIsSticky = sticky === 'left' || sticky === 'right';
   const tableCellClasses = classNames(
+    'palmetto-components__variables__table',
     styles['table-cell'],
     {
       [styles.truncated]: truncateOverflow,
@@ -79,7 +80,6 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
       display="table-cell"
       borderColor={TableConstants.BORDER_COLOR}
       borderWidth={isBorderless ? '0' : `0 0 ${TableConstants.BORDER_WIDTH} 0`}
-      background={TableConstants.BACKGROUND_COLOR}
       padding={
         isCompact
           ? `${TableConstants.PADDING_VERTICAL_COMPACT} ${TableConstants.PADDING_HORIZONTAL_COMPACT}`
