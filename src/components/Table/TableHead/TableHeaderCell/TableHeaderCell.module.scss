@@ -65,7 +65,7 @@
     white-space: nowrap;
 
     .sort-icon {
-      margin-left: var(--table-header-sort-icon-spacing);
+      margin-left: var(--table-header-sort-icon-spacing, var(--INTERNAL_table-header-sort-icon-spacing));
     }
   }
 }
