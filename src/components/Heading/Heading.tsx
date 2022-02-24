@@ -59,5 +59,5 @@ export const Heading: FC<HeadingProps> = ({
     },
   );
 
-  return createElement(element, { className: classes, children, ...restProps });
+  return createElement(element, { className: classes, ...restProps }, children);
 };

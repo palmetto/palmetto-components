@@ -45,7 +45,7 @@ export default {
       control: 'text',
     },
     tabIndex: {
-      type: { control: 'number' },
+      control: 'number',
     },
     type: {
       control: {
@@ -72,7 +72,7 @@ export default {
       },
     },
     href: {
-      type: { control: 'text' },
+      control: 'text',
     },
   },
 } as Meta;
