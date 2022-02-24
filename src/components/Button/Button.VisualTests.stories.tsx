@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { within } from '@storybook/testing-library';
 import { Button, ButtonProps } from './Button';
 import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 import { Box } from '../Box/Box';
@@ -70,6 +71,12 @@ const Template: Story<ButtonProps> = (args, showIconButton) => (
   </Box>
 );
 
+const SingleButtonTemplate: Story<ButtonProps> = args => (
+  <Button {...args}>
+    label
+  </Button>
+);
+
 export const Sizes = Template.bind({});
 Sizes.args = { showIconButton: true };
 Sizes.parameters = RESPONSIVE_STORY;
@@ -82,3 +89,13 @@ Disabled.args = { isDisabled: true, showIconButton: true };
 
 export const WithIcons = Template.bind({});
 WithIcons.args = { iconPrefix: 'mail', iconSuffix: 'chat' };
+
+export const WithFocusState = SingleButtonTemplate.bind({});
+
+WithFocusState.play = async ({ canvasElement }) => {
+  // Starts querying the component from its root
+  const canvas = within(canvasElement);
+
+  // Looks up the button and interacts with it.
+  canvas.getByRole('button').focus();
+};
