@@ -1,5 +1,12 @@
 Changelog
 
+# [0.126.0](https://github.com/palmetto/palmetto-components/compare/v0.125.0...v0.126.0) (2022-02-24)
+
+
+### Features
+
+* **Card:** theme tokens ([#708](https://github.com/palmetto/palmetto-components/issues/708)) ([4190cf5](https://github.com/palmetto/palmetto-components/commit/4190cf5edcddd86ba0ff263d36e903ccd49439fe))
+
 # [0.125.0](https://github.com/palmetto/palmetto-components/compare/v0.124.0...v0.125.0) (2022-02-23)
 
 
