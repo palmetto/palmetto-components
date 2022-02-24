@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Box } from '../../../Box/Box';
-import * as TableConstants from '../../constants';
 import styles from './TableBodyCell.module.scss';
 
 export interface TableBodyCellProps {
@@ -64,6 +63,8 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
     styles['table-cell'],
     {
       [styles.truncated]: truncateOverflow,
+      [styles.compact]: isCompact,
+      [styles.borderless]: isBorderless,
       [styles['sticky-column']]: columnIsSticky,
       [styles['sticky-column-left']]: sticky === 'left',
       [styles['sticky-column-right']]: sticky === 'right',
@@ -78,16 +79,7 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
       as={columnIsSticky ? 'th' : 'td'}
       className={tableCellClasses}
       display="table-cell"
-      borderColor={TableConstants.BORDER_COLOR}
-      borderWidth={isBorderless ? '0' : `0 0 ${TableConstants.BORDER_WIDTH} 0`}
-      padding={
-        isCompact
-          ? `${TableConstants.PADDING_VERTICAL_COMPACT} ${TableConstants.PADDING_HORIZONTAL_COMPACT}`
-          : `${TableConstants.PADDING_VERTICAL} ${TableConstants.PADDING_HORIZONTAL}`
-      }
       width={`${width}px`}
-      color={TableConstants.FONT_COLOR}
-      fontSize={TableConstants.CELL_FONT_SIZE}
       style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
       scope="row"
     >
