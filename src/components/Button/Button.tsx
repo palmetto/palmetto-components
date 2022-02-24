@@ -224,7 +224,6 @@ export const Button: FC<ButtonProps> = forwardRef(
       id,
       href,
       className: buttonClasses,
-      children: buttonContent,
       disabled,
       target: (as === 'a' && href) ? target : null,
       onBlur: handleBlur,
@@ -235,6 +234,6 @@ export const Button: FC<ButtonProps> = forwardRef(
       type: (href || as === 'a') ? null : type,
       tabIndex,
       ...restProps,
-    });
+    }, buttonContent);
   },
 );

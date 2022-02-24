@@ -20,7 +20,11 @@ export const Demo: Story = () => {
   const handleOpenPopover = () => {
     setPopoverOpen(!isPopoverOpen);
   };
-  const NavItem: FC<{className?: string; iconName?: IconProps['name'];}> = ({ children, className, iconName }) => (
+  const NavItem: FC<{ className?: string; iconName?: IconProps['name']; }> = ({
+    children,
+    className,
+    iconName,
+  }) => (
     <Box
       as="li"
       color="grey-500"
@@ -39,6 +43,10 @@ export const Demo: Story = () => {
       </Box>
     </Box>
   );
+  NavItem.defaultProps = {
+    className: undefined,
+    iconName: undefined,
+  };
   const popoverContent = (
     <>
       <Box
