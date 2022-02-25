@@ -1,5 +1,12 @@
 Changelog
 
+## [0.127.2](https://github.com/palmetto/palmetto-components/compare/v0.127.1...v0.127.2) (2022-02-25)
+
+
+### Bug Fixes
+
+* **FileUpload:** make helpText block level item on mobile ([#711](https://github.com/palmetto/palmetto-components/issues/711)) ([8bef2ef](https://github.com/palmetto/palmetto-components/commit/8bef2ef03d2cddcdcfe64e0429ecfa9eff2af665)), closes [#377](https://github.com/palmetto/palmetto-components/issues/377)
+
 ## [0.127.1](https://github.com/palmetto/palmetto-components/compare/v0.127.0...v0.127.1) (2022-02-24)
 
 # [0.127.0](https://github.com/palmetto/palmetto-components/compare/v0.126.0...v0.127.0) (2022-02-24)
