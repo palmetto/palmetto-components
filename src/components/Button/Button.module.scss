@@ -99,6 +99,7 @@
   &:not(.naked) {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     position: relative;
     transition-duration: 0.2s;
     transition-property: background-color, border, box-shadow, color;
