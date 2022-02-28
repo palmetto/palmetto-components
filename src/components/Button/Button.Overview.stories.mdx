@@ -140,12 +140,20 @@ Add an icon to the left or right inside the Button using the `iconPrefix` and `i
 
 <Canvas>
   <Story name="With Icons">
-    <Box direction="row" childGap="md">
+    <Box display="flex" direction="row" childGap="md">
       <Button variant="primary" iconPrefix="mail">
         Email
       </Button>
       <Button variant="primary" isOutlined iconSuffix="chat">
         Chat Now
+      </Button>
+    </Box>
+    <Box display="flex" direction="row" childGap="xs" margin="lg 0 0 0">
+      <Button onClick={() => alert('clicked')} variant="light" iconPrefix="caret-left">
+        Prev
+      </Button>
+      <Button onClick={() => alert('clicked')} variant="light" iconSuffix="caret-right">
+        Next
       </Button>
     </Box>
   </Story>
