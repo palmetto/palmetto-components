@@ -15,7 +15,7 @@ const Template: Story<ButtonProps> = (args, showIconButton) => (
   <Box childGap="xl">
     {BUTTON_SIZES.map(size => (
       <Box childGap="sm" key={size}>
-        <Box childGap="sm" direction="row">
+        <Box childGap="sm" direction="row" alignItems="flex-start">
           {BUTTON_VARIANTS.map(variant => (
             <Button {...args} size={size} variant={variant} key={`${size}-${variant}`}>
               {`${size} ${variant}`}
@@ -34,7 +34,7 @@ const Template: Story<ButtonProps> = (args, showIconButton) => (
             </Button>
           )}
         </Box>
-        <Box childGap="sm" direction="row" key={size}>
+        <Box childGap="sm" direction="row" alignItems="flex-start" key={size}>
           {BUTTON_VARIANTS.map(variant => (
             <Button
               {...args}
