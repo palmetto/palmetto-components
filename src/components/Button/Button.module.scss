@@ -97,7 +97,8 @@
   font-family: var(--button-font-family, var(--asset-fonts-body));
 
   &:not(.naked) {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     position: relative;
     transition-duration: 0.2s;
     transition-property: background-color, border, box-shadow, color;
