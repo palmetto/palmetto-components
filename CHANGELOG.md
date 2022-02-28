@@ -1,5 +1,12 @@
 Changelog
 
+## [0.127.3](https://github.com/palmetto/palmetto-components/compare/v0.127.2...v0.127.3) (2022-02-28)
+
+
+### Bug Fixes
+
+* **Button:** vertically center button contents ([#712](https://github.com/palmetto/palmetto-components/issues/712)) ([6248f3a](https://github.com/palmetto/palmetto-components/commit/6248f3a5aad702abc649f7ebb0efd82d74ea9dc1))
+
 ## [0.127.2](https://github.com/palmetto/palmetto-components/compare/v0.127.1...v0.127.2) (2022-02-25)
 
 
