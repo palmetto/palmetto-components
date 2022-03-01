@@ -1,3 +1,19 @@
+.card {
+  background-color: var(--card-background-color, var(--color-brand-white-500));
+  border-radius: var(--modal-border-radius, var(--size-border-radius-md));
+  box-shadow: var(--card-box-shadow, var(--size-box-shadow-sm));
+
+  &.subdued {
+    background-color: var(--card-subdued-background-color, var(--color-brand-grey-50));
+    box-shadow: none;
+  }
+}
+
+.card-footer {
+  background-color: var(--card-footer-background-color, var(--color-brand-grey-50));
+  border-color: var(--card-section-border-color, var(--color-brand-grey-100));
+}
+
 .card-section + .card-section {
-  border-top: 1px solid var(--card-border-color);
+  border-top: 1px solid var(--card-section-border-color, var(--color-brand-grey-100));
 }

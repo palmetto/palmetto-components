@@ -97,54 +97,6 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
     return value === option.value;
   };
 
-  const getOptionBackgroundColor = (option: Option) => {
-    if (isOptionSelected(option) && !option.disabled && error) {
-      return 'danger-lightest';
-    }
-    if (isOptionSelected(option) && option.disabled && error) {
-      return 'danger-lightest';
-    }
-    if (isOptionSelected(option) && !option.disabled) {
-      return 'primary-lightest';
-    }
-    if (option.disabled) {
-      return 'grey-lightest';
-    }
-
-    return 'white';
-  };
-
-  const getOptionBorderColor = (option: Option) => {
-    if (isOptionSelected(option) && !option.disabled && error) {
-      return 'danger';
-    }
-    if (isOptionSelected(option) && option.disabled && error) {
-      return 'danger-lighter';
-    }
-    if (isOptionSelected(option) && !option.disabled) {
-      return 'primary';
-    }
-    if (isOptionSelected(option) && option.disabled) {
-      return 'grey-light';
-    }
-
-    return 'grey-lighter';
-  };
-
-  const getOptionFontColor = (option: Option) => {
-    if (error && option.disabled) {
-      return 'danger-lighter';
-    }
-    if (error) {
-      return 'danger';
-    }
-    if (option.disabled) {
-      return 'grey-light';
-    }
-
-    return 'dark';
-  };
-
   return (
     <Box
       ref={ref}
@@ -180,9 +132,6 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
           <OptionTile
             key={option.id}
             className={styles.option}
-            background={getOptionBackgroundColor(option)}
-            borderColor={getOptionBorderColor(option)}
-            color={getOptionFontColor(option)}
             flex={isFullWidth ? 'auto' : 'initial'}
             cursor={option.disabled ? 'not-allowed' : 'pointer'}
             hover={{

@@ -20,6 +20,10 @@ import { Box, BoxProps } from '../Box/Box';
 
 export type PopoverProps = {
   /**
+   * Custom class to apply to the alert.
+   */
+  className?: string;
+  /**
    * The trigger element
    */
   children: ReactNode;
@@ -98,6 +102,7 @@ const contentContainerDefaults: BoxProps = {
 };
 
 export const Popover: FC<PopoverProps> = ({
+  className,
   isOpen,
   children,
   content,
@@ -192,7 +197,7 @@ export const Popover: FC<PopoverProps> = ({
     const renderPopperBox = () => (
       <Box
         ref={popperRef}
-        className={styles.popover}
+        className={classNames(styles.popover, className)}
         style={popperStyles.popper}
         role="dialog"
         aria-hidden={!isOpen}

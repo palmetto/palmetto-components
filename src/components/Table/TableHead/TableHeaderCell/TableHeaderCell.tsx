@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { Box } from '../../../Box/Box';
 import { Icon } from '../../../Icon/Icon';
 import { Column, EventWithColumnKey } from '../../../../types';
-import * as TableConstants from '../../constants';
 import styles from './TableHeaderCell.module.scss';
 
 export interface TableHeaderCellProps {
@@ -138,10 +137,13 @@ export const TableHeaderCell: FC<TableHeaderCellProps> = ({
   };
 
   const tableHeaderClasses = classNames(
+    'palmetto-components__variables__table',
     styles['table-header-cell'],
     {
       [styles.sortable]: isSortable,
+      [styles.compact]: isCompact,
       [styles.truncated]: truncateOverflow,
+      [styles.borderless]: isBorderless,
       [styles['sticky-header']]: hasStickyHeader,
       [styles['sticky-column']]: sticky === 'left' || sticky === 'right',
       [styles['sticky-column-left']]: sticky === 'left',
@@ -157,18 +159,7 @@ export const TableHeaderCell: FC<TableHeaderCellProps> = ({
       as="th"
       display="table-cell"
       className={tableHeaderClasses}
-      borderColor={TableConstants.BORDER_COLOR}
-      borderWidth={isBorderless ? '0' : `0 0 ${TableConstants.BORDER_WIDTH} 0`}
-      background={TableConstants.BACKGROUND_COLOR}
-      padding={
-        isCompact
-          ? `${TableConstants.PADDING_VERTICAL_COMPACT} ${TableConstants.PADDING_HORIZONTAL_COMPACT}`
-          : `${TableConstants.PADDING_HEADER_VERTICAL} ${TableConstants.PADDING_HORIZONTAL}`
-      }
       width={`${width}px`}
-      color={TableConstants.FONT_COLOR}
-      fontSize={TableConstants.HEADER_FONT_SIZE}
-      fontWeight={TableConstants.HEADER_FONT_WEIGHT}
       aria-sort={
         sortedColumn && isColumnSorted(column.dataKey) ? sortedColumn.sortDirection : 'none'
       }

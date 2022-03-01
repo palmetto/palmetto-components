@@ -51,7 +51,6 @@ export const Heading: FC<HeadingProps> = ({
   const headingSize = size || HEADING_DEFAULT_SIZE_MAP[as];
 
   const classes = classNames(
-    'palmetto-components__variables__heading',
     styles.heading,
     className,
     generateResponsiveClasses('font-size', headingSize),
@@ -60,5 +59,5 @@ export const Heading: FC<HeadingProps> = ({
     },
   );
 
-  return createElement(element, { className: classes, children, ...restProps });
+  return createElement(element, { className: classes, ...restProps }, children);
 };

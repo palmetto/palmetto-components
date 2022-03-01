@@ -1,5 +1,7 @@
 import React, { FC, ReactNode } from 'react';
+import classNames from 'classnames';
 import { Box, BoxProps } from '../../../Box/Box';
+import styles from '../../Card.module.scss';
 
 export interface CardFooterProps extends BoxProps {
   /**
@@ -13,19 +15,17 @@ export interface CardFooterProps extends BoxProps {
 }
 
 export const CardFooter: FC<CardFooterProps> = ({
-  background = 'grey-50',
-  borderColor = 'grey-100',
   borderWidth = 'xs 0 0 0',
   children = null,
+  className,
   display = 'block',
   padding = 'md lg',
   ...restProps
 }) => (
   <Box
-    background={background}
+    className={classNames(styles['card-footer'], className)}
     display={display}
     padding={padding}
-    borderColor={borderColor}
     borderWidth={borderWidth}
     {...restProps}
   >

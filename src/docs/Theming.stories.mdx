@@ -1,301 +1,305 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { useState } from 'react';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import { size } from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 import { color } from '@palmetto/palmetto-design-tokens/build/js/variables-color';
 import { asset } from '@palmetto/palmetto-design-tokens/build/js/variables-asset';
 
-<Meta
-  title="Theming/Variables"
-/>
+import { Alert } from '../components/Alert/Alert';
+import { Badge } from '../components/Badge/Badge';
+import { Box } from '../components/Box/Box';
+import { Button } from '../components/Button/Button';
+import { CategoryFilter } from '../components/CategoryFilter/CategoryFilter';
+import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
+import { Heading } from '../components/Heading/Heading';
+import { OptionTileGroup } from '../components/OptionTileGroup/OptionTileGroup';
+import { Pagination } from '../components/Pagination/Pagination';
+import { RadioGroup } from '../components/RadioGroup/RadioGroup';
+import { SelectInput } from '../components/SelectInput/SelectInput';
+import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
+import { Tabs } from '../components/Tabs/Tabs';
+import { TabsSlider } from '../components/TabsSlider/TabsSlider';
+import { Toggle } from '../components/Toggle/Toggle';
+import { TextareaInput } from '../components/TextareaInput/TextareaInput';
+import { TextInput } from '../components/TextInput/TextInput';
 
+<Meta title="Theming/Overview" />
 
 # Theming
 
-Palmetto Components library uses Design Tokens at its core. Since all design tokens are tied to CSS variables,
-The underlying values can be overwritten to easily generate custom themes.
+The Palmetto Design System uses design tokens at its core. Since all design tokens are tied to CSS variables, the underlying values can be overwritten to create a custom theme.
 
-There are two kinds of theming variables in our library:
-1. Base Tokens -- Changing these will affect the look and feel of the entire library. E.G: `--color-brand-primary-base`, or `--size-spacing-md`.
-2. Component Tokens -- Theses are scoped to specific components so altering them will apply to that component only. E.G: `--button-size-md-font-size`.
+## Design Token Types
 
-Below is a table of all customizable base tokens. For component-specific variables, see docs for the specific component.
+There are three kinds of tokens in our library:
 
-### Colors
+### Base Tokens
 
-NOTE: Some colors are mapped to others, so changing it is important to change both to maintain consistency. 
+Base tokens are primitive values, such as color, typography, and spacing, in a design language. These can be directly used, and are inherited by all other token types. Changing these will affect the look and feel of the entire library. E.G: `--color-brand-primary-500`, or `--size-spacing-md`.
 
-E.G: `--color-brand-primary-base` is the same as `--color-brand-primary-500`. Similarly `lighter`, `darker` (semantic variations) will correspond
-to one of the number values in the scale. E.G: `--color-brand-primary-lightest` is the same as `--color-brand-primary-50`. 
+### Common Tokens
 
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(color.brand).map(([name, colorVariations]) => (
-      Object.entries(colorVariations).map(([variationName, variationValue], i) => {
-        const variationsWithDarkFont = [
-          'white',
-          'light',
-          'lighter',
-          'lightest',
-          'transparent',
-          '50',
-          '100',
-          '200',
-          '300',
-        ];
-        return (
-          <tr key={i}>
-            <td><code>{`--color-brand-${name}-${variationName}`}</code></td>
-            <td
-              style={{
-                background: variationValue.value,
-                color: variationsWithDarkFont.includes(variationName) ? 'black' : 'white',
-              }}
-            >
-              {variationValue.value}
-            </td>
-          </tr>
-        );
-      })
-    ))}
-  </tbody>
-</table>
+Also referred to as alias tokens, common tokens relate to a specific context or abstraction, and may be used across multiple tokens. E.G: `form-control-background-color` is used by TextInput, TextareaInput, SelectInput, and OptionTile components.
 
-### Border Radius
+### Component Tokens
 
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-      <th>px</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size['border-radius']).map(([name, entry], i) => (
-      <tr key={i}>
-        <td><code>{`--size-border-radius-${name}`}</code></td>
-        <td>{entry.value}</td>
-        <td>{name !== 'circle' ? entry.original.value * 16 : ''}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+Component tokens are scoped to specific components so altering them will apply to that component only. E.G: `--button-size-md-font-size`.
 
-### Border Width
+Not every possible property style is available to be customized, as the Palmetto Design System is not intended to be a fully-customizable ui library. Token documentation for components that are theme-able are at the bottom of each components' documentation page.
 
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size['border']).map(([name, entry], i) => (
-      <tr key={i}>
-        <td>
-          <code>{`--size-border-${name}`}</code>
-        </td>
-        <td>{entry.value}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+## Theme Example
 
-### Box Shadow
+Here is an example where all three token types are used to create a customized appearance or theme.
 
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size['box-shadow']).map(([name, entry], i) => (
-      <tr key={i}>
-        <td>
-          <code>{`--size-box-shadow-${name}`}</code>
-        </td>
-        <td>{entry.value}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-### Font Family
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(asset.fonts).map(([name, entry], i) => (
-      <tr key={i}>
-        <td>
-          <code>{`--asset-fonts-${name}`}</code>
-        </td>
-        <td>{entry.value}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-### Font Size
-
-<table>
-<thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-      <th>px</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size.font).map(([name, entry], i) => (
-      <tr key={i}>
-        <td><code>{`--size-font-${name}`}</code></td>
-        <td>{entry.value}</td>
-        <td>{name === 'base' ? '16' : (name === 'inherit' ? '' : entry.original.value * 16)}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-### Font Weight
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size['font-weight']).map(([name, entry], i) => (
-      <tr key={i}>
-        <td>
-          <code>{`--size-font-weight-${name}`}</code>
-        </td>
-        <td>{entry.value}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-### Height
-
-NOTE: You likely do not want to change underlying variable values for literal variables. E.G: `--size-height-90`.
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-      <th>px</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size.height).map(([name, entry], i) => (
-      <tr key={i}>
-        <td><code>{`--size-height-${name}`}</code></td>
-        <td>{entry.value}</td>
-        <td>{name === 'base' ? '16' : (entry.value.includes('%') || ['inherit', 'auto'].includes(name)) ? '' : entry.original.value * 16}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-### Width
-
-NOTE: You likely do not want to change underlying variable values for literal variables. E.G: `--size-width-90`.
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-      <th>px</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size.width).map(([name, entry], i) => (
-      <tr key={i}>
-        <td><code>{`--size-width-${name}`}</code></td>
-        <td>{entry.value}</td>
-        <td>{name === 'base' ? '16' : (entry.value.includes('%') || ['inherit', 'auto'].includes(name)) ? '' : entry.original.value * 16}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-### Line Height
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size['line-height']).map(([name, entry], i) => (
-      <tr key={i}>
-        <td>
-          <code>{`--size-line-height-${name}`}</code>
-        </td>
-        <td>{entry.value}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-### Spacing
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-      <th>px</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size.spacing).map(([name, entry], i) => (
-      <tr key={i}>
-        <td><code>{`--size-spacing-${name}`}</code></td>
-        <td>{entry.value}</td>
-        <td>{name === 'base' ? '16' : (['inherit', 'auto'].includes(name) ? '' : entry.original.value * 16)}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-### Z-Index
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.entries(size['z-index']).map(([name, entry], i) => (
-      <tr key={i}>
-        <td>
-          <code>{`--size-z-index-${name}`}</code>
-        </td>
-        <td>{entry.value}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+<Canvas>
+  <Story name="Theme Example">
+    {() => {
+      const options = [
+        {
+          id: 'car',
+          value: 'car',
+          label: 'Car',
+        },
+        {
+          id: 'truck',
+          value: 'truck',
+          label: 'Truck',
+        },
+        {
+          id: 'motorcycle',
+          value: 'motorcycle',
+          label: 'Motorcycle',
+        },
+      ];
+      const [isThemed, setIsThemed] = useState(true);
+      const [themeExampleValues, setThemeExampleValues] = useState({
+        activePage: 1,
+        multiSelectValue: [
+          {
+            id: 'motorcycle',
+            value: 'motorcycle',
+            label: 'Motorcycle',
+          },
+          {
+            id: 'truck',
+            value: 'truck',
+            label: 'Truck',
+          },
+        ],
+        optionTileGroupValue: options[0].value,
+        radioValue: options[0].value,
+        selectedTab: 0,
+        selectedTabSlider: 0,
+        selectValue: options[0].value,
+        textValue: 'hello world',
+        textareaValue: 'hello world',
+      });
+      const handleChange = (key, value) => {
+        setThemeExampleValues(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
+      const customTheme = {
+        // Base tokens
+        '--asset-fonts-brand': 'Consolas,monaco,monospace',
+        '--color-brand-primary-50': '#FAF5FF',
+        '--color-brand-primary-100': '#E9D8FD',
+        '--color-brand-primary-200': '#D6BCFA',
+        '--color-brand-primary-300': '#B794F4',
+        '--color-brand-primary-400': '#9F7AEA',
+        '--color-brand-primary-500': '#805AD5',
+        '--color-brand-primary-600': '#6B46C1',
+        '--color-brand-primary-700': '#553C9A',
+        '--color-brand-primary-800': '#44337A',
+        '--color-brand-primary-900': '#322659',
+        '--color-brand-info-50': '#EBF8FF',
+        '--color-brand-info-100': '#BEE3F8',
+        '--color-brand-info-200': '#90CDF4',
+        '--color-brand-info-300': '#63B3ED',
+        '--color-brand-info-400': '#4299E1',
+        '--color-brand-info-500': '#3182CE',
+        '--color-brand-info-600': '#2B6CB0',
+        '--color-brand-info-700': '#2C5282',
+        '--color-brand-info-800': '#2A4365',
+        '--color-brand-info-900': '#1A365D',
+        '--color-brand-success-50': '#F0FFF4',
+        '--color-brand-success-100': '#C6F6D5',
+        '--color-brand-success-200': '#9AE6B4',
+        '--color-brand-success-300': '#68D391',
+        '--color-brand-success-400': '#48BB78',
+        '--color-brand-success-500': '#38A169',
+        '--color-brand-success-600': '#2F855A',
+        '--color-brand-success-700': '#276749',
+        '--color-brand-success-800': '#22543D',
+        '--color-brand-success-900': '#1C4532',
+        '--color-brand-danger-50': '#FFF5F5',
+        '--color-brand-danger-100': '#FED7D7',
+        '--color-brand-danger-200': '#FEB2B2',
+        '--color-brand-danger-300': '#FC8181',
+        '--color-brand-danger-400': '#F56565',
+        '--color-brand-danger-500': '#E53E3E',
+        '--color-brand-danger-600': '#C53030',
+        '--color-brand-danger-700': '#9B2C2C',
+        '--color-brand-danger-800': '#822727',
+        '--color-brand-danger-900': '#63171B',
+        '--color-brand-grey-50': '#FAFAFA',
+        '--color-brand-grey-100': '#EDEDED',
+        '--color-brand-grey-200': '#D4D4D4',
+        '--color-brand-grey-300': '#BCBCBC',
+        '--color-brand-grey-400': '#A4A4A4',
+        '--color-brand-grey-500': '#8B8B8B',
+        '--color-brand-grey-600': '#727272',
+        '--color-brand-grey-700': '#5F5F5F',
+        '--color-brand-grey-800': '#4B4B4B',
+        '--color-brand-grey-900': '#3B3B3B',
+        // Common tokens
+        '--form-control-size-md-border-radius': 0,
+        '--form-control-font-family': 'Consolas,monaco,monospace',
+        '--form-control-border-color': '#805AD5',
+        // Component tokens
+        '--alert-border-width': '2px',
+        '--alert-info-border-color': '#3182CE',
+        '--button-size-md-border-radius': '0',
+        '--button-size-md-padding-vertical': '.5rem',
+        '--button-size-md-padding-horizontal': '.5rem',
+        '--button-primary-box-shadow-focus': '0 0 0 4px var(--color-brand-primary-200)',
+        '--button-font-family': 'Consolas,monaco,monospace',
+      };
+      return (
+        <Box
+          childGap="lg"
+          background="white"
+          borderWidth="xs"
+          borderColor="grey-100"
+          padding="3xl"
+          display="block"
+          style={isThemed ? customTheme : null}
+        >
+          <Toggle id="themeToggle" label="Apply Theme" onChange={event => setIsThemed(event.target.checked)} isChecked={isThemed} size="lg" />
+          <Box childGap="sm">
+            <Heading as="h2" size="xl">
+              Leading the world toward a clean energy future
+            </Heading>
+          </Box>
+          <Box direction="row" childGap="sm">
+            <Badge variant="primary" message="primary" />
+            <Badge variant="secondary" message="secondary" />
+            <Badge variant="tertiary" message="tertiary" />
+            <Badge variant="info" message="info" />
+            <Badge variant="success" message="success" />
+            <Badge variant="warning" message="warning" />
+            <Badge variant="danger" message="danger" />
+            <Badge variant="default" message="default" />
+          </Box>
+          <Box direction="row" childGap="sm">
+            <CategoryFilter>Unselected</CategoryFilter>
+            <CategoryFilter isSelected>Selected</CategoryFilter>
+          </Box>
+          <Alert hasIcon variant="info" title="Info Alert" message="This is an info alert" />
+          <Tabs value={themeExampleValues.selectedTab} onChange={(event, index) => handleChange('selectedTab', index)}>
+            <Tabs.Item>Tab 1</Tabs.Item>
+            <Tabs.Item>Tab 2</Tabs.Item>
+            <Tabs.Item>Tab 3</Tabs.Item>
+          </Tabs>
+          <TabsSlider value={themeExampleValues.selectedTabSlider} onChange={(event, index) => handleChange('selectedTabSlider', index)}>
+            <TabsSlider.Item>Tab 1</TabsSlider.Item>
+            <TabsSlider.Item>Tab 2</TabsSlider.Item>
+            <TabsSlider.Item>Tab 3</TabsSlider.Item>
+            <TabsSlider.Item isDisabled>Disabled</TabsSlider.Item>
+          </TabsSlider>
+          <Box alignItems="center" childGap="sm" direction="row">
+            <Button variant="primary">Primary</Button>
+            <Button variant="success">Success</Button>
+            <Button variant="danger">Danger</Button>
+            <Button variant="light">Light</Button>
+            <Button variant="dark">Dark</Button>
+            <Button variant="white">White</Button>
+          </Box>
+          <Box alignItems="center" childGap="sm" direction="row">
+            <Button isOutlined variant="primary">
+              Primary
+            </Button>
+            <Button isOutlined variant="success">
+              Success
+            </Button>
+            <Button isOutlined variant="danger">
+              Danger
+            </Button>
+            <Button isOutlined variant="light">
+              Light
+            </Button>
+            <Button isOutlined variant="dark">
+              Dark
+            </Button>
+            <Button isOutlined variant="white">
+              White
+            </Button>
+          </Box>
+          <Box background="grey-50" padding="lg" childGap="lg">
+            <Heading size="lg" as="h4">
+              Form Inputs
+            </Heading>
+            <TextInput
+              id="demo"
+              helpText="This is a themed text input"
+              label="Text Input"
+              value={themeExampleValues.textValue}
+              onChange={event => handleChange('textValue', event.target.value)}
+            />
+            <SelectInputNative
+              id="default Select"
+              label="Select Input"
+              onChange={event => handleChange('selectValue', event.target.value)}
+              options={options}
+              value={themeExampleValues.selectValue}
+            />
+            <SelectInput
+              id="multiSelect"
+              name="multiSelect"
+              label="Multi-Select Input"
+              isMulti
+              value={themeExampleValues.multiSelectValue}
+              menuPortalTarget={document.body}
+              options={options}
+              onChange={event => handleChange('multiSelectValue', event.target.value)}
+            />
+            <TextareaInput
+              label="Textarea Input"
+              name="textareaInput"
+              id="textareaInput"
+              value={themeExampleValues.textareaValue}
+              onChange={e => handleChange('textareaValue', e.target.value)}
+            />
+            <Box direction="row" childGap="md">
+              <CheckboxInput id="checkedCheckbox" label="Checked Checkbox" onChange={() => {}} isChecked />
+              <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
+            </Box>
+            <RadioGroup
+              title="Radio Group"
+              name="radioGroup"
+              onChange={event => handleChange('radioValue', event.target.value)}
+              value={themeExampleValues.radioValue}
+              options={options}
+              direction="row"
+            />
+            <OptionTileGroup
+              name="directionVertical"
+              value={themeExampleValues.optionTileGroupValue}
+              onChange={event => handleChange('optionTileGroupValue', event.target.value)}
+              options={options}
+              direction="row"
+            />
+          </Box>
+          <Pagination
+            activePage={themeExampleValues.activePage}
+            itemsPerPage={20}
+            onChange={index => handleChange('activePage', index)}
+            totalItemsCount={100}
+            arePagesVisible
+            numberOfPagesDisplayed={3}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

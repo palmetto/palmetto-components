@@ -11,7 +11,7 @@ import { getElementType } from '../../lib/getElementType';
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
-export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark';
+export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark' | 'white';
 
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 export interface ButtonProps {
@@ -168,7 +168,7 @@ export const Button: FC<ButtonProps> = forwardRef(
     const getSpinnerVariant = () => {
       if (isOutlined) return variant;
 
-      return variant === 'light' ? 'grey' : 'white';
+      return (variant === 'light' || variant === 'white') ? 'grey' : 'white';
     };
 
     const buttonContent = iconPrefix || iconSuffix ? (
@@ -224,7 +224,6 @@ export const Button: FC<ButtonProps> = forwardRef(
       id,
       href,
       className: buttonClasses,
-      children: buttonContent,
       disabled,
       target: (as === 'a' && href) ? target : null,
       onBlur: handleBlur,
@@ -235,6 +234,6 @@ export const Button: FC<ButtonProps> = forwardRef(
       type: (href || as === 'a') ? null : type,
       tabIndex,
       ...restProps,
-    });
+    }, buttonContent);
   },
 );

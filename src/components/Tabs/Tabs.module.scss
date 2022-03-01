@@ -1,31 +1,35 @@
 .tab-item {
   border-bottom: 2px solid transparent;
-  font-weight: var(--size-font-weight-bold);
+  font-weight: var(--tabs-font-weight, var(--size-font-weight-bold));
   transition: color 0.2s, border-color 0.2s;
 
-  &[disabled] { /* stylelint-disable-line */
+  &[disabled] {
+    /* stylelint-disable-line */
     cursor: not-allowed;
   }
 
   /* define regular focus styles for non-supporting browsers */
   &:focus {
     outline: 0;
-    box-shadow: inset var(--input-focus-box-shadow);
+    box-shadow: inset
+      var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
   /* Show focus styles on keyboard focus. */
   &:focus-visible {
     outline: 0;
-    box-shadow: inset var(--input-focus-box-shadow);
+    box-shadow: inset
+      var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
   &--selected {
     &:not(.disabled) {
-      border-bottom: 2px solid var(--color-brand-primary-base);
-      color: var(--color-brand-primary-base);
+      border-bottom: 2px solid var(--tabs-selected-border-color, var(--color-brand-primary-500));
+      color: var(--tabs-selected-font-color, var(--color-brand-primary-500));
 
-      &:hover { /* stylelint-disable-line */
-        color: var(--color-brand-primary-dark);
+      &:hover {
+        /* stylelint-disable-line */
+        color: var(--tabs-selected-font-color-hover, var(--color-brand-primary-600));
       }
     }
 
@@ -37,7 +41,7 @@
 
   &:not(.disabled) {
     &:hover {
-      color: var(--color-brand-primary-base);
+      color: var(--tabs-font-color-hover, var(--color-brand-primary-500));
       cursor: pointer;
     }
   }

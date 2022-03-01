@@ -116,7 +116,7 @@ export const Pagination: FC<PaginationProps> = ({
           {prevPageText}
         </Button>
         {arePagesVisible && (
-          <Box direction="row">
+          <Box direction="row" childGap="2xs">
             {pages.map(({ pageNumber, isPage }) => (
               <Button
                 key={pageNumber}
@@ -125,7 +125,6 @@ export const Pagination: FC<PaginationProps> = ({
                 size={isCompact ? 'sm' : 'md'}
                 style={{
                   minWidth: isCompact ? '33px' : '42px',
-                  borderRadius: 0,
                   border: 0,
                 }}
                 className={className}
