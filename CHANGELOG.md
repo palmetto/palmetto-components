@@ -1,5 +1,12 @@
 Changelog
 
+# [0.113.0-beta.2](https://github.com/palmetto/palmetto-components/compare/v0.113.0-beta.1...v0.113.0-beta.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* update palmetto-design-tokens package ([#713](https://github.com/palmetto/palmetto-components/issues/713)) ([5a913c7](https://github.com/palmetto/palmetto-components/commit/5a913c7b223776176325dc5de45f47e6d3ff14a6))
+
 # [0.113.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.112.2-beta.1...v0.113.0-beta.1) (2022-02-08)
 
 
