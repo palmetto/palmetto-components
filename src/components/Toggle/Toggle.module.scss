@@ -181,7 +181,7 @@
   padding: 2px;
 
   &.error {
-    background-color: var(--form-control-background-color-error, var(--INTERNAL_form-control-background-color-error));
+    background-color: var(--toggle-background-color-error, var(--color-brand-danger-400));
   }
 }
 
