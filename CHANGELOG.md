@@ -1,5 +1,12 @@
 Changelog
 
+# [0.128.0](https://github.com/palmetto/palmetto-components/compare/v0.127.3...v0.128.0) (2022-03-02)
+
+
+### Features
+
+* **Colors:** updated brand colors ([#721](https://github.com/palmetto/palmetto-components/issues/721)) ([5776395](https://github.com/palmetto/palmetto-components/commit/577639550a9488f6cb630f0ecc9abacfc9275845))
+
 ## [0.127.3](https://github.com/palmetto/palmetto-components/compare/v0.127.2...v0.127.3) (2022-02-28)
 
 
