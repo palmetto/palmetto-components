@@ -1,9 +1,11 @@
 .tab-item {
   z-index: 1;
-  font-weight: var(--size-font-weight-bold);
+  font-weight: var(--tabs-slider-font-weight, var(--button-font-weight, var(--size-font-weight-bold)));
   color: var(--color-brand-grey-500);
+  font-family: var(--tabs-slider-font-family, var(--button-font-family));
 
-  &[disabled] { /* stylelint-disable-line */
+  &[disabled] {
+    /* stylelint-disable-line */
     cursor: not-allowed;
     color: var(--color-brand-grey-300);
   }
@@ -11,13 +13,13 @@
   /* define regular focus styles for non-supporting browsers */
   &:focus {
     outline: 0;
-    box-shadow: inset var(--input-focus-box-shadow);
+    box-shadow: inset var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
   /* Show focus styles on keyboard focus. */
   &:focus-visible {
     outline: 0;
-    box-shadow: inset var(--input-focus-box-shadow);
+    box-shadow: inset var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
   &:not(.disabled) {

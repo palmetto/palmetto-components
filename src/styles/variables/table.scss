@@ -1,21 +1,24 @@
-:root {
-  --table-border-color: var(--color-brand-grey-lighter);
+.palmetto-components__variables__table {
+  --INTERNAL_table-border-color: var(--color-brand-grey-100);
+  --INTERNAL_table-border-width: var(--size-border-xs);
+  --INTERNAL_table-background-color: var(--color-brand-white-500);
+  --INTERNAL_table-font-color: var(--color-brand-grey-600);
 
-  --table-background-color: var(--color-brand-white-base);
+  --INTERNAL_table-padding-horizontal: var(--size-spacing-lg);
+  --INTERNAL_table-padding-vertical: var(--size-spacing-md);
+  --INTERNAL_table-compact-padding-horizontal: var(--size-spacing-xs);
+  --INTERNAL_table-compact-padding-vertical: var(--size-spacing-xs);
 
-  --table-padding-horizontal: var(--size-spacing-lg);
-  --table-padding-vertical: var(--size-spacing-md);
-  --table-padding-header-vertical: var(--size-spacing-md);
-  --table-padding-horizontal-compact: var(--size-spacing-xs);
-  --table-padding-vertical-compact: var(--size-spacing-xs);
+  --INTERNAL_table-header-background-color: var(--color-brand-white-500);
+  --INTERNAL_table-header-font-size: var(--size-font-xs);
+  --INTERNAL_table-header-font-color: var(--color-brand-grey-600);
+  --INTERNAL_table-header-font-weight: var(--size-font-weight-bold);
+  --INTERNAL_table-header-sort-icon-spacing: var(--size-spacing-xs);
+  --INTERNAL_table-header-padding-vertical: var(--size-spacing-md);
+  --INTERNAL_table-header-border-width: var(--size-border-xs);
 
-  --table-header-color: var(--color-brand-dark-base);
-  --table-header-font-size: var(--size-font-xs);
-  --table-header-font-weight: var(--size-font-weight-bold);
-  --table-header-sort-icon-spacing: var(--size-spacing-xs);
+  --INTERNAL_table-font-size: var(--size-font-sm);
 
-  --table-cell-font-size: var(--size-font-sm);
-
-  --table-row-hover-background: var(--color-brand-grey-lightest);
-  --table-row-striped-background: var(--color-brand-grey-lightest);
+  --INTERNAL_table-row-hover-background: var(--color-brand-grey-50);
+  --INTERNAL_table-row-striped-background: var(--color-brand-grey-50);
 }

@@ -321,7 +321,7 @@ describe('Toast', () => {
     });
 
     expect(screen.getByText('test compact toast')).toBeInTheDocument();
-    expect(screen.getByText('test compact toast').parentElement).toHaveClass('p-v-sm', 'p-h-md');
+    expect(screen.getByText('test compact toast').parentElement).toHaveClass('p-sm');
 
     act(() => {
       toast.dismiss();

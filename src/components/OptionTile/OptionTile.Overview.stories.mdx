@@ -164,7 +164,6 @@ Also note that these icons are only there for visual feedback, as the true input
               padding="0"
               childGap="0"
               direction="column"
-              radius="0"
               isSelected={option.value === selectedOption}
               onChange={(event) => setSelectedOption(event.target.value)}
               id={option.id}
@@ -183,3 +182,7 @@ Also note that these icons are only there for visual feedback, as the true input
     }}
   </Story>
 </Canvas>
+
+## Component Design Tokens
+
+This component shares component design tokens with all form controls. For a complete list of tokens, see the [Theming Form Controls documentation](/docs/theming-form-controls--custom-theme-form).
