@@ -1,5 +1,12 @@
 Changelog
 
+# [0.128.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.127.3...v0.128.0-beta.1) (2022-03-02)
+
+
+### Features
+
+* force a beta release ([#720](https://github.com/palmetto/palmetto-components/issues/720)) ([a5b28cb](https://github.com/palmetto/palmetto-components/commit/a5b28cb753b36e8b34a2b98550e3ecdf51f46c06))
+
 ## [0.127.3](https://github.com/palmetto/palmetto-components/compare/v0.127.2...v0.127.3) (2022-02-28)
 
 
