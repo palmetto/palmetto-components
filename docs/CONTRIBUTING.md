@@ -157,7 +157,7 @@ This library is meant to be added as a dependency to React apps. Aside from sand
 
 2) Symlink your local package into any project that consumes it. See [NPM link](https://docs.npmjs.com/cli/link) or [Yarn link](https://classic.yarnpkg.com/en/docs/cli/link/) for more details.
 
-**NOTE:** That when building and symlinking, it is necesary to expose local symlinks from your test app for `react` and `react-dom` and link them to the component library. Specific steps:
+**NOTE:** That when building and symlinking, it is necessary to expose local symlinks from your test app for `react` and `react-dom` and link them to the component library. Specific steps:
 * In Your Application, link react and react-dom:
 ```
 cd node_modules/react && yarn link
@@ -477,5 +477,5 @@ Must be one of the following:
 
 ### Prereleases
 If your code includes major changes or any breaking changes to the codebase, I.E, a new major version, or a large refactor, that will require a pre-release,
-and more extensive testing. To publish a pre-release, open (and eventutally merge) your PR against the `beta` branch. This will
+and more extensive testing. To publish a pre-release, open (and eventually merge) your PR against the `beta` branch. This will
 publish the package with a @beta tag which can then be easily consumed and tested by other consumers locally.
