@@ -13,9 +13,8 @@ export interface IconProps {
    * A color token identifier to use for the text color.
    */
   color?: FontColor | ResponsiveProp<FontColor>;
-
   /**
-   * A [font size token](/?path=/docs/design-tokens-font-size--page) identifier
+   * A [font size token](/?path=/docs/design-tokens-design-tokens--page#font-size) identifier
    */
   size?: FontSize | ResponsiveProp<FontSize>;
   /**

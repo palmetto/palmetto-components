@@ -62,18 +62,18 @@ export interface BoxProps {
    */
   alignSelf?: CssAlignItemsValue | ResponsiveProp<CssAlignItemsValue>;
   /**
-   * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand), or a `url()` for an image
+   * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
    */
   background?: BrandColor;
   /**
-   * Any valid [brand color token](/?path=/docs/design-tokens-colors--brand) for the border color
+   * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color) for the border color
    * Or a responsive prop with BrandColor for each breakpoint.
    */
   borderColor?: BrandColor;
   /**
    * Width of the Box's border
-   * Can be a single [border width token](/?path=/docs/design-tokens-border-width--page).
-   * Can also be a string of [border width tokens](/?path=/docs/design-tokens-border-width--page)
+   * Can be a single [border width token](/?path=/story/design-tokens-design-tokens--page#border-width).
+   * Can also be a string of [border width tokens](/?path=/story/design-tokens-design-tokens--page#border-width)
    * that models itself after the css shorthand property,
    * where you can set the border width on all four sides of an element.
    * e.g: "0 sm xs 0" --> top: 0, right: sm, bottom: xs, left: 0;
@@ -85,7 +85,7 @@ export interface BoxProps {
   className?: string;
   /**
    * The amount of spacing between child elements.
-   * Can be a single [spacing value](/?path=/docs/design-tokens-spacing--page).
+   * Can be a single [spacing value](/?path=/story/design-tokens-design-tokens--page#spacing).
    * NOTE: this prop is incompatible with reverse flex direction values (row-reverse, column-reverse).
    */
   childGap?: SpacingSize | ResponsiveProp<SpacingSize>;
@@ -130,20 +130,20 @@ export interface BoxProps {
     shadow?: BoxProps['shadow'];
   };
   /**
-   * The [font family token](/?path=/docs/design-tokens-font-family--page) identifier for the Box's text
+   * The [font family token](/?path=/story/design-tokens-design-tokens--page#font-family) identifier for the Box's text
    */
   fontFamily?: FontFamily | ResponsiveProp<FontFamily>;
   /**
-   * The [font size token](/?path=/docs/design-tokens-font-size--page) identifier for the Box's text
+   * The [font size token](/?path=/story/design-tokens-design-tokens--page#font-size) identifier for the Box's text
    */
   fontSize?: FontSize | ResponsiveProp<FontSize>;
   /**
-   * The [font weight token](/?path=/story/design-tokens-font-weight--page) identifier for the Box's text
+   * The [font weight token](/?path=/docs/design-tokens-design-tokens--page#font-weight) identifier for the Box's text
    */
   fontWeight?: FontWeight | ResponsiveProp<FontWeight>;
   /**
    * The height of the element. Can be given a standard css value (px, rem, em, %),
-   * or a [height token](/?path=/docs/design-tokens-height--page)
+   * or a [height token](/?path=/story/design-tokens-design-tokens--page#height)
    */
   height?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
@@ -169,30 +169,30 @@ export interface BoxProps {
   justifyContent?: CssJustifyContentValue | ResponsiveProp<CssJustifyContentValue>;
   /**
    * Amount of space around the element.
-   * Can be a single [spacing value](?path=/docs/design-tokens-spacing--page).
-   * Can also be a string of [spacing value](?path=/docs/design-tokens-spacing--page)
+   * Can be a single [spacing value](/?path=/story/design-tokens-design-tokens--page#spacing).
+   * Can also be a string of [spacing value](/?path=/story/design-tokens-design-tokens--page#spacing)
    * that models itself after the css shorthand property,
-   * where you can set the margin area on all four sides of an element.It is shorthand for top, right, bottom, left.
+   * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
    */
   margin?: BaseSpacing | ResponsiveProp<BaseSpacing>;
   /**
    * The maximum height of the element. Can be given a standard css value (px, rem, em, %),
-   * or a [height token](/?path=/docs/design-tokens-height--page)
+   * or a [height token](/?path=/story/design-tokens-design-tokens--page#height)
    */
   maxHeight?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
    * The minimum height of the element. Can be given a standard css value (px, rem, em, %),
-   * or a [height token](/?path=/docs/design-tokens-height--page)
+   * or a [height token](/?path=/story/design-tokens-design-tokens--page#height)
    */
   minHeight?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
    * The maximum width of the element. Can be given a standard css value (px, rem, em, %),
-   * or a [width token](/?path=/docs/design-tokens-width--page)
+   * or a [width token](/?path=/story/design-tokens-design-tokens--page#width)
    */
   maxWidth?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
    * The minimum width of the element. Can be given a standard css value (px, rem, em, %),
-   * or a [width token](/?path=/docs/design-tokens-width--page)
+   * or a [width token](/?path=/story/design-tokens-design-tokens--page#width)
    */
   minWidth?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
@@ -234,7 +234,7 @@ export interface BoxProps {
   wrap?: boolean | ResponsiveProp<boolean>;
   /**
    * The width of the element. Can be given a standard css value (px, rem, em, %),
-   * or a [width token](/?path=/docs/design-tokens-width--page)
+   * or a [width token](/?path=/story/design-tokens-design-tokens--page#width)
    */
   width?: DimensionSize | ResponsiveProp<DimensionSize> | string;
   /**
