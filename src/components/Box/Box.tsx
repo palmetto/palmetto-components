@@ -201,8 +201,8 @@ export interface BoxProps {
   overflow?: CssOverflowValue | ResponsiveProp<CssOverflowValue>;
   /**
    * Amount of space within the element around the Box contents.
-   * Can be a single [spacing value](/?path=/docs/design-tokens-spacing--page).
-   * Can also be a string of [spacing value](/?path=/docs/design-tokens-spacing--page)
+   * Can be a single [spacing value](/?path=/story/design-tokens-design-tokens--page#spacing).
+   * Can also be a string of [spacing value](/?path=/story/design-tokens-design-tokens--page#spacing)
    * that models itself after the css shorthand property,
    * where you can set the margin area on all four sides of an element. It is shorthand for top, right, bottom, left.
    */
