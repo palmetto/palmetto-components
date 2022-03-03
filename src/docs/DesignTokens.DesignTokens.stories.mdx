@@ -2,10 +2,49 @@ import { ColorPalette, ColorItem, Meta } from '@storybook/addon-docs/blocks';
 import { color } from '@palmetto/palmetto-design-tokens/build/json/variables-color.json';
 import { size } from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 import { asset } from '@palmetto/palmetto-design-tokens/build/js/variables-asset';
+import { Canvas } from '@storybook/addon-docs/blocks';
 
 <Meta title="Design Tokens/Design Tokens" />
 
 # Design Tokens
+
+Design tokens are an abstraction of design decisions made to construct and maintain an application design system. Spacing, color, typography, styles and animation are represented as data, in our case json. They’re used in place of hard-coded values in order to ensure flexibility and unity across all our product experiences.
+
+Design tokens are directly integrated into our component library and cover properties like spacing, color and component state.
+
+We use [Style Dictionary](https://amzn.github.io/style-dictionary/) to generate style definitions across all platforms from a single source - removing roadblocks, errors, and inefficiencies across our workflow.
+
+## Source on Github
+
+[Palmetto Design Tokens](https://github.com/palmetto/palmetto-design-tokens) are available as an [npm package](https://www.npmjs.com/package/@palmetto/palmetto-design-tokens) so that you can create a Palmetto unified product experience for your platform of choice.
+
+## Types
+
+### Global Tokens
+
+Global tokens are the primitive values in our design language, represented by context-agnostic names. Color palette, spacing, typography, and dimension values are all recorded as global tokens. These can be directly used, and are inherited by all other token types.
+
+```css
+--color-brand-grey-500: #2f8459;
+```
+
+### Alias Tokens or Common Tokens
+
+Alias tokens relate to a specific context or abstraction. Aliases help communicate the intended purpose of a token, and are effective when a value with a single intent will appear in multiple places.
+
+```css
+--color-brand-primary-base: #008433; /* alias */
+--form-control-background-color: --color-brand-white-base; /* common */
+```
+
+### Component Specific Tokens
+
+Component-specific tokens have the most specific component level context. They often inherit from alias or global tokens, but are named in a way that allows consumers to be as specific as possible in applying tokens in component development.
+
+```css
+--button-background-color: --color-brand-primary-base; /* component */
+--badge-size-xl-font-size: --size-font-md;
+```
 
 ## Border Radius
 
