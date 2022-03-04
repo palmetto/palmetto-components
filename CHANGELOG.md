@@ -1,5 +1,12 @@
 Changelog
 
+## [0.128.2](https://github.com/palmetto/palmetto-components/compare/v0.128.1...v0.128.2) (2022-03-04)
+
+
+### Bug Fixes
+
+* **Icon:** copy-document icon ([#723](https://github.com/palmetto/palmetto-components/issues/723)) ([064745c](https://github.com/palmetto/palmetto-components/commit/064745c4013960edad6ab054840063405e602771))
+
 ## [0.128.1](https://github.com/palmetto/palmetto-components/compare/v0.128.0...v0.128.1) (2022-03-03)
 
 # [0.128.0](https://github.com/palmetto/palmetto-components/compare/v0.127.3...v0.128.0) (2022-03-02)
