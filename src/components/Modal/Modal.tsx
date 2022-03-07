@@ -95,7 +95,7 @@ const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, Moda
 ) => {
   const maxWidthCss = getDimensionCss('mw', maxWidth);
 
-  const overylayClassnames = classNames(styles.overlay, {
+  const overlayClassnames = classNames(styles.overlay, {
     fullscreen: fullScreenMobile,
   });
   const contentClassnames = classNames(
@@ -109,7 +109,7 @@ const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, Moda
 
   return (
     <DialogOverlay
-      className={overylayClassnames}
+      className={overlayClassnames}
       containerRef={containerRef}
       allowPinchZoom={allowPinchZoom}
       isOpen={isOpen}
