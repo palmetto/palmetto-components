@@ -1,9 +1,7 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 /* This line prevents @reach/dialog from throwing a warning due to not importing their CSS. */
-:root {
-  --reach-dialog: 1;
-}
+:root { --reach-dialog: 1; }
 
 .modal-close {
   border: none;
@@ -46,10 +44,7 @@
 
     @media (min-width: $size-breakpoint-tablet) {
       display: grid;
-      grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(
-          var(--size-spacing-2xl),
-          1fr
-        );
+      grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(var(--size-spacing-2xl), 1fr);
       grid-template-columns: var(--size-spacing-2xl) auto var(--size-spacing-2xl);
       align-content: center;
       align-items: center;
@@ -69,8 +64,7 @@
     background-color: var(--modal-background-color, var(--color-brand-white-500));
     padding: 0;
     width: 100%;
-    border-radius: var(--modal-border-radius, var(--size-border-radius-md))
-      var(--modal-border-radius, var(--size-border-radius-md)) 0 0;
+    border-radius: var(--modal-border-radius, var(--size-border-radius-md)) var(--modal-border-radius, var(--size-border-radius-md)) 0 0;
 
     :global {
       animation: slideInUp 0.3s;
@@ -92,7 +86,7 @@
       }
     }
 
-    @media (min-width: $size-breakpoint-desktop) {
+    @media(min-width: $size-breakpoint-desktop) {
       width: 50vw;
     }
   }
@@ -109,10 +103,7 @@
 
     @media (min-width: $size-breakpoint-tablet) {
       display: grid;
-      grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(
-          var(--size-spacing-2xl),
-          1fr
-        );
+      grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(var(--size-spacing-2xl), 1fr);
       grid-template-columns: var(--size-spacing-2xl) auto var(--size-spacing-2xl);
       align-items: center;
       overflow: hidden;
@@ -134,7 +125,7 @@
           animation: fadeInUp 0.2s ease-out;
         }
 
-        @media (min-width: $size-breakpoint-desktop) {
+        @media(min-width: $size-breakpoint-desktop) {
           width: 50vw;
         }
       }
