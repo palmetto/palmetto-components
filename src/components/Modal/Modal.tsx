@@ -95,9 +95,13 @@ const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, Moda
 ) => {
   const maxWidthCss = getDimensionCss('mw', maxWidth);
 
-  const overlayClassnames = classNames(styles.overlay, {
-    fullscreen: fullScreenMobile,
-  });
+  const overlayClassnames = classNames(
+    styles.overlay,
+    styles.modal,
+    {
+      fullscreen: fullScreenMobile,
+    },
+  );
   const contentClassnames = classNames(
     styles['modal-content'],
     className,
