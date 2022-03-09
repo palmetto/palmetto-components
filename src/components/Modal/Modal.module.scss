@@ -34,6 +34,8 @@
 }
 
 .modal {
+
+
   .container {
     position: fixed;
     top: 0;
@@ -90,44 +92,44 @@
       width: 50vw;
     }
   }
+}
 
-  [data-reach-dialog-overlay].fullscreen {
+:global([data-reach-dialog-overlay].fullscreen) {
+  [data-reach-dialog-content] {
+    position: fixed;
+    top: env(safe-area-inset-top, 0);
+    right: env(safe-area-inset-right, 0);
+    bottom: env(safe-area-inset-bottom, 0);
+    left: env(safe-area-inset-left, 0);
+    border-radius: 0;
+  }
+
+  @media (min-width: $size-breakpoint-tablet) {
+    display: grid;
+    grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(var(--size-spacing-2xl), 1fr);
+    grid-template-columns: var(--size-spacing-2xl) auto var(--size-spacing-2xl);
+    align-items: center;
+    overflow: hidden;
+
+    // should no longer be fullscreen on tablet and larger
     [data-reach-dialog-content] {
-      position: fixed;
-      top: env(safe-area-inset-top, 0);
-      right: env(safe-area-inset-right, 0);
-      bottom: env(safe-area-inset-bottom, 0);
-      left: env(safe-area-inset-left, 0);
-      border-radius: 0;
-    }
+      position: unset;
+      grid-row: 2;
+      grid-column: 2;
+      margin: auto;
+      outline: none;
+      border-radius: var(--modal-border-radius, var(--size-border-radius-md));
+      box-shadow: var(--modal-box-shadow, var(--size-box-shadow-md));
+      width: 70vw;
+      min-height: unset;
+      max-height: calc(100vh - 80px);
 
-    @media (min-width: $size-breakpoint-tablet) {
-      display: grid;
-      grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(var(--size-spacing-2xl), 1fr);
-      grid-template-columns: var(--size-spacing-2xl) auto var(--size-spacing-2xl);
-      align-items: center;
-      overflow: hidden;
+      :global {
+        animation: fadeInUp 0.2s ease-out;
+      }
 
-      // should no longer be fullscreen on tablet and larger
-      [data-reach-dialog-content] {
-        position: unset;
-        grid-row: 2;
-        grid-column: 2;
-        margin: auto;
-        outline: none;
-        border-radius: var(--modal-border-radius, var(--size-border-radius-md));
-        box-shadow: var(--modal-box-shadow, var(--size-box-shadow-md));
-        width: 70vw;
-        min-height: unset;
-        max-height: calc(100vh - 80px);
-
-        :global {
-          animation: fadeInUp 0.2s ease-out;
-        }
-
-        @media(min-width: $size-breakpoint-desktop) {
-          width: 50vw;
-        }
+      @media(min-width: $size-breakpoint-desktop) {
+        width: 50vw;
       }
     }
   }
