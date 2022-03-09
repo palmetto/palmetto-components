@@ -1,0 +1,90 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { MediaModal } from './MediaModal';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
+import { Vimeo } from 'mdx-embed';
+
+<Meta title="Components/MediaModal/Overview" component={MediaModal} />
+
+# MediaModal
+
+Modals are containers appearing in front of the main content to provide critical information or an actionable piece of content.
+These are specifically great for presenting new flows while preserving the state of content.
+
+The default behavior of a Modal is to focus on the first focusable item.
+Therefore, you should ensure that the first focusable item is non-destructive, such as a "cancel" or close button.
+
+<Canvas>
+  <Story name="Landscape Image">
+    {() => {
+      const [showModal, setShowModal] = useState(false);
+      const open = () => setShowModal(true);
+      const close = () => setShowModal(false);
+      return (
+        <div>
+          <script src="https://player.vimeo.com/api/player.js"></script>
+          <Button variant="light" onClick={open}>
+            Show Landscape Image Modal
+          </Button>
+          <MediaModal ariaLabelledBy="titleBasic" isOpen={showModal} onDismiss={close}>
+            <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
+          </MediaModal>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Portrait Image">
+    {() => {
+      const [showModal, setShowModal] = useState(false);
+      const open = () => setShowModal(true);
+      const close = () => setShowModal(false);
+      return (
+        <div>
+          <script src="https://player.vimeo.com/api/player.js"></script>
+          <Button variant="light" onClick={open}>
+            Show Portrait Image Modal
+          </Button>
+          <MediaModal ariaLabelledBy="titleBasic" isOpen={showModal} onDismiss={close}>
+            <img
+              src="images/clement-duguerre-HP0En6B1Db8-unsplash.jpg"
+              alt=""
+              className="h-100"
+              style={{ objectFit: 'contain' }}
+            />
+          </MediaModal>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Vimeo Video Embed">
+    {() => {
+      const [showModal, setShowModal] = useState(false);
+      const open = () => setShowModal(true);
+      const close = () => setShowModal(false);
+      return (
+        <div>
+          <script src="https://player.vimeo.com/api/player.js"></script>
+          <Button variant="light" onClick={open}>
+            Show Vimeo Video Modal
+          </Button>
+          <MediaModal ariaLabelledBy="titleBasic" isOpen={showModal} onDismiss={close}>
+            <Box display="block" maxWidth="5xl" width="100">
+              <Vimeo vimeoId="595469877" />
+            </Box>
+          </MediaModal>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={MediaModal} />
