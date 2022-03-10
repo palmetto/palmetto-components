@@ -56,44 +56,7 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
 An optional title and description can be used to describe the contents of the modal.
 
 <Canvas>
-  <Story name="Portrait Image with Header">
-    {() => {
-      const [showModal, setShowModal] = useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
-      return (
-        <div>
-          <Button variant="light" onClick={open}>
-            Show Portrait Image Modal
-          </Button>
-          <MediaModal
-            title="clement-duguerre-HP0En6B1Db8-unsplash.jpg"
-            description="Site Survey - Roof"
-            isOpen={showModal}
-            onDismiss={close}
-          >
-            <img
-              src="images/clement-duguerre-HP0En6B1Db8-unsplash.jpg"
-              alt=""
-              style={{
-                objectFit: 'contain',
-                height: 'calc(100vh - var(--size-height-2xl))',
-                width: 'auto',
-              }}
-            />
-          </MediaModal>
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Footer
-
-A node can be passed as `footerContent` to provide available actions to take on the contents of the modal.
-
-<Canvas>
-  <Story name="With Footer">
+  <Story name="Portrait Image with Header and Footer">
     {() => {
       const [showModal, setShowModal] = useState(false);
       const open = () => setShowModal(true);
@@ -116,10 +79,24 @@ A node can be passed as `footerContent` to provide available actions to take on 
       return (
         <div>
           <Button variant="light" onClick={open}>
-            Show Image Modal with Footer
+            Show Portrait Image Modal
           </Button>
-          <MediaModal isOpen={showModal} onDismiss={close} footerContent={footerItems}>
-            <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
+          <MediaModal
+            title="clement-duguerre-HP0En6B1Db8-unsplash.jpg"
+            description="Site Survey - Roof"
+            isOpen={showModal}
+            onDismiss={close}
+            footerContent={footerItems}
+          >
+            <img
+              src="images/clement-duguerre-HP0En6B1Db8-unsplash.jpg"
+              alt=""
+              style={{
+                objectFit: 'contain',
+                height: 'calc(100vh - var(--size-height-2xl))',
+                width: 'auto',
+              }}
+            />
           </MediaModal>
         </div>
       );
