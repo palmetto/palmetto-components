@@ -11,7 +11,7 @@ import { Vimeo } from 'mdx-embed';
 
 # MediaModal
 
-The MediaModal is a "light box" style container for presenting a large images or videos.
+The MediaModal is a "light box" style container for presenting images or videos.
 
 The default behavior of a Modal is to focus on the first focusable item.
 Therefore, you should ensure that the first focusable item is non-destructive, such as a "cancel" or close button.
@@ -35,6 +35,10 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
     }}
   </Story>
 </Canvas>
+
+## Title and Description Header
+
+An optional title and description can be used to describe the contents of the modal.
 
 <Canvas>
   <Story name="Portrait Image with Header">
@@ -69,6 +73,10 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
   </Story>
 </Canvas>
 
+## Footer
+
+A node can be passed as `footerContent` to provide available actions to take on the contents of the modal.
+
 <Canvas>
   <Story name="With Footer">
     {() => {
@@ -95,13 +103,7 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
           <Button variant="light" onClick={open}>
             Show Image Modal with Footer
           </Button>
-          <MediaModal
-            title="wes-hicks-6rNitHsIU3c-unsplash.jpg"
-            description="Site Survey - Roof"
-            isOpen={showModal}
-            onDismiss={close}
-            footerContent={footerItems}
-          >
+          <MediaModal isOpen={showModal} onDismiss={close} footerContent={footerItems}>
             <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
           </MediaModal>
         </div>
@@ -109,6 +111,8 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
     }}
   </Story>
 </Canvas>
+
+## Video
 
 <Canvas>
   <Story name="Vimeo Video">

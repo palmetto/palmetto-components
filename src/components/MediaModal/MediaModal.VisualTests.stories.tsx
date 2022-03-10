@@ -12,25 +12,39 @@ export default {
 };
 
 export const LandscapeImage = (): ReactNode => (
-  <MediaModal ariaLabelledBy="title" isOpen onDismiss={() => null}>
+  <MediaModal isOpen onDismiss={() => null}>
     <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
   </MediaModal>
 );
 
-export const PortraitImage = (): ReactNode => (
-  <MediaModal ariaLabelledBy="title" isOpen onDismiss={() => null}>
+export const FooterLandscapeImage = (): ReactNode => (
+  <MediaModal isOpen onDismiss={() => null} footerContent="footer contents">
+    <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
+  </MediaModal>
+);
+
+export const TitleDescriptionPortraitImage = (): ReactNode => (
+  <MediaModal
+    title="clement-duguerre-HP0En6B1Db8-unsplash.jpg"
+    description="Site Survey - Roof"
+    isOpen
+    onDismiss={() => null}
+  >
     <img
       src="images/clement-duguerre-HP0En6B1Db8-unsplash.jpg"
       alt=""
-      className="h-100"
-      style={{ objectFit: 'contain' }}
+      style={{
+        objectFit: 'contain',
+        height: 'calc(100vh - var(--size-height-2xl))',
+        width: 'auto',
+      }}
     />
   </MediaModal>
 );
 
 export const VimeoVideo = (): ReactNode => (
-  <MediaModal ariaLabelledBy="title" isOpen onDismiss={() => null}>
-    <Box display="block" maxWidth="5xl" width="100">
+  <MediaModal isOpen onDismiss={() => null}>
+    <Box display="block" width="90vw" maxWidth="5xl">
       <Vimeo vimeoId="595469877" />
     </Box>
   </MediaModal>
