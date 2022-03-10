@@ -16,6 +16,21 @@ The MediaModal is a "light box" style container for presenting images or videos.
 The default behavior of a Modal is to focus on the first focusable item.
 Therefore, you should ensure that the first focusable item is non-destructive, such as a "cancel" or close button.
 
+## Usage Guidelines
+
+- Is used for viewing "media" assets such as images and videos, and not for confirmation or messaging to the user.
+- The bottom footer contains no more than three primary actions (e.g. for an image, they would be download, open new window, and third reserved tertiary actions in a popover menu)
+- It closes when a user presses the `esc` key, outside of the content area, or the `x` button
+
+## Content Guidelines
+
+- The title/description properties should describe the contents of the modal
+- Its children are primarily images or videos, not copy.
+
+## Props
+
+<ArgsTable of={MediaModal} />
+
 <Canvas>
   <Story name="Landscape Image">
     {() => {
@@ -136,6 +151,31 @@ A node can be passed as `footerContent` to provide available actions to take on 
   </Story>
 </Canvas>
 
-## Props
+## Component Design Tokens
 
-<ArgsTable of={MediaModal} />
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--media-modal-font-color': '--color-brand-grey-100',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+
+  </tbody>
+</table>
