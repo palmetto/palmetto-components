@@ -1,8 +1,8 @@
 import React, { ReactNode, RefObject, forwardRef } from 'react';
 import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
-import { getDimensionCss } from '../../lib/getDimensionCss';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
 import styles from './MediaModal.module.scss';
 
 export interface MediaModalProps {
@@ -47,10 +47,13 @@ export interface MediaModalProps {
    */
   isOpen: boolean;
   /**
-   * Max width for modal content. Uses the same maxWidth prop as the `Box` component,
-   * and as such can be responsive as well.
+   * Title ClassNames to add to dialog.
    */
-  maxWidth?: BoxProps['maxWidth'];
+  title?: string;
+  /**
+   * Text appearing below the title.
+   */
+  description?: string;
   /**
    * Function that is called whenever the user hits "Esacape" key or clicks outside the modal.
    */
@@ -67,21 +70,22 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
       ariaLabel,
       ariaLabelledBy,
       allowPinchZoom = false,
+      title,
+      description,
       children,
       className,
       containerRef = undefined,
       initialFocusRef,
       isOpen,
-      maxWidth = undefined,
       onDismiss,
       ...restProps
     },
     ref,
   ) => {
-    const maxWidthCss = getDimensionCss('mw', maxWidth);
-
     const overlayClassnames = classNames(styles.overlay, styles['media-modal']);
-    const contentClassnames = classNames(styles['media-modal'], className, maxWidthCss.classes);
+    const contentClassnames = classNames(styles['media-modal'], className);
+
+    const showHeader = title || description;
 
     return (
       <DialogOverlay
@@ -95,14 +99,33 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
         {...restProps}
       >
         <Box className={styles.container}>
+          {showHeader && (
+            <Box
+              height="lg"
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              color="grey-100"
+              padding="md lg"
+              className={styles.caption}
+            >
+              <div>
+                <Box fontWeight="bold" className={styles.title}>
+                  {title}
+                </Box>
+                <Box fontSize="sm">{description}</Box>
+              </div>
+              <Button iconPrefix="remove" onClick={onDismiss} isNaked aria-label="close" />
+            </Box>
+          )}
           <DialogContent
             aria-label={ariaLabel}
             aria-labelledby={ariaLabelledBy}
             className={contentClassnames}
-            style={{ ...maxWidthCss.styles }}
           >
             {children}
           </DialogContent>
+          <Box className={styles.footer}>footer</Box>
         </Box>
       </DialogOverlay>
     );

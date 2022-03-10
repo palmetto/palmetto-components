@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { MediaModal } from './MediaModal';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
@@ -23,11 +23,15 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
       const close = () => setShowModal(false);
       return (
         <div>
-          <script src="https://player.vimeo.com/api/player.js"></script>
           <Button variant="light" onClick={open}>
             Show Landscape Image Modal
           </Button>
-          <MediaModal ariaLabelledBy="titleBasic" isOpen={showModal} onDismiss={close}>
+          <MediaModal
+            title="wes-hicks-6rNitHsIU3c-unsplash.jpg"
+            description="Site Survey - Roof"
+            isOpen={showModal}
+            onDismiss={close}
+          >
             <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
           </MediaModal>
         </div>
@@ -44,16 +48,23 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
       const close = () => setShowModal(false);
       return (
         <div>
-          <script src="https://player.vimeo.com/api/player.js"></script>
           <Button variant="light" onClick={open}>
             Show Portrait Image Modal
           </Button>
-          <MediaModal ariaLabelledBy="titleBasic" isOpen={showModal} onDismiss={close}>
+          <MediaModal
+            title="clement-duguerre-HP0En6B1Db8-unsplash"
+            description="Site Survey - Roof"
+            isOpen={showModal}
+            onDismiss={close}
+          >
             <img
               src="images/clement-duguerre-HP0En6B1Db8-unsplash.jpg"
               alt=""
-              className="h-100"
-              style={{ objectFit: 'contain' }}
+              style={{
+                objectFit: 'contain',
+                height: 'calc(100vh - var(--size-height-2xl))',
+                width: 'auto',
+              }}
             />
           </MediaModal>
         </div>
@@ -61,8 +72,7 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
     }}
   </Story>
 </Canvas>
-
-<Canvas>
+<!--<Canvas>
   <Story name="Vimeo Video Embed">
     {() => {
       const [showModal, setShowModal] = useState(false);
@@ -70,20 +80,20 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
       const close = () => setShowModal(false);
       return (
         <div>
-          <script src="https://player.vimeo.com/api/player.js"></script>
           <Button variant="light" onClick={open}>
             Show Vimeo Video Modal
           </Button>
           <MediaModal ariaLabelledBy="titleBasic" isOpen={showModal} onDismiss={close}>
-            <Box display="block" maxWidth="5xl" width="100">
-              <Vimeo vimeoId="595469877" />
+            <Box width="5xl" height="lg" background="danger-500">
+              test
             </Box>
+            <Vimeo vimeoId="595469877" style={{ width: '100%' }} />
           </MediaModal>
         </div>
       );
     }}
   </Story>
-</Canvas>
+</Canvas> -->
 
 ## Props
 
