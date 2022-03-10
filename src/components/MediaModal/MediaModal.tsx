@@ -47,15 +47,19 @@ export interface MediaModalProps {
    */
   isOpen: boolean;
   /**
-   * Title ClassNames to add to dialog.
+   * If defined, will be displayed at the top of the viewport
    */
   title?: string;
   /**
-   * Text appearing below the title.
+   * If defined, will be displayed at the top of the viewport
    */
   description?: string;
   /**
-   * Function that is called whenever the user hits "Esacape" key or clicks outside the modal.
+   * Contents of the footer area.
+   */
+  footerContent?: ReactNode;
+  /**
+   * Function that is called whenever the user hits "Escape" key or clicks outside the modal.
    */
   onDismiss: (event?: React.SyntheticEvent) => void;
   /**
@@ -75,6 +79,7 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
       children,
       className,
       containerRef = undefined,
+      footerContent = undefined,
       initialFocusRef,
       isOpen,
       onDismiss,
@@ -99,33 +104,38 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
         {...restProps}
       >
         <Box className={styles.container}>
-          {showHeader && (
-            <Box
-              height="lg"
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-              color="grey-100"
-              padding="md lg"
-              className={styles.caption}
-            >
-              <div>
-                <Box fontWeight="bold" className={styles.title}>
-                  {title}
-                </Box>
-                <Box fontSize="sm">{description}</Box>
-              </div>
-              <Button iconPrefix="remove" onClick={onDismiss} isNaked aria-label="close" />
-            </Box>
-          )}
           <DialogContent
             aria-label={ariaLabel}
             aria-labelledby={ariaLabelledBy}
             className={contentClassnames}
           >
+            {showHeader && (
+              <Box
+                height="lg"
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                padding="md lg"
+                className={styles.header}
+              >
+                <div>
+                  <Box className={styles.title}>{title}</Box>
+                  <Box fontSize="xs">{description}</Box>
+                </div>
+                <div className="font-size-lg">
+                  <Button
+                    iconPrefix="remove-light"
+                    size="lg"
+                    onClick={onDismiss}
+                    isNaked
+                    aria-label="close"
+                  />
+                </div>
+              </Box>
+            )}
             {children}
+            {footerContent && <div className={styles.footer}>{footerContent}</div>}
           </DialogContent>
-          <Box className={styles.footer}>footer</Box>
         </Box>
       </DialogOverlay>
     );

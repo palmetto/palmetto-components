@@ -15,7 +15,7 @@
   }
 }
 
-[data-reach-dialog-overlay] {
+[data-reach-dialog-overlay].modal {
   display: flex;
   position: fixed;
   top: 0;

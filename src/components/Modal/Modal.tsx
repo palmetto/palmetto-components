@@ -62,7 +62,7 @@ export interface ModalProps {
    */
   maxWidth?: BoxProps['maxWidth'];
   /**
-   * Function that is called whenever the user hits "Esacape" key or clicks outside the modal.
+   * Function that is called whenever the user hits "Escape" key or clicks outside the modal.
    */
   onDismiss: (event?: React.SyntheticEvent) => void;
   /**
