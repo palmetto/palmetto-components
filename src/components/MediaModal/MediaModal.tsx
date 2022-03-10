@@ -13,14 +13,10 @@ export interface MediaModalProps {
   /**
    * Each modal needs to be properly labeled to provide context for users with
    * assistive technology such as screen readers. If a modal is announced to
-   * the user without a label, it can be confusing and difficult to navigate.
+   * the user without a label, it can be confusing and difficult to
+   * navigate. If `title` is defined, that will be used instead
    */
   ariaLabel?: string;
-  /**
-   * The id of the element that should be used as the Modal's label by assistive
-   * technologies like screen readers. Usually the id is set on the `Modal.Header`
-   */
-  ariaLabelledBy?: string;
   /**
    * Contents of the dialog.
    */
@@ -72,7 +68,6 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
   (
     {
       ariaLabel,
-      ariaLabelledBy,
       allowPinchZoom = false,
       title,
       description,
@@ -104,11 +99,7 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
         {...restProps}
       >
         <Box className={styles.container}>
-          <DialogContent
-            aria-label={ariaLabel}
-            aria-labelledby={ariaLabelledBy}
-            className={contentClassnames}
-          >
+          <DialogContent aria-label={ariaLabel || title} className={contentClassnames}>
             {showHeader && (
               <Box
                 height="lg"
