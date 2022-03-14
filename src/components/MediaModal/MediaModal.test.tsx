@@ -1,15 +1,48 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { MediaModal } from './MediaModal';
+import { composeStories } from '@storybook/testing-react';
 
-describe('Modal', () => {
+import * as stories from './MediaModal.VisualTests.stories';
+
+const {
+  LandscapeImage,
+  PortraitImageFooter,
+  TitleDescriptionPortraitImage,
+  PortraitImageTitleDescriptionFooter,
+} = composeStories(stories);
+
+describe('MediaModal', () => {
   test('renders its children', () => {
-    const { getByText } = render(
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      <MediaModal isOpen onDismiss={() => {}} ariaLabel="testDefault">
-        test modal
-      </MediaModal>,
-    );
-    expect(getByText('test modal')).toBeInTheDocument();
+    const { getByAltText } = render(<LandscapeImage />);
+    expect(getByAltText('landscape test')).toBeInTheDocument();
+  });
+
+  test('it applies the ariaLabel', () => {
+    const { getByLabelText } = render(<LandscapeImage ariaLabel="label test" />);
+    expect(getByLabelText('label test')).toBeInTheDocument();
+  });
+
+  test('it uses the title as the dialog aria label', () => {
+    const { getByLabelText } = render(<TitleDescriptionPortraitImage />);
+    expect(getByLabelText('clement-duguerre-HP0En6B1Db8-unsplash.jpg')).toBeInTheDocument();
+  });
+
+  test('renders title and description', () => {
+    const { getByAltText, getByText } = render(<TitleDescriptionPortraitImage />);
+    expect(getByAltText('portrait')).toBeInTheDocument();
+    expect(getByText('clement-duguerre-HP0En6B1Db8-unsplash.jpg')).toBeInTheDocument();
+    expect(getByText('Site Survey - Roof')).toBeInTheDocument();
+  });
+
+  test('renders footer content', () => {
+    const { getByText } = render(<PortraitImageFooter />);
+    expect(getByText('footer content')).toBeInTheDocument();
+  });
+
+  test('renders title, description, and footer content', () => {
+    const { getByText } = render(<PortraitImageTitleDescriptionFooter />);
+    expect(getByText('title content')).toBeInTheDocument();
+    expect(getByText('description content')).toBeInTheDocument();
+    expect(getByText('footer content')).toBeInTheDocument();
   });
 });

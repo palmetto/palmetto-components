@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
+import { Story } from '@storybook/react/types-6-0';
 import { Vimeo } from 'mdx-embed';
-import { MediaModal } from './MediaModal';
+import { MediaModal, MediaModalProps } from './MediaModal';
 import { Box } from '../Box/Box';
 
 export default {
@@ -11,41 +12,59 @@ export default {
   },
 };
 
-export const LandscapeImage = (): ReactNode => (
-  <MediaModal isOpen onDismiss={() => null}>
-    <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
-  </MediaModal>
+const Template: Story<MediaModalProps> = ({ ...args }) => (
+  <MediaModal {...args} /> // eslint-disable-line @typescript-eslint/no-empty-function
 );
 
-export const FooterLandscapeImage = (): ReactNode => (
-  <MediaModal isOpen onDismiss={() => null} footerContent="footer contents">
-    <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
-  </MediaModal>
-);
+export const LandscapeImage = Template.bind({});
+LandscapeImage.args = {
+  ariaLabel: 'test MediaModal',
+  isOpen: true,
+  children: <img src="/images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="landscape test" />,
+};
 
-export const TitleDescriptionPortraitImage = (): ReactNode => (
-  <MediaModal
-    title="clement-duguerre-HP0En6B1Db8-unsplash.jpg"
-    description="Site Survey - Roof"
-    isOpen
-    onDismiss={() => null}
-  >
+export const TitleDescriptionPortraitImage = Template.bind({});
+TitleDescriptionPortraitImage.args = {
+  isOpen: true,
+  children: (
     <img
       src="images/clement-duguerre-HP0En6B1Db8-unsplash.jpg"
-      alt=""
+      alt="portrait"
       style={{
         objectFit: 'contain',
         height: 'calc(100vh - var(--size-height-2xl))',
         width: 'auto',
       }}
     />
-  </MediaModal>
-);
+  ),
+  title: 'clement-duguerre-HP0En6B1Db8-unsplash.jpg',
+  description: 'Site Survey - Roof',
+};
 
-export const VimeoVideo = (): ReactNode => (
-  <MediaModal isOpen onDismiss={() => null}>
+export const PortraitImageFooter = Template.bind({});
+PortraitImageFooter.args = {
+  ariaLabel: 'test MediaModal',
+  isOpen: true,
+  children: <img src="/images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="landscape test" />,
+  footerContent: 'footer content',
+};
+
+export const PortraitImageTitleDescriptionFooter = Template.bind({});
+PortraitImageTitleDescriptionFooter.args = {
+  isOpen: true,
+  children: <img src="/images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="landscape test" />,
+  footerContent: 'footer content',
+  title: 'title content',
+  description: 'description content',
+};
+
+export const VimeoVideo = Template.bind({});
+VimeoVideo.args = {
+  ariaLabel: 'test MediaModal',
+  isOpen: true,
+  children: (
     <Box display="block" width="90vw" maxWidth="5xl">
       <Vimeo vimeoId="595469877" />
     </Box>
-  </MediaModal>
-);
+  ),
+};

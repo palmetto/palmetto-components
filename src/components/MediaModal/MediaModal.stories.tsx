@@ -21,7 +21,7 @@ export const WithCustomPortalTarget: Story = () => {
         Show Modal
       </Button>
       <MediaModal
-        ariaLabelledBy="customPortalModal"
+        ariaLabel="leaves"
         isOpen={showModal}
         onDismiss={() => setShowModal(false)}
         containerRef={ref}
