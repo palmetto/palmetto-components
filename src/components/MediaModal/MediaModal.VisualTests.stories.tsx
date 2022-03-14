@@ -20,7 +20,7 @@ export const LandscapeImage = Template.bind({});
 LandscapeImage.args = {
   ariaLabel: 'test MediaModal',
   isOpen: true,
-  children: <img src="/images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="landscape test" />,
+  children: <img src="/images/landscape-mediamodal.jpg" alt="landscape test" />,
 };
 
 export const TitleDescriptionPortraitImage = Template.bind({});
@@ -28,7 +28,7 @@ TitleDescriptionPortraitImage.args = {
   isOpen: true,
   children: (
     <img
-      src="images/clement-duguerre-HP0En6B1Db8-unsplash.jpg"
+      src="images/portrait-mediamodal.jpg"
       alt="portrait"
       style={{
         objectFit: 'contain',
@@ -37,7 +37,7 @@ TitleDescriptionPortraitImage.args = {
       }}
     />
   ),
-  title: 'clement-duguerre-HP0En6B1Db8-unsplash.jpg',
+  title: 'portrait-mediamodal.jpg',
   description: 'Site Survey - Roof',
 };
 
@@ -45,14 +45,14 @@ export const PortraitImageFooter = Template.bind({});
 PortraitImageFooter.args = {
   ariaLabel: 'test MediaModal',
   isOpen: true,
-  children: <img src="/images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="landscape test" />,
+  children: <img src="/images/landscape-mediamodal.jpg" alt="landscape test" />,
   footerContent: 'footer content',
 };
 
 export const PortraitImageTitleDescriptionFooter = Template.bind({});
 PortraitImageTitleDescriptionFooter.args = {
   isOpen: true,
-  children: <img src="/images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="landscape test" />,
+  children: <img src="/images/landscape-mediamodal.jpg" alt="landscape test" />,
   footerContent: 'footer content',
   title: 'title content',
   description: 'description content',

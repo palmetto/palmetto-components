@@ -24,13 +24,13 @@ describe('MediaModal', () => {
 
   test('it uses the title as the dialog aria label', () => {
     const { getByLabelText } = render(<TitleDescriptionPortraitImage />);
-    expect(getByLabelText('clement-duguerre-HP0En6B1Db8-unsplash.jpg')).toBeInTheDocument();
+    expect(getByLabelText('portrait-mediamodal.jpg')).toBeInTheDocument();
   });
 
   test('renders title and description', () => {
     const { getByAltText, getByText } = render(<TitleDescriptionPortraitImage />);
     expect(getByAltText('portrait')).toBeInTheDocument();
-    expect(getByText('clement-duguerre-HP0En6B1Db8-unsplash.jpg')).toBeInTheDocument();
+    expect(getByText('portrait-mediamodal.jpg')).toBeInTheDocument();
     expect(getByText('Site Survey - Roof')).toBeInTheDocument();
   });
 

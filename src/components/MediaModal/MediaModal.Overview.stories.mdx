@@ -43,8 +43,8 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
           <Button variant="light" onClick={open}>
             Show Landscape Image
           </Button>
-          <MediaModal ariaLabel="leaves photo" isOpen={showModal} onDismiss={close}>
-            <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
+          <MediaModal ariaLabel="landscape photo" isOpen={showModal} onDismiss={close}>
+            <img src="images/landscape-mediamodal.jpg" alt="" />
           </MediaModal>
         </div>
       );
@@ -68,15 +68,10 @@ An optional title and description can be used to describe the contents of the mo
       };
       const footerItems = (
         <Box direction="row" childGap="lg" fontSize="lg">
-          <Box as="a" color="white" href="/images/wes-hicks-6rNitHsIU3c-unsplash.jpg" download>
+          <Box as="a" color="white" href="/images/landscape-mediamodal.jpg" download>
             <Icon name="download" />
           </Box>
-          <Box
-            as="a"
-            color="white"
-            href="/images/wes-hicks-6rNitHsIU3c-unsplash.jpg"
-            target="_blank"
-          >
+          <Box as="a" color="white" href="/images/landscape-mediamodal.jpg" target="_blank">
             <Icon name="launch-app" />
           </Box>
           <Popover
@@ -100,14 +95,14 @@ An optional title and description can be used to describe the contents of the mo
             Show Portrait Image with Title, Description, and Footer
           </Button>
           <MediaModal
-            title="clement-duguerre-HP0En6B1Db8-unsplash.jpg"
+            title="portrait-mediamodal.jpg"
             description="Site Survey - Roof"
             isOpen={showModal}
             onDismiss={close}
             footerContent={footerItems}
           >
             <img
-              src="images/clement-duguerre-HP0En6B1Db8-unsplash.jpg"
+              src="images/portrait-mediamodal.jpg"
               alt=""
               style={{
                 objectFit: 'contain',

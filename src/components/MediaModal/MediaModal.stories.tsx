@@ -26,7 +26,7 @@ export const WithCustomPortalTarget: Story = () => {
         onDismiss={() => setShowModal(false)}
         containerRef={ref}
       >
-        <img src="images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="" />
+        <img src="images/landscape-mediamodal.jpg" alt="" />
       </MediaModal>
     </div>
   );

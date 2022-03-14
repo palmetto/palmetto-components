@@ -23,7 +23,7 @@ export default {
 
 const Template: Story<MediaModalProps> = ({ ...args }) => (
   <MediaModal {...args}>
-    <img src="/images/wes-hicks-6rNitHsIU3c-unsplash.jpg" alt="landscape test" />
+    <img src="/images/landscape-mediamodal.jpg" alt="landscape test" />
   </MediaModal>
 );
 
