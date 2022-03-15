@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { ICON_NAMES } from '../../lib/tokens';
-import { Button, ButtonProps } from './Button';
+import { Button, StrictButtonProps } from './Button';
 import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 
 export default {
@@ -77,7 +77,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = ({ ...args }) => <Button {...args} />;
+const Template: Story<StrictButtonProps> = ({ ...args }) => <Button {...args} />;
 
 export const Playground = Template.bind({});
 Playground.args = {
