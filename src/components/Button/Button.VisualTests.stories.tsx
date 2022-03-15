@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button, ButtonProps } from './Button';
+import { Button, StrictButtonProps } from './Button';
 import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 import { Box } from '../Box/Box';
 
@@ -9,7 +9,7 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args, showIconButton) => (
+const Template: Story<StrictButtonProps & {showIconButton: boolean; }> = (args, showIconButton) => (
   <Box childGap="xl">
     {BUTTON_SIZES.map(size => (
       <Box childGap="sm" key={size}>
