@@ -62,7 +62,7 @@ export interface ModalProps {
    */
   maxWidth?: BoxProps['maxWidth'];
   /**
-   * Function that is called whenever the user hits "Esacape" key or clicks outside the modal.
+   * Function that is called whenever the user hits "Escape" key or clicks outside the modal.
    */
   onDismiss: (event?: React.SyntheticEvent) => void;
   /**
@@ -95,9 +95,13 @@ const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, Moda
 ) => {
   const maxWidthCss = getDimensionCss('mw', maxWidth);
 
-  const overylayClassnames = classNames(styles.overlay, {
-    fullscreen: fullScreenMobile,
-  });
+  const overlayClassnames = classNames(
+    styles.overlay,
+    styles.modal,
+    {
+      fullscreen: fullScreenMobile,
+    },
+  );
   const contentClassnames = classNames(
     styles['modal-content'],
     className,
@@ -109,7 +113,7 @@ const ModalBaseComponent: React.FC<ModalProps> = forwardRef<HTMLDivElement, Moda
 
   return (
     <DialogOverlay
-      className={overylayClassnames}
+      className={overlayClassnames}
       containerRef={containerRef}
       allowPinchZoom={allowPinchZoom}
       isOpen={isOpen}
