@@ -33,8 +33,12 @@ export const generatePages = (
       ? activePage + numberOfPagesDisplayed
       : pageTotal - 1;
 
+    // only add ellipsis if there are more than 0 pages between the final page and the rest of the pages
+    if (pageTotal > numberOfPagesDisplayed + 1) {
+      pages.push({ pageNumber: secondToLastPage, isPage: false });
+    }
+
     pages.push(
-      { pageNumber: secondToLastPage, isPage: false },
       { pageNumber: pageTotal, isPage: true },
     );
   }
