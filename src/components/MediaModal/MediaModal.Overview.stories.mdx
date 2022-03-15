@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 import { MediaModal } from './MediaModal';
+import { Badge } from '../Badge/Badge';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
@@ -44,7 +45,14 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
             Show Landscape Image
           </Button>
           <MediaModal ariaLabel="landscape photo" isOpen={showModal} onDismiss={close}>
-            <img src="images/landscape-mediamodal.jpg" alt="" />
+            <img
+              src="images/landscape-mediamodal.jpg"
+              alt=""
+              style={{
+                objectFit: 'contain',
+                maxHeight: '100vh',
+              }}
+            />
           </MediaModal>
         </div>
       );
@@ -52,12 +60,51 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
   </Story>
 </Canvas>
 
-## Title, Description, Footer Header
+## Title, Description, Footer
 
 An optional title and description can be used to describe the contents of the modal.
 
 <Canvas>
-  <Story name="Portrait Image with Title, Description, and Footer">
+  <Story name="Portrait Image with Title and Description">
+    {() => {
+      const [showModal, setShowModal] = useState(false);
+      const open = () => setShowModal(true);
+      const close = () => setShowModal(false);
+      return (
+        <div>
+          <Button variant="light" onClick={open}>
+            Portrait Image with Title and Description
+          </Button>
+          <MediaModal
+            title="portrait-mediamodal.jpg"
+            description="Site Survey - Roof"
+            isOpen={showModal}
+            onDismiss={close}
+          >
+            <img
+              src="images/portrait-mediamodal.jpg"
+              alt=""
+              style={{
+                objectFit: 'contain',
+                height: 'calc(100vh - var(--size-height-2xl))',
+                width: 'auto',
+              }}
+            />
+          </MediaModal>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Custom Header and Footer
+
+A node can be passed to `headerContent` and `footerContent` for more control over what is displayed in the respective content areas of the MediaModal.
+
+If `headerContent` is defined, then the `title` and `description` will not be rendered, even if defined.
+
+<Canvas>
+  <Story name="Custom Header Content">
     {() => {
       const [showModal, setShowModal] = useState(false);
       const open = () => setShowModal(true);
@@ -66,6 +113,16 @@ An optional title and description can be used to describe the contents of the mo
       const handleOpenPopover = () => {
         setPopoverOpen(!isPopoverOpen);
       };
+      const headerItems = (
+        <Box childGap="2xs">
+          <Box fontWeight="bold">Custom Styled Title</Box>
+          <Box direction="row" childGap="xs">
+            <Badge variant="info" size="sm" message="Invertor" />
+            <Badge variant="info" size="sm" message="Utility Meter" />
+            <Badge variant="info" size="sm" message="Site Survey" />
+          </Box>
+        </Box>
+      );
       const footerItems = (
         <Box direction="row" childGap="lg" fontSize="lg">
           <Box as="a" color="white" href="/images/landscape-mediamodal.jpg" download>
@@ -92,13 +149,12 @@ An optional title and description can be used to describe the contents of the mo
       return (
         <div>
           <Button variant="light" onClick={open}>
-            Show Portrait Image with Title, Description, and Footer
+            With Custom Header and Footer
           </Button>
           <MediaModal
-            title="portrait-mediamodal.jpg"
-            description="Site Survey - Roof"
             isOpen={showModal}
             onDismiss={close}
+            headerContent={headerItems}
             footerContent={footerItems}
           >
             <img

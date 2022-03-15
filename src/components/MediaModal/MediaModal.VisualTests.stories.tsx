@@ -41,6 +41,14 @@ TitleDescriptionPortraitImage.args = {
   description: 'Site Survey - Roof',
 };
 
+export const LandscapeImageHeaderContent = Template.bind({});
+LandscapeImageHeaderContent.args = {
+  ariaLabel: 'test MediaModal',
+  isOpen: true,
+  headerContent: <div>header content</div>,
+  children: <img src="/images/landscape-mediamodal.jpg" alt="landscape test" />,
+};
+
 export const PortraitImageFooter = Template.bind({});
 PortraitImageFooter.args = {
   ariaLabel: 'test MediaModal',

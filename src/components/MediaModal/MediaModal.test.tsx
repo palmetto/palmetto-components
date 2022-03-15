@@ -6,6 +6,7 @@ import * as stories from './MediaModal.VisualTests.stories';
 
 const {
   LandscapeImage,
+  LandscapeImageHeaderContent,
   PortraitImageFooter,
   TitleDescriptionPortraitImage,
   PortraitImageTitleDescriptionFooter,
@@ -32,6 +33,20 @@ describe('MediaModal', () => {
     expect(getByAltText('portrait')).toBeInTheDocument();
     expect(getByText('portrait-mediamodal.jpg')).toBeInTheDocument();
     expect(getByText('Site Survey - Roof')).toBeInTheDocument();
+  });
+
+  test('renders header content', () => {
+    const { getByText } = render(<LandscapeImageHeaderContent />);
+    expect(getByText('header content')).toBeInTheDocument();
+  });
+
+  test('renders header content but not title and description', () => {
+    const { getByText, queryByText } = render(
+      <LandscapeImageHeaderContent title="test title" description="test description" />,
+    );
+    expect(getByText('header content')).toBeInTheDocument();
+    expect(queryByText('test title')).not.toBeInTheDocument();
+    expect(queryByText('test description')).not.toBeInTheDocument();
   });
 
   test('renders footer content', () => {

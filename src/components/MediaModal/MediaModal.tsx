@@ -43,17 +43,22 @@ export interface MediaModalProps {
    */
   isOpen: boolean;
   /**
-   * If defined, will be displayed at the top of the viewport
+   * Title to be displayed at the top of the viewport. If headerContent is defined, this will be ignored.
    */
   title?: string;
   /**
-   * If defined, will be displayed at the top of the viewport
+   * Text to be displayed at the top of the viewport beneath the title.
+   * If headerContent is defined, this will be ignored.
    */
   description?: string;
   /**
    * Contents of the footer area.
    */
   footerContent?: ReactNode;
+  /**
+   * Contents of the header area. If defined, the title and description will not be rendered.
+   */
+  headerContent?: ReactNode;
   /**
    * Function that is called whenever the user hits "Escape" key or clicks outside the modal.
    */
@@ -75,6 +80,7 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
       className,
       containerRef = undefined,
       footerContent = undefined,
+      headerContent = undefined,
       initialFocusRef,
       isOpen,
       onDismiss,
@@ -85,7 +91,7 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
     const overlayClassnames = classNames(styles.overlay, styles['media-modal']);
     const contentClassnames = classNames(styles['media-modal'], className);
 
-    const showHeader = title || description;
+    const showHeader = headerContent || title || description;
 
     return (
       <DialogOverlay
@@ -102,26 +108,26 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
           <DialogContent aria-label={ariaLabel || title} className={contentClassnames}>
             {showHeader && (
               <Box
-                height="lg"
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
                 padding="md lg"
                 className={styles.header}
               >
-                <div>
-                  <Box className={styles.title}>{title}</Box>
-                  <Box fontSize="xs">{description}</Box>
-                </div>
-                <div className="font-size-lg">
+                {headerContent || (
+                  <Box childGap="2xs">
+                    <Box className={styles.title}>{title}</Box>
+                    <Box fontSize="xs">{description}</Box>
+                  </Box>
+                )}
+                <Box fontSize="lg">
                   <Button
                     iconPrefix="remove-light"
-                    size="lg"
                     onClick={onDismiss}
                     isNaked
                     aria-label="close"
                   />
-                </div>
+                </Box>
               </Box>
             )}
             {children}
