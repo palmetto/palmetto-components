@@ -2,7 +2,8 @@ import React, {
   FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement, AnchorHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
-import { IconName } from '../../types';
+import { IconName, ResponsiveProp } from '../../types';
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { handleReactRouterClick } from '../../lib/reactRouterClickHandler';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
@@ -10,7 +11,7 @@ import { getElementType } from '../../lib/getElementType';
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
-export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark';
+export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark' | 'white';
 
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 export interface ButtonProps {
@@ -96,7 +97,7 @@ export interface ButtonProps {
   /**
    * The size of the button.
    */
-  size?: ButtonSize;
+  size?: ButtonSize | ResponsiveProp<ButtonSize>;
   /**
    * The color variant of the button
    */
@@ -137,14 +138,22 @@ export const Button: FC<ButtonProps> = forwardRef(
   ) => {
     const disabled = isLoading || isDisabled;
 
-    const buttonClasses = classNames(styles.button, className, {
-      [styles.outline]: isOutlined && !isNaked,
-      [styles.loading]: isLoading,
-      [styles.naked]: isNaked,
-      [styles[variant]]: variant && !isNaked,
-      [styles[size]]: size && !isNaked,
-      [styles['full-width']]: fullWidth,
-    });
+    const responsiveClasses = generateResponsiveClasses('size', size).map(c => styles[c]);
+
+    const buttonClasses = classNames(
+      'palmetto-components__variables__button',
+      'palmetto-components__variables__form-control',
+      styles.button,
+      className,
+      ...!isNaked ? responsiveClasses : [],
+      {
+        [styles.outline]: isOutlined && !isNaked,
+        [styles.loading]: isLoading,
+        [styles.naked]: isNaked,
+        [styles[variant]]: variant && !isNaked,
+        [styles['full-width']]: fullWidth,
+      },
+    );
 
     const handleClick = handleReactRouterClick;
 
@@ -159,7 +168,7 @@ export const Button: FC<ButtonProps> = forwardRef(
     const getSpinnerVariant = () => {
       if (isOutlined) return variant;
 
-      return variant === 'light' ? 'grey' : 'white';
+      return (variant === 'light' || variant === 'white') ? 'grey' : 'white';
     };
 
     const buttonContent = iconPrefix || iconSuffix ? (
@@ -215,7 +224,6 @@ export const Button: FC<ButtonProps> = forwardRef(
       id,
       href,
       className: buttonClasses,
-      children: buttonContent,
       disabled,
       target: (as === 'a' && href) ? target : null,
       onBlur: handleBlur,
@@ -226,6 +234,6 @@ export const Button: FC<ButtonProps> = forwardRef(
       type: (href || as === 'a') ? null : type,
       tabIndex,
       ...restProps,
-    });
+    }, buttonContent);
   },
 );

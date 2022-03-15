@@ -5,10 +5,9 @@ import {
   BadgeProps,
   BadgeSize,
   BadgeVariant,
-  BADGE_COLOR_MAP,
-  BADGE_SIZE_MAP,
 } from './Badge';
 import { Box } from '../Box/Box';
+import { BADGE_SIZES, BADGE_VARIANTS } from './Badge.constants';
 
 export default {
   title: 'Components/Badge/Visual Regression Tests',
@@ -17,10 +16,10 @@ export default {
 
 const Template: Story<BadgeProps> = args => (
   <Box childGap="xl">
-    {Object.keys(BADGE_SIZE_MAP).map(size => (
+    {BADGE_SIZES.map(size => (
       <Box childGap="sm" key={size}>
         <Box childGap="sm" direction="row">
-          {Object.keys(BADGE_COLOR_MAP).map(variant => (
+          {BADGE_VARIANTS.map(variant => (
             <Badge
               {...args}
               variant={variant as BadgeVariant}

@@ -3,7 +3,7 @@
     tr:nth-of-type(odd) {
       th,
       td {
-        background-color: var(--table-row-striped-background);
+        background-color: var(--table-row-striped-background, var(--INTERNAL_table-row-striped-background));
       }
     }
   }

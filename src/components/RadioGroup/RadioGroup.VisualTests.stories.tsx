@@ -36,7 +36,7 @@ const options = [
   {
     id: 'three',
     value: 'three',
-    label: 'Three',
+    label: <div>Three - node label</div>,
   },
 ];
 

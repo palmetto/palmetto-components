@@ -7,7 +7,7 @@ import { Box, BoxProps } from '../Box/Box';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
-import { computedResponsiveSize } from './TextareaInputSizeUtilities'; // eslint-disable-line import/no-cycle
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import styles from './TextareaInput.module.scss';
 
 export type TextareaInputSize = 'sm' | 'md' | 'lg';
@@ -123,8 +123,12 @@ export const TextareaInput: FC<TextareaInputProps> = ({
   size = 'md',
   ...restProps
 }) => {
+  const responsiveClasses = generateResponsiveClasses('size', size);
+
   const inputWrapperClasses = classNames(
+    'palmetto-components__variables__form-control',
     styles['textarea-input-wrapper'],
+    ...responsiveClasses.map(c => (styles[c])),
     {
       [styles.error]: error,
       [styles.disabled]: isDisabled,
@@ -146,9 +150,6 @@ export const TextareaInput: FC<TextareaInputProps> = ({
     onBlur,
     onChange,
     onFocus,
-    padding: computedResponsiveSize(size, 'padding'),
-    fontSize: computedResponsiveSize(size, 'fontSize'),
-    radius: computedResponsiveSize(size, 'radius'),
     placeholder,
     rows,
     value,

@@ -188,7 +188,11 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
       <FormLabel inputId={id} className="display-none">
         {labelText}
       </FormLabel>
-      <Box childGap="xs" alignItems="center" direction="row">
+      <Box
+        childGap="xs"
+        alignItems={{ base: 'flex-start', tablet: 'center' }}
+        direction={{ base: 'column', tablet: 'row' }}
+      >
         <Button
           onClick={handleClick}
           aria-controls={id}

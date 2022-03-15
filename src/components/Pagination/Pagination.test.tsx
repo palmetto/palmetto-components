@@ -190,7 +190,7 @@ describe('Pagination', () => {
       const buttons = screen.queryAllByRole('button');
 
       buttons.forEach(button => {
-        expect(button).toHaveClass('sm');
+        expect(button).toHaveClass('size-sm');
       });
     });
   });

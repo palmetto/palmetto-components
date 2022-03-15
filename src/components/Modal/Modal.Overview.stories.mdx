@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Modal } from './Modal';
 import { Button } from '../Button/Button';
 import { SelectInput } from '../SelectInput/SelectInput';
@@ -14,7 +14,7 @@ These are specifically great for presenting new flows while preserving the state
 The default behavior of a Modal is to focus on the first focusable item.
 Therefore, you should ensure that the first focusable item is non-destructive, such as a "cancel" or close button.
 
-Modal consists of three child components that are automatically included with the `<Card />`:
+Modal consists of three child components that are automatically included with the `<Modal />`:
 
 1. `<Modal.Header />` - a standard header of a Modal, which may contain a title for the Modal's contents and a close button
 1. `<Modal.Body />` - for the body of the Modal
@@ -219,3 +219,37 @@ maxWidth, use existing tokens only.
     }}
   </Story>
 </Canvas>
+
+
+## Component Design Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--modal-background-color': '--color-brand-white-500',
+        '--modal-border-radius': '--size-border-radius-md',
+        '--modal-box-shadow': '--size-box-shadow-md',
+        '--modal-close-button-color': '--color-brand-grey-500',
+        '--modal-close-button-color-hover': '--color-brand-grey-600',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+  </tbody>
+</table>
+

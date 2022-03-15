@@ -5,24 +5,39 @@
   height: calc(var(--size-spacing-md) - 4px);
 }
 
-%thumb-size-sm { @include thumb-size-sm; }
-.thumb-size-sm { @extend %thumb-size-sm; }
+%thumb-size-sm {
+  @include thumb-size-sm;
+}
+
+.thumb-size-sm {
+  @extend %thumb-size-sm;
+}
 
 @mixin thumb-size-md {
   width: calc(var(--size-spacing-lg) - 4px);
   height: calc(var(--size-spacing-lg) - 4px);
 }
 
-%thumb-size-md { @include thumb-size-md; }
-.thumb-size-md { @extend %thumb-size-md; }
+%thumb-size-md {
+  @include thumb-size-md;
+}
+
+.thumb-size-md {
+  @extend %thumb-size-md;
+}
 
 @mixin thumb-size-lg {
   width: calc(var(--size-spacing-xl) - 4px);
   height: calc(var(--size-spacing-xl) - 4px);
 }
 
-%thumb-size-lg { @include thumb-size-lg; }
-.thumb-size-lg { @extend %thumb-size-lg; }
+%thumb-size-lg {
+  @include thumb-size-lg;
+}
+
+.thumb-size-lg {
+  @extend %thumb-size-lg;
+}
 
 @mixin track-size-sm {
   min-width: 1.5rem;
@@ -30,8 +45,13 @@
   height: var(--size-spacing-md);
 }
 
-%track-size-sm { @include track-size-sm; }
-.track-size-sm { @extend %track-size-sm; }
+%track-size-sm {
+  @include track-size-sm;
+}
+
+.track-size-sm {
+  @extend %track-size-sm;
+}
 
 @mixin track-size-md {
   min-width: 2.5rem;
@@ -39,8 +59,13 @@
   height: var(--size-spacing-lg);
 }
 
-%track-size-md { @include track-size-md; }
-.track-size-md { @extend %track-size-md; }
+%track-size-md {
+  @include track-size-md;
+}
+
+.track-size-md {
+  @extend %track-size-md;
+}
 
 @mixin track-size-lg {
   min-width: 3.5rem;
@@ -48,34 +73,90 @@
   height: var(--size-spacing-xl);
 }
 
-%track-size-lg { @include track-size-lg; }
-.track-size-lg { @extend %track-size-lg; }
+%track-size-lg {
+  @include track-size-lg;
+}
+
+.track-size-lg {
+  @extend %track-size-lg;
+}
 
 @media (min-width: $size-breakpoint-tablet) {
-  .thumb-size-sm-tablet { @include thumb-size-sm; }
-  .thumb-size-md-tablet { @include thumb-size-md; }
-  .thumb-size-lg-tablet { @include thumb-size-lg; }
-  .track-size-sm-tablet { @include track-size-sm; }
-  .track-size-md-tablet { @include track-size-md; }
-  .track-size-lg-tablet { @include track-size-lg; }
+  .thumb-size-sm-tablet {
+    @include thumb-size-sm;
+  }
+
+  .thumb-size-md-tablet {
+    @include thumb-size-md;
+  }
+
+  .thumb-size-lg-tablet {
+    @include thumb-size-lg;
+  }
+
+  .track-size-sm-tablet {
+    @include track-size-sm;
+  }
+
+  .track-size-md-tablet {
+    @include track-size-md;
+  }
+
+  .track-size-lg-tablet {
+    @include track-size-lg;
+  }
 }
 
 @media (min-width: $size-breakpoint-desktop) {
-  .thumb-size-sm-desktop { @include thumb-size-sm; }
-  .thumb-size-md-desktop { @include thumb-size-md; }
-  .thumb-size-lg-desktop { @include thumb-size-lg; }
-  .track-size-sm-desktop { @include track-size-sm; }
-  .track-size-md-desktop { @include track-size-md; }
-  .track-size-lg-desktop { @include track-size-lg; }
+  .thumb-size-sm-desktop {
+    @include thumb-size-sm;
+  }
+
+  .thumb-size-md-desktop {
+    @include thumb-size-md;
+  }
+
+  .thumb-size-lg-desktop {
+    @include thumb-size-lg;
+  }
+
+  .track-size-sm-desktop {
+    @include track-size-sm;
+  }
+
+  .track-size-md-desktop {
+    @include track-size-md;
+  }
+
+  .track-size-lg-desktop {
+    @include track-size-lg;
+  }
 }
 
 @media (min-width: $size-breakpoint-hd) {
-  .thumb-size-sm-hd { @include thumb-size-sm; }
-  .thumb-size-md-hd { @include thumb-size-md; }
-  .thumb-size-lg-hd { @include thumb-size-lg; }
-  .track-size-sm-hd { @include track-size-sm; }
-  .track-size-md-hd { @include track-size-md; }
-  .track-size-lg-hd { @include track-size-lg; }
+  .thumb-size-sm-hd {
+    @include thumb-size-sm;
+  }
+
+  .thumb-size-md-hd {
+    @include thumb-size-md;
+  }
+
+  .thumb-size-lg-hd {
+    @include thumb-size-lg;
+  }
+
+  .track-size-sm-hd {
+    @include track-size-sm;
+  }
+
+  .track-size-md-hd {
+    @include track-size-md;
+  }
+
+  .track-size-lg-hd {
+    @include track-size-lg;
+  }
 }
 
 .disabled {
@@ -100,7 +181,7 @@
   padding: 2px;
 
   &.error {
-    background-color: var(--form-control-error-background-color);
+    background-color: var(--toggle-background-color-error, var(--color-brand-danger-400));
   }
 }
 
@@ -133,33 +214,57 @@
   }
 
   @media (min-width: $size-breakpoint-tablet) {
-    &:checked + .toggle-track .toggle-thumb.thumb-size-sm-tablet { transform: translateX(0.5rem); }
-    &:checked + .toggle-track .toggle-thumb.thumb-size-md-tablet { transform: translateX(1rem); }
-    &:checked + .toggle-track .toggle-thumb.thumb-size-lg-tablet { transform: translateX(1.5rem); }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-sm-tablet {
+      transform: translateX(0.5rem);
+    }
+
+    &:checked + .toggle-track .toggle-thumb.thumb-size-md-tablet {
+      transform: translateX(1rem);
+    }
+
+    &:checked + .toggle-track .toggle-thumb.thumb-size-lg-tablet {
+      transform: translateX(1.5rem);
+    }
   }
-  
+
   @media (min-width: $size-breakpoint-desktop) {
-    &:checked + .toggle-track .toggle-thumb.thumb-size-sm-desktop { transform: translateX(0.5rem); }
-    &:checked + .toggle-track .toggle-thumb.thumb-size-md-desktop { transform: translateX(1rem); }
-    &:checked + .toggle-track .toggle-thumb.thumb-size-lg-desktop {transform: translateX(1.5rem); }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-sm-desktop {
+      transform: translateX(0.5rem);
+    }
+
+    &:checked + .toggle-track .toggle-thumb.thumb-size-md-desktop {
+      transform: translateX(1rem);
+    }
+
+    &:checked + .toggle-track .toggle-thumb.thumb-size-lg-desktop {
+      transform: translateX(1.5rem);
+    }
   }
-  
+
   @media (min-width: $size-breakpoint-hd) {
-    &:checked + .toggle-track .toggle-thumb.thumb-size-sm-hd { transform: translateX(0.5rem); }
-    &:checked + .toggle-track .toggle-thumb.thumb-size-md-hd { transform: translateX(1rem); }
-    &:checked + .toggle-track .toggle-thumb.thumb-size-lg-hd { transform: translateX(1.5rem); }
+    &:checked + .toggle-track .toggle-thumb.thumb-size-sm-hd {
+      transform: translateX(0.5rem);
+    }
+
+    &:checked + .toggle-track .toggle-thumb.thumb-size-md-hd {
+      transform: translateX(1rem);
+    }
+
+    &:checked + .toggle-track .toggle-thumb.thumb-size-lg-hd {
+      transform: translateX(1.5rem);
+    }
   }
 
   /* define regular focus styles for non-supporting browsers */
   &:focus + .toggle-track {
     outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
+    box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
   /* Show focus styles on keyboard focus. */
   &:focus-visible + .toggle-track {
     outline: 0;
-    box-shadow: var(--input-focus-box-shadow);
+    box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
   /* Hide focus styles if they're not needed, for example,

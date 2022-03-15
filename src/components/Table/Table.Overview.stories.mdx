@@ -997,35 +997,6 @@ The below is an example of setting the `align` prop globally in the `<Table />` 
   </Story>
 </Canvas>
 
-## Custom Column Classes
-
-You can add custom classes to both your table header cell as well as all the cells in a column by passing the Classes
-in the column config.
-
-<Canvas>
-  <Story name="Custom Column Classes">
-    {() => {
-      const columnConfig = [
-        { heading: 'with cellClassName', dataKey: 'id', cellClassName: 'background-color-secondary-lightest font-color-secondary' },
-        { heading: 'With headerClassName', dataKey: 'color', headerClassName: 'background-color-tertiary-lightest font-color-tertiary' },
-        { heading: 'Flavor', dataKey: 'flavor' },
-      ];
-      const tableData = [
-        { id: 1, color: 'red', flavor: 'vanilla' },
-        { id: 2, color: 'blue', flavor: 'chocolate' },
-        { id: 3, color: 'green', flavor: 'strawberry' },
-      ];
-      return (
-        <Table
-          rowKey="id"
-          columns={columnConfig}
-          rows={tableData}
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
 ## Component as Column Header
 
 You can use a ReactNode as your table header or cell.
@@ -1053,3 +1024,49 @@ You can use a ReactNode as your table header or cell.
     }}
   </Story>
 </Canvas>
+
+## Component Design Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        'table-border-color': '--color-brand-grey-100',
+        'table-border-width': '--size-border-xs',
+        'table-background-color': '--color-brand-white-500',
+        'table-font-color': '--color-brand-grey-600',
+        'table-font-size': '--size-font-sm',
+        'table-padding-horizontal': '--size-spacing-lg',
+        'table-padding-vertical': '--size-spacing-md',
+        'table-compact-padding-horizontal': '--size-spacing-xs',
+        'table-compact-padding-vertical': '--size-spacing-xs',
+        'table-header-background-color': '--color-brand-white-500',
+        'table-header-font-size': '--size-font-xs',
+        'table-header-font-color': '--color-brand-grey-600',
+        'table-header-font-weight': '--size-font-weight-bold',
+        'table-header-sort-icon-spacing': '--size-spacing-xs',
+        'table-header-padding-vertical': '--size-spacing-md',
+        'table-header-border-width': '--size-border-xs',
+        'table-row-hover-background': '--color-brand-grey-50',
+        'table-row-striped-background': '--color-brand-grey-50',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+
+  </tbody>
+</table>

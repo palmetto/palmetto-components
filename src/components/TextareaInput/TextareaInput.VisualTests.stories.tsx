@@ -23,6 +23,7 @@ ResponsiveSize.args = {
     desktop: 'lg',
     hd: 'sm',
   },
-  value: 'responsive',
+  value: 'Responsive size',
+  label: 'Textarea Input Visual Test',
 };
 ResponsiveSize.parameters = RESPONSIVE_STORY;

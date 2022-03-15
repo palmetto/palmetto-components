@@ -1,0 +1,92 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
+/* This line prevents @reach/dialog from throwing a warning due to not importing their CSS. */
+:root {
+  --reach-dialog: 1;
+}
+
+[data-reach-dialog-overlay].media-modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: flex-end;
+  z-index: var(--size-z-index-overlay);
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+
+  :global {
+    animation: fadeIn 0.2s;
+  }
+}
+
+.media-modal {
+  .container {
+    position: fixed;
+    display: grid;
+    width: 100%;
+    top: env(safe-area-inset-top, 0);
+    right: env(safe-area-inset-right, 0);
+    bottom: env(safe-area-inset-bottom, 0);
+    left: env(safe-area-inset-left, 0);
+    grid-template-rows: minmax(var(--size-height-lg), 1fr) auto minmax(var(--size-height-lg), 1fr);
+    grid-template-columns: 1fr auto 1fr;
+    overflow: hidden;
+  }
+
+  .header {
+    position: fixed;
+    top: env(safe-area-inset-top, 0);
+    right: env(safe-area-inset-right, 0);
+    left: env(safe-area-inset-left, 0);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--media-modal-font-color, var(--color-brand-grey-100));
+  }
+
+  .title {
+    overflow: hidden;
+    /* stylelint-disable */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    /* stylelint-enable */
+  }
+
+  .footer {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    left: env(safe-area-inset-left, 0);
+    right: env(safe-area-inset-right, 0);
+    bottom: env(safe-area-inset-bottom, 0);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--media-modal-font-color, var(--color-brand-grey-100));
+    height: var(--size-height-lg);
+    justify-content: center;
+    align-items: center;
+    padding: var(--size-spacing-md);
+    align-self: flex-end;
+    z-index: var(--size-z-index-modal);
+  }
+
+  [data-reach-dialog-content] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    grid-row: 2;
+    grid-column: 2;
+    z-index: var(--size-z-index-modal);
+    outline: none;
+    padding: 0;
+    height: 100%;
+    border-radius: 0;
+
+    :global {
+      animation: fadeIn 0.2s ease-out;
+    }
+  }
+}

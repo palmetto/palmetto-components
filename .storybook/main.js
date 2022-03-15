@@ -36,6 +36,7 @@ module.exports = {
     },
     '@storybook/addon-controls',
     '@storybook/addon-links/register',
+    'storybook-addon-mdx-embed',
     './register',
   ],
   webpackFinal: config => {

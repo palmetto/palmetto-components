@@ -76,6 +76,8 @@ export const CategoryFilter: CategoryFilterComponent = forwardRef<HTMLDivElement
   ref,
 ) => {
   const classes = classNames(
+    'palmetto-components__variables__button',
+    'palmetto-components__variables__form-control',
     styles['category-filter'],
     className,
     {
@@ -90,16 +92,10 @@ export const CategoryFilter: CategoryFilterComponent = forwardRef<HTMLDivElement
       role="checkbox"
       alignItems="center"
       disabled={isDisabled}
-      background={isSelected ? 'primary' : 'transparent'}
       className={classes}
       childGap={computedResponsiveSize(size, 'childGap')}
       direction="row"
-      hover={!isDisabled ? {
-        background: isSelected ? 'primary-600' : 'grey-100',
-      } : undefined}
       cursor={isDisabled ? 'not-allowed' : 'pointer'}
-      radius="xl"
-      borderColor={isSelected ? 'primary' : 'grey-100'}
       borderWidth="xs"
       aria-checked={isSelected}
       fontSize={computedResponsiveSize(size, 'fontSize')}

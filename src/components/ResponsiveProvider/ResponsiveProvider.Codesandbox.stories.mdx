@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Responsive/ResponsiveProvider/Codesandbox" />
+<Meta title="Providers/ResponsiveProvider/Codesandbox" />
 
 # ResponsiveProvider
 
@@ -17,7 +17,7 @@ it is best to use it once in an application, and placed as high as possible in t
 
 The example below shows basic usage.
 
-Our library includes opinionated [breakpoints](/?path=/docs/design-tokens-breakpoints--page). The `useBreakpoint` hook exposes
+Our library includes opinionated [breakpoints](?path=/story/design-tokens-design-tokens--page#breakpoints). The `useBreakpoint` hook exposes
 these to any component nested under a `ResponsiveProvider`
 
 ```js codesandbox=palmetto-components
@@ -37,7 +37,7 @@ export default () => {
       </Box>
     );
   };
- 
+
   return (
     <ResponsiveProvider>
       <ConsumerApp />
@@ -45,6 +45,3 @@ export default () => {
   );
 };
 ```
-
-
-

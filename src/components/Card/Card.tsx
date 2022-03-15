@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
+import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import { CardFooter, CardHeader, CardSection } from './components';
+import styles from './Card.module.scss';
 
 export interface CardProps extends BoxProps {
   /**
@@ -17,27 +19,26 @@ const CardBaseComponent: React.FC<CardProps> = React.forwardRef((
   {
     children,
     subdued,
-    radius = 'md',
+    className = undefined,
     overflow = 'hidden',
     display = 'block',
-    shadow = 'sm',
-    background = 'white',
     width = '100',
     ...restProps
   },
   ref,
 ) => {
-  const backgroundColor = subdued ? 'grey-lightest' : background;
+  const classes = classNames(styles.card, className,
+    {
+      [styles.subdued]: subdued,
+    });
 
   return (
     <Box
-      background={backgroundColor}
-      radius={radius}
       overflow={overflow}
       display={display}
       ref={ref}
-      shadow={subdued ? undefined : shadow}
       width={width}
+      className={classes}
       {...restProps}
     >
       {children}

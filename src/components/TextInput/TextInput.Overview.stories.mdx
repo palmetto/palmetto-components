@@ -290,7 +290,7 @@ a callback function when the clear icon is clicked, which can then be handled to
 
 ## Sizes
 
-Set the `size` of the input to `sm`, `md` or `lg`. The `size` prop is also a `ResponsiveProp`, so it can be sized differently at each [breakpoint](?path=/story/design-tokens-breakpoints--page) by passing an object.
+Set the `size` of the input to `sm`, `md` or `lg`. The `size` prop is also a `ResponsiveProp`, so it can be sized differently at each [breakpoint](?path=/docs/design-tokens-design-tokens--page#breakpoints) by passing an object.
 
 <Canvas>
   <Story name="Size">
@@ -519,49 +519,6 @@ An input does not need to be marked as required to render a validation message.
   </Story>
 </Canvas>
 
-## Custom Classes
+## Component Design Tokens
 
-Use the `className` prop to add a custom class, or classes to an input.
-
-<Canvas>
-  <Story name="Custom Classes">
-    {() => {
-      const [value, setValue] = useState('');
-      return (
-        <TextInput
-          id="customClasses"
-          value={value}
-          label="Label"
-          onChange={event => setValue(event.target.value)}
-          className="background-color-primary"
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="Adjacent Inputs">
-    {() => {
-      const [value1, setValue1] = useState('');
-      const [value2, setValue2] = useState('');
-      const [value3, setValue3] = useState('');
-      return (
-        <Box display="flex" direction="row" justify="between" overflow="hidden" childGap="md">
-          <TextInput
-            id="adjacent1"
-            value={value1}
-            label="input 1"
-            onChange={event => setValue1(event.target.value)}
-          />
-          <TextInput
-            id="adjacent2"
-            value={value2}
-            label="input 2"
-            onChange={event => setValue2(event.target.value)}
-          />
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
+This component shares component design tokens with all form controls. For a complete list of tokens, see the [Theming Form Controls documentation](/docs/theming-form-controls--custom-theme-form).

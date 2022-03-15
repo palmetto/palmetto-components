@@ -3,18 +3,19 @@
     margin: 0;
     border: none;
     padding: 0;
+    font-family: var(--form-control-font-family, var(--INTERNAL_form-control-font-family));
 
     .legend {
       display: block;
-      margin-bottom: var(--form-control-radio-group-options-spacing);
+      margin-bottom: var(--form-control-radio-group-options-spacing, var(--INTERNAL_form-control-radio-group-options-spacing));
       line-height: 1.25;
-      color: var(--form-control-font-color);
-      font-size: var(--form-control-size-md-label-size);
-      font-weight: var(--form-control-legend-font-weight);
+      color: var(--form-control-font-color, var(--INTERNAL_form-control-font-color));
+      font-size: var(--form-control-size-md-label-size, var(--INTERNAL_form-control-size-md-label-size));
+      font-weight: var(--form-control-legend-font-weight, var(--INTERNAL_form-control-legend-font-weight));
 
       .description {
-        margin-top: var(--form-control-radio-group-description-spacing);
-        color: var(--form-control-description-color);
+        margin-top: var(--INTERNAL_form-control-radio-group-description-spacing, var(--INTERNAL_form-control-radio-group-description-spacing));
+        color: var(--form-control-description-color, var(--INTERNAL_form-control-description-color));
         font-weight: 400;
       }
     }

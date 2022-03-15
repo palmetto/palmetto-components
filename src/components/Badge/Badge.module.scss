@@ -1,4 +1,154 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
+@mixin size-sm {
+  font-size: var(--badge-size-sm-font-size, var(--size-font-2xs));
+  padding: var(--badge-size-sm-padding-vertical, var(--size-spacing-2xs))
+    var(--badge-size-sm-padding-horizontal, var(--size-spacing-2xs));
+}
+
+%size-sm { @include size-sm; }
+.size-sm { @extend %size-sm; }
+
+@mixin size-md {
+  font-size: var(--badge-size-md-font-size, var(--size-font-xs));
+  padding: var(--badge-size-md-padding-vertical, var(--size-spacing-2xs))
+    var(--badge-size-md-padding-horizontal, var(--size-spacing-xs));
+}
+
+%size-md { @include size-md; }
+.size-md { @extend %size-md; }
+
+@mixin size-lg {
+  font-size: var(--badge-size-lg-font-size, var(--size-font-sm));
+  padding: var(--badge-size-lg-padding-vertical, var(--size-spacing-2xs))
+    var(--badge-size-lg-padding-horizontal, var(--size-spacing-xs));
+}
+
+%size-lg { @include size-lg; }
+.size-lg { @extend %size-lg; }
+
+@mixin size-xl {
+  font-size: var(--badge-size-xl-font-size, var(--size-font-md));
+  padding: var(--badge-size-xl-padding-vertical, var(--size-spacing-xs))
+    var(--badge-size-xl-padding-horizontal, var(--size-spacing-sm));
+}
+
+%size-xl { @include size-xl; }
+.size-xl { @extend %size-xl; }
+
 .badge {
+  border-radius: var(--badge-border-radius, var(--size-border-radius-sm));
   text-transform: uppercase;
   letter-spacing: 0.8px;
+  font-weight: var(--badge-font-weight, var(--size-font-weight-bold));
+
+  &.primary {
+    background-color: var(--badge-primary-background-color, var(--color-brand-primary-100));
+    color: var(--badge-primary-font-color, var(--color-brand-grey-700));
+  }
+
+  &.secondary {
+    background-color: var(--badge-secondary-background-color, var(--color-brand-secondary-100));
+    color: var(--badge-secondary-font-color, var(--color-brand-grey-700));
+  }
+
+  &.tertiary {
+    background-color: var(--badge-tertiary-background-color, var(--color-brand-tertiary-100));
+    color: var(--badge-tertiary-font-color, var(--color-brand-grey-700));
+  }
+
+  &.success {
+    background-color: var(--badge-success-background-color, var(--color-brand-success-100));
+    color: var(--badge-success-font-color, var(--color-brand-grey-700));
+  }
+
+  &.danger {
+    background-color: var(--badge-danger-background-color, var(--color-brand-danger-100));
+    color: var(--badge-danger-font-color, var(--color-brand-grey-700));
+  }
+
+  &.info {
+    background-color: var(--badge-info-background-color, var(--color-brand-info-100));
+    color: var(--badge-info-font-color, var(--color-brand-grey-700));
+  }
+
+  &.warning {
+    background-color: var(--badge-warning-background-color, var(--color-brand-warning-100));
+    color: var(--badge-warning-font-color, var(--color-brand-grey-700));
+  }
+
+  &.default {
+    background-color: var(--badge-default-background-color, var(--color-brand-grey-100));
+    color: var(--badge-default-font-color, var(--color-brand-grey-700));
+  }
+
+  &.size-sm {
+    @extend %size-sm;
+  }
+
+  &.size-md {
+    @extend %size-md;
+  }
+
+  &.size-lg {
+    @extend %size-lg;
+  }
+
+  &.size-xl {
+    @extend %size-xl;
+  }
+
+  @media (min-width: $size-breakpoint-tablet) {
+    &.size-sm-tablet {
+      @include size-sm;
+    }
+
+    &.size-md-tablet {
+      @include size-md;
+    }
+
+    &.size-lg-tablet {
+      @include size-lg;
+    }
+
+    &.size-xl-tablet {
+      @include size-xl;
+    }
+  }
+
+  @media (min-width: $size-breakpoint-desktop) {
+    &.size-sm-desktop {
+      @include size-sm;
+    }
+
+    &.size-md-desktop {
+      @include size-md;
+    }
+
+    &.size-lg-desktop {
+      @include size-lg;
+    }
+
+    &.size-xl-desktop {
+      @include size-xl;
+    }
+  }
+
+  @media (min-width: $size-breakpoint-hd) {
+    &.size-sm-hd {
+      @include size-sm;
+    }
+
+    &.size-md-hd {
+      @include size-md;
+    }
+
+    &.size-lg-hd {
+      @include size-lg;
+    }
+
+    &.size-xl-hd {
+      @include size-xl;
+    }
+  }
 }

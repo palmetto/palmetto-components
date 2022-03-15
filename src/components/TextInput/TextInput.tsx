@@ -13,8 +13,7 @@ import classNames from 'classnames';
 import Cleave from 'cleave.js/react';
 import { ChangeEvent as CleaveChangeEvent } from 'cleave.js/react/props';
 import { ResponsiveProp, UnknownPropertiesObjType } from '../../types';
-import { cssShorthandToClasses } from '../../lib/cssShorthandToClasses';
-import { computedResponsiveSize } from './TextInputSizeUtilities'; // eslint-disable-line import/no-cycle
+import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { getInputMaskType } from './TextInputMasks'; // eslint-disable-line import/no-cycle
 import { Box, BoxProps } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
@@ -158,10 +157,18 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
     },
     ref,
   ) => {
-    const inputWrapperClasses = classNames(styles['text-input-wrapper'], {
-      [styles.error]: error,
-      [styles.disabled]: isDisabled,
-    });
+    const responsiveClasses = generateResponsiveClasses('size', size);
+
+    const inputWrapperClasses = classNames(
+      'palmetto-components__variables__form-control',
+      styles['text-input-wrapper'],
+      ...responsiveClasses.map(c => (styles[c])),
+      {
+        [styles.error]: error,
+        [styles.disabled]: isDisabled,
+        [styles['is-clearable']]: onClear,
+      },
+    );
 
     const clearBtnClasses = classNames(styles['clear-button'], styles.md);
 
@@ -204,7 +211,6 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
       value,
       className: classNames(
         inputProps.className,
-        cssShorthandToClasses('p', computedResponsiveSize(size, 'childPadding')),
         {
           'p-left-xs p-left-xs-tablet p-left-xs-desktop p-left-xs-hd': prefix,
           'p-right-xs p-right-xs-tablet p-right-xs-desktop p-right-xs-hd': suffix,
@@ -228,15 +234,11 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
         <Box
           direction="row"
           className={inputWrapperClasses}
-          padding={computedResponsiveSize(size, 'containerPadding')}
-          fontSize={computedResponsiveSize(size, 'fontSize')}
-          radius={computedResponsiveSize(size, 'radius')}
         >
           {prefix && (
             <Box
               color="grey-400"
-              className="ws-nowrap"
-              padding={computedResponsiveSize(size, 'childPadding')}
+              className={classNames(styles.prefix, 'ws-nowrap')}
             >
               {prefix}
             </Box>
@@ -250,7 +252,10 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
           )}
           {!!onClear && !!value && renderClearIcon()}
           {suffix && (
-            <Box color="grey-400" className="ws-nowrap" padding={computedResponsiveSize(size, 'childPadding')}>
+            <Box
+              color="grey-400"
+              className={classNames(styles.suffix, 'ws-nowrap')}
+            >
               {suffix}
             </Box>
           )}

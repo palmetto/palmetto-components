@@ -82,7 +82,7 @@ Use the `hideLabel` prop to not render the label, however a `label` is still req
 ### Sizes
 
 Set the size of the `toggle` to `sm`, `md` or `lg`. `md` is the default size.
-The `size` prop is also a `ResponsiveProp`, so it can be sized differently at each [breakpoint](?path=/story/design-tokens-breakpoints--page) by passing an object.
+The `size` prop is also a `ResponsiveProp`, so it can be sized differently at each [breakpoint](?path=/docs/design-tokens-design-tokens--page#breakpoints) by passing an object.
 
 <Canvas isExpanded>
   <Story name="Size">
@@ -166,3 +166,32 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
     }}
   </Story>
 </Canvas>
+
+
+## Component Design Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--toggle-background-color-error': '--color-brand-danger-400',
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+  </tbody>
+</table>

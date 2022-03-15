@@ -1,5 +1,246 @@
 Changelog
 
+# [0.129.0](https://github.com/palmetto/palmetto-components/compare/v0.128.2...v0.129.0) (2022-03-15)
+
+
+### Features
+
+* **MediaModal:** fix warning in documentation and initiate package release ([#729](https://github.com/palmetto/palmetto-components/issues/729)) ([e9f51c4](https://github.com/palmetto/palmetto-components/commit/e9f51c42328a6487f52e0bf40becbd56961f9d26))
+
+## [0.128.2](https://github.com/palmetto/palmetto-components/compare/v0.128.1...v0.128.2) (2022-03-04)
+
+
+### Bug Fixes
+
+* **Icon:** copy-document icon ([#723](https://github.com/palmetto/palmetto-components/issues/723)) ([064745c](https://github.com/palmetto/palmetto-components/commit/064745c4013960edad6ab054840063405e602771))
+
+## [0.128.1](https://github.com/palmetto/palmetto-components/compare/v0.128.0...v0.128.1) (2022-03-03)
+
+# [0.128.0](https://github.com/palmetto/palmetto-components/compare/v0.127.3...v0.128.0) (2022-03-02)
+
+
+### Features
+
+* **Colors:** updated brand colors ([#721](https://github.com/palmetto/palmetto-components/issues/721)) ([5776395](https://github.com/palmetto/palmetto-components/commit/577639550a9488f6cb630f0ecc9abacfc9275845))
+
+## [0.127.3](https://github.com/palmetto/palmetto-components/compare/v0.127.2...v0.127.3) (2022-02-28)
+
+
+### Bug Fixes
+
+* **Button:** vertically center button contents ([#712](https://github.com/palmetto/palmetto-components/issues/712)) ([6248f3a](https://github.com/palmetto/palmetto-components/commit/6248f3a5aad702abc649f7ebb0efd82d74ea9dc1))
+
+## [0.127.2](https://github.com/palmetto/palmetto-components/compare/v0.127.1...v0.127.2) (2022-02-25)
+
+
+### Bug Fixes
+
+* **FileUpload:** make helpText block level item on mobile ([#711](https://github.com/palmetto/palmetto-components/issues/711)) ([8bef2ef](https://github.com/palmetto/palmetto-components/commit/8bef2ef03d2cddcdcfe64e0429ecfa9eff2af665)), closes [#377](https://github.com/palmetto/palmetto-components/issues/377)
+
+## [0.127.1](https://github.com/palmetto/palmetto-components/compare/v0.127.0...v0.127.1) (2022-02-24)
+
+# [0.127.0](https://github.com/palmetto/palmetto-components/compare/v0.126.0...v0.127.0) (2022-02-24)
+
+
+### Features
+
+* **Table:** theming tokens ([#709](https://github.com/palmetto/palmetto-components/issues/709)) ([3ab6d5d](https://github.com/palmetto/palmetto-components/commit/3ab6d5d1af194008063c6402e027b58f9d4a75e1))
+
+# [0.126.0](https://github.com/palmetto/palmetto-components/compare/v0.125.0...v0.126.0) (2022-02-24)
+
+
+### Features
+
+* **Card:** theme tokens ([#708](https://github.com/palmetto/palmetto-components/issues/708)) ([4190cf5](https://github.com/palmetto/palmetto-components/commit/4190cf5edcddd86ba0ff263d36e903ccd49439fe))
+
+# [0.125.0](https://github.com/palmetto/palmetto-components/compare/v0.124.0...v0.125.0) (2022-02-23)
+
+
+### Features
+
+* **Modal:** theme tokens ([#707](https://github.com/palmetto/palmetto-components/issues/707)) ([302a86a](https://github.com/palmetto/palmetto-components/commit/302a86af0b00902a867024e81ff18423a422abd9))
+
+# [0.124.0](https://github.com/palmetto/palmetto-components/compare/v0.123.0...v0.124.0) (2022-02-23)
+
+
+### Features
+
+* **Toast:** theme tokens ([#706](https://github.com/palmetto/palmetto-components/issues/706)) ([0d4fe4b](https://github.com/palmetto/palmetto-components/commit/0d4fe4b442db4df16cc131879feeed8ed651b3a8))
+
+# [0.123.0](https://github.com/palmetto/palmetto-components/compare/v0.122.0...v0.123.0) (2022-02-23)
+
+
+### Features
+
+* **Theming:** form controls can be themed ([#682](https://github.com/palmetto/palmetto-components/issues/682)) ([fcceb95](https://github.com/palmetto/palmetto-components/commit/fcceb95f79faa00942f1bbde3dbcbdc2131a0185))
+
+# [0.122.0](https://github.com/palmetto/palmetto-components/compare/v0.121.0...v0.122.0) (2022-02-17)
+
+
+### Features
+
+* **Theming:** Theming Documentation ([#704](https://github.com/palmetto/palmetto-components/issues/704)) ([91a2b3c](https://github.com/palmetto/palmetto-components/commit/91a2b3cf8c54023f8f24216b1ebda782813c876f)), closes [#435](https://github.com/palmetto/palmetto-components/issues/435)
+
+# [0.121.0](https://github.com/palmetto/palmetto-components/compare/v0.120.0...v0.121.0) (2022-02-16)
+
+
+### Features
+
+* **Button:** add white button variant ([#598](https://github.com/palmetto/palmetto-components/issues/598)) ([ac910d4](https://github.com/palmetto/palmetto-components/commit/ac910d4612e2c60eb7378c7dbef18a69fac0f71f))
+
+# [0.120.0](https://github.com/palmetto/palmetto-components/compare/v0.119.0...v0.120.0) (2022-02-16)
+
+
+### Features
+
+* **Modal:** Render Modal in custom portal target. ([#702](https://github.com/palmetto/palmetto-components/issues/702)) ([796e6a1](https://github.com/palmetto/palmetto-components/commit/796e6a170cf86f55ceada7520feab742facecd12))
+
+# [0.119.0](https://github.com/palmetto/palmetto-components/compare/v0.118.1...v0.119.0) (2022-02-15)
+
+
+### Features
+
+* **Popover:** Add className prop to Popover to prevent overwriting .popover styles ([#699](https://github.com/palmetto/palmetto-components/issues/699)) ([d936b4f](https://github.com/palmetto/palmetto-components/commit/d936b4f884feba5402c9e749f2824b1b3e40b081))
+
+## [0.118.1](https://github.com/palmetto/palmetto-components/compare/v0.118.0...v0.118.1) (2022-02-11)
+
+# [0.118.0](https://github.com/palmetto/palmetto-components/compare/v0.117.0...v0.118.0) (2022-02-10)
+
+
+### Features
+
+* **Badge:** theme tokens and responsive sizing ([#694](https://github.com/palmetto/palmetto-components/issues/694)) ([15bf5ef](https://github.com/palmetto/palmetto-components/commit/15bf5ef8299705d1a2ec7b37293bde6f19418172))
+
+# [0.117.0](https://github.com/palmetto/palmetto-components/compare/v0.116.0...v0.117.0) (2022-02-10)
+
+
+### Features
+
+* **Button:** theme tokens ([#690](https://github.com/palmetto/palmetto-components/issues/690)) ([c7c241e](https://github.com/palmetto/palmetto-components/commit/c7c241e9662410d68f1ce9036bfea2e92c78bcd0))
+
+# [0.116.0](https://github.com/palmetto/palmetto-components/compare/v0.115.0...v0.116.0) (2022-02-10)
+
+
+### Features
+
+* **CategoryFilter:** theme tokens ([#692](https://github.com/palmetto/palmetto-components/issues/692)) ([45cc9d8](https://github.com/palmetto/palmetto-components/commit/45cc9d86f95bcf930dfd397685969bee0f2929a6))
+
+# [0.115.0](https://github.com/palmetto/palmetto-components/compare/v0.114.0...v0.115.0) (2022-02-09)
+
+
+### Features
+
+* **Icon:** eye, eye-slash ([#691](https://github.com/palmetto/palmetto-components/issues/691)) ([e263b90](https://github.com/palmetto/palmetto-components/commit/e263b90294a00f1946e3ee067fd63fbf782bc026))
+
+# [0.114.0](https://github.com/palmetto/palmetto-components/compare/v0.113.0...v0.114.0) (2022-02-09)
+
+
+### Features
+
+* **TextLink:** theme tokens ([#689](https://github.com/palmetto/palmetto-components/issues/689)) ([70d92bc](https://github.com/palmetto/palmetto-components/commit/70d92bcdb23108b670f8586a611240fe0fc905d9))
+
+# [0.113.0](https://github.com/palmetto/palmetto-components/compare/v0.112.1...v0.113.0) (2022-02-09)
+
+
+### Features
+
+* **Heading:** theme tokens ([#688](https://github.com/palmetto/palmetto-components/issues/688)) ([64be68c](https://github.com/palmetto/palmetto-components/commit/64be68ca21387c7d273d449abff3eda3a80db5f6))
+
+## [0.112.1](https://github.com/palmetto/palmetto-components/compare/v0.112.0...v0.112.1) (2022-02-07)
+
+# [0.112.0](https://github.com/palmetto/palmetto-components/compare/v0.111.2...v0.112.0) (2022-02-07)
+
+
+### Features
+
+* **Theming:** refactoring alert with fallback tokens ([#681](https://github.com/palmetto/palmetto-components/issues/681)) ([82e3a81](https://github.com/palmetto/palmetto-components/commit/82e3a812be794a8d4e30388bec4e0ed5682a32f8))
+
+## [0.111.2](https://github.com/palmetto/palmetto-components/compare/v0.111.1...v0.111.2) (2022-02-02)
+
+
+### Bug Fixes
+
+* **Icon:** archive icon color  ([#679](https://github.com/palmetto/palmetto-components/issues/679)) ([116f1b7](https://github.com/palmetto/palmetto-components/commit/116f1b7bf4d73f62e3bcfdd286829dd726d4cc4c))
+
+## [0.111.1](https://github.com/palmetto/palmetto-components/compare/v0.111.0...v0.111.1) (2022-02-02)
+
+# [0.111.0](https://github.com/palmetto/palmetto-components/compare/v0.110.0...v0.111.0) (2022-02-01)
+
+
+### Features
+
+* **Button:** responsive button ([#678](https://github.com/palmetto/palmetto-components/issues/678)) ([26d3524](https://github.com/palmetto/palmetto-components/commit/26d3524d00ddf54590b40b9ca0506c8b23191475))
+
+# [0.110.0](https://github.com/palmetto/palmetto-components/compare/v0.109.0...v0.110.0) (2022-02-01)
+
+
+### Features
+
+* **forms:** make form control font family themable ([#677](https://github.com/palmetto/palmetto-components/issues/677)) ([0903e99](https://github.com/palmetto/palmetto-components/commit/0903e998354b4b3b0a6eddfa0f81e9d358624f29))
+
+# [0.109.0](https://github.com/palmetto/palmetto-components/compare/v0.108.2...v0.109.0) (2022-02-01)
+
+
+### Features
+
+* **Spinner:** Themable spinner ([#676](https://github.com/palmetto/palmetto-components/issues/676)) ([4d52ce4](https://github.com/palmetto/palmetto-components/commit/4d52ce4ec149d30b1ccf6c5926e77e72e9adf0f1))
+
+## [0.108.2](https://github.com/palmetto/palmetto-components/compare/v0.108.1...v0.108.2) (2022-01-26)
+
+
+### Bug Fixes
+
+* **useBreakpoint:** Use useLayoutEffect on client-side environments. ([#675](https://github.com/palmetto/palmetto-components/issues/675)) ([77e1e0b](https://github.com/palmetto/palmetto-components/commit/77e1e0bd6656bce877e9fec41ddb5aad8beefe0a))
+
+## [0.108.1](https://github.com/palmetto/palmetto-components/compare/v0.108.0...v0.108.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* **modal:** prevent full screen modal from overflowing beyond safe viewport area ([#673](https://github.com/palmetto/palmetto-components/issues/673)) ([622a80d](https://github.com/palmetto/palmetto-components/commit/622a80dc33c65a64b5cb39ed04dec49aca6e0d4d))
+
+# [0.108.0](https://github.com/palmetto/palmetto-components/compare/v0.107.0...v0.108.0) (2022-01-24)
+
+
+### Features
+
+* **tokens:** updated icons ([#670](https://github.com/palmetto/palmetto-components/issues/670)) ([e8245e4](https://github.com/palmetto/palmetto-components/commit/e8245e4d14d28cf934904943dd8ee433419790c5))
+
+# [0.107.0](https://github.com/palmetto/palmetto-components/compare/v0.106.0...v0.107.0) (2022-01-21)
+
+
+### Features
+
+* **Alert:** refactoring alert with variables ([#671](https://github.com/palmetto/palmetto-components/issues/671)) ([6e97ac9](https://github.com/palmetto/palmetto-components/commit/6e97ac9b9799d7a784af8d8ae3eae82ebd06c57a))
+
+# [0.106.0](https://github.com/palmetto/palmetto-components/compare/v0.105.0...v0.106.0) (2022-01-19)
+
+
+### Features
+
+* **Heading:** improve heading variables ([#669](https://github.com/palmetto/palmetto-components/issues/669)) ([1e440cd](https://github.com/palmetto/palmetto-components/commit/1e440cd2d6e38119cd1877b8a21a5d2aa0a62cec))
+
+# [0.105.0](https://github.com/palmetto/palmetto-components/compare/v0.104.0...v0.105.0) (2022-01-19)
+
+
+### Features
+
+* **tokens:** update tokens package ([#667](https://github.com/palmetto/palmetto-components/issues/667)) ([5e0fa52](https://github.com/palmetto/palmetto-components/commit/5e0fa529be4f60bebba331286862756178105877))
+
+# [0.104.0](https://github.com/palmetto/palmetto-components/compare/v0.103.1...v0.104.0) (2022-01-13)
+
+
+### Features
+
+* **theming :** Scoped component variables ([#664](https://github.com/palmetto/palmetto-components/issues/664)) ([d1b6d3c](https://github.com/palmetto/palmetto-components/commit/d1b6d3cd6d4271e48d35c6ace984ae6348a81c32))
+
+## [0.103.1](https://github.com/palmetto/palmetto-components/compare/v0.103.0...v0.103.1) (2022-01-13)
+
+
+### Bug Fixes
+
+* **RadioInput:** don't apply width and height to all label children ([#663](https://github.com/palmetto/palmetto-components/issues/663)) ([98be439](https://github.com/palmetto/palmetto-components/commit/98be4396eb5be9849a9fe5a5813a89dfddbfc6b6))
+
 # [0.103.0](https://github.com/palmetto/palmetto-components/compare/v0.102.2...v0.103.0) (2022-01-06)
 
 

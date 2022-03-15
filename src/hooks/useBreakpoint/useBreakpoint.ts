@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BREAKPOINTS } from '../../lib/tokens';
 import { Breakpoint } from '../../types';
 import { useWindowSize } from '../useWindowSize/useWindowSize';
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect/useIsomorphicLayouEffect';
 
 const defaultBreakpoint: Breakpoint = { name: 'base', minWidth: 0 };
 
@@ -18,7 +19,7 @@ export const useBreakpoint = (): BreakpointState => {
 
   const [breakpoint, setBreakpoint] = useState<Breakpoint>({ ...defaultBreakpoint });
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const sortedBreakpoints = [...BREAKPOINTS].sort((a, b) => b.minWidth - a.minWidth);
     const activeBreakpoint = windowSize && sortedBreakpoints.find(b => b.minWidth <= (windowSize.innerWidth as number));
 
