@@ -1,5 +1,12 @@
 Changelog
 
+# [0.129.0](https://github.com/palmetto/palmetto-components/compare/v0.128.2...v0.129.0) (2022-03-15)
+
+
+### Features
+
+* **MediaModal:** fix warning in documentation and initiate package release ([#729](https://github.com/palmetto/palmetto-components/issues/729)) ([e9f51c4](https://github.com/palmetto/palmetto-components/commit/e9f51c42328a6487f52e0bf40becbd56961f9d26))
+
 ## [0.128.2](https://github.com/palmetto/palmetto-components/compare/v0.128.1...v0.128.2) (2022-03-04)
 
 
