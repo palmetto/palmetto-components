@@ -1,5 +1,12 @@
 Changelog
 
+## [0.129.1](https://github.com/palmetto/palmetto-components/compare/v0.129.0...v0.129.1) (2022-03-15)
+
+
+### Bug Fixes
+
+* **Pagination:** Fix edge case where pagination would display middle ellipsis when there was no actual page ([#731](https://github.com/palmetto/palmetto-components/issues/731)) ([502afeb](https://github.com/palmetto/palmetto-components/commit/502afeb93f69dc7a26f6bb65e11e6ce1cc8fc2d4))
+
 # [0.129.0](https://github.com/palmetto/palmetto-components/compare/v0.128.2...v0.129.0) (2022-03-15)
 
 
