@@ -115,4 +115,19 @@ describe('generatePages', () => {
     expect(pages[4].isPage).toBe(true);
     expect(pages[4].pageNumber).toBe(10);
   });
+
+  it('returns the correct pages -- one less page range than total', () => {
+    const pages = generatePages(2, 3, 1, 2);
+
+    expect(pages[0].isPage).toBe(true);
+    expect(pages[0].pageNumber).toBe(1);
+
+    expect(pages[1].isPage).toBe(true);
+    expect(pages[1].pageNumber).toBe(2);
+
+    expect(pages[2].isPage).toBe(true);
+    expect(pages[2].pageNumber).toBe(3);
+
+    expect(pages.length).toBe(3);
+  });
 });
