@@ -24,9 +24,10 @@ export const parameters = {
       order: [
         'About',
         ['Introduction', 'Get Started', 'Contributing'],
+        'Foundation',
+        ['Design Principles', 'Design Tokens'],
         'Content',
         ['Goals and Principles', 'Voice and Tone', 'Grammar and Mechanics', 'Word List'],
-        'Design Tokens',
         'Theming',
         ['Overview', 'Form Controls'],
         'Components',
