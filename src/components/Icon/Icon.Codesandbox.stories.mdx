@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/Icon/Codesandbox" />
 
@@ -11,7 +11,7 @@ Use an icon only when it provides additional clarity or is necessary to draw att
 import React from 'react';
 import { Icon } from '@palmetto/palmetto-components';
 
-export default () => (<Icon name="star" />);
+export default () => <Icon name="star" />;
 ```
 
 ## Size
@@ -47,14 +47,14 @@ import { Icon, Box } from '@palmetto/palmetto-components';
 
 export default () => (
   <>
-  <Box direction="row" childGap="sm" margin="0 0 md 0">
-    <Icon name="remove" color="danger-500" />
-    <Box>Color is set at the Icon level</Box>
-  </Box>
-  <Box direction="row" childGap="sm" color="secondary-400">
-    <Icon name="book" />
-    <Box>Color is set by the Icon's parent</Box>
-  </Box>
+    <Box direction="row" childGap="sm" margin="0 0 md 0">
+      <Icon name="remove" color="danger-500" />
+      <Box>Color is set at the Icon level</Box>
+    </Box>
+    <Box direction="row" childGap="sm" color="secondary-400">
+      <Icon name="book" />
+      <Box>Color is set by the Icon's parent</Box>
+    </Box>
   </>
 );
 ```
