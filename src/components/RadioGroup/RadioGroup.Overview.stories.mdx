@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Box } from '../Box/Box';
 import { RadioGroup } from './RadioGroup';
 
@@ -334,10 +334,10 @@ Use the `size` prop to render differently sized radio icons.
         lg: null,
         responsive: null,
       });
-      const options  = (id) => ([
+      const options = id => [
         { id: `purple__${id}`, value: 'purple', label: 'Purple' },
         { id: `green__${id}`, value: 'green', label: 'Green' },
-      ]);
+      ];
       const handleChange = (event, key) => {
         const value = event.target.value;
         setState(prevState => ({ ...prevState, [key]: value }));
