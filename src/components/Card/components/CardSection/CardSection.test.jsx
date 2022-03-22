@@ -10,9 +10,9 @@ describe('Card/CardSection', () => {
     expect(container.children[0].classList).toContain('p-h-lg');
   });
 
-  test('card is subdued', () => {
+  test('is subdued', () => {
     const { container } = render(<CardSection subdued>subdued</CardSection>);
-    expect(container.children[0].classList).toContain('subdued');
+    expect(container.children[0].classList).toContain('card-subdued');
   });
 
   test('title is rendered as h4 if defined as a string', () => {
