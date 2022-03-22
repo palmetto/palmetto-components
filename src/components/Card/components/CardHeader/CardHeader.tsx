@@ -15,6 +15,10 @@ export interface CardHeaderProps extends BoxProps {
    * The title of the card
    */
   title?: ReactNode;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const CardHeader: FC<CardHeaderProps> = ({

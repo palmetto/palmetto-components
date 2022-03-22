@@ -43,6 +43,10 @@ export interface CardSectionProps extends BoxProps {
    * Title for the section.
    */
   title?: ReactNode;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const CardSection: FC<CardSectionProps> = ({

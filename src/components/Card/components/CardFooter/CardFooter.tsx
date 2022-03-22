@@ -20,6 +20,10 @@ export interface CardFooterProps extends BoxProps {
    * Or a responsive prop with BrandColor for each breakpoint.
    */
   borderColor?: BrandColor;
+  /**
+   * Additional props to be spread to rendered element
+   */
+  [x: string]: any; // eslint-disable-line
 }
 
 export const CardFooter: FC<CardFooterProps> = ({
