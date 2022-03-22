@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import CardSection from './CardSection';
+import { CardSection } from './CardSection';
 
 describe('Card/CardSection', () => {
   test('lg padding class is applied by default', () => {
@@ -10,9 +10,9 @@ describe('Card/CardSection', () => {
     expect(container.children[0].classList).toContain('p-h-lg');
   });
 
-  test('card as correct background class if subdued', () => {
+  test('card is subdued', () => {
     const { container } = render(<CardSection subdued>subdued</CardSection>);
-    expect(container.children[0].classList).toContain('background-color-grey-lightest');
+    expect(container.children[0].classList).toContain('subdued');
   });
 
   test('title is rendered as h4 if defined as a string', () => {
