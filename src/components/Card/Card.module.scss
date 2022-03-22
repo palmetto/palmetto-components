@@ -14,6 +14,12 @@
   border-color: var(--card-section-border-color, var(--color-brand-grey-100));
 }
 
-.card-section + .card-section {
-  border-top: 1px solid var(--card-section-border-color, var(--color-brand-grey-100));
+.card-section {
+  &.subdued {
+    background-color: var(--card-subdued-background-color, var(--color-brand-grey-50));
+  }
+
+  & + .card-section {
+    border-top: 1px solid var(--card-section-border-color, var(--color-brand-grey-100));
+  }
 }
