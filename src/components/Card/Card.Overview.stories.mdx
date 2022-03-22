@@ -330,12 +330,25 @@ Occasionally, you may want to customize a single instance of a `Card`, but still
         <Card.Section>Default appearance</Card.Section>
         <Card.Footer>footer</Card.Footer>
       </Card>
-      <Card shadow="xl" radius="md" background="secondary-50">
+      <Card shadow="xl" radius="sm" background="secondary-50">
         <Card.Section>Customized appearance using BoxProps</Card.Section>
         <Card.Footer background="secondary-900" color="grey-100">
           footer
         </Card.Footer>
       </Card>
+      <div
+        style={{
+          '--card-background-color': 'var(--color-brand-tertiary-50)',
+          '--card-footer-background-color': 'var(--color-brand-tertiary-900)',
+          '--card-border-radius': 'var(--size-border-radius-lg)',
+          '--card-box-shadow': '0',
+        }}
+      >
+        <Card>
+          <Card.Section>Themed card using component design tokens</Card.Section>
+          <Card.Footer color="white">footer</Card.Footer>
+        </Card>
+      </div>
     </Box>
   </Story>
 </Canvas>
