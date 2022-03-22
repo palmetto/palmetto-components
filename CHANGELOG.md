@@ -1,5 +1,14 @@
 Changelog
 
+## [0.129.3](https://github.com/palmetto/palmetto-components/compare/v0.129.2...v0.129.3) (2022-03-21)
+
+
+### Bug Fixes
+
+* **storybook:** @storybook/addon-docs/block import warning ([#735](https://github.com/palmetto/palmetto-components/issues/735)) ([a56a6f7](https://github.com/palmetto/palmetto-components/commit/a56a6f74fee75f95c8b1a164de52c7e3bb33e591))
+
+## [0.129.2](https://github.com/palmetto/palmetto-components/compare/v0.129.1...v0.129.2) (2022-03-21)
+
 ## [0.129.1](https://github.com/palmetto/palmetto-components/compare/v0.129.0...v0.129.1) (2022-03-15)
 
 

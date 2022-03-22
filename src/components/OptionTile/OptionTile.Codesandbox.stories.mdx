@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/OptionTile/Codesandbox" />
 
@@ -13,7 +13,6 @@ that will either be a `checkbox` or a `radio` input. For a
 slightly more opinionated, and fully functional fieldset using the `OptionTile` see
 [OptionTileGroup](?path=/docs/components-optiontilegroup-overview--default-story).
 
-
 ```js codesandbox=palmetto-components
 import React, { useState } from 'react';
 import { OptionTile } from '@palmetto/palmetto-components';
@@ -24,7 +23,10 @@ export default () => {
   return (
     <OptionTile
       isSelected={isSelected}
-      onChange={() => { let newVal = !isSelected; setIsSelected(newVal)}}
+      onChange={() => {
+        let newVal = !isSelected;
+        setIsSelected(newVal);
+      }}
       id="defaultOptionTile"
       name="defaultOptionTile"
       value="defaultOptionTile"
