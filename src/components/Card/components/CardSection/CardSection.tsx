@@ -7,18 +7,18 @@ import styles from '../../Card.module.scss';
 
 export interface CardSectionProps extends BoxProps {
   /**
-   * If defined as a prop, all theme styling will be removed.
+   * If defined as a prop, all themeable styling will be removed.
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
    */
   background?: BrandColor;
   /**
-   * If defined as a prop, all theme styling will be removed.
+   * If defined as a prop, all themeable styling will be removed.
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color) for the border color
    * Or a responsive prop with BrandColor for each breakpoint.
    */
   borderColor?: BrandColor;
   /**
-   * If defined as a prop, all theme styling will be removed.
+   * If defined as a prop, all themeable styling will be removed.
    * Width of the section's border
    * Can be a single [border width token](/?path=/story/design-tokens-design-tokens--page#border-width).
    * Can also be a string of [border width tokens](/?path=/story/design-tokens-design-tokens--page#border-width)
@@ -26,7 +26,7 @@ export interface CardSectionProps extends BoxProps {
    * where you can set the border width on all four sides of an element.
    * e.g: "0 sm xs 0" --> top: 0, right: sm, bottom: xs, left: 0;
    */
-   borderWidth?: BorderSize | string | ResponsiveProp<BorderSize | string>;
+  borderWidth?: BorderSize | string | ResponsiveProp<BorderSize | string>;
   /**
    * Contents of the Section.
    */
@@ -58,22 +58,27 @@ export const CardSection: FC<CardSectionProps> = ({
   title = undefined,
   ...restProps
 }) => {
-  const renderTitle = typeof title === 'string' ? (
-    <Box className="m-bottom-md">
-      <Heading as="h4" size="sm" variant="grey">
-        {title}
-      </Heading>
-    </Box>
-  ) : (
-    title
+  const renderTitle =
+    typeof title === 'string' ? (
+      <Box className="m-bottom-md">
+        <Heading as="h4" size="sm" variant="grey">
+          {title}
+        </Heading>
+      </Box>
+    ) : (
+      title
+    );
+
+  const useTheme =
+    background === undefined && borderColor === undefined && borderWidth === undefined;
+
+  const sectionClasses = classNames(
+    {
+      [styles['card-section']]: useTheme,
+      [styles.subdued]: useTheme && subdued,
+    },
+    className,
   );
-
-  const useTheme = background === undefined && borderColor === undefined && borderWidth === undefined;
-
-  const sectionClasses = classNames({
-    [styles['card-section']]: useTheme,
-    [styles.subdued]: subdued && useTheme,
-  }, className);
 
   return (
     <Box

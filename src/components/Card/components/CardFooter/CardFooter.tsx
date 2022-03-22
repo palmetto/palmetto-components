@@ -10,12 +10,12 @@ export interface CardFooterProps extends BoxProps {
    */
   children?: ReactNode;
   /**
-   * If defined as a prop, all theme styling will be removed.
+   * If defined as a prop, all themeable styling will be removed.
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
    */
   background?: BrandColor;
   /**
-   * If defined as a prop, all theme styling will be removed.
+   * If defined as a prop, all themeable styling will be removed.
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color) for the border color
    * Or a responsive prop with BrandColor for each breakpoint.
    */
