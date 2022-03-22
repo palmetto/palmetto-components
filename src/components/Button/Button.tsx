@@ -1,5 +1,5 @@
 import React, {
-  FC, ReactNode, MouseEvent, FocusEvent, forwardRef, createElement, AnchorHTMLAttributes,
+  ReactNode, MouseEvent, FocusEvent, forwardRef, createElement, AnchorHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 import { IconName, ResponsiveProp } from '../../types';
@@ -99,6 +99,9 @@ interface BaseButtonProps {
       * The color variant of the button
       */
      variant?: ButtonVariant;
+     /**
+      * ref - currently cannot be typed due to limitations of using the `as` prop
+      */
 }
 
 /**
@@ -122,7 +125,7 @@ type NormalButtonProps = { as?: 'button'; } &
 
 export type StrictButtonProps = NormalButtonProps | AnchorButtonProps
 
-export const Button: FC<StrictButtonProps> = forwardRef(
+export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, StrictButtonProps>(
   (
     {
       children = undefined,
