@@ -104,28 +104,15 @@ interface BaseButtonProps {
       */
 }
 
-/**
- * @deprecated use StrictBoxProps instead
- */
-export interface ButtonProps extends BaseButtonProps {
-  /**
-   * HTML element that will be rendered.
-   */
-  as?: 'button' | 'a';
-  /**
-   * Additional props to be spread to rendered element
-   */
-  [x: string]: any; // eslint-disable-line
-}
-
 type AnchorButtonProps = { as: 'a'; } &
   BaseButtonProps & Omit<JSX.IntrinsicElements['a'], 'ref'>
+
 type NormalButtonProps = { as?: 'button'; } &
   BaseButtonProps & Omit<JSX.IntrinsicElements['button'], 'ref'>
 
-export type StrictButtonProps = NormalButtonProps | AnchorButtonProps
+export type ButtonProps = NormalButtonProps | AnchorButtonProps
 
-export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, StrictButtonProps>(
+export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonProps>(
   (
     {
       children = undefined,
