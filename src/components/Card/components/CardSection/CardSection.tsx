@@ -7,7 +7,6 @@ import styles from '../../Card.module.scss';
 
 export interface CardSectionProps extends BoxProps {
   /**
-   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
    */
   background?: BrandColor;
