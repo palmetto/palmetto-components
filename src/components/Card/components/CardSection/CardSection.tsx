@@ -58,19 +58,17 @@ export const CardSection: FC<CardSectionProps> = ({
   title = undefined,
   ...restProps
 }) => {
-  const renderTitle =
-    typeof title === 'string' ? (
-      <Box className="m-bottom-md">
-        <Heading as="h4" size="sm" variant="grey">
-          {title}
-        </Heading>
-      </Box>
-    ) : (
-      title
-    );
+  const renderTitle = typeof title === 'string' ? (
+    <Box className="m-bottom-md">
+      <Heading as="h4" size="sm" variant="grey">
+        {title}
+      </Heading>
+    </Box>
+  ) : (
+    title
+  );
 
-  const useTheme =
-    background === undefined && borderColor === undefined && borderWidth === undefined;
+  const useTheme = background === undefined && borderColor === undefined && borderWidth === undefined;
 
   const sectionClasses = classNames(
     {

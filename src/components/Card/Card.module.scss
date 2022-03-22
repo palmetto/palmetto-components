@@ -19,7 +19,7 @@
     background-color: var(--card-subdued-background-color, var(--color-brand-grey-50));
   }
 
-  & + .card-section {
+  + .card-section {
     border-top: 1px solid var(--card-section-border-color, var(--color-brand-grey-100));
   }
 }

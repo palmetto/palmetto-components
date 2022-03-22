@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
-import { BorderRadiusSize, BoxShadowSize, BrandColor, ResponsiveProp } from '../../types';
+import {
+  BorderRadiusSize, BoxShadowSize, BrandColor, ResponsiveProp,
+} from '../../types';
 import { CardFooter, CardHeader, CardSection } from './components';
 import styles from './Card.module.scss';
 
