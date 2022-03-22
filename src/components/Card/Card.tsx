@@ -9,7 +9,7 @@ import styles from './Card.module.scss';
 
 export interface CardProps extends BoxProps {
   /**
-   * If defined as a prop, all themeable styling will be removed.
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
    */
   background?: BrandColor;
@@ -22,12 +22,12 @@ export interface CardProps extends BoxProps {
    */
   subdued?: boolean;
   /**
-   * If defined as a prop, all themeable styling will be removed.
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * Radius of the Card's corners
    */
   radius?: BorderRadiusSize | ResponsiveProp<BorderRadiusSize>;
   /**
-   * If defined as a prop, all themeable styling will be removed.
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * The size of the drop shadow applied to the Card
    */
   shadow?: BoxShadowSize | ResponsiveProp<BoxShadowSize>;
@@ -49,12 +49,12 @@ const CardBaseComponent: React.FC<CardProps> = React.forwardRef(
     },
     ref,
   ) => {
-    const useTheme = background === undefined && radius === undefined && shadow === undefined;
-
     const classes = classNames(
       {
-        [styles.card]: useTheme,
-        [styles.subdued]: useTheme && subdued,
+        [styles['card-background']]: background === undefined && !subdued,
+        [styles['card-radius']]: radius === undefined,
+        [styles['card-shadow']]: shadow === undefined && !subdued,
+        [styles['card-subdued']]: subdued,
       },
       className,
     );

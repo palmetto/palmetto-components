@@ -10,12 +10,12 @@ export interface CardFooterProps extends BoxProps {
    */
   children?: ReactNode;
   /**
-   * If defined as a prop, all themeable styling will be removed.
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
    */
   background?: BrandColor;
   /**
-   * If defined as a prop, all themeable styling will be removed.
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color) for the border color
    * Or a responsive prop with BrandColor for each breakpoint.
    */
@@ -36,9 +36,13 @@ export const CardFooter: FC<CardFooterProps> = ({
   padding = 'md lg',
   ...restProps
 }) => {
-  const useTheme = background === undefined && borderColor === undefined;
-
-  const classes = classNames({ [styles['card-footer']]: useTheme }, className);
+  const classes = classNames(
+    {
+      [styles['card-footer-background']]: background === undefined,
+      [styles['card-footer-border-color']]: borderColor === undefined,
+    },
+    className,
+  );
 
   return (
     <Box

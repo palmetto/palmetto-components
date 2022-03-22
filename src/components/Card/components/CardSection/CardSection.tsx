@@ -7,18 +7,18 @@ import styles from '../../Card.module.scss';
 
 export interface CardSectionProps extends BoxProps {
   /**
-   * If defined as a prop, all themeable styling will be removed.
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
    */
   background?: BrandColor;
   /**
-   * If defined as a prop, all themeable styling will be removed.
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color) for the border color
    * Or a responsive prop with BrandColor for each breakpoint.
    */
   borderColor?: BrandColor;
   /**
-   * If defined as a prop, all themeable styling will be removed.
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * Width of the section's border
    * Can be a single [border width token](/?path=/story/design-tokens-design-tokens--page#border-width).
    * Can also be a string of [border width tokens](/?path=/story/design-tokens-design-tokens--page#border-width)
@@ -72,12 +72,10 @@ export const CardSection: FC<CardSectionProps> = ({
     title
   );
 
-  const useTheme = background === undefined && borderColor === undefined && borderWidth === undefined;
-
   const sectionClasses = classNames(
     {
-      [styles['card-section']]: useTheme,
-      [styles.subdued]: useTheme && subdued,
+      [styles['card-section-border']]: borderColor === undefined && borderWidth === undefined,
+      [styles['card-subdued']]: subdued,
     },
     className,
   );
