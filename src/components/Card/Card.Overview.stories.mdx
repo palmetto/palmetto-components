@@ -317,6 +317,29 @@ Here are some common use cases of `<Card />`.
   </Story>
 </Canvas>
 
+## Single-Instance Styling
+
+Occasionally, you may want to customize a single instance of a `Card`, but still have the ability to manage the appearance of all other Card instances through its component design token values. We allow single-instance overrides through the use of BoxProps.
+
+**Using any BoxProp whose css attribute matches a component design token's attribute, will mean that all the component's design token values will be ignored. It is assumed that a greater granularity of visual control is desired.**
+
+<Canvas>
+  <Story name="Single-Instance Styling">
+    <Box childGap="xl">
+      <Card>
+        <Card.Section>Default appearance</Card.Section>
+        <Card.Footer>footer</Card.Footer>
+      </Card>
+      <Card shadow="xl" radius="md" background="secondary-50">
+        <Card.Section>Customized appearance using BoxProps</Card.Section>
+        <Card.Footer background="secondary-900" color="grey-100">
+          footer
+        </Card.Footer>
+      </Card>
+    </Box>
+  </Story>
+</Canvas>
+
 ## Component Design Tokens
 
 <table>
