@@ -317,6 +317,47 @@ Here are some common use cases of `<Card />`.
   </Story>
 </Canvas>
 
+## Single-Instance Styling
+
+Occasionally, you may want to customize a single instance of a `Card`, but still have the ability to manage the appearance of all other Card instances through its component design token values. We allow single-instance overrides through the use of BoxProps.
+
+<Canvas>
+  <Story name="Single-Instance Styling">
+    <Box childGap="xl">
+      <Card>
+        <Card.Section>Default appearance</Card.Section>
+        <Card.Section>Default appearance</Card.Section>
+        <Card.Footer>footer</Card.Footer>
+      </Card>
+      <Box
+        childGap="xl"
+        style={{
+          '--card-background-color': 'var(--color-brand-tertiary-50)',
+          '--card-footer-background-color': 'var(--color-brand-tertiary-900)',
+          '--card-border-radius': 'var(--size-border-radius-lg)',
+          '--card-section-border-color': 'var(--color-brand-tertiary-100)',
+          '--card-box-shadow': '0',
+        }}
+      >
+        <Card>
+          <Card.Section>Themed card using component design tokens</Card.Section>
+          <Card.Section>Themed card using component design tokens</Card.Section>
+          <Card.Footer color="white">footer</Card.Footer>
+        </Card>
+        <Card shadow="xl" radius="sm" background="secondary-50">
+          <Card.Section>BoxProps are used instead of tokens</Card.Section>
+          <Card.Section borderWidth="sm 0 0 0" borderColor="secondary-100">
+            BoxProps are used instead of tokens
+          </Card.Section>
+          <Card.Footer background="secondary-900" color="grey-100">
+            footer
+          </Card.Footer>
+        </Card>
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
 ## Component Design Tokens
 
 <table>
@@ -332,7 +373,9 @@ Here are some common use cases of `<Card />`.
         '--card-background-color': '--color-brand-white-500',
         '--card-border-radius': '--size-border-radius-md',
         '--card-box-shadow': '--size-box-shadow-sm',
+        '--card-subdued-background-color': '--color-brand-grey-50',
         '--card-section-border-color': '--color-brand-grey-100',
+        '--card-section-subdued-border-color': '--color-brand-grey-100',
         '--card-footer-background-color': '--color-brand-grey-50',
       };
       return Object.entries(tokens).map(([name, entry], i) => (

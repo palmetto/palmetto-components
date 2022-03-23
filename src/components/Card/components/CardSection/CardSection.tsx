@@ -6,6 +6,26 @@ import styles from '../../Card.module.scss';
 
 export interface CardSectionProps extends BoxProps {
   /**
+   * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
+   */
+  background?: BoxProps['background'];
+  /**
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
+   * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color) for the border color
+   * Or a responsive prop with BrandColor for each breakpoint.
+   */
+  borderColor?: BoxProps['borderColor'];
+  /**
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
+   * Width of the section's border
+   * Can be a single [border width token](/?path=/story/design-tokens-design-tokens--page#border-width).
+   * Can also be a string of [border width tokens](/?path=/story/design-tokens-design-tokens--page#border-width)
+   * that models itself after the css shorthand property,
+   * where you can set the border width on all four sides of an element.
+   * e.g: "0 sm xs 0" --> top: 0, right: sm, bottom: xs, left: 0;
+   */
+  borderWidth?: BoxProps['borderWidth'];
+  /**
    * Contents of the Section.
    */
   children?: ReactNode;
@@ -29,6 +49,8 @@ export interface CardSectionProps extends BoxProps {
 
 export const CardSection: FC<CardSectionProps> = ({
   background = undefined,
+  borderColor = undefined,
+  borderWidth = undefined,
   children = null,
   childGap = undefined,
   className = undefined,
@@ -38,8 +60,6 @@ export const CardSection: FC<CardSectionProps> = ({
   title = undefined,
   ...restProps
 }) => {
-  const backgroundColor = subdued ? 'grey-lightest' : background;
-
   const renderTitle = typeof title === 'string' ? (
     <Box className="m-bottom-md">
       <Heading as="h4" size="sm" variant="grey">
@@ -50,11 +70,19 @@ export const CardSection: FC<CardSectionProps> = ({
     title
   );
 
-  const sectionClasses = classNames(styles['card-section'], className);
+  const sectionClasses = classNames(
+    {
+      [styles['card-section-border']]: borderColor === undefined && borderWidth === undefined,
+      [styles['card-subdued']]: subdued,
+    },
+    className,
+  );
 
   return (
     <Box
-      background={backgroundColor}
+      background={background}
+      borderColor={borderColor}
+      borderWidth={borderWidth}
       className={sectionClasses}
       display={display}
       padding={padding}
