@@ -19,6 +19,12 @@
   + .card-section-border {
     border-top: 1px solid var(--card-section-border-color, var(--color-brand-grey-100));
   }
+
+  &.card-subdued {
+    + .card-section-border {
+      border-top: 1px solid var(--card-section-subdued-border-color, var(--color-brand-grey-100));
+    }
+  }
 }
 
 .card-footer-background {
