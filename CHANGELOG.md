@@ -1,5 +1,12 @@
 Changelog
 
+# [0.130.0](https://github.com/palmetto/palmetto-components/compare/v0.129.3...v0.130.0) (2022-03-23)
+
+
+### Features
+
+* **Card:** enable one-off styling through BoxProps while maintaining theming ([#737](https://github.com/palmetto/palmetto-components/issues/737)) ([c4de33b](https://github.com/palmetto/palmetto-components/commit/c4de33bb1745a67e7d9e11acc40000272e369630))
+
 ## [0.129.3](https://github.com/palmetto/palmetto-components/compare/v0.129.2...v0.129.3) (2022-03-21)
 
 
