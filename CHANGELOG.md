@@ -1,5 +1,12 @@
 Changelog
 
+# [0.132.0](https://github.com/palmetto/palmetto-components/compare/v0.131.0...v0.132.0) (2022-03-28)
+
+
+### Features
+
+* **Icon:** adds "camera" icon ([#742](https://github.com/palmetto/palmetto-components/issues/742)) ([c7297c5](https://github.com/palmetto/palmetto-components/commit/c7297c5fab64c1d068cc4f6e9db214c199b00b8d))
+
 # [0.131.0](https://github.com/palmetto/palmetto-components/compare/v0.130.0...v0.131.0) (2022-03-28)
 
 
