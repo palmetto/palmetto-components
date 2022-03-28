@@ -186,3 +186,42 @@ Also note that these icons are only there for visual feedback, as the true input
 ## Component Design Tokens
 
 This component shares component design tokens with all form controls. For a complete list of tokens, see the [Theming Form Controls documentation](/docs/theming-form-controls--custom-theme-form).
+
+If you require theming for this component separately of other form controls, it also includes the following component specific tokens:
+
+<table>
+  <thead>
+    <tr>
+      <th>token name</th>
+      <th>global form control token</th>
+      <th>default</th>
+    </tr>
+  </thead>
+  <tbody>
+    {(() => {
+      const tokens = {
+        '--option-tile-background-color': { global: '--form-control-background-color', default: '--color-brand-white-base' },
+        '--option-tile-border-color': { global: '--form-control-border-color', default: '--color-brand-grey-100' },
+        '--option-tile-border-radius': { global: '--form-control-size-md-border-radius', default: '--size-border-radius-md' },
+        '--option-tile-font-family': { global: '--form-control-font-family', default: '--asset-fonts-body' },
+        '--option-tile-border-color-hover': { global: '--form-control-border-color-hover', default: '--color-brand-grey-300' },
+        '--option-tile-background-color-disabled': { global: '--form-control-background-color-disabled', default: '--color-brand-grey-50' },
+        '--option-tile-font-color-disabled': { global: '--form-control-font-color-disabled', default: '--color-brand-grey-300' },
+        '--option-tile-border-color-disabled': { global: '--form-control-border-color', default: '--color-brand-grey-100' },
+      };
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry.global}</code>
+          </td>
+          <td>
+            <code>{entry.default}</code>
+          </td>
+        </tr>
+      ));
+    })()}
+  </tbody>
+</table>
