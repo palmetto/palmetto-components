@@ -1,10 +1,18 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
+import {
+  BorderRadiusSize, BoxShadowSize, BrandColor, ResponsiveProp,
+} from '../../types';
 import { CardFooter, CardHeader, CardSection } from './components';
 import styles from './Card.module.scss';
 
 export interface CardProps extends BoxProps {
+  /**
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
+   * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
+   */
+  background?: BrandColor;
   /**
    * The Card's contents.
    */
@@ -13,38 +21,61 @@ export interface CardProps extends BoxProps {
    * visually subdue the appearance of the entire card.
    */
   subdued?: boolean;
+  /**
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
+   * Radius of the Card's corners
+   */
+  radius?: BorderRadiusSize | ResponsiveProp<BorderRadiusSize>;
+  /**
+   * If defined as a prop, this value will take higher precedence than the corresponding component design token value
+   * The size of the drop shadow applied to the Card
+   */
+  shadow?: BoxShadowSize | ResponsiveProp<BoxShadowSize>;
 }
 
-const CardBaseComponent: React.FC<CardProps> = React.forwardRef((
-  {
-    children,
-    subdued,
-    className = undefined,
-    overflow = 'hidden',
-    display = 'block',
-    width = '100',
-    ...restProps
-  },
-  ref,
-) => {
-  const classes = classNames(styles.card, className,
+const CardBaseComponent: React.FC<CardProps> = React.forwardRef(
+  (
     {
-      [styles.subdued]: subdued,
-    });
+      background = undefined,
+      children,
+      subdued,
+      className = undefined,
+      overflow = 'hidden',
+      display = 'block',
+      radius = undefined,
+      shadow = undefined,
+      width = '100',
+      ...restProps
+    },
+    ref,
+  ) => {
+    const classes = classNames(
+      {
+        [styles['card-background']]: background === undefined && !subdued,
+        [styles['card-radius']]: radius === undefined,
+        [styles['card-shadow']]: shadow === undefined && !subdued,
+        [styles['card-subdued']]: subdued,
+      },
+      className,
+    );
 
-  return (
-    <Box
-      overflow={overflow}
-      display={display}
-      ref={ref}
-      width={width}
-      className={classes}
-      {...restProps}
-    >
-      {children}
-    </Box>
-  );
-});
+    return (
+      <Box
+        background={background}
+        overflow={overflow}
+        display={display}
+        ref={ref}
+        width={width}
+        radius={radius}
+        shadow={shadow}
+        className={classes}
+        {...restProps}
+      >
+        {children}
+      </Box>
+    );
+  },
+);
 
 export interface CardStatic {
   Header: typeof CardHeader;

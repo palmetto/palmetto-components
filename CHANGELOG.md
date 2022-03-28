@@ -1,5 +1,42 @@
 Changelog
 
+# [0.131.0](https://github.com/palmetto/palmetto-components/compare/v0.130.0...v0.131.0) (2022-03-28)
+
+
+### Features
+
+* [738] option tile theme tokens ([#740](https://github.com/palmetto/palmetto-components/issues/740)) ([fc73cd4](https://github.com/palmetto/palmetto-components/commit/fc73cd4ede4e4e4d7ce2800d2d645e72dcd5cf49))
+
+# [0.130.0](https://github.com/palmetto/palmetto-components/compare/v0.129.3...v0.130.0) (2022-03-23)
+
+
+### Features
+
+* **Card:** enable one-off styling through BoxProps while maintaining theming ([#737](https://github.com/palmetto/palmetto-components/issues/737)) ([c4de33b](https://github.com/palmetto/palmetto-components/commit/c4de33bb1745a67e7d9e11acc40000272e369630))
+
+## [0.129.3](https://github.com/palmetto/palmetto-components/compare/v0.129.2...v0.129.3) (2022-03-21)
+
+
+### Bug Fixes
+
+* **storybook:** @storybook/addon-docs/block import warning ([#735](https://github.com/palmetto/palmetto-components/issues/735)) ([a56a6f7](https://github.com/palmetto/palmetto-components/commit/a56a6f74fee75f95c8b1a164de52c7e3bb33e591))
+
+## [0.129.2](https://github.com/palmetto/palmetto-components/compare/v0.129.1...v0.129.2) (2022-03-21)
+
+## [0.129.1](https://github.com/palmetto/palmetto-components/compare/v0.129.0...v0.129.1) (2022-03-15)
+
+
+### Bug Fixes
+
+* **Pagination:** Fix edge case where pagination would display middle ellipsis when there was no actual page ([#731](https://github.com/palmetto/palmetto-components/issues/731)) ([502afeb](https://github.com/palmetto/palmetto-components/commit/502afeb93f69dc7a26f6bb65e11e6ce1cc8fc2d4))
+
+# [0.129.0](https://github.com/palmetto/palmetto-components/compare/v0.128.2...v0.129.0) (2022-03-15)
+
+
+### Features
+
+* **MediaModal:** fix warning in documentation and initiate package release ([#729](https://github.com/palmetto/palmetto-components/issues/729)) ([e9f51c4](https://github.com/palmetto/palmetto-components/commit/e9f51c42328a6487f52e0bf40becbd56961f9d26))
+
 ## [0.128.2](https://github.com/palmetto/palmetto-components/compare/v0.128.1...v0.128.2) (2022-03-04)
 
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { ResponsiveProvider } from '../../components/ResponsiveProvider/ResponsiveProvider';
 import { useBreakpoint } from './useBreakpoint';
 
@@ -26,6 +26,7 @@ The hook will return a `BreakpointState` object with the following shape:
   activeBreakpoint: { name: BreakpointName, minWidth: number },
 }
 ```
+
 **NOTE:** This hook relies on `ResponsiveContext`, so your app must be wrapped in the [`ResponsiveProvider`]() to provide window size context to all children components.
 
 ## Basic Usage
@@ -43,7 +44,7 @@ The hook will return a `BreakpointState` object with the following shape:
             {isHd && <p>HD layout</p>}
           </div>
         );
-      };     
+      };
       return (
         <ResponsiveProvider>
           <App />

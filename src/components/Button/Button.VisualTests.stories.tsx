@@ -11,7 +11,7 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args, showIconButton) => (
+const Template: Story<ButtonProps & { showIconButton: boolean; }> = (args, showIconButton) => (
   <Box childGap="xl">
     {BUTTON_SIZES.map(size => (
       <Box childGap="sm" key={size}>

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/Toast/Codesandbox" />
 
@@ -18,9 +18,7 @@ export default () => {
   return (
     <>
       <ToastContainer />
-      <Button onClick={handleClick}>
-        Show toast
-      </Button>
+      <Button onClick={handleClick}>Show toast</Button>
     </>
   );
 };
