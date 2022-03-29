@@ -97,10 +97,6 @@ export const DatePicker: FC<DatePickerProps> = ({
 }) => {
   const datePickerClasses = classNames(
     styles['react-datepicker'],
-    'font-color-dark',
-    'font-size-sm',
-    'background-color-white',
-    'border-radius-sm',
     className,
   );
 
