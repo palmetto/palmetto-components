@@ -1,5 +1,19 @@
 Changelog
 
+# [0.132.0](https://github.com/palmetto/palmetto-components/compare/v0.131.0...v0.132.0) (2022-03-28)
+
+
+### Features
+
+* **Icon:** adds "camera" icon ([#742](https://github.com/palmetto/palmetto-components/issues/742)) ([c7297c5](https://github.com/palmetto/palmetto-components/commit/c7297c5fab64c1d068cc4f6e9db214c199b00b8d))
+
+# [0.131.0](https://github.com/palmetto/palmetto-components/compare/v0.130.0...v0.131.0) (2022-03-28)
+
+
+### Features
+
+* [738] option tile theme tokens ([#740](https://github.com/palmetto/palmetto-components/issues/740)) ([fc73cd4](https://github.com/palmetto/palmetto-components/commit/fc73cd4ede4e4e4d7ce2800d2d645e72dcd5cf49))
+
 # [0.130.0](https://github.com/palmetto/palmetto-components/compare/v0.129.3...v0.130.0) (2022-03-23)
 
 

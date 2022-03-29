@@ -1,5 +1,5 @@
 import React, {
-  ReactNode, MouseEvent, FocusEvent, forwardRef, createElement, AnchorHTMLAttributes,
+  ReactNode, MouseEvent, FocusEvent, forwardRef, createElement, AnchorHTMLAttributes, ButtonHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 import { IconName, ResponsiveProp } from '../../types';
@@ -15,7 +15,7 @@ export type ButtonVariant = 'primary' | 'success' | 'danger' | 'light' | 'dark' 
 
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 
-interface BaseButtonProps {
+export interface BaseButtonProps {
      /**
       * Contents of the button.
       */
@@ -104,11 +104,11 @@ interface BaseButtonProps {
       */
 }
 
-type AnchorButtonProps = { as: 'a'; } &
-  BaseButtonProps & Omit<JSX.IntrinsicElements['a'], 'ref'>
+export type AnchorButtonProps = { as: 'a'; } &
+  BaseButtonProps & React.HTMLAttributes<HTMLAnchorElement>
 
-type NormalButtonProps = { as?: 'button'; } &
-  BaseButtonProps & Omit<JSX.IntrinsicElements['button'], 'ref'>
+export type NormalButtonProps = { as?: 'button'; } &
+  BaseButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
 
 export type ButtonProps = NormalButtonProps | AnchorButtonProps
 
