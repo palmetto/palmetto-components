@@ -1,5 +1,12 @@
 Changelog
 
+# [0.133.0](https://github.com/palmetto/palmetto-components/compare/v0.132.0...v0.133.0) (2022-03-30)
+
+
+### Features
+
+* **DatePicker:** component theme tokens ([#743](https://github.com/palmetto/palmetto-components/issues/743)) ([ccd9842](https://github.com/palmetto/palmetto-components/commit/ccd9842d6401083c9080d2f642108d5c4062d144))
+
 # [0.132.0](https://github.com/palmetto/palmetto-components/compare/v0.131.0...v0.132.0) (2022-03-28)
 
 
