@@ -1,5 +1,12 @@
 Changelog
 
+## [0.133.2](https://github.com/palmetto/palmetto-components/compare/v0.133.1...v0.133.2) (2022-04-04)
+
+
+### Bug Fixes
+
+* **Table:** improve table theming ([#745](https://github.com/palmetto/palmetto-components/issues/745)) ([9b040dd](https://github.com/palmetto/palmetto-components/commit/9b040dd73256de63e3e71f0394e75199ebabe4c8))
+
 ## [0.133.1](https://github.com/palmetto/palmetto-components/compare/v0.133.0...v0.133.1) (2022-03-30)
 
 # [0.133.0](https://github.com/palmetto/palmetto-components/compare/v0.132.0...v0.133.0) (2022-03-30)
