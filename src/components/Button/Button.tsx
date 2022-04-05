@@ -86,12 +86,6 @@ export interface BaseButtonProps {
       */
      target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
      /**
-      * The Button's type.
-      * NOTE: this is not restricted to button types since we allow
-      * rendering a button as a different HTML element than a button (`<a>` or `<input>`).
-      */
-     type?: 'submit' | 'reset' | 'button' | string;
-     /**
       * The size of the button.
       */
      size?: ButtonSize | ResponsiveProp<ButtonSize>;
@@ -133,7 +127,6 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
       onBlur = undefined,
       tabIndex = undefined,
       target = undefined,
-      type = 'button',
       size = 'md',
       variant = 'primary',
       ...restProps
@@ -235,7 +228,6 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
         (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => handleClick(event, onClick, target, navigate),
       onFocus: handleFocus,
       ref,
-      type: (href || as === 'a') ? null : type,
       tabIndex,
       ...restProps,
     }, buttonContent);
