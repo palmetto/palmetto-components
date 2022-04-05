@@ -99,10 +99,10 @@ export interface BaseButtonProps {
 }
 
 export type AnchorButtonProps = { as: 'a'; } &
-  BaseButtonProps & React.HTMLAttributes<HTMLAnchorElement>
+  BaseButtonProps & Omit<React.DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'>
 
 export type NormalButtonProps = { as?: 'button'; } &
-  BaseButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
+  BaseButtonProps & Omit<React.DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, 'ref'>
 
 export type ButtonProps = NormalButtonProps | AnchorButtonProps
 
@@ -127,6 +127,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
       onBlur = undefined,
       tabIndex = undefined,
       target = undefined,
+      type = undefined,
       size = 'md',
       variant = 'primary',
       ...restProps
@@ -228,6 +229,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
         (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => handleClick(event, onClick, target, navigate),
       onFocus: handleFocus,
       ref,
+      type: type || ((as !== 'a' && !href) && 'button'),
       tabIndex,
       ...restProps,
     }, buttonContent);
