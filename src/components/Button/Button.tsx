@@ -86,12 +86,6 @@ export interface BaseButtonProps {
       */
      target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
      /**
-      * The Button's type.
-      * NOTE: this is not restricted to button types since we allow
-      * rendering a button as a different HTML element than a button (`<a>` or `<input>`).
-      */
-     type?: 'submit' | 'reset' | 'button' | string;
-     /**
       * The size of the button.
       */
      size?: ButtonSize | ResponsiveProp<ButtonSize>;
