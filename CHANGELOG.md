@@ -1,5 +1,12 @@
 Changelog
 
+## [0.133.3](https://github.com/palmetto/palmetto-components/compare/v0.133.2...v0.133.3) (2022-04-05)
+
+
+### Bug Fixes
+
+* **Button:** remove custom button type ([#746](https://github.com/palmetto/palmetto-components/issues/746)) ([f1e0fcc](https://github.com/palmetto/palmetto-components/commit/f1e0fcc6d6f7819033b3688678b8cad1dc4a7670))
+
 ## [0.133.2](https://github.com/palmetto/palmetto-components/compare/v0.133.1...v0.133.2) (2022-04-04)
 
 
