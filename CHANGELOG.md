@@ -1,5 +1,12 @@
 Changelog
 
+## [0.133.4](https://github.com/palmetto/palmetto-components/compare/v0.133.3...v0.133.4) (2022-04-05)
+
+
+### Bug Fixes
+
+* **Button:** default to button type if attribute not passed and is actual button ([#747](https://github.com/palmetto/palmetto-components/issues/747)) ([1166236](https://github.com/palmetto/palmetto-components/commit/1166236a001f76e30f922958ae68d20378c577df))
+
 ## [0.133.3](https://github.com/palmetto/palmetto-components/compare/v0.133.2...v0.133.3) (2022-04-05)
 
 
