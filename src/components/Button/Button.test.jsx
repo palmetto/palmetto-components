@@ -5,12 +5,6 @@ import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 
 describe('Button', () => {
   describe('Type', () => {
-    test('Sets the html button type to "button" by default', () => {
-      render(<Button>Default Button Type</Button>);
-
-      const testBtn = screen.getByText('Default Button Type').closest('button');
-      expect(testBtn.getAttribute('type')).toBe('button');
-    });
     test('Sets the html button type to "submit" if specified', () => {
       render(<Button type="submit">Submit Button</Button>);
 
