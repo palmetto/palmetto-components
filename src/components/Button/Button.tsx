@@ -99,10 +99,10 @@ export interface BaseButtonProps {
 }
 
 export type AnchorButtonProps = { as: 'a'; } &
-  BaseButtonProps & React.DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
+  BaseButtonProps & Omit<React.DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>, 'ref'>
 
 export type NormalButtonProps = { as?: 'button'; } &
-  BaseButtonProps & React.DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+  BaseButtonProps & Omit<React.DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, 'ref'>
 
 export type ButtonProps = NormalButtonProps | AnchorButtonProps
 
