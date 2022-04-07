@@ -1,5 +1,12 @@
 Changelog
 
+# [0.134.0](https://github.com/palmetto/palmetto-components/compare/v0.133.4...v0.134.0) (2022-04-07)
+
+
+### Features
+
+* **MediaModal:** add closeButton prop to render a visible close button ([#749](https://github.com/palmetto/palmetto-components/issues/749)) ([90dc871](https://github.com/palmetto/palmetto-components/commit/90dc871e33921b54dd37d2a0792f662df7370ae1))
+
 ## [0.133.4](https://github.com/palmetto/palmetto-components/compare/v0.133.3...v0.133.4) (2022-04-05)
 
 
