@@ -23,6 +23,14 @@ LandscapeImage.args = {
   children: <img src="/images/landscape-mediamodal.jpg" alt="landscape test" />,
 };
 
+export const WithCloseButton = Template.bind({});
+WithCloseButton.args = {
+  ariaLabel: 'with close button MediaModal',
+  isOpen: true,
+  children: <img src="/images/landscape-mediamodal.jpg" alt="landscape test" />,
+  closeButton: true,
+};
+
 export const TitleDescriptionPortraitImage = Template.bind({});
 TitleDescriptionPortraitImage.args = {
   isOpen: true,

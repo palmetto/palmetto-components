@@ -10,6 +10,7 @@ const {
   PortraitImageFooter,
   TitleDescriptionPortraitImage,
   PortraitImageTitleDescriptionFooter,
+  WithCloseButton,
 } = composeStories(stories);
 
 describe('MediaModal', () => {
@@ -26,6 +27,11 @@ describe('MediaModal', () => {
   test('it uses the title as the dialog aria label', () => {
     const { getByLabelText } = render(<TitleDescriptionPortraitImage />);
     expect(getByLabelText('portrait-mediamodal.jpg')).toBeInTheDocument();
+  });
+
+  test('it renders a close button', () => {
+    const { getByLabelText } = render(<WithCloseButton />);
+    expect(getByLabelText('close')).toBeInTheDocument();
   });
 
   test('renders title and description', () => {

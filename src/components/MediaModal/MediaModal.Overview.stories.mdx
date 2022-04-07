@@ -97,6 +97,37 @@ An optional title and description can be used to describe the contents of the mo
   </Story>
 </Canvas>
 
+## Close Button
+
+Render a visible close button in the upper right of the viewport.
+
+<Canvas>
+  <Story name="With Close Button">
+    {() => {
+      const [showModal, setShowModal] = useState(false);
+      const open = () => setShowModal(true);
+      const close = () => setShowModal(false);
+      return (
+        <div>
+          <Button variant="light" onClick={open}>
+            Show with Close Button
+          </Button>
+          <MediaModal ariaLabel="landscape photo" isOpen={showModal} onDismiss={close} closeButton>
+            <img
+              src="images/landscape-mediamodal.jpg"
+              alt=""
+              style={{
+                objectFit: 'contain',
+                maxHeight: '100vh',
+              }}
+            />
+          </MediaModal>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Custom Header and Footer
 
 A node can be passed to `headerContent` and `footerContent` for more control over what is displayed in the respective content areas of the MediaModal.

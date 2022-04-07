@@ -41,8 +41,11 @@
     top: env(safe-area-inset-top, 0);
     right: env(safe-area-inset-right, 0);
     left: env(safe-area-inset-left, 0);
-    background: rgba(0, 0, 0, 0.5);
     color: var(--media-modal-font-color, var(--color-brand-grey-100));
+  }
+
+  .header-bar {
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .title {
