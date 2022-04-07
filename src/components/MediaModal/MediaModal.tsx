@@ -32,6 +32,11 @@ export interface MediaModalProps {
    */
   containerRef?: React.RefObject<Node>;
   /**
+   * Whether the modal has a visible close button.
+   * If a title description, or headerContent is defined, then a close button will be rendered
+   */
+  closeButton?: boolean;
+  /**
    * By default the first focusable element will receive focus when the dialog
    * opens but you can provide a ref to focus instead.
    *
@@ -43,11 +48,14 @@ export interface MediaModalProps {
    */
   isOpen: boolean;
   /**
-   * Title to be displayed at the top of the viewport. If headerContent is defined, this will be ignored.
+   * Title to be displayed at the top of the viewport.
+   * A close button will be rendered automatically if this prop is defined.
+   * If headerContent is defined, this will be ignored.
    */
   title?: string;
   /**
    * Text to be displayed at the top of the viewport beneath the title.
+   * A close button will be rendered automatically if this prop is defined.
    * If headerContent is defined, this will be ignored.
    */
   description?: string;
@@ -57,6 +65,7 @@ export interface MediaModalProps {
   footerContent?: ReactNode;
   /**
    * Contents of the header area. If defined, the title and description will not be rendered.
+   * A close button will be rendered automatically if this prop is defined.
    */
   headerContent?: ReactNode;
   /**
@@ -78,6 +87,7 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
       description,
       children,
       className,
+      closeButton = false,
       containerRef = undefined,
       footerContent = undefined,
       headerContent = undefined,
@@ -91,7 +101,39 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
     const overlayClassnames = classNames(styles.overlay, styles['media-modal']);
     const contentClassnames = classNames(styles['media-modal'], className);
 
-    const showHeader = headerContent || title || description;
+    const showHeaderBar = headerContent || title || description;
+
+    const renderHeader = () => {
+      if (closeButton && !showHeaderBar) {
+        return (
+          <Box alignItems="flex-end" fontSize="lg" padding="lg" className={styles.header}>
+            <Button iconPrefix="remove-light" onClick={onDismiss} isNaked aria-label="close" />
+          </Box>
+        );
+      }
+      if (showHeaderBar) {
+        return (
+          <Box
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            padding="md lg"
+            className={classNames(styles.header, styles['header-bar'])}
+          >
+            {headerContent || (
+              <Box childGap="2xs">
+                <Box className={styles.title}>{title}</Box>
+                <Box fontSize="xs">{description}</Box>
+              </Box>
+            )}
+            <Box fontSize="lg">
+              <Button iconPrefix="remove-light" onClick={onDismiss} isNaked aria-label="close" />
+            </Box>
+          </Box>
+        );
+      }
+      return null;
+    };
 
     return (
       <DialogOverlay
@@ -106,30 +148,7 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
       >
         <Box className={styles.container}>
           <DialogContent aria-label={ariaLabel || title} className={contentClassnames}>
-            {showHeader && (
-              <Box
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                padding="md lg"
-                className={styles.header}
-              >
-                {headerContent || (
-                  <Box childGap="2xs">
-                    <Box className={styles.title}>{title}</Box>
-                    <Box fontSize="xs">{description}</Box>
-                  </Box>
-                )}
-                <Box fontSize="lg">
-                  <Button
-                    iconPrefix="remove-light"
-                    onClick={onDismiss}
-                    isNaked
-                    aria-label="close"
-                  />
-                </Box>
-              </Box>
-            )}
+            {renderHeader()}
             {children}
             {footerContent && <div className={styles.footer}>{footerContent}</div>}
           </DialogContent>
