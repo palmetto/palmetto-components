@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { ResponsiveProp } from '../../types';
 import { ButtonVariant } from '../Button/Button';
