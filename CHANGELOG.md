@@ -1,5 +1,12 @@
 Changelog
 
+## [0.134.1](https://github.com/palmetto/palmetto-components/compare/v0.134.0...v0.134.1) (2022-04-11)
+
+
+### Bug Fixes
+
+* remove unused webpack dependencies ([#751](https://github.com/palmetto/palmetto-components/issues/751)) ([cc59f3f](https://github.com/palmetto/palmetto-components/commit/cc59f3fe9f288b05b350f3ee5ef78e8aadfc9865))
+
 # [0.134.0](https://github.com/palmetto/palmetto-components/compare/v0.133.4...v0.134.0) (2022-04-07)
 
 
