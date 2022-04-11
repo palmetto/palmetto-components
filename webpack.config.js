@@ -114,8 +114,6 @@ module.exports = {
   optimization: {
     usedExports: true,
     minimizer: [
-      // Minify Javascript
-      // new TerserJSPlugin(),
       // Minify CSS/SCSS
       new OptimizeCSSAssetsPlugin(),
     ],
