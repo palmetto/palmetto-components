@@ -50,7 +50,7 @@ export interface DrawerProps {
   /**
    * Which edge of the viewport should the drawer appear from
    */
-  placement: DrawerPlacement;
+  placement?: DrawerPlacement;
   /**
    * Function that is called whenever the user either hits
    *  the "Escape" key, clicks the close button icon, or clicks the overlay.

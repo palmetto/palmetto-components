@@ -1,16 +1,32 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Drawer } from './Drawer';
 
 describe('Drawer', () => {
-  describe('Default', () => {
-    test('It renders a button', () => {
-      render(<Drawer isSelected={false}>default button</Drawer>);
+  test('renders its children', () => {
+    const { getByText } = render(
+      <Drawer isOpen ariaLabel="testDefault">
+        test drawer
+      </Drawer>,
+    );
+    expect(getByText('test drawer')).toBeInTheDocument();
+  });
 
-      const buttonElement = screen.getByText('default button');
+  test('it open and closes based on isOpen prop', () => {
+    const { queryByText, getByText, rerender } = render(
+      <Drawer isOpen={false} ariaLabel="testIsOpen">
+        test drawer
+      </Drawer>,
+    );
 
-      expect(buttonElement).toBeInTheDocument();
-      expect(buttonElement).toHaveAttribute('role', 'checkbox');
-    });
+    expect(queryByText('test modal')).toBe(null);
+
+    rerender(
+      <Drawer isOpen ariaLabel="testIsOpen">
+        test drawer
+      </Drawer>,
+    );
+
+    expect(getByText('test drawer')).toBeInTheDocument();
   });
 });
