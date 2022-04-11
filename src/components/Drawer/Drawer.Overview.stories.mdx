@@ -1,0 +1,38 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { Drawer } from './Drawer';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
+
+<Meta title="Components/Drawer/Overview" component={Drawer} />
+
+# Drawer
+
+A Drawer is a panel that is typically overlaid on top of a page and slides in from the side. It contains a set of information or actions. Since the user can interact with the Drawer without leaving the current page, tasks can be achieved more efficiently within the same context.
+
+<Canvas isExpanded>
+  <Story name="Basic Drawer">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const open = () => setIsOpen(true);
+      const close = () => setIsOpen(false);
+      return (
+        <Box height="500px">
+          <Button variant="light" onClick={open}>
+            Show Drawer
+          </Button>
+          <Drawer isOpen={isOpen} onDismiss={close}>
+            <Button variant="light" onClick={close}>
+              Close
+            </Button>
+            drawer
+          </Drawer>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Drawer} />
