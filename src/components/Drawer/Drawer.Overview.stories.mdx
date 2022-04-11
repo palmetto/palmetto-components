@@ -3,12 +3,21 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Drawer } from './Drawer';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+import { RadioGroup } from '../RadioGroup/RadioGroup';
 
 <Meta title="Components/Drawer/Overview" component={Drawer} />
 
 # Drawer
 
-A Drawer is a panel that is typically overlaid on top of a page and slides in from the side. It contains a set of information or actions. Since the user can interact with the Drawer without leaving the current page, tasks can be achieved more efficiently within the same context.
+A Drawer is a panel that is typically overlaid on top of a page and slides in from the side. It contains a set of information or actions without leaving the context of the original page. They do not interrupt the a users flow like a modal.
+
+## Usage Guidelines
+
+- tbd
+
+## Content Guidelines
+
+- tbd
 
 <Canvas isExpanded>
   <Story name="Basic Drawer">
@@ -19,7 +28,7 @@ A Drawer is a panel that is typically overlaid on top of a page and slides in fr
       return (
         <>
           <Button variant="light" onClick={open}>
-            Show Drawer
+            Open Drawer
           </Button>
           <Drawer isOpen={isOpen} onDismiss={close}>
             <Button variant="light" onClick={close}>
@@ -36,3 +45,61 @@ A Drawer is a panel that is typically overlaid on top of a page and slides in fr
 ## Props
 
 <ArgsTable of={Drawer} />
+
+## Placement
+
+The Drawer can appear from the right (default), left, top, or bottom of the screen. When appearing from the left or right of the screen, the close Icon Button is positioned on the same side where the Drawer originates from. When appearing from the top or bottom of the screen, the close Icon Button is positioned on the right as default.
+
+<Canvas isExpanded>
+  <Story name="Placement">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const [value, setValue] = useState('right');
+      const placementOptions = [
+        {
+          id: 'top',
+          value: 'top',
+          label: 'top',
+        },
+        {
+          id: 'right',
+          value: 'right',
+          label: 'right',
+        },
+        {
+          id: 'bottom',
+          value: 'bottom',
+          label: 'bottom',
+        },
+        {
+          id: 'left',
+          value: 'left',
+          label: 'left',
+        },
+      ];
+      const open = () => setIsOpen(true);
+      const close = () => setIsOpen(false);
+      return (
+        <Box display="block" childGap="md">
+          <RadioGroup
+            title="Placement"
+            direction="row"
+            name="placement"
+            onChange={event => setValue(event.target.value)}
+            value={value}
+            options={placementOptions}
+          />
+          <Button variant="light" onClick={open}>
+            Open Drawer
+          </Button>
+          <Drawer isOpen={isOpen} onDismiss={close} placement={value}>
+            <Button variant="light" onClick={close}>
+              Close
+            </Button>
+            <Box>drawer content</Box>
+          </Drawer>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
