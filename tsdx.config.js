@@ -24,8 +24,7 @@ const addToConfig = (config, addedItems, configKey) => {
 };
 
 module.exports = {
-  rollup(config, options) {
-    console.log('=============== im here');
+  rollup(config) {
     config = addToConfig(config, [rollupPostCssConfig(path.resolve('dist/css/index.css'))], 'plugins');
     return config;
   },
