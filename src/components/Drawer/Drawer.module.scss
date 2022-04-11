@@ -59,13 +59,15 @@
     }
 
     @media(min-width: $size-breakpoint-tablet) {
-      &.right, &.left {
+      &.right,
+      &.left {
         width: 50vw;
       }
     }
 
     @media(min-width: $size-breakpoint-desktop) {
-      &.right, &.left {
+      &.right,
+      &.left {
         width: 30vw;
       }
     }

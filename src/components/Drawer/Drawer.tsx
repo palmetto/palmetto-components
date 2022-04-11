@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react';
+import React, { FC, forwardRef, RefObject } from 'react';
 import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
 import { Box } from '../Box/Box';
