@@ -8,11 +8,9 @@
  */
 
 const path = require('path');
-const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const rules = [];
@@ -116,8 +114,6 @@ module.exports = {
   optimization: {
     usedExports: true,
     minimizer: [
-      // Minify Javascript
-      new TerserJSPlugin(),
       // Minify CSS/SCSS
       new OptimizeCSSAssetsPlugin(),
     ],
