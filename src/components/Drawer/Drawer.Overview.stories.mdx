@@ -17,7 +17,7 @@ A Drawer is a panel that is typically overlaid on top of a page and slides in fr
       const open = () => setIsOpen(true);
       const close = () => setIsOpen(false);
       return (
-        <Box height="500px">
+        <>
           <Button variant="light" onClick={open}>
             Show Drawer
           </Button>
@@ -25,9 +25,9 @@ A Drawer is a panel that is typically overlaid on top of a page and slides in fr
             <Button variant="light" onClick={close}>
               Close
             </Button>
-            drawer
+            <Box>drawer content</Box>
           </Drawer>
-        </Box>
+        </>
       );
     }}
   </Story>

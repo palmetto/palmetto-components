@@ -70,13 +70,19 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
       initialFocusRef,
       isOpen,
       onDismiss,
-      placement = 'left',
+      placement = 'right',
     },
     ref,
   ) => {
     const overlayClassnames = classNames(styles.overlay, styles.drawer);
 
-    const contentClassnames = classNames(styles['modal-content'], className);
+    const contentClassnames = classNames(styles['modal-content'], {
+      [styles.bottom]: placement === 'bottom',
+      [styles.left]: placement === 'left',
+      [styles.right]: placement === 'right',
+      [styles.top]: placement === 'top',
+      className,
+    });
 
     return (
       <DialogOverlay
