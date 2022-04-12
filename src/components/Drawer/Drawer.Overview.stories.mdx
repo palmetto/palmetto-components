@@ -92,13 +92,51 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer isOpen={isOpen} onDismiss={close} placement={value}>
+          <Drawer
+            isOpen={isOpen}
+            onDismiss={close}
+            placement={value}
+            dangerouslyBypassFocusLock
+            dangerouslyBypassScrollLock
+            hideOverlay
+          >
             <Button variant="light" onClick={close}>
               Close
             </Button>
             <Box>drawer content</Box>
           </Drawer>
         </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Hide Overlay
+
+<Canvas isExpanded>
+  <Story name="Hidden Overlay">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const open = () => setIsOpen(true);
+      const close = () => setIsOpen(false);
+      return (
+        <>
+          <Button variant="light" onClick={open}>
+            Open Drawer
+          </Button>
+          <Drawer
+            isOpen={isOpen}
+            dangerouslyBypassFocusLock
+            dangerouslyBypassScrollLock
+            onDismiss={close}
+            hideOverlay
+          >
+            <Button variant="light" onClick={close}>
+              Close
+            </Button>
+            <Box>drawer content</Box>
+          </Drawer>
+        </>
       );
     }}
   </Story>

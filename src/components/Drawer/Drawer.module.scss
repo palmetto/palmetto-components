@@ -8,26 +8,37 @@
   left: 0;
   z-index: var(--size-z-index-overlay);
   background: hsla(0, 0%, 0%, 0.33);
-  background-color: rgba(77, 82, 79, 0.5);
   overflow: hidden;
+
+  &.hide-overlay-right {
+    left: 70%;
+    background-color: transparent;
+  }
+
+  &.hide-overlay-left {
+    right: 70%;
+    background-color: transparent;
+  }
+
+  &.hide-overlay-bottom {
+    top: calc(100% - var(--drawer-bottom-height, var(--size-height-2xl)));
+    background-color: transparent;
+  }
+
+  &.hide-overlay-top {
+    bottom: calc(100% - var(--drawer-top-height, var(--size-height-2xl)));
+    background-color: transparent;
+  }
 }
 
 .drawer {
   [data-reach-dialog-content] {
-    background-color: var(--drawer-background-color, var(--color-brand-white-500));
+    background-color: var(--drawer-background-color, var(--color-brand-grey-50));
     display: block;
     padding: var(--drawer-content-padding, var(--size-spacing-lg));
     position: absolute;
+    box-shadow: var(--drawer-box-shadow, var(--size-box-shadow-lg));
     z-index: var(--size-z-index-drawer);
-
-    &.bottom {
-      bottom: 0;
-      width: 100%;
-
-      :global {
-        animation: fadeInUp 0.2s ease-out;
-      }
-    }
 
     &.left {
       left: 0;
@@ -49,9 +60,20 @@
       }
     }
 
+    &.bottom {
+      bottom: 0;
+      width: 100%;
+      height: var(--drawer-bottom-height, var(--size-height-2xl));
+
+      :global {
+        animation: fadeInUp 0.2s ease-out;
+      }
+    }
+
     &.top {
       top: 0;
       width: 100%;
+      height: var(--drawer-top-height, var(--size-height-2xl));
 
       :global {
         animation: fadeInDown 0.2s ease-out;
@@ -61,14 +83,22 @@
     @media(min-width: $size-breakpoint-tablet) {
       &.right,
       &.left {
-        width: 50vw;
+        width: 50%;
+
+        &.hide-overlay {
+          width: 100%;
+        }
       }
     }
 
     @media(min-width: $size-breakpoint-desktop) {
       &.right,
       &.left {
-        width: 30vw;
+        width: 30%;
+
+        &.hide-overlay {
+          width: 100%;
+        }
       }
     }
   }
