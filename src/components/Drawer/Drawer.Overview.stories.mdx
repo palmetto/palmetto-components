@@ -104,7 +104,11 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
   </Story>
 </Canvas>
 
-## Hide Overlay
+## Hidden Overlay
+
+In cases where content in the drawer is supplemental to content on the main area of the page, use `hideOverlay` to allow for interaction between the areas (e.g. copy-and-paste text from main area into a form in the drawer).
+
+Note that focus and page scrolling will not be locked if `hideOverlay` is true.
 
 <Canvas isExpanded>
   <Story name="Hidden Overlay">
@@ -117,13 +121,7 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer
-            isOpen={isOpen}
-            dangerouslyBypassFocusLock
-            dangerouslyBypassScrollLock
-            onDismiss={close}
-            hideOverlay
-          >
+          <Drawer isOpen={isOpen} onDismiss={close} hideOverlay>
             <Button variant="light" onClick={close}>
               Close
             </Button>

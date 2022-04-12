@@ -51,7 +51,11 @@ export interface DrawerProps {
    * If true, this will allow the body to scroll while the drawer is open.
    */
   dangerouslyBypassScrollLock?: boolean;
-  hideOverlay: boolean;
+  /**
+   * If true, the overlay will not be rendered, scrolling for the entire page will remain enabled,
+   * and focus will not be locked to the contents of the drawer
+   */
+  hideOverlay?: boolean;
   /**
    * By default the first focusable element will receive focus when the dialog
    * opens but you can provide a ref to focus instead.
@@ -120,8 +124,8 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
         onDismiss={closeOnOverlayClick ? onDismiss : undefined}
         initialFocusRef={initialFocusRef}
         ref={ref}
-        dangerouslyBypassFocusLock={dangerouslyBypassFocusLock}
-        dangerouslyBypassScrollLock={dangerouslyBypassScrollLock}
+        dangerouslyBypassFocusLock={hideOverlay || dangerouslyBypassFocusLock}
+        dangerouslyBypassScrollLock={hideOverlay || dangerouslyBypassScrollLock}
       >
         <Box className={styles.container}>
           <DialogContent
