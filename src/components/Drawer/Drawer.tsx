@@ -4,7 +4,9 @@ import classNames from 'classnames';
 import { Box } from '../Box/Box';
 import styles from './Drawer.module.scss';
 
-export type DrawerPlacement = 'left' | 'right' | 'top' | 'bottom';
+export type DrawerPlacementType = 'left' | 'right' | 'top' | 'bottom';
+
+export const DRAWER_PLACEMENT: DrawerPlacementType[] = ['right', 'left', 'top', 'bottom'];
 
 export interface DrawerProps {
   /**
@@ -64,7 +66,7 @@ export interface DrawerProps {
   /**
    * Which edge of the viewport should the drawer appear from
    */
-  placement?: DrawerPlacement;
+  placement?: DrawerPlacementType;
   /**
    * Function that is called whenever the user either hits
    *  the "Escape" key, clicks the close button icon, or clicks the overlay.

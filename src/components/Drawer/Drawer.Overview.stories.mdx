@@ -92,14 +92,7 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer
-            isOpen={isOpen}
-            onDismiss={close}
-            placement={value}
-            dangerouslyBypassFocusLock
-            dangerouslyBypassScrollLock
-            hideOverlay
-          >
+          <Drawer isOpen={isOpen} onDismiss={close} placement={value}>
             <Button variant="light" onClick={close}>
               Close
             </Button>
