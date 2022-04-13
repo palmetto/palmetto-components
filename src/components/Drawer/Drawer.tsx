@@ -1,4 +1,6 @@
-import React, { CSSProperties, FC, forwardRef, RefObject } from 'react';
+import React, {
+  CSSProperties, FC, forwardRef, RefObject,
+} from 'react';
 import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
 import { DimensionSize } from '../../types';
