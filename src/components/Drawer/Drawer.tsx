@@ -104,6 +104,8 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
       [styles['hide-overlay-right']]: hideOverlay && placement === 'right',
       [styles['hide-overlay-bottom']]: hideOverlay && placement === 'bottom',
       [styles['hide-overlay-top']]: hideOverlay && placement === 'top',
+      'position-fixed': containerRef === undefined,
+      'position-absolute': containerRef !== undefined,
     });
 
     const contentClassnames = classNames(styles['drawer-content'], {

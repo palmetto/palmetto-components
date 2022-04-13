@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Drawer } from './Drawer';
+import { Alert } from '../Alert/Alert';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+import { TextInput } from '../TextInput/TextInput';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
 
 <Meta title="Components/Drawer/Overview" component={Drawer} />
@@ -13,11 +15,19 @@ A Drawer is a panel that is typically overlaid on top of a page and slides in fr
 
 ## Usage Guidelines
 
-- tbd
+- The Drawer visibility is controlled via the `isOpen` prop, and is hidden by default. To handle closing the Drawer, provide an `onDismiss` callback that will be called when the user clicks the Overlay or Esc keyboard key.
+- When a Drawer is open, the main body is scroll-locked by default.
+- Avoid nesting Drawers to prevent usability issues.
+- The button that triggers the drawer opening should be in close proximity to the Drawer itself.
+- Drawers are appropriate for supplemental information, filters, or subtasks where it's important to keep the subtasks in the context of the main task
 
-## Content Guidelines
+## Accessibility
 
-- tbd
+- Use the `ariaLabel` or `ariaLabelledBy` props to properly label a drawer to provide context for users with assistive technology such as screen readers. If a drawer is announced to the user without a label, it can be confusing and difficult to navigate.
+- When the Drawer is opened, focus is trapped inside the Drawer.
+- 'Esc'
+- By default, the Drawer sets focus on the first focusable element. If the `initialFocusRef` prop is passed, the Drawer sets focus on the element with the assigned ref.
+- After the drawer closes, focus is returned to the element that triggered it.
 
 <Canvas isExpanded>
   <Story name="Basic Drawer">
@@ -31,10 +41,14 @@ A Drawer is a panel that is typically overlaid on top of a page and slides in fr
             Open Drawer
           </Button>
           <Drawer isOpen={isOpen} onDismiss={close}>
-            <Button variant="light" onClick={close}>
-              Close
-            </Button>
-            <Box>drawer content</Box>
+            <Box padding="lg" display="block" childGap="md">
+              <Button variant="light" onClick={close}>
+                Close
+              </Button>
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+            </Box>
           </Drawer>
         </>
       );
@@ -93,10 +107,20 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
             Open Drawer
           </Button>
           <Drawer isOpen={isOpen} onDismiss={close} placement={value}>
-            <Button variant="light" onClick={close}>
-              Close
-            </Button>
-            <Box>drawer content</Box>
+            <Box padding="lg" display="block" childGap="md">
+              <Button variant="light" onClick={close}>
+                Close
+              </Button>
+              <Box as="p">drawer content</Box>
+              <Box as="p">drawer content</Box>
+              <Box as="p">drawer content</Box>
+              <Box as="p">drawer content</Box>
+              <Box as="p">drawer content</Box>
+              <Box as="p">drawer content</Box>
+              <Box as="p">drawer content</Box>
+              <Box as="p">drawer content</Box>
+              <Box as="p">drawer content</Box>
+            </Box>
           </Drawer>
         </Box>
       );
@@ -122,12 +146,97 @@ Note that focus and page scrolling will not be locked if `hideOverlay` is true.
             Open Drawer
           </Button>
           <Drawer isOpen={isOpen} onDismiss={close} hideOverlay>
-            <Button variant="light" onClick={close}>
-              Close
-            </Button>
-            <Box>drawer content</Box>
+            <Box padding="lg" display="block" childGap="md">
+              <Button variant="light" onClick={close}>
+                Close
+              </Button>
+              <Box>drawer content</Box>
+            </Box>
           </Drawer>
         </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Initial Focus Ref
+
+By default the first focusable element will receive focus when the drawer opens, but you can provide a ref to focus instead.
+
+<Alert
+  hasIcon
+  message="Without the initialFocusRef prop, the drawer will automatically focus on the first focusable element in it's children."
+  variant="info"
+/>
+
+<Canvas isExpanded>
+  <Story name="Initial Focus Ref">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const ref = useRef();
+      const open = () => setIsOpen(true);
+      const close = () => setIsOpen(false);
+      return (
+        <>
+          <Button variant="light" onClick={open}>
+            Open Drawer
+          </Button>
+          <Drawer isOpen={isOpen} onDismiss={close} initialFocusRef={ref}>
+            <Box padding="lg" display="block" childGap="md">
+              <Button variant="light" onClick={close}>
+                Close
+              </Button>
+              <Box>drawer content</Box>
+              <Button variant="dark" isOutlined ref={ref} onClick={close}>
+                I receive focus
+              </Button>
+            </Box>
+          </Drawer>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Contained Drawer
+
+Render the Drawer within a containing div using `containerRef`.
+
+<Alert
+  hasIcon
+  message="When choosing to use a Drawer within a containing div, use dangerouslyBypassScrollLock to allow the content outside of the containing div to remain interactive."
+  variant="info"
+/>
+
+<Canvas>
+  <Story name="Contained Drawer">
+    {() => {
+      const containerRef = useRef();
+      const [showDrawer, setShowDrawer] = useState(false);
+      return (
+        <Box
+          position="relative"
+          display="block"
+          height="500px"
+          id="myContainer"
+          ref={containerRef}
+          background="secondary-900"
+          padding="lg"
+        >
+          <Button variant="light" onClick={() => setShowDrawer(true)}>
+            Show Drawer
+          </Button>
+          <Drawer
+            isOpen={showDrawer}
+            onDismiss={() => setShowDrawer(false)}
+            containerRef={containerRef}
+            dangerouslyBypassScrollLock
+          >
+            <Box padding="lg" as="p">
+              This drawer is rendered inside it&apos;s containing div, rather than the document.body
+            </Box>
+          </Drawer>
+        </Box>
       );
     }}
   </Story>

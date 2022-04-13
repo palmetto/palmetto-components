@@ -1,14 +1,13 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 [data-reach-dialog-overlay].drawer {
-  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: var(--size-z-index-overlay);
   background: hsla(0, 0%, 0%, 0.33);
-  overflow: hidden;
+  overflow: visible;
 
   &.hide-overlay-right {
     left: 70%;
@@ -33,11 +32,12 @@
 
 .drawer {
   [data-reach-dialog-content] {
-    background-color: var(--drawer-background-color, var(--color-brand-grey-50));
+    background-color: var(--drawer-background-color, var(--color-brand-white-500));
     display: block;
-    padding: var(--drawer-content-padding, var(--size-spacing-lg));
+    padding: var(--drawer-content-padding, var(--size-spacing-0));
     position: absolute;
-    box-shadow: var(--drawer-box-shadow, var(--size-box-shadow-lg));
+    box-shadow: var(--drawer-box-shadow, var(--size-box-shadow-xl));
+    overflow: auto;
     z-index: var(--size-z-index-drawer);
 
     &.left {
