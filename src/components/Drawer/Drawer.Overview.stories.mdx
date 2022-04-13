@@ -13,22 +13,6 @@ import { RadioGroup } from '../RadioGroup/RadioGroup';
 
 A Drawer is a panel that is typically overlaid on top of a page and slides in from the side. It contains a set of information or actions without leaving the context of the original page. They do not interrupt the a users flow like a modal.
 
-## Usage Guidelines
-
-- The Drawer visibility is controlled via the `isOpen` prop, and is hidden by default. To handle closing the Drawer, provide an `onDismiss` callback that will be called when the user clicks the Overlay or Esc keyboard key.
-- When a Drawer is open, the main body is scroll-locked by default.
-- Avoid nesting Drawers to prevent usability issues.
-- The button that triggers the drawer opening should be in close proximity to the Drawer itself.
-- Drawers are appropriate for supplemental information, filters, or subtasks where it's important to keep the subtasks in the context of the main task
-
-## Accessibility
-
-- Use the `ariaLabel` or `ariaLabelledBy` props to properly label a drawer to provide context for users with assistive technology such as screen readers. If a drawer is announced to the user without a label, it can be confusing and difficult to navigate.
-- When the Drawer is opened, focus is trapped inside the Drawer.
-- 'Esc'
-- By default, the Drawer sets focus on the first focusable element. If the `initialFocusRef` prop is passed, the Drawer sets focus on the element with the assigned ref.
-- After the drawer closes, focus is returned to the element that triggered it.
-
 <Canvas isExpanded>
   <Story name="Basic Drawer">
     {() => {
@@ -55,6 +39,37 @@ A Drawer is a panel that is typically overlaid on top of a page and slides in fr
     }}
   </Story>
 </Canvas>
+
+## Usage Guidelines
+
+- Use the drawer as way to achieve progressive disclosure, to reveal relevant information at the appropriate time.
+- The Drawer visibility is controlled via the `isOpen` prop, and is hidden by default. To handle closing the Drawer, provide an `onDismiss` callback that will be called when the user clicks the Overlay or Esc keyboard key.
+- When a Drawer is open, the main body is scroll-locked by default.
+- Avoid nesting Drawers to prevent usability issues.
+- The button that triggers the drawer opening should be in close proximity to the Drawer itself.
+- Drawers are appropriate for supplemental information, filters, or subtasks where it's important to keep the subtasks in the context of the main task
+
+### When not to use
+
+- To force users to complete an action before continuing. Use a [Modal](/docs/components-modal-overview--basic-usage) instead.
+- For small content or a few options near the original content, use a [Popover](/docs/components-popover-overview--demo).
+
+## Content Guidelines
+
+Drawers are good for short pieces of content that are related to the main screen but not a part of it. Examples include:
+
+- Contextual help
+- Notifications or activity log
+- Simple forms or settings
+- Navigation or page table of contents
+
+## Accessibility
+
+- Use the `ariaLabel` or `ariaLabelledBy` props to properly label a drawer to provide context for users with assistive technology such as screen readers. If a drawer is announced to the user without a label, it can be confusing and difficult to navigate.
+- When the Drawer is opened, focus is trapped inside the Drawer.
+- 'Esc'
+- By default, the Drawer sets focus on the first focusable element. If the `initialFocusRef` prop is passed, the Drawer sets focus on the element with the assigned ref.
+- After the drawer closes, focus is returned to the element that triggered it.
 
 ## Props
 
