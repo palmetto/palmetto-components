@@ -143,9 +143,11 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
   </Story>
 </Canvas>
 
-## Size
+## Width
 
 The width of Drawers with a `left` or `right` placement can be set via `width`. The Drawer height will be 100% of the viewport, or if `containerRef` is used, 100% of the container.
+
+When `placement` is set to `top` or `bottom`, the `width` prop is ignored and the drawer will be 100% of the viewport or container.
 
 <Canvas withSource="open">
   <Story name="Width">
@@ -174,6 +176,35 @@ The width of Drawers with a `left` or `right` placement can be set via `width`. 
                 Close
               </Button>
               <Box>drawer content</Box>
+            </Box>
+          </Drawer>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Height
+
+The height of Drawers with a `top` or `bottom` placement is determined by Drawer's contents. The width will be set to 100%.
+
+<Canvas withSource="open">
+  <Story name="Height">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const open = () => setIsOpen(true);
+      const close = () => setIsOpen(false);
+      return (
+        <>
+          <Button variant="light" onClick={open}>
+            Open Drawer
+          </Button>
+          <Drawer placement="top" isOpen={isOpen} onDismiss={close}>
+            <Box padding="lg" height="3xl" display="block" childGap="md">
+              <Button variant="light" onClick={close}>
+                Close
+              </Button>
+              <Box>3xl Height</Box>
             </Box>
           </Drawer>
         </>

@@ -13,7 +13,7 @@ export default {
 
 const Template: Story<DrawerProps> = ({ ...args }) => (
   <Drawer {...args}>
-    <Box background="info-50" height="100">
+    <Box background="info-50" minHeight="3xl" height="100">
       drawer contents
     </Box>
   </Drawer> // eslint-disable-line @typescript-eslint/no-empty-function
@@ -109,4 +109,34 @@ LeftDrawerHideOverlayTokenWidth.args = {
   hideOverlay: true,
   width: '2xl',
   placement: 'left',
+};
+
+export const TopDrawer = Template.bind({});
+TopDrawer.args = {
+  ariaLabel: 'Top Drawer',
+  isOpen: true,
+  placement: 'top',
+};
+
+export const TopDrawerHideOverlay = Template.bind({});
+TopDrawerHideOverlay.args = {
+  ariaLabel: 'Top Drawer',
+  isOpen: true,
+  hideOverlay: true,
+  placement: 'top',
+};
+
+export const BottomDrawer = Template.bind({});
+BottomDrawer.args = {
+  ariaLabel: 'Bottom Drawer',
+  isOpen: true,
+  placement: 'bottom',
+};
+
+export const BottomDrawerHideOverlay = Template.bind({});
+BottomDrawerHideOverlay.args = {
+  ariaLabel: 'Bottom Drawer',
+  isOpen: true,
+  hideOverlay: true,
+  placement: 'bottom',
 };

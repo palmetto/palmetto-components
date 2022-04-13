@@ -7,6 +7,7 @@
   left: 0;
   z-index: var(--size-z-index-overlay);
   background: hsla(0, 0%, 0%, 0.33);
+  max-height: 100vh;
   overflow: visible;
 
   &.hide-overlay-right {
@@ -20,12 +21,14 @@
   }
 
   &.hide-overlay-bottom {
-    top: calc(100% - var(--drawer-bottom-height, var(--size-height-2xl)));
+    /* push the overlay to opposite edge so that underlying content is not covered */
+    top: 100%;
     background-color: transparent;
   }
 
   &.hide-overlay-top {
-    bottom: calc(100% - var(--drawer-top-height, var(--size-height-2xl)));
+    /* push the overlay to opposite edge so that underlying content is not covered */
+    bottom: 100%;
     background-color: transparent;
   }
 }
@@ -63,7 +66,6 @@
     &.bottom {
       bottom: 0;
       width: 100%;
-      height: var(--drawer-bottom-height, var(--size-height-2xl));
 
       :global {
         animation: fadeInUp 0.2s ease-out;
@@ -73,7 +75,6 @@
     &.top {
       top: 0;
       width: 100%;
-      height: var(--drawer-top-height, var(--size-height-2xl));
 
       :global {
         animation: fadeInDown 0.2s ease-out;
