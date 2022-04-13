@@ -72,7 +72,7 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef(
           'aria-posinset': index + 1,
           'aria-setsize': React.Children.count(children),
           'aria-selected': value === index,
-          ref: mergeRefs([value === index ? activeTabRef : null, child.props.ref]),
+          ref: mergeRefs([value === index ? activeTabRef : null, child.ref]),
         });
       }
 
