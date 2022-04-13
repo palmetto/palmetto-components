@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import mergeRefs from 'react-merge-refs';
 import { ResponsiveProp } from '../../types';
 import { ButtonVariant } from '../Button/Button';
 import { Box, BoxProps } from '../Box/Box';
@@ -71,7 +72,7 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef(
           'aria-posinset': index + 1,
           'aria-setsize': React.Children.count(children),
           'aria-selected': value === index,
-          ref: value === index ? activeTabRef : null,
+          ref: mergeRefs([value === index ? activeTabRef : null, child.props.ref]),
         });
       }
 
