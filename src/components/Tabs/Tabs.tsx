@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode, RefObject } from 'react';
 import classNames from 'classnames';
 import mergeRefs from 'react-merge-refs';
 import { ResponsiveProp } from '../../types';
@@ -72,7 +72,10 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef(
           'aria-posinset': index + 1,
           'aria-setsize': React.Children.count(children),
           'aria-selected': value === index,
-          ref: mergeRefs([value === index ? activeTabRef : null, child.ref]),
+          ref: mergeRefs([
+            value === index ? activeTabRef : null,
+            (child as ReactNode & { ref: RefObject<HTMLElement>; }).ref,
+          ]),
         });
       }
 
