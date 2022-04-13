@@ -81,7 +81,7 @@ export interface DrawerProps {
    * The width of the Drawer when opened. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/story/design-tokens-design-tokens--page#width)
    */
-  width: DimensionSize;
+  width?: DimensionSize | string;
 }
 
 export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
@@ -101,11 +101,13 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
       isOpen,
       onDismiss,
       placement = 'right',
-      width,
+      width = undefined,
     },
     ref,
   ) => {
-    const dynamicWidth = WIDTH_OPTIONS.includes(width) ? `var(--size-width-${width})` : width;
+    const dynamicWidth = (WIDTH_OPTIONS as Array<string | undefined>).includes(width)
+      ? `var(--size-width-${width})`
+      : width;
 
     const dynamicStyle: CSSProperties = {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
