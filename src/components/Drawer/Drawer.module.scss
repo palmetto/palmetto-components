@@ -10,12 +10,12 @@
   overflow: visible;
 
   &.hide-overlay-right {
-    left: 70%;
+    left: calc(100% - var(--w, var(--size-width-4xl)));
     background-color: transparent;
   }
 
   &.hide-overlay-left {
-    right: 70%;
+    right: calc(100% - var(--w, var(--size-width-4xl)));
     background-color: transparent;
   }
 
@@ -83,7 +83,7 @@
     @media(min-width: $size-breakpoint-tablet) {
       &.right,
       &.left {
-        width: 50%;
+        width: var(--w, var(--size-width-4xl));
 
         &.hide-overlay {
           width: 100%;
@@ -94,7 +94,7 @@
     @media(min-width: $size-breakpoint-desktop) {
       &.right,
       &.left {
-        width: 30%;
+        width: var(--w, var(--size-width-4xl));
 
         &.hide-overlay {
           width: 100%;

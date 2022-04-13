@@ -13,7 +13,7 @@ import { RadioGroup } from '../RadioGroup/RadioGroup';
 
 A Drawer is a panel that is typically overlaid on top of a page and slides in from the side. It contains a set of information or actions without leaving the context of the original page. They do not interrupt the a users flow like a modal.
 
-<Canvas isExpanded>
+<Canvas withSource="open">
   <Story name="Basic Drawer">
     {() => {
       const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +79,7 @@ Drawers are good for short pieces of content that are related to the main screen
 
 The Drawer can appear from the right (default), left, top, or bottom of the screen. When appearing from the left or right of the screen, the close Icon Button is positioned on the same side where the Drawer originates from. When appearing from the top or bottom of the screen, the close Icon Button is positioned on the right as default.
 
-<Canvas isExpanded>
+<Canvas withSource="open">
   <Story name="Placement">
     {() => {
       const [isOpen, setIsOpen] = useState(false);
@@ -143,13 +143,52 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
   </Story>
 </Canvas>
 
+## Size
+
+The width of Drawers with a `left` or `right` placement can be set via `width`. The Drawer height will be 100% of the viewport, or if `containerRef` is used, 100% of the container.
+
+<Canvas withSource="open">
+  <Story name="Width">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const [width, setWidth] = React.useState('default');
+      const open = () => setIsOpen(true);
+      const close = () => setIsOpen(false);
+      const handleClick = newWidth => {
+        setWidth(newWidth);
+        open();
+      };
+      const widths = ['430px', '100%', '30rem', '4xl'];
+      return (
+        <>
+          <Box childGap="sm" direction="row">
+            {widths.map(width => (
+              <Button variant="light" onClick={() => handleClick(width)} key={width}>
+                {`Open ${width} Drawer `}
+              </Button>
+            ))}
+          </Box>
+          <Drawer width={width} isOpen={isOpen} onDismiss={close}>
+            <Box padding="lg" display="block" childGap="md">
+              <Button variant="light" onClick={close}>
+                Close
+              </Button>
+              <Box>drawer content</Box>
+            </Box>
+          </Drawer>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Hidden Overlay
 
 In cases where content in the drawer is supplemental to content on the main area of the page, use `hideOverlay` to allow for interaction between the areas (e.g. copy-and-paste text from main area into a form in the drawer).
 
 Note that focus and page scrolling will not be locked if `hideOverlay` is true.
 
-<Canvas isExpanded>
+<Canvas withSource="open">
   <Story name="Hidden Overlay">
     {() => {
       const [isOpen, setIsOpen] = useState(false);
@@ -184,7 +223,7 @@ By default the first focusable element will receive focus when the drawer opens,
   variant="info"
 />
 
-<Canvas isExpanded>
+<Canvas withSource="open">
   <Story name="Initial Focus Ref">
     {() => {
       const [isOpen, setIsOpen] = useState(false);
@@ -223,7 +262,7 @@ Render the Drawer within a containing div using `containerRef`.
   variant="info"
 />
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="Contained Drawer">
     {() => {
       const containerRef = useRef();

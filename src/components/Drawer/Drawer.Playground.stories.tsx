@@ -38,6 +38,9 @@ export default {
         options: DRAWER_PLACEMENT,
       },
     },
+    width: {
+      control: 'text',
+    },
     children: {
       table: {
         disable: true,

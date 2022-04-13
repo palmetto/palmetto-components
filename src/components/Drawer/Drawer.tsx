@@ -1,7 +1,8 @@
-import React, { FC, forwardRef, RefObject } from 'react';
+import React, { CSSProperties, FC, forwardRef, RefObject } from 'react';
 import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
-import { Box } from '../Box/Box';
+import { DimensionSize } from '../../types';
+import { WIDTH_OPTIONS } from '../../lib/tokens';
 import styles from './Drawer.module.scss';
 
 export type DrawerPlacementType = 'left' | 'right' | 'top' | 'bottom';
@@ -76,6 +77,11 @@ export interface DrawerProps {
    *  the "Escape" key, clicks the close button icon, or clicks the overlay.
    */
   onDismiss?: (event?: React.SyntheticEvent) => void;
+  /**
+   * The width of the Drawer when opened. Can be given a standard css value (px, rem, em, %),
+   * or a [width token](/?path=/story/design-tokens-design-tokens--page#width)
+   */
+  width: DimensionSize;
 }
 
 export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
@@ -95,9 +101,17 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
       isOpen,
       onDismiss,
       placement = 'right',
+      width,
     },
     ref,
   ) => {
+    const dynamicWidth = WIDTH_OPTIONS.includes(width) ? `var(--size-width-${width})` : width;
+
+    const dynamicStyle: CSSProperties = {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ['--w' as any]: dynamicWidth,
+    };
+
     const overlayClassnames = classNames(styles.overlay, styles.drawer, {
       [styles['hide-overlay']]: hideOverlay,
       [styles['hide-overlay-left']]: hideOverlay && placement === 'left',
@@ -128,16 +142,16 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
         ref={ref}
         dangerouslyBypassFocusLock={hideOverlay || dangerouslyBypassFocusLock}
         dangerouslyBypassScrollLock={hideOverlay || dangerouslyBypassScrollLock}
+        style={{ ...dynamicStyle }}
       >
-        <Box className={styles.container}>
-          <DialogContent
-            aria-label={ariaLabel}
-            aria-labelledby={ariaLabelledBy}
-            className={contentClassnames}
-          >
-            {children}
-          </DialogContent>
-        </Box>
+        <DialogContent
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+          className={contentClassnames}
+          style={{ ...dynamicStyle }}
+        >
+          {children}
+        </DialogContent>
       </DialogOverlay>
     );
   },
