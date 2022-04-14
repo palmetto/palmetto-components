@@ -11,12 +11,12 @@
   overflow: visible;
 
   &.hide-overlay-right {
-    left: calc(100% - var(--w, var(--drawer-width, var(--size-width-4xl))));
+    left: calc(100% - var(--w, var(--drawer-width, var(--size-width-4xl)))); /* stylelint-disable-line */
     background-color: transparent;
   }
 
   &.hide-overlay-left {
-    right: calc(100% - var(--w, var(--drawer-width, var(--size-width-4xl))));
+    right: calc(100% - var(--w, var(--drawer-width, var(--size-width-4xl)))); /* stylelint-disable-line */
     background-color: transparent;
   }
 
@@ -100,7 +100,7 @@
 }
 
 .drawer-header {
-  border-color: var(--drawer-header-border-color, var(--color-brand-grey-100))
+  border-color: var(--drawer-header-border-color, var(--color-brand-grey-100));
 }
 
 .drawer-close-button {
