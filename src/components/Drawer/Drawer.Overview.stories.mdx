@@ -14,7 +14,12 @@ import { RadioGroup } from '../RadioGroup/RadioGroup';
 A Drawer is a panel that slides in from one edge of the viewport and overlays content on top of the page. It contains information or actions without leaving the context of the original page.
 
 <Canvas withSource="open">
-  <Story name="Basic Drawer">
+  <Story
+    name="Basic Drawer"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const open = () => setIsOpen(true);
@@ -82,7 +87,12 @@ Drawers are good for short pieces of content that are related to the main screen
 The Drawer can appear from the right (default), left, top, or bottom of the screen. When appearing from the left or right of the screen, the close Icon Button is positioned on the same side where the Drawer originates from. When appearing from the top or bottom of the screen, the close Icon Button is positioned on the right as default.
 
 <Canvas withSource="open">
-  <Story name="Placement">
+  <Story
+    name="Placement"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const [value, setValue] = useState('right');
@@ -153,7 +163,12 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
 A header will be added to the drawer content if `title` is defined, or `closeButton` is `true`. If the content of the drawer is taller than the drawer height, then the content will scroll while the header remains fixed to the top.
 
 <Canvas>
-  <Story name="Title and Close Button">
+  <Story
+    name="Title and Close Button"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const open = () => setIsOpen(true);
@@ -181,7 +196,12 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
       );
     }}
   </Story>
-  <Story name="Close Button Only">
+  <Story
+    name="Close Button Only"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const open = () => setIsOpen(true);
@@ -218,7 +238,12 @@ Set the width of a Drawer to specific value for a `left` or `right` placement vi
 When `placement` is set to `top` or `bottom`, the `width` prop is ignored and the drawer will be 100% of the viewport or container.
 
 <Canvas withSource="open">
-  <Story name="Width">
+  <Story
+    name="Width"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const [width, setWidth] = React.useState('default');
@@ -261,7 +286,12 @@ When `placement` is set to `top` or `bottom`, the `width` prop is ignored and th
 The height of Drawers with a `top` or `bottom` placement is determined by Drawer's contents. The width will be set to 100%.
 
 <Canvas withSource="open">
-  <Story name="Height">
+  <Story
+    name="Height"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const open = () => setIsOpen(true);
@@ -295,7 +325,12 @@ In cases where content in the drawer is supplemental to content on the main area
 Note: focus and page scrolling will not be locked if `hideOverlay` is true. Also, the 'Esc' key button will no longer automatically close the Drawer.
 
 <Canvas withSource="open">
-  <Story name="Hidden Overlay">
+  <Story
+    name="Hidden Overlay"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const open = () => setIsOpen(true);
@@ -333,7 +368,12 @@ By default the first focusable element will receive focus when the drawer opens,
 />
 
 <Canvas withSource="open">
-  <Story name="Initial Focus Ref">
+  <Story
+    name="Initial Focus Ref"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const ref = useRef();
@@ -375,7 +415,12 @@ Render the Drawer within a containing div using `containerRef`.
 />
 
 <Canvas withSource="open">
-  <Story name="Contained Drawer">
+  <Story
+    name="Contained Drawer"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const containerRef = useRef();
       const [showDrawer, setShowDrawer] = useState(false);
@@ -423,7 +468,12 @@ The appearance of a Drawer can be customized via component design tokens.
 />
 
 <Canvas withSource="open">
-  <Story name="Theme Example">
+  <Story
+    name="Theme Example"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const containerRef = useRef();
