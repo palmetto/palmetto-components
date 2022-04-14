@@ -1,4 +1,6 @@
-import React, { CSSProperties, FC, forwardRef, RefObject } from 'react';
+import React, {
+  CSSProperties, FC, forwardRef, RefObject,
+} from 'react';
 import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
 import { DimensionSize } from '../../types';
@@ -198,14 +200,13 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
       return null;
     };
 
-    const content =
-      title || closeButton ? (
-        <Box flex="auto" overflow="auto">
-          {children}
-        </Box>
-      ) : (
-        children
-      );
+    const content = title || closeButton ? (
+      <Box flex="auto" overflow="auto">
+        {children}
+      </Box>
+    ) : (
+      children
+    );
 
     return (
       <DialogOverlay
