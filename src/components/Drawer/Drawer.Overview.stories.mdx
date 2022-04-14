@@ -139,7 +139,7 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
 
 ## Drawer Header
 
-A header will be added to the drawer content if `title` is defined, or `closeButton` is `true`.
+A header will be added to the drawer content if `title` is defined, or `closeButton` is `true`. If the content of the drawer is taller than the drawer height, then the content will scroll while the header remains fixed to the top.
 
 <Canvas>
   <Story name="Title and Close Button">
@@ -147,6 +147,10 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
       const [isOpen, setIsOpen] = useState(false);
       const open = () => setIsOpen(true);
       const close = () => setIsOpen(false);
+      const drawerContent = [];
+      for (let i = 0; i < 50; i++) {
+        drawerContent.push(<Box key={i}>Drawer content&hellip;</Box>);
+      }
       return (
         <>
           <Button variant="light" onClick={open}>
@@ -154,9 +158,7 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
           </Button>
           <Drawer isOpen={isOpen} onDismiss={close} title="Drawer Title">
             <Box padding="lg" display="block" childGap="md">
-              <Box>Drawer content&hellip;</Box>
-              <Box>Drawer content&hellip;</Box>
-              <Box>Drawer content&hellip;</Box>
+              {drawerContent}
             </Box>
           </Drawer>
         </>
@@ -168,6 +170,10 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
       const [isOpen, setIsOpen] = useState(false);
       const open = () => setIsOpen(true);
       const close = () => setIsOpen(false);
+      const drawerContent = [];
+      for (let i = 0; i < 50; i++) {
+        drawerContent.push(<Box key={i}>Drawer content&hellip;</Box>);
+      }
       return (
         <>
           <Button variant="light" onClick={open}>
@@ -175,9 +181,7 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
           </Button>
           <Drawer isOpen={isOpen} onDismiss={close} closeButton>
             <Box padding="lg" display="block" childGap="md">
-              <Box>Drawer content&hellip;</Box>
-              <Box>Drawer content&hellip;</Box>
-              <Box>Drawer content&hellip;</Box>
+              {drawerContent}
             </Box>
           </Drawer>
         </>

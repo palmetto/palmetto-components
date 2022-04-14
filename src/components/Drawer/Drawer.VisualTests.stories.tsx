@@ -19,6 +19,21 @@ const Template: Story<DrawerProps> = ({ ...args }) => (
   </Drawer> // eslint-disable-line @typescript-eslint/no-empty-function
 );
 
+const LongContentTemplate: Story<DrawerProps> = ({ ...args }) => {
+  const drawerContent = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 50; i++) {
+    drawerContent.push(<Box key={i}>Drawer content&hellip;</Box>);
+  }
+  return (
+    <Drawer {...args}>
+      <Box background="info-50" padding="lg" display="block" childGap="md">
+        {drawerContent}
+      </Box>
+    </Drawer>
+  );
+};
+
 export const RightDrawer = Template.bind({});
 RightDrawer.args = {
   ariaLabel: 'Right Drawer',
@@ -33,8 +48,24 @@ RightDrawerTitleClose.args = {
   onDismiss: () => null,
 };
 
+export const RightDrawerTitleCloseScrolling = LongContentTemplate.bind({});
+RightDrawerTitleCloseScrolling.args = {
+  ariaLabel: 'Right Drawer',
+  isOpen: true,
+  title: 'Right Drawer',
+  onDismiss: () => null,
+};
+
 export const RightDrawerClose = Template.bind({});
 RightDrawerClose.args = {
+  ariaLabel: 'Right Drawer',
+  isOpen: true,
+  closeButton: true,
+  onDismiss: () => null,
+};
+
+export const RightDrawerCloseScrolling = LongContentTemplate.bind({});
+RightDrawerCloseScrolling.args = {
   ariaLabel: 'Right Drawer',
   isOpen: true,
   closeButton: true,
