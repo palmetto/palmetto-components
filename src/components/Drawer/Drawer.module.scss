@@ -10,24 +10,23 @@
   max-height: 100vh;
   overflow: visible;
 
+  /* for the hide-overlay-* classes, push the overlay to opposite edge so that underlying content is not covered */
   &.hide-overlay-right {
-    left: calc(100% - var(--w, var(--drawer-width, var(--size-width-4xl)))); /* stylelint-disable-line */
+    left: 100%;
     background-color: transparent;
   }
 
   &.hide-overlay-left {
-    right: calc(100% - var(--w, var(--drawer-width, var(--size-width-4xl)))); /* stylelint-disable-line */
+    right: 100%;
     background-color: transparent;
   }
 
   &.hide-overlay-bottom {
-    /* push the overlay to opposite edge so that underlying content is not covered */
     top: 100%;
     background-color: transparent;
   }
 
   &.hide-overlay-top {
-    /* push the overlay to opposite edge so that underlying content is not covered */
     bottom: 100%;
     background-color: transparent;
   }
@@ -90,10 +89,6 @@
       &.right,
       &.left {
         width: var(--w, var(--drawer-width, var(--size-width-4xl)));
-
-        &.hide-overlay {
-          width: 100%;
-        }
       }
     }
   }
