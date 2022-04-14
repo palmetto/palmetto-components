@@ -1,5 +1,12 @@
 Changelog
 
+## [0.136.2](https://github.com/palmetto/palmetto-components/compare/v0.136.1...v0.136.2) (2022-04-14)
+
+
+### Bug Fixes
+
+* **Badge:** add 300 color border ([#757](https://github.com/palmetto/palmetto-components/issues/757)) ([ddc8be0](https://github.com/palmetto/palmetto-components/commit/ddc8be00e0f21092e92ab1c7ab7a1380b365325a))
+
 ## [0.136.1](https://github.com/palmetto/palmetto-components/compare/v0.136.0...v0.136.1) (2022-04-14)
 
 
