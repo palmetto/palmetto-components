@@ -24,11 +24,8 @@ A Drawer is a panel that is typically overlaid on top of a page and slides in fr
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer isOpen={isOpen} onDismiss={close}>
+          <Drawer isOpen={isOpen} title="Drawer Title" onDismiss={close}>
             <Box padding="lg" display="block" childGap="md">
-              <Button variant="light" onClick={close}>
-                Close
-              </Button>
               <Box>Drawer content&hellip;</Box>
               <Box>Drawer content&hellip;</Box>
               <Box>Drawer content&hellip;</Box>
@@ -121,11 +118,8 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer isOpen={isOpen} onDismiss={close} placement={value}>
+          <Drawer title="test" isOpen={isOpen} onDismiss={close} placement={value}>
             <Box padding="lg" display="block" childGap="md">
-              <Button variant="light" onClick={close}>
-                Close
-              </Button>
               <Box as="p">drawer content</Box>
               <Box as="p">drawer content</Box>
               <Box as="p">drawer content</Box>
@@ -138,6 +132,55 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
             </Box>
           </Drawer>
         </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Drawer Header
+
+A header will be added to the drawer content if `title` is defined, or `closeButton` is `true`.
+
+<Canvas>
+  <Story name="Title and Close Button">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const open = () => setIsOpen(true);
+      const close = () => setIsOpen(false);
+      return (
+        <>
+          <Button variant="light" onClick={open}>
+            Title and Close Button
+          </Button>
+          <Drawer isOpen={isOpen} onDismiss={close} title="Drawer Title">
+            <Box padding="lg" display="block" childGap="md">
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+            </Box>
+          </Drawer>
+        </>
+      );
+    }}
+  </Story>
+  <Story name="Close Button Only">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const open = () => setIsOpen(true);
+      const close = () => setIsOpen(false);
+      return (
+        <>
+          <Button variant="light" onClick={open}>
+            Close Button Only
+          </Button>
+          <Drawer isOpen={isOpen} onDismiss={close} closeButton>
+            <Box padding="lg" display="block" childGap="md">
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+            </Box>
+          </Drawer>
+        </>
       );
     }}
   </Story>
@@ -170,11 +213,8 @@ When `placement` is set to `top` or `bottom`, the `width` prop is ignored and th
               </Button>
             ))}
           </Box>
-          <Drawer width={width} isOpen={isOpen} onDismiss={close}>
+          <Drawer width={width} isOpen={isOpen} onDismiss={close} closeButton>
             <Box padding="lg" display="block" childGap="md">
-              <Button variant="light" onClick={close}>
-                Close
-              </Button>
               <Box>drawer content</Box>
             </Box>
           </Drawer>
@@ -199,11 +239,8 @@ The height of Drawers with a `top` or `bottom` placement is determined by Drawer
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer placement="top" isOpen={isOpen} onDismiss={close}>
+          <Drawer placement="top" isOpen={isOpen} onDismiss={close} closeButton>
             <Box padding="lg" height="3xl" display="block" childGap="md">
-              <Button variant="light" onClick={close}>
-                Close
-              </Button>
               <Box>3xl Height</Box>
             </Box>
           </Drawer>
@@ -230,11 +267,8 @@ Note that focus and page scrolling will not be locked if `hideOverlay` is true.
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer isOpen={isOpen} onDismiss={close} hideOverlay>
+          <Drawer isOpen={isOpen} onDismiss={close} hideOverlay closeButton>
             <Box padding="lg" display="block" childGap="md">
-              <Button variant="light" onClick={close}>
-                Close
-              </Button>
               <Box>drawer content</Box>
             </Box>
           </Drawer>
@@ -266,11 +300,8 @@ By default the first focusable element will receive focus when the drawer opens,
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer isOpen={isOpen} onDismiss={close} initialFocusRef={ref}>
+          <Drawer isOpen={isOpen} onDismiss={close} initialFocusRef={ref} title="intialFocusRef">
             <Box padding="lg" display="block" childGap="md">
-              <Button variant="light" onClick={close}>
-                Close
-              </Button>
               <Box>drawer content</Box>
               <Button variant="dark" isOutlined ref={ref} onClick={close}>
                 I receive focus
@@ -316,6 +347,7 @@ Render the Drawer within a containing div using `containerRef`.
             onDismiss={() => setShowDrawer(false)}
             containerRef={containerRef}
             dangerouslyBypassScrollLock
+            title="containerRef"
           >
             <Box padding="lg" as="p">
               This drawer is rendered inside it&apos;s containing div, rather than the document.body

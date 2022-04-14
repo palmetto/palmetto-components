@@ -1,10 +1,10 @@
-import React, {
-  CSSProperties, FC, forwardRef, RefObject,
-} from 'react';
+import React, { CSSProperties, FC, forwardRef, RefObject } from 'react';
 import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
 import { DimensionSize } from '../../types';
 import { WIDTH_OPTIONS } from '../../lib/tokens';
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
 import styles from './Drawer.module.scss';
 
 export type DrawerPlacementType = 'left' | 'right' | 'top' | 'bottom';
@@ -34,6 +34,11 @@ export interface DrawerProps {
    * Additional class names to add to the drawer content.
    */
   className?: string;
+  /**
+   * Whether the drawer has a visible close button.
+   * If a title is defined, then a close button will be rendered
+   */
+  closeButton?: boolean;
   /**
    * If true, the drawer will close when the overlay is clicked
    */
@@ -80,6 +85,11 @@ export interface DrawerProps {
    */
   onDismiss?: (event?: React.SyntheticEvent) => void;
   /**
+   * Title to be displayed at the top of the Drawer.
+   * A close button will be rendered automatically if this prop is defined.
+   */
+  title?: string;
+  /**
    * The width of the Drawer when opened. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/story/design-tokens-design-tokens--page#width)
    */
@@ -94,6 +104,7 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
       allowPinchZoom = false,
       children,
       className,
+      closeButton = false,
       closeOnOverlayClick = true,
       containerRef = undefined,
       dangerouslyBypassFocusLock = false,
@@ -103,6 +114,7 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
       isOpen,
       onDismiss,
       placement = 'right',
+      title,
       width = undefined,
     },
     ref,
@@ -132,8 +144,68 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
       [styles.right]: placement === 'right',
       [styles.top]: placement === 'top',
       [styles['hide-overlay']]: hideOverlay,
+      'overflow-auto': !closeButton && !title,
       className,
     });
+
+    const renderHeader = () => {
+      if (closeButton && onDismiss && !title) {
+        return (
+          <Box
+            alignItems="flex-end"
+            justifyContent="center"
+            padding="md lg"
+            borderWidth="0 0 xs 0"
+            borderColor="grey-100"
+          >
+            <button
+              aria-label="close"
+              type="button"
+              className={styles['drawer-close-button']}
+              onClick={onDismiss}
+            >
+              <Icon name="remove" />
+            </button>
+          </Box>
+        );
+      }
+      if (title) {
+        return (
+          <Box
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            padding={onDismiss ? 'md lg' : 'lg'}
+            borderWidth="0 0 xs 0"
+            borderColor="grey-100"
+          >
+            <Box className={styles.title} fontWeight="bold">
+              {title}
+            </Box>
+            {onDismiss && (
+              <button
+                aria-label="close"
+                type="button"
+                className={styles['drawer-close-button']}
+                onClick={onDismiss}
+              >
+                <Icon name="remove" />
+              </button>
+            )}
+          </Box>
+        );
+      }
+      return null;
+    };
+
+    const content =
+      title || closeButton ? (
+        <Box flex="auto" overflow="auto">
+          {children}
+        </Box>
+      ) : (
+        children
+      );
 
     return (
       <DialogOverlay
@@ -154,7 +226,8 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
           className={contentClassnames}
           style={{ ...dynamicStyle }}
         >
-          {children}
+          {renderHeader()}
+          {content}
         </DialogContent>
       </DialogOverlay>
     );

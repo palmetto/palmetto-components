@@ -36,11 +36,11 @@
 .drawer {
   [data-reach-dialog-content] {
     background-color: var(--drawer-background-color, var(--color-brand-white-500));
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: var(--drawer-content-padding, var(--size-spacing-0));
     position: absolute;
     box-shadow: var(--drawer-box-shadow, var(--size-box-shadow-xl));
-    overflow: auto;
     z-index: var(--size-z-index-drawer);
 
     &.left {
@@ -102,5 +102,17 @@
         }
       }
     }
+  }
+}
+
+.drawer-close-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: var(--size-spacing-xs);
+  color: var(--drawer-close-button-color, var(--color-brand-grey-500));
+
+  &:hover {
+    color: var(--drawer-close-button-color-hover, var(--color-brand-grey-600));
   }
 }

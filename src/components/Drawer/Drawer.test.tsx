@@ -29,4 +29,13 @@ describe('Drawer', () => {
 
     expect(getByText('test drawer')).toBeInTheDocument();
   });
+
+  test('it applies the ariaLabel', () => {
+    const { getByLabelText } = render(
+      <Drawer isOpen ariaLabel="label test">
+        test drawer
+      </Drawer>,
+    );
+    expect(getByLabelText('label test')).toBeInTheDocument();
+  });
 });

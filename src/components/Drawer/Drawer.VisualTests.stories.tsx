@@ -25,6 +25,29 @@ RightDrawer.args = {
   isOpen: true,
 };
 
+export const RightDrawerTitleClose = Template.bind({});
+RightDrawerTitleClose.args = {
+  ariaLabel: 'Right Drawer',
+  isOpen: true,
+  title: 'Right Drawer',
+  onDismiss: () => null,
+};
+
+export const RightDrawerClose = Template.bind({});
+RightDrawerClose.args = {
+  ariaLabel: 'Right Drawer',
+  isOpen: true,
+  closeButton: true,
+  onDismiss: () => null,
+};
+
+export const RightDrawerTitle = Template.bind({});
+RightDrawerTitle.args = {
+  ariaLabel: 'Right Drawer Title',
+  isOpen: true,
+  title: 'Right Drawer Title',
+};
+
 export const RightDrawerHideOverlay = Template.bind({});
 RightDrawerHideOverlay.args = {
   ariaLabel: 'Right Drawer',
@@ -67,6 +90,14 @@ LeftDrawer.args = {
   ariaLabel: 'Left Drawer',
   isOpen: true,
   placement: 'left',
+};
+
+export const LeftDrawerTitle = Template.bind({});
+LeftDrawerTitle.args = {
+  ariaLabel: 'Left Drawer',
+  isOpen: true,
+  placement: 'left',
+  title: 'Left Drawer Title',
 };
 
 export const LeftDrawerHideOverlay = Template.bind({});
@@ -118,6 +149,14 @@ TopDrawer.args = {
   placement: 'top',
 };
 
+export const TopDrawerTitle = Template.bind({});
+TopDrawerTitle.args = {
+  ariaLabel: 'Top Drawer',
+  isOpen: true,
+  placement: 'top',
+  title: 'Top Drawer Title',
+};
+
 export const TopDrawerHideOverlay = Template.bind({});
 TopDrawerHideOverlay.args = {
   ariaLabel: 'Top Drawer',
@@ -131,6 +170,14 @@ BottomDrawer.args = {
   ariaLabel: 'Bottom Drawer',
   isOpen: true,
   placement: 'bottom',
+};
+
+export const BottomDrawerTitle = Template.bind({});
+BottomDrawerTitle.args = {
+  ariaLabel: 'Bottom Drawer',
+  isOpen: true,
+  placement: 'bottom',
+  title: 'Bottom Drawer Title',
 };
 
 export const BottomDrawerHideOverlay = Template.bind({});
