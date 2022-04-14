@@ -94,4 +94,5 @@ const Template: Story<DrawerProps> = ({ ...args }) => {
 export const Playground = Template.bind({});
 Playground.args = {
   title: 'Drawer Title',
+  ariaLabel: 'drawer component example',
 };

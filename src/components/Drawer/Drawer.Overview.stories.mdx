@@ -24,7 +24,12 @@ A Drawer is a panel that slides in from one edge of the viewport and overlays co
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer isOpen={isOpen} title="Drawer Title" onDismiss={close}>
+          <Drawer
+            isOpen={isOpen}
+            title="Drawer Title"
+            onDismiss={close}
+            ariaLabel="drawer component example"
+          >
             <Box padding="lg" display="block" childGap="md">
               <Box>Drawer content&hellip;</Box>
               <Box>Drawer content&hellip;</Box>
@@ -118,7 +123,13 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer title="test" isOpen={isOpen} onDismiss={close} placement={value}>
+          <Drawer
+            title="test"
+            isOpen={isOpen}
+            onDismiss={close}
+            placement={value}
+            ariaLabel="drawer component example"
+          >
             <Box padding="lg" display="block" childGap="md">
               <Box as="p">drawer content</Box>
               <Box as="p">drawer content</Box>
@@ -156,7 +167,12 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
           <Button variant="light" onClick={open}>
             Title and Close Button
           </Button>
-          <Drawer isOpen={isOpen} onDismiss={close} title="Drawer Title">
+          <Drawer
+            ariaLabel="drawer component example"
+            isOpen={isOpen}
+            onDismiss={close}
+            title="Drawer Title"
+          >
             <Box padding="lg" display="block" childGap="md">
               {drawerContent}
             </Box>
@@ -179,7 +195,12 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
           <Button variant="light" onClick={open}>
             Close Button Only
           </Button>
-          <Drawer isOpen={isOpen} onDismiss={close} closeButton>
+          <Drawer
+            ariaLabel="drawer component example"
+            isOpen={isOpen}
+            onDismiss={close}
+            closeButton
+          >
             <Box padding="lg" display="block" childGap="md">
               {drawerContent}
             </Box>
@@ -223,6 +244,7 @@ When `placement` is set to `top` or `bottom`, the `width` prop is ignored and th
             isOpen={isOpen}
             onDismiss={close}
             closeButton
+            ariaLabel="drawer component example"
           >
             <Box padding="lg" display="block" childGap="md">
               <Box>drawer content</Box>
@@ -249,7 +271,13 @@ The height of Drawers with a `top` or `bottom` placement is determined by Drawer
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer placement="top" isOpen={isOpen} onDismiss={close} closeButton>
+          <Drawer
+            placement="top"
+            isOpen={isOpen}
+            onDismiss={close}
+            closeButton
+            ariaLabel="drawer component example"
+          >
             <Box padding="lg" height="3xl" display="block" childGap="md">
               <Box>3xl Height</Box>
             </Box>
@@ -277,7 +305,13 @@ Note that focus and page scrolling will not be locked if `hideOverlay` is true.
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer isOpen={isOpen} onDismiss={close} hideOverlay closeButton>
+          <Drawer
+            isOpen={isOpen}
+            onDismiss={close}
+            hideOverlay
+            closeButton
+            ariaLabel="drawer component example"
+          >
             <Box padding="lg" display="block" childGap="md">
               <Box>drawer content</Box>
             </Box>
@@ -310,7 +344,13 @@ By default the first focusable element will receive focus when the drawer opens,
           <Button variant="light" onClick={open}>
             Open Drawer
           </Button>
-          <Drawer isOpen={isOpen} onDismiss={close} initialFocusRef={ref} title="intialFocusRef">
+          <Drawer
+            isOpen={isOpen}
+            onDismiss={close}
+            initialFocusRef={ref}
+            title="initialFocusRef"
+            ariaLabel="drawer component example"
+          >
             <Box padding="lg" display="block" childGap="md">
               <Box>drawer content</Box>
               <Button variant="dark" isOutlined ref={ref} onClick={close}>
@@ -359,6 +399,7 @@ Render the Drawer within a containing div using `containerRef`.
             dangerouslyBypassScrollLock
             hideOverlay
             title="containerRef"
+            ariaLabel="drawer component example"
           >
             <Box padding="lg" as="p">
               This drawer is rendered inside it&apos;s containing div, rather than the document.body
