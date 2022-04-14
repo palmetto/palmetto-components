@@ -11,7 +11,7 @@ import { RadioGroup } from '../RadioGroup/RadioGroup';
 
 # Drawer
 
-A Drawer is a panel that is typically overlaid on top of a page and slides in from the side. It contains a set of information or actions without leaving the context of the original page. They do not interrupt the a users flow like a modal.
+A Drawer is a panel that slides in from one edge of the viewport and overlays content on top of the page. It contains information or actions without leaving the context of the original page.
 
 <Canvas withSource="open">
   <Story name="Basic Drawer">
@@ -213,7 +213,13 @@ When `placement` is set to `top` or `bottom`, the `width` prop is ignored and th
               </Button>
             ))}
           </Box>
-          <Drawer width={width} isOpen={isOpen} onDismiss={close} closeButton>
+          <Drawer
+            width={width}
+            title={`${width} wide drawer`}
+            isOpen={isOpen}
+            onDismiss={close}
+            closeButton
+          >
             <Box padding="lg" display="block" childGap="md">
               <Box>drawer content</Box>
             </Box>

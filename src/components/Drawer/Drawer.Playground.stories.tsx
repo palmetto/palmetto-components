@@ -17,6 +17,9 @@ export default {
     ariaLabelledBy: {
       control: 'text',
     },
+    closeButton: {
+      control: 'boolean',
+    },
     closeOnOverlayClick: {
       control: 'boolean',
     },
@@ -38,6 +41,9 @@ export default {
         options: DRAWER_PLACEMENT,
       },
     },
+    title: {
+      control: 'text',
+    },
     width: {
       control: 'text',
     },
@@ -46,7 +52,17 @@ export default {
         disable: true,
       },
     },
+    containerRef: {
+      table: {
+        disable: true,
+      },
+    },
     isOpen: {
+      table: {
+        disable: true,
+      },
+    },
+    initialFocusRef: {
       table: {
         disable: true,
       },
@@ -69,13 +85,13 @@ const Template: Story<DrawerProps> = ({ ...args }) => {
         Show Drawer
       </Button>
       <Drawer {...args} isOpen={show} onDismiss={close}>
-        <Button variant="light" onClick={close}>
-          Close
-        </Button>
-        <Box>drawer content</Box>
+        <Box padding="lg">drawer content</Box>
       </Drawer>
     </>
   );
 };
 
 export const Playground = Template.bind({});
+Playground.args = {
+  title: 'Drawer Title',
+};
