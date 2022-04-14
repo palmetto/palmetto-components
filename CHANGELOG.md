@@ -1,5 +1,12 @@
 Changelog
 
+# [0.136.0](https://github.com/palmetto/palmetto-components/compare/v0.135.0...v0.136.0) (2022-04-14)
+
+
+### Features
+
+* **Tabs:** scroll selected Tab.Item into view ([#750](https://github.com/palmetto/palmetto-components/issues/750)) ([33a42f7](https://github.com/palmetto/palmetto-components/commit/33a42f76b42fe3b4da35e1bd4a68c329b95b5621))
+
 # [0.135.0](https://github.com/palmetto/palmetto-components/compare/v0.134.1...v0.135.0) (2022-04-13)
 
 
