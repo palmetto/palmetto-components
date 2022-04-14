@@ -38,47 +38,57 @@
 
 .badge {
   border-radius: var(--badge-border-radius, var(--size-border-radius-sm));
+  border-style: solid;
+  border-width: var(--badge-border-width, var(--size-border-xs));
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: var(--badge-font-weight, var(--size-font-weight-bold));
 
   &.primary {
     background-color: var(--badge-primary-background-color, var(--color-brand-primary-100));
+    border-color: var(--badge-primary-border-color, var(--color-brand-primary-300));
     color: var(--badge-primary-font-color, var(--color-brand-grey-700));
   }
 
   &.secondary {
     background-color: var(--badge-secondary-background-color, var(--color-brand-secondary-100));
+    border-color: var(--badge-secondary-border-color, var(--color-brand-secondary-300));
     color: var(--badge-secondary-font-color, var(--color-brand-grey-700));
   }
 
   &.tertiary {
     background-color: var(--badge-tertiary-background-color, var(--color-brand-tertiary-100));
+    border-color: var(--badge-tertiary-border-color, var(--color-brand-tertiary-300));
     color: var(--badge-tertiary-font-color, var(--color-brand-grey-700));
   }
 
   &.success {
     background-color: var(--badge-success-background-color, var(--color-brand-success-100));
+    border-color: var(--badge-success-border-color, var(--color-brand-success-300));
     color: var(--badge-success-font-color, var(--color-brand-grey-700));
   }
 
   &.danger {
     background-color: var(--badge-danger-background-color, var(--color-brand-danger-100));
+    border-color: var(--badge-danger-border-color, var(--color-brand-danger-300));
     color: var(--badge-danger-font-color, var(--color-brand-grey-700));
   }
 
   &.info {
     background-color: var(--badge-info-background-color, var(--color-brand-info-100));
+    border-color: var(--badge-info-border-color, var(--color-brand-info-300));
     color: var(--badge-info-font-color, var(--color-brand-grey-700));
   }
 
   &.warning {
     background-color: var(--badge-warning-background-color, var(--color-brand-warning-100));
+    border-color: var(--badge-warning-border-color, var(--color-brand-warning-300));
     color: var(--badge-warning-font-color, var(--color-brand-grey-700));
   }
 
   &.default {
     background-color: var(--badge-default-background-color, var(--color-brand-grey-100));
+    border-color: var(--badge-default-border-color, var(--color-brand-grey-300));
     color: var(--badge-default-font-color, var(--color-brand-grey-700));
   }
 
