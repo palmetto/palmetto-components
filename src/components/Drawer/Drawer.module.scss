@@ -11,12 +11,12 @@
   overflow: visible;
 
   &.hide-overlay-right {
-    left: calc(100% - var(--w, var(--size-width-4xl)));
+    left: calc(100% - var(--w, var(--drawer-width, var(--size-width-4xl))));
     background-color: transparent;
   }
 
   &.hide-overlay-left {
-    right: calc(100% - var(--w, var(--size-width-4xl)));
+    right: calc(100% - var(--w, var(--drawer-width, var(--size-width-4xl))));
     background-color: transparent;
   }
 
@@ -31,11 +31,16 @@
     bottom: 100%;
     background-color: transparent;
   }
+
+  :global {
+    animation: fadeIn 0.2s;
+  }
 }
 
 .drawer {
   [data-reach-dialog-content] {
     background-color: var(--drawer-background-color, var(--color-brand-white-500));
+    color: var(--drawer-font-color, inherit);
     display: flex;
     flex-direction: column;
     padding: var(--drawer-content-padding, var(--size-spacing-0));
@@ -45,7 +50,7 @@
 
     &.left {
       left: 0;
-      width: 80vw;
+      width: var(--w, var(--drawer-width, 80vw));
       height: 100%;
 
       :global {
@@ -55,7 +60,7 @@
 
     &.right {
       right: 0;
-      width: 80vw;
+      width: var(--w, var(--drawer-width, 80vw));
       height: 100%;
 
       :global {
@@ -84,18 +89,7 @@
     @media(min-width: $size-breakpoint-tablet) {
       &.right,
       &.left {
-        width: var(--w, var(--size-width-4xl));
-
-        &.hide-overlay {
-          width: 100%;
-        }
-      }
-    }
-
-    @media(min-width: $size-breakpoint-desktop) {
-      &.right,
-      &.left {
-        width: var(--w, var(--size-width-4xl));
+        width: var(--w, var(--drawer-width, var(--size-width-4xl)));
 
         &.hide-overlay {
           width: 100%;
@@ -103,6 +97,10 @@
       }
     }
   }
+}
+
+.drawer-header {
+  border-color: var(--drawer-header-border-color, var(--color-brand-grey-100))
 }
 
 .drawer-close-button {

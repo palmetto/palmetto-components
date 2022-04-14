@@ -158,7 +158,7 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
             justifyContent="center"
             padding="md lg"
             borderWidth="0 0 xs 0"
-            borderColor="grey-100"
+            className={styles['drawer-header']}
           >
             <button
               aria-label="close"
@@ -179,7 +179,7 @@ export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
             alignItems="center"
             padding={onDismiss ? 'md lg' : 'lg'}
             borderWidth="0 0 xs 0"
-            borderColor="grey-100"
+            className={styles['drawer-header']}
           >
             <Box className={styles.title} fontWeight="bold">
               {title}
