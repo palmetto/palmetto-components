@@ -5,6 +5,7 @@ import { Tabs } from './Tabs';
 describe('Tabs', () => {
   describe('Default', () => {
     test('It renders basic tabs structure by default', () => {
+      window.HTMLElement.prototype.scrollIntoView = jest.fn();
       render(
         <Tabs value={0} onChange={() => null}>
           <Tabs.Item>
