@@ -1,5 +1,12 @@
 Changelog
 
+## [0.136.1](https://github.com/palmetto/palmetto-components/compare/v0.136.0...v0.136.1) (2022-04-14)
+
+
+### Bug Fixes
+
+* **Alert:** add 300 color border ([#756](https://github.com/palmetto/palmetto-components/issues/756)) ([d830df2](https://github.com/palmetto/palmetto-components/commit/d830df229f6a6399700eefbbcd73566c6235f131))
+
 # [0.136.0](https://github.com/palmetto/palmetto-components/compare/v0.135.0...v0.136.0) (2022-04-14)
 
 
