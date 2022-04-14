@@ -1,5 +1,5 @@
 import React, {
-  CSSProperties, FC, forwardRef, RefObject,
+  CSSProperties, forwardRef, RefObject,
 } from 'react';
 import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
@@ -98,7 +98,7 @@ export interface DrawerProps {
   width?: DimensionSize | string;
 }
 
-export const Drawer: FC<DrawerProps> = forwardRef<HTMLDivElement, DrawerProps>(
+export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
   (
     {
       ariaLabel,
