@@ -1,5 +1,12 @@
 Changelog
 
+# [0.135.0](https://github.com/palmetto/palmetto-components/compare/v0.134.1...v0.135.0) (2022-04-13)
+
+
+### Features
+
+* **Icon:** play icon ([#753](https://github.com/palmetto/palmetto-components/issues/753)) ([0567ffa](https://github.com/palmetto/palmetto-components/commit/0567ffaf6e80058e652f7e2020c51f368dfcd7ca))
+
 ## [0.134.1](https://github.com/palmetto/palmetto-components/compare/v0.134.0...v0.134.1) (2022-04-11)
 
 
