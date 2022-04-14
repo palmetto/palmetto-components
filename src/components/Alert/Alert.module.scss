@@ -23,7 +23,7 @@
 .alert__default {
   color: var(--alert-default-font-color, var(--color-brand-grey-600));
   background: var(--alert-default-background-color, var(--color-brand-grey-100));
-  border-color: var(--alert-default-border-color, --color-brand-grey-300);
+  border-color: var(--alert-default-border-color, var(--color-brand-grey-300));
 }
 
 .alert__info {
