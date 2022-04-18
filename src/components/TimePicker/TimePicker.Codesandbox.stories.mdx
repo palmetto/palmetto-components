@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/TimePicker/Codesandbox" />
 
@@ -11,7 +11,6 @@ and as such includes the same underlying props interface with an added method fo
 
 _ABOUT TIME FORMAT:_ While the `value` prop technically returns `{ label: string; value: string; }` the value returned will always
 be a JS ISO date string, like this: `2016-07-13T18:46:01.933Z`.
-
 
 ```js codesandbox=palmetto-components
 import React, { useState } from 'react';
@@ -42,7 +41,7 @@ Pass an `interval` (seconds) value to determine how many times get generated as 
 The example below uses `3600` --> 1 Hour Intervals
 
 ```js codesandbox=palmetto-components
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { TimePicker, Box } from '@palmetto/palmetto-components';
 
 export default () => {
@@ -77,7 +76,7 @@ the options showing the startTime twice when using a 24-hour cycle.
 See example below where we want to show 15 minute increments starting at 9:00AM and ending at 3:30PM.
 
 ```js codesandbox=palmetto-components
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { TimePicker, Box } from '@palmetto/palmetto-components';
 
 export default () => {
@@ -111,7 +110,7 @@ NOTE: that the option values are always returned as ISO strings regardless of th
 The example below is shown in military (24-hour) time.
 
 ```js codesandbox=palmetto-components
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { TimePicker, Box } from '@palmetto/palmetto-components';
 
 export default () => {
@@ -135,4 +134,3 @@ export default () => {
   );
 };
 ```
-
