@@ -1,5 +1,12 @@
 Changelog
 
+## [0.136.4](https://github.com/palmetto/palmetto-components/compare/v0.136.3...v0.136.4) (2022-04-18)
+
+
+### Bug Fixes
+
+* **Badge:** lighten border color to 200 color token ([#759](https://github.com/palmetto/palmetto-components/issues/759)) ([80e63da](https://github.com/palmetto/palmetto-components/commit/80e63da5b50edfc76f0c4b4bbeff1ef4f43057a4))
+
 ## [0.136.3](https://github.com/palmetto/palmetto-components/compare/v0.136.2...v0.136.3) (2022-04-18)
 
 
