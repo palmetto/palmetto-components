@@ -1,9 +1,7 @@
-import React, {
-  CSSProperties, forwardRef, RefObject,
-} from 'react';
+import React, { CSSProperties, forwardRef, RefObject } from 'react';
 import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
-import { DimensionSize } from '../../types';
+import { DimensionSize, CssDimensionValue } from '../../types';
 import { WIDTH_OPTIONS } from '../../lib/tokens';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
@@ -95,7 +93,7 @@ export interface DrawerProps {
    * The width of the Drawer when opened. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/story/design-tokens-design-tokens--page#width)
    */
-  width?: DimensionSize | `${number}${'px' | 'rem' | 'em' | '%'}`;
+  width?: DimensionSize | CssDimensionValue;
 }
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
