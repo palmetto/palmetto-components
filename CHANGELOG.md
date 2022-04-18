@@ -1,5 +1,12 @@
 Changelog
 
+## [0.136.5](https://github.com/palmetto/palmetto-components/compare/v0.136.4...v0.136.5) (2022-04-18)
+
+
+### Bug Fixes
+
+* **Alert:** lighten border color to 200 color token ([#760](https://github.com/palmetto/palmetto-components/issues/760)) ([2ea9a07](https://github.com/palmetto/palmetto-components/commit/2ea9a07c4f0d70167781b70acc216bbe88dc807b))
+
 ## [0.136.4](https://github.com/palmetto/palmetto-components/compare/v0.136.3...v0.136.4) (2022-04-18)
 
 
