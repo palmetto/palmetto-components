@@ -95,7 +95,7 @@ export interface DrawerProps {
    * The width of the Drawer when opened. Can be given a standard css value (px, rem, em, %),
    * or a [width token](/?path=/story/design-tokens-design-tokens--page#width)
    */
-  width?: DimensionSize | string;
+  width?: DimensionSize | `${number}${'px' | 'rem' | 'em' | '%'}`;
 }
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
