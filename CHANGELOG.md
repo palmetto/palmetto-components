@@ -1,5 +1,12 @@
 Changelog
 
+## [0.136.3](https://github.com/palmetto/palmetto-components/compare/v0.136.2...v0.136.3) (2022-04-18)
+
+
+### Bug Fixes
+
+* storybook import add-ons/blocks console warning ([#758](https://github.com/palmetto/palmetto-components/issues/758)) ([2052e48](https://github.com/palmetto/palmetto-components/commit/2052e4826e6dfff60fb9ec13fce782eaf37875c9))
+
 ## [0.136.2](https://github.com/palmetto/palmetto-components/compare/v0.136.1...v0.136.2) (2022-04-14)
 
 
