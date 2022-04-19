@@ -13,6 +13,10 @@ export const DRAWER_PLACEMENT: DrawerPlacementType[] = ['right', 'left', 'top', 
 
 export interface DrawerProps {
   /**
+   * If the drawer is open
+   */
+  isOpen: boolean;
+  /**
    * Handle zoom/pinch gestures on iOS devices when scroll locking is enabled.
    */
   allowPinchZoom?: boolean;
@@ -72,10 +76,6 @@ export interface DrawerProps {
    */
   initialFocusRef?: RefObject<HTMLDivElement>;
   /**
-   * If the drawer is open
-   */
-  isOpen: boolean;
-  /**
    * Which edge of the viewport should the drawer appear from
    */
   placement?: DrawerPlacementType;
@@ -99,22 +99,22 @@ export interface DrawerProps {
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
   (
     {
-      ariaLabel,
-      ariaLabelledBy,
+      ariaLabel = undefined,
+      ariaLabelledBy = undefined,
       allowPinchZoom = false,
-      children,
-      className,
+      children = undefined,
+      className = undefined,
       closeButton = false,
       closeOnOverlayClick = true,
       containerRef = undefined,
       dangerouslyBypassFocusLock = false,
       dangerouslyBypassScrollLock = false,
       hideOverlay = false,
-      initialFocusRef,
+      initialFocusRef = undefined,
       isOpen,
-      onDismiss,
+      onDismiss = undefined,
       placement = 'right',
-      title,
+      title = undefined,
       width = undefined,
     },
     ref,
