@@ -5,6 +5,23 @@
   --reach-dialog: 1;
 }
 
+.media-modal-close {
+  border-radius: var(--size-border-radius-sm);
+  padding: var(--size-spacing-2xs);
+  /* Show focus styles on keyboard focus. */
+  &:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 4px var(--color-brand-grey-500);
+  }
+
+  /* Hide focus styles if they're not needed, for example,
+  when an element receives focus via the mouse. */
+  &:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
 [data-reach-dialog-overlay].media-modal {
   display: flex;
   position: fixed;
