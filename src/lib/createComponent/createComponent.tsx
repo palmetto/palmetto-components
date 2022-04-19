@@ -1,10 +1,10 @@
-import React, { ComponentProps, ComponentType, FC } from 'react';
+import React, { ComponentProps, ComponentType, FC, PropsWithChildren } from 'react';
 
 // Taken from https://github.com/emotion-js/emotion/blob/main/packages/react/types/helper.d.ts
 type PropsOf<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
-> = JSX.LibraryManagedAttributes<C, React.ComponentProps<C>>;
+> = JSX.LibraryManagedAttributes<C, PropsWithChildren<ComponentProps<C>>>;
 
 /**
  * @param Component The component you want to pass custom style props into
@@ -16,7 +16,7 @@ type PropsOf<
  * then the styles into the function returned from that one.
  */
 
-export const createComponent = <C extends ComponentType<ComponentProps<C>>> (Component: C) => ( // eslint-disable-line
+export const createComponent = <C extends ComponentType<ComponentProps<C>>> (Component: C) => (
   styleProps?: PropsOf<C>,
 ): FC<PropsOf<C>> => {
   const Custom: FC<PropsOf<C>> = props => <Component {...styleProps} {...props} />;
@@ -26,3 +26,5 @@ export const createComponent = <C extends ComponentType<ComponentProps<C>>> (Com
 
   return Custom;
 };
+
+export default createComponent;

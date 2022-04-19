@@ -90,7 +90,7 @@ if (process.env.IS_STORYBOOK) {
 }
 
 // Rules for package publishing.
-// All JS is built with tsdx/rollup but
+// All JS is built with dts/rollup but
 // global CSS files are generated via webpack.
 if (process.env.IS_PUBLISHING) {
   rules.push(

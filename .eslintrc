@@ -69,7 +69,8 @@
         "delimiter": "semi",
         "requireLast": true
       }
-    }]
+    }],
+    "object-curly-newline": "off"
   },
   "settings": {
     "import/parsers": {
