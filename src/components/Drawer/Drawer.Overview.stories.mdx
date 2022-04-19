@@ -322,7 +322,12 @@ The height of Drawers with a `top` or `bottom` placement is determined by Drawer
 
 In cases where content in the drawer is supplemental to content on the main area of the page, use `hideOverlay` to allow for interaction between the areas (e.g. copy-and-paste text from main area into a form in the drawer).
 
-Note: focus and page scrolling will not be locked if `hideOverlay` is true. Also, the 'Esc' key button will no longer automatically close the Drawer.
+<Alert
+  variant="warning"
+  title="Focus Management"
+  hasIcon
+  message="If you decide to use `hideOverlay`, then you must also manage focus. Focus and page scrolling will not be locked if `hideOverlay` is true. Also, the 'Esc' key button will no longer automatically close the Drawer."
+/>
 
 <Canvas withSource="open">
   <Story
@@ -333,21 +338,40 @@ Note: focus and page scrolling will not be locked if `hideOverlay` is true. Also
   >
     {() => {
       const [isOpen, setIsOpen] = useState(false);
-      const open = () => setIsOpen(true);
-      const close = () => setIsOpen(false);
+      const close = () => {
+        setIsOpen(false);
+        if (returnFocusRef && returnFocusRef.current) {
+          returnFocusRef.current.focus();
+        }
+      };
+      const toggle = () => {
+        const prevState = isOpen;
+        setIsOpen(!prevState);
+      };
+      const closeBtnRef = React.useRef();
+      const returnFocusRef = React.useRef();
+      React.useEffect(() => {
+        setTimeout(() => {
+          if (closeBtnRef && closeBtnRef.current) {
+            closeBtnRef.current.focus();
+          }
+        }, 100);
+      }, [isOpen]);
       return (
         <>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={toggle} ref={returnFocusRef}>
             Open Drawer
           </Button>
           <Drawer
             isOpen={isOpen}
             onDismiss={close}
             hideOverlay
-            closeButton
             ariaLabel="drawer component example"
           >
             <Box padding="lg" display="block" childGap="md">
+              <Button ref={closeBtnRef} onClick={close} variant="light">
+                close
+              </Button>
               <Box>drawer content</Box>
             </Box>
           </Drawer>
