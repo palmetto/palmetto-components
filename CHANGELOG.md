@@ -1,5 +1,26 @@
 Changelog
 
+## [0.136.5](https://github.com/palmetto/palmetto-components/compare/v0.136.4...v0.136.5) (2022-04-18)
+
+
+### Bug Fixes
+
+* **Alert:** lighten border color to 200 color token ([#760](https://github.com/palmetto/palmetto-components/issues/760)) ([2ea9a07](https://github.com/palmetto/palmetto-components/commit/2ea9a07c4f0d70167781b70acc216bbe88dc807b))
+
+## [0.136.4](https://github.com/palmetto/palmetto-components/compare/v0.136.3...v0.136.4) (2022-04-18)
+
+
+### Bug Fixes
+
+* **Badge:** lighten border color to 200 color token ([#759](https://github.com/palmetto/palmetto-components/issues/759)) ([80e63da](https://github.com/palmetto/palmetto-components/commit/80e63da5b50edfc76f0c4b4bbeff1ef4f43057a4))
+
+## [0.136.3](https://github.com/palmetto/palmetto-components/compare/v0.136.2...v0.136.3) (2022-04-18)
+
+
+### Bug Fixes
+
+* storybook import add-ons/blocks console warning ([#758](https://github.com/palmetto/palmetto-components/issues/758)) ([2052e48](https://github.com/palmetto/palmetto-components/commit/2052e4826e6dfff60fb9ec13fce782eaf37875c9))
+
 ## [0.136.2](https://github.com/palmetto/palmetto-components/compare/v0.136.1...v0.136.2) (2022-04-14)
 
 
