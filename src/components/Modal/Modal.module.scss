@@ -16,8 +16,8 @@
     color: var(--modal-close-button-color-hover, var(--color-brand-grey-600));
   }
 
-   /* Show focus styles on keyboard focus. */
-   &:focus-visible {
+  /* Show focus styles on keyboard focus. */
+  &:focus-visible {
     outline: 0;
     box-shadow: var(--modal-close-button-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
   }
