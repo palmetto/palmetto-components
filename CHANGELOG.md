@@ -1,5 +1,12 @@
 Changelog
 
+## [0.136.6](https://github.com/palmetto/palmetto-components/compare/v0.136.5...v0.136.6) (2022-04-19)
+
+
+### Bug Fixes
+
+* **Modal:** style focus state for close button ([#761](https://github.com/palmetto/palmetto-components/issues/761)) ([17eb293](https://github.com/palmetto/palmetto-components/commit/17eb29312f9ec8c1903d1b40fecdad992b1ac6f3))
+
 ## [0.136.5](https://github.com/palmetto/palmetto-components/compare/v0.136.4...v0.136.5) (2022-04-18)
 
 
