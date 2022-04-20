@@ -34,15 +34,8 @@ function wait(t: number) {
 describe('Toast', () => {
   const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
 
-  beforeAll(() => {
-    jest.useFakeTimers();
-  });
-
-  afterAll(() => {
-    jest.useRealTimers();
-  });
-
   beforeEach(() => {
+    jest.useFakeTimers();
     Element.prototype.getBoundingClientRect = jest.fn(() => (
       {
         width: 300,
@@ -59,6 +52,7 @@ describe('Toast', () => {
   });
 
   afterEach(() => {
+    jest.useRealTimers();
     cleanup();
     Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
   });
@@ -259,6 +253,7 @@ describe('Toast', () => {
 
       act(() => {
         jest.advanceTimersByTime(1000);
+        jest.useRealTimers();
       });
 
       await waitFor(() => { expect(screen.getByText('success yay')).toBeInTheDocument(); });
@@ -284,6 +279,7 @@ describe('Toast', () => {
 
       act(() => {
         jest.advanceTimersByTime(1000);
+        jest.useRealTimers();
       });
 
       await waitFor(() => { expect(screen.getByText('error boo')).toBeInTheDocument(); });
