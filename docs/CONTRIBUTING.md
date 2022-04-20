@@ -153,16 +153,18 @@ In the project directory, you can run:
 
 This library is meant to be added as a dependency to React apps. Aside from sandbox testing in [Storybook](https://storybook.js.org/), you can also test any changes or new features by following these steps:
 
-1) Build palmetto-components locally by running `yarn build`.
-2) Update your project's palmetto-components dependency to point at your local palmetto-components project.
+1) Build palmetto-components locally.
+```
+yarn build
+```
+2) Update your project's palmetto-components dependency to point at your local palmetto-components build.
 ```
 "@palmetto/palmetto-components": "file:../palmetto-components",
 ```
-3) Force install your project's packages.
+3) Start your project.
 ```
-yarn install --force
+yarn install && yarn start
 ```
-4) Stop your dev-server and do `yarn start` again.
 
 **NOTE:** It is rare but you may run into discrepancies between your local storybook preview and a locally built version of the library. This is due
 to a different build process for each, which while in theory should produce the same result, in some cases transpilation nuances can affect
