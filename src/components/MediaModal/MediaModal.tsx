@@ -107,7 +107,13 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
       if (closeButton && !showHeaderBar) {
         return (
           <Box alignItems="flex-end" fontSize="lg" padding="lg" className={styles.header}>
-            <Button iconPrefix="remove-light" onClick={onDismiss} isNaked aria-label="close" />
+            <Button
+              aria-label="close"
+              className={styles['media-modal-close']}
+              iconPrefix="remove-light"
+              isNaked
+              onClick={onDismiss}
+            />
           </Box>
         );
       }
@@ -127,7 +133,13 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
               </Box>
             )}
             <Box fontSize="lg">
-              <Button iconPrefix="remove-light" onClick={onDismiss} isNaked aria-label="close" />
+              <Button
+                aria-label="close"
+                className={styles['media-modal-close']}
+                iconPrefix="remove-light"
+                isNaked
+                onClick={onDismiss}
+              />
             </Box>
           </Box>
         );

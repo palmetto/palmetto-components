@@ -9,10 +9,26 @@
   cursor: pointer;
   padding: var(--size-spacing-xs);
   color: var(--modal-close-button-color, var(--color-brand-grey-500));
+  line-height: var(--size-line-height-base);
+  border-radius: var(--size-border-radius-sm);
 
   &:hover {
     color: var(--modal-close-button-color-hover, var(--color-brand-grey-600));
   }
+
+  /* Show focus styles on keyboard focus. */
+  &:focus-visible {
+    outline: 0;
+    box-shadow: var(--modal-close-button-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
+  }
+
+  /* Hide focus styles if they're not needed, for example,
+  when an element receives focus via the mouse. */
+  &:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+  }
+
 }
 
 [data-reach-dialog-overlay].modal {
