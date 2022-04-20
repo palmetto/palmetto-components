@@ -153,23 +153,16 @@ In the project directory, you can run:
 
 This library is meant to be added as a dependency to React apps. Aside from sandbox testing in [Storybook](https://storybook.js.org/), you can also test any changes or new features by following these steps:
 
-1) Build locally by running `yarn build`.
-
-2) Symlink your local package into any project that consumes it. See [NPM link](https://docs.npmjs.com/cli/link) or [Yarn link](https://classic.yarnpkg.com/en/docs/cli/link/) for more details.
-
-**NOTE:** That when building and symlinking, it is necesary to expose local symlinks from your test app for `react` and `react-dom` and link them to the component library. Specific steps:
-* In Your Application, link react and react-dom:
+1) Build palmetto-components locally by running `yarn build`.
+2) Update your project's palmetto-components dependency to point at your local palmetto-components project.
 ```
-cd node_modules/react && yarn link
-cd ../../
-cd node_modules/react-dom && yarn link
+"@palmetto/palmetto-components": "file:../palmetto-components",
 ```
-* In Your Library (palmetto-components), use linked versions of react and react-dom
+3) Force install your project's packages.
 ```
-yarn link react
-yarn link react-dom
+yarn install --force
 ```
-* Stop your dev-server and do `yarn start` again.
+4) Stop your dev-server and do `yarn start` again.
 
 **NOTE:** It is rare but you may run into discrepancies between your local storybook preview and a locally built version of the library. This is due
 to a different build process for each, which while in theory should produce the same result, in some cases transpilation nuances can affect
