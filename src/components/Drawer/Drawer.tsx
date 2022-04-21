@@ -130,19 +130,12 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 
     const overlayClassnames = classNames(styles.overlay, styles.drawer, {
       [styles['hide-overlay']]: hideOverlay,
-      [styles['hide-overlay-left']]: hideOverlay && placement === 'left',
-      [styles['hide-overlay-right']]: hideOverlay && placement === 'right',
-      [styles['hide-overlay-bottom']]: hideOverlay && placement === 'bottom',
-      [styles['hide-overlay-top']]: hideOverlay && placement === 'top',
+      [styles[`hide-overlay-${placement}`]]: hideOverlay,
       'position-fixed': containerRef === undefined,
       'position-absolute': containerRef !== undefined,
     });
 
-    const contentClassnames = classNames(styles['drawer-content'], {
-      [styles.bottom]: placement === 'bottom',
-      [styles.left]: placement === 'left',
-      [styles.right]: placement === 'right',
-      [styles.top]: placement === 'top',
+    const contentClassnames = classNames(styles['drawer-content'], styles[placement], {
       [styles['hide-overlay']]: hideOverlay,
       'overflow-auto': !closeButton && !title,
       className,
