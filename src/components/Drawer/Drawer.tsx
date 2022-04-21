@@ -8,9 +8,6 @@ import { Icon } from '../Icon/Icon';
 import styles from './Drawer.module.scss';
 
 export type DrawerPlacementType = 'left' | 'right' | 'top' | 'bottom';
-
-export const DRAWER_PLACEMENT: DrawerPlacementType[] = ['right', 'left', 'top', 'bottom'];
-
 export interface DrawerProps {
   /**
    * If the drawer is open

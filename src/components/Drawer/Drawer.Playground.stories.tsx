@@ -1,8 +1,10 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Drawer, DrawerProps, DRAWER_PLACEMENT } from './Drawer';
+import { Drawer, DrawerProps, DrawerPlacementType } from './Drawer';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+
+export const DRAWER_PLACEMENT: DrawerPlacementType[] = ['right', 'left', 'top', 'bottom'];
 
 export default {
   title: 'Components/Drawer/Playground',
