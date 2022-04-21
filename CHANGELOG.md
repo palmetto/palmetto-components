@@ -1,5 +1,12 @@
 Changelog
 
+# [0.137.0](https://github.com/palmetto/palmetto-components/compare/v0.136.8...v0.137.0) (2022-04-21)
+
+
+### Features
+
+* Drawer component ([#752](https://github.com/palmetto/palmetto-components/issues/752)) ([e5ba541](https://github.com/palmetto/palmetto-components/commit/e5ba54110cf13561cae9a25e37172f1142eb1d50))
+
 ## [0.136.8](https://github.com/palmetto/palmetto-components/compare/v0.136.7...v0.136.8) (2022-04-20)
 
 ## [0.136.7](https://github.com/palmetto/palmetto-components/compare/v0.136.6...v0.136.7) (2022-04-19)
