@@ -4,7 +4,12 @@ import { Drawer, DrawerProps, DrawerPlacementType } from './Drawer';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 
-export const DRAWER_PLACEMENT: DrawerPlacementType[] = ['right', 'left', 'top', 'bottom'];
+const DRAWER_PLACEMENT: DrawerPlacementType[] = [
+  'right',
+  'left',
+  'top',
+  'bottom',
+];
 
 export default {
   title: 'Components/Drawer/Playground',
