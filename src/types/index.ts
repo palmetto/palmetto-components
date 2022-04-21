@@ -63,6 +63,10 @@ export type StylesAndClasses<T> = {
 
 export type CssDimensionAbbreviation = 'h' | 'w' | 'mw' | 'mh' | 'minw' | 'minh';
 
+export type CssDimensionUnit = 'px' | 'rem' | 'em' | '%';
+
+export type CssDimensionValue = `${number}${CssDimensionUnit}`;
+
 export type CssSpacingAbbreviation = 'm' | 'p';
 
 export type CssJustifyContentValue =
