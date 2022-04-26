@@ -125,7 +125,7 @@ export const Popover: FC<PopoverProps> = ({
     const handleClickOutside = (event: MouseEvent) => {
       const popover = popperRef.current;
       const trigger = triggerRef.current;
-      
+
       if (!popover || !trigger) {
         return;
       }
