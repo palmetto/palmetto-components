@@ -367,14 +367,9 @@
       }
     }
 
-    &--in-selecting-range:not(&--in-range) {
+    &--in-selecting-range:not([class*="--in-range"]) {
       background-color: var(--date-picker-item-background-color-in-range, var(--color-brand-primary-400));
     }
-
-    /* &--in-range:not(&--in-selecting-range) {
-      .react-datepicker__month--selecting-range & {
-      }
-    } */
 
     &--disabled {
       cursor: default;
