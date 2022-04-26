@@ -1,4 +1,5 @@
 module.exports = {
+  testEnvironment: 'jest-environment-jsdom',
   roots: ['./src'],
   restoreMocks: true,
   setupFilesAfterEnv: ['./jest.setup.js'],
