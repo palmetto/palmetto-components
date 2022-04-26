@@ -125,6 +125,23 @@ export const DateInput: FC<DateInputProps> = ({
     if (!mergedDatePickerProps.selectsRange && date) setPopoverOpen(false);
   };
 
+  // This function is a one-off workaround to an edge case when detecting outside clicks.
+  // in Popover.tsx, outside clicks are detected by seeing if the clicked element is a child
+  // of the popover, which would mean it is NOT an outside click. However, when using min/max dates
+  // in the Datepicker, the month navigation elements are removed from the DOM when the max/min date has been reached.
+  // Because our outside click detector sees that the clicked element is not a child of the popover (it doesn't exist in the DOM anymore)
+  // It registers an outside click and closes the Popover.
+  // With this code we specifically guard against closing the popover if a user has clicked one of the month navigation arrows.
+  const handleOnClickOutside = (event: MouseEvent | KeyboardEvent) => {
+    const target = event.target as Element;
+
+    if (target.className.includes('react-datepicker__navigation')) {
+      return;
+    }
+
+    handleTogglePopover(false);
+  }
+
   const renderDatePicker = () => (
     <DatePicker
       {...mergedDatePickerProps}
@@ -141,7 +158,7 @@ export const DateInput: FC<DateInputProps> = ({
       content={renderDatePicker()}
       withPortal
       portalTarget={document.body}
-      onClickOutside={() => handleTogglePopover(false)}
+      onClickOutside={handleOnClickOutside}
     >
       <TextInput
         {...mergedTextInputProps}

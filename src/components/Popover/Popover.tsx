@@ -60,7 +60,7 @@ export type PopoverProps = {
   /**
    * Callback function to handle when a user clicks outside the Popover
    */
-  onClickOutside?: () => void;
+  onClickOutside?: (event: MouseEvent | KeyboardEvent) => void;
   /**
    * The placement (position) of the Popover relative to its trigger.
    */
@@ -101,21 +101,6 @@ const contentContainerDefaults: BoxProps = {
   shadow: 'md',
 };
 
-const findHighestNode = (currentNode: Node, componentNode: Node) => {
-  if (currentNode === componentNode) {
-    return true;
-  }
-
-  while(currentNode.parentNode) {
-    if (currentNode === componentNode) {
-      return true;
-    }
-    console.log('still got a parent', currentNode.parentNode);
-    console.log('component node', componentNode);
-    currentNode = currentNode.parentNode;
-  }
-}
-
 export const Popover: FC<PopoverProps> = ({
   className,
   isOpen,
@@ -141,23 +126,22 @@ export const Popover: FC<PopoverProps> = ({
       const popover = popperRef.current;
       const trigger = triggerRef.current;
       
-      console.log('hey here', popover, trigger);
-      // if (!popover || !trigger) {
-      //   return;
-      // }
+      if (!popover || !trigger) {
+        return;
+      }
 
-      if (event.target === trigger || trigger?.contains(event.target as Node) || findHighestNode(event.target as Node, popover)) {
+      if (event.target === trigger || trigger?.contains(event.target as Node)) {
         return;
       }
 
       if (event.target !== popover && !popover?.contains(event.target as Node)) {
-        if (onClickOutside) onClickOutside();
+        if (onClickOutside) onClickOutside(event);
       }
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      if (event.code === 'Escape') {
-        if (onClickOutside) onClickOutside();
+      if (event.key === 'Escape') {
+        if (onClickOutside) onClickOutside(event);
       }
     };
 
@@ -172,7 +156,7 @@ export const Popover: FC<PopoverProps> = ({
         document.body.removeEventListener('keyup', handleKeyUp);
       }
     };
-  }, [onClickOutside, popperRef.current, isOpen]);
+  }, [onClickOutside]);
 
   const { styles: popperStyles, attributes } = usePopper(
     triggerRef.current,
