@@ -101,6 +101,21 @@ const contentContainerDefaults: BoxProps = {
   shadow: 'md',
 };
 
+const findHighestNode = (currentNode: Node, componentNode: Node) => {
+  if (currentNode === componentNode) {
+    return true;
+  }
+
+  while(currentNode.parentNode) {
+    if (currentNode === componentNode) {
+      return true;
+    }
+    console.log('still got a parent', currentNode.parentNode);
+    console.log('component node', componentNode);
+    currentNode = currentNode.parentNode;
+  }
+}
+
 export const Popover: FC<PopoverProps> = ({
   className,
   isOpen,
@@ -125,12 +140,13 @@ export const Popover: FC<PopoverProps> = ({
     const handleClickOutside = (event: MouseEvent) => {
       const popover = popperRef.current;
       const trigger = triggerRef.current;
+      
+      console.log('hey here', popover, trigger);
+      // if (!popover || !trigger) {
+      //   return;
+      // }
 
-      if (!popover || !trigger) {
-        return;
-      }
-
-      if (event.target === trigger || trigger?.contains(event.target as Node)) {
+      if (event.target === trigger || trigger?.contains(event.target as Node) || findHighestNode(event.target as Node, popover)) {
         return;
       }
 
@@ -156,7 +172,7 @@ export const Popover: FC<PopoverProps> = ({
         document.body.removeEventListener('keyup', handleKeyUp);
       }
     };
-  }, [onClickOutside]);
+  }, [onClickOutside, popperRef.current, isOpen]);
 
   const { styles: popperStyles, attributes } = usePopper(
     triggerRef.current,

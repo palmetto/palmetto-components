@@ -1,9 +1,9 @@
 import React, { FC, SyntheticEvent, ReactNode } from 'react';
 import classNames from 'classnames';
-import ReactDatePicker from 'react-datepicker';
+import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import styles from './DatePicker.module.scss';
 
-export interface DatePickerProps {
+export interface DatePickerProps extends ReactDatePickerProps {
   /**
    * React children (to be rendered below the calendar dates).
    */
@@ -42,6 +42,14 @@ export interface DatePickerProps {
    * Custom format for weekday.
    */
   formatWeekDay?: (formattedDate: string) => string;
+  /**
+   * Last allowable/shown date
+   */
+  maxDate?: Date | null;
+  /**
+   * First allowable/shown date
+   */
+  minDate?: Date | null;
   /**
    * Months to be shown at one time
    */
@@ -83,6 +91,8 @@ export interface DatePickerProps {
 export const DatePicker: FC<DatePickerProps> = ({
   children = null,
   dayClassName = undefined,
+  maxDate = undefined,
+  minDate = undefined,
   monthsShown = undefined,
   openToDate = undefined,
   startDate = undefined,
@@ -105,6 +115,8 @@ export const DatePicker: FC<DatePickerProps> = ({
       inline
       calendarClassName={datePickerClasses}
       formatWeekDay={formatWeekDay}
+      maxDate={maxDate}
+      minDate={minDate}
       monthsShown={monthsShown}
       openToDate={openToDate}
       selected={selected}
