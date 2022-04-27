@@ -1,5 +1,12 @@
 Changelog
 
+## [0.137.1](https://github.com/palmetto/palmetto-components/compare/v0.137.0...v0.137.1) (2022-04-27)
+
+
+### Bug Fixes
+
+* **DateInput:** Datepicker popover max date ([#767](https://github.com/palmetto/palmetto-components/issues/767)) ([07c8d75](https://github.com/palmetto/palmetto-components/commit/07c8d757dbc6c61dee13f496591e79405d60e7aa))
+
 # [0.137.0](https://github.com/palmetto/palmetto-components/compare/v0.136.8...v0.137.0) (2022-04-21)
 
 
