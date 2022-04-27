@@ -60,7 +60,7 @@ export type PopoverProps = {
   /**
    * Callback function to handle when a user clicks outside the Popover
    */
-  onClickOutside?: () => void;
+  onClickOutside?: (event: MouseEvent | KeyboardEvent) => void;
   /**
    * The placement (position) of the Popover relative to its trigger.
    */
@@ -135,13 +135,13 @@ export const Popover: FC<PopoverProps> = ({
       }
 
       if (event.target !== popover && !popover?.contains(event.target as Node)) {
-        if (onClickOutside) onClickOutside();
+        if (onClickOutside) onClickOutside(event);
       }
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      if (event.code === 'Escape') {
-        if (onClickOutside) onClickOutside();
+      if (event.key === 'Escape') {
+        if (onClickOutside) onClickOutside(event);
       }
     };
 

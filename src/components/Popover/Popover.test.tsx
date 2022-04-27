@@ -49,7 +49,7 @@ describe('Popover', () => {
       fireEvent.click(popover);
       fireEvent.click(trigger);
       fireEvent.click(container);
-      fireEvent.keyUp(container, { code: 'Escape' });
+      fireEvent.keyUp(container, { key: 'Escape' });
       expect(mockedOnClickOutside).toBeCalledTimes(2);
     });
   });
