@@ -1,5 +1,12 @@
 Changelog
 
+## [0.137.2](https://github.com/palmetto/palmetto-components/compare/v0.137.1...v0.137.2) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Badge:** set line-height to prevent height from increasing due to line-height set by parent ([#770](https://github.com/palmetto/palmetto-components/issues/770)) ([f92bb98](https://github.com/palmetto/palmetto-components/commit/f92bb98915dde11e70e06c3d5846b86612b733f3))
+
 ## [0.137.1](https://github.com/palmetto/palmetto-components/compare/v0.137.0...v0.137.1) (2022-04-27)
 
 
