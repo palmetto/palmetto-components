@@ -43,6 +43,7 @@
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: var(--badge-font-weight, var(--size-font-weight-bold));
+  line-height: var(--size-line-height-base);
 
   &.primary {
     background-color: var(--badge-primary-background-color, var(--color-brand-primary-100));
