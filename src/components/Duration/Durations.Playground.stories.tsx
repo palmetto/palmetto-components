@@ -2,7 +2,6 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Duration, DurationProps } from './Duration';
 
-
 export default {
   title: 'Components/Duration/Playground',
   component: Duration,
@@ -39,7 +38,6 @@ export default {
     },
   },
 } as Meta;
-
 
 const Template: Story<DurationProps> = ({ ...args }) => <Duration {...args} />;
 
