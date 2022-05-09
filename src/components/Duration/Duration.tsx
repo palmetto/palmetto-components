@@ -34,15 +34,15 @@ export interface DurationProps {
   /**
    * The control will display seconds until this number of milliseconds is reached, then minutes are used.
    */
-  displaySecondsUntilInMs?: number;
+  displayMinutes?: number;
   /**
    * The control will display minutes until this number of milliseconds is reached, then hours are used.
    */
-  displayMinutesUntilInMs?: number;
+  displayHours?: number;
   /**
    * The control will display hours until this number of milliseconds is reached, then days are used.
    */
-  displayHoursUntilInMs?: number;
+  displayDays?: number;
 }
 
 export const Duration: FC<DurationProps> = ({
@@ -50,9 +50,9 @@ export const Duration: FC<DurationProps> = ({
   seconds = 0,
   minutes = 0,
   as = 'span',
-  displaySecondsUntilInMs = 60000, // 1 minute
-  displayMinutesUntilInMs = 7200000, // 2 hours
-  displayHoursUntilInMs = 86400000, // 24 hours
+  displayMinutes = 60000, // 1 minute
+  displayHours = 3600000, // 1 hours
+  displayDays = 86400000, // 24 hours
   roundUp = true,
   className,
   ...restProps
@@ -63,13 +63,13 @@ export const Duration: FC<DurationProps> = ({
 
   const rounding = roundUp ? Math.ceil : Math.floor;
 
-  if (totalMilliseconds < displaySecondsUntilInMs) {
+  if (totalMilliseconds < displayMinutes) {
     number = rounding(totalMilliseconds / 1000);
     label = number > 1 ? 'seconds' : 'second';
-  } else if (totalMilliseconds < displayMinutesUntilInMs) {
+  } else if (totalMilliseconds < displayHours) {
     number = rounding(totalMilliseconds / 60000);
     label = number > 1 ? 'minutes' : 'minute';
-  } else if (totalMilliseconds < displayHoursUntilInMs) {
+  } else if (totalMilliseconds < displayDays) {
     number = rounding(totalMilliseconds / 3600000);
     label = number > 1 ? 'hours' : 'hour';
   } else {
@@ -80,5 +80,5 @@ export const Duration: FC<DurationProps> = ({
   const element = getElementType(Duration, { as });
   const classes = classNames(className);
 
-  return createElement(element, { className: classes, ...restProps }, `${number} ${label}`);
+  return createElement(element, { className: classes, ...restProps }, `${number.toLocaleString()} ${label}`);
 };

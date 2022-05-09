@@ -5,50 +5,50 @@ import { Duration } from './Duration';
 describe('Duration', () => {
   test('combines all the times', () => {
     const { getByText } = render(
-      <Duration milliseconds={1} seconds={2} minutes={3} displaySecondsUntilInMs={200000} />,
+      <Duration milliseconds={1} seconds={2} minutes={3} displayMinutes={200000} />,
     );
     // 182,001 ms (1 milliseconds + 2 seconds + 3 minutes) rounded up to minutes
     expect(getByText('183 seconds')).toBeDefined();
   });
 
-  test('uses seconds up to displaySecondsUntilInMs cut off', () => {
+  test('uses seconds up to displayMinutes cut off', () => {
     const { getByText } = render(
-      <Duration milliseconds={10000} displaySecondsUntilInMs={10001} />,
+      <Duration milliseconds={10000} displayMinutes={10001} />,
     );
     expect(getByText('10 seconds')).toBeDefined();
   });
 
-  test('uses minutes after displaySecondsUntilInMs cut off', () => {
+  test('uses minutes after displayMinutes cut off', () => {
     const { getByText } = render(
-      <Duration milliseconds={10000} displaySecondsUntilInMs={9999} />,
+      <Duration milliseconds={10000} displayMinutes={9999} />,
     );
     expect(getByText('1 minute')).toBeDefined();
   });
 
-  test('uses seconds up to displayMinutesUntilInMs cut off', () => {
+  test('uses seconds up to displayHours cut off', () => {
     const { getByText } = render(
-      <Duration milliseconds={7000000} displayMinutesUntilInMs={7000001} />,
+      <Duration milliseconds={7000000} displayHours={7000001} />,
     );
     expect(getByText('117 minutes')).toBeDefined();
   });
 
-  test('uses minutes after displayMinutesUntilInMs cut off', () => {
+  test('uses minutes after displayHours cut off', () => {
     const { getByText } = render(
-      <Duration milliseconds={7000002} displayMinutesUntilInMs={7000001} />,
+      <Duration milliseconds={7000002} displayHours={7000001} />,
     );
     expect(getByText('2 hours')).toBeDefined();
   });
 
-  test('uses seconds up to displayHoursUntilInMs cut off', () => {
+  test('uses seconds up to displayDays cut off', () => {
     const { getByText } = render(
-      <Duration milliseconds={86000000} displayHoursUntilInMs={86000001} />,
+      <Duration milliseconds={86000000} displayDays={86000001} />,
     );
     expect(getByText('24 hours')).toBeDefined();
   });
 
-  test('uses minutes after displayHoursUntilInMs cut off', () => {
+  test('uses minutes after displayDays cut off', () => {
     const { getByText } = render(
-      <Duration milliseconds={86000002} displayHoursUntilInMs={86000001} />,
+      <Duration milliseconds={86000002} displayDays={86000001} />,
     );
     expect(getByText('1 day')).toBeDefined();
   });

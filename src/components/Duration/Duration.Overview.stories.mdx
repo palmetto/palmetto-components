@@ -1,4 +1,10 @@
 import { Duration } from  './Duration';
+import { Box } from '../Box/Box';
+import { Badge } from '../Badge/Badge';
+import { Alert } from '../Alert/Alert';
+import { Popover } from '../Popover/Popover';
+import { Button } from '../Button/Button';
+import { useState, useEffect } from 'react';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
 <Meta title="Components/Duration/Overview" component={Duration} />
@@ -19,14 +25,17 @@ between different time units at defined intervals, including rounding, and displ
 
 <ArgsTable of={Duration} />
 
-## Steps
+## Switching Units
 
-The steps at which the `Duration` component switches between time units can be configured using the 
-`displaySecondsUntilInMs`, `displayMinutesUntilInMs`, and `displayHoursUntilInMs` properties.
+The intervals at which the `Duration` component switches between time units can be configured using the 
+`displayMinutes`, `displayHours`, and `displayDays` properties.
 
 <Canvas>
-  <Story name="Steps">
-       <Duration milliseconds={3600000} displayMinutesUntilInMs={3600000} /> 
+  <Story name="Switching Units">
+    <Box childGap="md" padding="sm">
+       <Duration milliseconds={3600000} displayHours={7200000} /> 
+       <Duration milliseconds={3600000} displayHours={3600000} /> 
+      </Box>
   </Story>
 </Canvas>  
 
@@ -36,6 +45,61 @@ By default the `Duration` component will round up the time span to the nearest w
 `roundUp` property.
 
 <Canvas>
-  Up: <Duration milliseconds={60001} roundUp={true} /> 
-  Down: <Duration milliseconds={60001} roundUp={false} as="p" /> 
-</Canvas>  
+  <Story name="Rounding">
+    <Box childGap="md" padding="sm">
+      Up: <Duration milliseconds={60001} roundUp={true} /> 
+      Down: <Duration milliseconds={60001} roundUp={false} /> 
+    </Box>
+  </Story>
+</Canvas> 
+
+## With Other Components
+
+<Canvas>
+  <Story name="Composition">
+    <Box direction="row" childGap="sm">
+      <Badge onMouseOver={() => console.log('over')} message={<Duration milliseconds={60001} />} variant="default"/>
+      <Badge message={<Duration milliseconds={3600000} />} variant="warning" />
+      <Badge message={<Duration milliseconds={86500000} />} variant="danger"/>
+    </Box>
+    
+  </Story>
+</Canvas> 
+
+<Canvas>
+  <Story name="Hover">
+    {() => {
+      const [isPopoverOpen, setPopoverOpen] = useState(false);
+      const popoverContent = (
+        <>
+          <p>
+            <Duration milliseconds={86500000} displayMinutes={10000000000} /> or <Duration milliseconds={86500000} displayHours={10000000000} /> or <Duration milliseconds={86500000} displayDays={10000000000}/>
+          </p>
+        </>
+      );
+      useEffect(() => {
+        console.log(isPopoverOpen);
+      }, [isPopoverOpen]);
+      return (
+        <Box display="inline-block">
+          <Popover
+            content={popoverContent}
+            isOpen={isPopoverOpen}
+            placement="right-start"
+            contentContainerProps={{
+              background: 'secondary',
+              color: 'white',
+            }}
+            withPortal
+            portalTarget={document.body}
+          >
+            <Box padding="sm">
+              <Badge display="" onMouseOver={() => setPopoverOpen(true)} onMouseOut={() => setPopoverOpen(false)} message={<Duration milliseconds={86500000} />} variant="default"/>
+            </Box>
+          </Popover>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
