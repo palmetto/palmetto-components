@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import {
   BrandColor, FontColor, FontSize, BaseSpacing, ResponsiveProp,
@@ -30,7 +30,7 @@ export interface BadgeProps {
   /**
    * The text message or ReactNode to be rendered in the badge.
    */
-  message?: string;
+  message?: string | ReactNode;
   /**
    * The size of the button.
    */
