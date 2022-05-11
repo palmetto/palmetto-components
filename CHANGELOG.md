@@ -1,5 +1,12 @@
 Changelog
 
+# [0.138.0](https://github.com/palmetto/palmetto-components/compare/v0.137.3...v0.138.0) (2022-05-11)
+
+
+### Features
+
+* Duration component ([#771](https://github.com/palmetto/palmetto-components/issues/771)) ([8154492](https://github.com/palmetto/palmetto-components/commit/8154492f1158692e9615290046b5a1318e701164))
+
 ## [0.137.3](https://github.com/palmetto/palmetto-components/compare/v0.137.2...v0.137.3) (2022-05-11)
 
 
