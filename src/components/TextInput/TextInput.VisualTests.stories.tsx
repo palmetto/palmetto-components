@@ -1,5 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { within } from '@storybook/testing-library';
 import { TextInput, TextInputProps } from './TextInput';
 import { Icon } from '../Icon/Icon';
 import { Box } from '../Box/Box';
@@ -151,3 +152,65 @@ ResponsiveSize.args = {
   prefix: '$',
 };
 ResponsiveSize.parameters = RESPONSIVE_STORY;
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: 'Disabled TextInput',
+  isDisabled: true,
+};
+
+export const DisabledPlaceholder = Template.bind({});
+DisabledPlaceholder.args = {
+  label: 'Disabled TextInput',
+  isDisabled: true,
+  placeholder: 'placeholder text',
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  label: 'Error TextInput',
+  error: true,
+};
+
+export const ErrorValidationMessageRequired = Template.bind({});
+ErrorValidationMessageRequired.args = {
+  label: 'Error TextInput',
+  isRequired: true,
+  error: 'Helpful validation message',
+};
+
+export const ErrorValidationMessage = Template.bind({});
+ErrorValidationMessage.args = {
+  label: 'Error TextInput',
+  error: 'Helpful validation message',
+};
+
+export const ErrorHiddenLabelValidationMessage = Template.bind({});
+ErrorHiddenLabelValidationMessage.args = {
+  label: 'Error TextInput',
+  hideLabel: true,
+  error: 'Helpful validation message',
+};
+
+export const DefaultFocus = Template.bind({});
+
+DefaultFocus.args = {
+  label: 'Default Focus',
+};
+
+DefaultFocus.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByLabelText('Default Focus').focus();
+};
+
+export const ErrorFocus = Template.bind({});
+
+ErrorFocus.args = {
+  label: 'Error Focus',
+  error: 'validation message',
+};
+
+ErrorFocus.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByLabelText('Error Focus').focus();
+};

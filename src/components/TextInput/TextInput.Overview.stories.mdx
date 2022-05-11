@@ -206,27 +206,6 @@ All that is required to render a basic version of the TextInput is a unique `id`
 Use the `isDisabled` prop to mark the input as disabled.
 
 <Canvas>
-  <Story name="Disabled">
-    {() => {
-      const [value, setValue] = useState('');
-      return (
-        <TextInput
-          id="disabled"
-          value={value}
-          label="Label"
-          onChange={event => setValue(event.target.value)}
-          isDisabled
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Disabled with Value
-
-Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can have values that are either preset, or entered by users.
-
-<Canvas>
   <Story name="Disabled with Value">
     {() => {
       const [value, setValue] = useState('Preset value');
@@ -237,28 +216,6 @@ Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can hav
           label="Label"
           onChange={event => setValue(event.target.value)}
           isDisabled
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Disabled with Placeholder
-
-Use the `isDisabled` prop to mark the input as disabled. Disabled inputs can have placeholders.
-
-<Canvas>
-  <Story name="Disabled with Placeholder">
-    {() => {
-      const [value, setValue] = useState('');
-      return (
-        <TextInput
-          id="disabledWithPlaceholder"
-          value={value}
-          label="Label"
-          onChange={event => setValue(event.target.value)}
-          isDisabled
-          placeholder="Useful placeholder..."
         />
       );
     }}
@@ -434,31 +391,9 @@ Use the `maxLength` prop to limit the number of characters that can be entered i
   </Story>
 </Canvas>
 
-## Required with Error
+## Validation Error
 
-Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. A `boolean` is passed in this example.
-
-<Canvas>
-  <Story name="Required with Error">
-    {() => {
-      const [value, setValue] = useState('');
-      return (
-        <TextInput
-          id="requiredWithError"
-          value={value}
-          label="Label"
-          onChange={event => setValue(event.target.value)}
-          error={true}
-          isRequired
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Required with Error and Validation Message
-
-Pass a `string` or `node` to the `error` prop to render a validation message.
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. 
 
 <Canvas>
   <Story name="Required with Error and Validation Message">
@@ -472,47 +407,6 @@ Pass a `string` or `node` to the `error` prop to render a validation message.
           onChange={event => setValue(event.target.value)}
           isRequired
           error="Helpful validation message"
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Not Required with Error and Validation Message
-
-An input does not need to be marked as required to render a validation message.
-
-<Canvas>
-  <Story name="Not Required with Error and Validation Message">
-    {() => {
-      const [value, setValue] = useState('');
-      return (
-        <TextInput
-          id="notRequiredWithValidationMessage"
-          value={value}
-          label="Label"
-          onChange={event => setValue(event.target.value)}
-          error="Helpful validation message"
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Error with Hidden Label
-
-<Canvas>
-  <Story name="Error with Hidden Label">
-    {() => {
-      const [value, setValue] = useState('');
-      return (
-        <TextInput
-          id="errorWithHiddenLabel"
-          value={value}
-          label="Label"
-          hideLabel
-          onChange={event => setValue(event.target.value)}
-          error={true}
         />
       );
     }}
