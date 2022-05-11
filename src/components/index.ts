@@ -16,6 +16,7 @@ export * from './DatePicker/DatePicker';
 export * from './Details/Details';
 export * from './Details/DetailsSummary';
 export * from './Drawer/Drawer';
+export * from './Duration/Duration';
 export * from './FileUpload/FileUpload';
 export * from './Formik/FormikCheckboxInput/FormikCheckboxInput';
 export * from './Formik/FormikRadioGroup/FormikRadioGroup';
