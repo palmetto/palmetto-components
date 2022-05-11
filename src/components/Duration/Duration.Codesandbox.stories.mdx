@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Components/Duration/Codesandbox" />
+
+# Duration
+
+Use 'Duration' to display a time span in a friendly human readable format. The `Duration` component handles converting 
+between different time units at defined intervals, including rounding, and displaying the result with an approperiate label.
+
+```js codesandbox=palmetto-components
+import React from 'react';
+import { Box, Duration } from '@palmetto/palmetto-components';
+
+export default () => (
+  <Box childGap="md">
+    <Duration milliseconds={1000} /> 
+    <Duration milliseconds={60000} /> 
+    <Duration milliseconds={7200000} /> 
+    <Duration milliseconds={86400000} />
+  </Box>
+);
+```
