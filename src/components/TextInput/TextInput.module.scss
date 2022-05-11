@@ -192,6 +192,36 @@
     }
   }
 
+  > input {
+    box-sizing: border-box;
+    display: flex;
+    transition-duration: 300ms;
+    transition-property: border, background-color;
+    transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
+    /* border and background is set on the text-input-wrapper */
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    line-height: var(--form-control-line-height, var(--INTERNAL_form-control-line-height));
+    color: var(--form-control-font-color, var(--INTERNAL_form-control-font-color));
+
+    &::placeholder {
+      /* Override lower placeholder opacity in Firefox */
+      opacity: 1;
+      color: var(--form-control-placeholder-color, var(--INTERNAL_form-control-placeholder-color));
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+    }
+
+    &:disabled {
+      @extend %disabled-base;
+      background-color: transparent;
+    }
+  }
+
   &.error {
     box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)),
       inset 0 0 0 1px var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error));
@@ -224,36 +254,6 @@
 
   &.disabled {
     @extend %disabled-base;
-  }
-
-  > input {
-    box-sizing: border-box;
-    display: flex;
-    transition-duration: 300ms;
-    transition-property: border, background-color;
-    transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
-    /* border and background is set on the text-input-wrapper */
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    line-height: var(--form-control-line-height, var(--INTERNAL_form-control-line-height));
-    color: var(--form-control-font-color, var(--INTERNAL_form-control-font-color));
-
-    &::placeholder {
-      /* Override lower placeholder opacity in Firefox */
-      opacity: 1;
-      color: var(--form-control-placeholder-color, var(--INTERNAL_form-control-placeholder-color));
-    }
-
-    &:focus {
-      outline: none;
-      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
-    }
-
-    &:disabled {
-      @extend %disabled-base;
-      background-color: transparent;
-    }
   }
 
   .clear-button {
