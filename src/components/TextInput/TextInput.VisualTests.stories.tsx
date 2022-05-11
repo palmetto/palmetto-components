@@ -153,6 +153,45 @@ ResponsiveSize.args = {
 };
 ResponsiveSize.parameters = RESPONSIVE_STORY;
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: 'Disabled TextInput',
+  isDisabled: true,
+};
+
+export const DisabledPlaceholder = Template.bind({});
+DisabledPlaceholder.args = {
+  label: 'Disabled TextInput',
+  isDisabled: true,
+  placeholder: 'placeholder text',
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  label: 'Error TextInput',
+  error: true,
+};
+
+export const ErrorValidationMessageRequired = Template.bind({});
+ErrorValidationMessageRequired.args = {
+  label: 'Error TextInput',
+  isRequired: true,
+  error: 'Helpful validation message',
+};
+
+export const ErrorValidationMessage = Template.bind({});
+ErrorValidationMessage.args = {
+  label: 'Error TextInput',
+  error: 'Helpful validation message',
+};
+
+export const ErrorHiddenLabelValidationMessage = Template.bind({});
+ErrorHiddenLabelValidationMessage.args = {
+  label: 'Error TextInput',
+  hideLabel: true,
+  error: 'Helpful validation message',
+};
+
 export const DefaultFocus = Template.bind({});
 
 DefaultFocus.args = {
