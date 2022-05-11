@@ -1,5 +1,12 @@
 Changelog
 
+## [0.138.1](https://github.com/palmetto/palmetto-components/compare/v0.138.0...v0.138.1) (2022-05-11)
+
+
+### Bug Fixes
+
+* **Duration:** export and plural label ([#775](https://github.com/palmetto/palmetto-components/issues/775)) ([933fa9f](https://github.com/palmetto/palmetto-components/commit/933fa9fd636b87d6deb2c5f3ba3bc3008132ff36))
+
 # [0.138.0](https://github.com/palmetto/palmetto-components/compare/v0.137.3...v0.138.0) (2022-05-11)
 
 
