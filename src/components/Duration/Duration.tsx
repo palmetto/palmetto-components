@@ -2,6 +2,17 @@ import { FC, createElement } from 'react';
 import classNames from 'classnames';
 import { getElementType } from '../../lib/getElementType';
 
+export interface DurationLabelConfiguration {
+  day: string;
+  days: string;
+  hour: string;
+  hours: string;
+  minute: string;
+  minutes: string;
+  second: string;
+  seconds: string;
+}
+
 export interface DurationProps {
   /**
    * Number of milliseconds in this duration.
@@ -43,6 +54,10 @@ export interface DurationProps {
    * The control will display hours until this number of milliseconds is reached, then days are used.
    */
   displayDays?: number;
+  /**
+   * A configuration object that allows for internationalization of the time unit labels.
+   */
+  labels?: DurationLabelConfiguration;
 }
 
 export const Duration: FC<DurationProps> = ({
@@ -55,6 +70,16 @@ export const Duration: FC<DurationProps> = ({
   displayDays = 86400000, // 24 hours
   roundUp = true,
   className,
+  labels = {
+    day: 'day',
+    days: 'days',
+    hour: 'hour',
+    hours: 'hours',
+    minute: 'minute',
+    minutes: 'minutes',
+    second: 'second',
+    seconds: 'seconds',
+  },
   ...restProps
 }) => {
   const totalMilliseconds = milliseconds + seconds * 1000 + minutes * 60000;
@@ -65,16 +90,16 @@ export const Duration: FC<DurationProps> = ({
 
   if (totalMilliseconds < displayMinutes) {
     number = rounding(totalMilliseconds / 1000);
-    label = number > 1 ? 'seconds' : 'second';
+    label = number > 1 ? labels.seconds : labels.second;
   } else if (totalMilliseconds < displayHours) {
     number = rounding(totalMilliseconds / 60000);
-    label = number > 1 ? 'minutes' : 'minute';
+    label = number > 1 ? labels.minutes : labels.minute;
   } else if (totalMilliseconds < displayDays) {
     number = rounding(totalMilliseconds / 3600000);
-    label = number > 1 ? 'hours' : 'hour';
+    label = number > 1 ? labels.hours : labels.hour;
   } else {
     number = rounding(totalMilliseconds / 86400000);
-    label = number > 1 ? 'days' : 'day';
+    label = number > 1 ? labels.days : labels.day;
   }
 
   const element = getElementType(Duration, { as });
