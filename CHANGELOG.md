@@ -1,5 +1,12 @@
 Changelog
 
+## [0.137.3](https://github.com/palmetto/palmetto-components/compare/v0.137.2...v0.137.3) (2022-05-11)
+
+
+### Bug Fixes
+
+* **Badge:** allow message prop to accept nodes in addition to strings ([#772](https://github.com/palmetto/palmetto-components/issues/772)) ([c5f40eb](https://github.com/palmetto/palmetto-components/commit/c5f40eb1c49f0ddce209d6017d9cb696d2f56b03))
+
 ## [0.137.2](https://github.com/palmetto/palmetto-components/compare/v0.137.1...v0.137.2) (2022-05-06)
 
 
