@@ -12,13 +12,17 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 # Duration
 
 Use 'Duration' to display a time span in a friendly human readable format. The `Duration` component handles converting 
-between different time units at defined intervals, including rounding, and displaying the result with an approperiate label.
+between different time units at defined intervals, including rounding, and displaying the result with an appropriate label.
 
-<Canvas>
-  <Duration milliseconds={1000} /> 
-  <Duration milliseconds={60000} /> 
-  <Duration milliseconds={7200000} /> 
-  <Duration milliseconds={86400000} />
+<Canvas withSource="open">
+  <Story name="Examples">
+    <Box childGap="xs">
+      <Duration milliseconds={1000} />
+      <Duration milliseconds={60000} />
+      <Duration milliseconds={7200000} />
+      <Duration milliseconds={86400000} />
+    </Box>
+  </Story>
 </Canvas>
 
 ## Props
@@ -30,12 +34,12 @@ between different time units at defined intervals, including rounding, and displ
 The intervals at which the `Duration` component switches between time units can be configured using the 
 `displayMinutes`, `displayHours`, and `displayDays` properties.
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="Switching Units">
-    <Box childGap="md" padding="sm">
-       <Duration milliseconds={3600000} displayHours={7200000} /> 
-       <Duration milliseconds={3600000} displayHours={3600000} /> 
-      </Box>
+    <Box childGap="xs">
+      <Duration milliseconds={3600000} displayHours={7200000} />
+      <Duration milliseconds={3600000} displayHours={3600000} /> 
+    </Box>
   </Story>
 </Canvas>  
 
@@ -44,9 +48,9 @@ The intervals at which the `Duration` component switches between time units can 
 By default the `Duration` component will round up the time span to the nearest whole unit. This can be configured using the
 `roundUp` property.
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="Rounding">
-    <Box childGap="md" padding="sm">
+    <Box childGap="xs" padding="sm">
       Up: <Duration milliseconds={60001} roundUp={true} /> 
       Down: <Duration milliseconds={60001} roundUp={false} /> 
     </Box>
@@ -55,19 +59,20 @@ By default the `Duration` component will round up the time span to the nearest w
 
 ## With Other Components
 
-<Canvas>
+Use the `Duration` component with other stylized components to display a time span in a friendly human readable format.
+
+<Canvas withSource="open">
   <Story name="Composition">
     <Box direction="row" childGap="sm">
-      <Badge onMouseOver={() => console.log('over')} message={<Duration milliseconds={60001} />} variant="default"/>
+      <Badge message={<Duration milliseconds={60001} />} variant="default"/>
       <Badge message={<Duration milliseconds={3600000} />} variant="warning" />
       <Badge message={<Duration milliseconds={86500000} />} variant="danger"/>
     </Box>
-    
   </Story>
 </Canvas> 
 
 <Canvas>
-  <Story name="Hover">
+  <Story name="Hover" withSource="open">
     {() => {
       const [isPopoverOpen, setPopoverOpen] = useState(false);
       const popoverContent = (
