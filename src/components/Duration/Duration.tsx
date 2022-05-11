@@ -90,16 +90,16 @@ export const Duration: FC<DurationProps> = ({
 
   if (totalMilliseconds < displayMinutes) {
     number = rounding(totalMilliseconds / 1000);
-    label = number > 1 ? labels.seconds : labels.second;
+    label = number === 1 ? labels.second : labels.seconds;
   } else if (totalMilliseconds < displayHours) {
     number = rounding(totalMilliseconds / 60000);
-    label = number > 1 ? labels.minutes : labels.minute;
+    label = number === 1 ? labels.minute : labels.minutes;
   } else if (totalMilliseconds < displayDays) {
     number = rounding(totalMilliseconds / 3600000);
-    label = number > 1 ? labels.hours : labels.hour;
+    label = number === 1 ? labels.hour : labels.hours;
   } else {
     number = rounding(totalMilliseconds / 86400000);
-    label = number > 1 ? labels.days : labels.day;
+    label = number === 1 ? labels.day : labels.days;
   }
 
   const element = getElementType(Duration, { as });
