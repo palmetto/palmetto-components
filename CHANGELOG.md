@@ -1,5 +1,12 @@
 Changelog
 
+## [0.138.3](https://github.com/palmetto/palmetto-components/compare/v0.138.2...v0.138.3) (2022-05-11)
+
+
+### Bug Fixes
+
+* **TextInput:** focus styling for error state ([#774](https://github.com/palmetto/palmetto-components/issues/774)) ([de7d628](https://github.com/palmetto/palmetto-components/commit/de7d628290d533bfd7b57592eee68c5c67e16823))
+
 ## [0.138.2](https://github.com/palmetto/palmetto-components/compare/v0.138.1...v0.138.2) (2022-05-11)
 
 ## [0.138.1](https://github.com/palmetto/palmetto-components/compare/v0.138.0...v0.138.1) (2022-05-11)
