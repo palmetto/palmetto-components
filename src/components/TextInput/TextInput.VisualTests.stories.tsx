@@ -1,5 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { within } from '@storybook/testing-library';
 import { TextInput, TextInputProps } from './TextInput';
 import { Icon } from '../Icon/Icon';
 import { Box } from '../Box/Box';
@@ -151,3 +152,26 @@ ResponsiveSize.args = {
   prefix: '$',
 };
 ResponsiveSize.parameters = RESPONSIVE_STORY;
+
+export const DefaultFocus = Template.bind({});
+
+DefaultFocus.args = {
+  label: 'Default Focus',
+};
+
+DefaultFocus.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByLabelText('Default Focus').focus();
+};
+
+export const ErrorFocus = Template.bind({});
+
+ErrorFocus.args = {
+  label: 'Error Focus',
+  error: 'validation message',
+};
+
+ErrorFocus.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByLabelText('Error Focus').focus();
+};
