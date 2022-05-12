@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { within } from '@storybook/testing-library';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 import { RadioGroup, RadioGroupProps } from './RadioGroup';
 import { Box } from '../Box/Box';
@@ -44,8 +45,8 @@ const Template: Story<RadioGroupProps> = ({ ...args }) => (
   <Box childGap="xl">
     {sizes.map(size => (
       <Box childGap="md" key={`${args.id}-${size}`}>
-        { /* eslint-disable-next-line */}
-        {/* @ts-ignore */} 
+        {/* eslint-disable-next-line */}
+        {/* @ts-ignore */}
         <RadioGroup size={size} options={options} {...args} />
       </Box>
     ))}
@@ -70,13 +71,21 @@ export const AllSizesDisabled = Template.bind({});
 AllSizesDisabled.args = { id: 'AllSizesDisabled', isDisabled: true };
 
 export const AllSizesDisabledChecked = Template.bind({});
-AllSizesDisabledChecked.args = { id: 'AllSizesDisabledChecked', isDisabled: true, value: 'one' };
+AllSizesDisabledChecked.args = {
+  id: 'AllSizesDisabledChecked',
+  isDisabled: true,
+  value: 'one',
+};
 
 export const AllSizesTitle = Template.bind({});
 AllSizesTitle.args = { id: 'AllSizesTitle', title: 'title' };
 
 export const AllSizesTitleDisabled = Template.bind({});
-AllSizesTitleDisabled.args = { id: 'AllSizesTitleDisabled', title: 'title', isDisabled: true };
+AllSizesTitleDisabled.args = {
+  id: 'AllSizesTitleDisabled',
+  title: 'title',
+  isDisabled: true,
+};
 
 export const AllSizesTitleDisabledError = Template.bind({});
 AllSizesTitleDisabledError.args = {
@@ -140,10 +149,18 @@ AllSizesHorizontalChecked.args = {
 };
 
 export const AllSizesHorizontalError = Template.bind({});
-AllSizesHorizontalError.args = { id: 'AllSizesHorizontalError', error: 'Agreement is required', direction: 'row' };
+AllSizesHorizontalError.args = {
+  id: 'AllSizesHorizontalError',
+  error: 'Agreement is required',
+  direction: 'row',
+};
 
 export const AllSizesHorizontalDisabled = Template.bind({});
-AllSizesHorizontalDisabled.args = { id: 'AllSizesHorizontalDisabled', isDisabled: true, direction: 'row' };
+AllSizesHorizontalDisabled.args = {
+  id: 'AllSizesHorizontalDisabled',
+  isDisabled: true,
+  direction: 'row',
+};
 
 export const AllSizesHorizontalDisabledChecked = Template.bind({});
 AllSizesHorizontalDisabledChecked.args = {
@@ -154,7 +171,11 @@ AllSizesHorizontalDisabledChecked.args = {
 };
 
 export const AllSizesHorizontalTitle = Template.bind({});
-AllSizesHorizontalTitle.args = { id: 'AllSizesHorizontalTitle', title: 'title', direction: 'row' };
+AllSizesHorizontalTitle.args = {
+  id: 'AllSizesHorizontalTitle',
+  title: 'title',
+  direction: 'row',
+};
 
 export const AllSizesHorizontalTitleDisabled = Template.bind({});
 AllSizesHorizontalTitleDisabled.args = {
@@ -215,4 +236,36 @@ AllSizesHorizontalTitleDisabledOptionSelected.args = {
     },
   ],
   direction: 'row',
+};
+
+const SimpleTemplate: Story<RadioGroupProps> = ({ ...args }) => (
+  <RadioGroup {...args} options={options} />
+);
+
+export const FocusSelected = SimpleTemplate.bind({});
+FocusSelected.args = {
+  id: 'FocusSelected',
+  isRequired: true,
+  title: 'title required',
+  value: 'one',
+};
+
+FocusSelected.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const radios = canvas.queryAllByRole('radio');
+  radios[0].focus();
+};
+
+export const FocusUnselected = SimpleTemplate.bind({});
+FocusUnselected.args = {
+  id: 'AllSizesChecked',
+  isRequired: true,
+  title: 'title required',
+  value: 'two',
+};
+
+FocusUnselected.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const radios = canvas.queryAllByRole('radio');
+  radios[0].focus();
 };
