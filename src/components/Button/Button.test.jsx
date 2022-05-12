@@ -4,18 +4,35 @@ import { Button } from './Button';
 import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 
 describe('Button', () => {
-  describe('Type', () => {
-    test('Sets the html button type to "submit" if specified', () => {
+  describe('html button type', () => {
+    test('is set to button', () => {
+      render(<Button>Button</Button>);
+      const testBtn = screen.getByRole('button');
+      expect(testBtn.getAttribute('type')).toBe('button');
+    });
+
+    test('is set to "submit" if specified', () => {
       render(<Button type="submit">Submit Button</Button>);
 
-      const testBtn = screen.getByText('Submit Button').closest('button');
+      const testBtn = screen.getByRole('button');
       expect(testBtn.getAttribute('type')).toBe('submit');
     });
-    test('Sets the html button type to "reset" if specified', () => {
+
+    test('is set to "reset" if specified', () => {
       render(<Button type="reset">Reset Button</Button>);
 
-      const testBtn = screen.getByText('Reset Button').closest('button');
+      const testBtn = screen.getByRole('button');
       expect(testBtn.getAttribute('type')).toBe('reset');
+    });
+
+    test('is not set if "as" prop is an anchor tag', () => {
+      render(
+        <Button as="a" href="https://www.palmetto.com">
+          link button
+        </Button>,
+      );
+      const testBtn = screen.getByText('link button').parentElement;
+      expect(testBtn).not.toHaveAttribute('type');
     });
   });
 
