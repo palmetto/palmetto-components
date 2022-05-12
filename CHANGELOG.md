@@ -1,5 +1,12 @@
 Changelog
 
+## [0.138.7](https://github.com/palmetto/palmetto-components/compare/v0.138.6...v0.138.7) (2022-05-12)
+
+
+### Bug Fixes
+
+* **TextInput:** visual focus state ([#781](https://github.com/palmetto/palmetto-components/issues/781)) ([abe2603](https://github.com/palmetto/palmetto-components/commit/abe2603959602601c8bb55da7b29375dd6e6aa5f))
+
 ## [0.138.6](https://github.com/palmetto/palmetto-components/compare/v0.138.5...v0.138.6) (2022-05-12)
 
 
