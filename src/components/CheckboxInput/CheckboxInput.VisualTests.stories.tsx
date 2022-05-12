@@ -182,3 +182,8 @@ FocusErrorUnchecked.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   canvas.getByRole('checkbox').focus();
 };
+
+FocusChecked.parameters = {};
+FocusUnchecked.parameters = {};
+FocusErrorChecked.parameters = {};
+FocusErrorChecked.parameters = {};
