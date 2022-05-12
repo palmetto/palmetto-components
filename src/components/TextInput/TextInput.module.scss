@@ -227,6 +227,10 @@
       inset 0 0 0 1px var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error));
     background-color: var(--form-control-background-color-error, var(--INTERNAL_form-control-background-color-error));
 
+    &:focus-within {
+      background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
+    }
+
     input:focus {
       outline: none;
       background-color: transparent;
