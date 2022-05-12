@@ -1,5 +1,12 @@
 Changelog
 
+## [0.138.4](https://github.com/palmetto/palmetto-components/compare/v0.138.3...v0.138.4) (2022-05-12)
+
+
+### Bug Fixes
+
+* **Button:** html type property getting set to boolean value ([#777](https://github.com/palmetto/palmetto-components/issues/777)) ([c7a4681](https://github.com/palmetto/palmetto-components/commit/c7a4681f70c298fc751ccd7620bdea4f8b1b9431))
+
 ## [0.138.3](https://github.com/palmetto/palmetto-components/compare/v0.138.2...v0.138.3) (2022-05-11)
 
 
