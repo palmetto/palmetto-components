@@ -229,7 +229,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
         (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => handleClick(event, onClick, target, navigate),
       onFocus: handleFocus,
       ref,
-      type: type || ((as !== 'a' && !href) && 'button'),
+      type: type || ((as !== 'a' && !href) ? 'button' : undefined),
       tabIndex,
       ...restProps,
     }, buttonContent);
