@@ -26,7 +26,7 @@ describe('Button', () => {
       expect(testBtn.getAttribute('type')).toBe('reset');
     });
 
-    test('is set to not set if as is not a button', () => {
+    test('is not set if "as" prop anchor tag', () => {
       render(
         <Button as="a" href="https://www.palmetto.com">
           link button
