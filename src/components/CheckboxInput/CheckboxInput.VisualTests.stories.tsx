@@ -7,7 +7,6 @@ import { CheckboxInput, CheckboxInputProps } from './CheckboxInput';
 export default {
   title: 'Components/CheckboxInput/Visual Regression Tests',
   component: CheckboxInput,
-  parameters: RESPONSIVE_STORY,
 } as Meta;
 
 const Template: Story<CheckboxInputProps> = ({ ...args }) => (
@@ -26,6 +25,7 @@ ResponsiveSizeOneUnchecked.args = {
     hd: 'sm',
   },
 };
+ResponsiveSizeOneUnchecked.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSizeTwoUnchecked = Template.bind({});
 ResponsiveSizeTwoUnchecked.args = {
@@ -39,6 +39,7 @@ ResponsiveSizeTwoUnchecked.args = {
     hd: 'md',
   },
 };
+ResponsiveSizeTwoUnchecked.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSizeThreeUnchecked = Template.bind({});
 ResponsiveSizeThreeUnchecked.args = {
@@ -52,6 +53,7 @@ ResponsiveSizeThreeUnchecked.args = {
     hd: 'lg',
   },
 };
+ResponsiveSizeThreeUnchecked.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSizeOneChecked = Template.bind({});
 ResponsiveSizeOneChecked.args = {
@@ -65,6 +67,7 @@ ResponsiveSizeOneChecked.args = {
     hd: 'sm',
   },
 };
+ResponsiveSizeOneChecked.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSizeTwoChecked = Template.bind({});
 ResponsiveSizeTwoChecked.args = {
@@ -78,6 +81,7 @@ ResponsiveSizeTwoChecked.args = {
     hd: 'md',
   },
 };
+ResponsiveSizeTwoChecked.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSizeThreeChecked = Template.bind({});
 ResponsiveSizeThreeChecked.args = {
@@ -91,6 +95,7 @@ ResponsiveSizeThreeChecked.args = {
     hd: 'lg',
   },
 };
+ResponsiveSizeThreeChecked.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSizeOneIndeterminate = Template.bind({});
 ResponsiveSizeOneIndeterminate.args = {
@@ -105,6 +110,7 @@ ResponsiveSizeOneIndeterminate.args = {
   },
   isIndeterminate: true,
 };
+ResponsiveSizeOneIndeterminate.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSizeTwoIndeterminate = Template.bind({});
 ResponsiveSizeTwoIndeterminate.args = {
@@ -119,6 +125,7 @@ ResponsiveSizeTwoIndeterminate.args = {
   },
   isIndeterminate: true,
 };
+ResponsiveSizeTwoIndeterminate.parameters = RESPONSIVE_STORY;
 
 export const ResponsiveSizeThreeIndeterminate = Template.bind({});
 ResponsiveSizeThreeIndeterminate.args = {
@@ -133,6 +140,7 @@ ResponsiveSizeThreeIndeterminate.args = {
   },
   isIndeterminate: true,
 };
+ResponsiveSizeThreeIndeterminate.parameters = RESPONSIVE_STORY;
 
 export const FocusChecked = Template.bind({});
 FocusChecked.args = {
@@ -182,8 +190,3 @@ FocusErrorUnchecked.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   canvas.getByRole('checkbox').focus();
 };
-
-FocusChecked.parameters = {};
-FocusUnchecked.parameters = {};
-FocusErrorChecked.parameters = {};
-FocusErrorChecked.parameters = {};
