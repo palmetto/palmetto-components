@@ -1,5 +1,12 @@
 Changelog
 
+## [0.138.5](https://github.com/palmetto/palmetto-components/compare/v0.138.4...v0.138.5) (2022-05-12)
+
+
+### Bug Fixes
+
+* **Checkbox:** add visual focus state ([#778](https://github.com/palmetto/palmetto-components/issues/778)) ([9f1ab6f](https://github.com/palmetto/palmetto-components/commit/9f1ab6f806309b279ac59d4f1370c0ebdfb92768))
+
 ## [0.138.4](https://github.com/palmetto/palmetto-components/compare/v0.138.3...v0.138.4) (2022-05-12)
 
 
