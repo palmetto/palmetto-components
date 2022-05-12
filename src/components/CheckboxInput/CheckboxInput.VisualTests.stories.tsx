@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { within } from '@storybook/testing-library';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 import { CheckboxInput, CheckboxInputProps } from './CheckboxInput';
 
@@ -131,4 +132,53 @@ ResponsiveSizeThreeIndeterminate.args = {
     hd: 'lg',
   },
   isIndeterminate: true,
+};
+
+export const FocusChecked = Template.bind({});
+FocusChecked.args = {
+  id: 'FocusUnchecked',
+  label: 'Focus Checked',
+  isChecked: true,
+};
+
+FocusChecked.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByRole('checkbox').focus();
+};
+
+export const FocusUnchecked = Template.bind({});
+FocusUnchecked.args = {
+  id: 'FocusUnchecked',
+  label: 'Focus Unchecked',
+  isChecked: false,
+};
+
+FocusUnchecked.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByRole('checkbox').focus();
+};
+
+export const FocusErrorChecked = Template.bind({});
+FocusErrorChecked.args = {
+  id: 'FocusErrorChecked',
+  label: 'Focus Error Checked',
+  isChecked: true,
+  error: true,
+};
+
+FocusErrorChecked.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByRole('checkbox').focus();
+};
+
+export const FocusErrorUnchecked = Template.bind({});
+FocusErrorUnchecked.args = {
+  id: 'FocusErrorUnchecked',
+  label: 'Focus Error Unchecked',
+  isChecked: false,
+};
+
+FocusErrorUnchecked.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByRole('checkbox').focus();
 };
