@@ -8,7 +8,6 @@ import { Box } from '../Box/Box';
 export default {
   title: 'Components/RadioGroup/Visual Regression Tests',
   component: RadioGroup,
-  parameters: RESPONSIVE_STORY,
 } as Meta;
 
 const sizes = [
@@ -63,6 +62,7 @@ AllSizesChecked.args = {
   title: 'title required',
   value: 'one',
 };
+AllSizesChecked.parameters = RESPONSIVE_STORY;
 
 export const AllSizesError = Template.bind({});
 AllSizesError.args = { id: 'AllSizesError', error: 'Agreement is required' };
@@ -249,6 +249,7 @@ FocusSelected.args = {
   title: 'title required',
   value: 'one',
 };
+FocusSelected.parameters = {};
 
 FocusSelected.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
@@ -263,6 +264,7 @@ FocusUnselected.args = {
   title: 'title required',
   value: 'two',
 };
+FocusUnselected.parameters = {};
 
 FocusUnselected.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
