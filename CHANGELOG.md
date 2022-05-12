@@ -1,5 +1,12 @@
 Changelog
 
+## [0.138.6](https://github.com/palmetto/palmetto-components/compare/v0.138.5...v0.138.6) (2022-05-12)
+
+
+### Bug Fixes
+
+* **RadioGroup:** add visual focus state ([#780](https://github.com/palmetto/palmetto-components/issues/780)) ([72859b8](https://github.com/palmetto/palmetto-components/commit/72859b8a84af310126e0a0c741790a7d2d649422))
+
 ## [0.138.5](https://github.com/palmetto/palmetto-components/compare/v0.138.4...v0.138.5) (2022-05-12)
 
 
