@@ -1,5 +1,12 @@
 Changelog
 
+## [0.138.8](https://github.com/palmetto/palmetto-components/compare/v0.138.7...v0.138.8) (2022-05-13)
+
+
+### Bug Fixes
+
+* OptionTile, SelectInput, SelectInputNative, TextareaInput focus states ([#782](https://github.com/palmetto/palmetto-components/issues/782)) ([7fa8da7](https://github.com/palmetto/palmetto-components/commit/7fa8da7b55d3ae2f4c860078bbbac30dda6059d3))
+
 ## [0.138.7](https://github.com/palmetto/palmetto-components/compare/v0.138.6...v0.138.7) (2022-05-12)
 
 
