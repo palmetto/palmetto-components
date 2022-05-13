@@ -4,6 +4,11 @@
   border-radius: var(--option-tile-border-radius, var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius)));
   font-family: var(--option-tile-font-family, var(--form-control-font-family, var(--INTERNAL_form-control-font-family)));
 
+  &:focus-within {
+    box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus)),
+      inset 0 0 0 1px var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+  }
+  
   &:hover {
     border: 1px solid var(--option-tile-border-color-hover, var(--form-control-border-color-hover, var(--INTERNAL_form-control-border-color-hover)));
   }

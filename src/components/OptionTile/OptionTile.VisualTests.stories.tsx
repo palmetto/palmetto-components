@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { within } from '@storybook/testing-library';
 import { OptionTile, OptionTileProps } from './OptionTile';
 
 export default {
@@ -64,4 +65,34 @@ HiddenInput.args = {
   hideInput: true,
   value: 'hiddenInput',
   label: 'hiddenInput',
+};
+
+export const FocusUnchecked = Template.bind({});
+FocusUnchecked.args = {
+  isSelected: false,
+  children: 'radio unchecked',
+  id: 'radioUnchecked',
+  name: 'radioUnchecked',
+  value: 'radioUnchecked',
+  label: 'radioUnchecked',
+};
+
+FocusUnchecked.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByRole('radio').focus();
+};
+
+export const FocusChecked = Template.bind({});
+FocusChecked.args = {
+  isSelected: true,
+  children: 'radio selected',
+  id: 'radioSelected',
+  name: 'radioSelected',
+  value: 'radioSelected',
+  label: 'radioSelected',
+};
+
+FocusChecked.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByRole('radio').focus();
 };
