@@ -84,6 +84,7 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
   };
 
   const containerClasses = classNames(
+    'palmetto-components__variables__form-control',
     className,
     styles['radio-container'],
     responsiveClasses,

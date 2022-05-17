@@ -132,7 +132,7 @@
 
   &:focus-within {
     outline: none;
-    box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)),
+    box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow-focus)),
       inset 0 0 0 1px var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
   }
 

@@ -59,4 +59,28 @@ describe('Duration', () => {
     );
     expect(getByText('1 minute')).toBeDefined();
   });
+
+  test('treats 0 as plural', () => {
+    const { getByText } = render(
+      <Duration milliseconds={0} />,
+    );
+    expect(getByText('0 seconds')).toBeDefined();
+  });
+
+  test('can customize the labels', () => {
+    const labels = {
+      day: 'trent_day',
+      days: 'trent_days',
+      hour: 'trent_hour',
+      hours: 'trent_hours',
+      minute: 'trent_minute',
+      minutes: 'trent_minutes',
+      second: 'trent_second',
+      seconds: 'trent_seconds',
+    };
+    const { getByText } = render(
+      <Duration milliseconds={0} labels={labels} />,
+    );
+    expect(getByText('0 trent_seconds')).toBeDefined();
+  });
 });

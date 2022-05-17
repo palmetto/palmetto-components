@@ -127,7 +127,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
     onFocus: handleFocus,
     size,
     label,
-    className: 'm-right-xs',
+    className: classNames('palmetto-components__variables__form-control', 'm-right-xs'),
     error,
   };
 

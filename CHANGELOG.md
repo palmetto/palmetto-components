@@ -1,5 +1,63 @@
 Changelog
 
+## [0.138.8](https://github.com/palmetto/palmetto-components/compare/v0.138.7...v0.138.8) (2022-05-13)
+
+
+### Bug Fixes
+
+* OptionTile, SelectInput, SelectInputNative, TextareaInput focus states ([#782](https://github.com/palmetto/palmetto-components/issues/782)) ([7fa8da7](https://github.com/palmetto/palmetto-components/commit/7fa8da7b55d3ae2f4c860078bbbac30dda6059d3))
+
+## [0.138.7](https://github.com/palmetto/palmetto-components/compare/v0.138.6...v0.138.7) (2022-05-12)
+
+
+### Bug Fixes
+
+* **TextInput:** visual focus state ([#781](https://github.com/palmetto/palmetto-components/issues/781)) ([abe2603](https://github.com/palmetto/palmetto-components/commit/abe2603959602601c8bb55da7b29375dd6e6aa5f))
+
+## [0.138.6](https://github.com/palmetto/palmetto-components/compare/v0.138.5...v0.138.6) (2022-05-12)
+
+
+### Bug Fixes
+
+* **RadioGroup:** add visual focus state ([#780](https://github.com/palmetto/palmetto-components/issues/780)) ([72859b8](https://github.com/palmetto/palmetto-components/commit/72859b8a84af310126e0a0c741790a7d2d649422))
+
+## [0.138.5](https://github.com/palmetto/palmetto-components/compare/v0.138.4...v0.138.5) (2022-05-12)
+
+
+### Bug Fixes
+
+* **Checkbox:** add visual focus state ([#778](https://github.com/palmetto/palmetto-components/issues/778)) ([9f1ab6f](https://github.com/palmetto/palmetto-components/commit/9f1ab6f806309b279ac59d4f1370c0ebdfb92768))
+
+## [0.138.4](https://github.com/palmetto/palmetto-components/compare/v0.138.3...v0.138.4) (2022-05-12)
+
+
+### Bug Fixes
+
+* **Button:** html type property getting set to boolean value ([#777](https://github.com/palmetto/palmetto-components/issues/777)) ([c7a4681](https://github.com/palmetto/palmetto-components/commit/c7a4681f70c298fc751ccd7620bdea4f8b1b9431))
+
+## [0.138.3](https://github.com/palmetto/palmetto-components/compare/v0.138.2...v0.138.3) (2022-05-11)
+
+
+### Bug Fixes
+
+* **TextInput:** focus styling for error state ([#774](https://github.com/palmetto/palmetto-components/issues/774)) ([de7d628](https://github.com/palmetto/palmetto-components/commit/de7d628290d533bfd7b57592eee68c5c67e16823))
+
+## [0.138.2](https://github.com/palmetto/palmetto-components/compare/v0.138.1...v0.138.2) (2022-05-11)
+
+## [0.138.1](https://github.com/palmetto/palmetto-components/compare/v0.138.0...v0.138.1) (2022-05-11)
+
+
+### Bug Fixes
+
+* **Duration:** export and plural label ([#775](https://github.com/palmetto/palmetto-components/issues/775)) ([933fa9f](https://github.com/palmetto/palmetto-components/commit/933fa9fd636b87d6deb2c5f3ba3bc3008132ff36))
+
+# [0.138.0](https://github.com/palmetto/palmetto-components/compare/v0.137.3...v0.138.0) (2022-05-11)
+
+
+### Features
+
+* Duration component ([#771](https://github.com/palmetto/palmetto-components/issues/771)) ([8154492](https://github.com/palmetto/palmetto-components/commit/8154492f1158692e9615290046b5a1318e701164))
+
 ## [0.137.3](https://github.com/palmetto/palmetto-components/compare/v0.137.2...v0.137.3) (2022-05-11)
 
 

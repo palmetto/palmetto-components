@@ -175,7 +175,8 @@ react-select elements for which we do not own the markup */
 
       &:global(.react-select__control--is-focused) {
         border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
-        box-shadow: none;
+        box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow-focus)),
+        inset 0 0 0 1px var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
       }
 
       &:global(.react-select__control--is-disabled) {

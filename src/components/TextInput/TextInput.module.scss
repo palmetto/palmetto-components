@@ -192,49 +192,6 @@
     }
   }
 
-  &.error {
-    box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)),
-      inset 0 0 0 1px var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error));
-    background-color: var(--form-control-background-color-error, var(--INTERNAL_form-control-background-color-error));
-
-    input:focus {
-      outline: none;
-      background-color: transparent;
-    }
-
-    /* Necessary so that inset shadow that we use for border does not get covered by child elements. */
-    > * {
-      /* stylelint-disable */
-      &:focus {
-        box-shadow: inset 0 1px 0 0 var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error)),
-          inset 0 -1px 0 0 var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error));
-      }
-    }
-  }
-
-  /* Necessary so that inset shadow that we use for border does not get covered by child elements. */
-  &:not(.error) {
-    > * {
-      &:focus,
-      &.disabled {
-        &:not(input) {
-          box-shadow: inset 0 1px 0 0 var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus)),
-            inset 0 -1px 0 0 var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
-        }
-      }
-    }
-  }
-
-  &:focus-within {
-    outline: none;
-    box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)),
-      inset 0 0 0 1px var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
-  }
-
-  &.disabled {
-    @extend %disabled-base;
-  }
-
   > input {
     box-sizing: border-box;
     display: flex;
@@ -263,6 +220,44 @@
       @extend %disabled-base;
       background-color: transparent;
     }
+  }
+
+  &.error {
+    box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)),
+      inset 0 0 0 1px var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error));
+    background-color: var(--form-control-background-color-error, var(--INTERNAL_form-control-background-color-error));
+
+    &:focus-within {
+      background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
+    }
+
+    input:focus {
+      outline: none;
+      background-color: transparent;
+    }
+  }
+
+  /* Necessary so that inset shadow that we use for border does not get covered by child elements. */
+  &:not(.error) {
+    > * {
+      &:focus,
+      &.disabled {
+        &:not(input) {
+          box-shadow: inset 0 1px 0 0 var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus)),
+            inset 0 -1px 0 0 var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+        }
+      }
+    }
+  }
+
+  &:focus-within {
+    outline: none;
+    box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus)),
+      inset 0 0 0 1px var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+  }
+
+  &.disabled {
+    @extend %disabled-base;
   }
 
   .clear-button {
