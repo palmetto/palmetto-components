@@ -3,7 +3,7 @@ import { ENTER, SPACE } from '../../constants/keyCodes';
 import { Box, BoxProps } from '../Box/Box';
 
 export interface DetailsSummaryProps extends BoxProps {
-  isDetailsOpen: boolean;
+  isDetailsOpen?: boolean;
   onToggle?: (event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>) => void;
 }
 
@@ -51,7 +51,6 @@ export const DetailsSummary: React.FC<DetailsSummaryProps> = ({
       {...restProps}
       as="summary"
       display={display}
-      role="button"
       aria-expanded={isDetailsOpen}
       tabIndex={0}
       onClick={handleClick}

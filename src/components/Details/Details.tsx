@@ -8,7 +8,7 @@ export interface DetailsProps extends BoxProps {
   /**
    * Whether the details below the summary are opened. Directly corresponds to `open` property in <details> element.
    */
-  isOpen: boolean;
+  isOpen?: boolean;
 }
 
 const DetailsBaseComponent: React.FC<DetailsProps> = React.forwardRef<HTMLDetailsElement, DetailsProps>((
