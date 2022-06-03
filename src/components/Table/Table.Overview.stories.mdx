@@ -44,7 +44,7 @@ NOTE: all properties in a column object are optional, but we highly recommend in
         },
         {
           name: 'cellClassName',
-          type: 'string',
+          type: 'string | (function: (cell, row, rowIndex) => string)',
           description: 'A CSS class to be applied to all cells in the column',
         },
         {
