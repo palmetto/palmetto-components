@@ -1,5 +1,12 @@
 Changelog
 
+# [0.139.0](https://github.com/palmetto/palmetto-components/compare/v0.138.9...v0.139.0) (2022-06-03)
+
+
+### Features
+
+* **Table:** add support for table cell class names to be generated via a function ([#785](https://github.com/palmetto/palmetto-components/issues/785)) ([be13f5c](https://github.com/palmetto/palmetto-components/commit/be13f5c881a11eb10c471a40a0178b156ebd87fe))
+
 ## [0.138.9](https://github.com/palmetto/palmetto-components/compare/v0.138.8...v0.138.9) (2022-05-17)
 
 ## [0.138.8](https://github.com/palmetto/palmetto-components/compare/v0.138.7...v0.138.8) (2022-05-13)
