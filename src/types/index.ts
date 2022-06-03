@@ -145,7 +145,7 @@ export declare type Column = {
   /**
    * CSS Class to be applied uniformly to all individual cells in a column.
    */
-  cellClassName?: string;
+  cellClassName?: string | ((cell?: Cell, row?: Row, rowIndex?: number) => string);
   /**
    * The key value to be rendered based on the table `rows`.
    */
