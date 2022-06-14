@@ -1,5 +1,12 @@
 Changelog
 
+## [0.139.1](https://github.com/palmetto/palmetto-components/compare/v0.139.0...v0.139.1) (2022-06-14)
+
+
+### Bug Fixes
+
+* **Table:** apply bg color to Table rather then cells ([#788](https://github.com/palmetto/palmetto-components/issues/788)) ([5febe6f](https://github.com/palmetto/palmetto-components/commit/5febe6f661c4c5e78631cee53b96db70b12ee721))
+
 # [0.139.0](https://github.com/palmetto/palmetto-components/compare/v0.138.9...v0.139.0) (2022-06-03)
 
 
