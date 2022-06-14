@@ -1082,25 +1082,6 @@ You can use a ReactNode as your table header or cell.
           '--table-row-striped-background': 'var(--color-brand-grey-800)',
         }}>
           <Table rowKey="id" columns={columnConfig} rows={tableData} isStriped />
-        <div
-          style={{
-            '--table-border-color': 'var(--color-brand-grey-700)',
-            '--table-border-width': 'var(--size-border-md)',
-            '--table-background-color': 'var(--color-brand-grey-900)',
-            '--table-header-background-color': 'var(--color-brand-grey-900)',
-            '--table-font-color': 'var(--color-brand-grey-100)',
-            '--table-header-font-color': 'var(--color-brand-grey-100)',
-            '--table-header-font-size': 'var(--size-font-lg)',
-            '--table-font-size': 'var(--size-font-md)',
-            '--table-row-striped-background': 'var(--color-brand-grey-800)',
-          }}
-        >
-          <Table
-            rowKey="id"
-            columns={columnConfig}
-            rows={tableData}
-            isStriped
-          />
         </div>
       );
     }}
@@ -1112,7 +1093,7 @@ You can use a ReactNode as your table header or cell.
 Add custom classes to cells in a column by passing the `cellClassName` in the column config.
 
 <Canvas>
-  <Story name="Custom Column Classes">
+  <Story name="Custom Cell Classes">
     {() => {
       const columnConfig = [
         {
@@ -1136,6 +1117,8 @@ Add custom classes to cells in a column by passing the `cellClassName` in the co
     }}
   </Story>
 </Canvas>
+
+
 ## Component Design Tokens
 
 <table>
