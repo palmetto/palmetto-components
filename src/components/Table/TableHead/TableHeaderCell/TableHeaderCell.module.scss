@@ -38,12 +38,6 @@
     z-index: var(--size-z-index-sticky);
   }
 
-  &.sticky-column {
-    position: sticky;
-    z-index: calc(var(--size-z-index-sticky) + 1);
-    box-shadow: 2px 0 0 0 rgba(0, 0, 0, 0.05), 1px 0 0 0 rgba(0, 0, 0, 0.05), -2px 0 0 0 rgba(0, 0, 0, 0.05), -1px 0 0 0 rgba(0, 0, 0, 0.05);
-    background-color: var(--table-header-background-color, var(--INTERNAL_table-header-background-color));
-  }
 
   &.sticky-column-left {
     left: 0;
@@ -52,6 +46,14 @@
   &.sticky-column-right {
     right: 0;
   }
+
+  &.sticky-column {
+    position: sticky;
+    z-index: calc(var(--size-z-index-sticky) + 1);
+    box-shadow: 5px 0 5px -2px rgba(0, 0, 0, 0.1), -5px 0 5px -2px rgba(0, 0, 0, 0.1);
+    background-color: var(--table-header-background-color, var(--INTERNAL_table-header-background-color));
+  }
+
 
   &.align-right {
     text-align: right;
