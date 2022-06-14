@@ -22,18 +22,21 @@
     white-space: nowrap;
   }
 
-  &.sticky-column {
-    position: sticky;
-    z-index: calc(var(--size-z-index-sticky) - 1);
-    box-shadow: var(--size-box-shadow-md);
-  }
-
   &.sticky-column-left {
+    background-color: var(--table-background-color, var(--INTERNAL_table-background-color));
     left: 0;
   }
 
   &.sticky-column-right {
+    background-color: var(--table-background-color, var(--INTERNAL_table-background-color));
     right: 0;
+  }
+
+  &.sticky-column {
+    position: sticky;
+    z-index: calc(var(--size-z-index-sticky) - 1);
+    background-color: var(--table-background-color, var(--INTERNAL_table-background-color));
+    box-shadow: 5px 0px 5px -2px rgba(0,0,0,0.1), -5px 0px 5px -2px rgba(0,0,0,0.1);
   }
 
   &.align-right {
