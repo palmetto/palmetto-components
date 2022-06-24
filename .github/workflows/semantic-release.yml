@@ -38,12 +38,3 @@ jobs:
         run: yarn deploy-storybook --ci
         env:
           GH_TOKEN: palmetto:${{ secrets.GITHUB_TOKEN }}
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          registry-url: https://npm.pkg.github.com/
-      - name: Release to GitHub Packages
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn semantic-release
