@@ -9,6 +9,7 @@ jobs:
       actions: write
       contents: write
       packages: write
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -38,3 +39,15 @@ jobs:
         run: yarn deploy-storybook --ci
         env:
           GH_TOKEN: palmetto:${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@palmetto'
+      - name: Release to GitHub Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: yarn publish
