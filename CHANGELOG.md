@@ -1,5 +1,12 @@
 Changelog
 
+## [0.139.5](https://github.com/palmetto/palmetto-components/compare/v0.139.4...v0.139.5) (2022-06-28)
+
+
+### Bug Fixes
+
+* **Drawer:** prevent top/bottom placement drawers from being taller then viewport ([#793](https://github.com/palmetto/palmetto-components/issues/793)) ([52bed69](https://github.com/palmetto/palmetto-components/commit/52bed697d5edbb02f76b704ba2f8b650cef3d64e))
+
 ## [0.139.4](https://github.com/palmetto/palmetto-components/compare/v0.139.3...v0.139.4) (2022-06-25)
 
 ## [0.139.3](https://github.com/palmetto/palmetto-components/compare/v0.139.2...v0.139.3) (2022-06-24)
