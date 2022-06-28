@@ -70,6 +70,7 @@
     &.bottom {
       bottom: 0;
       width: 100%;
+      max-height: 100vh;
 
       :global {
         animation: fadeInUp 0.2s ease-out;
@@ -79,6 +80,7 @@
     &.top {
       top: 0;
       width: 100%;
+      max-height: 100vh;
 
       :global {
         animation: fadeInDown 0.2s ease-out;
