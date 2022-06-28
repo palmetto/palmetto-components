@@ -7,7 +7,11 @@ export default {
   title: 'Components/Drawer/Visual Regression Tests',
   component: Drawer,
   parameters: {
-    chromatic: { delay: 1000, pauseAnimationAtEnd: true, viewports: [350, 700, 1012, 1300] },
+    chromatic: {
+      delay: 1000,
+      pauseAnimationAtEnd: true,
+      viewports: [350, 700, 1012, 1300],
+    },
   },
 };
 
@@ -176,6 +180,13 @@ LeftDrawerHideOverlayTokenWidth.args = {
 export const TopDrawer = Template.bind({});
 TopDrawer.args = {
   ariaLabel: 'Top Drawer',
+  isOpen: true,
+  placement: 'top',
+};
+
+export const TopDrawerScroll = LongContentTemplate.bind({});
+TopDrawerScroll.args = {
+  ariaLabel: 'Top Drawer Scrolling',
   isOpen: true,
   placement: 'top',
 };
