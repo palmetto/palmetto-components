@@ -102,6 +102,16 @@ export const TableRow: FC<TableRowProps> = ({
     return column.dataKey && row ? row[column.dataKey] : null;
   };
 
+  const getCellClassName = (column: Column):string|undefined => {
+    if (column.cellClassName) {
+      if (typeof column.cellClassName === 'function') {
+        return column.cellClassName(column, row, rowIndex);
+      }
+      return column.cellClassName;
+    }
+    return undefined;
+  };
+
   return (
     <tr className={tableRowClasses}>
       {Object.values(columns).map((column, columnIndex) => (
@@ -125,7 +135,7 @@ export const TableRow: FC<TableRowProps> = ({
         ) : (
           <TableBodyCell
             align={column.align || align}
-            className={column.cellClassName}
+            className={getCellClassName(column)}
             emptyCellPlaceholder={column.emptyCellPlaceholder || emptyCellPlaceholder}
             truncateOverflow={column.truncateOverflow || truncateOverflow}
             key={getColumnKeys(columns)[columnIndex]}

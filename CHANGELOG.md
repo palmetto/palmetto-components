@@ -1,5 +1,32 @@
 Changelog
 
+## [0.139.5](https://github.com/palmetto/palmetto-components/compare/v0.139.4...v0.139.5) (2022-06-28)
+
+
+### Bug Fixes
+
+* **Drawer:** prevent top/bottom placement drawers from being taller then viewport ([#793](https://github.com/palmetto/palmetto-components/issues/793)) ([52bed69](https://github.com/palmetto/palmetto-components/commit/52bed697d5edbb02f76b704ba2f8b650cef3d64e))
+
+## [0.139.4](https://github.com/palmetto/palmetto-components/compare/v0.139.3...v0.139.4) (2022-06-25)
+
+## [0.139.3](https://github.com/palmetto/palmetto-components/compare/v0.139.2...v0.139.3) (2022-06-24)
+
+## [0.139.2](https://github.com/palmetto/palmetto-components/compare/v0.139.1...v0.139.2) (2022-06-24)
+
+## [0.139.1](https://github.com/palmetto/palmetto-components/compare/v0.139.0...v0.139.1) (2022-06-14)
+
+
+### Bug Fixes
+
+* **Table:** apply bg color to Table rather then cells ([#788](https://github.com/palmetto/palmetto-components/issues/788)) ([5febe6f](https://github.com/palmetto/palmetto-components/commit/5febe6f661c4c5e78631cee53b96db70b12ee721))
+
+# [0.139.0](https://github.com/palmetto/palmetto-components/compare/v0.138.9...v0.139.0) (2022-06-03)
+
+
+### Features
+
+* **Table:** add support for table cell class names to be generated via a function ([#785](https://github.com/palmetto/palmetto-components/issues/785)) ([be13f5c](https://github.com/palmetto/palmetto-components/commit/be13f5c881a11eb10c471a40a0178b156ebd87fe))
+
 ## [0.138.9](https://github.com/palmetto/palmetto-components/compare/v0.138.8...v0.138.9) (2022-05-17)
 
 ## [0.138.8](https://github.com/palmetto/palmetto-components/compare/v0.138.7...v0.138.8) (2022-05-13)

@@ -15,6 +15,7 @@
 
   .scroll-container {
     .table {
+      background-color: var(--table-background-color, var(--INTERNAL_table-background-color));
       margin-top: 1px;
       cursor: default;
       width: 100%;

@@ -44,7 +44,7 @@ NOTE: all properties in a column object are optional, but we highly recommend in
         },
         {
           name: 'cellClassName',
-          type: 'string',
+          type: 'string | (function: (cell, row, rowIndex) => string)',
           description: 'A CSS class to be applied to all cells in the column',
         },
         {
@@ -1087,6 +1087,37 @@ You can use a ReactNode as your table header or cell.
     }}
   </Story>
 </Canvas>
+
+## Custom Column Classes
+
+Add custom classes to cells in a column by passing the `cellClassName` in the column config.
+
+<Canvas>
+  <Story name="Custom Cell Classes">
+    {() => {
+      const columnConfig = [
+        {
+          heading: 'with cellClassName',
+          dataKey: 'id',
+          cellClassName:
+            'background-color-secondary-lightest',
+        },
+        {
+          heading: 'With headerClassName',
+          dataKey: 'color',
+        },
+        { heading: 'Flavor', dataKey: 'flavor' },
+      ];
+      const tableData = [
+        { id: 1, color: 'red', flavor: 'vanilla' },
+        { id: 2, color: 'blue', flavor: 'chocolate' },
+        { id: 3, color: 'green', flavor: 'strawberry' },
+      ];
+      return <Table rowKey="id" columns={columnConfig} rows={tableData} />;
+    }}
+  </Story>
+</Canvas>
+
 
 ## Component Design Tokens
 
