@@ -125,7 +125,6 @@ export const SelectInput: FC<SelectInputProps> = ({
   isClearable = false,
   isDisabled = false,
   isMulti = false,
-  isRequired = false,
   menuPortalTarget = null,
   name = '',
   onFocus = null,

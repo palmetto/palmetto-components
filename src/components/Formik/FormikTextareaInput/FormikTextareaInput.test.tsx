@@ -54,20 +54,6 @@ const renderForm = (initialValue: any, props: FormProps, testValueKey = testLabe
   </Formik>
 );
 
-function getByTextWithMarkup(text: string) {
-  // eslint-disable-next-line
-  // @ts-ignore
-  return (content, element) => {
-    const hasText = (node: Element) => node.textContent === text;
-    const elementHasText = hasText(element);
-    // eslint-disable-next-line
-    // @ts-ignore
-    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
-
-    return elementHasText && childrenDontHaveText;
-  };
-}
-
 describe('FormikTextareaInput', () => {
   describe('States', () => {
     describe('Autofocused', () => {
