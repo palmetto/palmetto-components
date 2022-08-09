@@ -1,5 +1,12 @@
 Changelog
 
+# [0.140.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.139.9...v0.140.0-beta.1) (2022-08-09)
+
+
+### Features
+
+* Remove asterisk from required input labels ([#798](https://github.com/palmetto/palmetto-components/issues/798)) ([d52e7af](https://github.com/palmetto/palmetto-components/commit/d52e7afc2a07674469752ed6eb8a4cabbb169998))
+
 ## [0.139.9](https://github.com/palmetto/palmetto-components/compare/v0.139.8...v0.139.9) (2022-08-09)
 
 ## [0.139.8](https://github.com/palmetto/palmetto-components/compare/v0.139.7...v0.139.8) (2022-08-01)
