@@ -118,15 +118,6 @@ describe('FormikRadioGroup', () => {
       });
     });
 
-    describe('Required', () => {
-      test('it renders asterisk next to the title', () => {
-        render(renderForm(null, { title: 'Mock Title', isRequired: true }));
-
-        const title = screen.getByText('*');
-        expect(title).toBeInTheDocument();
-      });
-    });
-
     describe('Pre-Selected Option', () => {
       test('an option is automatically selected', () => {
         render(renderForm('green', {}));

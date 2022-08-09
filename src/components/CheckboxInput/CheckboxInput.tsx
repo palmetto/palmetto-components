@@ -67,7 +67,7 @@ export interface CheckboxInputProps {
    */
   isIndeterminate?: CheckboxProps['isIndeterminate'];
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
   /**
@@ -125,6 +125,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
     onBlur: handleBlur,
     onChange: handleChange,
     onFocus: handleFocus,
+    isRequired,
     size,
     label,
     className: classNames('palmetto-components__variables__form-control', 'm-right-xs'),

@@ -74,11 +74,11 @@ export interface FileUploadProps extends BoxProps {
    */
   inputProps?: BoxProps & React.HTMLProps<HTMLInputElement>;
   /**
-   * Whether the file upload is disabled.
+   * Whether the file upload is disabled
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * Determines if input is required or not
    */
   isRequired?: boolean;
   /**
@@ -218,7 +218,6 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
                   {buttonText}
                 </Box>
               )}
-            {isRequired && <>&nbsp;*</>}
           </Box>
           <Box
             // We spread props here at that top to avoid inputProps overwriting high-level component props
@@ -235,6 +234,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
             disabled={isDisabled}
             aria-disabled={isDisabled}
             required={isRequired}
+            aria-required={isRequired}
           />
         </Button>
         {helpText && (

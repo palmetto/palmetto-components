@@ -30,7 +30,7 @@ export interface FormControlProps extends BoxProps {
    */
   isDisabled?: boolean;
   /**
-   * Sets the aria-required attribute on the input
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
 }

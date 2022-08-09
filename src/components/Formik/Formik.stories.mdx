@@ -55,8 +55,14 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         if (!values.areTermsChecked2) {
           errors.areTermsChecked2 = 'Toggle is required';
         }
+        if (!values.firstName) {
+          errors.firstName = 'First name is required';
+        }
+        if (!values.lastName) {
+          errors.lastName = 'Last name is required';
+        }
         if (!values.email) {
-          errors.email = 'Required';
+          errors.email = 'email is required';
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
           errors.email = 'Invalid email address';
         }
@@ -118,7 +124,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
             render={({ isSubmitting, values, setFieldValue, handleBlur, errors }) => (
               <Form>
                 <Box childGap="lg">
-                  <div>
+                  {/* <div>
                     <Box
                       direction={{
                         base: 'row',
@@ -146,7 +152,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                         Submit
                       </Button>
                     </Box>
-                  </div>
+                  </div> */}
                   <div>
                     <Field
                       type="text"
@@ -160,6 +166,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                         action('change')(event);
                         setFieldValue('firstName', event.target.value);
                       }}
+                      isRequired
                     />
                   </div>
                   <div>
@@ -169,6 +176,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                       name="lastName"
                       id="lastName"
                       component={FormikTextInput}
+                      isRequired
                     />
                   </div>
                   <div>

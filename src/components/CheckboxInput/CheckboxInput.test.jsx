@@ -106,6 +106,14 @@ describe('CheckboxInput', () => {
     expect(getByLabelText('test label')).toHaveAttribute('aria-labelledby', 'testInputLabel');
   });
 
+  test('sets required properties when isRequired is true', () => {
+    const { getByLabelText } = render(
+      <CheckboxInput id="testInput" label="test label" value="hello" onChange={() => null} isRequired />,
+    );
+    expect(getByLabelText('test label')).toHaveAttribute('aria-required', 'true');
+    expect(getByLabelText('test label')).toHaveAttribute('required');
+  });
+
   describe('error states', () => {
     test('renders error message if error exists and is not true', () => {
       const { getByText } = render(

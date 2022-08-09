@@ -50,7 +50,7 @@ export interface ToggleProps {
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
   /**
@@ -118,6 +118,7 @@ export const Toggle: FC<ToggleProps> = ({
     onBlur: handleBlur,
     onChange: handleChange,
     onFocus: handleFocus,
+    required: isRequired,
     type: 'checkbox',
     className: styles['toggle-input'],
   };

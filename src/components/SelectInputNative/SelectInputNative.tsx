@@ -98,6 +98,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
           disabled={isDisabled}
           name={name}
           id={id}
+          required={isRequired}
         >
           {optionsWithPlaceholder.map(option => (
             <Box

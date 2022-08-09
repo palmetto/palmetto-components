@@ -185,7 +185,7 @@ describe('SelectInputNative', () => {
     /* eslint-enable */
 
     describe('Is Required', () => {
-      test('it renders an asterisk in the label', () => {
+      test('it sets the required and aria-required properties on the input', () => {
         const mockedHandleChange = jest.fn();
 
         render(
@@ -201,6 +201,7 @@ describe('SelectInputNative', () => {
 
         const inputElement = screen.getByLabelText('Required Select');
         expect(inputElement).toHaveAttribute('aria-required', 'true');
+        expect(inputElement).toHaveAttribute('required');
       });
     });
 

@@ -75,7 +75,7 @@ export interface SelectInputProps {
    */
   isMulti?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
   /**
