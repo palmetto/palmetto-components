@@ -123,7 +123,6 @@ export const Toggle: FC<ToggleProps> = ({
   };
 
   const labelProps = {
-    isFieldRequired: isRequired,
     inputId: id,
     isDisabled,
     display: 'flex' as BoxProps['display'],

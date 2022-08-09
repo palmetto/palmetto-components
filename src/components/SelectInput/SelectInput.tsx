@@ -168,7 +168,6 @@ export const SelectInput: FC<SelectInputProps> = ({
   const inputClasses = classNames('react-select', { [styles.error]: error });
 
   const labelProps = {
-    isFieldRequired: isRequired,
     inputId: id,
     helpText,
     className: styles['select-input-label'],

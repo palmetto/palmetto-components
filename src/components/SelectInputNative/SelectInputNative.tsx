@@ -80,7 +80,6 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
       id={id}
       error={error}
       helpText={helpText}
-      isRequired={isRequired}
       isDisabled={isDisabled}
       {...restProps}
     >
@@ -91,6 +90,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
           as="select"
           aria-label={label}
           aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
+          aria-required={isRequired}
           value={value ?? ''}
           onChange={onChange}
           color={!value ? 'grey-light' : 'dark'}

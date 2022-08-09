@@ -192,14 +192,15 @@ describe('SelectInputNative', () => {
           <SelectInputNative
             id="testId"
             onChange={mockedHandleChange}
-            label="Select Label"
+            label="Required Select"
             options={selectOptions}
             isRequired
             value={selectOptions[0].value}
           />,
         );
 
-        expect(screen.getByText(getByTextWithMarkup('Select Label *'))).toBeInTheDocument();
+        const inputElement = screen.getByLabelText('Required Select');
+        expect(inputElement).toHaveAttribute('aria-required', 'true');
       });
     });
 

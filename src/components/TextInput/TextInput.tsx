@@ -225,7 +225,6 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
         error={error}
         label={label}
         id={id}
-        isRequired={isRequired}
         isDisabled={isDisabled}
         hideLabel={hideLabel}
         ref={ref}

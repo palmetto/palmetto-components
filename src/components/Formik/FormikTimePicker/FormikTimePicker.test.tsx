@@ -142,14 +142,6 @@ describe('FormikTimePicker', () => {
       });
     });
 
-    describe('Is Required', () => {
-      test('it renders an asterisk in the label', () => {
-        render(renderForm([], { isRequired: true }));
-
-        expect(screen.getByText(getByTextWithMarkup(`${testLabelName} *`))).toBeInTheDocument();
-      });
-    });
-
     describe('Is Disabled', () => {
       test('it disables the input', () => {
         render(renderForm([], { isDisabled: true }));

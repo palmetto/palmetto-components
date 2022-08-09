@@ -193,14 +193,6 @@ describe('TextInput', () => {
 
         expect(inputElement).toHaveAttribute('aria-required', 'true');
       });
-
-      test("it's label renders an asterisk indicating that it's required", () => {
-        render(<TextInput {...baseProps} isRequired />);
-
-        const labelElement = screen.getByText(getByTextWithMarkup(`${baseProps.label} *`));
-
-        expect(labelElement).toBeInTheDocument();
-      });
     });
 
     describe('Error', () => {

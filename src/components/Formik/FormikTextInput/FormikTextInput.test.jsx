@@ -149,9 +149,8 @@ describe('FormikTextInput', () => {
     describe('Form Label', () => {
       test('Input correctly passes props to dependency label component', async () => {
         const { getByText } = render(renderForm('', { isRequired: true }));
-        const labelElement = getByText(getByTextWithMarkup(`${testLabelName} *`));
+        const labelElement = getByText(`${testLabelName}`);
         expect(labelElement).toHaveAttribute('for', testLabelName);
-        expect(labelElement).toBeInTheDocument();
       });
     });
   });

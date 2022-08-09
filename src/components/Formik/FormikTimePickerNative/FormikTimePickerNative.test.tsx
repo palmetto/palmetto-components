@@ -107,10 +107,10 @@ describe('FormikTimePickerNative', () => {
     });
 
     describe('Is Required', () => {
-      test('it renders an asterisk in the label', () => {
+      test('it sets aria-required on the input', () => {
         render(renderForm(undefined, { isRequired: true }));
-
-        expect(screen.getByText(getByTextWithMarkup(`${testLabelName} *`))).toBeInTheDocument();
+        const inputElement = screen.getByLabelText(testLabelName);
+        expect(inputElement).toHaveAttribute('aria-required', 'true');
       });
     });
 
