@@ -30,7 +30,7 @@ export interface FormControlProps extends BoxProps {
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
 }
@@ -41,7 +41,6 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
     hideLabel,
     children,
     error,
-    isRequired,
     id,
     helpText,
     isDisabled,
@@ -51,7 +50,6 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
   ref,
 ) => {
   const labelProps = {
-    isFieldRequired: isRequired,
     inputId: id,
     helpText,
     margin: '0 0 xs 0',

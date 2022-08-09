@@ -12,7 +12,12 @@ import { FormLabel } from '../FormLabel/FormLabel';
 Use a CheckboxInput to allow users to make a range of selections (zero, one or many).
 
 <Canvas isExpanded>
-  <CheckboxInput id="example" label="Checkbox with a label" isChecked onChange={() => {}} />
+  <CheckboxInput
+    id="example"
+    label="Checkbox with a label"
+    isChecked
+    onChange={() => {}}
+  />
 </Canvas>
 
 ## Props
@@ -128,7 +133,7 @@ Use cases for intermediate checkboxes can sometimes be unclear. Below is an exam
 
 ## Required
 
-Use the `isRequired` prop to mark the input as required.
+Use the `isRequired` prop to set the `required` and `aria-required` on the underlying input element.
 Ideally, the label text should also indicate that the checkbox is required.
 
 <Canvas>

@@ -47,7 +47,7 @@ export interface RadioGroupProps {
    */
   isDisabled?: boolean;
   /**
-   * Determines if radio group is required or not. (Label will have an asterisk if required).
+   * If the radio group is required or not
    */
   isRequired?: boolean;
   /**
@@ -107,7 +107,6 @@ export const RadioGroup: FC<RadioGroupProps> = ({
         {(title || description) && (
           <legend className={styles.legend}>
             {title}
-            {isRequired && <span>&nbsp;*</span>}
             {description && <div className={styles.description}>{description}</div>}
           </legend>
         )}
@@ -120,6 +119,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
                 onChange={onChange}
                 option={option}
                 isDisabled={isDisabled || option.disabled || false}
+                isRequired={isRequired}
                 isSelected={value === option.value}
                 onBlur={onBlur}
                 onFocus={onFocus}

@@ -45,8 +45,7 @@ describe('CheckboxInput', () => {
     expect(FormLabel).toHaveBeenCalledWith(
       {
         inputId: 'testCheckbox',
-        helpText: 'i am help text',
-        isFieldRequired: false,
+        helpText: 'i am help text', 
         children: 'test checkbox',
         className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
         isDisabled: false,
@@ -71,7 +70,6 @@ describe('CheckboxInput', () => {
       {
         inputId: 'testCheckbox',
         helpText: undefined,
-        isFieldRequired: true,
         children: 'test checkbox',
         className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
         isDisabled: false,
@@ -108,6 +106,14 @@ describe('CheckboxInput', () => {
     expect(getByLabelText('test label')).toHaveAttribute('aria-labelledby', 'testInputLabel');
   });
 
+  test('sets required properties when isRequired is true', () => {
+    const { getByLabelText } = render(
+      <CheckboxInput id="testInput" label="test label" value="hello" onChange={() => null} isRequired />,
+    );
+    expect(getByLabelText('test label')).toHaveAttribute('aria-required', 'true');
+    expect(getByLabelText('test label')).toHaveAttribute('required');
+  });
+
   describe('error states', () => {
     test('renders error message if error exists and is not true', () => {
       const { getByText } = render(
@@ -137,7 +143,6 @@ describe('CheckboxInput', () => {
         {
           inputId: 'testCheckbox',
           helpText: undefined,
-          isFieldRequired: false,
           children: 'test checkbox',
           className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
           isDisabled: false,
@@ -161,7 +166,6 @@ describe('CheckboxInput', () => {
         {
           inputId: 'testCheckbox',
           helpText: undefined,
-          isFieldRequired: false,
           children: 'test checkbox',
           className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
           isDisabled: false,
@@ -186,7 +190,6 @@ describe('CheckboxInput', () => {
       {
         inputId: 'testCheckbox',
         helpText: undefined,
-        isFieldRequired: false,
         children: 'test checkbox',
         className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
         isDisabled: true,
@@ -211,7 +214,6 @@ describe('CheckboxInput', () => {
         {
           inputId: 'testCheckbox',
           helpText: undefined,
-          isFieldRequired: false,
           children: 'test checkbox',
           className: 'm-0',
           isDisabled: false,
@@ -234,7 +236,6 @@ describe('CheckboxInput', () => {
         {
           inputId: 'testCheckbox',
           helpText: undefined,
-          isFieldRequired: false,
           children: 'test checkbox',
           className: 'm-top-xs m-right-0 m-bottom-0 m-left-0',
           isDisabled: false,

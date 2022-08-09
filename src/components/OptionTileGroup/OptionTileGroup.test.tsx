@@ -41,7 +41,7 @@ describe('OptionTileGroup', () => {
   });
 
   describe('States', () => {
-    test('required', () => {
+    test('radios are required', () => {
       render(
         <OptionTileGroup
           name="required"
@@ -49,12 +49,37 @@ describe('OptionTileGroup', () => {
           options={[...options]}
           value="chocolate"
           isRequired
-          title="title"
+          title="required radios"
         />,
       );
 
-      const asterisk = screen.getByText('*');
-      expect(asterisk).toBeInTheDocument();
+      const selectedCheckboxOne = screen.getByLabelText('chocolate');
+      const selectedCheckboxTwo = screen.getByLabelText('strawberry');
+      const selectedCheckboxThree = screen.getByLabelText('vanilla');
+      expect(selectedCheckboxOne).toHaveAttribute('required');
+      expect(selectedCheckboxTwo).toHaveAttribute('required');
+      expect(selectedCheckboxThree).toHaveAttribute('required');
+    });
+
+    test('checkboxes are required', () => {
+      render(
+        <OptionTileGroup
+          name="required"
+          onChange={jest.fn()}
+          options={[...options]}
+          value="chocolate"
+          isRequired
+          title="required checkbox"
+          isMulti
+        />,
+      );
+
+      const selectedCheckboxOne = screen.getByLabelText('chocolate');
+      const selectedCheckboxTwo = screen.getByLabelText('strawberry');
+      const selectedCheckboxThree = screen.getByLabelText('vanilla');
+      expect(selectedCheckboxOne).toHaveAttribute('required');
+      expect(selectedCheckboxTwo).toHaveAttribute('required');
+      expect(selectedCheckboxThree).toHaveAttribute('required');
     });
 
     test('with option selected', () => {

@@ -61,7 +61,7 @@ export interface OptionTileGroupProps extends BoxProps {
    */
   isMulti?: boolean;
   /**
-   * Determines if option group is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on each option
    */
   isRequired?: boolean;
   /**
@@ -122,7 +122,6 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
             fontWeight="bold"
           >
             {title}
-            {isRequired && <span>&nbsp;*</span>}
             {description && (
               <Box margin="xs 0 0 0" fontWeight="regular">{description}</Box>
             )}
@@ -138,6 +137,7 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
               ...(!option.disabled && !isOptionSelected(option)) && { borderColor: 'grey-300' },
             }}
             isSelected={isOptionSelected(option)}
+            isRequired={isRequired}
             onChange={onChange}
             value={option.value}
             label={option.label}

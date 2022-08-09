@@ -41,6 +41,10 @@ export interface RadioInputProps {
    */
   isHidden?: boolean;
   /**
+   * The required and aria-required attributes
+   */
+  isRequired?: boolean;
+  /**
    * If the radio group should be disabled and not focusable.
    */
   isSelected?: boolean;
@@ -66,6 +70,7 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
     className = '',
     isDisabled = false,
     isHidden = false,
+    isRequired = false,
     isSelected = false,
     onBlur = undefined,
     onFocus = undefined,
@@ -96,6 +101,7 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
       {option && (
         <Box className={containerClasses} key={option.id} direction="row" alignItems="center" ref={ref}>
           <Box
+            aria-required={isRequired}
             as="input"
             id={option.id}
             type="radio"
@@ -107,6 +113,7 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
             onBlur={onBlur}
             disabled={isDisabled}
             position="absolute"
+            required={isRequired}
             style={{ opacity: '0' }}
             margin={isHidden ? '0' : '0 xs 0 2xs'}
           />

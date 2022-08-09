@@ -9,16 +9,6 @@ const selectOptions = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
-function getByTextWithMarkup(text) {
-  return (content, element) => {
-    const hasText = node => node.textContent === text;
-    const elementHasText = hasText(element);
-    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
-
-    return elementHasText && childrenDontHaveText;
-  };
-}
-
 describe('SelectInput', () => {
   describe('Callback Handling', () => {
     test('it fires onChange callback on change', async () => {
@@ -189,24 +179,6 @@ describe('SelectInput', () => {
         expect(screen.queryByText('Select...')).toBeNull();
         expect(screen.getByText('Chocolate')).toBeInTheDocument();
         expect(screen.getByText('Vanilla')).toBeInTheDocument();
-      });
-    });
-
-    describe('Is Required', () => {
-      test('it renders an asterisk in the label', () => {
-        const mockedHandleChange = jest.fn();
-
-        render(
-          <SelectInput
-            id="testId"
-            onChange={mockedHandleChange}
-            label="Select Label"
-            options={selectOptions}
-            isRequired
-          />,
-        );
-
-        expect(screen.getByText(getByTextWithMarkup('Select Label *'))).toBeInTheDocument();
       });
     });
 

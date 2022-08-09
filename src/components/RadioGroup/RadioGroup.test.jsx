@@ -166,7 +166,7 @@ describe('RadioGroup', () => {
     });
 
     describe('Required', () => {
-      test('it renders asterisk next to the title', () => {
+      test('it marks each radio as required', () => {
         render(
           <RadioGroup
             name="testName"
@@ -177,8 +177,16 @@ describe('RadioGroup', () => {
           />,
         );
 
-        const title = screen.getByText('*');
-        expect(title).toBeInTheDocument();
+        const purpleRadioInputLabel = screen.getByLabelText('Purple');
+        const greenRadioInputLabel = screen.getByLabelText('Green');
+        const blueRadioInputLabel = screen.getByLabelText('Blue');
+
+        expect(purpleRadioInputLabel).toHaveAttribute('aria-required', 'true');
+        expect(purpleRadioInputLabel).toHaveAttribute('required');
+        expect(greenRadioInputLabel).toHaveAttribute('aria-required', 'true');
+        expect(greenRadioInputLabel).toHaveAttribute('required');
+        expect(blueRadioInputLabel).toHaveAttribute('aria-required', 'true');
+        expect(blueRadioInputLabel).toHaveAttribute('required');
       });
     });
 

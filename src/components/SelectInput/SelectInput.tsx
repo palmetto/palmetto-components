@@ -75,7 +75,7 @@ export interface SelectInputProps {
    */
   isMulti?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
   /**
@@ -125,7 +125,6 @@ export const SelectInput: FC<SelectInputProps> = ({
   isClearable = false,
   isDisabled = false,
   isMulti = false,
-  isRequired = false,
   menuPortalTarget = null,
   name = '',
   onFocus = null,
@@ -168,7 +167,6 @@ export const SelectInput: FC<SelectInputProps> = ({
   const inputClasses = classNames('react-select', { [styles.error]: error });
 
   const labelProps = {
-    isFieldRequired: isRequired,
     inputId: id,
     helpText,
     className: styles['select-input-label'],
