@@ -42,44 +42,32 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
         { id: 'medium', value: 'medium', label: 'Medium' },
         { id: 'large', value: 'large', label: 'Large' },
       ];
-      const songOptions = [
-        { value: 'songOfStorms', label: 'Song of Storms'},
-        { value: 'songOfTime', label: 'Song of Time'},
-        { value: 'zeldaLullaby', label: 'Zelda\'s Lullaby'},
-      ];
       const handleValidation = values => {
         const errors = {};
         if (!values.areTermsChecked) {
-          errors.areTermsChecked = 'Checkbox is required';
+          errors.areTermsChecked = 'required';
         }
         if (!values.areTermsChecked2) {
-          errors.areTermsChecked2 = 'Toggle is required';
-        }
-        if (!values.firstName) {
-          errors.firstName = 'First name is required';
-        }
-        if (!values.lastName) {
-          errors.lastName = 'Last name is required';
+          errors.areTermsChecked2 = 'required';
         }
         if (!values.email) {
-          errors.email = 'email is required';
-        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+          errors.email = 'required';
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+        ) {
           errors.email = 'Invalid email address';
         }
         if (!values.flavor) {
-          errors.flavor = 'Flavor is required';
+          errors.flavor = 'required';
         }
         if (!values.sizes) {
-          errors.sizes = 'Size is required';
+          errors.sizes = 'required';
         }
         if (!values.timePicker) {
-          errors.timePicker = 'Time is required';
+          errors.timePicker = 'required';
         }
         if (!values.dateInput) {
-          errors.dateInput = 'Date is required';
-        }
-        if (!values.selectInputNative) {
-          errors.selectInputNative = 'Song is required';
+          errors.dateInput = 'required';
         }
         return errors;
       };
@@ -105,14 +93,11 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
               email: '',
               phoneInputMask: '',
               phoneInputMaskWithUnformattedValue: '',
-              creditCardInputMask: '',
-              creditCardInputMaskWithUnformattedValue: '',
               areTermsChecked: false,
               areTermsChecked2: false,
               flavor: null,
               flavor2: null,
               colors: [],
-              selectInputNative: '',
               sizes: null,
               timePicker: null,
               timePickerNative: null,
@@ -120,245 +105,161 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
             }}
             validate={handleValidation}
             onSubmit={handleSubmit}
-            handleChange={event => action('change')(event)}
-            render={({ isSubmitting, values, setFieldValue, handleBlur, errors }) => (
+          >
+            {({ isSubmitting, values, setFieldValue, handleBlur, errors }) => (
               <Form>
                 <Box childGap="lg">
-                  {/* <div>
-                    <Box
-                      direction={{
-                        base: 'row',
-                        tablet: 'row',
-                        desktop: 'row',
-                        hd: 'row',
-                      }}
-                      childGap={{
-                        base: 'sm',
-                        tablet: 'md',
-                        desktop: 'lg',
-                        hd: 'lg',
-                      }}
-                      width="100%"
-                    >
-                      <Field
-                        type="text"
-                        name="search"
-                        id="search"
-                        placeholder="Search"
-                        size="sm"
-                        component={FormikTextInput}
-                      />
-                      <Button type="submit" size="sm" isLoading={isSubmitting}>
-                        Submit
-                      </Button>
-                    </Box>
-                  </div> */}
-                  <div>
-                    <Field
-                      type="text"
-                      label="First Name"
-                      name="firstName"
-                      id="firstName"
-                      component={FormikTextInput}
-                      // With a custom onChange.
-                      // We preserve Formik's convention and relegate state form management back to the user.
-                      onChange={event => {
-                        action('change')(event);
-                        setFieldValue('firstName', event.target.value);
-                      }}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      type="text"
-                      label="Last Name"
-                      name="lastName"
-                      id="lastName"
-                      component={FormikTextInput}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Email"
-                      name="email"
-                      id="email"
-                      component={FormikTextInput}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Phone Input Mask Returning a Formatted Value"
-                      name="phoneInputMask"
-                      id="phoneInputMask"
-                      component={FormikTextInput}
-                      inputMask="phone"
-                      type="tel"
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Phone Input Mask Returning an Unformatted Value"
-                      name="phoneInputMaskWithUnformattedValue"
-                      id="phoneInputMaskWithUnformattedValue"
-                      component={FormikTextInput}
-                      inputMask="phone"
-                      type="tel"
-                      onChange={event => {
-                        setFieldValue('phoneInputMaskWithUnformattedValue', event.target.rawValue);
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Credit Card Input Mask Returning a Formatted Value"
-                      name="creditCardInputMask"
-                      id="creditCardInputMask"
-                      component={FormikTextInput}
-                      inputMask="creditCard"
-                      type="tel"
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Credit Card Input Mask Returning an Unformatted Value"
-                      name="creditCardInputMaskWithUnformattedValue"
-                      id="creditCardInputMaskWithUnformattedValue"
-                      component={FormikTextInput}
-                      inputMask="creditCard"
-                      type="tel"
-                      onChange={event => {
-                        setFieldValue(
-                          'creditCardInputMaskWithUnformattedValue',
-                          event.target.rawValue,
-                        );
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Flavor with Custom onChange"
-                      name="flavor"
-                      id="flavor"
-                      options={flavorOptions}
-                      component={FormikSelectInput}
-                      // With a custom onChange.
-                      // We preserve Formik's convention and relegate form state management back to the user.
-                      onChange={event => {
-                        action('change')(event.target.value);
-                        setFieldValue('flavor', event.target.value);
-                      }}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Flavor without custom onChange"
-                      name="flavor2"
-                      id="flavor2"
-                      options={flavorOptions}
-                      component={FormikSelectInput}
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Colors"
-                      name="colors"
-                      id="colors"
-                      isMulti
-                      options={colorOptions}
-                      component={FormikSelectInput}
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Native select input"
-                      name="selectInputNative"
-                      id="selectInputNative"
-                      options={songOptions}
-                      component={FormikSelectInputNative}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Describe your perfect meal"
-                      name="meal"
-                      id="meal"
-                      component={FormikTextareaInput}
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      title="Sizes"
-                      name="sizes"
-                      options={sizeOptions}
-                      component={FormikRadioGroup}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Select Time"
-                      name="timePicker"
-                      component={FormikTimePicker}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Select Time With Native Select"
-                      name="timePickerNative"
-                      component={FormikTimePickerNative}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Terms and Conditions"
-                      name="areTermsChecked"
-                      id="areTermsChecked"
-                      component={FormikCheckboxInput}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <Field
-                      label="Terms and Conditions Toggle"
-                      name="areTermsChecked2"
-                      id="areTermsChecked2"
-                      component={FormikToggle}
-                      isRequired
-                    />
-                  </div>
-                  <div>
-                    <DateInput
-                      datePickerProps={{
-                        onChange: date => { setFieldValue('dateInput', date) },
-                        selected: values.dateInput,
-                      }}
-                      textInputProps={{
-                        label: 'Date Input',
-                        name: 'dateInput',
-                        id: 'dateInput',
-                        error: errors.dateInput,
-                        isRequired: true,
-                        onClear: () => { setFieldValue('dateInput', null) },
-                        onBlur: handleBlur,
-                      }}
-                    />
-                  </div>
-                  <Button type="submit" className="m-bottom-md" isLoading={isSubmitting}>
+                  <Field
+                    type="text"
+                    label="First Name"
+                    name="firstName"
+                    id="firstName"
+                    component={FormikTextInput}
+                    // With a custom onChange.
+                    // We preserve Formik's convention and relegate state form management back to the user.
+                    onChange={event => {
+                      setFieldValue('firstName', event.target.value);
+                    }}
+                  />
+                  <Field
+                    type="text"
+                    label="Last Name"
+                    name="lastName"
+                    id="lastName"
+                    component={FormikTextInput}
+                  />
+                  <Field
+                    label="Email"
+                    name="email"
+                    id="email"
+                    component={FormikTextInput}
+                    isRequired
+                  />
+                  <Field
+                    label="Phone Input Mask Returning a Formatted Value"
+                    name="phoneInputMask"
+                    id="phoneInputMask"
+                    component={FormikTextInput}
+                    inputMask="phone"
+                    type="tel"
+                  />
+                  <Field
+                    label="Phone Input Mask Returning an Unformatted Value"
+                    name="phoneInputMaskWithUnformattedValue"
+                    id="phoneInputMaskWithUnformattedValue"
+                    component={FormikTextInput}
+                    inputMask="phone"
+                    type="tel"
+                    onChange={event => {
+                      setFieldValue(
+                        'phoneInputMaskWithUnformattedValue',
+                        event.target.rawValue,
+                      );
+                    }}
+                  />
+                  <Field
+                    label="Flavor with Custom onChange"
+                    name="flavor"
+                    id="flavor"
+                    options={flavorOptions}
+                    component={FormikSelectInputNative}
+                    // With a custom onChange.
+                    // We preserve Formik's convention and relegate form state management back to the user.
+                    onChange={event => {
+                      setFieldValue('flavor', event.target.value);
+                    }}
+                    isRequired
+                  />
+                  <Field
+                    label="Flavor without custom onChange"
+                    name="flavor2"
+                    id="flavor2"
+                    options={flavorOptions}
+                    component={FormikSelectInputNative}
+                  />
+                  <Field
+                    label="Multi-select Colors"
+                    name="colors"
+                    id="colors"
+                    isMulti
+                    options={colorOptions}
+                    component={FormikSelectInput}
+                  />
+                  <Field
+                    label="Describe your perfect meal"
+                    name="meal"
+                    id="meal"
+                    component={FormikTextareaInput}
+                  />
+                  <Field
+                    title="Sizes"
+                    name="sizes"
+                    id="sizes"
+                    options={sizeOptions}
+                    component={FormikRadioGroup}
+                    isRequired
+                  />
+                  <Field
+                    label="Select Time With Native Select"
+                    name="timePicker"
+                    id="timePicker"
+                    component={FormikTimePickerNative}
+                    isRequired
+                  />
+                  <Field
+                    label="Terms and Conditions"
+                    name="areTermsChecked"
+                    id="areTermsChecked"
+                    component={FormikCheckboxInput}
+                    isRequired
+                  />
+                  <Field
+                    label="Terms and Conditions Toggle"
+                    name="areTermsChecked2"
+                    id="areTermsChecked2"
+                    component={FormikToggle}
+                    isRequired
+                  />
+                  <DateInput
+                    datePickerProps={{
+                      onChange: date => {
+                        setFieldValue('dateInput', date);
+                      },
+                      selected: values.dateInput,
+                    }}
+                    textInputProps={{
+                      label: 'Date Input',
+                      name: 'dateInput',
+                      id: 'dateInput',
+                      error: errors.dateInput,
+                      isRequired: true,
+                      onClear: () => {
+                        setFieldValue('dateInput', null);
+                      },
+                      onBlur: handleBlur,
+                    }}
+                  />
+                  <Button
+                    type="submit"
+                    className="m-bottom-md"
+                    isLoading={isSubmitting}
+                  >
                     Submit
                   </Button>
-                  <pre>{JSON.stringify(formatOutput(values, isSubmitting), undefined, 2)}</pre>
-                  <pre>{JSON.stringify(formatOutput(errors), undefined, 2)}</pre>
+                  <pre>
+                    {JSON.stringify(
+                      formatOutput(values, isSubmitting),
+                      undefined,
+                      2,
+                    )}
+                  </pre>
+                  <pre>
+                    {JSON.stringify(formatOutput(errors), undefined, 2)}
+                  </pre>
                 </Box>
               </Form>
             )}
-          />
+          </Formik>
         </Box>
       );
     }}
