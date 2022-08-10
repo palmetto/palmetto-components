@@ -45,6 +45,12 @@ export default () => {
   ];
   const handleValidation = values => {
     const errors = {};
+    if (!values.firstName) {
+      errors.firstName = 'required';
+    }
+    if (!values.lastName) {
+      errors.lastName = 'required';
+    }
     if (!values.areTermsChecked) {
       errors.areTermsChecked = 'required';
     }
@@ -121,6 +127,7 @@ export default () => {
                 onChange={event => {
                   setFieldValue('firstName', event.target.value);
                 }}
+                isRequired
               />
               <Field
                 type="text"
@@ -128,6 +135,7 @@ export default () => {
                 name="lastName"
                 id="lastName"
                 component={FormikTextInput}
+                isRequired
               />
               <Field
                 label="Email"

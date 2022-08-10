@@ -44,6 +44,12 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
       ];
       const handleValidation = values => {
         const errors = {};
+        if (!values.firstName) {
+          errors.firstName = 'required';
+        }
+        if (!values.lastName) {
+          errors.lastName = 'required';
+        }
         if (!values.areTermsChecked) {
           errors.areTermsChecked = 'required';
         }
@@ -104,6 +110,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
               dateInput: '',
             }}
             validate={handleValidation}
+            validateOnChange={false}
             onSubmit={handleSubmit}
           >
             {({ isSubmitting, values, setFieldValue, handleBlur, errors }) => (
@@ -120,6 +127,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                     onChange={event => {
                       setFieldValue('firstName', event.target.value);
                     }}
+                    isRequired
                   />
                   <Field
                     type="text"
@@ -127,6 +135,7 @@ Formik Form demonstrates a pattern for integrating the input elements found in P
                     name="lastName"
                     id="lastName"
                     component={FormikTextInput}
+                    isRequired
                   />
                   <Field
                     label="Email"
