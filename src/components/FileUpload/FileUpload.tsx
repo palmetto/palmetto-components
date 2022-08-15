@@ -129,7 +129,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
     isRequired = false,
     multiple = false,
     onClearFiles = undefined,
-    requiredIndicator = ' *',
+    requiredIndicator = <>&nbsp;*</>,
     size = 'md',
     variant = 'light',
     ...restProps

@@ -62,6 +62,10 @@ export interface ToggleProps {
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: React.ReactNode;
+  /**
    * The size of the toggle.
    */
   size?: ToggleSize | ResponsiveProp<ToggleSize>;
@@ -80,6 +84,7 @@ export const Toggle: FC<ToggleProps> = ({
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
+  requiredIndicator = ' *',
   size = 'md',
 }) => {
   const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
@@ -130,6 +135,8 @@ export const Toggle: FC<ToggleProps> = ({
     direction: 'row' as BoxProps['direction'],
     childGap: 'xs' as BoxProps['childGap'],
     alignItems: helpText ? 'flex-start' : 'center' as BoxProps['alignItems'],
+    isFieldRequired: isRequired,
+    requiredIndicator,
   };
 
   return (
