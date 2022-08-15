@@ -3,7 +3,7 @@
   border: 1px solid var(--option-tile-border-color, var(--form-control-border-color, var(--INTERNAL_form-control-border-color)));
   border-radius: var(--option-tile-border-radius, var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius)));
   font-family: var(--option-tile-font-family, var(--form-control-font-family, var(--INTERNAL_form-control-font-family)));
-  line-height: var(--form-control-line-height, var(--INTERNAL_form-control-line-height));
+  line-height: var(--option-tile-line-height, var(--form-control-line-height, var(--INTERNAL_form-control-line-height)));
 
   &:focus-within {
     box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus)),
