@@ -9,6 +9,18 @@ const selectOptions = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
+function getByTextWithMarkup(text) {
+  return (content, element) => {
+    const hasText = node => node.textContent === text;
+    const elementHasText = hasText(element);
+    const childrenDontHaveText = Array.from(element.children).every(
+      child => !hasText(child),
+    );
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
+
 describe('SelectInput', () => {
   describe('Callback Handling', () => {
     test('it fires onChange callback on change', async () => {
@@ -92,7 +104,12 @@ describe('SelectInput', () => {
       const mockedHandleChange = jest.fn();
 
       render(
-        <SelectInput id="testInput" label="hidden label" hideLabel onChange={mockedHandleChange} />,
+        <SelectInput
+          id="testInput"
+          label="hidden label"
+          hideLabel
+          onChange={mockedHandleChange}
+        />,
       );
       const inputElement = screen.getByLabelText('hidden label');
       expect(inputElement).not.toHaveAttribute('aria-labelledby');
@@ -118,7 +135,10 @@ describe('SelectInput', () => {
       test('assigns the "aria-labelledby" attribute and renders label correct id, when a label is provided', () => {
         render(<SelectInput id="testInput" label="test label" />);
         const inputElement = screen.getByLabelText('test label');
-        expect(inputElement).toHaveAttribute('aria-labelledby', 'testInputLabel');
+        expect(inputElement).toHaveAttribute(
+          'aria-labelledby',
+          'testInputLabel',
+        );
         expect(document.getElementById('testInputLabel')).toBeInTheDocument();
       });
     });
@@ -182,6 +202,26 @@ describe('SelectInput', () => {
       });
     });
 
+    describe('Is Required', () => {
+      test('it renders an asterisk in the label', () => {
+        const mockedHandleChange = jest.fn();
+
+        render(
+          <SelectInput
+            id="testId"
+            onChange={mockedHandleChange}
+            label="Select Label"
+            options={selectOptions}
+            isRequired
+          />,
+        );
+
+        expect(
+          screen.getByText(getByTextWithMarkup('Select Label *')),
+        ).toBeInTheDocument();
+      });
+    });
+
     describe('Is Disabled', () => {
       test('it disables the input', () => {
         const mockedHandleChange = jest.fn();
@@ -233,7 +273,9 @@ describe('SelectInput', () => {
           />,
         );
 
-        expect(container.querySelector('.react-select__clear-indicator')).not.toBeInTheDocument();
+        expect(
+          container.querySelector('.react-select__clear-indicator'),
+        ).not.toBeInTheDocument();
       });
 
       test('it renders the X icon if input has value and is clearable', () => {
@@ -250,18 +292,16 @@ describe('SelectInput', () => {
           />,
         );
 
-        expect(container.querySelector('.react-select__clear-indicator')).toBeInTheDocument();
+        expect(
+          container.querySelector('.react-select__clear-indicator'),
+        ).toBeInTheDocument();
       });
     });
   });
 
   describe('Sizes', () => {
     const mockedHandleChange = jest.fn();
-    const sizes = [
-      'sm',
-      'md',
-      'lg',
-    ];
+    const sizes = ['sm', 'md', 'lg'];
 
     const breakpoints = ['tablet', 'desktop', 'hd'];
 
@@ -294,7 +334,9 @@ describe('SelectInput', () => {
             />,
           );
 
-          expect(container.children[0].getAttribute('class')).toContain(`size-${size}-${breakpoint}`);
+          expect(container.children[0].getAttribute('class')).toContain(
+            `size-${size}-${breakpoint}`,
+          );
         });
       });
     });
@@ -317,9 +359,15 @@ describe('SelectInput', () => {
       );
 
       expect(container.children[0].getAttribute('class')).toContain('size-sm');
-      expect(container.children[0].getAttribute('class')).toContain('size-md-tablet');
-      expect(container.children[0].getAttribute('class')).toContain('size-lg-desktop');
-      expect(container.children[0].getAttribute('class')).toContain('size-sm-hd');
+      expect(container.children[0].getAttribute('class')).toContain(
+        'size-md-tablet',
+      );
+      expect(container.children[0].getAttribute('class')).toContain(
+        'size-lg-desktop',
+      );
+      expect(container.children[0].getAttribute('class')).toContain(
+        'size-sm-hd',
+      );
     });
   });
 });

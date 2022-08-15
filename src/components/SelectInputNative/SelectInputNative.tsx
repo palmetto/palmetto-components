@@ -25,6 +25,10 @@ export interface SelectInputNativeProps extends BoxProps, FormControlProps {
    */
   name?: string;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: React.ReactNode;
+  /**
    * Size of the input. ('sm' | 'md' | 'lg')
    */
   size?: SelectInputNativeSize | ResponsiveProp<SelectInputNativeSize>;
@@ -52,6 +56,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
   options,
   onChange,
   placeholder = 'Select...',
+  requiredIndicator = ' *',
   size = 'md',
   ...restProps
 }) => {
@@ -81,6 +86,8 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
       error={error}
       helpText={helpText}
       isDisabled={isDisabled}
+      isRequired={isRequired}
+      requiredIndicator={requiredIndicator}
       {...restProps}
     >
       <Box

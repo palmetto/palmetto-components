@@ -100,6 +100,10 @@ export interface SelectInputProps {
    */
   placeholder?: string;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
+  /**
    * The size of the text input.
    */
   size?: 'sm' | 'md' | 'lg' | ResponsiveProp<'sm' | 'md' | 'lg'>;
@@ -125,11 +129,13 @@ export const SelectInput: FC<SelectInputProps> = ({
   isClearable = false,
   isDisabled = false,
   isMulti = false,
+  isRequired = false,
   menuPortalTarget = null,
   name = '',
   onFocus = null,
   onBlur = null,
   placeholder = undefined,
+  requiredIndicator = ' *',
   size = 'md',
   ...restProps
 }) => {
@@ -171,6 +177,8 @@ export const SelectInput: FC<SelectInputProps> = ({
     helpText,
     className: styles['select-input-label'],
     isDisabled,
+    isFieldRequired: isRequired,
+    requiredIndicator,
   };
 
   const ClearIndicator = (props: IndicatorProps<OptionTypeBase, boolean>) => (

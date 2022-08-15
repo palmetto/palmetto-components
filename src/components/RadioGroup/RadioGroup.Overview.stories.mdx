@@ -163,6 +163,52 @@ Use the `isRequired` prop to mark the group as requiring at least one selection.
   </Story>
 </Canvas>
 
+You can remove or customize the required indicator using the `requiredIndicator` prop.
+
+<Canvas>
+  <Story name="Custom Required Indicator">
+    {() => {
+      const [value, setValue] = useState(false);
+      const [value2, setValue2] = useState(false);
+      const options = [
+        {
+          id: 'cat',
+          value: 'cat',
+          label: 'Cat',
+        },
+        {
+          id: 'dog',
+          value: 'dog',
+          label: 'Dog',
+        },
+      ];
+      return (
+        <Box childGap="md">
+          <RadioGroup
+            title="Required Without Indicator"
+            name="withoutIndicator"
+            onChange={event => setValue(event.target.value)}
+            value={value}
+            isRequired
+            options={options}
+            requiredIndicator={null}
+          />
+          <RadioGroup
+            title="Required Custom Indicator"
+            name="customIndicator"
+            onChange={event => setValue2(event.target.value)}
+            value={value2}
+            isRequired
+            options={options}
+            requiredIndicator=" (required)"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
 ## Pre-Selected Option
 
 Use the `value` prop to pre-select an option.

@@ -90,6 +90,10 @@ export interface FileUploadProps extends BoxProps {
    */
   onClearFiles?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
+  /**
    * Size of component. Matches Button sizes.
    */
   size?: ButtonSize;
@@ -125,6 +129,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
     isRequired = false,
     multiple = false,
     onClearFiles = undefined,
+    requiredIndicator = ' *',
     size = 'md',
     variant = 'light',
     ...restProps
@@ -218,6 +223,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
                   {buttonText}
                 </Box>
               )}
+            {isRequired && requiredIndicator && <span>{requiredIndicator}</span>}
           </Box>
           <Box
             // We spread props here at that top to avoid inputProps overwriting high-level component props

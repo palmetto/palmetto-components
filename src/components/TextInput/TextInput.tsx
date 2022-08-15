@@ -110,6 +110,10 @@ export interface TextInputProps {
    */
   prefix?: ReactNode;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
+  /**
    * The size of the text input.
    */
   size?: TextInputSize | ResponsiveProp<TextInputSize>;
@@ -150,6 +154,7 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
       onFocus = undefined,
       prefix = undefined,
       placeholder = '',
+      requiredIndicator = ' *',
       suffix = undefined,
       size = 'md',
       type = 'text',
@@ -226,8 +231,10 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
         error={error}
         label={label}
         id={id}
-        isDisabled={isDisabled}
         hideLabel={hideLabel}
+        isDisabled={isDisabled}
+        isRequired={isRequired}
+        requiredIndicator={requiredIndicator}
         ref={ref}
         {...restProps}
       >

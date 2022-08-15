@@ -47,7 +47,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
 
 ## Required
 
-Use the `isRequired` prop to set the `required` and `aria-required` on the underlying input element
+Use the `isRequired` prop to set the `required` and `aria-required` on the underlying input element.
 
 <Canvas>
   <Story name="Required">
@@ -57,10 +57,41 @@ Use the `isRequired` prop to set the `required` and `aria-required` on the under
         <TextInput
           id="required"
           value={value}
-          label="TextInput Label"
+          label="Required Text Input"
           onChange={event => setValue(event.target.value)}
           isRequired
         />
+      );
+    }}
+  </Story>
+</Canvas>
+
+You can remove or customize the required indicator using the `requiredIndicator` prop.
+
+<Canvas>
+  <Story name="Custom Required Indicator">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value2, setValue2] = useState('');
+      return (
+        <Box childGap="md">
+          <TextInput
+            id="requiredWithoutIndicator"
+            label="Required Without Indicator"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            isRequired
+            requiredIndicator={null}
+          />
+          <TextInput
+            id="requiredCustomIndicator"
+            label="Required Custom Indicator"
+            value={value2}
+            onChange={event => setValue2(event.target.value)}
+            isRequired
+            requiredIndicator=" (required)"
+          />
+        </Box>
       );
     }}
   </Story>
@@ -393,7 +424,7 @@ Use the `maxLength` prop to limit the number of characters that can be entered i
 
 ## Validation Error
 
-Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. 
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`.
 
 <Canvas>
   <Story name="Required with Error and Validation Message">

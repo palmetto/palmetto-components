@@ -1,26 +1,24 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  screen,
-} from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { RadioGroup } from './RadioGroup';
 
-const groupOptions = [{
-  id: 'purple',
-  value: 'purple',
-  label: 'Purple',
-},
-{
-  id: 'green',
-  value: 'green',
-  label: 'Green',
-},
-{
-  id: 'blue',
-  value: 'blue',
-  label: 'Blue',
-}];
+const groupOptions = [
+  {
+    id: 'purple',
+    value: 'purple',
+    label: 'Purple',
+  },
+  {
+    id: 'green',
+    value: 'green',
+    label: 'Green',
+  },
+  {
+    id: 'blue',
+    value: 'blue',
+    label: 'Blue',
+  },
+];
 
 describe('RadioGroup', () => {
   describe('Callback Handling', () => {
@@ -43,7 +41,9 @@ describe('RadioGroup', () => {
 
       test('calls onChange and passes checked value in event', () => {
         let value = null;
-        const mockedHandleChangeWithValue = jest.fn(event => { value = event.target.value; });
+        const mockedHandleChangeWithValue = jest.fn(event => {
+          value = event.target.value;
+        });
 
         render(
           <RadioGroup
@@ -188,6 +188,21 @@ describe('RadioGroup', () => {
         expect(blueRadioInputLabel).toHaveAttribute('aria-required', 'true');
         expect(blueRadioInputLabel).toHaveAttribute('required');
       });
+
+      test('it renders default required indicator', () => {
+        render(
+          <RadioGroup
+            name="testName"
+            onChange={jest.fn()}
+            options={groupOptions}
+            title="Mock Title"
+            isRequired
+          />,
+        );
+
+        const requiredIndicator = screen.getByText('*');
+        expect(requiredIndicator).toBeInTheDocument();
+      });
     });
 
     describe('Pre-Selected Option', () => {
@@ -257,7 +272,9 @@ describe('RadioGroup', () => {
           />,
         );
 
-        const validationMessage = screen.getByText('Helpful Validation Message');
+        const validationMessage = screen.getByText(
+          'Helpful Validation Message',
+        );
         expect(validationMessage).toBeInTheDocument();
       });
     });

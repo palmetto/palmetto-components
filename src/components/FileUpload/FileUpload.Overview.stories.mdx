@@ -415,15 +415,49 @@ display a proper error when necessary.
             onChange={handleChange}
             files={files}
             isRequired
-            size="sm"
             error={error}
             fileNameMaxLength={14}
           />
           <div>
-            <Button onClick={handleSubmit} size="sm">
+            <Button onClick={handleSubmit}>
               Submit with no files to see error.
             </Button>
           </div>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+You can remove or customize the required indicator using the `requiredIndicator` prop.
+
+<Canvas>
+  <Story name="Custom Required Indicator">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = event => {
+        setFiles(event.target.files);
+      };
+      return (
+        <Box childGap="md">
+          <FileUpload
+            labelText="My File"
+            id="myFile"
+            onChange={handleChange}
+            files={files}
+            buttonText="Without Indicator"
+            isRequired
+            requiredIndicator={null}
+          />
+          <FileUpload
+            labelText="My File"
+            id="myFile"
+            onChange={handleChange}
+            files={files}
+            buttonText="Custom Indicator"
+            isRequired
+            requiredIndicator=" (required)"
+          />
         </Box>
       );
     }}

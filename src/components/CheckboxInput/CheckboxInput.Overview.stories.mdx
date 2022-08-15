@@ -134,7 +134,6 @@ Use cases for intermediate checkboxes can sometimes be unclear. Below is an exam
 ## Required
 
 Use the `isRequired` prop to set the `required` and `aria-required` on the underlying input element.
-Ideally, the label text should also indicate that the checkbox is required.
 
 <Canvas>
   <Story name="Required">
@@ -148,6 +147,37 @@ Ideally, the label text should also indicate that the checkbox is required.
           onChange={event => setValue(event.target.checked)}
           isRequired
         />
+      );
+    }}
+  </Story>
+</Canvas>
+
+You can remove or customize the required indicator using the `requiredIndicator` prop.
+
+<Canvas>
+  <Story name="Custom Required Indicator">
+    {() => {
+      const [value, setValue] = useState(false);
+      const [value2, setValue2] = useState(false);
+      return (
+        <Box childGap="md">
+          <CheckboxInput
+            id="requiredCheckboxNull"
+            label="Required Without Indicator"
+            isChecked={value}
+            onChange={event => setValue(event.target.checked)}
+            isRequired
+            requiredIndicator={null}
+          />
+          <CheckboxInput
+            id="requiredCheckboxCustom"
+            label="Required Custom Indicator"
+            isChecked={value2}
+            onChange={event => setValue2(event.target.checked)}
+            isRequired
+            requiredIndicator=" (required)"
+          />
+        </Box>
       );
     }}
   </Story>

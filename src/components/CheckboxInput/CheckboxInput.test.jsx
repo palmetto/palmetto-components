@@ -45,10 +45,12 @@ describe('CheckboxInput', () => {
     expect(FormLabel).toHaveBeenCalledWith(
       {
         inputId: 'testCheckbox',
-        helpText: 'i am help text', 
+        helpText: 'i am help text',
         children: 'test checkbox',
         className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
         isDisabled: false,
+        isFieldRequired: false,
+        requiredIndicator: ' *',
       },
       {},
     );
@@ -73,6 +75,8 @@ describe('CheckboxInput', () => {
         children: 'test checkbox',
         className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
         isDisabled: false,
+        isFieldRequired: true,
+        requiredIndicator: ' *',
       },
       {},
     );
@@ -146,6 +150,8 @@ describe('CheckboxInput', () => {
           children: 'test checkbox',
           className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
           isDisabled: false,
+          isFieldRequired: false,
+          requiredIndicator: ' *',
         },
         {},
       );
@@ -169,6 +175,8 @@ describe('CheckboxInput', () => {
           children: 'test checkbox',
           className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
           isDisabled: false,
+          isFieldRequired: false,
+          requiredIndicator: ' *',
         },
         {},
       );
@@ -193,6 +201,8 @@ describe('CheckboxInput', () => {
         children: 'test checkbox',
         className: 'm-top-2xs m-right-0 m-bottom-0 m-left-0',
         isDisabled: true,
+        isFieldRequired: false,
+        requiredIndicator: ' *',
       },
       {},
     );
@@ -217,6 +227,8 @@ describe('CheckboxInput', () => {
           children: 'test checkbox',
           className: 'm-0',
           isDisabled: false,
+          isFieldRequired: false,
+          requiredIndicator: ' *',
         },
         {},
       );
@@ -239,6 +251,8 @@ describe('CheckboxInput', () => {
           children: 'test checkbox',
           className: 'm-top-xs m-right-0 m-bottom-0 m-left-0',
           isDisabled: false,
+          isFieldRequired: false,
+          requiredIndicator: ' *',
         },
         {},
       );

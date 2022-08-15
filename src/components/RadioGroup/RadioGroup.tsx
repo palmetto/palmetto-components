@@ -59,6 +59,10 @@ export interface RadioGroupProps {
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: React.ReactNode;
+  /**
    * Size of the radio icons in the group.
    */
   size?: RadioInputProps['size'];
@@ -88,6 +92,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
+  requiredIndicator = ' *',
   size = 'md',
   title = undefined,
   value = undefined,
@@ -107,6 +112,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
         {(title || description) && (
           <legend className={styles.legend}>
             {title}
+            {isRequired && <span>{requiredIndicator}</span>}
             {description && <div className={styles.description}>{description}</div>}
           </legend>
         )}

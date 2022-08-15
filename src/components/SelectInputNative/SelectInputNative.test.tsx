@@ -9,6 +9,20 @@ const selectOptions = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
+function getByTextWithMarkup(text: string) {
+  // eslint-disable-next-line
+  // @ts-ignore
+  return (content, element) => {
+    const hasText = (node: Element) => node.textContent === text;
+    const elementHasText = hasText(element);
+    // eslint-disable-next-line
+    // @ts-ignore
+    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
+
+    return elementHasText && childrenDontHaveText;
+  };
+}
+
 describe('SelectInputNative', () => {
   describe('Callback Handling', () => {
     test('it fires onChange callback on change', async () => {
@@ -188,6 +202,23 @@ describe('SelectInputNative', () => {
         const inputElement = screen.getByLabelText('Required Select');
         expect(inputElement).toHaveAttribute('aria-required', 'true');
         expect(inputElement).toHaveAttribute('required');
+      });
+
+      test('it renders an asterisk in the label by default', () => {
+        const mockedHandleChange = jest.fn();
+
+        render(
+          <SelectInputNative
+            id="testId"
+            onChange={mockedHandleChange}
+            label="Select Label"
+            options={selectOptions}
+            isRequired
+            value={selectOptions[0].value}
+          />,
+        );
+
+        expect(screen.getByText(getByTextWithMarkup('Select Label *'))).toBeInTheDocument();
       });
     });
 

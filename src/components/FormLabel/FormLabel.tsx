@@ -33,6 +33,10 @@ export interface FormLabelProps extends BoxProps {
    */
   isRadioInputLabel?: boolean;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
+  /**
    * Additional props to be spread to rendered element
    */
   [x: string]: any; // eslint-disable-line
@@ -45,7 +49,9 @@ export const FormLabel: FC<FormLabelProps> = ({
   display = 'block',
   helpText,
   isDisabled = false,
+  isFieldRequired = false,
   isRadioInputLabel = false,
+  requiredIndicator = ' *',
   margin = '0',
   padding = '0',
   ...restProps
@@ -73,8 +79,15 @@ export const FormLabel: FC<FormLabelProps> = ({
       {...restProps}
     >
       {children}
+      {isFieldRequired && requiredIndicator && <span>{requiredIndicator}</span>}
       {helpText && (
-        <Box as="p" display="block" fontSize="sm" color="grey" className={styles['help-text']}>
+        <Box
+          as="p"
+          display="block"
+          fontSize="sm"
+          color="grey"
+          className={styles['help-text']}
+        >
           {helpText}
         </Box>
       )}

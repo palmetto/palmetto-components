@@ -79,6 +79,10 @@ export interface CheckboxInputProps {
    */
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: React.ReactNode;
+  /**
    * The size of the checkbox.
    */
   size?: CheckboxSize;
@@ -102,6 +106,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
+  requiredIndicator = ' *',
   size = 'md',
   ...restProps
 }) => {
@@ -136,6 +141,8 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
     inputId: id,
     helpText,
     isDisabled,
+    isFieldRequired: isRequired,
+    requiredIndicator,
     className: classNames(...cssShorthandToClasses('m', computedResponsiveSize(size))),
   };
 
@@ -145,7 +152,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
         alignItems="flex-start"
         direction="row"
       >
-        <Checkbox {...checkboxProps} labelledby={label ? `${id}Label` : undefined} />
+        <Checkbox {...checkboxProps} labelledby={`${id}Label`} />
         {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       </Box>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}

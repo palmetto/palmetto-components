@@ -83,6 +83,10 @@ export interface TextareaInputProps extends Omit<BoxProps, 'as' | 'width'> {
    */
   placeholder?: string;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
+  /**
    * Textarea resize behavior
    */
   resize?: 'vertical' | 'horizontal' | 'none' | 'both';
@@ -118,6 +122,7 @@ export const TextareaInput: FC<TextareaInputProps> = ({
   onBlur = undefined,
   onFocus = undefined,
   placeholder = '',
+  requiredIndicator = ' *',
   resize = 'vertical',
   rows = 3,
   size = 'md',
@@ -161,6 +166,8 @@ export const TextareaInput: FC<TextareaInputProps> = ({
     helpText,
     className: styles['textarea-input-label'],
     isDisabled,
+    isFieldRequired: isRequired,
+    requiredIndicator,
   };
 
   return (

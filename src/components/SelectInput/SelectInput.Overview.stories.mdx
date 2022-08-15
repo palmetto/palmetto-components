@@ -255,6 +255,35 @@ Use the `autoFocus` prop to autofocus a SelectInput.
   </Story>
 </Canvas>
 
+## Required
+
+Use the `isRequired` prop to mark the input as required.
+
+<Canvas>
+  <Story name="Required">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState(null);
+      return (
+        <div style={{ height: '200px' }}>
+          <SelectInput
+            id="required"
+            label="Label"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            options={options}
+            isRequired
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Disabled
 
 Use the `isDisabled` prop to mark the input as disabled.
