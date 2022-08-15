@@ -1,5 +1,12 @@
 Changelog
 
+## [0.139.10](https://github.com/palmetto/palmetto-components/compare/v0.139.9...v0.139.10) (2022-08-15)
+
+
+### Bug Fixes
+
+* **OptionTile:** prevent line-height from being accidentally overridden by parent ([#801](https://github.com/palmetto/palmetto-components/issues/801)) ([2b59c6b](https://github.com/palmetto/palmetto-components/commit/2b59c6bdd7ed3e700e059457f94419b0014e8c04))
+
 ## [0.139.9](https://github.com/palmetto/palmetto-components/compare/v0.139.8...v0.139.9) (2022-08-09)
 
 ## [0.139.8](https://github.com/palmetto/palmetto-components/compare/v0.139.7...v0.139.8) (2022-08-01)
