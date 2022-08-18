@@ -1,5 +1,7 @@
 Changelog
 
+## [0.139.11](https://github.com/palmetto/palmetto-components/compare/v0.139.10...v0.139.11) (2022-08-18)
+
 ## [0.139.10](https://github.com/palmetto/palmetto-components/compare/v0.139.9...v0.139.10) (2022-08-15)
 
 
