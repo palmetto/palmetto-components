@@ -1,5 +1,12 @@
 Changelog
 
+## [0.140.2](https://github.com/palmetto/palmetto-components/compare/v0.140.1...v0.140.2) (2022-08-18)
+
+
+### Bug Fixes
+
+* **Accordion:** AccordionPanelSummary allow setting of vertical alignment with caret ([#803](https://github.com/palmetto/palmetto-components/issues/803)) ([d55e71b](https://github.com/palmetto/palmetto-components/commit/d55e71bf25af19924d345e417a006701bf544609)), closes [#789](https://github.com/palmetto/palmetto-components/issues/789)
+
 ## [0.140.1](https://github.com/palmetto/palmetto-components/compare/v0.140.0...v0.140.1) (2022-08-18)
 
 # [0.140.0](https://github.com/palmetto/palmetto-components/compare/v0.139.11...v0.140.0) (2022-08-18)
