@@ -50,20 +50,6 @@ const renderForm = (
   </Formik>
 );
 
-function getByTextWithMarkup(text: string) {
-  // eslint-disable-next-line
-  // @ts-ignore
-  return (content, element) => {
-    const hasText = (node: Element) => node.textContent === text;
-    const elementHasText = hasText(element);
-    // eslint-disable-next-line
-    // @ts-ignore
-    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
-
-    return elementHasText && childrenDontHaveText;
-  };
-}
-
 describe('FormikTimePickerNative', () => {
   describe('States', () => {
     describe('Hidden label, with a placeholder', () => {
@@ -107,10 +93,10 @@ describe('FormikTimePickerNative', () => {
     });
 
     describe('Is Required', () => {
-      test('it renders an asterisk in the label', () => {
+      test('it sets aria-required on the input', () => {
         render(renderForm(undefined, { isRequired: true }));
-
-        expect(screen.getByText(getByTextWithMarkup(`${testLabelName} *`))).toBeInTheDocument();
+        const inputElement = screen.getByLabelText(testLabelName);
+        expect(inputElement).toHaveAttribute('aria-required', 'true');
       });
     });
 

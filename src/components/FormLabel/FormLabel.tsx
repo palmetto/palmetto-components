@@ -25,13 +25,17 @@ export interface FormLabelProps extends BoxProps {
    */
   isDisabled?: boolean;
   /**
-   * Render an asterisk after the label to mark it as required
+   * prop deprecated: no longer in use and will be remove in next major release.
    */
   isFieldRequired?: boolean;
   /**
    * Apply custom styling to labels for a radio input
    */
   isRadioInputLabel?: boolean;
+  /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
   /**
    * Additional props to be spread to rendered element
    */
@@ -47,6 +51,7 @@ export const FormLabel: FC<FormLabelProps> = ({
   isDisabled = false,
   isFieldRequired = false,
   isRadioInputLabel = false,
+  requiredIndicator = ' *',
   margin = '0',
   padding = '0',
   ...restProps
@@ -74,9 +79,15 @@ export const FormLabel: FC<FormLabelProps> = ({
       {...restProps}
     >
       {children}
-      {isFieldRequired && <span> *</span>}
+      {isFieldRequired && requiredIndicator && <span>{requiredIndicator}</span>}
       {helpText && (
-        <Box as="p" display="block" fontSize="sm" color="grey" className={styles['help-text']}>
+        <Box
+          as="p"
+          display="block"
+          fontSize="sm"
+          color="grey"
+          className={styles['help-text']}
+        >
           {helpText}
         </Box>
       )}

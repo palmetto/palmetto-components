@@ -50,7 +50,7 @@ export interface ToggleProps {
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
   /**
@@ -61,6 +61,10 @@ export interface ToggleProps {
    * Callback function when input is focused.
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: React.ReactNode;
   /**
    * The size of the toggle.
    */
@@ -80,6 +84,7 @@ export const Toggle: FC<ToggleProps> = ({
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
+  requiredIndicator = ' *',
   size = 'md',
 }) => {
   const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
@@ -118,18 +123,20 @@ export const Toggle: FC<ToggleProps> = ({
     onBlur: handleBlur,
     onChange: handleChange,
     onFocus: handleFocus,
+    required: isRequired,
     type: 'checkbox',
     className: styles['toggle-input'],
   };
 
   const labelProps = {
-    isFieldRequired: isRequired,
     inputId: id,
     isDisabled,
     display: 'flex' as BoxProps['display'],
     direction: 'row' as BoxProps['direction'],
     childGap: 'xs' as BoxProps['childGap'],
     alignItems: helpText ? 'flex-start' : 'center' as BoxProps['alignItems'],
+    isFieldRequired: isRequired,
+    requiredIndicator,
   };
 
   return (

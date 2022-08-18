@@ -75,7 +75,7 @@ export interface SelectInputProps {
    */
   isMulti?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
   /**
@@ -99,6 +99,10 @@ export interface SelectInputProps {
    * Placeholder for input.
    */
   placeholder?: string;
+  /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
   /**
    * The size of the text input.
    */
@@ -131,6 +135,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   onFocus = null,
   onBlur = null,
   placeholder = undefined,
+  requiredIndicator = ' *',
   size = 'md',
   ...restProps
 }) => {
@@ -168,11 +173,12 @@ export const SelectInput: FC<SelectInputProps> = ({
   const inputClasses = classNames('react-select', { [styles.error]: error });
 
   const labelProps = {
-    isFieldRequired: isRequired,
     inputId: id,
     helpText,
     className: styles['select-input-label'],
     isDisabled,
+    isFieldRequired: isRequired,
+    requiredIndicator,
   };
 
   const ClearIndicator = (props: IndicatorProps<OptionTypeBase, boolean>) => (

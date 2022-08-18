@@ -15,9 +15,6 @@ export default {
     isDisabled: {
       control: 'boolean',
     },
-    isFieldRequired: {
-      control: 'boolean',
-    },
     isRadioInputLabel: {
       control: 'boolean',
     },

@@ -47,7 +47,7 @@ The input is vertically resizable by default.
 
 ## Required
 
-Use the `isRequired` prop to mark the input as required.
+Use the `isRequired` prop to set the `required` and `aria-required` on the underlying input element.
 
 <Canvas>
   <Story name="Required">
@@ -61,6 +61,37 @@ Use the `isRequired` prop to mark the input as required.
           onChange={event => setValue(event.target.value)}
           isRequired
         />
+      );
+    }}
+  </Story>
+</Canvas>
+
+You can remove or customize the required indicator using the `requiredIndicator` prop.
+
+<Canvas>
+  <Story name="Custom Required Indicator">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value2, setValue2] = useState('');
+      return (
+        <Box childGap="md">
+          <TextareaInput
+            id="requiredWithoutIndicator"
+            label="Required Without Indicator"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+            isRequired
+            requiredIndicator={null}
+          />
+          <TextareaInput
+            id="requiredCustomIndicator"
+            label="Required Custom Indicator"
+            value={value2}
+            onChange={event => setValue2(event.target.value)}
+            isRequired
+            requiredIndicator=" (required)"
+          />
+        </Box>
       );
     }}
   </Story>

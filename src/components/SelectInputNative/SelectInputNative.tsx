@@ -25,6 +25,10 @@ export interface SelectInputNativeProps extends BoxProps, FormControlProps {
    */
   name?: string;
   /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: React.ReactNode;
+  /**
    * Size of the input. ('sm' | 'md' | 'lg')
    */
   size?: SelectInputNativeSize | ResponsiveProp<SelectInputNativeSize>;
@@ -52,6 +56,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
   options,
   onChange,
   placeholder = 'Select...',
+  requiredIndicator = ' *',
   size = 'md',
   ...restProps
 }) => {
@@ -80,8 +85,9 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
       id={id}
       error={error}
       helpText={helpText}
-      isRequired={isRequired}
       isDisabled={isDisabled}
+      isRequired={isRequired}
+      requiredIndicator={requiredIndicator}
       {...restProps}
     >
       <Box
@@ -91,6 +97,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
           as="select"
           aria-label={label}
           aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
+          aria-required={isRequired}
           value={value ?? ''}
           onChange={onChange}
           color={!value ? 'grey-light' : 'dark'}
@@ -98,6 +105,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
           disabled={isDisabled}
           name={name}
           id={id}
+          required={isRequired}
         >
           {optionsWithPlaceholder.map(option => (
             <Box

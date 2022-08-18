@@ -21,7 +21,7 @@ If there are more than five options, use the [SelectInput](?path=/docs/component
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
-      const [value, setValue] = useState([]);
+      const [value, setValue] = useState('chocolate');
       const options = [
         {
           id: 'chocolate_default',
@@ -110,7 +110,7 @@ to the selected states on the tile itself. This is likely best when paired with 
 <Canvas isExpanded>
   <Story name="Hidden Input">
     {() => {
-      const [value, setValue] = useState([]);
+      const [value, setValue] = useState('chocolate');
       const options = [
         {
           id: 'chocolate_hidden',
@@ -148,7 +148,7 @@ Set the direction (flex) of the tiles. It can be one of `row` or `column` but wi
 <Canvas isExpanded>
   <Story name="Direction">
     {() => {
-      const [valueVertical, setValueVertical] = useState([]);
+      const [valueVertical, setValueVertical] = useState('chocolate');
       const optionsVertical = [
         {
           id: 'chocolate_direction',
@@ -189,7 +189,7 @@ Acting as the fieldset legend.
 <Canvas isExpanded>
   <Story name="Title and Description">
     {() => {
-      const [value, setValue] = useState([]);
+      const [value, setValue] = useState('chocolate');
       const options = [
         {
           id: 'chocolate_title',
@@ -223,12 +223,12 @@ Acting as the fieldset legend.
 
 ## Required
 
-Will show an asterisk on the title (if included).
+Sets the required and aria-required attributes on the options in the group. To avoid confusion as to whether a radio button group is required or not, authors are encouraged to specify the attribute on all the radio buttons in a group. We recommend to avoid having radio button groups that do not have any initially checked controls in the first place, because this is a state that the user cannot return to.
 
 <Canvas isExpanded>
   <Story name="Required">
     {() => {
-      const [value, setValue] = useState([]);
+      const [value, setValue] = useState('chocolate');
       const options = [
         {
           id: 'chocolate_required',

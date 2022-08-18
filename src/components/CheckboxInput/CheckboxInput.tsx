@@ -67,7 +67,7 @@ export interface CheckboxInputProps {
    */
   isIndeterminate?: CheckboxProps['isIndeterminate'];
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
   /**
@@ -78,6 +78,10 @@ export interface CheckboxInputProps {
    * Callback function when input is focused.
    */
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: React.ReactNode;
   /**
    * The size of the checkbox.
    */
@@ -102,6 +106,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
+  requiredIndicator = ' *',
   size = 'md',
   ...restProps
 }) => {
@@ -125,6 +130,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
     onBlur: handleBlur,
     onChange: handleChange,
     onFocus: handleFocus,
+    isRequired,
     size,
     label,
     className: classNames('palmetto-components__variables__form-control', 'm-right-xs'),
@@ -132,10 +138,11 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
   };
 
   const labelProps = {
-    isFieldRequired: isRequired,
     inputId: id,
     helpText,
     isDisabled,
+    isFieldRequired: isRequired,
+    requiredIndicator,
     className: classNames(...cssShorthandToClasses('m', computedResponsiveSize(size))),
   };
 
@@ -145,7 +152,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
         alignItems="flex-start"
         direction="row"
       >
-        <Checkbox {...checkboxProps} labelledby={label ? `${id}Label` : undefined} />
+        <Checkbox {...checkboxProps} labelledby={`${id}Label`} />
         {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       </Box>
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}

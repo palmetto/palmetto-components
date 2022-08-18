@@ -61,9 +61,13 @@ export interface OptionTileGroupProps extends BoxProps {
    */
   isMulti?: boolean;
   /**
-   * Determines if option group is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on each option
    */
   isRequired?: boolean;
+  /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+   requiredIndicator?: React.ReactNode;
   /**
    * Title to be displayed above the Option Group.
    */
@@ -84,6 +88,7 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
     isFullWidth = true,
     isMulti = false,
     isRequired = false,
+    requiredIndicator = <>&nbsp;*</>,
     title = '',
     ...restProps
   },
@@ -122,7 +127,7 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
             fontWeight="bold"
           >
             {title}
-            {isRequired && <span>&nbsp;*</span>}
+            {isRequired && requiredIndicator && <span>{requiredIndicator}</span>}
             {description && (
               <Box margin="xs 0 0 0" fontWeight="regular">{description}</Box>
             )}
@@ -138,6 +143,7 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
               ...(!option.disabled && !isOptionSelected(option)) && { borderColor: 'grey-300' },
             }}
             isSelected={isOptionSelected(option)}
+            isRequired={isRequired}
             onChange={onChange}
             value={option.value}
             label={option.label}

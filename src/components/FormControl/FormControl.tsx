@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Box, BoxProps } from '../Box/Box';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
@@ -16,7 +16,7 @@ export interface FormControlProps extends BoxProps {
    * Mark the input field as invalid and display a validation message.
    * Pass a string or node to render a validation message below the input.
    */
-  error?: React.ReactNode;
+  error?: ReactNode;
   /**
    * Visually hide the label.
    */
@@ -24,15 +24,19 @@ export interface FormControlProps extends BoxProps {
   /**
    * Additional clarifying text to help describe the input
    */
-  helpText?: React.ReactNode;
+  helpText?: ReactNode;
   /**
    * The input's disabled attribute
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
+  /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
 }
 
 export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
@@ -41,21 +45,23 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
     hideLabel,
     children,
     error,
-    isRequired,
     id,
+    isRequired,
     helpText,
     isDisabled,
+    requiredIndicator,
     width = '100',
     ...restProps
   },
   ref,
 ) => {
   const labelProps = {
-    isFieldRequired: isRequired,
     inputId: id,
     helpText,
     margin: '0 0 xs 0',
     isDisabled,
+    isFieldRequired: isRequired,
+    requiredIndicator,
   };
 
   return (

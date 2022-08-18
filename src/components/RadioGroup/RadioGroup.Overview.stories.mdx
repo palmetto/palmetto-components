@@ -27,7 +27,7 @@ All that is required to render a basic version of the RadioGroup is the group's 
 <Canvas isExpanded>
   <Story name="Default">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('chocolate');
       const options = [
         {
           id: 'chocolate',
@@ -64,7 +64,7 @@ Use the `title` prop to add a title.
 <Canvas>
   <Story name="Title">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('purple');
       const options = [
         {
           id: 'purple',
@@ -102,7 +102,7 @@ Use the `title` and `description` props to add a title and description.
 <Canvas>
   <Story name="Title and Description">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('light');
       const options = [
         {
           id: 'light',
@@ -131,12 +131,12 @@ Use the `title` and `description` props to add a title and description.
 
 ## Required
 
-Use the `isRequired` prop to mark the group as required.
+Use the `isRequired` prop to mark the group as requiring at least one selection. To avoid confusion as to whether a radio button group is required or not, authors are encouraged to specify the attribute on all the radio buttons in a group. We recommend to avoid having radio button groups that do not have any initially checked controls in the first place, because this is a state that the user cannot return to.
 
 <Canvas>
   <Story name="Required">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('cat');
       const options = [
         {
           id: 'cat',
@@ -162,6 +162,52 @@ Use the `isRequired` prop to mark the group as required.
     }}
   </Story>
 </Canvas>
+
+You can remove or customize the required indicator using the `requiredIndicator` prop.
+
+<Canvas>
+  <Story name="Custom Required Indicator">
+    {() => {
+      const [value, setValue] = useState(false);
+      const [value2, setValue2] = useState(false);
+      const options = [
+        {
+          id: 'cat',
+          value: 'cat',
+          label: 'Cat',
+        },
+        {
+          id: 'dog',
+          value: 'dog',
+          label: 'Dog',
+        },
+      ];
+      return (
+        <Box childGap="md">
+          <RadioGroup
+            title="Required Without Indicator"
+            name="withoutIndicator"
+            onChange={event => setValue(event.target.value)}
+            value={value}
+            isRequired
+            options={options}
+            requiredIndicator={null}
+          />
+          <RadioGroup
+            title="Required Custom Indicator"
+            name="customIndicator"
+            onChange={event => setValue2(event.target.value)}
+            value={value2}
+            isRequired
+            options={options}
+            requiredIndicator=" (required)"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
 
 ## Pre-Selected Option
 
@@ -208,7 +254,7 @@ An individual option, or multiple options can be disabled by marking them as dis
 <Canvas>
   <Story name="Disabled Option">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('short');
       const options = [
         {
           id: 'short',
@@ -247,7 +293,7 @@ A group can be fully disabled by using the `isDisabled` prop.
 <Canvas>
   <Story name="Disabled Group">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('react');
       const options = [
         {
           id: 'react',
@@ -287,7 +333,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
 <Canvas>
   <Story name="Error">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('apple');
       const options = [
         {
           id: 'apple',
@@ -389,7 +435,7 @@ Use the `direction` prop change the alignment of the radio inputs.
 <Canvas>
   <Story name="Row">
     {() => {
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState('one');
       const options = [
         {
           id: 'one',

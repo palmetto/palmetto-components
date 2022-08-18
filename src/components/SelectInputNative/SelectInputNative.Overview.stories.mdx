@@ -42,7 +42,9 @@ All that is required to render a basic version of the SelectInputNative is a uni
           <SelectInputNative
             id="default Select"
             label="Label"
-            onChange={event => { setValue(event.target.value) }}
+            onChange={event => {
+              setValue(event.target.value);
+            }}
             options={options}
             value={value}
           />
@@ -200,7 +202,7 @@ Use the `autoFocus` prop to autofocus a SelectInput.
 
 ## Required
 
-Use the `isRequired` prop to mark the input as required.
+Use the `isRequired` prop to set the `required` and `aria-required` on the underlying input element.
 
 <Canvas>
   <Story name="Required">
@@ -212,16 +214,52 @@ Use the `isRequired` prop to mark the input as required.
       ];
       const [value, setValue] = useState(null);
       return (
-        <div style={{ height: '200px' }}>
+        <SelectInputNative
+          id="required"
+          label="Required Input"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+          options={options}
+          isRequired
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+You can remove or customize the required indicator using the `requiredIndicator` prop.
+
+<Canvas>
+  <Story name="Custom Required Indicator">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      const [value, setValue] = useState('');
+      const [value2, setValue2] = useState('');
+      return (
+        <Box childGap="md">
           <SelectInputNative
-            id="required"
-            label="Label"
+            id="withouRequiredIndicator"
+            label="Required Without Indicator"
             value={value}
             onChange={event => setValue(event.target.value)}
             options={options}
             isRequired
+            requiredIndicator={null}
           />
-        </div>
+          <SelectInputNative
+            id="customRequiredIndicator"
+            label="Required Custom Indicator"
+            value={value2}
+            onChange={event => setValue2(event.target.value)}
+            options={options}
+            isRequired
+            requiredIndicator=" (required)"
+          />
+        </Box>
       );
     }}
   </Story>

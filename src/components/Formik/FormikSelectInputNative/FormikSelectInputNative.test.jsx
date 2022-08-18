@@ -96,10 +96,10 @@ describe('SelectInputNative', () => {
     });
 
     describe('Is Required', () => {
-      test('it renders an asterisk in the label', () => {
-        render(renderForm(null, { isRequired: true }));
-
-        expect(screen.getByText(getByTextWithMarkup(`${testLabelName} *`))).toBeInTheDocument();
+      test('it sets aria-required on the input', () => {
+        render(renderForm(undefined, { isRequired: true }));
+        const inputElement = screen.getByLabelText(testLabelName);
+        expect(inputElement).toHaveAttribute('aria-required', 'true');
       });
     });
 

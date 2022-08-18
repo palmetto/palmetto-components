@@ -47,7 +47,7 @@ export interface RadioGroupProps {
    */
   isDisabled?: boolean;
   /**
-   * Determines if radio group is required or not. (Label will have an asterisk if required).
+   * If the radio group is required or not
    */
   isRequired?: boolean;
   /**
@@ -58,6 +58,10 @@ export interface RadioGroupProps {
    * Callback function to call on focus event.
    */
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: React.ReactNode;
   /**
    * Size of the radio icons in the group.
    */
@@ -88,6 +92,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   isRequired = false,
   onBlur = undefined,
   onFocus = undefined,
+  requiredIndicator = ' *',
   size = 'md',
   title = undefined,
   value = undefined,
@@ -107,7 +112,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
         {(title || description) && (
           <legend className={styles.legend}>
             {title}
-            {isRequired && <span>&nbsp;*</span>}
+            {isRequired && <span>{requiredIndicator}</span>}
             {description && <div className={styles.description}>{description}</div>}
           </legend>
         )}
@@ -120,6 +125,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
                 onChange={onChange}
                 option={option}
                 isDisabled={isDisabled || option.disabled || false}
+                isRequired={isRequired}
                 isSelected={value === option.value}
                 onBlur={onBlur}
                 onFocus={onFocus}

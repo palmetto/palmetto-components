@@ -76,7 +76,7 @@ export interface TextInputProps {
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
   /**
@@ -109,6 +109,10 @@ export interface TextInputProps {
    * An input helper rendered before the input field value
    */
   prefix?: ReactNode;
+  /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
   /**
    * The size of the text input.
    */
@@ -150,6 +154,7 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
       onFocus = undefined,
       prefix = undefined,
       placeholder = '',
+      requiredIndicator = ' *',
       suffix = undefined,
       size = 'md',
       type = 'text',
@@ -207,6 +212,7 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
       onChange,
       onFocus,
       placeholder,
+      required: isRequired,
       type,
       value,
       className: classNames(
@@ -225,9 +231,10 @@ export const TextInput: ForwardRefExoticComponent<TextInputProps> = forwardRef<H
         error={error}
         label={label}
         id={id}
-        isRequired={isRequired}
-        isDisabled={isDisabled}
         hideLabel={hideLabel}
+        isDisabled={isDisabled}
+        isRequired={isRequired}
+        requiredIndicator={requiredIndicator}
         ref={ref}
         {...restProps}
       >

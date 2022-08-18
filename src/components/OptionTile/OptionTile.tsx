@@ -51,6 +51,10 @@ export interface OptionTileProps extends BoxProps {
    */
   hideInput?: boolean;
   /**
+   * The required and aria-required attributes on each option
+   */
+   isRequired?: boolean;
+  /**
    * Whether to render a radio or a checkbox input.
    */
   inputType?: 'radio' | 'checkbox';
@@ -75,6 +79,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
     flex = 'auto',
     hideInput = false,
     inputType = 'radio',
+    isRequired = false,
     onClick = undefined,
     padding = 'md',
     shadow = '2xs',
@@ -150,6 +155,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
           value={value}
           isHidden
           isDisabled={disabled}
+          isRequired={isRequired}
           ref={inputRef}
         />
       ) : (
@@ -163,6 +169,7 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
             label,
           }}
           isDisabled={disabled}
+          isRequired={isRequired}
           isSelected={isSelected}
           isHidden
           ref={inputRef}

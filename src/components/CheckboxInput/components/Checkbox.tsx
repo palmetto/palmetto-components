@@ -53,7 +53,7 @@ export interface CheckboxProps extends Omit<BoxProps, 'radius' | 'background' | 
    */
   isIndeterminate?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * The required and aria-required attributes on the input
    */
   isRequired?: boolean;
   /**
@@ -121,6 +121,7 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
       'aria-invalid': !!error,
       'aria-label': label,
       'aria-labelledby': labelledby,
+      'aria-required': isRequired,
       id,
       checked: !!isChecked,
       disabled: isDisabled,

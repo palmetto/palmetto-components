@@ -74,11 +74,11 @@ export interface FileUploadProps extends BoxProps {
    */
   inputProps?: BoxProps & React.HTMLProps<HTMLInputElement>;
   /**
-   * Whether the file upload is disabled.
+   * Whether the file upload is disabled
    */
   isDisabled?: boolean;
   /**
-   * Determines if input is required or not. (Label will have an asterisk if required).
+   * Determines if input is required or not
    */
   isRequired?: boolean;
   /**
@@ -89,6 +89,10 @@ export interface FileUploadProps extends BoxProps {
    * Input `multiple` attribute, pass `true` if you wish to upload multiple files.
    */
   onClearFiles?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  /**
+   * Visual indicator that the field is required, that gets appended to the label
+   */
+  requiredIndicator?: ReactNode;
   /**
    * Size of component. Matches Button sizes.
    */
@@ -125,6 +129,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
     isRequired = false,
     multiple = false,
     onClearFiles = undefined,
+    requiredIndicator = <>&nbsp;*</>,
     size = 'md',
     variant = 'light',
     ...restProps
@@ -218,7 +223,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
                   {buttonText}
                 </Box>
               )}
-            {isRequired && <>&nbsp;*</>}
+            {isRequired && requiredIndicator && <span>{requiredIndicator}</span>}
           </Box>
           <Box
             // We spread props here at that top to avoid inputProps overwriting high-level component props
@@ -235,6 +240,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
             disabled={isDisabled}
             aria-disabled={isDisabled}
             required={isRequired}
+            aria-required={isRequired}
           />
         </Button>
         {helpText && (
