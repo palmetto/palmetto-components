@@ -1,5 +1,12 @@
 Changelog
 
+# [0.140.0](https://github.com/palmetto/palmetto-components/compare/v0.139.11...v0.140.0) (2022-08-18)
+
+
+### Features
+
+* **Form Inputs:** map isRequired to "required" html attribute, allow required indicator to be customized ([#799](https://github.com/palmetto/palmetto-components/issues/799)) ([b239a23](https://github.com/palmetto/palmetto-components/commit/b239a235a1731ce8ba3a886be7e126c1f4150bbc))
+
 ## [0.139.11](https://github.com/palmetto/palmetto-components/compare/v0.139.10...v0.139.11) (2022-08-18)
 
 ## [0.139.10](https://github.com/palmetto/palmetto-components/compare/v0.139.9...v0.139.10) (2022-08-15)
