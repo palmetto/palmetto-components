@@ -31,7 +31,15 @@ All that is required to render a basic version of an Alert is a `message` prop w
 or a ReactNode to be rendered.
 
 <Canvas>
-  <Story name="Default">
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=0%3A1',
+      },
+    }}
+  >
     <Alert message="Hello world!" />
   </Story>
 </Canvas>
@@ -47,7 +55,12 @@ Alerts come in different variants based on the kind of feedback being delivered 
       return (
         <>
           {variants.map(variant => (
-            <Alert key={variant} message={variant} variant={variant} className="m-bottom-md" />
+            <Alert
+              key={variant}
+              message={variant}
+              variant={variant}
+              className="m-bottom-md"
+            />
           ))}
         </>
       );
@@ -149,7 +162,9 @@ IMPORTANT: The `render` prop, will supersede the `message` prop, if both are pre
           <Heading as="h3" size="xl">
             Oops!
           </Heading>
-          <p>Looks like something went wrong. But I'm using a render function.</p>
+          <p>
+            Looks like something went wrong. But I'm using a render function.
+          </p>
           <Button size="sm" className="m-top-sm">
             Click this button to fix it!
           </Button>
@@ -223,7 +238,12 @@ Renders a version of the banner with less padding.
 
 <Canvas>
   <Story name="Compact">
-    <Alert message="Compact Alerts have less padding" variant="info" isCompact />;
+    <Alert
+      message="Compact Alerts have less padding"
+      variant="info"
+      isCompact
+    />
+    ;
   </Story>
 </Canvas>
 
