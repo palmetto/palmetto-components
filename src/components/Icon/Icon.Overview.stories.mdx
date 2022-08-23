@@ -4,7 +4,11 @@ import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
-import { FONT_SIZE_OPTIONS, FONT_COLOR_OPTIONS, ICON_NAMES } from '../../lib/tokens';
+import {
+  FONT_SIZE_OPTIONS,
+  FONT_COLOR_OPTIONS,
+  ICON_NAMES,
+} from '../../lib/tokens';
 
 <Meta
   title="Components/Icon/Overview"
@@ -75,7 +79,15 @@ If a given icon name is not found in the dictionary, a red box with question mar
 ## Available Icons
 
 <Canvas>
-  <Story name="all icons">
+  <Story
+    name="all icons"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=972%3A15875',
+      },
+    }}
+  >
     {() => {
       return (
         <Box

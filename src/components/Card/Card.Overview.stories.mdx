@@ -76,7 +76,13 @@ It consists of three child components that are automatically included with the `
         </Box>
       </Card.Section>
       <Card.Footer>
-        <Box display="flex" direction="row" justify="between" overflow="hidden" childGap="md">
+        <Box
+          display="flex"
+          direction="row"
+          justify="between"
+          overflow="hidden"
+          childGap="md"
+        >
           <Box direction="row" childGap="sm">
             <Button size="sm" variant="light">
               Edit
@@ -107,7 +113,15 @@ A `<Card />` consists of three child components:
 1. `<Card.Footer />` - where primary actions are placed
 
 <Canvas>
-  <Story name="Default Card">
+  <Story
+    name="Default Card"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=548%3A7658',
+      },
+    }}
+  >
     <Card>
       <Card.Header title="Default Card" />
       <Card.Section>
@@ -142,7 +156,9 @@ See [Card.Header props](#cardheader-props)
 <Canvas>
   <Story name="Card Title">
     <Card>
-      <Card.Header title="Default Card">This is a good place for card description text</Card.Header>
+      <Card.Header title="Default Card">
+        This is a good place for card description text
+      </Card.Header>
       <Card.Section>
         <p>Card content</p>
       </Card.Section>
@@ -231,7 +247,12 @@ Here are some common use cases of `<Card />`.
 
 <Canvas>
   <Story name="Example - Sign Up Form">
-    <Box alignItems="center" alignContent="center" padding="2xl" background="grey-lightest">
+    <Box
+      alignItems="center"
+      alignContent="center"
+      padding="2xl"
+      background="grey-lightest"
+    >
       <Card maxWidth="4xl">
         <Card.Section padding="3xl">
           <Box childGap="xl">
@@ -244,7 +265,12 @@ Here are some common use cases of `<Card />`.
               </Box>
             </Box>
             <Box childGap="lg">
-              <TextInput id="email" value="" label="Email Address" onChange={() => null} />
+              <TextInput
+                id="email"
+                value=""
+                label="Email Address"
+                onChange={() => null}
+              />
               <TextInput
                 id="password"
                 type="password"
@@ -303,10 +329,18 @@ Here are some common use cases of `<Card />`.
 
 <Canvas>
   <Story name="Example - Full Bleed Photo">
-    <Box alignItems="center" alignContent="center" padding="2xl" background="grey-lightest">
+    <Box
+      alignItems="center"
+      alignContent="center"
+      padding="2xl"
+      background="grey-lightest"
+    >
       <Card width="300px">
         <Card.Section padding="0" overflow="hidden" height="300px">
-          <img src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80" data-chromatic="ignore" />
+          <img
+            src="https://images.unsplash.com/photo-1555412654-72a95a495858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80"
+            data-chromatic="ignore"
+          />
         </Card.Section>
         <Card.Section childGap="xs">
           <Heading>Headline</Heading>

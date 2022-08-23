@@ -30,7 +30,15 @@ Use TextInput to render a single-line text input. Masks can also be applied to c
 All that is required to render a basic version of the TextInput is a unique `id`, `label`, `value`, and an onchange event handler passed to the `onChange` prop.
 
 <Canvas>
-  <Story name="Default">
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=403%3A0',
+      },
+    }}
+  >
     {() => {
       const [value, setValue] = useState('');
       return (

@@ -29,7 +29,15 @@ when a custom UI is not needed for a select, or the native UI is preferred (this
 All that is required to render a basic version of the SelectInputNative is a unique `id`, a `label`, a list of options passed to the `options` prop, a `value`, and an onchange event handler passed to the `onChange` prop.
 
 <Canvas>
-  <Story name="Default">
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=130%3A3463',
+      },
+    }}
+  >
     {() => {
       const [value, setValue] = useState(null);
       const options = [

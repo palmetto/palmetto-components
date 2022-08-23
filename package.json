@@ -165,6 +165,7 @@
     "sass-resources-loader": "^2.0.3",
     "semantic-release": "^19.0.3",
     "size-limit": "^4.11.0",
+    "storybook-addon-designs": "^6.3.1",
     "storybook-addon-mdx-embed": "^1.0.0",
     "style-loader": "^1.2.1",
     "stylelint": "^13.6.0",

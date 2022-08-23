@@ -26,7 +26,15 @@ Actions almost always occur on the same page.
 The `variant` prop determines which color variant to render.
 
 <Canvas>
-  <Story name="Variants">
+  <Story
+    name="Variants"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=2115%3A24829',
+      },
+    }}
+  >
     <Box alignItems="center" childGap="sm" direction="row">
       <Button variant="primary">Primary</Button>
       <Button variant="success">Success</Button>
@@ -46,7 +54,15 @@ Use `isOutlined` to render an outline button. This is helpful for adding a secon
 the color of the primary CTA but makes the hierarchy clear. The background is transparent in the default state.
 
 <Canvas>
-  <Story name="Outlined">
+  <Story
+    name="Outlined"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=2115%3A24829',
+      },
+    }}
+  >
     <Box alignItems="center" childGap="sm" direction="row">
       <Button variant="primary" isOutlined>
         Primary
@@ -78,7 +94,15 @@ Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size
 so it can have different sizes at different breakpoints.
 
 <Canvas>
-  <Story name="Size">
+  <Story
+    name="Size"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=2115%3A24829',
+      },
+    }}
+  >
     <Box childGap="sm" direction="row" alignItems="flex-start">
       <Button size="xs" variant="light">
         Extra Small
@@ -149,10 +173,18 @@ Add an icon to the left or right inside the Button using the `iconPrefix` and `i
       </Button>
     </Box>
     <Box display="flex" direction="row" childGap="xs" margin="lg 0 0 0">
-      <Button onClick={() => alert('clicked')} variant="light" iconPrefix="caret-left">
+      <Button
+        onClick={() => alert('clicked')}
+        variant="light"
+        iconPrefix="caret-left"
+      >
         Prev
       </Button>
-      <Button onClick={() => alert('clicked')} variant="light" iconSuffix="caret-right">
+      <Button
+        onClick={() => alert('clicked')}
+        variant="light"
+        iconSuffix="caret-right"
+      >
         Next
       </Button>
     </Box>
@@ -197,7 +229,11 @@ Callback functions can be passed to `onClick`, `onBlur`, and `onFocus` events.
 
 <Canvas>
   <Story name="Event Callbacks">
-    <Button onBlur={action('blur')} onClick={action('click')} onFocus={action('focus')}>
+    <Button
+      onBlur={action('blur')}
+      onClick={action('click')}
+      onFocus={action('focus')}
+    >
       click, focus, blur events
     </Button>
   </Story>

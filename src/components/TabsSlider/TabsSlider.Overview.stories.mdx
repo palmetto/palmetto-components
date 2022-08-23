@@ -19,7 +19,15 @@ that affect width, then it may not correctly size the selected indicator initial
 transition is complete with `onTransitionEnd` or `onAnimationEnd` before rendering the `TabsSlider`.
 
 <Canvas isExpanded>
-  <Story name="Default">
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=620%3A8083',
+      },
+    }}
+  >
     {() => {
       const [selectedTab, setSelectedTab] = useState(0);
       return (
@@ -93,7 +101,9 @@ and even make it responsive using the same `ResponsiveProp` pattern as the box, 
             <TabsSlider.Item>Tab 3</TabsSlider.Item>
             <TabsSlider.Item>Tab 4</TabsSlider.Item>
           </TabsSlider>
-          <Box>This one is responsive. Change your screen size to see it in action.</Box>
+          <Box>
+            This one is responsive. Change your screen size to see it in action.
+          </Box>
           <TabsSlider
             value={responsive}
             onChange={(event, index) => {
@@ -153,7 +163,9 @@ The only other likely use case is to render each tab as an anchor. See example m
   <Story name="Anchor Elements">
     {() => {
       const [selectedTab, setSelectedTab] = useState(0);
-      const handleClick = (event) => { event.preventDefault(); };
+      const handleClick = event => {
+        event.preventDefault();
+      };
       return (
         <Box childGap="md">
           <TabsSlider
@@ -162,16 +174,34 @@ The only other likely use case is to render each tab as an anchor. See example m
               setSelectedTab(index);
             }}
           >
-            <TabsSlider.Item as="a" href="#firstPanel" id="tabOneAnchor" aria-controls="firstPanel" style={{ textDecoration: 'none' }} onClick={handleClick}>
+            <TabsSlider.Item
+              as="a"
+              href="#firstPanel"
+              id="tabOneAnchor"
+              aria-controls="firstPanel"
+              style={{ textDecoration: 'none' }}
+              onClick={handleClick}
+            >
               Tab 1
             </TabsSlider.Item>
-            <TabsSlider.Item as="a" href="#secondPanel" id="tabTwoAnchor" aria-controls="secondPanel" style={{ textDecoration: 'none' }} onClick={handleClick}>
+            <TabsSlider.Item
+              as="a"
+              href="#secondPanel"
+              id="tabTwoAnchor"
+              aria-controls="secondPanel"
+              style={{ textDecoration: 'none' }}
+              onClick={handleClick}
+            >
               Tab 2
             </TabsSlider.Item>
           </TabsSlider>
-           <TabPanels value={selectedTab}>
-            <Box padding="lg" id="firstPanel" aria-labelledby="tabOneAnchor">Here's the first tab</Box>
-            <Box padding="lg" id="secondPanel" aria-labelledby="tabTwoAnchor">Here's the second tab</Box>
+          <TabPanels value={selectedTab}>
+            <Box padding="lg" id="firstPanel" aria-labelledby="tabOneAnchor">
+              Here's the first tab
+            </Box>
+            <Box padding="lg" id="secondPanel" aria-labelledby="tabTwoAnchor">
+              Here's the second tab
+            </Box>
           </TabPanels>
         </Box>
       );
