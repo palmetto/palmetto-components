@@ -21,7 +21,15 @@ Toggles should provide immediate results and should not require the user to Save
 ### Basic Example
 
 <Canvas isExpanded>
-  <Story name="Default">
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=488%3A3785',
+      },
+    }}
+  >
     {() => {
       const [value, setValue] = useState(null);
       return (
@@ -41,7 +49,15 @@ Toggles should provide immediate results and should not require the user to Save
 Use the `helpText` prop to add clarifying text beneath the toggle label.
 
 <Canvas isExpanded>
-  <Story name="With Help Text">
+  <Story
+    name="With Help Text"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=488%3A3785',
+      },
+    }}
+  >
     {() => {
       const [value, setValue] = useState(null);
       return (
@@ -62,7 +78,15 @@ Use the `helpText` prop to add clarifying text beneath the toggle label.
 Use the `hideLabel` prop to not render the label, however a `label` is still required for accessability purposes.
 
 <Canvas>
-  <Story name="Hidden Label">
+  <Story
+    name="Hidden Label"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=488%3A3785',
+      },
+    }}
+  >
     {() => {
       const [value, setValue] = useState(null);
       return (
@@ -85,7 +109,15 @@ Set the size of the `toggle` to `sm`, `md` or `lg`. `md` is the default size.
 The `size` prop is also a `ResponsiveProp`, so it can be sized differently at each [breakpoint](?path=/docs/design-tokens-design-tokens--page#breakpoints) by passing an object.
 
 <Canvas isExpanded>
-  <Story name="Size">
+  <Story
+    name="Size"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=488%3A3785',
+      },
+    }}
+  >
     {() => {
       const [value, setValue] = useState(true);
       return (
@@ -129,7 +161,15 @@ The `size` prop is also a `ResponsiveProp`, so it can be sized differently at ea
 Disable the toggle by setting the `isDisabled` prop.
 
 <Canvas>
-  <Story name="Disabled">
+  <Story
+    name="Disabled"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=488%3A3785',
+      },
+    }}
+  >
     {() => {
       const [value, setValue] = useState(null);
       return (
@@ -150,7 +190,15 @@ Disable the toggle by setting the `isDisabled` prop.
 Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`. If either a `string` or `node` is passed, a validation message is displayed below it.
 
 <Canvas>
-  <Story name="Error">
+  <Story
+    name="Error"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=488%3A3785',
+      },
+    }}
+  >
     {() => {
       const [value, setValue] = useState(null);
       return (

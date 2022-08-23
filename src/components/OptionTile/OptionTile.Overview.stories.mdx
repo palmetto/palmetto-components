@@ -24,15 +24,25 @@ that will either be a `checkbox` or a `radio` input. For a
 slightly more opinionated, and fully functional fieldset using the `OptionTile` see
 [OptionTileGroup](?path=/docs/components-optiontilegroup-overview--default-story).
 
-
 <Canvas isExpanded>
-  <Story name="Default">
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=650%3A11941',
+      },
+    }}
+  >
     {() => {
       const [isSelected, setIsSelected] = useState(false);
       return (
         <OptionTile
           isSelected={isSelected}
-          onChange={() => { let newVal = !isSelected; setIsSelected(newVal)}}
+          onChange={() => {
+            let newVal = !isSelected;
+            setIsSelected(newVal);
+          }}
           id="defaultOptionTile"
           name="defaultOptionTile"
           value="defaultOptionTile"
@@ -54,7 +64,15 @@ The tile can be rendered as a radio (for single select) or a checkbox (for multi
 The default is a radio.
 
 <Canvas isExpanded>
-  <Story name="Input Types">
+  <Story
+    name="Input Types"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=650%3A11941',
+      },
+    }}
+  >
     {() => {
       const [isCheckboxSelected, setIsCheckboxSelected] = useState(false);
       const [isRadioSelected, setIsRadioSelected] = useState(false);
@@ -91,7 +109,7 @@ The default is a radio.
 Some basic styles are included by default, which can all be overwritten via props. The component uses a `Box` as a root element,
 and as such `BoxProps` can be used to style it.
 
-NOTE: We do include a selected, disabled, and error states that are hardcoded but they ONLY 
+NOTE: We do include a selected, disabled, and error states that are hardcoded but they ONLY
 affect the radio/checkbox icons. These elements have an opinionated style using `primary` brand color.
 If this creates a mismatch with your preferred styling, you can choose to hide them with the `hideInput`
 prop, and if necessary recreate them any way you wish via `children`.
@@ -106,11 +124,18 @@ Also note that these icons are only there for visual feedback, as the true input
       return (
         <OptionTile
           isSelected={isSelected}
-          onChange={() => { let newVal = !isSelected; setIsSelected(newVal)}}
+          onChange={() => {
+            let newVal = !isSelected;
+            setIsSelected(newVal);
+          }}
           id="hoverOptionTile"
           name="hoverOptionTile"
           value="hoverOptionTile"
-          hover={{ borderColor: 'danger', shadow: 'lg', background: 'danger-lightest' }}
+          hover={{
+            borderColor: 'danger',
+            shadow: 'lg',
+            background: 'danger-lightest',
+          }}
         >
           Hello world!
         </OptionTile>
@@ -141,7 +166,7 @@ Also note that these icons are only there for visual feedback, as the true input
           img: 'https://www.thespruceeats.com/thmb/KyWpKNdzCXtBXiA96QlJaAU05c0=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
         },
         {
-          id: 'strawberry', 
+          id: 'strawberry',
           label: 'strawberry',
           name: 'strawberry',
           value: 'strawberry',
@@ -165,15 +190,24 @@ Also note that these icons are only there for visual feedback, as the true input
               childGap="0"
               direction="column"
               isSelected={option.value === selectedOption}
-              onChange={(event) => setSelectedOption(event.target.value)}
+              onChange={event => setSelectedOption(event.target.value)}
               id={option.id}
               name={option.name}
               value={option.value}
-              background={option.value === selectedOption ? 'secondary-lightest' : undefined}
-              borderColor={option.value === selectedOption ? 'secondary' : undefined}
+              background={
+                option.value === selectedOption
+                  ? 'secondary-lightest'
+                  : undefined
+              }
+              borderColor={
+                option.value === selectedOption ? 'secondary' : undefined
+              }
               hover={{ shadow: 'lg' }}
             >
-              <img src={option.img} style={{ objectFit: 'cover', width: '100%', height: '100px' }} />
+              <img
+                src={option.img}
+                style={{ objectFit: 'cover', width: '100%', height: '100px' }}
+              />
               <p className="p-md font-family-brand">{option.label}</p>
             </OptionTile>
           ))}
@@ -200,30 +234,102 @@ If you require theming for this component separately of other form controls, it 
   <tbody>
     {(() => {
       const tokens = {
-        '--option-tile-background-color': { global: '--form-control-background-color', default: '--color-brand-white-base' },
-        '--option-tile-border-color': { global: '--form-control-border-color', default: '--color-brand-grey-100' },
-        '--option-tile-border-radius': { global: '--form-control-size-md-border-radius', default: '--size-border-radius-md' },
-        '--option-tile-font-family': { global: '--form-control-font-family', default: '--asset-fonts-body' },
-        '--option-tile-line-height': { global: '--form-control-line-height', default: '--size-line-height-input' },
-        '--option-tile-border-color-hover': { global: '--form-control-border-color-hover', default: '--color-brand-grey-300' },
-        '--option-tile-background-color-disabled': { global: '--form-control-background-color-disabled', default: '--color-brand-grey-50' },
-        '--option-tile-font-color-disabled': { global: '--form-control-font-color-disabled', default: '--color-brand-grey-300' },
-        '--option-tile-border-color-disabled': { global: '--form-control-border-color', default: '--color-brand-grey-100' },
-        '--option-tile-font-color-error': { global: '--form-control-font-color-error', default: '--color-brand-danger-500' },
-        '--option-tile-border-color-error-hover': { global: '--form-control-border-color-hover', default: '--color-brand-grey-300' },
-        '--option-tile-font-color-error-disabled': { global: '--form-control-font-color-error-disabled', default: '--color-brand-danger-200' },
-        '--option-tile-border-color-error-disabled-hover': { global: '--form-control-border-color', default: '--color-brand-grey-100' },
-        '--option-tile-background-color-selected': { global: '--form-control-background-color-selected', default: '--color-brand-primary-50' },
-        '--option-tile-border-color-selected': { global: '--form-control-border-color-selected', default: '--color-brand-primary-500' },
-        '--option-tile-background-color-disabled-selected': { global: '--form-control-background-color-disabled', default: '--color-brand-grey-50' },
-        '--option-tile-border-color-disabled-selected': { global: '--form-control-border-color', default: '--color-brand-grey-100' },
-        '--option-tile-border-color-disabled-selected-hover': { global: '--form-control-border-color', default: '--color-brand-grey-100' },
-        '--option-tile-background-color-selected-error': { global: '--form-control-background-color-error', default: '--color-brand-danger-50' },
-        '--option-tile-border-color-selected-error': { global: '--form-control-border-color-selected-error', default: '--color-brand-danger-500' },
-        '--option-tile-font-color-selected-error': { global: 'form-control-font-color-error', default: '--color-brand-danger-500' },
-        '--option-tile-font-color-disabled-selected-error': { global: '--form-control-font-color-error-disabled', default: 'color-brand-danger-200' },
-        '--option-tile-border-color-selected-error-hover': { global: '--form-control-border-color-selected-error', default: 'color-brand-danger-500' },
-        '--option-tile-border-color-selected-hover': { global: '--form-control-border-color-selected-hover', default: '--color-brand-primary-500' },
+        '--option-tile-background-color': {
+          global: '--form-control-background-color',
+          default: '--color-brand-white-base',
+        },
+        '--option-tile-border-color': {
+          global: '--form-control-border-color',
+          default: '--color-brand-grey-100',
+        },
+        '--option-tile-border-radius': {
+          global: '--form-control-size-md-border-radius',
+          default: '--size-border-radius-md',
+        },
+        '--option-tile-font-family': {
+          global: '--form-control-font-family',
+          default: '--asset-fonts-body',
+        },
+        '--option-tile-line-height': {
+          global: '--form-control-line-height',
+          default: '--size-line-height-input',
+        },
+        '--option-tile-border-color-hover': {
+          global: '--form-control-border-color-hover',
+          default: '--color-brand-grey-300',
+        },
+        '--option-tile-background-color-disabled': {
+          global: '--form-control-background-color-disabled',
+          default: '--color-brand-grey-50',
+        },
+        '--option-tile-font-color-disabled': {
+          global: '--form-control-font-color-disabled',
+          default: '--color-brand-grey-300',
+        },
+        '--option-tile-border-color-disabled': {
+          global: '--form-control-border-color',
+          default: '--color-brand-grey-100',
+        },
+        '--option-tile-font-color-error': {
+          global: '--form-control-font-color-error',
+          default: '--color-brand-danger-500',
+        },
+        '--option-tile-border-color-error-hover': {
+          global: '--form-control-border-color-hover',
+          default: '--color-brand-grey-300',
+        },
+        '--option-tile-font-color-error-disabled': {
+          global: '--form-control-font-color-error-disabled',
+          default: '--color-brand-danger-200',
+        },
+        '--option-tile-border-color-error-disabled-hover': {
+          global: '--form-control-border-color',
+          default: '--color-brand-grey-100',
+        },
+        '--option-tile-background-color-selected': {
+          global: '--form-control-background-color-selected',
+          default: '--color-brand-primary-50',
+        },
+        '--option-tile-border-color-selected': {
+          global: '--form-control-border-color-selected',
+          default: '--color-brand-primary-500',
+        },
+        '--option-tile-background-color-disabled-selected': {
+          global: '--form-control-background-color-disabled',
+          default: '--color-brand-grey-50',
+        },
+        '--option-tile-border-color-disabled-selected': {
+          global: '--form-control-border-color',
+          default: '--color-brand-grey-100',
+        },
+        '--option-tile-border-color-disabled-selected-hover': {
+          global: '--form-control-border-color',
+          default: '--color-brand-grey-100',
+        },
+        '--option-tile-background-color-selected-error': {
+          global: '--form-control-background-color-error',
+          default: '--color-brand-danger-50',
+        },
+        '--option-tile-border-color-selected-error': {
+          global: '--form-control-border-color-selected-error',
+          default: '--color-brand-danger-500',
+        },
+        '--option-tile-font-color-selected-error': {
+          global: 'form-control-font-color-error',
+          default: '--color-brand-danger-500',
+        },
+        '--option-tile-font-color-disabled-selected-error': {
+          global: '--form-control-font-color-error-disabled',
+          default: 'color-brand-danger-200',
+        },
+        '--option-tile-border-color-selected-error-hover': {
+          global: '--form-control-border-color-selected-error',
+          default: 'color-brand-danger-500',
+        },
+        '--option-tile-border-color-selected-hover': {
+          global: '--form-control-border-color-selected-hover',
+          default: '--color-brand-primary-500',
+        },
       };
       return Object.entries(tokens).map(([name, entry], i) => (
         <tr key={i}>

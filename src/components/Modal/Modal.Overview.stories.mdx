@@ -25,7 +25,15 @@ Modal consists of three child components that are automatically included with th
 In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `false`.
 
 <Canvas>
-  <Story name="Basic Usage">
+  <Story
+    name="Basic Usage"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=618%3A7847',
+      },
+    }}
+  >
     {() => {
       const [showModal, setShowModal] = useState(false);
       const open = () => setShowModal(true);
@@ -35,8 +43,16 @@ In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `
           <Button variant="light" onClick={open}>
             Show Modal
           </Button>
-          <Modal ariaLabelledBy="titleBasic" isOpen={showModal} onDismiss={close}>
-            <Modal.Header id="titleBasic" title="The Modal Title" onDismiss={close} />
+          <Modal
+            ariaLabelledBy="titleBasic"
+            isOpen={showModal}
+            onDismiss={close}
+          >
+            <Modal.Header
+              id="titleBasic"
+              title="The Modal Title"
+              onDismiss={close}
+            />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>
@@ -60,7 +76,15 @@ In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `
 Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These components simply wrap your content in consistent padding, otherwise you can pass whatever you want as content.
 
 <Canvas>
-  <Story name="Body and Footer">
+  <Story
+    name="Body and Footer"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=618%3A7847',
+      },
+    }}
+  >
     {() => {
       const [showModal, setShowModal] = React.useState(false);
       const open = () => setShowModal(true);
@@ -70,8 +94,16 @@ Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These co
           <Button variant="light" onClick={open}>
             Show Modal With Body and Footer
           </Button>
-          <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={close}>
-            <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={close} />
+          <Modal
+            ariaLabelledBy="titleFooterBody"
+            isOpen={showModal}
+            onDismiss={close}
+          >
+            <Modal.Header
+              id="titleFooterBody"
+              title="The Modal Title"
+              onDismiss={close}
+            />
             <Modal.Body>Modal body content</Modal.Body>
             <Modal.Footer>This is content in the modal footer</Modal.Footer>
           </Modal>
@@ -86,7 +118,15 @@ Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These co
 Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a close button.
 
 <Canvas>
-  <Story name="Close button">
+  <Story
+    name="Close button"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=618%3A7847',
+      },
+    }}
+  >
     {() => {
       const [showModal, setShowModal] = React.useState(false);
       const open = () => setShowModal(true);
@@ -96,7 +136,11 @@ Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a cl
           <Button variant="light" onClick={open}>
             Show Modal With Close Button
           </Button>
-          <Modal ariaLabel="modal with close button" isOpen={showModal} onDismiss={close}>
+          <Modal
+            ariaLabel="modal with close button"
+            isOpen={showModal}
+            onDismiss={close}
+          >
             <Modal.Header onDismiss={close} />
             <Modal.Body>Modal content</Modal.Body>
           </Modal>
@@ -111,7 +155,15 @@ Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a cl
 Omit `<Modal.Header/>` to render a minimal modal without a header.
 
 <Canvas>
-  <Story name="Without Header">
+  <Story
+    name="Without Header"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=618%3A7847',
+      },
+    }}
+  >
     {() => {
       const [showModal, setShowModal] = React.useState(false);
       const open = () => setShowModal(true);
@@ -121,7 +173,11 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
           <Button variant="light" onClick={open}>
             Show Modal Without Header
           </Button>
-          <Modal ariaLabel="Modal without a header" isOpen={showModal} onDismiss={close}>
+          <Modal
+            ariaLabel="Modal without a header"
+            isOpen={showModal}
+            onDismiss={close}
+          >
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
               <Button variant="light" onClick={close}>
@@ -186,21 +242,34 @@ maxWidth, use existing tokens only.
   <Story name="Max Width">
     {() => {
       const [showModal, setShowModal] = React.useState(false);
-      const [showResponsiveModal, setShowResponsiveModal] = React.useState(false);
+      const [showResponsiveModal, setShowResponsiveModal] =
+        React.useState(false);
       return (
         <>
           <div className="m-bottom-md">
             <Button variant="light" onClick={() => setShowModal(true)}>
               Show Modal
             </Button>
-            <Modal ariaLabelledBy="titleFooterBody" isOpen={showModal} onDismiss={() => setShowModal(false)} maxWidth="4xl">
-              <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={() => setShowModal(false)} />
+            <Modal
+              ariaLabelledBy="titleFooterBody"
+              isOpen={showModal}
+              onDismiss={() => setShowModal(false)}
+              maxWidth="4xl"
+            >
+              <Modal.Header
+                id="titleFooterBody"
+                title="The Modal Title"
+                onDismiss={() => setShowModal(false)}
+              />
               <Modal.Body>Modal body content</Modal.Body>
               <Modal.Footer>This is content in the modal footer</Modal.Footer>
             </Modal>
           </div>
           <div>
-            <Button variant="light" onClick={() => setShowResponsiveModal(true)}>
+            <Button
+              variant="light"
+              onClick={() => setShowResponsiveModal(true)}
+            >
               This one has responsive max width
             </Button>
             <Modal
@@ -209,7 +278,11 @@ maxWidth, use existing tokens only.
               onDismiss={() => setShowResponsiveModal(false)}
               maxWidth={{ tablet: '3xl', desktop: '4xl', hd: '5xl' }}
             >
-              <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={() => setShowResponsiveModal(false)} />
+              <Modal.Header
+                id="titleFooterBody"
+                title="The Modal Title"
+                onDismiss={() => setShowResponsiveModal(false)}
+              />
               <Modal.Body>Modal body content</Modal.Body>
               <Modal.Footer>This is content in the modal footer</Modal.Footer>
             </Modal>
@@ -219,7 +292,6 @@ maxWidth, use existing tokens only.
     }}
   </Story>
 </Canvas>
-
 
 ## Component Design Tokens
 
@@ -253,4 +325,3 @@ maxWidth, use existing tokens only.
     })()}
   </tbody>
 </table>
-

@@ -18,6 +18,10 @@ A Drawer is a panel that slides in from one edge of the viewport and overlays co
     name="Basic Drawer"
     parameters={{
       chromatic: { disableSnapshot: true },
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=1792%3A42426',
+      },
     }}
   >
     {() => {
@@ -258,7 +262,11 @@ When `placement` is set to `top` or `bottom`, the `width` prop is ignored and th
         <>
           <Box childGap="sm" direction="row">
             {widths.map(width => (
-              <Button variant="light" onClick={() => handleClick(width)} key={width}>
+              <Button
+                variant="light"
+                onClick={() => handleClick(width)}
+                key={width}
+              >
                 {`Open ${width} Drawer `}
               </Button>
             ))}
@@ -472,7 +480,8 @@ Render the Drawer within a containing div using `containerRef`.
             ariaLabel="drawer component example"
           >
             <Box padding="lg" as="p">
-              This drawer is rendered inside it&apos;s containing div, rather than the document.body
+              This drawer is rendered inside it&apos;s containing div, rather
+              than the document.body
             </Box>
           </Drawer>
         </Box>

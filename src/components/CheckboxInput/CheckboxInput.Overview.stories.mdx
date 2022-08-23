@@ -29,7 +29,15 @@ Use a CheckboxInput to allow users to make a range of selections (zero, one or m
 All that is required to render a basic version of the CheckboxInput is a unique `id`, a `label`, `isChecked`, and an onchange event handler passed to the `onChange` prop.
 
 <Canvas>
-  <Story name="Default">
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=787%3A8277',
+      },
+    }}
+  >
     {() => {
       const [value, setValue] = useState(null);
       return (

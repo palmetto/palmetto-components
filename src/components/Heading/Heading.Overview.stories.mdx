@@ -26,7 +26,15 @@ If no size is specified, a default size will be applied.
 Each Heading level has a default size.
 
 <Canvas>
-  <Story name="Levels">
+  <Story
+    name="Levels"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=742%3A8800',
+      },
+    }}
+  >
     <>
       <Heading as="h1">h1 Heading</Heading>
       <Heading as="h2">h2 Heading</Heading>
@@ -58,7 +66,10 @@ The `size` prop accepts an object where the properties correspond to [breakpoint
 
 <Canvas>
   <Story name="Responsive Sizes" parameters={{ ...RESPONSIVE_STORY }}>
-    <Heading as="h3" size={{ base: 'sm', tablet: 'lg', desktop: 'xl', hd: '3xl' }}>
+    <Heading
+      as="h3"
+      size={{ base: 'sm', tablet: 'lg', desktop: 'xl', hd: '3xl' }}
+    >
       Leading the world towards a clean energy future
     </Heading>
   </Story>

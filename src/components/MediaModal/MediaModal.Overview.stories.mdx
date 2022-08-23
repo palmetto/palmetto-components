@@ -34,7 +34,15 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
 <ArgsTable of={MediaModal} />
 
 <Canvas>
-  <Story name="Landscape Image">
+  <Story
+    name="Landscape Image"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=1503%3A30057',
+      },
+    }}
+  >
     {() => {
       const [showModal, setShowModal] = useState(false);
       const open = () => setShowModal(true);
@@ -44,7 +52,11 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
           <Button variant="light" onClick={open}>
             Show Landscape Image
           </Button>
-          <MediaModal ariaLabel="landscape photo" isOpen={showModal} onDismiss={close}>
+          <MediaModal
+            ariaLabel="landscape photo"
+            isOpen={showModal}
+            onDismiss={close}
+          >
             <img
               src="images/landscape-mediamodal.jpg"
               alt=""
@@ -65,7 +77,15 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
 An optional title and description can be used to describe the contents of the modal.
 
 <Canvas>
-  <Story name="Portrait Image with Title and Description">
+  <Story
+    name="Portrait Image with Title and Description"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=1503%3A30057',
+      },
+    }}
+  >
     {() => {
       const [showModal, setShowModal] = useState(false);
       const open = () => setShowModal(true);
@@ -102,7 +122,15 @@ An optional title and description can be used to describe the contents of the mo
 Render a visible close button in the upper right of the viewport.
 
 <Canvas>
-  <Story name="With Close Button">
+  <Story
+    name="With Close Button"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=1503%3A30057',
+      },
+    }}
+  >
     {() => {
       const [showModal, setShowModal] = useState(false);
       const open = () => setShowModal(true);
@@ -112,7 +140,12 @@ Render a visible close button in the upper right of the viewport.
           <Button variant="light" onClick={open}>
             Show with Close Button
           </Button>
-          <MediaModal ariaLabel="landscape photo" isOpen={showModal} onDismiss={close} closeButton>
+          <MediaModal
+            ariaLabel="landscape photo"
+            isOpen={showModal}
+            onDismiss={close}
+            closeButton
+          >
             <img
               src="images/landscape-mediamodal.jpg"
               alt=""
@@ -156,10 +189,20 @@ If `headerContent` is defined, then the `title` and `description` will not be re
       );
       const footerItems = (
         <Box direction="row" childGap="lg" fontSize="lg">
-          <Box as="a" color="white" href="/images/landscape-mediamodal.jpg" download>
+          <Box
+            as="a"
+            color="white"
+            href="/images/landscape-mediamodal.jpg"
+            download
+          >
             <Icon name="download" />
           </Box>
-          <Box as="a" color="white" href="/images/landscape-mediamodal.jpg" target="_blank">
+          <Box
+            as="a"
+            color="white"
+            href="/images/landscape-mediamodal.jpg"
+            target="_blank"
+          >
             <Icon name="launch-app" />
           </Box>
           <Popover
@@ -218,7 +261,11 @@ If `headerContent` is defined, then the `title` and `description` will not be re
           <Button variant="light" onClick={open}>
             Show Vimeo Modal
           </Button>
-          <MediaModal ariaLabel="vimeo video" isOpen={showModal} onDismiss={close}>
+          <MediaModal
+            ariaLabel="vimeo video"
+            isOpen={showModal}
+            onDismiss={close}
+          >
             <Box display="block" width="90vw" maxWidth="5xl">
               <Vimeo vimeoId="595469877" />
             </Box>
