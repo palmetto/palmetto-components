@@ -78,6 +78,10 @@ export interface FileUploadProps extends BoxProps {
    */
   isDisabled?: boolean;
   /**
+   * Renders an outline version of the button. With a transparent background.
+   */
+  isOutlined?: boolean;
+  /**
    * Determines if input is required or not
    */
   isRequired?: boolean;
@@ -100,7 +104,7 @@ export interface FileUploadProps extends BoxProps {
   /**
    * Color for button component. Matches a curated subset of button variants.
    */
-  variant?: 'light' | 'dark' | 'primary';
+  variant?: 'light' | 'dark' | 'primary' | 'white' ;
   /**
    * Additional props to be spread. IMPORTANT: these will be spread ONLY to the
    * `input` element in the component since it is the actual semantic file input
@@ -126,6 +130,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
     helpText = undefined,
     inputProps = undefined,
     isDisabled = false,
+    isOutlined = false,
     isRequired = false,
     multiple = false,
     onClearFiles = undefined,
@@ -202,6 +207,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
           onClick={handleClick}
           aria-controls={id}
           isDisabled={isDisabled}
+          isOutlined={isOutlined}
           variant={variant}
           size={size}
           fullWidth={fullWidth}
