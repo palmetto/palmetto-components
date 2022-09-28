@@ -31,6 +31,9 @@ export default {
     isDisabled: {
       control: 'boolean',
     },
+    isOutlined: {
+      control: 'boolean',
+    },
     isRequired: {
       control: 'boolean',
     },
@@ -49,7 +52,7 @@ export default {
     variant: {
       control: {
         type: 'radio',
-        options: ['light', 'dark', 'primary'],
+        options: ['light', 'dark', 'primary', 'white'],
       },
     },
     size: {
@@ -61,7 +64,9 @@ export default {
   },
 } as Meta;
 
-const Template: Story<FileUploadProps> = ({ ...args }) => <FileUpload {...args} />;
+const Template: Story<FileUploadProps> = ({ ...args }) => (
+  <FileUpload {...args} />
+);
 
 export const Playground = Template.bind({});
 Playground.args = {
