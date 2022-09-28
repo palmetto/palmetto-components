@@ -1,5 +1,12 @@
 Changelog
 
+# [0.141.0](https://github.com/palmetto/palmetto-components/compare/v0.140.3...v0.141.0) (2022-09-28)
+
+
+### Features
+
+* **FileUpload:** add white and outlined variants ([#806](https://github.com/palmetto/palmetto-components/issues/806)) ([065db69](https://github.com/palmetto/palmetto-components/commit/065db693886bbbe7a371605f00de5338fd5abdc3))
+
 ## [0.140.3](https://github.com/palmetto/palmetto-components/compare/v0.140.2...v0.140.3) (2022-08-23)
 
 ## [0.140.2](https://github.com/palmetto/palmetto-components/compare/v0.140.1...v0.140.2) (2022-08-18)
