@@ -1,5 +1,12 @@
 Changelog
 
+# [0.142.0](https://github.com/palmetto/palmetto-components/compare/v0.141.0...v0.142.0) (2022-09-30)
+
+
+### Features
+
+* **FileUpload:** allow icon to be customized ([#807](https://github.com/palmetto/palmetto-components/issues/807)) ([f329730](https://github.com/palmetto/palmetto-components/commit/f32973017195fce6c96b145f81d14919f36d72f0))
+
 # [0.141.0](https://github.com/palmetto/palmetto-components/compare/v0.140.3...v0.141.0) (2022-09-28)
 
 
