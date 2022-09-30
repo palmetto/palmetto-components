@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { FileUpload, FileUploadProps } from './FileUpload';
+import { ICON_NAMES } from '../../lib/tokens';
 import { BUTTON_SIZES } from '../Button/Button.constants';
 
 export default {
@@ -27,6 +28,12 @@ export default {
     },
     hasIcon: {
       control: 'boolean',
+    },
+    iconName: {
+      control: {
+        type: 'select',
+        options: [null, ...ICON_NAMES],
+      },
     },
     isDisabled: {
       control: 'boolean',
