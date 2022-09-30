@@ -95,6 +95,33 @@ Use the `helpText` prop to add clarifying text adjacent to the file upload butto
   </Story>
 </Canvas>
 
+## Custom Icon
+
+Customize the icon to communicate the button's intended use using `iconName`. For example, using a mobile device, pressing the button will launch the device's built in camera.
+
+<Canvas>
+  <Story name="Custom Icon">
+    {() => {
+      const [files, setFiles] = useState(null);
+      const handleChange = event => {
+        setFiles(event.target.files);
+      };
+      return (
+        <FileUpload
+          labelText="My File"
+          buttonText="Take Photo"
+          id="myFile"
+          onChange={handleChange}
+          files={files}
+          iconName="camera"
+          accept="images/*"
+          capture="environment"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Without Icon
 
 Remove the icon on the button with the handy `hasIcon` boolean.

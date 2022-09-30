@@ -9,7 +9,7 @@ describe('FileUpload', () => {
 
       const fileInput = screen.getByLabelText('myFileUpload');
       const button = screen.getByText('Upload File').closest('button');
-      const uploadIcon = screen.getByTestId('file-upload__upload-icon');
+      const uploadIcon = screen.getByTestId('file-upload-icon');
 
       expect(fileInput).toBeInTheDocument();
       expect(button).toBeInTheDocument();
@@ -68,7 +68,7 @@ describe('FileUpload', () => {
         />,
       );
 
-      const uploadIcon = screen.queryByTestId('file-upload__upload-icon');
+      const uploadIcon = screen.queryByTestId('file-upload-icon');
       expect(uploadIcon).toBe(null);
     });
 

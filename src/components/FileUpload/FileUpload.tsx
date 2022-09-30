@@ -9,6 +9,7 @@ import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { Button, ButtonSize } from '../Button/Button';
 import styles from './FileUpload.module.scss';
+import { IconName } from '../../types';
 
 export interface FileUploadProps extends BoxProps {
   /**
@@ -69,6 +70,7 @@ export interface FileUploadProps extends BoxProps {
    * Additional clarifying text to help describe the type of acceptable files
    */
   helpText?: ReactNode;
+  iconName?: IconName;
   /**
    * Props passed directly to the input element of the component
    */
@@ -128,6 +130,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
     fullWidth = false,
     hasIcon = true,
     helpText = undefined,
+    iconName = 'upload',
     inputProps = undefined,
     isDisabled = false,
     isOutlined = false,
@@ -218,9 +221,9 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
           <Box as="span" direction="row" onClick={(e: MouseEvent) => { e.preventDefault(); }}>
             {hasIcon && (
               <Icon
-                name="upload"
+                name={iconName}
                 className={classNames('align-self-center', { 'm-right-xs': buttonText })}
-                data-testid="file-upload__upload-icon"
+                data-testid="file-upload-icon"
               />
             )}
             {buttonText
