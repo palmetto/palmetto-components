@@ -70,6 +70,9 @@ export interface FileUploadProps extends BoxProps {
    * Additional clarifying text to help describe the type of acceptable files
    */
   helpText?: ReactNode;
+  /**
+   * Name of the icon displayed inside the button
+   */
   iconName?: IconName;
   /**
    * Props passed directly to the input element of the component
