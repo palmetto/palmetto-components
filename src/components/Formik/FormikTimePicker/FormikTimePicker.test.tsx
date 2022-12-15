@@ -132,7 +132,7 @@ describe('FormikTimePicker', () => {
       test('it disables the input', () => {
         render(renderForm([], { isDisabled: true }));
 
-        expect(screen.getByRole('textbox')).toBeDisabled();
+        expect(screen.getByLabelText(testLabelName)).toBeDisabled();
       });
     });
 
