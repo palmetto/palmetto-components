@@ -27,7 +27,7 @@
     "classnames": "^2.2.6",
     "cleave.js": "^1.6.0",
     "date-fns": "^2.16.1",
-    "focus-trap-react": "^8.1.0",
+    "focus-trap-react": "^10.0.2",
     "formik": "^2.2.9",
     "react-datepicker": "^3.3.0",
     "react-merge-refs": "^1.1.0",
