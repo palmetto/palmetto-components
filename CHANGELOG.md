@@ -1,5 +1,7 @@
 Changelog
 
+## [0.142.4](https://github.com/palmetto/palmetto-components/compare/v0.142.3...v0.142.4) (2022-12-28)
+
 ## [0.142.3](https://github.com/palmetto/palmetto-components/compare/v0.142.2...v0.142.3) (2022-12-27)
 
 ## [0.142.2](https://github.com/palmetto/palmetto-components/compare/v0.142.1...v0.142.2) (2022-12-06)
