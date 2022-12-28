@@ -1,0 +1,49 @@
+import { useState, useEffect } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { useDisclosure } from './useDisclosure';
+import { Drawer } from '../../components/Drawer/Drawer';
+import { Button } from '../../components/Button/Button';
+import { Box } from '../../components/Box/Box';
+
+<Meta
+  title="Hooks/useDisclosure/Overview"
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# useDisclosure
+
+The `useDisclosure` is a hook used to help handle common open, close, or toggle scenarios. It can be used to control components such as `Modal`, `MediaModal`, `Drawer`, and `Details`.
+
+<Canvas withSource="open">
+  <Story name="Basic Usage">
+    {() => {
+      const { isOpen, onOpen, onClose } = useDisclosure();
+      return (
+        <div>
+          <Button variant="light" type="button" onClick={onOpen}>
+            Open Drawer
+          </Button>
+          <Drawer
+            isOpen={isOpen}
+            title="Drawer Title"
+            onDismiss={onClose}
+            ariaLabel="drawer component example"
+          >
+            <Box padding="lg" display="block" childGap="md">
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+            </Box>
+          </Drawer>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={useDisclosure} />
