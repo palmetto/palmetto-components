@@ -53,6 +53,7 @@ export const useDisclosure = (
   const handleOpen = useCallback(() => {
     onOpenProp?.();
   }, [onOpenProp]);
+
   const handleClose = useCallback(() => {
     onCloseProp?.();
   }, [onCloseProp]);

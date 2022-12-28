@@ -63,6 +63,7 @@ describe('useDisclosure', () => {
     test('onClose callback is called when onToggle is run', () => {
       render(<UseDisclosureExample onClose={mockedOnClose} defaultIsOpen />);
 
+      expect(screen.getByTestId('details-content')).toBeVisible();
       fireEvent.click(screen.getByText('Details Summary'));
       expect(screen.getByTestId('details-content')).not.toBeVisible();
       expect(mockedOnClose).toHaveBeenCalledTimes(1);
