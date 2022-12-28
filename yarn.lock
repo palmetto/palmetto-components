@@ -14882,9 +14882,9 @@ mdurl@^1.0.0:
   integrity sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==
 
 mdx-embed@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/mdx-embed/-/mdx-embed-1.0.0.tgz#b1d6ae7fe8d27299769430b2ea7df280ae85c539"
-  integrity sha512-Ey2TqM7EA+EKHXUheD4me1rfxYvd633ZqoRIFv1shsfSxUQ+5776hUtPYm5g8WMZAKOkzta7cZKZ/ipUWCNoXQ==
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/mdx-embed/-/mdx-embed-1.1.2.tgz#04468e8dcb3be9fe3e65207e88a83d2f76555a24"
+  integrity sha512-AAronHC/sh4py+RhJOuX8+9+lyUbJsmCLquXNPCEHZ0llPWjMuwls77hII/lWI2kwBSPZPahrqti8kGTv1pi1w==
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -20173,9 +20173,9 @@ storybook-addon-designs@^6.3.1:
     "@figspec/react" "^1.0.0"
 
 storybook-addon-mdx-embed@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/storybook-addon-mdx-embed/-/storybook-addon-mdx-embed-1.0.0.tgz#017fe379bc92032f52cc29224eda97d45a4c25ed"
-  integrity sha512-6vG7FZWNlX43xE5XOI7dmFMMpIk6IXY/YEYW9k+VKF6wailN18fjsObx7p/kykXAecxILBRpaRqLQ3MH8Dv6mg==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/storybook-addon-mdx-embed/-/storybook-addon-mdx-embed-1.1.1.tgz#b91931e115f664ad8fc63f2e3b54bc0bde81a9ee"
+  integrity sha512-HPvygg6KHI6ekGBh7yU+O9pTg58DIh3F4xU2Aws8IAnu8Pzjij1mcII7Q/ICvqIxI5HcW8zVILhVhpPshlExjw==
 
 stream-browserify@^2.0.1:
   version "2.0.2"
