@@ -91,7 +91,6 @@
     "@storybook/addon-controls": "^6.3.12",
     "@storybook/addon-docs": "^6.3.12",
     "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-links": "^6.3.12",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^6.3.12",
     "@storybook/react": "^6.5.10",
