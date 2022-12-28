@@ -35,7 +35,6 @@ module.exports = {
       },
     },
     '@storybook/addon-controls',
-    '@storybook/addon-links/',
     "@storybook/addon-essentials",
     'storybook-addon-designs',
     'storybook-addon-mdx-embed',
