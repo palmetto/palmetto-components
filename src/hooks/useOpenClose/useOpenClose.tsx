@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export interface UseDisclosureProps {
+export interface UseOpenCloseProps {
   /**
    * Initial visibility of the component
    */
@@ -21,7 +21,7 @@ export interface UseDisclosureProps {
   onOpen?: () => void;
 }
 
-export interface UseDisclosureState {
+export interface UseOpenCloseState {
   /**
    * If true, sets the controlled component to its visible state
    */
@@ -40,9 +40,9 @@ export interface UseDisclosureState {
   onToggle: () => void;
 }
 
-export const useDisclosure = (
-  props: UseDisclosureProps = {},
-): UseDisclosureState => {
+export const useOpenClose = (
+  props: UseOpenCloseProps = {},
+): UseOpenCloseState => {
   const {
     defaultIsOpen,
     isOpen: isOpenProp,

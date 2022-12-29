@@ -7,7 +7,7 @@ import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Popover } from '../Popover/Popover';
-import { useDisclosure } from '../../hooks/useDisclosure/useDisclosure';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 <Meta title="Components/MediaModal/Overview" component={MediaModal} />
 
@@ -33,7 +33,7 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
         isOpen: isMediaModalOpen,
         onOpen: onMediaModalOpen,
         onClose: onMediaModalClose,
-      } = useDisclosure();
+      } = useOpenClose();
       return (
         <div>
           <Button variant="light" onClick={onMediaModalOpen}>
@@ -93,7 +93,7 @@ An optional title and description can be used to describe the contents of the mo
         isOpen: isMediaModalOpen,
         onOpen: onMediaModalOpen,
         onClose: onMediaModalClose,
-      } = useDisclosure();
+      } = useOpenClose();
       return (
         <div>
           <Button variant="light" onClick={onMediaModalOpen}>
@@ -140,7 +140,7 @@ Render a visible close button in the upper right of the viewport.
         isOpen: isMediaModalOpen,
         onOpen: onMediaModalOpen,
         onClose: onMediaModalClose,
-      } = useDisclosure();
+      } = useOpenClose();
       return (
         <div>
           <Button variant="light" onClick={onMediaModalOpen}>
@@ -180,9 +180,9 @@ If `headerContent` is defined, then the `title` and `description` will not be re
         isOpen: isMediaModalOpen,
         onOpen: onMediaModalOpen,
         onClose: onMediaModalClose,
-      } = useDisclosure();
+      } = useOpenClose();
       const { isOpen: isPopoverOpen, onToggle: onPopoverToggle } =
-        useDisclosure();
+        useOpenClose();
       const headerItems = (
         <Box childGap="2xs">
           <Box fontWeight="bold">Custom Styled Title</Box>
@@ -263,7 +263,7 @@ If `headerContent` is defined, then the `title` and `description` will not be re
         isOpen: isMediaModalOpen,
         onOpen: onMediaModalOpen,
         onClose: onMediaModalClose,
-      } = useDisclosure();
+      } = useOpenClose();
       return (
         <div>
           <Button variant="light" onClick={onMediaModalOpen}>

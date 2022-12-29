@@ -6,7 +6,7 @@ import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { TextInput } from '../TextInput/TextInput';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
-import { useDisclosure } from '../../hooks/useDisclosure/useDisclosure';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 <Meta title="Components/Drawer/Overview" component={Drawer} />
 
@@ -30,7 +30,7 @@ A Drawer is a panel that slides in from one edge of the viewport and overlays co
         isOpen: isDrawerOpen,
         onOpen: onDrawerOpen,
         onClose: onDrawerClose,
-      } = useDisclosure();
+      } = useOpenClose();
       return (
         <>
           <Button variant="light" onClick={onDrawerOpen}>
@@ -105,7 +105,7 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
         isOpen: isDrawerOpen,
         onOpen: onDrawerOpen,
         onClose: onDrawerClose,
-      } = useDisclosure();
+      } = useOpenClose();
       const [placement, setPlacement] = useState('right');
       const placementOptions = [
         {
@@ -183,7 +183,7 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
         isOpen: isDrawerOpen,
         onOpen: onDrawerOpen,
         onClose: onDrawerClose,
-      } = useDisclosure();
+      } = useOpenClose();
       const drawerContent = [];
       for (let i = 0; i < 50; i++) {
         drawerContent.push(<Box key={i}>Drawer content&hellip;</Box>);
@@ -218,7 +218,7 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
         isOpen: isDrawerOpen,
         onOpen: onDrawerOpen,
         onClose: onDrawerClose,
-      } = useDisclosure();
+      } = useOpenClose();
       const drawerContent = [];
       for (let i = 0; i < 50; i++) {
         drawerContent.push(<Box key={i}>Drawer content&hellip;</Box>);
@@ -262,7 +262,7 @@ When `placement` is set to `top` or `bottom`, the `width` prop is ignored and th
         isOpen: isDrawerOpen,
         onOpen: onDrawerOpen,
         onClose: onDrawerClose,
-      } = useDisclosure();
+      } = useOpenClose();
       const [width, setWidth] = React.useState('default');
       const handleClick = newWidth => {
         setWidth(newWidth);
@@ -316,7 +316,7 @@ The height of Drawers with a `top` or `bottom` placement is determined by Drawer
         isOpen: isDrawerOpen,
         onOpen: onDrawerOpen,
         onClose: onDrawerClose,
-      } = useDisclosure();
+      } = useOpenClose();
       return (
         <>
           <Button variant="light" onClick={onDrawerOpen}>
@@ -369,7 +369,7 @@ In cases where content in the drawer is supplemental to content on the main area
         isOpen: isDrawerOpen,
         onToggle: onDrawerToggle,
         onClose: onDrawerClose,
-      } = useDisclosure({ onClose: returnFocus });
+      } = useOpenClose({ onClose: returnFocus });
       useEffect(() => {
         setTimeout(() => {
           if (closeBtnRef && closeBtnRef.current) {
@@ -423,7 +423,7 @@ By default the first focusable element will receive focus when the drawer opens,
         isOpen: isDrawerOpen,
         onOpen: onDrawerOpen,
         onClose: onDrawerClose,
-      } = useDisclosure();
+      } = useOpenClose();
       const ref = useRef();
       return (
         <>
@@ -478,7 +478,7 @@ Render the Drawer within a containing div using `containerRef`.
         isOpen: isDrawerOpen,
         onOpen: onDrawerOpen,
         onClose: onDrawerClose,
-      } = useDisclosure();
+      } = useOpenClose();
       return (
         <Box
           position="relative"
@@ -535,7 +535,7 @@ The appearance of a Drawer can be customized via component design tokens.
         isOpen: isDrawerOpen,
         onOpen: onDrawerOpen,
         onClose: onDrawerClose,
-      } = useDisclosure();
+      } = useOpenClose();
       const containerRef = useRef();
       return (
         <Box

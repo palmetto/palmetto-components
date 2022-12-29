@@ -6,7 +6,7 @@ import { Details } from './Details';
 import { Button } from '../Button/Button';
 import { Box } from '../Box/Box';
 import { DetailsSummary } from './DetailsSummary';
-import { useDisclosure } from '../../hooks/useDisclosure/useDisclosure';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 <Meta title="Components/Details/Overview" component={Details} />
 
@@ -23,7 +23,7 @@ NOTE: for a custom implementation of this component see the [accordion](/?path=/
 <Canvas withSource="open">
   <Story name="Basic Usage">
     {() => {
-      const { isOpen, onToggle } = useDisclosure();
+      const { isOpen, onToggle } = useOpenClose();
       return (
         <Details isOpen={isOpen}>
           <Details.Summary
@@ -62,7 +62,7 @@ Add any custom JSX to the `<Details.Summary>` element to customize your summary 
 <Canvas withSource="open">
   <Story name="With custom summary">
     {() => {
-      const { isOpen, onToggle } = useDisclosure();
+      const { isOpen, onToggle } = useOpenClose();
       return (
         <Details isOpen={isOpen}>
           <Details.Summary
@@ -92,7 +92,7 @@ Render the component with the details expanded by setting `isOpen` to `true`.
 <Canvas withSource="open">
   <Story name="Opened">
     {() => {
-      const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: true });
+      const { isOpen, onToggle } = useOpenClose({ defaultIsOpen: true });
       return (
         <Details isOpen={isOpen}>
           <Details.Summary

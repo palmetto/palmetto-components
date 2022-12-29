@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
-import { useDisclosure } from './useDisclosure';
+import { useOpenClose } from './useOpenClose';
 import { Drawer } from '../../components/Drawer/Drawer';
 import { Button } from '../../components/Button/Button';
 import { Box } from '../../components/Box/Box';
 
 <Meta
-  title="Hooks/useDisclosure/Overview"
+  title="Hooks/useOpenClose/Overview"
   parameters={{
     controls: { hideNoControlsWarning: true },
   }}
 />
 
-# useDisclosure
+# useOpenClose
 
-The `useDisclosure` is a hook to help handle common open, close, or toggle scenarios. It can be used to control components such as `Modal`, `MediaModal`, `Drawer`, `Details` and even `Popover`.
+The `useOpenClose` is a hook to help handle common open, close, or toggle scenarios. It can be used to control components such as `Modal`, `MediaModal`, `Drawer`, `Details` and even `Popover`.
 
 <Canvas withSource="open">
   <Story
@@ -23,7 +23,7 @@ The `useDisclosure` is a hook to help handle common open, close, or toggle scena
     parameters={{ chromatic: { disableSnapshot: true } }}
   >
     {() => {
-      const { isOpen, onOpen, onClose } = useDisclosure({
+      const { isOpen, onOpen, onClose } = useOpenClose({
         onOpen: action('onOpen'),
         onClose: action('onClose'),
       });
@@ -52,4 +52,4 @@ The `useDisclosure` is a hook to help handle common open, close, or toggle scena
 
 ## Parameters
 
-<ArgsTable of={useDisclosure} />
+<ArgsTable of={useOpenClose} />

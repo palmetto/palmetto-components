@@ -14,10 +14,10 @@ NOTE: for a custom implementation of this component see the [accordion](/?path=/
 
 ```js codesandbox=palmetto-components
 import React, { useState } from 'react';
-import { Details, Box, Heading, useDisclosure } from '@palmetto/palmetto-components';
+import { Details, Box, Heading, useOpenClose } from '@palmetto/palmetto-components';
 
 export default () => {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle } = useOpenClose();
 
   return (
     <Details isOpen={isOpen} margin="md">

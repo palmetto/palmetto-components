@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { MediaModal } from './MediaModal';
 import { Button } from '../Button/Button';
-import { useDisclosure } from '../../hooks/useDisclosure/useDisclosure';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 export default {
   title: 'Components/MediaModal',
@@ -18,7 +18,7 @@ export const WithCustomPortalTarget: Story = () => {
     isOpen: isMediaModalOpen,
     onOpen: onMediaModalOpen,
     onClose: onMediaModalClose,
-  } = useDisclosure();
+  } = useOpenClose();
 
   return (
     <div id="myContainer" ref={ref}>

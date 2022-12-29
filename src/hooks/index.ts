@@ -1,3 +1,3 @@
 export * from './useBreakpoint/useBreakpoint';
-export * from './useDisclosure/useDisclosure';
+export * from './useOpenClose/useOpenClose';
 export * from './useWindowSize/useWindowSize';

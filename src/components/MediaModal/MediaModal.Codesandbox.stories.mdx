@@ -14,7 +14,7 @@ import React, { useState } from 'react';
 import {
   Button,
   MediaModal,
-  useDisclosure,
+  useOpenClose,
 } from '@palmetto/palmetto-components';
 
 export default () => {
@@ -22,7 +22,7 @@ export default () => {
     isOpen: isMediaModalOpen,
     onOpen: onMediaModalOpen,
     onClose: onMediaModalClose,
-  } = useDisclosure();
+  } = useOpenClose();
   return (
     <div>
       <Button variant="light" onClick={onMediaModalOpen}>

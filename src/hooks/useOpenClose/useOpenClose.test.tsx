@@ -1,13 +1,13 @@
 import React from 'react';
 import { fireEvent, screen, render } from '@testing-library/react';
-import { useDisclosure, UseDisclosureProps } from './useDisclosure';
+import { useOpenClose, UseOpenCloseProps } from './useOpenClose';
 import { Details } from '../../components/Details/Details';
 
 const mockedOnOpen = jest.fn(() => null);
 const mockedOnClose = jest.fn(() => null);
 
-const UseDisclosureExample = (props: UseDisclosureProps) => {
-  const { isOpen, onToggle } = useDisclosure({ ...props });
+const UseOpenCloseExample = (props: UseOpenCloseProps) => {
+  const { isOpen, onToggle } = useOpenClose({ ...props });
 
   return (
     <Details isOpen={isOpen}>
@@ -26,14 +26,14 @@ const UseDisclosureExample = (props: UseDisclosureProps) => {
   );
 };
 
-describe('useDisclosure', () => {
+describe('useOpenClose', () => {
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   describe('initial state', () => {
     test('component does not render the disclosure by default', () => {
-      const { getByText, getByTestId } = render(<UseDisclosureExample />);
+      const { getByText, getByTestId } = render(<UseOpenCloseExample />);
 
       const myButton = getByText('Details Summary');
 
@@ -41,7 +41,7 @@ describe('useDisclosure', () => {
       expect(getByTestId('details-content')).not.toBeVisible();
     });
     test('component shows and hides the disclosure when onToggle is pressed', () => {
-      render(<UseDisclosureExample />);
+      render(<UseOpenCloseExample />);
 
       fireEvent.click(screen.getByText('Details Summary'));
       expect(screen.getByTestId('details-content')).toBeVisible();
@@ -53,7 +53,7 @@ describe('useDisclosure', () => {
 
   describe('callbacks', () => {
     test('onOpen callback is called when onToggle is run', () => {
-      render(<UseDisclosureExample onOpen={mockedOnOpen} />);
+      render(<UseOpenCloseExample onOpen={mockedOnOpen} />);
 
       fireEvent.click(screen.getByText('Details Summary'));
       expect(screen.getByTestId('details-content')).toBeVisible();
@@ -61,7 +61,7 @@ describe('useDisclosure', () => {
       expect(mockedOnOpen).toHaveBeenCalledTimes(1);
     });
     test('onClose callback is called when onToggle is run', () => {
-      render(<UseDisclosureExample onClose={mockedOnClose} defaultIsOpen />);
+      render(<UseOpenCloseExample onClose={mockedOnClose} defaultIsOpen />);
 
       expect(screen.getByTestId('details-content')).toBeVisible();
       fireEvent.click(screen.getByText('Details Summary'));
@@ -72,14 +72,14 @@ describe('useDisclosure', () => {
 
   describe('controlled', () => {
     test('does not close when onToggle is called when isOpen', () => {
-      render(<UseDisclosureExample isOpen />);
+      render(<UseOpenCloseExample isOpen />);
 
       fireEvent.click(screen.getByText('Details Summary'));
       expect(screen.getByTestId('details-content')).toBeVisible();
     });
     test('calls onClose, but does not call onOpen when isOpen', () => {
       render(
-        <UseDisclosureExample
+        <UseOpenCloseExample
           isOpen
           onOpen={mockedOnOpen}
           onClose={mockedOnClose}
@@ -94,14 +94,14 @@ describe('useDisclosure', () => {
       expect(mockedOnOpen).toHaveBeenCalledTimes(0);
     });
     test('does not open when onToggle is called and isOpen is false', () => {
-      render(<UseDisclosureExample isOpen={false} />);
+      render(<UseOpenCloseExample isOpen={false} />);
 
       fireEvent.click(screen.getByText('Details Summary'));
       expect(screen.getByTestId('details-content')).not.toBeVisible();
     });
     test('calls onOpen, but does not call onClose when isOpen is false', () => {
       render(
-        <UseDisclosureExample
+        <UseOpenCloseExample
           isOpen={false}
           onOpen={mockedOnOpen}
           onClose={mockedOnClose}
