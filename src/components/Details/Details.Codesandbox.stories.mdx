@@ -14,18 +14,14 @@ NOTE: for a custom implementation of this component see the [accordion](/?path=/
 
 ```js codesandbox=palmetto-components
 import React, { useState } from 'react';
-import { Details, Box, Heading } from '@palmetto/palmetto-components';
+import { Details, Box, Heading, useDisclosure } from '@palmetto/palmetto-components';
 
 export default () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleToggle = () => {
-    const newIsOpen = !isOpen;
-    setIsOpen(newIsOpen);
-  };
+  const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Details isOpen={isOpen} margin="md">
-      <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()} display="inline">
+      <Details.Summary isDetailsOpen={isOpen} onToggle={onToggle)} display="inline">
         What is Palmetto's Mission?
       </Details.Summary>
       <Box padding="md 0" childGap="sm">
