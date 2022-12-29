@@ -20,22 +20,29 @@ inside `<Details>` typically following the `<Details.Summary>`.
 
 NOTE: for a custom implementation of this component see the [accordion](/?path=/story/components-accordion-overview--default-story)
 
-<Canvas isExpanded>
-  <Story name="Demo">
+<Canvas withSource="open">
+  <Story name="Basic Usage">
     {() => {
       const { isOpen, onToggle } = useDisclosure();
       return (
         <Details isOpen={isOpen}>
-          <Details.Summary isDetailsOpen={isOpen} onToggle={onToggle} display="inline">
+          <Details.Summary
+            isDetailsOpen={isOpen}
+            onToggle={onToggle}
+            display="inline"
+          >
             What is Palmetto's Mission?
           </Details.Summary>
           <Box padding="md 0" childGap="sm">
-            <Box fontSize="lg" as="h4">Leading the World Towards a Clean Energy Future</Box>
+            <Box fontSize="lg" as="h4">
+              Leading the World Towards a Clean Energy Future
+            </Box>
             <Box as="p">
-              We are on a mission to stop climate change before we reach an irreversible tipping
-              point. Yes, this requires large shifts by entire nations and entire populations. It
-              requires urgency and change on a massive scale. But technological advancements have
-              put it within reach.
+              We are on a mission to stop climate change before we reach an
+              irreversible tipping point. Yes, this requires large shifts by
+              entire nations and entire populations. It requires urgency and
+              change on a massive scale. But technological advancements have put
+              it within reach.
             </Box>
           </Box>
         </Details>
@@ -52,19 +59,25 @@ NOTE: for a custom implementation of this component see the [accordion](/?path=/
 
 Add any custom JSX to the `<Details.Summary>` element to customize your summary trigger.
 
-<Canvas isExpanded>
+<Canvas withSource="open">
   <Story name="With custom summary">
     {() => {
       const { isOpen, onToggle } = useDisclosure();
       return (
         <Details isOpen={isOpen}>
-          <Details.Summary fontWeight="bold" color="primary-500" hover={{ color: 'primary-600'}} isDetailsOpen={isOpen} onToggle={onToggle}>
+          <Details.Summary
+            fontWeight="bold"
+            color="primary-500"
+            hover={{ color: 'primary-600' }}
+            isDetailsOpen={isOpen}
+            onToggle={onToggle}
+          >
             Do you have my reservation?
           </Details.Summary>
           <Box padding="md 0" as="p">
-            See, you know how to take the reservation, you just don't know how to hold the
-            reservation and that's really the most important part of the reservation, the holding.
-            Anybody can just take them.
+            See, you know how to take the reservation, you just don't know how
+            to hold the reservation and that's really the most important part of
+            the reservation, the holding. Anybody can just take them.
           </Box>
         </Details>
       );
@@ -76,19 +89,25 @@ Add any custom JSX to the `<Details.Summary>` element to customize your summary 
 
 Render the component with the details expanded by setting `isOpen` to `true`.
 
-<Canvas isExpanded>
+<Canvas withSource="open">
   <Story name="Opened">
     {() => {
-      const { isOpen, onToggle } = useDisclosure({defaultIsOpen: true});
+      const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: true });
       return (
         <Details isOpen={isOpen}>
-          <Details.Summary fontWeight="bold" color="primary-500" hover={{ color: 'primary-600'}} isDetailsOpen={isOpen} onToggle={onToggle}>
+          <Details.Summary
+            fontWeight="bold"
+            color="primary-500"
+            hover={{ color: 'primary-600' }}
+            isDetailsOpen={isOpen}
+            onToggle={onToggle}
+          >
             Do you have my reservation?
           </Details.Summary>
           <Box padding="md 0" as="p">
-            See, you know how to take the reservation, you just don't know how to hold the
-            reservation and that's really the most important part of the reservation, the holding.
-            Anybody can just take them.
+            See, you know how to take the reservation, you just don't know how
+            to hold the reservation and that's really the most important part of
+            the reservation, the holding. Anybody can just take them.
           </Box>
         </Details>
       );
