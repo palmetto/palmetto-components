@@ -16,19 +16,19 @@ export const WithCustomPortalTarget: Story = () => {
   const ref = React.useRef() as React.RefObject<HTMLDivElement>;
   const {
     isOpen: isMediaModalOpen,
-    onOpen: onMediaModalOpen,
-    onClose: onMediaModalClose,
+    handleOpen: openMediaModal,
+    handleClose: closeMediaModal,
   } = useOpenClose();
 
   return (
     <div id="myContainer" ref={ref}>
-      <Button variant="light" onClick={onMediaModalOpen}>
+      <Button variant="light" onClick={openMediaModal}>
         Show Modal
       </Button>
       <MediaModal
         ariaLabel="leaves"
         isOpen={isMediaModalOpen}
-        onDismiss={onMediaModalClose}
+        onDismiss={closeMediaModal}
         containerRef={ref}
       >
         <img src="images/landscape-mediamodal.jpg" alt="" />

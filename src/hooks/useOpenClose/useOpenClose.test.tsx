@@ -7,13 +7,13 @@ const mockedOnOpen = jest.fn(() => null);
 const mockedOnClose = jest.fn(() => null);
 
 const UseOpenCloseExample = (props: UseOpenCloseProps) => {
-  const { isOpen, onToggle } = useOpenClose({ ...props });
+  const { isOpen, handleToggle } = useOpenClose({ ...props });
 
   return (
     <Details isOpen={isOpen}>
       <Details.Summary
         isDetailsOpen={isOpen}
-        onToggle={onToggle}
+        onToggle={handleToggle}
         display="inline"
       >
         Details Summary
@@ -40,7 +40,7 @@ describe('useOpenClose', () => {
       expect(myButton).toBeInTheDocument();
       expect(getByTestId('details-content')).not.toBeVisible();
     });
-    test('component shows and hides the disclosure when onToggle is pressed', () => {
+    test('component shows and hides the disclosure when toggle is pressed', () => {
       render(<UseOpenCloseExample />);
 
       fireEvent.click(screen.getByText('Details Summary'));
@@ -52,7 +52,7 @@ describe('useOpenClose', () => {
   });
 
   describe('callbacks', () => {
-    test('onOpen callback is called when onToggle is run', () => {
+    test('onOpen callback is called when toggle is run', () => {
       render(<UseOpenCloseExample onOpen={mockedOnOpen} />);
 
       fireEvent.click(screen.getByText('Details Summary'));
@@ -60,7 +60,7 @@ describe('useOpenClose', () => {
 
       expect(mockedOnOpen).toHaveBeenCalledTimes(1);
     });
-    test('onClose callback is called when onToggle is run', () => {
+    test('onClose callback is called when toggle is run', () => {
       render(<UseOpenCloseExample onClose={mockedOnClose} defaultIsOpen />);
 
       expect(screen.getByTestId('details-content')).toBeVisible();
@@ -71,7 +71,7 @@ describe('useOpenClose', () => {
   });
 
   describe('controlled', () => {
-    test('does not close when onToggle is called when isOpen', () => {
+    test('does not close when toggle is called when isOpen', () => {
       render(<UseOpenCloseExample isOpen />);
 
       fireEvent.click(screen.getByText('Details Summary'));
@@ -93,7 +93,7 @@ describe('useOpenClose', () => {
       expect(mockedOnClose).toHaveBeenCalledTimes(2);
       expect(mockedOnOpen).toHaveBeenCalledTimes(0);
     });
-    test('does not open when onToggle is called and isOpen is false', () => {
+    test('does not open when toggle is called and isOpen is false', () => {
       render(<UseOpenCloseExample isOpen={false} />);
 
       fireEvent.click(screen.getByText('Details Summary'));

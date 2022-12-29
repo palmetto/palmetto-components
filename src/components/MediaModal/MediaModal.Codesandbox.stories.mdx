@@ -20,18 +20,18 @@ import {
 export default () => {
   const {
     isOpen: isMediaModalOpen,
-    onOpen: onMediaModalOpen,
-    onClose: onMediaModalClose,
+    handleOpen: openMediaModal,
+    handleClose: closeMediaModal,
   } = useOpenClose();
   return (
     <div>
-      <Button variant="light" onClick={onMediaModalOpen}>
+      <Button variant="light" onClick={openMediaModal}>
         Show MediaModal
       </Button>
       <MediaModal
         ariaLabel="landscape photo"
         isOpen={isMediaModalOpen}
-        onDismiss={onMediaModalClose}
+        onDismiss={closeMediaModal}
       >
         <img
           src="https://ux.palmetto.com/images/landscape-mediamodal.jpg"

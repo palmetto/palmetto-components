@@ -17,11 +17,11 @@ import React, { useState } from 'react';
 import { Details, Box, Heading, useOpenClose } from '@palmetto/palmetto-components';
 
 export default () => {
-  const { isOpen, onToggle } = useOpenClose();
+  const { isOpen, handleToggle } = useOpenClose();
 
   return (
     <Details isOpen={isOpen} margin="md">
-      <Details.Summary isDetailsOpen={isOpen} onToggle={onToggle)} display="inline">
+      <Details.Summary isDetailsOpen={isOpen} onToggle={handleToggle)} display="inline">
         What is Palmetto's Mission?
       </Details.Summary>
       <Box padding="md 0" childGap="sm">

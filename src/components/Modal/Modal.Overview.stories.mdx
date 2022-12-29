@@ -3,6 +3,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Modal } from './Modal';
 import { Button } from '../Button/Button';
 import { SelectInput } from '../SelectInput/SelectInput';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 <Meta title="Components/Modal/Overview" component={Modal} />
 
@@ -35,27 +36,29 @@ In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `
     }}
   >
     {() => {
-      const [showModal, setShowModal] = useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
+      const {
+        isOpen: isModalOpen,
+        handleOpen: openModal,
+        handleClose: closeModal,
+      } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openModal}>
             Show Modal
           </Button>
           <Modal
             ariaLabelledBy="titleBasic"
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isModalOpen}
+            onDismiss={closeModal}
           >
             <Modal.Header
               id="titleBasic"
               title="The Modal Title"
-              onDismiss={close}
+              onDismiss={closeModal}
             />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
-              <Button variant="light" onClick={close}>
+              <Button variant="light" onClick={closeModal}>
                 Cancel
               </Button>
               <Button variant="primary">Primary Action</Button>
@@ -79,6 +82,7 @@ Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These co
   <Story
     name="Body and Footer"
     parameters={{
+      chromatic: { disableSnapshot: true },
       design: {
         type: 'figma',
         url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=618%3A7847',
@@ -86,23 +90,25 @@ Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These co
     }}
   >
     {() => {
-      const [showModal, setShowModal] = React.useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
+      const {
+        isOpen: isModalOpen,
+        handleOpen: openModal,
+        handleClose: closeModal,
+      } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openModal}>
             Show Modal With Body and Footer
           </Button>
           <Modal
             ariaLabelledBy="titleFooterBody"
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isModalOpen}
+            onDismiss={closeModal}
           >
             <Modal.Header
               id="titleFooterBody"
               title="The Modal Title"
-              onDismiss={close}
+              onDismiss={closeModal}
             />
             <Modal.Body>Modal body content</Modal.Body>
             <Modal.Footer>This is content in the modal footer</Modal.Footer>
@@ -121,6 +127,7 @@ Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a cl
   <Story
     name="Close button"
     parameters={{
+      chromatic: { disableSnapshot: true },
       design: {
         type: 'figma',
         url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=618%3A7847',
@@ -128,20 +135,22 @@ Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a cl
     }}
   >
     {() => {
-      const [showModal, setShowModal] = React.useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
+      const {
+        isOpen: isModalOpen,
+        handleOpen: openModal,
+        handleClose: closeModal,
+      } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openModal}>
             Show Modal With Close Button
           </Button>
           <Modal
             ariaLabel="modal with close button"
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isModalOpen}
+            onDismiss={closeModal}
           >
-            <Modal.Header onDismiss={close} />
+            <Modal.Header onDismiss={closeModal} />
             <Modal.Body>Modal content</Modal.Body>
           </Modal>
         </div>
@@ -158,6 +167,7 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
   <Story
     name="Without Header"
     parameters={{
+      chromatic: { disableSnapshot: true },
       design: {
         type: 'figma',
         url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=618%3A7847',
@@ -165,22 +175,24 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
     }}
   >
     {() => {
-      const [showModal, setShowModal] = React.useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
+      const {
+        isOpen: isModalOpen,
+        handleOpen: openModal,
+        handleClose: closeModal,
+      } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openModal}>
             Show Modal Without Header
           </Button>
           <Modal
             ariaLabel="Modal without a header"
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isModalOpen}
+            onDismiss={closeModal}
           >
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
-              <Button variant="light" onClick={close}>
+              <Button variant="light" onClick={closeModal}>
                 Cancel
               </Button>
               <Button variant="primary">Primary Action</Button>
@@ -197,30 +209,37 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
 Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
 
 <Canvas>
-  <Story name="Fullscreen Mobile">
+  <Story
+    name="Fullscreen Mobile"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
-      const [showModal, setShowModal] = React.useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
+      const {
+        isOpen: isModalOpen,
+        handleOpen: openModal,
+        handleClose: closeModal,
+      } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openModal}>
             Show Fullscreen On Mobile Modal
           </Button>
           <Modal
             ariaLabelledBy="titleFullscreen"
             fullScreenMobile
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isModalOpen}
+            onDismiss={closeModal}
           >
             <Modal.Header
               id="titleFullscreen"
               title="Fullscreen Modal on Mobile"
-              onDismiss={close}
+              onDismiss={closeModal}
             />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
-              <Button variant="light" onClick={close}>
+              <Button variant="light" onClick={closeModal}>
                 Cancel
               </Button>
               <Button variant="primary">Primary Action</Button>
@@ -239,54 +258,37 @@ As with the `Box` component, this can be set to a specific pixel value, or any o
 maxWidth, use existing tokens only.
 
 <Canvas>
-  <Story name="Max Width">
+  <Story
+    name="Max Width"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
-      const [showModal, setShowModal] = React.useState(false);
-      const [showResponsiveModal, setShowResponsiveModal] =
-        React.useState(false);
+      const {
+        isOpen: isModalOpen,
+        handleOpen: openModal,
+        handleClose: closeModal,
+      } = useOpenClose();
       return (
         <>
-          <div className="m-bottom-md">
-            <Button variant="light" onClick={() => setShowModal(true)}>
-              Show Modal
-            </Button>
-            <Modal
-              ariaLabelledBy="titleFooterBody"
-              isOpen={showModal}
-              onDismiss={() => setShowModal(false)}
-              maxWidth="4xl"
-            >
-              <Modal.Header
-                id="titleFooterBody"
-                title="The Modal Title"
-                onDismiss={() => setShowModal(false)}
-              />
-              <Modal.Body>Modal body content</Modal.Body>
-              <Modal.Footer>This is content in the modal footer</Modal.Footer>
-            </Modal>
-          </div>
-          <div>
-            <Button
-              variant="light"
-              onClick={() => setShowResponsiveModal(true)}
-            >
-              This one has responsive max width
-            </Button>
-            <Modal
-              ariaLabelledBy="titleFooterBody"
-              isOpen={showResponsiveModal}
-              onDismiss={() => setShowResponsiveModal(false)}
-              maxWidth={{ tablet: '3xl', desktop: '4xl', hd: '5xl' }}
-            >
-              <Modal.Header
-                id="titleFooterBody"
-                title="The Modal Title"
-                onDismiss={() => setShowResponsiveModal(false)}
-              />
-              <Modal.Body>Modal body content</Modal.Body>
-              <Modal.Footer>This is content in the modal footer</Modal.Footer>
-            </Modal>
-          </div>
+          <Button variant="light" onClick={openModal}>
+            Open Max Width Modal
+          </Button>
+          <Modal
+            ariaLabelledBy="titleFooterBody"
+            isOpen={isModalOpen}
+            onDismiss={closeModal}
+            maxWidth={{ tablet: '3xl', desktop: '4xl', hd: '5xl' }}
+          >
+            <Modal.Header
+              id="titleFooterBody"
+              title="The Modal Title"
+              onDismiss={closeModal}
+            />
+            <Modal.Body>Modal body content</Modal.Body>
+            <Modal.Footer>This is content in the modal footer</Modal.Footer>
+          </Modal>
         </>
       );
     }}

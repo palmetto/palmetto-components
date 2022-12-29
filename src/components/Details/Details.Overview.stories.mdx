@@ -23,12 +23,12 @@ NOTE: for a custom implementation of this component see the [accordion](/?path=/
 <Canvas withSource="open">
   <Story name="Basic Usage">
     {() => {
-      const { isOpen, onToggle } = useOpenClose();
+      const { isOpen, handleToggle } = useOpenClose();
       return (
         <Details isOpen={isOpen}>
           <Details.Summary
             isDetailsOpen={isOpen}
-            onToggle={onToggle}
+            onToggle={handleToggle}
             display="inline"
           >
             What is Palmetto's Mission?
@@ -62,7 +62,7 @@ Add any custom JSX to the `<Details.Summary>` element to customize your summary 
 <Canvas withSource="open">
   <Story name="With custom summary">
     {() => {
-      const { isOpen, onToggle } = useOpenClose();
+      const { isOpen, handleToggle } = useOpenClose();
       return (
         <Details isOpen={isOpen}>
           <Details.Summary
@@ -70,7 +70,7 @@ Add any custom JSX to the `<Details.Summary>` element to customize your summary 
             color="primary-500"
             hover={{ color: 'primary-600' }}
             isDetailsOpen={isOpen}
-            onToggle={onToggle}
+            onToggle={handleToggle}
           >
             Do you have my reservation?
           </Details.Summary>
@@ -92,7 +92,7 @@ Render the component with the details expanded by setting `isOpen` to `true`.
 <Canvas withSource="open">
   <Story name="Opened">
     {() => {
-      const { isOpen, onToggle } = useOpenClose({ defaultIsOpen: true });
+      const { isOpen, handleToggle } = useOpenClose({ defaultIsOpen: true });
       return (
         <Details isOpen={isOpen}>
           <Details.Summary
@@ -100,7 +100,7 @@ Render the component with the details expanded by setting `isOpen` to `true`.
             color="primary-500"
             hover={{ color: 'primary-600' }}
             isDetailsOpen={isOpen}
-            onToggle={onToggle}
+            onToggle={handleToggle}
           >
             Do you have my reservation?
           </Details.Summary>

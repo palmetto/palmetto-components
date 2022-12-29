@@ -15,7 +15,7 @@ import { Box } from '../../components/Box/Box';
 
 # useOpenClose
 
-The `useOpenClose` is a hook to help handle common open, close, or toggle scenarios. It can be used to control components such as `Modal`, `MediaModal`, `Drawer`, `Details` and even `Popover`.
+The `useOpenClose` hook helps handle common open, close, or toggle scenarios. It can be used to control components such as `Modal`, `MediaModal`, `Drawer`, `Details` and even `Popover`.
 
 <Canvas withSource="open">
   <Story
@@ -23,19 +23,19 @@ The `useOpenClose` is a hook to help handle common open, close, or toggle scenar
     parameters={{ chromatic: { disableSnapshot: true } }}
   >
     {() => {
-      const { isOpen, onOpen, onClose } = useOpenClose({
+      const { isOpen, handleOpen, handleClose } = useOpenClose({
         onOpen: action('onOpen'),
         onClose: action('onClose'),
       });
       return (
         <div>
-          <Button variant="light" type="button" onClick={onOpen}>
+          <Button variant="light" type="button" onClick={handleOpen}>
             Open Drawer
           </Button>
           <Drawer
             isOpen={isOpen}
             title="Drawer Title"
-            onDismiss={onClose}
+            onDismiss={handleClose}
             ariaLabel="drawer component example"
           >
             <Box padding="lg" display="block" childGap="md">

@@ -29,15 +29,15 @@ export interface UseOpenCloseState {
   /**
    * Callback function to set a falsy value for the `isOpen` parameter.
    */
-  onClose: () => void;
+  handleClose: () => void;
   /**
    * Callback function to set a truthy value for the `isOpen` parameter.
    */
-  onOpen: () => void;
+  handleOpen: () => void;
   /**
    * Callback function to toggle the value of the `isOpen` parameter.
    */
-  onToggle: () => void;
+  handleToggle: () => void;
 }
 
 export const useOpenClose = (
@@ -50,11 +50,11 @@ export const useOpenClose = (
     onOpen: onOpenProp,
   } = props;
 
-  const handleOpen = useCallback(() => {
+  const openCallback = useCallback(() => {
     onOpenProp?.();
   }, [onOpenProp]);
 
-  const handleClose = useCallback(() => {
+  const closeCallback = useCallback(() => {
     onCloseProp?.();
   }, [onCloseProp]);
 
@@ -64,32 +64,32 @@ export const useOpenClose = (
 
   const isControlled = isOpenProp !== undefined;
 
-  const onClose = useCallback(() => {
+  const handleClose = useCallback(() => {
     if (!isControlled) {
       setIsOpen(false);
     }
-    handleClose?.();
-  }, [isControlled, handleClose]);
+    closeCallback?.();
+  }, [isControlled, closeCallback]);
 
-  const onOpen = useCallback(() => {
+  const handleOpen = useCallback(() => {
     if (!isControlled) {
       setIsOpen(true);
     }
-    handleOpen?.();
-  }, [isControlled, handleOpen]);
+    openCallback?.();
+  }, [isControlled, openCallback]);
 
-  const onToggle = useCallback(() => {
+  const handleToggle = useCallback(() => {
     if (isOpen) {
-      onClose();
+      handleClose();
     } else {
-      onOpen();
+      handleOpen();
     }
-  }, [isOpen, onOpen, onClose]);
+  }, [isOpen, handleOpen, handleClose]);
 
   return {
     isOpen,
-    onClose,
-    onOpen,
-    onToggle,
+    handleClose,
+    handleOpen,
+    handleToggle,
   };
 };

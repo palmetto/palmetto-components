@@ -86,15 +86,15 @@ export default {
 const Template: Story<DrawerProps> = ({ ...args }) => {
   const {
     isOpen: isDrawerOpen,
-    onOpen: onDrawerOpen,
-    onClose: onDrawerClose,
+    handleOpen: openDrawer,
+    handleClose: closeDrawer,
   } = useOpenClose();
   return (
     <>
-      <Button variant="light" onClick={onDrawerOpen}>
+      <Button variant="light" onClick={openDrawer}>
         Show Drawer
       </Button>
-      <Drawer {...args} isOpen={isDrawerOpen} onDismiss={onDrawerClose}>
+      <Drawer {...args} isOpen={isDrawerOpen} onDismiss={closeDrawer}>
         <Box padding="lg">drawer content</Box>
       </Drawer>
     </>
