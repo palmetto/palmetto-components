@@ -6,6 +6,7 @@ import { Button } from '../Button/Button';
 import { Box } from '../Box/Box';
 import { Heading } from '../Heading/Heading';
 import { Icon, IconProps } from '../Icon/Icon';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 export default {
   title: 'Components/Popover/Visual Regression Tests',
@@ -16,11 +17,10 @@ export default {
 } as Meta;
 
 export const Demo: Story = () => {
-  const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const handleOpenPopover = () => {
-    setPopoverOpen(!isPopoverOpen);
-  };
-  const NavItem: FC<{ className?: string; iconName?: IconProps['name']; }> = ({
+  const { isOpen: isPopoverOpen, handleToggle: togglePopover } = useOpenClose({
+    defaultIsOpen: true,
+  });
+  const NavItem: FC<{ className?: string; iconName?: IconProps['name'] }> = ({
     children,
     className,
     iconName,
@@ -64,7 +64,13 @@ export const Demo: Story = () => {
       >
         <Box as="ul" childGap="xs" padding="md md sm md">
           <Box direction="row" childGap="sm" alignItems="center">
-            <Box fontSize="xs" color="white" radius="sm" background="primary-light" padding="2xs">
+            <Box
+              fontSize="xs"
+              color="white"
+              radius="sm"
+              background="primary-light"
+              padding="2xs"
+            >
               JC
             </Box>
             <Box display="block" className="truncate">
@@ -130,7 +136,7 @@ export const Demo: Story = () => {
         withPortal
         portalTarget={document.body}
       >
-        <Button onClick={handleOpenPopover} variant="light" size="sm">
+        <Button onClick={togglePopover} variant="light" size="sm">
           Popover Menu &nbsp;
           <Icon name="menu" />
         </Button>
@@ -140,10 +146,9 @@ export const Demo: Story = () => {
 };
 
 export const Default: Story = () => {
-  const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const handleOpenPopover = () => {
-    setPopoverOpen(!isPopoverOpen);
-  };
+  const { isOpen: isPopoverOpen, handleToggle: togglePopover } = useOpenClose({
+    defaultIsOpen: true,
+  });
   const popoverContent = <>Hello!</>;
   return (
     <div>
@@ -155,7 +160,7 @@ export const Default: Story = () => {
           padding: 'sm',
         }}
       >
-        <Button onClick={handleOpenPopover} variant="light">
+        <Button onClick={togglePopover} variant="light">
           Toggle Popover
         </Button>
       </Popover>
@@ -204,7 +209,13 @@ export const Placement: Story = () => {
   return (
     <Box direction="row" childGap="md" wrap>
       {positions.map(position => (
-        <Box height="100px" width="300px" padding="5xl" display="inline-block" key={position}>
+        <Box
+          height="100px"
+          width="300px"
+          padding="5xl"
+          display="inline-block"
+          key={position}
+        >
           <Popover
             content={<>{position}</>}
             isOpen={isPopoverOpen[position]}
@@ -226,10 +237,13 @@ export const Placement: Story = () => {
 };
 
 export const HideArrow: Story = () => {
-  const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const handleTogglePopover = () => {
-    setPopoverOpen(!isPopoverOpen);
-  };
+  const {
+    isOpen: isPopoverOpen,
+    handleClose: closePopover,
+    handleToggle: togglePopover,
+  } = useOpenClose({
+    defaultIsOpen: true,
+  });
   const popoverContent = (
     <>
       <Box direction="column" childGap="sm">
@@ -250,10 +264,10 @@ export const HideArrow: Story = () => {
         }}
         withPortal
         portalTarget={document.body}
-        onClickOutside={() => setPopoverOpen(false)}
+        onClickOutside={closePopover}
         hasArrow={false}
       >
-        <Button onClick={handleTogglePopover} variant="light">
+        <Button onClick={togglePopover} variant="light">
           Toggle Popover
         </Button>
       </Popover>
@@ -262,10 +276,9 @@ export const HideArrow: Story = () => {
 };
 
 export const Offset: Story = () => {
-  const [isPopoverOpen, setPopoverOpen] = useState(true);
-  const handleTogglePopoverNear = () => {
-    setPopoverOpen(!isPopoverOpen);
-  };
+  const { isOpen: isPopoverOpen, handleToggle: togglePopover } = useOpenClose({
+    defaultIsOpen: true,
+  });
   const popoverContent = (
     <>
       <Box direction="column" childGap="sm">
@@ -290,7 +303,7 @@ export const Offset: Story = () => {
           hasArrow={false}
           offsetFromTarget={20}
         >
-          <Button onClick={handleTogglePopoverNear} variant="light">
+          <Button onClick={togglePopover} variant="light">
             Toggle Popover
           </Button>
         </Popover>
