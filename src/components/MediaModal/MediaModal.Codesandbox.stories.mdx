@@ -11,18 +11,28 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
 
 ```js codesandbox=palmetto-components
 import React, { useState } from 'react';
-import { Button, MediaModal } from '@palmetto/palmetto-components';
+import {
+  Button,
+  MediaModal,
+  useOpenClose,
+} from '@palmetto/palmetto-components';
 
 export default () => {
-  const [showModal, setShowModal] = useState(false);
-  const open = () => setShowModal(true);
-  const close = () => setShowModal(false);
+  const {
+    isOpen: isMediaModalOpen,
+    handleOpen: openMediaModal,
+    handleClose: closeMediaModal,
+  } = useOpenClose();
   return (
     <div>
-      <Button variant="light" onClick={open}>
+      <Button variant="light" onClick={openMediaModal}>
         Show MediaModal
       </Button>
-      <MediaModal ariaLabel="landscape photo" isOpen={showModal} onDismiss={close}>
+      <MediaModal
+        ariaLabel="landscape photo"
+        isOpen={isMediaModalOpen}
+        onDismiss={closeMediaModal}
+      >
         <img
           src="https://ux.palmetto.com/images/landscape-mediamodal.jpg"
           alt=""

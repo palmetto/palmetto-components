@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
-import { action } from '@storybook/addon-actions';
+import { Vimeo } from 'mdx-embed';
 import { MediaModal } from './MediaModal';
 import { Badge } from '../Badge/Badge';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Popover } from '../Popover/Popover';
-import { Vimeo } from 'mdx-embed';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 <Meta title="Components/MediaModal/Overview" component={MediaModal} />
 
@@ -18,25 +18,11 @@ The MediaModal is a "light box" style container for presenting an image or video
 The default behavior of a Modal is to focus on the first focusable item.
 Therefore, you should ensure that the first focusable item is non-destructive, such as a "cancel" or close button.
 
-## Usage Guidelines
-
-- Is used for viewing "media" assets such as images and videos, and not for confirmation or messaging to the user.
-- The bottom footer contains no more than three primary actions (e.g. for an image, they would be download, open new window, and third reserved tertiary actions in a popover menu)
-- It closes when a user presses the `esc` key, outside of the content area, or the `x` button
-
-## Content Guidelines
-
-- The title/description properties should describe the contents of the modal
-- Its children are primarily images or videos, not copy.
-
-## Props
-
-<ArgsTable of={MediaModal} />
-
-<Canvas>
+<Canvas withSource="open">
   <Story
-    name="Landscape Image"
+    name="Basic Usage"
     parameters={{
+      chromatic: { disableSnapshot: true },
       design: {
         type: 'figma',
         url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=1503%3A30057',
@@ -44,18 +30,20 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
     }}
   >
     {() => {
-      const [showModal, setShowModal] = useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
+      const {
+        isOpen: isMediaModalOpen,
+        handleOpen: openMediaModal,
+        handleClose: closeMediaModal,
+      } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={open}>
-            Show Landscape Image
+          <Button variant="light" onClick={openMediaModal}>
+            Show MediaModal
           </Button>
           <MediaModal
             ariaLabel="landscape photo"
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isMediaModalOpen}
+            onDismiss={closeMediaModal}
           >
             <img
               src="images/landscape-mediamodal.jpg"
@@ -72,14 +60,30 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
   </Story>
 </Canvas>
 
+## Usage Guidelines
+
+- Is used for viewing "media" assets such as images and videos, and not for confirmation or messaging to the user.
+- The bottom footer contains no more than three primary actions (e.g. for an image, they would be download, open new window, and third reserved tertiary actions in a popover menu)
+- It closes when a user presses the `esc` key, outside of the content area, or the `x` button
+
+## Content Guidelines
+
+- The title/description properties should describe the contents of the modal
+- Its children are primarily images or videos, not copy.
+
+## Props
+
+<ArgsTable of={MediaModal} />
+
 ## Title, Description, Footer
 
 An optional title and description can be used to describe the contents of the modal.
 
-<Canvas>
+<Canvas withSource="open">
   <Story
     name="Portrait Image with Title and Description"
     parameters={{
+      chromatic: { disableSnapshot: true },
       design: {
         type: 'figma',
         url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=1503%3A30057',
@@ -87,19 +91,21 @@ An optional title and description can be used to describe the contents of the mo
     }}
   >
     {() => {
-      const [showModal, setShowModal] = useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
+      const {
+        isOpen: isMediaModalOpen,
+        handleOpen: openMediaModal,
+        handleClose: closeMediaModal,
+      } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openMediaModal}>
             Portrait Image with Title and Description
           </Button>
           <MediaModal
             title="portrait-mediamodal.jpg"
             description="Site Survey - Roof"
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isMediaModalOpen}
+            onDismiss={closeMediaModal}
           >
             <img
               src="images/portrait-mediamodal.jpg"
@@ -121,10 +127,11 @@ An optional title and description can be used to describe the contents of the mo
 
 Render a visible close button in the upper right of the viewport.
 
-<Canvas>
+<Canvas withSource="open">
   <Story
     name="With Close Button"
     parameters={{
+      chromatic: { disableSnapshot: true },
       design: {
         type: 'figma',
         url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=1503%3A30057',
@@ -132,18 +139,20 @@ Render a visible close button in the upper right of the viewport.
     }}
   >
     {() => {
-      const [showModal, setShowModal] = useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
+      const {
+        isOpen: isMediaModalOpen,
+        handleOpen: openMediaModal,
+        handleClose: closeMediaModal,
+      } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openMediaModal}>
             Show with Close Button
           </Button>
           <MediaModal
             ariaLabel="landscape photo"
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isMediaModalOpen}
+            onDismiss={closeMediaModal}
             closeButton
           >
             <img
@@ -167,16 +176,21 @@ A node can be passed to `headerContent` and `footerContent` for more control ove
 
 If `headerContent` is defined, then the `title` and `description` will not be rendered, even if defined.
 
-<Canvas>
-  <Story name="Custom Header Content">
+<Canvas withSource="open">
+  <Story
+    name="Custom Header Content"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
-      const [showModal, setShowModal] = useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
-      const [isPopoverOpen, setPopoverOpen] = useState(false);
-      const handleOpenPopover = () => {
-        setPopoverOpen(!isPopoverOpen);
-      };
+      const {
+        isOpen: isMediaModalOpen,
+        handleOpen: openMediaModal,
+        handleClose: closeMediaModal,
+      } = useOpenClose();
+      const { isOpen: isPopoverOpen, onToggle: onPopoverToggle } =
+        useOpenClose();
       const headerItems = (
         <Box childGap="2xs">
           <Box fontWeight="bold">Custom Styled Title</Box>
@@ -216,18 +230,18 @@ If `headerContent` is defined, then the `title` and `description` will not be re
               fontSize: 'sm',
             }}
           >
-            <Button isNaked iconPrefix="dots" onClick={handleOpenPopover} />
+            <Button isNaked iconPrefix="dots" onClick={onPopoverToggle} />
           </Popover>
         </Box>
       );
       return (
         <div>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openMediaModal}>
             With Custom Header and Footer
           </Button>
           <MediaModal
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isMediaModalOpen}
+            onDismiss={closeMediaModal}
             headerContent={headerItems}
             footerContent={footerItems}
             ariaLabel="custom header and footer"
@@ -250,21 +264,28 @@ If `headerContent` is defined, then the `title` and `description` will not be re
 
 ## Video
 
-<Canvas>
-  <Story name="Vimeo Video">
+<Canvas withSource="open">
+  <Story
+    name="Vimeo Video"
+    parameters={{
+      chromatic: { disableSnapshot: true },
+    }}
+  >
     {() => {
-      const [showModal, setShowModal] = useState(false);
-      const open = () => setShowModal(true);
-      const close = () => setShowModal(false);
+      const {
+        isOpen: isMediaModalOpen,
+        handleOpen: openMediaModal,
+        handleClose: closeMediaModal,
+      } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openMediaModal}>
             Show Vimeo Modal
           </Button>
           <MediaModal
             ariaLabel="vimeo video"
-            isOpen={showModal}
-            onDismiss={close}
+            isOpen={isMediaModalOpen}
+            onDismiss={closeMediaModal}
           >
             <Box display="block" width="90vw" maxWidth="5xl">
               <Vimeo vimeoId="595469877" />
