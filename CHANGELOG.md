@@ -1,5 +1,12 @@
 Changelog
 
+# [0.143.0](https://github.com/palmetto/palmetto-components/compare/v0.142.5...v0.143.0) (2023-01-06)
+
+
+### Features
+
+* useOpenClose hook ([#817](https://github.com/palmetto/palmetto-components/issues/817)) ([041eb74](https://github.com/palmetto/palmetto-components/commit/041eb7476cab85a539db4f988fc6662123a02c32))
+
 ## [0.142.5](https://github.com/palmetto/palmetto-components/compare/v0.142.4...v0.142.5) (2022-12-28)
 
 ## [0.142.4](https://github.com/palmetto/palmetto-components/compare/v0.142.3...v0.142.4) (2022-12-28)
