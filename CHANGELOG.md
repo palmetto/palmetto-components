@@ -1,5 +1,12 @@
 Changelog
 
+# [0.144.0](https://github.com/palmetto/palmetto-components/compare/v0.143.1...v0.144.0) (2023-02-08)
+
+
+### Features
+
+* **Icons:** antenna, wifi, wifi-off ([#819](https://github.com/palmetto/palmetto-components/issues/819)) ([183945b](https://github.com/palmetto/palmetto-components/commit/183945bfe40c723fdd38f6fc6875623c3a7936ad))
+
 ## [0.143.1](https://github.com/palmetto/palmetto-components/compare/v0.143.0...v0.143.1) (2023-01-10)
 
 # [0.143.0](https://github.com/palmetto/palmetto-components/compare/v0.142.5...v0.143.0) (2023-01-06)
