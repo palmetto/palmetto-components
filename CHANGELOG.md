@@ -1,5 +1,12 @@
 Changelog
 
+# [0.145.0](https://github.com/palmetto/palmetto-components/compare/v0.144.0...v0.145.0) (2023-04-04)
+
+
+### Features
+
+* **Icon:** heart, arrow-respond, subtract ([#822](https://github.com/palmetto/palmetto-components/issues/822)) ([d0af7ce](https://github.com/palmetto/palmetto-components/commit/d0af7ce781dd60bce35011818fcaab6fde9adec8))
+
 # [0.144.0](https://github.com/palmetto/palmetto-components/compare/v0.143.1...v0.144.0) (2023-02-08)
 
 
