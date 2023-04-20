@@ -102,6 +102,8 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
 
     return value === option.value;
   };
+    
+  const hasAnyError = !!error || options.some((option) => !!option.error);
 
   return (
     <Box
@@ -123,7 +125,7 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
             as="legend"
             display="block"
             margin="0 0 md 0"
-            color={error ? 'danger' : 'dark'}
+            color={hasAnyError ? 'danger' : 'dark'}
             fontSize="sm"
             fontWeight="bold"
           >
