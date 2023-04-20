@@ -10,6 +10,7 @@ interface Option {
   value: string;
   label: string;
   disabled?: boolean;
+  error?: boolean | string;
   render?: (option: {
     id: string;
     value: string;
@@ -150,7 +151,7 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
             disabled={option.disabled}
             inputType={isMulti ? 'checkbox' : 'radio'}
             hideInput={hideInput}
-            error={!!error}
+            error={!!option.error || !!error}
             id={option.id}
             name={name}
           >
