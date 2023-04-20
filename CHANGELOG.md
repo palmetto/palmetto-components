@@ -1,5 +1,12 @@
 Changelog
 
+# [0.146.0](https://github.com/palmetto/palmetto-components/compare/v0.145.0...v0.146.0) (2023-04-20)
+
+
+### Features
+
+* **OptionTileGroup:** Allow options to have individual errors ([#823](https://github.com/palmetto/palmetto-components/issues/823)) ([18d203f](https://github.com/palmetto/palmetto-components/commit/18d203f30005aac8744f3a296bf0cbaf31c20399))
+
 # [0.145.0](https://github.com/palmetto/palmetto-components/compare/v0.144.0...v0.145.0) (2023-04-04)
 
 
