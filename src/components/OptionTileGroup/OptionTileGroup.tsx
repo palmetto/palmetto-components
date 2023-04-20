@@ -102,8 +102,8 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
 
     return value === option.value;
   };
-    
-  const hasAnyError = !!error || options.some((option) => !!option.error);
+
+  const hasAnyError = !!error || options.some(option => !!option.error);
 
   return (
     <Box
