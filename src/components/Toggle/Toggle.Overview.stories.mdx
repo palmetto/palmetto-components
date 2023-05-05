@@ -201,15 +201,25 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
   >
     {() => {
       const [value, setValue] = useState(null);
+      const [value2, setValue2] = useState(true);
       return (
-        <Toggle
-          id="invalidToggle"
-          label="Label"
-          isChecked={value}
-          onChange={value => setValue(event.target.checked)}
-          isRequired
-          error="You must accept the Terms and Conditions"
-        />
+        <Box childGap="md">
+          <Toggle
+            id="invalidToggle"
+            label="Agree to Terms and Conditions"
+            isChecked={value}
+            onChange={value => setValue(event.target.checked)}
+            isRequired
+            error="You must accept the Terms and Conditions"
+          />
+          <Toggle
+            id="invalidToggle2"
+            label="Roof Replacement"
+            isChecked={value2}
+            onChange={value2 => setValue2(event.target.checked)}
+            error="Site Improvements can not be present with PPA"
+          />
+        </Box>
       );
     }}
   </Story>

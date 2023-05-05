@@ -201,6 +201,10 @@
     background-color: var(--color-brand-primary-500);
   }
 
+  &:checked + .toggle-track.error {
+    background-color: var(--toggle-background-color-error, var(--color-brand-danger-500));
+  }
+
   &:checked + .toggle-track .toggle-thumb.thumb-size-sm {
     transform: translateX(0.5rem);
   }
