@@ -1,5 +1,12 @@
 Changelog
 
+# [0.148.0](https://github.com/palmetto/palmetto-components/compare/v0.147.6...v0.148.0) (2023-06-28)
+
+
+### Features
+
+* **Icon:** skip, rewind ([#832](https://github.com/palmetto/palmetto-components/issues/832)) ([3556fa1](https://github.com/palmetto/palmetto-components/commit/3556fa1f3a28ea022efd545b54fdacfa8044163b))
+
 ## [0.147.6](https://github.com/palmetto/palmetto-components/compare/v0.147.5...v0.147.6) (2023-06-28)
 
 
