@@ -1,5 +1,12 @@
 Changelog
 
+## [0.147.6](https://github.com/palmetto/palmetto-components/compare/v0.147.5...v0.147.6) (2023-06-28)
+
+
+### Bug Fixes
+
+* **RadioGroup:** remove unused token ([#831](https://github.com/palmetto/palmetto-components/issues/831)) ([c3e0244](https://github.com/palmetto/palmetto-components/commit/c3e0244b7c6ab1c59c9827765955fb92adaadaa0))
+
 ## [0.147.5](https://github.com/palmetto/palmetto-components/compare/v0.147.4...v0.147.5) (2023-06-21)
 
 ## [0.147.4](https://github.com/palmetto/palmetto-components/compare/v0.147.3...v0.147.4) (2023-06-14)
