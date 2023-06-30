@@ -100,7 +100,6 @@ export const CategoryFilter: CategoryFilterComponent = forwardRef<HTMLDivElement
       aria-checked={isSelected}
       fontSize={computedResponsiveSize(size, 'fontSize')}
       fontWeight="bold"
-      color={isSelected ? 'white' : 'dark'}
       padding={computedResponsiveSize(size, 'padding')}
       ref={ref}
       {...restProps}
