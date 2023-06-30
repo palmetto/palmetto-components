@@ -1,5 +1,12 @@
 Changelog
 
+# [0.149.0](https://github.com/palmetto/palmetto-components/compare/v0.148.0...v0.149.0) (2023-06-30)
+
+
+### Features
+
+* **CategoryFilter:** add font color tokens ([#833](https://github.com/palmetto/palmetto-components/issues/833)) ([0b37799](https://github.com/palmetto/palmetto-components/commit/0b37799531df8bba8b87071b5aa328237819673f))
+
 # [0.148.0](https://github.com/palmetto/palmetto-components/compare/v0.147.6...v0.148.0) (2023-06-28)
 
 
