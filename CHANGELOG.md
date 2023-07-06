@@ -1,5 +1,12 @@
 Changelog
 
+# [0.150.0](https://github.com/palmetto/palmetto-components/compare/v0.149.0...v0.150.0) (2023-07-06)
+
+
+### Features
+
+* **Icon:** arrows-maximize ([#834](https://github.com/palmetto/palmetto-components/issues/834)) ([b00b119](https://github.com/palmetto/palmetto-components/commit/b00b119cabd9075bce9b811fb0182aa6e53d1059))
+
 # [0.149.0](https://github.com/palmetto/palmetto-components/compare/v0.148.0...v0.149.0) (2023-06-30)
 
 
