@@ -28,9 +28,9 @@ export const ModalHeader: FC<ModalHeaderProps> = ({ id, onDismiss, title = undef
       alignItems="center"
       justifyContent={justifyContentValue}
       borderWidth="0 0 xs 0"
-      borderColor="grey-lighter"
       style={{
         flexShrink: 0,
+        borderColor: 'var(--modal-border-separator-color, var(--color-brand-grey-100))',
       }}
       height="lg"
     >
