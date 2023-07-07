@@ -30,7 +30,7 @@ export const TabItem: FC<TabItemProps> = forwardRef(
         disabled={isDisabled}
         padding={padding}
         borderWidth="0"
-        color={isDisabled ? 'grey-100' : 'grey-400'}
+        color={isDisabled ? 'grey-200' : 'grey-500'}
         direction="row"
         justifyContent="center"
         {...restProps}
