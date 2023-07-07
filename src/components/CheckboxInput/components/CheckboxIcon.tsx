@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, BoxProps } from '../../Box/Box';
 import { Icon } from '../../Icon/Icon';
-import { FontColor } from '../../../types';
 import { CheckboxProps } from './Checkbox'; // eslint-disable-line import/no-cycle
 
 export interface CheckboxIconProps extends BoxProps {
@@ -10,7 +9,7 @@ export interface CheckboxIconProps extends BoxProps {
    */
   className?: string;
   /**
-   * Whether the input is in an error state. The icon will visually change accordingly.
+   * prop deprecated: no longer in use and will be remove in next major release.
    */
   error?: CheckboxProps['error'];
   /**
@@ -18,7 +17,7 @@ export interface CheckboxIconProps extends BoxProps {
    */
   isChecked?: CheckboxProps['isChecked'];
   /**
-   * If the input should be disabled and not focusable.
+   * prop deprecated: no longer in use and will be remove in next major release.
    */
   isDisabled?: CheckboxProps['isDisabled'];
   /**
@@ -30,34 +29,23 @@ export interface CheckboxIconProps extends BoxProps {
 
 export const CheckboxIcon: React.FC<CheckboxIconProps> = ({
   className = undefined,
-  error = null,
   isChecked = false,
-  isDisabled = false,
   isIndeterminate = false,
   ...restProps
 }) => {
-  let color: FontColor = 'grey-500';
-  let name: 'checkbox-btn' | 'checkbox-btn-checked' | 'checkbox-btn-indeterminate' = 'checkbox-btn';
+  let name:
+    | 'checkbox-btn'
+    | 'checkbox-btn-checked'
+    | 'checkbox-btn-indeterminate' = 'checkbox-btn';
 
   if (isChecked) name = 'checkbox-btn-checked';
   else name = 'checkbox-btn';
 
   if (isIndeterminate) name = 'checkbox-btn-indeterminate';
 
-  if (isChecked && isDisabled) {
-    color = 'primary-200';
-  } else if (isChecked && !isDisabled) {
-    color = 'primary-500';
-  } else if (isDisabled) {
-    color = 'grey-200';
-  }
-
-  if (error) color = 'danger-500';
-  if (isDisabled && error) color = 'danger-200';
-
   return (
     <Box className={className} display="inline-block" {...restProps}>
-      <Icon color={color} name={name} />
+      <Icon name={name} />
     </Box>
   );
 };

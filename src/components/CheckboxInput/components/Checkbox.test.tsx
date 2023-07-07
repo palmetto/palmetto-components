@@ -84,55 +84,6 @@ describe('Checkbox', () => {
       const input = screen.getByLabelText('test checkbox');
       expect(input).toHaveAttribute('disabled');
     });
-    test('It is grey-200 when unchecked and disabled', () => {
-      render(
-        <Checkbox
-          isChecked={false}
-          id="testCheckbox"
-          label="test checkbox"
-          onChange={jest.fn(() => null)}
-          isDisabled
-        />,
-      );
-
-      expect(screen.getByTestId('icon-testid--checkbox-btn').classList).toContain(
-        'font-color-grey-200',
-      );
-    });
-
-    test('It is primary-200 when checked and disabled', () => {
-      render(
-        <Checkbox
-          isChecked
-          id="testCheckbox"
-          label="test checkbox"
-          onChange={jest.fn(() => null)}
-          isDisabled
-        />,
-      );
-
-      expect(screen.getByTestId('icon-testid--checkbox-btn-checked').classList).toContain(
-        'font-color-primary-200',
-      );
-    });
-  });
-
-  describe('Invalid error', () => {
-    test('It is danger-500 when there is an error', () => {
-      render(
-        <Checkbox
-          isChecked={false}
-          id="testCheckbox"
-          label="test checkbox"
-          onChange={jest.fn(() => null)}
-          error="checkbox required"
-        />,
-      );
-
-      expect(screen.getByTestId('icon-testid--checkbox-btn').classList).toContain(
-        'font-color-danger-500',
-      );
-    });
   });
 
   describe('onChange', () => {
