@@ -176,7 +176,7 @@
   display: block;
   transition: background-color 0.25s ease;
   border-radius: 9999em;
-  background-color: var(--color-brand-grey-200);
+  background-color: var(--toggle-background-color, var(--color-brand-grey-200));
   cursor: pointer;
   padding: 2px;
 
@@ -198,7 +198,7 @@
   white-space: nowrap;
 
   &:checked + .toggle-track {
-    background-color: var(--color-brand-primary-500);
+    background-color: var(--toggle-background-color-checked, var(--color-brand-primary-500))
   }
 
   &:checked + .toggle-track.error {
