@@ -130,6 +130,21 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
       {...restProps}
       onClick={handleClick}
     >
+      {!hideInput && (inputType === 'checkbox' ? (
+        <CheckboxIcon
+          isChecked={isSelected}
+          isDisabled={disabled}
+          error={error}
+          margin="0 md 0 0"
+        />
+      ) : (
+        <RadioInputIcon
+          isSelected={isSelected}
+          isDisabled={disabled}
+          error={error}
+          margin="0 md 0 0"
+        />
+      ))}
       {inputType === 'checkbox' ? (
         <Checkbox
           id={id}
@@ -138,12 +153,10 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
           isChecked={isSelected}
           label={label}
           value={value}
-          isHidden={hideInput}
+          isHidden
           isDisabled={disabled}
           isRequired={isRequired}
           ref={inputRef}
-          size="sm"
-          margin="0 xs 0 0"
         />
       ) : (
         <RadioInput
@@ -155,12 +168,12 @@ export const OptionTile: ForwardRefExoticComponent<OptionTileProps> = forwardRef
             value,
             label,
           }}
-          isHidden={hideInput}
           isDisabled={disabled}
           isRequired={isRequired}
           isSelected={isSelected}
+          isHidden
           ref={inputRef}
-          size="sm"
+          size="md"
         />
       )}
       {children}
