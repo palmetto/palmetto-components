@@ -1,5 +1,12 @@
 Changelog
 
+# [0.151.0](https://github.com/palmetto/palmetto-components/compare/v0.150.0...v0.151.0) (2023-07-08)
+
+
+### Features
+
+* CheckboxInput, Modal, Toggle, Tabs design tokens and documentation ([#836](https://github.com/palmetto/palmetto-components/issues/836)) ([5c91ea8](https://github.com/palmetto/palmetto-components/commit/5c91ea8a983113e21973d7cb21e0ef6742f3b6c1))
+
 # [0.150.0](https://github.com/palmetto/palmetto-components/compare/v0.149.0...v0.150.0) (2023-07-06)
 
 
