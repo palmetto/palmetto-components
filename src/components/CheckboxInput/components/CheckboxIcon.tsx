@@ -56,8 +56,8 @@ export const CheckboxIcon: React.FC<CheckboxIconProps> = ({
   if (isDisabled && error) color = 'danger-200';
 
   return (
-    <Box className={className} display="inline-block" {...restProps}>
-      <Icon color={color} name={name} />
+    <Box className={className} display="inline-block" color={color} {...restProps}>
+      <Icon name={name} />
     </Box>
   );
 };

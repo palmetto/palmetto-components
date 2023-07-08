@@ -53,6 +53,20 @@ $lg-dimension: 36px;
     height: 0;
   }
 
+  input + div {
+    background: var(--form-control-background-color, var(--color-brand-white-500));
+    color: var(--form-control-checkbox-color, var(--color-brand-grey-500));
+  }
+
+  input:checked + div,
+  input:indeterminate + div {
+    color: var(--form-control-checkbox-color-checked, var(--color-brand-primary-500));
+  }
+
+  input[aria-invalid='true'] + div { /* stylelint-disable-line */
+    color: var(--form-control-font-color-error, var(--color-brand-danger-500));
+  }
+
   input:focus + div {
     /* define regular focus styles for non-supporting browsers */
     outline: 0;
@@ -64,11 +78,20 @@ $lg-dimension: 36px;
     box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
+  input:disabled + div {
+    background: var(--form-control-background-color-disabled, var(--color-brand-grey-50));
+    color: var(--form-control-checkbox-color-disabled, var(--color-brand-grey-200));
+  }
+
   /* Hide focus styles if they're not needed, for example,
     when an element receives focus via the mouse. */
   input:focus:not(:focus-visible) + div {
     outline: 0;
     box-shadow: none;
+  }
+
+  input:checked:disabled + div {
+    color: var(--form-control-checkbox-color-checked-disabled, var(--color-brand-primary-200));
   }
 
   &.size-sm { @extend %size-sm; }

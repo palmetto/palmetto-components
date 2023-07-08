@@ -147,7 +147,6 @@ export const Checkbox: React.FC<CheckboxProps> = React.forwardRef(
 
     return (
       <Box
-        background={isDisabled && !isChecked ? 'grey-50' : 'white'}
         display={display}
         ref={ref}
         style={{ position: 'relative' }}

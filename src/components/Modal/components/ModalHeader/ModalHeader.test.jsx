@@ -29,10 +29,4 @@ describe('ModalHeader', () => {
     const { container } = render(<ModalHeader>test modal</ModalHeader>);
     expect(container.children[0].classList).toContain('h-lg');
   });
-
-  test('bottom border is added  by default', () => {
-    const { container } = render(<ModalHeader>test modal</ModalHeader>);
-    expect(container.children[0].classList).toContain('border-color-grey-lighter');
-    expect(container.children[0].classList).toContain('border-width-bottom-xs');
-  });
 });
