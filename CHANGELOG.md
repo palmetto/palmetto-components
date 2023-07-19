@@ -1,5 +1,12 @@
 Changelog
 
+# [0.152.0](https://github.com/palmetto/palmetto-components/compare/v0.151.3...v0.152.0) (2023-07-19)
+
+
+### Features
+
+* **tokens:** 6xl width ([#840](https://github.com/palmetto/palmetto-components/issues/840)) ([662d8f9](https://github.com/palmetto/palmetto-components/commit/662d8f9fa73527a67b1b1f7a7b1ae75116b1edb0))
+
 ## [0.151.3](https://github.com/palmetto/palmetto-components/compare/v0.151.2...v0.151.3) (2023-07-19)
 
 ## [0.151.2](https://github.com/palmetto/palmetto-components/compare/v0.151.1...v0.151.2) (2023-07-10)
