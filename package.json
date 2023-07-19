@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@palmetto/dialog": "^0.16.4",
-    "@palmetto/palmetto-design-tokens": "0.71.0",
+    "@palmetto/palmetto-design-tokens": "0.72.0",
     "@popperjs/core": "^2.5.3",
     "classnames": "^2.2.6",
     "cleave.js": "^1.6.0",
