@@ -1,12 +1,83 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { within } from '@storybook/testing-library';
+import { ComponentStory } from '@storybook/react';
 import { OptionTile, OptionTileProps } from './OptionTile';
+import { Box } from '../Box/Box';
 
 export default {
   title: 'Components/OptionTile/Visual Regression Tests',
   component: OptionTile,
 } as Meta;
+
+export const States: ComponentStory<typeof OptionTile> = () => (
+  <Box childGap="lg">
+    <OptionTile
+      isSelected={false}
+      id="defaultRadio"
+      name="defaultRadio"
+      value="default"
+      label="default"
+      onChange={() => {}} // eslint-disable-line
+    >
+      radio default
+    </OptionTile>
+    <OptionTile
+      isSelected
+      id="selectedRadio"
+      name="selectedRadio"
+      value="selected"
+      label="selected"
+      onChange={() => {}} // eslint-disable-line
+    >
+      radio selected
+    </OptionTile>
+    <OptionTile
+      inputType="checkbox"
+      isSelected={false}
+      id="defaultCheckbox"
+      name="defaultCheckbox"
+      value="default"
+      label="default"
+      onChange={() => {}} // eslint-disable-line
+    >
+      checkbox default
+    </OptionTile>
+    <OptionTile
+      inputType="checkbox"
+      isSelected
+      id="selectedCheckbox"
+      name="selectedCheckbox"
+      value="selected"
+      label="selected"
+      onChange={() => {}} // eslint-disable-line
+    >
+      checkbox selected
+    </OptionTile>
+    <OptionTile
+      isSelected={false}
+      id="hiddenRadio"
+      name="hiddenRadio"
+      value="hidden"
+      label="hidden"
+      hideInput
+      onChange={() => {}} // eslint-disable-line
+    >
+      hidden input default
+    </OptionTile>
+    <OptionTile
+      isSelected
+      id="selectedHiddenRadio"
+      name="selectedHiddenRadio"
+      value="selectedHidden"
+      label="selectedHidden"
+      hideInput
+      onChange={() => {}} // eslint-disable-line
+    >
+      hidden input selected
+    </OptionTile>
+  </Box>
+);
 
 const Template: Story<OptionTileProps> = args => (
   <OptionTile
@@ -16,56 +87,6 @@ const Template: Story<OptionTileProps> = args => (
     {args.children} {/* eslint-disable-line */}
   </OptionTile>
 );
-
-export const DefaultRadio = Template.bind({});
-DefaultRadio.args = {
-  children: 'radio default',
-  id: 'defaultRadio',
-  name: 'default',
-  value: 'default',
-  label: 'default',
-};
-
-export const RadioOptionSelected = Template.bind({});
-RadioOptionSelected.args = {
-  isSelected: true,
-  children: 'radio selected',
-  id: 'radioSelected',
-  name: 'radioSelected',
-  value: 'radioSelected',
-  label: 'radioSelected',
-};
-
-export const DefaultCheckbox = Template.bind({});
-DefaultCheckbox.args = {
-  inputType: 'checkbox',
-  id: 'checkboxDefault',
-  name: 'checkboxDefault',
-  children: 'checkbox default',
-  value: 'checkboxDefault',
-  label: 'checkboxDefault',
-};
-
-export const CheckboxSelected = Template.bind({});
-CheckboxSelected.args = {
-  inputType: 'checkbox',
-  id: 'selectedCheckbox',
-  name: 'selectedCheckbox',
-  children: 'selected checkbox',
-  isSelected: true,
-  value: 'checkboxSelected',
-  label: 'checkboxSelected',
-};
-
-export const HiddenInput = Template.bind({});
-HiddenInput.args = {
-  id: 'hiddenInput',
-  name: 'hiddenInput',
-  children: 'hidden input',
-  hideInput: true,
-  value: 'hiddenInput',
-  label: 'hiddenInput',
-};
 
 export const FocusUnchecked = Template.bind({});
 FocusUnchecked.args = {
