@@ -1,7 +1,15 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+
+import { ComponentStory } from '@storybook/react';
+import { Box } from '../Box/Box';
 import { RESPONSIVE_STORY } from '../../docs/constants';
-import { CategoryFilter, CategoryFilterProps } from './CategoryFilter';
+import {
+  CategoryFilter,
+  CategoryFilterProps,
+  BaseCategoryFilterSize,
+} from './CategoryFilter';
+import CATEGORY_FILTER_SIZES from './CategoryFilter.constants';
 
 export default {
   title: 'Components/CategoryFilter/Visual Regression Tests',
@@ -9,169 +17,57 @@ export default {
 } as Meta;
 
 const Template: Story<CategoryFilterProps> = ({ ...args }) => (
-  <CategoryFilter {...args}>category filter</CategoryFilter> // eslint-disable-line @typescript-eslint/no-empty-function
+  <Box display="block" childGap="xl">
+    {CATEGORY_FILTER_SIZES.map(size => (
+      <Box childGap="sm" key={size} direction="row">
+        <CategoryFilter
+          {...args}
+          isSelected={false}
+          size={size as BaseCategoryFilterSize}
+        >
+          {`${size} default`}
+        </CategoryFilter>
+        <CategoryFilter
+          {...args}
+          isSelected
+          size={size as BaseCategoryFilterSize}
+        >
+          selected
+        </CategoryFilter>
+        <CategoryFilter
+          {...args}
+          isDisabled
+          size={size as BaseCategoryFilterSize}
+        >
+          disabled
+        </CategoryFilter>
+        <CategoryFilter
+          {...args}
+          isSelected
+          isDisabled
+          size={size as BaseCategoryFilterSize}
+        >
+          disabled selected
+        </CategoryFilter>
+      </Box>
+    ))}
+  </Box>
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  isSelected: false,
-};
+export const SizesAndStates = Template.bind({});
 
-export const Selected = Template.bind({});
-Selected.args = {
-  isSelected: true,
-};
+export const ResponsiveSize: ComponentStory<typeof CategoryFilter> = () => (
+  <CategoryFilter
+    isSelected
+    size={{
+      base: 'xs',
+      tablet: 'sm',
+      desktop: 'md',
+      hd: 'lg',
+    }}
+  >
+    Responsive CategoryFilter
+  </CategoryFilter>
+);
 
-export const ExtraSmallUnselected = Template.bind({});
-ExtraSmallUnselected.args = {
-  isSelected: false,
-  size: 'xs',
-};
-
-export const SmallUnselected = Template.bind({});
-SmallUnselected.args = {
-  isSelected: false,
-  size: 'sm',
-};
-
-export const MediumUnselected = Template.bind({});
-MediumUnselected.args = {
-  isSelected: false,
-  size: 'md',
-};
-
-export const LargeUnselected = Template.bind({});
-LargeUnselected.args = {
-  isSelected: false,
-  size: 'lg',
-};
-
-export const ExtraSmallSelected = Template.bind({});
-ExtraSmallSelected.args = {
-  isSelected: true,
-  size: 'xs',
-};
-
-export const SmallSelected = Template.bind({});
-SmallSelected.args = {
-  isSelected: true,
-  size: 'sm',
-};
-
-export const MediumSelected = Template.bind({});
-MediumSelected.args = {
-  isSelected: true,
-  size: 'md',
-};
-
-export const LargeSelected = Template.bind({});
-LargeSelected.args = {
-  isSelected: true,
-  size: 'lg',
-};
-
-export const ResponsiveUnselected = Template.bind({});
-ResponsiveUnselected.args = {
-  isSelected: false,
-  size: {
-    base: 'xs',
-    tablet: 'sm',
-    desktop: 'md',
-    hd: 'lg',
-  },
-};
-ResponsiveUnselected.parameters = RESPONSIVE_STORY;
-
-export const ResponsiveSelected = Template.bind({});
-ResponsiveSelected.args = {
-  isSelected: true,
-  size: {
-    base: 'xs',
-    tablet: 'sm',
-    desktop: 'md',
-    hd: 'lg',
-  },
-};
-ResponsiveSelected.parameters = RESPONSIVE_STORY;
-
-export const ExtraSmallUnselectedDisabled = Template.bind({});
-ExtraSmallUnselectedDisabled.args = {
-  isDisabled: true,
-  isSelected: false,
-  size: 'xs',
-};
-
-export const SmallUnselectedDisabled = Template.bind({});
-SmallUnselectedDisabled.args = {
-  isDisabled: true,
-  isSelected: false,
-  size: 'sm',
-};
-
-export const MediumUnselectedDisabled = Template.bind({});
-MediumUnselectedDisabled.args = {
-  isDisabled: true,
-  isSelected: false,
-  size: 'md',
-};
-
-export const LargeUnselectedDisabled = Template.bind({});
-LargeUnselectedDisabled.args = {
-  isDisabled: true,
-  isSelected: false,
-  size: 'lg',
-};
-
-export const ExtraSmallSelectedDisabled = Template.bind({});
-ExtraSmallSelectedDisabled.args = {
-  isDisabled: true,
-  isSelected: true,
-  size: 'xs',
-};
-
-export const SmallSelectedDisabled = Template.bind({});
-SmallSelectedDisabled.args = {
-  isDisabled: true,
-  isSelected: true,
-  size: 'sm',
-};
-
-export const MediumSelectedDisabled = Template.bind({});
-MediumSelectedDisabled.args = {
-  isDisabled: true,
-  isSelected: true,
-  size: 'md',
-};
-
-export const LargeSelectedDisabled = Template.bind({});
-LargeSelectedDisabled.args = {
-  isDisabled: true,
-  isSelected: true,
-  size: 'lg',
-};
-
-export const ResponsiveUnselectedDisabled = Template.bind({});
-ResponsiveUnselectedDisabled.args = {
-  isDisabled: true,
-  isSelected: false,
-  size: {
-    base: 'xs',
-    tablet: 'sm',
-    desktop: 'md',
-    hd: 'lg',
-  },
-};
-ResponsiveUnselectedDisabled.parameters = RESPONSIVE_STORY;
-
-export const ResponsiveSelectedDisabled = Template.bind({});
-ResponsiveSelectedDisabled.args = {
-  isDisabled: true,
-  isSelected: true,
-  size: {
-    base: 'xs',
-    tablet: 'sm',
-    desktop: 'md',
-    hd: 'lg',
-  },
-};
-ResponsiveSelectedDisabled.parameters = RESPONSIVE_STORY;
+ResponsiveSize.parameters = RESPONSIVE_STORY;
