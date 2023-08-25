@@ -4,18 +4,18 @@
   transition: color 0.2s, border-color 0.2s;
 
   &[disabled] {
-    /* stylelint-disable-line */
+    //stylelint-disable-line
     cursor: not-allowed;
   }
 
-  /* define regular focus styles for non-supporting browsers */
+  //define regular focus styles for non-supporting browsers
   &:focus {
     outline: 0;
     box-shadow: inset
       var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
-  /* Show focus styles on keyboard focus. */
+  //Show focus styles on keyboard focus.
   &:focus-visible {
     outline: 0;
     box-shadow: inset
@@ -28,7 +28,6 @@
       color: var(--tabs-selected-font-color, var(--color-brand-primary-500));
 
       &:hover {
-        /* stylelint-disable-line */
         color: var(--tabs-selected-font-color-hover, var(--color-brand-primary-600));
       }
     }
@@ -46,8 +45,8 @@
     }
   }
 
-  /* Hide focus styles if they're not needed, for example,
-  when an element receives focus via the mouse. */
+  // Hide focus styles if they're not needed, for example,
+  // when an element receives focus via the mouse.
   &:focus:not(:focus-visible) {
     outline: 0;
     box-shadow: none;

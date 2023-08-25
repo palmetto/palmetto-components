@@ -186,7 +186,7 @@
 }
 
 .toggle-input {
-  /* Hide the checkbox input (only needed for `:checked` property) */
+  //Hide the checkbox input (only needed for `:checked` property)
   position: absolute;
   clip: rect(0, 0, 0, 0);
   margin: -1px;
@@ -259,20 +259,20 @@
     }
   }
 
-  /* define regular focus styles for non-supporting browsers */
+  // define regular focus styles for non-supporting browsers
   &:focus + .toggle-track {
     outline: 0;
     box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
-  /* Show focus styles on keyboard focus. */
+  // Show focus styles on keyboard focus.
   &:focus-visible + .toggle-track {
     outline: 0;
     box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
-  /* Hide focus styles if they're not needed, for example,
-  when an element receives focus via the mouse. */
+  // Hide focus styles if they're not needed, for example,
+  // when an element receives focus via the mouse.
   &:focus:not(:focus-visible) + .toggle-track {
     outline: 0;
     box-shadow: none;

@@ -148,7 +148,7 @@
   &::before {
     transform-origin: 50% 50%;
     transform: rotate(42deg);
-    z-index: 1; /* change the stacking context so this half of the chevron stays above the disabled background color. */
+    z-index: 1; //change the stacking context so this half of the chevron stays above the disabled background color.
   }
 
   &::after {

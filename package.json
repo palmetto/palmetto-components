@@ -33,6 +33,7 @@
     "react-merge-refs": "^1.1.0",
     "react-popper": "^2.2.3",
     "react-select": "^3.1.0",
+    "stylelint-config-standard": "^34.0.0",
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
