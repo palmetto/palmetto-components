@@ -5,7 +5,6 @@
   font-family: var(--tabs-slider-font-family, var(--button-font-family));
 
   &[disabled] {
-    //stylelint-disable-line
     cursor: not-allowed;
     color: var(--color-brand-grey-300);
   }

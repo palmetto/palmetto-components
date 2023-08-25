@@ -1,4 +1,4 @@
-@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
 
 @mixin size-xs {
   border-radius: var(--button-size-xs-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
@@ -346,7 +346,7 @@
 
       &:not(:disabled):hover {
         border-color: var(--button-white-outline-border-color-hover, var(--color-brand-white-base));
-        background-color: var(--button-white-outline-background-color-hover, rgba(255, 255, 255, 0.1));
+        background-color: var(--button-white-outline-background-color-hover, rgb(255 255 255 / 10%));
         color: var(--button-font-color-white-outline-hover, var(--color-brand-white-base));
       }
     }

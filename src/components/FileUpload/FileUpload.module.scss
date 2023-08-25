@@ -1,4 +1,4 @@
-@import '../../styles/mixins';
+@import url('../../styles/mixins');
 
 .file-upload-input-element {
   @include accessible-hidden-element;

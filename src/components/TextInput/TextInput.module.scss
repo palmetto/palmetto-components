@@ -1,4 +1,4 @@
-@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
 
 @mixin size-sm {
   border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
@@ -218,6 +218,7 @@
 
     &:disabled {
       @extend %disabled-base;
+
       background-color: transparent;
     }
   }

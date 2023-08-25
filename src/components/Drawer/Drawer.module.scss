@@ -1,4 +1,4 @@
-@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
 
 [data-reach-dialog-overlay].drawer {
   top: 0;
@@ -6,7 +6,7 @@
   bottom: 0;
   left: 0;
   z-index: var(--size-z-index-overlay);
-  background: hsla(0, 0%, 0%, 0.33);
+  background: hsl(0deg 0% 0% / 33%);
   max-height: 100vh;
   overflow: visible;
 

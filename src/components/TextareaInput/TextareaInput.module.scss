@@ -1,4 +1,4 @@
-@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
 
 @mixin size-sm {
   border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
@@ -71,7 +71,7 @@
     transition-property: border, background-color;
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
     border: 1px solid var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
-    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 0 rgb(0 0 0 / 5%);
     background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
     width: 100%;
     line-height: var(--form-control-line-height, var(--INTERNAL_form-control-line-height));

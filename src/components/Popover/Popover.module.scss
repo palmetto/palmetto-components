@@ -35,7 +35,7 @@
 
     &::before {
       bottom: 0.25rem;
-      box-shadow: rgba(0, 0, 0, 0.05) -1px -1px 1px 0;
+      box-shadow: rgb(0 0 0 / 5%) -1px -1px 1px 0;
     }
   }
 }
@@ -46,7 +46,7 @@
 
     &::before {
       top: 0.25rem;
-      box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 3px 0;
+      box-shadow: rgb(0 0 0 / 8%) 3px 3px 3px 0;
     }
   }
 }
@@ -57,7 +57,7 @@
 
     &::before {
       left: 0.25rem;
-      box-shadow: rgba(0, 0, 0, 0.08) 1px -1px 1px 0;
+      box-shadow: rgb(0 0 0 / 8%) 1px -1px 1px 0;
     }
   }
 }
@@ -68,7 +68,7 @@
 
     &::before {
       right: 0.25rem;
-      box-shadow: rgba(0, 0, 0, 0.05) -2px 2px 2px 0;
+      box-shadow: rgb(0 0 0 / 5%) -2px 2px 2px 0;
     }
   }
 }

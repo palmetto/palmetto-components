@@ -1,6 +1,6 @@
-@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
 
-//This line prevents @reach/dialog from throwing a warning due to not importing their CSS.
+// This line prevents @reach/dialog from throwing a warning due to not importing their CSS.
 :root { --reach-dialog: 1; }
 
 .modal-close {
@@ -16,7 +16,7 @@
     color: var(--modal-close-button-color-hover, var(--color-brand-grey-600));
   }
 
-  //Show focus styles on keyboard focus.
+  // Show focus styles on keyboard focus.
   &:focus-visible {
     outline: 0;
     box-shadow: var(--modal-close-button-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
@@ -40,8 +40,8 @@
   left: 0;
   align-items: flex-end;
   z-index: var(--size-z-index-overlay);
-  background: hsla(0, 0%, 0%, 0.33);
-  background-color: rgba(77, 82, 79, 0.5);
+  background: hsl(0deg 0% 0% / 33%);
+  background-color: rgb(77 82 79 / 50%);
   overflow: hidden;
 
   :global {
@@ -85,6 +85,7 @@
     :global {
       animation: slideInUp 0.3s;
     }
+
     @media (min-width: $size-breakpoint-tablet) {
       position: initial;
       grid-row: 2;

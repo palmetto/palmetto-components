@@ -17,7 +17,7 @@
   &.disabled {
     background-color: var(--option-tile-background-color-disabled, var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled)));
     color: var(--option-tile-font-color-disabled, var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled)));
-    //https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
+    // https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
     -webkit-text-fill-color: var(--option-tile-font-color-disabled, var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled)));
     opacity: 1;
 

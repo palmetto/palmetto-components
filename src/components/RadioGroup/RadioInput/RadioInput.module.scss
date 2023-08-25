@@ -1,5 +1,5 @@
-@import '../../../styles/mixins';
-@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+@import url('../../../styles/mixins');
+@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
 
 $sm-dimension: 16px;
 $md-dimension: 20px;

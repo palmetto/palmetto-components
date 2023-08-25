@@ -1,4 +1,4 @@
-@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
 
 %disabled-base {
   background-color: var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled));
@@ -148,7 +148,8 @@
   &::before {
     transform-origin: 50% 50%;
     transform: rotate(42deg);
-    z-index: 1; //change the stacking context so this half of the chevron stays above the disabled background color.
+    //change the stacking context so this half of the chevron stays above the disabled background color.
+    z-index: 1;
   }
 
   &::after {
@@ -178,6 +179,7 @@
 
     &:disabled {
       @extend %disabled-base;
+
       background-color: transparent;
     }
   }
