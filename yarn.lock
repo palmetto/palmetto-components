@@ -3331,10 +3331,10 @@
     react-remove-scroll "^2.4.3"
     tslib "^2.3.0"
 
-"@palmetto/palmetto-design-tokens@0.71.0":
-  version "0.71.0"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.71.0.tgz#a888807639c0fad208e0c67a7db325d139e12cad"
-  integrity sha512-C9/FXou0S4QFeiLQaHR8ne+qIXaERuWHvXzHKBzTvtx8GgfMjJplYPkDrMu8cxDra8Nq7bbH1DNBgWLZ82UQPg==
+"@palmetto/palmetto-design-tokens@0.72.1":
+  version "0.72.1"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.72.1.tgz#c5c4468f0af5dae8d10ca06f4a60537f3e19565d"
+  integrity sha512-dblqim39fFF2ZmIcC8lmUxwcWLuiHKdkg8QP8agOx8373I7KEsK4BLijT/tB7rhMQMW/WQGIh0L+kt6AWXZA9w==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.10"
@@ -23298,9 +23298,9 @@ widest-line@^3.1.0:
     string-width "^4.0.0"
 
 word-wrap@^1.2.3, word-wrap@~1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
-  integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.4.tgz#cb4b50ec9aca570abd1f52f33cd45b6c61739a9f"
+  integrity sha512-2V81OA4ugVo5pRo46hAoD2ivUJx8jXmWXfUkY4KFNw0hEptvN0QfH3K4nHiwzGeKl5rFKedV48QVoqYavy4YpA==
 
 wordwrap@^1.0.0:
   version "1.0.0"
