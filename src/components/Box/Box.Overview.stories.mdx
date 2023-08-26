@@ -184,69 +184,182 @@ Set direction of child elements in a flex container.
       Row
     </Box>
     <Box childGap="md" padding="sm" direction="row">
-      <Box flex="auto" background="primary-light" padding="sm">1</Box>
-      <Box flex="auto" background="primary-light" padding="sm">2</Box>
-      <Box flex="auto" background="primary-light" padding="sm">3</Box>
-      <Box flex="auto" background="primary-light" padding="sm">4</Box>
-      <Box flex="auto" background="primary-light" padding="sm">5</Box>
+      <Box flex="auto" background="primary-light" padding="sm">
+        1
+      </Box>
+      <Box flex="auto" background="primary-light" padding="sm">
+        2
+      </Box>
+      <Box flex="auto" background="primary-light" padding="sm">
+        3
+      </Box>
+      <Box flex="auto" background="primary-light" padding="sm">
+        4
+      </Box>
+      <Box flex="auto" background="primary-light" padding="sm">
+        5
+      </Box>
     </Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Column
     </Box>
     <Box childGap="md" padding="sm" direction="column">
-      <Box width="20%" background="primary-light" padding="sm">1</Box>
-      <Box width="20%" background="primary-light" padding="sm">2</Box>
-      <Box width="20%" background="primary-light" padding="sm">3</Box>
-      <Box width="20%" background="primary-light" padding="sm">4</Box>
-      <Box width="20%" background="primary-light" padding="sm">5</Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        1
+      </Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        2
+      </Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        3
+      </Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        4
+      </Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        5
+      </Box>
     </Box>
     <Box margin="lg 0 lg 0">
-      <Box fontWeight="bold" margin="0 0 xs 0" as="p">IMPORTANT:</Box>
+      <Box fontWeight="bold" margin="0 0 xs 0" as="p">
+        IMPORTANT:
+      </Box>
       when using the reverse CSS flex direction, the childGap ceases to work correctly,
-      since it is meant to automatically add margin classes to all children elements except the last one,
-      which in this case is reversed, via CSS only, the node order remains intact.
+      since it is meant to automatically add margin classes to all children elements
+      except the last one, which in this case is reversed, via CSS only, the node
+      order remains intact.
     </Box>
-    <Box><Box fontWeight="bold" as="span" margin="0 0 xs 0">INCORRECT</Box> usage with childGap prop</Box>
+    <Box>
+      <Box fontWeight="bold" as="span" margin="0 0 xs 0">
+        INCORRECT
+      </Box>{' '}
+      usage with childGap prop
+    </Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Row Reverse
     </Box>
     <Box childGap="md" padding="sm" direction="row-reverse">
-      <Box width="20%" background="danger-light" padding="sm">1</Box>
-      <Box width="20%" background="danger-light" padding="sm">2</Box>
-      <Box width="20%" background="danger-light" padding="sm">3</Box>
-      <Box width="20%" background="danger-light" padding="sm">4</Box>
-      <Box width="20%" background="danger-light" padding="sm">5</Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        1
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        2
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        3
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        4
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        5
+      </Box>
     </Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Column Reverse
     </Box>
     <Box childGap="md" padding="sm" direction="column-reverse">
-      <Box width="20%" background="danger-light" padding="sm">1</Box>
-      <Box width="20%" background="danger-light" padding="sm">2</Box>
-      <Box width="20%" background="danger-light" padding="sm">3</Box>
-      <Box width="20%" background="danger-light" padding="sm">4</Box>
-      <Box width="20%" background="danger-light" padding="sm">5</Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        1
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        2
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        3
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        4
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        5
+      </Box>
     </Box>
-    <Box><Box fontWeight="bold" as="span" margin="0 0 xs 0">CORRECT</Box> usage with individual margins</Box>
+    <Box>
+      <Box fontWeight="bold" as="span" margin="0 0 xs 0">
+        CORRECT
+      </Box>{' '}
+      usage with individual margins
+    </Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Row Reverse
     </Box>
     <Box padding="sm" direction="row-reverse">
-      <Box width="20%" background="primary-light" padding="sm">1</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">2</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">3</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">4</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">5</Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        1
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 md 0 0"
+      >
+        2
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 md 0 0"
+      >
+        3
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 md 0 0"
+      >
+        4
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 md 0 0"
+      >
+        5
+      </Box>
     </Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Column Reverse
     </Box>
     <Box padding="sm" direction="column-reverse">
-      <Box width="20%" background="primary-light" padding="sm">1</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">2</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">3</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">4</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">5</Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        1
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 0 md 0"
+      >
+        2
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 0 md 0"
+      >
+        3
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 0 md 0"
+      >
+        4
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 0 md 0"
+      >
+        5
+      </Box>
     </Box>
   </Story>
 </Canvas>
@@ -652,26 +765,19 @@ Set the `fontSize` prop with a [font size](?path=/story/design-tokens-design-tok
 
 ## Font Family
 
-
 <Canvas>
   <Story name="Font Family">
-    <Box fontFamily="body" margin='0 0 md 0' fontSize="xl">
+    <Box fontFamily="body" margin="0 0 md 0" fontSize="xl">
       Body font
-      <Box fontSize="sm">
-        {FONT_FAMILY_VALUES['body'].value}
-      </Box>
+      <Box fontSize="sm">{FONT_FAMILY_VALUES['body'].value}</Box>
     </Box>
-    <Box fontFamily="brand" margin='0 0 md 0' fontSize="xl">
+    <Box fontFamily="brand" margin="0 0 md 0" fontSize="xl">
       Brand Font
-      <Box fontSize="sm">
-        {FONT_FAMILY_VALUES['brand'].value}
-      </Box>
+      <Box fontSize="sm">{FONT_FAMILY_VALUES['brand'].value}</Box>
     </Box>
-    <Box fontFamily="monospace" margin='0 0 md 0' fontSize="xl">
+    <Box fontFamily="monospace" margin="0 0 md 0" fontSize="xl">
       Monospace Font
-      <Box fontSize="sm">
-        {FONT_FAMILY_VALUES['monospace'].value}
-      </Box>
+      <Box fontSize="sm">{FONT_FAMILY_VALUES['monospace'].value}</Box>
     </Box>
   </Story>
 </Canvas>
@@ -807,7 +913,12 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
 
 <Canvas>
   <Story name="Shadow">
-    <Box direction="row" background="grey-50" padding="2xl" justifyContent="space-between">
+    <Box
+      direction="row"
+      background="grey-50"
+      padding="2xl"
+      justifyContent="space-between"
+    >
       <Box
         shadow="0"
         alignItems="center"
@@ -1054,13 +1165,28 @@ Height can be set to any CSS unit value (px, rem, em, %).
 <Canvas>
   <Story name="Height">
     <Box background="primary-lightest" childGap="xs">
-      <Box background="primary-light" height="227px" justifyContent="center" alignItems="center">
+      <Box
+        background="primary-light"
+        height="227px"
+        justifyContent="center"
+        alignItems="center"
+      >
         227px
       </Box>
-      <Box background="primary-light" height="10rem" justifyContent="center" alignItems="center">
+      <Box
+        background="primary-light"
+        height="10rem"
+        justifyContent="center"
+        alignItems="center"
+      >
         10rem
       </Box>
-      <Box background="primary-light" height="4em" justifyContent="center" alignItems="center">
+      <Box
+        background="primary-light"
+        height="4em"
+        justifyContent="center"
+        alignItems="center"
+      >
         4em
       </Box>
     </Box>
@@ -1071,7 +1197,12 @@ Height can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="Height standards">
-    <Box background="primary-lightest" childGap="xs" height="5xl" direction="row">
+    <Box
+      background="primary-lightest"
+      childGap="xs"
+      height="5xl"
+      direction="row"
+    >
       <Box
         flex="auto"
         background="primary-light"
@@ -1152,7 +1283,12 @@ Set the height to a common percentage of the Box's parent.
 
 <Canvas>
   <Story name="Height Percentage">
-    <Box height="400px" childGap="xs" direction="row" background="primary-lightest">
+    <Box
+      height="400px"
+      childGap="xs"
+      direction="row"
+      background="primary-lightest"
+    >
       <Box
         flex="auto"
         justifyContent="center"
@@ -1298,7 +1434,12 @@ Set the maximum width of the Box by setting `maxHeight` to a [height token](?pat
 
 <Canvas>
   <Story name="Max Height">
-    <Box height="300px" background="primary-lightest" direction="row" childGap="xs">
+    <Box
+      height="300px"
+      background="primary-lightest"
+      direction="row"
+      childGap="xs"
+    >
       <Box
         maxHeight="lg"
         flex="auto"
@@ -1390,22 +1531,24 @@ Set the overflow behavior of the Box with `overflow`
       height="100px"
     >
       <p>
-        Most homeowners are stuck with a single option for their power company, and that utility
-        just keeps increasing rates year after year. With solar, you take back control over where
-        your energy comes from, how much it costs, and what you can do with it. Use it, store it, or
-        sell it, all on your own terms.
+        Most homeowners are stuck with a single option for their power company,
+        and that utility just keeps increasing rates year after year. With
+        solar, you take back control over where your energy comes from, how much
+        it costs, and what you can do with it. Use it, store it, or sell it, all
+        on your own terms.
       </p>
       <p>
-        Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and
-        maintenance, all under one roof. Plus, you can monitor your entire system from the palm of
-        your hand, and we have an award-winning customer service team standing by to help you with
-        anything you might need.
+        Solar can be complicated, but Palmetto makes it easy. We have solar,
+        storage, and maintenance, all under one roof. Plus, you can monitor your
+        entire system from the palm of your hand, and we have an award-winning
+        customer service team standing by to help you with anything you might
+        need.
       </p>
       <p>
-        Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in
-        national tax credits and local rebates and incentives, and you can save even more. Like many
-        things in life though, these discounts won’t be around forever, so take advantage of them
-        while you can.
+        Switching to solar saves the average Palmetto customer $18,471 over 25
+        years. Add in national tax credits and local rebates and incentives, and
+        you can save even more. Like many things in life though, these discounts
+        won’t be around forever, so take advantage of them while you can.
       </p>
     </Box>
   </Story>
@@ -1461,16 +1604,41 @@ responsive object prop with said values. Example with `fixed` position not inclu
       overflow="scroll"
       height="300px"
     >
-      <Box position="absolute" padding="md" background="secondary-light" style={{ zIndex: 1 }} width="100px" height="150px">
+      <Box
+        position="absolute"
+        padding="md"
+        background="secondary-light"
+        style={{ zIndex: 1 }}
+        width="100px"
+        height="150px"
+      >
         absolute
       </Box>
-      <Box position="relative" padding="md" background="primary-light" textAlign="right" height="200px">
+      <Box
+        position="relative"
+        padding="md"
+        background="primary-light"
+        textAlign="right"
+        height="200px"
+      >
         relative
       </Box>
-      <Box position="sticky" padding="md" background="tertiary-light" height="50px" color="white" style={{ top: 0, zIndex: 2 }}>
+      <Box
+        position="sticky"
+        padding="md"
+        background="tertiary-light"
+        height="50px"
+        color="white"
+        style={{ top: 0, zIndex: 2 }}
+      >
         sticky
       </Box>
-      <Box position="static" padding="md" background="primary-light" height="400px">
+      <Box
+        position="static"
+        padding="md"
+        background="primary-light"
+        height="400px"
+      >
         static
       </Box>
     </Box>
@@ -1483,12 +1651,13 @@ You can control the styles for the box on hover using the `hover` prop and passi
 Hover on the elements below to see these in action.
 
 Currently our library supports hover states for:
-* `background`
-* `borderColor`
-* `borderWidth`
-* `color`
-* `fontSize`
-* `shadow`
+
+- `background`
+- `borderColor`
+- `borderWidth`
+- `color`
+- `fontSize`
+- `shadow`
 
 <Canvas>
   <Story name="Hover States" parameters={{ ...RESPONSIVE_STORY }}>
@@ -1521,7 +1690,7 @@ Currently our library supports hover states for:
         }}
         cursor="pointer"
       >
-       an outlined button 
+        an outlined button
       </Box>
       <Box
         padding="md"
@@ -1579,11 +1748,12 @@ You can control the styles for the box on hover using the `focus` prop and passi
 Focus on the elements below to the these in action.
 
 Currently our library supports hover states for:
-* `background`
-* `borderColor`
-* `borderWidth`
-* `color`
-* `shadow`
+
+- `background`
+- `borderColor`
+- `borderWidth`
+- `color`
+- `shadow`
 
 <Canvas>
   <Story name="Focus States" parameters={{ ...RESPONSIVE_STORY }}>
@@ -1633,7 +1803,7 @@ Any props that accept a `ResponsiveProp` will take an object with the following 
 }
 ```
 
-These props will create classes that are scoped to the specific breakpoint they're assigned to. Not all breakpoints
+These props will create classes that are scoped to the specific breakpoint they are assigned to. Not all breakpoints
 are required in this shape, you can pick and choose which breakpoints require different layout attributes based on a
 mobile first approach.
 
@@ -1677,7 +1847,10 @@ For example the following has padding at the `desktop` breakpoint and wider.
 <Canvas>
   <Story name="Omitting Responsive Keys" parameters={{ ...RESPONSIVE_STORY }}>
     <Box padding={{ desktop: 'lg' }} background="primary-lighter">
-      <p>This box will have no padding until the viewport reaches the desktop breakpoint. </p>
+      <p>
+        This box will have no padding until the viewport reaches the desktop
+        breakpoint.{' '}
+      </p>
     </Box>
   </Story>
 </Canvas>

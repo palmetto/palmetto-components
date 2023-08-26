@@ -1,5 +1,5 @@
-@import url('../../../styles/mixins');
-@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
+@import '../../../styles/mixins';
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 $sm-dimension: 20px;
 $md-dimension: 24px;
@@ -70,7 +70,7 @@ $lg-dimension: 36px;
   }
   // stylelint-enable
 
-  // define regular focus styles for non-supporting browsers
+
   input:focus + div {
     outline: 0;
     box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
@@ -87,7 +87,7 @@ $lg-dimension: 36px;
     color: var(--form-control-checkbox-color-disabled, var(--color-brand-grey-200));
   }
 
-  // Hide focus styles if they're not needed, for example, when an element receives focus via the mouse.
+  // Hide focus styles if they are not needed, for example, when an element receives focus via the mouse.
   input:focus:not(:focus-visible) + div {
     outline: 0;
     box-shadow: none;

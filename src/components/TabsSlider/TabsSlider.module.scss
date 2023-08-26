@@ -9,7 +9,7 @@
     color: var(--color-brand-grey-300);
   }
 
-  //define regular focus styles for non-supporting browsers
+
   &:focus {
     outline: 0;
     box-shadow: inset var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
@@ -28,7 +28,7 @@
     }
   }
 
-  // Hide focus styles if they're not needed, for example,
+  // Hide focus styles if they are not needed, for example,
   // when an element receives focus via the mouse.
   &:focus:not(:focus-visible) {
     outline: 0;

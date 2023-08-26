@@ -1,5 +1,5 @@
-@import url('../../../styles/mixins');
-@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
+@import '../../../styles/mixins';
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 $sm-dimension: 16px;
 $md-dimension: 20px;
@@ -37,7 +37,6 @@ $lg-dimension: 24px;
 
 .radio-container {
   input:focus + div {
-    //define regular focus styles for non-supporting browsers
     outline: 0;
     box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
@@ -48,7 +47,7 @@ $lg-dimension: 24px;
     box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
 
-  // Hide focus styles if they're not needed, for example,
+  // Hide focus styles if they are not needed, for example,
   // when an element receives focus via the mouse.
   input:focus:not(:focus-visible) + div {
     outline: 0;

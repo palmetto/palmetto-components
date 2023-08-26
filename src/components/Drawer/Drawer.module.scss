@@ -1,4 +1,4 @@
-@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 [data-reach-dialog-overlay].drawer {
   top: 0;
@@ -119,7 +119,7 @@
     box-shadow: var(--drawer-close-button-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
   }
 
-  //Hide focus styles if they're not needed, for example,
+  //Hide focus styles if they are not needed, for example,
   // when an element receives focus via the mouse.
   &:focus:not(:focus-visible) {
     outline: 0;

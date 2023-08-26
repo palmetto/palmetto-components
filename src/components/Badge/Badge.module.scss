@@ -1,4 +1,4 @@
-@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 @mixin size-sm {
   font-size: var(--badge-size-sm-font-size, var(--size-font-2xs));

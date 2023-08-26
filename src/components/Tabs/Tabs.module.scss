@@ -4,11 +4,10 @@
   transition: color 0.2s, border-color 0.2s;
 
   &[disabled] {
-    //stylelint-disable-line
     cursor: not-allowed;
   }
 
-  //define regular focus styles for non-supporting browsers
+
   &:focus {
     outline: 0;
     box-shadow: inset
@@ -45,7 +44,7 @@
     }
   }
 
-  // Hide focus styles if they're not needed, for example,
+  // Hide focus styles if they are not needed, for example,
   // when an element receives focus via the mouse.
   &:focus:not(:focus-visible) {
     outline: 0;

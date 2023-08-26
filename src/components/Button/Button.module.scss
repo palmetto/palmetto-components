@@ -1,4 +1,4 @@
-@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 @mixin size-xs {
   border-radius: var(--button-size-xs-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
@@ -126,7 +126,7 @@
     background-color: var(--button-primary-background-color, var(--color-brand-primary-500));
     color: var(--button-primary-font-color, var(--color-brand-white-base));
 
-    // define regular focus styles for non-supporting browsers
+
     &:focus {
       outline: 0;
       box-shadow: var(--button-primary-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
@@ -138,7 +138,7 @@
       box-shadow: var(--button-primary-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
     }
 
-    // Hide focus styles if they're not needed, for example,
+    // Hide focus styles if they are not needed, for example,
     // when an element receives focus via the mouse.
     &:focus:not(:focus-visible) {
       outline: 0;
@@ -167,7 +167,7 @@
     background-color: var(--button-success-background-color, var(--color-brand-success-500));
     color: var(--button-success-font-color, var(--color-brand-white-base));
 
-    // define regular focus styles for non-supporting browsers
+
     &:focus {
       outline: 0;
       box-shadow: var(--button-success-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
@@ -179,7 +179,7 @@
       box-shadow: var(--button-success-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
     }
 
-    // Hide focus styles if they're not needed, for example,
+    // Hide focus styles if they are not needed, for example,
     // when an element receives focus via the mouse.
     &:focus:not(:focus-visible) {
       outline: 0;

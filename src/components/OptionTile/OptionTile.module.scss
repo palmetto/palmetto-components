@@ -14,10 +14,10 @@
     border: 1px solid var(--option-tile-border-color-hover, var(--form-control-border-color-hover, var(--INTERNAL_form-control-border-color-hover)));
   }
 
+  // https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
   &.disabled {
     background-color: var(--option-tile-background-color-disabled, var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled)));
     color: var(--option-tile-font-color-disabled, var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled)));
-    // https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
     -webkit-text-fill-color: var(--option-tile-font-color-disabled, var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled)));
     opacity: 1;
 

@@ -1,5 +1,4 @@
 .option {
-  // define regular focus styles for non-supporting browsers
   &:focus {
     outline: 0;
     box-shadow: var(--option-tile-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));

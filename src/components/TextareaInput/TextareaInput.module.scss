@@ -1,4 +1,4 @@
-@import url('~@palmetto/palmetto-design-tokens/build/scss/variables-size');
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 @mixin size-sm {
   border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
@@ -78,7 +78,6 @@
     color: var(--form-control-font-color, var(--INTERNAL_form-control-font-color));
 
     &::placeholder {
-      //Override lower placeholder opacity in Firefox
       opacity: 1;
       color: var(--form-control-placeholder-color, var(--INTERNAL_form-control-placeholder-color));
     }
