@@ -2,7 +2,7 @@
 
 // min-width and min-height needed because of this
 // https://stackoverflow.com/questions/36247140/why-doesnt-flex-item-shrink-past-content-size
-.flex-auto { 
+.flex-auto {
   flex: 1 1 auto;
   min-width: 0;
   min-height: 0;
@@ -48,7 +48,7 @@
 .align-self-stretch { align-self: stretch; }
 
 @media (min-width: $size-breakpoint-tablet) {
-  .flex-auto-tablet { 
+  .flex-auto-tablet {
     flex: 1 1 auto;
     min-width: 0;
     min-height: 0;
@@ -96,7 +96,7 @@
 
 
 @media (min-width: $size-breakpoint-desktop) {
-  .flex-auto-desktop { 
+  .flex-auto-desktop {
     flex: 1 1 auto;
     min-width: 0;
     min-height: 0;
@@ -143,7 +143,7 @@
 }
 
 @media (min-width: $size-breakpoint-hd) {
-  .flex-auto-hd { 
+  .flex-auto-hd {
     flex: 1 1 auto;
     min-width: 0;
     min-height: 0;

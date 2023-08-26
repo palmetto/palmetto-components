@@ -120,10 +120,10 @@
   @extend %size-lg;
 }
 
+// https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
 %disabled-base {
   background-color: var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled));
   color: var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled));
-  /* https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios */
   -webkit-text-fill-color: var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled));
   opacity: 1;
 
@@ -192,13 +192,13 @@
     }
   }
 
+  // border and background is set on the text-input-wrapper
   > input {
     box-sizing: border-box;
     display: flex;
     transition-duration: 300ms;
     transition-property: border, background-color;
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
-    /* border and background is set on the text-input-wrapper */
     border: none;
     background-color: transparent;
     width: 100%;
@@ -206,7 +206,6 @@
     color: var(--form-control-font-color, var(--INTERNAL_form-control-font-color));
 
     &::placeholder {
-      /* Override lower placeholder opacity in Firefox */
       opacity: 1;
       color: var(--form-control-placeholder-color, var(--INTERNAL_form-control-placeholder-color));
     }
@@ -218,6 +217,7 @@
 
     &:disabled {
       @extend %disabled-base;
+
       background-color: transparent;
     }
   }
@@ -237,7 +237,7 @@
     }
   }
 
-  /* Necessary so that inset shadow that we use for border does not get covered by child elements. */
+  //Necessary so that inset shadow that we use for border does not get covered by child elements.
   &:not(.error) {
     > * {
       &:focus,
@@ -260,8 +260,8 @@
     @extend %disabled-base;
   }
 
+  // Reset default button styles
   .clear-button {
-    /* Reset default button styles */
     transition-duration: 0.2s;
     transition-property: color;
     border: 0;

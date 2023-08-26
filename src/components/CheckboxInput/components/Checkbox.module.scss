@@ -50,6 +50,7 @@ $lg-dimension: 36px;
 .checkbox {
   &.hidden {
     @include accessible-hidden-element;
+
     height: 0;
   }
 
@@ -63,16 +64,19 @@ $lg-dimension: 36px;
     color: var(--form-control-checkbox-color-checked, var(--color-brand-primary-500));
   }
 
-  input[aria-invalid='true'] + div { /* stylelint-disable-line */
+  // stylelint-disable
+  input[aria-invalid='true'] + div {
     color: var(--form-control-font-color-error, var(--color-brand-danger-500));
   }
+  // stylelint-enable
+
 
   input:focus + div {
-    /* define regular focus styles for non-supporting browsers */
     outline: 0;
     box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
   }
-  /* Show focus styles on keyboard focus. */
+
+  // Show focus styles on keyboard focus.
   input:focus-visible + div {
     outline: 0;
     box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
@@ -83,8 +87,7 @@ $lg-dimension: 36px;
     color: var(--form-control-checkbox-color-disabled, var(--color-brand-grey-200));
   }
 
-  /* Hide focus styles if they're not needed, for example,
-    when an element receives focus via the mouse. */
+  // Hide focus styles if they are not needed, for example, when an element receives focus via the mouse.
   input:focus:not(:focus-visible) + div {
     outline: 0;
     box-shadow: none;

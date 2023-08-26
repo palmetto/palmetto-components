@@ -1,21 +1,22 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
-/* This line prevents @reach/dialog from throwing a warning due to not importing their CSS. */
+// This line prevents @reach/dialog from throwing a warning due to not importing their CSS.
 :root {
   --reach-dialog: 1;
 }
 
+// Show focus styles on keyboard focus.
 .media-modal-close {
   border-radius: var(--size-border-radius-sm);
   padding: var(--size-spacing-2xs);
-  /* Show focus styles on keyboard focus. */
+
   &:focus-visible {
     outline: 0;
     box-shadow: 0 0 0 4px var(--color-brand-grey-500);
   }
 
-  /* Hide focus styles if they're not needed, for example,
-  when an element receives focus via the mouse. */
+  // Hide focus styles if they are not needed, for example,
+  // when an element receives focus via the mouse.
   &:focus:not(:focus-visible) {
     outline: 0;
     box-shadow: none;
@@ -31,7 +32,7 @@
   left: 0;
   align-items: flex-end;
   z-index: var(--size-z-index-overlay);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgb(0 0 0 / 80%);
   overflow: hidden;
 
   :global {
@@ -62,16 +63,14 @@
   }
 
   .header-bar {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgb(0 0 0 / 50%);
   }
 
   .title {
     overflow: hidden;
-    /* stylelint-disable */
-    display: -webkit-box;
+    display: box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    /* stylelint-enable */
   }
 
   .footer {
@@ -81,7 +80,7 @@
     left: env(safe-area-inset-left, 0);
     right: env(safe-area-inset-right, 0);
     bottom: env(safe-area-inset-bottom, 0);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgb(0 0 0 / 50%);
     color: var(--media-modal-font-color, var(--color-brand-grey-100));
     height: var(--size-height-lg);
     justify-content: center;
