@@ -15,6 +15,9 @@ export default {
     isDisabled: {
       control: 'boolean',
     },
+    isLegend: {
+      control: 'boolean',
+    },
     isRadioInputLabel: {
       control: 'boolean',
     },
