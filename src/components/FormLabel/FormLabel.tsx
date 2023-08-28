@@ -29,6 +29,10 @@ export interface FormLabelProps extends BoxProps {
    */
   isFieldRequired?: boolean;
   /**
+   * prop determines if the element should render as a legend for labeling multiple inputs
+   */
+  isLegend?: boolean;
+  /**
    * Apply custom styling to labels for a radio input
    */
   isRadioInputLabel?: boolean;
@@ -50,6 +54,7 @@ export const FormLabel: FC<FormLabelProps> = ({
   helpText,
   isDisabled = false,
   isFieldRequired = false,
+  isLegend = false,
   isRadioInputLabel = false,
   requiredIndicator = ' *',
   margin = '0',
@@ -69,7 +74,7 @@ export const FormLabel: FC<FormLabelProps> = ({
 
   return (
     <Box
-      as="label"
+      as={isLegend ? 'legend' : 'label'}
       id={`${inputId}Label`}
       className={labelClasses}
       display={display}
