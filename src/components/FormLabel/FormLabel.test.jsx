@@ -32,4 +32,13 @@ describe('FormLabel', () => {
     );
     expect(getByText('i am help text')).toBeDefined();
   });
+
+  test('renders as legend when set to legend', () => {
+    const { container } = render(
+      <FormLabel isLegend inputId="myId" helpText="i am help text">
+        my label
+      </FormLabel>,
+    );
+    expect(container.querySelector('legend')).toBeInTheDocument();
+  });
 });
