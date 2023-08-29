@@ -1,5 +1,12 @@
 Changelog
 
+## [0.152.4](https://github.com/palmetto/palmetto-components/compare/v0.152.3...v0.152.4) (2023-08-29)
+
+
+### Bug Fixes
+
+* stylelint warning ([#844](https://github.com/palmetto/palmetto-components/issues/844)) ([40edc59](https://github.com/palmetto/palmetto-components/commit/40edc5979e3640d2735dd8105ce5e79bda9866de))
+
 ## [0.152.3](https://github.com/palmetto/palmetto-components/compare/v0.152.2...v0.152.3) (2023-08-28)
 
 ## [0.152.2](https://github.com/palmetto/palmetto-components/compare/v0.152.1...v0.152.2) (2023-08-26)
