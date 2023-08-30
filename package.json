@@ -48,7 +48,7 @@
     "storybook": "cross-env IS_STORYBOOK=true start-storybook -p 6006 -s ./public",
     "build-storybook": "cross-env IS_STORYBOOK=true build-storybook -s ./public --webpack-stats-json",
     "deploy-storybook": "rimraf storybook-static && npm run build-storybook -s ./public && echo 'ux.palmetto.com' > 'storybook-static/CNAME' && storybook-to-ghpages --existing-output-dir=storybook-static",
-    "chromatic": "chromatic --project-token=x8ffq4qv9tq",
+    "chromatic": "chromatic --project-token=x8ffq4qv9tq --only-changed --externals '*./scss' --externals 'public/**'",
     "generate-docs": "yarn doctoc docs/CONTRIBUTING.md",
     "lint-js": "cross-env EXTEND_ESLINT=true eslint src",
     "lint-js:fix": "cross-env EXTEND_ESLINT=true eslint . --fix",
