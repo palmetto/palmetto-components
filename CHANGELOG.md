@@ -1,5 +1,12 @@
 Changelog
 
+# [0.153.0](https://github.com/palmetto/palmetto-components/compare/v0.152.6...v0.153.0) (2023-10-04)
+
+
+### Features
+
+* 1xl font size ([#848](https://github.com/palmetto/palmetto-components/issues/848)) ([ddae8f3](https://github.com/palmetto/palmetto-components/commit/ddae8f3ff3cfff45b98363d511a910e3f2e0b9b6))
+
 ## [0.152.6](https://github.com/palmetto/palmetto-components/compare/v0.152.5...v0.152.6) (2023-08-30)
 
 ## [0.152.5](https://github.com/palmetto/palmetto-components/compare/v0.152.4...v0.152.5) (2023-08-30)
