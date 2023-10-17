@@ -1,5 +1,12 @@
 Changelog
 
+# [0.154.0](https://github.com/palmetto/palmetto-components/compare/v0.153.0...v0.154.0) (2023-10-13)
+
+
+### Features
+
+* **Icon:** bank, cheque, laptop-computer ([#850](https://github.com/palmetto/palmetto-components/issues/850)) ([cac182d](https://github.com/palmetto/palmetto-components/commit/cac182d88477c3060b59bd863b30a977dd16f2f8))
+
 # [0.153.0](https://github.com/palmetto/palmetto-components/compare/v0.152.6...v0.153.0) (2023-10-04)
 
 
