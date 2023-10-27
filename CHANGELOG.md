@@ -1,5 +1,12 @@
 Changelog
 
+# [0.155.0](https://github.com/palmetto/palmetto-components/compare/v0.154.2...v0.155.0) (2023-10-27)
+
+
+### Features
+
+* **Icons:** solar-panels, electric vehicle, heat pump, window ([#853](https://github.com/palmetto/palmetto-components/issues/853)) ([f70bf45](https://github.com/palmetto/palmetto-components/commit/f70bf45e827f5dd8152c5d749d289ccac61703db))
+
 ## [0.154.2](https://github.com/palmetto/palmetto-components/compare/v0.154.1...v0.154.2) (2023-10-17)
 
 ## [0.154.1](https://github.com/palmetto/palmetto-components/compare/v0.154.0...v0.154.1) (2023-10-17)
