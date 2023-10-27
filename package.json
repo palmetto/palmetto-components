@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@palmetto/dialog": "^0.16.4",
-    "@palmetto/palmetto-design-tokens": "0.74.0",
+    "@palmetto/palmetto-design-tokens": "0.75.0",
     "@popperjs/core": "^2.5.3",
     "caniuse-lite": "^1.0.30001523",
     "classnames": "^2.2.6",
