@@ -1,5 +1,12 @@
 Changelog
 
+# [0.156.0](https://github.com/palmetto/palmetto-components/compare/v0.155.1...v0.156.0) (2023-11-20)
+
+
+### Features
+
+* **Icon:** electricity-bolt ([#854](https://github.com/palmetto/palmetto-components/issues/854)) ([bb3d9ee](https://github.com/palmetto/palmetto-components/commit/bb3d9ee29665c9a8c405fe4bbb94aa8886c52fa3))
+
 ## [0.155.1](https://github.com/palmetto/palmetto-components/compare/v0.155.0...v0.155.1) (2023-10-27)
 
 # [0.155.0](https://github.com/palmetto/palmetto-components/compare/v0.154.2...v0.155.0) (2023-10-27)
