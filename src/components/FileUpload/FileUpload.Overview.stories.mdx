@@ -172,15 +172,13 @@ The default button text for `FileUpload` is 'Upload File'. However, you can expl
 
 ## Variants
 
-Light, dark, primary and white variations are available.
+Leverage the same variants as the Button component to customize the look and feel of the FileUpload button.
 
 <Canvas>
   <Story name="Variants">
     {() => {
       const [files, setFiles] = useState(null);
       const [lightFiles, setLightFiles] = useState(null);
-      const [primaryFiles, setPrimaryFiles] = useState(null);
-      const [whiteFiles, setWhiteFiles] = useState(null);
       const handleChange = event => {
         setFiles(event.target.files);
       };
@@ -193,110 +191,27 @@ Light, dark, primary and white variations are available.
       return (
         <Box direction="row" childGap="md" alignItems="center">
           <FileUpload
-            buttonText="Dark"
+            buttonText="secondary"
             labelText="My File"
             id="darkUpload"
             onChange={handleChange}
             files={files}
-            variant="dark"
+            variant="primary"
           />
           <FileUpload
-            buttonText="Light"
+            buttonText="secondary-neutral"
             labelText="My File"
             id="lightUpload"
             onChange={handleLightChange}
             files={lightFiles}
-            variant="light"
+            variant="secondary-neutral"
           />
-          <FileUpload
-            buttonText="Primary"
-            labelText="My File"
-            id="primaryUpload"
-            onChange={handlePrimaryChange}
-            files={primaryFiles}
-            variant="primary"
-          />
-          <Box background="grey-500" padding="2xs">
-            <FileUpload
-              buttonText="White"
-              labelText="My File"
-              id="whiteUpload"
-              onChange={handlePrimaryChange}
-              files={whiteFiles}
-              variant="white"
-            />
-          </Box>
         </Box>
       );
     }}
   </Story>
 </Canvas>
 
-## Outlined
-
-Use `isOutlined` to render an outline button.
-
-<Canvas>
-  <Story name="Outlined">
-    {() => {
-      const [files, setFiles] = useState(null);
-      const [lightFiles, setLightFiles] = useState(null);
-      const [primaryFiles, setPrimaryFiles] = useState(null);
-      const [whiteFiles, setWhiteFiles] = useState(null);
-      const handleChange = event => {
-        setFiles(event.target.files);
-      };
-      const handleLightChange = event => {
-        setLightFiles(event.target.files);
-      };
-      const handlePrimaryChange = event => {
-        setPrimaryFiles(event.target.files);
-      };
-      return (
-        <Box direction="row" childGap="md" alignItems="center">
-          <FileUpload
-            buttonText="Dark"
-            labelText="My File"
-            id="darkUpload"
-            onChange={handleChange}
-            files={files}
-            variant="dark"
-            isOutlined
-          />
-          <FileUpload
-            buttonText="Light"
-            labelText="My File"
-            id="lightUpload"
-            onChange={handleLightChange}
-            files={lightFiles}
-            variant="light"
-            isOutlined
-          />
-          <FileUpload
-            buttonText="Primary"
-            labelText="My File"
-            id="primaryUpload"
-            onChange={handlePrimaryChange}
-            files={primaryFiles}
-            variant="primary"
-            isOutlined
-          />
-          <Box background="grey-500" padding="2xs">
-            <FileUpload
-              buttonText="White"
-              labelText="My File"
-              id="whiteUpload"
-              onChange={handlePrimaryChange}
-              files={whiteFiles}
-              variant="white"
-              isOutlined
-            />
-          </Box>
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
 
 ## Sizes
 

@@ -1,13 +1,11 @@
-import React, {
-  useRef, FC, ReactNode, ChangeEvent, MouseEvent,
-} from 'react';
+import React, { useRef, FC, ReactNode, ChangeEvent, MouseEvent } from 'react';
 import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
-import { Button, ButtonSize } from '../Button/Button';
+import { Button, ButtonSize, ButtonVariant } from '../Button/Button';
 import styles from './FileUpload.module.scss';
 import { IconName } from '../../types';
 
@@ -83,10 +81,6 @@ export interface FileUploadProps extends BoxProps {
    */
   isDisabled?: boolean;
   /**
-   * Renders an outline version of the button. With a transparent background.
-   */
-  isOutlined?: boolean;
-  /**
    * Determines if input is required or not
    */
   isRequired?: boolean;
@@ -97,7 +91,9 @@ export interface FileUploadProps extends BoxProps {
   /**
    * Input `multiple` attribute, pass `true` if you wish to upload multiple files.
    */
-  onClearFiles?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  onClearFiles?: (
+    event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+  ) => void;
   /**
    * Visual indicator that the field is required, that gets appended to the label
    */
@@ -107,9 +103,9 @@ export interface FileUploadProps extends BoxProps {
    */
   size?: ButtonSize;
   /**
-   * Color for button component. Matches a curated subset of button variants.
+   * Color and visual weight for the button.
    */
-  variant?: 'light' | 'dark' | 'primary' | 'white' ;
+  variant?: ButtonVariant;
   /**
    * Additional props to be spread. IMPORTANT: these will be spread ONLY to the
    * `input` element in the component since it is the actual semantic file input
@@ -118,158 +114,190 @@ export interface FileUploadProps extends BoxProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, FileUploadProps>((
-  {
-    id,
-    labelText,
-    name,
-    onChange,
-    accept = undefined,
-    buttonText = 'Upload File',
-    className = undefined,
-    error = null,
-    fileNameMaxLength = null,
-    files = null,
-    fullWidth = false,
-    hasIcon = true,
-    helpText = undefined,
-    iconName = 'upload',
-    inputProps = undefined,
-    isDisabled = false,
-    isOutlined = false,
-    isRequired = false,
-    multiple = false,
-    onClearFiles = undefined,
-    requiredIndicator = <>&nbsp;*</>,
-    size = 'md',
-    variant = 'light',
-    ...restProps
-  },
-  ref,
-) => {
-  const hiddenFileInput = useRef<HTMLInputElement>(null);
+export const FileUpload: FC<FileUploadProps> = React.forwardRef<
+  HTMLDivElement,
+  FileUploadProps
+>(
+  (
+    {
+      id,
+      labelText,
+      name,
+      onChange,
+      accept = undefined,
+      buttonText = 'Upload File',
+      className = undefined,
+      error = null,
+      fileNameMaxLength = null,
+      files = null,
+      fullWidth = false,
+      hasIcon = true,
+      helpText = undefined,
+      iconName = 'upload',
+      inputProps = undefined,
+      isDisabled = false,
+      isRequired = false,
+      multiple = false,
+      onClearFiles = undefined,
+      requiredIndicator = <>&nbsp;*</>,
+      size = 'md',
+      variant = 'primary-neutral',
+      ...restProps
+    },
+    ref,
+  ) => {
+    const hiddenFileInput = useRef<HTMLInputElement>(null);
 
-  const handleClick = (e: MouseEvent) => {
-    e.stopPropagation();
-    if (hiddenFileInput?.current) hiddenFileInput.current.click();
-  };
+    const handleClick = (e: MouseEvent) => {
+      e.stopPropagation();
+      if (hiddenFileInput?.current) hiddenFileInput.current.click();
+    };
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (inputProps?.onChange) {
-      inputProps.onChange(event);
-    }
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+      if (inputProps?.onChange) {
+        inputProps.onChange(event);
+      }
 
-    onChange(event);
-  };
+      onChange(event);
+    };
 
-  const truncateFileName = (fileName: string, maxLength: number): string => {
-    const half = Math.floor(maxLength / 2);
+    const truncateFileName = (fileName: string, maxLength: number): string => {
+      const half = Math.floor(maxLength / 2);
 
-    return `${fileName.substr(0, half)}...${fileName.substr(
-      fileName.length - half,
-      fileName.length,
-    )}`;
-  };
+      return `${fileName.substr(0, half)}...${fileName.substr(
+        fileName.length - half,
+        fileName.length,
+      )}`;
+    };
 
-  const messageFontSize = () => {
-    let fontSize: 'xs' | 'sm' | 'md' = 'sm';
-    if (size === 'sm') {
-      fontSize = 'xs';
-    } else if (size === 'lg') {
-      fontSize = 'md';
-    }
+    const messageFontSize = () => {
+      let fontSize: 'xs' | 'sm' | 'md' = 'sm';
+      if (size === 'sm') {
+        fontSize = 'xs';
+      } else if (size === 'lg') {
+        fontSize = 'md';
+      }
 
-    return fontSize;
-  };
+      return fontSize;
+    };
 
-  const renderFiles = () => files && (
-  <Box>
-    {[...Array.from(files)].map((file: File) => (
-      <p key={file.name} className={`font-size-${messageFontSize()} m-top-xs`}>
-        <Icon name="paperclip" className="font-color-grey-light m-right-xs" />
-        {fileNameMaxLength ? truncateFileName(file.name, fileNameMaxLength) : file.name}
-      </p>
-    ))}
-  </Box>
-  );
-
-  return (
-    <Box
-      display="inline-block"
-      className={className}
-      width={fullWidth ? '100' : undefined}
-      ref={ref}
-      {...restProps}
-    >
-      <FormLabel inputId={id} className="display-none">
-        {labelText}
-      </FormLabel>
-      <Box
-        childGap="xs"
-        alignItems={{ base: 'flex-start', tablet: 'center' }}
-        direction={{ base: 'column', tablet: 'row' }}
-      >
-        <Button
-          onClick={handleClick}
-          aria-controls={id}
-          isDisabled={isDisabled}
-          isOutlined={isOutlined}
-          variant={variant}
-          size={size}
-          fullWidth={fullWidth}
-        >
-          {/* We need the onClick handler here to prevent bubbling of clicks on the inner button elements */}
-          {/* Implemented in response to Safari's handling of bubbled click events into the details element */}
-          {/* which triggered default behavior of opening the details element on click */}
-          <Box as="span" direction="row" onClick={(e: MouseEvent) => { e.preventDefault(); }}>
-            {hasIcon && (
+    const renderFiles = () =>
+      files && (
+        <Box>
+          {[...Array.from(files)].map((file: File) => (
+            <p
+              key={file.name}
+              className={`font-size-${messageFontSize()} m-top-xs`}
+            >
               <Icon
-                name={iconName}
-                className={classNames('align-self-center', { 'm-right-xs': buttonText })}
-                data-testid="file-upload-icon"
+                name="paperclip"
+                className="font-color-grey-light m-right-xs"
               />
-            )}
-            {buttonText
-              && (
-                <Box data-testid="file-upload__upload-text">
-                  {buttonText}
-                </Box>
+              {fileNameMaxLength
+                ? truncateFileName(file.name, fileNameMaxLength)
+                : file.name}
+            </p>
+          ))}
+        </Box>
+      );
+
+    return (
+      <Box
+        display="inline-block"
+        className={className}
+        width={fullWidth ? '100' : undefined}
+        ref={ref}
+        {...restProps}
+      >
+        <FormLabel inputId={id} className="display-none">
+          {labelText}
+        </FormLabel>
+        <Box
+          childGap="xs"
+          alignItems={{ base: 'flex-start', tablet: 'center' }}
+          direction={{ base: 'column', tablet: 'row' }}
+        >
+          <Button
+            onClick={handleClick}
+            aria-controls={id}
+            isDisabled={isDisabled}
+            variant={variant}
+            size={size}
+            fullWidth={fullWidth}
+          >
+            {/* We need the onClick handler here to prevent bubbling of clicks on the inner button elements */}
+            {/* Implemented in response to Safari's handling of bubbled click events into the details element */}
+            {/* which triggered default behavior of opening the details element on click */}
+            <Box
+              as="span"
+              direction="row"
+              onClick={(e: MouseEvent) => {
+                e.preventDefault();
+              }}
+            >
+              {hasIcon && (
+                <Icon
+                  name={iconName}
+                  className={classNames('align-self-center', {
+                    'm-right-xs': buttonText,
+                  })}
+                  data-testid="file-upload-icon"
+                />
               )}
-            {isRequired && requiredIndicator && <span>{requiredIndicator}</span>}
-          </Box>
-          <Box
-            // We spread props here at that top to avoid inputProps overwriting high-level component props
-            {...inputProps}
-            as="input"
-            ref={mergeRefs([hiddenFileInput, ...(inputProps?.ref ? [inputProps.ref] : [])])}
-            className={classNames(styles['file-upload-input-element'], inputProps?.className)}
-            type="file"
-            id={id}
-            name={name}
-            accept={accept}
-            onChange={handleInputChange}
-            multiple={multiple}
-            disabled={isDisabled}
-            aria-disabled={isDisabled}
-            required={isRequired}
-            aria-required={isRequired}
-          />
-        </Button>
-        {helpText && (
-          <Box as="p" display="block" fontSize="sm" color="grey">
-            {helpText}
-          </Box>
+              {buttonText && (
+                <Box data-testid="file-upload__upload-text">{buttonText}</Box>
+              )}
+              {isRequired && requiredIndicator && (
+                <span>{requiredIndicator}</span>
+              )}
+            </Box>
+            <Box
+              // We spread props here at that top to avoid inputProps overwriting high-level component props
+              {...inputProps}
+              as="input"
+              ref={mergeRefs([
+                hiddenFileInput,
+                ...(inputProps?.ref ? [inputProps.ref] : []),
+              ])}
+              className={classNames(
+                styles['file-upload-input-element'],
+                inputProps?.className,
+              )}
+              type="file"
+              id={id}
+              name={name}
+              accept={accept}
+              onChange={handleInputChange}
+              multiple={multiple}
+              disabled={isDisabled}
+              aria-disabled={isDisabled}
+              required={isRequired}
+              aria-required={isRequired}
+            />
+          </Button>
+          {helpText && (
+            <Box as="p" display="block" fontSize="sm" color="grey">
+              {helpText}
+            </Box>
+          )}
+        </Box>
+        {error && error !== true && (
+          <InputValidationMessage size={messageFontSize()}>
+            {error}
+          </InputValidationMessage>
+        )}
+        {renderFiles()}
+        {files && onClearFiles && (
+          <Button
+            variant="secondary-neutral"
+            size="xs"
+            onClick={onClearFiles}
+            className="m-top-xs"
+          >
+            Clear
+          </Button>
         )}
       </Box>
-      {error && error !== true && (
-        <InputValidationMessage size={messageFontSize()}>{error}</InputValidationMessage>
-      )}
-      {renderFiles()}
-      {files && onClearFiles && (
-        <Button variant="light" isOutlined size="xs" onClick={onClearFiles} className="m-top-xs">
-          Clear
-        </Button>
-      )}
-    </Box>
-  );
-});
+    );
+  },
+);

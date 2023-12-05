@@ -108,7 +108,7 @@ export const Pagination: FC<PaginationProps> = ({
         childGap={isCompact ? 'xs' : 'sm'}
       >
         <Button
-          variant="light"
+          variant="secondary-neutral"
           size={isCompact ? 'sm' : 'md'}
           isDisabled={activePage === 1}
           onClick={() => onChange(activePage - 1)}
@@ -121,7 +121,7 @@ export const Pagination: FC<PaginationProps> = ({
               <Button
                 key={pageNumber}
                 onClick={() => onChange(pageNumber)}
-                isOutlined={activePage !== pageNumber}
+                variant={activePage !== pageNumber ? 'secondary-neutral' : 'primary-neutral'}
                 size={isCompact ? 'sm' : 'md'}
                 style={{
                   minWidth: isCompact ? '33px' : '42px',
@@ -135,7 +135,7 @@ export const Pagination: FC<PaginationProps> = ({
           </Box>
         )}
         <Button
-          variant="light"
+          variant="secondary-neutral"
           size={isCompact ? 'sm' : 'md'}
           isDisabled={activePage === pageTotal}
           onClick={() => onChange(activePage + 1)}

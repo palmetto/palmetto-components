@@ -78,7 +78,10 @@ export interface MediaModalProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, MediaModalProps>(
+export const MediaModal: React.FC<MediaModalProps> = forwardRef<
+  HTMLDivElement,
+  MediaModalProps
+>(
   (
     {
       ariaLabel,
@@ -106,12 +109,17 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
     const renderHeader = () => {
       if (closeButton && !showHeaderBar) {
         return (
-          <Box alignItems="flex-end" fontSize="lg" padding="lg" className={styles.header}>
+          <Box
+            alignItems="flex-end"
+            fontSize="lg"
+            padding="lg"
+            className={styles.header}
+          >
             <Button
               aria-label="close"
               className={styles['media-modal-close']}
               iconPrefix="remove-light"
-              isNaked
+              variant="tertiary-neutral"
               onClick={onDismiss}
             />
           </Box>
@@ -132,15 +140,13 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
                 <Box fontSize="xs">{description}</Box>
               </Box>
             )}
-            <Box fontSize="lg">
-              <Button
-                aria-label="close"
-                className={styles['media-modal-close']}
-                iconPrefix="remove-light"
-                isNaked
-                onClick={onDismiss}
-              />
-            </Box>
+            <Button
+              aria-label="close"
+              className={styles['media-modal-close']}
+              iconPrefix="remove-light"
+              variant="tertiary-neutral"
+              onClick={onDismiss}
+            />
           </Box>
         );
       }
@@ -159,10 +165,15 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
         {...restProps}
       >
         <Box className={styles.container}>
-          <DialogContent aria-label={ariaLabel || title} className={contentClassnames}>
+          <DialogContent
+            aria-label={ariaLabel || title}
+            className={contentClassnames}
+          >
             {renderHeader()}
             {children}
-            {footerContent && <div className={styles.footer}>{footerContent}</div>}
+            {footerContent && (
+              <div className={styles.footer}>{footerContent}</div>
+            )}
           </DialogContent>
         </Box>
       </DialogOverlay>

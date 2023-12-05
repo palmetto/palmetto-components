@@ -20,7 +20,7 @@ export const Demo: Story = () => {
   const { isOpen: isPopoverOpen, handleToggle: togglePopover } = useOpenClose({
     defaultIsOpen: true,
   });
-  const NavItem: FC<{ className?: string; iconName?: IconProps['name']; }> = ({
+  const NavItem: FC<{ className?: string; iconName?: IconProps['name'] }> = ({
     children,
     className,
     iconName,
@@ -136,7 +136,7 @@ export const Demo: Story = () => {
         withPortal
         portalTarget={document.body}
       >
-        <Button onClick={togglePopover} variant="light" size="sm">
+        <Button onClick={togglePopover} variant="primary-neutral" size="sm">
           Popover Menu &nbsp;
           <Icon name="menu" />
         </Button>
@@ -160,7 +160,7 @@ export const Default: Story = () => {
           padding: 'sm',
         }}
       >
-        <Button onClick={togglePopover} variant="light">
+        <Button onClick={togglePopover} variant="primary-neutral">
           Toggle Popover
         </Button>
       </Popover>
@@ -226,7 +226,10 @@ export const Placement: Story = () => {
               color: 'white',
             }}
           >
-            <Button onClick={() => handleOpenPopover(position)} variant="light">
+            <Button
+              onClick={() => handleOpenPopover(position)}
+              variant="primary-neutral"
+            >
               {position}
             </Button>
           </Popover>
@@ -267,7 +270,7 @@ export const HideArrow: Story = () => {
         onClickOutside={closePopover}
         hasArrow={false}
       >
-        <Button onClick={togglePopover} variant="light">
+        <Button onClick={togglePopover} variant="primary-neutral">
           Toggle Popover
         </Button>
       </Popover>
@@ -303,7 +306,7 @@ export const Offset: Story = () => {
           hasArrow={false}
           offsetFromTarget={20}
         >
-          <Button onClick={togglePopover} variant="light">
+          <Button onClick={togglePopover} variant="primary-neutral">
             Toggle Popover
           </Button>
         </Popover>

@@ -5,7 +5,14 @@ import { FileUpload } from './FileUpload';
 describe('FileUpload', () => {
   describe('Default', () => {
     it('renders a file upload input with default props', () => {
-      render(<FileUpload id="file-input" labelText="myFileUpload" name="file-input" onChange={() => null} />);
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+        />,
+      );
 
       const fileInput = screen.getByLabelText('myFileUpload');
       const button = screen.getByText('Upload File').closest('button');
@@ -13,14 +20,17 @@ describe('FileUpload', () => {
 
       expect(fileInput).toBeInTheDocument();
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('light', 'size-md');
+      expect(button).toHaveClass('primary-neutral', 'size-md');
       expect(uploadIcon).toBeInTheDocument();
     });
   });
 
   describe('Button Variations', () => {
     it('renders a file upload button in different styles based on props', () => {
-      interface Props { color?: 'dark' | 'light' | 'primary'; size?: 'sm' | 'md' | 'lg'; }
+      interface Props {
+        color?: 'dark' | 'light' | 'primary';
+        size?: 'sm' | 'md' | 'lg';
+      }
       const UploadComponent: FC<Props> = ({ color = 'light', size = 'md' }) => (
         <FileUpload
           id="file-input"
@@ -136,7 +146,9 @@ describe('FileUpload', () => {
         />,
       );
 
-      const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' });
+      const file = new File(['(⌐□_□)'], 'chucknorris.png', {
+        type: 'image/png',
+      });
       const fileUploadInput = screen.getByLabelText('myFileUpload');
       fireEvent.change(fileUploadInput, { target: { files: [file] } });
 
@@ -157,7 +169,9 @@ describe('FileUpload', () => {
         />,
       );
 
-      const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' });
+      const file = new File(['(⌐□_□)'], 'chucknorris.png', {
+        type: 'image/png',
+      });
       const fileUploadInput = screen.getByLabelText('myFileUpload');
       fireEvent.change(fileUploadInput, { target: { files: [file] } });
 
@@ -167,7 +181,11 @@ describe('FileUpload', () => {
 
     it('fires the onClear callback when clear button is clicked', () => {
       const mockedHandleClear = jest.fn();
-      const file = new File(['(⌐□_□)'], 'super-duper--duper-long-file-name.png', { type: 'image/png' });
+      const file = new File(
+        ['(⌐□_□)'],
+        'super-duper--duper-long-file-name.png',
+        { type: 'image/png' },
+      );
       const fileList: any = []; // eslint-disable-line
       fileList[0] = file;
       fileList.item = (index: number) => fileList[index];
@@ -193,7 +211,14 @@ describe('FileUpload', () => {
 
   describe('Open File Reader', () => {
     it('opens the native filereader when button is clicked', () => {
-      render(<FileUpload id="file-input" labelText="myFileUpload" name="file-input" onChange={() => null} />);
+      render(
+        <FileUpload
+          id="file-input"
+          labelText="myFileUpload"
+          name="file-input"
+          onChange={() => null}
+        />,
+      );
 
       const button = screen.getByText('Upload File').closest('button');
 
@@ -207,7 +232,11 @@ describe('FileUpload', () => {
 
   describe('Showing Files', () => {
     it('File names shown when filelist is passed', () => {
-      const file = new File(['(⌐□_□)'], 'super-duper--duper-long-file-name.png', { type: 'image/png' });
+      const file = new File(
+        ['(⌐□_□)'],
+        'super-duper--duper-long-file-name.png',
+        { type: 'image/png' },
+      );
       const fileList: any = []; // eslint-disable-line
       fileList[0] = file;
       fileList.item = (index: number) => fileList[index];
@@ -222,13 +251,19 @@ describe('FileUpload', () => {
         />,
       );
 
-      const fileName = screen.getByText('super-duper--duper-long-file-name.png');
+      const fileName = screen.getByText(
+        'super-duper--duper-long-file-name.png',
+      );
 
       expect(fileName).toBeInTheDocument();
     });
 
     it('File names are truncated based on fileNameMaxLength prop', () => {
-      const file = new File(['(⌐□_□)'], 'super-duper--duper-long-file-name.png', { type: 'image/png' });
+      const file = new File(
+        ['(⌐□_□)'],
+        'super-duper--duper-long-file-name.png',
+        { type: 'image/png' },
+      );
       const fileList: any = []; // eslint-disable-line
       fileList[0] = file;
       fileList.item = (index: number) => fileList[index];
@@ -284,7 +319,9 @@ describe('FileUpload', () => {
     });
 
     it('is shows an error when prop is passed', () => {
-      interface Props { size?: 'sm' | 'md' | 'lg'; }
+      interface Props {
+        size?: 'sm' | 'md' | 'lg';
+      }
       const UploadComponent: FC<Props> = ({ size = 'md' }) => (
         <FileUpload
           id="file-input"
@@ -380,7 +417,10 @@ describe('FileUpload', () => {
         />,
       );
 
-      expect(screen.getByLabelText('myFileUpload')).toHaveAttribute('data-testid', 'hello');
+      expect(screen.getByLabelText('myFileUpload')).toHaveAttribute(
+        'data-testid',
+        'hello',
+      );
     });
   });
 });
