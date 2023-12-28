@@ -25,6 +25,12 @@ describe('cssShorthandToClasses', () => {
       expect(spacingClasses).toEqual(['p-v-0', 'p-h-0']);
     });
 
+    test('returns expected css object if gap is set to sm lg', () => {
+      const classes = cssShorthandToClasses('g', 'sm lg');
+
+      expect(classes).toEqual(['rg-sm', 'cg-lg']);
+    });
+
     test('returns expected css object if border radius are set to sm lg', () => {
       const classes = cssShorthandToClasses('br', 'sm lg');
 
