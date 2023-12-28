@@ -32,41 +32,86 @@ export const AllBackgroundColors: React.FunctionComponent<BoxProps> = () => (
         || color === 'transparent'
       ) {
         return (
-          <Box flex="auto" padding="xs" background={color} key={`${color}-${index}`}>
+          <Box
+            flex="auto"
+            padding="xs"
+            background={color}
+            key={`${color}-${index}`}
+          >
             {`${color}`}
           </Box>
         );
       } else {
         return (
           <Box flex="auto" key={`${color}-${index}`}>
-            <Box flex="auto" padding="xs" background={`${color}-50` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-50` as BrandColor}
+            >
               {`${color}-50`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-100` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-100` as BrandColor}
+            >
               {`${color}-100`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-200` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-200` as BrandColor}
+            >
               {`${color}-200`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-300` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-300` as BrandColor}
+            >
               {`${color}-300`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-400` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-400` as BrandColor}
+            >
               {`${color}-400`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-500` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-500` as BrandColor}
+            >
               {`${color}-500`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-600` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-600` as BrandColor}
+            >
               {`${color}-600`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-700` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-700` as BrandColor}
+            >
               {`${color}-700`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-800` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-800` as BrandColor}
+            >
               {`${color}-800`}
             </Box>
-            <Box flex="auto" padding="xs" background={`${color}-900` as BrandColor}>
+            <Box
+              flex="auto"
+              padding="xs"
+              background={`${color}-900` as BrandColor}
+            >
               {`${color}-900`}
             </Box>
           </Box>
@@ -88,7 +133,12 @@ export const AllBorderColors: React.FunctionComponent<BoxProps> = () => (
         || color === 'transparent'
       ) {
         return (
-          <Box borderColor={color} borderWidth="sm" padding="xs" key={`${color}-${index}`}>
+          <Box
+            borderColor={color}
+            borderWidth="sm"
+            padding="xs"
+            key={`${color}-${index}`}
+          >
             {`${color}`}
           </Box>
         );
@@ -179,6 +229,78 @@ export const AllBorderColors: React.FunctionComponent<BoxProps> = () => (
         );
       }
     })}
+  </Box>
+);
+
+export const AllGap: React.FunctionComponent<BoxProps> = () => (
+  <Box maxWidth="5xl" gap="lg">
+    {[...SPACING_OPTIONS].map((spacing, i) => (
+      <Box gap={spacing} direction="row" key={i}>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+      </Box>
+    ))}
+  </Box>
+);
+
+export const AllRowGap: React.FunctionComponent<BoxProps> = () => (
+  <Box maxWidth="5xl" gap="lg" direction="row">
+    {[...SPACING_OPTIONS].map((spacing, i) => (
+      <Box rowGap={spacing} direction="column" key={i}>
+        <Box width="100" background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box width="100" background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box width="100" background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box width="100" background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box width="100" background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+      </Box>
+    ))}
+  </Box>
+);
+
+export const AllColumnGap: React.FunctionComponent<BoxProps> = () => (
+  <Box maxWidth="5xl" gap="lg">
+    {[...SPACING_OPTIONS].map((spacing, i) => (
+      <Box columnGap={spacing} direction="row" key={i}>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+        <Box background="primary-light" padding="sm">
+          {spacing}
+        </Box>
+      </Box>
+    ))}
   </Box>
 );
 
@@ -303,7 +425,12 @@ export const AllPadding: React.FunctionComponent<BoxProps> = () => (
 export const AllHorizontalPadding: React.FunctionComponent<BoxProps> = () => (
   <>
     {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box padding={`0 ${spacing}`} background="primary-lighter" margin="xs 0" key={i}>
+      <Box
+        padding={`0 ${spacing}`}
+        background="primary-lighter"
+        margin="xs 0"
+        key={i}
+      >
         {`${spacing} horizontal padding`}
       </Box>
     ))}
@@ -313,7 +440,12 @@ export const AllHorizontalPadding: React.FunctionComponent<BoxProps> = () => (
 export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
   <>
     {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box padding={`${spacing} 0`} background="primary-lighter" margin="xs 0" key={i}>
+      <Box
+        padding={`${spacing} 0`}
+        background="primary-lighter"
+        margin="xs 0"
+        key={i}
+      >
         {`${spacing} vertical padding`}
       </Box>
     ))}
@@ -602,6 +734,43 @@ ResponsiveChildGap.args = {
   },
 };
 ResponsiveChildGap.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveGap = BoxChildrenTemplate.bind({});
+ResponsiveGap.args = {
+  propertyName: 'gap',
+  gap: {
+    base: 'xs',
+    tablet: 'lg',
+    desktop: '3xl',
+    hd: '5xl',
+  },
+};
+ResponsiveGap.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveRowGap = BoxChildrenTemplate.bind({});
+ResponsiveRowGap.args = {
+  propertyName: 'rowGap',
+  rowGap: {
+    base: 'xs',
+    tablet: 'lg',
+    desktop: '3xl',
+    hd: '5xl',
+  },
+};
+ResponsiveRowGap.parameters = RESPONSIVE_STORY;
+
+export const ResponsiveColumnGap = BoxChildrenTemplate.bind({});
+ResponsiveColumnGap.args = {
+  propertyName: 'columnGap',
+  columnGap: {
+    base: 'xs',
+    tablet: 'lg',
+    desktop: '3xl',
+    hd: '5xl',
+  },
+  direction: 'row',
+};
+ResponsiveColumnGap.parameters = RESPONSIVE_STORY;
 
 export const AllCursorOptions: React.FunctionComponent<BoxProps> = () => (
   <Box
