@@ -17,7 +17,7 @@ export const AccordionPanelSummary: React.FC<AccordionPanelSummaryProps> = ({
   ...restProps
 }) => (
   <DetailsSummary
-    childGap="sm"
+    gap="sm"
     display="flex"
     direction="row"
     fontWeight={fontWeight}

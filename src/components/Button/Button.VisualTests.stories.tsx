@@ -12,10 +12,10 @@ export default {
 } as Meta;
 
 const Template: Story<ButtonProps & { showIconButton: boolean; }> = (args, showIconButton) => (
-  <Box childGap="xl">
+  <Box gap="xl">
     {BUTTON_SIZES.map(size => (
-      <Box childGap="sm" key={size}>
-        <Box childGap="sm" direction="row" alignItems="flex-start">
+      <Box gap="sm" key={size}>
+        <Box gap="sm" direction="row" alignItems="flex-start">
           {BUTTON_VARIANTS.map(variant => (
             <Button {...args} size={size} variant={variant} key={`${size}-${variant}`}>
               {`${size} ${variant}`}
@@ -34,7 +34,7 @@ const Template: Story<ButtonProps & { showIconButton: boolean; }> = (args, showI
             </Button>
           )}
         </Box>
-        <Box childGap="sm" direction="row" alignItems="flex-start" key={size}>
+        <Box gap="sm" direction="row" alignItems="flex-start" key={size}>
           {BUTTON_VARIANTS.map(variant => (
             <Button
               {...args}
@@ -62,7 +62,7 @@ const Template: Story<ButtonProps & { showIconButton: boolean; }> = (args, showI
         </Box>
       </Box>
     ))}
-    <Box childGap="sm">
+    <Box gap="sm">
       <Button {...args}>Full Width</Button>
       <Button {...args} fullWidth isOutlined>
         Full Width Outline

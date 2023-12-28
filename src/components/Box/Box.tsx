@@ -102,7 +102,7 @@ export interface BoxProps {
   /**
    * Sets the gaps (gutters) between columns.
    */
-  columnGap?: BaseSpacing | ResponsiveProp<BaseSpacing> | string;
+  columnGap?: BaseSpacing | ResponsiveProp<BaseSpacing>;
   /**
    * Cursor style. Use any standard CSS value.
    */
@@ -172,7 +172,7 @@ export interface BoxProps {
   /**
    * Sets the gaps (gutters) between rows and columns.
    */
-  gap?: BaseSpacing | ResponsiveProp<BaseSpacing> | string;
+  gap?: BaseSpacing | ResponsiveProp<BaseSpacing>;
   /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
@@ -228,7 +228,7 @@ export interface BoxProps {
   /**
    * Sets the gaps (gutters) between rows.
    */
-  rowGap?: BaseSpacing | ResponsiveProp<BaseSpacing> | string;
+  rowGap?: BaseSpacing | ResponsiveProp<BaseSpacing>;
   /**
    * The size of the drop shadow applied to the Box
    */

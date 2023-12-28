@@ -110,7 +110,7 @@ export const Alert: FC<AlertProps> = ({
   return (
     <Box
       alignItems="flex-start"
-      childGap="sm"
+      gap="sm"
       className={alertContainerClasses}
       direction="row"
       padding={isCompact ? 'xs' : 'md'}
@@ -124,7 +124,7 @@ export const Alert: FC<AlertProps> = ({
         {render ? (
           render()
         ) : (
-          <Box display="block" childGap={message && title ? '2xs' : undefined}>
+          <Box display="block" gap={message && title ? '2xs' : undefined}>
             {title && (
               <Heading as="h4" size="md">
                 {title}

@@ -8,7 +8,7 @@ A `<Box>` is a layout component to build UIs with consistent padding and spacing
 
 - Its content is arranged in a specified `direction`, with 'column' being the default
 - Renders a `<div />` element by default, but can be changed using `as`
-- Allows you to specify the spacing between child elements using `childGap`
+- Allows you to specify the spacing between child elements using `gap`
 - Many props accept `ResponsiveProp` that take an object with keys that correspond to <a href="?path=/story/design-tokens-design-tokens--page#breakpoints">breakpoint tokens</a>
 
 ```js codesandbox=palmetto-components
@@ -16,7 +16,7 @@ import React from 'react';
 import { Box } from '@palmetto/palmetto-components';
 
 export default () => (
-  <Box childGap="md">
+  <Box gap="md">
     <Box
       padding="xl"
       background="primary-100"
@@ -27,7 +27,7 @@ export default () => (
     >
       I am a box with a green background and border
     </Box>
-    <Box childGap={{ base: 'sm', tablet: 'md', desktop: 'lg' }} direction="row">
+    <Box gap={{ base: 'sm', tablet: 'md', desktop: 'lg' }} direction="row">
       <Box flex="auto" radius="md" background="secondary-100" height="lg" />
       <Box flex="auto" radius="md" background="secondary-100" height="lg" />
       <Box flex="auto" radius="md" background="secondary-100" height="lg" />

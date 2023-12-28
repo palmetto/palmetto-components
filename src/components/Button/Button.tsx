@@ -174,7 +174,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
         display="inline-flex"
         direction="row"
         alignItems="center"
-        childGap={size === 'xs' ? '2xs' : 'xs'}
+        gap={size === 'xs' ? '2xs' : 'xs'}
       >
         {isLoading && (
           <Spinner variant={getSpinnerVariant()} className={styles['spinner-wrapper']} />
