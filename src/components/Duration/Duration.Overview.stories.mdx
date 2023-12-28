@@ -16,7 +16,7 @@ between different time units at defined intervals, including rounding, and displ
 
 <Canvas withSource="open">
   <Story name="Examples">
-    <Box childGap="xs">
+    <Box gap="xs">
       <Duration milliseconds={1000} />
       <Duration milliseconds={60000} />
       <Duration milliseconds={7200000} />
@@ -36,7 +36,7 @@ The intervals at which the `Duration` component switches between time units can 
 
 <Canvas withSource="open">
   <Story name="Switching Units">
-    <Box childGap="xs">
+    <Box gap="xs">
       <Duration milliseconds={3600000} displayHours={7200000} />
       <Duration milliseconds={3600000} displayHours={3600000} /> 
     </Box>
@@ -50,9 +50,9 @@ By default the `Duration` component will round up the time span to the nearest w
 
 <Canvas withSource="open">
   <Story name="Rounding">
-    <Box childGap="xs" padding="sm">
-      Up: <Duration milliseconds={60001} roundUp={true} /> 
-      Down: <Duration milliseconds={60001} roundUp={false} /> 
+    <Box gap="xs">
+      <p>Up: <Duration milliseconds={60001} roundUp={true} /> </p>
+      <p>Down: <Duration milliseconds={60001} roundUp={false} /> </p>
     </Box>
   </Story>
 </Canvas> 
@@ -63,7 +63,7 @@ Use the `Duration` component with other stylized components to display a time sp
 
 <Canvas withSource="open">
   <Story name="Composition">
-    <Box direction="row" childGap="sm">
+    <Box direction="row" gap="sm">
       <Badge message={<Duration milliseconds={60001} />} variant="default"/>
       <Badge message={<Duration milliseconds={3600000} />} variant="warning" />
       <Badge message={<Duration milliseconds={86500000} />} variant="danger"/>

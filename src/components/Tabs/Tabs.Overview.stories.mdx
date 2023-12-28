@@ -171,7 +171,7 @@ The `size` prop allows you to specify the size of the tab, or the size of the ta
       const [firstSelectedTab, setFirstSelectedTab] = useState(0);
       const [secondSelectedTab, setSecondSelectedTab] = useState(0);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <Tabs
             value={firstSelectedTab}
             onChange={(event, index) => {
@@ -211,7 +211,7 @@ The only other likely use case is to render each tab as an anchor. See example m
         event.preventDefault();
       };
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <Tabs
             value={selectedTab}
             onChange={(event, index) => {

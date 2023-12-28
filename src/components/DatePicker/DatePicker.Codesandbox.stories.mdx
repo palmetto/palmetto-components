@@ -21,7 +21,7 @@ export default () => {
   const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
 
   return (
-    <Box childGap="md">
+    <Box gap="md">
       <DatePicker onChange={setSelectedDate} selected={selectedDate} />
       <p>Selected Date: {selectedDate.toISOString()}</p>
     </Box>

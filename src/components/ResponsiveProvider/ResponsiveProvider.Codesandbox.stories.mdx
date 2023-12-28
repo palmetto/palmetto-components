@@ -29,7 +29,7 @@ export default () => {
     const { isPhone, isTablet, isDesktop, isHd } = useBreakpoint();
 
     return (
-      <Box childGap="md">
+      <Box gap="md">
         <p>phone: {isPhone ? '✅' : '❌'}</p>
         <p>tablet: {isTablet ? '✅' : '❌'}</p>
         <p>desktop: {isDesktop ? '✅' : '❌'}</p>

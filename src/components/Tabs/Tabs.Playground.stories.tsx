@@ -51,7 +51,7 @@ const Template: Story<TabsProps> = ({
   disabledTabs,
   ...args
 }) => (
-  <Box childGap="md">
+  <Box gap="md">
     <Tabs value={value} size={size} {...args}>
       <Tabs.Item isDisabled={disabledTabs.includes(0)}>
         Tab 0

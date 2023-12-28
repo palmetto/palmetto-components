@@ -158,7 +158,7 @@ the entire gamut of styling options.
       ];
       return (
         <Box height="400px">
-          <Box direction="row" childGap="md" wrap>
+          <Box direction="row" gap="md" wrap>
             <Popover
               content={
                 <>
@@ -180,7 +180,7 @@ the entire gamut of styling options.
               </Button>
             </Popover>
           </Box>
-          <Box direction="row" childGap="sm" wrap margin="3xl 0 0 0">
+          <Box direction="row" gap="sm" wrap margin="3xl 0 0 0">
             <Box width="200px">
               <SelectInput
                 options={backgroundOptions}
@@ -270,7 +270,7 @@ prevent the content from getting cut off.
         'left-end',
       ];
       return (
-        <Box direction="row" childGap="md" wrap>
+        <Box direction="row" gap="md" wrap>
           {positions.map(position => (
             <Box
               height="100px"
@@ -505,7 +505,7 @@ Use the `trapFocus` prop to constrain focus to popover content elements.
       };
       const popoverContent = (
         <>
-          <Box direction="column" childGap="sm">
+          <Box direction="column" gap="sm">
             <Heading>
               Only the elements on this Popover can be tabbed into
             </Heading>
@@ -558,7 +558,7 @@ Render the popover with no arrow by passing `hasArrow` false.
       } = useOpenClose();
       const popoverContent = (
         <>
-          <Box direction="column" childGap="sm">
+          <Box direction="column" gap="sm">
             <Heading>With no arrow</Heading>
             <p>I am floating in space</p>
           </Box>
@@ -605,7 +605,7 @@ Place the popover closer or farther from its trigger with the `offsetFromTarget`
       };
       const popoverContent = (
         <>
-          <Box direction="column" childGap="sm">
+          <Box direction="column" gap="sm">
             <Heading>Custom Offset</Heading>
             <p>Near, far, wherever your are...</p>
           </Box>

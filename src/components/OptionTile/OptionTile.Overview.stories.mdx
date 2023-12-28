@@ -77,7 +77,7 @@ The default is a radio.
       const [isCheckboxSelected, setIsCheckboxSelected] = useState(false);
       const [isRadioSelected, setIsRadioSelected] = useState(false);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <OptionTile
             isSelected={isRadioSelected}
             onChange={() => setIsRadioSelected(!isRadioSelected)}
@@ -181,13 +181,13 @@ Also note that these icons are only there for visual feedback, as the true input
         },
       ];
       return (
-        <Box direction={{ base: 'column', tablet: 'row' }} childGap="md">
+        <Box direction={{ base: 'column', tablet: 'row' }} gap="md">
           {options.map((option, index) => (
             <OptionTile
               key={option.id}
               hideInput
               padding="0"
-              childGap="0"
+              gap="0"
               direction="column"
               isSelected={option.value === selectedOption}
               onChange={event => setSelectedOption(event.target.value)}

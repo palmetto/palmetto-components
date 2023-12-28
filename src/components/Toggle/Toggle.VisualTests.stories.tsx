@@ -12,9 +12,9 @@ export default {
 } as Meta;
 
 const Template: Story<ToggleProps> = ({ ...args }) => (
-  <Box childGap="xl">
+  <Box gap="xl">
     {TOGGLE_SIZES.map(size => (
-      <Box childGap="md" key={`${args.id}-${size}`}>
+      <Box gap="md" key={`${args.id}-${size}`}>
         <Toggle
           {...args}
           id={`${args.id}-${size}-checked`}
@@ -32,7 +32,7 @@ const Template: Story<ToggleProps> = ({ ...args }) => (
         />
       </Box>
     ))}
-    <Box childGap="md">
+    <Box gap="md">
       <Toggle
         {...args}
         id={`${args.id}-responsive-checked`}

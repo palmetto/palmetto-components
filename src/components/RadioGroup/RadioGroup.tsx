@@ -116,7 +116,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
             {description && <div className={styles.description}>{description}</div>}
           </legend>
         )}
-        <Box direction={direction} childGap="sm" className={styles.options}>
+        <Box direction={direction} gap="sm" className={styles.options}>
           {options
             && options.map(option => (
               <RadioInput

@@ -11,10 +11,10 @@ export default {
 } as Meta;
 
 const Template: Story<SpinnerProps> = args => (
-  <Box childGap="xl">
+  <Box gap="xl">
     {SPINNER_SIZES.map(size => (
-      <Box childGap="sm" key={size}>
-        <Box childGap="sm" direction="row">
+      <Box gap="sm" key={size}>
+        <Box gap="sm" direction="row">
           {BRAND_COLOR_NAMES.map(variant => (
             <Spinner {...args} variant={variant} size={size} key={`${size}-${variant}`} />
           ))}

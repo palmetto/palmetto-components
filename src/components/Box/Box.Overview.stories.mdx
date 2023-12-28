@@ -148,7 +148,20 @@ Use `rowGap` and `columnGap` to set the spacing between children of a Box (for d
 
 ### Child Gap
 
-<Alert hasIcon variant="warning" message="NOTE: The `childGap` prop is deprecated and will be removed in a future release. Please use `gap` instead." />
+For block layouts, you can use `childGap` to set the spacing between children of a Box. For flex or grid layouts, use `gap` instead.
+
+<Canvas>
+  <Story name="Child Gap">
+    <Box childGap="md" display="block">
+      <Box display="block" background="primary-light" padding="sm" />
+      <Box display="block" background="primary-light" padding="sm" />
+      <Box display="block" background="primary-light" padding="sm" />
+      <Box display="block" background="primary-light" padding="sm" />
+      <Box display="block" background="primary-light" padding="sm" />
+    </Box>
+  </Story>
+</Canvas>
+
 
 ## Flex Properties
 
@@ -1612,7 +1625,7 @@ responsive object prop with said values. Example with `fixed` position not inclu
   <Story name="Position">
     <Box
       padding="md"
-      gap="md"
+      childGap="md"
       display="block"
       background="primary-lighter"
       overflow="scroll"

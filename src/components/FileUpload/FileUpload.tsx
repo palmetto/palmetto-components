@@ -205,7 +205,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<HTMLDivElement, 
         {labelText}
       </FormLabel>
       <Box
-        childGap="xs"
+        gap="xs"
         alignItems={{ base: 'flex-start', tablet: 'center' }}
         direction={{ base: 'column', tablet: 'row' }}
       >

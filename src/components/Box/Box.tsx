@@ -84,11 +84,10 @@ export interface BoxProps {
    */
   className?: string;
   /**
-   * TO BE DEPRECATED: use gap, columnGap or rowGap props instead
-   * This will be remove in next major release.
-   * The amount of spacing between child elements.
+   * The amount of spacing (implemented as margin) between child elements.
    * Can be a single [spacing value](/?path=/story/design-tokens-design-tokens--page#spacing).
    * NOTE: this prop is incompatible with reverse flex direction values (row-reverse, column-reverse).
+   * For grid and flex layouts, use 'gap' instead.
    */
   childGap?: SpacingSize | ResponsiveProp<SpacingSize>;
   /**

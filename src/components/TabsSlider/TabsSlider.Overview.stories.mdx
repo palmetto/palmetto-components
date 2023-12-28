@@ -64,7 +64,7 @@ and even make it responsive using the same `ResponsiveProp` pattern as the box, 
       const [lg, setLg] = useState(0);
       const [responsive, setResponsive] = useState(0);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <TabsSlider
             value={sm}
             onChange={(event, index) => {
@@ -167,7 +167,7 @@ The only other likely use case is to render each tab as an anchor. See example m
         event.preventDefault();
       };
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <TabsSlider
             value={selectedTab}
             onChange={(event, index) => {
