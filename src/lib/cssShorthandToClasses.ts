@@ -37,18 +37,26 @@ export function generateBaseClasses(
   }
 
   const classes: string[] = [];
+  let shorthand: { [key: number]: string[]; };
 
-  const shorthand: { [key: number]: string[]; } = attribute === 'br' ? {
-    /* top-left-and-bottom-right | top-right-and-bottom-left */
-    2: ['top-left', 'top-right'],
-    /* top-left | top-right-and-bottom-left | bottom-right */
-    3: ['top-left', 'top-right', 'bottom-right'],
-    4: ['top-left', 'top-right', 'bottom-right', 'bottom-left'],
-  } : {
-    2: ['v', 'h'],
-    3: ['top', 'h', 'bottom'],
-    4: ['top', 'right', 'bottom', 'left'],
-  };
+  if (attribute === 'br') {
+    shorthand = {
+      /* top-left-and-bottom-right | top-right-and-bottom-left */
+      2: ['top-left', 'top-right'],
+      /* top-left | top-right-and-bottom-left | bottom-right */
+      3: ['top-left', 'top-right', 'bottom-right'],
+      4: ['top-left', 'top-right', 'bottom-right', 'bottom-left'],
+    };
+  } else if (attribute === 'g') {
+    shorthand = { 2: ['rg', 'cg'] };
+  } else {
+    shorthand = {
+      2: ['v', 'h'],
+      3: ['top', 'h', 'bottom'],
+      4: ['top', 'right', 'bottom', 'left'],
+    };
+  }
+
   if (trimmedValue.includes(' ') && trimmedValue.split(' ').length > 1) {
     const sides = trimmedValue.split(' ');
 
@@ -78,6 +86,10 @@ export function generateBaseClasses(
         } else if (trimmedSides.length === 2 && index === 1) {
           classes.push(`${attribute}-bottom-left-${trimmedSides[index]}`);
         }
+      });
+    } else if (attribute === 'g') {
+      trimmedSides.forEach((v, index) => {
+        classes.push(`${shorthand[trimmedSides.length][index]}-${v}`);
       });
     } else {
       trimmedSides.forEach((v, index) => {
