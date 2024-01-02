@@ -1,5 +1,12 @@
 Changelog
 
+# [0.157.0](https://github.com/palmetto/palmetto-components/compare/v0.156.1...v0.157.0) (2024-01-02)
+
+
+### Features
+
+* **Box:** gap, row-gap, column-gap Box support ([#857](https://github.com/palmetto/palmetto-components/issues/857)) ([69b604e](https://github.com/palmetto/palmetto-components/commit/69b604e45bf19d73f66d6ef31b76221473a38513))
+
 ## [0.156.1](https://github.com/palmetto/palmetto-components/compare/v0.156.0...v0.156.1) (2023-12-01)
 
 # [0.156.0](https://github.com/palmetto/palmetto-components/compare/v0.155.1...v0.156.0) (2023-11-20)
