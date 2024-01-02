@@ -66,7 +66,7 @@ up to the user.
   <Story name="States">
     {() => {
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <CheckboxInput
             id="statesUnchecked"
             label="Unchecked"
@@ -106,11 +106,11 @@ Use cases for intermediate checkboxes can sometimes be unclear. Below is an exam
         setExampleOneChildTwo(event.target.checked);
       };
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <Box display="block" fontWeight="bold">
             Nested Checkboxes (select all)
           </Box>
-          <Box childGap="sm">
+          <Box gap="sm">
             <CheckboxInput
               id="statesUnchecked"
               label="Parent"
@@ -118,7 +118,7 @@ Use cases for intermediate checkboxes can sometimes be unclear. Below is an exam
               isChecked={exampleOneChildOne || exampleOneChildTwo}
               isIndeterminate={exampleOneChildOne !== exampleOneChildTwo}
             />
-            <Box padding="0 0 0 sm" childGap="sm">
+            <Box padding="0 0 0 sm" gap="sm">
               <CheckboxInput
                 id="statesUnchecked"
                 label="Child One"
@@ -168,7 +168,7 @@ You can remove or customize the required indicator using the `requiredIndicator`
       const [value, setValue] = useState(false);
       const [value2, setValue2] = useState(false);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <CheckboxInput
             id="requiredCheckboxNull"
             label="Required Without Indicator"
@@ -203,7 +203,7 @@ Set the size of the checkbox and label with the `size` prop.
       const [lg, setLg] = useState(null);
       const [responsive, setResponsive] = useState(null);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <CheckboxInput
             id="smCheckboxInput"
             label="Small checkbox"

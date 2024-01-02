@@ -12,9 +12,9 @@ export default {
 } as Meta;
 
 export const SizeAndColor: React.FunctionComponent<IconProps> = () => (
-  <Box direction="row" childGap="sm" background="grey-50">
+  <Box direction="row" gap="sm" background="grey-50">
     {FONT_SIZE_OPTIONS.map(size => (
-      <Box childGap="sm">
+      <Box gap="sm">
         {FONT_COLOR_OPTIONS.map(color => (
           <Icon
             name="home"

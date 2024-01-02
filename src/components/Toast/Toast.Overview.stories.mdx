@@ -203,7 +203,7 @@ toast('my toast', { duration: 3000, position: 'top-center' });
       const handleClick = position => toast('Hey there', { position });
       return (
         <>
-          <Box childGap="md" direction="row">
+          <Box gap="md" direction="row">
             <Button onClick={() => handleClick('top-right')}>top right</Button>
             <Button onClick={() => handleClick('top-center')}>
               top center
@@ -243,7 +243,7 @@ We've included sensible defaults for the duration of a toast before it disappear
       };
       return (
         <>
-          <Box childGap="md" direction="row">
+          <Box gap="md" direction="row">
             <Button onClick={handleClick}>
               Open toast with custom duration
             </Button>
@@ -274,7 +274,7 @@ without the user being able to clear it, you can use `canDismiss: false`.
       };
       return (
         <>
-          <Box childGap="md" direction="row">
+          <Box gap="md" direction="row">
             <Button onClick={handleClick}>Open non-dismissible toast</Button>
           </Box>
         </>
@@ -309,7 +309,7 @@ For these cases, you can use `toast.dismiss`.
       };
       return (
         <>
-          <Box childGap="md" direction="row">
+          <Box gap="md" direction="row">
             <Button onClick={handleClick} isDisabled={!!toastId}>
               Show Toast
             </Button>
@@ -340,7 +340,7 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
       };
       return (
         <>
-          <Box childGap="md" direction="row">
+          <Box gap="md" direction="row">
             <Button onClick={handleClick}>Open compact toast</Button>
           </Box>
         </>
@@ -372,7 +372,7 @@ To give toasts an additional visual indication of feedback, `success`, `loading`
           <Box fontSize="lg" fontWeight="bold" margin="0 0 md 0">
             Basic Types
           </Box>
-          <Box childGap="md" direction="row">
+          <Box gap="md" direction="row">
             <Button onClick={() => handleClick('blank')} variant="light">
               Default
             </Button>

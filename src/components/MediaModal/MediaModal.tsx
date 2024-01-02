@@ -127,7 +127,7 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<HTMLDivElement, 
             className={classNames(styles.header, styles['header-bar'])}
           >
             {headerContent || (
-              <Box childGap="2xs">
+              <Box gap="2xs">
                 <Box className={styles.title}>{title}</Box>
                 <Box fontSize="xs">{description}</Box>
               </Box>

@@ -121,7 +121,7 @@ The `size` prop is also a `ResponsiveProp`, so it can be sized differently at ea
     {() => {
       const [value, setValue] = useState(true);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <Toggle
             id="smToggle"
             label="small toggle"
@@ -203,7 +203,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
       const [value, setValue] = useState(null);
       const [value2, setValue2] = useState(true);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <Toggle
             id="invalidToggle"
             label="Agree to Terms and Conditions"

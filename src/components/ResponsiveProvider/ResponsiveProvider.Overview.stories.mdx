@@ -42,7 +42,7 @@ window size data from the provider. the example below uses `useWindowSize`.
       const App = () => {
         const { innerWidth, innerHeight, outerWidth, outerHeight } = useWindowSize();
         return (
-          <Box childGap="md">
+          <Box gap="md">
             <p>Inner Width: {innerWidth}</p>
             <p>Inner Height: {innerHeight}</p>
             <p>Outer Width: {outerWidth}</p>
@@ -70,7 +70,7 @@ these to any component nested under a `ResponsiveProvider`
       const App = () => {
         const { isPhone, isTablet, isDesktop, isHd } = useBreakpoint();
         return (
-          <Box childGap="md">
+          <Box gap="md">
             <p>phone: {isPhone ? '✅' : '❌'}</p>
             <p>tablet: {isTablet ? '✅' : '❌'}</p>
             <p>desktop: {isDesktop ? '✅' : '❌'}</p>

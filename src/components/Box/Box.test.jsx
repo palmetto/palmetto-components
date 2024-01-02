@@ -64,7 +64,7 @@ describe('Box', () => {
     });
   });
 
-  test('childGap margin classes are applied for horizontal layout', () => {
+  test('childGap margin classes are applied for column layout', () => {
     [...SPACING_OPTIONS].forEach((value, optionIndex) => {
       const { container } = render(
         <Box childGap={value} key={optionIndex}>
@@ -84,7 +84,7 @@ describe('Box', () => {
     });
   });
 
-  test('childGap margin classes are applied for vertical layout', () => {
+  test('childGap margin classes are applied for row layout', () => {
     [...SPACING_OPTIONS].forEach((value, optionIndex) => {
       const { container } = render(
         <Box childGap={value} key={optionIndex} direction="row">
