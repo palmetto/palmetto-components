@@ -15,10 +15,24 @@ export default {
     totalItemsCount: {
       control: 'number',
     },
+    arePagesVisible: {
+      control: 'boolean',
+    },
+    isCompact: {
+      control: 'boolean',
+    },
+    nextPageText: {
+      control: 'text',
+    },
+    prevPageText: {
+      control: 'text',
+    },
   },
 } as Meta;
 
-const Template: Story<PaginationProps> = ({ ...args }) => <Pagination {...args} />;
+const Template: Story<PaginationProps> = ({ ...args }) => (
+  <Pagination {...args} />
+);
 export const Playground = Template.bind({});
 Playground.args = {
   arePagesVisible: true,
@@ -26,6 +40,14 @@ Playground.args = {
 };
 Playground.parameters = {
   controls: {
-    include: ['activePage', 'itemsPerPage', 'totalItemsCount'],
+    include: [
+      'activePage',
+      'itemsPerPage',
+      'totalItemsCount',
+      'arePagesVisible',
+      'isCompact',
+      'nextPageText',
+      'prevPageText',
+    ],
   },
 };
