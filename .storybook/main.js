@@ -36,6 +36,7 @@ module.exports = {
     "@storybook/addon-essentials",
     'storybook-addon-designs',
     'storybook-addon-mdx-embed',
+    '@storybook/addon-postcss',
     './register',
   ],
   webpackFinal: config => {
