@@ -12,7 +12,7 @@ import { Button } from '../Button/Button';
 
 The Tabs component allows a user to flip amongst different views within the same page. This helps users navigate related content without having to change context.
 
-<Canvas isExpanded>
+<Canvas withSource="open">
   <Story
     name="Default"
     parameters={{
@@ -33,6 +33,7 @@ The Tabs component allows a user to flip amongst different views within the same
         >
           <Tabs.Item>Tab 1</Tabs.Item>
           <Tabs.Item>Tab 2</Tabs.Item>
+          <Tabs.Item>Tab 3</Tabs.Item>
           <Tabs.Item isDisabled>Disabled</Tabs.Item>
         </Tabs>
       );
