@@ -1,5 +1,12 @@
 Changelog
 
+## [0.157.5](https://github.com/palmetto/palmetto-components/compare/v0.157.4...v0.157.5) (2024-01-16)
+
+
+### Bug Fixes
+
+* **Tabs:** correct aria-setsize count when Tabs are conditionally rendered ([#862](https://github.com/palmetto/palmetto-components/issues/862)) ([7fb27f4](https://github.com/palmetto/palmetto-components/commit/7fb27f4007db22d5651db6e8bbc2298b132c1352))
+
 ## [0.157.4](https://github.com/palmetto/palmetto-components/compare/v0.157.3...v0.157.4) (2024-01-09)
 
 ## [0.157.3](https://github.com/palmetto/palmetto-components/compare/v0.157.2...v0.157.3) (2024-01-09)
