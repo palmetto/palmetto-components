@@ -1,6 +1,5 @@
 import React, { FC, ReactNode } from 'react';
 import { Box, BoxProps } from '../../../Box/Box';
-import { Heading } from '../../../Heading/Heading';
 
 export interface CardHeaderProps extends BoxProps {
   /**
@@ -32,7 +31,7 @@ export const CardHeader: FC<CardHeaderProps> = ({
 }) => {
   const renderTitle = () => (
     typeof title === 'string'
-      ? <Heading size="lg" as="h4">{title}</Heading>
+      ? <Box fontSize="lg" fontWeight="bold" as="h4">{title}</Box>
       : title
   );
 
