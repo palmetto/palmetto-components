@@ -2,6 +2,7 @@ import React, {
   FC, ReactNode, MouseEvent, KeyboardEvent,
 } from 'react';
 import classNames from 'classnames';
+import { Heading } from '../Heading/Heading';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import styles from './Alert.module.scss';
@@ -125,9 +126,9 @@ export const Alert: FC<AlertProps> = ({
         ) : (
           <Box display="block" childGap={message && title ? '2xs' : undefined}>
             {title && (
-              <Box fontFamily="brand" as="h4" fontSize="md">
+              <Heading as="h4" size="md">
                 {title}
-              </Box>
+              </Heading>
             )}
             {message && (typeof message === 'string' ? <p>{message}</p> : message)}
           </Box>
