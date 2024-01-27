@@ -27,12 +27,11 @@ export const CardHeader: FC<CardHeaderProps> = ({
   display = 'block',
   padding = 'md lg',
   title = null,
-  fontfamily = 'brand',
   ...restProps
 }) => {
   const renderTitle = () => (
     typeof title === 'string'
-      ? <Box fontSize="lg" fontWeight="bold" fontFamily={fontfamily} as="h4">{title}</Box>
+      ? <Box fontSize="lg" fontWeight="bold" as="h4">{title}</Box>
       : title
   );
 
