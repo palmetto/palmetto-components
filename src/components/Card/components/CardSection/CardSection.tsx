@@ -61,7 +61,7 @@ export const CardSection: FC<CardSectionProps> = ({
 }) => {
   const renderTitle = typeof title === 'string' ? (
     <Box className="m-bottom-md">
-      <Box as="h4" fontWeight="bold" fontSize="sm" color="grey-500">
+      <Box as="h4" fontWeight="bold" fontSize="sm" color="grey-600">
         {title}
       </Box>
     </Box>
