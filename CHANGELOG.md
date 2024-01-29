@@ -1,5 +1,12 @@
 Changelog
 
+## [0.157.7](https://github.com/palmetto/palmetto-components/compare/v0.157.6...v0.157.7) (2024-01-29)
+
+
+### Bug Fixes
+
+* **fonts:** update font files and weights ([#864](https://github.com/palmetto/palmetto-components/issues/864)) ([168a2b9](https://github.com/palmetto/palmetto-components/commit/168a2b9f1816dcc79d04b659ea20b929bc293d52))
+
 ## [0.157.6](https://github.com/palmetto/palmetto-components/compare/v0.157.5...v0.157.6) (2024-01-26)
 
 ## [0.157.5](https://github.com/palmetto/palmetto-components/compare/v0.157.4...v0.157.5) (2024-01-16)
