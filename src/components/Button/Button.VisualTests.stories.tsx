@@ -11,7 +11,7 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps & { showIconButton: boolean }> = (
+const Template: Story<ButtonProps & { showIconButton: boolean; }> = (
   args,
   showIconButton,
 ) => (
