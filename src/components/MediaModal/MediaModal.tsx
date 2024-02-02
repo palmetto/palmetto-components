@@ -2,7 +2,6 @@ import React, { ReactNode, RefObject, forwardRef } from 'react';
 import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
 import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import styles from './MediaModal.module.scss';
 
