@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { within } from '@testing-library/react';
 import { Button, ButtonProps } from './Button';
 import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 import { Box } from '../Box/Box';
@@ -10,15 +11,15 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps & { showIconButton: boolean; }> = (
+const Template: Story<ButtonProps & { showIconButton: boolean }> = (
   args,
   showIconButton,
 ) => (
   <Box childGap="xl">
-    {BUTTON_SIZES.map(size => (
-      <Box gap="sm" key={size}>
+    {BUTTON_VARIANTS.map(variant => (
+      <Box gap="sm" key={variant}>
         <Box gap="sm" direction="row" alignItems="flex-start">
-          {BUTTON_VARIANTS.map(variant => (
+          {BUTTON_SIZES.map(size => (
             <Button
               {...args}
               size={size}
@@ -33,28 +34,29 @@ const Template: Story<ButtonProps & { showIconButton: boolean; }> = (
               {...args}
               iconPrefix="add"
               iconSuffix="property-agreement"
-              size={size}
-              variant="primary"
-              key={`${size}-icon`}
+              variant={variant}
+              key={`${variant}-icon`}
             >
-              {`${size} icon`}
+              {`${variant} icon`}
             </Button>
           )}
         </Box>
       </Box>
     ))}
     <Box gap="sm">
-      <Button {...args}>Full Width</Button>
+      <Button size="sm">sm full width</Button>
+      <Button size="md">md full width</Button>
+      <Button size="lg">lg full width</Button>
     </Box>
   </Box>
 );
 
-// const SingleButtonTemplate: Story<ButtonProps> = args => (
-//   // the div is to add padding so that chromatic captures the box-shadow focus state
-//   <div className="p-md">
-//     <Button {...args}>label</Button>
-//   </div>
-// );
+const SingleButtonTemplate: Story<ButtonProps> = args => (
+  // the div is to add padding so that chromatic captures the box-shadow focus state
+  <div className="p-md">
+    <Button {...args}>label</Button>
+  </div>
+);
 
 export const Sizes = Template.bind({});
 Sizes.args = { showIconButton: true };
@@ -67,54 +69,42 @@ export const Disabled = Template.bind({});
 Disabled.args = { isDisabled: true, showIconButton: true };
 
 export const WithIcons = Template.bind({});
-WithIcons.args = { iconPrefix: 'mail', iconSuffix: 'chat' };
+WithIcons.args = {
+  iconPrefix: 'add',
+  iconSuffix: 'property-agreement',
+  showIconButton: false,
+};
 
-// export const PrimaryFocus = SingleButtonTemplate.bind({});
+export const SecondaryFocus = SingleButtonTemplate.bind({});
 
-// PrimaryFocus.play = async ({ canvasElement }) => {
-//   // Starts querying the component from its root
-//   const canvas = within(canvasElement);
+SecondaryFocus.play = async ({ canvasElement }) => {
+  // Starts querying the component from its root
+  const canvas = within(canvasElement);
 
-//   // Looks up the button and interacts with it.
-//   canvas.getByRole('button').focus();
-// };
+  // Looks up the button and interacts with it.
+  canvas.getByRole('button').focus();
+};
 
-// export const SuccessFocus = SingleButtonTemplate.bind({});
-// SuccessFocus.args = { variant: 'success' };
+export const PrimaryFocus = SingleButtonTemplate.bind({});
+PrimaryFocus.args = { variant: 'primary' };
 
-// SuccessFocus.play = async ({ canvasElement }) => {
-//   const canvas = within(canvasElement);
-//   canvas.getByRole('button').focus();
-// };
+PrimaryFocus.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByRole('button').focus();
+};
 
-// export const DangerFocus = SingleButtonTemplate.bind({});
-// DangerFocus.args = { variant: 'danger' };
+export const DangerFocus = SingleButtonTemplate.bind({});
+DangerFocus.args = { variant: 'primary-danger' };
 
-// DangerFocus.play = async ({ canvasElement }) => {
-//   const canvas = within(canvasElement);
-//   canvas.getByRole('button').focus();
-// };
+DangerFocus.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByRole('button').focus();
+};
 
-// export const LightFocus = SingleButtonTemplate.bind({});
-// LightFocus.args = { variant: 'light' };
+export const TertiaryFocus = SingleButtonTemplate.bind({});
+TertiaryFocus.args = { variant: 'tertiary' };
 
-// LightFocus.play = async ({ canvasElement }) => {
-//   const canvas = within(canvasElement);
-//   canvas.getByRole('button').focus();
-// };
-
-// export const DarkFocus = SingleButtonTemplate.bind({});
-// DarkFocus.args = { variant: 'dark' };
-
-// DarkFocus.play = async ({ canvasElement }) => {
-//   const canvas = within(canvasElement);
-//   canvas.getByRole('button').focus();
-// };
-
-// export const WhiteFocus = SingleButtonTemplate.bind({});
-// WhiteFocus.args = { variant: 'white' };
-
-// WhiteFocus.play = async ({ canvasElement }) => {
-//   const canvas = within(canvasElement);
-//   canvas.getByRole('button').focus();
-// };
+TertiaryFocus.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  canvas.getByRole('button').focus();
+};
