@@ -23,12 +23,6 @@ export default {
         options: BUTTON_SIZES,
       },
     },
-    isNaked: {
-      control: 'boolean',
-    },
-    isOutlined: {
-      control: 'boolean',
-    },
     fullWidth: {
       control: 'boolean',
     },

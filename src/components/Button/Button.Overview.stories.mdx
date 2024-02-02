@@ -21,68 +21,35 @@ Actions almost always occur on the same page.
 
 <ArgsTable of={Button} />
 
-## Color Variants
+## Variants
 
-The `variant` prop determines which color variant to render.
+The `variant` prop determines which color visual weight to render.
 
-<Canvas>
+<Canvas withSource="open">
   <Story
     name="Variants"
     parameters={{
       design: {
         type: 'figma',
-        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=2115%3A24829',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?type=design&node-id=4065%3A1337&mode=design&t=y5ghcijLJzWx4apI-1',
       },
     }}
   >
-    <Box alignItems="center" gap="sm" direction="row">
-      <Button variant="primary">Primary</Button>
-      <Button variant="success">Success</Button>
-      <Button variant="danger">Danger</Button>
-      <Button variant="light">Light</Button>
-      <Button variant="dark">Dark</Button>
-      <Box background="grey-500" padding="2xs">
-        <Button variant="white">White</Button>
+    <Box gap="md">
+      <Box gap="sm" direction="row" alignItems="flex-start">
+        <Button variant="primary">Primary</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="tertiary">Tertiary</Button>
       </Box>
-    </Box>
-  </Story>
-</Canvas>
-
-## Outlined
-
-Use `isOutlined` to render an outline button. This is helpful for adding a secondary CTA in an application which matches
-the color of the primary CTA but makes the hierarchy clear. The background is transparent in the default state.
-
-<Canvas>
-  <Story
-    name="Outlined"
-    parameters={{
-      design: {
-        type: 'figma',
-        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=2115%3A24829',
-      },
-    }}
-  >
-    <Box alignItems="center" gap="sm" direction="row">
-      <Button variant="primary" isOutlined>
-        Primary
-      </Button>
-      <Button variant="success" isOutlined>
-        Success
-      </Button>
-      <Button variant="danger" isOutlined>
-        Danger
-      </Button>
-      <Button variant="light" isOutlined>
-        Light
-      </Button>
-      <Button variant="dark" isOutlined>
-        Dark
-      </Button>
-      <Box background="grey-500" padding="2xs">
-        <Button variant="white" isOutlined>
-          White
-        </Button>
+      <Box gap="sm" direction="row" alignItems="flex-start">
+        <Button variant="primary-neutral">Primary-Neutral</Button>
+        <Button variant="secondary-neutral">Secondary-Neutral</Button>
+        <Button variant="tertiary-neutral">Tertiary-Neutral</Button>
+      </Box>
+      <Box gap="sm" direction="row" alignItems="flex-start">
+        <Button variant="primary-danger">Primary-Danger</Button>
+        <Button variant="secondary-danger">Secondary-Danger</Button>
+        <Button variant="tertiary-danger">Tertiary-Danger</Button>
       </Box>
     </Box>
   </Story>
@@ -93,7 +60,7 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
 Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size. The button also takes a `ResponsiveProp` object
 so it can have different sizes at different breakpoints.
 
-<Canvas>
+<Canvas withSource="open">
   <Story
     name="Size"
     parameters={{
@@ -104,18 +71,10 @@ so it can have different sizes at different breakpoints.
     }}
   >
     <Box gap="sm" direction="row" alignItems="flex-start">
-      <Button size="xs" variant="light">
-        Extra Small
-      </Button>
-      <Button size="sm" variant="light">
-        Small
-      </Button>
-      <Button size="md" variant="light">
-        Medium
-      </Button>
-      <Button size="lg" variant="light">
-        Large
-      </Button>
+      <Button size="xs">xs</Button>
+      <Button size="sm">sm</Button>
+      <Button size="md">md</Button>
+      <Button size="lg">lg</Button>
       <Button
         size={{
           base: 'xs',
@@ -123,22 +82,10 @@ so it can have different sizes at different breakpoints.
           desktop: 'md',
           hd: 'lg',
         }}
-        variant="light"
+        variant="primary-neutral"
       >
-        Responsive
+        responsive
       </Button>
-    </Box>
-  </Story>
-</Canvas>
-
-## Naked
-
-When you need a button with no styles but want to use utility classes.
-
-<Canvas>
-  <Story name="Naked">
-    <Box display="block" fontSize="sm" color="secondary-500">
-      <Button isNaked>Naked Button</Button>
     </Box>
   </Story>
 </Canvas>
@@ -147,14 +94,11 @@ When you need a button with no styles but want to use utility classes.
 
 Use the `fullWidth` prop to allow the button to grow to its container's full width.
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="Full Width">
-    <Box gap="md">
-      <Button fullWidth>Full Width</Button>
-      <Button fullWidth isOutlined>
-        Full Width
-      </Button>
-    </Box>
+    <Button variant="primary-neutral" fullWidth>
+      Full Width
+    </Button>
   </Story>
 </Canvas>
 
@@ -162,42 +106,32 @@ Use the `fullWidth` prop to allow the button to grow to its container's full wid
 
 Add an icon to the left or right inside the Button using the `iconPrefix` and `iconSuffix` props respectively.
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="With Icons">
-    <Box display="flex" direction="row" gap="md">
-      <Button variant="primary" iconPrefix="mail">
+    <Box direction="row" gap="xs">
+      <Button variant="primary-neutral" iconPrefix="mail">
         Email
       </Button>
-      <Button variant="primary" isOutlined iconSuffix="chat">
+      <Button variant="secondary-neutral" iconSuffix="chat">
         Chat Now
-      </Button>
-    </Box>
-    <Box display="flex" direction="row" gap="xs" margin="lg 0 0 0">
-      <Button
-        onClick={() => alert('clicked')}
-        variant="light"
-        iconPrefix="caret-left"
-      >
-        Prev
-      </Button>
-      <Button
-        onClick={() => alert('clicked')}
-        variant="light"
-        iconSuffix="caret-right"
-      >
-        Next
       </Button>
     </Box>
   </Story>
 </Canvas>
 
-## Icon Only Button
+## Icon Button
 
-Use a combination of `isNaked` and an named icon to make an icon a button. Be sure to include an `aria-label` for screen readers to know what action the button will perform when pressed.
+Use a combination of `tertiary-*` variant and a named icon to make an icon a button. Be sure to include an `aria-label` for screen readers to know what action the button will perform when pressed.
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="Icon Button">
-    <Button iconPrefix="remove" isNaked aria-label="remove" />
+    <Button variant="tertiary" iconPrefix="add" aria-label="add" />
+    <Button
+      variant="tertiary-neutral"
+      iconPrefix="dots"
+      aria-label="open menu"
+    />
+    <Button variant="tertiary-danger" iconPrefix="trash" aria-label="remove" />
   </Story>
 </Canvas>
 
@@ -206,9 +140,17 @@ Use a combination of `isNaked` and an named icon to make an icon a button. Be su
 Setting the `isLoading` prop to true will replace the button text with loading indicator and disable the button to prevent unintended submissions.
 The width of the button will remain consistent to prevent content from shifting.
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="Loading">
-    <Button isLoading>Sign In</Button>
+    <Box direction="row" gap="sm">
+      <Button isLoading>Primary Loading</Button>
+      <Button variant="secondary" isLoading>
+        Secondary Loading
+      </Button>
+      <Button variant="tertiary" isLoading>
+        Tertiary Loading
+      </Button>
+    </Box>
   </Story>
 </Canvas>
 
@@ -217,9 +159,19 @@ The width of the button will remain consistent to prevent content from shifting.
 Use for actions that aren’t currently available, such as immediately after a form submission.
 The interface should make it clear why the button is disabled and what needs to be done to enable it.
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="Disabled">
-    <Button isDisabled>Disabled Button</Button>
+    <Box direction="row" gap="sm">
+      <Button variant="primary-neutral" isDisabled>
+        Primary Disabled
+      </Button>
+      <Button variant="secondary-neutral" isDisabled>
+        Secondary Disabled
+      </Button>
+      <Button variant="tertiary-neutral" isDisabled>
+        Tertiary Disabled
+      </Button>
+    </Box>
   </Story>
 </Canvas>
 
@@ -227,7 +179,7 @@ The interface should make it clear why the button is disabled and what needs to 
 
 Callback functions can be passed to `onClick`, `onBlur`, and `onFocus` events.
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="Event Callbacks">
     <Button
       onBlur={action('blur')}
@@ -290,17 +242,25 @@ The Button component can be themed by base tokens, or component specific tokens.
       alignItems="flex-start"
       style={{
         '--button-font-family': 'var(--asset-fonts-brand)',
-        '--button-font-weight': 'var(--size-font-weight-regular)',
+        '--button-font-weight': 'var(--size-font-weight-bold)',
         '--button-size-xs-border-radius': '0',
         '--button-size-sm-border-radius': '0',
         '--button-size-md-border-radius': '0',
         '--button-size-lg-border-radius': '0',
       }}
     >
-      <Button size="xs">Get Solar</Button>
-      <Button size="sm">Get Solar</Button>
-      <Button size="md">Get Solar</Button>
-      <Button size="lg">Get Solar</Button>
+      <Button variant="primary" size="xs">
+        Get Solar
+      </Button>
+      <Button variant="primary" size="sm">
+        Get Solar
+      </Button>
+      <Button variant="primary" size="md">
+        Get Solar
+      </Button>
+      <Button variant="primary" size="lg">
+        Get Solar
+      </Button>
     </Box>
   </Story>
 </Canvas>
@@ -319,101 +279,111 @@ The Button component can be themed by base tokens, or component specific tokens.
       const tokens = {
         '--button-font-family': '--asset-fonts-body',
         '--button-font-weight': '--size-font-weight-bold',
-        '--button-size-xs-border-radius': '--form-control-size-sm-border-radius',
+        '--button-size-xs-border-radius':
+          '--form-control-size-sm-border-radius',
         '--button-size-xs-font-size': '--form-control-size-xs-font-size',
         '--button-size-xs-padding-vertical': '--size-spacing-2xs',
         '--button-size-xs-padding-horizontal': '--size-spacing-xs',
-        '--button-size-sm-border-radius': '--form-control-size-sm-border-radius',
+        '--button-size-sm-border-radius':
+          '--form-control-size-sm-border-radius',
         '--button-size-sm-font-size': '--form-control-size-sm-font-size',
         '--button-size-sm-padding-vertical': '--form-control-size-sm-padding',
         '--button-size-sm-padding-horizontal': '--size-spacing-sm',
-        '--button-size-md-border-radius': '--form-control-size-md-border-radius',
+        '--button-size-md-border-radius':
+          '--form-control-size-md-border-radius',
         '--button-size-md-font-size': '--form-control-size-md-font-size',
         '--button-size-md-padding-vertical': '--form-control-size-md-padding',
         '--button-size-md-padding-horizontal': '--size-spacing-md',
-        '--button-size-lg-border-radius': '--form-control-size-lg-border-radius',
+        '--button-size-lg-border-radius':
+          '--form-control-size-lg-border-radius',
         '--button-size-lg-font-size': '--form-control-size-lg-font-size',
         '--button-size-lg-padding-vertical': '--form-control-size-lg-padding',
         '--button-size-lg-padding-horizontal': '--size-spacing-lg',
-        '--button-primary-background-color': '--color-brand-primary-500',
+        '--button-primary-background-color': '--color-brand-primary-500;',
         '--button-primary-background-color-hover': '--color-brand-primary-600',
+        '--button-primary-background-color-active': '--color-brand-primary-700',
         '--button-primary-font-color': '--color-brand-white-base',
         '--button-primary-font-color-hover': '--color-brand-white-base',
-        '--button-primary-outline-border-color': '--color-brand-primary-500',
-        '--button-primary-outline-border-color-hover': '--color-brand-primary-500',
-        '--button-primary-outline-background-color': 'transparent',
-        '--button-primary-outline-background-color-hover': '--color-brand-primary-50',
-        '--button-primary-outline-font-color': '--color-brand-primary-500',
-        '--button-primary-outline-font-color-hover': '--color-brand-primary-600',
-        '--button-primary-box-shadow-focus': 'form-control-box-shadow-focus',
-        '--button-success-background-color': '--color-brand-success-500',
-        '--button-success-background-color-hover': '--color-brand-success-600',
-        '--button-success-font-color': '--color-brand-white-base',
-        '--button-success-font-color-hover': '--color-brand-white-base',
-        '--button-success-outline-background-color': 'transparent',
-        '--button-success-outline-background-color-hover': '--color-brand-success-50',
-        '--button-success-outline-border-color': '--color-brand-success-500',
-        '--button-success-outline-border-color-hover': '--color-brand-success-500',
-        '--button-success-outline-font-color': '--color-brand-success-500',
-        '--button-success-outline-font-color-hover': '--color-brand-success-600',
-        '--button-success-box-shadow-focus': 'form-control-box-shadow-focus',
-        '--button-danger-background-color': '--color-brand-danger-500',
-        '--button-danger-background-color-hover': '--color-brand-danger-600',
-        '--button-danger-font-color': '--color-brand-white-base',
-        '--button-danger-font-color-hover': '--color-brand-white-base',
-        '--button-danger-outline-background-color': 'transparent',
-        '--button-danger-outline-background-color-hover': '--color-brand-danger-50',
-        '--button-danger-outline-border-color': '--color-brand-danger-500',
-        '--button-danger-outline-border-hover-color': '--color-brand-danger-500',
-        '--button-danger-outline-font-color': '--color-brand-danger-500',
-        '--button-danger-outline-font-color-hover': '--color-brand-danger-500',
-        '--button-danger-box-shadow-focus': '0 0 0 4px --color-brand-danger-200',
-        '--button-dark-background-color': '--color-brand-dark-base',
-        '--button-dark-background-color-hover': '--color-brand-black-base',
-        '--button-dark-font-color': '--color-brand-white-base',
-        '--button-dark-font-color-hover': '--color-brand-white-base',
-        '--button-dark-outline-background-color': 'transparent',
-        '--button-dark-outline-background-color-hover': '--color-brand-grey-50',
-        '--button-dark-outline-border-color': '--color-brand-dark-base',
-        '--button-dark-outline-border-hover-color': '--color-brand-grey-900',
-        '--button-dark-outline-font-color': '--color-brand-dark-base',
-        '--button-dark-outline-font-color-hover': '--color-brand-white-base',
-        '--button-dark-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
-        '--button-light-background-color': '--color-brand-grey-100',
-        '--button-light-background-color-hover': '--color-brand-grey-200',
-        '--button-light-font-color': '--color-brand-dark-base',
-        '--button-light-font-color-hover': '--color-brand-dark-base',
-        '--button-light-outline-background-color': 'transparent',
-        '--button-light-outline-background-color-hover': '--color-brand-grey-50',
-        '--button-light-outline-border-color': '--color-brand-light-base',
-        '--button-light-outline-border-color-hover': '--color-brand-grey-300',
-        '--button-light-outline-font-color': '--color-brand-dark-base',
-        '--button-light-outline-font-color-hover': '--color-brand-dark-base',
-        '--button-light-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
-        '--button-white-background-color': '--color-brand-white-base',
-        '--button-white-background-color-hover': '--color-brand-grey-50',
-        '--button-white-font-color': '--color-brand-grey-600',
-        '--button-white-font-color-hover': '--color-brand-grey-700',
-        '--button-white-outline-background-color': 'transparent',
-        '--button-white-outline-background-color-hover': 'rgba(255, 255, 255, .1)',
-        '--button-white-outline-border-color': '--color-brand-white-base',
-        '--button-white-outline-border-color-hover': '--color-brand-white-base',
-        '--button-white-outline-font-color': '--color-brand-white-base',
-        '--button-white-outline-font-color-hover': '--color-brand-white-base',
-        '--button-white-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
-        '--button-naked-font-color': '',
+        '--button-secondary-background-color': '--color-brand-white-base',
+        '--button-secondary-background-color-hover': '--color-brand-primary-50',
+        '--button-secondary-background-color-active':
+          '--color-brand-primary-100',
+        '--button-secondary-border-color': '--color-brand-grey-200',
+        '--button-secondary-border-color-hover': '--color-brand-primary-100',
+        '--button-secondary-font-color': '--color-brand-primary-500',
+        '--button-secondary-font-color-hover': '--color-brand-primary-500',
+        '--button-tertiary-background-color': 'transparent',
+        '--button-tertiary-background-color-hover': '--color-brand-primary-50',
+        '--button-tertiary-background-color-active':
+          '--color-brand-primary-100',
+        '--button-tertiary-font-color': '--color-brand-primary-500',
+        '--button-tertiary-font-color-hover': '--color-brand-primary-500',
+        '--button-primary-neutral-background-color': '--color-brand-grey-100',
+        '--button-primary-neutral-background-color-hover':
+          '--color-brand-grey-200',
+        '--button-primary-neutral-background-color-active':
+          '--color-brand-grey-300',
+        '--button-primary-neutral-font-color': '--color-brand-grey-700',
+        '--button-primary-neutral-font-color-hover': '--color-brand-grey-700',
+        '--button-secondary-neutral-background-color':
+          '--color-brand-white-base',
+        '--button-secondary-neutral-background-color-hover':
+          '--color-brand-grey-100',
+        '--button-secondary-neutral-background-color-active':
+          '--color-brand-grey-200',
+        '--button-secondary-neutral-border-color': '--color-brand-grey-200',
+        '--button-secondary-neutral-border-color-hover':
+          '--color-brand-grey-100',
+        '--button-secondary-neutral-font-color': '--color-brand-grey-700',
+        '--button-secondary-neutral-font-color-hover': '--color-brand-grey-700',
+        '--button-tertiary-neutral-background-color': 'transparent',
+        '--button-tertiary-neutral-background-color-hover':
+          '--color-brand-grey-100',
+        '--button-tertiary-neutral-background-color-active':
+          '--color-brand-grey-200',
+        '--button-tertiary-neutral-font-color': '--color-brand-grey-700',
+        '--button-tertiary-neutral-font-color-hover': '--color-brand-grey-700',
+        '--button-primary-danger-background-color': '--color-brand-danger-500',
+        '--button-primary-danger-background-color-hover':
+          '--color-brand-danger-600',
+        '--button-primary-danger-background-color-active':
+          '--color-brand-danger-700',
+        '--button-primary-danger-font-color': '--color-brand-white-base',
+        '--button-primary-danger-font-color-hover': '--color-brand-white-base',
+        '--button-secondary-danger-background-color':
+          '--color-brand-white-base',
+        '--button-secondary-danger-background-color-hover':
+          '--color-brand-danger-50',
+        '--button-secondary-danger-background-color-active':
+          '--color-brand-danger-100',
+        '--button-secondary-danger-border-color': '--color-brand-grey-200',
+        '--button-secondary-danger-border-color-hover':
+          '--color-brand-danger-100',
+        '--button-secondary-danger-font-color': '--color-brand-danger-500',
+        '--button-secondary-danger-font-color-hover':
+          '--color-brand-danger-500',
+        '--button-tertiary-danger-background-color': 'transparent',
+        '--button-tertiary-danger-background-color-hover':
+          '--color-brand-danger-50',
+        '--button-tertiary-danger-background-color-active':
+          '--color-brand-danger-100',
+        '--button-tertiary-danger-font-color': '--color-brand-danger-500',
+        '--button-tertiary-danger-font-color-hover': '--color-brand-danger-500',
+        '--button-box-shadow-focus': '0 0 0 4px --color-brand-primary-200',
+        '--button-neutral-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
+        '--button-danger-box-shadow-focus':
+          '0 0 0 4px --color-brand-danger-200',
       };
-return Object.entries(tokens).map(([name, entry], i) => (
-
-<tr key={i}>
-  <td>
-    <code>{name}</code>
-  </td>
-  <td>
-    <code>{entry}</code>
-  </td>
-</tr>
-)); })()}
-
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
   </tbody>
 </table>

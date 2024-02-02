@@ -37,7 +37,7 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
       } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={openMediaModal}>
+          <Button variant="primary-neutral" onClick={openMediaModal}>
             Show MediaModal
           </Button>
           <MediaModal
@@ -98,7 +98,7 @@ An optional title and description can be used to describe the contents of the mo
       } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={openMediaModal}>
+          <Button variant="primary-neutral" onClick={openMediaModal}>
             Portrait Image with Title and Description
           </Button>
           <MediaModal
@@ -146,7 +146,7 @@ Render a visible close button in the upper right of the viewport.
       } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={openMediaModal}>
+          <Button variant="primary-neutral" onClick={openMediaModal}>
             Show with Close Button
           </Button>
           <MediaModal
@@ -195,34 +195,34 @@ If `headerContent` is defined, then the `title` and `description` will not be re
         <Box gap="2xs">
           <Box fontWeight="bold">Custom Styled Title</Box>
           <Box direction="row" gap="xs">
-            <Badge variant="info" size="sm" message="Invertor" />
-            <Badge variant="info" size="sm" message="Utility Meter" />
-            <Badge variant="info" size="sm" message="Site Survey" />
+            <Badge variant="info" message="Invertor" />
+            <Badge variant="info" message="Utility Meter" />
+            <Badge variant="info" message="Site Survey" />
           </Box>
         </Box>
       );
       const footerItems = (
-        <Box direction="row" gap="lg" fontSize="lg">
-          <Box
+        <Box direction="row" childGap="lg">
+          <Button
+            variant="tertiary-neutral"
             as="a"
             color="white"
             href="/images/landscape-mediamodal.jpg"
+            iconPrefix="download"
             download
-          >
-            <Icon name="download" />
-          </Box>
-          <Box
+            size="sm"
+          />
+          <Button
+            variant="tertiary-neutral"
             as="a"
-            color="white"
             href="/images/landscape-mediamodal.jpg"
             target="_blank"
-          >
-            <Icon name="launch-app" />
-          </Box>
+            iconPrefix="launch-app"
+            size="sm"
+          />
           <Popover
             content={<>more options</>}
             isOpen={isPopoverOpen}
-            placement="bottom-start"
             contentContainerProps={{
               padding: 'md',
               direction: 'column',
@@ -230,13 +230,18 @@ If `headerContent` is defined, then the `title` and `description` will not be re
               fontSize: 'sm',
             }}
           >
-            <Button isNaked iconPrefix="dots" onClick={onPopoverToggle} />
+            <Button
+              variant="tertiary-neutral"
+              iconPrefix="dots"
+              onClick={onPopoverToggle}
+              size="sm"
+            />
           </Popover>
         </Box>
       );
       return (
         <div>
-          <Button variant="light" onClick={openMediaModal}>
+          <Button variant="primary-neutral" onClick={openMediaModal}>
             With Custom Header and Footer
           </Button>
           <MediaModal
@@ -279,7 +284,7 @@ If `headerContent` is defined, then the `title` and `description` will not be re
       } = useOpenClose();
       return (
         <div>
-          <Button variant="light" onClick={openMediaModal}>
+          <Button variant="primary-neutral" onClick={openMediaModal}>
             Show Vimeo Modal
           </Button>
           <MediaModal

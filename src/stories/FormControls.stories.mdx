@@ -56,7 +56,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 value={formValues.textInputSm}
                 placeholder="Small"
                 size="sm"
-                onChange={event => handleChange('textInputSm', event.target.value)}
+                onChange={event =>
+                  handleChange('textInputSm', event.target.value)
+                }
               />
             </Box>
             <Box display="block">
@@ -64,7 +66,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 id="mdText"
                 value={formValues.textInputMd}
                 placeholder="Medium"
-                onChange={event => handleChange('textInputMd', event.target.value)}
+                onChange={event =>
+                  handleChange('textInputMd', event.target.value)
+                }
               />
             </Box>
             <Box>
@@ -73,18 +77,20 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 value={formValues.textInputLg}
                 placeholder="Large"
                 size="lg"
-                onChange={event => handleChange('textInputLg', event.target.value)}
+                onChange={event =>
+                  handleChange('textInputLg', event.target.value)
+                }
               />
             </Box>
           </Box>
           <Box gap="sm" alignItems="flex-start" justifyContent="flex-start">
-            <Button iconPrefix="property-agreement" size="sm">
+            <Button iconPrefix="add" size="sm">
               Small
             </Button>
-            <Button iconPrefix="property-agreement" size="md">
+            <Button iconPrefix="add" size="md">
               Medium
             </Button>
-            <Button iconPrefix="property-agreement" size="lg">
+            <Button iconPrefix="add" size="lg">
               Large
             </Button>
           </Box>
@@ -92,7 +98,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <SelectInputNative
               id="smallSelect"
               label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
+              onChange={event =>
+                handleChange('selectInput', event.target.value)
+              }
               options={options}
               value={formValues.selectInput}
               hideLabel
@@ -101,7 +109,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <SelectInputNative
               id="mediumSelect"
               label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
+              onChange={event =>
+                handleChange('selectInput', event.target.value)
+              }
               options={options}
               value={formValues.selectInput}
               hideLabel
@@ -110,7 +120,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <SelectInputNative
               id="largeSelect"
               label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
+              onChange={event =>
+                handleChange('selectInput', event.target.value)
+              }
               options={options}
               value={formValues.selectInput}
               hideLabel
@@ -121,7 +133,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <SelectInput
               id="smallSelect"
               label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
+              onChange={event =>
+                handleChange('selectInput', event.target.value)
+              }
               options={options}
               value={formValues.selectInput}
               hideLabel
@@ -130,7 +144,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <SelectInput
               id="mediumSelect"
               label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
+              onChange={event =>
+                handleChange('selectInput', event.target.value)
+              }
               options={options}
               value={formValues.selectInput}
               hideLabel
@@ -139,7 +155,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <SelectInput
               id="largeSelect"
               label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
+              onChange={event =>
+                handleChange('selectInput', event.target.value)
+              }
               options={options}
               value={formValues.selectInput}
               hideLabel
@@ -150,7 +168,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <SelectInput
               id="smallMultiSelect"
               label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
+              onChange={event =>
+                handleChange('selectInput', event.target.value)
+              }
               options={options}
               value={formValues.selectInput}
               hideLabel
@@ -160,7 +180,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <SelectInput
               id="mediumMultiSelect"
               label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
+              onChange={event =>
+                handleChange('selectInput', event.target.value)
+              }
               options={options}
               value={formValues.selectInput}
               hideLabel
@@ -170,7 +192,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <SelectInput
               id="largeMultiSelect"
               label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
+              onChange={event =>
+                handleChange('selectInput', event.target.value)
+              }
               options={options}
               value={formValues.selectInput}
               hideLabel
@@ -184,7 +208,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 id="smToggle"
                 label="small toggle"
                 hideLabel
-                onChange={event => handleChange('toggleValue', event.target.checked)}
+                onChange={event =>
+                  handleChange('toggleValue', event.target.checked)
+                }
                 isChecked={formValues.toggleValue}
                 size="sm"
               />
@@ -194,7 +220,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 id="mdToggle"
                 label="medium toggle"
                 hideLabel
-                onChange={event => handleChange('toggleValue', event.target.checked)}
+                onChange={event =>
+                  handleChange('toggleValue', event.target.checked)
+                }
                 isChecked={formValues.toggleValue}
                 size="md"
               />
@@ -204,7 +232,9 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
                 id="lgToggle"
                 label="large toggle"
                 hideLabel
-                onChange={event => handleChange('toggleValue', event.target.checked)}
+                onChange={event =>
+                  handleChange('toggleValue', event.target.checked)
+                }
                 isChecked={formValues.toggleValue}
                 size="lg"
               />
@@ -244,7 +274,7 @@ Inline form sizes with labels.
       ];
       return (
         <div>
-          <Box direction="row" gap="sm" padding="sm" >
+          <Box direction="row" gap="sm" padding="sm">
             <Box width="30">
               <TextInput
                 id="smTextLabel"
@@ -280,7 +310,7 @@ Inline form sizes with labels.
               />
             </Box>
           </Box>
-          <Box direction="row" gap="sm" padding="sm" >
+          <Box direction="row" gap="sm" padding="sm">
             <Box width="30">
               <TextInput
                 id="mdTextLabel"
@@ -313,7 +343,7 @@ Inline form sizes with labels.
               />
             </Box>
           </Box>
-          <Box direction="row" gap="sm"  padding="sm">
+          <Box direction="row" gap="sm" padding="sm">
             <Box width="30">
               <TextInput
                 id="lgTextLabel"
@@ -384,7 +414,7 @@ Inline form sizes with error states.
       const errorMsg = 'Error message';
       return (
         <div>
-          <Box direction="row" gap="sm" padding="sm" >
+          <Box direction="row" gap="sm" padding="sm">
             <Box width="30">
               <TextInput
                 id="smTextError"
@@ -424,7 +454,7 @@ Inline form sizes with error states.
               />
             </Box>
           </Box>
-          <Box direction="row" gap="sm" padding="sm" >
+          <Box direction="row" gap="sm" padding="sm">
             <Box width="30">
               <TextInput
                 id="mdTextError"
@@ -460,7 +490,7 @@ Inline form sizes with error states.
               />
             </Box>
           </Box>
-          <Box direction="row" gap="sm"  padding="sm">
+          <Box direction="row" gap="sm" padding="sm">
             <Box width="30">
               <TextInput
                 id="lgTextError"
@@ -536,7 +566,7 @@ Inline form sizes with labels and error states.
       const errorMsg = 'Error message';
       return (
         <div>
-          <Box direction="row" gap="sm" padding="sm" >
+          <Box direction="row" gap="sm" padding="sm">
             <Box width="30">
               <TextInput
                 id="smErrorLabelText"
@@ -575,7 +605,7 @@ Inline form sizes with labels and error states.
               />
             </Box>
           </Box>
-          <Box direction="row" gap="sm" padding="sm" >
+          <Box direction="row" gap="sm" padding="sm">
             <Box width="30">
               <TextInput
                 id="mdErrorLabelText"

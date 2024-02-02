@@ -33,7 +33,7 @@ A Drawer is a panel that slides in from one edge of the viewport and overlays co
       } = useOpenClose();
       return (
         <>
-          <Button variant="light" onClick={openDrawer}>
+          <Button variant="secondary-neutral" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer
@@ -139,7 +139,7 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
             value={placement}
             options={placementOptions}
           />
-          <Button variant="light" onClick={openDrawer}>
+          <Button variant="secondary-neutral" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer
@@ -190,7 +190,7 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
       }
       return (
         <>
-          <Button variant="light" onClick={openDrawer}>
+          <Button variant="secondary-neutral" onClick={openDrawer}>
             Title and Close Button
           </Button>
           <Drawer
@@ -225,7 +225,7 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
       }
       return (
         <>
-          <Button variant="light" onClick={openDrawer}>
+          <Button variant="secondary-neutral" onClick={openDrawer}>
             Close Button Only
           </Button>
           <Drawer
@@ -274,7 +274,7 @@ When `placement` is set to `top` or `bottom`, the `width` prop is ignored and th
           <Box gap="sm" direction="row">
             {widths.map(width => (
               <Button
-                variant="light"
+                variant="secondary-neutral"
                 onClick={() => handleClick(width)}
                 key={width}
               >
@@ -319,7 +319,7 @@ The height of Drawers with a `top` or `bottom` placement is determined by Drawer
       } = useOpenClose();
       return (
         <>
-          <Button variant="light" onClick={openDrawer}>
+          <Button variant="secondary-neutral" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer
@@ -380,7 +380,7 @@ In cases where content in the drawer is supplemental to content on the main area
       return (
         <>
           <Button
-            variant="light"
+            variant="secondary-neutral"
             onClick={handleDrawerToggle}
             ref={returnFocusRef}
           >
@@ -393,7 +393,7 @@ In cases where content in the drawer is supplemental to content on the main area
             hideOverlay
           >
             <Box padding="lg" display="block" childGap="md">
-              <Button ref={closeBtnRef} onClick={closeDrawer} variant="light">
+              <Button ref={closeBtnRef} onClick={closeDrawer} variant="secondary-neutral">
                 close
               </Button>
               <Box>drawer content</Box>
@@ -431,7 +431,7 @@ By default the first focusable element will receive focus when the drawer opens,
       const ref = useRef();
       return (
         <>
-          <Button variant="light" onClick={openDrawer}>
+          <Button variant="secondary-neutral" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer
@@ -443,7 +443,7 @@ By default the first focusable element will receive focus when the drawer opens,
           >
             <Box padding="lg" display="block" childGap="md">
               <Box>drawer content</Box>
-              <Button variant="dark" isOutlined ref={ref} onClick={closeDrawer}>
+              <Button variant="primary-neutral" ref={ref} onClick={closeDrawer}>
                 I receive focus
               </Button>
             </Box>
@@ -489,7 +489,7 @@ Render the Drawer within a containing div using `containerRef`.
           padding="lg"
           overflow="hidden"
         >
-          <Button variant="light" onClick={openDrawer}>
+          <Button variant="secondary-neutral" onClick={openDrawer}>
             Show Drawer
           </Button>
           <Drawer
@@ -552,7 +552,7 @@ The appearance of a Drawer can be customized via component design tokens.
             '--drawer-close-button-color-hover': 'var(--color-brand-grey-100)',
           }}
         >
-          <Button variant="light" onClick={openDrawer}>
+          <Button variant="secondary-neutral" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer

@@ -38,9 +38,6 @@ export default {
     isDisabled: {
       control: 'boolean',
     },
-    isOutlined: {
-      control: 'boolean',
-    },
     isRequired: {
       control: 'boolean',
     },
