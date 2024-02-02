@@ -45,16 +45,6 @@ const renderForm = (initialValue, props, testValueKey = testLabelName) => (
   </Formik>
 );
 
-function getByTextWithMarkup(text) {
-  return (content, element) => {
-    const hasText = node => node.textContent === text;
-    const elementHasText = hasText(element);
-    const childrenDontHaveText = Array.from(element.children).every(child => !hasText(child));
-
-    return elementHasText && childrenDontHaveText;
-  };
-}
-
 describe('FormikSelectInput', () => {
   describe('States', () => {
     describe('Hidden label, with a placeholder', () => {
@@ -121,7 +111,7 @@ describe('FormikSelectInput', () => {
       test('it disables the input', () => {
         render(renderForm([], { isDisabled: true }));
 
-        expect(screen.getByRole('textbox')).toBeDisabled();
+        expect(screen.getByLabelText(testLabelName)).toBeDisabled();
       });
     });
 

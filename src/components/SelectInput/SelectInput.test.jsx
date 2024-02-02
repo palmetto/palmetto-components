@@ -236,7 +236,7 @@ describe('SelectInput', () => {
           />,
         );
 
-        expect(screen.getByRole('textbox')).toBeDisabled();
+        expect(screen.getByLabelText('Select Label')).toBeDisabled();
       });
     });
 
