@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.2](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2024-02-02)
+
+
+### Bug Fixes
+
+* **Button:** secondary neutral hover color ([#866](https://github.com/palmetto/palmetto-components/issues/866)) ([dbde3f3](https://github.com/palmetto/palmetto-components/commit/dbde3f36b686462d788578518ccf806634fc13a4))
+
 # [1.0.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.157.7...v1.0.0-beta.1) (2024-02-02)
 
 
