@@ -82,7 +82,7 @@ You can remove or customize the required indicator using the `requiredIndicator`
       const [value, setValue] = useState('');
       const [value2, setValue2] = useState('');
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <TextInput
             id="requiredWithoutIndicator"
             label="Required Without Indicator"
@@ -201,7 +201,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
       const [prefixValue3, setPrefixValue3] = useState('');
       const [prefixValue4, setPrefixValue4] = useState('Pre-populated Value');
       return (
-        <Box childGap="md" display="block">
+        <Box gap="md">
           <TextInput
             id="prefixSuffix1"
             value={prefixValue1}
@@ -300,7 +300,7 @@ Set the `size` of the input to `sm`, `md` or `lg`. The `size` prop is also a `Re
           direction={{
             base: 'column',
           }}
-          childGap={{
+          gap={{
             base: 'sm',
             tablet: 'md',
             desktop: 'lg',

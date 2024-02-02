@@ -3,10 +3,10 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Details } from './Details';
-import { Heading } from '../Heading/Heading';
 import { Button } from '../Button/Button';
 import { Box } from '../Box/Box';
 import { DetailsSummary } from './DetailsSummary';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 <Meta title="Components/Details/Overview" component={Details} />
 
@@ -20,26 +20,29 @@ inside `<Details>` typically following the `<Details.Summary>`.
 
 NOTE: for a custom implementation of this component see the [accordion](/?path=/story/components-accordion-overview--default-story)
 
-<Canvas isExpanded>
-  <Story name="Demo">
+<Canvas withSource="open">
+  <Story name="Basic Usage">
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const handleToggle = () => {
-        const newIsOpen = !isOpen;
-        setIsOpen(newIsOpen);
-      };
+      const { isOpen, handleToggle } = useOpenClose();
       return (
         <Details isOpen={isOpen}>
-          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()} display="inline">
+          <Details.Summary
+            isDetailsOpen={isOpen}
+            onToggle={handleToggle}
+            display="inline"
+          >
             What is Palmetto's Mission?
           </Details.Summary>
-          <Box padding="md 0" childGap="sm">
-            <Heading as="h4">Leading the World Towards a Clean Energy Future</Heading>
+          <Box padding="md 0" gap="sm">
+            <Box fontSize="lg" as="h4">
+              Leading the World Towards a Clean Energy Future
+            </Box>
             <Box as="p">
-              We are on a mission to stop climate change before we reach an irreversible tipping
-              point. Yes, this requires large shifts by entire nations and entire populations. It
-              requires urgency and change on a massive scale. But technological advancements have
-              put it within reach.
+              We are on a mission to stop climate change before we reach an
+              irreversible tipping point. Yes, this requires large shifts by
+              entire nations and entire populations. It requires urgency and
+              change on a massive scale. But technological advancements have put
+              it within reach.
             </Box>
           </Box>
         </Details>
@@ -56,57 +59,25 @@ NOTE: for a custom implementation of this component see the [accordion](/?path=/
 
 Add any custom JSX to the `<Details.Summary>` element to customize your summary trigger.
 
-<Canvas isExpanded>
+<Canvas withSource="open">
   <Story name="With custom summary">
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const handleToggle = () => {
-        const newIsOpen = !isOpen;
-        setIsOpen(newIsOpen);
-      };
+      const { isOpen, handleToggle } = useOpenClose();
       return (
         <Details isOpen={isOpen}>
-          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()}>
-            <Heading style={{ cursor: 'pointer' }}>Do you have my reservation?</Heading>
+          <Details.Summary
+            fontWeight="bold"
+            color="primary-500"
+            hover={{ color: 'primary-600' }}
+            isDetailsOpen={isOpen}
+            onToggle={handleToggle}
+          >
+            Do you have my reservation?
           </Details.Summary>
           <Box padding="md 0" as="p">
-            See, you know how to take the reservation, you just don’t know how to hold the
-            reservation and that’s really the most important part of the reservation, the holding.
-            Anybody can just take them.
-          </Box>
-        </Details>
-      );
-    }}
-  </Story>
-</Canvas>
-
-Since the `<Details.Summmary>` component is simply a `<Box>` it's very simple to style using all the props available. The example
-below renders the summary inline so that the trigger is an inline `<Button>`. This works well in conjunction with details that
-are more akin to widgets.
-
-<Canvas isExpanded>
-  <Story name="With a button">
-    {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const handleToggle = () => {
-        const newIsOpen = !isOpen;
-        setIsOpen(newIsOpen);
-      };
-      return (
-        <Details isOpen={isOpen}>
-          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()} display="inline">
-            <Button>See Widget</Button>
-          </Details.Summary>
-          <Box padding="md" margin="xs 0 0 0" background="grey-50" height="120px" width="200px">
-            <Heading size="md">I'm a widget</Heading>
-            <Box as="ul" margin="sm 0 0 0" padding="0">
-              <Box as="li" margin="xs 0 0 0">
-                Item 1
-              </Box>
-              <Box as="li" margin="xs 0 0 0">
-                Item 2
-              </Box>
-            </Box>
+            See, you know how to take the reservation, you just don't know how
+            to hold the reservation and that's really the most important part of
+            the reservation, the holding. Anybody can just take them.
           </Box>
         </Details>
       );
@@ -118,23 +89,25 @@ are more akin to widgets.
 
 Render the component with the details expanded by setting `isOpen` to `true`.
 
-<Canvas isExpanded>
+<Canvas withSource="open">
   <Story name="Opened">
     {() => {
-      const [isOpen, setIsOpen] = useState(true);
-      const handleToggle = () => {
-        const newIsOpen = !isOpen;
-        setIsOpen(newIsOpen);
-      };
+      const { isOpen, handleToggle } = useOpenClose({ defaultIsOpen: true });
       return (
         <Details isOpen={isOpen}>
-          <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()}>
-            <Heading style={{ cursor: 'pointer' }}>Do you have my reservation?</Heading>
+          <Details.Summary
+            fontWeight="bold"
+            color="primary-500"
+            hover={{ color: 'primary-600' }}
+            isDetailsOpen={isOpen}
+            onToggle={handleToggle}
+          >
+            Do you have my reservation?
           </Details.Summary>
           <Box padding="md 0" as="p">
-            See, you know how to take the reservation, you just don’t know how to hold the
-            reservation and that’s really the most important part of the reservation, the holding.
-            Anybody can just take them.
+            See, you know how to take the reservation, you just don't know how
+            to hold the reservation and that's really the most important part of
+            the reservation, the holding. Anybody can just take them.
           </Box>
         </Details>
       );

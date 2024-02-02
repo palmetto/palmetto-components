@@ -11,7 +11,7 @@ export const BasicExample: React.ReactNode = () => {
   const [checked, setChecked] = useState(true);
   const [unchecked, setUnchecked] = useState(false);
   return (
-    <Box childGap="lg" direction="row">
+    <Box gap="lg" direction="row">
       <Checkbox
         id="checkbox"
         label="checked checkbox"
@@ -34,7 +34,7 @@ export const Sizes: React.ReactNode = () => {
   const [lgCheckbox, setLgCheckbox] = useState(true);
   const [responsiveCheckbox, setResponsiveCheckbox] = useState(true);
   return (
-    <Box childGap="lg" direction="row" alignItems="flex-start">
+    <Box gap="lg" direction="row" alignItems="flex-start">
       <Checkbox
         id="sm"
         label="small"
@@ -76,7 +76,7 @@ export const Disabled: React.ReactNode = () => {
   const [checked, setChecked] = useState(true);
   const [unchecked, setUnchecked] = useState(false);
   return (
-    <Box childGap="lg" direction="row">
+    <Box gap="lg" direction="row">
       <Checkbox
         id="checkbox"
         label="Label"
@@ -98,7 +98,7 @@ export const Disabled: React.ReactNode = () => {
 export const Error: React.ReactNode = () => {
   const [checked, setChecked] = useState(false);
   return (
-    <Box childGap="lg" direction="row">
+    <Box gap="lg" direction="row">
       <Checkbox
         id="checkbox"
         label="Label"

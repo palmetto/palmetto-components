@@ -1,5 +1,6 @@
 import { Box } from './Box';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { Alert } from '../Alert/Alert';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 import {
   FONT_SIZE_OPTIONS,
@@ -18,11 +19,11 @@ A `<Box>` is a layout component to build UIs with consistent padding and spacing
 
 - Its content is arranged in a specified `direction`, with 'column' being the default
 - Renders a `<div />` element by default, but can be changed using `as`
-- Allows you to specify the spacing between child elements using `childGap`
+- Allows you to specify the spacing between child elements using `gap`
 - Many props accept `ResponsiveProp` that take an object with keys that correspond to [breakpoint tokens](?path=/story/design-tokens-design-tokens--page#breakpoints).
 
 <Canvas>
-  <Box childGap="md">
+  <Box gap="md">
     <Box
       padding="xl"
       background="primary-100"
@@ -33,7 +34,7 @@ A `<Box>` is a layout component to build UIs with consistent padding and spacing
     >
       I am a box with a green background and border
     </Box>
-    <Box childGap={{ base: 'sm', tablet: 'md', desktop: 'lg' }} direction="row">
+    <Box gap={{ base: 'sm', tablet: 'md', desktop: 'lg' }} direction="row">
       <Box flex="auto" radius="md" background="secondary-100" height="lg" />
       <Box flex="auto" radius="md" background="secondary-100" height="lg" />
       <Box flex="auto" radius="md" background="secondary-100" height="lg" />
@@ -71,7 +72,7 @@ Use the `borderColor` prop to set the color of the border and the borderWidth to
 
 <Canvas>
   <Story name="Border">
-    <Box childGap="sm" direction="row">
+    <Box gap="sm" direction="row">
       <Box borderColor="grey-200" borderWidth="xs md" padding="xs">
         grey-lighter, xs md
       </Box>
@@ -85,29 +86,82 @@ Use the `borderColor` prop to set the color of the border and the borderWidth to
   </Story>
 </Canvas>
 
-### Child Gap
 
-Set the spacing between children of the Box with `childGap`.
-The space between children will be set whether the direction of is `row` or `column`.
+## Gap
 
-<Canvas>
-  <Story name="Child Gap">
-    <Box childGap="md" padding="sm">
-      <Box flex="auto" background="primary-light" padding="sm"></Box>
-      <Box flex="auto" background="primary-light" padding="sm"></Box>
-      <Box flex="auto" background="primary-light" padding="sm"></Box>
-      <Box flex="auto" background="primary-light" padding="sm"></Box>
-      <Box flex="auto" background="primary-light" padding="sm"></Box>
-    </Box>
-    <Box childGap="2xl" direction="row" padding="sm">
-      <Box width="20%" background="primary-light" padding="sm"></Box>
-      <Box width="20%" background="primary-light" padding="sm"></Box>
-      <Box width="20%" background="primary-light" padding="sm"></Box>
-      <Box width="20%" background="primary-light" padding="sm"></Box>
-      <Box width="20%" background="primary-light" padding="sm"></Box>
+Use `gap` to set the spacing between children of a Box (for display grid and flex).
+
+<Canvas withSource="open">
+  <Story name="Gap">
+    <Box gap="lg" direction="row" wrap maxWidth="4xl">
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
     </Box>
   </Story>
 </Canvas>
+
+### Controlling row and column gaps independently
+
+Use `rowGap` and `columnGap` to set the spacing between children of a Box (for display grid and flex) in the row and column directions independently. You can also use shorthand `gap` to set both at once (e.g. `gap="row col"`).
+
+<Canvas withSource="open">
+  <Story name="Gap Shorthand">
+    <Box gap="xs 4xl" direction="row" wrap maxWidth="4xl">
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
+      <Box width="xl" background="primary-light" height="md" />
+    </Box>
+  </Story>
+</Canvas>
+
+<Canvas withSource="open">
+  <Story name="Row Gap and Column Gap">
+    <Box gap="lg">
+      <Box rowGap="xs" columnGap="xl" direction="row" wrap maxWidth="4xl">
+        <Box width="xl" background="primary-light" height="md" />
+        <Box width="xl" background="primary-light" height="md" />
+        <Box width="xl" background="primary-light" height="md" />
+        <Box width="xl" background="primary-light" height="md" />
+        <Box width="xl" background="primary-light" height="md" />
+        <Box width="xl" background="primary-light" height="md" />
+      </Box>
+      <Box rowGap="sm" maxWidth="4xl">
+        <Box width="100" background="primary-light" height="md" />
+        <Box width="100" background="primary-light" height="md" />
+        <Box width="100" background="primary-light" height="md" />
+      </Box>
+      <Box columnGap="sm" maxWidth="4xl" direction="row">
+        <Box flex="auto" background="primary-light" height="md" />
+        <Box flex="auto" background="primary-light" height="md" />
+        <Box flex="auto" background="primary-light" height="md" />
+      </Box>
+    </Box>
+  </Story>
+</Canvas>
+
+### Child Gap
+
+For block layouts, you can use `childGap` to set the spacing between children of a Box. For flex or grid layouts, use `gap` instead.
+
+<Canvas>
+  <Story name="Child Gap">
+    <Box childGap="md" display="block">
+      <Box display="block" background="primary-light" padding="sm" />
+      <Box display="block" background="primary-light" padding="sm" />
+      <Box display="block" background="primary-light" padding="sm" />
+      <Box display="block" background="primary-light" padding="sm" />
+      <Box display="block" background="primary-light" padding="sm" />
+    </Box>
+  </Story>
+</Canvas>
+
 
 ## Flex Properties
 
@@ -122,8 +176,8 @@ passing using a standard `style` object with the `flex` shorthand you need.
 
 <Canvas>
   <Story name="Flex Auto">
-    <Box childGap="md">
-      <Box childGap="md" direction="row">
+    <Box gap="md">
+      <Box gap="md" direction="row">
         <Box
           flex="auto"
           background="primary-light"
@@ -183,78 +237,170 @@ Set direction of child elements in a flex container.
     <Box margin="0 0 md 0" fontWeight="bold">
       Row
     </Box>
-    <Box childGap="md" padding="sm" direction="row">
-      <Box flex="auto" background="primary-light" padding="sm">1</Box>
-      <Box flex="auto" background="primary-light" padding="sm">2</Box>
-      <Box flex="auto" background="primary-light" padding="sm">3</Box>
-      <Box flex="auto" background="primary-light" padding="sm">4</Box>
-      <Box flex="auto" background="primary-light" padding="sm">5</Box>
+    <Box gap="md" padding="sm" direction="row">
+      <Box flex="auto" background="primary-light" padding="sm">
+        1
+      </Box>
+      <Box flex="auto" background="primary-light" padding="sm">
+        2
+      </Box>
+      <Box flex="auto" background="primary-light" padding="sm">
+        3
+      </Box>
+      <Box flex="auto" background="primary-light" padding="sm">
+        4
+      </Box>
+      <Box flex="auto" background="primary-light" padding="sm">
+        5
+      </Box>
     </Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Column
     </Box>
-    <Box childGap="md" padding="sm" direction="column">
-      <Box width="20%" background="primary-light" padding="sm">1</Box>
-      <Box width="20%" background="primary-light" padding="sm">2</Box>
-      <Box width="20%" background="primary-light" padding="sm">3</Box>
-      <Box width="20%" background="primary-light" padding="sm">4</Box>
-      <Box width="20%" background="primary-light" padding="sm">5</Box>
+    <Box gap="md" padding="sm" direction="column">
+      <Box width="20%" background="primary-light" padding="sm">
+        1
+      </Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        2
+      </Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        3
+      </Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        4
+      </Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        5
+      </Box>
     </Box>
-    <Box margin="lg 0 lg 0">
-      <Box fontWeight="bold" margin="0 0 xs 0" as="p">IMPORTANT:</Box>
-      when using the reverse CSS flex direction, the childGap ceases to work correctly,
-      since it is meant to automatically add margin classes to all children elements except the last one,
-      which in this case is reversed, via CSS only, the node order remains intact.
-    </Box>
-    <Box><Box fontWeight="bold" as="span" margin="0 0 xs 0">INCORRECT</Box> usage with childGap prop</Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Row Reverse
     </Box>
-    <Box childGap="md" padding="sm" direction="row-reverse">
-      <Box width="20%" background="danger-light" padding="sm">1</Box>
-      <Box width="20%" background="danger-light" padding="sm">2</Box>
-      <Box width="20%" background="danger-light" padding="sm">3</Box>
-      <Box width="20%" background="danger-light" padding="sm">4</Box>
-      <Box width="20%" background="danger-light" padding="sm">5</Box>
+    <Box gap="md" padding="sm" direction="row-reverse">
+      <Box width="20%" background="danger-light" padding="sm">
+        1
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        2
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        3
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        4
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        5
+      </Box>
     </Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Column Reverse
     </Box>
-    <Box childGap="md" padding="sm" direction="column-reverse">
-      <Box width="20%" background="danger-light" padding="sm">1</Box>
-      <Box width="20%" background="danger-light" padding="sm">2</Box>
-      <Box width="20%" background="danger-light" padding="sm">3</Box>
-      <Box width="20%" background="danger-light" padding="sm">4</Box>
-      <Box width="20%" background="danger-light" padding="sm">5</Box>
+    <Box gap="md" padding="sm" direction="column-reverse">
+      <Box width="20%" background="danger-light" padding="sm">
+        1
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        2
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        3
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        4
+      </Box>
+      <Box width="20%" background="danger-light" padding="sm">
+        5
+      </Box>
     </Box>
-    <Box><Box fontWeight="bold" as="span" margin="0 0 xs 0">CORRECT</Box> usage with individual margins</Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Row Reverse
     </Box>
     <Box padding="sm" direction="row-reverse">
-      <Box width="20%" background="primary-light" padding="sm">1</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">2</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">3</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">4</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 md 0 0">5</Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        1
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 md 0 0"
+      >
+        2
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 md 0 0"
+      >
+        3
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 md 0 0"
+      >
+        4
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 md 0 0"
+      >
+        5
+      </Box>
     </Box>
     <Box margin="lg 0 md 0" fontWeight="bold">
       Column Reverse
     </Box>
     <Box padding="sm" direction="column-reverse">
-      <Box width="20%" background="primary-light" padding="sm">1</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">2</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">3</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">4</Box>
-      <Box width="20%" background="primary-light" padding="sm" margin="0 0 md 0">5</Box>
+      <Box width="20%" background="primary-light" padding="sm">
+        1
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 0 md 0"
+      >
+        2
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 0 md 0"
+      >
+        3
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 0 md 0"
+      >
+        4
+      </Box>
+      <Box
+        width="20%"
+        background="primary-light"
+        padding="sm"
+        margin="0 0 md 0"
+      >
+        5
+      </Box>
     </Box>
   </Story>
 </Canvas>
 
 <Canvas>
   <Story name="Flex Grow and Shrink">
-    <Box childGap="md">
-      <Box childGap="md" direction="row">
+    <Box gap="md">
+      <Box gap="md" direction="row">
         <Box
           style={{ flex: '3' }}
           background="primary-light"
@@ -311,85 +457,85 @@ Set content alignment along the main axis
 
 <Canvas>
   <Story name="JustifyContent">
-    <Box flex="auto" childGap="md">
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+    <Box flex="auto" gap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">start</Box>
         <Box
           flex="auto"
           background="primary-lighter"
           justifyContent="flex-start"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">center</Box>
         <Box
           flex="auto"
           background="primary-lighter"
           justifyContent="center"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">end</Box>
         <Box
           flex="auto"
           background="primary-lighter"
           justifyContent="flex-end"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">between</Box>
         <Box
           flex="auto"
           background="primary-lighter"
           justifyContent="space-between"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">around</Box>
         <Box
           flex="auto"
           background="primary-lighter"
           justifyContent="space-around"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">evenly</Box>
         <Box
           flex="auto"
           background="primary-lighter"
           justifyContent="space-evenly"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
@@ -406,8 +552,8 @@ Set content alignment along the cross axis.
 
 <Canvas>
   <Story name="AlignItems">
-    <Box flex="auto" childGap="md">
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+    <Box flex="auto" gap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">start</Box>
         <Box
           flex="auto"
@@ -415,14 +561,14 @@ Set content alignment along the cross axis.
           background="primary-lighter"
           alignItems="flex-start"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">center</Box>
         <Box
           flex="auto"
@@ -430,14 +576,14 @@ Set content alignment along the cross axis.
           background="primary-lighter"
           alignItems="center"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">end</Box>
         <Box
           flex="auto"
@@ -445,14 +591,14 @@ Set content alignment along the cross axis.
           background="primary-lighter"
           alignItems="flex-end"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">baseline</Box>
         <Box
           flex="auto"
@@ -460,14 +606,14 @@ Set content alignment along the cross axis.
           background="primary-lighter"
           alignItems="baseline"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
           <Box width="md" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box width="70px">stretch</Box>
         <Box
           flex="auto"
@@ -475,7 +621,7 @@ Set content alignment along the cross axis.
           background="primary-lighter"
           alignItems="stretch"
           direction="row"
-          childGap="md"
+          gap="md"
         >
           <Box width="md" background="primary" />
           <Box width="md" background="primary" />
@@ -493,8 +639,8 @@ This property has no effect when there is only one line of flex items.
 
 <Canvas>
   <Story name="Align Content">
-    <Box childGap="md">
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+    <Box gap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box flex="auto" width="70px">
           start
         </Box>
@@ -503,10 +649,9 @@ This property has no effect when there is only one line of flex items.
           alignContent="flex-start"
           height="200px"
           wrap
-          childGap="md"
+          gap="md"
           background="primary-lighter"
           direction="row"
-          childGap="md"
         >
           <Box width="2xl" height="md" background="primary" />
           <Box width="2xl" height="md" background="primary" />
@@ -515,7 +660,7 @@ This property has no effect when there is only one line of flex items.
           <Box width="2xl" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box flex="auto" width="70px">
           center
         </Box>
@@ -524,10 +669,9 @@ This property has no effect when there is only one line of flex items.
           alignContent="center"
           height="200px"
           wrap
-          childGap="md"
+          gap="md"
           background="primary-lighter"
           direction="row"
-          childGap="md"
         >
           <Box width="2xl" height="md" background="primary" />
           <Box width="2xl" height="md" background="primary" />
@@ -536,7 +680,7 @@ This property has no effect when there is only one line of flex items.
           <Box width="2xl" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box flex="auto" width="70px">
           end
         </Box>
@@ -545,10 +689,9 @@ This property has no effect when there is only one line of flex items.
           alignContent="flex-end"
           height="200px"
           wrap
-          childGap="md"
+          gap="md"
           background="primary-lighter"
           direction="row"
-          childGap="md"
         >
           <Box width="2xl" height="md" background="primary" />
           <Box width="2xl" height="md" background="primary" />
@@ -557,7 +700,7 @@ This property has no effect when there is only one line of flex items.
           <Box width="2xl" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box flex="auto" width="70px">
           stretch
         </Box>
@@ -566,10 +709,9 @@ This property has no effect when there is only one line of flex items.
           alignContent="stretch"
           height="200px"
           wrap
-          childGap="md"
+          gap="md"
           background="primary-lighter"
           direction="row"
-          childGap="md"
         >
           <Box width="2xl" background="primary" />
           <Box width="2xl" background="primary" />
@@ -578,7 +720,7 @@ This property has no effect when there is only one line of flex items.
           <Box width="2xl" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center"  gap="md">
         <Box flex="auto" width="70px">
           between
         </Box>
@@ -587,10 +729,9 @@ This property has no effect when there is only one line of flex items.
           alignContent="space-between"
           height="200px"
           wrap
-          childGap="md"
+          gap="md"
           background="primary-lighter"
           direction="row"
-          childGap="md"
         >
           <Box width="2xl" height="md" background="primary" />
           <Box width="2xl" height="md" background="primary" />
@@ -599,7 +740,7 @@ This property has no effect when there is only one line of flex items.
           <Box width="2xl" height="md" background="primary" />
         </Box>
       </Box>
-      <Box direction="row" alignItems="center" direction="row" childGap="md">
+      <Box direction="row" alignItems="center" gap="md">
         <Box flex="auto" width="70px">
           around
         </Box>
@@ -608,10 +749,9 @@ This property has no effect when there is only one line of flex items.
           alignContent="center"
           height="200px"
           wrap
-          childGap="md"
+          gap="md"
           background="primary-lighter"
           direction="row"
-          childGap="md"
         >
           <Box width="2xl" height="md" background="primary" />
           <Box width="2xl" height="md" background="primary" />
@@ -652,26 +792,19 @@ Set the `fontSize` prop with a [font size](?path=/story/design-tokens-design-tok
 
 ## Font Family
 
-
 <Canvas>
   <Story name="Font Family">
-    <Box fontFamily="body" margin='0 0 md 0' fontSize="xl">
+    <Box fontFamily="body" margin="0 0 md 0" fontSize="xl">
       Body font
-      <Box fontSize="sm">
-        {FONT_FAMILY_VALUES['body'].value}
-      </Box>
+      <Box fontSize="sm">{FONT_FAMILY_VALUES['body'].value}</Box>
     </Box>
-    <Box fontFamily="brand" margin='0 0 md 0' fontSize="xl">
+    <Box fontFamily="brand" margin="0 0 md 0" fontSize="xl">
       Brand Font
-      <Box fontSize="sm">
-        {FONT_FAMILY_VALUES['brand'].value}
-      </Box>
+      <Box fontSize="sm">{FONT_FAMILY_VALUES['brand'].value}</Box>
     </Box>
-    <Box fontFamily="monospace" margin='0 0 md 0' fontSize="xl">
+    <Box fontFamily="monospace" margin="0 0 md 0" fontSize="xl">
       Monospace Font
-      <Box fontSize="sm">
-        {FONT_FAMILY_VALUES['monospace'].value}
-      </Box>
+      <Box fontSize="sm">{FONT_FAMILY_VALUES['monospace'].value}</Box>
     </Box>
   </Story>
 </Canvas>
@@ -685,6 +818,7 @@ Set the `fontWeight` prop with a [font weight](?path=/story/design-tokens-design
     <Box>
       <Box fontWeight="light">light</Box>
       <Box fontWeight="regular">regular</Box>
+      <Box fontWeight="medium">medium</Box>
       <Box fontWeight="bold">bold</Box>
       <Box fontWeight="black">black</Box>
     </Box>
@@ -765,7 +899,7 @@ Set the `radius` prop with a [radius token](?path=/story/design-tokens-design-to
 
 <Canvas>
   <Story name="Radius">
-    <Box direction="row" childGap="2xs" justifyContent="space-between">
+    <Box direction="row" gap="2xs" justifyContent="space-between">
       <Box radius="xs" background="secondary-light" padding="sm">
         xs
       </Box>
@@ -806,7 +940,12 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
 
 <Canvas>
   <Story name="Shadow">
-    <Box direction="row" background="grey-50" padding="2xl" justifyContent="space-between">
+    <Box
+      direction="row"
+      background="grey-50"
+      padding="2xl"
+      justifyContent="space-between"
+    >
       <Box
         shadow="0"
         alignItems="center"
@@ -905,7 +1044,7 @@ Width can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="Width">
-    <Box background="primary-lightest" childGap="xs">
+    <Box background="primary-lightest" gap="xs">
       <Box background="primary-light" width="227px">
         227px
       </Box>
@@ -923,7 +1062,7 @@ Width can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="Width standards">
-    <Box background="primary-lightest" childGap="xs" overflow="auto">
+    <Box background="primary-lightest" gap="xs" overflow="auto">
       <Box background="primary-light" width="sm">
         sm
       </Box>
@@ -956,7 +1095,7 @@ Set the width to a common percentage of the Box's parent.
 
 <Canvas>
   <Story name="Width Percentage">
-    <Box background="primary-lightest" childGap="xs">
+    <Box background="primary-lightest" gap="xs">
       <Box background="primary-light" width="10">
         10%
       </Box>
@@ -1012,7 +1151,7 @@ Set the maximum width of the Box by setting `maxWidth` to a [width token](?path=
 
 <Canvas>
   <Story name="Max width">
-    <Box background="primary-lightest" childGap="xs">
+    <Box background="primary-lightest" gap="xs">
       <Box background="primary-light" maxWidth="2xl">
         2xl
       </Box>
@@ -1032,7 +1171,7 @@ Set the minimum width of the Box by setting `minWidth` to a [width token](?path=
 
 <Canvas>
   <Story name="Min width">
-    <Box alignItems="flex-start" background="primary-lightest" childGap="xs">
+    <Box alignItems="flex-start" background="primary-lightest" gap="xs">
       <Box background="primary-light" minWidth="2xl">
         2xl
       </Box>
@@ -1052,14 +1191,29 @@ Height can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="Height">
-    <Box background="primary-lightest" childGap="xs">
-      <Box background="primary-light" height="227px" justifyContent="center" alignItems="center">
+    <Box background="primary-lightest" gap="xs">
+      <Box
+        background="primary-light"
+        height="227px"
+        justifyContent="center"
+        alignItems="center"
+      >
         227px
       </Box>
-      <Box background="primary-light" height="10rem" justifyContent="center" alignItems="center">
+      <Box
+        background="primary-light"
+        height="10rem"
+        justifyContent="center"
+        alignItems="center"
+      >
         10rem
       </Box>
-      <Box background="primary-light" height="4em" justifyContent="center" alignItems="center">
+      <Box
+        background="primary-light"
+        height="4em"
+        justifyContent="center"
+        alignItems="center"
+      >
         4em
       </Box>
     </Box>
@@ -1070,7 +1224,12 @@ Height can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="Height standards">
-    <Box background="primary-lightest" childGap="xs" height="5xl" direction="row">
+    <Box
+      background="primary-lightest"
+      gap="xs"
+      height="5xl"
+      direction="row"
+    >
       <Box
         flex="auto"
         background="primary-light"
@@ -1151,7 +1310,12 @@ Set the height to a common percentage of the Box's parent.
 
 <Canvas>
   <Story name="Height Percentage">
-    <Box height="400px" childGap="xs" direction="row" background="primary-lightest">
+    <Box
+      height="400px"
+      gap="xs"
+      direction="row"
+      background="primary-lightest"
+    >
       <Box
         flex="auto"
         justifyContent="center"
@@ -1297,7 +1461,12 @@ Set the maximum width of the Box by setting `maxHeight` to a [height token](?pat
 
 <Canvas>
   <Story name="Max Height">
-    <Box height="300px" background="primary-lightest" direction="row" childGap="xs">
+    <Box
+      height="300px"
+      background="primary-lightest"
+      direction="row"
+      gap="xs"
+    >
       <Box
         maxHeight="lg"
         flex="auto"
@@ -1340,7 +1509,7 @@ Set the minimum width of the Box by setting `minHeight` to a [height token](?pat
       background="primary-lightest"
       alignItems="flex-start"
       direction="row"
-      childGap="xs"
+      gap="xs"
     >
       <Box
         width="33"
@@ -1382,29 +1551,31 @@ Set the overflow behavior of the Box with `overflow`
     <Box
       overflow="auto"
       padding="md"
-      childGap="md"
+      gap="md"
       flex="auto"
       background="primary-lighter"
       borderColor="grey"
       height="100px"
     >
       <p>
-        Most homeowners are stuck with a single option for their power company, and that utility
-        just keeps increasing rates year after year. With solar, you take back control over where
-        your energy comes from, how much it costs, and what you can do with it. Use it, store it, or
-        sell it, all on your own terms.
+        Most homeowners are stuck with a single option for their power company,
+        and that utility just keeps increasing rates year after year. With
+        solar, you take back control over where your energy comes from, how much
+        it costs, and what you can do with it. Use it, store it, or sell it, all
+        on your own terms.
       </p>
       <p>
-        Solar can be complicated, but Palmetto makes it easy. We have solar, storage, and
-        maintenance, all under one roof. Plus, you can monitor your entire system from the palm of
-        your hand, and we have an award-winning customer service team standing by to help you with
-        anything you might need.
+        Solar can be complicated, but Palmetto makes it easy. We have solar,
+        storage, and maintenance, all under one roof. Plus, you can monitor your
+        entire system from the palm of your hand, and we have an award-winning
+        customer service team standing by to help you with anything you might
+        need.
       </p>
       <p>
-        Switching to solar saves the average Palmetto customer $18,471 over 25 years. Add in
-        national tax credits and local rebates and incentives, and you can save even more. Like many
-        things in life though, these discounts won’t be around forever, so take advantage of them
-        while you can.
+        Switching to solar saves the average Palmetto customer $18,471 over 25
+        years. Add in national tax credits and local rebates and incentives, and
+        you can save even more. Like many things in life though, these discounts
+        won’t be around forever, so take advantage of them while you can.
       </p>
     </Box>
   </Story>
@@ -1418,7 +1589,7 @@ Set the cursor for value for the element in question. Use any valid [CSS cursor 
   <Story name="Cursor">
     <Box
       padding="md"
-      childGap="md"
+      gap="md"
       flex="auto"
       background="primary-lighter"
       overflow="auto"
@@ -1460,16 +1631,41 @@ responsive object prop with said values. Example with `fixed` position not inclu
       overflow="scroll"
       height="300px"
     >
-      <Box position="absolute" padding="md" background="secondary-light" style={{ zIndex: 1 }} width="100px" height="150px">
+      <Box
+        position="absolute"
+        padding="md"
+        background="secondary-light"
+        style={{ zIndex: 1 }}
+        width="100px"
+        height="150px"
+      >
         absolute
       </Box>
-      <Box position="relative" padding="md" background="primary-light" textAlign="right" height="200px">
+      <Box
+        position="relative"
+        padding="md"
+        background="primary-light"
+        textAlign="right"
+        height="200px"
+      >
         relative
       </Box>
-      <Box position="sticky" padding="md" background="tertiary-light" height="50px" color="white" style={{ top: 0, zIndex: 2 }}>
+      <Box
+        position="sticky"
+        padding="md"
+        background="tertiary-light"
+        height="50px"
+        color="white"
+        style={{ top: 0, zIndex: 2 }}
+      >
         sticky
       </Box>
-      <Box position="static" padding="md" background="primary-light" height="400px">
+      <Box
+        position="static"
+        padding="md"
+        background="primary-light"
+        height="400px"
+      >
         static
       </Box>
     </Box>
@@ -1482,16 +1678,17 @@ You can control the styles for the box on hover using the `hover` prop and passi
 Hover on the elements below to see these in action.
 
 Currently our library supports hover states for:
-* `background`
-* `borderColor`
-* `borderWidth`
-* `color`
-* `fontSize`
-* `shadow`
+
+- `background`
+- `borderColor`
+- `borderWidth`
+- `color`
+- `fontSize`
+- `shadow`
 
 <Canvas>
   <Story name="Hover States" parameters={{ ...RESPONSIVE_STORY }}>
-    <Box childGap="md">
+    <Box gap="md">
       <Box
         padding="md"
         background="primary"
@@ -1520,7 +1717,7 @@ Currently our library supports hover states for:
         }}
         cursor="pointer"
       >
-       an outlined button 
+        an outlined button
       </Box>
       <Box
         padding="md"
@@ -1578,15 +1775,16 @@ You can control the styles for the box on hover using the `focus` prop and passi
 Focus on the elements below to the these in action.
 
 Currently our library supports hover states for:
-* `background`
-* `borderColor`
-* `borderWidth`
-* `color`
-* `shadow`
+
+- `background`
+- `borderColor`
+- `borderWidth`
+- `color`
+- `shadow`
 
 <Canvas>
   <Story name="Focus States" parameters={{ ...RESPONSIVE_STORY }}>
-    <Box childGap="md">
+    <Box gap="md">
       <Box
         as="input"
         type="text"
@@ -1632,7 +1830,7 @@ Any props that accept a `ResponsiveProp` will take an object with the following 
 }
 ```
 
-These props will create classes that are scoped to the specific breakpoint they're assigned to. Not all breakpoints
+These props will create classes that are scoped to the specific breakpoint they are assigned to. Not all breakpoints
 are required in this shape, you can pick and choose which breakpoints require different layout attributes based on a
 mobile first approach.
 
@@ -1676,7 +1874,10 @@ For example the following has padding at the `desktop` breakpoint and wider.
 <Canvas>
   <Story name="Omitting Responsive Keys" parameters={{ ...RESPONSIVE_STORY }}>
     <Box padding={{ desktop: 'lg' }} background="primary-lighter">
-      <p>This box will have no padding until the viewport reaches the desktop breakpoint. </p>
+      <p>
+        This box will have no padding until the viewport reaches the desktop
+        breakpoint.{' '}
+      </p>
     </Box>
   </Story>
 </Canvas>

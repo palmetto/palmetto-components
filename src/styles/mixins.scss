@@ -1,10 +1,8 @@
-/*******************************************************************************\
- *                                                                             *
- * Visually hide any element (mostly text) accessibly.                         *
- * Support includes IE9+                                                       *
- * Source: https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html   *
- *                                                                             *
- *******************************************************************************/
+// Visually hide any element (mostly text) accessibly.
+// Support includes IE9+
+// Source: https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html
+
+
 @mixin accessible-hidden-element {
   clip: rect(0 0 0 0);
   clip-path: inset(100%);

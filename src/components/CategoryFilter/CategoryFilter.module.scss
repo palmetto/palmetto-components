@@ -2,6 +2,7 @@
   background-color: var(--category-filter-background-color, transparent);
   border-color: var(--category-filter-border-color, var(--color-brand-grey-100));
   border-radius: var(--category-filter-border-radius, var(--size-border-radius-xl));
+  color: var(--category-filter-font-color, var(--color-brand-grey-600));
   font-family: var(--category-filter-font-family, var(--button-font-family));
   font-weight: var(--category-filter-font-weight, var(--button-font-weight, var(--size-font-weight-bold)));
   height: max-content;
@@ -15,15 +16,18 @@
 
     &:hover {
       background-color: var(--category-filter-background-color, transparent);
+      color: var(--category-filter-font-color, var(--color-brand-grey-600));
     }
   }
 
   &.selected {
     background-color: var(--category-filter-selected-background-color, var(--color-brand-primary-500));
     border-color: var(--category-filter-selected-border-color, var(--color-brand-primary-500));
+    color: var(--category-filter-font-color, var(--color-brand-white-500));
 
     &:hover {
       background-color: var(--category-filter-selected-background-color-hover, var(--color-brand-primary-600));
+      color: var(--category-filter-font-color, var(--color-brand-white-500));
     }
 
     &.disabled:hover {

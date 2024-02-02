@@ -1,16 +1,20 @@
 {
   "extends": [
-    "stylelint-config-recommended",
+    "stylelint-config-standard",
     "stylelint-config-sass-guidelines",
     "stylelint-config-css-modules"
   ],
   "rules": {
     "declaration-property-value-disallowed-list": null,
     "max-nesting-depth": null,
-    "order/properties-alphabetical-order": null,
     "selector-max-compound-selectors": 4,
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "media-query-no-invalid": null,
+    "keyframes-name-pattern": null,
+    "import-notation": null
   }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { MediaModal, MediaModalProps } from './MediaModal';
 import { Button } from '../Button/Button';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 export default {
   title: 'Components/MediaModal/Playground',
@@ -23,15 +24,21 @@ export default {
 } as Meta;
 
 const Template: Story<MediaModalProps> = ({ ...args }) => {
-  const [showModal, setShowModal] = React.useState(false);
-  const open = () => setShowModal(true);
-  const close = () => setShowModal(false);
+  const {
+    isOpen: isMediaModalOpen,
+    handleOpen: openMediaModal,
+    handleClose: closeMediaModal,
+  } = useOpenClose();
   return (
     <>
-      <Button variant="light" onClick={open}>
+      <Button variant="light" onClick={openMediaModal}>
         Show MediaModal
       </Button>
-      <MediaModal {...args} isOpen={showModal} onDismiss={close}>
+      <MediaModal
+        {...args}
+        isOpen={isMediaModalOpen}
+        onDismiss={closeMediaModal}
+      >
         <img src="/images/landscape-mediamodal.jpg" alt="landscape test" />
       </MediaModal>
     </>

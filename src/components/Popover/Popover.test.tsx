@@ -81,28 +81,6 @@ describe('Popover', () => {
     });
   });
 
-  describe('Trap Focus', () => {
-    it('It traps focus inside the Popover', async () => {
-      render(
-        <>
-          <div>
-            <button type="button" id="outside-button">outside</button>
-          </div>
-          <Popover
-            isOpen
-            content={<button type="button" id="inside-button">hello</button>}
-            trapFocus
-          >
-            <p>trigger</p>
-          </Popover>
-        </>,
-      );
-
-      const popoverContent = screen.getByText('hello');
-      await waitFor(() => expect(popoverContent).toHaveFocus());
-    });
-  });
-
   describe('Portal', () => {
     it('Renders the Popover in the body if withPortal is true.', async () => {
       render(

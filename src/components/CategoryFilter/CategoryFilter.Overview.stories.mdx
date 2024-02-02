@@ -43,7 +43,7 @@ The CategoryFilter component consists of a button with text, typically used in a
         }));
       };
       return (
-        <Box direction="row" childGap="xs">
+        <Box direction="row" gap="xs">
           <CategoryFilter
             isSelected={isSelected.chocolate}
             onClick={() => handleSelect('chocolate')}
@@ -93,7 +93,7 @@ The CategoryFilter can be sized with one of `xs`, `sm`, `md`, `lg`, or a `Respon
         }));
       };
       return (
-        <Box direction="row" childGap="sm" wrap>
+        <Box direction="row" gap="sm" wrap>
           <CategoryFilter
             isSelected={isSelected.xs}
             onClick={() => handleSelect('xs')}
@@ -144,7 +144,7 @@ Use the disabled prop to indicate the button is not clickable in its currenty st
     {() => {
       const [isSelected, setSelected] = useState(false);
       return (
-        <Box direction="row" childGap="sm">
+        <Box direction="row" gap="sm">
           <CategoryFilter isSelected={false} isDisabled>
             Unselected
           </CategoryFilter>
@@ -171,8 +171,13 @@ Use the disabled prop to indicate the button is not clickable in its currenty st
       const tokens = {
         '--category-filter-background-color': 'transparent',
         '--category-filter-background-color-hover': '--color-brand-grey-100',
+        '--category-filter-border-color': '--color-brand-grey-100',
+        '--category-filter-font-color': '--color-brand-grey-600',
+        '--category-filter-font-color-hover': '--color-brand-grey-600',
         '--category-filter-selected-background-color': '--color-brand-primary-500',
         '--category-filter-selected-background-color-hover': '--color-brand-primary-600',
+        '--category-filter-selected-font-color': '--color-brand-white-500',
+        '--category-filter-selected-font-color-hover': '--color-brand-white-500',
         '--category-filter-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
         '--category-filter-selected-box-shadow-focus': '0 0 0 4px --color-brand-success-200',
         '--category-filter-border-radius': '--size-border-radius-xl',

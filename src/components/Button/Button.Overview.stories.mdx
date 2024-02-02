@@ -35,7 +35,7 @@ The `variant` prop determines which color variant to render.
       },
     }}
   >
-    <Box alignItems="center" childGap="sm" direction="row">
+    <Box alignItems="center" gap="sm" direction="row">
       <Button variant="primary">Primary</Button>
       <Button variant="success">Success</Button>
       <Button variant="danger">Danger</Button>
@@ -63,7 +63,7 @@ the color of the primary CTA but makes the hierarchy clear. The background is tr
       },
     }}
   >
-    <Box alignItems="center" childGap="sm" direction="row">
+    <Box alignItems="center" gap="sm" direction="row">
       <Button variant="primary" isOutlined>
         Primary
       </Button>
@@ -103,7 +103,7 @@ so it can have different sizes at different breakpoints.
       },
     }}
   >
-    <Box childGap="sm" direction="row" alignItems="flex-start">
+    <Box gap="sm" direction="row" alignItems="flex-start">
       <Button size="xs" variant="light">
         Extra Small
       </Button>
@@ -149,7 +149,7 @@ Use the `fullWidth` prop to allow the button to grow to its container's full wid
 
 <Canvas>
   <Story name="Full Width">
-    <Box childGap="md">
+    <Box gap="md">
       <Button fullWidth>Full Width</Button>
       <Button fullWidth isOutlined>
         Full Width
@@ -164,7 +164,7 @@ Add an icon to the left or right inside the Button using the `iconPrefix` and `i
 
 <Canvas>
   <Story name="With Icons">
-    <Box display="flex" direction="row" childGap="md">
+    <Box display="flex" direction="row" gap="md">
       <Button variant="primary" iconPrefix="mail">
         Email
       </Button>
@@ -172,7 +172,7 @@ Add an icon to the left or right inside the Button using the `iconPrefix` and `i
         Chat Now
       </Button>
     </Box>
-    <Box display="flex" direction="row" childGap="xs" margin="lg 0 0 0">
+    <Box display="flex" direction="row" gap="xs" margin="lg 0 0 0">
       <Button
         onClick={() => alert('clicked')}
         variant="light"
@@ -285,7 +285,7 @@ The Button component can be themed by base tokens, or component specific tokens.
 <Canvas>
   <Story name="With Custom Theme">
     <Box
-      childGap="sm"
+      gap="sm"
       direction="row"
       alignItems="flex-start"
       style={{

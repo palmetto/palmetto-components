@@ -1,0 +1,55 @@
+import { useState, useEffect } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { useOpenClose } from './useOpenClose';
+import { Drawer } from '../../components/Drawer/Drawer';
+import { Button } from '../../components/Button/Button';
+import { Box } from '../../components/Box/Box';
+
+<Meta
+  title="Hooks/useOpenClose/Overview"
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# useOpenClose
+
+The `useOpenClose` hook helps handle common open, close, or toggle scenarios. It can be used to control components such as `Modal`, `MediaModal`, `Drawer`, `Details` and even `Popover`.
+
+<Canvas withSource="open">
+  <Story
+    name="Basic Usage"
+    parameters={{ chromatic: { disableSnapshot: true } }}
+  >
+    {() => {
+      const { isOpen, handleOpen, handleClose } = useOpenClose({
+        onOpen: action('onOpen'),
+        onClose: action('onClose'),
+      });
+      return (
+        <div>
+          <Button variant="light" type="button" onClick={handleOpen}>
+            Open Drawer
+          </Button>
+          <Drawer
+            isOpen={isOpen}
+            title="Drawer Title"
+            onDismiss={handleClose}
+            ariaLabel="drawer component example"
+          >
+            <Box padding="lg" gap="md">
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+              <Box>Drawer content&hellip;</Box>
+            </Box>
+          </Drawer>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Parameters
+
+<ArgsTable of={useOpenClose} />

@@ -12,7 +12,7 @@ export const ModalFooter: FC<ModalFooterProps> = ({
   direction = 'row',
   alignItems = 'center',
   justifyContent = 'flex-end',
-  childGap = 'sm',
+  gap = 'sm',
   style,
   ...restProps
 }) => (
@@ -22,10 +22,10 @@ export const ModalFooter: FC<ModalFooterProps> = ({
     alignItems={alignItems}
     justifyContent={justifyContent}
     borderWidth="xs 0 0 0"
-    borderColor="grey-lighter"
-    childGap={childGap}
+    gap={gap}
     style={{
       flexShrink: 0,
+      borderColor: 'var(--modal-border-separator-color, var(--color-brand-grey-100))',
       ...style,
     }}
     {...restProps}

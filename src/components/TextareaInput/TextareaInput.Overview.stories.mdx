@@ -74,7 +74,7 @@ You can remove or customize the required indicator using the `requiredIndicator`
       const [value, setValue] = useState('');
       const [value2, setValue2] = useState('');
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <TextareaInput
             id="requiredWithoutIndicator"
             label="Required Without Indicator"
@@ -128,7 +128,7 @@ The `resize` prop accepts `horizontal`, `vertical`, `both` or `none` to control 
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <TextareaInput
             id="resizeBoth"
             value={value1}
@@ -161,7 +161,7 @@ Set the `size` of the input to `sm`, `md` or `lg`. The `size` prop is also a `Re
       const [valueLg, setValueLg] = useState('');
       const [valueResponsive, setValueResponsive] = useState('');
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <TextareaInput
             id="Small"
             value={valueSm}

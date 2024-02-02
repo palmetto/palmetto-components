@@ -41,7 +41,7 @@ const Template: Story<TabsSliderProps> = ({
   disabledTabs,
   ...args
 }) => (
-  <Box childGap="md">
+  <Box gap="md">
     <TabsSlider value={value} size={size} {...args}>
       <TabsSlider.Item isDisabled={disabledTabs.includes(0)}>
         Tab 0

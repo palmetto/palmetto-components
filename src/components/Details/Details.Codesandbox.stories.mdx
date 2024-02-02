@@ -14,21 +14,17 @@ NOTE: for a custom implementation of this component see the [accordion](/?path=/
 
 ```js codesandbox=palmetto-components
 import React, { useState } from 'react';
-import { Details, Box, Heading } from '@palmetto/palmetto-components';
+import { Details, Box, Heading, useOpenClose } from '@palmetto/palmetto-components';
 
 export default () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleToggle = () => {
-    const newIsOpen = !isOpen;
-    setIsOpen(newIsOpen);
-  };
+  const { isOpen, handleToggle } = useOpenClose();
 
   return (
     <Details isOpen={isOpen} margin="md">
-      <Details.Summary isDetailsOpen={isOpen} onToggle={() => handleToggle()} display="inline">
+      <Details.Summary isDetailsOpen={isOpen} onToggle={handleToggle)} display="inline">
         What is Palmetto's Mission?
       </Details.Summary>
-      <Box padding="md 0" childGap="sm">
+      <Box padding="md 0" gap="sm">
         <Heading as="h4">Leading the World Towards a Clean Energy Future</Heading>
         <Box as="p">
           We are on a mission to stop climate change before we reach an irreversible tipping point.

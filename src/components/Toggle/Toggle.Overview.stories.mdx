@@ -121,7 +121,7 @@ The `size` prop is also a `ResponsiveProp`, so it can be sized differently at ea
     {() => {
       const [value, setValue] = useState(true);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <Toggle
             id="smToggle"
             label="small toggle"
@@ -201,15 +201,25 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
   >
     {() => {
       const [value, setValue] = useState(null);
+      const [value2, setValue2] = useState(true);
       return (
-        <Toggle
-          id="invalidToggle"
-          label="Label"
-          isChecked={value}
-          onChange={value => setValue(event.target.checked)}
-          isRequired
-          error="You must accept the Terms and Conditions"
-        />
+        <Box gap="md">
+          <Toggle
+            id="invalidToggle"
+            label="Agree to Terms and Conditions"
+            isChecked={value}
+            onChange={value => setValue(event.target.checked)}
+            isRequired
+            error="You must accept the Terms and Conditions"
+          />
+          <Toggle
+            id="invalidToggle2"
+            label="Roof Replacement"
+            isChecked={value2}
+            onChange={value2 => setValue2(event.target.checked)}
+            error="Site Improvements can not be present with PPA"
+          />
+        </Box>
       );
     }}
   </Story>
@@ -227,6 +237,8 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
   <tbody>
     {(() => {
       const tokens = {
+        '--toggle-background-color': '--color-brand-grey-200',
+        '--toggle-background-color-checked': '--color-brand-primary-500',
         '--toggle-background-color-error': '--color-brand-danger-500',
       };
       return Object.entries(tokens).map(([name, entry], i) => (

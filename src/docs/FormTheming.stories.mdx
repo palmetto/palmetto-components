@@ -81,8 +81,18 @@ Form controls share tokens since they are designed to have a consistent appearan
         '--form-control-border-color-hover': '#805AD5',
       };
       return (
-        <Box childGap="lg" background="grey-50" padding="lg" display="block" style={isThemed ? customTheme : null}>
-          <Toggle label="Apply Custom Theme" isChecked={isThemed} onChange={e => setIsThemed(e.target.checked)} />
+        <Box
+          childGap="lg"
+          background="grey-50"
+          padding="lg"
+          display="block"
+          style={isThemed ? customTheme : null}
+        >
+          <Toggle
+            label="Apply Custom Theme"
+            isChecked={isThemed}
+            onChange={e => setIsThemed(e.target.checked)}
+          />
           <TextInput
             id="demo"
             helpText="This is a themed text input"
@@ -105,7 +115,9 @@ Form controls share tokens since they are designed to have a consistent appearan
             value={themeExampleValues.multiSelectValue}
             menuPortalTarget={document.body}
             options={options}
-            onChange={event => handleChange('multiSelectValue', event.target.value)}
+            onChange={event =>
+              handleChange('multiSelectValue', event.target.value)
+            }
           />
           <TextareaInput
             label="Textarea Input"
@@ -114,9 +126,18 @@ Form controls share tokens since they are designed to have a consistent appearan
             value={themeExampleValues.textareaValue}
             onChange={e => handleChange('textareaValue', e.target.value)}
           />
-          <Box direction="row" childGap="md">
-            <CheckboxInput id="checkedCheckbox" label="Checked Checkbox" onChange={() => {}} isChecked />
-            <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
+          <Box direction="row" gap="md">
+            <CheckboxInput
+              id="checkedCheckbox"
+              label="Checked Checkbox"
+              onChange={() => {}}
+              isChecked
+            />
+            <CheckboxInput
+              id="uncheckedCheckbox"
+              label="Unchecked Checkbox"
+              onChange={() => {}}
+            />
           </Box>
           <RadioGroup
             title="Radio Group"
@@ -129,7 +150,9 @@ Form controls share tokens since they are designed to have a consistent appearan
           <OptionTileGroup
             name="directionVertical"
             value={themeExampleValues.optionTileGroupValue}
-            onChange={event => handleChange('optionTileGroupValue', event.target.value)}
+            onChange={event =>
+              handleChange('optionTileGroupValue', event.target.value)
+            }
             options={options}
             direction="row"
           />
@@ -192,8 +215,11 @@ The following tokens are shared by all form controls to maintain a consistent ap
         'form-control-icon-color': '--color-brand-grey-300',
         'form-control-icon-color-hover': '--color-brand-grey',
         'form-control-placeholder-color': '--color-brand-grey-300',
+        'form-control-checkbox-color': '--color-brand-grey-500',
+        'form-control-checkbox-color-checked': '--color-brand-primary-500',
+        'form-control-checkbox-color-disabled': '--color-brand-primary-200',
+        'form-control-checkbox-color-checked-disabled': '--color-brand-primary-200',
         'form-control-radio-group-description-spacing': '--size-spacing-xs',
-        'form-control-radio-group-option-spacing': '--size-spacing-sm',
         'form-control-radio-group-options-spacing': '--size-spacing-md',
         'form-control-select-sm-icon-size': '20px',
         'form-control-select-md-icon-size': '32px',

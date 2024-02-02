@@ -16,29 +16,29 @@ export interface CategoryFilterProps extends BoxProps {
 type ResponsiveCategoryFilterProps = {
   fontSize: BoxProps['fontSize'];
   padding: BoxProps['padding'];
-  childGap: BoxProps['childGap'];
+  gap: BoxProps['gap'];
 }
 
 const propSizeMap: { [key in BaseCategoryFilterSize]: ResponsiveCategoryFilterProps} = {
   xs: {
     fontSize: 'xs',
     padding: '2xs xs',
-    childGap: '2xs',
+    gap: '2xs',
   },
   sm: {
     fontSize: 'sm',
     padding: '2xs xs',
-    childGap: '2xs',
+    gap: '2xs',
   },
   md: {
     fontSize: 'md',
     padding: 'sm md',
-    childGap: 'xs',
+    gap: 'xs',
   },
   lg: {
     fontSize: 'lg',
     padding: 'sm md',
-    childGap: 'xs',
+    gap: 'xs',
   },
 };
 
@@ -51,7 +51,7 @@ const propSizeMap: { [key in BaseCategoryFilterSize]: ResponsiveCategoryFilterPr
  */
 export const computedResponsiveSize = ( // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
   size: CategoryFilterProps['size'],
-  prop: 'fontSize' | 'padding' | 'childGap',
+  prop: 'fontSize' | 'padding' | 'gap',
 ) => {
   if (size && !(typeof size === 'string') && typeof size === 'object') {
     return Object.entries(size)
@@ -93,14 +93,13 @@ export const CategoryFilter: CategoryFilterComponent = forwardRef<HTMLDivElement
       alignItems="center"
       disabled={isDisabled}
       className={classes}
-      childGap={computedResponsiveSize(size, 'childGap')}
+      gap={computedResponsiveSize(size, 'gap')}
       direction="row"
       cursor={isDisabled ? 'not-allowed' : 'pointer'}
       borderWidth="xs"
       aria-checked={isSelected}
       fontSize={computedResponsiveSize(size, 'fontSize')}
       fontWeight="bold"
-      color={isSelected ? 'white' : 'dark'}
       padding={computedResponsiveSize(size, 'padding')}
       ref={ref}
       {...restProps}

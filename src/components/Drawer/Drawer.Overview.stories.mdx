@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Drawer } from './Drawer';
 import { Alert } from '../Alert/Alert';
@@ -6,6 +6,7 @@ import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { TextInput } from '../TextInput/TextInput';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 <Meta title="Components/Drawer/Overview" component={Drawer} />
 
@@ -15,7 +16,7 @@ A Drawer is a panel that slides in from one edge of the viewport and overlays co
 
 <Canvas withSource="open">
   <Story
-    name="Basic Drawer"
+    name="Basic Usage"
     parameters={{
       chromatic: { disableSnapshot: true },
       design: {
@@ -25,18 +26,20 @@ A Drawer is a panel that slides in from one edge of the viewport and overlays co
     }}
   >
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const open = () => setIsOpen(true);
-      const close = () => setIsOpen(false);
+      const {
+        isOpen: isDrawerOpen,
+        handleOpen: openDrawer,
+        handleClose: closeDrawer,
+      } = useOpenClose();
       return (
         <>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer
-            isOpen={isOpen}
+            isOpen={isDrawerOpen}
             title="Drawer Title"
-            onDismiss={close}
+            onDismiss={closeDrawer}
             ariaLabel="drawer component example"
           >
             <Box padding="lg" display="block" childGap="md">
@@ -78,7 +81,7 @@ Drawers are good for short pieces of content that are related to the main screen
 
 - Use the `ariaLabel` or `ariaLabelledBy` props to properly label a drawer to provide context for users with assistive technology such as screen readers. If a drawer is announced to the user without a label, it can be confusing and difficult to navigate.
 - When the Drawer is opened, focus is trapped inside the Drawer.
-- 'Esc'
+- The 'Esc' key will close the Drawer.
 - By default, the Drawer sets focus on the first focusable element. If the `initialFocusRef` prop is passed, the Drawer sets focus on the element with the assigned ref.
 - After the drawer closes, focus is returned to the element that triggered it.
 
@@ -98,8 +101,12 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
     }}
   >
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const [value, setValue] = useState('right');
+      const {
+        isOpen: isDrawerOpen,
+        handleOpen: openDrawer,
+        handleClose: closeDrawer,
+      } = useOpenClose();
+      const [placement, setPlacement] = useState('right');
       const placementOptions = [
         {
           id: 'top',
@@ -122,26 +129,24 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
           label: 'left',
         },
       ];
-      const open = () => setIsOpen(true);
-      const close = () => setIsOpen(false);
       return (
         <Box display="block" childGap="md">
           <RadioGroup
             title="Placement"
             direction="row"
             name="placement"
-            onChange={event => setValue(event.target.value)}
-            value={value}
+            onChange={event => setPlacement(event.target.value)}
+            value={placement}
             options={placementOptions}
           />
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer
             title="test"
-            isOpen={isOpen}
-            onDismiss={close}
-            placement={value}
+            isOpen={isDrawerOpen}
+            onDismiss={closeDrawer}
+            placement={placement}
             ariaLabel="drawer component example"
           >
             <Box padding="lg" display="block" childGap="md">
@@ -166,7 +171,7 @@ The Drawer can appear from the right (default), left, top, or bottom of the scre
 
 A header will be added to the drawer content if `title` is defined, or `closeButton` is `true`. If the content of the drawer is taller than the drawer height, then the content will scroll while the header remains fixed to the top.
 
-<Canvas>
+<Canvas withSource="open">
   <Story
     name="Title and Close Button"
     parameters={{
@@ -174,22 +179,24 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
     }}
   >
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const open = () => setIsOpen(true);
-      const close = () => setIsOpen(false);
+      const {
+        isOpen: isDrawerOpen,
+        handleOpen: openDrawer,
+        handleClose: closeDrawer,
+      } = useOpenClose();
       const drawerContent = [];
       for (let i = 0; i < 50; i++) {
         drawerContent.push(<Box key={i}>Drawer content&hellip;</Box>);
       }
       return (
         <>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openDrawer}>
             Title and Close Button
           </Button>
           <Drawer
             ariaLabel="drawer component example"
-            isOpen={isOpen}
-            onDismiss={close}
+            isOpen={isDrawerOpen}
+            onDismiss={closeDrawer}
             title="Drawer Title"
           >
             <Box padding="lg" display="block" childGap="md">
@@ -207,22 +214,24 @@ A header will be added to the drawer content if `title` is defined, or `closeBut
     }}
   >
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const open = () => setIsOpen(true);
-      const close = () => setIsOpen(false);
+      const {
+        isOpen: isDrawerOpen,
+        handleOpen: openDrawer,
+        handleClose: closeDrawer,
+      } = useOpenClose();
       const drawerContent = [];
       for (let i = 0; i < 50; i++) {
         drawerContent.push(<Box key={i}>Drawer content&hellip;</Box>);
       }
       return (
         <>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openDrawer}>
             Close Button Only
           </Button>
           <Drawer
             ariaLabel="drawer component example"
-            isOpen={isOpen}
-            onDismiss={close}
+            isOpen={isDrawerOpen}
+            onDismiss={closeDrawer}
             closeButton
           >
             <Box padding="lg" display="block" childGap="md">
@@ -249,18 +258,20 @@ When `placement` is set to `top` or `bottom`, the `width` prop is ignored and th
     }}
   >
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
+      const {
+        isOpen: isDrawerOpen,
+        handleOpen: openDrawer,
+        handleClose: closeDrawer,
+      } = useOpenClose();
       const [width, setWidth] = React.useState('default');
-      const open = () => setIsOpen(true);
-      const close = () => setIsOpen(false);
       const handleClick = newWidth => {
         setWidth(newWidth);
-        open();
+        openDrawer();
       };
       const widths = ['333px', '100%', '30rem', '4xl'];
       return (
         <>
-          <Box childGap="sm" direction="row">
+          <Box gap="sm" direction="row">
             {widths.map(width => (
               <Button
                 variant="light"
@@ -274,8 +285,8 @@ When `placement` is set to `top` or `bottom`, the `width` prop is ignored and th
           <Drawer
             width={width}
             title={`${width} wide drawer`}
-            isOpen={isOpen}
-            onDismiss={close}
+            isOpen={isDrawerOpen}
+            onDismiss={closeDrawer}
             closeButton
             ariaLabel="drawer component example"
           >
@@ -301,18 +312,20 @@ The height of Drawers with a `top` or `bottom` placement is determined by Drawer
     }}
   >
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const open = () => setIsOpen(true);
-      const close = () => setIsOpen(false);
+      const {
+        isOpen: isDrawerOpen,
+        handleOpen: openDrawer,
+        handleClose: closeDrawer,
+      } = useOpenClose();
       return (
         <>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer
             placement="top"
-            isOpen={isOpen}
-            onDismiss={close}
+            isOpen={isDrawerOpen}
+            onDismiss={closeDrawer}
             closeButton
             ariaLabel="drawer component example"
           >
@@ -345,39 +358,42 @@ In cases where content in the drawer is supplemental to content on the main area
     }}
   >
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const close = () => {
-        setIsOpen(false);
+      const closeBtnRef = useRef();
+      const returnFocusRef = useRef();
+      const returnFocus = () => {
         if (returnFocusRef && returnFocusRef.current) {
           returnFocusRef.current.focus();
         }
       };
-      const toggle = () => {
-        const prevState = isOpen;
-        setIsOpen(!prevState);
-      };
-      const closeBtnRef = React.useRef();
-      const returnFocusRef = React.useRef();
-      React.useEffect(() => {
+      const {
+        isOpen: isDrawerOpen,
+        handleToggle: handleDrawerToggle,
+        handleClose: closeDrawer,
+      } = useOpenClose({ onClose: returnFocus });
+      useEffect(() => {
         setTimeout(() => {
           if (closeBtnRef && closeBtnRef.current) {
             closeBtnRef.current.focus();
           }
         }, 100);
-      }, [isOpen]);
+      }, [isDrawerOpen]);
       return (
         <>
-          <Button variant="light" onClick={toggle} ref={returnFocusRef}>
-            Open Drawer
+          <Button
+            variant="light"
+            onClick={handleDrawerToggle}
+            ref={returnFocusRef}
+          >
+            Toggle Drawer
           </Button>
           <Drawer
-            isOpen={isOpen}
-            onDismiss={close}
-            hideOverlay
+            isOpen={isDrawerOpen}
+            onDismiss={closeDrawer}
             ariaLabel="drawer component example"
+            hideOverlay
           >
             <Box padding="lg" display="block" childGap="md">
-              <Button ref={closeBtnRef} onClick={close} variant="light">
+              <Button ref={closeBtnRef} onClick={closeDrawer} variant="light">
                 close
               </Button>
               <Box>drawer content</Box>
@@ -407,25 +423,27 @@ By default the first focusable element will receive focus when the drawer opens,
     }}
   >
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
+      const {
+        isOpen: isDrawerOpen,
+        handleOpen: openDrawer,
+        handleClose: closeDrawer,
+      } = useOpenClose();
       const ref = useRef();
-      const open = () => setIsOpen(true);
-      const close = () => setIsOpen(false);
       return (
         <>
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer
-            isOpen={isOpen}
-            onDismiss={close}
+            isOpen={isDrawerOpen}
+            onDismiss={closeDrawer}
             initialFocusRef={ref}
             title="initialFocusRef"
             ariaLabel="drawer component example"
           >
             <Box padding="lg" display="block" childGap="md">
               <Box>drawer content</Box>
-              <Button variant="dark" isOutlined ref={ref} onClick={close}>
+              <Button variant="dark" isOutlined ref={ref} onClick={closeDrawer}>
                 I receive focus
               </Button>
             </Box>
@@ -455,7 +473,11 @@ Render the Drawer within a containing div using `containerRef`.
   >
     {() => {
       const containerRef = useRef();
-      const [showDrawer, setShowDrawer] = useState(false);
+      const {
+        isOpen: isDrawerOpen,
+        handleOpen: openDrawer,
+        handleClose: closeDrawer,
+      } = useOpenClose();
       return (
         <Box
           position="relative"
@@ -467,12 +489,12 @@ Render the Drawer within a containing div using `containerRef`.
           padding="lg"
           overflow="hidden"
         >
-          <Button variant="light" onClick={() => setShowDrawer(true)}>
+          <Button variant="light" onClick={openDrawer}>
             Show Drawer
           </Button>
           <Drawer
-            isOpen={showDrawer}
-            onDismiss={() => setShowDrawer(false)}
+            isOpen={isDrawerOpen}
+            onDismiss={closeDrawer}
             containerRef={containerRef}
             dangerouslyBypassScrollLock
             hideOverlay
@@ -508,10 +530,12 @@ The appearance of a Drawer can be customized via component design tokens.
     }}
   >
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
+      const {
+        isOpen: isDrawerOpen,
+        handleOpen: openDrawer,
+        handleClose: closeDrawer,
+      } = useOpenClose();
       const containerRef = useRef();
-      const open = () => setIsOpen(true);
-      const close = () => setIsOpen(false);
       return (
         <Box
           display="block"
@@ -528,13 +552,13 @@ The appearance of a Drawer can be customized via component design tokens.
             '--drawer-close-button-color-hover': 'var(--color-brand-grey-100)',
           }}
         >
-          <Button variant="light" onClick={open}>
+          <Button variant="light" onClick={openDrawer}>
             Open Drawer
           </Button>
           <Drawer
-            isOpen={isOpen}
+            isOpen={isDrawerOpen}
             title="Themed Drawer"
-            onDismiss={close}
+            onDismiss={closeDrawer}
             ariaLabel="themed drawer"
             containerRef={containerRef} // where the tokens are scoped
             hideOverlay

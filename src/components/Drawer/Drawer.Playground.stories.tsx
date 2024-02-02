@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { Drawer, DrawerProps, DrawerPlacementType } from './Drawer';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+import { useOpenClose } from '../../hooks/useOpenClose/useOpenClose';
 
 const DRAWER_PLACEMENT: DrawerPlacementType[] = [
   'right',
@@ -83,15 +84,17 @@ export default {
 } as Meta;
 
 const Template: Story<DrawerProps> = ({ ...args }) => {
-  const [show, setShow] = React.useState(false);
-  const open = () => setShow(true);
-  const close = () => setShow(false);
+  const {
+    isOpen: isDrawerOpen,
+    handleOpen: openDrawer,
+    handleClose: closeDrawer,
+  } = useOpenClose();
   return (
     <>
-      <Button variant="light" onClick={open}>
+      <Button variant="light" onClick={openDrawer}>
         Show Drawer
       </Button>
-      <Drawer {...args} isOpen={show} onDismiss={close}>
+      <Drawer {...args} isOpen={isDrawerOpen} onDismiss={closeDrawer}>
         <Box padding="lg">drawer content</Box>
       </Drawer>
     </>

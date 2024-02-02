@@ -28,7 +28,7 @@ It is also used in combination with an input and popover by the [DateInput compo
     {() => {
       const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <DatePicker onChange={setSelectedDate} selected={selectedDate} />
           <p>Selected Date: {selectedDate.toISOString()}</p>
         </Box>
@@ -49,7 +49,7 @@ It is also used in combination with an input and popover by the [DateInput compo
         setEndDate(endDate);
       };
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <DatePicker
             onChange={setDate}
             selected={startDate}
@@ -79,7 +79,7 @@ It is also used in combination with an input and popover by the [DateInput compo
       const max = new Date(2019, 11, 18);
       max.setDate(max.getDate() + 5);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <DatePicker selected={startDate} onChange={setStartDate} minDate={min} maxDate={max} />
           <p>Selected Date: {startDate.toISOString()}</p>
         </Box>
@@ -97,14 +97,13 @@ It is also used in combination with an input and popover by the [DateInput compo
       const [startDateTwo, setStartDateTwo] = useState(new Date(2019, 10));
       const [startDateThree, setStartDateThree] = useState(new Date(2019, 10));
       return (
-        <Box display="flex" direction="row" childGap="md">
-          <Box childGap="md" display="flex" direction="column" alignItems="center" width="33">
+        <Box display="flex" direction="row" gap="md">
+          <Box gap="md" display="flex" direction="column" alignItems="center" width="33">
             <Heading size="md">Default</Heading>
             <DatePicker selected={startDateOne} onChange={setStartDateOne} showMonthYearPicker />
-            <p>Selected Date:</p>
-            <p style={{ fontSize: '0.8rem' }}>{startDateOne.toISOString()}</p>
+            <p>{startDateOne.toISOString()}</p>
           </Box>
-          <Box childGap="md" display="flex" direction="column" alignItems="center" width="33">
+          <Box gap="md" display="flex" direction="column" alignItems="center" width="33">
             <Heading size="md">With full month name</Heading>
             <DatePicker
               selected={startDateTwo}
@@ -112,10 +111,9 @@ It is also used in combination with an input and popover by the [DateInput compo
               showMonthYearPicker
               showFullMonthYearPicker
             />
-            <p>Selected Date:</p>
-            <p style={{ fontSize: '0.8rem' }}>{startDateTwo.toISOString()}</p>
+            <p>{startDateTwo.toISOString()}</p>
           </Box>
-          <Box childGap="md" display="flex" direction="column" alignItems="center" width="33">
+          <Box gap="md" display="flex" direction="column" alignItems="center" width="33">
             <Heading size="md">With Two-column layout</Heading>
             <DatePicker
               selected={startDateThree}
@@ -124,8 +122,7 @@ It is also used in combination with an input and popover by the [DateInput compo
               showFullMonthYearPicker
               showTwoColumnMonthYearPicker
             />
-            <p>Selected Date:</p>
-            <p style={{ fontSize: '0.8rem' }}>{startDateThree.toISOString()}</p>
+            <p>{startDateThree.toISOString()}</p>
           </Box>
         </Box>
       );
@@ -146,7 +143,7 @@ It is also used in combination with an input and popover by the [DateInput compo
         setEndDate(endDate);
       };
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <DatePicker
             onChange={setDate}
             selected={startDate}
@@ -155,8 +152,8 @@ It is also used in combination with an input and popover by the [DateInput compo
             selectsRange
             monthsShown={2}
           />
-          Start Date: <p style={{ fontSize: '0.75rem ' }}>{startDate && startDate.toISOString()}</p>
-          End Date:<p style={{ fontSize: '0.75rem ' }}>{endDate && endDate.toISOString()}</p>
+          <p>Start Date: {startDate && startDate.toISOString()}</p>
+          <p>End Date: {endDate && endDate.toISOString()}</p>
         </Box>
       );
     }}
@@ -170,7 +167,7 @@ It is also used in combination with an input and popover by the [DateInput compo
     {() => {
       const [startDate, setStartDate] = useState(new Date('1993/09/28'));
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <DatePicker
             selected={startDate}
             onChange={date => setStartDate(date)}
@@ -178,7 +175,7 @@ It is also used in combination with an input and popover by the [DateInput compo
             timeIntervals={15}
             timeCaption="Time"
           />
-          Selected Date: <p style={{ fontSize: '0.75rem ' }}>{startDate && startDate.toISOString()}</p>
+          <p>Selected Date: {startDate && startDate.toISOString()}</p>
         </Box>
       );
     }}
@@ -192,13 +189,13 @@ It is also used in combination with an input and popover by the [DateInput compo
     {() => {
       const [startDate, setStartDate] = useState(new Date('1993/09/28'));
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <DatePicker
             onChange={setStartDate}
             selected={startDate}
             openToDate={new Date('1993/09/28')}
           />
-          Selected Date: <p style={{ fontSize: '0.75rem ' }}>{startDate && startDate.toISOString()}</p>
+          <p>Selected Date: {startDate && startDate.toISOString()}</p>
         </Box>
       );
     }}
@@ -212,7 +209,7 @@ It is also used in combination with an input and popover by the [DateInput compo
     {() => {
       const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <DatePicker onChange={setSelectedDate} selected={selectedDate}>
             <Box display="block" style={{ textAlign: 'center' }} color="primary">
               It will be sunny out today!
@@ -232,7 +229,7 @@ It is also used in combination with an input and popover by the [DateInput compo
     {() => {
       const [selectedDate, setSelectedDate] = useState(new Date(2019, 11, 3));
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <DatePicker
             onChange={setSelectedDate}
             selected={selectedDate}
@@ -266,7 +263,7 @@ The DatePicker component can be themed by base tokens, or component specific tok
       const max = new Date(2019, 11, 18);
       max.setDate(max.getDate() + 5);
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <div
             style={{
               '--color-brand-primary-50': '#CFC5E9',
@@ -294,7 +291,7 @@ The DatePicker component can be themed by base tokens, or component specific tok
             }}
           >
             <Box margin="md 0" fontWeight="bold">Here we've overwritten ONLY the values for the DatePicker component</Box>
-            <Box direction="row" childGap="md" wrap>
+            <Box direction="row" gap="md" wrap>
               <DatePicker onChange={setSelectedDate} selected={selectedDate} />
               <DatePicker
                 onChange={setDate}

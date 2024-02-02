@@ -70,7 +70,7 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef(
           key: child.key,
           style: { ...child.props.style, ...(isFullWidth && { flex: 1 }) },
           'aria-posinset': index + 1,
-          'aria-setsize': React.Children.count(children),
+          'aria-setsize': React.Children.toArray(children).length,
           'aria-selected': value === index,
           ref: mergeRefs([
             value === index ? activeTabRef : null,

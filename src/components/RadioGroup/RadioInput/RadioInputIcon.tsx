@@ -15,7 +15,7 @@ export interface RadioIconProps extends BoxProps {
    */
   error?: RadioGroupProps['error'];
   /**
-   * Whethere the radio is selected.
+   * Whether the radio is selected.
    */
   isSelected?: RadioInputProps['isSelected'];
   /**

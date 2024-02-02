@@ -26,7 +26,6 @@ module.exports = {
   },
   stories: ['../src/**/*.stories.@([tj]sx|mdx)'],
   addons: [
-    '@storybook/addon-actions/register',
     '@storybook/addon-a11y',
     {
       name: '@storybook/addon-docs',
@@ -34,11 +33,10 @@ module.exports = {
         transcludeMarkdown: true,
       },
     },
-    '@storybook/addon-controls',
-    '@storybook/addon-links/',
     "@storybook/addon-essentials",
     'storybook-addon-designs',
     'storybook-addon-mdx-embed',
+    '@storybook/addon-postcss',
     './register',
   ],
   webpackFinal: config => {

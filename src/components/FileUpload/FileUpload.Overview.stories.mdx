@@ -191,7 +191,7 @@ Light, dark, primary and white variations are available.
         setPrimaryFiles(event.target.files);
       };
       return (
-        <Box direction="row" childGap="md" alignItems="center">
+        <Box direction="row" gap="md" alignItems="center">
           <FileUpload
             buttonText="Dark"
             labelText="My File"
@@ -253,7 +253,7 @@ Use `isOutlined` to render an outline button.
         setPrimaryFiles(event.target.files);
       };
       return (
-        <Box direction="row" childGap="md" alignItems="center">
+        <Box direction="row" gap="md" alignItems="center">
           <FileUpload
             buttonText="Dark"
             labelText="My File"
@@ -315,9 +315,9 @@ Set the size of the FileUpload button to `xs`, `sm`, `md` or `lg`. `md` is the d
         alert(`You picked this file: ${event.target.files[0].name}`);
       };
       return (
-        <Box childGap="lg" direction="row">
-          <Box childGap="md">
-            <Box childGap="sm">
+        <Box gap="lg" direction="row">
+          <Box gap="md">
+            <Box gap="sm">
               {sizes.map(size => (
                 <FileUpload
                   key={size.label}
@@ -354,7 +354,7 @@ they are cleared at the top level where the `files` prop is emptied.
         setFiles(null);
       };
       return (
-        <Box childGap="md" direction="row">
+        <Box gap="md" direction="row">
           <FileUpload
             labelText="My File"
             id="myFile"
@@ -522,7 +522,7 @@ display a proper error when necessary.
         }
       };
       return (
-        <Box childGap="md" direction="row">
+        <Box gap="md" direction="row">
           <FileUpload
             labelText="My File"
             id="myFile"
@@ -553,7 +553,7 @@ You can remove or customize the required indicator using the `requiredIndicator`
         setFiles(event.target.files);
       };
       return (
-        <Box childGap="md">
+        <Box gap="md">
           <FileUpload
             labelText="My File"
             id="myFile"

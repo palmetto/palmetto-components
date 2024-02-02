@@ -41,9 +41,9 @@ const options = [
 ];
 
 const Template: Story<RadioGroupProps> = ({ ...args }) => (
-  <Box childGap="xl">
+  <Box gap="xl">
     {sizes.map(size => (
-      <Box childGap="md" key={`${args.id}-${size}`}>
+      <Box gap="md" key={`${args.id}-${size}`}>
         {/* eslint-disable-next-line */}
         {/* @ts-ignore */}
         <RadioGroup size={size} options={options} {...args} />

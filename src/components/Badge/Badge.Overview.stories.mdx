@@ -45,7 +45,7 @@ Badges come in different variants based on the kind of message being delivered t
         'danger',
       ];
       return (
-        <Box direction="row" childGap="sm">
+        <Box direction="row" gap="sm">
           {variants.map(variant => (
             <Badge message={variant} variant={variant} key={variant} />
           ))}
@@ -65,7 +65,7 @@ so the badge can be a different size per breakpoint.
     {() => {
       return (
         <>
-          <Box direction="column" alignItems="flex-start" childGap="md">
+          <Box direction="column" alignItems="flex-start" gap="md">
             <Badge size="sm" message="Small" />
             <Badge size="md" message="Medium" />
             <Badge size="lg" message="Large" />

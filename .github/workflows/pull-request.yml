@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - uses: actions/cache@v1
         with:
           path: ~/.cache/yarn
@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - uses: actions/cache@v1
         with:
           path: ~/.cache/yarn
@@ -53,7 +53,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - uses: actions/cache@v1
         with:
           path: ~/.cache/yarn
@@ -71,7 +71,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - uses: actions/cache@v1
         with:
           path: ~/.cache/yarn
@@ -91,7 +91,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - uses: actions/cache@v1
         with:
           path: ~/.cache/yarn
@@ -121,7 +121,7 @@ jobs:
           fetch-depth: 0 # Required to retrieve git history
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - uses: actions/cache@v1
         with:
           path: ~/.cache/yarn
@@ -134,4 +134,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-
+          onlyChanged: true
+          externals: |
+            - '*.scss'
+            - 'public/**'

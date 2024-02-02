@@ -99,7 +99,14 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
   return (
     <>
       {option && (
-        <Box className={containerClasses} key={option.id} direction="row" alignItems="center" ref={ref}>
+        <Box
+          className={containerClasses}
+          key={option.id}
+          direction="row"
+          alignItems="center"
+          ref={ref}
+          position="relative"
+        >
           <Box
             aria-required={isRequired}
             as="input"
@@ -127,7 +134,9 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
               radius="circle"
             />
           )}
-          {option.label && <FormLabel {...labelProps}>{option.label}</FormLabel>}
+          {option.label && (
+            <FormLabel {...labelProps}>{option.label}</FormLabel>
+          )}
         </Box>
       )}
     </>
