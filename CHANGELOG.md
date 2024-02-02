@@ -1,5 +1,33 @@
 Changelog
 
+# [1.0.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.157.7...v1.0.0-beta.1) (2024-02-02)
+
+
+* BREAKING CHANGE: New Buttons (#865) ([935c361](https://github.com/palmetto/palmetto-components/commit/935c3615456e7ca8d8b2b51f0c13d6e0f6985f2d)), closes [#865](https://github.com/palmetto/palmetto-components/issues/865)
+
+
+### BREAKING CHANGES
+
+* * wip
+
+* more wip
+
+* fix errors
+
+* form label help text tokens
+
+* mediamodal close button
+
+* Update Theming.stories.mdx
+
+* fix build
+
+* Update Button.VisualTests.stories.tsx
+
+* Update Button.VisualTests.stories.tsx
+
+* cleanup
+
 ## [0.157.7](https://github.com/palmetto/palmetto-components/compare/v0.157.6...v0.157.7) (2024-01-29)
 
 
