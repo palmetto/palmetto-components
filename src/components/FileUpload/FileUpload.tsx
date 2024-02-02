@@ -181,25 +181,24 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<
       return fontSize;
     };
 
-    const renderFiles = () =>
-      files && (
-        <Box>
-          {[...Array.from(files)].map((file: File) => (
-            <p
-              key={file.name}
-              className={`font-size-${messageFontSize()} m-top-xs`}
-            >
-              <Icon
-                name="paperclip"
-                className="font-color-grey-light m-right-xs"
-              />
-              {fileNameMaxLength
-                ? truncateFileName(file.name, fileNameMaxLength)
-                : file.name}
-            </p>
-          ))}
-        </Box>
-      );
+    const renderFiles = () => files && (
+    <Box>
+      {[...Array.from(files)].map((file: File) => (
+        <p
+          key={file.name}
+          className={`font-size-${messageFontSize()} m-top-xs`}
+        >
+          <Icon
+            name="paperclip"
+            className="font-color-grey-light m-right-xs"
+          />
+          {fileNameMaxLength
+            ? truncateFileName(file.name, fileNameMaxLength)
+            : file.name}
+        </p>
+      ))}
+    </Box>
+    );
 
     return (
       <Box

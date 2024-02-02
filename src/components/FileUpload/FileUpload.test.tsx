@@ -28,16 +28,19 @@ describe('FileUpload', () => {
   describe('Button Variations', () => {
     it('renders a file upload button in different styles based on props', () => {
       interface Props {
-        color?: 'dark' | 'light' | 'primary';
+        variant?: 'secondary' | 'primary';
         size?: 'sm' | 'md' | 'lg';
       }
-      const UploadComponent: FC<Props> = ({ color = 'light', size = 'md' }) => (
+      const UploadComponent: FC<Props> = ({
+        variant = 'secondary',
+        size = 'md',
+      }) => (
         <FileUpload
           id="file-input"
           labelText="myFileUpload"
           name="file-input"
           onChange={() => null}
-          variant={color}
+          variant={variant}
           size={size}
         />
       );
@@ -46,21 +49,21 @@ describe('FileUpload', () => {
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('light', 'size-md');
+      expect(button).toHaveClass('secondary', 'size-md');
 
-      rerender(<UploadComponent size="sm" color="dark" />);
+      rerender(<UploadComponent size="sm" variant="secondary" />);
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('dark', 'size-sm');
+      expect(button).toHaveClass('secondary', 'size-sm');
 
-      rerender(<UploadComponent size="lg" color="dark" />);
+      rerender(<UploadComponent size="lg" variant="secondary" />);
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('dark', 'size-lg');
+      expect(button).toHaveClass('secondary', 'size-lg');
 
-      rerender(<UploadComponent size="md" color="primary" />);
+      rerender(<UploadComponent size="md" variant="primary" />);
       button = screen.getByText('Upload File').closest('button');
 
       expect(button).toBeInTheDocument();

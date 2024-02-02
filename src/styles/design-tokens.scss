@@ -3,9 +3,3 @@
   --background-primary: var(--color-brand-white-base);
   --background-secondary: var(--color-brand-grey-50);
 }
-
-:root[data-theme="dark"],
-div[data-theme="dark"] {
-  --background-primary: var(--color-brand-grey-800);
-  --background-secondary: var(--color-brand-grey-900);
-}

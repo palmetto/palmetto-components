@@ -105,7 +105,7 @@ export interface BaseButtonProps {
    */
 }
 
-export type AnchorButtonProps = { as: 'a' } & BaseButtonProps &
+export type AnchorButtonProps = { as: 'a'; } & BaseButtonProps &
   Omit<
     React.DetailedHTMLProps<
       AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -114,7 +114,7 @@ export type AnchorButtonProps = { as: 'a' } & BaseButtonProps &
     'ref'
   >;
 
-export type NormalButtonProps = { as?: 'button' } & BaseButtonProps &
+export type NormalButtonProps = { as?: 'button'; } & BaseButtonProps &
   Omit<
     React.DetailedHTMLProps<
       ButtonHTMLAttributes<HTMLButtonElement>,
@@ -193,62 +193,61 @@ export const Button = forwardRef<
       return 'dark';
     };
 
-    const buttonContent =
-      iconPrefix || iconSuffix ? (
-        <Box
-          display="inline-flex"
-          direction="row"
-          alignItems="center"
-          gap={size === 'xs' ? '2xs' : 'xs'}
-        >
-          {isLoading && (
-            <Spinner
-              variant={getSpinnerVariant()}
-              className={styles['spinner-wrapper']}
-            />
-          )}
-          {iconPrefix && (
-            <Box display="block" style={{ lineHeight: '1' }}>
-              <Icon
-                className={styles.label}
-                name={iconPrefix}
-                aria-hidden="true"
-                focusable="false"
-                data-testid="prefixIcon"
-                size={size}
-              />
-            </Box>
-          )}
-          {children && <span className={styles.label}>{children}</span>}
-          {iconSuffix && (
-            <Box display="block">
-              <Icon
-                className={styles.label}
-                name={iconSuffix}
-                aria-hidden="true"
-                focusable="false"
-                data-testid="suffixIcon"
-                size={size}
-              />
-            </Box>
-          )}
+    const buttonContent = iconPrefix || iconSuffix ? (
+      <Box
+        display="inline-flex"
+        direction="row"
+        alignItems="center"
+        gap={size === 'xs' ? '2xs' : 'xs'}
+      >
+        {isLoading && (
+        <Spinner
+          variant={getSpinnerVariant()}
+          className={styles['spinner-wrapper']}
+        />
+        )}
+        {iconPrefix && (
+        <Box display="block" style={{ lineHeight: '1' }}>
+          <Icon
+            className={styles.label}
+            name={iconPrefix}
+            aria-hidden="true"
+            focusable="false"
+            data-testid="prefixIcon"
+            size={size}
+          />
         </Box>
-      ) : (
-        <>
-          {isLoading && (
-            <Spinner
-              variant={getSpinnerVariant()}
-              className={styles['spinner-wrapper']}
-            />
-          )}
-          {(() => {
-            if (children) {
-              return <span className={styles.label}>{children}</span>;
-            }
-            return null;
-          })()}
-        </>
-      );
+        )}
+        {children && <span className={styles.label}>{children}</span>}
+        {iconSuffix && (
+        <Box display="block">
+          <Icon
+            className={styles.label}
+            name={iconSuffix}
+            aria-hidden="true"
+            focusable="false"
+            data-testid="suffixIcon"
+            size={size}
+          />
+        </Box>
+        )}
+      </Box>
+    ) : (
+      <>
+        {isLoading && (
+        <Spinner
+          variant={getSpinnerVariant()}
+          className={styles['spinner-wrapper']}
+        />
+        )}
+        {(() => {
+          if (children) {
+            return <span className={styles.label}>{children}</span>;
+          }
+          return null;
+        })()}
+      </>
+    );
 
     const buttonElement = getElementType(Button, { as });
 
@@ -261,8 +260,9 @@ export const Button = forwardRef<
         disabled,
         target: as === 'a' && href ? target : null,
         onBlur: handleBlur,
-        onClick: (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) =>
-          handleClick(event, onClick, target, navigate),
+        onClick: (
+          event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+        ) => handleClick(event, onClick, target, navigate),
         onFocus: handleFocus,
         ref,
         type: type || (as !== 'a' && !href ? 'button' : undefined),
