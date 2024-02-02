@@ -35,18 +35,18 @@ The `variant` prop determines which color visual weight to render.
       },
     }}
   >
-    <Box childGap="md" style={{ backgroundColor: 'var(--background-primary)'}}>
-      <Box childGap="sm" direction="row" alignItems="flex-start">
+    <Box gap="md">
+      <Box gap="sm" direction="row" alignItems="flex-start">
         <Button variant="primary">Primary</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="tertiary">Tertiary</Button>
       </Box>
-      <Box childGap="sm" direction="row" alignItems="flex-start">
+      <Box gap="sm" direction="row" alignItems="flex-start">
         <Button variant="primary-neutral">Primary-Neutral</Button>
         <Button variant="secondary-neutral">Secondary-Neutral</Button>
         <Button variant="tertiary-neutral">Tertiary-Neutral</Button>
       </Box>
-      <Box childGap="sm" direction="row" alignItems="flex-start">
+      <Box gap="sm" direction="row" alignItems="flex-start">
         <Button variant="primary-danger">Primary-Danger</Button>
         <Button variant="secondary-danger">Secondary-Danger</Button>
         <Button variant="tertiary-danger">Tertiary-Danger</Button>
@@ -56,6 +56,7 @@ The `variant` prop determines which color visual weight to render.
 </Canvas>
 
 ## Sizes
+
 Set the size of the button to `xs`, `sm`, `md` or `lg`. `md` is the default size. The button also takes a `ResponsiveProp` object
 so it can have different sizes at different breakpoints.
 
@@ -69,19 +70,11 @@ so it can have different sizes at different breakpoints.
       },
     }}
   >
-    <Box childGap="sm" direction="row" alignItems="flex-start">
-      <Button size="xs">
-        xs
-      </Button>
-      <Button size="sm">
-        sm
-      </Button>
-      <Button size="md">
-        md
-      </Button>
-      <Button size="lg">
-        lg
-      </Button>
+    <Box gap="sm" direction="row" alignItems="flex-start">
+      <Button size="xs">xs</Button>
+      <Button size="sm">sm</Button>
+      <Button size="md">md</Button>
+      <Button size="lg">lg</Button>
       <Button
         size={{
           base: 'xs',
@@ -103,7 +96,9 @@ Use the `fullWidth` prop to allow the button to grow to its container's full wid
 
 <Canvas withSource="open">
   <Story name="Full Width">
-    <Button variant="primary-neutral" fullWidth>Full Width</Button>
+    <Button variant="primary-neutral" fullWidth>
+      Full Width
+    </Button>
   </Story>
 </Canvas>
 
@@ -113,7 +108,7 @@ Add an icon to the left or right inside the Button using the `iconPrefix` and `i
 
 <Canvas withSource="open">
   <Story name="With Icons">
-    <Box direction="row" childGap="xs">
+    <Box direction="row" gap="xs">
       <Button variant="primary-neutral" iconPrefix="mail">
         Email
       </Button>
@@ -131,7 +126,11 @@ Use a combination of `tertiary-*` variant and a named icon to make an icon a but
 <Canvas withSource="open">
   <Story name="Icon Button">
     <Button variant="tertiary" iconPrefix="add" aria-label="add" />
-    <Button variant="tertiary-neutral" iconPrefix="dots" aria-label="open menu" />
+    <Button
+      variant="tertiary-neutral"
+      iconPrefix="dots"
+      aria-label="open menu"
+    />
     <Button variant="tertiary-danger" iconPrefix="trash" aria-label="remove" />
   </Story>
 </Canvas>
@@ -143,10 +142,14 @@ The width of the button will remain consistent to prevent content from shifting.
 
 <Canvas withSource="open">
   <Story name="Loading">
-    <Box direction="row" childGap="sm">
+    <Box direction="row" gap="sm">
       <Button isLoading>Primary Loading</Button>
-      <Button variant="secondary" isLoading>Secondary Loading</Button>
-      <Button variant="tertiary" isLoading>Tertiary Loading</Button>
+      <Button variant="secondary" isLoading>
+        Secondary Loading
+      </Button>
+      <Button variant="tertiary" isLoading>
+        Tertiary Loading
+      </Button>
     </Box>
   </Story>
 </Canvas>
@@ -158,10 +161,16 @@ The interface should make it clear why the button is disabled and what needs to 
 
 <Canvas withSource="open">
   <Story name="Disabled">
-    <Box direction="row" childGap="sm">
-      <Button variant="primary-neutral" isDisabled>Primary Disabled</Button>
-      <Button variant="secondary-neutral" isDisabled>Secondary Disabled</Button>
-      <Button variant="tertiary-neutral" isDisabled>Tertiary Disabled</Button>
+    <Box direction="row" gap="sm">
+      <Button variant="primary-neutral" isDisabled>
+        Primary Disabled
+      </Button>
+      <Button variant="secondary-neutral" isDisabled>
+        Secondary Disabled
+      </Button>
+      <Button variant="tertiary-neutral" isDisabled>
+        Tertiary Disabled
+      </Button>
     </Box>
   </Story>
 </Canvas>
@@ -222,7 +231,9 @@ can render buttons as one of `button`, `a`, and `input`.
 </Canvas>
 
 ## Custom Theme
+
 The Button component can be themed by base tokens, or component specific tokens. This example shows how we style our `Button` with our brand font and squared corners for use on our public marketing site.
+
 <Canvas>
   <Story name="With Custom Theme">
     <Box
@@ -238,15 +249,24 @@ The Button component can be themed by base tokens, or component specific tokens.
         '--button-size-lg-border-radius': '0',
       }}
     >
-      <Button variant="primary" size="xs">Get Solar</Button>
-      <Button variant="primary" size="sm">Get Solar</Button>
-      <Button variant="primary" size="md">Get Solar</Button>
-      <Button variant="primary" size="lg">Get Solar</Button>
+      <Button variant="primary" size="xs">
+        Get Solar
+      </Button>
+      <Button variant="primary" size="sm">
+        Get Solar
+      </Button>
+      <Button variant="primary" size="md">
+        Get Solar
+      </Button>
+      <Button variant="primary" size="lg">
+        Get Solar
+      </Button>
     </Box>
   </Story>
 </Canvas>
 
 ## Component Design Tokens
+
 <table>
   <thead>
     <tr>
@@ -259,19 +279,23 @@ The Button component can be themed by base tokens, or component specific tokens.
       const tokens = {
         '--button-font-family': '--asset-fonts-body',
         '--button-font-weight': '--size-font-weight-bold',
-        '--button-size-xs-border-radius': '--form-control-size-sm-border-radius',
+        '--button-size-xs-border-radius':
+          '--form-control-size-sm-border-radius',
         '--button-size-xs-font-size': '--form-control-size-xs-font-size',
         '--button-size-xs-padding-vertical': '--size-spacing-2xs',
         '--button-size-xs-padding-horizontal': '--size-spacing-xs',
-        '--button-size-sm-border-radius': '--form-control-size-sm-border-radius',
+        '--button-size-sm-border-radius':
+          '--form-control-size-sm-border-radius',
         '--button-size-sm-font-size': '--form-control-size-sm-font-size',
         '--button-size-sm-padding-vertical': '--form-control-size-sm-padding',
         '--button-size-sm-padding-horizontal': '--size-spacing-sm',
-        '--button-size-md-border-radius': '--form-control-size-md-border-radius',
+        '--button-size-md-border-radius':
+          '--form-control-size-md-border-radius',
         '--button-size-md-font-size': '--form-control-size-md-font-size',
         '--button-size-md-padding-vertical': '--form-control-size-md-padding',
         '--button-size-md-padding-horizontal': '--size-spacing-md',
-        '--button-size-lg-border-radius': '--form-control-size-lg-border-radius',
+        '--button-size-lg-border-radius':
+          '--form-control-size-lg-border-radius',
         '--button-size-lg-font-size': '--form-control-size-lg-font-size',
         '--button-size-lg-padding-vertical': '--form-control-size-lg-padding',
         '--button-size-lg-padding-horizontal': '--size-spacing-lg',
@@ -282,63 +306,84 @@ The Button component can be themed by base tokens, or component specific tokens.
         '--button-primary-font-color-hover': '--color-brand-white-base',
         '--button-secondary-background-color': '--color-brand-white-base',
         '--button-secondary-background-color-hover': '--color-brand-primary-50',
-        '--button-secondary-background-color-active': '--color-brand-primary-100',
+        '--button-secondary-background-color-active':
+          '--color-brand-primary-100',
         '--button-secondary-border-color': '--color-brand-grey-200',
         '--button-secondary-border-color-hover': '--color-brand-primary-100',
         '--button-secondary-font-color': '--color-brand-primary-500',
         '--button-secondary-font-color-hover': '--color-brand-primary-500',
         '--button-tertiary-background-color': 'transparent',
         '--button-tertiary-background-color-hover': '--color-brand-primary-50',
-        '--button-tertiary-background-color-active': '--color-brand-primary-100',
+        '--button-tertiary-background-color-active':
+          '--color-brand-primary-100',
         '--button-tertiary-font-color': '--color-brand-primary-500',
         '--button-tertiary-font-color-hover': '--color-brand-primary-500',
         '--button-primary-neutral-background-color': '--color-brand-grey-100',
-        '--button-primary-neutral-background-color-hover': '--color-brand-grey-200',
-        '--button-primary-neutral-background-color-active': '--color-brand-grey-300',
+        '--button-primary-neutral-background-color-hover':
+          '--color-brand-grey-200',
+        '--button-primary-neutral-background-color-active':
+          '--color-brand-grey-300',
         '--button-primary-neutral-font-color': '--color-brand-grey-700',
         '--button-primary-neutral-font-color-hover': '--color-brand-grey-700',
-        '--button-secondary-neutral-background-color': '--color-brand-white-base',
-        '--button-secondary-neutral-background-color-hover': '--color-brand-grey-100',
-        '--button-secondary-neutral-background-color-active': '--color-brand-grey-200',
+        '--button-secondary-neutral-background-color':
+          '--color-brand-white-base',
+        '--button-secondary-neutral-background-color-hover':
+          '--color-brand-grey-100',
+        '--button-secondary-neutral-background-color-active':
+          '--color-brand-grey-200',
         '--button-secondary-neutral-border-color': '--color-brand-grey-200',
-        '--button-secondary-neutral-border-color-hover': '--color-brand-grey-100',
+        '--button-secondary-neutral-border-color-hover':
+          '--color-brand-grey-100',
         '--button-secondary-neutral-font-color': '--color-brand-grey-700',
         '--button-secondary-neutral-font-color-hover': '--color-brand-grey-700',
         '--button-tertiary-neutral-background-color': 'transparent',
-        '--button-tertiary-neutral-background-color-hover': '--color-brand-grey-100',
-        '--button-tertiary-neutral-background-color-active': '--color-brand-grey-200',
+        '--button-tertiary-neutral-background-color-hover':
+          '--color-brand-grey-100',
+        '--button-tertiary-neutral-background-color-active':
+          '--color-brand-grey-200',
         '--button-tertiary-neutral-font-color': '--color-brand-grey-700',
         '--button-tertiary-neutral-font-color-hover': '--color-brand-grey-700',
         '--button-primary-danger-background-color': '--color-brand-danger-500',
-        '--button-primary-danger-background-color-hover': '--color-brand-danger-600',
-        '--button-primary-danger-background-color-active': '--color-brand-danger-700',
+        '--button-primary-danger-background-color-hover':
+          '--color-brand-danger-600',
+        '--button-primary-danger-background-color-active':
+          '--color-brand-danger-700',
         '--button-primary-danger-font-color': '--color-brand-white-base',
         '--button-primary-danger-font-color-hover': '--color-brand-white-base',
-        '--button-secondary-danger-background-color': '--color-brand-white-base',
-        '--button-secondary-danger-background-color-hover': '--color-brand-danger-50',
-        '--button-secondary-danger-background-color-active': '--color-brand-danger-100',
+        '--button-secondary-danger-background-color':
+          '--color-brand-white-base',
+        '--button-secondary-danger-background-color-hover':
+          '--color-brand-danger-50',
+        '--button-secondary-danger-background-color-active':
+          '--color-brand-danger-100',
         '--button-secondary-danger-border-color': '--color-brand-grey-200',
-        '--button-secondary-danger-border-color-hover': '--color-brand-danger-100',
+        '--button-secondary-danger-border-color-hover':
+          '--color-brand-danger-100',
         '--button-secondary-danger-font-color': '--color-brand-danger-500',
-        '--button-secondary-danger-font-color-hover': '--color-brand-danger-500',
+        '--button-secondary-danger-font-color-hover':
+          '--color-brand-danger-500',
         '--button-tertiary-danger-background-color': 'transparent',
-        '--button-tertiary-danger-background-color-hover': '--color-brand-danger-50',
-        '--button-tertiary-danger-background-color-active': '--color-brand-danger-100',
+        '--button-tertiary-danger-background-color-hover':
+          '--color-brand-danger-50',
+        '--button-tertiary-danger-background-color-active':
+          '--color-brand-danger-100',
         '--button-tertiary-danger-font-color': '--color-brand-danger-500',
         '--button-tertiary-danger-font-color-hover': '--color-brand-danger-500',
         '--button-box-shadow-focus': '0 0 0 4px --color-brand-primary-200',
         '--button-neutral-box-shadow-focus': '0 0 0 4px --color-brand-grey-200',
-        '--button-danger-box-shadow-focus': '0 0 0 4px --color-brand-danger-200'
+        '--button-danger-box-shadow-focus':
+          '0 0 0 4px --color-brand-danger-200',
       };
-return Object.entries(tokens).map(([name, entry], i) => (
-<tr key={i}>
-  <td>
-    <code>{name}</code>
-  </td>
-  <td>
-    <code>{entry}</code>
-  </td>
-</tr>
-)); })()}
+      return Object.entries(tokens).map(([name, entry], i) => (
+        <tr key={i}>
+          <td>
+            <code>{name}</code>
+          </td>
+          <td>
+            <code>{entry}</code>
+          </td>
+        </tr>
+      ));
+    })()}
   </tbody>
 </table>
