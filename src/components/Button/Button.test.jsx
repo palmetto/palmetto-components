@@ -68,9 +68,9 @@ describe('Button', () => {
           Alarm Button
         </Button>,
       );
-      expect(screen.getByText('Alarm Button').classList).toContain(
-        'm-right-2xs',
-      );
+      expect(
+        screen.getByText('Alarm Button').parentElement.classList,
+      ).toContain('g-2xs');
     });
   });
 

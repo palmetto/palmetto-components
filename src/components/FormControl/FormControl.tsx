@@ -50,7 +50,6 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
     helpText,
     isDisabled,
     requiredIndicator,
-    width = '100',
     ...restProps
   },
   ref,
@@ -65,7 +64,7 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
   };
 
   return (
-    <Box width={width} ref={ref} {...restProps}>
+    <Box flex="auto" ref={ref} {...restProps}>
       {label && !hideLabel && <FormLabel {...labelProps}>{label}</FormLabel>}
       {children}
       {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
