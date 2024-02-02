@@ -105,7 +105,7 @@ export const Pagination: FC<PaginationProps> = ({
         direction="row"
         justifyContent={{ base: 'space-between' }}
         flex={{ base: 'auto', tablet: 'none' }}
-        childGap={isCompact ? 'xs' : 'sm'}
+        gap={isCompact ? 'xs' : 'sm'}
       >
         <Button
           variant="secondary-neutral"
@@ -116,7 +116,7 @@ export const Pagination: FC<PaginationProps> = ({
           {prevPageText}
         </Button>
         {arePagesVisible && (
-          <Box direction="row" childGap="2xs">
+          <Box direction="row" gap="2xs">
             {pages.map(({ pageNumber, isPage }) => (
               <Button
                 key={pageNumber}

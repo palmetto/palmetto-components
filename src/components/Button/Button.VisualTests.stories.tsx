@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { within } from '@storybook/testing-library';
 import { Button, ButtonProps } from './Button';
 import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
 import { Box } from '../Box/Box';
@@ -11,14 +10,14 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps & { showIconButton: boolean }> = (
+const Template: Story<ButtonProps & { showIconButton: boolean; }> = (
   args,
   showIconButton,
 ) => (
   <Box childGap="xl">
     {BUTTON_SIZES.map(size => (
-      <Box childGap="sm" key={size}>
-        <Box childGap="sm" direction="row" alignItems="flex-start">
+      <Box gap="sm" key={size}>
+        <Box gap="sm" direction="row" alignItems="flex-start">
           {BUTTON_VARIANTS.map(variant => (
             <Button
               {...args}
@@ -44,7 +43,7 @@ const Template: Story<ButtonProps & { showIconButton: boolean }> = (
         </Box>
       </Box>
     ))}
-    <Box childGap="sm">
+    <Box gap="sm">
       <Button {...args}>Full Width</Button>
     </Box>
   </Box>

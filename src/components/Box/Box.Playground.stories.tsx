@@ -29,7 +29,19 @@ export default {
       description: 'number of child Boxes to render within the parent Box',
       defaultValue: 5,
     },
-    childGap: {
+    gap: {
+      control: {
+        type: 'select',
+        options: [null, ...SPACING_OPTIONS],
+      },
+    },
+    columnGap: {
+      control: {
+        type: 'select',
+        options: [null, ...SPACING_OPTIONS],
+      },
+    },
+    rowGap: {
       control: {
         type: 'select',
         options: [null, ...SPACING_OPTIONS],
@@ -439,7 +451,7 @@ Playground.args = {
   direction: 'row',
   childWidth: 'lg',
   childHeight: 'lg',
-  childGap: 'sm',
+  gap: 'sm',
   padding: 'lg',
   width: '100',
   childBackground: 'white',

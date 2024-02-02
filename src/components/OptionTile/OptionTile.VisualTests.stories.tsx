@@ -11,7 +11,7 @@ export default {
 } as Meta;
 
 export const States: ComponentStory<typeof OptionTile> = () => (
-  <Box childGap="lg">
+  <Box gap="lg">
     <OptionTile
       isSelected={false}
       id="defaultRadio"

@@ -1,5 +1,36 @@
 Changelog
 
+## [0.157.7](https://github.com/palmetto/palmetto-components/compare/v0.157.6...v0.157.7) (2024-01-29)
+
+
+### Bug Fixes
+
+* **fonts:** update font files and weights ([#864](https://github.com/palmetto/palmetto-components/issues/864)) ([168a2b9](https://github.com/palmetto/palmetto-components/commit/168a2b9f1816dcc79d04b659ea20b929bc293d52))
+
+## [0.157.6](https://github.com/palmetto/palmetto-components/compare/v0.157.5...v0.157.6) (2024-01-26)
+
+## [0.157.5](https://github.com/palmetto/palmetto-components/compare/v0.157.4...v0.157.5) (2024-01-16)
+
+
+### Bug Fixes
+
+* **Tabs:** correct aria-setsize count when Tabs are conditionally rendered ([#862](https://github.com/palmetto/palmetto-components/issues/862)) ([7fb27f4](https://github.com/palmetto/palmetto-components/commit/7fb27f4007db22d5651db6e8bbc2298b132c1352))
+
+## [0.157.4](https://github.com/palmetto/palmetto-components/compare/v0.157.3...v0.157.4) (2024-01-09)
+
+## [0.157.3](https://github.com/palmetto/palmetto-components/compare/v0.157.2...v0.157.3) (2024-01-09)
+
+## [0.157.2](https://github.com/palmetto/palmetto-components/compare/v0.157.1...v0.157.2) (2024-01-09)
+
+## [0.157.1](https://github.com/palmetto/palmetto-components/compare/v0.157.0...v0.157.1) (2024-01-03)
+
+# [0.157.0](https://github.com/palmetto/palmetto-components/compare/v0.156.1...v0.157.0) (2024-01-02)
+
+
+### Features
+
+* **Box:** gap, row-gap, column-gap Box support ([#857](https://github.com/palmetto/palmetto-components/issues/857)) ([69b604e](https://github.com/palmetto/palmetto-components/commit/69b604e45bf19d73f66d6ef31b76221473a38513))
+
 ## [0.156.1](https://github.com/palmetto/palmetto-components/compare/v0.156.0...v0.156.1) (2023-12-01)
 
 # [0.156.0](https://github.com/palmetto/palmetto-components/compare/v0.155.1...v0.156.0) (2023-11-20)

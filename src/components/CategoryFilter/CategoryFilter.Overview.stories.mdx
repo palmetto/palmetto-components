@@ -43,7 +43,7 @@ The CategoryFilter component consists of a button with text, typically used in a
         }));
       };
       return (
-        <Box direction="row" childGap="xs">
+        <Box direction="row" gap="xs">
           <CategoryFilter
             isSelected={isSelected.chocolate}
             onClick={() => handleSelect('chocolate')}
@@ -93,7 +93,7 @@ The CategoryFilter can be sized with one of `xs`, `sm`, `md`, `lg`, or a `Respon
         }));
       };
       return (
-        <Box direction="row" childGap="sm" wrap>
+        <Box direction="row" gap="sm" wrap>
           <CategoryFilter
             isSelected={isSelected.xs}
             onClick={() => handleSelect('xs')}
@@ -144,7 +144,7 @@ Use the disabled prop to indicate the button is not clickable in its currenty st
     {() => {
       const [isSelected, setSelected] = useState(false);
       return (
-        <Box direction="row" childGap="sm">
+        <Box direction="row" gap="sm">
           <CategoryFilter isSelected={false} isDisabled>
             Unselected
           </CategoryFilter>

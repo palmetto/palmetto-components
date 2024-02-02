@@ -18,7 +18,7 @@ export default {
 const Template: Story<CategoryFilterProps> = ({ ...args }) => (
   <Box display="block" childGap="xl">
     {CATEGORY_FILTER_SIZES.map(size => (
-      <Box childGap="sm" key={size} direction="row">
+      <Box gap="sm" key={size} direction="row">
         <CategoryFilter
           {...args}
           isSelected={false}

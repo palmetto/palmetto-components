@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../../../Box/Box';
-import { Heading } from '../../../Heading/Heading';
 import styles from '../../Card.module.scss';
 
 export interface CardSectionProps extends BoxProps {
@@ -62,9 +61,9 @@ export const CardSection: FC<CardSectionProps> = ({
 }) => {
   const renderTitle = typeof title === 'string' ? (
     <Box className="m-bottom-md">
-      <Heading as="h4" size="sm" variant="grey">
+      <Box as="h4" fontWeight="bold" fontSize="sm" color="grey-600">
         {title}
-      </Heading>
+      </Box>
     </Box>
   ) : (
     title

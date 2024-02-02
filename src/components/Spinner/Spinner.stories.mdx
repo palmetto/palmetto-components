@@ -27,7 +27,7 @@ Set the color variations of the spinner
   <Story name="Variants">
     <Box display="block" childGap="md">
       {BRAND_COLOR_NAMES.map(color => (
-        <Box direction="row" childGap="sm">
+        <Box direction="row" gap="sm">
           <Spinner variant={color} />
           <div>{color}</div>
         </Box>
@@ -42,20 +42,20 @@ Use the `size` prop on your Spinner based on what's a best fit for your layout
 
 <Canvas>
   <Story name="Sizes">
-    <Box direction="row" childGap="md">
-      <Box direction="row" childGap="sm">
+    <Box direction="row" gap="md">
+      <Box direction="row" gap="sm">
         <Spinner size="sm" />
         <div>sm</div>
       </Box>
-      <Box direction="row" childGap="sm">
+      <Box direction="row" gap="sm">
         <Spinner size="md" />
         <div>md</div>
       </Box>
-      <Box direction="row" childGap="sm">
+      <Box direction="row" gap="sm">
         <Spinner size="lg" />
         <div>lg</div>
       </Box>
-      <Box direction="row" childGap="sm">
+      <Box direction="row" gap="sm">
         <Spinner size="xl" />
         <div>xl</div>
       </Box>

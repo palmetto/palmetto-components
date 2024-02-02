@@ -45,7 +45,7 @@ The example below utilizes the `theme` and `setTheme` values for a basic theme s
         };
         return (
           <>
-            <Box direction="row" childGap="xs" alignItems="center" margin="0 0 md 0">
+            <Box direction="row" gap="xs" alignItems="center" margin="0 0 md 0">
               <Box fontWeight="bold" display="inline">light</Box>
               <Toggle
                 isChecked={theme === 'dark'}
@@ -151,7 +151,7 @@ In the example below -- the user can decide to either use their system preferenc
         const activeTheme = userThemeSetting === 'systemPreference' ? systemPreference : theme;
         return (
           <>
-            <Box direction="row" childGap="xs" alignItems="center" margin="0 0 md 0">
+            <Box direction="row" gap="xs" alignItems="center" margin="0 0 md 0">
               <RadioGroup
                 name="userThemeSetting"
                 value={userThemeSetting}
@@ -167,7 +167,7 @@ In the example below -- the user can decide to either use their system preferenc
               borderWidth="xs"
               borderColor={activeTheme === 'light' ? 'grey-lighter' : 'grey-darker'}
             >
-              <Box childGap="sm">
+              <Box gap="sm">
                 <Box as="span" direction="row">
                   Active Theme:&nbsp;
                   <Box fontWeight="bold" as="span" style={{ color: 'inherit' }}>

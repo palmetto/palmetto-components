@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - name: Install dependencies
         run: yarn install
       - name: Unit Tests
@@ -42,7 +42,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
           registry-url: https://npm.pkg.github.com/
           scope: '@palmetto'
       - name: Release to GitHub Packages

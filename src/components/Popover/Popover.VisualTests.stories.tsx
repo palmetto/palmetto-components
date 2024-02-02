@@ -33,7 +33,7 @@ export const Demo: Story = () => {
       }}
       className={className}
     >
-      <Box direction="row" childGap="md" alignItems="center">
+      <Box direction="row" gap="md" alignItems="center">
         {iconName && (
           <Box color="grey-300" fontSize="lg">
             <Icon className="nav-item-icon" name={iconName} />
@@ -62,8 +62,8 @@ export const Demo: Story = () => {
           flexShrink: 0,
         }}
       >
-        <Box as="ul" childGap="xs" padding="md md sm md">
-          <Box direction="row" childGap="sm" alignItems="center">
+        <Box as="ul" gap="xs" padding="md md sm md">
+          <Box direction="row" gap="sm" alignItems="center">
             <Box
               fontSize="xs"
               color="white"
@@ -78,10 +78,10 @@ export const Demo: Story = () => {
             </Box>
           </Box>
         </Box>
-        <Box flex="auto" overflow="auto" padding="sm md lg md" childGap="lg">
+        <Box flex="auto" overflow="auto" padding="sm md lg md" gap="lg">
           <Box
             as="ul"
-            childGap="sm"
+            gap="sm"
             style={{
               flexShrink: 0,
             }}
@@ -93,7 +93,7 @@ export const Demo: Story = () => {
             <NavItem iconName="settings">Settings</NavItem>
           </Box>
           <Box
-            childGap="sm"
+            gap="sm"
             padding="lg 0 0 0"
             borderWidth="xs 0 0 0"
             borderColor="grey-lighter"
@@ -102,20 +102,20 @@ export const Demo: Story = () => {
             <Heading size="sm" as="h4" variant="grey">
               Favorites
             </Heading>
-            <Box childGap="xs">
+            <Box gap="xs">
               <Box fontSize="xs" color="grey">
                 Favorite contacts or reports by clicking the star
               </Box>
             </Box>
           </Box>
           <Box
-            childGap="sm"
+            gap="sm"
             padding="lg 0 0 0"
             borderWidth="xs 0 0 0"
             borderColor="grey-lighter"
             style={{ flex: '1 0 auto' }}
           >
-            <Box as="ul" childGap="sm">
+            <Box as="ul" gap="sm">
               <NavItem iconName="c-question">Feedback</NavItem>
             </Box>
           </Box>
@@ -207,13 +207,13 @@ export const Placement: Story = () => {
     'left-end',
   ];
   return (
-    <Box direction="row" childGap="md" wrap>
+    <Box direction="row" gap="xs" width="100" wrap>
       {positions.map(position => (
         <Box
           height="100px"
           width="300px"
-          padding="5xl"
-          display="inline-block"
+          alignItems="center"
+          justifyContent="center"
           key={position}
         >
           <Popover
@@ -249,7 +249,7 @@ export const HideArrow: Story = () => {
   });
   const popoverContent = (
     <>
-      <Box direction="column" childGap="sm">
+      <Box direction="column" gap="sm">
         <Heading>With no arrow</Heading>
         <p>I am floating in space</p>
       </Box>
@@ -284,7 +284,7 @@ export const Offset: Story = () => {
   });
   const popoverContent = (
     <>
-      <Box direction="column" childGap="sm">
+      <Box direction="column" gap="sm">
         <Heading>Custom Offset</Heading>
         <p>Near, far, wherever your are...</p>
       </Box>

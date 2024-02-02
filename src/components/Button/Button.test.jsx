@@ -56,7 +56,12 @@ describe('Button', () => {
       expect(screen.getByTestId('prefixIcon')).toBeInTheDocument();
       expect(screen.getByTestId('suffixIcon')).toBeInTheDocument();
     });
-
+    test('Renders gap between icon and text', () => {
+      render(<Button iconSuffix="alarm">Alarm Button</Button>);
+      expect(
+        screen.getByText('Alarm Button').parentElement.classList,
+      ).toContain('g-xs');
+    });
     test('Renders smaller gap between icon and text for xs sized buttons', () => {
       render(
         <Button size="xs" iconSuffix="alarm">

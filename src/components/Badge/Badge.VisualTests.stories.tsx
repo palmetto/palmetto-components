@@ -15,10 +15,10 @@ export default {
 } as Meta;
 
 const Template: Story<BadgeProps> = args => (
-  <Box childGap="xl">
+  <Box gap="xl">
     {BADGE_SIZES.map(size => (
-      <Box childGap="sm" key={size}>
-        <Box childGap="sm" direction="row">
+      <Box gap="sm" key={size}>
+        <Box gap="sm" direction="row">
           {BADGE_VARIANTS.map(variant => (
             <Badge
               {...args}

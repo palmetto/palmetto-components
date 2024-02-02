@@ -176,12 +176,12 @@ Here is an example where all three token types are used to create a customized a
           style={isThemed ? customTheme : null}
         >
           <Toggle id="themeToggle" label="Apply Theme" onChange={event => setIsThemed(event.target.checked)} isChecked={isThemed} size="lg" />
-          <Box childGap="sm">
+          <Box gap="sm">
             <Heading as="h2" size="xl">
               Leading the world toward a clean energy future
             </Heading>
           </Box>
-          <Box direction="row" childGap="sm">
+          <Box direction="row" gap="sm">
             <Badge variant="primary" message="primary" />
             <Badge variant="secondary" message="secondary" />
             <Badge variant="tertiary" message="tertiary" />
@@ -191,7 +191,7 @@ Here is an example where all three token types are used to create a customized a
             <Badge variant="danger" message="danger" />
             <Badge variant="default" message="default" />
           </Box>
-          <Box direction="row" childGap="sm">
+          <Box direction="row" gap="sm">
             <CategoryFilter>Unselected</CategoryFilter>
             <CategoryFilter isSelected>Selected</CategoryFilter>
           </Box>
@@ -207,7 +207,7 @@ Here is an example where all three token types are used to create a customized a
             <TabsSlider.Item>Tab 3</TabsSlider.Item>
             <TabsSlider.Item isDisabled>Disabled</TabsSlider.Item>
           </TabsSlider>
-          <Box alignItems="center" childGap="sm" direction="row">
+          <Box alignItems="center" gap="sm" direction="row">
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Success</Button>
             <Button variant="tertiary">Danger</Button>
@@ -218,7 +218,7 @@ Here is an example where all three token types are used to create a customized a
             <Button variant="secondary-danger">Success Danger</Button>
             <Button variant="tertiary-danger">Danger Danger</Button>
           </Box>
-          <Box background="grey-50" padding="lg" childGap="lg">
+          <Box background="grey-50" padding="lg" gap="lg">
             <Heading size="lg" as="h4">
               Form Inputs
             </Heading>
@@ -253,7 +253,7 @@ Here is an example where all three token types are used to create a customized a
               value={themeExampleValues.textareaValue}
               onChange={e => handleChange('textareaValue', e.target.value)}
             />
-            <Box direction="row" childGap="md">
+            <Box direction="row" gap="md">
               <CheckboxInput id="checkedCheckbox" label="Checked Checkbox" onChange={() => {}} isChecked />
               <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
             </Box>

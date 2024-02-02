@@ -10,7 +10,7 @@ export default {
 } as Meta;
 
 export const Sizes = (): ReactElement => (
-  <Box childGap="xl">
+  <Box gap="xl">
     <SelectInputNative
       id="smallSelect"
       label="Small"

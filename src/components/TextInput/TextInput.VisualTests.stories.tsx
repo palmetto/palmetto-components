@@ -24,8 +24,8 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
   const [prefixValue3, setPrefixValue3] = useState('');
   const [prefixValue4, setPrefixValue4] = useState('Pre-populated Value');
   return (
-    <Box childGap="xl" direction="row">
-      <Box childGap="md" width="33">
+    <Box gap="xl" direction="row">
+      <Box gap="md" width="33">
         <TextInput
           id="prefixSuffix1"
           value={prefixValue}
@@ -63,7 +63,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           size="sm"
         />
       </Box>
-      <Box childGap="md" width="33">
+      <Box gap="md" width="33">
         <TextInput
           id="prefixSuffix5"
           value={prefixValue}
@@ -97,7 +97,7 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
           suffix={<Icon name="search" />}
         />
       </Box>
-      <Box childGap="md" width="33">
+      <Box gap="md" width="33">
         <TextInput
           id="prefixSuffix9"
           value={prefixValue}

@@ -84,9 +84,10 @@ export interface BoxProps {
    */
   className?: string;
   /**
-   * The amount of spacing between child elements.
+   * The amount of spacing (implemented as margin) between child elements.
    * Can be a single [spacing value](/?path=/story/design-tokens-design-tokens--page#spacing).
    * NOTE: this prop is incompatible with reverse flex direction values (row-reverse, column-reverse).
+   * For grid and flex layouts, use 'gap' instead.
    */
   childGap?: SpacingSize | ResponsiveProp<SpacingSize>;
   /**
@@ -97,6 +98,10 @@ export interface BoxProps {
    * A color token identifier to use for the text color.
    */
   color?: FontColor;
+  /**
+   * Sets the gaps (gutters) between columns.
+   */
+  columnGap?: BaseSpacing | ResponsiveProp<BaseSpacing>;
   /**
    * Cursor style. Use any standard CSS value.
    */
@@ -164,6 +169,10 @@ export interface BoxProps {
     shadow?: BoxProps['shadow'];
   };
   /**
+   * Sets the gaps (gutters) between rows and columns.
+   */
+  gap?: BaseSpacing | ResponsiveProp<BaseSpacing>;
+  /**
    * How space between and around content items is distributed along the main-axis a flex Box
    */
   justifyContent?: CssJustifyContentValue | ResponsiveProp<CssJustifyContentValue>;
@@ -216,6 +225,10 @@ export interface BoxProps {
    */
   radius?: BorderRadiusSize | ResponsiveProp<BorderRadiusSize>;
   /**
+   * Sets the gaps (gutters) between rows.
+   */
+  rowGap?: BaseSpacing | ResponsiveProp<BaseSpacing>;
+  /**
    * The size of the drop shadow applied to the Box
    */
   shadow?: BoxShadowSize | ResponsiveProp<BoxShadowSize>;
@@ -265,16 +278,18 @@ export const Box: FC<BoxProps> = forwardRef((
     childGap = undefined,
     className = '',
     color = undefined,
+    columnGap = undefined,
     cursor = undefined,
     display = 'flex',
     direction = 'column',
     flex = undefined,
     fontFamily = undefined,
     fontSize = 'inherit',
+    focus = undefined,
     fontWeight = undefined,
+    gap = undefined,
     height = undefined,
     hover = undefined,
-    focus = undefined,
     justifyContent = undefined,
     margin = undefined,
     maxHeight = undefined,
@@ -285,6 +300,7 @@ export const Box: FC<BoxProps> = forwardRef((
     padding = undefined,
     position = undefined,
     radius = undefined,
+    rowGap = undefined,
     shadow = undefined,
     style = {},
     textAlign = undefined,
@@ -333,6 +349,9 @@ export const Box: FC<BoxProps> = forwardRef((
     cssShorthandToClasses('m', margin),
     cssShorthandToClasses('p', padding),
     cssShorthandToClasses('br', radius),
+    cssShorthandToClasses('g', gap),
+    cssShorthandToClasses('cg', columnGap),
+    cssShorthandToClasses('rg', rowGap),
     heightCss.classes,
     maxHeightCss.classes,
     minHeightCss.classes,
@@ -522,6 +541,7 @@ export const boxPropsKeys: (keyof Pick<BoxProps, KnownKeys<BoxProps>>)[] = [
   'childGap',
   'children',
   'color',
+  'columnGap',
   'cursor',
   'direction',
   'display',
@@ -530,6 +550,7 @@ export const boxPropsKeys: (keyof Pick<BoxProps, KnownKeys<BoxProps>>)[] = [
   'fontFamily',
   'fontSize',
   'fontWeight',
+  'gap',
   'height',
   'hover',
   'justifyContent',
@@ -542,6 +563,7 @@ export const boxPropsKeys: (keyof Pick<BoxProps, KnownKeys<BoxProps>>)[] = [
   'padding',
   'position',
   'radius',
+  'rowGap',
   'shadow',
   'style',
   'textAlign',
