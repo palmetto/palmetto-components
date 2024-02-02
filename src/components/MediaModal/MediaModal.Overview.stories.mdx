@@ -195,9 +195,9 @@ If `headerContent` is defined, then the `title` and `description` will not be re
         <Box gap="2xs">
           <Box fontWeight="bold">Custom Styled Title</Box>
           <Box direction="row" gap="xs">
-            <Badge variant="info" size="sm" message="Invertor" />
-            <Badge variant="info" size="sm" message="Utility Meter" />
-            <Badge variant="info" size="sm" message="Site Survey" />
+            <Badge variant="info" message="Invertor" />
+            <Badge variant="info" message="Utility Meter" />
+            <Badge variant="info" message="Site Survey" />
           </Box>
         </Box>
       );
@@ -223,7 +223,6 @@ If `headerContent` is defined, then the `title` and `description` will not be re
           <Popover
             content={<>more options</>}
             isOpen={isPopoverOpen}
-            placement="bottom-start"
             contentContainerProps={{
               padding: 'md',
               direction: 'column',
@@ -231,8 +230,12 @@ If `headerContent` is defined, then the `title` and `description` will not be re
               fontSize: 'sm',
             }}
           >
-            <Button variant="tertiary-neutral" iconPrefix="dots" onClick={onPopoverToggle}
-            size="sm" />
+            <Button
+              variant="tertiary-neutral"
+              iconPrefix="dots"
+              onClick={onPopoverToggle}
+              size="sm"
+            />
           </Popover>
         </Box>
       );

@@ -3,6 +3,7 @@ import { DialogOverlay, DialogContent } from '@palmetto/dialog';
 import classNames from 'classnames';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+import { Icon } from '../Icon/Icon';
 import styles from './MediaModal.module.scss';
 
 export interface MediaModalProps {
@@ -106,6 +107,26 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<
 
     const showHeaderBar = headerContent || title || description;
 
+    const closeBtn = (
+      <Box
+        as="button"
+        type="button"
+        aria-label="close"
+        className={styles['media-modal-close']}
+        onClick={onDismiss}
+        cursor="pointer"
+        color="grey-100"
+        background="transparent"
+        borderWidth="0"
+        padding="xs"
+        hover={{
+          color: 'white',
+        }}
+      >
+        <Icon name="remove-light" size="lg" />
+      </Box>
+    );
+
     const renderHeader = () => {
       if (closeButton && !showHeaderBar) {
         return (
@@ -115,13 +136,7 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<
             padding="lg"
             className={styles.header}
           >
-            <Button
-              aria-label="close"
-              className={styles['media-modal-close']}
-              iconPrefix="remove-light"
-              variant="tertiary-neutral"
-              onClick={onDismiss}
-            />
+            {closeBtn}
           </Box>
         );
       }
@@ -140,13 +155,7 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<
                 <Box fontSize="xs">{description}</Box>
               </Box>
             )}
-            <Button
-              aria-label="close"
-              className={styles['media-modal-close']}
-              iconPrefix="remove-light"
-              variant="tertiary-neutral"
-              onClick={onDismiss}
-            />
+            {closeBtn}
           </Box>
         );
       }

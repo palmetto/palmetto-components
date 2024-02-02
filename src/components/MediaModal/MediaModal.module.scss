@@ -7,9 +7,6 @@
 
 // Show focus styles on keyboard focus.
 .media-modal-close {
-  color: #fff;
-  border-radius: var(--size-border-radius-sm);
-  padding: var(--size-spacing-2xs);
 
   &:focus-visible {
     outline: 0;
@@ -50,7 +47,10 @@
     right: env(safe-area-inset-right, 0);
     bottom: env(safe-area-inset-bottom, 0);
     left: env(safe-area-inset-left, 0);
-    grid-template-rows: minmax(var(--size-height-lg), 1fr) auto minmax(var(--size-height-lg), 1fr);
+    grid-template-rows: minmax(var(--size-height-lg), 1fr) auto minmax(
+        var(--size-height-lg),
+        1fr
+      );
     grid-template-columns: 1fr auto 1fr;
     overflow: hidden;
   }
