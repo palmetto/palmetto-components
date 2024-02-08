@@ -38,8 +38,27 @@ export const FormikTextInput: React.FC<FormikTextInputProps> = (
     label={label}
     name={name}
     onBlur={onBlur}
-    onChange={onChange ?? formikOnChange}
-    value={value}
+    onChange={(e) => {
+      const trimmedValue = e.target.value.trim();
+      if (onChange) {
+        onChange({
+          target: {
+            value: trimmedValue,
+            name: e.target.name,
+          },
+          type: e.type,
+        });
+      } else {
+        formikOnChange({
+          target: {
+            value: trimmedValue,
+            name: e.target.name,
+          },
+          type: e.type,
+        });
+      }
+    }}
+    value={value.trim()}
     error={getIn(touched, name) && getIn(errors, name)}
   />
 );
