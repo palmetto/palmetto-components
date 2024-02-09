@@ -346,7 +346,11 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
       const handleClick = () => {
         toast('This is compact', { isCompact: true });
       };
-      return <Button onClick={handleClick}>Open compact toast</Button>;
+      return (
+        <Button onClick={handleClick} tone="neutral">
+          Open compact toast
+        </Button>
+      );
     }}
   </Story>
 </Canvas>
