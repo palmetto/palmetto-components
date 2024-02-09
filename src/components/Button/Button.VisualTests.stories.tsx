@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { within } from '@testing-library/react';
 import { Button, ButtonProps } from './Button';
-import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
+import { BUTTON_SIZES, BUTTON_TONE, BUTTON_VARIANTS } from './Button.constants';
 import { Box } from '../Box/Box';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 
@@ -15,38 +15,46 @@ const Template: Story<ButtonProps & { showIconButton: boolean; }> = (
   args,
   showIconButton,
 ) => (
-  <Box childGap="xl">
-    {BUTTON_VARIANTS.map(variant => (
+  <Box gap="xl">
+    {BUTTON_TONE.map(tone => BUTTON_VARIANTS.map(variant => (
       <Box gap="sm" key={variant}>
         <Box gap="sm" direction="row" alignItems="flex-start">
           {BUTTON_SIZES.map(size => (
             <Button
               {...args}
               size={size}
+              tone={tone}
               variant={variant}
-              key={`${size}-${variant}`}
+              key={`${size}-${variant}-${tone}`}
             >
-              {`${size} ${variant}`}
+              {`${size} ${variant} ${tone}`}
             </Button>
           ))}
           {showIconButton && (
-            <Button
-              {...args}
-              iconPrefix="add"
-              iconSuffix="property-agreement"
-              variant={variant}
-              key={`${variant}-icon`}
-            >
-              {`${variant} icon`}
-            </Button>
+          <Button
+            {...args}
+            iconPrefix="add"
+            iconSuffix="property-agreement"
+            variant={variant}
+            tone="neutral"
+            key={`${variant}-icon`}
+          >
+            {`${variant} ${tone} icon`}
+          </Button>
           )}
         </Box>
       </Box>
-    ))}
+    )))}
     <Box gap="sm">
-      <Button size="sm">sm full width</Button>
-      <Button size="md">md full width</Button>
-      <Button size="lg">lg full width</Button>
+      <Button {...args} size="sm" tone="neutral">
+        sm full width
+      </Button>
+      <Button {...args} size="md" tone="neutral">
+        md full width
+      </Button>
+      <Button {...args} size="lg" tone="neutral">
+        lg full width
+      </Button>
     </Box>
   </Box>
 );
@@ -76,7 +84,7 @@ WithIcons.args = {
 };
 
 export const SecondaryFocus = SingleButtonTemplate.bind({});
-
+SecondaryFocus.args = { variant: 'secondary' };
 SecondaryFocus.play = async ({ canvasElement }) => {
   // Starts querying the component from its root
   const canvas = within(canvasElement);
@@ -94,7 +102,7 @@ PrimaryFocus.play = async ({ canvasElement }) => {
 };
 
 export const DangerFocus = SingleButtonTemplate.bind({});
-DangerFocus.args = { variant: 'primary-danger' };
+DangerFocus.args = { tone: 'danger' };
 
 DangerFocus.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

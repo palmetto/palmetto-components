@@ -17,17 +17,8 @@ import { getElementType } from '../../lib/getElementType';
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
-export type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'tertiary'
-  | 'primary-neutral'
-  | 'secondary-neutral'
-  | 'tertiary-neutral'
-  | 'primary-danger'
-  | 'secondary-danger'
-  | 'tertiary-danger';
-
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
+export type ButtonTone = 'primary' | 'neutral' | 'danger';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface BaseButtonProps {
@@ -97,7 +88,11 @@ export interface BaseButtonProps {
    */
   size?: ButtonSize | ResponsiveProp<ButtonSize>;
   /**
-   * The color variant of the button
+   * Indicate the intent of the action the button performs.
+   */
+  tone?: ButtonTone;
+  /**
+   * The level of visual weight of the button
    */
   variant?: ButtonVariant;
   /**
@@ -149,7 +144,8 @@ export const Button = forwardRef<
       target = undefined,
       type = undefined,
       size = 'md',
-      variant = 'primary-neutral',
+      tone = 'primary',
+      variant = 'primary',
       ...restProps
     },
     ref,
@@ -169,6 +165,7 @@ export const Button = forwardRef<
       {
         [styles.loading]: isLoading,
         [styles[variant]]: variant,
+        [styles[tone]]: tone,
         [styles['full-width']]: fullWidth,
       },
     );
@@ -188,7 +185,9 @@ export const Button = forwardRef<
     };
 
     const getSpinnerVariant = () => {
-      if (variant === 'primary' || variant === 'primary-danger') return 'white';
+      if (variant === 'primary' && (tone === 'primary' || tone === 'danger')) {
+        return 'white';
+      }
 
       return 'dark';
     };
@@ -260,9 +259,7 @@ export const Button = forwardRef<
         disabled,
         target: as === 'a' && href ? target : null,
         onBlur: handleBlur,
-        onClick: (
-          event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
-        ) => handleClick(event, onClick, target, navigate),
+        onClick: (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => handleClick(event, onClick, target, navigate),
         onFocus: handleFocus,
         ref,
         type: type || (as !== 'a' && !href ? 'button' : undefined),

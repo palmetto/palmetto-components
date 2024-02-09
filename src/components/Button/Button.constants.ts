@@ -1,15 +1,15 @@
-import { ButtonVariant, ButtonSize } from './Button';
+import { ButtonVariant, ButtonSize, ButtonTone } from './Button';
 
 export const BUTTON_VARIANTS: ButtonVariant[] = [
   'primary',
   'secondary',
   'tertiary',
-  'primary-neutral',
-  'secondary-neutral',
-  'tertiary-neutral',
-  'primary-danger',
-  'secondary-danger',
-  'tertiary-danger',
+];
+
+export const BUTTON_TONE: ButtonTone[] = [
+  'primary',
+  'neutral',
+  'danger',
 ];
 
 export const BUTTON_SIZES: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
