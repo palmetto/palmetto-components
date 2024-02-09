@@ -150,7 +150,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<
       onClearFiles = undefined,
       requiredIndicator = <>&nbsp;*</>,
       size = 'md',
-      tone = 'primary',
+      tone = 'neutral',
       variant = 'primary',
       ...restProps
     },
