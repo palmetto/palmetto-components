@@ -20,7 +20,7 @@ describe('FileUpload', () => {
 
       expect(fileInput).toBeInTheDocument();
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('primary-neutral', 'size-md');
+      expect(button).toHaveClass('primary', 'size-md');
       expect(uploadIcon).toBeInTheDocument();
     });
   });

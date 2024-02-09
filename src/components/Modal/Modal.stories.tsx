@@ -17,7 +17,11 @@ export const WithCustomPortalTarget: Story = () => {
 
   return (
     <div id="myContainer" ref={ref}>
-      <Button variant="primary-neutral" onClick={() => setShowModal(true)}>
+      <Button
+        variant="primary"
+        tone="neutral"
+        onClick={() => setShowModal(true)}
+      >
         Show Modal
       </Button>
       <Modal

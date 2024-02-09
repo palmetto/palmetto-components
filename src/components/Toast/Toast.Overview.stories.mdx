@@ -314,7 +314,8 @@ For these cases, you can use `toast.dismiss`.
               Show Toast
             </Button>
             <Button
-              variant="secondary-neutral"
+              variant="secondary"
+              tone="neutral"
               isDisabled={!toastId}
               onClick={handleDismiss}
             >
@@ -372,7 +373,11 @@ To give toasts an additional visual indication of feedback, `success`, `loading`
             Basic Types
           </Box>
           <Box childGap="md" direction="row">
-            <Button onClick={() => handleClick('blank')} variant="primary-neutral">
+            <Button
+              onClick={() => handleClick('blank')}
+              variant="primary"
+              tone="neutral"
+            >
               Default
             </Button>
             <Button onClick={() => handleClick('error')} variant="danger">
@@ -427,7 +432,11 @@ To give toasts an additional visual indication of feedback, `success`, `loading`
                 handle displaying different toast variations based on the state
                 of the passed promise.
               </p>
-              <Button onClick={() => handleClick('async')} variant="primary-neutral">
+              <Button
+                onClick={() => handleClick('async')}
+                variant="primary"
+                tone="neutral"
+              >
                 async
               </Button>
             </Box>
@@ -437,7 +446,11 @@ To give toasts an additional visual indication of feedback, `success`, `loading`
                 promise you can pass a function to the toasts in question, see
                 code example.
               </p>
-              <Button onClick={() => handleClick('async-data')} variant="primary-neutral">
+              <Button
+                onClick={() => handleClick('async-data')}
+                variant="primary"
+                tone="neutral"
+              >
                 async (including promise data)
               </Button>
             </Box>

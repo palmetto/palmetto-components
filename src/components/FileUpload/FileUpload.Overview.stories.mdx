@@ -191,7 +191,7 @@ Leverage the same variants as the Button component to customize the look and fee
       return (
         <Box direction="row" gap="md" alignItems="center">
           <FileUpload
-            buttonText="secondary"
+            buttonText="primary"
             labelText="My File"
             id="darkUpload"
             onChange={handleChange}
@@ -199,19 +199,19 @@ Leverage the same variants as the Button component to customize the look and fee
             variant="primary"
           />
           <FileUpload
-            buttonText="secondary-neutral"
+            buttonText="secondary neutral"
             labelText="My File"
             id="lightUpload"
             onChange={handleLightChange}
             files={lightFiles}
-            variant="secondary-neutral"
+            variant="secondary"
+            tone="neutral"
           />
         </Box>
       );
     }}
   </Story>
 </Canvas>
-
 
 ## Sizes
 

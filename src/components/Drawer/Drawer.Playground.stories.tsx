@@ -91,7 +91,7 @@ const Template: Story<DrawerProps> = ({ ...args }) => {
   } = useOpenClose();
   return (
     <>
-      <Button variant="secondary-neutral" onClick={openDrawer}>
+      <Button variant="secondary" tone="neutral" onClick={openDrawer}>
         Show Drawer
       </Button>
       <Drawer {...args} isOpen={isDrawerOpen} onDismiss={closeDrawer}>

@@ -43,7 +43,7 @@ In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `
       } = useOpenClose();
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openModal}>
+          <Button variant="primary" tone="neutral" onClick={openModal}>
             Show Modal
           </Button>
           <Modal
@@ -58,7 +58,7 @@ In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `
             />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
-              <Button variant="primary-neutral" onClick={closeModal}>
+              <Button variant="primary" tone="neutral" onClick={closeModal}>
                 Cancel
               </Button>
               <Button variant="primary">Primary Action</Button>
@@ -97,7 +97,7 @@ Use the `Modal.Body` and `Modal.Footer` to add body and footer content. These co
       } = useOpenClose();
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openModal}>
+          <Button variant="primary" tone="neutral" onClick={openModal}>
             Show Modal With Body and Footer
           </Button>
           <Modal
@@ -142,7 +142,7 @@ Set the `onDismiss` prop on the `Modal.Header` to true to automatically add a cl
       } = useOpenClose();
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openModal}>
+          <Button variant="primary" tone="neutral" onClick={openModal}>
             Show Modal With Close Button
           </Button>
           <Modal
@@ -182,7 +182,7 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
       } = useOpenClose();
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openModal}>
+          <Button variant="primary" tone="neutral" onClick={openModal}>
             Show Modal Without Header
           </Button>
           <Modal
@@ -192,7 +192,7 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
           >
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
-              <Button variant="primary-neutral" onClick={closeModal}>
+              <Button variant="primary" tone="neutral" onClick={closeModal}>
                 Cancel
               </Button>
               <Button variant="primary">Primary Action</Button>
@@ -223,7 +223,7 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
       } = useOpenClose();
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openModal}>
+          <Button variant="primary" tone="neutral" onClick={openModal}>
             Show Fullscreen On Mobile Modal
           </Button>
           <Modal
@@ -239,7 +239,7 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
             />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
-              <Button variant="primary-neutral" onClick={closeModal}>
+              <Button variant="primary" tone="neutral" onClick={closeModal}>
                 Cancel
               </Button>
               <Button variant="primary">Primary Action</Button>
@@ -272,7 +272,7 @@ maxWidth, use existing tokens only.
       } = useOpenClose();
       return (
         <>
-          <Button variant="primary-neutral" onClick={openModal}>
+          <Button variant="primary" tone="neutral" onClick={openModal}>
             Open Max Width Modal
           </Button>
           <Modal

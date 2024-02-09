@@ -37,7 +37,7 @@ Therefore, you should ensure that the first focusable item is non-destructive, s
       } = useOpenClose();
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openMediaModal}>
+          <Button variant="primary" tone="neutral" onClick={openMediaModal}>
             Show MediaModal
           </Button>
           <MediaModal
@@ -98,7 +98,7 @@ An optional title and description can be used to describe the contents of the mo
       } = useOpenClose();
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openMediaModal}>
+          <Button variant="primary" tone="neutral" onClick={openMediaModal}>
             Portrait Image with Title and Description
           </Button>
           <MediaModal
@@ -146,7 +146,7 @@ Render a visible close button in the upper right of the viewport.
       } = useOpenClose();
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openMediaModal}>
+          <Button variant="primary" tone="neutral" onClick={openMediaModal}>
             Show with Close Button
           </Button>
           <MediaModal
@@ -204,7 +204,8 @@ If `headerContent` is defined, then the `title` and `description` will not be re
       const footerItems = (
         <Box direction="row" childGap="lg">
           <Button
-            variant="tertiary-neutral"
+            variant="tertiary"
+            tone="neutral"
             as="a"
             color="white"
             href="/images/landscape-mediamodal.jpg"
@@ -213,7 +214,8 @@ If `headerContent` is defined, then the `title` and `description` will not be re
             size="sm"
           />
           <Button
-            variant="tertiary-neutral"
+            variant="tertiary"
+            tone="neutral"
             as="a"
             href="/images/landscape-mediamodal.jpg"
             target="_blank"
@@ -231,7 +233,8 @@ If `headerContent` is defined, then the `title` and `description` will not be re
             }}
           >
             <Button
-              variant="tertiary-neutral"
+              variant="tertiary"
+              tone="neutral"
               iconPrefix="dots"
               onClick={onPopoverToggle}
               size="sm"
@@ -241,7 +244,7 @@ If `headerContent` is defined, then the `title` and `description` will not be re
       );
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openMediaModal}>
+          <Button variant="primary" tone="neutral" onClick={openMediaModal}>
             With Custom Header and Footer
           </Button>
           <MediaModal
@@ -284,7 +287,7 @@ If `headerContent` is defined, then the `title` and `description` will not be re
       } = useOpenClose();
       return (
         <div>
-          <Button variant="primary-neutral" onClick={openMediaModal}>
+          <Button variant="primary" tone="neutral" onClick={openMediaModal}>
             Show Vimeo Modal
           </Button>
           <MediaModal
