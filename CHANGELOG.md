@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.3](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2024-02-09)
+
+
+### Features
+
+* **Button:** tone prop ([#867](https://github.com/palmetto/palmetto-components/issues/867)) ([918eeea](https://github.com/palmetto/palmetto-components/commit/918eeeab347d9e7f13a54b41ad027dfc40d79605))
+
 # [1.0.0-beta.2](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2024-02-02)
 
 
