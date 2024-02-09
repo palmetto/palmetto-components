@@ -14,7 +14,17 @@ They are used in forms, toolbars, modal dialogs and as stand-alone action trigge
 Actions almost always occur on the same page.
 
 <Canvas isExpanded>
-  <Button onClick={() => alert('clicked')}>Button</Button>
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?type=design&node-id=4032%3A11&mode=design&t=ht1ehQlCvlWB3tJ2-1',
+      },
+    }}
+  >
+    <Button onClick={action('clicked')}>Button</Button>
+  </Story>
 </Canvas>
 
 ## Props
@@ -31,7 +41,7 @@ The `variant` prop determines which color visual weight to render.
     parameters={{
       design: {
         type: 'figma',
-        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?type=design&node-id=4065%3A1337&mode=design&t=y5ghcijLJzWx4apI-1',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?type=design&node-id=4032%3A11&mode=design&t=ht1ehQlCvlWB3tJ2-1',
       },
     }}
   >
@@ -42,14 +52,26 @@ The `variant` prop determines which color visual weight to render.
         <Button variant="tertiary">Tertiary</Button>
       </Box>
       <Box gap="sm" direction="row" alignItems="flex-start">
-        <Button variant="primary-neutral">Primary-Neutral</Button>
-        <Button variant="secondary-neutral">Secondary-Neutral</Button>
-        <Button variant="tertiary-neutral">Tertiary-Neutral</Button>
+        <Button variant="primary" tone="neutral">
+          Primary Neutral
+        </Button>
+        <Button variant="secondary" tone="neutral">
+          Secondary Neutral
+        </Button>
+        <Button variant="tertiary" tone="neutral">
+          Tertiary Neutral
+        </Button>
       </Box>
       <Box gap="sm" direction="row" alignItems="flex-start">
-        <Button variant="primary-danger">Primary-Danger</Button>
-        <Button variant="secondary-danger">Secondary-Danger</Button>
-        <Button variant="tertiary-danger">Tertiary-Danger</Button>
+        <Button variant="primary" tone="danger">
+          Primary Danger
+        </Button>
+        <Button variant="secondary" tone="danger">
+          Secondary Danger
+        </Button>
+        <Button variant="tertiary" tone="danger">
+          Tertiary Danger
+        </Button>
       </Box>
     </Box>
   </Story>
@@ -66,15 +88,23 @@ so it can have different sizes at different breakpoints.
     parameters={{
       design: {
         type: 'figma',
-        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=2115%3A24829',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?type=design&node-id=4032%3A11&mode=design&t=ht1ehQlCvlWB3tJ2-1',
       },
     }}
   >
     <Box gap="sm" direction="row" alignItems="flex-start">
-      <Button size="xs">xs</Button>
-      <Button size="sm">sm</Button>
-      <Button size="md">md</Button>
-      <Button size="lg">lg</Button>
+      <Button size="xs" tone="neutral">
+        xs
+      </Button>
+      <Button size="sm" tone="neutral">
+        sm
+      </Button>
+      <Button size="md" tone="neutral">
+        md
+      </Button>
+      <Button size="lg" tone="neutral">
+        lg
+      </Button>
       <Button
         size={{
           base: 'xs',
@@ -82,7 +112,8 @@ so it can have different sizes at different breakpoints.
           desktop: 'md',
           hd: 'lg',
         }}
-        variant="primary-neutral"
+        variant="primary"
+        tone="neutral"
       >
         responsive
       </Button>
@@ -96,7 +127,7 @@ Use the `fullWidth` prop to allow the button to grow to its container's full wid
 
 <Canvas withSource="open">
   <Story name="Full Width">
-    <Button variant="primary-neutral" fullWidth>
+    <Button variant="primary" tone="neutral" fullWidth>
       Full Width
     </Button>
   </Story>
@@ -109,10 +140,10 @@ Add an icon to the left or right inside the Button using the `iconPrefix` and `i
 <Canvas withSource="open">
   <Story name="With Icons">
     <Box direction="row" gap="xs">
-      <Button variant="primary-neutral" iconPrefix="mail">
+      <Button variant="primary" tone="neutral" iconPrefix="mail">
         Email
       </Button>
-      <Button variant="secondary-neutral" iconSuffix="chat">
+      <Button variant="secondary" tone="neutral" iconSuffix="chat">
         Chat Now
       </Button>
     </Box>
@@ -127,11 +158,17 @@ Use a combination of `tertiary-*` variant and a named icon to make an icon a but
   <Story name="Icon Button">
     <Button variant="tertiary" iconPrefix="add" aria-label="add" />
     <Button
-      variant="tertiary-neutral"
+      variant="tertiary"
+      tone="neutral"
       iconPrefix="dots"
       aria-label="open menu"
     />
-    <Button variant="tertiary-danger" iconPrefix="trash" aria-label="remove" />
+    <Button
+      variant="tertiary"
+      tone="danger"
+      iconPrefix="trash"
+      aria-label="remove"
+    />
   </Story>
 </Canvas>
 
@@ -162,13 +199,13 @@ The interface should make it clear why the button is disabled and what needs to 
 <Canvas withSource="open">
   <Story name="Disabled">
     <Box direction="row" gap="sm">
-      <Button variant="primary-neutral" isDisabled>
+      <Button variant="primary" tone="neutral" isDisabled>
         Primary Disabled
       </Button>
-      <Button variant="secondary-neutral" isDisabled>
+      <Button variant="secondary" tone="neutral" isDisabled>
         Secondary Disabled
       </Button>
-      <Button variant="tertiary-neutral" isDisabled>
+      <Button variant="tertiary" tone="neutral" isDisabled>
         Tertiary Disabled
       </Button>
     </Box>

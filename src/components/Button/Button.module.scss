@@ -24,9 +24,7 @@
   --button-primary-neutral-font-color: var(--color-brand-grey-700);
   --button-primary-neutral-font-color-hover: var(--color-brand-grey-700);
   --button-secondary-neutral-background-color: var(--color-brand-white-base);
-  --button-secondary-neutral-background-color-hover: var(
-    --color-brand-grey-50
-  );
+  --button-secondary-neutral-background-color-hover: var(--color-brand-grey-50);
   --button-secondary-neutral-background-color-active: var(
     --color-brand-grey-200
   );
@@ -268,6 +266,64 @@
     &:not(:disabled):active {
       background-color: var(--button-primary-background-color-active);
     }
+
+    &.neutral {
+      background-color: var(--button-primary-neutral-background-color);
+      color: var(--button-primary-neutral-font-color);
+
+      &:focus {
+        outline: 0;
+        box-shadow: var(--button-neutral-box-shadow-focus);
+      }
+
+      &:focus-visible {
+        outline: 0;
+        box-shadow: var(--button-neutral-box-shadow-focus);
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: 0;
+        box-shadow: none;
+      }
+
+      &:not(:disabled):hover {
+        background-color: var(--button-primary-neutral-background-color-hover);
+        color: var(--button-primary-neutral-font-color-hover);
+      }
+
+      &:not(:disabled):active {
+        background-color: var(--button-primary-neutral-background-color-active);
+      }
+    }
+
+    &.danger {
+      background-color: var(--button-primary-danger-background-color);
+      color: var(--button-primary-danger-font-color);
+
+      &:focus {
+        outline: 0;
+        box-shadow: var(--button-danger-box-shadow-focus);
+      }
+
+      &:focus-visible {
+        outline: 0;
+        box-shadow: var(--button-danger-box-shadow-focus);
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: 0;
+        box-shadow: none;
+      }
+
+      &:not(:disabled):hover {
+        background-color: var(--button-primary-danger-background-color-hover);
+        color: var(--button-primary-danger-font-color-hover);
+      }
+
+      &:not(:disabled):active {
+        background-color: var(--button-primary-danger-background-color-active);
+      }
+    }
   }
 
   &.secondary {
@@ -301,6 +357,77 @@
     &:not(:disabled):active {
       background-color: var(--button-secondary-background-color-active);
     }
+
+    &.neutral {
+      background-color: var(--button-secondary-neutral-background-color);
+      border: 1px solid;
+      border-color: var(--button-secondary-neutral-border-color);
+      color: var(--button-secondary-neutral-font-color);
+
+      &:focus {
+        outline: 0;
+        box-shadow: var(--button-neutral-box-shadow-focus);
+      }
+
+      // Show focus styles on keyboard focus.
+      &:focus-visible {
+        outline: 0;
+        box-shadow: var(--button-neutral-box-shadow-focus);
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: 0;
+        box-shadow: none;
+      }
+
+      &:not(:disabled):hover {
+        border-color: var(--button-secondary-neutral-border-color-hover);
+        background-color: var(
+          --button-secondary-neutral-background-color-hover
+        );
+        color: var(--button-secondary-neutral-font-color-hover);
+      }
+
+      &:not(:disabled):active {
+        background-color: var(
+          --button-secondary-neutral-background-color-active
+        );
+      }
+    }
+
+    &.danger {
+      background-color: var(--button-secondary-danger-background-color);
+      border: 1px solid;
+      border-color: var(--button-secondary-danger-border-color);
+      color: var(--button-secondary-danger-font-color);
+
+      &:focus {
+        outline: 0;
+        box-shadow: var(--button-danger-box-shadow-focus);
+      }
+
+      &:focus-visible {
+        outline: 0;
+        box-shadow: var(--button-danger-box-shadow-focus);
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: 0;
+        box-shadow: none;
+      }
+
+      &:not(:disabled):hover {
+        border-color: var(--button-secondary-danger-border-color-hover);
+        background-color: var(--button-secondary-danger-background-color-hover);
+        color: var(--button-secondary-danger-font-color-hover);
+      }
+
+      &:not(:disabled):active {
+        background-color: var(
+          --button-secondary-danger-background-color-active
+        );
+      }
+    }
   }
 
   &.tertiary {
@@ -333,187 +460,68 @@
       background-color: var(--button-tertiary-background-color-active);
       border-color: var(--button-tertiary-background-color-active);
     }
-  }
 
-  &.primary-neutral {
-    background-color: var(--button-primary-neutral-background-color);
-    color: var(--button-primary-neutral-font-color);
+    &.neutral {
+      background-color: var(--button-tertiary-neutral-background-color);
+      color: var(--button-tertiary-neutral-font-color);
 
-    &:focus {
-      outline: 0;
-      box-shadow: var(--button-neutral-box-shadow-focus);
+      &:focus {
+        outline: 0;
+        box-shadow: var(--button-neutral-box-shadow-focus);
+      }
+
+      // Show focus styles on keyboard focus.
+      &:focus-visible {
+        outline: 0;
+        box-shadow: var(--button-neutral-box-shadow-focus);
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: 0;
+        box-shadow: none;
+      }
+
+      &:not(:disabled):hover {
+        background-color: var(--button-tertiary-neutral-background-color-hover);
+        border-color: var(--button-tertiary-neutral-background-color-hover);
+        color: var(--button-tertiary-neutral-font-color-hover);
+      }
+
+      &:not(:disabled):active {
+        background-color: var(
+          --button-tertiary-neutral-background-color-active
+        );
+      }
     }
 
-    &:focus-visible {
-      outline: 0;
-      box-shadow: var(--button-neutral-box-shadow-focus);
-    }
+    &.danger {
+      background-color: var(--button-tertiary-danger-background-color);
+      color: var(--button-tertiary-danger-font-color);
 
-    &:focus:not(:focus-visible) {
-      outline: 0;
-      box-shadow: none;
-    }
+      &:focus {
+        outline: 0;
+        box-shadow: var(--button-danger-box-shadow-focus);
+      }
 
-    &:not(:disabled):hover {
-      background-color: var(--button-primary-neutral-background-color-hover);
-      color: var(--button-primary-neutral-font-color-hover);
-    }
+      &:focus-visible {
+        outline: 0;
+        box-shadow: var(--button-danger-box-shadow-focus);
+      }
 
-    &:not(:disabled):active {
-      background-color: var(--button-primary-neutral-background-color-active);
-    }
-  }
+      &:focus:not(:focus-visible) {
+        outline: 0;
+        box-shadow: none;
+      }
 
-  &.secondary-neutral {
-    background-color: var(--button-secondary-neutral-background-color);
-    border: 1px solid;
-    border-color: var(--button-secondary-neutral-border-color);
-    color: var(--button-secondary-neutral-font-color);
+      &:not(:disabled):hover {
+        background-color: var(--button-tertiary-danger-background-color-hover);
+        border-color: var(--button-tertiary-danger-background-color-hover);
+        color: var(--button-tertiary-danger-font-color-hover);
+      }
 
-    &:focus {
-      outline: 0;
-      box-shadow: var(--button-neutral-box-shadow-focus);
-    }
-
-    // Show focus styles on keyboard focus.
-    &:focus-visible {
-      outline: 0;
-      box-shadow: var(--button-neutral-box-shadow-focus);
-    }
-
-    &:focus:not(:focus-visible) {
-      outline: 0;
-      box-shadow: none;
-    }
-
-    &:not(:disabled):hover {
-      border-color: var(--button-secondary-neutral-border-color-hover);
-      background-color: var(--button-secondary-neutral-background-color-hover);
-      color: var(--button-secondary-neutral-font-color-hover);
-    }
-
-    &:not(:disabled):active {
-      background-color: var(--button-secondary-neutral-background-color-active);
-    }
-  }
-
-  &.tertiary-neutral {
-    background-color: var(--button-tertiary-neutral-background-color);
-    color: var(--button-tertiary-neutral-font-color);
-
-    &:focus {
-      outline: 0;
-      box-shadow: var(--button-neutral-box-shadow-focus);
-    }
-
-    // Show focus styles on keyboard focus.
-    &:focus-visible {
-      outline: 0;
-      box-shadow: var(--button-neutral-box-shadow-focus);
-    }
-
-    &:focus:not(:focus-visible) {
-      outline: 0;
-      box-shadow: none;
-    }
-
-    &:not(:disabled):hover {
-      background-color: var(--button-tertiary-neutral-background-color-hover);
-      color: var(--button-tertiary-neutral-font-color-hover);
-    }
-
-    &:not(:disabled):active {
-      background-color: var(--button-tertiary-neutral-background-color-active);
-    }
-  }
-
-  &.primary-danger {
-    background-color: var(--button-primary-danger-background-color);
-    color: var(--button-primary-danger-font-color);
-
-    &:focus {
-      outline: 0;
-      box-shadow: var(--button-danger-box-shadow-focus);
-    }
-
-    &:focus-visible {
-      outline: 0;
-      box-shadow: var(--button-danger-box-shadow-focus);
-    }
-
-    &:focus:not(:focus-visible) {
-      outline: 0;
-      box-shadow: none;
-    }
-
-    &:not(:disabled):hover {
-      background-color: var(--button-primary-danger-background-color-hover);
-      color: var(--button-primary-danger-font-color-hover);
-    }
-
-    &:not(:disabled):active {
-      background-color: var(--button-primary-danger-background-color-active);
-    }
-  }
-
-  &.secondary-danger {
-    background-color: var(--button-secondary-danger-background-color);
-    border: 1px solid;
-    border-color: var(--button-secondary-danger-border-color);
-    color: var(--button-secondary-danger-font-color);
-
-    &:focus {
-      outline: 0;
-      box-shadow: var(--button-danger-box-shadow-focus);
-    }
-
-    &:focus-visible {
-      outline: 0;
-      box-shadow: var(--button-danger-box-shadow-focus);
-    }
-
-    &:focus:not(:focus-visible) {
-      outline: 0;
-      box-shadow: none;
-    }
-
-    &:not(:disabled):hover {
-      border-color: var(--button-secondary-danger-border-color-hover);
-      background-color: var(--button-secondary-danger-background-color-hover);
-      color: var(--button-secondary-danger-font-color-hover);
-    }
-
-    &:not(:disabled):active {
-      background-color: var(--button-secondary-danger-background-color-active);
-    }
-  }
-
-  &.tertiary-danger {
-    background-color: var(--button-tertiary-danger-background-color);
-    color: var(--button-tertiary-danger-font-color);
-
-    &:focus {
-      outline: 0;
-      box-shadow: var(--button-danger-box-shadow-focus);
-    }
-
-    &:focus-visible {
-      outline: 0;
-      box-shadow: var(--button-danger-box-shadow-focus);
-    }
-
-    &:focus:not(:focus-visible) {
-      outline: 0;
-      box-shadow: none;
-    }
-
-    &:not(:disabled):hover {
-      background-color: var(--button-tertiary-danger-background-color-hover);
-      color: var(--button-tertiary-danger-font-color-hover);
-    }
-
-    &:not(:disabled):active {
-      background-color: var(--button-tertiary-danger-background-color-active);
+      &:not(:disabled):active {
+        background-color: var(--button-tertiary-danger-background-color-active);
+      }
     }
   }
 

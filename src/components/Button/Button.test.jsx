@@ -277,15 +277,15 @@ describe('Button', () => {
 
     describe('Loading', () => {
       test('it renders the spinning loading indicator', () => {
-        render(<Button isLoading>Button is loading</Button>);
+        render(<Button tone="neutral" isLoading>Button is loading</Button>);
         const spinnerElement = document.getElementsByClassName('spinner')[0];
         expect(spinnerElement).toBeInTheDocument();
         expect(spinnerElement).toHaveClass('font-color-dark');
       });
 
-      test('it renders the grey spinning indicator if button variant is secondary-neutral', () => {
+      test('it renders the grey spinning indicator if button variant is secondary with neutral tone', () => {
         render(
-          <Button isLoading variant="secondary-neutral">
+          <Button isLoading variant="secondary" tone="neutral">
             Button is loading
           </Button>,
         );
@@ -310,9 +310,9 @@ describe('Button', () => {
         expect(spinnerElement).toHaveClass('font-color-white');
       });
 
-      test('it renders white spinning indicator when button is primary-danger', () => {
+      test('it renders white spinning indicator when button is primary with tone danger', () => {
         render(
-          <Button variant="primary-danger" isLoading>
+          <Button variant="primary" tone="danger" isLoading>
             Button is loading
           </Button>,
         );
@@ -341,7 +341,7 @@ describe('Button', () => {
         render(<Button>primary</Button>);
 
         expect(screen.getByText('primary').closest('button')).toHaveClass(
-          'primary-neutral',
+          'primary',
         );
       });
 

@@ -22,7 +22,7 @@ export const WithCustomPortalTarget: Story = () => {
 
   return (
     <div id="myContainer" ref={ref}>
-      <Button variant="primary-neutral" onClick={openMediaModal}>
+      <Button variant="primary" tone="neutral" onClick={openMediaModal}>
         Show Modal
       </Button>
       <MediaModal

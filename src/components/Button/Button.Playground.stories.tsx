@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { ICON_NAMES } from '../../lib/tokens';
 import { Button, ButtonProps } from './Button';
-import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
+import { BUTTON_SIZES, BUTTON_VARIANTS, BUTTON_TONE } from './Button.constants';
 
 export default {
   title: 'Components/Button/Playground',
@@ -15,6 +15,12 @@ export default {
       control: {
         type: 'select',
         options: BUTTON_VARIANTS,
+      },
+    },
+    tone: {
+      control: {
+        type: 'select',
+        options: BUTTON_TONE,
       },
     },
     size: {

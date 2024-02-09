@@ -5,7 +5,12 @@ import { Box, BoxProps } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
-import { Button, ButtonSize, ButtonVariant } from '../Button/Button';
+import {
+  Button,
+  ButtonSize,
+  ButtonTone,
+  ButtonVariant,
+} from '../Button/Button';
 import styles from './FileUpload.module.scss';
 import { IconName } from '../../types';
 
@@ -103,6 +108,10 @@ export interface FileUploadProps extends BoxProps {
    */
   size?: ButtonSize;
   /**
+   * Indicate the intent of the action the button performs.
+   */
+  tone?: ButtonTone;
+  /**
    * Color and visual weight for the button.
    */
   variant?: ButtonVariant;
@@ -141,7 +150,8 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<
       onClearFiles = undefined,
       requiredIndicator = <>&nbsp;*</>,
       size = 'md',
-      variant = 'primary-neutral',
+      tone = 'neutral',
+      variant = 'primary',
       ...restProps
     },
     ref,
@@ -220,6 +230,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<
             onClick={handleClick}
             aria-controls={id}
             isDisabled={isDisabled}
+            tone={tone}
             variant={variant}
             size={size}
             fullWidth={fullWidth}
@@ -288,7 +299,8 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<
         {renderFiles()}
         {files && onClearFiles && (
           <Button
-            variant="secondary-neutral"
+            variant="secondary"
+            tone="neutral"
             size="xs"
             onClick={onClearFiles}
             className="m-top-xs"

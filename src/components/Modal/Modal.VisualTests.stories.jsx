@@ -31,7 +31,7 @@ export const BasicExample = () => (
     <Modal.Header id="title" title="The Modal Title" onDismiss={() => null} />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="primary-neutral" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>
@@ -58,7 +58,7 @@ export const WithoutHeader = () => (
   <Modal ariaLabel="modal without header" isOpen onDismiss={() => null}>
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="primary-neutral" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>
@@ -75,7 +75,7 @@ export const FullScreenOnMobile = () => (
     />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="primary-neutral" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>
@@ -92,7 +92,7 @@ export const WithMaxWidth = () => (
     />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="primary-neutral" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>
@@ -114,7 +114,7 @@ export const WithResponsiveMaxWidth = () => (
     />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="primary-neutral" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>

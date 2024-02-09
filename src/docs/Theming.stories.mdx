@@ -166,18 +166,25 @@ Here is an example where all three token types are used to create a customized a
           '0 0 0 4px var(--color-brand-primary-200)',
         '--button-font-family': 'Consolas,monaco,monospace',
         '--button-primary-background-color': 'var(--color-brand-primary-500)',
-        '--button-primary-background-color-hover': 'var(--color-brand-primary-600)',
-        '--button-primary-background-color-active': 'var(--color-brand-primary-700)',
+        '--button-primary-background-color-hover':
+          'var(--color-brand-primary-600)',
+        '--button-primary-background-color-active':
+          'var(--color-brand-primary-700)',
         '--button-secondary-background-color': 'var(--color-brand-white-base)',
-        '--button-secondary-background-color-hover': 'var(--color-brand-primary-50)',
-        '--button-secondary-background-color-active': 'var(--color-brand-primary-100)',
+        '--button-secondary-background-color-hover':
+          'var(--color-brand-primary-50)',
+        '--button-secondary-background-color-active':
+          'var(--color-brand-primary-100)',
         '--button-secondary-border-color': 'var(--color-brand-grey-200)',
-        '--button-secondary-border-color-hover': 'var(--color-brand-primary-100)',
+        '--button-secondary-border-color-hover':
+          'var(--color-brand-primary-100)',
         '--button-secondary-font-color': 'var(--color-brand-primary-500)',
         '--button-secondary-font-color-hover': 'var(--color-brand-primary-500)',
-          '--button-tertiary-background-color': 'transparent',
-        '--button-tertiary-background-color-hover': 'var(--color-brand-primary-50)',
-        '--button-tertiary-background-color-active': 'var(--color-brand-primary-100)',
+        '--button-tertiary-background-color': 'transparent',
+        '--button-tertiary-background-color-hover':
+          'var(--color-brand-primary-50)',
+        '--button-tertiary-background-color-active':
+          'var(--color-brand-primary-100)',
         '--button-tertiary-font-color': 'var(--color-brand-primary-500)',
         '--button-tertiary-font-color-hover': 'var(--color-brand-primary-500)',
       };
@@ -246,12 +253,24 @@ Here is an example where all three token types are used to create a customized a
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="tertiary">Tertiary</Button>
-            <Button variant="primary-neutral">Primary Neutral</Button>
-            <Button variant="secondary-neutral">Secondary Neutral</Button>
-            <Button variant="tertiary-neutral">Tertiary Neutral</Button>
-            <Button variant="primary-danger">Primary Danger</Button>
-            <Button variant="secondary-danger">Secondary Danger</Button>
-            <Button variant="tertiary-danger">Tertiary Danger</Button>
+            <Button variant="primary" tone="neutral">
+              Primary Neutral
+            </Button>
+            <Button variant="secondary" tone="neutral">
+              Secondary Neutral
+            </Button>
+            <Button variant="tertiary" tone="neutral">
+              Tertiary Neutral
+            </Button>
+            <Button variant="primary" tone="danger">
+              Primary Danger
+            </Button>
+            <Button variant="secondary" tone="danger">
+              Secondary Danger
+            </Button>
+            <Button variant="tertiary" tone="danger">
+              Tertiary Danger
+            </Button>
           </Box>
           <Box background="grey-50" padding="lg" gap="lg">
             <Heading size="lg" as="h4">
