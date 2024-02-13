@@ -79,7 +79,7 @@ VimeoVideo.args = {
   ariaLabel: 'test MediaModal',
   isOpen: true,
   children: (
-    <Box display="block" width="90vw" maxWidth="5xl">
+    <Box display="block" width="90vw" maxWidth="5xl" data-chromatic="ignore">
       <Vimeo vimeoId="595469877" />
     </Box>
   ),
