@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.4](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-02-13)
+
+
+### Bug Fixes
+
+* **Button:** loading state icon color ([#868](https://github.com/palmetto/palmetto-components/issues/868)) ([96c93c9](https://github.com/palmetto/palmetto-components/commit/96c93c9890e31a01705bca797a8cd3c3f6ecf916))
+
 # [1.0.0-beta.3](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2024-02-09)
 
 
