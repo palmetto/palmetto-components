@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.6](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-02-13)
+
+
+### Bug Fixes
+
+* **FormControls:** specify width 100 instead of relying on flex auto ([#870](https://github.com/palmetto/palmetto-components/issues/870)) ([a78ba2e](https://github.com/palmetto/palmetto-components/commit/a78ba2ee4b938bd7d51e1f8b208d062ea99be39f))
+
 # [1.0.0-beta.5](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-02-13)
 
 # [1.0.0-beta.4](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-02-13)
