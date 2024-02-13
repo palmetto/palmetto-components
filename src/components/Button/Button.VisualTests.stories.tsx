@@ -36,7 +36,7 @@ const Template: Story<ButtonProps & { showIconButton: boolean; }> = (
             iconPrefix="add"
             iconSuffix="property-agreement"
             variant={variant}
-            tone="neutral"
+            tone={tone}
             key={`${variant}-icon`}
           >
             {`${variant} ${tone} icon`}
