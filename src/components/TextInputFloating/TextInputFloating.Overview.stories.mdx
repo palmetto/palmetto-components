@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { TextInputFloating } from './TextInputFloating';
 import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
 
 <Meta
   title="Components/TextInputFloating/Overview"
@@ -14,7 +15,9 @@ import { Box } from '../Box/Box';
 
 # TextInputFloating
 
-<Canvas isExpanded>
+Use `TextInputFloating` to create a floating label input field. It is a controlled component, which means that you need to provide a value and an `onChange` handler to update the value.
+
+<Canvas withSource="open">
   <Story name="Default">
     {() => {
       const [value, setValue] = useState('');
@@ -25,6 +28,7 @@ import { Box } from '../Box/Box';
             id="emailInput"
             value={value}
             label="Email"
+            placeholder="Enter your email address"
             onChange={event => setValue(event.target.value)}
           />
           <TextInputFloating
@@ -43,9 +47,13 @@ import { Box } from '../Box/Box';
 
 ## Props
 
-<ArgsTable of={TextInput} />
+<ArgsTable of={TextInputFloating} />
 
-<Canvas isExpanded>
+### Required
+
+Use the `isRequired` prop to set the `required` and `aria-required` on the underlying input element.
+
+<Canvas>
   <Story name="Required">
     {() => {
       const [value, setValue] = useState('');
@@ -62,7 +70,52 @@ import { Box } from '../Box/Box';
   </Story>
 </Canvas>
 
-<Canvas isExpanded>
+Customize the required indicator with the `requiredIndicator` prop.
+
+<Canvas>
+  <Story name="Custom Required Indicator">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <TextInputFloating
+          id="customRequiredInput"
+          value={value}
+          label="Required Input"
+          onChange={event => setValue(event.target.value)}
+          isRequired
+          requiredIndicator=" (required)"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Help Text
+
+Use `helpText` to provide additional information about the input field.
+
+<Canvas>
+  <Story name="Help Text">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <TextInputFloating
+          id="helpTextStory"
+          value={value}
+          label="Inverter Manufacturer"
+          onChange={event => setValue(event.target.value)}
+          helpText="Must be from the approved vendor list"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Validation Error
+
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`.
+
+<Canvas>
   <Story name="Error">
     {() => {
       const [value, setValue] = useState('');
@@ -94,7 +147,7 @@ import { Box } from '../Box/Box';
 
 Add `isDisabled`to give it a grayed out appearance, remove pointer events, and prevent focusing.
 
-<Canvas isExpanded>
+<Canvas>
   <Story name="Disabled">
     {() => {
       const [value, setValue] = useState('');
@@ -120,3 +173,129 @@ Add `isDisabled`to give it a grayed out appearance, remove pointer events, and p
     }}
   </Story>
 </Canvas>
+
+### Clearable
+
+Use the `onClear` prop to display a clear icon (x) when the input has a value. `onClear` will fire
+a callback function when the clear icon is clicked, which can then be handled to clear the value.
+
+<Canvas>
+  <Story name="Clearable">
+    {() => {
+      const [value, setValue] = useState('clear me');
+      return (
+        <TextInputFloating
+          id="clearableTextInput"
+          value={value}
+          label="Clearable Input"
+          onChange={event => setValue(event.target.value)}
+          onClear={event => setValue('')}
+          isRequired
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Prefix and Suffix
+
+All that is required to render a basic version of the TextInput is a unique `id`, `label`, `value`, and an onchange event handler passed to the `onChange` prop.
+
+<Canvas>
+  <Story name="With Prefix and Suffix">
+    {() => {
+      const [prefixValue0, setPrefixValue0] = useState('');
+      const [prefixValue1, setPrefixValue1] = useState('palmettosolar');
+      const [prefixValue2, setPrefixValue2] = useState('49');
+      const [prefixValue3, setPrefixValue3] = useState('');
+      const [prefixValue4, setPrefixValue4] = useState('Pre-populated Value');
+      return (
+        <Box gap="md">
+          <TextInputFloating
+            id="prefixSuffix0"
+            value={prefixValue0}
+            label="Prefix Without Value"
+            onChange={event => setPrefixValue0(event.target.value)}
+            prefix="$"
+          />
+          <TextInputFloating
+            id="prefixSuffix1"
+            value={prefixValue1}
+            label="Prefix With Value"
+            onChange={event => setPrefixValue1(event.target.value)}
+            prefix="@"
+          />
+          <TextInputFloating
+            id="prefixSuffix2"
+            value={prefixValue2}
+            label="Prefix and Suffix"
+            onChange={event => setPrefixValue2(event.target.value)}
+            prefix="$"
+            suffix="per watt"
+          />
+          <TextInputFloating
+            id="prefixSuffix3"
+            value={prefixValue3}
+            label="Suffix Without Value"
+            onChange={event => setPrefixValue3(event.target.value)}
+            suffix={<Icon name="book" />}
+          />
+          <TextInputFloating
+            id="prefixSuffix4"
+            value={prefixValue4}
+            label="Suffix with Clear"
+            placeholder="Contact name"
+            onChange={event => setPrefixValue4(event.target.value)}
+            onClear={event => setPrefixValue4('')}
+            suffix={<Icon name="search" />}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Sizes
+
+There are only two sizes for TextInputFloating, `md` and `lg`, with `md` being the default.
+
+<Canvas>
+  <Story name="Sizes">
+    {() => {
+      const [value1, setValue1] = useState('');
+      const [value2, setValue2] = useState('');
+      const [value3, setValue3] = useState('Value');
+      return (
+        <Box gap="md">
+          <TextInputFloating
+            id="mdTextInput"
+            value={value1}
+            label="Medium Input"
+            size="md"
+            onChange={event => setValue1(event.target.value)}
+          />
+          <TextInputFloating
+            id="lgTextInput"
+            value={value2}
+            label="Large Input"
+            size="lg"
+            onChange={event => setValue2(event.target.value)}
+          />
+          <TextInputFloating
+            id="lgSuffixTextInput"
+            value={value3}
+            label="Large Input with Prefix and Suffix"
+            size="lg"
+            prefix="$"
+            suffix="/kWh"
+            onChange={event => setValue3(event.target.value)}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Component Design Tokens
+
+This component shares component design tokens with all form controls. For a complete list of tokens, see the [Theming Form Controls documentation](/docs/theming-form-controls--custom-theme-form).

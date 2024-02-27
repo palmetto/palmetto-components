@@ -1,8 +1,13 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
-@mixin floating-label-minimize {
+@mixin floating-label-minimize-md {
   opacity: 0.75;
   transform: scale(0.6875) translateY(-0.3rem) translateX(0.15rem);
+}
+
+@mixin floating-label-minimize-lg {
+  opacity: 0.75;
+  transform: scale(0.75) translateY(-0.3rem) translateX(0.15rem);
 }
 
 @mixin size-md {
@@ -40,22 +45,54 @@
       --form-control-size-md-border-radius,
       var(--INTERNAL_form-control-size-md-border-radius)
     );
+
+    &:focus {
+      + .text-input-label {
+        @include floating-label-minimize-lg;
+      }
+    }
+
+    &:not(:placeholder-shown) ~ label {
+      @include floating-label-minimize-md;
+    }
+  }
+
+  .text-input-label {
+    padding: var(
+      --form-control-size-md-padding,
+      var(--INTERNAL_form-control-size-md-padding)
+    );
   }
 
   .prefix {
-    padding: var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
+    padding: calc(
+        var(
+            --form-control-size-lg-padding,
+            var(--INTERNAL_form-control-size-lg-padding)
+          ) + 3px
       )
       0
-      var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
+      calc(
+        var(
+            --form-control-size-md-padding,
+            var(--INTERNAL_form-control-size-md-padding)
+          ) - 5px
       )
       var(
         --form-control-size-md-padding,
         var(--INTERNAL_form-control-size-md-padding)
       );
+
+    + input {
+      padding-left: var(
+        --form-control-size-xs-padding,
+        var(--INTERNAL_form-control-size-xs-padding)
+      );
+    }
+
+    + input + .text-input-label {
+      @include floating-label-minimize-md;
+    }
   }
 
   .suffix {
@@ -114,35 +151,83 @@
     var(--INTERNAL_form-control-size-lg-border-radius)
   );
   font-size: var(
-    --form-control-size-lg-font-size,
-    var(--INTERNAL_form-control-size-lg-font-size)
+    --form-control-size-md-font-size,
+    var(--INTERNAL_form-control-size-md-font-size)
   );
 
   > input {
-    padding: var(
-      --form-control-size-lg-padding,
-      var(--INTERNAL_form-control-size-lg-padding)
-    );
-    border-radius: var(
-      --form-control-size-lg-border-radius,
-      var(--INTERNAL_form-control-size-lg-border-radius)
-    );
-  }
-
-  .prefix {
-    padding: var(
-        --form-control-size-lg-padding,
-        var(--INTERNAL_form-control-size-lg-padding)
+    padding: calc(
+        var(
+            --form-control-size-lg-padding,
+            var(--INTERNAL_form-control-size-lg-padding)
+          ) + 8px
       )
-      0
       var(
         --form-control-size-lg-padding,
         var(--INTERNAL_form-control-size-lg-padding)
+      )
+      calc(
+        var(
+            --form-control-size-lg-padding,
+            var(--INTERNAL_form-control-size-lg-padding)
+          ) - 3px
       )
       var(
         --form-control-size-lg-padding,
         var(--INTERNAL_form-control-size-lg-padding)
       );
+    border-radius: var(
+      --form-control-size-lg-border-radius,
+      var(--INTERNAL_form-control-size-lg-border-radius)
+    );
+
+    &:focus {
+      + .text-input-label {
+        @include floating-label-minimize-lg;
+      }
+    }
+
+    &:not(:placeholder-shown) ~ label {
+      @include floating-label-minimize-lg;
+    }
+  }
+
+  .text-input-label {
+    padding: var(
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-lg-padding)
+    );
+  }
+
+  .prefix {
+    padding: calc(
+        var(
+            --form-control-size-lg-padding,
+            var(--INTERNAL_form-control-size-lg-padding)
+          ) + 8px
+      )
+      0
+      calc(
+        var(
+            --form-control-size-lg-padding,
+            var(--INTERNAL_form-control-size-lg-padding)
+          ) - 5px
+      )
+      var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      );
+
+    + input {
+      padding-left: var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-sm-padding)
+      );
+    }
+
+    + input + .text-input-label {
+      @include floating-label-minimize-lg;
+    }
   }
 
   .suffix {
@@ -285,11 +370,7 @@
     );
 
     &::placeholder {
-      opacity: 1;
-      color: var(
-        --form-control-placeholder-color,
-        var(--INTERNAL_form-control-placeholder-color)
-      );
+      color: transparent;
     }
 
     &:focus {
@@ -298,20 +379,16 @@
         --form-control-border-color-focus,
         var(--INTERNAL_form-control-border-color-focus)
       );
-
-      + .text-input-label {
-        @include floating-label-minimize;
-      }
-    }
-
-    &:not(:placeholder-shown) ~ label {
-      @include floating-label-minimize;
     }
 
     &:disabled {
       @extend %disabled-base;
 
       background-color: transparent;
+
+      + .text-input-label {
+        cursor: not-allowed;
+      }
     }
   }
 
@@ -406,10 +483,9 @@
   font-size: 1rem;
   transform-origin: 0 0;
   transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
-  font-weight: 500;
-
-  padding: var(
-    --form-control-size-md-padding,
-    var(--INTERNAL_form-control-size-md-padding)
-  );
+  font-weight: --form-control-label-font-weight,
+    var(--INTERNAL_form-control-label-font-weigh);
+  color: --form-control-label-font-color,
+    var(--INTERNAL_form-control-label-font-color);
+  cursor: text;
 }

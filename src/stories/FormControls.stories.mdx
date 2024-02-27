@@ -6,6 +6,7 @@ import { SelectInput } from '../components/SelectInput/SelectInput';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
 import { Button } from '../components/Button/Button';
 import { TextInput } from '../components/TextInput/TextInput';
+import { TextInputFloating } from '../components/TextInputFloating/TextInputFloating';
 import { Toggle } from '../components/Toggle/Toggle';
 
 <Meta title="Patterns/Form Controls" />
@@ -49,6 +50,32 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
       };
       return (
         <Box direction="row" gap="xs">
+          <Box gap="sm" width="110px">
+            <Box height="32px" />
+            <Box display="block">
+              <TextInputFloating
+                label="medium"
+                id="mdText"
+                value={formValues.textInputMd}
+                placeholder="Medium"
+                onChange={event =>
+                  handleChange('textInputMd', event.target.value)
+                }
+              />
+            </Box>
+            <Box>
+              <TextInputFloating
+                label="large"
+                id="lgText"
+                value={formValues.textInputLg}
+                placeholder="Large"
+                size="lg"
+                onChange={event =>
+                  handleChange('textInputLg', event.target.value)
+                }
+              />
+            </Box>
+          </Box>
           <Box gap="sm" width="110px">
             <Box display="block">
               <TextInput
