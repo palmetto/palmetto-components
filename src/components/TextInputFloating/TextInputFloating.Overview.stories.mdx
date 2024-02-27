@@ -1,0 +1,122 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { TextInputFloating } from './TextInputFloating';
+import { Box } from '../Box/Box';
+
+<Meta
+  title="Components/TextInputFloating/Overview"
+  component={TextInputFloating}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# TextInputFloating
+
+<Canvas isExpanded>
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState('');
+      const [valuePw, setValuePw] = useState('');
+      return (
+        <Box gap="md">
+          <TextInputFloating
+            id="emailInput"
+            value={value}
+            label="Email"
+            onChange={event => setValue(event.target.value)}
+          />
+          <TextInputFloating
+            id="passwordInput"
+            value={valuePw}
+            label="Password"
+            type="password"
+            onChange={event => setValuePw(event.target.value)}
+            helpText="Password must be at least 8 characters long"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={TextInput} />
+
+<Canvas isExpanded>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <TextInputFloating
+          id="requiredInput"
+          value={value}
+          label="Required Input"
+          onChange={event => setValue(event.target.value)}
+          isRequired
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas isExpanded>
+  <Story name="Error">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value2, setValue2] = useState('Invalid Value');
+      return (
+        <Box gap="md">
+          <TextInputFloating
+            id="error1"
+            value={value}
+            label="email"
+            error="Required Input"
+            onChange={event => setValue(event.target.value)}
+            isRequired
+          />
+          <TextInputFloating
+            id="error2"
+            value={value2}
+            label="email"
+            error="Invalid Value"
+            onChange={event => setValue2(event.target.value)}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Disabled
+
+Add `isDisabled`to give it a grayed out appearance, remove pointer events, and prevent focusing.
+
+<Canvas isExpanded>
+  <Story name="Disabled">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value2, setValue2] = useState('Value');
+      return (
+        <Box gap="md">
+          <TextInputFloating
+            id="disabled"
+            value={value}
+            label="email"
+            onChange={event => setValue(event.target.value)}
+            isDisabled
+          />
+          <TextInputFloating
+            id="disabledValue"
+            value={value2}
+            label="Disabled with Value"
+            onChange={event => setValue2(event.target.value)}
+            isDisabled
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

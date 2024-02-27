@@ -1,0 +1,415 @@
+@import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
+@mixin floating-label-minimize {
+  opacity: 0.75;
+  transform: scale(0.6875) translateY(-0.3rem) translateX(0.15rem);
+}
+
+@mixin size-md {
+  border-radius: var(
+    --form-control-size-md-border-radius,
+    var(--INTERNAL_form-control-size-md-border-radius)
+  );
+  font-size: var(
+    --form-control-size-sm-font-size,
+    var(--INTERNAL_form-control-size-sm-font-size)
+  );
+
+  > input {
+    padding: calc(
+        var(
+            --form-control-size-lg-padding,
+            var(--INTERNAL_form-control-size-lg-padding)
+          ) + 3px
+      )
+      var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      )
+      calc(
+        var(
+            --form-control-size-md-padding,
+            var(--INTERNAL_form-control-size-md-padding)
+          ) - 5px
+      )
+      var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      );
+    border-radius: var(
+      --form-control-size-md-border-radius,
+      var(--INTERNAL_form-control-size-md-border-radius)
+    );
+  }
+
+  .prefix {
+    padding: var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      )
+      0
+      var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      )
+      var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      );
+  }
+
+  .suffix {
+    padding: var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      )
+      var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      )
+      var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      )
+      0;
+  }
+
+  .clear-button {
+    padding: var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      )
+      var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      )
+      var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      )
+      0;
+  }
+
+  &:not(.is-clearable) {
+    .suffix {
+      padding: var(
+        --form-control-size-md-padding,
+        var(--INTERNAL_form-control-size-md-padding)
+      );
+    }
+  }
+}
+
+%size-md {
+  @include size-md;
+}
+
+.size-md {
+  @extend %size-md;
+}
+
+@mixin size-lg {
+  border-radius: var(
+    --form-control-size-lg-border-radius,
+    var(--INTERNAL_form-control-size-lg-border-radius)
+  );
+  font-size: var(
+    --form-control-size-lg-font-size,
+    var(--INTERNAL_form-control-size-lg-font-size)
+  );
+
+  > input {
+    padding: var(
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-lg-padding)
+    );
+    border-radius: var(
+      --form-control-size-lg-border-radius,
+      var(--INTERNAL_form-control-size-lg-border-radius)
+    );
+  }
+
+  .prefix {
+    padding: var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      )
+      0
+      var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      )
+      var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      );
+  }
+
+  .suffix {
+    padding: var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      )
+      var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      )
+      var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      )
+      0;
+  }
+
+  .clear-button {
+    padding: var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      )
+      var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      )
+      var(
+        --form-control-size-lg-padding,
+        var(--INTERNAL_form-control-size-lg-padding)
+      )
+      0;
+  }
+}
+
+%size-lg {
+  @include size-lg;
+}
+
+.size-lg {
+  @extend %size-lg;
+}
+
+// https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
+%disabled-base {
+  background-color: var(
+    --form-control-background-color-disabled,
+    var(--INTERNAL_form-control-background-color-disabled)
+  );
+  color: var(
+    --form-control-font-color-disabled,
+    var(--INTERNAL_form-control-font-color-disabled)
+  );
+  -webkit-text-fill-color: var(
+    --form-control-font-color-disabled,
+    var(--INTERNAL_form-control-font-color-disabled)
+  );
+  opacity: 1;
+
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
+.text-input-wrapper {
+  font-family: var(
+    --form-control-font-family,
+    var(--INTERNAL_form-control-font-family)
+  );
+  position: relative;
+  box-shadow: var(
+      --form-control-box-shadow,
+      var(--INTERNAL_form-control-box-shadow)
+    ),
+    inset 0 0 0 1px
+      var(
+        --form-control-border-color,
+        var(--INTERNAL_form-control-border-color)
+      );
+  background-color: var(
+    --form-control-background-color,
+    var(--INTERNAL_form-control-background-color)
+  );
+
+  &.size-md {
+    @extend %size-md;
+  }
+
+  &.size-lg {
+    @extend %size-lg;
+  }
+
+  @media (min-width: $size-breakpoint-tablet) {
+    &.size-md-tablet {
+      @include size-md;
+    }
+
+    &.size-lg-tablet {
+      @include size-lg;
+    }
+  }
+
+  @media (min-width: $size-breakpoint-desktop) {
+    &.size-md-desktop {
+      @include size-md;
+    }
+
+    &.size-lg-desktop {
+      @include size-lg;
+    }
+  }
+
+  @media (min-width: $size-breakpoint-hd) {
+    &.size-md-hd {
+      @include size-md;
+    }
+
+    &.size-lg-hd {
+      @include size-lg;
+    }
+  }
+
+  // border and background is set on the text-input-wrapper
+  > input {
+    box-sizing: border-box;
+    display: flex;
+    transition-duration: 300ms;
+    transition-property: border, background-color;
+    transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    line-height: var(
+      --form-control-line-height,
+      var(--INTERNAL_form-control-line-height)
+    );
+    color: var(
+      --form-control-font-color,
+      var(--INTERNAL_form-control-font-color)
+    );
+
+    &::placeholder {
+      opacity: 1;
+      color: var(
+        --form-control-placeholder-color,
+        var(--INTERNAL_form-control-placeholder-color)
+      );
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(
+        --form-control-border-color-focus,
+        var(--INTERNAL_form-control-border-color-focus)
+      );
+
+      + .text-input-label {
+        @include floating-label-minimize;
+      }
+    }
+
+    &:not(:placeholder-shown) ~ label {
+      @include floating-label-minimize;
+    }
+
+    &:disabled {
+      @extend %disabled-base;
+
+      background-color: transparent;
+    }
+  }
+
+  &.error {
+    box-shadow: var(
+        --form-control-box-shadow,
+        var(--INTERNAL_form-control-box-shadow)
+      ),
+      inset 0 0 0 1px
+        var(
+          --form-control-border-color-error,
+          var(--INTERNAL_form-control-border-color-error)
+        );
+    background-color: var(
+      --form-control-background-color-error,
+      var(--INTERNAL_form-control-background-color-error)
+    );
+
+    &:focus-within {
+      background-color: var(
+        --form-control-background-color,
+        var(--INTERNAL_form-control-background-color)
+      );
+    }
+
+    input:focus {
+      outline: none;
+      background-color: transparent;
+    }
+  }
+
+  //Necessary so that inset shadow that we use for border does not get covered by child elements.
+  &:not(.error) {
+    > * {
+      &:focus,
+      &.disabled {
+        &:not(input) {
+          box-shadow: inset 0 1px 0 0
+              var(
+                --form-control-box-shadow-focus,
+                var(--INTERNAL_form-control-box-shadow-focus)
+              ),
+            inset 0 -1px 0 0 var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+        }
+      }
+    }
+  }
+
+  &:focus-within {
+    outline: none;
+    box-shadow: var(
+        --form-control-box-shadow-focus,
+        var(--INTERNAL_form-control-box-shadow-focus)
+      ),
+      inset 0 0 0 1px
+        var(
+          --form-control-border-color-focus,
+          var(--INTERNAL_form-control-border-color-focus)
+        );
+  }
+
+  &.disabled {
+    @extend %disabled-base;
+  }
+
+  // Reset default button styles
+  .clear-button {
+    transition-duration: 0.2s;
+    transition-property: color;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    cursor: pointer;
+    color: var(
+      --form-control-icon-color,
+      var(--INTERNAL_form-control-icon-color)
+    );
+    font-style: inherit;
+
+    &:hover {
+      color: var(
+        --form-control-icon-hover-color,
+        var(--INTERNAL_form-control-icon-hover-color)
+      );
+    }
+  }
+}
+
+.text-input-label {
+  position: absolute;
+  top: 0;
+  font-size: 1rem;
+  transform-origin: 0 0;
+  transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+  font-weight: 500;
+
+  padding: var(
+    --form-control-size-md-padding,
+    var(--INTERNAL_form-control-size-md-padding)
+  );
+}
