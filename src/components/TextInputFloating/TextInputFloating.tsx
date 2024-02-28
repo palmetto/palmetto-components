@@ -127,146 +127,144 @@ export interface TextInputFloatingProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps> =
-  forwardRef<HTMLDivElement, TextInputFloatingProps>(
-    (
+export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps> = forwardRef<HTMLDivElement, TextInputFloatingProps>(
+  (
+    {
+      id,
+      label,
+      onChange,
+      value,
+      autoComplete = false,
+      autoFocus = false,
+      error = false,
+      helpText,
+      hideLabel = false,
+      inputProps = {},
+      isDisabled = false,
+      isRequired = false,
+      maxLength = undefined,
+      name = '',
+      onBlur = undefined,
+      onClear = undefined,
+      onFocus = undefined,
+      prefix = undefined,
+      placeholder = '',
+      requiredIndicator = ' *',
+      suffix = undefined,
+      size = 'md',
+      type = 'text',
+    },
+    ref,
+  ) => {
+    const responsiveClasses = generateResponsiveClasses('size', size);
+
+    const inputWrapperClasses = classNames(
+      'palmetto-components__variables__form-control',
+      styles['text-input-wrapper'],
+      ...responsiveClasses.map(c => styles[c]),
       {
-        id,
-        label,
-        onChange,
-        value,
-        autoComplete = false,
-        autoFocus = false,
-        error = false,
-        helpText,
-        hideLabel = false,
-        inputProps = {},
-        isDisabled = false,
-        isRequired = false,
-        maxLength = undefined,
-        name = '',
-        onBlur = undefined,
-        onClear = undefined,
-        onFocus = undefined,
-        prefix = undefined,
-        placeholder = '',
-        requiredIndicator = ' *',
-        suffix = undefined,
-        size = 'md',
-        type = 'text',
-        ...restProps
+        [styles.error]: error,
+        [styles.disabled]: isDisabled,
+        [styles['is-clearable']]: onClear,
       },
-      ref,
-    ) => {
-      const responsiveClasses = generateResponsiveClasses('size', size);
+    );
 
-      const inputWrapperClasses = classNames(
-        'palmetto-components__variables__form-control',
-        styles['text-input-wrapper'],
-        ...responsiveClasses.map(c => styles[c]),
-        {
-          [styles.error]: error,
-          [styles.disabled]: isDisabled,
-          [styles['is-clearable']]: onClear,
-        },
-      );
+    const clearBtnClasses = classNames(styles['clear-button'], styles.md);
 
-      const clearBtnClasses = classNames(styles['clear-button'], styles.md);
-
-      const renderClearIcon = (): ReactNode => {
-        const handleKeyPress = (
-          event: KeyboardEvent<HTMLButtonElement>,
-        ): void => {
-          if (event.keyCode === 13 && onClear) onClear(event);
-        };
-
-        return (
-          <button
-            type="button"
-            onClick={onClear}
-            onKeyUp={handleKeyPress}
-            className={clearBtnClasses}
-            data-testid="text-input-clear-button"
-            aria-label="clear input"
-          >
-            <Icon name="remove" className="display-block" />
-          </button>
-        );
-      };
-
-      const computedInputProps: TextInputFloatingProps['inputProps'] = {
-        ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
-        'aria-required': isRequired,
-        'aria-invalid': !!error,
-        'aria-label': label,
-        'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
-        autoComplete: getAutoCompleteValue(autoComplete),
-        autoFocus,
-        disabled: isDisabled,
-        id,
-        maxLength,
-        name,
-        onBlur,
-        onChange,
-        onFocus,
-        placeholder,
-        required: isRequired,
-        type,
-        value,
-        className: classNames(inputProps.className, {
-          'p-left-xs p-left-xs-tablet p-left-xs-desktop p-left-xs-hd': prefix,
-          'p-right-xs p-right-xs-tablet p-right-xs-desktop p-right-xs-hd':
-            suffix,
-          'p-h-0': !suffix && !prefix,
-        }),
+    const renderClearIcon = (): ReactNode => {
+      const handleKeyPress = (
+        event: KeyboardEvent<HTMLButtonElement>,
+      ): void => {
+        if (event.keyCode === 13 && onClear) onClear(event);
       };
 
       return (
-        <Box>
+        <button
+          type="button"
+          onClick={onClear}
+          onKeyUp={handleKeyPress}
+          className={clearBtnClasses}
+          data-testid="text-input-clear-button"
+          aria-label="clear input"
+        >
+          <Icon name="remove" className="display-block" />
+        </button>
+      );
+    };
+
+    const computedInputProps: TextInputFloatingProps['inputProps'] = {
+      ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
+      'aria-required': isRequired,
+      'aria-invalid': !!error,
+      'aria-label': label,
+      'aria-labelledby': label && !hideLabel ? `${id}Label` : undefined,
+      autoComplete: getAutoCompleteValue(autoComplete),
+      autoFocus,
+      disabled: isDisabled,
+      id,
+      maxLength,
+      name,
+      onBlur,
+      onChange,
+      onFocus,
+      placeholder,
+      required: isRequired,
+      type,
+      value,
+      className: classNames(inputProps.className, {
+        'p-left-xs p-left-xs-tablet p-left-xs-desktop p-left-xs-hd': prefix,
+        'p-right-xs p-right-xs-tablet p-right-xs-desktop p-right-xs-hd':
+            suffix,
+        'p-h-0': !suffix && !prefix,
+      }),
+    };
+
+    return (
+      <>
+        <Box
+          ref={ref}
+          direction="row"
+          position="relative"
+          className={inputWrapperClasses}
+        >
+          {prefix && (
           <Box
-            ref={ref}
-            direction="row"
-            position="relative"
-            className={inputWrapperClasses}
+            color="grey-400"
+            className={classNames(styles.prefix, 'ws-nowrap')}
           >
-            {prefix && (
-              <Box
-                color="grey-400"
-                className={classNames(styles.prefix, 'ws-nowrap')}
-              >
-                {prefix}
-              </Box>
-            )}
-            <Box as="input" {...computedInputProps} />
-            {!!onClear && !!value && renderClearIcon()}
-            <label
-              htmlFor={id}
-              className={styles['text-input-label']}
-              id={`${id}Label`}
-            >
-              {label}
-              {isRequired && requiredIndicator && (
-                <span>{requiredIndicator}</span>
-              )}
-            </label>
-            {suffix && (
-              <Box
-                color="grey-400"
-                className={classNames(styles.suffix, 'ws-nowrap')}
-              >
-                {suffix}
-              </Box>
-            )}
+            {prefix}
           </Box>
-          {helpText && (
-            <Box margin="xs 0 0 0" as="p" fontSize="xs" color="grey-500">
-              {helpText}
-            </Box>
           )}
-          {error && error !== true && (
-            <InputValidationMessage>{error}</InputValidationMessage>
+          <Box as="input" {...computedInputProps} />
+          {!!onClear && !!value && renderClearIcon()}
+          <label
+            htmlFor={id}
+            className={styles['text-input-label']}
+            id={`${id}Label`}
+          >
+            {label}
+            {isRequired && requiredIndicator && (
+            <span>{requiredIndicator}</span>
+            )}
+          </label>
+          {suffix && (
+          <Box
+            color="grey-400"
+            className={classNames(styles.suffix, 'ws-nowrap')}
+          >
+            {suffix}
+          </Box>
           )}
         </Box>
-      );
-    },
-  );
+        {helpText && (
+        <Box margin="xs 0 0 0" as="p" fontSize="xs" color="grey-500">
+          {helpText}
+        </Box>
+        )}
+        {error && error !== true && (
+        <InputValidationMessage>{error}</InputValidationMessage>
+        )}
+      </>
+    );
+  },
+);
