@@ -20,6 +20,13 @@
     var(--INTERNAL_form-control-size-sm-font-size)
   );
 
+  .text-input-label {
+    padding: var(
+      --form-control-size-md-padding,
+      var(--INTERNAL_form-control-size-md-padding)
+    );
+  }
+
   > input {
     padding: calc(
         var(
@@ -55,13 +62,6 @@
     &:not(:placeholder-shown) ~ label {
       @include floating-label-minimize-md;
     }
-  }
-
-  .text-input-label {
-    padding: var(
-      --form-control-size-md-padding,
-      var(--INTERNAL_form-control-size-md-padding)
-    );
   }
 
   .prefix {
@@ -155,6 +155,13 @@
     var(--INTERNAL_form-control-size-md-font-size)
   );
 
+  .text-input-label {
+    padding: var(
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-lg-padding)
+    );
+  }
+
   > input {
     padding: calc(
         var(
@@ -190,13 +197,6 @@
     &:not(:placeholder-shown) ~ label {
       @include floating-label-minimize-lg;
     }
-  }
-
-  .text-input-label {
-    padding: var(
-      --form-control-size-lg-padding,
-      var(--INTERNAL_form-control-size-lg-padding)
-    );
   }
 
   .prefix {
@@ -290,6 +290,19 @@
   &:hover {
     cursor: not-allowed;
   }
+}
+
+.text-input-label {
+  position: absolute;
+  top: 0;
+  font-size: 1rem;
+  transform-origin: 0 0;
+  transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+  font-weight: --form-control-label-font-weight,
+    var(--INTERNAL_form-control-label-font-weigh);
+  color: --form-control-label-font-color,
+    var(--INTERNAL_form-control-label-font-color);
+  cursor: text;
 }
 
 .text-input-wrapper {
@@ -475,17 +488,4 @@
       );
     }
   }
-}
-
-.text-input-label {
-  position: absolute;
-  top: 0;
-  font-size: 1rem;
-  transform-origin: 0 0;
-  transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
-  font-weight: --form-control-label-font-weight,
-    var(--INTERNAL_form-control-label-font-weigh);
-  color: --form-control-label-font-color,
-    var(--INTERNAL_form-control-label-font-color);
-  cursor: text;
 }
