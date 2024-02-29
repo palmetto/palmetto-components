@@ -54,8 +54,8 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             <Box height="32px" />
             <Box display="block">
               <TextInputFloating
-                label="medium"
-                id="mdText"
+                label="floating md"
+                id="mdTextFloating"
                 value={formValues.textInputMd}
                 placeholder="Medium"
                 onChange={event =>
@@ -65,8 +65,8 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
             </Box>
             <Box>
               <TextInputFloating
-                label="large"
-                id="lgText"
+                label="floating lg"
+                id="lgTextFloating"
                 value={formValues.textInputLg}
                 placeholder="Large"
                 size="lg"
@@ -123,7 +123,7 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
           </Box>
           <Box gap="sm" width="150px" alignItems="flex-start">
             <SelectInputNative
-              id="smallSelect"
+              id="smallSelectNative"
               label="Label"
               onChange={event =>
                 handleChange('selectInput', event.target.value)
@@ -134,7 +134,7 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
               size="sm"
             />
             <SelectInputNative
-              id="mediumSelect"
+              id="mediumSelectNative"
               label="Label"
               onChange={event =>
                 handleChange('selectInput', event.target.value)
@@ -145,7 +145,7 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
               size="md"
             />
             <SelectInputNative
-              id="largeSelect"
+              id="largeSelectNative"
               label="Label"
               onChange={event =>
                 handleChange('selectInput', event.target.value)
@@ -280,11 +280,16 @@ Inline form sizes with labels.
 <Canvas>
   <Story name="Sizes with Labels">
     {() => {
-      const [value, setValue] = useState('');
-      const [value1, setValue1] = useState('');
-      const [value2, setValue2] = useState('');
-      const [value3, setValue3] = useState('');
-      const [valueLabel4, setValueLabel4] = useState();
+      const [formValues, setFormValues] = useState({
+        textInputSm: '',
+        textInputMd: '',
+        textInputLg: '',
+        selectInput: {
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        toggleValue: false,
+      });
       const options = [
         {
           value: 'chocolate',
@@ -299,17 +304,26 @@ Inline form sizes with labels.
           label: 'Vanilla',
         },
       ];
+      const handleChange = (key, value) => {
+        setFormValues(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
       return (
         <div>
           <Box direction="row" gap="sm" padding="sm">
+            <Box width="30" />
             <Box width="30">
               <TextInput
                 id="smTextLabel"
-                value={value}
+                value={formValues.textInputSm}
                 placeholder="Small"
                 size="sm"
                 label="Label"
-                onChange={event => setValue(event.target.value)}
+                onChange={event =>
+                  handleChange('textInputSm', event.target.value)
+                }
               />
             </Box>
             <Box alignItems="flex-end" direction="row">
@@ -321,9 +335,11 @@ Inline form sizes with labels.
               <SelectInput
                 id="smSelectLabel"
                 label="Label"
-                onChange={event => setValue3(event.target.value)}
+                onChange={event =>
+                  handleChange('selectInput', event.target.value)
+                }
                 options={options}
-                value={value3}
+                value={formValues.selectInput}
                 size="sm"
               />
             </Box>
@@ -331,20 +347,36 @@ Inline form sizes with labels.
               <Toggle
                 id="smToggleLabel"
                 label="small toggle"
-                onChange={event => setValueLabel4(event.target.checked)}
-                isChecked={valueLabel4}
+                onChange={event =>
+                  handleChange('toggleValue', event.target.checked)
+                }
+                isChecked={formValues.toggleValue}
                 size="sm"
               />
             </Box>
           </Box>
-          <Box direction="row" gap="sm" padding="sm">
+          <Box direction="row" alignItems="flex-end" gap="sm" padding="sm">
+            <Box width="30">
+              <TextInputFloating
+                id="mdTextLabelFloating"
+                value={formValues.textInputMd}
+                placeholder="Floating MD"
+                size="md"
+                label="Floating Label"
+                onChange={event =>
+                  handleChange('textInputMd', event.target.value)
+                }
+              />
+            </Box>
             <Box width="30">
               <TextInput
                 id="mdTextLabel"
-                value={value1}
+                value={formValues.textInputMd}
                 placeholder="Medium"
                 label="Label"
-                onChange={event => setValue1(event.target.value)}
+                onChange={event =>
+                  handleChange('textInputMd', event.target.value)
+                }
               />
             </Box>
             <Box alignItems="flex-end" direction="row">
@@ -354,9 +386,11 @@ Inline form sizes with labels.
               <SelectInput
                 id="mdSelectLabel"
                 label="Label"
-                onChange={event => setValue3(event.target.value)}
+                onChange={event =>
+                  handleChange('selectInput', event.target.value)
+                }
                 options={options}
-                value={value3}
+                value={formValues.selectInput}
                 size="md"
               />
             </Box>
@@ -364,21 +398,37 @@ Inline form sizes with labels.
               <Toggle
                 id="mdToggleLabel"
                 label="medium toggle"
-                onChange={event => setValueLabel4(event.target.checked)}
-                isChecked={valueLabel4}
+                onChange={event =>
+                  handleChange('toggleValue', event.target.checked)
+                }
+                isChecked={formValues.toggleValue}
                 size="md"
               />
             </Box>
           </Box>
-          <Box direction="row" gap="sm" padding="sm">
+          <Box direction="row" alignItems="flex-end" gap="sm" padding="sm">
+            <Box width="30">
+              <TextInputFloating
+                id="lgTextLabelFloating"
+                value={formValues.textInputLg}
+                placeholder="Floating Lg"
+                size="lg"
+                label="Floating Label"
+                onChange={event =>
+                  handleChange('textInputLg', event.target.value)
+                }
+              />
+            </Box>
             <Box width="30">
               <TextInput
                 id="lgTextLabel"
-                value={value2}
+                value={formValues.textInputLg}
                 placeholder="Large"
                 size="lg"
                 label="Label"
-                onChange={event => setValue2(event.target.value)}
+                onChange={event =>
+                  handleChange('textInputLg', event.target.value)
+                }
               />
             </Box>
             <Box alignItems="flex-end" direction="row">
@@ -390,9 +440,11 @@ Inline form sizes with labels.
               <SelectInput
                 id="lgSelectLabel"
                 label="Label"
-                onChange={event => setValue3(event.target.value)}
+                onChange={event =>
+                  handleChange('selectInput', event.target.value)
+                }
                 options={options}
-                value={value3}
+                value={formValues.selectInput}
                 size="lg"
               />
             </Box>
@@ -400,8 +452,10 @@ Inline form sizes with labels.
               <Toggle
                 id="lgToggleLabel"
                 label="large toggle"
-                onChange={event => setValueLabel4(event.target.checked)}
-                isChecked={valueLabel4}
+                onChange={event =>
+                  handleChange('toggleValue', event.target.checked)
+                }
+                isChecked={formValues.toggleValue}
                 size="lg"
               />
             </Box>
@@ -419,11 +473,16 @@ Inline form sizes with error states.
 <Canvas>
   <Story name="Sizes with Error State">
     {() => {
-      const [value, setValue] = useState('');
-      const [value1, setValue1] = useState('');
-      const [value2, setValue2] = useState('');
-      const [value3, setValue3] = useState();
-      const [valueError4, setValueError4] = useState();
+      const [formValues, setFormValues] = useState({
+        textInputSm: '',
+        textInputMd: '',
+        textInputLg: '',
+        selectInput: {
+          value: 'chocolate',
+          label: 'Chocolate',
+        },
+        toggleValue: false,
+      });
       const options = [
         {
           value: 'chocolate',
@@ -438,122 +497,170 @@ Inline form sizes with error states.
           label: 'Vanilla',
         },
       ];
+      const handleChange = (key, value) => {
+        setFormValues(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
       const errorMsg = 'Error message';
       return (
         <div>
           <Box direction="row" gap="sm" padding="sm">
+            <Box width="30" />
             <Box width="30">
               <TextInput
-                id="smTextError"
-                value={value}
+                id="smTextLabel"
+                value={formValues.textInputSm}
                 placeholder="Small"
                 size="sm"
+                label="Label"
+                onChange={event =>
+                  handleChange('textInputSm', event.target.value)
+                }
                 error={errorMsg}
-                onChange={event => setValue(event.target.value)}
               />
             </Box>
-            <Box alignItems="flex-start" direction="row">
+            <Box alignItems="flex-end" direction="row">
               <Button iconPrefix="property-agreement" size="sm">
                 Small Button
               </Button>
             </Box>
             <Box width="160px">
               <SelectInput
-                id="smallErrorSelect"
+                id="smSelectLabel"
                 label="Label"
-                onChange={event => setValue3(event.target.value)}
+                onChange={event =>
+                  handleChange('selectInput', event.target.value)
+                }
                 options={options}
-                value={value3}
-                hideLabel
+                value={formValues.selectInput}
                 size="sm"
                 error={errorMsg}
               />
             </Box>
             <Box justifyContent="center">
               <Toggle
-                id="smToggleError"
+                id="smToggleLabel"
                 label="small toggle"
-                onChange={event => setValueError4(event.target.checked)}
-                isChecked={valueError4}
+                onChange={event =>
+                  handleChange('toggleValue', event.target.checked)
+                }
+                isChecked={formValues.toggleValue}
                 size="sm"
-                hideLabel
                 error={errorMsg}
               />
             </Box>
           </Box>
-          <Box direction="row" gap="sm" padding="sm">
+          <Box direction="row" alignItems="flex-end" gap="sm" padding="sm">
             <Box width="30">
-              <TextInput
-                id="mdTextError"
-                value={value1}
-                placeholder="Medium"
+              <TextInputFloating
+                id="mdTextLabelFloating"
+                value={formValues.textInputMd}
+                placeholder="Floating MD"
+                size="md"
+                label="Floating Label"
+                onChange={event =>
+                  handleChange('textInputMd', event.target.value)
+                }
                 error={errorMsg}
-                onChange={event => setValue1(event.target.value)}
               />
             </Box>
-            <Box alignItems="flex-start" direction="row">
+            <Box width="30">
+              <TextInput
+                id="mdTextLabel"
+                value={formValues.textInputMd}
+                placeholder="Medium"
+                label="Label"
+                onChange={event =>
+                  handleChange('textInputMd', event.target.value)
+                }
+                error={errorMsg}
+              />
+            </Box>
+            <Box alignItems="flex-end" direction="row">
               <Button iconPrefix="property-agreement">Medium Button</Button>
             </Box>
             <Box width="160px">
               <SelectInput
-                id="mdErrorSelect"
+                id="mdSelectLabel"
                 label="Label"
-                onChange={event => setValue3(event.target.value)}
+                onChange={event =>
+                  handleChange('selectInput', event.target.value)
+                }
                 options={options}
-                value={value3}
-                hideLabel
+                value={formValues.selectInput}
+                size="md"
                 error={errorMsg}
               />
             </Box>
             <Box justifyContent="center">
               <Toggle
-                id="mdToggleError"
-                label="small toggle"
-                onChange={event => setValueError4(event.target.checked)}
-                isChecked={valueError4}
+                id="mdToggleLabel"
+                label="medium toggle"
+                onChange={event =>
+                  handleChange('toggleValue', event.target.checked)
+                }
+                isChecked={formValues.toggleValue}
                 size="md"
-                hideLabel
                 error={errorMsg}
               />
             </Box>
           </Box>
-          <Box direction="row" gap="sm" padding="sm">
+          <Box direction="row" alignItems="flex-end" gap="sm" padding="sm">
             <Box width="30">
-              <TextInput
-                id="lgTextError"
-                value={value2}
-                placeholder="Large"
+              <TextInputFloating
+                id="lgTextLabelFloating"
+                value={formValues.textInputLg}
+                placeholder="Floating Lg"
                 size="lg"
+                label="Floating Label"
+                onChange={event =>
+                  handleChange('textInputLg', event.target.value)
+                }
                 error={errorMsg}
-                onChange={event => setValue2(event.target.value)}
               />
             </Box>
-            <Box alignItems="flex-start" direction="row">
+            <Box width="30">
+              <TextInput
+                id="lgTextLabel"
+                value={formValues.textInputLg}
+                placeholder="Large"
+                size="lg"
+                label="Label"
+                onChange={event =>
+                  handleChange('textInputLg', event.target.value)
+                }
+                error={errorMsg}
+              />
+            </Box>
+            <Box alignItems="flex-end" direction="row">
               <Button iconPrefix="property-agreement" size="lg">
                 Large Button
               </Button>
             </Box>
             <Box width="160px">
               <SelectInput
-                id="lgErrorSelect"
+                id="lgSelectLabel"
                 label="Label"
-                onChange={event => setValue3(event.target.value)}
+                onChange={event =>
+                  handleChange('selectInput', event.target.value)
+                }
                 options={options}
-                value={value3}
-                hideLabel
+                value={formValues.selectInput}
                 size="lg"
-                isClearable
                 error={errorMsg}
               />
             </Box>
             <Box justifyContent="center">
               <Toggle
-                id="lgToggleError"
+                id="lgToggleLabel"
                 label="large toggle"
-                onChange={event => setValueError4(event.target.checked)}
-                isChecked={valueError4}
+                onChange={event =>
+                  handleChange('toggleValue', event.target.checked)
+                }
+                isChecked={formValues.toggleValue}
                 size="lg"
-                hideLabel
                 error={errorMsg}
               />
             </Box>
