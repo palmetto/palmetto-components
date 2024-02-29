@@ -36,6 +36,7 @@ Use `TextInputFloating` to create a floating label input field. It is a controll
             value={valuePw}
             label="Password"
             type="password"
+            placeholder="Enter your password"
             onChange={event => setValuePw(event.target.value)}
             helpText="Password must be at least 8 characters long"
           />
@@ -62,6 +63,7 @@ Use the `isRequired` prop to set the `required` and `aria-required` on the under
           id="requiredInput"
           value={value}
           label="Required Input"
+          placeholder="Enter your email address"
           onChange={event => setValue(event.target.value)}
           isRequired
         />
@@ -218,6 +220,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
             label="website address"
             onChange={event => setPrefixValue0(event.target.value)}
             prefix="https://"
+            placeholder="Enter your website address"
           />
           <TextInputFloating
             id="prefixSuffix1"

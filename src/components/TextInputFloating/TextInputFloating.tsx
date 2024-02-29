@@ -148,7 +148,7 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
       onClear = undefined,
       onFocus = undefined,
       prefix = undefined,
-      placeholder = '',
+      placeholder = ' ',
       requiredIndicator = ' *',
       suffix = undefined,
       size = 'md',

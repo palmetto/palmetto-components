@@ -219,6 +219,7 @@
   color: --form-control-label-font-color,
     var(--INTERNAL_form-control-label-font-color);
   cursor: text;
+  white-space: nowrap;
 }
 
 .prefix {
