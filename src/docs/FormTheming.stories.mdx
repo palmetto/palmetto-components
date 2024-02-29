@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import { useState } from 'react';
 import { TextInput } from '../components/TextInput/TextInput';
+import { TextInputFloating } from '../components/TextInputFloating/TextInputFloating';
 import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { SelectInput } from '../components/SelectInput/SelectInput';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
@@ -57,6 +58,7 @@ Form controls share tokens since they are designed to have a consistent appearan
         selectValue: options[0].value,
         textValue: 'hello world',
         textareaValue: 'hello world',
+        emptyValue: '',
       });
       const handleChange = (key, value) => {
         setThemeExampleValues(prevFields => ({
@@ -82,16 +84,28 @@ Form controls share tokens since they are designed to have a consistent appearan
       };
       return (
         <Box
-          childGap="lg"
+          gap="lg"
           background="grey-50"
           padding="lg"
-          display="block"
           style={isThemed ? customTheme : null}
         >
           <Toggle
             label="Apply Custom Theme"
             isChecked={isThemed}
             onChange={e => setIsThemed(e.target.checked)}
+          />
+          <TextInputFloating
+            id="floatingThemeDemoEmpty"
+            label="Empty Text Input Floating"
+            value={themeExampleValues.emptyValue}
+            onChange={event => handleChange('emptyValue', event.target.value)}
+          />
+          <TextInputFloating
+            id="floatingThemeDemo"
+            helpText="This is a themed floating label text input"
+            label="Text Input Floating"
+            value={themeExampleValues.textValue}
+            onChange={event => handleChange('textValue', event.target.value)}
           />
           <TextInput
             id="demo"
@@ -221,7 +235,8 @@ The following tokens are shared by all form controls to maintain a consistent ap
         'form-control-checkbox-color': '--color-brand-grey-500',
         'form-control-checkbox-color-checked': '--color-brand-primary-500',
         'form-control-checkbox-color-disabled': '--color-brand-primary-200',
-        'form-control-checkbox-color-checked-disabled': '--color-brand-primary-200',
+        'form-control-checkbox-color-checked-disabled':
+          '--color-brand-primary-200',
         'form-control-radio-group-description-spacing': '--size-spacing-xs',
         'form-control-radio-group-options-spacing': '--size-spacing-md',
         'form-control-select-sm-icon-size': '20px',
