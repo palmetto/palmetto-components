@@ -268,7 +268,6 @@ There are only two sizes for TextInputFloating, `md` and `lg`, with `md` being t
     {() => {
       const [value1, setValue1] = useState('');
       const [value2, setValue2] = useState('');
-      const [value3, setValue3] = useState('Value');
       return (
         <Box gap="md">
           <TextInputFloating
@@ -284,15 +283,6 @@ There are only two sizes for TextInputFloating, `md` and `lg`, with `md` being t
             label="Large Input"
             size="lg"
             onChange={event => setValue2(event.target.value)}
-          />
-          <TextInputFloating
-            id="lgSuffixTextInput"
-            value={value3}
-            label="Large Input with Prefix and Suffix"
-            size="lg"
-            prefix="$"
-            suffix="/kWh"
-            onChange={event => setValue3(event.target.value)}
           />
         </Box>
       );
