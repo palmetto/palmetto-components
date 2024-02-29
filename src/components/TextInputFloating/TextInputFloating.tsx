@@ -215,8 +215,8 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
     };
 
     return (
-      <>
-        <Box ref={ref} direction="row" className={inputWrapperClasses}>
+      <div ref={ref}>
+        <Box direction="row" className={inputWrapperClasses}>
           {prefix && (
           <Box
             color="grey-600"
@@ -263,7 +263,7 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
         {error && error !== true && (
         <InputValidationMessage>{error}</InputValidationMessage>
         )}
-      </>
+      </div>
     );
   },
 );

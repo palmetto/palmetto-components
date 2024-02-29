@@ -134,7 +134,8 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
             id="error2"
             value={value2}
             label="email"
-            error="Invalid Value"
+            error="Must be a valid email address"
+            helpText="e.g. name@email.com"
             onChange={event => setValue2(event.target.value)}
           />
         </Box>
