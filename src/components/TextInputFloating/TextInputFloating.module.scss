@@ -27,7 +27,7 @@
     );
   }
 
-  > input {
+  input {
     padding: calc(
         var(
             --form-control-size-lg-padding,
@@ -55,7 +55,7 @@
 
     &:focus {
       + .text-input-label {
-        @include floating-label-minimize-lg;
+        @include floating-label-minimize-md;
       }
     }
 
@@ -65,75 +65,24 @@
   }
 
   .prefix {
-    padding: calc(
-        var(
-            --form-control-size-lg-padding,
-            var(--INTERNAL_form-control-size-lg-padding)
-          ) + 3px
-      )
-      0
-      calc(
-        var(
-            --form-control-size-md-padding,
-            var(--INTERNAL_form-control-size-md-padding)
-          ) - 5px
-      )
-      var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
-      );
-
-    + input {
-      padding-left: var(
-        --form-control-size-xs-padding,
-        var(--INTERNAL_form-control-size-xs-padding)
-      );
-    }
-
-    + input + .text-input-label {
-      @include floating-label-minimize-md;
-    }
+    padding: var(
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-md-padding)
+    );
   }
 
   .suffix {
     padding: var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
-      )
-      var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
-      )
-      var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
-      )
-      0;
+      --form-control-size-md-padding,
+      var(--INTERNAL_form-control-size-md-padding)
+    );
   }
 
   .clear-button {
     padding: var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
-      )
-      var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
-      )
-      var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
-      )
-      0;
-  }
-
-  &:not(.is-clearable) {
-    .suffix {
-      padding: var(
-        --form-control-size-md-padding,
-        var(--INTERNAL_form-control-size-md-padding)
-      );
-    }
+      --form-control-size-md-padding,
+      var(--INTERNAL_form-control-size-md-padding)
+    );
   }
 }
 
@@ -162,12 +111,12 @@
     );
   }
 
-  > input {
+  input {
     padding: calc(
         var(
             --form-control-size-lg-padding,
             var(--INTERNAL_form-control-size-lg-padding)
-          ) + 8px
+          ) + 10px
       )
       var(
         --form-control-size-lg-padding,
@@ -177,7 +126,7 @@
         var(
             --form-control-size-lg-padding,
             var(--INTERNAL_form-control-size-lg-padding)
-          ) - 3px
+          ) - 5px
       )
       var(
         --form-control-size-lg-padding,
@@ -200,50 +149,17 @@
   }
 
   .prefix {
-    padding: calc(
-        var(
-            --form-control-size-lg-padding,
-            var(--INTERNAL_form-control-size-lg-padding)
-          ) + 8px
-      )
-      0
-      calc(
-        var(
-            --form-control-size-lg-padding,
-            var(--INTERNAL_form-control-size-lg-padding)
-          ) - 5px
-      )
-      var(
-        --form-control-size-lg-padding,
-        var(--INTERNAL_form-control-size-lg-padding)
-      );
-
-    + input {
-      padding-left: var(
-        --form-control-size-lg-padding,
-        var(--INTERNAL_form-control-size-sm-padding)
-      );
-    }
-
-    + input + .text-input-label {
-      @include floating-label-minimize-lg;
-    }
+    padding: var(
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-lg-padding)
+    );
   }
 
   .suffix {
     padding: var(
-        --form-control-size-lg-padding,
-        var(--INTERNAL_form-control-size-lg-padding)
-      )
-      var(
-        --form-control-size-lg-padding,
-        var(--INTERNAL_form-control-size-lg-padding)
-      )
-      var(
-        --form-control-size-lg-padding,
-        var(--INTERNAL_form-control-size-lg-padding)
-      )
-      0;
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-lg-padding)
+    );
   }
 
   .clear-button {
@@ -305,6 +221,34 @@
   cursor: text;
 }
 
+.prefix {
+  border: 1px solid
+    var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
+  background-color: var(--color-brand-grey-50);
+  border-top-left-radius: var(
+    --form-control-size-md-border-radius,
+    var(--INTERNAL_form-control-size-md-border-radius)
+  );
+  border-bottom-left-radius: var(
+    --form-control-size-md-border-radius,
+    var(--INTERNAL_form-control-size-md-border-radius)
+  );
+}
+
+.suffix {
+  border: 1px solid
+    var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
+  background-color: var(--color-brand-grey-50);
+  border-top-right-radius: var(
+    --form-control-size-md-border-radius,
+    var(--INTERNAL_form-control-size-md-border-radius)
+  );
+  border-bottom-right-radius: var(
+    --form-control-size-md-border-radius,
+    var(--INTERNAL_form-control-size-md-border-radius)
+  );
+}
+
 .text-input-wrapper {
   font-family: var(
     --form-control-font-family,
@@ -326,11 +270,15 @@
   );
 
   &.size-md {
-    @extend %size-md;
+    .label-input-wrapper {
+      @extend %size-md;
+    }
   }
 
   &.size-lg {
-    @extend %size-lg;
+    .label-input-wrapper {
+      @extend %size-lg;
+    }
   }
 
   @media (min-width: $size-breakpoint-tablet) {
@@ -364,7 +312,7 @@
   }
 
   // border and background is set on the text-input-wrapper
-  > input {
+  input {
     box-sizing: border-box;
     display: flex;
     transition-duration: 300ms;

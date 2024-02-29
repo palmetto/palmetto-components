@@ -211,45 +211,44 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
       required: isRequired,
       type,
       value,
-      className: classNames(inputProps.className, {
-        'p-left-xs p-left-xs-tablet p-left-xs-desktop p-left-xs-hd': prefix,
-        'p-right-xs p-right-xs-tablet p-right-xs-desktop p-right-xs-hd':
-            suffix,
-        'p-h-0': !suffix && !prefix,
-      }),
+      className: classNames(inputProps.className),
     };
 
     return (
       <>
-        <Box
-          ref={ref}
-          direction="row"
-          position="relative"
-          className={inputWrapperClasses}
-        >
+        <Box ref={ref} direction="row" className={inputWrapperClasses}>
           {prefix && (
           <Box
-            color="grey-400"
+            color="grey-600"
+            alignItems="center"
+            justifyContent="center"
             className={classNames(styles.prefix, 'ws-nowrap')}
           >
             {prefix}
           </Box>
           )}
-          <Box as="input" {...computedInputProps} />
-          {!!onClear && !!value && renderClearIcon()}
-          <label
-            htmlFor={id}
-            className={styles['text-input-label']}
-            id={`${id}Label`}
+          <Box
+            direction="row"
+            position="relative"
+            className="label-input-wrapper"
+            flex="auto"
           >
-            {label}
-            {isRequired && requiredIndicator && (
-            <span>{requiredIndicator}</span>
-            )}
-          </label>
+            <Box as="input" {...computedInputProps} />
+            {!!onClear && !!value && renderClearIcon()}
+            <label
+              htmlFor={id}
+              className={styles['text-input-label']}
+              id={`${id}Label`}
+            >
+              {label}
+              {isRequired && requiredIndicator && (
+              <span>{requiredIndicator}</span>
+              )}
+            </label>
+          </Box>
           {suffix && (
           <Box
-            color="grey-400"
+            color="grey-600"
             className={classNames(styles.suffix, 'ws-nowrap')}
           >
             {suffix}

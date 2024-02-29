@@ -206,7 +206,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
     {() => {
       const [prefixValue0, setPrefixValue0] = useState('');
       const [prefixValue1, setPrefixValue1] = useState('palmettosolar');
-      const [prefixValue2, setPrefixValue2] = useState('49');
+      const [prefixValue2, setPrefixValue2] = useState('2.51');
       const [prefixValue3, setPrefixValue3] = useState('');
       const [prefixValue4, setPrefixValue4] = useState('Pre-populated Value');
       return (
@@ -214,24 +214,24 @@ All that is required to render a basic version of the TextInput is a unique `id`
           <TextInputFloating
             id="prefixSuffix0"
             value={prefixValue0}
-            label="Prefix Without Value"
+            label="website address"
             onChange={event => setPrefixValue0(event.target.value)}
-            prefix="$"
+            prefix="https://"
           />
           <TextInputFloating
             id="prefixSuffix1"
             value={prefixValue1}
-            label="Prefix With Value"
+            label="Social Media Handle"
             onChange={event => setPrefixValue1(event.target.value)}
             prefix="@"
           />
           <TextInputFloating
             id="prefixSuffix2"
             value={prefixValue2}
-            label="Prefix and Suffix"
+            label="Price Per Watt"
             onChange={event => setPrefixValue2(event.target.value)}
             prefix="$"
-            suffix="per watt"
+            suffix="/watt"
           />
           <TextInputFloating
             id="prefixSuffix3"
