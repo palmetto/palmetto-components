@@ -46,6 +46,7 @@ export * from './Tabs/Tabs';
 export * from './TabsSlider/TabsSlider';
 export * from './Table/Table';
 export * from './TextInput/TextInput';
+export * from './TextInputFloating/TextInputFloating';
 export * from './TextareaInput/TextareaInput';
 export * from './TextLink/TextLink';
 export * from './ThemeProvider/ThemeProvider';
