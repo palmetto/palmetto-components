@@ -187,7 +187,7 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
           data-testid="text-input-clear-button"
           aria-label="clear input"
         >
-          <Icon name="remove" className="display-block" />
+          <Icon name="remove-light" className="display-block" />
         </button>
       );
     };
