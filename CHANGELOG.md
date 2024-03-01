@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.8](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-03-01)
+
+
+### Bug Fixes
+
+* **TextInputFloating:** prefix/suffix focus styles, clear icon ([#875](https://github.com/palmetto/palmetto-components/issues/875)) ([7e90a7c](https://github.com/palmetto/palmetto-components/commit/7e90a7c43f46ae56a09b5980a44a7ce4f76167d1))
+
 # [1.0.0-beta.7](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2024-02-29)
 
 
