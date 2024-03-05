@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { FormLabel } from '../FormLabel/FormLabel';
+import { HelpText } from '../HelpText/HelpText';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import {
   Button,
@@ -285,11 +286,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<
               aria-required={isRequired}
             />
           </Button>
-          {helpText && (
-            <Box as="p" display="block" fontSize="sm" color="grey">
-              {helpText}
-            </Box>
-          )}
+          {helpText && <HelpText>{helpText}</HelpText>}
         </Box>
         {error && error !== true && (
           <InputValidationMessage size={messageFontSize()}>

@@ -7,6 +7,7 @@ import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Box, BoxProps } from '../Box/Box';
+import { HelpText } from '../HelpText/HelpText';
 import styles from './Toggle.module.scss';
 
 export type ToggleSize = 'sm' | 'md' | 'lg';
@@ -153,11 +154,7 @@ export const Toggle: FC<ToggleProps> = ({
               className={helpText && (size === 'md' || size === 'lg') ? 'm-top-2xs' : ''}
             >
               {label && <div>{label}</div>}
-              {helpText && (
-                <Box as="p" display="block" fontSize="sm" fontWeight="regular" color="grey">
-                  {helpText}
-                </Box>
-              )}
+              {helpText && <HelpText>{helpText}</HelpText>}
             </Box>
           )}
         </FormLabel>
