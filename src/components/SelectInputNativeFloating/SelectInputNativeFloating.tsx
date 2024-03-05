@@ -14,6 +14,7 @@ import { ResponsiveProp } from '../../types';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 
 import { Box, BoxProps } from '../Box/Box';
+import { HelpText } from '../HelpText/HelpText';
 import { Icon } from '../Icon/Icon';
 import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
 import styles from './SelectInputNativeFloating.module.scss';
@@ -195,7 +196,7 @@ export const SelectInputNativeFloating: ForwardRefExoticComponent<SelectInputNat
     };
 
     return (
-      <div ref={ref}>
+      <Box gap="2xs" ref={ref}>
         <Box
           direction="row"
           flex="auto"
@@ -228,15 +229,11 @@ export const SelectInputNativeFloating: ForwardRefExoticComponent<SelectInputNat
             )}
           </label>
         </Box>
-        {helpText && (
-        <Box margin="xs 0 0 0" as="p" fontSize="xs" color="grey-500">
-          {helpText}
-        </Box>
-        )}
+        {helpText && <HelpText>{helpText}</HelpText>}
         {error && error !== true && (
         <InputValidationMessage>{error}</InputValidationMessage>
         )}
-      </div>
+      </Box>
     );
   },
 );
