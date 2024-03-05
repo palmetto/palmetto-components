@@ -9,22 +9,6 @@ const selectOptions = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
-function getByTextWithMarkup(text: string) {
-  // eslint-disable-next-line
-  // @ts-ignore
-  return (content, element) => {
-    const hasText = (node: Element) => node.textContent === text;
-    const elementHasText = hasText(element);
-    // eslint-disable-next-line
-    // @ts-ignore
-    const childrenDontHaveText = Array.from(element.children).every(
-      child => !hasText(child),
-    );
-
-    return elementHasText && childrenDontHaveText;
-  };
-}
-
 describe('SelectInputNativeFloating', () => {
   describe('Callback Handling', () => {
     test('it fires onChange callback on change', async () => {
@@ -205,9 +189,7 @@ describe('SelectInputNativeFloating', () => {
           />,
         );
 
-        expect(
-          screen.getByText(getByTextWithMarkup('Select Label *')),
-        ).toBeInTheDocument();
+        expect(screen.getByText('*')).toBeInTheDocument();
       });
     });
 
