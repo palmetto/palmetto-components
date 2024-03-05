@@ -196,7 +196,7 @@ export const SelectInputNativeFloating: ForwardRefExoticComponent<SelectInputNat
     };
 
     return (
-      <Box gap="2xs" ref={ref}>
+      <div ref={ref}>
         <Box
           direction="row"
           flex="auto"
@@ -233,7 +233,7 @@ export const SelectInputNativeFloating: ForwardRefExoticComponent<SelectInputNat
         {error && error !== true && (
         <InputValidationMessage>{error}</InputValidationMessage>
         )}
-      </Box>
+      </div>
     );
   },
 );

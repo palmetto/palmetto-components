@@ -50,7 +50,7 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>((
     helpText,
     isDisabled,
     requiredIndicator,
-    width = '100%',
+    width = '100',
     ...restProps
   },
   ref,

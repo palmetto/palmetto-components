@@ -211,7 +211,7 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
     };
 
     return (
-      <Box gap="2xs" ref={ref}>
+      <Box width="100" ref={ref}>
         <Box direction="row" className={inputWrapperClasses}>
           {prefix && (
           <Box
