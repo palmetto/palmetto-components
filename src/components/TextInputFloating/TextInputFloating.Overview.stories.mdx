@@ -52,41 +52,31 @@ Use `TextInputFloating` to create a floating label input field. It is a controll
 
 ### Required
 
-Use the `isRequired` prop to set the `required` and `aria-required` on the underlying input element.
+Use the `isRequired` prop to display an `*` after the label and set the `required` and `aria-required` on the underlying input element. You can also use the `requiredIndicator` prop to customize the indicator that appears next to the label.
 
 <Canvas>
   <Story name="Required">
     {() => {
       const [value, setValue] = useState('');
       return (
-        <TextInputFloating
-          id="requiredInput"
-          value={value}
-          label="Required Input"
-          placeholder="Enter your email address"
-          onChange={event => setValue(event.target.value)}
-          isRequired
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-Customize the required indicator with the `requiredIndicator` prop.
-
-<Canvas>
-  <Story name="Custom Required Indicator">
-    {() => {
-      const [value, setValue] = useState('');
-      return (
-        <TextInputFloating
-          id="customRequiredInput"
-          value={value}
-          label="Required Input"
-          onChange={event => setValue(event.target.value)}
-          isRequired
-          requiredIndicator=" (required)"
-        />
+        <Box gap="md">
+          <TextInputFloating
+            id="requiredInput"
+            value={value}
+            label="Required Input"
+            placeholder="Enter your email address"
+            onChange={event => setValue(event.target.value)}
+            isRequired
+          />
+          <TextInputFloating
+            id="customRequiredInput"
+            value={value}
+            label="Required Input"
+            onChange={event => setValue(event.target.value)}
+            isRequired
+            requiredIndicator=" (required)"
+          />
+        </Box>
       );
     }}
   </Story>
@@ -261,7 +251,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
 
 ### Sizes
 
-There are only two sizes for TextInputFloating, `md` and `lg`, with `md` being the default.
+Two sizes, `md` and `lg` are available, with `md` being the default.
 
 <Canvas>
   <Story name="Sizes">

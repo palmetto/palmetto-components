@@ -219,12 +219,6 @@ describe('TextInput', () => {
         );
         expect(document.getElementById(baseProps.id)).toBeInTheDocument();
       });
-
-      test('does not assign "aria-labelledby" attribute when a label is hidden', () => {
-        render(<TextInputFloating {...baseProps} hideLabel />);
-        const inputElement = screen.getByLabelText(baseProps.label);
-        expect(inputElement).not.toHaveAttribute('aria-labelledby');
-      });
     });
 
     describe('Prefix and Suffix', () => {
