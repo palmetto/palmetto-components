@@ -1,6 +1,4 @@
-import React, {
-  FC, ChangeEvent, FocusEvent, ReactNode,
-} from 'react';
+import React, { FC, ChangeEvent, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import { ResponsiveProp } from '../../types';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
@@ -100,17 +98,20 @@ export const Toggle: FC<ToggleProps> = ({
     if (onFocus) onFocus(event);
   };
 
-  const wrapperClasses = classNames('palmetto-components__variables__form-control', { [styles.disabled]: isDisabled });
+  const wrapperClasses = classNames(
+    'palmetto-components__variables__form-control',
+    { [styles.disabled]: isDisabled },
+  );
   const trackClasses = classNames(
     styles['toggle-track'],
-    ...generateResponsiveClasses('track-size', size).map(c => (styles[c])),
+    ...generateResponsiveClasses('track-size', size).map(c => styles[c]),
     {
       [styles.error]: error,
     },
   );
   const thumbClasses = classNames(
     styles['toggle-thumb'],
-    ...generateResponsiveClasses('thumb-size', size).map(c => (styles[c])),
+    ...generateResponsiveClasses('thumb-size', size).map(c => styles[c]),
   );
 
   const inputProps = {
@@ -135,30 +136,39 @@ export const Toggle: FC<ToggleProps> = ({
     display: 'flex' as BoxProps['display'],
     direction: 'row' as BoxProps['direction'],
     childGap: 'xs' as BoxProps['childGap'],
-    alignItems: helpText ? 'flex-start' : 'center' as BoxProps['alignItems'],
+    alignItems: helpText ? 'flex-start' : ('center' as BoxProps['alignItems']),
     isFieldRequired: isRequired,
     requiredIndicator,
   };
+
+  const addTopMargin = size === 'md'
+    || size === 'lg'
+    || (typeof size === 'object'
+      && Object.values(size).some(value => value === 'md' || value === 'lg'));
 
   return (
     <Box className={className}>
       <Box className={wrapperClasses}>
         <FormLabel {...labelProps}>
           <input {...inputProps} />
-          <span aria-hidden="true" className={trackClasses} data-testid="toggleTrack">
+          <span
+            aria-hidden="true"
+            className={trackClasses}
+            data-testid="toggleTrack"
+          >
             <span className={thumbClasses} data-testid="toggleThumb" />
           </span>
           {!hideLabel && (
-            <Box
-              className={helpText && (size === 'md' || size === 'lg') ? 'm-top-2xs' : ''}
-            >
+            <Box className={helpText && addTopMargin ? 'm-top-2xs' : ''}>
               {label && <div>{label}</div>}
               {helpText && <HelpText>{helpText}</HelpText>}
             </Box>
           )}
         </FormLabel>
       </Box>
-      {error && error !== true && <InputValidationMessage>{error}</InputValidationMessage>}
+      {error && error !== true && (
+        <InputValidationMessage>{error}</InputValidationMessage>
+      )}
     </Box>
   );
 };
