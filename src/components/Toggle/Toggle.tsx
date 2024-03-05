@@ -150,7 +150,6 @@ export const Toggle: FC<ToggleProps> = ({
           </span>
           {!hideLabel && (
             <Box
-              gap="2xs"
               className={helpText && (size === 'md' || size === 'lg') ? 'm-top-2xs' : ''}
             >
               {label && <div>{label}</div>}
