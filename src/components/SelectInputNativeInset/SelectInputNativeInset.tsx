@@ -33,7 +33,7 @@ export interface SelectInputNativeInsetProps {
   /**
    * List of options for the select input.
    */
-  options: { value: string | number; label: string | number }[];
+  options: { value: string | number; label: string | number; }[];
   /**
    * Callback function to call on change event.
    */
@@ -112,129 +112,128 @@ export interface SelectInputNativeInsetProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const SelectInputNativeInset: ForwardRefExoticComponent<SelectInputNativeInsetProps> =
-  forwardRef<HTMLDivElement, SelectInputNativeInsetProps>(
-    (
+export const SelectInputNativeInset: ForwardRefExoticComponent<SelectInputNativeInsetProps> = forwardRef<HTMLDivElement, SelectInputNativeInsetProps>(
+  (
+    {
+      id,
+      label,
+      onChange,
+      value,
+      autoComplete = false,
+      autoFocus = false,
+      error = false,
+      helpText,
+      inputProps = {},
+      isDisabled = false,
+      isRequired = false,
+      name = '',
+      onBlur = undefined,
+      onClear = undefined,
+      onFocus = undefined,
+      options,
+      placeholder = 'Select...',
+      requiredIndicator = ' *',
+      size = 'md',
+    },
+    ref,
+  ) => {
+    const placeholderOption = { value: '', label: placeholder };
+    const optionsWithPlaceholder = [{ ...placeholderOption }, ...options];
+
+    const responsiveClasses = generateResponsiveClasses('size', size);
+
+    const inputWrapperClasses = classNames(
+      'palmetto-components__variables__form-control',
+      styles['text-input-wrapper'],
+      ...responsiveClasses.map(c => styles[c]),
       {
-        id,
-        label,
-        onChange,
-        value,
-        autoComplete = false,
-        autoFocus = false,
-        error = false,
-        helpText,
-        inputProps = {},
-        isDisabled = false,
-        isRequired = false,
-        name = '',
-        onBlur = undefined,
-        onClear = undefined,
-        onFocus = undefined,
-        options,
-        placeholder = 'Select...',
-        requiredIndicator = ' *',
-        size = 'md',
+        [styles.error]: error,
+        [styles.disabled]: isDisabled,
+        [styles['is-clearable']]: onClear,
       },
-      ref,
-    ) => {
-      const placeholderOption = { value: '', label: placeholder };
-      const optionsWithPlaceholder = [{ ...placeholderOption }, ...options];
+    );
 
-      const responsiveClasses = generateResponsiveClasses('size', size);
+    const clearBtnClasses = classNames(styles['clear-button'], styles.md);
 
-      const inputWrapperClasses = classNames(
-        'palmetto-components__variables__form-control',
-        styles['text-input-wrapper'],
-        ...responsiveClasses.map(c => styles[c]),
-        {
-          [styles.error]: error,
-          [styles.disabled]: isDisabled,
-          [styles['is-clearable']]: onClear,
-        },
-      );
-
-      const clearBtnClasses = classNames(styles['clear-button'], styles.md);
-
-      const renderClearIcon = (): ReactNode => {
-        const handleKeyPress = (
-          event: KeyboardEvent<HTMLButtonElement>,
-        ): void => {
-          if (event.keyCode === 13 && onClear) onClear(event);
-        };
-
-        return (
-          <button
-            type="button"
-            onClick={onClear}
-            onKeyUp={handleKeyPress}
-            className={clearBtnClasses}
-            data-testid="text-input-clear-button"
-            aria-label="clear input"
-          >
-            <Icon name="remove-light" className="display-block" />
-          </button>
-        );
-      };
-
-      const computedInputProps: SelectInputNativeInsetProps['inputProps'] = {
-        ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
-        'aria-required': isRequired,
-        'aria-invalid': !!error,
-        'aria-label': label,
-        'aria-labelledby': label ? `${id}Label` : undefined,
-        autoComplete: getAutoCompleteValue(autoComplete),
-        autoFocus,
-        disabled: isDisabled,
-        id,
-        name,
-        onBlur,
-        onChange,
-        onFocus,
-        required: isRequired,
-        value: value ?? '',
-        className: classNames(inputProps.className),
+    const renderClearIcon = (): ReactNode => {
+      const handleKeyPress = (
+        event: KeyboardEvent<HTMLButtonElement>,
+      ): void => {
+        if (event.keyCode === 13 && onClear) onClear(event);
       };
 
       return (
-        <div ref={ref}>
-          <Box
-            direction="row"
-            flex="auto"
-            position="relative"
-            className={inputWrapperClasses}
-          >
-            <Box as="select" {...computedInputProps}>
-              {optionsWithPlaceholder.map(option => (
-                <Box
-                  as="option"
-                  key={option.value}
-                  value={option.value}
-                  disabled={option.value === ''}
-                  hidden={option.value === ''}
-                  color={option.value === '' ? 'grey-500' : 'grey-600'}
-                >
-                  {option.label}
-                </Box>
-              ))}
-            </Box>
-            {!!onClear && !!value && renderClearIcon()}
-            <label
-              htmlFor={id}
-              className={styles['select-input-label']}
-              id={`${id}Label`}
-            >
-              {label}
-              {isRequired && requiredIndicator && (
-                <span>{requiredIndicator}</span>
-              )}
-            </label>
-          </Box>
-          {helpText && <HelpText>{helpText}</HelpText>}
-          {error && error !== true && (
-            <InputValidationMessage>{error}</InputValidationMessage>
-          )}
-        </div>
+        <button
+          type="button"
+          onClick={onClear}
+          onKeyUp={handleKeyPress}
+          className={clearBtnClasses}
+          data-testid="text-input-clear-button"
+          aria-label="clear input"
+        >
+          <Icon name="remove-light" className="display-block" />
+        </button>
       );
-    },
-  );
+    };
+
+    const computedInputProps: SelectInputNativeInsetProps['inputProps'] = {
+      ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
+      'aria-required': isRequired,
+      'aria-invalid': !!error,
+      'aria-label': label,
+      'aria-labelledby': label ? `${id}Label` : undefined,
+      autoComplete: getAutoCompleteValue(autoComplete),
+      autoFocus,
+      disabled: isDisabled,
+      id,
+      name,
+      onBlur,
+      onChange,
+      onFocus,
+      required: isRequired,
+      value: value ?? '',
+      className: classNames(inputProps.className),
+    };
+
+    return (
+      <div ref={ref}>
+        <Box
+          direction="row"
+          flex="auto"
+          position="relative"
+          className={inputWrapperClasses}
+        >
+          <Box as="select" {...computedInputProps}>
+            {optionsWithPlaceholder.map(option => (
+              <Box
+                as="option"
+                key={option.value}
+                value={option.value}
+                disabled={option.value === ''}
+                hidden={option.value === ''}
+                color={option.value === '' ? 'grey-500' : 'grey-600'}
+              >
+                {option.label}
+              </Box>
+            ))}
+          </Box>
+          {!!onClear && !!value && renderClearIcon()}
+          <label
+            htmlFor={id}
+            className={styles['select-input-label']}
+            id={`${id}Label`}
+          >
+            {label}
+            {isRequired && requiredIndicator && (
+            <span>{requiredIndicator}</span>
+            )}
+          </label>
+        </Box>
+        {helpText && <HelpText>{helpText}</HelpText>}
+        {error && error !== true && (
+        <InputValidationMessage>{error}</InputValidationMessage>
+        )}
+      </div>
+    );
+  },
+);

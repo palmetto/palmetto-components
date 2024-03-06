@@ -122,95 +122,94 @@ export interface TextareaInputInsetProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const TextareaInputInset: ForwardRefExoticComponent<TextareaInputInsetProps> =
-  forwardRef<HTMLDivElement, TextareaInputInsetProps>(
-    (
-      {
-        id,
-        label,
-        onChange,
-        value,
-        autoComplete = false,
-        autoFocus = false,
-        className,
-        error = false,
-        helpText,
-        inputProps = {},
-        isDisabled = false,
-        isRequired = false,
-        maxLength = undefined,
-        name = '',
-        onBlur = undefined,
-        onFocus = undefined,
-        placeholder = ' ',
-        requiredIndicator = ' *',
-        resize = 'vertical',
-        rows = 5,
-        size = 'md',
-        type = 'text',
-      },
-      ref,
-    ) => {
-      const responsiveClasses = generateResponsiveClasses('size', size);
-
-      const inputWrapperClasses = classNames(
-        'palmetto-components__variables__form-control',
-        styles['text-input-wrapper'],
-        ...responsiveClasses.map(c => styles[c]),
-        {
-          [styles.disabled]: isDisabled,
-        },
-      );
-
-      const computedInputProps: TextareaInputInsetProps['inputProps'] = {
-        ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
-        'aria-required': isRequired,
-        'aria-invalid': !!error,
-        'aria-label': label,
-        'aria-labelledby': label ? `${id}Label` : undefined,
-        autoComplete: getAutoCompleteValue(autoComplete),
-        autoFocus,
-        className: classNames(styles[`textarea-resize-${resize}`], {
-          [styles.error]: error,
-        }),
-        disabled: isDisabled,
-        id,
-        maxLength,
-        name,
-        onBlur,
-        onChange,
-        onFocus,
-        placeholder,
-        required: isRequired,
-        rows,
-        type,
-        value,
-      };
-
-      return (
-        <Box width="100" ref={ref} className={className}>
-          <Box
-            display="block"
-            position="relative"
-            className={inputWrapperClasses}
-          >
-            <Box as="textarea" {...computedInputProps} />
-            <label
-              htmlFor={id}
-              className={styles['text-input-label']}
-              id={`${id}Label`}
-            >
-              {label}
-              {isRequired && requiredIndicator && (
-                <span>{requiredIndicator}</span>
-              )}
-            </label>
-          </Box>
-          {helpText && <HelpText>{helpText}</HelpText>}
-          {error && error !== true && (
-            <InputValidationMessage>{error}</InputValidationMessage>
-          )}
-        </Box>
-      );
+export const TextareaInputInset: ForwardRefExoticComponent<TextareaInputInsetProps> = forwardRef<HTMLDivElement, TextareaInputInsetProps>(
+  (
+    {
+      id,
+      label,
+      onChange,
+      value,
+      autoComplete = false,
+      autoFocus = false,
+      className,
+      error = false,
+      helpText,
+      inputProps = {},
+      isDisabled = false,
+      isRequired = false,
+      maxLength = undefined,
+      name = '',
+      onBlur = undefined,
+      onFocus = undefined,
+      placeholder = ' ',
+      requiredIndicator = ' *',
+      resize = 'vertical',
+      rows = 5,
+      size = 'md',
+      type = 'text',
     },
-  );
+    ref,
+  ) => {
+    const responsiveClasses = generateResponsiveClasses('size', size);
+
+    const inputWrapperClasses = classNames(
+      'palmetto-components__variables__form-control',
+      styles['text-input-wrapper'],
+      ...responsiveClasses.map(c => styles[c]),
+      {
+        [styles.disabled]: isDisabled,
+      },
+    );
+
+    const computedInputProps: TextareaInputInsetProps['inputProps'] = {
+      ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
+      'aria-required': isRequired,
+      'aria-invalid': !!error,
+      'aria-label': label,
+      'aria-labelledby': label ? `${id}Label` : undefined,
+      autoComplete: getAutoCompleteValue(autoComplete),
+      autoFocus,
+      className: classNames(styles[`textarea-resize-${resize}`], {
+        [styles.error]: error,
+      }),
+      disabled: isDisabled,
+      id,
+      maxLength,
+      name,
+      onBlur,
+      onChange,
+      onFocus,
+      placeholder,
+      required: isRequired,
+      rows,
+      type,
+      value,
+    };
+
+    return (
+      <Box width="100" ref={ref} className={className}>
+        <Box
+          display="block"
+          position="relative"
+          className={inputWrapperClasses}
+        >
+          <Box as="textarea" {...computedInputProps} />
+          <label
+            htmlFor={id}
+            className={styles['text-input-label']}
+            id={`${id}Label`}
+          >
+            {label}
+            {isRequired && requiredIndicator && (
+            <span>{requiredIndicator}</span>
+            )}
+          </label>
+        </Box>
+        {helpText && <HelpText>{helpText}</HelpText>}
+        {error && error !== true && (
+        <InputValidationMessage>{error}</InputValidationMessage>
+        )}
+      </Box>
+    );
+  },
+);
