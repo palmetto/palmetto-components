@@ -1,0 +1,228 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { TextareaInputFloating } from './TextareaInputFloating';
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
+
+<Meta
+  title="Components/TextareaInputFloating/Overview"
+  component={TextareaInputFloating}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# TextareaInputFloating
+
+Use `TextareaInputFloating` to create a floating label input field. It is a controlled component, which means that you need to provide a value and an `onChange` handler to update the value.
+
+<Canvas withSource="open">
+  <Story name="Default">
+    {() => {
+      const [value, setValue] = useState('');
+      const [valuePw, setValuePw] = useState('');
+      return (
+        <Box gap="md">
+          <TextareaInputFloating
+            id="textareaInputDefault"
+            value={value}
+            label="Multi-line Text Input"
+            placeholder="Enter your message"
+            onChange={event => setValue(event.target.value)}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={TextareaInputFloating} />
+
+### Required
+
+Use the `isRequired` prop to display an `*` after the label and set the `required` and `aria-required` on the underlying input element. You can also use the `requiredIndicator` prop to customize the indicator that appears next to the label.
+
+<Canvas>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <Box gap="md">
+          <TextareaInputFloating
+            id="requiredInput"
+            value={value}
+            label="Required Input"
+            placeholder="Enter your email address"
+            onChange={event => setValue(event.target.value)}
+            isRequired
+          />
+          <TextareaInputFloating
+            id="customRequiredInput"
+            value={value}
+            label="Required Input"
+            onChange={event => setValue(event.target.value)}
+            isRequired
+            requiredIndicator=" (required)"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Help Text
+
+Use `helpText` to provide additional information about the input field.
+
+<Canvas>
+  <Story name="Help Text">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <TextareaInputFloating
+          id="helpTextStory"
+          value={value}
+          label="Design Request Note"
+          onChange={event => setValue(event.target.value)}
+          helpText="Describe what design changes you would like to make"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Validation Error
+
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`.
+
+<Canvas>
+  <Story name="Error">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value2, setValue2] = useState(
+        'We are on a mission to stop climate change before we reach an irreversible tipping point. This requires urgency and change on a massive scale but technological advancements have put it within reach.',
+      );
+      return (
+        <Box gap="md">
+          <TextareaInputFloating
+            id="error1"
+            value={value}
+            label="Note"
+            error="Note is required"
+            onChange={event => setValue(event.target.value)}
+            isRequired
+          />
+          <TextareaInputFloating
+            id="error2"
+            value={value2}
+            label="Note"
+            error="Note is required"
+            helpText="Add context to your note"
+            onChange={event => setValue2(event.target.value)}
+            isRequired
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Disabled
+
+Add `isDisabled`to give it a grayed out appearance, remove pointer events, and prevent focusing.
+
+<Canvas>
+  <Story name="Disabled">
+    {() => {
+      const [value, setValue] = useState('');
+      const [value2, setValue2] = useState(
+        'We are on a mission to stop climate change before we reach an irreversible tipping point. This requires urgency and change on a massive scale but technological advancements have put it within reach.',
+      );
+      return (
+        <Box gap="md">
+          <TextareaInputFloating
+            id="disabled"
+            value={value}
+            label="Disabled"
+            onChange={event => setValue(event.target.value)}
+            isDisabled
+          />
+          <TextareaInputFloating
+            id="disabledValue"
+            value={value2}
+            label="Disabled with Value"
+            onChange={event => setValue2(event.target.value)}
+            isDisabled
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Sizes
+
+Two sizes, `md` and `lg` are available, with `md` being the default.
+
+<Canvas>
+  <Story name="Sizes">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <Box gap="md">
+          <TextareaInputFloating
+            id="mdTextInput"
+            value={value}
+            label="Medium Input"
+            size="md"
+            onChange={event => setValue(event.target.value)}
+          />
+          <TextareaInputFloating
+            id="lgTextInput"
+            value={value}
+            label="Large Input"
+            size="lg"
+            onChange={event => setValue(event.target.value)}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Resize
+
+The `resize` prop accepts `horizontal`, `vertical`, `both` or `none` to control the users ability to resize the input.
+
+<Canvas>
+  <Story name="Resize">
+    {() => {
+      const [value, setValue] = useState('');
+      return (
+        <Box gap="md">
+          <TextareaInputFloating
+            id="resizeBoth"
+            value={value}
+            label="Resize Me Vertically and Horizontally"
+            onChange={event => setValue(event.target.value)}
+            resize="both"
+          />
+          <TextareaInputFloating
+            id="resizeNone"
+            value={value}
+            label="Can't resize me"
+            onChange={event => setValue(event.target.value)}
+            resize="none"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Component Design Tokens
+
+This component shares component design tokens with all form controls. For a complete list of tokens, see the [Theming Form Controls documentation](/docs/theming-form-controls--custom-theme-form).
