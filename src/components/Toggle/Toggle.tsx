@@ -136,15 +136,29 @@ export const Toggle: FC<ToggleProps> = ({
     display: 'flex' as BoxProps['display'],
     direction: 'row' as BoxProps['direction'],
     childGap: 'xs' as BoxProps['childGap'],
-    alignItems: helpText ? 'flex-start' : ('center' as BoxProps['alignItems']),
+    alignItems: 'flex-start' as BoxProps['alignItems'],
     isFieldRequired: isRequired,
     requiredIndicator,
   };
 
-  const addTopMargin = size === 'md'
-    || size === 'lg'
-    || (typeof size === 'object'
-      && Object.values(size).some(value => value === 'md' || value === 'lg'));
+  const getLabelTopMargin = (toggleSize: ToggleSize) => {
+    if (toggleSize === 'lg') return 'xs 0 0 0';
+    if (toggleSize === 'md') return '2xs 0 0 0';
+    return '0';
+  };
+
+  const labelTopMargin = typeof size === 'object'
+    ? Object.keys(size).reduce(
+      (a, v) => ({
+        ...a,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // not sure how to fix this type error?
+        [v]: getLabelTopMargin(size[v]),
+      }),
+      {},
+    )
+    : getLabelTopMargin(size);
 
   return (
     <Box className={className}>
@@ -159,7 +173,7 @@ export const Toggle: FC<ToggleProps> = ({
             <span className={thumbClasses} data-testid="toggleThumb" />
           </span>
           {!hideLabel && (
-            <Box className={helpText && addTopMargin ? 'm-top-2xs' : ''}>
+            <Box margin={labelTopMargin}>
               {label && <div>{label}</div>}
               {helpText && <HelpText>{helpText}</HelpText>}
             </Box>
