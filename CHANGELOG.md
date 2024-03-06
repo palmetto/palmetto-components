@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.10](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2024-03-06)
+
+
+### Features
+
+* **TextareaInputFloating:** new component ([#878](https://github.com/palmetto/palmetto-components/issues/878)) ([c3e0b3a](https://github.com/palmetto/palmetto-components/commit/c3e0b3a7604ec698b62044aa8dce17018698fd00))
+
 # [1.0.0-beta.9](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2024-03-06)
 
 
