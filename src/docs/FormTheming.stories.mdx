@@ -9,6 +9,7 @@ import { SelectInputNativeFloating } from '../components/SelectInputNativeFloati
 import { OptionTileGroup } from '../components/OptionTileGroup/OptionTileGroup';
 import { RadioGroup } from '../components/RadioGroup/RadioGroup';
 import { TextareaInput } from '../components/TextareaInput/TextareaInput';
+import { TextareaInputFloating } from '../components/TextareaInputFloating/TextareaInputFloating';
 import { Toggle } from '../components/Toggle/Toggle';
 import { Button } from '../components/Button/Button';
 import { Box } from '../components/Box/Box';
@@ -148,6 +149,13 @@ Form controls share tokens since they are designed to have a consistent appearan
             value={themeExampleValues.textareaValue}
             onChange={e => handleChange('textareaValue', e.target.value)}
           />
+          <TextareaInputFloating
+            label="Textarea Input Floating"
+            name="textareaInputFloating"
+            id="textareaInputFloating"
+            value={themeExampleValues.textareaValue}
+            onChange={e => handleChange('textareaValue', e.target.value)}
+          />
           <Box direction="row" gap="md">
             <CheckboxInput
               id="checkedCheckbox"
@@ -269,3 +277,5 @@ The following tokens are shared by all form controls to maintain a consistent ap
     })()}
   </tbody>
 </table>
+import {TextareaInputFloating} from
+'src/components/TextareaInputFloating/TextareaInputFloating';
