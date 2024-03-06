@@ -1,0 +1,22 @@
+.help-text {
+  color: var(
+    --form-control-help-text-font-color,
+    var(--INTERNAL_form-control-help-text-font-color)
+  );
+  font-family: var(
+    --form-control-font-family,
+    var(--INTERNAL_form-control-font-family)
+  );
+  font-size: var(
+    --form-control-help-text-font-size,
+    var(--INTERNAL_form-control-help-text-font-size)
+  );
+  margin-top: var(
+    --form-control-help-margin,
+    var(--INTERNAL_form-control-help-margin)
+  );
+  font-weight: var(
+    --form-control-help-text-font-weight,
+    var(--INTERNAL_form-control-help-text-font-weight)
+  );
+}

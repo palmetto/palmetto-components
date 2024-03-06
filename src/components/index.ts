@@ -29,6 +29,7 @@ export * from './Formik/FormikTimePickerNative/FormikTimePickerNative';
 export * from './Formik/FormikToggle/FormikToggle';
 export * from './FormLabel/FormLabel';
 export * from './Heading/Heading';
+export * from './HelpText/HelpText';
 export * from './Icon/Icon';
 export * from './MediaModal/MediaModal';
 export * from './Modal/Modal';

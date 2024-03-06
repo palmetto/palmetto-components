@@ -11,10 +11,4 @@
   &.disabled {
     color: var(--color-brand-grey-light);
   }
-
-  .help-text {
-    color: var(--form-control-help-text-font-color, var(--INTERNAL_form-control-help-text-font-color));
-    margin-top: var(--form-control-help-margin, var(--INTERNAL_form-control-help-margin));
-    font-weight: var(--form-control-help-text-font-weight, var(--INTERNAL_form-control-help-text-font-weight));
-  }
 }

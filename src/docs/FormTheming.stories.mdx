@@ -5,6 +5,7 @@ import { TextInputFloating } from '../components/TextInputFloating/TextInputFloa
 import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { SelectInput } from '../components/SelectInput/SelectInput';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
+import { SelectInputNativeFloating } from '../components/SelectInputNativeFloating/SelectInputNativeFloating';
 import { OptionTileGroup } from '../components/OptionTileGroup/OptionTileGroup';
 import { RadioGroup } from '../components/RadioGroup/RadioGroup';
 import { TextareaInput } from '../components/TextareaInput/TextareaInput';
@@ -121,6 +122,13 @@ Form controls share tokens since they are designed to have a consistent appearan
             options={options}
             value={themeExampleValues.selectValue}
           />
+          <SelectInputNativeFloating
+            id="floationg Select"
+            label="Floating Select Input"
+            onChange={event => handleChange('selectValue', event.target.value)}
+            options={options}
+            value={themeExampleValues.selectValue}
+          />
           <SelectInput
             id="multiSelect"
             name="multiSelect"
@@ -194,6 +202,7 @@ The following tokens are shared by all form controls to maintain a consistent ap
         'form-control-label-margin': '--size-spacing-xs',
         'form-control-help-margin': '--size-spacing-2xs',
         'form-control-line-height': '--size-line-height-input',
+        'form-control-help-text-font-size': 'var(--size-font-sm)',
         'form-control-help-text-font-weight': 'var(--size-font-weight-regular)',
         'form-control-label-font-weight': 'var(--size-font-weight-medium)',
         'form-control-legend-font-weight': 'var(--size-font-weight-medium)',

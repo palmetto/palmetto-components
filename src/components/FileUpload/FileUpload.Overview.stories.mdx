@@ -17,17 +17,7 @@ import { Button } from '../Button/Button';
 
 Use FileUpload to capture files for upload in forms or elsewhere.
 
-<Canvas isExpanded>
-  <FileUpload labelText="My File" id="demoFileUpload" />
-</Canvas>
-
-## Props
-
-<ArgsTable of={FileUpload} />
-
-## Default
-
-<Canvas>
+<Canvas withSource="open">
   <Story name="Default">
     {() => {
       const [files, setFiles] = useState(null);
@@ -45,6 +35,10 @@ Use FileUpload to capture files for upload in forms or elsewhere.
     }}
   </Story>
 </Canvas>
+
+## Props
+
+<ArgsTable of={FileUpload} />
 
 ## Custom Button Text
 
@@ -148,7 +142,7 @@ Remove the icon on the button with the handy `hasIcon` boolean.
 
 ## Without Button Text
 
-The default button text for `FileUpload` is 'Upload File'. However, you can explicitely pass `null` to the `buttonText` prop to remove all text.
+The default button text for `FileUpload` is 'Upload File'. However, you can explicitly pass `null` to the `buttonText` prop to remove all text.
 
 <Canvas>
   <Story name="Without Button Text">
@@ -205,12 +199,10 @@ Leverage the same variants as the Button component to customize the look and fee
             onChange={handleLightChange}
             files={lightFiles}
             variant="secondary"
-
           />
         </Box>
       );
     }}
-
   </Story>
 </Canvas>
 

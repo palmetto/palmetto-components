@@ -7,7 +7,6 @@ import React, {
   ForwardRefExoticComponent,
   ReactNode,
   HTMLProps,
-  InputHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 import { ChangeEvent as CleaveChangeEvent } from 'cleave.js/react/props';
@@ -18,11 +17,11 @@ import { Box, BoxProps } from '../Box/Box';
 import { HelpText } from '../HelpText/HelpText';
 import { Icon } from '../Icon/Icon';
 import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
-import styles from './TextInputFloating.module.scss';
+import styles from './SelectInputNativeFloating.module.scss';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 
-export type TextInputFloatingSize = 'md' | 'lg';
-export interface TextInputFloatingProps {
+export type SelectInputNativeFloatingSize = 'md' | 'lg';
+export interface SelectInputNativeFloatingProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -32,15 +31,19 @@ export interface TextInputFloatingProps {
    */
   label: string;
   /**
+   * List of options for the select input.
+   */
+  options: { value: string | number; label: string | number; }[];
+  /**
    * Callback function to call on change event.
    */
   onChange: (
     event: ChangeEvent<HTMLInputElement> | CleaveChangeEvent<HTMLInputElement>,
   ) => void;
   /**
-   * The text value of the input. Required since our Input is a controlled component.
+   * Value of selected option. Should match the value key in the option object.
    */
-  value: InputHTMLAttributes<HTMLInputElement>['value'];
+  value: string | number | null;
   /**
    * Automatically focus the input when the page is loaded.
    */
@@ -71,11 +74,6 @@ export interface TextInputFloatingProps {
    */
   isRequired?: boolean;
   /**
-   * The input's 'maxlength' attribute.
-   * NOTE: initializing the input with a value longer than the desired maxlength will not trim this value.
-   */
-  maxLength?: number;
-  /**
    * The input's 'name' attribute.
    */
   name?: string;
@@ -99,32 +97,22 @@ export interface TextInputFloatingProps {
    */
   placeholder?: string;
   /**
-   * An input helper rendered before the input field value
-   */
-  prefix?: ReactNode;
-  /**
    * Visual indicator that the field is required, that gets appended to the label
    */
   requiredIndicator?: ReactNode;
   /**
    * The size of the text input.
    */
-  size?: TextInputFloatingSize | ResponsiveProp<TextInputFloatingSize>;
-  /**
-   * An input helper rendered after the input field value
-   */
-  suffix?: ReactNode;
-  /**
-   * The input 'type' value. Defaults to type 'text'.
-   */
-  type?: InputHTMLAttributes<HTMLInputElement>['type'];
+  size?:
+    | SelectInputNativeFloatingSize
+    | ResponsiveProp<SelectInputNativeFloatingSize>;
   /**
    * Additional props to be spread to rendered element
    */
   [x: string]: any; // eslint-disable-line
 }
 
-export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps> = forwardRef<HTMLDivElement, TextInputFloatingProps>(
+export const SelectInputNativeFloating: ForwardRefExoticComponent<SelectInputNativeFloatingProps> = forwardRef<HTMLDivElement, SelectInputNativeFloatingProps>(
   (
     {
       id,
@@ -138,20 +126,20 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
       inputProps = {},
       isDisabled = false,
       isRequired = false,
-      maxLength = undefined,
       name = '',
       onBlur = undefined,
       onClear = undefined,
       onFocus = undefined,
-      prefix = undefined,
-      placeholder = ' ',
+      options,
+      placeholder = 'Select...',
       requiredIndicator = ' *',
-      suffix = undefined,
       size = 'md',
-      type = 'text',
     },
     ref,
   ) => {
+    const placeholderOption = { value: '', label: placeholder };
+    const optionsWithPlaceholder = [{ ...placeholderOption }, ...options];
+
     const responsiveClasses = generateResponsiveClasses('size', size);
 
     const inputWrapperClasses = classNames(
@@ -188,7 +176,7 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
       );
     };
 
-    const computedInputProps: TextInputFloatingProps['inputProps'] = {
+    const computedInputProps: SelectInputNativeFloatingProps['inputProps'] = {
       ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
       'aria-required': isRequired,
       'aria-invalid': !!error,
@@ -198,64 +186,54 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
       autoFocus,
       disabled: isDisabled,
       id,
-      maxLength,
       name,
       onBlur,
       onChange,
       onFocus,
-      placeholder,
       required: isRequired,
-      type,
-      value,
+      value: value ?? '',
       className: classNames(inputProps.className),
     };
 
     return (
-      <Box width="100" ref={ref}>
-        <Box direction="row" className={inputWrapperClasses}>
-          {prefix && (
-          <Box
-            color="grey-600"
-            alignItems="center"
-            justifyContent="center"
-            className={classNames(styles.prefix, 'ws-nowrap')}
-          >
-            {prefix}
+      <div ref={ref}>
+        <Box
+          direction="row"
+          flex="auto"
+          position="relative"
+          className={inputWrapperClasses}
+        >
+          <Box as="select" {...computedInputProps}>
+            {optionsWithPlaceholder.map(option => (
+              <Box
+                as="option"
+                key={option.value}
+                value={option.value}
+                disabled={option.value === ''}
+                hidden={option.value === ''}
+                color={option.value === '' ? 'grey-500' : 'grey-600'}
+              >
+                {option.label}
+              </Box>
+            ))}
           </Box>
-          )}
-          <Box
-            direction="row"
-            position="relative"
-            className="label-input-wrapper"
-            flex="auto"
+          {!!onClear && !!value && renderClearIcon()}
+          <label
+            htmlFor={id}
+            className={styles['select-input-label']}
+            id={`${id}Label`}
           >
-            <Box as="input" {...computedInputProps} />
-            {!!onClear && !!value && renderClearIcon()}
-            <label
-              htmlFor={id}
-              className={styles['text-input-label']}
-              id={`${id}Label`}
-            >
-              {label}
-              {isRequired && requiredIndicator && (
-              <span>{requiredIndicator}</span>
-              )}
-            </label>
-          </Box>
-          {suffix && (
-          <Box
-            color="grey-600"
-            className={classNames(styles.suffix, 'ws-nowrap')}
-          >
-            {suffix}
-          </Box>
-          )}
+            {label}
+            {isRequired && requiredIndicator && (
+            <span>{requiredIndicator}</span>
+            )}
+          </label>
         </Box>
         {helpText && <HelpText>{helpText}</HelpText>}
         {error && error !== true && (
         <InputValidationMessage>{error}</InputValidationMessage>
         )}
-      </Box>
+      </div>
     );
   },
 );

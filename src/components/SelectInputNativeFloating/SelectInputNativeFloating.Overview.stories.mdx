@@ -1,0 +1,263 @@
+import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { SelectInputNativeFloating } from './SelectInputNativeFloating';
+import { RESPONSIVE_STORY } from '../../docs/constants';
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
+
+<Meta
+  title="Components/SelectInputNativeFloating/Overview"
+  component={SelectInputNativeFloating}
+  parameters={{
+    controls: { hideNoControlsWarning: true },
+  }}
+/>
+
+# SelectInputNativeFloating
+
+Use `SelectInputNativeFloating` to create a floating label input field, but unlike `TextInputFloating` they always show the `label` in the floated state. It is a controlled component, which means that you need to provide a value and an `onChange` handler to update the value.
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/k1kOsplTGXvSSMQQCzhCND/Palmetto-Design-System?node-id=130%3A3463',
+      },
+    }}
+  >
+    {() => {
+      const [value, setValue] = useState('');
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <SelectInputNativeFloating
+          id="default Select"
+          label="Label"
+          onChange={event => {
+            setValue(event.target.value);
+          }}
+          options={options}
+          value={value}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={SelectInputNativeFloating} />
+
+### Required
+
+Use the `isRequired` prop to display an `*` after the label and set the `required` and `aria-required` on the underlying input element. You can also use the `requiredIndicator` prop to customize the indicator that appears next to the label.
+
+<Canvas>
+  <Story name="Required">
+    {() => {
+      const [value, setValue] = useState('');
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <Box gap="md">
+          <SelectInputNativeFloating
+            id="requiredSelect"
+            label="Required Field"
+            onChange={event => {
+              setValue(event.target.value);
+            }}
+            options={options}
+            value={value}
+            isRequired
+          />
+          <SelectInputNativeFloating
+            id="customRequiredSelect"
+            label="Custom Required Indicator Field"
+            onChange={event => {
+              setValue(event.target.value);
+            }}
+            options={options}
+            value={value}
+            isRequired
+            requiredIndicator=" (required)"
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Help Text
+
+Use `helpText` to provide additional information about the input field.
+
+<Canvas>
+  <Story name="Help Text">
+    {() => {
+      const [value, setValue] = useState('');
+      const options = [
+        { value: 'Enphase', label: 'Enphase' },
+        { value: 'SolarEdge', label: 'SolarEdge' },
+        { value: 'Tesla', label: 'Tesla' },
+      ];
+      return (
+        <SelectInputNativeFloating
+          id="helpTextSelect"
+          label="Inverter Manufacturer"
+          helpText="Must be from the approved vendor list"
+          onChange={event => {
+            setValue(event.target.value);
+          }}
+          options={options}
+          value={value}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Validation Error
+
+Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, `string`, or `node`.
+
+<Canvas>
+  <Story name="Error">
+    {() => {
+      const [value, setValue] = useState('');
+      const options = [
+        { value: 'Enphase', label: 'Enphase' },
+        { value: 'SolarEdge', label: 'SolarEdge' },
+        { value: 'Tesla', label: 'Tesla' },
+      ];
+      return (
+        <SelectInputNativeFloating
+          id="errorSelect"
+          label="Inverter Manufacturer"
+          helpText="Must be from the approved vendor list"
+          onChange={event => {
+            setValue(event.target.value);
+          }}
+          options={options}
+          value={value}
+          error="Required Input"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Disabled
+
+Add `isDisabled`to give it a grayed out appearance, remove pointer events, and prevent focusing.
+
+<Canvas>
+  <Story name="Disabled">
+    {() => {
+      const [value, setValue] = useState('');
+      const options = [
+        { value: 'Enphase', label: 'Enphase' },
+        { value: 'SolarEdge', label: 'SolarEdge' },
+        { value: 'Tesla', label: 'Tesla' },
+      ];
+      return (
+        <SelectInputNativeFloating
+          id="disabledSelect"
+          label="Disabled Input"
+          onChange={event => {
+            setValue(event.target.value);
+          }}
+          options={options}
+          value={value}
+          isDisabled
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Clearable
+
+Use the `onClear` prop to display a clear icon (x) when the input has a value. `onClear` will fire
+a callback function when the clear icon is clicked, which can then be handled to clear the value.
+
+<Canvas>
+  <Story name="Clearable">
+    {() => {
+      const [value, setValue] = useState('Clear Me');
+      const options = [
+        { value: 'clear', label: 'Clear Me' },
+        { value: 'option2', label: 'Option 2' },
+        { value: 'option3', label: 'Option 3' },
+      ];
+      return (
+        <SelectInputNativeFloating
+          id="clearableSelect"
+          label="Clearable Input"
+          onChange={event => {
+            setValue(event.target.value);
+          }}
+          options={options}
+          value={value}
+          onClear={event => setValue('')}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Sizes
+
+Two sizes, `md` and `lg` are available, with `md` being the default.
+
+<Canvas>
+  <Story name="Sizes" parameters={RESPONSIVE_STORY}>
+    {() => {
+      const [value, setValue] = useState('');
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+      return (
+        <Box gap="md">
+          <SelectInputNativeFloating
+            id="mdFlavorInput"
+            value={value}
+            label="md size"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+          />
+          <SelectInputNativeFloating
+            id="lgFlavorInput"
+            value={value}
+            size="lg"
+            label="lg size"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+          />
+          <SelectInputNativeFloating
+            id="responsiveFlavorInput"
+            value={value}
+            size={{ base: 'md', tablet: 'lg', desktop: 'md', hd: 'lg' }}
+            label="responsive size"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+          />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Component Design Tokens
+
+This component shares component design tokens with all form controls. For a complete list of tokens, see the [Theming Form Controls documentation](/docs/theming-form-controls--custom-theme-form).
