@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.9](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2024-03-06)
+
+
+### Features
+
+* **SelectInputNativeFloating:** new component ([#877](https://github.com/palmetto/palmetto-components/issues/877)) ([62dc894](https://github.com/palmetto/palmetto-components/commit/62dc89457ca214aa3f48928bd226a58bb5fc0b0a))
+
 # [1.0.0-beta.8](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-03-01)
 
 
