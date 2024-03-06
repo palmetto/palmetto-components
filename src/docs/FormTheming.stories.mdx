@@ -5,6 +5,7 @@ import { TextInputFloating } from '../components/TextInputFloating/TextInputFloa
 import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { SelectInput } from '../components/SelectInput/SelectInput';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
+import { SelectInputNativeFloating } from '../components/SelectInputNativeFloating/SelectInputNativeFloating';
 import { OptionTileGroup } from '../components/OptionTileGroup/OptionTileGroup';
 import { RadioGroup } from '../components/RadioGroup/RadioGroup';
 import { TextareaInput } from '../components/TextareaInput/TextareaInput';
@@ -117,6 +118,13 @@ Form controls share tokens since they are designed to have a consistent appearan
           <SelectInputNative
             id="default Select"
             label="Select Input"
+            onChange={event => handleChange('selectValue', event.target.value)}
+            options={options}
+            value={themeExampleValues.selectValue}
+          />
+          <SelectInputNativeFloating
+            id="floationg Select"
+            label="Floating Select Input"
             onChange={event => handleChange('selectValue', event.target.value)}
             options={options}
             value={themeExampleValues.selectValue}

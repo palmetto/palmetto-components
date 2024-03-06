@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { SelectInputNativeFloating } from './SelectInputNativeFloating';
+import { RESPONSIVE_STORY } from '../../docs/constants';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 
@@ -218,7 +219,7 @@ a callback function when the clear icon is clicked, which can then be handled to
 Two sizes, `md` and `lg` are available, with `md` being the default.
 
 <Canvas>
-  <Story name="Sizes">
+  <Story name="Sizes" parameters={RESPONSIVE_STORY}>
     {() => {
       const [value, setValue] = useState('');
       const options = [
@@ -240,6 +241,14 @@ Two sizes, `md` and `lg` are available, with `md` being the default.
             value={value}
             size="lg"
             label="lg size"
+            onChange={event => setValue(event.target.value)}
+            options={options}
+          />
+          <SelectInputNativeFloating
+            id="responsiveFlavorInput"
+            value={value}
+            size={{ base: 'md', tablet: 'lg', desktop: 'md', hd: 'lg' }}
+            label="responsive size"
             onChange={event => setValue(event.target.value)}
             options={options}
           />
