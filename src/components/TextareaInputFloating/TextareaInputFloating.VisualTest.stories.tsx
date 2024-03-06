@@ -1,12 +1,10 @@
-import React, { ReactElement, useState } from 'react';
+import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { within } from '@storybook/testing-library';
 import {
   TextareaInputFloating,
   TextareaInputFloatingProps,
 } from './TextareaInputFloating';
-import { Icon } from '../Icon/Icon';
-import { Box } from '../Box/Box';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 
 export default {
