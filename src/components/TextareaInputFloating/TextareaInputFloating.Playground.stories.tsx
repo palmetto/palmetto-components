@@ -33,12 +33,6 @@ export default {
     helpText: {
       control: 'text',
     },
-    hideLabel: {
-      control: 'boolean',
-    },
-    isClearable: {
-      control: 'boolean',
-    },
     isDisabled: {
       control: 'boolean',
     },
@@ -51,13 +45,10 @@ export default {
     placeholder: {
       control: 'text',
     },
-    prefix: {
-      control: 'text',
-    },
-    suffix: {
-      control: 'text',
-    },
     maxLength: {
+      control: 'number',
+    },
+    rows: {
       control: 'number',
     },
     size: {
@@ -68,12 +59,6 @@ export default {
     },
     requiredIndicator: {
       control: 'text',
-    },
-    type: {
-      control: {
-        type: 'select',
-        options: ['text', 'password', 'email', 'tel', 'url', 'search'],
-      },
     },
   },
 } as Meta;
