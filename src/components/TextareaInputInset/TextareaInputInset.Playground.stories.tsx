@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
-  TextareaInputFloating,
-  TextareaInputFloatingProps,
-} from './TextareaInputFloating';
+  TextareaInputInset,
+  TextareaInputInsetProps,
+} from './TextareaInputInset';
 
 export default {
-  title: 'Components/TextareaInputFloating/Playground',
-  component: TextareaInputFloating,
+  title: 'Components/TextareaInputInset/Playground',
+  component: TextareaInputInset,
   argTypes: {
     autoComplete: {
       control: 'boolean',
@@ -63,14 +63,14 @@ export default {
   },
 } as Meta;
 
-const Template: Story<TextareaInputFloatingProps> = ({ ...args }) => (
-  <TextareaInputFloating {...args} />
+const Template: Story<TextareaInputInsetProps> = ({ ...args }) => (
+  <TextareaInputInset {...args} />
 );
 
 export const Playground = Template.bind({});
 Playground.args = {
-  id: 'playgroundTextareaInputFloating ',
-  label: 'Playground TextareaInputFloating ',
+  id: 'playgroundTextareaInputInset ',
+  label: 'Playground TextareaInputInset ',
   helpText: 'Helpful text',
-  name: 'playgroundTextareaInputFloating ',
+  name: 'playgroundTextareaInputInset ',
 };

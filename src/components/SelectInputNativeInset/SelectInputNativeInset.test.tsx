@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { BreakpointSize } from '../../types';
-import { SelectInputNativeFloating } from './SelectInputNativeFloating';
+import { SelectInputNativeInset } from './SelectInputNativeInset';
 
 const selectOptions = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -9,13 +9,13 @@ const selectOptions = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
-describe('SelectInputNativeFloating', () => {
+describe('SelectInputNativeInset', () => {
   describe('Callback Handling', () => {
     test('it fires onChange callback on change', async () => {
       const mockedHandleChange = jest.fn();
 
       const { getByLabelText } = render(
-        <SelectInputNativeFloating
+        <SelectInputNativeInset
           id="testId"
           onChange={mockedHandleChange}
           placeholder="Test Placeholder"
@@ -35,7 +35,7 @@ describe('SelectInputNativeFloating', () => {
       const mockedHandleFocus = jest.fn();
 
       render(
-        <SelectInputNativeFloating
+        <SelectInputNativeInset
           id="testId"
           onChange={mockedHandleChange}
           onFocus={mockedHandleFocus}
@@ -56,7 +56,7 @@ describe('SelectInputNativeFloating', () => {
       const mockedHandleBlur = jest.fn();
 
       render(
-        <SelectInputNativeFloating
+        <SelectInputNativeInset
           id="testId"
           onChange={mockedHandleChange}
           onBlur={mockedHandleBlur}
@@ -78,7 +78,7 @@ describe('SelectInputNativeFloating', () => {
     test('onClear prop renders clear icon when input has value', () => {
       const mockedHandleChange = jest.fn();
       render(
-        <SelectInputNativeFloating
+        <SelectInputNativeInset
           id="testId"
           onChange={mockedHandleChange}
           options={selectOptions}
@@ -96,7 +96,7 @@ describe('SelectInputNativeFloating', () => {
       const mockedHandleClear = jest.fn(() => null);
 
       render(
-        <SelectInputNativeFloating
+        <SelectInputNativeInset
           id="testId"
           onChange={mockedHandleChange}
           options={selectOptions}
@@ -123,7 +123,7 @@ describe('SelectInputNativeFloating', () => {
         const mockedHandleChange = jest.fn();
 
         render(
-          <SelectInputNativeFloating
+          <SelectInputNativeInset
             id="testId"
             onChange={mockedHandleChange}
             label="Select Label"
@@ -138,7 +138,7 @@ describe('SelectInputNativeFloating', () => {
 
       test('assigns the "aria-labelledby" attribute and renders label correct id, when a label is provided', () => {
         render(
-          <SelectInputNativeFloating
+          <SelectInputNativeInset
             id="testInput"
             label="test label"
             options={selectOptions}
@@ -160,7 +160,7 @@ describe('SelectInputNativeFloating', () => {
         const mockedHandleChange = jest.fn();
 
         render(
-          <SelectInputNativeFloating
+          <SelectInputNativeInset
             id="testId"
             onChange={mockedHandleChange}
             label="Required Select"
@@ -179,7 +179,7 @@ describe('SelectInputNativeFloating', () => {
         const mockedHandleChange = jest.fn();
 
         render(
-          <SelectInputNativeFloating
+          <SelectInputNativeInset
             id="testId"
             onChange={mockedHandleChange}
             label="Select Label"
@@ -198,7 +198,7 @@ describe('SelectInputNativeFloating', () => {
         const mockedHandleChange = jest.fn();
 
         render(
-          <SelectInputNativeFloating
+          <SelectInputNativeInset
             id="testId"
             onChange={mockedHandleChange}
             label="disabled test"
@@ -217,7 +217,7 @@ describe('SelectInputNativeFloating', () => {
         const mockedHandleChange = jest.fn();
 
         render(
-          <SelectInputNativeFloating
+          <SelectInputNativeInset
             id="testId"
             onChange={mockedHandleChange}
             label="Select Label"
@@ -241,7 +241,7 @@ describe('SelectInputNativeFloating', () => {
     sizes.forEach(size => {
       test(`it has a ${size} class applied to it`, () => {
         render(
-          <SelectInputNativeFloating
+          <SelectInputNativeInset
             id="testId"
             onChange={mockedHandleChange}
             options={selectOptions}
@@ -258,7 +258,7 @@ describe('SelectInputNativeFloating', () => {
       breakpoints.forEach(breakpoint => {
         test(`it applies responsive classes for breakpoint: ${breakpoint} and size: ${size}`, () => {
           render(
-            <SelectInputNativeFloating
+            <SelectInputNativeInset
               id="testId"
               onChange={mockedHandleChange}
               options={selectOptions}
@@ -279,7 +279,7 @@ describe('SelectInputNativeFloating', () => {
 
     test('It applies responsive classes when multiple are applied', () => {
       render(
-        <SelectInputNativeFloating
+        <SelectInputNativeInset
           id="testId"
           onChange={mockedHandleChange}
           options={selectOptions}

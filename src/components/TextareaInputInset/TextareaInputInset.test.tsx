@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { TextareaInputFloating } from './TextareaInputFloating';
+import { TextareaInputInset } from './TextareaInputInset';
 
 const baseProps = {
   name: 'firstName',
@@ -18,10 +18,7 @@ describe('TextInput', () => {
         const mockedHandleChange = jest.fn(() => null);
 
         render(
-          <TextareaInputFloating
-            {...baseProps}
-            onChange={mockedHandleChange}
-          />,
+          <TextareaInputInset {...baseProps} onChange={mockedHandleChange} />,
         );
         const inputElement = screen.getByDisplayValue(baseProps.value);
 
@@ -35,7 +32,7 @@ describe('TextInput', () => {
           value = event.target.value;
         });
         const { rerender } = render(
-          <TextareaInputFloating
+          <TextareaInputInset
             {...baseProps}
             value={value}
             onChange={mockedHandleChange}
@@ -51,7 +48,7 @@ describe('TextInput', () => {
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
 
         rerender(
-          <TextareaInputFloating
+          <TextareaInputInset
             {...baseProps}
             value={value}
             onChange={mockedHandleChange}
@@ -65,7 +62,7 @@ describe('TextInput', () => {
       test('Input fires onFocus callback', () => {
         const mockedHandleFocus = jest.fn();
         render(
-          <TextareaInputFloating {...baseProps} onFocus={mockedHandleFocus} />,
+          <TextareaInputInset {...baseProps} onFocus={mockedHandleFocus} />,
         );
         const inputElement = screen.getByDisplayValue(baseProps.value);
         fireEvent.focus(inputElement);
@@ -76,9 +73,7 @@ describe('TextInput', () => {
     describe('onBlur', () => {
       test('Input fires onBlur callback', () => {
         const mockedHandleBlur = jest.fn();
-        render(
-          <TextareaInputFloating {...baseProps} onBlur={mockedHandleBlur} />,
-        );
+        render(<TextareaInputInset {...baseProps} onBlur={mockedHandleBlur} />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
         fireEvent.focus(inputElement);
         fireEvent.blur(inputElement);
@@ -90,7 +85,7 @@ describe('TextInput', () => {
   describe('States', () => {
     describe('Label', () => {
       test('it renders a label', () => {
-        render(<TextareaInputFloating {...baseProps} />);
+        render(<TextareaInputInset {...baseProps} />);
 
         const labelElement = screen.getByText(baseProps.label);
 
@@ -100,7 +95,7 @@ describe('TextInput', () => {
 
     describe('Autofocused', () => {
       test('Input autofocuses if "autoFocus" prop is set to true', () => {
-        render(<TextareaInputFloating {...baseProps} autoFocus />);
+        render(<TextareaInputInset {...baseProps} autoFocus />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
         expect(document.activeElement).toEqual(inputElement);
       });
@@ -108,19 +103,19 @@ describe('TextInput', () => {
 
     describe('Autocomplete', () => {
       test('Input correctly assigns autocomplete value of "on" when bool true is provided', () => {
-        render(<TextareaInputFloating {...baseProps} autoComplete />);
+        render(<TextareaInputInset {...baseProps} autoComplete />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
         expect(inputElement).toHaveAttribute('autocomplete', 'on');
       });
 
       test('Input correctly assigns autocomplete value of "off" when bool false is provided', () => {
-        render(<TextareaInputFloating {...baseProps} autoComplete={false} />);
+        render(<TextareaInputInset {...baseProps} autoComplete={false} />);
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'off');
       });
 
       test('Input correctly assigns autocomplete specific value when provided', () => {
-        render(<TextareaInputFloating {...baseProps} autoComplete="email" />);
+        render(<TextareaInputInset {...baseProps} autoComplete="email" />);
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'email');
       });
@@ -128,7 +123,7 @@ describe('TextInput', () => {
 
     describe('Required', () => {
       test('it correctly assigns the "aria-required" attribute when "isRequired" prop is true', () => {
-        render(<TextareaInputFloating {...baseProps} isRequired />);
+        render(<TextareaInputInset {...baseProps} isRequired />);
 
         const inputElement = screen.getByDisplayValue('hello');
 
@@ -138,9 +133,7 @@ describe('TextInput', () => {
 
     describe('Error', () => {
       test('Input correctly displays error message if provided', () => {
-        render(
-          <TextareaInputFloating {...baseProps} error="You silly goose" />,
-        );
+        render(<TextareaInputInset {...baseProps} error="You silly goose" />);
 
         const validationMessageElement = screen.getByText('You silly goose');
 
@@ -152,7 +145,7 @@ describe('TextInput', () => {
     describe('Help Text', () => {
       test('Input renders help text', async () => {
         const { getByText } = render(
-          <TextareaInputFloating
+          <TextareaInputInset
             {...baseProps}
             value=""
             helpText="i am help text"
@@ -165,7 +158,7 @@ describe('TextInput', () => {
 
     describe('Max Length', () => {
       test('Input correctly passes maxlength property if prop is passed', async () => {
-        render(<TextareaInputFloating {...baseProps} value="" maxLength={3} />);
+        render(<TextareaInputInset {...baseProps} value="" maxLength={3} />);
 
         const inputElement = screen.getByLabelText(baseProps.label);
         expect(inputElement).toBeInTheDocument();
@@ -177,7 +170,7 @@ describe('TextInput', () => {
     describe('Name', () => {
       test('Input correctly passes name property if prop is passed', async () => {
         render(
-          <TextareaInputFloating
+          <TextareaInputInset
             {...baseProps}
             value=""
             name="test floating label"
@@ -193,7 +186,7 @@ describe('TextInput', () => {
 
     describe('Aria-labelledby', () => {
       test('assigns the "aria-labelledby" attribute and renders label with correct id, when label is provided', () => {
-        render(<TextareaInputFloating {...baseProps} />);
+        render(<TextareaInputInset {...baseProps} />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
         expect(inputElement).toHaveAttribute(
           'aria-labelledby',

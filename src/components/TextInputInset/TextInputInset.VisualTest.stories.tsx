@@ -1,18 +1,18 @@
 import React, { ReactElement, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { within } from '@storybook/testing-library';
-import { TextInputFloating, TextInputFloatingProps } from './TextInputFloating';
+import { TextInputInset, TextInputInsetProps } from './TextInputInset';
 import { Icon } from '../Icon/Icon';
 import { Box } from '../Box/Box';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 
 export default {
-  title: 'Components/TextInputFloating/Visual Regression Tests',
-  component: TextInputFloating,
+  title: 'Components/TextInputInset/Visual Regression Tests',
+  component: TextInputInset,
 } as Meta;
 
-const Template: Story<TextInputFloatingProps> = args => (
-  <TextInputFloating
+const Template: Story<TextInputInsetProps> = args => (
+  <TextInputInset
     {...args}
     onChange={() => {}} // eslint-disable-line
   />
@@ -64,72 +64,88 @@ export const PrefixSuffixSizes: React.FC = (): ReactElement => {
   return (
     <Box gap="xl">
       <Box gap="md">
-        <TextInputFloating
+        <TextInputInset
           id="prefixSuffix5"
           value={prefixValue}
           label="Prefix with Value"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setPrefixValue(event.target.value)
+          }
           prefix="@"
         />
-        <TextInputFloating
+        <TextInputInset
           id="prefixSuffix6"
           value={prefixValue2}
           label="Prefix and Suffix"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue2(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setPrefixValue2(event.target.value)
+          }
           prefix="$"
           suffix=".99"
         />
-        <TextInputFloating
+        <TextInputInset
           id="prefixSuffix7"
           value={prefixValue3}
           label="Suffix"
           placeholder="Contact name"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue3(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setPrefixValue3(event.target.value)
+          }
           suffix={<Icon name="book" />}
         />
-        <TextInputFloating
+        <TextInputInset
           id="prefixSuffix8"
           value={prefixValue4}
           label="Suffix with Clear"
           placeholder="Contact name"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue4(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setPrefixValue4(event.target.value)
+          }
           onClear={() => setPrefixValue4('')}
           suffix={<Icon name="search" />}
         />
       </Box>
       <Box gap="md">
-        <TextInputFloating
+        <TextInputInset
           id="prefixSuffix9"
           value={prefixValue}
           label="Prefix with Value"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setPrefixValue(event.target.value)
+          }
           prefix="@"
           size="lg"
         />
-        <TextInputFloating
+        <TextInputInset
           id="prefixSuffix10"
           value={prefixValue2}
           label="Prefix and Suffix"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue2(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setPrefixValue2(event.target.value)
+          }
           prefix="$"
           suffix=".99"
           size="lg"
         />
-        <TextInputFloating
+        <TextInputInset
           id="prefixSuffix11"
           value={prefixValue3}
           label="Suffix"
           placeholder="Contact name"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue3(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setPrefixValue3(event.target.value)
+          }
           suffix={<Icon name="book" />}
           size="lg"
         />
-        <TextInputFloating
+        <TextInputInset
           id="prefixSuffix112"
           value={prefixValue4}
           label="Suffix with Clear"
           placeholder="Contact name"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPrefixValue4(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setPrefixValue4(event.target.value)
+          }
           onClear={() => setPrefixValue4('')}
           suffix={<Icon name="search" />}
           size="lg"

@@ -4,7 +4,7 @@ import { Box } from '../components/Box/Box';
 import { SelectInput } from '../components/SelectInput/SelectInput';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
 import { TextInput } from '../components/TextInput/TextInput';
-import { TextInputFloating } from '../components/TextInputFloating/TextInputFloating';
+import { TextInputInset } from '../components/TextInputInset/TextInputInset';
 import { Toggle } from '../components/Toggle/Toggle';
 
 export default {
@@ -47,9 +47,9 @@ const Template: Story = args => {
       <Box gap="sm" width="110px">
         <Box height="32px" />
         <Box display="block">
-          <TextInputFloating
+          <TextInputInset
             label="floating md"
-            id="mdTextFloating"
+            id="mdTextInset"
             value={formValues.textInputMd}
             placeholder="Medium"
             onChange={event => handleChange('textInputMd', event.target.value)}
@@ -57,9 +57,9 @@ const Template: Story = args => {
           />
         </Box>
         <Box>
-          <TextInputFloating
+          <TextInputInset
             label="floating lg"
-            id="lgTextFloating"
+            id="lgTextInset"
             value={formValues.textInputLg}
             placeholder="Large"
             size="lg"

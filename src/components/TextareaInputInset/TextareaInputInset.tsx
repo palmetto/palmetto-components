@@ -15,11 +15,11 @@ import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { Box, BoxProps } from '../Box/Box';
 import { HelpText } from '../HelpText/HelpText';
 import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
-import styles from './TextareaInputFloating.module.scss';
+import styles from './TextareaInputInset.module.scss';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 
-export type TextareaInputFloatingSize = 'md' | 'lg';
-export interface TextareaInputFloatingProps {
+export type TextareaInputInsetSize = 'md' | 'lg';
+export interface TextareaInputInsetProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -107,7 +107,7 @@ export interface TextareaInputFloatingProps {
   /**
    * The size of the text input.
    */
-  size?: TextareaInputFloatingSize | ResponsiveProp<TextareaInputFloatingSize>;
+  size?: TextareaInputInsetSize | ResponsiveProp<TextareaInputInsetSize>;
   /**
    * An input helper rendered after the input field value
    */
@@ -122,94 +122,95 @@ export interface TextareaInputFloatingProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const TextareaInputFloating: ForwardRefExoticComponent<TextareaInputFloatingProps> = forwardRef<HTMLDivElement, TextareaInputFloatingProps>(
-  (
-    {
-      id,
-      label,
-      onChange,
-      value,
-      autoComplete = false,
-      autoFocus = false,
-      className,
-      error = false,
-      helpText,
-      inputProps = {},
-      isDisabled = false,
-      isRequired = false,
-      maxLength = undefined,
-      name = '',
-      onBlur = undefined,
-      onFocus = undefined,
-      placeholder = ' ',
-      requiredIndicator = ' *',
-      resize = 'vertical',
-      rows = 5,
-      size = 'md',
-      type = 'text',
-    },
-    ref,
-  ) => {
-    const responsiveClasses = generateResponsiveClasses('size', size);
-
-    const inputWrapperClasses = classNames(
-      'palmetto-components__variables__form-control',
-      styles['text-input-wrapper'],
-      ...responsiveClasses.map(c => styles[c]),
+export const TextareaInputInset: ForwardRefExoticComponent<TextareaInputInsetProps> =
+  forwardRef<HTMLDivElement, TextareaInputInsetProps>(
+    (
       {
-        [styles.disabled]: isDisabled,
+        id,
+        label,
+        onChange,
+        value,
+        autoComplete = false,
+        autoFocus = false,
+        className,
+        error = false,
+        helpText,
+        inputProps = {},
+        isDisabled = false,
+        isRequired = false,
+        maxLength = undefined,
+        name = '',
+        onBlur = undefined,
+        onFocus = undefined,
+        placeholder = ' ',
+        requiredIndicator = ' *',
+        resize = 'vertical',
+        rows = 5,
+        size = 'md',
+        type = 'text',
       },
-    );
+      ref,
+    ) => {
+      const responsiveClasses = generateResponsiveClasses('size', size);
 
-    const computedInputProps: TextareaInputFloatingProps['inputProps'] = {
-      ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
-      'aria-required': isRequired,
-      'aria-invalid': !!error,
-      'aria-label': label,
-      'aria-labelledby': label ? `${id}Label` : undefined,
-      autoComplete: getAutoCompleteValue(autoComplete),
-      autoFocus,
-      className: classNames(styles[`textarea-resize-${resize}`], {
-        [styles.error]: error,
-      }),
-      disabled: isDisabled,
-      id,
-      maxLength,
-      name,
-      onBlur,
-      onChange,
-      onFocus,
-      placeholder,
-      required: isRequired,
-      rows,
-      type,
-      value,
-    };
+      const inputWrapperClasses = classNames(
+        'palmetto-components__variables__form-control',
+        styles['text-input-wrapper'],
+        ...responsiveClasses.map(c => styles[c]),
+        {
+          [styles.disabled]: isDisabled,
+        },
+      );
 
-    return (
-      <Box width="100" ref={ref} className={className}>
-        <Box
-          display="block"
-          position="relative"
-          className={inputWrapperClasses}
-        >
-          <Box as="textarea" {...computedInputProps} />
-          <label
-            htmlFor={id}
-            className={styles['text-input-label']}
-            id={`${id}Label`}
+      const computedInputProps: TextareaInputInsetProps['inputProps'] = {
+        ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
+        'aria-required': isRequired,
+        'aria-invalid': !!error,
+        'aria-label': label,
+        'aria-labelledby': label ? `${id}Label` : undefined,
+        autoComplete: getAutoCompleteValue(autoComplete),
+        autoFocus,
+        className: classNames(styles[`textarea-resize-${resize}`], {
+          [styles.error]: error,
+        }),
+        disabled: isDisabled,
+        id,
+        maxLength,
+        name,
+        onBlur,
+        onChange,
+        onFocus,
+        placeholder,
+        required: isRequired,
+        rows,
+        type,
+        value,
+      };
+
+      return (
+        <Box width="100" ref={ref} className={className}>
+          <Box
+            display="block"
+            position="relative"
+            className={inputWrapperClasses}
           >
-            {label}
-            {isRequired && requiredIndicator && (
-            <span>{requiredIndicator}</span>
-            )}
-          </label>
+            <Box as="textarea" {...computedInputProps} />
+            <label
+              htmlFor={id}
+              className={styles['text-input-label']}
+              id={`${id}Label`}
+            >
+              {label}
+              {isRequired && requiredIndicator && (
+                <span>{requiredIndicator}</span>
+              )}
+            </label>
+          </Box>
+          {helpText && <HelpText>{helpText}</HelpText>}
+          {error && error !== true && (
+            <InputValidationMessage>{error}</InputValidationMessage>
+          )}
         </Box>
-        {helpText && <HelpText>{helpText}</HelpText>}
-        {error && error !== true && (
-        <InputValidationMessage>{error}</InputValidationMessage>
-        )}
-      </Box>
-    );
-  },
-);
+      );
+    },
+  );

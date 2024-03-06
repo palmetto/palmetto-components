@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
-import { TextareaInputFloating } from './TextareaInputFloating';
+import { TextareaInputInset } from './TextareaInputInset';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 
 <Meta
-  title="Components/TextareaInputFloating/Overview"
-  component={TextareaInputFloating}
+  title="Components/TextareaInputInset/Overview"
+  component={TextareaInputInset}
   parameters={{
     controls: { hideNoControlsWarning: true },
   }}
 />
 
-# TextareaInputFloating
+# TextareaInputInset
 
-Use `TextareaInputFloating` to create a floating label input field. It is a controlled component, which means that you need to provide a value and an `onChange` handler to update the value.
+Use `TextareaInputInset` to create a floating label input field. It is a controlled component, which means that you need to provide a value and an `onChange` handler to update the value.
 
 <Canvas withSource="open">
   <Story name="Default">
@@ -24,7 +24,7 @@ Use `TextareaInputFloating` to create a floating label input field. It is a cont
       const [valuePw, setValuePw] = useState('');
       return (
         <Box gap="md">
-          <TextareaInputFloating
+          <TextareaInputInset
             id="textareaInputDefault"
             value={value}
             label="Multi-line Text Input"
@@ -39,7 +39,7 @@ Use `TextareaInputFloating` to create a floating label input field. It is a cont
 
 ## Props
 
-<ArgsTable of={TextareaInputFloating} />
+<ArgsTable of={TextareaInputInset} />
 
 ### Required
 
@@ -51,7 +51,7 @@ Use the `isRequired` prop to display an `*` after the label and set the `require
       const [value, setValue] = useState('');
       return (
         <Box gap="md">
-          <TextareaInputFloating
+          <TextareaInputInset
             id="requiredInput"
             value={value}
             label="Required Input"
@@ -59,7 +59,7 @@ Use the `isRequired` prop to display an `*` after the label and set the `require
             onChange={event => setValue(event.target.value)}
             isRequired
           />
-          <TextareaInputFloating
+          <TextareaInputInset
             id="customRequiredInput"
             value={value}
             label="Required Input"
@@ -82,7 +82,7 @@ Use `helpText` to provide additional information about the input field.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <TextareaInputFloating
+        <TextareaInputInset
           id="helpTextStory"
           value={value}
           label="Design Request Note"
@@ -107,7 +107,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
       );
       return (
         <Box gap="md">
-          <TextareaInputFloating
+          <TextareaInputInset
             id="error1"
             value={value}
             label="Note"
@@ -115,7 +115,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
             onChange={event => setValue(event.target.value)}
             isRequired
           />
-          <TextareaInputFloating
+          <TextareaInputInset
             id="error2"
             value={value2}
             label="Note"
@@ -143,14 +143,14 @@ Add `isDisabled`to give it a grayed out appearance, remove pointer events, and p
       );
       return (
         <Box gap="md">
-          <TextareaInputFloating
+          <TextareaInputInset
             id="disabled"
             value={value}
             label="Disabled"
             onChange={event => setValue(event.target.value)}
             isDisabled
           />
-          <TextareaInputFloating
+          <TextareaInputInset
             id="disabledValue"
             value={value2}
             label="Disabled with Value"
@@ -173,14 +173,14 @@ Two sizes, `md` and `lg` are available, with `md` being the default.
       const [value, setValue] = useState('');
       return (
         <Box gap="md">
-          <TextareaInputFloating
+          <TextareaInputInset
             id="mdTextInput"
             value={value}
             label="Medium Input"
             size="md"
             onChange={event => setValue(event.target.value)}
           />
-          <TextareaInputFloating
+          <TextareaInputInset
             id="lgTextInput"
             value={value}
             label="Large Input"
@@ -203,14 +203,14 @@ The `resize` prop accepts `horizontal`, `vertical`, `both` or `none` to control 
       const [value, setValue] = useState('');
       return (
         <Box gap="md">
-          <TextareaInputFloating
+          <TextareaInputInset
             id="resizeBoth"
             value={value}
             label="Resize Me Vertically and Horizontally"
             onChange={event => setValue(event.target.value)}
             resize="both"
           />
-          <TextareaInputFloating
+          <TextareaInputInset
             id="resizeNone"
             value={value}
             label="Can't resize me"
