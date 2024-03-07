@@ -4,21 +4,21 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Box } from '../components/Box/Box';
 import { Button } from '../components/Button/Button';
 import { TextInput } from '../components/TextInput/TextInput';
-import { TextInputFloating } from '../components/TextInputFloating/TextInputFloating';
+import { TextInputInset } from '../components/TextInputInset/TextInputInset';
 import { TextareaInput } from '../components/TextareaInput/TextareaInput';
-import { TextareaInputFloating } from '../components/TextareaInputFloating/TextareaInputFloating';
+import { TextareaInputInset } from '../components/TextareaInputInset/TextareaInputInset';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
-import { SelectInputNativeFloating } from '../components/SelectInputNativeFloating/SelectInputNativeFloating';
+import { SelectInputNativeInset } from '../components/SelectInputNativeInset/SelectInputNativeInset';
 import { Toggle } from '../components/Toggle/Toggle';
 
 <Meta title="Patterns/Form Controls" />
 
-## Floating Inputs
+## Inset Inputs
 
-Try not to mix Floating style inputs with regular inputs in the same form.
+Try not to mix Inset style inputs with regular inputs in the same form.
 
 <Canvas>
-  <Story name="Floating Inputs">
+  <Story name="Inset Inputs">
     {() => {
       const [formValues, setFormValues] = useState({
         emailInput: '',
@@ -48,13 +48,13 @@ Try not to mix Floating style inputs with regular inputs in the same form.
       };
       return (
         <Box gap="md">
-          <TextInputFloating
+          <TextInputInset
             label="Email"
             id="emailInput"
             value={formValues.textInputMd}
             onChange={event => handleChange('emailInput', event.target.value)}
           />
-          <TextInputFloating
+          <TextInputInset
             label="Password"
             type="password"
             id="passwordInput"
@@ -63,13 +63,13 @@ Try not to mix Floating style inputs with regular inputs in the same form.
               handleChange('passwordInput', event.target.value)
             }
           />
-          <TextareaInputFloating
+          <TextareaInputInset
             label="Notes"
             id="notesInput"
             value={formValues.textInputMd}
             onChange={event => handleChange('notesInput', event.target.value)}
           />
-          <SelectInputNativeFloating
+          <SelectInputNativeInset
             id="floatingSelectNative"
             label="Flavor"
             onChange={event => handleChange('selectInput', event.target.value)}

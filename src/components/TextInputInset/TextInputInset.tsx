@@ -18,11 +18,11 @@ import { Box, BoxProps } from '../Box/Box';
 import { HelpText } from '../HelpText/HelpText';
 import { Icon } from '../Icon/Icon';
 import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
-import styles from './TextInputFloating.module.scss';
+import styles from './TextInputInset.module.scss';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 
-export type TextInputFloatingSize = 'md' | 'lg';
-export interface TextInputFloatingProps {
+export type TextInputInsetSize = 'md' | 'lg';
+export interface TextInputInsetProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -109,7 +109,7 @@ export interface TextInputFloatingProps {
   /**
    * The size of the text input.
    */
-  size?: TextInputFloatingSize | ResponsiveProp<TextInputFloatingSize>;
+  size?: TextInputInsetSize | ResponsiveProp<TextInputInsetSize>;
   /**
    * An input helper rendered after the input field value
    */
@@ -124,7 +124,7 @@ export interface TextInputFloatingProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps> = forwardRef<HTMLDivElement, TextInputFloatingProps>(
+export const TextInputInset: ForwardRefExoticComponent<TextInputInsetProps> = forwardRef<HTMLDivElement, TextInputInsetProps>(
   (
     {
       id,
@@ -188,7 +188,7 @@ export const TextInputFloating: ForwardRefExoticComponent<TextInputFloatingProps
       );
     };
 
-    const computedInputProps: TextInputFloatingProps['inputProps'] = {
+    const computedInputProps: TextInputInsetProps['inputProps'] = {
       ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
       'aria-required': isRequired,
       'aria-invalid': !!error,

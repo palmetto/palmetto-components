@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
-import { TextInputFloating } from './TextInputFloating';
+import { TextInputInset } from './TextInputInset';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 
 <Meta
-  title="Components/TextInputFloating/Overview"
-  component={TextInputFloating}
+  title="Components/TextInputInset/Overview"
+  component={TextInputInset}
   parameters={{
     controls: { hideNoControlsWarning: true },
   }}
 />
 
-# TextInputFloating
+# TextInputInset
 
-Use `TextInputFloating` to create a floating label input field. It is a controlled component, which means that you need to provide a value and an `onChange` handler to update the value.
+Use `TextInputInset` to create a floating label input field. It is a controlled component, which means that you need to provide a value and an `onChange` handler to update the value.
 
 <Canvas withSource="open">
   <Story name="Default">
@@ -24,14 +24,14 @@ Use `TextInputFloating` to create a floating label input field. It is a controll
       const [valuePw, setValuePw] = useState('');
       return (
         <Box gap="md">
-          <TextInputFloating
+          <TextInputInset
             id="emailInput"
             value={value}
             label="Email"
             placeholder="Enter your email address"
             onChange={event => setValue(event.target.value)}
           />
-          <TextInputFloating
+          <TextInputInset
             id="passwordInput"
             value={valuePw}
             label="Password"
@@ -48,7 +48,7 @@ Use `TextInputFloating` to create a floating label input field. It is a controll
 
 ## Props
 
-<ArgsTable of={TextInputFloating} />
+<ArgsTable of={TextInputInset} />
 
 ### Required
 
@@ -60,7 +60,7 @@ Use the `isRequired` prop to display an `*` after the label and set the `require
       const [value, setValue] = useState('');
       return (
         <Box gap="md">
-          <TextInputFloating
+          <TextInputInset
             id="requiredInput"
             value={value}
             label="Required Input"
@@ -68,7 +68,7 @@ Use the `isRequired` prop to display an `*` after the label and set the `require
             onChange={event => setValue(event.target.value)}
             isRequired
           />
-          <TextInputFloating
+          <TextInputInset
             id="customRequiredInput"
             value={value}
             label="Required Input"
@@ -91,7 +91,7 @@ Use `helpText` to provide additional information about the input field.
     {() => {
       const [value, setValue] = useState('');
       return (
-        <TextInputFloating
+        <TextInputInset
           id="helpTextStory"
           value={value}
           label="Inverter Manufacturer"
@@ -114,7 +114,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
       const [value2, setValue2] = useState('Invalid Value');
       return (
         <Box gap="md">
-          <TextInputFloating
+          <TextInputInset
             id="error1"
             value={value}
             label="email"
@@ -122,7 +122,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
             onChange={event => setValue(event.target.value)}
             isRequired
           />
-          <TextInputFloating
+          <TextInputInset
             id="error2"
             value={value2}
             label="email"
@@ -147,14 +147,14 @@ Add `isDisabled`to give it a grayed out appearance, remove pointer events, and p
       const [value2, setValue2] = useState('Value');
       return (
         <Box gap="md">
-          <TextInputFloating
+          <TextInputInset
             id="disabled"
             value={value}
             label="email"
             onChange={event => setValue(event.target.value)}
             isDisabled
           />
-          <TextInputFloating
+          <TextInputInset
             id="disabledValue"
             value={value2}
             label="Disabled with Value"
@@ -177,7 +177,7 @@ a callback function when the clear icon is clicked, which can then be handled to
     {() => {
       const [value, setValue] = useState('clear me');
       return (
-        <TextInputFloating
+        <TextInputInset
           id="clearableTextInput"
           value={value}
           label="Clearable Input"
@@ -204,7 +204,7 @@ All that is required to render a basic version of the TextInput is a unique `id`
       const [prefixValue4, setPrefixValue4] = useState('Pre-populated Value');
       return (
         <Box gap="md">
-          <TextInputFloating
+          <TextInputInset
             id="prefixSuffix0"
             value={prefixValue0}
             label="website address"
@@ -212,14 +212,14 @@ All that is required to render a basic version of the TextInput is a unique `id`
             prefix="https://"
             placeholder="Enter your website address"
           />
-          <TextInputFloating
+          <TextInputInset
             id="prefixSuffix1"
             value={prefixValue1}
             label="Social Media Handle"
             onChange={event => setPrefixValue1(event.target.value)}
             prefix="@"
           />
-          <TextInputFloating
+          <TextInputInset
             id="prefixSuffix2"
             value={prefixValue2}
             label="Price Per Watt"
@@ -227,14 +227,14 @@ All that is required to render a basic version of the TextInput is a unique `id`
             prefix="$"
             suffix="/watt"
           />
-          <TextInputFloating
+          <TextInputInset
             id="prefixSuffix3"
             value={prefixValue3}
             label="Suffix Without Value"
             onChange={event => setPrefixValue3(event.target.value)}
             suffix={<Icon name="book" />}
           />
-          <TextInputFloating
+          <TextInputInset
             id="prefixSuffix4"
             value={prefixValue4}
             label="Suffix with Clear"
@@ -260,14 +260,14 @@ Two sizes, `md` and `lg` are available, with `md` being the default.
       const [value2, setValue2] = useState('');
       return (
         <Box gap="md">
-          <TextInputFloating
+          <TextInputInset
             id="mdTextInput"
             value={value1}
             label="Medium Input"
             size="md"
             onChange={event => setValue1(event.target.value)}
           />
-          <TextInputFloating
+          <TextInputInset
             id="lgTextInput"
             value={value2}
             label="Large Input"

@@ -1,15 +1,15 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import { useState } from 'react';
 import { TextInput } from '../components/TextInput/TextInput';
-import { TextInputFloating } from '../components/TextInputFloating/TextInputFloating';
+import { TextInputInset } from '../components/TextInputInset/TextInputInset';
 import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { SelectInput } from '../components/SelectInput/SelectInput';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
-import { SelectInputNativeFloating } from '../components/SelectInputNativeFloating/SelectInputNativeFloating';
+import { SelectInputNativeInset } from '../components/SelectInputNativeInset/SelectInputNativeInset';
 import { OptionTileGroup } from '../components/OptionTileGroup/OptionTileGroup';
 import { RadioGroup } from '../components/RadioGroup/RadioGroup';
 import { TextareaInput } from '../components/TextareaInput/TextareaInput';
-import { TextareaInputFloating } from '../components/TextareaInputFloating/TextareaInputFloating';
+import { TextareaInputInset } from '../components/TextareaInputInset/TextareaInputInset';
 import { Toggle } from '../components/Toggle/Toggle';
 import { Button } from '../components/Button/Button';
 import { Box } from '../components/Box/Box';
@@ -96,16 +96,16 @@ Form controls share tokens since they are designed to have a consistent appearan
             isChecked={isThemed}
             onChange={e => setIsThemed(e.target.checked)}
           />
-          <TextInputFloating
+          <TextInputInset
             id="floatingThemeDemoEmpty"
-            label="Empty Text Input Floating"
+            label="Empty Text Input Inset"
             value={themeExampleValues.emptyValue}
             onChange={event => handleChange('emptyValue', event.target.value)}
           />
-          <TextInputFloating
+          <TextInputInset
             id="floatingThemeDemo"
             helpText="This is a themed floating label text input"
-            label="Text Input Floating"
+            label="Text Input Inset"
             value={themeExampleValues.textValue}
             onChange={event => handleChange('textValue', event.target.value)}
           />
@@ -123,9 +123,9 @@ Form controls share tokens since they are designed to have a consistent appearan
             options={options}
             value={themeExampleValues.selectValue}
           />
-          <SelectInputNativeFloating
+          <SelectInputNativeInset
             id="floationg Select"
-            label="Floating Select Input"
+            label="Inset Select Input"
             onChange={event => handleChange('selectValue', event.target.value)}
             options={options}
             value={themeExampleValues.selectValue}
@@ -149,10 +149,10 @@ Form controls share tokens since they are designed to have a consistent appearan
             value={themeExampleValues.textareaValue}
             onChange={e => handleChange('textareaValue', e.target.value)}
           />
-          <TextareaInputFloating
-            label="Textarea Input Floating"
-            name="textareaInputFloating"
-            id="textareaInputFloating"
+          <TextareaInputInset
+            label="Textarea Input Inset"
+            name="textareaInputInset"
+            id="textareaInputInset"
             value={themeExampleValues.textareaValue}
             onChange={e => handleChange('textareaValue', e.target.value)}
           />
@@ -277,5 +277,4 @@ The following tokens are shared by all form controls to maintain a consistent ap
     })()}
   </tbody>
 </table>
-import {TextareaInputFloating} from
-'src/components/TextareaInputFloating/TextareaInputFloating';
+import {TextareaInputInset} from 'src/components/TextareaInputInset/TextareaInputInset';

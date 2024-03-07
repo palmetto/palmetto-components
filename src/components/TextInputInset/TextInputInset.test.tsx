@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { TextInputFloating } from './TextInputFloating';
+import { TextInputInset } from './TextInputInset';
 
 const baseProps = {
   name: 'firstName',
@@ -17,9 +17,7 @@ describe('TextInput', () => {
       test('onChange event fires callback function', () => {
         const mockedHandleChange = jest.fn(() => null);
 
-        render(
-          <TextInputFloating {...baseProps} onChange={mockedHandleChange} />,
-        );
+        render(<TextInputInset {...baseProps} onChange={mockedHandleChange} />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
 
         fireEvent.change(inputElement, { target: { value: 'good bye' } });
@@ -32,7 +30,7 @@ describe('TextInput', () => {
           value = event.target.value;
         });
         const { rerender } = render(
-          <TextInputFloating
+          <TextInputInset
             {...baseProps}
             value={value}
             onChange={mockedHandleChange}
@@ -48,7 +46,7 @@ describe('TextInput', () => {
         expect(mockedHandleChange).toHaveBeenCalledTimes(1);
 
         rerender(
-          <TextInputFloating
+          <TextInputInset
             {...baseProps}
             value={value}
             onChange={mockedHandleChange}
@@ -60,7 +58,7 @@ describe('TextInput', () => {
 
     describe('onClear', () => {
       test('onClear prop renders clear icon when input has value', () => {
-        render(<TextInputFloating {...baseProps} onClear={() => null} />);
+        render(<TextInputInset {...baseProps} onClear={() => null} />);
         const clearButton = screen.getByTestId('text-input-clear-button');
         expect(clearButton).toBeInTheDocument();
       });
@@ -68,9 +66,7 @@ describe('TextInput', () => {
       test('onClear event fires callback function', () => {
         const mockedHandleClear = jest.fn(() => null);
 
-        render(
-          <TextInputFloating {...baseProps} onClear={mockedHandleClear} />,
-        );
+        render(<TextInputInset {...baseProps} onClear={mockedHandleClear} />);
         const clearButton = screen.getByTestId('text-input-clear-button');
         expect(clearButton).toBeInTheDocument();
 
@@ -86,9 +82,7 @@ describe('TextInput', () => {
     describe('onFocus', () => {
       test('Input fires onFocus callback', () => {
         const mockedHandleFocus = jest.fn();
-        render(
-          <TextInputFloating {...baseProps} onFocus={mockedHandleFocus} />,
-        );
+        render(<TextInputInset {...baseProps} onFocus={mockedHandleFocus} />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
         fireEvent.focus(inputElement);
         expect(mockedHandleFocus).toBeCalledTimes(1);
@@ -98,7 +92,7 @@ describe('TextInput', () => {
     describe('onBlur', () => {
       test('Input fires onBlur callback', () => {
         const mockedHandleBlur = jest.fn();
-        render(<TextInputFloating {...baseProps} onBlur={mockedHandleBlur} />);
+        render(<TextInputInset {...baseProps} onBlur={mockedHandleBlur} />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
         fireEvent.focus(inputElement);
         fireEvent.blur(inputElement);
@@ -110,7 +104,7 @@ describe('TextInput', () => {
   describe('States', () => {
     describe('Label', () => {
       test('it renders a label', () => {
-        render(<TextInputFloating {...baseProps} />);
+        render(<TextInputInset {...baseProps} />);
 
         const labelElement = screen.getByText(baseProps.label);
 
@@ -120,7 +114,7 @@ describe('TextInput', () => {
 
     describe('Autofocused', () => {
       test('Input autofocuses if "autoFocus" prop is set to true', () => {
-        render(<TextInputFloating {...baseProps} autoFocus />);
+        render(<TextInputInset {...baseProps} autoFocus />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
         expect(document.activeElement).toEqual(inputElement);
       });
@@ -128,19 +122,19 @@ describe('TextInput', () => {
 
     describe('Autocomplete', () => {
       test('Input correctly assigns autocomplete value of "on" when bool true is provided', () => {
-        render(<TextInputFloating {...baseProps} autoComplete />);
+        render(<TextInputInset {...baseProps} autoComplete />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
         expect(inputElement).toHaveAttribute('autocomplete', 'on');
       });
 
       test('Input correctly assigns autocomplete value of "off" when bool false is provided', () => {
-        render(<TextInputFloating {...baseProps} autoComplete={false} />);
+        render(<TextInputInset {...baseProps} autoComplete={false} />);
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'off');
       });
 
       test('Input correctly assigns autocomplete specific value when provided', () => {
-        render(<TextInputFloating {...baseProps} autoComplete="email" />);
+        render(<TextInputInset {...baseProps} autoComplete="email" />);
         const inputElement = screen.getByDisplayValue('hello');
         expect(inputElement).toHaveAttribute('autocomplete', 'email');
       });
@@ -148,7 +142,7 @@ describe('TextInput', () => {
 
     describe('Required', () => {
       test('it correctly assigns the "aria-required" attribute when "isRequired" prop is true', () => {
-        render(<TextInputFloating {...baseProps} isRequired />);
+        render(<TextInputInset {...baseProps} isRequired />);
 
         const inputElement = screen.getByDisplayValue('hello');
 
@@ -158,7 +152,7 @@ describe('TextInput', () => {
 
     describe('Error', () => {
       test('Input correctly displays error message if provided', () => {
-        render(<TextInputFloating {...baseProps} error="You silly goose" />);
+        render(<TextInputInset {...baseProps} error="You silly goose" />);
 
         const validationMessageElement = screen.getByText('You silly goose');
 
@@ -170,11 +164,7 @@ describe('TextInput', () => {
     describe('Help Text', () => {
       test('Input renders help text', async () => {
         const { getByText } = render(
-          <TextInputFloating
-            {...baseProps}
-            value=""
-            helpText="i am help text"
-          />,
+          <TextInputInset {...baseProps} value="" helpText="i am help text" />,
         );
 
         expect(getByText('i am help text')).toBeDefined();
@@ -183,7 +173,7 @@ describe('TextInput', () => {
 
     describe('Max Length', () => {
       test('Input correctly passes maxlength property if prop is passed', async () => {
-        render(<TextInputFloating {...baseProps} value="" maxLength={3} />);
+        render(<TextInputInset {...baseProps} value="" maxLength={3} />);
 
         const inputElement = screen.getByLabelText(baseProps.label);
         expect(inputElement).toBeInTheDocument();
@@ -195,11 +185,7 @@ describe('TextInput', () => {
     describe('Name', () => {
       test('Input correctly passes name property if prop is passed', async () => {
         render(
-          <TextInputFloating
-            {...baseProps}
-            value=""
-            name="test floating label"
-          />,
+          <TextInputInset {...baseProps} value="" name="test floating label" />,
         );
 
         const inputElement = screen.getByLabelText(baseProps.label);
@@ -211,7 +197,7 @@ describe('TextInput', () => {
 
     describe('Aria-labelledby', () => {
       test('assigns the "aria-labelledby" attribute and renders label with correct id, when label is provided', () => {
-        render(<TextInputFloating {...baseProps} />);
+        render(<TextInputInset {...baseProps} />);
         const inputElement = screen.getByDisplayValue(baseProps.value);
         expect(inputElement).toHaveAttribute(
           'aria-labelledby',
@@ -223,12 +209,12 @@ describe('TextInput', () => {
 
     describe('Prefix and Suffix', () => {
       test('renders the prefix if specified', () => {
-        render(<TextInputFloating {...baseProps} prefix="prefixValue" />);
+        render(<TextInputInset {...baseProps} prefix="prefixValue" />);
         expect(screen.getByText('prefixValue')).toBeInTheDocument();
       });
 
       test('renders the suffix if specified', () => {
-        render(<TextInputFloating {...baseProps} suffix="suffixValue" />);
+        render(<TextInputInset {...baseProps} suffix="suffixValue" />);
         expect(screen.getByText('suffixValue')).toBeInTheDocument();
       });
     });

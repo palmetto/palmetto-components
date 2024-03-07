@@ -17,11 +17,11 @@ import { Box, BoxProps } from '../Box/Box';
 import { HelpText } from '../HelpText/HelpText';
 import { Icon } from '../Icon/Icon';
 import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
-import styles from './SelectInputNativeFloating.module.scss';
+import styles from './SelectInputNativeInset.module.scss';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 
-export type SelectInputNativeFloatingSize = 'md' | 'lg';
-export interface SelectInputNativeFloatingProps {
+export type SelectInputNativeInsetSize = 'md' | 'lg';
+export interface SelectInputNativeInsetProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -104,15 +104,15 @@ export interface SelectInputNativeFloatingProps {
    * The size of the text input.
    */
   size?:
-    | SelectInputNativeFloatingSize
-    | ResponsiveProp<SelectInputNativeFloatingSize>;
+    | SelectInputNativeInsetSize
+    | ResponsiveProp<SelectInputNativeInsetSize>;
   /**
    * Additional props to be spread to rendered element
    */
   [x: string]: any; // eslint-disable-line
 }
 
-export const SelectInputNativeFloating: ForwardRefExoticComponent<SelectInputNativeFloatingProps> = forwardRef<HTMLDivElement, SelectInputNativeFloatingProps>(
+export const SelectInputNativeInset: ForwardRefExoticComponent<SelectInputNativeInsetProps> = forwardRef<HTMLDivElement, SelectInputNativeInsetProps>(
   (
     {
       id,
@@ -176,7 +176,7 @@ export const SelectInputNativeFloating: ForwardRefExoticComponent<SelectInputNat
       );
     };
 
-    const computedInputProps: SelectInputNativeFloatingProps['inputProps'] = {
+    const computedInputProps: SelectInputNativeInsetProps['inputProps'] = {
       ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
       'aria-required': isRequired,
       'aria-invalid': !!error,

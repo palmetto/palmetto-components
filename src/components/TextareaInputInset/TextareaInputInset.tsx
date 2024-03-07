@@ -15,11 +15,11 @@ import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { Box, BoxProps } from '../Box/Box';
 import { HelpText } from '../HelpText/HelpText';
 import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
-import styles from './TextareaInputFloating.module.scss';
+import styles from './TextareaInputInset.module.scss';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 
-export type TextareaInputFloatingSize = 'md' | 'lg';
-export interface TextareaInputFloatingProps {
+export type TextareaInputInsetSize = 'md' | 'lg';
+export interface TextareaInputInsetProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -107,7 +107,7 @@ export interface TextareaInputFloatingProps {
   /**
    * The size of the text input.
    */
-  size?: TextareaInputFloatingSize | ResponsiveProp<TextareaInputFloatingSize>;
+  size?: TextareaInputInsetSize | ResponsiveProp<TextareaInputInsetSize>;
   /**
    * An input helper rendered after the input field value
    */
@@ -122,7 +122,7 @@ export interface TextareaInputFloatingProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const TextareaInputFloating: ForwardRefExoticComponent<TextareaInputFloatingProps> = forwardRef<HTMLDivElement, TextareaInputFloatingProps>(
+export const TextareaInputInset: ForwardRefExoticComponent<TextareaInputInsetProps> = forwardRef<HTMLDivElement, TextareaInputInsetProps>(
   (
     {
       id,
@@ -161,7 +161,7 @@ export const TextareaInputFloating: ForwardRefExoticComponent<TextareaInputFloat
       },
     );
 
-    const computedInputProps: TextareaInputFloatingProps['inputProps'] = {
+    const computedInputProps: TextareaInputInsetProps['inputProps'] = {
       ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
       'aria-required': isRequired,
       'aria-invalid': !!error,

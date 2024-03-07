@@ -2,18 +2,18 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { within } from '@storybook/testing-library';
 import {
-  TextareaInputFloating,
-  TextareaInputFloatingProps,
-} from './TextareaInputFloating';
+  TextareaInputInset,
+  TextareaInputInsetProps,
+} from './TextareaInputInset';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 
 export default {
-  title: 'Components/TextareaInputFloating/Visual Regression Tests',
-  component: TextareaInputFloating,
+  title: 'Components/TextareaInputInset/Visual Regression Tests',
+  component: TextareaInputInset,
 } as Meta;
 
-const Template: Story<TextareaInputFloatingProps> = args => (
-  <TextareaInputFloating
+const Template: Story<TextareaInputInsetProps> = args => (
+  <TextareaInputInset
     {...args}
     onChange={() => {}} // eslint-disable-line
   />
