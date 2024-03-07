@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.12](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2024-03-07)
+
+
+### Bug Fixes
+
+* rename floating inputs to inset ([#880](https://github.com/palmetto/palmetto-components/issues/880)) ([b13ab19](https://github.com/palmetto/palmetto-components/commit/b13ab19d1c47b42b4e4e0a54fe0c67e4738c5198))
+
 # [1.0.0-beta.11](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2024-03-06)
 
 # [1.0.0-beta.10](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2024-03-06)
