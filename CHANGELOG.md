@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.14](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.13...v1.0.0-beta.14) (2024-03-15)
+
+
+### Bug Fixes
+
+* **SelectInputInset:** rename SelectInputNativeInset to SelectInputInset ([#883](https://github.com/palmetto/palmetto-components/issues/883)) ([bfaacd7](https://github.com/palmetto/palmetto-components/commit/bfaacd71bfc1e8152c0288c1057202ac40439d22))
+
 # [1.0.0-beta.13](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2024-03-15)
 
 
