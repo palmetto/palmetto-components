@@ -8,7 +8,7 @@ import { TextInputInset } from '../components/TextInputInset/TextInputInset';
 import { TextareaInput } from '../components/TextareaInput/TextareaInput';
 import { TextareaInputInset } from '../components/TextareaInputInset/TextareaInputInset';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
-import { SelectInputNativeInset } from '../components/SelectInputNativeInset/SelectInputNativeInset';
+import { SelectInputInset } from '../components/SelectInputInset/SelectInputInset';
 import { Toggle } from '../components/Toggle/Toggle';
 
 <Meta title="Patterns/Form Controls" />
@@ -69,7 +69,7 @@ Try not to mix Inset style inputs with regular inputs in the same form.
             value={formValues.textInputMd}
             onChange={event => handleChange('notesInput', event.target.value)}
           />
-          <SelectInputNativeInset
+          <SelectInputInset
             id="floatingSelectNative"
             label="Flavor"
             onChange={event => handleChange('selectInput', event.target.value)}

@@ -17,11 +17,11 @@ import { Box, BoxProps } from '../Box/Box';
 import { HelpText } from '../HelpText/HelpText';
 import { Icon } from '../Icon/Icon';
 import { getAutoCompleteValue } from '../../lib/getAutoCompleteValue';
-import styles from './SelectInputNativeInset.module.scss';
+import styles from './SelectInputInset.module.scss';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 
-export type SelectInputNativeInsetSize = 'md' | 'lg';
-export interface SelectInputNativeInsetProps {
+export type SelectInputInsetSize = 'md' | 'lg';
+export interface SelectInputInsetProps {
   /**
    * The input's id attribute. Used to programmatically tie the input with its label.
    */
@@ -103,16 +103,14 @@ export interface SelectInputNativeInsetProps {
   /**
    * The size of the text input.
    */
-  size?:
-    | SelectInputNativeInsetSize
-    | ResponsiveProp<SelectInputNativeInsetSize>;
+  size?: SelectInputInsetSize | ResponsiveProp<SelectInputInsetSize>;
   /**
    * Additional props to be spread to rendered element
    */
   [x: string]: any; // eslint-disable-line
 }
 
-export const SelectInputNativeInset: ForwardRefExoticComponent<SelectInputNativeInsetProps> = forwardRef<HTMLDivElement, SelectInputNativeInsetProps>(
+export const SelectInputInset: ForwardRefExoticComponent<SelectInputInsetProps> = forwardRef<HTMLDivElement, SelectInputInsetProps>(
   (
     {
       id,
@@ -176,7 +174,7 @@ export const SelectInputNativeInset: ForwardRefExoticComponent<SelectInputNative
       );
     };
 
-    const computedInputProps: SelectInputNativeInsetProps['inputProps'] = {
+    const computedInputProps: SelectInputInsetProps['inputProps'] = {
       ...inputProps, // These are spread first so that we don't have top level props overwritten by the user.
       'aria-required': isRequired,
       'aria-invalid': !!error,

@@ -41,7 +41,7 @@ export * from './RadioGroup/RadioGroup';
 export * from './ResponsiveProvider/ResponsiveProvider';
 export * from './SelectInput/SelectInput';
 export * from './SelectInputNative/SelectInputNative';
-export * from './SelectInputNativeInset/SelectInputNativeInset';
+export * from './SelectInputInset/SelectInputInset';
 export * from './Spinner/Spinner';
 export * from './TabPanels/TabPanels';
 export * from './Tabs/Tabs';
