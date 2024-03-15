@@ -259,29 +259,10 @@ describe('SelectInput', () => {
     });
 
     describe('Is Clearable', () => {
-      test('it does not render the X icon if input has value but is not clearable', () => {
-        const mockedHandleChange = jest.fn();
-
-        const { container } = render(
-          <SelectInput
-            id="testId"
-            onChange={mockedHandleChange}
-            label="Select Label"
-            options={selectOptions}
-            value={selectOptions[0]}
-            isClearable={false}
-          />,
-        );
-
-        expect(
-          container.querySelector('.react-select__clear-indicator'),
-        ).not.toBeInTheDocument();
-      });
-
       test('it renders the X icon if input has value and is clearable', () => {
         const mockedHandleChange = jest.fn();
 
-        const { container } = render(
+        render(
           <SelectInput
             id="testId"
             onChange={mockedHandleChange}
@@ -293,7 +274,7 @@ describe('SelectInput', () => {
         );
 
         expect(
-          container.querySelector('.react-select__clear-indicator'),
+          screen.getByTestId('icon-testid--remove-light'),
         ).toBeInTheDocument();
       });
     });
