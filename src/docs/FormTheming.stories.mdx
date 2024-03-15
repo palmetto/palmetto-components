@@ -5,7 +5,7 @@ import { TextInputInset } from '../components/TextInputInset/TextInputInset';
 import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { SelectInput } from '../components/SelectInput/SelectInput';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
-import { SelectInputNativeInset } from '../components/SelectInputNativeInset/SelectInputNativeInset';
+import { SelectInputInset } from '../components/SelectInputInset/SelectInputInset';
 import { OptionTileGroup } from '../components/OptionTileGroup/OptionTileGroup';
 import { RadioGroup } from '../components/RadioGroup/RadioGroup';
 import { TextareaInput } from '../components/TextareaInput/TextareaInput';
@@ -123,7 +123,7 @@ Form controls share tokens since they are designed to have a consistent appearan
             options={options}
             value={themeExampleValues.selectValue}
           />
-          <SelectInputNativeInset
+          <SelectInputInset
             id="floationg Select"
             label="Inset Select Input"
             onChange={event => handleChange('selectValue', event.target.value)}

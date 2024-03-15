@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
-import { SelectInputNativeInset } from './SelectInputNativeInset';
+import { SelectInputInset } from './SelectInputInset';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 
 <Meta
-  title="Components/SelectInputNativeInset/Overview"
-  component={SelectInputNativeInset}
+  title="Components/SelectInputInset/Overview"
+  component={SelectInputInset}
   parameters={{
     controls: { hideNoControlsWarning: true },
   }}
 />
 
-# SelectInputNativeInset
+# SelectInputInset
 
-Use `SelectInputNativeInset` to create a floating label input field, but unlike `TextInputInset` they always show the `label` in the floated state. It is a controlled component, which means that you need to provide a value and an `onChange` handler to update the value.
+Use `SelectInputInset` to create a floating label input field, but unlike `TextInputInset` they always show the `label` in the floated state. It is a controlled component, which means that you need to provide a value and an `onChange` handler to update the value.
 
 <Canvas withSource="open">
   <Story
@@ -36,7 +36,7 @@ Use `SelectInputNativeInset` to create a floating label input field, but unlike 
         { value: 'vanilla', label: 'Vanilla' },
       ];
       return (
-        <SelectInputNativeInset
+        <SelectInputInset
           id="default Select"
           label="Label"
           onChange={event => {
@@ -52,7 +52,7 @@ Use `SelectInputNativeInset` to create a floating label input field, but unlike 
 
 ## Props
 
-<ArgsTable of={SelectInputNativeInset} />
+<ArgsTable of={SelectInputInset} />
 
 ### Required
 
@@ -69,7 +69,7 @@ Use the `isRequired` prop to display an `*` after the label and set the `require
       ];
       return (
         <Box gap="md">
-          <SelectInputNativeInset
+          <SelectInputInset
             id="requiredSelect"
             label="Required Field"
             onChange={event => {
@@ -79,7 +79,7 @@ Use the `isRequired` prop to display an `*` after the label and set the `require
             value={value}
             isRequired
           />
-          <SelectInputNativeInset
+          <SelectInputInset
             id="customRequiredSelect"
             label="Custom Required Indicator Field"
             onChange={event => {
@@ -110,7 +110,7 @@ Use `helpText` to provide additional information about the input field.
         { value: 'Tesla', label: 'Tesla' },
       ];
       return (
-        <SelectInputNativeInset
+        <SelectInputInset
           id="helpTextSelect"
           label="Inverter Manufacturer"
           helpText="Must be from the approved vendor list"
@@ -139,7 +139,7 @@ Use the `error` prop to mark the input as invalid. `error` accepts a `boolean`, 
         { value: 'Tesla', label: 'Tesla' },
       ];
       return (
-        <SelectInputNativeInset
+        <SelectInputInset
           id="errorSelect"
           label="Inverter Manufacturer"
           helpText="Must be from the approved vendor list"
@@ -169,7 +169,7 @@ Add `isDisabled`to give it a grayed out appearance, remove pointer events, and p
         { value: 'Tesla', label: 'Tesla' },
       ];
       return (
-        <SelectInputNativeInset
+        <SelectInputInset
           id="disabledSelect"
           label="Disabled Input"
           onChange={event => {
@@ -199,7 +199,7 @@ a callback function when the clear icon is clicked, which can then be handled to
         { value: 'option3', label: 'Option 3' },
       ];
       return (
-        <SelectInputNativeInset
+        <SelectInputInset
           id="clearableSelect"
           label="Clearable Input"
           onChange={event => {
@@ -229,14 +229,14 @@ Two sizes, `md` and `lg` are available, with `md` being the default.
       ];
       return (
         <Box gap="md">
-          <SelectInputNativeInset
+          <SelectInputInset
             id="mdFlavorInput"
             value={value}
             label="md size"
             onChange={event => setValue(event.target.value)}
             options={options}
           />
-          <SelectInputNativeInset
+          <SelectInputInset
             id="lgFlavorInput"
             value={value}
             size="lg"
@@ -244,7 +244,7 @@ Two sizes, `md` and `lg` are available, with `md` being the default.
             onChange={event => setValue(event.target.value)}
             options={options}
           />
-          <SelectInputNativeInset
+          <SelectInputInset
             id="responsiveFlavorInput"
             value={value}
             size={{ base: 'md', tablet: 'lg', desktop: 'md', hd: 'lg' }}

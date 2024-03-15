@@ -1,14 +1,11 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { boxPropsKeys } from '../Box/Box';
-import {
-  SelectInputNativeInset,
-  SelectInputNativeInsetProps,
-} from './SelectInputNativeInset';
+import { SelectInputInset, SelectInputInsetProps } from './SelectInputInset';
 
 export default {
-  title: 'Components/SelectInputNativeInset/Playground',
-  component: SelectInputNativeInset,
+  title: 'Components/SelectInputInset/Playground',
+  component: SelectInputInset,
   argTypes: {
     id: {
       control: 'text',
@@ -62,15 +59,15 @@ export default {
   },
 } as Meta;
 
-const Template: Story<SelectInputNativeInsetProps> = ({ ...args }) => (
-  <SelectInputNativeInset {...args} />
+const Template: Story<SelectInputInsetProps> = ({ ...args }) => (
+  <SelectInputInset {...args} />
 );
 
 export const Playground = Template.bind({});
 Playground.args = {
-  id: 'playgroundSelectInputNativeInset',
-  label: 'Playground SelectInputNativeInset',
-  name: 'playgroundSelectInputNativeInset',
+  id: 'playgroundSelectInputInset',
+  label: 'Playground SelectInputInset',
+  name: 'playgroundSelectInputInset',
   options: [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
