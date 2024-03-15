@@ -29,17 +29,7 @@
 
   &::before,
   &::after {
-    width: 14px;
-    height: 4px;
     top: calc(var(--size-spacing-md) + 3px);
-  }
-
-  &::before {
-    right: calc(var(--size-spacing-sm) + 11px);
-  }
-
-  &::after {
-    right: calc(var(--size-spacing-sm) + 3px);
   }
 
   select {
@@ -111,17 +101,7 @@
 
   &::before,
   &::after {
-    width: 14px;
-    height: 4px;
     top: calc(var(--size-spacing-md) + 9px);
-  }
-
-  &::before {
-    right: calc(var(--size-spacing-sm) + 11px);
-  }
-
-  &::after {
-    right: calc(var(--size-spacing-sm) + 3px);
   }
 
   select {
@@ -243,18 +223,22 @@
     border-radius: 100px;
     content: '';
     position: absolute;
-    background: var(--color-brand-grey-light);
+    background: var(--color-brand-grey-300);
     pointer-events: none;
+    width: 10px;
+    height: 2px;
   }
 
   //change the stacking context so this half of the chevron stays above the disabled background color.
   &::before {
+    right: calc(var(--size-spacing-sm) + 7px);
     transform-origin: 50% 50%;
     transform: rotate(42deg);
     z-index: 1;
   }
 
   &::after {
+    right: calc(var(--size-spacing-sm) + 1px);
     transform-origin: 50% 50%;
     transform: rotate(-42deg);
   }
@@ -405,7 +389,7 @@
   // Reset default button styles
   .clear-button {
     position: absolute;
-    right: var(--size-spacing-2xl);
+    right: var(--size-spacing-xl);
     transition-duration: 0.2s;
     transition-property: color;
     border: 0;

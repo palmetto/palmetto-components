@@ -18,7 +18,9 @@ import { FormLabel } from '../FormLabel/FormLabel';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
-export type SelectInputOptions = GroupedOptionsType<OptionTypeBase> | OptionsType<OptionTypeBase>;
+export type SelectInputOptions =
+  | GroupedOptionsType<OptionTypeBase>
+  | OptionsType<OptionTypeBase>;
 
 export interface SelectInputProps {
   /**
@@ -164,7 +166,7 @@ export const SelectInput: FC<SelectInputProps> = ({
     'palmetto-components__variables__form-control',
     'select-input-wrapper',
     className,
-    ...responsiveClasses.map(c => (styles[c])),
+    ...responsiveClasses.map(c => styles[c]),
     {
       [styles.disabled]: isDisabled,
     },
@@ -183,7 +185,15 @@ export const SelectInput: FC<SelectInputProps> = ({
 
   const ClearIndicator = (props: IndicatorProps<OptionTypeBase, boolean>) => (
     <components.ClearIndicator {...props}>
-      <Icon name="remove" />
+      <Icon name="remove-light" />
+    </components.ClearIndicator>
+  );
+
+  const DropdownIndicator = (
+    props: IndicatorProps<OptionTypeBase, boolean>,
+  ) => (
+    <components.ClearIndicator {...props}>
+      <Icon name="caret-down" />
     </components.ClearIndicator>
   );
 
@@ -194,7 +204,7 @@ export const SelectInput: FC<SelectInputProps> = ({
         {...restProps}
         inputId={id}
         aria-label={label}
-        components={{ ClearIndicator }}
+        components={{ ClearIndicator, DropdownIndicator }}
         aria-labelledby={label && !hideLabel ? `${id}Label` : undefined}
         className={inputClasses}
         classNamePrefix="react-select"
@@ -209,7 +219,12 @@ export const SelectInput: FC<SelectInputProps> = ({
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        styles={{ menuPortal: base => ({ ...base, zIndex: Number(Z_INDEX_VALUES.popover) }) }}
+        styles={{
+          menuPortal: base => ({
+            ...base,
+            zIndex: Number(Z_INDEX_VALUES.popover),
+          }),
+        }}
         value={value}
       />
       {error && typeof error !== 'boolean' && (
