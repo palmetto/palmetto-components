@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.13](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2024-03-15)
+
+
+### Features
+
+* **SelectInputs:** make dropdown indicator match icon ([#882](https://github.com/palmetto/palmetto-components/issues/882)) ([3c9a80c](https://github.com/palmetto/palmetto-components/commit/3c9a80c524e9b22421b0fb8567783bb5f6651728))
+
 # [1.0.0-beta.12](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2024-03-07)
 
 
