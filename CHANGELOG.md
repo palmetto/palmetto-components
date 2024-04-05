@@ -1,5 +1,12 @@
 Changelog
 
+# [1.0.0-beta.16](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.15...v1.0.0-beta.16) (2024-04-05)
+
+
+### Features
+
+* update drop shadows ([#886](https://github.com/palmetto/palmetto-components/issues/886)) ([bc78fa2](https://github.com/palmetto/palmetto-components/commit/bc78fa2a776d6b0506865ae2d76456401b0c686f))
+
 # [1.0.0-beta.15](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2024-04-05)
 
 
