@@ -1,6 +1,10 @@
 {
   "name": "@palmetto/palmetto-components",
   "author": "@palmetto",
+  "contributors": [
+    "Juan Fabrega <juanantoniofabrega@gmail.com>",
+    "Nathan Young <hellonathanyoung@gmail.com>"
+  ],
   "version": "0.0.0-development",
   "description": "A React component library to power all Palmetto UI.",
   "private": false,
