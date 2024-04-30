@@ -75,7 +75,9 @@ Keep the contents of a toast as short as possible by placing only the most impor
       const handleClick = () => toast('Proposal saved', { duration: 5000 });
       return (
         <>
-          <Button onClick={handleClick}>Show toast</Button>
+          <Button onClick={handleClick} tone="neutral">
+            Show toast
+          </Button>
         </>
       );
     }}
@@ -204,18 +206,22 @@ toast('my toast', { duration: 3000, position: 'top-center' });
       return (
         <>
           <Box gap="md" direction="row">
-            <Button onClick={() => handleClick('top-right')}>top right</Button>
-            <Button onClick={() => handleClick('top-center')}>
+            <Button tone="neutral" onClick={() => handleClick('top-right')}>
+              top right
+            </Button>
+            <Button tone="neutral" onClick={() => handleClick('top-center')}>
               top center
             </Button>
-            <Button onClick={() => handleClick('topleft')}>top left</Button>
-            <Button onClick={() => handleClick('bottom-right')}>
+            <Button tone="neutral" onClick={() => handleClick('topleft')}>
+              top left
+            </Button>
+            <Button tone="neutral" onClick={() => handleClick('bottom-right')}>
               bottom right
             </Button>
-            <Button onClick={() => handleClick('bottom-center')}>
+            <Button tone="neutral" onClick={() => handleClick('bottom-center')}>
               bottom center
             </Button>
-            <Button onClick={() => handleClick('bottom-left')}>
+            <Button tone="neutral" onClick={() => handleClick('bottom-left')}>
               bottom left
             </Button>
           </Box>
@@ -244,7 +250,7 @@ We've included sensible defaults for the duration of a toast before it disappear
       return (
         <>
           <Box gap="md" direction="row">
-            <Button onClick={handleClick}>
+            <Button onClick={handleClick} tone="neutral">
               Open toast with custom duration
             </Button>
           </Box>
@@ -275,7 +281,9 @@ without the user being able to clear it, you can use `canDismiss: false`.
       return (
         <>
           <Box gap="md" direction="row">
-            <Button onClick={handleClick}>Open non-dismissible toast</Button>
+            <Button onClick={handleClick} tone="neutral">
+              Open non-dismissible toast
+            </Button>
           </Box>
         </>
       );
@@ -310,12 +318,12 @@ For these cases, you can use `toast.dismiss`.
       return (
         <>
           <Box gap="md" direction="row">
-            <Button onClick={handleClick} isDisabled={!!toastId}>
+            <Button onClick={handleClick} tone="neutral" isDisabled={!!toastId}>
               Show Toast
             </Button>
             <Button
-              variant="light"
-              isOutlined
+              variant="secondary"
+              tone="neutral"
               isDisabled={!toastId}
               onClick={handleDismiss}
             >
@@ -339,11 +347,9 @@ Use the `isCompact` prop for a toast the uses less screen real estate.
         toast('This is compact', { isCompact: true });
       };
       return (
-        <>
-          <Box gap="md" direction="row">
-            <Button onClick={handleClick}>Open compact toast</Button>
-          </Box>
-        </>
+        <Button onClick={handleClick} tone="neutral">
+          Open compact toast
+        </Button>
       );
     }}
   </Story>
@@ -372,17 +378,19 @@ To give toasts an additional visual indication of feedback, `success`, `loading`
           <Box fontSize="lg" fontWeight="bold" margin="0 0 md 0">
             Basic Types
           </Box>
-          <Box gap="md" direction="row">
-            <Button onClick={() => handleClick('blank')} variant="light">
+          <Box childGap="md" direction="row">
+            <Button
+              onClick={() => handleClick('blank')}
+              variant="primary"
+              tone="neutral"
+            >
               Default
             </Button>
             <Button onClick={() => handleClick('error')} variant="danger">
               Error
             </Button>
-            <Button onClick={() => handleClick('success')} variant="success">
-              Success
-            </Button>
-            <Button onClick={() => handleClick('loading')} variant="dark">
+            <Button onClick={() => handleClick('success')}>Success</Button>
+            <Button onClick={() => handleClick('loading')} tone="neutral">
               Loading
             </Button>
           </Box>
@@ -428,7 +436,11 @@ To give toasts an additional visual indication of feedback, `success`, `loading`
                 handle displaying different toast variations based on the state
                 of the passed promise.
               </p>
-              <Button onClick={() => handleClick('async')} variant="light">
+              <Button
+                onClick={() => handleClick('async')}
+                variant="primary"
+                tone="neutral"
+              >
                 async
               </Button>
             </Box>
@@ -438,7 +450,7 @@ To give toasts an additional visual indication of feedback, `success`, `loading`
                 promise you can pass a function to the toasts in question, see
                 code example.
               </p>
-              <Button onClick={() => handleClick('async-data')} variant="light">
+              <Button onClick={() => handleClick('async-data')} tone="neutral">
                 async (including promise data)
               </Button>
             </Box>

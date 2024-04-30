@@ -31,7 +31,7 @@ const Template: Story<MediaModalProps> = ({ ...args }) => {
   } = useOpenClose();
   return (
     <>
-      <Button variant="light" onClick={openMediaModal}>
+      <Button variant="primary" tone="neutral" onClick={openMediaModal}>
         Show MediaModal
       </Button>
       <MediaModal

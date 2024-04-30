@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
+import { HelpText } from '../HelpText/HelpText';
 import styles from './FormLabel.module.scss';
 
 export interface FormLabelProps extends BoxProps {
@@ -80,17 +81,7 @@ export const FormLabel: FC<FormLabelProps> = ({
     >
       {children}
       {isFieldRequired && requiredIndicator && <span>{requiredIndicator}</span>}
-      {helpText && (
-        <Box
-          as="p"
-          display="block"
-          fontSize="sm"
-          color="grey"
-          className={styles['help-text']}
-        >
-          {helpText}
-        </Box>
-      )}
+      {helpText && <HelpText>{helpText}</HelpText>}
     </Box>
   );
 };

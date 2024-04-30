@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { within } from '@storybook/testing-library';
+import { within } from '@testing-library/react';
 import { Button, ButtonProps } from './Button';
-import { BUTTON_SIZES, BUTTON_VARIANTS } from './Button.constants';
+import { BUTTON_SIZES, BUTTON_TONE, BUTTON_VARIANTS } from './Button.constants';
 import { Box } from '../Box/Box';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 
@@ -11,61 +11,49 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps & { showIconButton: boolean; }> = (args, showIconButton) => (
+const Template: Story<ButtonProps & { showIconButton: boolean; }> = (
+  args,
+  showIconButton,
+) => (
   <Box gap="xl">
-    {BUTTON_SIZES.map(size => (
-      <Box gap="sm" key={size}>
+    {BUTTON_TONE.map(tone => BUTTON_VARIANTS.map(variant => (
+      <Box gap="sm" key={variant}>
         <Box gap="sm" direction="row" alignItems="flex-start">
-          {BUTTON_VARIANTS.map(variant => (
-            <Button {...args} size={size} variant={variant} key={`${size}-${variant}`}>
-              {`${size} ${variant}`}
-            </Button>
-          ))}
-          {showIconButton && (
-            <Button
-              {...args}
-              iconPrefix="circle"
-              iconSuffix="property-agreement"
-              size={size}
-              variant="primary"
-              key={`${size}-icon`}
-            >
-              {`${size} icon`}
-            </Button>
-          )}
-        </Box>
-        <Box gap="sm" direction="row" alignItems="flex-start" key={size}>
-          {BUTTON_VARIANTS.map(variant => (
+          {BUTTON_SIZES.map(size => (
             <Button
               {...args}
               size={size}
+              tone={tone}
               variant={variant}
-              isOutlined
-              key={`${size}-${variant}-outline`}
+              key={`${size}-${variant}-${tone}`}
             >
-              {`${size} ${variant}`}
+              {`${size} ${variant} ${tone}`}
             </Button>
           ))}
           {showIconButton && (
-            <Button
-              {...args}
-              iconPrefix="circle"
-              iconSuffix="property-agreement"
-              size={size}
-              isOutlined
-              variant="primary"
-              key={`${size}-icon`}
-            >
-              {`${size} icon`}
-            </Button>
+          <Button
+            {...args}
+            iconPrefix="add"
+            iconSuffix="property-agreement"
+            variant={variant}
+            tone={tone}
+            key={`${variant}-icon`}
+          >
+            {`${variant} ${tone} icon`}
+          </Button>
           )}
         </Box>
       </Box>
-    ))}
+    )))}
     <Box gap="sm">
-      <Button {...args}>Full Width</Button>
-      <Button {...args} fullWidth isOutlined>
-        Full Width Outline
+      <Button {...args} size="sm" tone="neutral">
+        sm full width
+      </Button>
+      <Button {...args} size="md" tone="neutral">
+        md full width
+      </Button>
+      <Button {...args} size="lg" tone="neutral">
+        lg full width
       </Button>
     </Box>
   </Box>
@@ -89,11 +77,15 @@ export const Disabled = Template.bind({});
 Disabled.args = { isDisabled: true, showIconButton: true };
 
 export const WithIcons = Template.bind({});
-WithIcons.args = { iconPrefix: 'mail', iconSuffix: 'chat' };
+WithIcons.args = {
+  iconPrefix: 'add',
+  iconSuffix: 'property-agreement',
+  showIconButton: false,
+};
 
-export const PrimaryFocus = SingleButtonTemplate.bind({});
-
-PrimaryFocus.play = async ({ canvasElement }) => {
+export const SecondaryFocus = SingleButtonTemplate.bind({});
+SecondaryFocus.args = { variant: 'secondary' };
+SecondaryFocus.play = async ({ canvasElement }) => {
   // Starts querying the component from its root
   const canvas = within(canvasElement);
 
@@ -101,93 +93,26 @@ PrimaryFocus.play = async ({ canvasElement }) => {
   canvas.getByRole('button').focus();
 };
 
-export const SuccessFocus = SingleButtonTemplate.bind({});
-SuccessFocus.args = { variant: 'success' };
+export const PrimaryFocus = SingleButtonTemplate.bind({});
+PrimaryFocus.args = { variant: 'primary' };
 
-SuccessFocus.play = async ({ canvasElement }) => {
+PrimaryFocus.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   canvas.getByRole('button').focus();
 };
 
 export const DangerFocus = SingleButtonTemplate.bind({});
-DangerFocus.args = { variant: 'danger' };
+DangerFocus.args = { tone: 'danger' };
 
 DangerFocus.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   canvas.getByRole('button').focus();
 };
 
-export const LightFocus = SingleButtonTemplate.bind({});
-LightFocus.args = { variant: 'light' };
+export const TertiaryFocus = SingleButtonTemplate.bind({});
+TertiaryFocus.args = { variant: 'tertiary' };
 
-LightFocus.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  canvas.getByRole('button').focus();
-};
-
-export const DarkFocus = SingleButtonTemplate.bind({});
-DarkFocus.args = { variant: 'dark' };
-
-DarkFocus.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  canvas.getByRole('button').focus();
-};
-
-export const WhiteFocus = SingleButtonTemplate.bind({});
-WhiteFocus.args = { variant: 'white' };
-
-WhiteFocus.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  canvas.getByRole('button').focus();
-};
-
-export const PrimaryOutlinedFocus = SingleButtonTemplate.bind({});
-PrimaryOutlinedFocus.args = { isOutlined: true };
-
-PrimaryOutlinedFocus.play = async ({ canvasElement }) => {
-  // Starts querying the component from its root
-  const canvas = within(canvasElement);
-
-  // Looks up the button and interacts with it.
-  canvas.getByRole('button').focus();
-};
-
-export const SuccessOutlinedFocus = SingleButtonTemplate.bind({});
-SuccessOutlinedFocus.args = { variant: 'success', isOutlined: true };
-
-SuccessOutlinedFocus.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  canvas.getByRole('button').focus();
-};
-
-export const DangerOutlinedFocus = SingleButtonTemplate.bind({});
-DangerOutlinedFocus.args = { variant: 'danger', isOutlined: true };
-
-DangerOutlinedFocus.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  canvas.getByRole('button').focus();
-};
-
-export const LightOutlinedFocus = SingleButtonTemplate.bind({});
-LightOutlinedFocus.args = { variant: 'light', isOutlined: true };
-
-LightOutlinedFocus.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  canvas.getByRole('button').focus();
-};
-
-export const DarkOutlinedFocus = SingleButtonTemplate.bind({});
-DarkOutlinedFocus.args = { variant: 'dark', isOutlined: true };
-
-DarkOutlinedFocus.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  canvas.getByRole('button').focus();
-};
-
-export const WhiteOutlinedFocus = SingleButtonTemplate.bind({});
-WhiteOutlinedFocus.args = { variant: 'white', isOutlined: true };
-
-WhiteOutlinedFocus.play = async ({ canvasElement }) => {
+TertiaryFocus.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   canvas.getByRole('button').focus();
 };

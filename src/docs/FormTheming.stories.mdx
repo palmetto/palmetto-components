@@ -1,12 +1,15 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import { useState } from 'react';
 import { TextInput } from '../components/TextInput/TextInput';
+import { TextInputInset } from '../components/TextInputInset/TextInputInset';
 import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { SelectInput } from '../components/SelectInput/SelectInput';
 import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
+import { SelectInputInset } from '../components/SelectInputInset/SelectInputInset';
 import { OptionTileGroup } from '../components/OptionTileGroup/OptionTileGroup';
 import { RadioGroup } from '../components/RadioGroup/RadioGroup';
 import { TextareaInput } from '../components/TextareaInput/TextareaInput';
+import { TextareaInputInset } from '../components/TextareaInputInset/TextareaInputInset';
 import { Toggle } from '../components/Toggle/Toggle';
 import { Button } from '../components/Button/Button';
 import { Box } from '../components/Box/Box';
@@ -57,6 +60,7 @@ Form controls share tokens since they are designed to have a consistent appearan
         selectValue: options[0].value,
         textValue: 'hello world',
         textareaValue: 'hello world',
+        emptyValue: '',
       });
       const handleChange = (key, value) => {
         setThemeExampleValues(prevFields => ({
@@ -82,16 +86,28 @@ Form controls share tokens since they are designed to have a consistent appearan
       };
       return (
         <Box
-          childGap="lg"
+          gap="lg"
           background="grey-50"
           padding="lg"
-          display="block"
           style={isThemed ? customTheme : null}
         >
           <Toggle
             label="Apply Custom Theme"
             isChecked={isThemed}
             onChange={e => setIsThemed(e.target.checked)}
+          />
+          <TextInputInset
+            id="floatingThemeDemoEmpty"
+            label="Empty Text Input Inset"
+            value={themeExampleValues.emptyValue}
+            onChange={event => handleChange('emptyValue', event.target.value)}
+          />
+          <TextInputInset
+            id="floatingThemeDemo"
+            helpText="This is a themed floating label text input"
+            label="Text Input Inset"
+            value={themeExampleValues.textValue}
+            onChange={event => handleChange('textValue', event.target.value)}
           />
           <TextInput
             id="demo"
@@ -103,6 +119,13 @@ Form controls share tokens since they are designed to have a consistent appearan
           <SelectInputNative
             id="default Select"
             label="Select Input"
+            onChange={event => handleChange('selectValue', event.target.value)}
+            options={options}
+            value={themeExampleValues.selectValue}
+          />
+          <SelectInputInset
+            id="floationg Select"
+            label="Inset Select Input"
             onChange={event => handleChange('selectValue', event.target.value)}
             options={options}
             value={themeExampleValues.selectValue}
@@ -123,6 +146,13 @@ Form controls share tokens since they are designed to have a consistent appearan
             label="Textarea Input"
             name="textareaInput"
             id="textareaInput"
+            value={themeExampleValues.textareaValue}
+            onChange={e => handleChange('textareaValue', e.target.value)}
+          />
+          <TextareaInputInset
+            label="Textarea Input Inset"
+            name="textareaInputInset"
+            id="textareaInputInset"
             value={themeExampleValues.textareaValue}
             onChange={e => handleChange('textareaValue', e.target.value)}
           />
@@ -180,8 +210,10 @@ The following tokens are shared by all form controls to maintain a consistent ap
         'form-control-label-margin': '--size-spacing-xs',
         'form-control-help-margin': '--size-spacing-2xs',
         'form-control-line-height': '--size-line-height-input',
-        'form-control-label-font-weight': '--size-font-weight-bold',
-        'form-control-legend-font-weight': '--size-font-weight-bold',
+        'form-control-help-text-font-size': 'var(--size-font-sm)',
+        'form-control-help-text-font-weight': 'var(--size-font-weight-regular)',
+        'form-control-label-font-weight': 'var(--size-font-weight-medium)',
+        'form-control-legend-font-weight': 'var(--size-font-weight-medium)',
         'form-control-box-shadow': '0 3px 0 rgba(0, 0, 0, 0.05)',
         'form-control-font-family': '--asset-fonts-body',
         'form-control-size-xs-border-radius': '--size-border-radius-sm',
@@ -207,10 +239,12 @@ The following tokens are shared by all form controls to maintain a consistent ap
         'form-control-border-color-hover': '--color-brand-grey-300',
         'form-control-border-color-selected': '--color-brand-primary-500',
         'form-control-border-color-selected-hover': '--color-brand-primary-500',
-        'form-control-font-color': '--color-brand-dark-base',
+        'form-control-font-color': '--color-brand-grey-700',
         'form-control-font-color-disabled': '--color-brand-grey-300',
         'form-control-font-color-error': '--color-brand-danger-base',
         'form-control-font-color-error-disabled': '--color-brand-danger-200',
+        'form-control-help-text-font-color': 'var(--color-brand-grey-500)',
+        'form-control-label-font-color': 'var(--color-brand-grey-700)',
         'form-control-description-color': '--color-brand-grey-600',
         'form-control-icon-color': '--color-brand-grey-300',
         'form-control-icon-color-hover': '--color-brand-grey',
@@ -218,7 +252,8 @@ The following tokens are shared by all form controls to maintain a consistent ap
         'form-control-checkbox-color': '--color-brand-grey-500',
         'form-control-checkbox-color-checked': '--color-brand-primary-500',
         'form-control-checkbox-color-disabled': '--color-brand-primary-200',
-        'form-control-checkbox-color-checked-disabled': '--color-brand-primary-200',
+        'form-control-checkbox-color-checked-disabled':
+          '--color-brand-primary-200',
         'form-control-radio-group-description-spacing': '--size-spacing-xs',
         'form-control-radio-group-options-spacing': '--size-spacing-md',
         'form-control-select-sm-icon-size': '20px',
@@ -242,3 +277,4 @@ The following tokens are shared by all form controls to maintain a consistent ap
     })()}
   </tbody>
 </table>
+import {TextareaInputInset} from 'src/components/TextareaInputInset/TextareaInputInset';

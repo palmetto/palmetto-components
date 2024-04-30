@@ -1,13 +1,18 @@
 .palmetto-components__variables__form-control {
   // ----GLOBALS----
-  --INTERNAL_form-control-box-shadow-focus: 0 0 0 4px var(--color-brand-primary-200);
+  --INTERNAL_form-control-box-shadow-focus: 0 0 0 4px
+    var(--color-brand-primary-200);
   --INTERNAL_form-control-label-margin: var(--size-spacing-xs);
   --INTERNAL_form-control-help-margin: var(--size-spacing-2xs);
   --INTERNAL_form-control-line-height: var(--size-line-height-input);
-  --INTERNAL_form-control-label-font-weight: var(--size-font-weight-bold);
-  --INTERNAL_form-control-legend-font-weight: var(--size-font-weight-bold);
+  --INTERNAL_form-control-help-text-font-weight: var(
+    --size-font-weight-regular
+  );
+  --INTERNAL_form-control-label-font-weight: var(--size-font-weight-medium);
+  --INTERNAL_form-control-legend-font-weight: var(--size-font-weight-medium);
   --INTERNAL_form-control-box-shadow: 0 3px 0 rgb(0 0 0 / 5%);
   --INTERNAL_form-control-font-family: var(--asset-fonts-body);
+  --INTERNAL_form-control-help-text-font-size: var(--size-font-sm);
 
   // --SIZES--
 
@@ -36,26 +41,40 @@
   --INTERNAL_form-control-background-color: var(--color-brand-white-base);
   --INTERNAL_form-control-background-color-disabled: var(--color-brand-grey-50);
   --INTERNAL_form-control-background-color-error: var(--color-brand-danger-50);
-  --INTERNAL_form-control-background-color-selected: var(--color-brand-primary-50);
+  --INTERNAL_form-control-background-color-selected: var(
+    --color-brand-primary-50
+  );
   --INTERNAL_form-control-border-color: var(--color-brand-grey-100);
   --INTERNAL_form-control-border-color-error: var(--color-brand-danger-100);
-  --INTERNAL_form-control-border-color-error-disabled: var(--color-brand-danger-100);
+  --INTERNAL_form-control-border-color-error-disabled: var(
+    --color-brand-danger-100
+  );
   --INTERNAL_form-control-border-color-focus: var(--color-brand-grey-600);
   --INTERNAL_form-control-border-color-hover: var(--color-brand-grey-300);
   --INTERNAL_form-control-border-color-selected: var(--color-brand-primary-500);
-  --INTERNAL_form-control-border-color-selected-error: var(--color-brand-danger-500);
-  --INTERNAL_form-control-border-color-selected-hover: var(--color-brand-primary-500);
-  --INTERNAL_form-control-font-color: var(--color-brand-dark-base);
+  --INTERNAL_form-control-border-color-selected-error: var(
+    --color-brand-danger-500
+  );
+  --INTERNAL_form-control-border-color-selected-hover: var(
+    --color-brand-primary-500
+  );
+  --INTERNAL_form-control-font-color: var(--color-brand-grey-700);
   --INTERNAL_form-control-font-color-disabled: var(--color-brand-grey-300);
   --INTERNAL_form-control-font-color-error: var(--color-brand-danger-500);
-  --INTERNAL_form-control-font-color-error-disabled: var(--color-brand-danger-200);
+  --INTERNAL_form-control-font-color-error-disabled: var(
+    --color-brand-danger-200
+  );
+  --INTERNAL_form-control-help-text-font-color: var(--color-brand-grey-500);
+  --INTERNAL_form-control-label-font-color: var(--color-brand-grey-700);
   --INTERNAL_form-control-description-color: var(--color-brand-grey-600);
   --INTERNAL_form-control-icon-color: var(--color-brand-grey-300);
   --INTERNAL_form-control-icon-color-hover: var(--color-brand-grey);
   --INTERNAL_form-control-placeholder-color: var(--color-brand-grey-300);
 
   // ----RADIO GROUP----
-  --INTERNAL_form-control-radio-group-description-spacing: var(--size-spacing-xs);
+  --INTERNAL_form-control-radio-group-description-spacing: var(
+    --size-spacing-xs
+  );
   --INTERNAL_form-control-radio-group-options-spacing: var(--size-spacing-md);
 
   // ----SELECT INPUT----

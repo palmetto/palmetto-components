@@ -108,7 +108,8 @@ export const Pagination: FC<PaginationProps> = ({
         gap={isCompact ? 'xs' : 'sm'}
       >
         <Button
-          variant="light"
+          variant="secondary"
+          tone="neutral"
           size={isCompact ? 'sm' : 'md'}
           isDisabled={activePage === 1}
           onClick={() => onChange(activePage - 1)}
@@ -121,7 +122,8 @@ export const Pagination: FC<PaginationProps> = ({
               <Button
                 key={pageNumber}
                 onClick={() => onChange(pageNumber)}
-                isOutlined={activePage !== pageNumber}
+                variant={activePage !== pageNumber ? 'secondary' : 'primary'}
+                tone="neutral"
                 size={isCompact ? 'sm' : 'md'}
                 style={{
                   minWidth: isCompact ? '33px' : '42px',
@@ -135,7 +137,8 @@ export const Pagination: FC<PaginationProps> = ({
           </Box>
         )}
         <Button
-          variant="light"
+          variant="secondary"
+          tone="neutral"
           size={isCompact ? 'sm' : 'md'}
           isDisabled={activePage === pageTotal}
           onClick={() => onChange(activePage + 1)}
@@ -151,9 +154,8 @@ export const Pagination: FC<PaginationProps> = ({
         }}
         fontSize={isCompact ? 'sm' : 'md'}
       >
-        {isTotalVisible && (
-          `Showing ${activeListRange.first}-${activeListRange.last} of ${totalItemsCount}`
-        )}
+        {isTotalVisible
+          && `Showing ${activeListRange.first}-${activeListRange.last} of ${totalItemsCount}`}
       </Box>
     </Box>
   );

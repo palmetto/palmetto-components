@@ -49,7 +49,7 @@ of uses for a popover include:
             }}
             onClickOutside={closePopover}
           >
-            <Button onClick={togglePopover} variant="light">
+            <Button onClick={togglePopover} variant="primary" tone="neutral">
               Toggle Popover
             </Button>
           </Popover>
@@ -100,7 +100,7 @@ You can apply a custom class to your popover with the `className` prop. Here we 
             className="font-color-danger"
             onClickOutside={closePopover}
           >
-            <Button onClick={togglePopover} variant="light">
+            <Button onClick={togglePopover} variant="primary" tone="neutral">
               Toggle Popover
             </Button>
           </Popover>
@@ -175,7 +175,7 @@ the entire gamut of styling options.
                 radius: popoverRadius.value,
               }}
             >
-              <Button onClick={togglePopover} variant="light">
+              <Button onClick={togglePopover} variant="primary" tone="neutral">
                 Toggle Popover
               </Button>
             </Popover>
@@ -290,7 +290,8 @@ prevent the content from getting cut off.
               >
                 <Button
                   onClick={() => handleOpenPopover(position)}
-                  variant="light"
+                  variant="primary"
+                  tone="neutral"
                 >
                   {position}
                 </Button>
@@ -353,7 +354,7 @@ in order to render the element anywhere on the page.
             portalTarget={document.body}
             onClickOutside={closePopover}
           >
-            <Button onClick={togglePopover} variant="light">
+            <Button onClick={togglePopover} variant="primary" tone="neutral">
               Toggle Popover
             </Button>
           </Popover>
@@ -409,7 +410,8 @@ NOTE: this should be use sparingly since context dependent on hover, isn't an op
             <Button
               onMouseOver={openPopover}
               onMouseOut={closePopover}
-              variant="light"
+              variant="primary"
+              tone="neutral"
             >
               Hover Me
             </Button>
@@ -468,7 +470,7 @@ in cases where the click target includes the Popover trigger or content nodes.
               background: 'primary-light',
             }}
           >
-            <Button onClick={togglePopover} variant="light">
+            <Button onClick={togglePopover} variant="primary" tone="neutral">
               Toggle Popover
             </Button>
           </Popover>
@@ -529,7 +531,7 @@ Use the `trapFocus` prop to constrain focus to popover content elements.
             onClickOutside={closePopover}
             trapFocus
           >
-            <Button onClick={togglePopover} variant="light">
+            <Button onClick={togglePopover} variant="primary" tone="neutral">
               Toggle Popover
             </Button>
           </Popover>
@@ -575,7 +577,7 @@ Render the popover with no arrow by passing `hasArrow` false.
             }}
             onClickOutside={closePopover}
           >
-            <Button onClick={togglePopover} variant="light">
+            <Button onClick={togglePopover} variant="primary" tone="neutral">
               Toggle Popover
             </Button>
           </Popover>
@@ -627,7 +629,7 @@ Place the popover closer or farther from its trigger with the `offsetFromTarget`
               hasArrow={false}
               offsetFromTarget={offset}
             >
-              <Button onClick={togglePopover} variant="light">
+              <Button onClick={togglePopover} variant="primary" tone="neutral">
                 Toggle Popover
               </Button>
             </Popover>

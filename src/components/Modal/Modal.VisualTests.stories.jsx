@@ -6,7 +6,11 @@ export default {
   title: 'Components/Modal/Visual Regression Tests',
   component: Modal,
   parameters: {
-    chromatic: { delay: 1000, pauseAnimationAtEnd: true, viewports: [350, 700, 1012, 1300] },
+    chromatic: {
+      delay: 1000,
+      pauseAnimationAtEnd: true,
+      viewports: [350, 700, 1012, 1300],
+    },
   },
   decorators: [
     storyFn => (
@@ -27,7 +31,7 @@ export const BasicExample = () => (
     <Modal.Header id="title" title="The Modal Title" onDismiss={() => null} />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="light" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>
@@ -54,7 +58,7 @@ export const WithoutHeader = () => (
   <Modal ariaLabel="modal without header" isOpen onDismiss={() => null}>
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="light" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>
@@ -64,10 +68,14 @@ export const WithoutHeader = () => (
 
 export const FullScreenOnMobile = () => (
   <Modal ariaLabelledBy="title" fullScreenMobile isOpen onDismiss={() => null}>
-    <Modal.Header id="title" title="Fullscreen Modal on Mobile" onDismiss={() => null} />
+    <Modal.Header
+      id="title"
+      title="Fullscreen Modal on Mobile"
+      onDismiss={() => null}
+    />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="light" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>
@@ -77,10 +85,14 @@ export const FullScreenOnMobile = () => (
 
 export const WithMaxWidth = () => (
   <Modal ariaLabelledBy="title" maxWidth="300px" isOpen onDismiss={() => null}>
-    <Modal.Header id="title" title="Fullscreen Modal on Mobile" onDismiss={() => null} />
+    <Modal.Header
+      id="title"
+      title="Fullscreen Modal on Mobile"
+      onDismiss={() => null}
+    />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="light" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>
@@ -95,10 +107,14 @@ export const WithResponsiveMaxWidth = () => (
     isOpen
     onDismiss={() => null}
   >
-    <Modal.Header id="title" title="Fullscreen Modal on Mobile" onDismiss={() => null} />
+    <Modal.Header
+      id="title"
+      title="Fullscreen Modal on Mobile"
+      onDismiss={() => null}
+    />
     <Modal.Body>Modal content</Modal.Body>
     <Modal.Footer>
-      <Button variant="light" onClick={() => null}>
+      <Button variant="primary" tone="neutral" onClick={() => null}>
         Cancel
       </Button>
       <Button variant="primary">Primary Action</Button>

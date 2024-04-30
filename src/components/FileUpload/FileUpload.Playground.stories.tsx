@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { FileUpload, FileUploadProps } from './FileUpload';
 import { ICON_NAMES } from '../../lib/tokens';
-import { BUTTON_SIZES } from '../Button/Button.constants';
+import { BUTTON_SIZES, BUTTON_TONE, BUTTON_VARIANTS } from '../Button/Button.constants';
 
 export default {
   title: 'Components/FileUpload/Playground',
@@ -38,9 +38,6 @@ export default {
     isDisabled: {
       control: 'boolean',
     },
-    isOutlined: {
-      control: 'boolean',
-    },
     isRequired: {
       control: 'boolean',
     },
@@ -58,8 +55,14 @@ export default {
     },
     variant: {
       control: {
-        type: 'radio',
-        options: ['light', 'dark', 'primary', 'white'],
+        type: 'select',
+        options: BUTTON_VARIANTS,
+      },
+    },
+    tone: {
+      control: {
+        type: 'select',
+        options: BUTTON_TONE,
       },
     },
     size: {

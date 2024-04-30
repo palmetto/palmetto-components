@@ -17,7 +17,11 @@ export const WithCustomPortalTarget: Story = () => {
 
   return (
     <div id="myContainer" ref={ref}>
-      <Button variant="light" onClick={() => setShowModal(true)}>
+      <Button
+        variant="primary"
+        tone="neutral"
+        onClick={() => setShowModal(true)}
+      >
         Show Modal
       </Button>
       <Modal
@@ -27,9 +31,14 @@ export const WithCustomPortalTarget: Story = () => {
         maxWidth="4xl"
         containerRef={ref}
       >
-        <Modal.Header id="customPortalModal" title="Custom Portal" onDismiss={() => setShowModal(false)} />
+        <Modal.Header
+          id="customPortalModal"
+          title="Custom Portal"
+          onDismiss={() => setShowModal(false)}
+        />
         <Modal.Body style={{ lineHeight: 1.5 }}>
-          This modal is rendered inside it&apos;s containing div, rather than the document.body
+          This modal is rendered inside it&apos;s containing div, rather than
+          the document.body
         </Modal.Body>
       </Modal>
     </div>

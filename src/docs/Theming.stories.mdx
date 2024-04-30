@@ -162,8 +162,31 @@ Here is an example where all three token types are used to create a customized a
         '--button-size-md-border-radius': '0',
         '--button-size-md-padding-vertical': '.5rem',
         '--button-size-md-padding-horizontal': '.5rem',
-        '--button-primary-box-shadow-focus': '0 0 0 4px var(--color-brand-primary-200)',
+        '--button-primary-box-shadow-focus':
+          '0 0 0 4px var(--color-brand-primary-200)',
         '--button-font-family': 'Consolas,monaco,monospace',
+        '--button-primary-background-color': 'var(--color-brand-primary-500)',
+        '--button-primary-background-color-hover':
+          'var(--color-brand-primary-600)',
+        '--button-primary-background-color-active':
+          'var(--color-brand-primary-700)',
+        '--button-secondary-background-color': 'var(--color-brand-white-base)',
+        '--button-secondary-background-color-hover':
+          'var(--color-brand-primary-50)',
+        '--button-secondary-background-color-active':
+          'var(--color-brand-primary-100)',
+        '--button-secondary-border-color': 'var(--color-brand-grey-200)',
+        '--button-secondary-border-color-hover':
+          'var(--color-brand-primary-100)',
+        '--button-secondary-font-color': 'var(--color-brand-primary-500)',
+        '--button-secondary-font-color-hover': 'var(--color-brand-primary-500)',
+        '--button-tertiary-background-color': 'transparent',
+        '--button-tertiary-background-color-hover':
+          'var(--color-brand-primary-50)',
+        '--button-tertiary-background-color-active':
+          'var(--color-brand-primary-100)',
+        '--button-tertiary-font-color': 'var(--color-brand-primary-500)',
+        '--button-tertiary-font-color-hover': 'var(--color-brand-primary-500)',
       };
       return (
         <Box
@@ -175,7 +198,13 @@ Here is an example where all three token types are used to create a customized a
           display="block"
           style={isThemed ? customTheme : null}
         >
-          <Toggle id="themeToggle" label="Apply Theme" onChange={event => setIsThemed(event.target.checked)} isChecked={isThemed} size="lg" />
+          <Toggle
+            id="themeToggle"
+            label="Apply Theme"
+            onChange={event => setIsThemed(event.target.checked)}
+            isChecked={isThemed}
+            size="lg"
+          />
           <Box gap="sm">
             <Heading as="h2" size="xl">
               Leading the world toward a clean energy future
@@ -195,13 +224,26 @@ Here is an example where all three token types are used to create a customized a
             <CategoryFilter>Unselected</CategoryFilter>
             <CategoryFilter isSelected>Selected</CategoryFilter>
           </Box>
-          <Alert hasIcon variant="info" title="Info Alert" message="This is an info alert" />
-          <Tabs value={themeExampleValues.selectedTab} onChange={(event, index) => handleChange('selectedTab', index)}>
+          <Alert
+            hasIcon
+            variant="info"
+            title="Info Alert"
+            message="This is an info alert"
+          />
+          <Tabs
+            value={themeExampleValues.selectedTab}
+            onChange={(event, index) => handleChange('selectedTab', index)}
+          >
             <Tabs.Item>Tab 1</Tabs.Item>
             <Tabs.Item>Tab 2</Tabs.Item>
             <Tabs.Item>Tab 3</Tabs.Item>
           </Tabs>
-          <TabsSlider value={themeExampleValues.selectedTabSlider} onChange={(event, index) => handleChange('selectedTabSlider', index)}>
+          <TabsSlider
+            value={themeExampleValues.selectedTabSlider}
+            onChange={(event, index) =>
+              handleChange('selectedTabSlider', index)
+            }
+          >
             <TabsSlider.Item>Tab 1</TabsSlider.Item>
             <TabsSlider.Item>Tab 2</TabsSlider.Item>
             <TabsSlider.Item>Tab 3</TabsSlider.Item>
@@ -209,30 +251,25 @@ Here is an example where all three token types are used to create a customized a
           </TabsSlider>
           <Box alignItems="center" gap="sm" direction="row">
             <Button variant="primary">Primary</Button>
-            <Button variant="success">Success</Button>
-            <Button variant="danger">Danger</Button>
-            <Button variant="light">Light</Button>
-            <Button variant="dark">Dark</Button>
-            <Button variant="white">White</Button>
-          </Box>
-          <Box alignItems="center" gap="sm" direction="row">
-            <Button isOutlined variant="primary">
-              Primary
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="tertiary">Tertiary</Button>
+            <Button variant="primary" tone="neutral">
+              Primary Neutral
             </Button>
-            <Button isOutlined variant="success">
-              Success
+            <Button variant="secondary" tone="neutral">
+              Secondary Neutral
             </Button>
-            <Button isOutlined variant="danger">
-              Danger
+            <Button variant="tertiary" tone="neutral">
+              Tertiary Neutral
             </Button>
-            <Button isOutlined variant="light">
-              Light
+            <Button variant="primary" tone="danger">
+              Primary Danger
             </Button>
-            <Button isOutlined variant="dark">
-              Dark
+            <Button variant="secondary" tone="danger">
+              Secondary Danger
             </Button>
-            <Button isOutlined variant="white">
-              White
+            <Button variant="tertiary" tone="danger">
+              Tertiary Danger
             </Button>
           </Box>
           <Box background="grey-50" padding="lg" gap="lg">
@@ -249,7 +286,9 @@ Here is an example where all three token types are used to create a customized a
             <SelectInputNative
               id="default Select"
               label="Select Input"
-              onChange={event => handleChange('selectValue', event.target.value)}
+              onChange={event =>
+                handleChange('selectValue', event.target.value)
+              }
               options={options}
               value={themeExampleValues.selectValue}
             />
@@ -261,7 +300,9 @@ Here is an example where all three token types are used to create a customized a
               value={themeExampleValues.multiSelectValue}
               menuPortalTarget={document.body}
               options={options}
-              onChange={event => handleChange('multiSelectValue', event.target.value)}
+              onChange={event =>
+                handleChange('multiSelectValue', event.target.value)
+              }
             />
             <TextareaInput
               label="Textarea Input"
@@ -271,8 +312,17 @@ Here is an example where all three token types are used to create a customized a
               onChange={e => handleChange('textareaValue', e.target.value)}
             />
             <Box direction="row" gap="md">
-              <CheckboxInput id="checkedCheckbox" label="Checked Checkbox" onChange={() => {}} isChecked />
-              <CheckboxInput id="uncheckedCheckbox" label="Unchecked Checkbox" onChange={() => {}} />
+              <CheckboxInput
+                id="checkedCheckbox"
+                label="Checked Checkbox"
+                onChange={() => {}}
+                isChecked
+              />
+              <CheckboxInput
+                id="uncheckedCheckbox"
+                label="Unchecked Checkbox"
+                onChange={() => {}}
+              />
             </Box>
             <RadioGroup
               title="Radio Group"
@@ -285,7 +335,9 @@ Here is an example where all three token types are used to create a customized a
             <OptionTileGroup
               name="directionVertical"
               value={themeExampleValues.optionTileGroupValue}
-              onChange={event => handleChange('optionTileGroupValue', event.target.value)}
+              onChange={event =>
+                handleChange('optionTileGroupValue', event.target.value)
+              }
               options={options}
               direction="row"
             />

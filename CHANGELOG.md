@@ -1,5 +1,15 @@
 Changelog
 
+# [1.0.0-beta.18](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2024-04-30)
+
+
+### Features
+
+* update drop shadows  ([#885](https://github.com/palmetto/palmetto-components/issues/885)) ([7aae6b1](https://github.com/palmetto/palmetto-components/commit/7aae6b1c3a7354bebb9a3b70d33b6586002c2151))
+
+# [1.0.0-beta.17](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2024-04-12)
+
+# [1.0.0-beta.16](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.15...v1.0.0-beta.16) (2024-04-05)
 ## [0.158.2](https://github.com/palmetto/palmetto-components/compare/v0.158.1...v0.158.2) (2024-04-12)
 
 ## [0.158.1](https://github.com/palmetto/palmetto-components/compare/v0.158.0...v0.158.1) (2024-04-12)
@@ -9,6 +19,123 @@ Changelog
 
 ### Features
 
+* update drop shadows ([#886](https://github.com/palmetto/palmetto-components/issues/886)) ([bc78fa2](https://github.com/palmetto/palmetto-components/commit/bc78fa2a776d6b0506865ae2d76456401b0c686f))
+
+# [1.0.0-beta.15](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2024-04-05)
+
+
+### Features
+
+* update drop shadows  ([#885](https://github.com/palmetto/palmetto-components/issues/885)) ([189b809](https://github.com/palmetto/palmetto-components/commit/189b80935c49d32fb9b929a6c4cd21c3dbde06e2))
+
+# [1.0.0-beta.14](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.13...v1.0.0-beta.14) (2024-03-15)
+
+
+### Bug Fixes
+
+* **SelectInputInset:** rename SelectInputNativeInset to SelectInputInset ([#883](https://github.com/palmetto/palmetto-components/issues/883)) ([bfaacd7](https://github.com/palmetto/palmetto-components/commit/bfaacd71bfc1e8152c0288c1057202ac40439d22))
+
+# [1.0.0-beta.13](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2024-03-15)
+
+
+### Features
+
+* **SelectInputs:** make dropdown indicator match icon ([#882](https://github.com/palmetto/palmetto-components/issues/882)) ([3c9a80c](https://github.com/palmetto/palmetto-components/commit/3c9a80c524e9b22421b0fb8567783bb5f6651728))
+
+# [1.0.0-beta.12](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2024-03-07)
+
+
+### Bug Fixes
+
+* rename floating inputs to inset ([#880](https://github.com/palmetto/palmetto-components/issues/880)) ([b13ab19](https://github.com/palmetto/palmetto-components/commit/b13ab19d1c47b42b4e4e0a54fe0c67e4738c5198))
+
+# [1.0.0-beta.11](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2024-03-06)
+
+# [1.0.0-beta.10](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2024-03-06)
+
+
+### Features
+
+* **TextareaInputFloating:** new component ([#878](https://github.com/palmetto/palmetto-components/issues/878)) ([c3e0b3a](https://github.com/palmetto/palmetto-components/commit/c3e0b3a7604ec698b62044aa8dce17018698fd00))
+
+# [1.0.0-beta.9](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2024-03-06)
+
+
+### Features
+
+* **SelectInputNativeFloating:** new component ([#877](https://github.com/palmetto/palmetto-components/issues/877)) ([62dc894](https://github.com/palmetto/palmetto-components/commit/62dc89457ca214aa3f48928bd226a58bb5fc0b0a))
+
+# [1.0.0-beta.8](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-03-01)
+
+
+### Bug Fixes
+
+* **TextInputFloating:** prefix/suffix focus styles, clear icon ([#875](https://github.com/palmetto/palmetto-components/issues/875)) ([7e90a7c](https://github.com/palmetto/palmetto-components/commit/7e90a7c43f46ae56a09b5980a44a7ce4f76167d1))
+
+# [1.0.0-beta.7](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2024-02-29)
+
+
+### Features
+
+* **TextInputFloating:** new component  ([#874](https://github.com/palmetto/palmetto-components/issues/874)) ([a19211b](https://github.com/palmetto/palmetto-components/commit/a19211b558e9fb9652820b35c272c302dfee0254))
+
+# [1.0.0-beta.6](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-02-13)
+
+
+### Bug Fixes
+
+* **FormControls:** specify width 100 instead of relying on flex auto ([#870](https://github.com/palmetto/palmetto-components/issues/870)) ([a78ba2e](https://github.com/palmetto/palmetto-components/commit/a78ba2ee4b938bd7d51e1f8b208d062ea99be39f))
+
+# [1.0.0-beta.5](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-02-13)
+
+# [1.0.0-beta.4](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-02-13)
+
+
+### Bug Fixes
+
+* **Button:** loading state icon color ([#868](https://github.com/palmetto/palmetto-components/issues/868)) ([96c93c9](https://github.com/palmetto/palmetto-components/commit/96c93c9890e31a01705bca797a8cd3c3f6ecf916))
+
+# [1.0.0-beta.3](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2024-02-09)
+
+
+### Features
+
+* **Button:** tone prop ([#867](https://github.com/palmetto/palmetto-components/issues/867)) ([918eeea](https://github.com/palmetto/palmetto-components/commit/918eeeab347d9e7f13a54b41ad027dfc40d79605))
+
+# [1.0.0-beta.2](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2024-02-02)
+
+
+### Bug Fixes
+
+* **Button:** secondary neutral hover color ([#866](https://github.com/palmetto/palmetto-components/issues/866)) ([dbde3f3](https://github.com/palmetto/palmetto-components/commit/dbde3f36b686462d788578518ccf806634fc13a4))
+
+# [1.0.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.157.7...v1.0.0-beta.1) (2024-02-02)
+
+
+* BREAKING CHANGE: New Buttons (#865) ([935c361](https://github.com/palmetto/palmetto-components/commit/935c3615456e7ca8d8b2b51f0c13d6e0f6985f2d)), closes [#865](https://github.com/palmetto/palmetto-components/issues/865)
+
+
+### BREAKING CHANGES
+
+* * wip
+
+* more wip
+
+* fix errors
+
+* form label help text tokens
+
+* mediamodal close button
+
+* Update Theming.stories.mdx
+
+* fix build
+
+* Update Button.VisualTests.stories.tsx
+
+* Update Button.VisualTests.stories.tsx
+
+* cleanup
 * update drop shadows  ([#885](https://github.com/palmetto/palmetto-components/issues/885)) ([7aae6b1](https://github.com/palmetto/palmetto-components/commit/7aae6b1c3a7354bebb9a3b70d33b6586002c2151))
 
 ## [0.157.9](https://github.com/palmetto/palmetto-components/compare/v0.157.8...v0.157.9) (2024-02-28)

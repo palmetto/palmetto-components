@@ -1,8 +1,14 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 %disabled-base {
-  background-color: var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled));
-  color: var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled));
+  background-color: var(
+    --form-control-background-color-disabled,
+    var(--INTERNAL_form-control-background-color-disabled)
+  );
+  color: var(
+    --form-control-font-color-disabled,
+    var(--INTERNAL_form-control-font-color-disabled)
+  );
   opacity: 1;
 
   &:hover {
@@ -16,30 +22,42 @@
 }
 
 @mixin size-sm {
-  border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
-  font-size: var(--form-control-size-sm-font-size, var(--INTERNAL_form-control-size-sm-font-size));
+  border-radius: var(
+    --form-control-size-sm-border-radius,
+    var(--INTERNAL_form-control-size-sm-border-radius)
+  );
+  font-size: var(
+    --form-control-size-sm-font-size,
+    var(--INTERNAL_form-control-size-sm-font-size)
+  );
 
   > select {
-    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
-    padding-left: var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
+    border-radius: var(
+      --form-control-size-lg-border-radius,
+      var(--INTERNAL_form-control-size-lg-border-radius)
+    );
+    padding-left: var(
+      --form-control-size-sm-padding,
+      var(--INTERNAL_form-control-size-sm-padding)
+    );
     padding-right: var(--size-spacing-2xl);
-    padding-top: calc(var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)));
-    padding-bottom: calc(var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding)));
+    padding-top: calc(
+      var(
+        --form-control-size-sm-padding,
+        var(--INTERNAL_form-control-size-sm-padding)
+      )
+    );
+    padding-bottom: calc(
+      var(
+        --form-control-size-sm-padding,
+        var(--INTERNAL_form-control-size-sm-padding)
+      )
+    );
   }
 
   &::before,
   &::after {
-    width: 8px;
-    height: 2px;
     top: calc(var(--size-spacing-sm) + 3px);
-  }
-
-  &::before {
-    right: calc(var(--size-spacing-sm) + 8px);
-  }
-
-  &::after {
-    right: calc(var(--size-spacing-sm) + 3px);
   }
 }
 
@@ -52,30 +70,38 @@
 }
 
 @mixin size-md {
-  border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
-  font-size: var(--form-control-size-md-font-size, var(--INTERNAL_form-control-size-md-font-size));
+  border-radius: var(
+    --form-control-size-md-border-radius,
+    var(--INTERNAL_form-control-size-md-border-radius)
+  );
+  font-size: var(
+    --form-control-size-md-font-size,
+    var(--INTERNAL_form-control-size-md-font-size)
+  );
 
   > select {
-    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
-    padding-left: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
+    border-radius: var(
+      --form-control-size-lg-border-radius,
+      var(--INTERNAL_form-control-size-lg-border-radius)
+    );
+    padding-left: var(
+      --form-control-size-md-padding,
+      var(--INTERNAL_form-control-size-md-padding)
+    );
     padding-right: var(--size-spacing-3xl);
-    padding-top: calc(var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)));
-    padding-bottom: calc(var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding)));
+    padding-top: var(
+      --form-control-size-md-padding,
+      var(--INTERNAL_form-control-size-md-padding)
+    );
+    padding-bottom: var(
+      --form-control-size-md-padding,
+      var(--INTERNAL_form-control-size-md-padding)
+    );
   }
 
   &::before,
   &::after {
-    width: 14px;
-    height: 4px;
     top: calc(var(--size-spacing-md) + 3px);
-  }
-
-  &::before {
-    right: calc(var(--size-spacing-sm) + 11px);
-  }
-
-  &::after {
-    right: calc(var(--size-spacing-sm) + 3px);
   }
 }
 
@@ -88,30 +114,38 @@
 }
 
 @mixin size-lg {
-  border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
-  font-size: var(--form-control-size-lg-font-size, var(--INTERNAL_form-control-size-lg-font-size));
+  border-radius: var(
+    --form-control-size-lg-border-radius,
+    var(--INTERNAL_form-control-size-lg-border-radius)
+  );
+  font-size: var(
+    --form-control-size-lg-font-size,
+    var(--INTERNAL_form-control-size-lg-font-size)
+  );
 
   > select {
-    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
-    padding-left: var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding));
+    border-radius: var(
+      --form-control-size-lg-border-radius,
+      var(--INTERNAL_form-control-size-lg-border-radius)
+    );
+    padding-left: var(
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-lg-padding)
+    );
     padding-right: var(--size-spacing-3xl);
-    padding-top: calc(var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding)) - 1px);
-    padding-bottom: calc(var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding)) - 1px);
+    padding-top: var(
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-lg-padding)
+    );
+    padding-bottom: var(
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-lg-padding)
+    );
   }
 
   &::before,
   &::after {
-    width: 14px;
-    height: 4px;
     top: calc(var(--size-spacing-md) + 9px);
-  }
-
-  &::before {
-    right: calc(var(--size-spacing-sm) + 11px);
-  }
-
-  &::after {
-    right: calc(var(--size-spacing-sm) + 3px);
   }
 }
 
@@ -124,16 +158,36 @@
 }
 
 .select-input-native-wrapper {
-  font-family: var(--form-control-font-family, var(--INTERNAL_form-control-font-family));
+  font-family: var(
+    --form-control-font-family,
+    var(--INTERNAL_form-control-font-family)
+  );
   position: relative;
-  box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow)),
-    inset 0 0 0 1px var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
-  background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
+  box-shadow: var(
+      --form-control-box-shadow,
+      var(--INTERNAL_form-control-box-shadow)
+    ),
+    inset 0 0 0 1px
+      var(
+        --form-control-border-color,
+        var(--INTERNAL_form-control-border-color)
+      );
+  background-color: var(
+    --form-control-background-color,
+    var(--INTERNAL_form-control-background-color)
+  );
 
   &:focus-within {
     outline: none;
-    box-shadow: var(--form-control-box-shadow, var(--INTERNAL_form-control-box-shadow-focus)),
-      inset 0 0 0 1px var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+    box-shadow: var(
+        --form-control-box-shadow,
+        var(--INTERNAL_form-control-box-shadow-focus)
+      ),
+      inset 0 0 0 1px
+        var(
+          --form-control-border-color-focus,
+          var(--INTERNAL_form-control-border-color-focus)
+        );
   }
 
   &::before,
@@ -141,18 +195,22 @@
     border-radius: 100px;
     content: '';
     position: absolute;
-    background: var(--color-brand-grey-light);
+    background: var(--color-brand-grey-300);
     pointer-events: none;
+    width: 10px;
+    height: 2px;
   }
 
   //change the stacking context so this half of the chevron stays above the disabled background color.
   &::before {
+    right: calc(var(--size-spacing-sm) + 7px);
     transform-origin: 50% 50%;
     transform: rotate(42deg);
     z-index: 1;
   }
 
   &::after {
+    right: calc(var(--size-spacing-sm) + 1px);
     transform-origin: 50% 50%;
     transform: rotate(-42deg);
   }
@@ -170,11 +228,17 @@
     border: none;
     background: transparent;
     width: 100%;
-    line-height: var(--form-control-line-height, var(--INTERNAL_form-control-line-height));
+    line-height: var(
+      --form-control-line-height,
+      var(--INTERNAL_form-control-line-height)
+    );
 
     &:focus {
       outline: none;
-      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+      border-color: var(
+        --form-control-border-color-focus,
+        var(--INTERNAL_form-control-border-color-focus)
+      );
     }
 
     &:disabled {
@@ -239,17 +303,29 @@
   }
 
   &.error {
-    border-color: var(--form-control-border-color-error, var(--INTERNAL_form-control-border-color-error));
-    background-color: var(--form-control-border-color-error, var(--INTERNAL_form-control-background-color-error));
+    border-color: var(
+      --form-control-border-color-error,
+      var(--INTERNAL_form-control-border-color-error)
+    );
+    background-color: var(
+      --form-control-border-color-error,
+      var(--INTERNAL_form-control-background-color-error)
+    );
 
     select:focus {
       outline: none;
-      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+      border-color: var(
+        --form-control-border-color-focus,
+        var(--INTERNAL_form-control-border-color-focus)
+      );
       background-color: transparent;
     }
   }
 }
 
 .text-input-label {
-  margin-bottom: var(--form-control-label-margin, var(--INTERNAL_form-control-label-margin));
+  margin-bottom: var(
+    --form-control-label-margin,
+    var(--INTERNAL_form-control-label-margin)
+  );
 }

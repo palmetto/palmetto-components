@@ -2,29 +2,28 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Box } from '../components/Box/Box';
-import { SelectInput } from '../components/SelectInput/SelectInput';
-import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
 import { Button } from '../components/Button/Button';
 import { TextInput } from '../components/TextInput/TextInput';
+import { TextInputInset } from '../components/TextInputInset/TextInputInset';
+import { TextareaInput } from '../components/TextareaInput/TextareaInput';
+import { TextareaInputInset } from '../components/TextareaInputInset/TextareaInputInset';
+import { SelectInputNative } from '../components/SelectInputNative/SelectInputNative';
+import { SelectInputInset } from '../components/SelectInputInset/SelectInputInset';
 import { Toggle } from '../components/Toggle/Toggle';
 
 <Meta title="Patterns/Form Controls" />
 
-## Sizes
+## Inset Inputs
 
-Sizes for form controls likes inputs and buttons, should match so that they can be placed inline.
+Try not to mix Inset style inputs with regular inputs in the same form.
 
 <Canvas>
-  <Story name="Sizes">
+  <Story name="Inset Inputs">
     {() => {
       const [formValues, setFormValues] = useState({
-        textInputSm: '',
-        textInputMd: '',
-        textInputLg: '',
-        selectInput: {
-          value: 'chocolate',
-          label: 'Chocolate',
-        },
+        emailInput: '',
+        passwordInput: '',
+        notesInput: '',
         toggleValue: false,
       });
       const options = [
@@ -48,186 +47,55 @@ Sizes for form controls likes inputs and buttons, should match so that they can 
         }));
       };
       return (
-        <Box direction="row" gap="xs">
-          <Box gap="sm" width="110px">
-            <Box display="block">
-              <TextInput
-                id="smText"
-                value={formValues.textInputSm}
-                placeholder="Small"
-                size="sm"
-                onChange={event => handleChange('textInputSm', event.target.value)}
-              />
-            </Box>
-            <Box display="block">
-              <TextInput
-                id="mdText"
-                value={formValues.textInputMd}
-                placeholder="Medium"
-                onChange={event => handleChange('textInputMd', event.target.value)}
-              />
-            </Box>
-            <Box>
-              <TextInput
-                id="lgText"
-                value={formValues.textInputLg}
-                placeholder="Large"
-                size="lg"
-                onChange={event => handleChange('textInputLg', event.target.value)}
-              />
-            </Box>
-          </Box>
-          <Box gap="sm" alignItems="flex-start" justifyContent="flex-start">
-            <Button iconPrefix="property-agreement" size="sm">
-              Small
-            </Button>
-            <Button iconPrefix="property-agreement" size="md">
-              Medium
-            </Button>
-            <Button iconPrefix="property-agreement" size="lg">
-              Large
-            </Button>
-          </Box>
-          <Box gap="sm" width="150px" alignItems="flex-start">
-            <SelectInputNative
-              id="smallSelect"
-              label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
-              options={options}
-              value={formValues.selectInput}
-              hideLabel
-              size="sm"
-            />
-            <SelectInputNative
-              id="mediumSelect"
-              label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
-              options={options}
-              value={formValues.selectInput}
-              hideLabel
-              size="md"
-            />
-            <SelectInputNative
-              id="largeSelect"
-              label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
-              options={options}
-              value={formValues.selectInput}
-              hideLabel
-              size="lg"
-            />
-          </Box>
-          <Box gap="sm" width="150px" alignItems="flex-start">
-            <SelectInput
-              id="smallSelect"
-              label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
-              options={options}
-              value={formValues.selectInput}
-              hideLabel
-              size="sm"
-            />
-            <SelectInput
-              id="mediumSelect"
-              label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
-              options={options}
-              value={formValues.selectInput}
-              hideLabel
-              size="md"
-            />
-            <SelectInput
-              id="largeSelect"
-              label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
-              options={options}
-              value={formValues.selectInput}
-              hideLabel
-              size="lg"
-            />
-          </Box>
-          <Box gap="sm" width="200px" alignItems="flex-start">
-            <SelectInput
-              id="smallMultiSelect"
-              label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
-              options={options}
-              value={formValues.selectInput}
-              hideLabel
-              isMulti
-              size="sm"
-            />
-            <SelectInput
-              id="mediumMultiSelect"
-              label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
-              options={options}
-              value={formValues.selectInput}
-              hideLabel
-              isMulti
-              size="md"
-            />
-            <SelectInput
-              id="largeMultiSelect"
-              label="Label"
-              onChange={event => handleChange('selectInput', event.target.value)}
-              options={options}
-              value={formValues.selectInput}
-              hideLabel
-              isMulti
-              size="lg"
-            />
-          </Box>
-          <Box gap="sm" width="160px">
-            <Box height="32px" justifyContent="center">
-              <Toggle
-                id="smToggle"
-                label="small toggle"
-                hideLabel
-                onChange={event => handleChange('toggleValue', event.target.checked)}
-                isChecked={formValues.toggleValue}
-                size="sm"
-              />
-            </Box>
-            <Box height="42px" justifyContent="center">
-              <Toggle
-                id="mdToggle"
-                label="medium toggle"
-                hideLabel
-                onChange={event => handleChange('toggleValue', event.target.checked)}
-                isChecked={formValues.toggleValue}
-                size="md"
-              />
-            </Box>
-            <Box height="55px" justifyContent="center">
-              <Toggle
-                id="lgToggle"
-                label="large toggle"
-                hideLabel
-                onChange={event => handleChange('toggleValue', event.target.checked)}
-                isChecked={formValues.toggleValue}
-                size="lg"
-              />
-            </Box>
-          </Box>
+        <Box gap="md">
+          <TextInputInset
+            label="Email"
+            id="emailInput"
+            value={formValues.textInputMd}
+            onChange={event => handleChange('emailInput', event.target.value)}
+          />
+          <TextInputInset
+            label="Password"
+            type="password"
+            id="passwordInput"
+            value={formValues.textInputMd}
+            onChange={event =>
+              handleChange('passwordInput', event.target.value)
+            }
+          />
+          <TextareaInputInset
+            label="Notes"
+            id="notesInput"
+            value={formValues.textInputMd}
+            onChange={event => handleChange('notesInput', event.target.value)}
+          />
+          <SelectInputInset
+            id="floatingSelectNative"
+            label="Flavor"
+            onChange={event => handleChange('selectInput', event.target.value)}
+            options={options}
+            value={formValues.selectInput}
+            size="md"
+          />
         </Box>
       );
     }}
   </Story>
 </Canvas>
 
-## Sizes with Labels
+## Default Inputs
 
-Inline form sizes with labels.
+All of the inputs in this section are using the default style where the label is above the input.
 
 <Canvas>
-  <Story name="Sizes with Labels">
+  <Story name="Default Inputs">
     {() => {
-      const [value, setValue] = useState('');
-      const [value1, setValue1] = useState('');
-      const [value2, setValue2] = useState('');
-      const [value3, setValue3] = useState('');
-      const [valueLabel4, setValueLabel4] = useState();
+      const [formValues, setFormValues] = useState({
+        emailInput: '',
+        passwordInput: '',
+        notesInput: '',
+        toggleValue: false,
+      });
       const options = [
         {
           value: 'chocolate',
@@ -242,415 +110,44 @@ Inline form sizes with labels.
           label: 'Vanilla',
         },
       ];
+      const handleChange = (key, value) => {
+        setFormValues(prevFields => ({
+          ...prevFields,
+          [key]: value,
+        }));
+      };
       return (
-        <div>
-          <Box direction="row" gap="sm" padding="sm" >
-            <Box width="30">
-              <TextInput
-                id="smTextLabel"
-                value={value}
-                placeholder="Small"
-                size="sm"
-                label="Label"
-                onChange={event => setValue(event.target.value)}
-              />
-            </Box>
-            <Box alignItems="flex-end" direction="row">
-              <Button iconPrefix="property-agreement" size="sm">
-                Small Button
-              </Button>
-            </Box>
-            <Box width="160px">
-              <SelectInput
-                id="smSelectLabel"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                size="sm"
-              />
-            </Box>
-            <Box justifyContent="center">
-              <Toggle
-                id="smToggleLabel"
-                label="small toggle"
-                onChange={event => setValueLabel4(event.target.checked)}
-                isChecked={valueLabel4}
-                size="sm"
-              />
-            </Box>
-          </Box>
-          <Box direction="row" gap="sm" padding="sm" >
-            <Box width="30">
-              <TextInput
-                id="mdTextLabel"
-                value={value1}
-                placeholder="Medium"
-                label="Label"
-                onChange={event => setValue1(event.target.value)}
-              />
-            </Box>
-            <Box alignItems="flex-end" direction="row">
-              <Button iconPrefix="property-agreement">Medium Button</Button>
-            </Box>
-            <Box width="160px">
-              <SelectInput
-                id="mdSelectLabel"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                size="md"
-              />
-            </Box>
-            <Box justifyContent="center">
-              <Toggle
-                id="mdToggleLabel"
-                label="medium toggle"
-                onChange={event => setValueLabel4(event.target.checked)}
-                isChecked={valueLabel4}
-                size="md"
-              />
-            </Box>
-          </Box>
-          <Box direction="row" gap="sm"  padding="sm">
-            <Box width="30">
-              <TextInput
-                id="lgTextLabel"
-                value={value2}
-                placeholder="Large"
-                size="lg"
-                label="Label"
-                onChange={event => setValue2(event.target.value)}
-              />
-            </Box>
-            <Box alignItems="flex-end" direction="row">
-              <Button iconPrefix="property-agreement" size="lg">
-                Large Button
-              </Button>
-            </Box>
-            <Box width="160px">
-              <SelectInput
-                id="lgSelectLabel"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                size="lg"
-              />
-            </Box>
-            <Box justifyContent="center">
-              <Toggle
-                id="lgToggleLabel"
-                label="large toggle"
-                onChange={event => setValueLabel4(event.target.checked)}
-                isChecked={valueLabel4}
-                size="lg"
-              />
-            </Box>
-          </Box>
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Sizes with Error States
-
-Inline form sizes with error states.
-
-<Canvas>
-  <Story name="Sizes with Error State">
-    {() => {
-      const [value, setValue] = useState('');
-      const [value1, setValue1] = useState('');
-      const [value2, setValue2] = useState('');
-      const [value3, setValue3] = useState();
-      const [valueError4, setValueError4] = useState();
-      const options = [
-        {
-          value: 'chocolate',
-          label: 'Chocolate',
-        },
-        {
-          value: 'strawberry',
-          label: 'Strawberry',
-        },
-        {
-          value: 'vanilla',
-          label: 'Vanilla',
-        },
-      ];
-      const errorMsg = 'Error message';
-      return (
-        <div>
-          <Box direction="row" gap="sm" padding="sm" >
-            <Box width="30">
-              <TextInput
-                id="smTextError"
-                value={value}
-                placeholder="Small"
-                size="sm"
-                error={errorMsg}
-                onChange={event => setValue(event.target.value)}
-              />
-            </Box>
-            <Box alignItems="flex-start" direction="row">
-              <Button iconPrefix="property-agreement" size="sm">
-                Small Button
-              </Button>
-            </Box>
-            <Box width="160px">
-              <SelectInput
-                id="smallErrorSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                hideLabel
-                size="sm"
-                error={errorMsg}
-              />
-            </Box>
-            <Box justifyContent="center">
-              <Toggle
-                id="smToggleError"
-                label="small toggle"
-                onChange={event => setValueError4(event.target.checked)}
-                isChecked={valueError4}
-                size="sm"
-                hideLabel
-                error={errorMsg}
-              />
-            </Box>
-          </Box>
-          <Box direction="row" gap="sm" padding="sm" >
-            <Box width="30">
-              <TextInput
-                id="mdTextError"
-                value={value1}
-                placeholder="Medium"
-                error={errorMsg}
-                onChange={event => setValue1(event.target.value)}
-              />
-            </Box>
-            <Box alignItems="flex-start" direction="row">
-              <Button iconPrefix="property-agreement">Medium Button</Button>
-            </Box>
-            <Box width="160px">
-              <SelectInput
-                id="mdErrorSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                hideLabel
-                error={errorMsg}
-              />
-            </Box>
-            <Box justifyContent="center">
-              <Toggle
-                id="mdToggleError"
-                label="small toggle"
-                onChange={event => setValueError4(event.target.checked)}
-                isChecked={valueError4}
-                size="md"
-                hideLabel
-                error={errorMsg}
-              />
-            </Box>
-          </Box>
-          <Box direction="row" gap="sm"  padding="sm">
-            <Box width="30">
-              <TextInput
-                id="lgTextError"
-                value={value2}
-                placeholder="Large"
-                size="lg"
-                error={errorMsg}
-                onChange={event => setValue2(event.target.value)}
-              />
-            </Box>
-            <Box alignItems="flex-start" direction="row">
-              <Button iconPrefix="property-agreement" size="lg">
-                Large Button
-              </Button>
-            </Box>
-            <Box width="160px">
-              <SelectInput
-                id="lgErrorSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                hideLabel
-                size="lg"
-                isClearable
-                error={errorMsg}
-              />
-            </Box>
-            <Box justifyContent="center">
-              <Toggle
-                id="lgToggleError"
-                label="large toggle"
-                onChange={event => setValueError4(event.target.checked)}
-                isChecked={valueError4}
-                size="lg"
-                hideLabel
-                error={errorMsg}
-              />
-            </Box>
-          </Box>
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Sizes with Labels and Error States
-
-Inline form sizes with labels and error states.
-
-<Canvas>
-  <Story name="Sizes with Labels and Error State">
-    {() => {
-      const [value, setValue] = useState('');
-      const [value1, setValue1] = useState('');
-      const [value2, setValue2] = useState('');
-      const [value3, setValue3] = useState('');
-      const [valueErrorLabel4, setValueErrorLabel4] = useState();
-      const options = [
-        {
-          value: 'chocolate',
-          label: 'Chocolate',
-        },
-        {
-          value: 'strawberry',
-          label: 'Strawberry',
-        },
-        {
-          value: 'vanilla',
-          label: 'Vanilla',
-        },
-      ];
-      const errorMsg = 'Error message';
-      return (
-        <div>
-          <Box direction="row" gap="sm" padding="sm" >
-            <Box width="30">
-              <TextInput
-                id="smErrorLabelText"
-                value={value}
-                placeholder="Small"
-                size="sm"
-                label="Label"
-                error={errorMsg}
-                onChange={event => setValue(event.target.value)}
-              />
-            </Box>
-            <Box alignItems="center" direction="row">
-              <Button iconPrefix="property-agreement" size="sm">
-                Small Button
-              </Button>
-            </Box>
-            <Box width="160px">
-              <SelectInput
-                id="smErrorLabelSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                size="sm"
-                error={errorMsg}
-              />
-            </Box>
-            <Box justifyContent="center">
-              <Toggle
-                id="smToggleErrorLabel"
-                label="small toggle"
-                onChange={event => setValueErrorLabel4(event.target.checked)}
-                isChecked={valueErrorLabel4}
-                size="sm"
-                error={errorMsg}
-              />
-            </Box>
-          </Box>
-          <Box direction="row" gap="sm" padding="sm" >
-            <Box width="30">
-              <TextInput
-                id="mdErrorLabelText"
-                value={value1}
-                placeholder="Medium"
-                label="Label"
-                error={errorMsg}
-                onChange={event => setValue1(event.target.value)}
-              />
-            </Box>
-            <Box alignItems="center" direction="row">
-              <Button iconPrefix="property-agreement">Medium Button</Button>
-            </Box>
-            <Box width="160px">
-              <SelectInput
-                id="mdErrorLabelSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                size="md"
-                error={errorMsg}
-              />
-            </Box>
-            <Box justifyContent="center">
-              <Toggle
-                id="mdToggleErrorLabel"
-                label="medium toggle"
-                onChange={event => setValueErrorLabel4(event.target.checked)}
-                isChecked={valueErrorLabel4}
-                size="md"
-                error={errorMsg}
-              />
-            </Box>
-          </Box>
-          <Box direction="row" gap="sm" padding="sm">
-            <Box width="30">
-              <TextInput
-                id="lgErrorLabelText"
-                value={value2}
-                placeholder="Large"
-                size="lg"
-                label="Label"
-                error={errorMsg}
-                onChange={event => setValue2(event.target.value)}
-              />
-            </Box>
-            <Box alignItems="center" direction="row">
-              <Button iconPrefix="property-agreement" size="lg">
-                Large Button
-              </Button>
-            </Box>
-            <Box width="160px">
-              <SelectInput
-                id="lgSelect"
-                label="Label"
-                onChange={event => setValue3(event.target.value)}
-                options={options}
-                value={value3}
-                size="lg"
-                error={errorMsg}
-              />
-            </Box>
-            <Box justifyContent="center">
-              <Toggle
-                id="lgToggleErrorLabel"
-                label="large toggle"
-                onChange={event => setValueErrorLabel4(event.target.checked)}
-                isChecked={valueErrorLabel4}
-                size="lg"
-                error={errorMsg}
-              />
-            </Box>
-          </Box>
-        </div>
+        <Box gap="md">
+          <TextInput
+            label="Email"
+            id="defaultEmailInput"
+            value={formValues.textInputMd}
+            onChange={event => handleChange('emailInput', event.target.value)}
+          />
+          <TextInput
+            label="Password"
+            type="password"
+            id="defaultPasswordInput"
+            value={formValues.textInputMd}
+            onChange={event =>
+              handleChange('passwordInput', event.target.value)
+            }
+          />
+          <TextareaInput
+            label="Notes"
+            id="defaultNotesInput"
+            value={formValues.textInputMd}
+            onChange={event => handleChange('notesInput', event.target.value)}
+          />
+          <SelectInputNative
+            id="defaultSelectInputNative"
+            label="Flavor"
+            onChange={event => handleChange('selectInput', event.target.value)}
+            options={options}
+            value={formValues.selectInput}
+            size="md"
+          />
+        </Box>
       );
     }}
   </Story>
