@@ -277,7 +277,22 @@ describe('Button', () => {
 
     describe('Loading', () => {
       test('it renders the spinning loading indicator', () => {
-        render(<Button tone="neutral" isLoading>Button is loading</Button>);
+        render(
+          <Button tone="neutral" isLoading>
+            Button is loading
+          </Button>,
+        );
+        const spinnerElement = document.getElementsByClassName('spinner')[0];
+        expect(spinnerElement).toBeInTheDocument();
+        expect(spinnerElement).toHaveClass('font-color-dark');
+      });
+
+      test('it renders the spinning loading indicator with prefix icon', () => {
+        render(
+          <Button tone="neutral" iconPrefix="add" isLoading>
+            Button is loading
+          </Button>,
+        );
         const spinnerElement = document.getElementsByClassName('spinner')[0];
         expect(spinnerElement).toBeInTheDocument();
         expect(spinnerElement).toHaveClass('font-color-dark');
@@ -286,6 +301,17 @@ describe('Button', () => {
       test('it renders the grey spinning indicator if button variant is secondary with neutral tone', () => {
         render(
           <Button isLoading variant="secondary" tone="neutral">
+            Button is loading
+          </Button>,
+        );
+        const spinnerElement = document.getElementsByClassName('spinner')[0];
+        expect(spinnerElement).toBeInTheDocument();
+        expect(spinnerElement).toHaveClass('font-color-dark');
+      });
+
+      test('it renders the grey spinning indicator if button variant is tertiary with neutral tone', () => {
+        render(
+          <Button isLoading variant="tertiary" tone="neutral">
             Button is loading
           </Button>,
         );
@@ -319,6 +345,17 @@ describe('Button', () => {
         const spinnerElement = document.getElementsByClassName('spinner')[0];
         expect(spinnerElement).toBeInTheDocument();
         expect(spinnerElement).toHaveClass('font-color-white');
+      });
+
+      test('it renders white spinning indicator when button is secondary with tone danger', () => {
+        render(
+          <Button variant="secondary" tone="danger" isLoading>
+            Button is loading
+          </Button>,
+        );
+        const spinnerElement = document.getElementsByClassName('spinner')[0];
+        expect(spinnerElement).toBeInTheDocument();
+        expect(spinnerElement).toHaveClass('font-color-danger');
       });
     });
 
