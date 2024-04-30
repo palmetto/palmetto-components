@@ -185,6 +185,10 @@ export const Button = forwardRef<
     };
 
     const getSpinnerVariant = () => {
+      if (tone === 'primary' && (variant === 'secondary' || variant === 'tertiary')) {
+        return 'primary';
+      }
+
       if (tone === 'danger' && (variant === 'secondary' || variant === 'tertiary')) {
         return 'danger';
       }

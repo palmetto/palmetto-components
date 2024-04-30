@@ -287,6 +287,17 @@ describe('Button', () => {
         expect(spinnerElement).toHaveClass('font-color-dark');
       });
 
+      test('it renders the primary spinning loading indicator with prefix icon', () => {
+        render(
+          <Button tone="primary" variant="secondary" iconPrefix="add" isLoading>
+            Button is loading
+          </Button>,
+        );
+        const spinnerElement = document.getElementsByClassName('spinner')[0];
+        expect(spinnerElement).toBeInTheDocument();
+        expect(spinnerElement).toHaveClass('font-color-primary');
+      });
+
       test('it renders the spinning loading indicator with prefix icon', () => {
         render(
           <Button tone="neutral" iconPrefix="add" isLoading>
