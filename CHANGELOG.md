@@ -1,5 +1,61 @@
 Changelog
 
+# [1.0.0](https://github.com/palmetto/palmetto-components/compare/v0.158.2...v1.0.0) (2024-04-30)
+
+
+* BREAKING CHANGE: New Buttons, Inset label form Inputs (#891) ([2a48b37](https://github.com/palmetto/palmetto-components/commit/2a48b3744e9bfc9e029458b5ac6abe43f486b312)), closes [#891](https://github.com/palmetto/palmetto-components/issues/891) [#811](https://github.com/palmetto/palmetto-components/issues/811) [#866](https://github.com/palmetto/palmetto-components/issues/866) [#866](https://github.com/palmetto/palmetto-components/issues/866) [#867](https://github.com/palmetto/palmetto-components/issues/867) [#867](https://github.com/palmetto/palmetto-components/issues/867) [#868](https://github.com/palmetto/palmetto-components/issues/868) [#868](https://github.com/palmetto/palmetto-components/issues/868) [#869](https://github.com/palmetto/palmetto-components/issues/869) [#870](https://github.com/palmetto/palmetto-components/issues/870) [#870](https://github.com/palmetto/palmetto-components/issues/870) [#874](https://github.com/palmetto/palmetto-components/issues/874) [#874](https://github.com/palmetto/palmetto-components/issues/874) [#875](https://github.com/palmetto/palmetto-components/issues/875) [#875](https://github.com/palmetto/palmetto-components/issues/875) [#877](https://github.com/palmetto/palmetto-components/issues/877) [#877](https://github.com/palmetto/palmetto-components/issues/877) [#878](https://github.com/palmetto/palmetto-components/issues/878) [#878](https://github.com/palmetto/palmetto-components/issues/878) [#879](https://github.com/palmetto/palmetto-components/issues/879) [#880](https://github.com/palmetto/palmetto-components/issues/880) [#880](https://github.com/palmetto/palmetto-components/issues/880) [#881](https://github.com/palmetto/palmetto-components/issues/881) [#882](https://github.com/palmetto/palmetto-components/issues/882) [#882](https://github.com/palmetto/palmetto-components/issues/882) [#883](https://github.com/palmetto/palmetto-components/issues/883) [#883](https://github.com/palmetto/palmetto-components/issues/883) [#885](https://github.com/palmetto/palmetto-components/issues/885) [#885](https://github.com/palmetto/palmetto-components/issues/885) [#886](https://github.com/palmetto/palmetto-components/issues/886) [#886](https://github.com/palmetto/palmetto-components/issues/886) [#888](https://github.com/palmetto/palmetto-components/issues/888) [#887](https://github.com/palmetto/palmetto-components/issues/887)
+
+
+### BREAKING CHANGES
+
+* New Buttons (#865)
+* * wip
+
+* more wip
+
+* fix errors
+
+* form label help text tokens
+
+* mediamodal close button
+
+* Update Theming.stories.mdx
+
+* fix build
+
+* Update Button.VisualTests.stories.tsx
+
+* Update Button.VisualTests.stories.tsx
+
+* cleanup
+
+* chore(release): 1.0.0-beta.1 [skip ci]
+
+# [1.0.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v0.157.7...v1.0.0-beta.1) (2024-02-02)
+* New Buttons (#865) ([935c361](https://github.com/palmetto/palmetto-components/commit/935c3615456e7ca8d8b2b51f0c13d6e0f6985f2d)), closes [#865](https://github.com/palmetto/palmetto-components/issues/865)
+
+### BREAKING CHANGES
+
+* * wip
+
+* more wip
+
+* fix errors
+
+* form label help text tokens
+
+* mediamodal close button
+
+* Update Theming.stories.mdx
+
+* fix build
+
+* Update Button.VisualTests.stories.tsx
+
+* Update Button.VisualTests.stories.tsx
+
+* cleanup
+
 # [1.0.0-beta.18](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2024-04-30)
 
 
