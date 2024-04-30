@@ -3,6 +3,11 @@ Changelog
 # [1.0.0-beta.17](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2024-04-12)
 
 # [1.0.0-beta.16](https://github.com/palmetto/palmetto-components/compare/v1.0.0-beta.15...v1.0.0-beta.16) (2024-04-05)
+## [0.158.2](https://github.com/palmetto/palmetto-components/compare/v0.158.1...v0.158.2) (2024-04-12)
+
+## [0.158.1](https://github.com/palmetto/palmetto-components/compare/v0.158.0...v0.158.1) (2024-04-12)
+
+# [0.158.0](https://github.com/palmetto/palmetto-components/compare/v0.157.9...v0.158.0) (2024-04-05)
 
 
 ### Features
@@ -124,6 +129,11 @@ Changelog
 * Update Button.VisualTests.stories.tsx
 
 * cleanup
+* update drop shadows  ([#885](https://github.com/palmetto/palmetto-components/issues/885)) ([7aae6b1](https://github.com/palmetto/palmetto-components/commit/7aae6b1c3a7354bebb9a3b70d33b6586002c2151))
+
+## [0.157.9](https://github.com/palmetto/palmetto-components/compare/v0.157.8...v0.157.9) (2024-02-28)
+
+## [0.157.8](https://github.com/palmetto/palmetto-components/compare/v0.157.7...v0.157.8) (2024-02-27)
 
 ## [0.157.7](https://github.com/palmetto/palmetto-components/compare/v0.157.6...v0.157.7) (2024-01-29)
 
