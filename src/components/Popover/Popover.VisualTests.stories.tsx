@@ -68,7 +68,7 @@ export const Demo: Story = () => {
               fontSize="xs"
               color="white"
               radius="sm"
-              background="primary-light"
+              background="primary-100"
               padding="2xs"
             >
               JC
