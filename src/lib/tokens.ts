@@ -57,7 +57,7 @@ export const BASE_BRAND_COLORS = Object.entries({ ...color.brand })
 
 export const BACKGROUND_COLOR_OPTIONS = [...(Object.keys(color.background)), ...BRAND_COLOR_OPTIONS] as BackgroundColor[];
 
-export const FONT_COLOR_OPTIONS = [...BRAND_COLOR_OPTIONS] as FontColor[];
+export const FONT_COLOR_OPTIONS = [...(Object.keys(color.text)), ...BRAND_COLOR_OPTIONS] as FontColor[];
 export const FONT_COLOR_VALUES = color.brand;
 
 export const FONT_SIZE_OPTIONS = Object.keys(size.font) as FontSize[];

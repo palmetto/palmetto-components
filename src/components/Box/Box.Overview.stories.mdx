@@ -54,20 +54,34 @@ Use the `background` prop to set the color of the background
 
 <Canvas>
   <Story name="Background">
-    <Box background="primary" margin="xs" padding="xs">
-      primary
-    </Box>
-    <Box background="secondary" margin="xs" padding="xs">
-      secondary
-    </Box>
-    <Box background="tertiary" margin="xs" padding="xs">
-      tertiary
-    </Box>
-    <Box background="inverse" margin="xs" padding="xs">
-      inverse
-    </Box>
-    <Box background="danger-300" margin="xs" padding="xs">
-      danger
+    <Box gap="xs">
+      <Box background="primary" padding="xs">
+        primary
+      </Box>
+      <Box background="secondary" padding="xs">
+        secondary
+      </Box>
+      <Box background="tertiary" padding="xs">
+        tertiary
+      </Box>
+      <Box background="inverse" color="inverse-primary" padding="xs">
+        inverse
+      </Box>
+      <Box background="default" padding="xs">
+        default
+      </Box>
+      <Box background="info" padding="xs">
+        info
+      </Box>
+      <Box background="success" padding="xs">
+        success
+      </Box>
+      <Box background="warning" padding="xs">
+        warning
+      </Box>
+      <Box background="danger" padding="xs">
+        danger
+      </Box>
     </Box>
   </Story>
 </Canvas>
@@ -734,9 +748,18 @@ Use the `color` prop to set the color of the text
 
 <Canvas>
   <Story name="Font Color">
-    <Box color="danger-500">Danger 500</Box>
-    <Box color="info-500">Info 500</Box>
-    <Box>Default Color</Box>
+    <Box gap="xs">
+      <Box color="body-primary">body-primary</Box>
+      <Box color="body-secondary">body-secondary</Box>
+      <Box color="body-tertiary">body-tertiary</Box>
+      <Box color="contrast">contrast</Box>
+      <Box color="inverse-primary">inverse-primary</Box>
+      <Box color="inverse-secondary">inverse-secondary</Box>
+      <Box color="primary">primary</Box>
+      <Box color="success">success</Box>
+      <Box color="info">info</Box>
+      <Box color="disabled">disabled</Box>
+    </Box>
   </Story>
 </Canvas>
 
