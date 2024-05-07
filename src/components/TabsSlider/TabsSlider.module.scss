@@ -6,7 +6,7 @@
 
   &[disabled] {
     cursor: not-allowed;
-    color: var(--color-brand-grey-300);
+    color: var(--color-text-disabled);
   }
 
 
@@ -23,7 +23,7 @@
 
   &:not(.disabled) {
     &:hover {
-      color: var(--color-brand-grey-600);
+      color: var(--color-text-body-primary);
       cursor: pointer;
     }
   }
@@ -37,7 +37,7 @@
 
   &--selected {
     &:not(.disabled) {
-      color: var(--color-brand-grey-600);
+      color: var(--color-text-body-primary);
     }
   }
 }

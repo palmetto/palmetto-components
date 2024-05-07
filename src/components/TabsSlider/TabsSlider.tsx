@@ -246,7 +246,7 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
       className={containerClasses}
       as={as}
       overflow="auto"
-      background="grey-100"
+      background="tertiary"
       radius="md"
       ref={mergeRefs([tabsRef, ref])}
     >
@@ -264,7 +264,7 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
           height="100"
           position="absolute"
           borderWidth={tabBorderWidth()}
-          borderColor="grey-100"
+          borderColor="separator"
           style={{ ...indicatorStyle }}
           className={styles['tabs-slider-indicator']}
         />
