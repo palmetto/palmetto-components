@@ -134,7 +134,7 @@ Also note that these icons are only there for visual feedback, as the true input
           hover={{
             borderColor: 'danger',
             shadow: 'lg',
-            background: 'danger-lightest',
+            background: 'danger-50',
           }}
         >
           Hello world!
@@ -195,9 +195,7 @@ Also note that these icons are only there for visual feedback, as the true input
               name={option.name}
               value={option.value}
               background={
-                option.value === selectedOption
-                  ? 'secondary-lightest'
-                  : undefined
+                option.value === selectedOption ? 'secondary-50' : undefined
               }
               borderColor={
                 option.value === selectedOption ? 'secondary' : undefined
@@ -236,7 +234,7 @@ If you require theming for this component separately of other form controls, it 
       const tokens = {
         '--option-tile-background-color': {
           global: '--form-control-background-color',
-          default: '--color-brand-white-base',
+          default: '--color-brand-white-500',
         },
         '--option-tile-border-color': {
           global: '--form-control-border-color',

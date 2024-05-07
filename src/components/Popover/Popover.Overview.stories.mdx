@@ -144,8 +144,8 @@ the entire gamut of styling options.
         { value: 'secondary', label: 'Secondary' },
         { value: 'tertiary', label: 'Tertiary' },
         { value: 'warning', label: 'Warning' },
-        { value: 'grey-light', label: 'Grey Light' },
-        { value: 'grey-dark', label: 'Grey Dark' },
+        { value: 'grey-300', label: 'Grey Light' },
+        { value: 'grey-600', label: 'Grey Dark' },
       ];
       const fontColorOptions = [
         { value: 'white', label: 'White' },
@@ -404,7 +404,7 @@ NOTE: this should be use sparingly since context dependent on hover, isn't an op
             placement="right-start"
             contentContainerProps={{
               padding: 'md',
-              background: 'primary-light',
+              background: 'primary-300',
             }}
           >
             <Button
@@ -467,7 +467,7 @@ in cases where the click target includes the Popover trigger or content nodes.
             onClickOutside={closePopover}
             contentContainerProps={{
               padding: 'md',
-              background: 'primary-light',
+              background: 'primary-300',
             }}
           >
             <Button onClick={togglePopover} variant="primary" tone="neutral">
@@ -524,7 +524,7 @@ Use the `trapFocus` prop to constrain focus to popover content elements.
             placement="right-start"
             contentContainerProps={{
               padding: 'md',
-              background: 'grey-lightest',
+              background: 'grey-50',
             }}
             withPortal
             portalTarget={document.body}
@@ -622,7 +622,7 @@ Place the popover closer or farther from its trigger with the `offsetFromTarget`
               placement="right-start"
               contentContainerProps={{
                 padding: 'md',
-                background: 'grey-lightest',
+                background: 'grey-50',
               }}
               withPortal
               portalTarget={document.body}

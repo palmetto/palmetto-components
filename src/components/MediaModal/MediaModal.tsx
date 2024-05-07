@@ -115,11 +115,11 @@ export const MediaModal: React.FC<MediaModalProps> = forwardRef<
         onClick={onDismiss}
         cursor="pointer"
         color="grey-100"
-        background="transparent"
+        background="transparent-500"
         borderWidth="0"
         padding="xs"
         hover={{
-          color: 'white',
+          color: 'white-500',
         }}
       >
         <Icon name="remove-light" size="lg" />

@@ -7,7 +7,6 @@ import {
   FONT_FAMILY_OPTIONS,
   FONT_FAMILY_VALUES,
   FONT_COLOR_OPTIONS,
-  BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
 } from '../../lib/tokens';
 
@@ -93,14 +92,23 @@ Use the `borderColor` prop to set the color of the border and the borderWidth to
 <Canvas>
   <Story name="Border">
     <Box gap="sm" direction="row">
-      <Box borderColor="grey-200" borderWidth="xs md" padding="xs">
-        grey-200, xs md
+      <Box borderColor="separator" borderWidth="md" padding="xs">
+        separator
       </Box>
-      <Box borderColor="danger" borderWidth="0 sm md xs" padding="xs">
-        danger, 0 sm md xs
+      <Box borderColor="success" borderWidth="0 sm md xs" padding="xs">
+        success, 0 sm md xs
       </Box>
-      <Box borderColor="primary-100" borderWidth="md" padding="xs">
-        primary-100, md
+      <Box borderColor="default" borderWidth="md" padding="xs">
+        default, md
+      </Box>
+      <Box borderColor="info" borderWidth="md" padding="xs">
+        info, md
+      </Box>
+      <Box borderColor="warning" borderWidth="md" padding="xs">
+        warning, md
+      </Box>
+      <Box borderColor="danger" borderWidth="md" padding="xs">
+        danger, md
       </Box>
     </Box>
   </Story>
@@ -445,9 +453,9 @@ Set content alignment along the main axis
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -459,9 +467,9 @@ Set content alignment along the main axis
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -473,9 +481,9 @@ Set content alignment along the main axis
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -487,9 +495,9 @@ Set content alignment along the main axis
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -501,9 +509,9 @@ Set content alignment along the main axis
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -515,9 +523,9 @@ Set content alignment along the main axis
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
     </Box>
@@ -541,9 +549,9 @@ Set content alignment along the cross axis.
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -556,9 +564,9 @@ Set content alignment along the cross axis.
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -571,9 +579,9 @@ Set content alignment along the cross axis.
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -586,9 +594,9 @@ Set content alignment along the cross axis.
           direction="row"
           gap="md"
         >
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
-          <Box width="md" height="md" background="primary" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
+          <Box width="md" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -601,9 +609,9 @@ Set content alignment along the cross axis.
           direction="row"
           gap="md"
         >
-          <Box width="md" background="primary" />
-          <Box width="md" background="primary" />
-          <Box width="md" background="primary" />
+          <Box width="md" background="primary-500" />
+          <Box width="md" background="primary-500" />
+          <Box width="md" background="primary-500" />
         </Box>
       </Box>
     </Box>
@@ -631,11 +639,11 @@ This property has no effect when there is only one line of flex items.
           background="primary-100"
           direction="row"
         >
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -651,11 +659,11 @@ This property has no effect when there is only one line of flex items.
           background="primary-100"
           direction="row"
         >
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -671,11 +679,11 @@ This property has no effect when there is only one line of flex items.
           background="primary-100"
           direction="row"
         >
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -691,11 +699,11 @@ This property has no effect when there is only one line of flex items.
           background="primary-100"
           direction="row"
         >
-          <Box width="2xl" background="primary" />
-          <Box width="2xl" background="primary" />
-          <Box width="2xl" background="primary" />
-          <Box width="2xl" background="primary" />
-          <Box width="2xl" background="primary" />
+          <Box width="2xl" background="primary-500" />
+          <Box width="2xl" background="primary-500" />
+          <Box width="2xl" background="primary-500" />
+          <Box width="2xl" background="primary-500" />
+          <Box width="2xl" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -711,11 +719,11 @@ This property has no effect when there is only one line of flex items.
           background="primary-100"
           direction="row"
         >
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
         </Box>
       </Box>
       <Box direction="row" alignItems="center" gap="md">
@@ -731,11 +739,11 @@ This property has no effect when there is only one line of flex items.
           background="primary-100"
           direction="row"
         >
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
-          <Box width="2xl" height="md" background="primary" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
+          <Box width="2xl" height="md" background="primary-500" />
         </Box>
       </Box>
     </Box>
@@ -887,34 +895,34 @@ Set the `radius` prop with a [radius token](?path=/story/design-tokens-design-to
 <Canvas>
   <Story name="Radius">
     <Box direction="row" gap="2xs" justifyContent="space-between">
-      <Box radius="xs" background="secondary-light" padding="sm">
+      <Box radius="xs" background="secondary-300" padding="sm">
         xs
       </Box>
-      <Box radius="sm" background="secondary-light" padding="sm">
+      <Box radius="sm" background="secondary-300" padding="sm">
         sm
       </Box>
-      <Box radius="md" background="secondary-light" padding="sm">
+      <Box radius="md" background="secondary-300" padding="sm">
         md
       </Box>
-      <Box radius="lg" background="secondary-light" padding="sm">
+      <Box radius="lg" background="secondary-300" padding="sm">
         lg
       </Box>
-      <Box radius="circle" background="secondary-light" padding="sm">
+      <Box radius="circle" background="secondary-300" padding="sm">
         circle
       </Box>
-      <Box radius="sm lg" background="secondary-light" padding="sm">
+      <Box radius="sm lg" background="secondary-300" padding="sm">
         sm lg
       </Box>
-      <Box radius="sm md lg" background="secondary-light" padding="sm">
+      <Box radius="sm md lg" background="secondary-300" padding="sm">
         sm md lg
       </Box>
-      <Box radius="xs sm md lg" background="secondary-light" padding="sm">
+      <Box radius="xs sm md lg" background="secondary-300" padding="sm">
         xs sm md lg
       </Box>
-      <Box radius="0 0 md md" background="secondary-light" padding="sm">
+      <Box radius="0 0 md md" background="secondary-300" padding="sm">
         0 0 md md
       </Box>
-      <Box radius="md md 0 0" background="secondary-light" padding="sm">
+      <Box radius="md md 0 0" background="secondary-300" padding="sm">
         md md 0 0
       </Box>
     </Box>
@@ -937,7 +945,7 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
         shadow="0"
         alignItems="center"
         justifyContent="center"
-        background="white"
+        background="primary"
         radius="md"
         padding="sm"
         height="lg"
@@ -948,7 +956,7 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
         shadow="2xs"
         alignItems="center"
         justifyContent="center"
-        background="white"
+        background="primary"
         radius="md"
         padding="sm"
         height="lg"
@@ -959,7 +967,7 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
         shadow="xs"
         alignItems="center"
         justifyContent="center"
-        background="white"
+        background="primary"
         radius="md"
         padding="sm"
         height="lg"
@@ -970,7 +978,7 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
         shadow="sm"
         alignItems="center"
         justifyContent="center"
-        background="white"
+        background="primary"
         radius="md"
         padding="sm"
         height="lg"
@@ -981,7 +989,7 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
         shadow="md"
         alignItems="center"
         justifyContent="center"
-        background="white"
+        background="primary"
         radius="md"
         padding="sm"
         height="lg"
@@ -992,7 +1000,7 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
         shadow="lg"
         alignItems="center"
         justifyContent="center"
-        background="white"
+        background="primary"
         radius="md"
         padding="sm"
         height="lg"
@@ -1003,7 +1011,7 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
         shadow="xl"
         alignItems="center"
         justifyContent="center"
-        background="white"
+        background="primary"
         radius="md"
         padding="sm"
         height="lg"
@@ -1014,7 +1022,7 @@ Set the `shadow` prop with a [shadow token](?path=/story/design-tokens-design-to
         shadow="2xl"
         alignItems="center"
         justifyContent="center"
-        background="white"
+        background="primary"
         radius="md"
         padding="sm"
         height="lg"
@@ -1031,7 +1039,7 @@ Width can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="Width">
-    <Box background="primary-lightest" gap="xs">
+    <Box background="primary-50" gap="xs">
       <Box background="primary-300" width="227px">
         227px
       </Box>
@@ -1049,7 +1057,7 @@ Width can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="Width standards">
-    <Box background="primary-lightest" gap="xs" overflow="auto">
+    <Box background="primary-50" gap="xs" overflow="auto">
       <Box background="primary-300" width="sm">
         sm
       </Box>
@@ -1082,7 +1090,7 @@ Set the width to a common percentage of the Box's parent.
 
 <Canvas>
   <Story name="Width Percentage">
-    <Box background="primary-lightest" gap="xs">
+    <Box background="primary-50" gap="xs">
       <Box background="primary-300" width="10">
         10%
       </Box>
@@ -1138,7 +1146,7 @@ Set the maximum width of the Box by setting `maxWidth` to a [width token](?path=
 
 <Canvas>
   <Story name="Max width">
-    <Box background="primary-lightest" gap="xs">
+    <Box background="primary-50" gap="xs">
       <Box background="primary-300" maxWidth="2xl">
         2xl
       </Box>
@@ -1158,7 +1166,7 @@ Set the minimum width of the Box by setting `minWidth` to a [width token](?path=
 
 <Canvas>
   <Story name="Min width">
-    <Box alignItems="flex-start" background="primary-lightest" gap="xs">
+    <Box alignItems="flex-start" background="primary-50" gap="xs">
       <Box background="primary-300" minWidth="2xl">
         2xl
       </Box>
@@ -1178,7 +1186,7 @@ Height can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="Height">
-    <Box background="primary-lightest" gap="xs">
+    <Box background="primary-50" gap="xs">
       <Box
         background="primary-300"
         height="227px"
@@ -1211,7 +1219,7 @@ Height can be set to any CSS unit value (px, rem, em, %).
 
 <Canvas>
   <Story name="Height standards">
-    <Box background="primary-lightest" gap="xs" height="5xl" direction="row">
+    <Box background="primary-50" gap="xs" height="5xl" direction="row">
       <Box
         flex="auto"
         background="primary-300"
@@ -1292,7 +1300,7 @@ Set the height to a common percentage of the Box's parent.
 
 <Canvas>
   <Story name="Height Percentage">
-    <Box height="400px" gap="xs" direction="row" background="primary-lightest">
+    <Box height="400px" gap="xs" direction="row" background="primary-50">
       <Box
         flex="auto"
         justifyContent="center"
@@ -1438,7 +1446,7 @@ Set the maximum width of the Box by setting `maxHeight` to a [height token](?pat
 
 <Canvas>
   <Story name="Max Height">
-    <Box height="300px" background="primary-lightest" direction="row" gap="xs">
+    <Box height="300px" background="primary-50" direction="row" gap="xs">
       <Box
         maxHeight="lg"
         flex="auto"
@@ -1478,7 +1486,7 @@ Set the minimum width of the Box by setting `minHeight` to a [height token](?pat
   <Story name="Min Height">
     <Box
       height="300px"
-      background="primary-lightest"
+      background="primary-50"
       alignItems="flex-start"
       direction="row"
       gap="xs"
@@ -1606,7 +1614,7 @@ responsive object prop with said values. Example with `fixed` position not inclu
       <Box
         position="absolute"
         padding="md"
-        background="secondary-light"
+        background="secondary-300"
         style={{ zIndex: 1 }}
         width="100px"
         height="150px"
@@ -1625,7 +1633,7 @@ responsive object prop with said values. Example with `fixed` position not inclu
       <Box
         position="sticky"
         padding="md"
-        background="tertiary-light"
+        background="tertiary-300"
         height="50px"
         color="white"
         style={{ top: 0, zIndex: 2 }}
@@ -1659,15 +1667,15 @@ Currently our library supports hover states for:
 - `shadow`
 
 <Canvas>
-  <Story name="Hover States" parameters={{ ...RESPONSIVE_STORY }}>
+  <Story name="Hover States">
     <Box gap="md">
       <Box
         padding="md"
-        background="primary"
+        background="primary-500"
         color="white"
         shadow="xs"
         hover={{
-          background: 'primary-dark',
+          background: 'primary-600',
         }}
         cursor="pointer"
       >
@@ -1675,17 +1683,17 @@ Currently our library supports hover states for:
       </Box>
       <Box
         padding="md"
-        background="white"
+        background="primary"
         color="primary"
         radius="md"
         borderWidth="xs"
-        borderColor="primary"
+        borderColor="primary-500"
         fontWeight="bold"
         direction="row"
         justifyContent="center"
         hover={{
-          background: 'primary',
-          color: 'white',
+          background: 'primary-600',
+          color: 'white-500',
         }}
         cursor="pointer"
       >
@@ -1694,10 +1702,10 @@ Currently our library supports hover states for:
       <Box
         padding="md"
         radius="md"
-        background="white"
+        background="primary"
         shadow="sm"
         borderWidth="xs"
-        borderColor="grey-lightest"
+        borderColor="grey-50"
         hover={{
           shadow: 'lg',
         }}
@@ -1707,7 +1715,7 @@ Currently our library supports hover states for:
       </Box>
       <Box
         padding="md"
-        background="white"
+        background="primary"
         hover={{
           fontSize: 'xl',
         }}
@@ -1716,7 +1724,7 @@ Currently our library supports hover states for:
       </Box>
       <Box
         padding="md"
-        background="white"
+        background="primary"
         borderWidth="xs"
         borderColor="transparent"
         hover={{
@@ -1728,8 +1736,8 @@ Currently our library supports hover states for:
       </Box>
       <Box
         padding="md"
-        background="white"
-        borderColor="grey-light"
+        background="primary"
+        borderColor="grey-300"
         borderWidth="xs"
         hover={{
           borderWidth: 'md',
@@ -1755,17 +1763,17 @@ Currently our library supports hover states for:
 - `shadow`
 
 <Canvas>
-  <Story name="Focus States" parameters={{ ...RESPONSIVE_STORY }}>
+  <Story name="Focus States">
     <Box gap="md">
       <Box
         as="input"
         type="text"
         padding="md"
-        background="white"
+        background="primary"
         color="dark"
         shadow="xs"
         borderWidth="xs"
-        borderColor="grey-lighter"
+        borderColor="grey-100"
         radius="md"
         style={{ outline: 'none' }}
         focus={{

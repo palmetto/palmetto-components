@@ -7,10 +7,16 @@
   }
 
   .react-datepicker {
-    color: var(--date-picker-font-color, var(--color-brand-dark-500));
+    color: var(--date-picker-font-color, var(--color-brand-600-500));
     font-size: var(--date-picker-font-size, var(--size-font-sm));
-    background-color: var(--date-picker-background-color, var(--color-brand-white-500));
-    border-radius: var(--date-picker-border-radius, var(--size-border-radius-sm));
+    background-color: var(
+      --date-picker-background-color,
+      var(--color-brand-white-500)
+    );
+    border-radius: var(
+      --date-picker-border-radius,
+      var(--size-border-radius-sm)
+    );
     display: inline-block;
     position: relative;
   }
@@ -82,7 +88,10 @@
     padding: 0;
     border-width: 2px 2px 0 0;
     border-style: solid;
-    border-color: var(--date-picker-navigation-icon-color, var(--color-brand-grey-300));
+    border-color: var(
+      --date-picker-navigation-icon-color,
+      var(--color-brand-grey-300)
+    );
     z-index: 1;
     height: 10px;
     width: 10px;
@@ -107,12 +116,18 @@
     &--previous,
     &--next {
       &:hover {
-        border-color: var(--date-picker-navigation-icon-color-hover, var(--color-brand-grey-500));
+        border-color: var(
+          --date-picker-navigation-icon-color-hover,
+          var(--color-brand-grey-500)
+        );
       }
 
       &--disabled,
       &--disabled:hover {
-        border-color: var(--date-picker-navigation-icon-color-disabled-hover, var(--color-brand-grey-50));
+        border-color: var(
+          --date-picker-navigation-icon-color-disabled-hover,
+          var(--color-brand-grey-50)
+        );
         cursor: default;
       }
     }
@@ -126,19 +141,19 @@
 
       &-previous {
         top: 4px;
-        border-top-color: var(--color-brand-grey-lighter);
+        border-top-color: var(--color-brand-grey-100);
 
         &:hover {
-          border-top-color: var(--color-brand-grey-light);
+          border-top-color: var(--color-brand-grey-300);
         }
       }
 
       &-upcoming {
         top: -4px;
-        border-bottom-color: var(--color-brand-grey-lighter);
+        border-bottom-color: var(--color-brand-grey-100);
 
         &:hover {
-          border-bottom-color: var(--color-brand-grey-lighter);
+          border-bottom-color: var(--color-brand-grey-100);
         }
       }
     }
@@ -177,7 +192,7 @@
 
   .react-datepicker__time-container {
     float: right;
-    border-left: 1px solid var(--color-brand-grey-lighter);
+    border-left: 1px solid var(--color-brand-grey-100);
     width: 85px;
 
     &--with-today-button {
@@ -219,16 +234,22 @@
 
             &:hover {
               cursor: pointer;
-              background-color: var(--color-brand-grey-lightest);
+              background-color: var(--color-brand-grey-50);
             }
 
             &--selected {
-              background-color: var(--date-picker-item-background-color-selected, var(--color-brand-primary-500));
+              background-color: var(
+                --date-picker-item-background-color-selected,
+                var(--color-brand-primary-500)
+              );
               color: var(--color-brand-white-500);
               font-weight: bold;
 
               &:hover {
-                background-color: var(--date-picker-item-background-color-selected-hover, var(--color-brand-primary-600));
+                background-color: var(
+                  --date-picker-item-background-color-selected-hover,
+                  var(--color-brand-primary-600)
+                );
               }
             }
 
@@ -258,7 +279,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: var(--color-brand-grey-lighter);
+        background-color: var(--color-brand-grey-100);
       }
     }
   }
@@ -282,7 +303,7 @@
     margin: 0 var(--size-spacing-2xs);
 
     &--outside-month {
-      color: var(--color-brand-grey-light);
+      color: var(--color-brand-grey-300);
     }
   }
 
@@ -291,16 +312,22 @@
     &--selected,
     &--in-selecting-range,
     &--in-range {
-      background-color: var(--date-picker-item-background-color-selected, var(--color-brand-primary-500));
+      background-color: var(
+        --date-picker-item-background-color-selected,
+        var(--color-brand-primary-500)
+      );
       color: var(--color-brand-white-500);
 
       &:hover {
-        background-color: var(--date-picker-item-background-color-selected-hover, var(--color-brand-primary-600));
+        background-color: var(
+          --date-picker-item-background-color-selected-hover,
+          var(--color-brand-primary-600)
+        );
       }
     }
 
     &--disabled {
-      color: var(--color-brand-grey-lighter);
+      color: var(--color-brand-grey-100);
       pointer-events: none;
 
       &:hover {
@@ -318,26 +345,47 @@
     transition-property: background-color, color, border-radius;
     cursor: pointer;
     margin: var(--size-spacing-2xs);
-    border-radius: var(--date-picker-item-border-radius, var(--size-border-radius-lg));
+    border-radius: var(
+      --date-picker-item-border-radius,
+      var(--size-border-radius-lg)
+    );
 
     &:hover {
-      border-radius: var(--date-picker-item-border-radius, var(--size-border-radius-lg));
-      background-color: var(--date-picker-item-background-color-hover, var(--color-brand-primary-50));
+      border-radius: var(
+        --date-picker-item-border-radius,
+        var(--size-border-radius-lg)
+      );
+      background-color: var(
+        --date-picker-item-background-color-hover,
+        var(--color-brand-primary-50)
+      );
     }
 
     &--today {
       font-weight: bold;
-      border-radius: var(--date-picker-item-border-radius, var(--size-border-radius-lg));
+      border-radius: var(
+        --date-picker-item-border-radius,
+        var(--size-border-radius-lg)
+      );
       background-color: var(--color-brand-grey-100);
     }
 
     &--highlighted {
-      border-radius: var(--date-picker-item-border-radius, var(--size-border-radius-lg));
-      background-color: var(--date-picker-item-background-color-selected, var(--color-brand-primary-500));
+      border-radius: var(
+        --date-picker-item-border-radius,
+        var(--size-border-radius-lg)
+      );
+      background-color: var(
+        --date-picker-item-background-color-selected,
+        var(--color-brand-primary-500)
+      );
       color: var(--color-brand-white-500);
 
       &:hover {
-        background-color: var(--date-picker-item-background-color-selected-hover, var(--color-brand-primary-600));
+        background-color: var(
+          --date-picker-item-background-color-selected-hover,
+          var(--color-brand-primary-600)
+        );
       }
     }
 
@@ -348,32 +396,56 @@
     &--selected,
     &--in-selecting-range,
     &--in-range {
-      border-radius: var(--date-picker-item-border-radius, var(--size-border-radius-lg));
-      background-color: var(--date-picker-item-background-color-selected, var(--color-brand-primary-500));
+      border-radius: var(
+        --date-picker-item-border-radius,
+        var(--size-border-radius-lg)
+      );
+      background-color: var(
+        --date-picker-item-background-color-selected,
+        var(--color-brand-primary-500)
+      );
       color: var(--color-brand-white-500);
 
       &:hover {
-        background-color: var(--date-picker-item-background-color-selected-hover, var(--color-brand-primary-600));
+        background-color: var(
+          --date-picker-item-background-color-selected-hover,
+          var(--color-brand-primary-600)
+        );
       }
     }
 
     &--keyboard-selected {
-      border-radius: var(--date-picker-item-border-radius, var(--size-border-radius-lg));
-      background-color: var(--date-picker-item-background-color-in-range, var(--color-brand-primary-400));
+      border-radius: var(
+        --date-picker-item-border-radius,
+        var(--size-border-radius-lg)
+      );
+      background-color: var(
+        --date-picker-item-background-color-in-range,
+        var(--color-brand-primary-400)
+      );
       color: var(--color-brand-white-500);
 
       &:hover {
-        background-color: var(--date-picker-item-background-color-selected-hover, var(--color-brand-primary-600));
+        background-color: var(
+          --date-picker-item-background-color-selected-hover,
+          var(--color-brand-primary-600)
+        );
       }
     }
 
-    &--in-selecting-range:not([class*="--in-range"]) {
-      background-color: var(--date-picker-item-background-color-in-range, var(--color-brand-primary-400));
+    &--in-selecting-range:not([class*='--in-range']) {
+      background-color: var(
+        --date-picker-item-background-color-in-range,
+        var(--color-brand-primary-400)
+      );
     }
 
     &--disabled {
       cursor: default;
-      color: var(--date-picker-item-font-color-disabled, var(--color-brand-grey-100));
+      color: var(
+        --date-picker-item-font-color-disabled,
+        var(--color-brand-grey-100)
+      );
 
       &:hover {
         background-color: transparent;
@@ -388,7 +460,10 @@
     &.react-datepicker__quarter--selected,
     &.react-datepicker__quarter--in-range {
       &:hover {
-        background-color: var(--date-picker-item-background-color-selected, var(--color-brand-primary-500));
+        background-color: var(
+          --date-picker-item-background-color-selected,
+          var(--color-brand-primary-500)
+        );
       }
     }
   }

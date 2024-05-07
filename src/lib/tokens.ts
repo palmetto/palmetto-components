@@ -4,24 +4,24 @@ import assets from '@palmetto/palmetto-design-tokens/build/json/variables-asset.
 import { ICON_NAMES as iconNames } from '@palmetto/palmetto-design-tokens/build/icons';
 
 import {
+  BackgroundColor,
+  BorderColor,
   BorderRadiusSize,
   BorderSize,
+  BoxShadowSize,
   BrandColor,
   Breakpoint,
   BreakpointSizeWithBase,
-  BoxShadowSize,
-  ColorName,
   FontColor,
-  FontSize,
   FontFamily,
+  FontSize,
   FontWeight,
   HeightSize,
+  IconName,
   LineHeightSize,
   SpacingSize,
   WidthSize,
   ZIndexSize,
-  IconName,
-  BackgroundColor,
 } from '../types';
 
 const { size } = sizes;
@@ -44,18 +44,18 @@ export const BREAKPOINTS = [...Object.entries(size.breakpoint), ['base', 0]]
     minWidth: parseInt(value as string, 10),
   })) as Breakpoint[];
 
-export const BRAND_COLOR_OPTIONS = (Object.keys(color.brand) as ColorName[])
+export const BRAND_COLOR_OPTIONS = (Object.keys(color.brand))
   .map(colorName => (
     Object.keys(color.brand[colorName])
       .map(colorGrade => (colorGrade === 'base' ? colorName : `${colorName}-${colorGrade}`))
   )).flat() as BrandColor[];
 
-export const BRAND_COLOR_NAMES = Object.keys(color.brand) as ColorName[];
+export const BRAND_COLOR_NAMES = Object.keys(color.brand);
 export const BRAND_COLOR_VALUES = Object.values(color.brand);
-export const BASE_BRAND_COLORS = Object.entries({ ...color.brand })
-  .reduce((acc, [key, value]) => ({ ...acc, [key]: value?.base }), {}) as { [c in ColorName]: string };
 
 export const BACKGROUND_COLOR_OPTIONS = [...(Object.keys(color.background)), ...BRAND_COLOR_OPTIONS] as BackgroundColor[];
+
+export const BORDER_COLOR_OPTIONS = [...(Object.keys(color.border)), ...BRAND_COLOR_OPTIONS] as BorderColor[];
 
 export const FONT_COLOR_OPTIONS = [...(Object.keys(color.text)), ...BRAND_COLOR_OPTIONS] as FontColor[];
 export const FONT_COLOR_VALUES = color.brand;

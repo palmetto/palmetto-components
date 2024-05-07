@@ -53,7 +53,7 @@ export const Demo: Story = () => {
         as="nav"
         fontSize="sm"
         className="main-nav"
-        background="white"
+        background="primary"
         padding={{
           base: '3xl 0 0 0',
           desktop: '0',
@@ -96,14 +96,14 @@ export const Demo: Story = () => {
             gap="sm"
             padding="lg 0 0 0"
             borderWidth="xs 0 0 0"
-            borderColor="grey-lighter"
+            borderColor="grey-100"
             style={{ flexShrink: 0 }}
           >
-            <Heading size="sm" as="h4" variant="grey">
+            <Heading size="sm" as="h4" variant="body-primary">
               Favorites
             </Heading>
             <Box gap="xs">
-              <Box fontSize="xs" color="grey">
+              <Box fontSize="xs" color="body-primary">
                 Favorite contacts or reports by clicking the star
               </Box>
             </Box>
@@ -112,7 +112,7 @@ export const Demo: Story = () => {
             gap="sm"
             padding="lg 0 0 0"
             borderWidth="xs 0 0 0"
-            borderColor="grey-lighter"
+            borderColor="grey-100"
             style={{ flex: '1 0 auto' }}
           >
             <Box as="ul" gap="sm">
@@ -227,7 +227,7 @@ export const Placement: Story = () => {
             placement={position}
             contentContainerProps={{
               padding: 'sm',
-              background: 'secondary',
+              background: 'info-500',
               color: 'white',
             }}
           >
@@ -269,7 +269,7 @@ export const HideArrow: Story = () => {
         placement="right-start"
         contentContainerProps={{
           padding: 'md',
-          background: 'grey-lightest',
+          background: 'grey-50',
         }}
         withPortal
         portalTarget={document.body}
@@ -305,7 +305,7 @@ export const Offset: Story = () => {
           placement="right-start"
           contentContainerProps={{
             padding: 'md',
-            background: 'grey-lightest',
+            background: 'grey-50',
           }}
           withPortal
           portalTarget={document.body}

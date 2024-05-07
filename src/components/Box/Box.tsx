@@ -13,10 +13,10 @@ import classNames from 'classnames';
 import {
   BackgroundColor,
   BaseSpacing,
+  BorderColor,
   BorderRadiusSize,
   BorderSize,
   BoxShadowSize,
-  BrandColor,
   BreakpointSizeWithBase,
   CssAlignContentValue,
   CssAlignItemsValue,
@@ -67,14 +67,13 @@ export interface BoxProps {
    */
   alignSelf?: CssAlignItemsValue | ResponsiveProp<CssAlignItemsValue>;
   /**
-   * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
+   * Any valid background color, or a `url()` for an image
    */
   background?: BackgroundColor;
   /**
-   * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color) for the border color
-   * Or a responsive prop with BrandColor for each breakpoint.
+   * Any valid border color
    */
-  borderColor?: BrandColor;
+  borderColor?: BorderColor;
   /**
    * Width of the Box's border
    * Can be a single [border width token](/?path=/story/design-tokens-design-tokens--page#border-width).

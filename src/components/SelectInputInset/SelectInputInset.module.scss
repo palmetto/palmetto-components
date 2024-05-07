@@ -164,7 +164,7 @@
 }
 
 // https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
-%disabled-base {
+%disabled-500 {
   background-color: var(
     --form-control-background-color-disabled,
     var(--INTERNAL_form-control-background-color-disabled)
@@ -314,7 +314,7 @@
     }
 
     &:disabled {
-      @extend %disabled-base;
+      @extend %disabled-500;
 
       background-color: transparent;
 
@@ -383,7 +383,7 @@
   }
 
   &.disabled {
-    @extend %disabled-base;
+    @extend %disabled-500;
   }
 
   // Reset default button styles

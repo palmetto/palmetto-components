@@ -1,6 +1,6 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
-%disabled-base {
+%disabled-500 {
   background-color: var(
     --form-control-background-color-disabled,
     var(--INTERNAL_form-control-background-color-disabled)
@@ -216,7 +216,7 @@
   }
 
   &.disabled {
-    @extend %disabled-base;
+    @extend %disabled-500;
   }
 
   > select {
@@ -242,7 +242,7 @@
     }
 
     &:disabled {
-      @extend %disabled-base;
+      @extend %disabled-500;
 
       background-color: transparent;
     }

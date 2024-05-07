@@ -57,7 +57,11 @@ NOTE: all properties in a column object are optional, but we highly recommend in
           type: 'string | number | undefined',
           description: 'placeholder for empty cells',
         },
-        { name: 'heading', type: 'string', description: 'The heading text to be displayed' },
+        {
+          name: 'heading',
+          type: 'string',
+          description: 'The heading text to be displayed',
+        },
         {
           name: 'headerClassName',
           type: 'string',
@@ -78,7 +82,8 @@ NOTE: all properties in a column object are optional, but we highly recommend in
         {
           name: 'render',
           type: 'function: (cell, row, rowIndex) => ReactNode',
-          description: 'Render any custom content based on the cell and row content',
+          description:
+            'Render any custom content based on the cell and row content',
         },
         {
           name: 'sticky',
@@ -92,7 +97,11 @@ NOTE: all properties in a column object are optional, but we highly recommend in
           description:
             'Whether the column content will get truncated (with ellipsis) if it surpasses the fixed-width',
         },
-        { name: 'width', type: 'number', description: 'Specify the width of a particular column.' },
+        {
+          name: 'width',
+          type: 'number',
+          description: 'Specify the width of a particular column.',
+        },
       ];
       const columnConfig = [
         { heading: 'Name', dataKey: 'name' },
@@ -103,7 +112,13 @@ NOTE: all properties in a column object are optional, but we highly recommend in
         },
         { heading: 'Description', dataKey: 'description' },
       ];
-      return <Table rowKey="name" columns={columnConfig} rows={columnInterfaceRows} />;
+      return (
+        <Table
+          rowKey="name"
+          columns={columnConfig}
+          rows={columnInterfaceRows}
+        />
+      );
     }}
   </Story>
 </Canvas>
@@ -176,7 +191,9 @@ table data is being fetched or refreshed.
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
-      return <Table rowKey="id" columns={columnConfig} rows={tableData} isLoading />;
+      return (
+        <Table rowKey="id" columns={columnConfig} rows={tableData} isLoading />
+      );
     }}
   </Story>
 </Canvas>
@@ -579,7 +596,12 @@ To stick the last, or any, column to the right of the table when it scrolls hori
         { heading: 'ID', dataKey: 'id' },
         { heading: 'Color', dataKey: 'color', width: 300 },
         { heading: 'Flavor', dataKey: 'flavor', width: 100 },
-        { heading: 'Brightness', dataKey: 'brightness', width: 150, sticky: 'right' },
+        {
+          heading: 'Brightness',
+          dataKey: 'brightness',
+          width: 150,
+          sticky: 'right',
+        },
       ];
       const tableData = [
         { id: 1, color: 'red', flavor: 'vanilla', brightness: 'light' },
@@ -732,7 +754,14 @@ The default layout algorithm for a HTML table is `auto`. Use the `useFixedTableL
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
-      return <Table rowKey="id" columns={columnConfig} rows={tableData} useFixedTableLayout />;
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          useFixedTableLayout
+        />
+      );
     }}
   </Story>
 </Canvas>
@@ -757,7 +786,14 @@ value will supersede the global setting.
         { id: 2, color: 'blue longy long long long', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
-      return <Table rowKey="id" columns={columnConfig} rows={tableData} truncateOverflow />;
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          truncateOverflow
+        />
+      );
     }}
   </Story>
 </Canvas>
@@ -783,7 +819,11 @@ See `Based on cell/row` example below.
       const renderFlavor = (cell, row, index) => {
         const rows = [{ href: cell.href, name: cell.name, id: row.id, index }];
         const columns = [
-          { heading: 'Url', dataKey: 'href', render: cell => <a href={cell}>{cell}</a> },
+          {
+            heading: 'Url',
+            dataKey: 'href',
+            render: cell => <a href={cell}>{cell}</a>,
+          },
           { heading: 'Name', dataKey: 'name' },
           { heading: 'ID', dataKey: 'id' },
           { heading: 'Index', dataKey: 'index' },
@@ -793,13 +833,32 @@ See `Based on cell/row` example below.
       const columnConfig = [
         { heading: 'ID', dataKey: 'id' },
         { heading: 'Color', dataKey: 'color' },
-        { heading: 'Based on the cell/row', dataKey: 'flavor', render: renderFlavor },
-        { heading: 'Any custom JSX', render: () => <Button tone="neutral">Do anything</Button> },
+        {
+          heading: 'Based on the cell/row',
+          dataKey: 'flavor',
+          render: renderFlavor,
+        },
+        {
+          heading: 'Any custom JSX',
+          render: () => <Button tone="neutral">Do anything</Button>,
+        },
       ];
       const tableData = [
-        { id: 1, color: 'red', flavor: { name: 'vanilla', href: 'www.vanilla.com' } },
-        { id: 2, color: 'blue', flavor: { name: 'chocolate', href: 'www.chocolate.com' } },
-        { id: 3, color: 'green', flavor: { name: 'strawberry', href: 'www.strawberry.com' } },
+        {
+          id: 1,
+          color: 'red',
+          flavor: { name: 'vanilla', href: 'www.vanilla.com' },
+        },
+        {
+          id: 2,
+          color: 'blue',
+          flavor: { name: 'chocolate', href: 'www.chocolate.com' },
+        },
+        {
+          id: 3,
+          color: 'green',
+          flavor: { name: 'strawberry', href: 'www.strawberry.com' },
+        },
       ];
       return <Table rowKey="id" columns={columnConfig} rows={tableData} />;
     }}
@@ -855,7 +914,14 @@ Render a borderless table by passing `isBorderless` (boolean) prop to the table.
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
-      return <Table rowKey="id" columns={columnConfig} rows={tableData} isBorderless />;
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          isBorderless
+        />
+      );
     }}
   </Story>
 </Canvas>
@@ -877,7 +943,9 @@ Render a compact table by passing `isCompact` (boolean) prop to the table.
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
-      return <Table rowKey="id" columns={columnConfig} rows={tableData} isCompact />;
+      return (
+        <Table rowKey="id" columns={columnConfig} rows={tableData} isCompact />
+      );
     }}
   </Story>
 </Canvas>
@@ -903,7 +971,9 @@ Render a striped table to slightly improve readibility by passing `isStriped` (b
         { id: 6, color: 'green', flavor: 'strawberry' },
         { id: 7, color: 'green', flavor: 'strawberry' },
       ];
-      return <Table rowKey="id" columns={columnConfig} rows={tableData} isStriped />;
+      return (
+        <Table rowKey="id" columns={columnConfig} rows={tableData} isStriped />
+      );
     }}
   </Story>
 </Canvas>
@@ -925,7 +995,14 @@ Make rows 'hoverable' by passing `hoverableRows` (boolean) prop to the table.
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
-      return <Table rowKey="id" columns={columnConfig} rows={tableData} hoverableRows />;
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          hoverableRows
+        />
+      );
     }}
   </Story>
 </Canvas>
@@ -947,7 +1024,15 @@ You can combine any of these boolean props based on your UI needs.
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
-      return <Table rowKey="id" columns={columnConfig} rows={tableData} hoverableRows isStriped />;
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          hoverableRows
+          isStriped
+        />
+      );
     }}
   </Story>
 </Canvas>
@@ -983,7 +1068,11 @@ The below is an example of setting the `align` prop globally in the `<Table />` 
   <Story name="Global Align">
     {() => {
       const columnConfig = [
-        { heading: 'Center Aligned via Column Config', dataKey: 'id', align: 'center' },
+        {
+          heading: 'Center Aligned via Column Config',
+          dataKey: 'id',
+          align: 'center',
+        },
         { heading: 'Globally aligned right', dataKey: 'color' },
         { heading: 'Also globally aligned right', dataKey: 'flavor' },
       ];
@@ -992,7 +1081,14 @@ The below is an example of setting the `align` prop globally in the `<Table />` 
         { id: 2, color: 'blue', flavor: 'chocolate' },
         { id: 3, color: 'green', flavor: 'strawberry' },
       ];
-      return <Table rowKey="id" columns={columnConfig} rows={tableData} align="right" />;
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          align="right"
+        />
+      );
     }}
   </Story>
 </Canvas>
@@ -1010,21 +1106,26 @@ You can use a ReactNode as your table header or cell.
         { heading: <Badge message="Status" />, dataKey: 'status' },
       ];
       const tableData = [
-        { id: 1, color: 'red', status: <Badge message="danger" variant="danger" /> },
-        { id: 2, color: 'blue', status: <Badge message="info" variant="info" /> },
-        { id: 3, color: 'green', status: <Badge message="success" variant="success" /> },
+        {
+          id: 1,
+          color: 'red',
+          status: <Badge message="danger" variant="danger" />,
+        },
+        {
+          id: 2,
+          color: 'blue',
+          status: <Badge message="info" variant="info" />,
+        },
+        {
+          id: 3,
+          color: 'green',
+          status: <Badge message="success" variant="success" />,
+        },
       ];
-      return (
-        <Table
-          rowKey="id"
-          columns={columnConfig}
-          rows={tableData}
-        />
-      );
+      return <Table rowKey="id" columns={columnConfig} rows={tableData} />;
     }}
   </Story>
 </Canvas>
-
 
 ## Themed Table
 
@@ -1070,18 +1171,25 @@ You can use a ReactNode as your table header or cell.
         },
       ];
       return (
-        <div style={{
-          '--table-border-color': 'var(--color-brand-grey-700)',
-          '--table-border-width': 'var(--size-border-md)',
-          '--table-background-color': 'var(--color-brand-grey-900)',
-          '--table-header-background-color': 'var(--color-brand-grey-900)',
-          '--table-font-color': 'var(--color-brand-grey-100)',
-          '--table-header-font-color': 'var(--color-brand-grey-100)',
-          '--table-header-font-size': 'var(--size-font-lg)',
-          '--table-font-size': 'var(--size-font-md)',
-          '--table-row-striped-background': 'var(--color-brand-grey-800)',
-        }}>
-          <Table rowKey="id" columns={columnConfig} rows={tableData} isStriped />
+        <div
+          style={{
+            '--table-border-color': 'var(--color-brand-grey-700)',
+            '--table-border-width': 'var(--size-border-md)',
+            '--table-background-color': 'var(--color-brand-grey-900)',
+            '--table-header-background-color': 'var(--color-brand-grey-900)',
+            '--table-font-color': 'var(--color-brand-grey-100)',
+            '--table-header-font-color': 'var(--color-brand-grey-100)',
+            '--table-header-font-size': 'var(--size-font-lg)',
+            '--table-font-size': 'var(--size-font-md)',
+            '--table-row-striped-background': 'var(--color-brand-grey-800)',
+          }}
+        >
+          <Table
+            rowKey="id"
+            columns={columnConfig}
+            rows={tableData}
+            isStriped
+          />
         </div>
       );
     }}
@@ -1099,8 +1207,7 @@ Add custom classes to cells in a column by passing the `cellClassName` in the co
         {
           heading: 'with cellClassName',
           dataKey: 'id',
-          cellClassName:
-            'background-color-secondary-lightest',
+          cellClassName: 'background-color-secondary-50',
         },
         {
           heading: 'With headerClassName',
@@ -1117,7 +1224,6 @@ Add custom classes to cells in a column by passing the `cellClassName` in the co
     }}
   </Story>
 </Canvas>
-
 
 ## Component Design Tokens
 

@@ -130,7 +130,7 @@ export const RadioInput = React.forwardRef<HTMLDivElement, RadioInputProps>((
               isDisabled={isDisabled}
               margin={isHidden ? '0' : '0 xs 0 2xs'}
               className={responsiveClasses}
-              background={isDisabled && !isSelected ? 'grey-50' : 'white'}
+              background={isDisabled && !isSelected ? 'grey-50' : 'white-500'}
               radius="circle"
             />
           )}

@@ -1,12 +1,24 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 @mixin size-sm {
-  border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
-  font-size: var(--form-control-size-sm-font-size, var(--INTERNAL_form-control-size-sm-font-size));
+  border-radius: var(
+    --form-control-size-sm-border-radius,
+    var(--INTERNAL_form-control-size-sm-border-radius)
+  );
+  font-size: var(
+    --form-control-size-sm-font-size,
+    var(--INTERNAL_form-control-size-sm-font-size)
+  );
 
   > textarea {
-    padding: var(--form-control-size-sm-padding, var(--INTERNAL_form-control-size-sm-padding));
-    border-radius: var(--form-control-size-sm-border-radius, var(--INTERNAL_form-control-size-sm-border-radius));
+    padding: var(
+      --form-control-size-sm-padding,
+      var(--INTERNAL_form-control-size-sm-padding)
+    );
+    border-radius: var(
+      --form-control-size-sm-border-radius,
+      var(--INTERNAL_form-control-size-sm-border-radius)
+    );
   }
 }
 
@@ -19,12 +31,24 @@
 }
 
 @mixin size-md {
-  border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
-  font-size: var(--form-control-size-md-font-size, var(--INTERNAL_form-control-size-md-font-size));
+  border-radius: var(
+    --form-control-size-md-border-radius,
+    var(--INTERNAL_form-control-size-md-border-radius)
+  );
+  font-size: var(
+    --form-control-size-md-font-size,
+    var(--INTERNAL_form-control-size-md-font-size)
+  );
 
   > textarea {
-    padding: var(--form-control-size-md-padding, var(--INTERNAL_form-control-size-md-padding));
-    border-radius: var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius));
+    padding: var(
+      --form-control-size-md-padding,
+      var(--INTERNAL_form-control-size-md-padding)
+    );
+    border-radius: var(
+      --form-control-size-md-border-radius,
+      var(--INTERNAL_form-control-size-md-border-radius)
+    );
   }
 }
 
@@ -37,12 +61,24 @@
 }
 
 @mixin size-lg {
-  border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
-  font-size: var(--form-control-size-lg-font-size, var(--INTERNAL_form-control-size-lg-font-size));
+  border-radius: var(
+    --form-control-size-lg-border-radius,
+    var(--INTERNAL_form-control-size-lg-border-radius)
+  );
+  font-size: var(
+    --form-control-size-lg-font-size,
+    var(--INTERNAL_form-control-size-lg-font-size)
+  );
 
   > textarea {
-    padding: var(--form-control-size-lg-padding, var(--INTERNAL_form-control-size-lg-padding));
-    border-radius: var(--form-control-size-lg-border-radius, var(--INTERNAL_form-control-size-lg-border-radius));
+    padding: var(
+      --form-control-size-lg-padding,
+      var(--INTERNAL_form-control-size-lg-padding)
+    );
+    border-radius: var(
+      --form-control-size-lg-border-radius,
+      var(--INTERNAL_form-control-size-lg-border-radius)
+    );
   }
 }
 
@@ -54,9 +90,15 @@
   @extend %size-lg;
 }
 
-%disabled-base {
-  background-color: var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled));
-  color: var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled));
+%disabled-500 {
+  background-color: var(
+    --form-control-background-color-disabled,
+    var(--INTERNAL_form-control-background-color-disabled)
+  );
+  color: var(
+    --form-control-font-color-disabled,
+    var(--INTERNAL_form-control-font-color-disabled)
+  );
 
   &:hover {
     cursor: not-allowed;
@@ -64,31 +106,53 @@
 }
 
 .textarea-input-wrapper {
-  font-family: var(--form-control-font-family, var(--INTERNAL_form-control-font-family));
+  font-family: var(
+    --form-control-font-family,
+    var(--INTERNAL_form-control-font-family)
+  );
 
   > textarea {
     transition-duration: 300ms;
     transition-property: border, background-color;
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
-    border: 1px solid var(--form-control-border-color, var(--INTERNAL_form-control-border-color));
+    border: 1px solid
+      var(
+        --form-control-border-color,
+        var(--INTERNAL_form-control-border-color)
+      );
     box-shadow: 0 3px 0 rgb(0 0 0 / 5%);
-    background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
+    background-color: var(
+      --form-control-background-color,
+      var(--INTERNAL_form-control-background-color)
+    );
     width: 100%;
-    line-height: var(--form-control-line-height, var(--INTERNAL_form-control-line-height));
-    color: var(--form-control-font-color, var(--INTERNAL_form-control-font-color));
+    line-height: var(
+      --form-control-line-height,
+      var(--INTERNAL_form-control-line-height)
+    );
+    color: var(
+      --form-control-font-color,
+      var(--INTERNAL_form-control-font-color)
+    );
 
     &::placeholder {
       opacity: 1;
-      color: var(--form-control-placeholder-color, var(--INTERNAL_form-control-placeholder-color));
+      color: var(
+        --form-control-placeholder-color,
+        var(--INTERNAL_form-control-placeholder-color)
+      );
     }
 
     &:focus {
       outline: none;
-      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+      border-color: var(
+        --form-control-border-color-focus,
+        var(--INTERNAL_form-control-border-color-focus)
+      );
     }
 
     &:disabled {
-      @extend %disabled-base;
+      @extend %disabled-500;
     }
   }
 
@@ -148,8 +212,14 @@
 
   &.error {
     > textarea {
-      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-error));
-      background-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-background-color-error));
+      border-color: var(
+        --form-control-border-color-focus,
+        var(--INTERNAL_form-control-border-color-error)
+      );
+      background-color: var(
+        --form-control-border-color-focus,
+        var(--INTERNAL_form-control-background-color-error)
+      );
     }
 
     textarea:focus {
@@ -158,20 +228,36 @@
     }
 
     &:focus-within {
-      background-color: var(--form-control-background-color, var(--INTERNAL_form-control-background-color));
-      border-color: var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+      background-color: var(
+        --form-control-background-color,
+        var(--INTERNAL_form-control-background-color)
+      );
+      border-color: var(
+        --form-control-border-color-focus,
+        var(--INTERNAL_form-control-border-color-focus)
+      );
     }
   }
 
   &:focus-within {
     outline: none;
-    box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus)),
-      inset 0 0 0 1px var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+    box-shadow: var(
+        --form-control-box-shadow-focus,
+        var(--INTERNAL_form-control-box-shadow-focus)
+      ),
+      inset 0 0 0 1px
+        var(
+          --form-control-border-color-focus,
+          var(--INTERNAL_form-control-border-color-focus)
+        );
   }
 }
 
 .textarea-input-label {
-  margin-bottom: var(--form-control-label-margin, var(--INTERNAL_form-control-label-margin));
+  margin-bottom: var(
+    --form-control-label-margin,
+    var(--INTERNAL_form-control-label-margin)
+  );
 }
 
 .textarea-resize-both {

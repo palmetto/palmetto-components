@@ -17,7 +17,7 @@ This however can lead to markup that can be hard to read in some cases. Consider
     shadow="sm"
     radius="sm"
     borderWidth="xs"
-    borderColor="grey-lighter"
+    borderColor="grey-100"
     hover={{
       shadow: 'md',
     }}
@@ -26,10 +26,10 @@ This however can lead to markup that can be hard to read in some cases. Consider
   >
     <Box
       justifyContent="center"
-      background="info-lightest"
+      background="info-50"
       padding="md"
       hover={{
-        background: 'info-lighter',
+        background: 'info-100',
         shadow: 'md',
       }}
       radius="sm"
@@ -40,10 +40,10 @@ This however can lead to markup that can be hard to read in some cases. Consider
     </Box>
     <Box
       justifyContent="center"
-      background="info-lightest"
+      background="info-50"
       padding="md"
       hover={{
-        background: 'info-lighter',
+        background: 'info-100',
         shadow: 'md',
       }}
       radius="sm"
@@ -54,10 +54,10 @@ This however can lead to markup that can be hard to read in some cases. Consider
     </Box>
     <Box
       justifyContent="center"
-      background="info-lightest"
+      background="info-50"
       padding="md"
       hover={{
-        background: 'info-lighter',
+        background: 'info-100',
         shadow: 'md',
       }}
       radius="sm"
@@ -68,10 +68,10 @@ This however can lead to markup that can be hard to read in some cases. Consider
     </Box>
     <Box
       justifyContent="center"
-      background="info-lightest"
+      background="info-50"
       padding="md"
       hover={{
-        background: 'info-lighter',
+        background: 'info-100',
         shadow: 'md',
       }}
       radius="sm"
@@ -95,7 +95,7 @@ export const App = () => (
     shadow="sm"
     radius="sm"
     borderWidth="xs"
-    borderColor="grey-lighter"
+    borderColor="grey-100"
     hover={{
       shadow: 'md',
     }}
@@ -104,10 +104,10 @@ export const App = () => (
   >
     <Box
       justifyContent="center"
-      background="info-lightest"
+      background="info-50"
       padding="md"
       hover={{
-        background: 'info-lighter',
+        background: 'info-100',
         shadow: 'md',
       }}
       radius="sm"
@@ -118,10 +118,10 @@ export const App = () => (
     </Box>
     <Box
       justifyContent="center"
-      background="info-lightest"
+      background="info-50"
       padding="md"
       hover={{
-        background: 'info-lighter',
+        background: 'info-100',
         shadow: 'md',
       }}
       radius="sm"
@@ -132,10 +132,10 @@ export const App = () => (
     </Box>
     <Box
       justifyContent="center"
-      background="info-lightest"
+      background="info-50"
       padding="md"
       hover={{
-        background: 'info-lighter',
+        background: 'info-100',
         shadow: 'md',
       }}
       radius="sm"
@@ -146,10 +146,10 @@ export const App = () => (
     </Box>
     <Box
       justifyContent="center"
-      background="info-lightest"
+      background="info-50"
       padding="md"
       hover={{
-        background: 'info-lighter',
+        background: 'info-100',
         shadow: 'md',
       }}
       radius="sm"
@@ -162,7 +162,8 @@ export const App = () => (
 );
 ```
 
-## Improving This Code 
+## Improving This Code
+
 The first step toward improving this code is obviously to try and remove duplicate elements so it's easier to parse. We can accomplish it like this:
 
 ```jsx
@@ -178,7 +179,7 @@ export const App = () => {
       shadow="sm"
       radius="sm"
       borderWidth="xs"
-      borderColor="grey-lighter"
+      borderColor="grey-100"
       hover={{
         shadow: 'md',
       }}
@@ -189,10 +190,10 @@ export const App = () => {
         <Box
           key={column}
           justifyContent="center"
-          background="info-lightest"
+          background="info-50"
           padding="md"
           hover={{
-            background: 'info-lighter',
+            background: 'info-100',
             shadow: 'md',
           }}
           radius="sm"
@@ -216,7 +217,7 @@ away these containers into their own components.
 // MainContainer.jsx
 import { Box } from '@palmetto/palmetto-components';
 
-export const MainContainer = (props) => {
+export const MainContainer = props => {
   const {
     children,
     gap = 'md',
@@ -224,13 +225,13 @@ export const MainContainer = (props) => {
     shadow = 'sm',
     radius = 'sm',
     border = 'xs',
-    borderColor = 'grey-lighter',
+    borderColor = 'grey-100',
     hover = {
       shadow: 'md',
     },
     padding = 'md',
     justifyContent = 'space-evenly',
-    ...restProps,
+    ...restProps
   } = props;
 
   return (
@@ -254,20 +255,20 @@ export const MainContainer = (props) => {
 // Column.jsx
 import { Box } from '@palmetto/palmetto-components';
 
-export const Column = (props) => {
+export const Column = props => {
   const {
     children,
     justifyContent = 'center',
-    background = 'info-lightest',
+    background = 'info-50',
     padding = 'md',
     hover = {
-      background: 'info-lighter',
+      background: 'info-100',
       shadow: 'md',
     },
     radius = 'sm',
     flex = 'auto',
     alignItems = 'center',
-    ...restProps,
+    ...restProps
   } = props;
 
   return (
@@ -294,15 +295,13 @@ export const App = () => {
   const columns = ['Column 1', 'Column 2', 'Column 3', 'Column 4'];
   <MainContainer>
     {columns.map(column => (
-      <Column key={column}>
-        {column}
-      </Column>
+      <Column key={column}>{column}</Column>
     ))}
-  </MainContainer>
-}
+  </MainContainer>;
+};
 ```
 
-This is our cleanest example yet, but the process of creating these components is still not ideal as they require re-writing each custom Box and then ensuring 
+This is our cleanest example yet, but the process of creating these components is still not ideal as they require re-writing each custom Box and then ensuring
 they always get the exact correct props, as well as ensuring proper spreading of other props.
 
 ## Enter the `createComponent` utility
@@ -319,7 +318,7 @@ const MainContainer = createComponent(Box)({
   shadow: 'sm',
   radius: 'sm',
   borderWidth: 'xs',
-  borderColor: 'grey-lighter',
+  borderColor: 'grey-100',
   hover: {
     shadow: 'md',
   },
@@ -329,10 +328,10 @@ const MainContainer = createComponent(Box)({
 
 const Column = createComponent(Box)({
   justifyContent: 'center',
-  background: 'info-lightest',
+  background: 'info-50',
   padding: 'md',
   hover: {{
-    background: 'info-lighter',
+    background: 'info-100',
     shadow: 'md',
   }}
   radius: 'sm',
@@ -355,47 +354,45 @@ export const App = () => {
 And here we have the same result as the original but with a much lighter markup footprint. The components in this example `MainContainer` and `Column` can also
 take any of the original `Box` props and overwrite its default style. This allows for even more complex customization such as creating custom components from other
 custom components. Read on for an example.
- 
+
 <Canvas>
   <Story name="Basic Custom Components">
-  {() => {
-    const MainContainer = createComponent(Box)({
-      gap: 'md',
-      direction: 'row',
-      shadow: 'sm',
-      radius: 'sm',
-      borderWidth: 'xs',
-      borderColor: 'grey-lighter',
-      hover: {
-        shadow: 'md',
-      },
-      padding: 'md',
-      justifyContent: 'space-evenly',
-    });
-    const Column = createComponent(Box)({
-      justifyContent: 'center',
-      background: 'info-lightest',
-      padding: 'md',
-      hover: {
-        background: 'info-lighter',
-        shadow: 'md',
-      },
-      radius: 'sm',
-      flex: 'auto',
-      alignItems: 'center',
-      cursor: 'pointer',
-    });
-    const columns = ['Column 1', 'Column 2', 'Column 3', 'Column 4'];
-    return (
-      <MainContainer>
-        {columns.map(column => (
-          <Column key={column}>
-            {column}
-          </Column>
-        ))}
-      </MainContainer>
-    );
-  }}
+    {() => {
+      const MainContainer = createComponent(Box)({
+        gap: 'md',
+        direction: 'row',
+        shadow: 'sm',
+        radius: 'sm',
+        borderWidth: 'xs',
+        borderColor: 'grey-100',
+        hover: {
+          shadow: 'md',
+        },
+        padding: 'md',
+        justifyContent: 'space-evenly',
+      });
+      const Column = createComponent(Box)({
+        justifyContent: 'center',
+        background: 'info-50',
+        padding: 'md',
+        hover: {
+          background: 'info-100',
+          shadow: 'md',
+        },
+        radius: 'sm',
+        flex: 'auto',
+        alignItems: 'center',
+        cursor: 'pointer',
+      });
+      const columns = ['Column 1', 'Column 2', 'Column 3', 'Column 4'];
+      return (
+        <MainContainer>
+          {columns.map(column => (
+            <Column key={column}>{column}</Column>
+          ))}
+        </MainContainer>
+      );
+    }}
   </Story>
 </Canvas>
 
@@ -419,27 +416,19 @@ The below shows how we can create simple variations on a component with this uti
         hover: { shadow: 'md' },
       });
       const BlueColumn = createComponent(BaseColumn)({
-        background: 'info-lightest',
-        color: 'info-dark',
+        background: 'info-50',
+        color: 'info-600',
       });
       const RedColumn = createComponent(BaseColumn)({
-        background: 'danger-lightest',
-        color: 'danger-dark',
+        background: 'danger-50',
+        color: 'danger-600',
       });
       return (
         <Container>
-          <BlueColumn>
-            blue
-          </BlueColumn>
-          <RedColumn>
-            red
-          </RedColumn>
-          <BlueColumn>
-            blue
-          </BlueColumn>
-          <RedColumn>
-            red
-          </RedColumn>
+          <BlueColumn>blue</BlueColumn>
+          <RedColumn>red</RedColumn>
+          <BlueColumn>blue</BlueColumn>
+          <RedColumn>red</RedColumn>
         </Container>
       );
     }}

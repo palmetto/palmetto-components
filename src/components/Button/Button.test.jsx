@@ -284,7 +284,7 @@ describe('Button', () => {
         );
         const spinnerElement = document.getElementsByClassName('spinner')[0];
         expect(spinnerElement).toBeInTheDocument();
-        expect(spinnerElement).toHaveClass('font-color-dark');
+        expect(spinnerElement).toHaveClass('font-color-body-primary');
       });
 
       test('it renders the primary spinning loading indicator with prefix icon', () => {
@@ -306,10 +306,10 @@ describe('Button', () => {
         );
         const spinnerElement = document.getElementsByClassName('spinner')[0];
         expect(spinnerElement).toBeInTheDocument();
-        expect(spinnerElement).toHaveClass('font-color-dark');
+        expect(spinnerElement).toHaveClass('font-color-body-primary');
       });
 
-      test('it renders the grey spinning indicator if button variant is secondary with neutral tone', () => {
+      test('it renders the body-primary color indicator if button variant is secondary with neutral tone', () => {
         render(
           <Button isLoading variant="secondary" tone="neutral">
             Button is loading
@@ -317,10 +317,10 @@ describe('Button', () => {
         );
         const spinnerElement = document.getElementsByClassName('spinner')[0];
         expect(spinnerElement).toBeInTheDocument();
-        expect(spinnerElement).toHaveClass('font-color-dark');
+        expect(spinnerElement).toHaveClass('font-color-body-primary');
       });
 
-      test('it renders the grey spinning indicator if button variant is tertiary with neutral tone', () => {
+      test('it renders the body-primary color indicator if button variant is tertiary with neutral tone', () => {
         render(
           <Button isLoading variant="tertiary" tone="neutral">
             Button is loading
@@ -328,7 +328,7 @@ describe('Button', () => {
         );
         const spinnerElement = document.getElementsByClassName('spinner')[0];
         expect(spinnerElement).toBeInTheDocument();
-        expect(spinnerElement).toHaveClass('font-color-dark');
+        expect(spinnerElement).toHaveClass('font-color-body-primary');
       });
 
       test('it keeps the button text in the dom so the button width does not change', () => {

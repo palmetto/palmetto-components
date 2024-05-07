@@ -25,10 +25,10 @@ The example below wraps the entire `App` with the provider but use your own judg
 Once your app is wrapped in the provider, you will have access to the shared context `ThemeContext`, which provides three key elements:
 
 1. `theme` -- the current theme -- `'light' | 'dark'`
-2. `systemPreference` -- whether the user prefers a light or dark them in their system preferences -- `light | dark`. Note that this is separate from the 
-current theme so that you can manage either use the system preference as the basis for your app theme, or perhaps only use it as a default with the ability to
-override it as needed. The provider attaches a listener to the prefers-color-scheme: dark media query, so the value will update automatically if a user changes their
-system preference.
+2. `systemPreference` -- whether the user prefers a light or dark them in their system preferences -- `light | dark`. Note that this is separate from the
+   current theme so that you can manage either use the system preference as the basis for your app theme, or perhaps only use it as a default with the ability to
+   override it as needed. The provider attaches a listener to the prefers-color-scheme: dark media query, so the value will update automatically if a user changes their
+   system preference.
 3. `setTheme` -- A function that takes a new theme value as an argument and changes the them accordingly -- `(theme: 'light' | 'dark') => void`
 
 The example below utilizes the `theme` and `setTheme` values for a basic theme switcher.
@@ -38,15 +38,19 @@ The example below utilizes the `theme` and `setTheme` values for a basic theme s
     {() => {
       const App = () => {
         const { theme, setTheme } = useContext(ThemeContext);
-        const handleChangeTheme = (event) => {
-          const { target: { checked } } = event;
+        const handleChangeTheme = event => {
+          const {
+            target: { checked },
+          } = event;
           const newTheme = checked ? 'dark' : 'light';
           setTheme(newTheme);
         };
         return (
           <>
             <Box direction="row" gap="xs" alignItems="center" margin="0 0 md 0">
-              <Box fontWeight="bold" display="inline">light</Box>
+              <Box fontWeight="bold" display="inline">
+                light
+              </Box>
               <Toggle
                 isChecked={theme === 'dark'}
                 onChange={handleChangeTheme}
@@ -55,13 +59,18 @@ The example below utilizes the `theme` and `setTheme` values for a basic theme s
             </Box>
             <Box
               padding="lg"
-              color={theme === 'light' ? 'grey-dark' : 'grey-lighter'}
-              background={theme === 'light' ? 'white' : 'grey-darker'}
+              color={theme === 'light' ? 'grey-600' : 'grey-100'}
+              background={theme === 'light' ? 'white' : 'grey-600er'}
               radius="md"
               borderWidth="xs"
-              borderColor={theme === 'light' ? 'grey-lighter' : 'grey-darker'}
+              borderColor={theme === 'light' ? 'grey-100' : 'grey-600er'}
             >
-              <Box as="span" direction="row">Theme is:&nbsp;<Box fontWeight="bold" as="span">{theme}</Box></Box>
+              <Box as="span" direction="row">
+                Theme is:&nbsp;
+                <Box fontWeight="bold" as="span">
+                  {theme}
+                </Box>
+              </Box>
             </Box>
           </>
         );
@@ -74,7 +83,6 @@ The example below utilizes the `theme` and `setTheme` values for a basic theme s
     }}
   </Story>
 </Canvas>
-
 
 ## Using the System Preference
 
@@ -90,11 +98,13 @@ change your system (light/dark) preference to see it in action.
           <>
             <Box
               padding="lg"
-              color={systemPreference === 'light' ? 'grey-dark' : 'grey-lighter'}
-              background={systemPreference === 'light' ? 'white' : 'grey-darker'}
+              color={systemPreference === 'light' ? 'grey-600' : 'grey-100'}
+              background={systemPreference === 'light' ? 'white' : 'grey-600er'}
               radius="md"
               borderWidth="xs"
-              borderColor={systemPreference === 'light' ? 'grey-lighter' : 'grey-darker'}
+              borderColor={
+                systemPreference === 'light' ? 'grey-100' : 'grey-600er'
+              }
             >
               <Box as="span" direction="row">
                 System Preference:&nbsp;
@@ -132,23 +142,26 @@ In the example below -- the user can decide to either use their system preferenc
           {
             id: 'light',
             value: 'light',
-            label: 'Light'
-          }, {
+            label: 'Light',
+          },
+          {
             id: 'dark',
             value: 'dark',
-            label: 'Dark'
-          }, {
+            label: 'Dark',
+          },
+          {
             id: 'systemPreference',
             value: 'systemPreference',
-            label: 'Use System Preference'
-          }
+            label: 'Use System Preference',
+          },
         ];
         useEffect(() => {
           if (userThemeSetting !== 'systemPreference') {
             setTheme(userThemeSetting);
           }
         }, [userThemeSetting]);
-        const activeTheme = userThemeSetting === 'systemPreference' ? systemPreference : theme;
+        const activeTheme =
+          userThemeSetting === 'systemPreference' ? systemPreference : theme;
         return (
           <>
             <Box direction="row" gap="xs" alignItems="center" margin="0 0 md 0">
@@ -161,11 +174,11 @@ In the example below -- the user can decide to either use their system preferenc
             </Box>
             <Box
               padding="lg"
-              color={activeTheme === 'light' ? 'grey-dark' : 'grey-lighter'}
-              background={activeTheme === 'light' ? 'white' : 'grey-darker'}
+              color={activeTheme === 'light' ? 'grey-600' : 'grey-100'}
+              background={activeTheme === 'light' ? 'white' : 'grey-600er'}
               radius="md"
               borderWidth="xs"
-              borderColor={activeTheme === 'light' ? 'grey-lighter' : 'grey-darker'}
+              borderColor={activeTheme === 'light' ? 'grey-100' : 'grey-600er'}
             >
               <Box gap="sm">
                 <Box as="span" direction="row">

@@ -5,15 +5,15 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 
 import { Box, BoxProps } from './Box';
 import {
+  BORDER_COLOR_OPTIONS,
   FONT_SIZE_OPTIONS,
   FONT_COLOR_OPTIONS,
-  BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
   FONT_FAMILY_OPTIONS,
   FONT_WEIGHT_OPTIONS,
   BACKGROUND_COLOR_OPTIONS,
 } from '../../lib/tokens';
-import { BrandColor, BackgroundColor } from '../../types';
+import { BackgroundColor, BorderColor } from '../../types';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 import { ResponsiveProvider } from '../ResponsiveProvider/ResponsiveProvider';
 import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
@@ -34,113 +34,12 @@ export const AllBackgroundColors: React.FunctionComponent<BoxProps> = () => (
 );
 
 export const AllBorderColors: React.FunctionComponent<BoxProps> = () => (
-  <Box flex="auto" direction="row" fontSize="sm">
-    {BRAND_COLOR_NAMES.map((color, index) => {
-      if (color.includes('inherit')) return null;
-      else if (
-        color === 'dark'
-        || color === 'light'
-        || color === 'black'
-        || color === 'white'
-        || color === 'transparent'
-      ) {
-        return (
-          <Box
-            borderColor={color}
-            borderWidth="sm"
-            padding="xs"
-            key={`${color}-${index}`}
-          >
-            {`${color}`}
-          </Box>
-        );
-      } else {
-        return (
-          <Box flex="auto" key={`${color}-${index}`}>
-            <Box
-              flex="auto"
-              borderColor={`${color}-50` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-50`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-100` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-100`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-200` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-200`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-300` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-300`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-400` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-400`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-500` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-500`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-600` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-600`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-700` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-700`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-800` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-800`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-900` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-900`}
-            </Box>
-          </Box>
-        );
-      }
-    })}
+  <Box direction="column" gap="xs" fontSize="sm">
+    {BORDER_COLOR_OPTIONS.map((color: BorderColor, index: number) => (
+      <Box padding="xs" borderColor={color} borderWidth="md" key={`${color}-${index}`}>
+        {color}
+      </Box>
+    ))}
   </Box>
 );
 
@@ -425,7 +324,7 @@ ResponsiveShadow.args = {
     hd: '2xl',
   },
   padding: 'sm',
-  background: 'white',
+  background: 'white-500',
 };
 ResponsiveShadow.parameters = RESPONSIVE_STORY;
 

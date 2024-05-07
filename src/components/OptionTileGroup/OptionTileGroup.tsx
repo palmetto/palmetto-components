@@ -125,7 +125,7 @@ export const OptionTileGroup: ForwardRefExoticComponent<OptionTileGroupProps> = 
             as="legend"
             display="block"
             margin="0 0 md 0"
-            color={hasAnyError ? 'danger' : 'dark'}
+            color={hasAnyError ? 'danger' : 'body-primary'}
             fontSize="sm"
             fontWeight="bold"
           >
