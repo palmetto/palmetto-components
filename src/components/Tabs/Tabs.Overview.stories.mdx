@@ -267,10 +267,10 @@ The only other likely use case is to render each tab as an anchor. See example m
     {(() => {
       const tokens = {
         '--tabs-font-weight': '--size-font-weight-bold',
-        '--tabs-font-color-hover': '--color-brand-primary-500',
-        '--tabs-selected-border-color': '--color-brand-primary-500',
-        '--tabs-selected-font-color': '--color-brand-primary-500',
-        '--tabs-selected-font-color-hover': '--color-brand-primary-600',
+        '--tabs-font-color-hover': '--color-text-primary',
+        '--tabs-selected-border-color': '--color-text-primary',
+        '--tabs-selected-font-color': '--color-text-primary',
+        '--tabs-selected-font-color-hover': '--color-text-primary',
       };
       return Object.entries(tokens).map(([name, entry], i) => (
         <tr key={i}>

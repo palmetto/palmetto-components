@@ -23,11 +23,11 @@
 
   &--selected {
     &:not(.disabled) {
-      border-bottom: 2px solid var(--tabs-selected-border-color, var(--color-brand-primary-500));
-      color: var(--tabs-selected-font-color, var(--color-brand-primary-500));
+      border-bottom: 2px solid var(--tabs-selected-border-color, var(--color-text-primary));
+      color: var(--tabs-selected-font-color, var(--color-text-primary));
 
       &:hover {
-        color: var(--tabs-selected-font-color-hover, var(--color-brand-primary-600));
+        color: var(--tabs-selected-font-color-hover, var(--color-text-primary));
       }
     }
 
@@ -39,7 +39,7 @@
 
   &:not(.disabled) {
     &:hover {
-      color: var(--tabs-font-color-hover, var(--color-brand-primary-500));
+      color: var(--tabs-font-color-hover, var(--color-text-primary));
       cursor: pointer;
     }
   }
