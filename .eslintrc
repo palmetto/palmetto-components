@@ -19,6 +19,7 @@
     "browser": true
   },
   "rules": {
+    "react/require-default-props": ["error", { "ignoreFunctionalComponents": true }],
     "arrow-parens": [
       "error",
       "as-needed"

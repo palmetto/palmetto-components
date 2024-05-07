@@ -3,7 +3,7 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import { Box } from '../Box/Box';
 import { Toggle } from '../Toggle/Toggle';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
-import { ThemeProvider, ThemeContext } from './ThemeProvider';
+import { ThemeProvider, Theme, useTheme } from './ThemeProvider';
 
 <Meta
   title="Providers/ThemeProvider/Overview"
@@ -15,129 +15,16 @@ import { ThemeProvider, ThemeContext } from './ThemeProvider';
 
 # ThemeProvider
 
-The ThemeProvider is a context provider that allows you to both set the theme and get the current theme (light or dark) for your application.
+Allow users to set the theme for the entire application by adding the `ThemeProvider` to the root of the application.
 
-## Basics
-
-First off, you should place the `ThemeProvider` component at the root of your application (or as high as you need it based on your application).
+Place the `ThemeProvider` component at the root of your application (or as high as you need it based on your application).
 The example below wraps the entire `App` with the provider but use your own judgement if you have other high-level providers in your app.
 
-Once your app is wrapped in the provider, you will have access to the shared context `ThemeContext`, which provides three key elements:
-
-1. `theme` -- the current theme -- `'light' | 'dark'`
-2. `systemPreference` -- whether the user prefers a light or dark them in their system preferences -- `light | dark`. Note that this is separate from the
-   current theme so that you can manage either use the system preference as the basis for your app theme, or perhaps only use it as a default with the ability to
-   override it as needed. The provider attaches a listener to the prefers-color-scheme: dark media query, so the value will update automatically if a user changes their
-   system preference.
-3. `setTheme` -- A function that takes a new theme value as an argument and changes the them accordingly -- `(theme: 'light' | 'dark') => void`
-
-The example below utilizes the `theme` and `setTheme` values for a basic theme switcher.
-
-<Canvas isExpanded>
-  <Story name="Basics">
+<Canvas withSource="open">
+  <Story name="Usage">
     {() => {
       const App = () => {
-        const { theme, setTheme } = useContext(ThemeContext);
-        const handleChangeTheme = event => {
-          const {
-            target: { checked },
-          } = event;
-          const newTheme = checked ? 'dark' : 'light';
-          setTheme(newTheme);
-        };
-        return (
-          <>
-            <Box direction="row" gap="xs" alignItems="center" margin="0 0 md 0">
-              <Box fontWeight="bold" display="inline">
-                light
-              </Box>
-              <Toggle
-                isChecked={theme === 'dark'}
-                onChange={handleChangeTheme}
-                label="dark"
-              />
-            </Box>
-            <Box
-              padding="lg"
-              color={theme === 'light' ? 'grey-600' : 'grey-100'}
-              background={theme === 'light' ? 'white' : 'grey-600er'}
-              radius="md"
-              borderWidth="xs"
-              borderColor={theme === 'light' ? 'grey-100' : 'grey-600er'}
-            >
-              <Box as="span" direction="row">
-                Theme is:&nbsp;
-                <Box fontWeight="bold" as="span">
-                  {theme}
-                </Box>
-              </Box>
-            </Box>
-          </>
-        );
-      };
-      return (
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Using the System Preference
-
-The example below using the user's system preference exclusively for determining the theme. To try this out,
-change your system (light/dark) preference to see it in action.
-
-<Canvas isExpanded>
-  <Story name="System Preference">
-    {() => {
-      const App = () => {
-        const { systemPreference } = useContext(ThemeContext);
-        return (
-          <>
-            <Box
-              padding="lg"
-              color={systemPreference === 'light' ? 'grey-600' : 'grey-100'}
-              background={systemPreference === 'light' ? 'white' : 'grey-600er'}
-              radius="md"
-              borderWidth="xs"
-              borderColor={
-                systemPreference === 'light' ? 'grey-100' : 'grey-600er'
-              }
-            >
-              <Box as="span" direction="row">
-                System Preference:&nbsp;
-                <Box fontWeight="bold" as="span" style={{ color: 'inherit' }}>
-                  {systemPreference}
-                </Box>
-              </Box>
-            </Box>
-          </>
-        );
-      };
-      return (
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Combining System Preference with App Settings
-
-Now we've seen how to use both our own variable, as well as a system preference to determine the dark/light theme,
-here is an example that puts these concepts together for a more holistic approach.
-
-In the example below -- the user can decide to either use their system preference, or hardcode a setting for the app, specifically
-
-<Canvas isExpanded>
-  <Story name="Recommended Approach">
-    {() => {
-      const App = () => {
-        const { theme, setTheme, systemPreference } = useContext(ThemeContext);
-        const [userThemeSetting, setUserThemeSetting] = useState('light');
+        const { theme, setTheme } = useTheme();
         const options = [
           {
             id: 'light',
@@ -150,56 +37,30 @@ In the example below -- the user can decide to either use their system preferenc
             label: 'Dark',
           },
           {
-            id: 'systemPreference',
-            value: 'systemPreference',
-            label: 'Use System Preference',
+            id: 'system',
+            value: 'system',
+            label: 'System',
           },
         ];
-        useEffect(() => {
-          if (userThemeSetting !== 'systemPreference') {
-            setTheme(userThemeSetting);
-          }
-        }, [userThemeSetting]);
-        const activeTheme =
-          userThemeSetting === 'systemPreference' ? systemPreference : theme;
         return (
-          <>
-            <Box direction="row" gap="xs" alignItems="center" margin="0 0 md 0">
-              <RadioGroup
-                name="userThemeSetting"
-                value={userThemeSetting}
-                onChange={event => setUserThemeSetting(event.target.value)}
-                options={options}
-              />
-            </Box>
-            <Box
-              padding="lg"
-              color={activeTheme === 'light' ? 'grey-600' : 'grey-100'}
-              background={activeTheme === 'light' ? 'white' : 'grey-600er'}
-              radius="md"
-              borderWidth="xs"
-              borderColor={activeTheme === 'light' ? 'grey-100' : 'grey-600er'}
-            >
-              <Box gap="sm">
-                <Box as="span" direction="row">
-                  Active Theme:&nbsp;
-                  <Box fontWeight="bold" as="span" style={{ color: 'inherit' }}>
-                    {activeTheme}
-                  </Box>
-                </Box>
-                <Box as="span" direction="row">
-                  System Preference:&nbsp;
-                  <Box fontWeight="bold" as="span" style={{ color: 'inherit' }}>
-                    {systemPreference}
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-          </>
+          <Box
+            gap="md"
+            background="secondary"
+            padding="xl"
+            color="body-primary"
+          >
+            <p>Theme: {theme}</p>
+            <RadioGroup
+              name="SelectTheme"
+              value={theme}
+              options={options}
+              onChange={event => setTheme(event.target.value)}
+            />
+          </Box>
         );
       };
       return (
-        <ThemeProvider>
+        <ThemeProvider defaultTheme="light" storageKey="palmetto-ui-theme">
           <App />
         </ThemeProvider>
       );
