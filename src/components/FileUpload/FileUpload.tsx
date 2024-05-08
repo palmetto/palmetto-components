@@ -201,7 +201,7 @@ export const FileUpload: FC<FileUploadProps> = React.forwardRef<
         >
           <Icon
             name="paperclip"
-            className="font-color-grey-300 m-right-xs"
+            className="font-color-body-tertiary m-right-xs"
           />
           {fileNameMaxLength
             ? truncateFileName(file.name, fileNameMaxLength)
