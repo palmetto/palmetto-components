@@ -260,7 +260,7 @@ const TabsSliderBaseComponent: React.FC<TabsSliderProps> = React.forwardRef<HTML
         {decoratedChildren}
         <Box
           radius="md"
-          background="primary"
+          background="tab-slider-active"
           height="100"
           position="absolute"
           borderWidth={tabBorderWidth()}
