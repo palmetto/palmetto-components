@@ -21,32 +21,32 @@
 
 .alert__default {
   color: var(--alert-default-font-color, var(--color-brand-grey-600));
-  background: var(--alert-default-background-color, var(--color-brand-grey-100));
-  border-color: var(--alert-default-border-color, var(--color-brand-grey-200));
+  background: var(--alert-default-background-color, var(--color-background-default));
+  border-color: var(--alert-default-border-color, var(--color-border-default));
 }
 
 .alert__info {
   color: var(--alert-info-font-color, var(--color-brand-grey-600));
-  background: var(--alert-info-background-color, var(--color-brand-info-50));
-  border-color: var(--alert-info-border-color, var(--color-brand-info-200));
+  background: var(--alert-info-background-color, var(--color-background-info));
+  border-color: var(--alert-info-border-color, var(--color-border-info));
 }
 
 .alert__success {
   color: var(--alert-success-font-color, var(--color-brand-grey-600));
-  background: var(--alert-success-background-color, var(--color-brand-success-50));
-  border-color: var(--alert-success-border-color, var(--color-brand-success-200));
+  background: var(--alert-success-background-color, var(--color-background-success));
+  border-color: var(--alert-success-border-color, var(--color-border-success));
 }
 
 .alert__warning {
   color: var(--alert-warning-font-color, var(--color-brand-grey-600));
-  background: var(--alert-warning-background-color, var(--color-brand-warning-50));
-  border-color: var(--alert-warning-border-color, var(--color-brand-warning-200));
+  background: var(--alert-warning-background-color, var(--color-background-warning));
+  border-color: var(--alert-warning-border-color, var(--color-border-warning));
 }
 
 .alert__danger {
   color: var(--alert-danger-font-color, var(--color-brand-grey-600));
-  background: var(--alert-danger-background-color, var(--color-brand-danger-50));
-  border-color: var(--alert-danger-border-color, var(--color-brand-danger-200));
+  background: var(--alert-danger-background-color, var(--color-background-danger));
+  border-color: var(--alert-danger-border-color, var(--color-border-danger));
 }
 
 .alert__icon__default { color: var(--alert-default-icon-color, var(--color-brand-grey-600)); }

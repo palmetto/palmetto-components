@@ -60,6 +60,18 @@ Here is an example where all three token types are used to create a customized a
   <Story name="Theme Example">
     {() => {
       const App = () => {
+        const alertVariants = [
+          'default',
+          'info',
+          'success',
+          'warning',
+          'danger',
+        ];
+        const message = variant => `
+        This is a ${variant} alert. It also has longer text to see what these alerts
+        can look like when broken into multiple lines. This one will definitely
+        break into multiple lines in most standard screen resolutions.
+      `;
         const options = [
           {
             id: 'car',
@@ -367,6 +379,16 @@ Here is an example where all three token types are used to create a customized a
               </Card.Section>
               <Card.Footer>Footer</Card.Footer>
             </Card>
+            {alertVariants.map(variant => (
+              <Alert
+                message={message(variant)}
+                key={variant}
+                title={variant.charAt(0).toUpperCase() + variant.slice(1)}
+                variant={variant}
+                hasIcon
+                className="m-bottom-md"
+              />
+            ))}
             <Pagination
               activePage={themeExampleValues.activePage}
               itemsPerPage={20}
