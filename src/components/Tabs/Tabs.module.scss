@@ -32,8 +32,10 @@
     }
 
     &.disabled {
-      border-bottom: 2px solid var(--color-brand-grey-100);
-      color: var(--color-brand-grey-100);
+      border-bottom: 2px solid var(--color-border-separator);
+      &.disabled {
+        color: var(--color-text-danger-disabled);
+      }
     }
   }
 

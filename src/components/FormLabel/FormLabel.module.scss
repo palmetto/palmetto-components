@@ -9,6 +9,6 @@
   }
 
   &.disabled {
-    color: var(--color-brand-grey-300);
+    color: var(--form-control-label-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled));
   }
 }
