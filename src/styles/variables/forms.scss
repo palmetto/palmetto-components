@@ -1,7 +1,7 @@
 .palmetto-components__variables__form-control {
   // ----GLOBALS----
   --INTERNAL_form-control-box-shadow-focus: 0 0 0 4px
-    var(--color-brand-primary-200);
+    var(--color-border-primary);
   --INTERNAL_form-control-label-margin: var(--size-spacing-xs);
   --INTERNAL_form-control-help-margin: var(--size-spacing-2xs);
   --INTERNAL_form-control-line-height: var(--size-line-height-input);
@@ -38,16 +38,22 @@
   --INTERNAL_form-control-size-lg-padding: var(--size-spacing-md);
 
   // --COLORS--
-  --INTERNAL_form-control-background-color: var(--color-brand-white-500);
-  --INTERNAL_form-control-background-color-disabled: var(--color-brand-grey-50);
-  --INTERNAL_form-control-background-color-error: var(--color-brand-danger-50);
-  --INTERNAL_form-control-background-color-selected: var(
-    --color-brand-primary-50
+  --INTERNAL_form-control-background-color: var(
+    --color-background-form-control
   );
-  --INTERNAL_form-control-border-color: var(--color-brand-grey-100);
-  --INTERNAL_form-control-border-color-error: var(--color-brand-danger-100);
+  --INTERNAL_form-control-background-color-disabled: var(
+    --color-background-form-control-disabled
+  );
+  --INTERNAL_form-control-background-color-error: var(
+    --color-background-danger
+  );
+  --INTERNAL_form-control-background-color-selected: var(
+    --color-background-success
+  );
+  --INTERNAL_form-control-border-color: var(--color-border-separator);
+  --INTERNAL_form-control-border-color-error: var(--color-border-danger);
   --INTERNAL_form-control-border-color-error-disabled: var(
-    --color-brand-danger-100
+    --color-border-danger
   );
   --INTERNAL_form-control-border-color-focus: var(--color-brand-grey-600);
   --INTERNAL_form-control-border-color-hover: var(--color-brand-grey-300);
@@ -58,18 +64,18 @@
   --INTERNAL_form-control-border-color-selected-hover: var(
     --color-brand-primary-500
   );
-  --INTERNAL_form-control-font-color: var(--color-brand-grey-700);
-  --INTERNAL_form-control-font-color-disabled: var(--color-brand-grey-300);
-  --INTERNAL_form-control-font-color-error: var(--color-brand-danger-500);
+  --INTERNAL_form-control-font-color: var(--color-text-contrast);
+  --INTERNAL_form-control-font-color-disabled: var(--color-text-disabled);
+  --INTERNAL_form-control-font-color-error: var(--color-text-danger);
   --INTERNAL_form-control-font-color-error-disabled: var(
-    --color-brand-danger-200
+    --color-text-danger-disabled
   );
-  --INTERNAL_form-control-help-text-font-color: var(--color-brand-grey-500);
-  --INTERNAL_form-control-label-font-color: var(--color-brand-grey-700);
-  --INTERNAL_form-control-description-color: var(--color-brand-grey-600);
-  --INTERNAL_form-control-icon-color: var(--color-brand-grey-300);
-  --INTERNAL_form-control-icon-color-hover: var(--color-brand-grey);
-  --INTERNAL_form-control-placeholder-color: var(--color-brand-grey-300);
+  --INTERNAL_form-control-help-text-font-color: var(--color-text-body-tertiary);
+  --INTERNAL_form-control-label-font-color: var(--color-text-body-primary);
+  --INTERNAL_form-control-description-color: var(--color-text-body-secondary);
+  --INTERNAL_form-control-icon-color: var(--color-text-body-tertiary);
+  --INTERNAL_form-control-icon-color-hover: var(--color-text-body-secondary);
+  --INTERNAL_form-control-placeholder-color: var(--color-text-placeholder);
 
   // ----RADIO GROUP----
   --INTERNAL_form-control-radio-group-description-spacing: var(
