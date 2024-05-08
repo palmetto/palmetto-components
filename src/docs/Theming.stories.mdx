@@ -8,6 +8,7 @@ import { Alert } from '../components/Alert/Alert';
 import { Badge } from '../components/Badge/Badge';
 import { Box } from '../components/Box/Box';
 import { Button } from '../components/Button/Button';
+import { Card } from '../components/Card/Card';
 import { CategoryFilter } from '../components/CategoryFilter/CategoryFilter';
 import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { Heading } from '../components/Heading/Heading';
@@ -359,6 +360,13 @@ Here is an example where all three token types are used to create a customized a
                 direction="row"
               />
             </Box>
+            <Card>
+              <Card.Header title="Default Card" />
+              <Card.Section>
+                <p>Card content</p>
+              </Card.Section>
+              <Card.Footer>Footer</Card.Footer>
+            </Card>
             <Pagination
               activePage={themeExampleValues.activePage}
               itemsPerPage={20}
