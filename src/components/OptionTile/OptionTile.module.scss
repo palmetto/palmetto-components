@@ -47,6 +47,7 @@
   &.selected {
     background-color: var(--option-tile-background-color-selected, var(--form-control-background-color-selected, var(--INTERNAL_form-control-background-color-selected)));
     border: 1px solid var(--option-tile-border-color-selected, var(--form-control-border-color-selected, var(--INTERNAL_form-control-border-color-selected)));
+    color: var(--color-brand-grey-600);
 
     &.disabled {
       background-color: var(--option-tile-background-color-disabled-selected, var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled)));
