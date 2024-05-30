@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { render, screen } from '@testing-library/react';
-import { THeme, useTheme, ThemeProvider } from './ThemeProvider';
+import { useTheme, ThemeProvider } from './ThemeProvider';
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
