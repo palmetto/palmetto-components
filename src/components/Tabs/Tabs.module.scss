@@ -32,6 +32,7 @@
 
     &.disabled {
       border-bottom: 2px solid var(--color-border-separator);
+
       &.disabled {
         color: var(--color-text-danger-disabled);
       }

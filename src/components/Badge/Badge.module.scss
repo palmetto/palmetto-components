@@ -9,6 +9,7 @@
 %size-sm {
   @include size-sm;
 }
+
 .size-sm {
   @extend %size-sm;
 }
@@ -22,6 +23,7 @@
 %size-md {
   @include size-md;
 }
+
 .size-md {
   @extend %size-md;
 }
@@ -35,6 +37,7 @@
 %size-lg {
   @include size-lg;
 }
+
 .size-lg {
   @extend %size-lg;
 }
@@ -48,6 +51,7 @@
 %size-xl {
   @include size-xl;
 }
+
 .size-xl {
   @extend %size-xl;
 }
