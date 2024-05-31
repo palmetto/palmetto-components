@@ -19,6 +19,7 @@ $lg-dimension: 36px;
 %size-sm {
   @include size-sm;
 }
+
 .size-sm {
   @extend %size-sm;
 }
@@ -37,6 +38,7 @@ $lg-dimension: 36px;
 %size-md {
   @include size-md;
 }
+
 .size-md {
   @extend %size-md;
 }
@@ -55,6 +57,7 @@ $lg-dimension: 36px;
 %size-lg {
   @include size-lg;
 }
+
 .size-lg {
   @extend %size-lg;
 }
@@ -136,9 +139,11 @@ $lg-dimension: 36px;
   &.size-sm {
     @extend %size-sm;
   }
+
   &.size-md {
     @extend %size-md;
   }
+
   &.size-lg {
     @extend %size-lg;
   }
@@ -147,9 +152,11 @@ $lg-dimension: 36px;
     &.size-sm-tablet {
       @include size-sm;
     }
+
     &.size-md-tablet {
       @include size-md;
     }
+
     &.size-lg-tablet {
       @include size-lg;
     }
@@ -159,9 +166,11 @@ $lg-dimension: 36px;
     &.size-sm-desktop {
       @include size-sm;
     }
+
     &.size-md-desktop {
       @include size-md;
     }
+
     &.size-lg-desktop {
       @include size-lg;
     }
@@ -171,9 +180,11 @@ $lg-dimension: 36px;
     &.size-sm-hd {
       @include size-sm;
     }
+
     &.size-md-hd {
       @include size-md;
     }
+
     &.size-lg-hd {
       @include size-lg;
     }
