@@ -546,7 +546,7 @@ export const Box: FC<BoxProps> = forwardRef(
       }
 
       const childClasses = classNames(child.props.className, [
-        ...new Set(childGapClasses),
+        ...Array.from(new Set(childGapClasses)),
       ]);
 
       return cloneElement(child, {
