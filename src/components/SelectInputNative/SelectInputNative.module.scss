@@ -303,10 +303,15 @@
   }
 
   &.error {
-    border-color: var(
-      --form-control-border-color-error,
-      var(--INTERNAL_form-control-border-color-error)
-    );
+    box-shadow: var(
+        --form-control-box-shadow,
+        var(--INTERNAL_form-control-box-shadow)
+      ),
+      inset 0 0 0 1px
+        var(
+          --form-control-border-color-error,
+          var(--INTERNAL_form-control-border-color-error)
+        );
     background-color: var(
       --form-control-border-color-error,
       var(--INTERNAL_form-control-background-color-error)
