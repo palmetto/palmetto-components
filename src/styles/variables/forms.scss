@@ -77,9 +77,10 @@
   --INTERNAL_form-control-icon-color-hover: var(--color-text-body-secondary);
   --INTERNAL_form-control-placeholder-color: var(--color-text-placeholder);
   --INTERNAL_form-control-checkbox-color: var(--color-brand-grey-500);
-  --INTERNAL_form-control-checkbox-color-checked: var(--color-text-primary);
   --INTERNAL_form-control-checkbox-color-disabled: var(--color-text-disabled);
-  --INTERNAL_form-control-checkbox-color-checked-disabled: var(--color-brand-primary-200);
+  --INTERNAL_form-control-checkbox-color-checked-disabled: var(
+    --color-brand-primary-200
+  );
 
   // ----RADIO GROUP----
   --INTERNAL_form-control-radio-group-description-spacing: var(

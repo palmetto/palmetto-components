@@ -306,81 +306,30 @@ populate the `aria-label` property on the input for accessibility reasons.
   </Story>
 </Canvas>
 
-## Custom Label
-
-If you require a label with custom markup, hide the default label (remember to still pass a text value for the label)
-and append your own. Feel free to use the `FormLabel` component to keep the base text styles consistent.
-
-<Canvas>
-  <Story name="Custom Label">
-    {() => {
-      const [value, setValue] = useState(null);
-      return (
-        <Box direction="row" alignItems="center">
-          <CheckboxInput
-            id="customLabel"
-            label="This label is custom"
-            hideLabel
-            onChange={value => setValue(event.target.checked)}
-            isChecked={value}
-          />
-          <FormLabel inputId="customLabel">
-            <Box display="block" fontSize="xl" color="secondary-500">
-              This is custom, look at this{' '}
-              <a
-                href="https://palmetto.com"
-                onClick={() => alert('hey you clicked me!')}
-                target="_blank"
-              >
-                Link
-              </a>
-            </Box>
-          </FormLabel>
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
 ## Disabled and Unchecked
 
 Use the `isDisabled` prop to disable an input.
 
 <Canvas>
-  <Story name="Disabled and Unchecked">
-    {() => {
-      const [value, setValue] = useState(null);
-      return (
+  <Story name="Disabled">
+    {() => (
+      <Box gap="md">
         <CheckboxInput
           id="disabledAndUnchecked"
-          label="Label"
-          isChecked={value}
-          onChange={value => setValue(event.target.checked)}
+          label="Disabled and Unchecked"
+          isChecked={false}
+          onChange={() => {}}
           isDisabled
         />
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Disabled and Checked
-
-Use the `isDisabled` and `isChecked` props to disable an input in a checked state.
-
-<Canvas>
-  <Story name="Disabled and Checked">
-    {() => {
-      const [value, setValue] = useState(true);
-      return (
         <CheckboxInput
-          id="disabledAndUnchecked"
-          label="Label"
-          isChecked={value}
-          onChange={value => setValue(event.target.checked)}
+          id="disabledAndChecked"
+          label="Disabled and Checked"
+          isChecked={true}
+          onChange={() => {}}
           isDisabled
         />
-      );
-    }}
+      </Box>
+    )}
   </Story>
 </Canvas>
 
