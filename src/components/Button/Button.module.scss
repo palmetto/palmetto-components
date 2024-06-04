@@ -1,67 +1,28 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 :root {
-  --button-primary-background-color: var(--color-brand-primary-500);
-  --button-primary-background-color-hover: var(--color-brand-primary-600);
-  --button-primary-background-color-active: var(--color-brand-primary-700);
   --button-primary-font-color: var(--color-brand-white-500);
   --button-primary-font-color-hover: var(--color-brand-white-500);
-  --button-secondary-background-color: var(--color-brand-white-500);
-  --button-secondary-background-color-hover: var(--color-brand-primary-50);
-  --button-secondary-background-color-active: var(--color-brand-primary-100);
   --button-secondary-border-color: var(--color-brand-grey-200);
   --button-secondary-border-color-hover: var(--color-brand-primary-100);
   --button-secondary-font-color: var(--color-brand-primary-500);
   --button-secondary-font-color-hover: var(--color-brand-primary-500);
-  --button-tertiary-background-color: transparent;
-  --button-tertiary-background-color-hover: var(--color-brand-primary-50);
-  --button-tertiary-background-color-active: var(--color-brand-primary-100);
   --button-tertiary-font-color: var(--color-brand-primary-500);
   --button-tertiary-font-color-hover: var(--color-brand-primary-500);
-  --button-primary-neutral-background-color: var(--color-brand-grey-100);
-  --button-primary-neutral-background-color-hover: var(--color-brand-grey-200);
-  --button-primary-neutral-background-color-active: var(--color-brand-grey-300);
   --button-primary-neutral-font-color: var(--color-brand-grey-700);
   --button-primary-neutral-font-color-hover: var(--color-brand-grey-700);
-  --button-secondary-neutral-background-color: var(--color-brand-white-500);
-  --button-secondary-neutral-background-color-hover: var(--color-brand-grey-50);
-  --button-secondary-neutral-background-color-active: var(
-    --color-brand-grey-200
-  );
   --button-secondary-neutral-border-color: var(--color-brand-grey-200);
   --button-secondary-neutral-border-color-hover: var(--color-brand-grey-200);
   --button-secondary-neutral-font-color: var(--color-brand-grey-700);
   --button-secondary-neutral-font-color-hover: var(--color-brand-grey-700);
-  --button-tertiary-neutral-background-color: transparent;
-  --button-tertiary-neutral-background-color-hover: var(--color-brand-grey-100);
-  --button-tertiary-neutral-background-color-active: var(
-    --color-brand-grey-200
-  );
   --button-tertiary-neutral-font-color: var(--color-brand-grey-700);
   --button-tertiary-neutral-font-color-hover: var(--color-brand-grey-700);
-  --button-primary-danger-background-color: var(--color-brand-danger-500);
-  --button-primary-danger-background-color-hover: var(--color-brand-danger-600);
-  --button-primary-danger-background-color-active: var(
-    --color-brand-danger-700
-  );
   --button-primary-danger-font-color: var(--color-brand-white-500);
   --button-primary-danger-font-color-hover: var(--color-brand-white-500);
-  --button-secondary-danger-background-color: var(--color-brand-white-500);
-  --button-secondary-danger-background-color-hover: var(
-    --color-brand-danger-50
-  );
-  --button-secondary-danger-background-color-active: var(
-    --color-brand-danger-100
-  );
   --button-secondary-danger-border-color: var(--color-brand-grey-200);
   --button-secondary-danger-border-color-hover: var(--color-brand-danger-100);
   --button-secondary-danger-font-color: var(--color-brand-danger-500);
   --button-secondary-danger-font-color-hover: var(--color-brand-danger-500);
-  --button-tertiary-danger-background-color: transparent;
-  --button-tertiary-danger-background-color-hover: var(--color-brand-danger-50);
-  --button-tertiary-danger-background-color-active: var(
-    --color-brand-danger-100
-  );
   --button-tertiary-danger-font-color: var(--color-brand-danger-500);
   --button-tertiary-danger-font-color-hover: var(--color-brand-danger-500);
   --button-box-shadow-focus: 0 0 0 4px var(--color-brand-primary-200);
@@ -237,7 +198,7 @@
   }
 
   &.primary {
-    background-color: var(--button-primary-background-color);
+    background-color: var(--color-background-button-primary);
     color: var(--button-primary-font-color);
 
     &:focus {
@@ -259,16 +220,16 @@
     }
 
     &:not(:disabled):hover {
-      background-color: var(--button-primary-background-color-hover);
+      background-color: var(--color-background-button-primary-hover);
       color: var(--button-primary-font-color-hover);
     }
 
     &:not(:disabled):active {
-      background-color: var(--button-primary-background-color-active);
+      background-color: var(--color-background-button-primary-active);
     }
 
     &.neutral {
-      background-color: var(--button-primary-neutral-background-color);
+      background-color: var(--color-background-button-primary-neutral);
       color: var(--button-primary-neutral-font-color);
 
       &:focus {
@@ -287,17 +248,17 @@
       }
 
       &:not(:disabled):hover {
-        background-color: var(--button-primary-neutral-background-color-hover);
+        background-color: var(--color-background-button-primary-neutral-hover);
         color: var(--button-primary-neutral-font-color-hover);
       }
 
       &:not(:disabled):active {
-        background-color: var(--button-primary-neutral-background-color-active);
+        background-color: var(--color-background-button-primary-neutral-active);
       }
     }
 
     &.danger {
-      background-color: var(--button-primary-danger-background-color);
+      background-color: var(--color-background-button-primary-danger);
       color: var(--button-primary-danger-font-color);
 
       &:focus {
@@ -316,12 +277,12 @@
       }
 
       &:not(:disabled):hover {
-        background-color: var(--button-primary-danger-background-color-hover);
+        background-color: var(--color-background-button-primary-danger-hover);
         color: var(--button-primary-danger-font-color-hover);
       }
 
       &:not(:disabled):active {
-        background-color: var(--button-primary-danger-background-color-active);
+        background-color: var(--color-background-button-primary-danger-active);
       }
     }
   }
@@ -329,7 +290,7 @@
   &.secondary {
     border: 1px solid;
     border-color: var(--button-secondary-border-color);
-    background-color: var(--button-secondary-background-color);
+    background-color: var(--color-background-button-secondary);
     color: var(--button-secondary-font-color);
 
     &:focus {
@@ -350,16 +311,16 @@
 
     &:not(:disabled):hover {
       border-color: var(--button-secondary-border-color-hover);
-      background-color: var(--button-secondary-background-color-hover);
+      background-color: var(--color-background-button-secondary-hover);
       color: var(--button-secondary-font-color-hover);
     }
 
     &:not(:disabled):active {
-      background-color: var(--button-secondary-background-color-active);
+      background-color: var(--color-background-button-secondary-active);
     }
 
     &.neutral {
-      background-color: var(--button-secondary-neutral-background-color);
+      background-color: var(--color-background-button-secondary-neutral);
       border: 1px solid;
       border-color: var(--button-secondary-neutral-border-color);
       color: var(--button-secondary-neutral-font-color);
@@ -383,20 +344,20 @@
       &:not(:disabled):hover {
         border-color: var(--button-secondary-neutral-border-color-hover);
         background-color: var(
-          --button-secondary-neutral-background-color-hover
+          --color-background-button-secondary-neutral-hover
         );
         color: var(--button-secondary-neutral-font-color-hover);
       }
 
       &:not(:disabled):active {
         background-color: var(
-          --button-secondary-neutral-background-color-active
+          --color-background-button-secondary-neutral-active
         );
       }
     }
 
     &.danger {
-      background-color: var(--button-secondary-danger-background-color);
+      background-color: var(--color-background-button-secondary-danger);
       border: 1px solid;
       border-color: var(--button-secondary-danger-border-color);
       color: var(--button-secondary-danger-font-color);
@@ -418,20 +379,20 @@
 
       &:not(:disabled):hover {
         border-color: var(--button-secondary-danger-border-color-hover);
-        background-color: var(--button-secondary-danger-background-color-hover);
+        background-color: var(--color-background-button-secondary-danger-hover);
         color: var(--button-secondary-danger-font-color-hover);
       }
 
       &:not(:disabled):active {
         background-color: var(
-          --button-secondary-danger-background-color-active
+          --color-background-button-secondary-danger-active
         );
       }
     }
   }
 
   &.tertiary {
-    background-color: var(--button-tertiary-background-color);
+    background-color: var(--color-background-button-tertiary);
     color: var(--button-tertiary-font-color);
 
     &:focus {
@@ -451,18 +412,18 @@
     }
 
     &:not(:disabled):hover {
-      background-color: var(--button-tertiary-background-color-hover);
-      border-color: var(--button-tertiary-background-color-hover);
+      background-color: var(--color-background-button-tertiary-hover);
+      border-color: var(--color-background-button-tertiary-hover);
       color: var(--button-tertiary-font-color-hover);
     }
 
     &:not(:disabled):active {
-      background-color: var(--button-tertiary-background-color-active);
-      border-color: var(--button-tertiary-background-color-active);
+      background-color: var(--color-background-button-tertiary-active);
+      border-color: var(--color-background-button-tertiary-active);
     }
 
     &.neutral {
-      background-color: var(--button-tertiary-neutral-background-color);
+      background-color: var(--color-background-button-tertiary-neutral);
       color: var(--button-tertiary-neutral-font-color);
 
       &:focus {
@@ -482,20 +443,20 @@
       }
 
       &:not(:disabled):hover {
-        background-color: var(--button-tertiary-neutral-background-color-hover);
-        border-color: var(--button-tertiary-neutral-background-color-hover);
+        background-color: var(--color-background-button-tertiary-neutral-hover);
+        border-color: var(--color-background-button-tertiary-neutral-hover);
         color: var(--button-tertiary-neutral-font-color-hover);
       }
 
       &:not(:disabled):active {
         background-color: var(
-          --button-tertiary-neutral-background-color-active
+          --color-background-button-tertiary-neutral-active
         );
       }
     }
 
     &.danger {
-      background-color: var(--button-tertiary-danger-background-color);
+      background-color: var(--color-background-button-tertiary-danger);
       color: var(--button-tertiary-danger-font-color);
 
       &:focus {
@@ -514,13 +475,13 @@
       }
 
       &:not(:disabled):hover {
-        background-color: var(--button-tertiary-danger-background-color-hover);
-        border-color: var(--button-tertiary-danger-background-color-hover);
+        background-color: var(--color-background-button-tertiary-danger-hover);
+        border-color: var(--color-background-button-tertiary-danger-hover);
         color: var(--button-tertiary-danger-font-color-hover);
       }
 
       &:not(:disabled):active {
-        background-color: var(--button-tertiary-danger-background-color-active);
+        background-color: var(--color-background-button-tertiary-danger-active);
       }
     }
   }
