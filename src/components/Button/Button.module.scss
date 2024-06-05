@@ -1,15 +1,6 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 :root {
-  --button-secondary-border-color: var(--color-brand-grey-200);
-  --button-secondary-border-color-hover: var(--color-brand-primary-100);
-
-  --button-secondary-neutral-border-color: var(--color-brand-grey-200);
-  --button-secondary-neutral-border-color-hover: var(--color-brand-grey-200);
-
-  --button-secondary-danger-border-color: var(--color-brand-grey-200);
-  --button-secondary-danger-border-color-hover: var(--color-brand-danger-100);
-
   --button-box-shadow-focus: 0 0 0 4px var(--color-brand-primary-200);
   --button-neutral-box-shadow-focus: 0 0 0 4px var(--color-brand-grey-200);
   --button-danger-box-shadow-focus: 0 0 0 4px var(--color-brand-danger-200);
@@ -274,7 +265,7 @@
 
   &.secondary {
     border: 1px solid;
-    border-color: var(--button-secondary-border-color);
+    border-color: var(--color-border-button-secondary);
     background-color: var(--color-background-button-secondary);
     color: var(--color-text-button-secondary);
 
@@ -295,7 +286,7 @@
     }
 
     &:not(:disabled):hover {
-      border-color: var(--button-secondary-border-color-hover);
+      border-color: var(--color-border-button-secondary-hover);
       background-color: var(--color-background-button-secondary-hover);
       color: var(--color-text-button-secondary-hover);
     }
@@ -307,7 +298,7 @@
     &.neutral {
       background-color: var(--color-background-button-secondary-neutral);
       border: 1px solid;
-      border-color: var(--button-secondary-neutral-border-color);
+      border-color: var(--color-border-button-secondary-neutral);
       color: var(--color-text-button-secondary-neutral);
 
       &:focus {
@@ -327,7 +318,7 @@
       }
 
       &:not(:disabled):hover {
-        border-color: var(--button-secondary-neutral-border-color-hover);
+        border-color: var(--color-border-button-secondary-neutral-hover);
         background-color: var(
           --color-background-button-secondary-neutral-hover
         );
@@ -344,7 +335,7 @@
     &.danger {
       background-color: var(--color-background-button-secondary-danger);
       border: 1px solid;
-      border-color: var(--button-secondary-danger-border-color);
+      border-color: var(--color-border-button-secondary-danger);
       color: var(--color-text-button-secondary-danger);
 
       &:focus {
@@ -363,7 +354,7 @@
       }
 
       &:not(:disabled):hover {
-        border-color: var(--button-secondary-danger-border-color-hover);
+        border-color: var(--color-border-button-secondary-danger-hover);
         background-color: var(--color-background-button-secondary-danger-hover);
         color: var(--color-text-button-secondary-danger-hover);
       }
