@@ -256,15 +256,12 @@
 %disabled-500 {
   background-color: var(
     --form-control-background-color-disabled,
-    var(--INTERNAL_form-control-background-color-disabled)
+    var(--color-background-form-control-disabled)
   );
-  color: var(
-    --form-control-font-color-disabled,
-    var(--INTERNAL_form-control-font-color-disabled)
-  );
+  color: var(--form-control-font-color-disabled, var(--color-text-disabled));
   -webkit-text-fill-color: var(
     --form-control-font-color-disabled,
-    var(--INTERNAL_form-control-font-color-disabled)
+    var(--color-text-disabled)
   );
   opacity: 1;
 
@@ -274,23 +271,16 @@
 }
 
 .text-input-wrapper {
-  font-family: var(
-    --form-control-font-family,
-    var(--INTERNAL_form-control-font-family)
-  );
+  font-family: var(--asset-fonts-body);
   position: relative;
   box-shadow: var(
       --form-control-box-shadow,
       var(--INTERNAL_form-control-box-shadow)
     ),
-    inset 0 0 0 1px
-      var(
-        --form-control-border-color,
-        var(--INTERNAL_form-control-border-color)
-      );
+    inset 0 0 0 1px var(--color-border-separator);
   background-color: var(
     --form-control-background-color,
-    var(--INTERNAL_form-control-background-color)
+    var(--color-background-form-control)
   );
 
   &.size-sm {
@@ -357,21 +347,12 @@
     border: none;
     background-color: transparent;
     width: 100%;
-    line-height: var(
-      --form-control-line-height,
-      var(--INTERNAL_form-control-line-height)
-    );
-    color: var(
-      --form-control-font-color,
-      var(--INTERNAL_form-control-font-color)
-    );
+    line-height: var(--form-control-line-height, var(--size-line-height-input));
+    color: var(--color-text-contrast);
 
     &::placeholder {
       opacity: 1;
-      color: var(
-        --form-control-placeholder-color,
-        var(--INTERNAL_form-control-placeholder-color)
-      );
+      color: var(--color-text-placeholder);
     }
 
     &:focus {
@@ -395,20 +376,14 @@
         var(--INTERNAL_form-control-box-shadow)
       ),
       inset 0 0 0 1px
-        var(
-          --form-control-border-color-error,
-          var(--INTERNAL_form-control-border-color-error)
-        );
+        var(--form-control-border-color-error, var(--color-border-danger));
     background-color: var(
       --form-control-background-color-error,
-      var(--INTERNAL_form-control-background-color-error)
+      var(--color-background-form-control-error)
     );
 
     &:focus-within {
-      background-color: var(
-        --form-control-background-color,
-        var(--INTERNAL_form-control-background-color)
-      );
+      background-color: var(--color-background-form-control);
     }
 
     input:focus {
@@ -459,17 +434,11 @@
     border-radius: 0;
     background: none;
     cursor: pointer;
-    color: var(
-      --form-control-icon-color,
-      var(--INTERNAL_form-control-icon-color)
-    );
+    color: var(--color-text-body-tertiary);
     font-style: inherit;
 
     &:hover {
-      color: var(
-        --form-control-icon-hover-color,
-        var(--INTERNAL_form-control-icon-hover-color)
-      );
+      color: var(--color-text-body-secondary);
     }
   }
 }

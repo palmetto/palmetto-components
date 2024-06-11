@@ -167,15 +167,12 @@
 %disabled-500 {
   background-color: var(
     --form-control-background-color-disabled,
-    var(--INTERNAL_form-control-background-color-disabled)
+    var(--color-background-form-control-disabled)
   );
-  color: var(
-    --form-control-font-color-disabled,
-    var(--INTERNAL_form-control-font-color-disabled)
-  );
+  color: var(--form-control-font-color-disabled, var(--color-text-disabled));
   -webkit-text-fill-color: var(
     --form-control-font-color-disabled,
-    var(--INTERNAL_form-control-font-color-disabled)
+    var(--color-text-disabled)
   );
   opacity: 1;
 
@@ -192,30 +189,22 @@
   transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
   font-weight: --form-control-label-font-weight,
     var(--INTERNAL_form-control-label-font-weigh);
-  color: --form-control-label-font-color,
-    var(--INTERNAL_form-control-label-font-color);
+  color: var(--color-text-body-primary);
   cursor: text;
   white-space: nowrap;
 }
 
 .text-input-wrapper {
-  font-family: var(
-    --form-control-font-family,
-    var(--INTERNAL_form-control-font-family)
-  );
+  font-family: var(--asset-fonts-body);
   position: relative;
   box-shadow: var(
       --form-control-box-shadow,
       var(--INTERNAL_form-control-box-shadow)
     ),
-    inset 0 0 0 1px
-      var(
-        --form-control-border-color,
-        var(--INTERNAL_form-control-border-color)
-      );
+    inset 0 0 0 1px var(--color-border-separator);
   background-color: var(
     --form-control-background-color,
-    var(--INTERNAL_form-control-background-color)
+    var(--color-background-form-control)
   );
 
   &::before,
@@ -292,14 +281,8 @@
     border: none;
     background-color: transparent;
     width: 100%;
-    line-height: var(
-      --form-control-line-height,
-      var(--INTERNAL_form-control-line-height)
-    );
-    color: var(
-      --form-control-font-color,
-      var(--INTERNAL_form-control-font-color)
-    );
+    line-height: var(--form-control-line-height, var(--size-line-height-input));
+    color: var(--color-text-contrast);
 
     &::placeholder {
       color: transparent;
@@ -330,20 +313,14 @@
         var(--INTERNAL_form-control-box-shadow)
       ),
       inset 0 0 0 1px
-        var(
-          --form-control-border-color-error,
-          var(--INTERNAL_form-control-border-color-error)
-        );
+        var(--form-control-border-color-error, var(--color-border-danger));
     background-color: var(
       --form-control-background-color-error,
-      var(--INTERNAL_form-control-background-color-error)
+      var(--color-background-form-control-error)
     );
 
     &:focus-within {
-      background-color: var(
-        --form-control-background-color,
-        var(--INTERNAL_form-control-background-color)
-      );
+      background-color: var(--color-background-form-control);
     }
 
     select:focus {
@@ -396,18 +373,12 @@
     border-radius: 0;
     background: none;
     cursor: pointer;
-    color: var(
-      --form-control-icon-color,
-      var(--INTERNAL_form-control-icon-color)
-    );
+    color: var(--color-text-body-tertiary);
     font-style: inherit;
     height: 100%;
 
     &:hover {
-      color: var(
-        --form-control-icon-hover-color,
-        var(--INTERNAL_form-control-icon-hover-color)
-      );
+      color: var(--color-text-body-secondary);
     }
   }
 }

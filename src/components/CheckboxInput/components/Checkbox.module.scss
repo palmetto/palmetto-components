@@ -70,14 +70,8 @@ $lg-dimension: 36px;
   }
 
   input + div {
-    background: var(
-      --form-control-background-color,
-      var(--INTERNAL_form-control-background-color)
-    );
-    color: var(
-      --form-control-checkbox-color,
-      var(--INTERNAL_form-control-checkbox-color)
-    );
+    background: var(--color-background-form-control);
+    color: var(--color-brand-grey-500);
   }
 
   input:checked + div,
@@ -113,14 +107,8 @@ $lg-dimension: 36px;
   }
 
   input:disabled + div {
-    background: var(
-      --form-control-background-color-disabled,
-      var(--color-background-secondary)
-    );
-    color: var(
-      --form-control-checkbox-color-disabled,
-      var(--color-text-disabled)
-    );
+    background: var(--color-background-secondary);
+    color: var(--color-text-disabled);
   }
 
   // Hide focus styles if they are not needed, for example, when an element receives focus via the mouse.

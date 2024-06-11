@@ -1,14 +1,20 @@
 .label {
-  font-family: var(--form-control-font-family, var(--INTERNAL_form-control-font-family));
-  color: var(--form-control-label-font-color, var(--INTERNAL_form-control-label-font-color));
-  font-size: var(--form-control-size-md-label-size, var(--INTERNAL_form-control-size-md-label-size));
-  font-weight: var(--form-control-label-font-weight, var(--INTERNAL_form-control-label-font-weight));
+  font-family: var(--asset-fonts-body);
+  color: var(--color-text-body-primary);
+  font-size: var(
+    --form-control-size-md-label-size,
+    var(--INTERNAL_form-control-size-md-label-size)
+  );
+  font-weight: var(
+    --form-control-label-font-weight,
+    var(--INTERNAL_form-control-label-font-weight)
+  );
 
   &.radio-input-label {
     font-weight: 400;
   }
 
   &.disabled {
-    color: var(--form-control-label-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled));
+    color: var(--color-text-disabled);
   }
 }

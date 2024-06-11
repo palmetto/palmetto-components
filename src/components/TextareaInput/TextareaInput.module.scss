@@ -93,12 +93,9 @@
 %disabled-500 {
   background-color: var(
     --form-control-background-color-disabled,
-    var(--INTERNAL_form-control-background-color-disabled)
+    var(--color-background-form-control-disabled)
   );
-  color: var(
-    --form-control-font-color-disabled,
-    var(--INTERNAL_form-control-font-color-disabled)
-  );
+  color: var(--form-control-font-color-disabled, var(--color-text-disabled));
 
   &:hover {
     cursor: not-allowed;
@@ -106,41 +103,25 @@
 }
 
 .textarea-input-wrapper {
-  font-family: var(
-    --form-control-font-family,
-    var(--INTERNAL_form-control-font-family)
-  );
+  font-family: var(--asset-fonts-body);
 
   > textarea {
     transition-duration: 300ms;
     transition-property: border, background-color;
     transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
-    border: 1px solid
-      var(
-        --form-control-border-color,
-        var(--INTERNAL_form-control-border-color)
-      );
+    border: 1px solid var(--color-border-separator);
     box-shadow: 0 3px 0 rgb(0 0 0 / 5%);
     background-color: var(
       --form-control-background-color,
-      var(--INTERNAL_form-control-background-color)
+      var(--color-background-form-control)
     );
     width: 100%;
-    line-height: var(
-      --form-control-line-height,
-      var(--INTERNAL_form-control-line-height)
-    );
-    color: var(
-      --form-control-font-color,
-      var(--INTERNAL_form-control-font-color)
-    );
+    line-height: var(--form-control-line-height, var(--size-line-height-input));
+    color: var(--color-text-contrast);
 
     &::placeholder {
       opacity: 1;
-      color: var(
-        --form-control-placeholder-color,
-        var(--INTERNAL_form-control-placeholder-color)
-      );
+      color: var(--color-text-placeholder);
     }
 
     &:focus {
@@ -214,11 +195,11 @@
     > textarea {
       border-color: var(
         --form-control-border-color-focus,
-        var(--INTERNAL_form-control-border-color-error)
+        var(--color-border-danger)
       );
       background-color: var(
         --form-control-border-color-focus,
-        var(--INTERNAL_form-control-background-color-error)
+        var(--color-background-form-control-error)
       );
     }
 
@@ -228,10 +209,7 @@
     }
 
     &:focus-within {
-      background-color: var(
-        --form-control-background-color,
-        var(--INTERNAL_form-control-background-color)
-      );
+      background-color: var(--color-background-form-control);
       border-color: var(
         --form-control-border-color-focus,
         var(--INTERNAL_form-control-border-color-focus)

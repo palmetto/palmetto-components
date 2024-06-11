@@ -1,9 +1,9 @@
 .option-tile {
-  background-color: var(--INTERNAL_form-control-background-color);
-  border: 1px solid var(--INTERNAL_form-control-border-color);
+  background-color: var(--color-background-form-control);
+  border: 1px solid var(--color-border-separator);
   border-radius: var(--INTERNAL_form-control-size-md-border-radius);
-  font-family: var(--INTERNAL_form-control-font-family);
-  line-height: var(--INTERNAL_form-control-line-height);
+  font-family: var(--asset-fonts-body);
+  line-height: var(--size-line-height-input);
 
   &:focus-within {
     box-shadow: var(--INTERNAL_form-control-box-shadow-focus),
@@ -16,60 +16,61 @@
 
   // https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
   &.disabled {
-    background-color: var(--INTERNAL_form-control-background-color-disabled);
-    color: var(--INTERNAL_form-control-font-color-disabled);
-    -webkit-text-fill-color: var(--INTERNAL_form-control-font-color-disabled);
+    background-color: var(--color-background-form-control-disabled);
+    color: var(--color-text-disabled);
+    -webkit-text-fill-color: var(--color-text-disabled);
     opacity: 1;
 
     &:hover {
       cursor: not-allowed;
-      border: 1px solid var(--INTERNAL_form-control-border-color);
+      border: 1px solid var(--color-border-separator);
     }
   }
 
   &.error {
-    color: var(--INTERNAL_form-control-font-color-error);
+    color: var(--color-text-danger);
 
     &:hover {
       border: 1px solid var(--INTERNAL_form-control-border-color-hover);
     }
 
     &.disabled {
-      color: var(--INTERNAL_form-control-font-color-error-disabled);
-      -webkit-text-fill-color: var(--INTERNAL_form-control-font-color-error-disabled);
+      color: var(--color-text-danger-disabled);
+      -webkit-text-fill-color: var(--color-text-danger-disabled);
 
       &:hover {
-        border: 1px solid var(--INTERNAL_form-control-border-color);
+        border: 1px solid var(--color-border-separator);
       }
     }
   }
 
   &.selected {
-    background-color: var(--INTERNAL_form-control-background-color-selected);
+    background-color: var(--color-background-form-control-selected);
     border: 1px solid var(--INTERNAL_form-control-border-color-selected);
     color: var(--color-text-body-primary);
 
     &.disabled {
-      background-color: var(--INTERNAL_form-control-background-color-disabled);
-      border: 1px solid var(--INTERNAL_form-control-border-color);
+      background-color: var(--color-background-form-control-disabled);
+      border: 1px solid var(--color-border-separator);
 
       &:hover {
-        border: 1px solid var(--INTERNAL_form-control-border-color);
+        border: 1px solid var(--color-border-separator);
       }
     }
 
     &.error {
-      background-color: var(--INTERNAL_form-control-background-color-error);
+      background-color: var(--color-background-form-control-error);
       border: 1px solid var(--INTERNAL_form-control-border-color-selected-error);
-      color: var(--INTERNAL_form-control-font-color-error);
+      color: var(--color-text-danger);
 
       &.disabled {
-        color: var(--INTERNAL_form-control-font-color-error-disabled);
-        -webkit-text-fill-color: var(--INTERNAL_form-control-font-color-error-disabled);
+        color: var(--color-text-danger-disabled);
+        -webkit-text-fill-color: var(--color-text-danger-disabled);
       }
 
       &:hover {
-        border: 1px solid var(--INTERNAL_form-control-border-color-selected-error);
+        border: 1px solid
+          var(--INTERNAL_form-control-border-color-selected-error);
       }
     }
 

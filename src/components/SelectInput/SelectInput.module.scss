@@ -4,16 +4,10 @@
 @mixin react-select-icon {
   padding: 0;
   padding-right: 2px;
-  color: var(
-    --form-control-icon-color,
-    var(--INTERNAL_form-control-icon-color)
-  );
+  color: var(--color-text-body-tertiary);
 
   &:hover {
-    color: var(
-      --form-control-icon-color-hover,
-      var(--INTERNAL_form-control-icon-color-hover)
-    );
+    color: var(--color-text-body-secondary);
   }
 }
 
@@ -189,10 +183,7 @@
 }
 
 :global(.select-input-wrapper) {
-  font-family: var(
-    --form-control-font-family,
-    var(--INTERNAL_form-control-font-family)
-  );
+  font-family: var(--asset-fonts-body);
 
   :global(.react-select) {
     &:hover {
@@ -207,27 +198,18 @@
     :global(.react-select__control) {
       line-height: var(
         --form-control-line-height,
-        var(--INTERNAL_form-control-line-height)
+        var(--size-line-height-input)
       );
-      border-color: var(
-        --form-control-border-color,
-        var(--INTERNAL_form-control-border-color)
-      );
+      border-color: var(--color-border-separator);
       box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
-      background-color: var(
-        --form-control-background-color,
-        var(--INTERNAL_form-control-background-color)
-      );
+      background-color: var(--color-background-form-control);
 
       :global(.react-select__value-container) {
         padding: 0;
       }
 
       :global(.react-select__placeholder) {
-        color: var(
-          --form-control-placeholder-color,
-          var(--INTERNAL_form-control-placeholder-color)
-        );
+        color: var(--color-text-placeholder);
       }
 
       :global(.react-select__clear-indicator) {
@@ -256,10 +238,7 @@
 
       &:global(.react-select__control--is-disabled) {
         :global(.react-select__dropdown-indicator) {
-          color: var(
-            --form-control-placeholder-color,
-            var(--INTERNAL_form-control-placeholder-color)
-          );
+          color: var(--color-text-placeholder);
         }
       }
     }
@@ -274,32 +253,26 @@
 
     :global(.react-select__menu) {
       z-index: var(--size-z-index-popover);
-      background-color: var(
-        --form-control-background-color,
-        var(--INTERNAL_form-control-background-color)
-      );
+      background-color: var(--color-background-form-control);
     }
 
     &.error {
       :global(.react-select__control) {
         border-color: var(
           --form-control-border-color-error,
-          var(--INTERNAL_form-control-border-color-error)
+          var(--color-border-danger)
         );
         background-color: var(
           --form-control-background-color-error,
-          var(--INTERNAL_form-control-background-color-error)
+          var(--color-background-form-control-error)
         );
 
         &:global(.react-select__control--is-focused) {
           outline: none;
-          border-color: var(
-            --form-control-border-color,
-            var(--INTERNAL_form-control-border-color)
-          );
+          border-color: var(--color-border-separator);
           background-color: var(
             --form-control-background-color,
-            var(--INTERNAL_form-control-background-color)
+            var(--color-background-form-control)
           );
         }
       }
@@ -356,7 +329,7 @@
     :global(.react-select__control--is-disabled) {
       background-color: var(
         --form-control-background-color-disabled,
-        var(--INTERNAL_form-control-background-color-disabled)
+        var(--color-background-form-control-disabled)
       );
     }
   }
