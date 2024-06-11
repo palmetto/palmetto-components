@@ -48,7 +48,7 @@ Also referred to as alias tokens, common tokens relate to a specific context or 
 
 ### Component Tokens
 
-Component tokens are scoped to specific components so altering them will apply to that component only. E.G: `--button-size-md-font-size`.
+Component tokens are scoped to specific components so altering them will apply to that component only. E.G: `--color-background-button-primary`.
 
 Not every possible property style is available to be customized, as the Palmetto Design System is not intended to be a fully-customizable ui library. Token documentation for components that are theme-able are at the bottom of each components' documentation page.
 
@@ -121,6 +121,7 @@ Here is an example where all three token types are used to create a customized a
         const customTheme = {
           // Base tokens
           '--asset-fonts-brand': 'Consolas,monaco,monospace',
+          '--asset-fonts-body': 'Consolas,monaco,monospace',
           '--color-brand-primary-50': '#FAF5FF',
           '--color-brand-primary-100': '#E9D8FD',
           '--color-brand-primary-200': '#D6BCFA',
@@ -178,37 +179,29 @@ Here is an example where all three token types are used to create a customized a
           '--form-control-border-color': '#805AD5',
           '--form-control-background-color-selected': '#FAF5FF',
           // Component tokens
-          '--alert-border-width': '2px',
-          '--alert-info-border-color': '#3182CE',
-          '--button-size-md-border-radius': '0',
-          '--button-size-md-padding-vertical': '.5rem',
-          '--button-size-md-padding-horizontal': '.5rem',
-          '--button-primary-box-shadow-focus':
-            '0 0 0 4px var(--color-brand-primary-200)',
-          '--button-font-family': 'Consolas,monaco,monospace',
-          '--button-primary-background-color': 'var(--color-brand-primary-500)',
-          '--button-primary-background-color-hover':
+          '--color-background-button-primary': 'var(--color-brand-primary-500)',
+          '--color-background-button-primary-hover':
             'var(--color-brand-primary-600)',
-          '--button-primary-background-color-active':
+          '--color-background-button-primary-active':
             'var(--color-brand-primary-700)',
-          '--button-secondary-background-color': 'var(--color-brand-white-500)',
-          '--button-secondary-background-color-hover':
+          '--color-background-button-secondary': 'var(--color-brand-white-500)',
+          '--color-background-button-secondary-hover':
             'var(--color-brand-primary-50)',
-          '--button-secondary-background-color-active':
+          '--color-background-button-secondary-active':
             'var(--color-brand-primary-100)',
-          '--button-secondary-border-color': 'var(--color-brand-grey-200)',
-          '--button-secondary-border-color-hover':
+          '--color-border-button-secondary': 'var(--color-brand-grey-200)',
+          '--color-border-button-secondary-hover':
             'var(--color-brand-primary-100)',
-          '--button-secondary-font-color': 'var(--color-brand-primary-500)',
-          '--button-secondary-font-color-hover':
+          '--color-text-button-secondary': 'var(--color-brand-primary-500)',
+          '--color-text-button-secondary-hover':
             'var(--color-brand-primary-500)',
-          '--button-tertiary-background-color': 'transparent',
-          '--button-tertiary-background-color-hover':
+          '--color-background-button-tertiary': 'transparent',
+          '--color-background-button-tertiary-hover':
             'var(--color-brand-primary-50)',
-          '--button-tertiary-background-color-active':
+          '--color-background-button-tertiary-active':
             'var(--color-brand-primary-100)',
-          '--button-tertiary-font-color': 'var(--color-brand-primary-500)',
-          '--button-tertiary-font-color-hover':
+          '--color-text-button-tertiary': 'var(--color-brand-primary-500)',
+          '--color-text-button-tertiary-hover':
             'var(--color-brand-primary-500)',
         };
         return (
@@ -220,6 +213,7 @@ Here is an example where all three token types are used to create a customized a
             padding="3xl"
             display="block"
             color="body-primary"
+            fontFamily="body"
             style={isThemed ? customTheme : null}
           >
             <Toggle

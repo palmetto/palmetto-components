@@ -1,80 +1,80 @@
 .option-tile {
-  background-color: var(--option-tile-background-color, var(--form-control-background-color, var(--INTERNAL_form-control-background-color)));
-  border: 1px solid var(--option-tile-border-color, var(--form-control-border-color, var(--INTERNAL_form-control-border-color)));
-  border-radius: var(--option-tile-border-radius, var(--form-control-size-md-border-radius, var(--INTERNAL_form-control-size-md-border-radius)));
-  font-family: var(--option-tile-font-family, var(--form-control-font-family, var(--INTERNAL_form-control-font-family)));
-  line-height: var(--option-tile-line-height, var(--form-control-line-height, var(--INTERNAL_form-control-line-height)));
+  background-color: var(--INTERNAL_form-control-background-color);
+  border: 1px solid var(--INTERNAL_form-control-border-color);
+  border-radius: var(--INTERNAL_form-control-size-md-border-radius);
+  font-family: var(--INTERNAL_form-control-font-family);
+  line-height: var(--INTERNAL_form-control-line-height);
 
   &:focus-within {
-    box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus)),
-      inset 0 0 0 1px var(--form-control-border-color-focus, var(--INTERNAL_form-control-border-color-focus));
+    box-shadow: var(--INTERNAL_form-control-box-shadow-focus),
+      inset 0 0 0 1px var(--INTERNAL_form-control-border-color-focus);
   }
 
   &:hover {
-    border: 1px solid var(--option-tile-border-color-hover, var(--form-control-border-color-hover, var(--INTERNAL_form-control-border-color-hover)));
+    border: 1px solid var(--INTERNAL_form-control-border-color-hover);
   }
 
   // https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
   &.disabled {
-    background-color: var(--option-tile-background-color-disabled, var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled)));
-    color: var(--option-tile-font-color-disabled, var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled)));
-    -webkit-text-fill-color: var(--option-tile-font-color-disabled, var(--form-control-font-color-disabled, var(--INTERNAL_form-control-font-color-disabled)));
+    background-color: var(--INTERNAL_form-control-background-color-disabled);
+    color: var(--INTERNAL_form-control-font-color-disabled);
+    -webkit-text-fill-color: var(--INTERNAL_form-control-font-color-disabled);
     opacity: 1;
 
     &:hover {
       cursor: not-allowed;
-      border: 1px solid var(--option-tile-border-color-hover-disabled, var(--option-tile-border-color, var(--form-control-border-color, var(--INTERNAL_form-control-border-color))));
+      border: 1px solid var(--INTERNAL_form-control-border-color);
     }
   }
 
   &.error {
-    color: var(--option-tile-font-color-error, var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error)));
+    color: var(--INTERNAL_form-control-font-color-error);
 
     &:hover {
-      border: 1px solid var(--option-tile-border-color-error-hover, var(--form-control-border-color-hover, var(--INTERNAL_form-control-border-color-hover)));
+      border: 1px solid var(--INTERNAL_form-control-border-color-hover);
     }
 
     &.disabled {
-      color: var(--option-tile-font-color-error-disabled, var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled)));
-      -webkit-text-fill-color: var(--option-tile-font-color-error-disabled, var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled)));
+      color: var(--INTERNAL_form-control-font-color-error-disabled);
+      -webkit-text-fill-color: var(--INTERNAL_form-control-font-color-error-disabled);
 
       &:hover {
-        border: 1px solid var(--option-tile-border-color-error-disabled-hover, var(--form-control-border-color, var(--INTERNAL_form-control-border-color)));
+        border: 1px solid var(--INTERNAL_form-control-border-color);
       }
     }
   }
 
   &.selected {
-    background-color: var(--option-tile-background-color-selected, var(--form-control-background-color-selected, var(--INTERNAL_form-control-background-color-selected)));
-    border: 1px solid var(--option-tile-border-color-selected, var(--form-control-border-color-selected, var(--INTERNAL_form-control-border-color-selected)));
-    color: var(--color-brand-grey-600);
+    background-color: var(--INTERNAL_form-control-background-color-selected);
+    border: 1px solid var(--INTERNAL_form-control-border-color-selected);
+    color: var(--color-text-body-primary);
 
     &.disabled {
-      background-color: var(--option-tile-background-color-disabled-selected, var(--form-control-background-color-disabled, var(--INTERNAL_form-control-background-color-disabled)));
-      border: 1px solid var(--option-tile-border-color-disabled-selected, var(--form-control-border-color, var(--INTERNAL_form-control-border-color)));
+      background-color: var(--INTERNAL_form-control-background-color-disabled);
+      border: 1px solid var(--INTERNAL_form-control-border-color);
 
       &:hover {
-        border: 1px solid var(--option-tile-border-color-disabled-selected-hover, var(--form-control-border-color, var(--INTERNAL_form-control-border-color)));
+        border: 1px solid var(--INTERNAL_form-control-border-color);
       }
     }
 
     &.error {
-      background-color: var(--option-tile-background-color-selected-error, var(--form-control-background-color-error, var(--INTERNAL_form-control-background-color-error)));
-      border: 1px solid var(--option-tile-border-color-selected-error, var(--form-control-border-color-selected-error, var(--INTERNAL_form-control-border-color-selected-error)));
-      color: var(--option-tile-font-color-selected-error, var(--form-control-font-color-error, var(--INTERNAL_form-control-font-color-error)));
+      background-color: var(--INTERNAL_form-control-background-color-error);
+      border: 1px solid var(--INTERNAL_form-control-border-color-selected-error);
+      color: var(--INTERNAL_form-control-font-color-error);
 
       &.disabled {
-        color: var(--option-tile-font-color-disabled-selected-error, var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled)));
-        -webkit-text-fill-color: var(--option-tile-font-color-disabled-selected-error, var(--form-control-font-color-error-disabled, var(--INTERNAL_form-control-font-color-error-disabled)));
+        color: var(--INTERNAL_form-control-font-color-error-disabled);
+        -webkit-text-fill-color: var(--INTERNAL_form-control-font-color-error-disabled);
       }
 
       &:hover {
-        border: 1px solid var(--option-tile-border-color-selected-error-hover, var(--form-control-border-color-selected-error, var(--INTERNAL_form-control-border-color-selected-error)));
+        border: 1px solid var(--INTERNAL_form-control-border-color-selected-error);
       }
     }
 
     &:hover {
-      border: 1px solid var(--option-tile-border-color-selected-hover, var(--form-control-border-color-selected-hover, var(--INTERNAL_form-control-border-color-selected-hover)));
+      border: 1px solid var(--INTERNAL_form-control-border-color-selected-hover);
     }
   }
 }
