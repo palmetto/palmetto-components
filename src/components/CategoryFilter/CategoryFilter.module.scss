@@ -3,7 +3,7 @@
   border-color: var(--category-filter-border-color, var(--color-border-separator));
   border-radius: var(--category-filter-border-radius, var(--size-border-radius-xl));
   color: var(--category-filter-font-color, var(--color-text-body-primary));
-  font-family: var(--category-filter-font-family, var(--button-font-family));
+  font-family: var(--asset-fonts-body);
   font-weight: var(--category-filter-font-weight, var(--button-font-weight, var(--size-font-weight-bold)));
   height: max-content;
   transition-duration: 0.2s;

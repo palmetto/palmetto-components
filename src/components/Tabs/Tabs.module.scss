@@ -2,6 +2,7 @@
   border-bottom: 2px solid transparent;
   font-weight: var(--tabs-font-weight, var(--size-font-weight-bold));
   transition: color 0.2s, border-color 0.2s;
+  font-family: var(--asset-fonts-body);
 
   &[disabled] {
     cursor: not-allowed;
