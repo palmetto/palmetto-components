@@ -60,102 +60,58 @@
   border-radius: var(--badge-border-radius, var(--size-border-radius-sm));
   border-style: solid;
   border-width: var(--badge-border-width, var(--size-border-xs));
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
+  font-family: var(--asset-fonts-body);
   font-weight: var(--badge-font-weight, var(--size-font-weight-bold));
+  letter-spacing: 0.8px;
   line-height: var(--size-line-height-base);
+  text-transform: uppercase;
 
   &.primary {
-    background-color: var(
-      --badge-primary-background-color,
-      var(--color-brand-primary-100)
-    );
-    border-color: var(
-      --badge-primary-border-color,
-      var(--color-brand-primary-200)
-    );
-    color: var(--badge-primary-font-color, var(--color-brand-grey-700));
+    background-color: var(--color-background-badge-primary);
+    border-color: var(--color-border-badge-primary);
+    color: var(--color-text-badge-primary);
   }
 
   &.secondary {
-    background-color: var(
-      --badge-secondary-background-color,
-      var(--color-brand-secondary-100)
-    );
-    border-color: var(
-      --badge-secondary-border-color,
-      var(--color-brand-secondary-200)
-    );
-    color: var(--badge-secondary-font-color, var(--color-brand-grey-700));
+    background-color: var(--color-background-badge-secondary);
+    border-color: var(--color-border-badge-secondary);
+    color: var(--color-text-badge-secondary);
   }
 
   &.tertiary {
-    background-color: var(
-      --badge-tertiary-background-color,
-      var(--color-brand-tertiary-100)
-    );
-    border-color: var(
-      --badge-tertiary-border-color,
-      var(--color-brand-tertiary-200)
-    );
-    color: var(--badge-tertiary-font-color, var(--color-brand-grey-700));
+    background-color: var(--color-background-badge-tertiary);
+    border-color: var(--color-border-badge-tertiary);
+    color: var(--color-text-badge-tertiary);
   }
 
   &.success {
-    background-color: var(
-      --badge-success-background-color,
-      var(--color-brand-success-100)
-    );
-    border-color: var(
-      --badge-success-border-color,
-      var(--color-brand-success-200)
-    );
-    color: var(--badge-success-font-color, var(--color-brand-grey-700));
+    background-color: var(--color-background-badge-success);
+    border-color: var(--color-border-badge-success);
+    color: var(--color-text-badge-success);
   }
 
   &.danger {
-    background-color: var(
-      --badge-danger-background-color,
-      var(--color-brand-danger-100)
-    );
-    border-color: var(
-      --badge-danger-border-color,
-      var(--color-brand-danger-200)
-    );
-    color: var(--badge-danger-font-color, var(--color-brand-grey-700));
+    background-color: var(--color-background-badge-danger);
+    border-color: var(--color-border-badge-danger);
+    color: var(--color-text-badge-danger);
   }
 
   &.info {
-    background-color: var(
-      --badge-info-background-color,
-      var(--color-brand-info-100)
-    );
-    border-color: var(--badge-info-border-color, var(--color-brand-info-200));
-    color: var(--badge-info-font-color, var(--color-brand-grey-700));
+    background-color: var(--color-background-badge-info);
+    border-color: var(--color-border-badge-info);
+    color: var(--color-text-badge-info);
   }
 
   &.warning {
-    background-color: var(
-      --badge-warning-background-color,
-      var(--color-brand-warning-100)
-    );
-    border-color: var(
-      --badge-warning-border-color,
-      var(--color-brand-warning-200)
-    );
-    color: var(--badge-warning-font-color, var(--color-brand-grey-700));
+    background-color: var(--color-background-badge-warning);
+    border-color: var(--color-border-badge-warning);
+    color: var(--color-text-badge-warning);
   }
 
   &.default {
-    background-color: var(
-      --badge-default-background-color,
-      var(--color-brand-grey-100)
-    );
-    border-color: var(
-      --badge-default-border-color,
-      var(--color-brand-grey-200)
-    );
-    color: var(--badge-default-font-color, var(--color-brand-grey-700));
+    background-color: var(--color-background-badge-default);
+    border-color: var(--color-border-badge-default);
+    color: var(--color-text-badge-default);
   }
 
   &.size-sm {
