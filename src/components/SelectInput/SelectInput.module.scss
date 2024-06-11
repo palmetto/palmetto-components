@@ -39,6 +39,7 @@
   :global(.react-select__option),
   :global(.react-select__placeholder),
   :global(.react-select__single-value) {
+    color: var(--color-text-body-primary);
     font-size: var(
       --form-control-size-sm-font-size,
       var(--INTERNAL_form-control-size-sm-font-size)
@@ -90,6 +91,7 @@
   }
 
   :global(.react-select__single-value) {
+    color: var(--color-text-body-primary);
     font-size: var(
       --form-control-size-md-font-size,
       var(--INTERNAL_form-control-size-md-font-size)
@@ -143,6 +145,7 @@
   :global(.react-select__option),
   :global(.react-select__placeholder),
   :global(.react-select__single-value) {
+    color: var(--color-text-body-primary);
     font-size: var(
       --form-control-size-lg-font-size,
       var(--INTERNAL_form-control-size-lg-font-size)
@@ -261,8 +264,20 @@
       }
     }
 
+    :global(.react-select__option--is-focused) {
+      background-color: var(--color-background-tertiary);
+    }
+
+    :global(.react-select__option--is-selected) {
+      background-color: var(--color-brand-info-500);
+    }
+
     :global(.react-select__menu) {
       z-index: var(--size-z-index-popover);
+      background-color: var(
+        --form-control-background-color,
+        var(--INTERNAL_form-control-background-color)
+      );
     }
 
     &.error {
