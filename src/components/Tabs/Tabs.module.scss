@@ -1,6 +1,6 @@
 .tab-item {
   border-bottom: 2px solid transparent;
-  font-weight: var(--tabs-font-weight, var(--size-font-weight-bold));
+  font-weight: var(--size-font-weight-bold);
   transition: color 0.2s, border-color 0.2s;
   font-family: var(--asset-fonts-body);
 
@@ -10,24 +10,22 @@
 
   &:focus {
     outline: 0;
-    box-shadow: inset
-      var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
+    box-shadow: inset var(--INTERNAL_form-control-box-shadow-focus);
   }
 
   //Show focus styles on keyboard focus.
   &:focus-visible {
     outline: 0;
-    box-shadow: inset
-      var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
+    box-shadow: inset var(--INTERNAL_form-control-box-shadow-focus);
   }
 
   &--selected {
     &:not(.disabled) {
-      border-bottom: 2px solid var(--tabs-selected-border-color, var(--color-text-primary));
-      color: var(--tabs-selected-font-color, var(--color-text-primary));
+      border-bottom: 2px solid var(--color-text-primary);
+      color: var(--color-text-primary);
 
       &:hover {
-        color: var(--tabs-selected-font-color-hover, var(--color-text-primary));
+        color: var(--color-text-primary);
       }
     }
 
@@ -42,7 +40,7 @@
 
   &:not(.disabled) {
     &:hover {
-      color: var(--tabs-font-color-hover, var(--color-text-primary));
+      color: var(--color-text-primary);
       cursor: pointer;
     }
   }
