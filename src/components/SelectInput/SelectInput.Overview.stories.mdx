@@ -460,36 +460,3 @@ if we did not portal it to the body element.
     }}
   </Story>
 </Canvas>
-
-## Custom Classes
-
-Use the `className` prop to add a custom class, or classes to an input.
-
-<Canvas>
-  <Story name="Custom Classes">
-    {() => {
-      const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-      ];
-      const [value, setValue] = useState(null);
-      return (
-        <div style={{ height: '200px' }}>
-          <SelectInput
-            id="customClasses"
-            label="Label"
-            value={value}
-            onChange={event => setValue(event.target.value)}
-            options={options}
-            className="background-color-success-500"
-          />
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## Component Design Tokens
-
-This component shares component design tokens with all form controls. For a complete list of tokens, see the [Theming Form Controls documentation](/docs/theming-form-controls--custom-theme-form).
