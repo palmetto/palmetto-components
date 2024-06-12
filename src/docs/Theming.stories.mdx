@@ -4,6 +4,7 @@ import { size } from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 import { color } from '@palmetto/palmetto-design-tokens/build/js/variables-color';
 import { asset } from '@palmetto/palmetto-design-tokens/build/js/variables-asset';
 
+import { Accordion } from '../components/Accordion/Accordion';
 import { Alert } from '../components/Alert/Alert';
 import { Badge } from '../components/Badge/Badge';
 import { Box } from '../components/Box/Box';
@@ -112,11 +113,31 @@ Here is an example where all three token types are used to create a customized a
           textValue: 'hello world',
           textareaValue: 'hello world',
         });
+        const [openPanels, setOpenPanels] = useState({
+          '1': false,
+          '2': true,
+          '3': false,
+        });
         const handleChange = (key, value) => {
           setThemeExampleValues(prevFields => ({
             ...prevFields,
             [key]: value,
           }));
+        };
+        /* This logic ensures only one panel is open at a time */
+        const handleTogglePanels = id => {
+          const updatedPanels = { ...openPanels };
+          if (updatedPanels[id]) {
+            updatedPanels[id] = false;
+          } else {
+            Object.keys(updatedPanels).forEach(key => {
+              if (updatedPanels[key]) {
+                updatedPanels[key] = false;
+              }
+            });
+            updatedPanels[id] = true;
+          }
+          setOpenPanels(updatedPanels);
         };
         const customTheme = {
           // Base tokens
@@ -201,7 +222,8 @@ Here is an example where all three token types are used to create a customized a
           '--color-text-button-tertiary': 'var(--color-brand-primary-500)',
           '--color-text-button-tertiary-hover':
             'var(--color-brand-primary-500)',
-          '--color-background-form-control-selected': 'var(--color-brand-primary-50)',
+          '--color-background-form-control-selected':
+            'var(--color-brand-primary-50)',
         };
         return (
           <Box
@@ -241,12 +263,6 @@ Here is an example where all three token types are used to create a customized a
               <CategoryFilter>Unselected</CategoryFilter>
               <CategoryFilter isSelected>Selected</CategoryFilter>
             </Box>
-            <Alert
-              hasIcon
-              variant="info"
-              title="Info Alert"
-              message="This is an info alert"
-            />
             <Tabs
               value={themeExampleValues.selectedTab}
               onChange={(event, index) => handleChange('selectedTab', index)}
@@ -387,6 +403,76 @@ Here is an example where all three token types are used to create a customized a
               </Card.Section>
               <Card.Footer>Footer</Card.Footer>
             </Card>
+            <Accordion>
+              <Accordion.Panel isOpen={openPanels['1']}>
+                <Accordion.PanelSummary
+                  onToggle={() => handleTogglePanels('1')}
+                  isDetailsOpen={openPanels['1']}
+                >
+                  What is solar energy? How do solar panels work?
+                </Accordion.PanelSummary>
+                <Accordion.PanelDetails gap="md">
+                  <p>
+                    Solar panels, also called photovoltaic or PV panels, consist
+                    of solar cells that are designed to capture the radiant
+                    light and heat contained in sunlight and convert it into
+                    usable clean energy for your home.
+                  </p>
+                  <p>
+                    When sunlight hits your solar panel, the photons of energy
+                    are converted into DC (direct current) electricity, which is
+                    then converted into AC (alternating current) electricity for
+                    use in your home. Solar panels are often grouped together to
+                    form a solar grid or solar array, allowing you to capture
+                    and harness the right amount of energy for your needs.
+                  </p>
+                </Accordion.PanelDetails>
+              </Accordion.Panel>
+              <Accordion.Panel isOpen={openPanels['2']}>
+                <Accordion.PanelSummary
+                  onToggle={() => handleTogglePanels('2')}
+                  isDetailsOpen={openPanels['2']}
+                >
+                  How do I know if solar is right for me?
+                </Accordion.PanelSummary>
+                <Accordion.PanelDetails>
+                  <p>
+                    There are several factors we can look at to determine if
+                    solar might be a good solution for your needs, including
+                    roof space, home energy usage, credit health, and
+                    eligibility for incentives. At Palmetto, we start by
+                    calculating a quick savings estimate based on your home,
+                    location, and current utility costs. Then, we’ll schedule a
+                    meeting to clarify your goals, address any questions,
+                    identify purchase options, and outline the solar process.
+                    All of this happens before you pay, allowing you to decide
+                    if a solar power system is right for you based on a complete
+                    understanding of the potential costs and savings.
+                  </p>
+                </Accordion.PanelDetails>
+              </Accordion.Panel>
+              <Accordion.Panel isOpen={openPanels['3']} borderWidth="0">
+                <Accordion.PanelSummary
+                  onToggle={() => handleTogglePanels('3')}
+                  isDetailsOpen={openPanels['3']}
+                >
+                  How many solar panels do I need?
+                </Accordion.PanelSummary>
+                <Accordion.PanelDetails>
+                  <p>
+                    The right solar power system for your home will depend on a
+                    variety of factors, including your current energy usage, the
+                    size and layout of your roof, and your preferred level of
+                    energy independence. To hone in on the right solution for
+                    your home, we always begin with a personal consultation and
+                    a survey, both of which serve to clarify your goals and
+                    outline available options. Should you choose to invest,
+                    we’ll design a custom solution to meet your goals and
+                    maximize your savings—no haggling, no upselling, just right.
+                  </p>
+                </Accordion.PanelDetails>
+              </Accordion.Panel>
+            </Accordion>
             {alertVariants.map(variant => (
               <Alert
                 message={message(variant)}

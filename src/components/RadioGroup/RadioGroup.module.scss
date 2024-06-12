@@ -17,10 +17,7 @@
         --form-control-size-md-label-size,
         var(--INTERNAL_form-control-size-md-label-size)
       );
-      font-weight: var(
-        --form-control-legend-font-weight,
-        var(--INTERNAL_form-control-legend-font-weight)
-      );
+      font-weight: var(--size-font-weight-medium);
 
       .description {
         margin-top: var(
