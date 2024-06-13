@@ -27,10 +27,10 @@ export const ModalHeader: FC<ModalHeaderProps> = ({ id, onDismiss, title = undef
       direction="row"
       alignItems="center"
       justifyContent={justifyContentValue}
+      borderColor="separator"
       borderWidth="0 0 xs 0"
       style={{
         flexShrink: 0,
-        borderColor: 'var(--modal-border-separator-color, var(--color-brand-grey-100))',
       }}
       height="lg"
     >
@@ -46,7 +46,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({ id, onDismiss, title = undef
           className={styles['modal-close']}
           onClick={onDismiss}
         >
-          <Icon name="remove" />
+          <Icon name="remove-light" />
         </button>
       )}
     </Box>
