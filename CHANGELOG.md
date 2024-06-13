@@ -1,5 +1,104 @@
 Changelog
 
+# [2.0.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v1.0.0...v2.0.0-beta.1) (2024-06-13)
+
+
+* BREAKING CHANGE: Dark mode support (#893) ([a65e07a](https://github.com/palmetto/palmetto-components/commit/a65e07af4d698a8c8b58fbff64a2af6df61b3299)), closes [#893](https://github.com/palmetto/palmetto-components/issues/893)
+
+
+### BREAKING CHANGES
+
+* background, border, font specific colors
+* background, border, font specific colors
+* Spinner variant prop changed to color
+* ThemeProvider
+
+* feat(RadioGroup): dark mode support
+
+* feat(Accordion): dark mode support
+
+* feat(Tabs): dark mode support
+
+* feat(TabsSlider): dark mode support
+
+* dark mode tokens
+
+* Update FileUpload.tsx
+
+* Update Heading.Playground.stories.tsx
+
+* Update MediaModal.tsx
+
+* feat(Card): dark mode support
+
+* feat(Alert): dark mode support
+
+* feat(TabsSlider): dark mode support
+
+* feat(CategoryFilter): dark mode support
+
+* wip
+
+* checkboxinput
+
+* OptionTile
+
+* update pdt package with new tokens
+
+* fix build
+
+* fix lint
+
+* Update Box.tsx
+
+* checkboxinput
+
+* Update MediaModal.tsx
+
+* Update SelectInputNative.module.scss
+
+* Update Checkbox.module.scss
+
+* Update pull-request.yml
+
+* light mode button background tokens
+
+* light mode button font color tokens
+
+* light mode button border color tokens
+
+* pdt 1.3.0
+
+* SelectInput dark mode fixes
+
+* Badge dark mode
+
+* spec body font
+
+* wip
+
+* remove internal form color tokens
+
+* remove form theming docs
+
+* wip
+
+* Toast dark mode
+
+* Toggle dark mode
+
+* Table dark mode
+
+* remove component design token documentation
+
+* more cleanup
+
+* datepicker dark mode
+
+* pdt 1.4
+
+* Update Theming.stories.mdx
+
 # [1.0.0](https://github.com/palmetto/palmetto-components/compare/v0.158.2...v1.0.0) (2024-04-30)
 
 
