@@ -47,7 +47,7 @@ describe('Modal', () => {
 
   test('onDismiss', async () => {
     const mockOnDismiss = jest.fn();
-    const { getByTestId } = render(
+    const { getByLabelText } = render(
       <Modal isOpen onDismiss={mockOnDismiss} ariaLabel="testSubcomponents">
         <Modal.Header id="titleFooterBody" title="The Modal Title" onDismiss={mockOnDismiss} />
         <Modal.Body>Modal body content</Modal.Body>
@@ -55,7 +55,7 @@ describe('Modal', () => {
       </Modal>,
     );
 
-    const closeButton = getByTestId('icon-testid--remove').closest('button');
+    const closeButton = getByLabelText('close');
     expect(closeButton).toBeInTheDocument();
 
     if (closeButton) {

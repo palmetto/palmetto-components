@@ -21,11 +21,11 @@ export const ModalFooter: FC<ModalFooterProps> = ({
     direction={direction}
     alignItems={alignItems}
     justifyContent={justifyContent}
+    borderColor="separator"
     borderWidth="xs 0 0 0"
     gap={gap}
     style={{
       flexShrink: 0,
-      borderColor: 'var(--modal-border-separator-color, var(--color-brand-grey-100))',
       ...style,
     }}
     {...restProps}
