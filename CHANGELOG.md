@@ -1,5 +1,12 @@
 Changelog
 
+# [2.0.0-beta.2](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2024-06-13)
+
+
+### Features
+
+* Modal dark mode ([#894](https://github.com/palmetto/palmetto-components/issues/894)) ([6030206](https://github.com/palmetto/palmetto-components/commit/603020674844451516b38c7ac593626a078e6b33))
+
 # [2.0.0-beta.1](https://github.com/palmetto/palmetto-components/compare/v1.0.0...v2.0.0-beta.1) (2024-06-13)
 
 
