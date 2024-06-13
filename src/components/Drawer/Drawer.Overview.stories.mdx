@@ -584,39 +584,3 @@ The appearance of a Drawer can be customized via component design tokens.
     }}
   </Story>
 </Canvas>
-
-## Component Design Tokens
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {(() => {
-      const tokens = {
-        '--drawer-background-color': '--color-brand-white-500',
-        '--drawer-box-shadow': '--size-box-shadow-xl',
-        '--drawer-font-color': '--color-brand-grey-100',
-        '--drawer-header-border-color': '--color-brand-grey-100',
-        '--drawer-width': '--size-width-4xl',
-        '--drawer-close-button-color': '--color-brand-grey-500',
-        '--drawer-close-button-color-hover': '--color-brand-grey-600',
-        '--drawer-close-button-box-shadow-focus': '--color-brand-grey-200',
-      };
-      return Object.entries(tokens).map(([name, entry], i) => (
-        <tr key={i}>
-          <td>
-            <code>{name}</code>
-          </td>
-          <td>
-            <code>{entry}</code>
-          </td>
-        </tr>
-      ));
-    })()}
-
-  </tbody>
-</table>

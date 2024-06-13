@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { render, screen } from '@testing-library/react';
-import { ThemeContext, ThemeProvider } from './ThemeProvider';
+import { useTheme, ThemeProvider } from './ThemeProvider';
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -19,7 +19,7 @@ Object.defineProperty(window, 'matchMedia', {
 describe('Theme Provider', () => {
   it('provides a theme and a setter -- dark', () => {
     const Component = () => {
-      const { theme, setTheme } = useContext(ThemeContext);
+      const { theme, setTheme } = useTheme();
       useEffect(() => {
         setTheme('dark');
       }, [setTheme]);
@@ -35,7 +35,7 @@ describe('Theme Provider', () => {
 
   it('provides a theme and a setter -- light', () => {
     const Component = () => {
-      const { theme, setTheme } = useContext(ThemeContext);
+      const { theme, setTheme } = useTheme();
       useEffect(() => {
         setTheme('light');
       }, [setTheme]);
@@ -47,5 +47,21 @@ describe('Theme Provider', () => {
       </ThemeProvider>,
     );
     expect(screen.getByText('light')).toBeInTheDocument();
+  });
+
+  it('provides a theme and a setter -- system', () => {
+    const Component = () => {
+      const { theme, setTheme } = useTheme();
+      useEffect(() => {
+        setTheme('system');
+      }, [setTheme]);
+      return <p>{theme}</p>;
+    };
+    render(
+      <ThemeProvider>
+        <Component />
+      </ThemeProvider>,
+    );
+    expect(screen.getByText('system')).toBeInTheDocument();
   });
 });

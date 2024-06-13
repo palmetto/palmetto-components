@@ -1,29 +1,29 @@
 .tab-item {
   z-index: 1;
-  font-weight: var(--tabs-slider-font-weight, var(--button-font-weight, var(--size-font-weight-bold)));
-  color: var(--color-brand-grey-500);
-  font-family: var(--tabs-slider-font-family, var(--button-font-family));
+  font-weight: var(--size-font-weight-bold);
+  color: var(--color-text-body-secondary);
+  font-family: var(--asset-fonts-body);
 
   &[disabled] {
     cursor: not-allowed;
-    color: var(--color-brand-grey-300);
+    color: var(--color-text-disabled);
   }
 
 
   &:focus {
     outline: 0;
-    box-shadow: inset var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
+    box-shadow: inset var(--INTERNAL_form-control-box-shadow-focus);
   }
 
   //Show focus styles on keyboard focus.
   &:focus-visible {
     outline: 0;
-    box-shadow: inset var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
+    box-shadow: inset var(--INTERNAL_form-control-box-shadow-focus);
   }
 
   &:not(.disabled) {
     &:hover {
-      color: var(--color-brand-grey-600);
+      color: var(--color-text-body-primary);
       cursor: pointer;
     }
   }
@@ -37,7 +37,7 @@
 
   &--selected {
     &:not(.disabled) {
-      color: var(--color-brand-grey-600);
+      color: var(--color-text-body-primary);
     }
   }
 }

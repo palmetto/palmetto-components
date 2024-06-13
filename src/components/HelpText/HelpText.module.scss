@@ -1,12 +1,6 @@
 .help-text {
-  color: var(
-    --form-control-help-text-font-color,
-    var(--INTERNAL_form-control-help-text-font-color)
-  );
-  font-family: var(
-    --form-control-font-family,
-    var(--INTERNAL_form-control-font-family)
-  );
+  color: var(--color-text-body-tertiary);
+  font-family: var(--asset-fonts-body);
   font-size: var(
     --form-control-help-text-font-size,
     var(--INTERNAL_form-control-help-text-font-size)

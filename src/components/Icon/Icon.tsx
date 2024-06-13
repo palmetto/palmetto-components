@@ -2,9 +2,7 @@ import React, { FC, forwardRef } from 'react';
 import icons from '@palmetto/palmetto-design-tokens/build/icons/react';
 import classNames from 'classnames';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
-import {
-  FontColor, FontSize, IconName, ResponsiveProp,
-} from '../../types';
+import { FontColor, FontSize, IconName, ResponsiveProp } from '../../types';
 import { Box } from '../Box/Box';
 
 export interface IconProps {
@@ -28,9 +26,7 @@ export interface IconProps {
 }
 
 export const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({
-    className = undefined, name, color, size, ...restProps
-  }, ref) => {
+  ({ className = undefined, name, color, size, ...restProps }, ref) => {
     const IconComponent = icons[name];
 
     if (!IconComponent) console.error(`Icon '${name}' not found`); // eslint-disable-line no-console
@@ -51,7 +47,7 @@ export const Icon: FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
     ) : (
       <Box
         fontWeight="bold"
-        background="danger"
+        background="danger-500"
         color="white"
         padding="2xs"
         fontSize="sm"
