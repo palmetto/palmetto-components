@@ -1,45 +1,46 @@
 .tab-item {
   border-bottom: 2px solid transparent;
-  font-weight: var(--tabs-font-weight, var(--size-font-weight-bold));
+  font-weight: var(--size-font-weight-bold);
   transition: color 0.2s, border-color 0.2s;
+  font-family: var(--asset-fonts-body);
 
   &[disabled] {
     cursor: not-allowed;
   }
 
-
   &:focus {
     outline: 0;
-    box-shadow: inset
-      var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
+    box-shadow: inset var(--INTERNAL_form-control-box-shadow-focus);
   }
 
   //Show focus styles on keyboard focus.
   &:focus-visible {
     outline: 0;
-    box-shadow: inset
-      var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
+    box-shadow: inset var(--INTERNAL_form-control-box-shadow-focus);
   }
 
   &--selected {
     &:not(.disabled) {
-      border-bottom: 2px solid var(--tabs-selected-border-color, var(--color-brand-primary-500));
-      color: var(--tabs-selected-font-color, var(--color-brand-primary-500));
+      border-bottom: 2px solid var(--color-text-primary);
+      color: var(--color-text-primary);
 
       &:hover {
-        color: var(--tabs-selected-font-color-hover, var(--color-brand-primary-600));
+        color: var(--color-text-primary);
       }
     }
 
     &.disabled {
-      border-bottom: 2px solid var(--color-brand-grey-100);
-      color: var(--color-brand-grey-100);
+      border-bottom: 2px solid var(--color-border-separator);
+
+      &.disabled {
+        color: var(--color-text-danger-disabled);
+      }
     }
   }
 
   &:not(.disabled) {
     &:hover {
-      color: var(--tabs-font-color-hover, var(--color-brand-primary-500));
+      color: var(--color-text-primary);
       cursor: pointer;
     }
   }

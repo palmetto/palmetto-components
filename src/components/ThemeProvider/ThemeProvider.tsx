@@ -1,60 +1,76 @@
-import React, {
-  createContext,
-  useState,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 
-export type Theme = 'light' | 'dark';
+export type Theme = 'dark' | 'light' | 'system';
 
-export interface ThemeContextShape {
+type ThemeProviderProps = {
+  children: React.ReactNode;
+  defaultTheme?: Theme;
+  storageKey?: string;
+};
+
+type ThemeProviderState = {
   theme: Theme;
-  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
-  systemPreference: Theme;
-}
+  setTheme: (theme: Theme) => void;
+};
 
-export const ThemeContext = createContext<ThemeContextShape>({
+const initialState: ThemeProviderState = {
   theme: 'light',
-  setTheme: (_theme) => {}, // eslint-disable-line
-  systemPreference: 'light',
-});
-ThemeContext.displayName = 'ThemeContext';
+  setTheme: () => null,
+};
 
-export interface ThemeProviderProps {
-  children?: React.ReactNode;
-}
+const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children = null }) => {
-  const [theme, setTheme] = useState<Theme>('light');
-  const [systemPreference, setSystemPreference] = useState<Theme>('light');
-
-  const prefersDark = useRef(window?.matchMedia('(prefers-color-scheme: dark)'));
-
-  const handleThemePreferenceChange = (mediaQuery: MediaQueryListEvent | MediaQueryList) => {
-    let preference: Theme;
-    if (mediaQuery.matches) {
-      preference = 'dark';
-    } else {
-      preference = 'light';
-    }
-
-    setSystemPreference(preference);
-  };
+export function ThemeProvider({
+  children,
+  defaultTheme = 'light',
+  storageKey = 'palmetto-ui-theme',
+  ...props
+}: ThemeProviderProps) {
+  const [theme, setTheme] = useState<Theme>(
+    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
+  );
 
   useEffect(() => {
-    const currentMediaQuery = prefersDark.current;
+    const root = window.document.documentElement;
 
-    if (typeof window !== 'undefined') {
-      handleThemePreferenceChange(currentMediaQuery);
-      currentMediaQuery.addEventListener('change', handleThemePreferenceChange);
+    root.classList.remove('light', 'dark');
+
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light';
+
+      root.classList.add(systemTheme);
+      return;
     }
 
-    return () => currentMediaQuery.removeEventListener('change', handleThemePreferenceChange);
-  }, [prefersDark]);
+    root.classList.add(theme);
+  }, [theme]);
+
+  const value = {
+    theme,
+    setTheme: (newTheme: Theme) => {
+      localStorage.setItem(storageKey, newTheme);
+      setTheme(newTheme);
+    },
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, systemPreference }}>
+    <ThemeProviderContext.Provider {...props} value={value}>
       {children}
-    </ThemeContext.Provider>
+    </ThemeProviderContext.Provider>
   );
+}
+
+export const useTheme = () => {
+  const context = useContext(ThemeProviderContext);
+
+  if (context === undefined) {
+    throw new Error(
+      'useTheme must be used within a ThemeProvider. Be sure your App is wrapped in ThemeProvider.',
+    );
+  }
+
+  return context;
 };

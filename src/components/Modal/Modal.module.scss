@@ -1,7 +1,9 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 // This line prevents @reach/dialog from throwing a warning due to not importing their CSS.
-:root { --reach-dialog: 1; }
+:root {
+  --reach-dialog: 1;
+}
 
 .modal-close {
   border: none;
@@ -19,7 +21,10 @@
   // Show focus styles on keyboard focus.
   &:focus-visible {
     outline: 0;
-    box-shadow: var(--modal-close-button-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
+    box-shadow: var(
+      --modal-close-button-box-shadow-focus,
+      0 0 0 4px var(--color-brand-grey-200)
+    );
   }
 
   // Hide focus styles if they are not needed, for example,
@@ -28,7 +33,6 @@
     outline: 0;
     box-shadow: none;
   }
-
 }
 
 [data-reach-dialog-overlay].modal {
@@ -60,8 +64,13 @@
 
     @media (min-width: $size-breakpoint-tablet) {
       display: grid;
-      grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(var(--size-spacing-2xl), 1fr);
-      grid-template-columns: var(--size-spacing-2xl) auto var(--size-spacing-2xl);
+      grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(
+          var(--size-spacing-2xl),
+          1fr
+        );
+      grid-template-columns: var(--size-spacing-2xl) auto var(
+          --size-spacing-2xl
+        );
       align-content: center;
       align-items: center;
       overflow: hidden;
@@ -77,10 +86,14 @@
     grid-column: 1;
     z-index: var(--size-z-index-modal);
     margin: 0;
-    background-color: var(--modal-background-color, var(--color-brand-white-500));
+    background-color: var(
+      --modal-background-color,
+      var(--color-brand-white-500)
+    );
     padding: 0;
     width: 100%;
-    border-radius: var(--modal-border-radius, var(--size-border-radius-md)) var(--modal-border-radius, var(--size-border-radius-md)) 0 0;
+    border-radius: var(--modal-border-radius, var(--size-border-radius-md))
+      var(--modal-border-radius, var(--size-border-radius-md)) 0 0;
 
     :global {
       animation: slideInUp 0.3s;
@@ -103,7 +116,7 @@
       }
     }
 
-    @media(min-width: $size-breakpoint-desktop) {
+    @media (min-width: $size-breakpoint-desktop) {
       width: 50vw;
     }
   }
@@ -121,7 +134,10 @@
 
   @media (min-width: $size-breakpoint-tablet) {
     display: grid;
-    grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(var(--size-spacing-2xl), 1fr);
+    grid-template-rows: minmax(var(--size-spacing-2xl), 1fr) auto minmax(
+        var(--size-spacing-2xl),
+        1fr
+      );
     grid-template-columns: var(--size-spacing-2xl) auto var(--size-spacing-2xl);
     align-items: center;
     overflow: hidden;
@@ -143,7 +159,7 @@
         animation: fadeInUp 0.2s ease-out;
       }
 
-      @media(min-width: $size-breakpoint-desktop) {
+      @media (min-width: $size-breakpoint-desktop) {
         width: 50vw;
       }
     }

@@ -11,16 +11,15 @@
       display: none;
     }
 
-
     &:focus {
       outline: 0;
-      box-shadow: 0 0 0 2px var(--color-brand-primary-light);
+      box-shadow: 0 0 0 2px var(--color-brand-primary-300);
     }
 
     //Show focus styles on keyboard focus.
     &:focus-visible {
       outline: 0;
-      box-shadow: 0 0 0 2px var(--color-brand-primary-light);
+      box-shadow: 0 0 0 2px var(--color-brand-primary-300);
     }
 
     // Hide focus styles if they are not needed, for example,

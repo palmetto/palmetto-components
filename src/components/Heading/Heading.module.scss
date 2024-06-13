@@ -1,5 +1,5 @@
 .heading {
-  line-height: var(--heading-line-height, var(--size-line-height-heading));
-  font-family: var(--heading-font-family, var(--asset-fonts-brand));
-  font-weight: var(--heading-font-weight, var(--size-font-weight-bold));
+  line-height: var(--size-line-height-heading);
+  font-family: var(--asset-fonts-brand);
+  font-weight: var(--size-font-weight-bold);
 }

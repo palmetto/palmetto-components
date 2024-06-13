@@ -154,7 +154,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
               className={styles['drawer-close-button']}
               onClick={onDismiss}
             >
-              <Icon name="remove" />
+              <Icon name="remove-light" />
             </button>
           </Box>
         );
@@ -179,7 +179,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
                 className={styles['drawer-close-button']}
                 onClick={onDismiss}
               >
-                <Icon name="remove" />
+                <Icon name="remove-light" />
               </button>
             )}
           </Box>

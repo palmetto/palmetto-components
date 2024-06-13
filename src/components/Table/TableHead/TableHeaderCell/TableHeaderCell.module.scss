@@ -3,15 +3,14 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
-  border-color: var(--table-border-color, var(--INTERNAL_table-border-color));
+  border-color: var(--color-border-separator);
   border-bottom-style: solid;
-  border-width: 0 0 var(--table-header-border-width, var(--INTERNAL_table-header-border-width)) 0;
-  background-color: var(--table-header-background-color, var(--INTERNAL_table-header-background-color));
-  color: var(--table-header-font-color, var(--INTERNAL_table-header-font-color));
-  font-size: var(--table-header-font-size, var(--INTERNAL_table-header-font-size));
-  font-weight: var(--table-header-font-weight, var(--INTERNAL_table-header-font-weight));
-  padding: var(--table-padding-vertical, var(--INTERNAL_table-padding-vertical))
-    var(--table-padding-horizontal, var(--INTERNAL_table-padding-horizontal));
+  border-width: 0 0 var(--size-border-xs) 0;
+  background-color: var(--color-background-primary);
+  color: var(--color-text-body-secondary);
+  font-size: var(--size-font-xs);
+  font-weight: var(--size-font-weight-bold);
+  padding: var(--size-spacing-md) var(--size-spacing-lg);
 
   &.sortable {
     cursor: pointer;
@@ -28,8 +27,7 @@
   }
 
   &.compact {
-    padding: var(--table-compact-padding-vertical, var(--INTERNAL_table-compact-padding-vertical))
-      var(--table-compact-padding-horizontal, var(--INTERNAL_table-compact-padding-horizontal));
+    padding: var(--size-spacing-xs) var(--size-spacing-xs);
   }
 
   &.sticky-header {
@@ -37,7 +35,6 @@
     top: 0;
     z-index: var(--size-z-index-sticky);
   }
-
 
   &.sticky-column-left {
     left: 0;
@@ -50,10 +47,10 @@
   &.sticky-column {
     position: sticky;
     z-index: calc(var(--size-z-index-sticky) + 1);
-    box-shadow: 5px 0 5px -2px rgb(0 0 0 / 10%), -5px 0 5px -2px rgb(0 0 0 / 10%);
-    background-color: var(--table-header-background-color, var(--INTERNAL_table-header-background-color));
+    box-shadow: 5px 0 5px -2px rgb(0 0 0 / 10%),
+      -5px 0 5px -2px rgb(0 0 0 / 10%);
+    background-color: var(--color-background-primary);
   }
-
 
   &.align-right {
     text-align: right;
@@ -67,7 +64,7 @@
     white-space: nowrap;
 
     .sort-icon {
-      margin-left: var(--table-header-sort-icon-spacing, var(--INTERNAL_table-header-sort-icon-spacing));
+      margin-left: var(--size-spacing-xs);
     }
   }
 }
