@@ -460,36 +460,3 @@ To give toasts an additional visual indication of feedback, `success`, `loading`
     }}
   </Story>
 </Canvas>
-
-## Component Design Tokens
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {(() => {
-      const tokens = {
-        '--toast-notification-background-color': '--color-brand-grey-800',
-        '--toast-notification-font-color': '--color-brand-white-500',
-        '--toast-notification-border-radius': '--size-border-radius-sm',
-        '--toast-notification-box-shadow': '--size-box-shadow-2xs',
-        '--toast-notification-dismiss-border-color': '--color-brand-grey-600',
-        '--toast-notification-dismiss-color': '--color-brand-white-500',
-      };
-      return Object.entries(tokens).map(([name, entry], i) => (
-        <tr key={i}>
-          <td>
-            <code>{name}</code>
-          </td>
-          <td>
-            <code>{entry}</code>
-          </td>
-        </tr>
-      ));
-    })()}
-  </tbody>
-</table>

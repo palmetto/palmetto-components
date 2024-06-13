@@ -59,7 +59,6 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
 }) => {
   const columnIsSticky = sticky === 'left' || sticky === 'right';
   const tableCellClasses = classNames(
-    'palmetto-components__variables__table',
     styles['table-cell'],
     {
       [styles.truncated]: truncateOverflow,
@@ -80,14 +79,15 @@ const TableBodyCell: FC<TableBodyCellProps> = ({
       className={tableCellClasses}
       display="table-cell"
       width={`${width}px`}
-      style={{ ...width && { minWidth: `${width}px`, maxWidth: `${width}px` } }}
+      style={{
+        ...(width && { minWidth: `${width}px`, maxWidth: `${width}px` }),
+      }}
       scope="row"
     >
-      {(children === null || typeof children === 'undefined' || children === '')
+      {children === null || typeof children === 'undefined' || children === ''
         ? emptyCellPlaceholder
         : children}
     </Box>
-
   );
 };
 

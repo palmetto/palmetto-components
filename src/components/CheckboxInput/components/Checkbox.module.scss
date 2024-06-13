@@ -16,8 +16,13 @@ $lg-dimension: 36px;
   }
 }
 
-%size-sm { @include size-sm; }
-.size-sm { @extend %size-sm; }
+%size-sm {
+  @include size-sm;
+}
+
+.size-sm {
+  @extend %size-sm;
+}
 
 @mixin size-md {
   border-radius: var(--size-border-radius-sm);
@@ -30,8 +35,13 @@ $lg-dimension: 36px;
   }
 }
 
-%size-md { @include size-md; }
-.size-md { @extend %size-md; }
+%size-md {
+  @include size-md;
+}
+
+.size-md {
+  @extend %size-md;
+}
 
 @mixin size-lg {
   border-radius: var(--size-border-radius-sm);
@@ -44,8 +54,13 @@ $lg-dimension: 36px;
   }
 }
 
-%size-lg { @include size-lg; }
-.size-lg { @extend %size-lg; }
+%size-lg {
+  @include size-lg;
+}
+
+.size-lg {
+  @extend %size-lg;
+}
 
 .checkbox {
   &.hidden {
@@ -55,36 +70,45 @@ $lg-dimension: 36px;
   }
 
   input + div {
-    background: var(--form-control-background-color, var(--color-brand-white-500));
-    color: var(--form-control-checkbox-color, var(--color-brand-grey-500));
+    background: var(--color-background-form-control);
+    color: var(--color-brand-grey-500);
   }
 
   input:checked + div,
   input:indeterminate + div {
-    color: var(--form-control-checkbox-color-checked, var(--color-brand-primary-500));
+    background: var(--color-brand-white-500);
+    color: var(
+      --form-control-checkbox-color-checked,
+      var(--color-text-primary)
+    );
   }
 
   // stylelint-disable
   input[aria-invalid='true'] + div {
-    color: var(--form-control-font-color-error, var(--color-brand-danger-500));
+    color: var(--form-control-font-color-error, var(--color-text-danger));
   }
   // stylelint-enable
 
-
   input:focus + div {
     outline: 0;
-    box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
+    box-shadow: var(
+      --form-control-box-shadow-focus,
+      var(--INTERNAL_form-control-box-shadow-focus)
+    );
   }
 
   // Show focus styles on keyboard focus.
   input:focus-visible + div {
     outline: 0;
-    box-shadow: var(--form-control-box-shadow-focus, var(--INTERNAL_form-control-box-shadow-focus));
+    box-shadow: var(
+      --form-control-box-shadow-focus,
+      var(--INTERNAL_form-control-box-shadow-focus)
+    );
   }
 
   input:disabled + div {
-    background: var(--form-control-background-color-disabled, var(--color-brand-grey-50));
-    color: var(--form-control-checkbox-color-disabled, var(--color-brand-grey-200));
+    background: var(--color-background-secondary);
+    color: var(--color-text-disabled);
   }
 
   // Hide focus styles if they are not needed, for example, when an element receives focus via the mouse.
@@ -94,28 +118,63 @@ $lg-dimension: 36px;
   }
 
   input:checked:disabled + div {
-    color: var(--form-control-checkbox-color-checked-disabled, var(--color-brand-primary-200));
+    color: var(
+      --form-control-checkbox-color-checked-disabled,
+      var(--color-brand-primary-200)
+    );
   }
 
-  &.size-sm { @extend %size-sm; }
-  &.size-md { @extend %size-md; }
-  &.size-lg { @extend %size-lg; }
+  &.size-sm {
+    @extend %size-sm;
+  }
+
+  &.size-md {
+    @extend %size-md;
+  }
+
+  &.size-lg {
+    @extend %size-lg;
+  }
 
   @media (min-width: $size-breakpoint-tablet) {
-    &.size-sm-tablet { @include size-sm; }
-    &.size-md-tablet { @include size-md; }
-    &.size-lg-tablet { @include size-lg; }
+    &.size-sm-tablet {
+      @include size-sm;
+    }
+
+    &.size-md-tablet {
+      @include size-md;
+    }
+
+    &.size-lg-tablet {
+      @include size-lg;
+    }
   }
 
   @media (min-width: $size-breakpoint-desktop) {
-    &.size-sm-desktop { @include size-sm; }
-    &.size-md-desktop { @include size-md; }
-    &.size-lg-desktop { @include size-lg; }
+    &.size-sm-desktop {
+      @include size-sm;
+    }
+
+    &.size-md-desktop {
+      @include size-md;
+    }
+
+    &.size-lg-desktop {
+      @include size-lg;
+    }
   }
 
   @media (min-width: $size-breakpoint-hd) {
-    &.size-sm-hd { @include size-sm; }
-    &.size-md-hd { @include size-md; }
-    &.size-lg-hd { @include size-lg; }
+    &.size-sm-hd {
+      @include size-sm;
+    }
+
+    &.size-md-hd {
+      @include size-md;
+    }
+
+    &.size-lg-hd {
+      @include size-lg;
+    }
   }
 }

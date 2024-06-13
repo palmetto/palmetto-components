@@ -33,8 +33,8 @@ Global tokens are the primitive values in our design language, represented by co
 Alias tokens relate to a specific context or abstraction. Aliases help communicate the intended purpose of a token, and are effective when a value with a single intent will appear in multiple places.
 
 ```css
---color-brand-primary-base: #008433; /* alias */
---form-control-background-color: --color-brand-white-base; /* common */
+--color-brand-primary-500: #008433; /* alias */
+--form-control-background-color: --color-brand-white-500; /* common */
 ```
 
 ### Component Specific Tokens
@@ -42,7 +42,7 @@ Alias tokens relate to a specific context or abstraction. Aliases help communica
 Component-specific tokens have the most specific component level context. They often inherit from alias or global tokens, but are named in a way that allows consumers to be as specific as possible in applying tokens in component development.
 
 ```css
---button-background-color: --color-brand-primary-base; /* component */
+--button-background-color: --color-brand-primary-500; /* component */
 --badge-size-xl-font-size: --size-font-md;
 ```
 
@@ -153,7 +153,7 @@ The following breakpoints are used in utility classes, but you can use them to m
     ))}
     <tr>
       <td>
-        <code>size-breakpoint-base</code>
+        <code>size-breakpoint-500</code>
       </td>
       <td>0px</td>
     </tr>
@@ -168,7 +168,9 @@ The following breakpoints are used in utility classes, but you can use them to m
   title="color-brand-white"
   subtitle="All whites"
   colors={Object.keys(color.brand.white).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.white).map(g => color.brand.white[g].value)[i];
+    acc[item] = Object.keys(color.brand.white).map(
+      g => color.brand.white[g].value,
+    )[i];
     return acc;
   }, {})}
 />
@@ -177,25 +179,31 @@ The following breakpoints are used in utility classes, but you can use them to m
   title="color-brand-black"
   subtitle="Black"
   colors={Object.keys(color.brand.black).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.black).map(g => color.brand.black[g].value)[i];
+    acc[item] = Object.keys(color.brand.black).map(
+      g => color.brand.black[g].value,
+    )[i];
     return acc;
   }, {})}
 />
 
 <ColorItem
-  title="color-brand-light"
+  title="color-brand-300"
   subtitle="Light"
   colors={Object.keys(color.brand.light).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.light).map(g => color.brand.light[g].value)[i];
+    acc[item] = Object.keys(color.brand.light).map(
+      g => color.brand.light[g].value,
+    )[i];
     return acc;
   }, {})}
 />
 
 <ColorItem
-  title="color-brand-dark"
+  title="color-brand-600"
   subtitle="Dark"
   colors={Object.keys(color.brand.dark).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.dark).map(g => color.brand.dark[g].value)[i];
+    acc[item] = Object.keys(color.brand.dark).map(
+      g => color.brand.dark[g].value,
+    )[i];
     return acc;
   }, {})}
 />
@@ -308,7 +316,13 @@ Use these tokens for `font-size`. They are defined in `rem`, which means they wi
           <code>{name}</code>
         </td>
         <td>{entry.value}</td>
-        <td>{name === 'base' ? '16' : name === 'inherit' ? '' : entry.original.value * 16}</td>
+        <td>
+          {name === 'base'
+            ? '16'
+            : name === 'inherit'
+            ? ''
+            : entry.original.value * 16}
+        </td>
       </tr>
     ))}
   </tbody>

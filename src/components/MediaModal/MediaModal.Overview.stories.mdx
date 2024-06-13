@@ -295,7 +295,12 @@ If `headerContent` is defined, then the `title` and `description` will not be re
             isOpen={isMediaModalOpen}
             onDismiss={closeMediaModal}
           >
-            <Box display="block" width="90vw" maxWidth="5xl" data-chromatic="ignore">
+            <Box
+              display="block"
+              width="90vw"
+              maxWidth="5xl"
+              data-chromatic="ignore"
+            >
               <Vimeo vimeoId="595469877" />
             </Box>
           </MediaModal>
@@ -304,32 +309,3 @@ If `headerContent` is defined, then the `title` and `description` will not be re
     }}
   </Story>
 </Canvas>
-
-## Component Design Tokens
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {(() => {
-      const tokens = {
-        '--media-modal-font-color': '--color-brand-grey-100',
-      };
-      return Object.entries(tokens).map(([name, entry], i) => (
-        <tr key={i}>
-          <td>
-            <code>{name}</code>
-          </td>
-          <td>
-            <code>{entry}</code>
-          </td>
-        </tr>
-      ));
-    })()}
-
-  </tbody>
-</table>

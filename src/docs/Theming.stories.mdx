@@ -4,10 +4,12 @@ import { size } from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 import { color } from '@palmetto/palmetto-design-tokens/build/js/variables-color';
 import { asset } from '@palmetto/palmetto-design-tokens/build/js/variables-asset';
 
+import { Accordion } from '../components/Accordion/Accordion';
 import { Alert } from '../components/Alert/Alert';
 import { Badge } from '../components/Badge/Badge';
 import { Box } from '../components/Box/Box';
 import { Button } from '../components/Button/Button';
+import { Card } from '../components/Card/Card';
 import { CategoryFilter } from '../components/CategoryFilter/CategoryFilter';
 import { CheckboxInput } from '../components/CheckboxInput/CheckboxInput';
 import { Heading } from '../components/Heading/Heading';
@@ -21,6 +23,11 @@ import { TabsSlider } from '../components/TabsSlider/TabsSlider';
 import { Toggle } from '../components/Toggle/Toggle';
 import { TextareaInput } from '../components/TextareaInput/TextareaInput';
 import { TextInput } from '../components/TextInput/TextInput';
+import {
+  ThemeProvider,
+  Theme,
+  useTheme,
+} from '../components/ThemeProvider/ThemeProvider';
 
 <Meta title="Theming/Overview" />
 
@@ -42,7 +49,7 @@ Also referred to as alias tokens, common tokens relate to a specific context or 
 
 ### Component Tokens
 
-Component tokens are scoped to specific components so altering them will apply to that component only. E.G: `--button-size-md-font-size`.
+Component tokens are scoped to specific components so altering them will apply to that component only. E.G: `--color-background-button-primary`.
 
 Not every possible property style is available to be customized, as the Palmetto Design System is not intended to be a fully-customizable ui library. Token documentation for components that are theme-able are at the bottom of each components' documentation page.
 
@@ -53,304 +60,444 @@ Here is an example where all three token types are used to create a customized a
 <Canvas>
   <Story name="Theme Example">
     {() => {
-      const options = [
-        {
-          id: 'car',
-          value: 'car',
-          label: 'Car',
-        },
-        {
-          id: 'truck',
-          value: 'truck',
-          label: 'Truck',
-        },
-        {
-          id: 'motorcycle',
-          value: 'motorcycle',
-          label: 'Motorcycle',
-        },
-      ];
-      const [isThemed, setIsThemed] = useState(true);
-      const [themeExampleValues, setThemeExampleValues] = useState({
-        activePage: 1,
-        multiSelectValue: [
+      const App = () => {
+        const alertVariants = [
+          'default',
+          'info',
+          'success',
+          'warning',
+          'danger',
+        ];
+        const message = variant => `
+        This is a ${variant} alert. It also has longer text to see what these alerts
+        can look like when broken into multiple lines. This one will definitely
+        break into multiple lines in most standard screen resolutions.
+      `;
+        const options = [
           {
-            id: 'motorcycle',
-            value: 'motorcycle',
-            label: 'Motorcycle',
+            id: 'car',
+            value: 'car',
+            label: 'Car',
           },
           {
             id: 'truck',
             value: 'truck',
             label: 'Truck',
           },
-        ],
-        optionTileGroupValue: options[0].value,
-        radioValue: options[0].value,
-        selectedTab: 0,
-        selectedTabSlider: 0,
-        selectValue: options[0].value,
-        textValue: 'hello world',
-        textareaValue: 'hello world',
-      });
-      const handleChange = (key, value) => {
-        setThemeExampleValues(prevFields => ({
-          ...prevFields,
-          [key]: value,
-        }));
-      };
-      const customTheme = {
-        // Base tokens
-        '--asset-fonts-brand': 'Consolas,monaco,monospace',
-        '--color-brand-primary-50': '#FAF5FF',
-        '--color-brand-primary-100': '#E9D8FD',
-        '--color-brand-primary-200': '#D6BCFA',
-        '--color-brand-primary-300': '#B794F4',
-        '--color-brand-primary-400': '#9F7AEA',
-        '--color-brand-primary-500': '#805AD5',
-        '--color-brand-primary-600': '#6B46C1',
-        '--color-brand-primary-700': '#553C9A',
-        '--color-brand-primary-800': '#44337A',
-        '--color-brand-primary-900': '#322659',
-        '--color-brand-info-50': '#EBF8FF',
-        '--color-brand-info-100': '#BEE3F8',
-        '--color-brand-info-200': '#90CDF4',
-        '--color-brand-info-300': '#63B3ED',
-        '--color-brand-info-400': '#4299E1',
-        '--color-brand-info-500': '#3182CE',
-        '--color-brand-info-600': '#2B6CB0',
-        '--color-brand-info-700': '#2C5282',
-        '--color-brand-info-800': '#2A4365',
-        '--color-brand-info-900': '#1A365D',
-        '--color-brand-success-50': '#F0FFF4',
-        '--color-brand-success-100': '#C6F6D5',
-        '--color-brand-success-200': '#9AE6B4',
-        '--color-brand-success-300': '#68D391',
-        '--color-brand-success-400': '#48BB78',
-        '--color-brand-success-500': '#38A169',
-        '--color-brand-success-600': '#2F855A',
-        '--color-brand-success-700': '#276749',
-        '--color-brand-success-800': '#22543D',
-        '--color-brand-success-900': '#1C4532',
-        '--color-brand-danger-50': '#FFF5F5',
-        '--color-brand-danger-100': '#FED7D7',
-        '--color-brand-danger-200': '#FEB2B2',
-        '--color-brand-danger-300': '#FC8181',
-        '--color-brand-danger-400': '#F56565',
-        '--color-brand-danger-500': '#E53E3E',
-        '--color-brand-danger-600': '#C53030',
-        '--color-brand-danger-700': '#9B2C2C',
-        '--color-brand-danger-800': '#822727',
-        '--color-brand-danger-900': '#63171B',
-        '--color-brand-grey-50': '#FAFAFA',
-        '--color-brand-grey-100': '#EDEDED',
-        '--color-brand-grey-200': '#D4D4D4',
-        '--color-brand-grey-300': '#BCBCBC',
-        '--color-brand-grey-400': '#A4A4A4',
-        '--color-brand-grey-500': '#8B8B8B',
-        '--color-brand-grey-600': '#727272',
-        '--color-brand-grey-700': '#5F5F5F',
-        '--color-brand-grey-800': '#4B4B4B',
-        '--color-brand-grey-900': '#3B3B3B',
-        // Common tokens
-        '--form-control-size-md-border-radius': 0,
-        '--form-control-font-family': 'Consolas,monaco,monospace',
-        '--form-control-border-color': '#805AD5',
-        // Component tokens
-        '--alert-border-width': '2px',
-        '--alert-info-border-color': '#3182CE',
-        '--button-size-md-border-radius': '0',
-        '--button-size-md-padding-vertical': '.5rem',
-        '--button-size-md-padding-horizontal': '.5rem',
-        '--button-primary-box-shadow-focus':
-          '0 0 0 4px var(--color-brand-primary-200)',
-        '--button-font-family': 'Consolas,monaco,monospace',
-        '--button-primary-background-color': 'var(--color-brand-primary-500)',
-        '--button-primary-background-color-hover':
-          'var(--color-brand-primary-600)',
-        '--button-primary-background-color-active':
-          'var(--color-brand-primary-700)',
-        '--button-secondary-background-color': 'var(--color-brand-white-base)',
-        '--button-secondary-background-color-hover':
-          'var(--color-brand-primary-50)',
-        '--button-secondary-background-color-active':
-          'var(--color-brand-primary-100)',
-        '--button-secondary-border-color': 'var(--color-brand-grey-200)',
-        '--button-secondary-border-color-hover':
-          'var(--color-brand-primary-100)',
-        '--button-secondary-font-color': 'var(--color-brand-primary-500)',
-        '--button-secondary-font-color-hover': 'var(--color-brand-primary-500)',
-        '--button-tertiary-background-color': 'transparent',
-        '--button-tertiary-background-color-hover':
-          'var(--color-brand-primary-50)',
-        '--button-tertiary-background-color-active':
-          'var(--color-brand-primary-100)',
-        '--button-tertiary-font-color': 'var(--color-brand-primary-500)',
-        '--button-tertiary-font-color-hover': 'var(--color-brand-primary-500)',
-      };
-      return (
-        <Box
-          childGap="lg"
-          background="white"
-          borderWidth="xs"
-          borderColor="grey-100"
-          padding="3xl"
-          display="block"
-          style={isThemed ? customTheme : null}
-        >
-          <Toggle
-            id="themeToggle"
-            label="Apply Theme"
-            onChange={event => setIsThemed(event.target.checked)}
-            isChecked={isThemed}
-            size="lg"
-          />
-          <Box gap="sm">
-            <Heading as="h2" size="xl">
-              Leading the world toward a clean energy future
-            </Heading>
-          </Box>
-          <Box direction="row" gap="sm">
-            <Badge variant="primary" message="primary" />
-            <Badge variant="secondary" message="secondary" />
-            <Badge variant="tertiary" message="tertiary" />
-            <Badge variant="info" message="info" />
-            <Badge variant="success" message="success" />
-            <Badge variant="warning" message="warning" />
-            <Badge variant="danger" message="danger" />
-            <Badge variant="default" message="default" />
-          </Box>
-          <Box direction="row" gap="sm">
-            <CategoryFilter>Unselected</CategoryFilter>
-            <CategoryFilter isSelected>Selected</CategoryFilter>
-          </Box>
-          <Alert
-            hasIcon
-            variant="info"
-            title="Info Alert"
-            message="This is an info alert"
-          />
-          <Tabs
-            value={themeExampleValues.selectedTab}
-            onChange={(event, index) => handleChange('selectedTab', index)}
-          >
-            <Tabs.Item>Tab 1</Tabs.Item>
-            <Tabs.Item>Tab 2</Tabs.Item>
-            <Tabs.Item>Tab 3</Tabs.Item>
-          </Tabs>
-          <TabsSlider
-            value={themeExampleValues.selectedTabSlider}
-            onChange={(event, index) =>
-              handleChange('selectedTabSlider', index)
-            }
-          >
-            <TabsSlider.Item>Tab 1</TabsSlider.Item>
-            <TabsSlider.Item>Tab 2</TabsSlider.Item>
-            <TabsSlider.Item>Tab 3</TabsSlider.Item>
-            <TabsSlider.Item isDisabled>Disabled</TabsSlider.Item>
-          </TabsSlider>
-          <Box alignItems="center" gap="sm" direction="row">
-            <Button variant="primary">Primary</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="tertiary">Tertiary</Button>
-            <Button variant="primary" tone="neutral">
-              Primary Neutral
-            </Button>
-            <Button variant="secondary" tone="neutral">
-              Secondary Neutral
-            </Button>
-            <Button variant="tertiary" tone="neutral">
-              Tertiary Neutral
-            </Button>
-            <Button variant="primary" tone="danger">
-              Primary Danger
-            </Button>
-            <Button variant="secondary" tone="danger">
-              Secondary Danger
-            </Button>
-            <Button variant="tertiary" tone="danger">
-              Tertiary Danger
-            </Button>
-          </Box>
-          <Box background="grey-50" padding="lg" gap="lg">
-            <Heading size="lg" as="h4">
-              Form Inputs
-            </Heading>
-            <TextInput
-              id="demo"
-              helpText="This is a themed text input"
-              label="Text Input"
-              value={themeExampleValues.textValue}
-              onChange={event => handleChange('textValue', event.target.value)}
-            />
-            <SelectInputNative
-              id="default Select"
-              label="Select Input"
-              onChange={event =>
-                handleChange('selectValue', event.target.value)
+          {
+            id: 'motorcycle',
+            value: 'motorcycle',
+            label: 'Motorcycle',
+          },
+        ];
+        const [isThemed, setIsThemed] = useState(false);
+        const [themeExampleValues, setThemeExampleValues] = useState({
+          activePage: 1,
+          multiSelectValue: [
+            {
+              id: 'motorcycle',
+              value: 'motorcycle',
+              label: 'Motorcycle',
+            },
+            {
+              id: 'truck',
+              value: 'truck',
+              label: 'Truck',
+            },
+          ],
+          optionTileGroupValue: options[0].value,
+          radioValue: options[0].value,
+          selectedTab: 0,
+          selectedTabSlider: 0,
+          selectValue: options[0].value,
+          textValue: 'hello world',
+          textareaValue: 'hello world',
+        });
+        const [openPanels, setOpenPanels] = useState({
+          '1': false,
+          '2': true,
+          '3': false,
+        });
+        const handleChange = (key, value) => {
+          setThemeExampleValues(prevFields => ({
+            ...prevFields,
+            [key]: value,
+          }));
+        };
+        /* This logic ensures only one panel is open at a time */
+        const handleTogglePanels = id => {
+          const updatedPanels = { ...openPanels };
+          if (updatedPanels[id]) {
+            updatedPanels[id] = false;
+          } else {
+            Object.keys(updatedPanels).forEach(key => {
+              if (updatedPanels[key]) {
+                updatedPanels[key] = false;
               }
-              options={options}
-              value={themeExampleValues.selectValue}
+            });
+            updatedPanels[id] = true;
+          }
+          setOpenPanels(updatedPanels);
+        };
+        const customTheme = {
+          // Base tokens
+          '--asset-fonts-brand': 'Consolas,monaco,monospace',
+          '--asset-fonts-body': 'Consolas,monaco,monospace',
+          '--color-brand-primary-50': '#FAF5FF',
+          '--color-brand-primary-100': '#E9D8FD',
+          '--color-brand-primary-200': '#D6BCFA',
+          '--color-brand-primary-300': '#B794F4',
+          '--color-brand-primary-400': '#9F7AEA',
+          '--color-brand-primary-500': '#805AD5',
+          '--color-brand-primary-600': '#6B46C1',
+          '--color-brand-primary-700': '#553C9A',
+          '--color-brand-primary-800': '#44337A',
+          '--color-brand-primary-900': '#322659',
+          '--color-brand-info-50': '#EBF8FF',
+          '--color-brand-info-100': '#BEE3F8',
+          '--color-brand-info-200': '#90CDF4',
+          '--color-brand-info-300': '#63B3ED',
+          '--color-brand-info-400': '#4299E1',
+          '--color-brand-info-500': '#3182CE',
+          '--color-brand-info-600': '#2B6CB0',
+          '--color-brand-info-700': '#2C5282',
+          '--color-brand-info-800': '#2A4365',
+          '--color-brand-info-900': '#1A365D',
+          '--color-brand-success-50': '#F0FFF4',
+          '--color-brand-success-100': '#C6F6D5',
+          '--color-brand-success-200': '#9AE6B4',
+          '--color-brand-success-300': '#68D391',
+          '--color-brand-success-400': '#48BB78',
+          '--color-brand-success-500': '#38A169',
+          '--color-brand-success-600': '#2F855A',
+          '--color-brand-success-700': '#276749',
+          '--color-brand-success-800': '#22543D',
+          '--color-brand-success-900': '#1C4532',
+          '--color-brand-danger-50': '#FFF5F5',
+          '--color-brand-danger-100': '#FED7D7',
+          '--color-brand-danger-200': '#FEB2B2',
+          '--color-brand-danger-300': '#FC8181',
+          '--color-brand-danger-400': '#F56565',
+          '--color-brand-danger-500': '#E53E3E',
+          '--color-brand-danger-600': '#C53030',
+          '--color-brand-danger-700': '#9B2C2C',
+          '--color-brand-danger-800': '#822727',
+          '--color-brand-danger-900': '#63171B',
+          '--color-brand-grey-50': '#FAFAFA',
+          '--color-brand-grey-100': '#EDEDED',
+          '--color-brand-grey-200': '#D4D4D4',
+          '--color-brand-grey-300': '#BCBCBC',
+          '--color-brand-grey-400': '#A4A4A4',
+          '--color-brand-grey-500': '#8B8B8B',
+          '--color-brand-grey-600': '#727272',
+          '--color-brand-grey-700': '#5F5F5F',
+          '--color-brand-grey-800': '#4B4B4B',
+          '--color-brand-grey-900': '#3B3B3B',
+          '--color-text-primary': '#805AD5',
+          // Common tokens
+          '--form-control-size-md-border-radius': 0,
+          '--asset-fonts-body': 'Consolas,monaco,monospace',
+          // Component tokens
+          '--color-background-button-primary': 'var(--color-brand-primary-500)',
+          '--color-background-button-primary-hover':
+            'var(--color-brand-primary-600)',
+          '--color-background-button-primary-active':
+            'var(--color-brand-primary-700)',
+          '--color-background-button-secondary': 'var(--color-brand-white-500)',
+          '--color-background-button-secondary-hover':
+            'var(--color-brand-primary-50)',
+          '--color-background-button-secondary-active':
+            'var(--color-brand-primary-100)',
+          '--color-border-button-secondary': 'var(--color-brand-grey-200)',
+          '--color-border-button-secondary-hover':
+            'var(--color-brand-primary-100)',
+          '--color-text-button-secondary': 'var(--color-brand-primary-500)',
+          '--color-text-button-secondary-hover':
+            'var(--color-brand-primary-500)',
+          '--color-background-button-tertiary': 'transparent',
+          '--color-background-button-tertiary-hover':
+            'var(--color-brand-primary-50)',
+          '--color-background-button-tertiary-active':
+            'var(--color-brand-primary-100)',
+          '--color-text-button-tertiary': 'var(--color-brand-primary-500)',
+          '--color-text-button-tertiary-hover':
+            'var(--color-brand-primary-500)',
+          '--color-background-form-control-selected':
+            'var(--color-brand-primary-800)',
+        };
+        return (
+          <Box
+            childGap="lg"
+            background="secondary"
+            borderWidth="xs"
+            borderColor="separator"
+            padding="3xl"
+            display="block"
+            color="body-primary"
+            fontFamily="body"
+            style={isThemed ? customTheme : null}
+          >
+            <Toggle
+              id="themeToggle"
+              label="Apply Custom Theme"
+              onChange={event => setIsThemed(event.target.checked)}
+              isChecked={isThemed}
+              size="lg"
             />
-            <SelectInput
-              id="multiSelect"
-              name="multiSelect"
-              label="Multi-Select Input"
-              isMulti
-              value={themeExampleValues.multiSelectValue}
-              menuPortalTarget={document.body}
-              options={options}
-              onChange={event =>
-                handleChange('multiSelectValue', event.target.value)
+            <Box gap="sm">
+              <Heading as="h2" size="xl">
+                Leading the world toward a clean energy future
+              </Heading>
+            </Box>
+            <Box direction="row" gap="sm">
+              <Badge variant="primary" message="primary" />
+              <Badge variant="secondary" message="secondary" />
+              <Badge variant="tertiary" message="tertiary" />
+              <Badge variant="info" message="info" />
+              <Badge variant="success" message="success" />
+              <Badge variant="warning" message="warning" />
+              <Badge variant="danger" message="danger" />
+              <Badge variant="default" message="default" />
+            </Box>
+            <Box direction="row" gap="sm">
+              <CategoryFilter>Unselected</CategoryFilter>
+              <CategoryFilter isSelected>Selected</CategoryFilter>
+            </Box>
+            <Tabs
+              value={themeExampleValues.selectedTab}
+              onChange={(event, index) => handleChange('selectedTab', index)}
+            >
+              <Tabs.Item>Tab 1</Tabs.Item>
+              <Tabs.Item>Tab 2</Tabs.Item>
+              <Tabs.Item>Tab 3</Tabs.Item>
+            </Tabs>
+            <TabsSlider
+              value={themeExampleValues.selectedTabSlider}
+              onChange={(event, index) =>
+                handleChange('selectedTabSlider', index)
               }
-            />
-            <TextareaInput
-              label="Textarea Input"
-              name="textareaInput"
-              id="textareaInput"
-              value={themeExampleValues.textareaValue}
-              onChange={e => handleChange('textareaValue', e.target.value)}
-            />
-            <Box direction="row" gap="md">
-              <CheckboxInput
-                id="checkedCheckbox"
-                label="Checked Checkbox"
-                onChange={() => {}}
-                isChecked
+            >
+              <TabsSlider.Item>Tab 1</TabsSlider.Item>
+              <TabsSlider.Item>Tab 2</TabsSlider.Item>
+              <TabsSlider.Item>Tab 3</TabsSlider.Item>
+              <TabsSlider.Item isDisabled>Disabled</TabsSlider.Item>
+            </TabsSlider>
+            <Box alignItems="center" gap="sm" direction="row">
+              <Button variant="primary">Primary</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="tertiary">Tertiary</Button>
+            </Box>
+            <Box alignItems="center" gap="sm" direction="row">
+              <Button variant="primary" tone="neutral">
+                Primary Neutral
+              </Button>
+              <Button variant="secondary" tone="neutral">
+                Secondary Neutral
+              </Button>
+              <Button variant="tertiary" tone="neutral">
+                Tertiary Neutral
+              </Button>
+            </Box>
+            <Box alignItems="center" gap="sm" direction="row">
+              <Button variant="primary" tone="danger">
+                Primary Danger
+              </Button>
+              <Button variant="secondary" tone="danger">
+                Secondary Danger
+              </Button>
+              <Button variant="tertiary" tone="danger">
+                Tertiary Danger
+              </Button>
+            </Box>
+            <Box background="primary" padding="lg" gap="lg">
+              <Heading size="lg" as="h4">
+                Form Inputs
+              </Heading>
+              <TextInput
+                id="demo"
+                helpText="This is a themed text input"
+                label="Text Input"
+                value={themeExampleValues.textValue}
+                onChange={event =>
+                  handleChange('textValue', event.target.value)
+                }
               />
-              <CheckboxInput
-                id="uncheckedCheckbox"
-                label="Unchecked Checkbox"
-                onChange={() => {}}
+              <SelectInputNative
+                id="default Select"
+                label="Select Input"
+                onChange={event =>
+                  handleChange('selectValue', event.target.value)
+                }
+                options={options}
+                value={themeExampleValues.selectValue}
+              />
+              <SelectInput
+                id="multiSelect"
+                name="multiSelect"
+                label="Multi-Select Input"
+                isMulti
+                value={themeExampleValues.multiSelectValue}
+                menuPortalTarget={document.body}
+                options={options}
+                onChange={event =>
+                  handleChange('multiSelectValue', event.target.value)
+                }
+              />
+              <TextareaInput
+                label="Textarea Input"
+                name="textareaInput"
+                id="textareaInput"
+                value={themeExampleValues.textareaValue}
+                onChange={e => handleChange('textareaValue', e.target.value)}
+              />
+              <Box direction="row" gap="md">
+                <CheckboxInput
+                  id="checkedCheckbox"
+                  label="Checked Checkbox"
+                  onChange={() => {}}
+                  isChecked
+                />
+                <CheckboxInput
+                  id="uncheckedCheckbox"
+                  label="Unchecked Checkbox"
+                  onChange={() => {}}
+                />
+                <CheckboxInput
+                  id="disabledCheckbox"
+                  label="Disabled Checkbox"
+                  isDisabled
+                  onChange={() => {}}
+                />
+                <CheckboxInput
+                  id="checkedDisabledCheckbox"
+                  label="Disabled Checked Checkbox"
+                  isDisabled
+                  isChecked
+                  onChange={() => {}}
+                />
+              </Box>
+              <RadioGroup
+                title="Radio Group"
+                name="radioGroup"
+                onChange={event =>
+                  handleChange('radioValue', event.target.value)
+                }
+                value={themeExampleValues.radioValue}
+                options={options}
+                direction="row"
+              />
+              <OptionTileGroup
+                name="directionVertical"
+                value={themeExampleValues.optionTileGroupValue}
+                onChange={event =>
+                  handleChange('optionTileGroupValue', event.target.value)
+                }
+                options={options}
+                direction="row"
               />
             </Box>
-            <RadioGroup
-              title="Radio Group"
-              name="radioGroup"
-              onChange={event => handleChange('radioValue', event.target.value)}
-              value={themeExampleValues.radioValue}
-              options={options}
-              direction="row"
-            />
-            <OptionTileGroup
-              name="directionVertical"
-              value={themeExampleValues.optionTileGroupValue}
-              onChange={event =>
-                handleChange('optionTileGroupValue', event.target.value)
-              }
-              options={options}
-              direction="row"
+            <Card>
+              <Card.Header title="Default Card" />
+              <Card.Section>
+                <p>Card content</p>
+              </Card.Section>
+              <Card.Footer>Footer</Card.Footer>
+            </Card>
+            <Accordion>
+              <Accordion.Panel isOpen={openPanels['1']}>
+                <Accordion.PanelSummary
+                  onToggle={() => handleTogglePanels('1')}
+                  isDetailsOpen={openPanels['1']}
+                >
+                  What is solar energy? How do solar panels work?
+                </Accordion.PanelSummary>
+                <Accordion.PanelDetails gap="md">
+                  <p>
+                    Solar panels, also called photovoltaic or PV panels, consist
+                    of solar cells that are designed to capture the radiant
+                    light and heat contained in sunlight and convert it into
+                    usable clean energy for your home.
+                  </p>
+                  <p>
+                    When sunlight hits your solar panel, the photons of energy
+                    are converted into DC (direct current) electricity, which is
+                    then converted into AC (alternating current) electricity for
+                    use in your home. Solar panels are often grouped together to
+                    form a solar grid or solar array, allowing you to capture
+                    and harness the right amount of energy for your needs.
+                  </p>
+                </Accordion.PanelDetails>
+              </Accordion.Panel>
+              <Accordion.Panel isOpen={openPanels['2']}>
+                <Accordion.PanelSummary
+                  onToggle={() => handleTogglePanels('2')}
+                  isDetailsOpen={openPanels['2']}
+                >
+                  How do I know if solar is right for me?
+                </Accordion.PanelSummary>
+                <Accordion.PanelDetails>
+                  <p>
+                    There are several factors we can look at to determine if
+                    solar might be a good solution for your needs, including
+                    roof space, home energy usage, credit health, and
+                    eligibility for incentives. At Palmetto, we start by
+                    calculating a quick savings estimate based on your home,
+                    location, and current utility costs. Then, we’ll schedule a
+                    meeting to clarify your goals, address any questions,
+                    identify purchase options, and outline the solar process.
+                    All of this happens before you pay, allowing you to decide
+                    if a solar power system is right for you based on a complete
+                    understanding of the potential costs and savings.
+                  </p>
+                </Accordion.PanelDetails>
+              </Accordion.Panel>
+              <Accordion.Panel isOpen={openPanels['3']} borderWidth="0">
+                <Accordion.PanelSummary
+                  onToggle={() => handleTogglePanels('3')}
+                  isDetailsOpen={openPanels['3']}
+                >
+                  How many solar panels do I need?
+                </Accordion.PanelSummary>
+                <Accordion.PanelDetails>
+                  <p>
+                    The right solar power system for your home will depend on a
+                    variety of factors, including your current energy usage, the
+                    size and layout of your roof, and your preferred level of
+                    energy independence. To hone in on the right solution for
+                    your home, we always begin with a personal consultation and
+                    a survey, both of which serve to clarify your goals and
+                    outline available options. Should you choose to invest,
+                    we’ll design a custom solution to meet your goals and
+                    maximize your savings—no haggling, no upselling, just right.
+                  </p>
+                </Accordion.PanelDetails>
+              </Accordion.Panel>
+            </Accordion>
+            {alertVariants.map(variant => (
+              <Alert
+                message={message(variant)}
+                key={variant}
+                title={variant.charAt(0).toUpperCase() + variant.slice(1)}
+                variant={variant}
+                hasIcon
+                className="m-bottom-md"
+              />
+            ))}
+            <Pagination
+              activePage={themeExampleValues.activePage}
+              itemsPerPage={20}
+              onChange={index => handleChange('activePage', index)}
+              totalItemsCount={100}
+              arePagesVisible
+              numberOfPagesDisplayed={3}
             />
           </Box>
-          <Pagination
-            activePage={themeExampleValues.activePage}
-            itemsPerPage={20}
-            onChange={index => handleChange('activePage', index)}
-            totalItemsCount={100}
-            arePagesVisible
-            numberOfPagesDisplayed={3}
-          />
-        </Box>
+        );
+      };
+      return (
+        <ThemeProvider defaultTheme="light" storageKey="palmetto-ui-theme">
+          <App />
+        </ThemeProvider>
       );
     }}
   </Story>

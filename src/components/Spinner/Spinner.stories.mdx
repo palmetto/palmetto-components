@@ -1,6 +1,6 @@
 import { Spinner } from './Spinner';
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
-import { BRAND_COLOR_NAMES } from '../../lib/tokens';
+import { FONT_COLOR_OPTIONS } from '../../lib/tokens';
 import { Box } from '../Box/Box';
 
 <Meta title="Components/Spinner/Overview" component={Spinner} />
@@ -19,19 +19,53 @@ and anywhere else a loading state is necessary.
 
 <ArgsTable of={Spinner} />
 
-## Variants
+## Colors
 
 Set the color variations of the spinner
 
 <Canvas>
-  <Story name="Variants">
+  <Story name="Colors">
     <Box display="block" childGap="md">
-      {BRAND_COLOR_NAMES.map(color => (
-        <Box direction="row" gap="sm">
-          <Spinner variant={color} />
-          <div>{color}</div>
-        </Box>
-      ))}
+      <Box direction="row" gap="sm">
+        <Spinner color="body-primary" />
+        <div>body-primary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="body-secondary" />
+        <div>body-secondary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="body-tertiary" />
+        <div>body-tertiary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="contrast" />
+        <div>contrast</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="inverse-primary" />
+        <div>inverse-primary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="inverse-secondary" />
+        <div>inverse-secondary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="primary" />
+        <div>primary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="success" />
+        <div>success</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="info" />
+        <div>info</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="disabled" />
+        <div>disabled</div>
+      </Box>
     </Box>
   </Story>
 </Canvas>

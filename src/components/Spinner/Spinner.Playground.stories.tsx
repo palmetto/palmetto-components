@@ -1,17 +1,17 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { FONT_COLOR_OPTIONS } from '../../lib/tokens';
 import { Spinner, SpinnerProps } from './Spinner';
-import { BRAND_COLOR_NAMES } from '../../lib/tokens';
 import { SPINNER_SIZES } from './Spinner.constants';
 
 export default {
   title: 'Components/Spinner/Playground',
   component: Spinner,
   argTypes: {
-    variant: {
+    color: {
       control: {
         type: 'select',
-        options: BRAND_COLOR_NAMES,
+        options: FONT_COLOR_OPTIONS,
       },
     },
     size: {
@@ -30,5 +30,5 @@ const Template: Story<SpinnerProps> = ({ ...args }) => <Spinner {...args} />;
 
 export const Playground = Template.bind({});
 Playground.args = {
-  variant: 'primary',
+  color: 'primary',
 };

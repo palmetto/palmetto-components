@@ -95,7 +95,7 @@ export type PopoverProps = {
 })
 
 const contentContainerDefaults: BoxProps = {
-  background: 'white',
+  background: 'white-500',
   padding: 'sm',
   radius: 'sm',
   shadow: 'md',

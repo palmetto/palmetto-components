@@ -21,17 +21,51 @@ Set the color variations of the spinner
 
 ```js codesandbox=palmetto-components
 import React from 'react';
-import { Spinner, BRAND_COLOR_NAMES, Box } from '@palmetto/palmetto-components';
+import { Spinner, Box } from '@palmetto/palmetto-components';
 
 export default () => (
   <Box display="block" childGap="md">
-    {BRAND_COLOR_NAMES.map(color => (
-      <Box direction="row" childGap="sm">
-        <Spinner variant={color} />
-        <div>{color}</div>
+      <Box direction="row" gap="sm">
+        <Spinner color="body-primary" />
+        <div>body-primary</div>
       </Box>
-    ))}
-  </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="body-secondary" />
+        <div>body-secondary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="body-tertiary" />
+        <div>body-tertiary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="contrast" />
+        <div>contrast</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="inverse-primary" />
+        <div>inverse-primary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="inverse-secondary" />
+        <div>inverse-secondary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="primary" />
+        <div>primary</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="success" />
+        <div>success</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="info" />
+        <div>info</div>
+      </Box>
+      <Box direction="row" gap="sm">
+        <Spinner color="disabled" />
+        <div>disabled</div>
+      </Box>
+    </Box>
 );
 ```
 
