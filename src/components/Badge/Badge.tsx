@@ -45,17 +45,6 @@ export interface BadgeProps {
   [x: string]: any; // eslint-disable-line
 }
 
-export const BADGE_COLOR_MAP: { [key in BadgeVariant]: BadgeColorAttributes } = {
-  info: { font: 'dark-500', background: 'info-100' },
-  primary: { font: 'dark-500', background: 'primary-100' },
-  success: { font: 'dark-500', background: 'success-100' },
-  secondary: { font: 'dark-500', background: 'secondary-100' },
-  warning: { font: 'dark-500', background: 'warning-100' },
-  tertiary: { font: 'dark-500', background: 'tertiary-100' },
-  danger: { font: 'dark-500', background: 'danger-100' },
-  default: { font: 'dark-500', background: 'grey-100' },
-};
-
 export const Badge: FC<BadgeProps> = ({
   className = '',
   message = '',
