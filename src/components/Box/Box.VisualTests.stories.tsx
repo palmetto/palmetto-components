@@ -324,7 +324,7 @@ ResponsiveShadow.args = {
     hd: '2xl',
   },
   padding: 'sm',
-  background: 'white-500',
+  background: 'white',
 };
 ResponsiveShadow.parameters = RESPONSIVE_STORY;
 
