@@ -1,5 +1,12 @@
 Changelog
 
+# [2.0.0-beta.3](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.2...v2.0.0-beta.3) (2024-06-14)
+
+
+### Bug Fixes
+
+* bump pdt ([#895](https://github.com/palmetto/palmetto-components/issues/895)) ([eceae11](https://github.com/palmetto/palmetto-components/commit/eceae11f8bb75a836e93f505edb5c99942ef7047))
+
 # [2.0.0-beta.2](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2024-06-13)
 
 
