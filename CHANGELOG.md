@@ -1,5 +1,12 @@
 Changelog
 
+# [2.0.0-beta.4](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2024-06-14)
+
+
+### Bug Fixes
+
+* **Popover:** arrowColor background color type ([a9a693a](https://github.com/palmetto/palmetto-components/commit/a9a693a4d21ebc7a22aa8d97eb60a9cff7ed0d46))
+
 # [2.0.0-beta.3](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.2...v2.0.0-beta.3) (2024-06-14)
 
 
