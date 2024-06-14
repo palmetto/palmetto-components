@@ -1,5 +1,12 @@
 Changelog
 
+# [2.0.0-beta.5](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2024-06-14)
+
+
+### Bug Fixes
+
+* transparent border color ([4eb2663](https://github.com/palmetto/palmetto-components/commit/4eb26638b283c5c16b2f7d215ceabc975c3ed2fe))
+
 # [2.0.0-beta.4](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2024-06-14)
 
 
