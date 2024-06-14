@@ -76,7 +76,7 @@ $lg-dimension: 36px;
 
   input:checked + div,
   input:indeterminate + div {
-    background: var(--color-brand-white-500);
+    background: var(--color-background-white);
     color: var(
       --form-control-checkbox-color-checked,
       var(--color-text-primary)
