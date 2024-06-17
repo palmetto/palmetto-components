@@ -1,5 +1,12 @@
 Changelog
 
+# [2.0.0-beta.6](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2024-06-17)
+
+
+### Bug Fixes
+
+* **Table:** dark mode loading state ([#896](https://github.com/palmetto/palmetto-components/issues/896)) ([f4ae24c](https://github.com/palmetto/palmetto-components/commit/f4ae24c6ce0a729cc6c7843bdb3745f4c503b8a2))
+
 # [2.0.0-beta.5](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2024-06-14)
 
 
