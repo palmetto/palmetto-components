@@ -10,7 +10,8 @@
     left: 0;
     align-items: center;
     justify-content: center;
-    background: rgb(255 255 255 / 50%);
+    background-color: var(--color-background-primary);
+    opacity: .6;
   }
 
   .scroll-container {
