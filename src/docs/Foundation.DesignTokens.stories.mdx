@@ -1,5 +1,4 @@
 import { ColorPalette, ColorItem, Meta } from '@storybook/addon-docs';
-import { color } from '@palmetto/palmetto-design-tokens/build/json/variables-color.json';
 import { size } from '@palmetto/palmetto-design-tokens/build/js/variables-size';
 import { asset } from '@palmetto/palmetto-design-tokens/build/js/variables-asset';
 import { Canvas } from '@storybook/addon-docs';
@@ -162,109 +161,7 @@ The following breakpoints are used in utility classes, but you can use them to m
 
 ## Color
 
-<ColorPalette>
-
-<ColorItem
-  title="color-brand-white"
-  subtitle="All whites"
-  colors={Object.keys(color.brand.white).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.white).map(
-      g => color.brand.white[g].value,
-    )[i];
-    return acc;
-  }, {})}
-/>
-
-<ColorItem
-  title="color-brand-black"
-  subtitle="Black"
-  colors={Object.keys(color.brand.black).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.black).map(
-      g => color.brand.black[g].value,
-    )[i];
-    return acc;
-  }, {})}
-/>
-
-<ColorItem
-  title="color-brand-300"
-  subtitle="Light"
-  colors={Object.keys(color.brand.light).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.light).map(
-      g => color.brand.light[g].value,
-    )[i];
-    return acc;
-  }, {})}
-/>
-
-<ColorItem
-  title="color-brand-600"
-  subtitle="Dark"
-  colors={Object.keys(color.brand.dark).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.dark).map(
-      g => color.brand.dark[g].value,
-    )[i];
-    return acc;
-  }, {})}
-/>
-
-<ColorItem
-  title="color-brand-grey"
-  subtitle="All greys"
-  colors={Object.keys(color.brand.grey).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.grey).map(g => color.brand.grey[g].value)[i];
-    return acc;
-  }, {})}
-/>
-<ColorItem
-  title="color-brand-primary"
-  subtitle="Primary colors"
-  colors={Object.keys(color.brand.primary).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.primary).map(g => color.brand.primary[g].value)[i];
-    return acc;
-  }, {})}
-/>
-<ColorItem
-  title="color-brand-secondary"
-  subtitle="secondary colors"
-  colors={Object.keys(color.brand.secondary).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.secondary).map(g => color.brand.secondary[g].value)[i];
-    return acc;
-  }, {})}
-/>
-<ColorItem
-  title="color-brand-tertiary"
-  subtitle="tertiary colors"
-  colors={Object.keys(color.brand.tertiary).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.tertiary).map(g => color.brand.tertiary[g].value)[i];
-    return acc;
-  }, {})}
-/>
-<ColorItem
-  title="color-brand-info"
-  subtitle="info colors"
-  colors={Object.keys(color.brand.info).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.info).map(g => color.brand.info[g].value)[i];
-    return acc;
-  }, {})}
-/>
-<ColorItem
-  title="color-brand-warning"
-  subtitle="warning colors"
-  colors={Object.keys(color.brand.warning).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.warning).map(g => color.brand.warning[g].value)[i];
-    return acc;
-  }, {})}
-/>
-<ColorItem
-  title="color-brand-danger"
-  subtitle="danger colors"
-  colors={Object.keys(color.brand.danger).reduce((acc, item, i) => {
-    acc[item] = Object.keys(color.brand.danger).map(g => color.brand.danger[g].value)[i];
-    return acc;
-  }, {})}
-/>
-</ColorPalette>
+Refer to the [Palmetto Design Tokens Figma](https://www.figma.com/design/abGRptpr7iPaMsXdEPVm6W/Design-Tokens?node-id=0-1&t=oY6gZSqBDdP10U54-1) for colors.
 
 ## Font Family
 
