@@ -1,5 +1,12 @@
 Changelog
 
+# [2.0.0-beta.7](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2024-07-08)
+
+
+### Bug Fixes
+
+* update color documentation ([a2c100f](https://github.com/palmetto/palmetto-components/commit/a2c100f6d0b9877d26e6c3bcd7142e493c668f47))
+
 # [2.0.0-beta.6](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2024-06-17)
 
 
