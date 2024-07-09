@@ -1,20 +1,38 @@
-
 import { Box, Heading } from '../components';
 
 <Meta title="Content/Goals and Principles" />
 
 <Box childGap={{ base: 'lg', tablet: 'xl', desktop: '2xl'}}>
 
-<Box display="block" background="warning-50" padding="lg" as="p" fontSize={{ base: 'sm', tablet: 'md'}}>
-  These guidelines may be modified, expanded, or updated over time as new needs arise. It’s impossible to predict every possible content need, and there may be exceptions that are required to aid with legibility, branding, etc. If you have any questions about how to use this guide, or you have a content need that goes against one of these guidelines, please post that request in the <a href="https://palmetto-team.slack.com/archives/C01QE0AAT4Z">#Content Slack Channel</a> and it will be reviewed for consideration.
+<Box
+  display="block"
+  background="warning-50"
+  padding="lg"
+  as="p"
+  fontSize={{ base: 'sm', tablet: 'md' }}
+>
+  These guidelines may be modified, expanded, or updated over time as new needs
+  arise. It’s impossible to predict every possible content need, and there may
+  be exceptions that are required to aid with legibility, branding, etc. If you
+  have any questions about how to use this guide, or you have a content need
+  that goes against one of these guidelines, please post that request in the{' '}
+  <a href="https://palmetto-team.slack.com/archives/C01QE0AAT4Z">
+    #Content Slack Channel
+  </a>{' '}
+  and it will be reviewed for consideration.
 </Box>
 
-<Box as="section" childGap="lg" borderWidth="0 0 xs 0" borderColor="grey-100" padding={{ base: '0 0 xl 0', tablet: '0 0 2xl 0', desktop: '0 0 3xl 0'}}>
+<Box as="section" childGap="lg" borderWidth="0 0 xs 0" borderColor="separator" padding={{ base: '0 0 xl 0', tablet: '0 0 2xl 0', desktop: '0 0 3xl 0'}}>
 
-  <Box display="block">
-    <Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl'}}>Content Goals</Heading>
-    <Box as="p" fontSize={{ base: 'md', tablet: 'lg'}} color="grey-500">With every piece of content we publish, we aim to:</Box>
+{' '}
+<Box display="block">
+  <Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl' }}>
+    Content Goals
+  </Heading>
+  <Box as="p" fontSize={{ base: 'md', tablet: 'lg' }} color="grey-500">
+    With every piece of content we publish, we aim to:
   </Box>
+</Box>
 
   <Box childGap={{ base: 'lg', tablet: 'xl'}}>
     <Box width="100" childGap={{ base: 'md', tablet: '2xl'}} direction={{ base: 'column', tablet: 'row'}}>
@@ -65,13 +83,17 @@ import { Box, Heading } from '../components';
   </Box>
 </Box>
 
-
 <Box as="section" childGap="md">
 
-  <Box>
-    <Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl'}}>Content Principles</Heading>
-    <Box as="p" fontSize={{ base: 'md', tablet: 'lg'}} color="grey-500">In order to achieve our content goals, we follow these principles:</Box>
+{' '}
+<Box>
+  <Heading as="h1" size={{ base: 'xl', tablet: '2xl', desktop: '3xl' }}>
+    Content Principles
+  </Heading>
+  <Box as="p" fontSize={{ base: 'md', tablet: 'lg' }} color="grey-500">
+    In order to achieve our content goals, we follow these principles:
   </Box>
+</Box>
 
   <table className="w-100">
     <tr>

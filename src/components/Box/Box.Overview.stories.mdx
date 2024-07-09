@@ -797,7 +797,12 @@ Set the `fontSize` prop with a [font size](?path=/story/design-tokens-design-tok
       Brand Font
       <Box fontSize="sm">{FONT_FAMILY_VALUES['brand'].value}</Box>
     </Box>
-    <Box fontFamily="monospace" margin="0 0 md 0" fontSize="xl" data-chromatic="ignore">
+    <Box
+      fontFamily="monospace"
+      margin="0 0 md 0"
+      fontSize="xl"
+      data-chromatic="ignore"
+    >
       Monospace Font
       <Box fontSize="sm">{FONT_FAMILY_VALUES['monospace'].value}</Box>
     </Box>
@@ -1773,7 +1778,7 @@ Currently our library supports hover states for:
         color="dark"
         shadow="xs"
         borderWidth="xs"
-        borderColor="grey-100"
+        borderColor="separator"
         radius="md"
         style={{ outline: 'none' }}
         focus={{

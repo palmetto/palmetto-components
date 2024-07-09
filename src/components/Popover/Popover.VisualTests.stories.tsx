@@ -20,7 +20,7 @@ export const Demo: Story = () => {
   const { isOpen: isPopoverOpen, handleToggle: togglePopover } = useOpenClose({
     defaultIsOpen: true,
   });
-  const NavItem: FC<{ className?: string; iconName?: IconProps['name']; }> = ({
+  const NavItem: FC<{ className?: string; iconName?: IconProps['name'] }> = ({
     children,
     className,
     iconName,
@@ -96,7 +96,7 @@ export const Demo: Story = () => {
             gap="sm"
             padding="lg 0 0 0"
             borderWidth="xs 0 0 0"
-            borderColor="grey-100"
+            borderColor="separator"
             style={{ flexShrink: 0 }}
           >
             <Heading size="sm" as="h4" variant="body-primary">
@@ -112,7 +112,7 @@ export const Demo: Story = () => {
             gap="sm"
             padding="lg 0 0 0"
             borderWidth="xs 0 0 0"
-            borderColor="grey-100"
+            borderColor="separator"
             style={{ flex: '1 0 auto' }}
           >
             <Box as="ul" gap="sm">
