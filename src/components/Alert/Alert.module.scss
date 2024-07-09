@@ -1,7 +1,7 @@
 .alert {
-  border-width: var(--alert-border-width, var(--size-border-xs));
+  border-width: var(--size-border-xs);
   border-style: solid;
-  box-shadow: var(--alert-box-shadow, var(--size-box-shadow-0));
+  box-shadow: var(--size-box-shadow-0);
 
   .close-icon {
     > button {
