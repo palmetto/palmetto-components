@@ -20,7 +20,7 @@ export const Demo: Story = () => {
   const { isOpen: isPopoverOpen, handleToggle: togglePopover } = useOpenClose({
     defaultIsOpen: true,
   });
-  const NavItem: FC<{ className?: string; iconName?: IconProps['name'] }> = ({
+  const NavItem: FC<{ className?: string; iconName?: IconProps['name']; }> = ({
     children,
     className,
     iconName,
