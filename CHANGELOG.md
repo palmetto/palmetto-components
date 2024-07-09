@@ -1,5 +1,7 @@
 Changelog
 
+# [2.0.0-beta.8](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2024-07-09)
+
 ## [1.0.1](https://github.com/palmetto/palmetto-components/compare/v1.0.0...v1.0.1) (2024-06-18)
 
 # [1.0.0](https://github.com/palmetto/palmetto-components/compare/v0.158.2...v1.0.0) (2024-04-30)
