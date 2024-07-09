@@ -1,9 +1,8 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
 
 @mixin size-sm {
-  font-size: var(--badge-size-sm-font-size, var(--size-font-2xs));
-  padding: var(--badge-size-sm-padding-vertical, var(--size-spacing-2xs))
-    var(--badge-size-sm-padding-horizontal, var(--size-spacing-2xs));
+  font-size: var(--size-font-2xs);
+  padding: var(--size-spacing-2xs) var(--size-spacing-2xs);
 }
 
 %size-sm {
@@ -15,9 +14,8 @@
 }
 
 @mixin size-md {
-  font-size: var(--badge-size-md-font-size, var(--size-font-xs));
-  padding: var(--badge-size-md-padding-vertical, var(--size-spacing-2xs))
-    var(--badge-size-md-padding-horizontal, var(--size-spacing-xs));
+  font-size: var(--size-font-xs);
+  padding: var(--size-spacing-2xs) var(--size-spacing-xs);
 }
 
 %size-md {
@@ -29,9 +27,8 @@
 }
 
 @mixin size-lg {
-  font-size: var(--badge-size-lg-font-size, var(--size-font-sm));
-  padding: var(--badge-size-lg-padding-vertical, var(--size-spacing-2xs))
-    var(--badge-size-lg-padding-horizontal, var(--size-spacing-xs));
+  font-size:  var(--size-font-sm);
+  padding: var(--size-spacing-2xs) var(--size-spacing-xs);
 }
 
 %size-lg {
@@ -43,9 +40,8 @@
 }
 
 @mixin size-xl {
-  font-size: var(--badge-size-xl-font-size, var(--size-font-md));
-  padding: var(--badge-size-xl-padding-vertical, var(--size-spacing-xs))
-    var(--badge-size-xl-padding-horizontal, var(--size-spacing-sm));
+  font-size: var(--size-font-md);
+  padding: var(--size-spacing-xs) var(--size-spacing-sm);
 }
 
 %size-xl {
@@ -57,11 +53,11 @@
 }
 
 .badge {
-  border-radius: var(--badge-border-radius, var(--size-border-radius-sm));
+  border-radius: var(--size-border-radius-sm);
   border-style: solid;
-  border-width: var(--badge-border-width, var(--size-border-xs));
+  border-width: var(--size-border-xs);
   font-family: var(--asset-fonts-body);
-  font-weight: var(--badge-font-weight, var(--size-font-weight-bold));
+  font-weight: var(--size-font-weight-bold);
   letter-spacing: 0.8px;
   line-height: var(--size-line-height-base);
   text-transform: uppercase;
