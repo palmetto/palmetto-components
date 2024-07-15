@@ -1,5 +1,109 @@
 Changelog
 
+# [2.0.0-beta.10](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2024-07-15)
+
+
+* Dark mode (#899) ([05dc98a](https://github.com/palmetto/palmetto-components/commit/05dc98a90de5aecebc8a4fa08baf280b14d0ab31)), closes [#899](https://github.com/palmetto/palmetto-components/issues/899) [#894](https://github.com/palmetto/palmetto-components/issues/894) [#895](https://github.com/palmetto/palmetto-components/issues/895) [#896](https://github.com/palmetto/palmetto-components/issues/896) [#897](https://github.com/palmetto/palmetto-components/issues/897)
+
+
+### BREAKING CHANGES
+
+* Dark mode support (#893)
+
+* wip
+
+* font colors
+* background, border, font specific colors
+* background, border, font specific colors
+* Spinner variant prop changed to color
+* ThemeProvider
+
+* feat(RadioGroup): dark mode support
+
+* feat(Accordion): dark mode support
+
+* feat(Tabs): dark mode support
+
+* feat(TabsSlider): dark mode support
+
+* dark mode tokens
+
+* Update FileUpload.tsx
+
+* Update Heading.Playground.stories.tsx
+
+* Update MediaModal.tsx
+
+* feat(Card): dark mode support
+
+* feat(Alert): dark mode support
+
+* feat(TabsSlider): dark mode support
+
+* feat(CategoryFilter): dark mode support
+
+* wip
+
+* checkboxinput
+
+* OptionTile
+
+* update pdt package with new tokens
+
+* fix build
+
+* fix lint
+
+* Update Box.tsx
+
+* checkboxinput
+
+* Update MediaModal.tsx
+
+* Update SelectInputNative.module.scss
+
+* Update Checkbox.module.scss
+
+* Update pull-request.yml
+
+* light mode button background tokens
+
+* light mode button font color tokens
+
+* light mode button border color tokens
+
+* pdt 1.3.0
+
+* SelectInput dark mode fixes
+
+* Badge dark mode
+
+* spec body font
+
+* wip
+
+* remove internal form color tokens
+
+* remove form theming docs
+
+* wip
+
+* Toast dark mode
+
+* Toggle dark mode
+
+* Table dark mode
+
+* remove component design token documentation
+
+* more cleanup
+
+* datepicker dark mode
+
+* pdt 1.4
+
+* Update Theming.stories.mdx
+
 # [2.0.0-beta.9](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2024-07-10)
 
 
