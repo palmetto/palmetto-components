@@ -1,8 +1,8 @@
 .category-filter {
-  background-color: transparent;
+  background-color: var(--color-background-category-filter);
   border-color: var(--color-border-default);
   border-radius: var(--size-border-radius-xl);
-  color: var(--color-text-body-primary);
+  color: var(--color-text-category-filter);
   font-family: var(--asset-fonts-body);
   font-weight: var(--size-font-weight-medium);
   height: max-content;
@@ -15,29 +15,30 @@
     opacity: 0.65;
 
     &:hover {
-      background-color: transparent;
+      background-color: var(--color-background-category-filter);
       border-color: var(--color-border-default);
-      color: var(--color-text-body-primary);
+      color: var(--color-text-category-filter-hover);
     }
   }
 
   &.selected {
-    background-color: var(--color-brand-primary-500);
+    background-color: var(--color-background-category-filter-active);
     border-color: var(--color-brand-primary-500);
-    color: var(--color-text-white);
+    color: var(--color-text-category-filter-active);
 
     &:hover {
-      background-color: var(--color-brand-primary-600);
-      color: var(--color-text-white);
-      border-color: var(--color-brand-primary-600);
+      background-color: var(--color-background-category-filter-active-hover);
+      color: var(--color-text-category-filter-active-hover);
+      border-color: var(--color-background-category-filter-active-hover);
     }
 
     &.disabled:hover {
-      background-color: var(--color-brand-primary-500);
+      background-color: var(--color-background-category-filter-active);
     }
   }
 
   &:hover {
+    background-color: var(--color-background-category-filter-hover);
     border-color: var(--color-border-default);
   }
 
