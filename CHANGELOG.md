@@ -1,5 +1,14 @@
 Changelog
 
+# [2.0.0-beta.9](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2024-07-10)
+
+
+### Features
+
+* document brand colors, semantic colors, and dark values ([eef2e06](https://github.com/palmetto/palmetto-components/commit/eef2e063081ce6499e7369dcae0231c0fe8ec27f))
+
+# [2.0.0-beta.8](https://github.com/palmetto/palmetto-components/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2024-07-09)
+
 ## [1.0.1](https://github.com/palmetto/palmetto-components/compare/v1.0.0...v1.0.1) (2024-06-18)
 
 # [1.0.0](https://github.com/palmetto/palmetto-components/compare/v0.158.2...v1.0.0) (2024-04-30)
