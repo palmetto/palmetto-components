@@ -37,7 +37,6 @@ module.exports = {
     'storybook-addon-designs',
     'storybook-addon-mdx-embed',
     '@storybook/addon-postcss',
-    './register',
   ],
   webpackFinal: config => {
     const mdxRule = config.module.rules.find((rule) =>
