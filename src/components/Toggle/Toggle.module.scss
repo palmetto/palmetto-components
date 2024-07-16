@@ -181,7 +181,7 @@
   padding: 2px;
 
   &.error {
-    background-color: var(--color-brand-danger-500);
+    background-color: var(--color-background-toggle-error);
   }
 }
 
@@ -198,11 +198,11 @@
   white-space: nowrap;
 
   &:checked + .toggle-track {
-    background-color: var(--color-brand-primary-500);
+    background-color: var(--color-background-toggle-checked);
   }
 
   &:checked + .toggle-track.error {
-    background-color: var(--color-brand-danger-500);
+    background-color: var(--color-background-toggle-error);
   }
 
   &:checked + .toggle-track .toggle-thumb.thumb-size-sm {

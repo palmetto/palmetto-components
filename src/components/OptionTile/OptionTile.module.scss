@@ -11,7 +11,7 @@
   }
 
   &:hover {
-    border: 1px solid var(--INTERNAL_form-control-border-color-hover);
+    border: 1px solid var(--color-border-default);
   }
 
   // https://stackoverflow.com/questions/262158/disabled-input-text-color-on-ios
@@ -31,7 +31,7 @@
     color: var(--color-text-danger);
 
     &:hover {
-      border: 1px solid var(--INTERNAL_form-control-border-color-hover);
+      border: 1px solid var(--color-border-default);
     }
 
     &.disabled {
@@ -75,7 +75,7 @@
     }
 
     &:hover {
-      border: 1px solid var(--INTERNAL_form-control-border-color-selected-hover);
+      border: 1px solid var(--INTERNAL_form-control-border-color-selected);
     }
   }
 }

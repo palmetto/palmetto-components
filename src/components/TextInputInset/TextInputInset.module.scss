@@ -220,7 +220,7 @@
 
 .prefix {
   border: 1px solid var(--color-border-separator);
-  background-color: var(--color-brand-grey-50);
+  background-color: var(--color-background-form-control-disabled);
   border-top-left-radius: var(
     --form-control-size-md-border-radius,
     var(--INTERNAL_form-control-size-md-border-radius)
@@ -229,11 +229,12 @@
     --form-control-size-md-border-radius,
     var(--INTERNAL_form-control-size-md-border-radius)
   );
+  color: var(--color-text-body-secondary);
 }
 
 .suffix {
   border: 1px solid var(--color-border-separator);
-  background-color: var(--color-brand-grey-50);
+  background-color: var(--color-background-form-control-disabled);
   border-top-right-radius: var(
     --form-control-size-md-border-radius,
     var(--INTERNAL_form-control-size-md-border-radius)
@@ -242,6 +243,7 @@
     --form-control-size-md-border-radius,
     var(--INTERNAL_form-control-size-md-border-radius)
   );
+  color: var(--color-text-body-secondary);
 }
 
 .text-input-wrapper {

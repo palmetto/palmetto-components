@@ -24,7 +24,7 @@ describe('Popover', () => {
       expect(popoverContainer).toBeInTheDocument();
       expect(popoverContainer).toHaveAttribute('role', 'dialog');
       expect(popoverContainer).toHaveAttribute('aria-hidden', 'false');
-      expect(popoverContainer).toHaveClass('background-color-white');
+      expect(popoverContainer).toHaveClass('background-color-inverse');
       expect(popoverContainer).toHaveClass('p-sm');
       await waitFor(() => expect(popoverContainer).toHaveAttribute('data-popper-placement', 'right'));
     });
