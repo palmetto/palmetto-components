@@ -61,7 +61,7 @@
     &.error {
       background-color: var(--color-background-form-control-error);
       border: 1px solid var(--INTERNAL_form-control-border-color-selected-error);
-      color: var(--color-text-white);
+      color: var(--color-text-danger);
 
       &.disabled {
         color: var(--color-text-danger-disabled);
