@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@palmetto/dialog": "^0.16.4",
-    "@palmetto/palmetto-design-tokens": "1.6.0",
+    "@palmetto/palmetto-design-tokens": "1.7.2",
     "@popperjs/core": "^2.5.3",
     "classnames": "^2.2.6",
     "cleave.js": "^1.6.0",
@@ -85,7 +85,6 @@
     "@babel/plugin-transform-spread": "^7.13.0",
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
-    "@fullstory/browser": "^1.4.9",
     "@mdx-js/loader": "^1.6.22",
     "@semantic-release/changelog": "5",
     "@semantic-release/commit-analyzer": "^8.0.1",
