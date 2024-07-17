@@ -1,8 +1,5 @@
 .card-background {
-  background-color: var(
-    --card-background-color,
-    var(--color-background-primary)
-  );
+  background-color: var(--color-background-primary);
 }
 
 .card-radius {
@@ -20,10 +17,7 @@
 }
 
 .card-subdued {
-  background-color: var(
-    --card-subdued-background-color,
-    var(--color-brand-grey-50)
-  );
+  background-color: var(--color-background-tertiary);
   box-shadow: none;
 
   .card-section-border {
