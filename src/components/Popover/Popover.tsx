@@ -14,7 +14,7 @@ import { Placement } from '@popperjs/core';
 import FocusTrap from 'focus-trap-react';
 import mergeRefs from 'react-merge-refs';
 import classNames from 'classnames';
-import { BrandColor } from '../../types';
+import { BackgroundColor } from '../../types';
 import styles from './Popover.module.scss';
 import { Box, BoxProps } from '../Box/Box';
 
@@ -40,7 +40,7 @@ export type PopoverProps = {
    * `background` color applied in the `contentContainerProps`, but can be overwritten
    * by passing a specific value here.
    */
-  arrowColor?: BrandColor;
+  arrowColor?: BackgroundColor;
   /**
    * An object matching the interface of the `Box` component props.
    * This is useful for styling the tooltip container using all the options available in
@@ -95,7 +95,8 @@ export type PopoverProps = {
 })
 
 const contentContainerDefaults: BoxProps = {
-  background: 'white',
+  background: 'inverse',
+  color: 'inverse-primary',
   padding: 'sm',
   radius: 'sm',
   shadow: 'md',

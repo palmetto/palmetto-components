@@ -2,7 +2,10 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  BorderRadiusSize, BoxShadowSize, BrandColor, ResponsiveProp,
+  BackgroundColor,
+  BorderRadiusSize,
+  BoxShadowSize,
+  ResponsiveProp,
 } from '../../types';
 import { CardFooter, CardHeader, CardSection } from './components';
 import styles from './Card.module.scss';
@@ -12,7 +15,7 @@ export interface CardProps extends BoxProps {
    * If defined as a prop, this value will take higher precedence than the corresponding component design token value
    * Any valid [brand color token](/?path=/story/design-tokens-design-tokens--page#color), or a `url()` for an image
    */
-  background?: BrandColor;
+  background?: BackgroundColor;
   /**
    * The Card's contents.
    */

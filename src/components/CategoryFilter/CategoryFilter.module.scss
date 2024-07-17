@@ -1,10 +1,10 @@
 .category-filter {
-  background-color: var(--category-filter-background-color, transparent);
-  border-color: var(--category-filter-border-color, var(--color-brand-grey-100));
-  border-radius: var(--category-filter-border-radius, var(--size-border-radius-xl));
-  color: var(--category-filter-font-color, var(--color-brand-grey-600));
-  font-family: var(--category-filter-font-family, var(--button-font-family));
-  font-weight: var(--category-filter-font-weight, var(--button-font-weight, var(--size-font-weight-bold)));
+  background-color: var(--color-background-category-filter);
+  border-color: var(--color-border-default);
+  border-radius: var(--size-border-radius-xl);
+  color: var(--color-text-category-filter);
+  font-family: var(--asset-fonts-body);
+  font-weight: var(--size-font-weight-medium);
   height: max-content;
   transition-duration: 0.2s;
   transition-property: background-color, border, box-shadow, color;
@@ -15,46 +15,49 @@
     opacity: 0.65;
 
     &:hover {
-      background-color: var(--category-filter-background-color, transparent);
-      color: var(--category-filter-font-color, var(--color-brand-grey-600));
+      background-color: var(--color-background-category-filter);
+      border-color: var(--color-border-default);
+      color: var(--color-text-category-filter-hover);
     }
   }
 
   &.selected {
-    background-color: var(--category-filter-selected-background-color, var(--color-brand-primary-500));
-    border-color: var(--category-filter-selected-border-color, var(--color-brand-primary-500));
-    color: var(--category-filter-font-color, var(--color-brand-white-500));
+    background-color: var(--color-background-category-filter-active);
+    border-color: var(--color-brand-primary-500);
+    color: var(--color-text-category-filter-active);
 
     &:hover {
-      background-color: var(--category-filter-selected-background-color-hover, var(--color-brand-primary-600));
-      color: var(--category-filter-font-color, var(--color-brand-white-500));
+      background-color: var(--color-background-category-filter-active-hover);
+      color: var(--color-text-category-filter-active-hover);
+      border-color: var(--color-background-category-filter-active-hover);
     }
 
     &.disabled:hover {
-      background-color: var(--category-filter-selected-background-color, var(--color-brand-primary-500));
+      background-color: var(--color-background-category-filter-active);
     }
   }
 
   &:hover {
-    background-color: var(--category-filter-background-color-hover, var(--color-brand-grey-100));
+    background-color: var(--color-background-category-filter-hover);
+    border-color: var(--color-border-default);
   }
 
   &:focus {
     outline: 0;
-    box-shadow: var(--category-filter-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
+    box-shadow: 0 0 0 4px var(--color-border-separator);
 
     &.selected {
-      box-shadow: var(--category-filter-selected-box-shadow-focus, 0 0 0 4px var(--color-brand-success-200));
+      box-shadow: 0 0 0 4px var(--color-brand-primary-200);
     }
   }
 
   &:focus-visible {
     outline: 0;
-    box-shadow: var(--category-filter-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
+    box-shadow: 0 0 0 4px var(--color-border-separator);
     border-color: transparent;
 
     &.selected {
-      box-shadow: var(--category-filter-selected-box-shadow-focus, 0 0 0 4px var(--color-brand-success-200));
+      box-shadow: 0 0 0 4px var(--color-brand-primary-200);
     }
   }
 

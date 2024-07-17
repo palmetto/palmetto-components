@@ -2792,18 +2792,6 @@
     "@figspec/components" "^1.0.0"
     "@lit-labs/react" "^1.0.2"
 
-"@fullstory/browser@^1.4.9":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@fullstory/browser/-/browser-1.7.1.tgz#eb94fcb5e21b13a1b30de58951480ac344e61cdd"
-  integrity sha512-IBPisG+xRyTHHX8XkZJkQRbP2hVYNMZUYW8R3YiB582dl/VZImkFN+LopIAfPqB97FAZgUTofi7flkrHT4Qmtg==
-  dependencies:
-    "@fullstory/snippet" "1.3.1"
-
-"@fullstory/snippet@1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@fullstory/snippet/-/snippet-1.3.1.tgz#6817ea94601e071e630b25262e703ca356a5f537"
-  integrity sha512-NgrBWGHH5i8zejlRFSyJNhovkNqHAXsWKrcXIWaABrgESwbkdGETjOU7BD7d1ZeT0X+QXL/2yr/1y4xnWfVkwQ==
-
 "@gar/promisify@^1.0.1", "@gar/promisify@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
@@ -3532,10 +3520,10 @@
     react-remove-scroll "^2.4.3"
     tslib "^2.3.0"
 
-"@palmetto/palmetto-design-tokens@0.79.2":
-  version "0.79.2"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-0.79.2.tgz#6236ed70252c05119375754529fb6a3d06d6c65d"
-  integrity sha512-9K36ykZSpZjCSPIKTEFgoEO8HdtCiSC7CF27gKVc2BEhAJ6XdT+vlp4j7Rr2Wto8CwM/hQZXSe+XqYL6VRrmGg==
+"@palmetto/palmetto-design-tokens@1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-1.7.2.tgz#269903b7cbfa77a95889ad5eeaa453332fdd9f99"
+  integrity sha512-4Ldyr+U+oUCnDHXkXOBIdmQSiZjG/E6pst/Tl69qLBJ3ZsvLUXvu3jyiGy//O0wYpVaO7BBsyT3q5a6e5ycdyg==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.10"

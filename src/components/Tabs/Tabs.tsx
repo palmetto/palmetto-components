@@ -22,7 +22,7 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef(
     {
       as = 'nav',
       borderWidth = '0 0 xs 0',
-      borderColor = 'grey-100',
+      borderColor = 'separator',
       children,
       isCentered = false,
       isFullWidth = false,

@@ -20,7 +20,7 @@ or
 @import '@palmetto/palmetto-components/dist/css/index.css';
 ```
 
-### 3. Import Global CSS Reset (Optional)
+### 3. Import Global CSS Reset
 
 We recommend importing our global reset in order to maintain a consistent
 look of all components across applications.
@@ -29,7 +29,7 @@ look of all components across applications.
 @import '@palmetto/palmetto-components/dist/css/reset.css'
 ```
 
-### 4. Import Nexa Font (Optional)
+### 4. Import Nexa Font
 
 We recommend importing our brand font, Nexa, for styling headings, etc.
 
@@ -51,13 +51,13 @@ function App() {
 ReactDOM.render(<App />, document.querySelector('#app'));
 ```
 
-### 6. Responsive Hooks & Window size context (Optional)
+### 6. Theme and Responsive Hooks size context
 
-`palmetto-components` provides [responsive hooks]() as well as opinionated [breakpoints]() to make custom responsive layouts
-easier to craft.
+Wrap your application in the `ThemeProvider` and `ResponsiveProvider` components to provide theme and responsive hooks to your application.
 
-In order for these hooks to work, however, they must be provided a context that feeds window size updates via a single listener (for performance reasons).
-use the [`ResponsiveProvider`]() to wrap your application and ensure that responsive hooks have access to the necessary context.
+Use the [ResponsiveProvider](?path=/docs/providers-responsiveprovider-overview--default-story) to wrap your application and ensure that responsive hooks have access to the necessary context.
+
+Theming is supported via the [ThemeProvider](?path=/docs/providers-themeprovider-overview--usage) component. This component allows you to set a default theme and a storage key for persisting the theme in local storage.
 
 ```jsx
 import React from 'react';
@@ -69,10 +69,11 @@ function App() {
 }
 
 ReactDOM.render(
-  <ResponsiveProvider>
-    <App />
-  </ResponsiveProvider>,
-  document.querySelector('#app')
+  <ThemeProvider defaultTheme="light" storageKey="palmetto-ui-theme">
+    <ResponsiveProvider>
+      <App />
+    </ResponsiveProvider>
+  </ThemeProvider>,
+  document.querySelector('#app'),
 );
 ```
-

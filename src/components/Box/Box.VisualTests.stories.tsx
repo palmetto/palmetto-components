@@ -2,16 +2,18 @@
 /* eslint-disable no-else-return */
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+
 import { Box, BoxProps } from './Box';
 import {
+  BORDER_COLOR_OPTIONS,
   FONT_SIZE_OPTIONS,
   FONT_COLOR_OPTIONS,
-  BRAND_COLOR_NAMES,
   SPACING_OPTIONS,
   FONT_FAMILY_OPTIONS,
   FONT_WEIGHT_OPTIONS,
+  BACKGROUND_COLOR_OPTIONS,
 } from '../../lib/tokens';
-import { BrandColor } from '../../types';
+import { BackgroundColor, BorderColor } from '../../types';
 import { RESPONSIVE_STORY } from '../../docs/constants';
 import { ResponsiveProvider } from '../ResponsiveProvider/ResponsiveProvider';
 import { useBreakpoint } from '../../hooks/useBreakpoint/useBreakpoint';
@@ -22,214 +24,22 @@ export default {
 } as Meta;
 
 export const AllBackgroundColors: React.FunctionComponent<BoxProps> = () => (
-  <Box flex="auto" direction="row" fontSize="sm">
-    {BRAND_COLOR_NAMES.map((color, index) => {
-      if (color.includes('inherit')) return null;
-      else if (
-        color === 'dark'
-        || color === 'light'
-        || color === 'black'
-        || color === 'white'
-        || color === 'transparent'
-      ) {
-        return (
-          <Box
-            flex="auto"
-            padding="xs"
-            background={color}
-            key={`${color}-${index}`}
-          >
-            {`${color}`}
-          </Box>
-        );
-      } else {
-        return (
-          <Box flex="auto" key={`${color}-${index}`}>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-50` as BrandColor}
-            >
-              {`${color}-50`}
-            </Box>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-100` as BrandColor}
-            >
-              {`${color}-100`}
-            </Box>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-200` as BrandColor}
-            >
-              {`${color}-200`}
-            </Box>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-300` as BrandColor}
-            >
-              {`${color}-300`}
-            </Box>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-400` as BrandColor}
-            >
-              {`${color}-400`}
-            </Box>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-500` as BrandColor}
-            >
-              {`${color}-500`}
-            </Box>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-600` as BrandColor}
-            >
-              {`${color}-600`}
-            </Box>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-700` as BrandColor}
-            >
-              {`${color}-700`}
-            </Box>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-800` as BrandColor}
-            >
-              {`${color}-800`}
-            </Box>
-            <Box
-              flex="auto"
-              padding="xs"
-              background={`${color}-900` as BrandColor}
-            >
-              {`${color}-900`}
-            </Box>
-          </Box>
-        );
-      }
-    })}
+  <Box direction="column" fontSize="sm">
+    {BACKGROUND_COLOR_OPTIONS.map((color: BackgroundColor, index: number) => (
+      <Box padding="xs" background={color} key={`${color}-${index}`}>
+        {color}
+      </Box>
+    ))}
   </Box>
 );
 
 export const AllBorderColors: React.FunctionComponent<BoxProps> = () => (
-  <Box flex="auto" direction="row" fontSize="sm">
-    {BRAND_COLOR_NAMES.map((color, index) => {
-      if (color.includes('inherit')) return null;
-      else if (
-        color === 'dark'
-        || color === 'light'
-        || color === 'black'
-        || color === 'white'
-        || color === 'transparent'
-      ) {
-        return (
-          <Box
-            borderColor={color}
-            borderWidth="sm"
-            padding="xs"
-            key={`${color}-${index}`}
-          >
-            {`${color}`}
-          </Box>
-        );
-      } else {
-        return (
-          <Box flex="auto" key={`${color}-${index}`}>
-            <Box
-              flex="auto"
-              borderColor={`${color}-50` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-50`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-100` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-100`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-200` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-200`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-300` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-300`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-400` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-400`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-500` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-500`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-600` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-600`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-700` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-700`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-800` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-800`}
-            </Box>
-            <Box
-              flex="auto"
-              borderColor={`${color}-900` as BrandColor}
-              borderWidth="sm"
-              padding="xs"
-            >
-              {`${color}-900`}
-            </Box>
-          </Box>
-        );
-      }
-    })}
+  <Box direction="column" gap="xs" fontSize="sm">
+    {BORDER_COLOR_OPTIONS.map((color: BorderColor, index: number) => (
+      <Box padding="xs" borderColor={color} borderWidth="md" key={`${color}-${index}`}>
+        {color}
+      </Box>
+    ))}
   </Box>
 );
 
@@ -237,19 +47,19 @@ export const AllGap: React.FunctionComponent<BoxProps> = () => (
   <Box maxWidth="5xl" gap="lg">
     {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box gap={spacing} direction="row" key={i}>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
       </Box>
@@ -261,19 +71,19 @@ export const AllRowGap: React.FunctionComponent<BoxProps> = () => (
   <Box maxWidth="5xl" gap="lg" direction="row">
     {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box rowGap={spacing} direction="column" key={i}>
-        <Box width="100" background="primary-light" padding="sm">
+        <Box width="100" background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box width="100" background="primary-light" padding="sm">
+        <Box width="100" background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box width="100" background="primary-light" padding="sm">
+        <Box width="100" background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box width="100" background="primary-light" padding="sm">
+        <Box width="100" background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box width="100" background="primary-light" padding="sm">
+        <Box width="100" background="primary-100" padding="sm">
           {spacing}
         </Box>
       </Box>
@@ -285,19 +95,19 @@ export const AllColumnGap: React.FunctionComponent<BoxProps> = () => (
   <Box maxWidth="5xl" gap="lg">
     {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box columnGap={spacing} direction="row" key={i}>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
       </Box>
@@ -309,19 +119,19 @@ export const AllRowChildGap: React.FunctionComponent<BoxProps> = () => (
   <Box maxWidth="5xl" display="block" childGap="xs">
     {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box childGap={spacing} direction="row" key={i}>
-        <Box width="20%" background="primary-light" padding="sm">
+        <Box width="20%" background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box width="20%" background="primary-light" padding="sm">
+        <Box width="20%" background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box width="20%" background="primary-light" padding="sm">
+        <Box width="20%" background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box width="20%" background="primary-light" padding="sm">
+        <Box width="20%" background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box width="20%" background="primary-light" padding="sm">
+        <Box width="20%" background="primary-100" padding="sm">
           {spacing}
         </Box>
       </Box>
@@ -333,19 +143,19 @@ export const AllColumnChildGap: React.FunctionComponent<BoxProps> = () => (
   <Box maxWidth="5xl" childGap="xs" direction="row">
     {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box flex="auto" childGap={spacing} direction="column" key={i}>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
-        <Box background="primary-light" padding="sm">
+        <Box background="primary-100" padding="sm">
           {spacing}
         </Box>
       </Box>
@@ -389,7 +199,7 @@ export const AllFontSizesWeightsFamily: React.FunctionComponent<BoxProps> = () =
 export const AllMargin: React.FunctionComponent<BoxProps> = () => (
   <>
     {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box margin={spacing} background="primary-lighter" key={i}>
+      <Box margin={spacing} background="primary-50" key={i}>
         {`${spacing} margin`}
       </Box>
     ))}
@@ -399,7 +209,7 @@ export const AllMargin: React.FunctionComponent<BoxProps> = () => (
 export const AllHorizontalMargin: React.FunctionComponent<BoxProps> = () => (
   <>
     {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box margin={`0 ${spacing}`} background="primary-lighter" key={i}>
+      <Box margin={`0 ${spacing}`} background="primary-50" key={i}>
         {`${spacing} horizontal margin`}
       </Box>
     ))}
@@ -409,7 +219,7 @@ export const AllHorizontalMargin: React.FunctionComponent<BoxProps> = () => (
 export const AllVerticalMargin: React.FunctionComponent<BoxProps> = () => (
   <>
     {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box margin={`${spacing} 0`} background="primary-lighter" key={i}>
+      <Box margin={`${spacing} 0`} background="primary-50" key={i}>
         {`${spacing} vertical margin`}
       </Box>
     ))}
@@ -419,7 +229,7 @@ export const AllVerticalMargin: React.FunctionComponent<BoxProps> = () => (
 export const AllPadding: React.FunctionComponent<BoxProps> = () => (
   <>
     {[...SPACING_OPTIONS].map((spacing, i) => (
-      <Box padding={spacing} background="primary-lighter" margin="xs 0" key={i}>
+      <Box padding={spacing} background="primary-50" margin="xs 0" key={i}>
         {`${spacing} padding`}
       </Box>
     ))}
@@ -431,7 +241,7 @@ export const AllHorizontalPadding: React.FunctionComponent<BoxProps> = () => (
     {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box
         padding={`0 ${spacing}`}
-        background="primary-lighter"
+        background="primary-50"
         margin="xs 0"
         key={i}
       >
@@ -446,7 +256,7 @@ export const AllVerticalPadding: React.FunctionComponent<BoxProps> = () => (
     {[...SPACING_OPTIONS].map((spacing, i) => (
       <Box
         padding={`${spacing} 0`}
-        background="primary-lighter"
+        background="primary-50"
         margin="xs 0"
         key={i}
       >
@@ -464,9 +274,7 @@ const BoxTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
         <Box {...args}>
           <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
           <p>
-            {`${propertyName}: ${
-              args[propertyName][activeBreakpoint.name]
-            }`}
+            {`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}
           </p>
         </Box>
       </Box>
@@ -685,9 +493,7 @@ const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
         >
           <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
           <p>
-            {`${propertyName}: ${
-              args[propertyName][activeBreakpoint.name]
-            }`}
+            {`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}
           </p>
         </Box>
         <Box
@@ -700,9 +506,7 @@ const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
         >
           <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
           <p>
-            {`${propertyName}: ${
-              args[propertyName][activeBreakpoint.name]
-            }`}
+            {`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}
           </p>
         </Box>
         <Box
@@ -715,9 +519,7 @@ const BoxChildrenTemplate: Story<BoxProps> = ({ propertyName, ...args }) => {
         >
           <p>{`Breakpoint: ${activeBreakpoint.name}`}</p>
           <p>
-            {`${propertyName}: ${
-              args[propertyName][activeBreakpoint.name]
-            }`}
+            {`${propertyName}: ${args[propertyName][activeBreakpoint.name]}`}
           </p>
         </Box>
       </Box>
@@ -797,115 +599,115 @@ export const AllCursorOptions: React.FunctionComponent<BoxProps> = () => (
     padding="md"
     childGap="md"
     flex="auto"
-    background="primary-lighter"
+    background="primary-50"
     overflow="auto"
   >
-    <Box cursor="auto" padding="md" background="primary-light">
+    <Box cursor="auto" padding="md" background="primary-100">
       auto
     </Box>
-    <Box cursor="default" padding="md" background="primary-light">
+    <Box cursor="default" padding="md" background="primary-100">
       default
     </Box>
-    <Box cursor="none" padding="md" background="primary-light">
+    <Box cursor="none" padding="md" background="primary-100">
       none
     </Box>
-    <Box cursor="context-menu" padding="md" background="primary-light">
+    <Box cursor="context-menu" padding="md" background="primary-100">
       context-menu
     </Box>
-    <Box cursor="help" padding="md" background="primary-light">
+    <Box cursor="help" padding="md" background="primary-100">
       help
     </Box>
-    <Box cursor="pointer" padding="md" background="primary-light">
+    <Box cursor="pointer" padding="md" background="primary-100">
       pointer
     </Box>
-    <Box cursor="progress" padding="md" background="primary-light">
+    <Box cursor="progress" padding="md" background="primary-100">
       progress
     </Box>
-    <Box cursor="wait" padding="md" background="primary-light">
+    <Box cursor="wait" padding="md" background="primary-100">
       wait
     </Box>
-    <Box cursor="cell" padding="md" background="primary-light">
+    <Box cursor="cell" padding="md" background="primary-100">
       cell
     </Box>
-    <Box cursor="crosshair" padding="md" background="primary-light">
+    <Box cursor="crosshair" padding="md" background="primary-100">
       crosshair
     </Box>
-    <Box cursor="text" padding="md" background="primary-light">
+    <Box cursor="text" padding="md" background="primary-100">
       text
     </Box>
-    <Box cursor="vertical-text" padding="md" background="primary-light">
+    <Box cursor="vertical-text" padding="md" background="primary-100">
       vertical-text
     </Box>
-    <Box cursor="alias" padding="md" background="primary-light">
+    <Box cursor="alias" padding="md" background="primary-100">
       alias
     </Box>
-    <Box cursor="copy" padding="md" background="primary-light">
+    <Box cursor="copy" padding="md" background="primary-100">
       copy
     </Box>
-    <Box cursor="move" padding="md" background="primary-light">
+    <Box cursor="move" padding="md" background="primary-100">
       move
     </Box>
-    <Box cursor="no-drop" padding="md" background="primary-light">
+    <Box cursor="no-drop" padding="md" background="primary-100">
       no-drop
     </Box>
-    <Box cursor="not-allowed" padding="md" background="primary-light">
+    <Box cursor="not-allowed" padding="md" background="primary-100">
       not-allowed
     </Box>
-    <Box cursor="grab" padding="md" background="primary-light">
+    <Box cursor="grab" padding="md" background="primary-100">
       grab
     </Box>
-    <Box cursor="grabbing" padding="md" background="primary-light">
+    <Box cursor="grabbing" padding="md" background="primary-100">
       grabbing
     </Box>
-    <Box cursor="all-scroll" padding="md" background="primary-light">
+    <Box cursor="all-scroll" padding="md" background="primary-100">
       all-scroll
     </Box>
-    <Box cursor="col-resize" padding="md" background="primary-light">
+    <Box cursor="col-resize" padding="md" background="primary-100">
       col-resize
     </Box>
-    <Box cursor="row-resize" padding="md" background="primary-light">
+    <Box cursor="row-resize" padding="md" background="primary-100">
       row-resize
     </Box>
-    <Box cursor="n-resize" padding="md" background="primary-light">
+    <Box cursor="n-resize" padding="md" background="primary-100">
       n-resize
     </Box>
-    <Box cursor="e-resize" padding="md" background="primary-light">
+    <Box cursor="e-resize" padding="md" background="primary-100">
       e-resize
     </Box>
-    <Box cursor="s-resize" padding="md" background="primary-light">
+    <Box cursor="s-resize" padding="md" background="primary-100">
       s-resize
     </Box>
-    <Box cursor="w-resize" padding="md" background="primary-light">
+    <Box cursor="w-resize" padding="md" background="primary-100">
       w-resize
     </Box>
-    <Box cursor="ne-resize" padding="md" background="primary-light">
+    <Box cursor="ne-resize" padding="md" background="primary-100">
       ne-resize
     </Box>
-    <Box cursor="nw-resize" padding="md" background="primary-light">
+    <Box cursor="nw-resize" padding="md" background="primary-100">
       nw-resize
     </Box>
-    <Box cursor="se-resize" padding="md" background="primary-light">
+    <Box cursor="se-resize" padding="md" background="primary-100">
       se-resize
     </Box>
-    <Box cursor="sw-resize" padding="md" background="primary-light">
+    <Box cursor="sw-resize" padding="md" background="primary-100">
       sw-resize
     </Box>
-    <Box cursor="ew-resize" padding="md" background="primary-light">
+    <Box cursor="ew-resize" padding="md" background="primary-100">
       ew-resize
     </Box>
-    <Box cursor="ns-resize" padding="md" background="primary-light">
+    <Box cursor="ns-resize" padding="md" background="primary-100">
       ns-resize
     </Box>
-    <Box cursor="nesw-resize" padding="md" background="primary-light">
+    <Box cursor="nesw-resize" padding="md" background="primary-100">
       nesw-resize
     </Box>
-    <Box cursor="nwse-resize" padding="md" background="primary-light">
+    <Box cursor="nwse-resize" padding="md" background="primary-100">
       nwse-resize
     </Box>
-    <Box cursor="zoom-in" padding="md" background="primary-light">
+    <Box cursor="zoom-in" padding="md" background="primary-100">
       zoom-in
     </Box>
-    <Box cursor="zoom-out" padding="md" background="primary-light">
+    <Box cursor="zoom-out" padding="md" background="primary-100">
       zoom-out
     </Box>
   </Box>
@@ -916,34 +718,34 @@ export const AllPositionOptions: React.FunctionComponent<BoxProps> = () => (
     padding="md"
     childGap="md"
     flex="auto"
-    background="primary-lighter"
+    background="primary-50"
     overflow="auto"
   >
-    <Box position="absolute" padding="md" background="primary-light">
+    <Box position="absolute" padding="md" background="primary-100">
       absolute
     </Box>
-    <Box position="relative" padding="md" background="primary-light">
+    <Box position="relative" padding="md" background="primary-100">
       relative
     </Box>
-    <Box position="sticky" padding="md" background="primary-light">
+    <Box position="sticky" padding="md" background="primary-100">
       sticky
     </Box>
-    <Box position="fixed" padding="md" background="primary-light">
+    <Box position="fixed" padding="md" background="primary-100">
       fixed
     </Box>
-    <Box position="static" padding="md" background="primary-light">
+    <Box position="static" padding="md" background="primary-100">
       static
     </Box>
-    <Box position="unset" padding="md" background="primary-light">
+    <Box position="unset" padding="md" background="primary-100">
       unset
     </Box>
-    <Box position="initial" padding="md" background="primary-light">
+    <Box position="initial" padding="md" background="primary-100">
       initial
     </Box>
-    <Box position="inherit" padding="md" background="primary-light">
+    <Box position="inherit" padding="md" background="primary-100">
       inherit
     </Box>
-    <Box position="revert" padding="md" background="primary-light">
+    <Box position="revert" padding="md" background="primary-100">
       revert
     </Box>
   </Box>

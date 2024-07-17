@@ -25,25 +25,33 @@ interface ToastNotificationProps {
   /**
    * Render function to create custom toast notification.
    */
-  children?: (components: {
-    message: React.ReactNode;
-  }) => React.ReactNode;
+  children?: (components: { message: React.ReactNode; }) => React.ReactNode;
   /**
    * Handler for when the dismiss button is pressed.
    */
   onDismiss?: () => void;
 }
 
-const getAnimationClass = (position: ToastPosition, visible: boolean): React.CSSProperties => {
+const getAnimationClass = (
+  position: ToastPosition,
+  visible: boolean,
+): React.CSSProperties => {
   const verticalPosition = position.includes('top') ? 'top' : 'bottom';
   const horizontalPosition = position.includes('left') ? 'left' : 'right';
   const isCentered = position.includes('center');
 
   const [enter, exit] = prefersReducedMotion()
-    ? [styles['toast-notification-fade-in'], styles['toast-notification-fade-out']]
+    ? [
+      styles['toast-notification-fade-in'],
+      styles['toast-notification-fade-out'],
+    ]
     : [
       styles[`toast-notification-enter-${verticalPosition}`],
-      styles[`toast-notification-exit-${isCentered ? verticalPosition : horizontalPosition}`],
+      styles[
+        `toast-notification-exit-${
+          isCentered ? verticalPosition : horizontalPosition
+        }`
+      ],
     ];
 
   return visible ? enter : exit;
@@ -55,7 +63,7 @@ const renderToastIcon = (toast: Toast) => {
   if (type === 'blank') return;
 
   let iconName: IconName = 'exclamation-mark';
-  let iconColor: FontColor = 'dark';
+  let iconColor: FontColor = 'grey-600';
 
   if (type === 'success') {
     iconName = 'c-check';
@@ -67,7 +75,11 @@ const renderToastIcon = (toast: Toast) => {
     iconColor = 'danger-300';
   }
 
-  const icon = type !== 'loading' ? <Icon name={iconName} color={iconColor} /> : <Spinner variant="grey" />;
+  const icon = type !== 'loading' ? (
+    <Icon name={iconName} color={iconColor} />
+  ) : (
+    <Spinner color="body-secondary" />
+  );
 
   // eslint-disable-next-line consistent-return
   return (
@@ -79,7 +91,10 @@ const renderToastIcon = (toast: Toast) => {
 
 const toastTypesWithIcon: ToastType[] = ['error', 'success', 'loading'];
 
-const renderDismissIcon = (toast: Toast, onDismiss: ToastNotificationProps['onDismiss']) => {
+const renderDismissIcon = (
+  toast: Toast,
+  onDismiss: ToastNotificationProps['onDismiss'],
+) => {
   if (!toast.canDismiss) return;
 
   // eslint-disable-next-line consistent-return
@@ -103,14 +118,14 @@ const renderDismissIcon = (toast: Toast, onDismiss: ToastNotificationProps['onDi
 
 // eslint-disable-next-line import/prefer-default-export
 export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
-  ({
-    toast, position = 'top-center', style, children, onDismiss,
-  }) => {
+  ({ toast, position = 'top-center', style, children, onDismiss }) => {
     const message = (
       <Box
         direction="row"
         justifyContent="center"
-        margin={toastTypesWithIcon.includes(toast.type) ? '0 0 0 sm' : undefined}
+        margin={
+          toastTypesWithIcon.includes(toast.type) ? '0 0 0 sm' : undefined
+        }
         style={{
           flex: '1 1 auto',
         }}
@@ -120,7 +135,9 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
       </Box>
     );
 
-    const animationClass = toast?.height ? getAnimationClass(toast.position || position, toast.visible) : undefined;
+    const animationClass = toast?.height
+      ? getAnimationClass(toast.position || position, toast.visible)
+      : undefined;
 
     const classes = classNames(
       toast.className,
@@ -141,7 +158,7 @@ export const ToastNotification: React.FC<ToastNotificationProps> = React.memo(
         style={{
           ...style,
           ...toast.style,
-          ...!toast.height && { opacity: 0 },
+          ...(!toast.height && { opacity: 0 }),
         }}
       >
         {typeof children === 'function' ? (

@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Box, BoxProps } from './Box';
 import {
+  BACKGROUND_COLOR_OPTIONS,
   BORDER_SIZE_OPTIONS,
   BORDER_RADIUS_OPTIONS,
   BOX_SHADOW_OPTIONS,
@@ -85,7 +86,14 @@ export default {
     alignItems: {
       control: {
         type: 'select',
-        options: [null, 'flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
+        options: [
+          null,
+          'flex-start',
+          'flex-end',
+          'center',
+          'baseline',
+          'stretch',
+        ],
       },
     },
     justifyContent: {
@@ -287,7 +295,7 @@ export default {
     background: {
       control: {
         type: 'select',
-        options: [null, ...BRAND_COLOR_OPTIONS],
+        options: [null, ...BACKGROUND_COLOR_OPTIONS],
       },
     },
     radius: {
@@ -360,7 +368,7 @@ export default {
     childBackground: {
       control: {
         type: 'select',
-        options: [null, ...BRAND_COLOR_OPTIONS],
+        options: [null, ...BACKGROUND_COLOR_OPTIONS],
       },
     },
     className: {
@@ -447,12 +455,12 @@ const Template: Story<BoxProps> = ({
 
 export const Playground = Template.bind({});
 Playground.args = {
-  background: 'info-300',
+  background: 'inverse',
   direction: 'row',
   childWidth: 'lg',
   childHeight: 'lg',
   gap: 'sm',
   padding: 'lg',
   width: '100',
-  childBackground: 'white',
+  childBackground: 'primary',
 };

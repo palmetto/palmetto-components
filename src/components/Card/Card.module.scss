@@ -1,36 +1,32 @@
 .card-background {
-  background-color: var(--card-background-color, var(--color-brand-white-500));
+  background-color: var(--color-background-primary);
 }
 
 .card-radius {
-  border-radius: var(--card-border-radius, var(--size-border-radius-md));
+  border-radius: var(--size-border-radius-md);
 }
 
 .card-shadow {
-  box-shadow: var(--card-box-shadow, var(--size-box-shadow-sm));
+  box-shadow: var(--size-box-shadow-sm);
 }
 
 .card-section-border {
   + .card-section-border {
-    border-top: 1px solid var(--card-section-border-color, var(--color-brand-grey-100));
+    border-top: 1px solid var(--color-border-separator);
   }
 }
 
 .card-subdued {
-  background-color: var(--card-subdued-background-color, var(--color-brand-grey-50));
+  background-color: var(--color-background-tertiary);
   box-shadow: none;
 
   .card-section-border {
     + .card-section-border {
-      border-top: 1px solid var(--card-section-subdued-border-color, var(--color-brand-grey-100));
+      border-top: 1px solid var(--color-border-separator);
     }
   }
 }
 
-.card-footer-background {
-  background-color: var(--card-footer-background-color, var(--color-brand-grey-50));
-}
-
 .card-footer-border-color {
-  border-color: var(--card-section-border-color, var(--color-brand-grey-100));
+  border-color: var(--color-border-separator);
 }

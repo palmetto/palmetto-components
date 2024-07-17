@@ -61,17 +61,14 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
   ...restProps
 }) => {
   const placeholderOption = { value: '', label: placeholder };
-  const optionsWithPlaceholder = [
-    { ...placeholderOption },
-    ...options,
-  ];
+  const optionsWithPlaceholder = [{ ...placeholderOption }, ...options];
 
   const responsiveClasses = generateResponsiveClasses('size', size);
 
   const selectWrapperClasses = classNames(
     'palmetto-components__variables__form-control',
     styles['select-input-native-wrapper'],
-    ...responsiveClasses.map(className => (styles[className])),
+    ...responsiveClasses.map(className => styles[className]),
     {
       [styles.disabled]: isDisabled,
       [styles.error]: error,
@@ -90,9 +87,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
       requiredIndicator={requiredIndicator}
       {...restProps}
     >
-      <Box
-        className={selectWrapperClasses}
-      >
+      <Box className={selectWrapperClasses}>
         <Box
           as="select"
           aria-label={label}
@@ -100,7 +95,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
           aria-required={isRequired}
           value={value ?? ''}
           onChange={onChange}
-          color={!value ? 'grey-light' : 'dark'}
+          color={!value ? 'placeholder' : 'contrast'}
           autoFocus={autoFocus}
           disabled={isDisabled}
           name={name}
@@ -114,7 +109,7 @@ export const SelectInputNative: React.FC<SelectInputNativeProps> = ({
               value={option.value}
               disabled={option.value === ''}
               hidden={option.value === ''}
-              color={option.value === '' ? 'grey-light' : 'dark'}
+              color={option.value === '' ? 'placeholder' : 'contrast'}
             >
               {option.label}
             </Box>

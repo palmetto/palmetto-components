@@ -30,7 +30,7 @@ export const AccordionPanelSummary: React.FC<AccordionPanelSummaryProps> = ({
       <Box>
         <Icon
           name={isDetailsOpen ? 'caret-sm-down' : 'caret-sm-right'}
-          color="grey-500"
+          color="body-secondary"
         />
       </Box>
     )}
@@ -39,7 +39,7 @@ export const AccordionPanelSummary: React.FC<AccordionPanelSummaryProps> = ({
       <Box margin="0 0 0 auto">
         <Icon
           name={isDetailsOpen ? 'caret-sm-up' : 'caret-sm-down'}
-          color="grey-500"
+          color="body-secondary"
         />
       </Box>
     )}

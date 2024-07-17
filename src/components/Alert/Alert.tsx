@@ -93,9 +93,9 @@ export const Alert: FC<AlertProps> = ({
     };
 
     return (
-      <Box margin="0 0 0 auto" color="grey-500" className={styles['close-icon']}>
+      <Box margin="0 0 0 auto" className={styles['close-icon']}>
         <button type="button" onClick={handleClose} onKeyUp={handleCloseKeyPress}>
-          {closeText || <Icon name="remove" data-testid="alert-close-icon-test-id" />}
+          {closeText || <Icon name="remove-light" data-testid="alert-close-icon-test-id" />}
         </button>
       </Box>
     );

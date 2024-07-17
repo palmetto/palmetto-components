@@ -113,8 +113,7 @@ You can apply a custom class to your popover with the `className` prop. Here we 
 ## Popover Styling
 
 Because the rendered Popover is powered by our `Box` component ([Read More](/?path=/docs/components-box-overview--background)) you
-can use all known box props to style it. The below example includes some of the basics, but is not representative of
-the entire gamut of styling options.
+can use all known box props to style it using the `contentContainerProps` prop.
 
 <Canvas withSource="open">
   <Story
@@ -126,36 +125,6 @@ the entire gamut of styling options.
     {() => {
       const { isOpen: isPopoverOpen, handleToggle: togglePopover } =
         useOpenClose();
-      const [popoverBackground, setPopoverBackground] = useState({
-        value: 'white',
-        label: 'White',
-      });
-      const [popoverFontColor, setPopoverFontColor] = useState({
-        value: 'dark',
-        label: 'Dark',
-      });
-      const [popoverRadius, setPopoverRadius] = useState({
-        value: 'sm',
-        label: 'Small',
-      });
-      const backgroundOptions = [
-        { value: 'white', label: 'White' },
-        { value: 'primary', label: 'Primary' },
-        { value: 'secondary', label: 'Secondary' },
-        { value: 'tertiary', label: 'Tertiary' },
-        { value: 'warning', label: 'Warning' },
-        { value: 'grey-light', label: 'Grey Light' },
-        { value: 'grey-dark', label: 'Grey Dark' },
-      ];
-      const fontColorOptions = [
-        { value: 'white', label: 'White' },
-        { value: 'dark', label: 'Dark' },
-      ];
-      const borderRadiusOptions = [
-        { value: 'sm', label: 'Small' },
-        { value: 'md', label: 'Medium' },
-        { value: 'lg', label: 'Large' },
-      ];
       return (
         <Box height="400px">
           <Box direction="row" gap="md" wrap>
@@ -170,47 +139,15 @@ the entire gamut of styling options.
               placement={'right'}
               contentContainerProps={{
                 padding: 'sm',
-                background: popoverBackground.value,
-                color: popoverFontColor.value,
-                radius: popoverRadius.value,
+                background: 'info',
+                color: 'white',
+                radius: 'md',
               }}
             >
               <Button onClick={togglePopover} variant="primary" tone="neutral">
                 Toggle Popover
               </Button>
             </Popover>
-          </Box>
-          <Box direction="row" gap="sm" wrap margin="3xl 0 0 0">
-            <Box width="200px">
-              <SelectInput
-                options={backgroundOptions}
-                onChange={event => {
-                  setPopoverBackground(event.target.value);
-                }}
-                value={popoverBackground}
-                label="Background Color"
-              />
-            </Box>
-            <Box width="200px">
-              <SelectInput
-                options={fontColorOptions}
-                onChange={event => {
-                  setPopoverFontColor(event.target.value);
-                }}
-                value={popoverFontColor}
-                label="Font Color"
-              />
-            </Box>
-            <Box width="200px">
-              <SelectInput
-                options={borderRadiusOptions}
-                onChange={event => {
-                  setPopoverRadius(event.target.value);
-                }}
-                value={popoverRadius}
-                label="Border Radius"
-              />
-            </Box>
           </Box>
         </Box>
       );
@@ -284,8 +221,6 @@ prevent the content from getting cut off.
                 placement={position}
                 contentContainerProps={{
                   padding: 'sm',
-                  background: 'secondary',
-                  color: 'white',
                 }}
               >
                 <Button
@@ -345,11 +280,6 @@ in order to render the element anywhere on the page.
             content={popoverContent}
             isOpen={isPopoverOpen}
             placement="right-start"
-            contentContainerProps={{
-              padding: 'md',
-              background: 'secondary',
-              color: 'white',
-            }}
             withPortal
             portalTarget={document.body}
             onClickOutside={closePopover}
@@ -402,10 +332,6 @@ NOTE: this should be use sparingly since context dependent on hover, isn't an op
             content={popoverContent}
             isOpen={isPopoverOpen}
             placement="right-start"
-            contentContainerProps={{
-              padding: 'md',
-              background: 'primary-light',
-            }}
           >
             <Button
               onMouseOver={openPopover}
@@ -465,10 +391,6 @@ in cases where the click target includes the Popover trigger or content nodes.
             withPortal
             portalTarget={document.body}
             onClickOutside={closePopover}
-            contentContainerProps={{
-              padding: 'md',
-              background: 'primary-light',
-            }}
           >
             <Button onClick={togglePopover} variant="primary" tone="neutral">
               Toggle Popover
@@ -522,10 +444,6 @@ Use the `trapFocus` prop to constrain focus to popover content elements.
             content={popoverContent}
             isOpen={isPopoverOpen}
             placement="right-start"
-            contentContainerProps={{
-              padding: 'md',
-              background: 'grey-lightest',
-            }}
             withPortal
             portalTarget={document.body}
             onClickOutside={closePopover}
@@ -559,12 +477,9 @@ Render the popover with no arrow by passing `hasArrow` false.
         handleClose: closePopover,
       } = useOpenClose();
       const popoverContent = (
-        <>
-          <Box direction="column" gap="sm">
-            <Heading>With no arrow</Heading>
-            <p>I am floating in space</p>
-          </Box>
-        </>
+        <Box direction="column" gap="sm">
+          <p>I am floating in space</p>
+        </Box>
       );
       return (
         <>
@@ -572,10 +487,8 @@ Render the popover with no arrow by passing `hasArrow` false.
             content={popoverContent}
             isOpen={isPopoverOpen}
             placement="right"
-            contentContainerProps={{
-              padding: 'sm',
-            }}
             onClickOutside={closePopover}
+            hasArrow={false}
           >
             <Button onClick={togglePopover} variant="primary" tone="neutral">
               Toggle Popover
@@ -606,12 +519,9 @@ Place the popover closer or farther from its trigger with the `offsetFromTarget`
         setInputValue(event.target.value);
       };
       const popoverContent = (
-        <>
-          <Box direction="column" gap="sm">
-            <Heading>Custom Offset</Heading>
-            <p>Near, far, wherever your are...</p>
-          </Box>
-        </>
+        <Box direction="column" gap="sm">
+          <p>Near, far, wherever your are...</p>
+        </Box>
       );
       return (
         <>
@@ -622,7 +532,7 @@ Place the popover closer or farther from its trigger with the `offsetFromTarget`
               placement="right-start"
               contentContainerProps={{
                 padding: 'md',
-                background: 'grey-lightest',
+                background: 'grey-50',
               }}
               withPortal
               portalTarget={document.body}

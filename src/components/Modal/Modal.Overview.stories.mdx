@@ -58,7 +58,7 @@ In order to hide or show the Modal, set the Modal's `isOpen` prop to `true` or `
             />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" tone="neutral" onClick={closeModal}>
+              <Button variant="secondary" tone="neutral" onClick={closeModal}>
                 Cancel
               </Button>
               <Button variant="primary">Primary Action</Button>
@@ -192,7 +192,7 @@ Omit `<Modal.Header/>` to render a minimal modal without a header.
           >
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" tone="neutral" onClick={closeModal}>
+              <Button variant="secondary" tone="neutral" onClick={closeModal}>
                 Cancel
               </Button>
               <Button variant="primary">Primary Action</Button>
@@ -239,7 +239,7 @@ Use `fullScreenMobile` to enable fullscreen at mobile viewport widths.
             />
             <Modal.Body>Modal content</Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" tone="neutral" onClick={closeModal}>
+              <Button variant="secondary" tone="neutral" onClick={closeModal}>
                 Cancel
               </Button>
               <Button variant="primary">Primary Action</Button>
@@ -294,37 +294,3 @@ maxWidth, use existing tokens only.
     }}
   </Story>
 </Canvas>
-
-## Component Design Tokens
-
-<table>
-  <thead>
-    <tr>
-      <th>token name</th>
-      <th>default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {(() => {
-      const tokens = {
-        '--modal-background-color': '--color-brand-white-500',
-        '--modal-border-radius': '--size-border-radius-md',
-        '--modal-box-shadow': '--size-box-shadow-md',
-        '--modal-close-button-color': '--color-brand-grey-500',
-        '--modal-close-button-color-hover': '--color-brand-grey-600',
-        '--modal-close-button-box-shadow-focus': '--color-brand-grey-200',
-        '--modal-border-separator-color': '--color-brand-grey-100',
-      };
-      return Object.entries(tokens).map(([name, entry], i) => (
-        <tr key={i}>
-          <td>
-            <code>{name}</code>
-          </td>
-          <td>
-            <code>{entry}</code>
-          </td>
-        </tr>
-      ));
-    })()}
-  </tbody>
-</table>

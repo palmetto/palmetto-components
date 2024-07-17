@@ -38,18 +38,18 @@
 
 .drawer {
   [data-reach-dialog-content] {
-    background-color: var(--drawer-background-color, var(--color-brand-white-500));
-    color: var(--drawer-font-color, inherit);
+    background-color: var(--color-background-primary);
+    color: var(--color-text-body-primary);
     display: flex;
     flex-direction: column;
-    padding: var(--drawer-content-padding, var(--size-spacing-0));
+    padding: 0;
     position: absolute;
-    box-shadow: var(--drawer-box-shadow, var(--size-box-shadow-xl));
+    box-shadow: var(--size-box-shadow-xl);
     z-index: var(--size-z-index-drawer);
 
     &.left {
       left: 0;
-      width: var(--w, var(--drawer-width, 80vw));
+      width: var(--w, 80vw);
       height: 100%;
 
       :global {
@@ -59,7 +59,7 @@
 
     &.right {
       right: 0;
-      width: var(--w, var(--drawer-width, 80vw));
+      width: var(--w, 80vw);
       height: 100%;
 
       :global {
@@ -87,17 +87,17 @@
       }
     }
 
-    @media(min-width: $size-breakpoint-tablet) {
+    @media (min-width: $size-breakpoint-tablet) {
       &.right,
       &.left {
-        width: var(--w, var(--drawer-width, var(--size-width-4xl)));
+        width: var(--w, var(--size-width-4xl));
       }
     }
   }
 }
 
 .drawer-header {
-  border-color: var(--drawer-header-border-color, var(--color-brand-grey-100));
+  border-color: var(--color-border-separator);
 }
 
 .drawer-close-button {
@@ -105,18 +105,21 @@
   background: transparent;
   cursor: pointer;
   padding: var(--size-spacing-xs);
-  color: var(--drawer-close-button-color, var(--color-brand-grey-500));
+  color: var(--color-text-body-secondary);
   line-height: var(--size-line-height-base);
   border-radius: var(--size-border-radius-sm);
 
   &:hover {
-    color: var(--drawer-close-button-color-hover, var(--color-brand-grey-600));
+    color: var(--color-text-body-primary);
   }
 
   //Show focus styles on keyboard focus.
   &:focus-visible {
     outline: 0;
-    box-shadow: var(--drawer-close-button-box-shadow-focus, 0 0 0 4px var(--color-brand-grey-200));
+    box-shadow: var(
+      --drawer-close-button-box-shadow-focus,
+      0 0 0 4px var(--color-brand-grey-200)
+    );
   }
 
   //Hide focus styles if they are not needed, for example,

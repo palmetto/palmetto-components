@@ -21,8 +21,9 @@ import {
 export type {
   BorderSize,
   BoxShadowSize,
+  BackgroundColor,
+  BorderColor,
   BrandColor,
-  ColorName,
   FontColor,
   FontSize,
   FontWeight,

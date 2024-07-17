@@ -197,7 +197,7 @@ export const Button = forwardRef<
         return 'white';
       }
 
-      return 'dark';
+      return 'body-primary';
     };
 
     const buttonContent = iconPrefix || iconSuffix ? (
@@ -209,7 +209,7 @@ export const Button = forwardRef<
       >
         {isLoading && (
         <Spinner
-          variant={getSpinnerVariant()}
+          color={getSpinnerVariant()}
           className={styles['spinner-wrapper']}
         />
         )}
@@ -243,7 +243,7 @@ export const Button = forwardRef<
       <>
         {isLoading && (
         <Spinner
-          variant={getSpinnerVariant()}
+          color={getSpinnerVariant()}
           className={styles['spinner-wrapper']}
         />
         )}
