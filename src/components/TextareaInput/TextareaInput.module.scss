@@ -90,7 +90,7 @@
   @extend %size-lg;
 }
 
-%disabled-500 {
+%disabled-base {
   background-color: var(
     --form-control-background-color-disabled,
     var(--color-background-form-control-disabled)
@@ -133,7 +133,7 @@
     }
 
     &:disabled {
-      @extend %disabled-500;
+      @extend %disabled-base;
     }
   }
 
