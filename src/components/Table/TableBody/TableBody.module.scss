@@ -17,3 +17,24 @@
     }
   }
 }
+
+.expandButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-brand-primary-500);
+  font-size: var(--size-font-sm);
+  width: 100%;
+  text-align: left;
+  
+  &:hover {
+    color: var(--color-brand-primary-600);
+    text-decoration: underline;
+  }
+}
+
+.expandedRow {
+  td {
+    background-color: var(--color-background-secondary);
+  }
+}

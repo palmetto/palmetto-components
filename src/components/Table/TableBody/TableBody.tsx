@@ -1,9 +1,10 @@
-import React, { FC, Key } from 'react';
+import React, { FC, Key, ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './TableBody.module.scss';
 import { Column, Row } from '../../../types';
 import { TableRow } from '../common/TableRow/TableRow';
-
+import { Box } from '../../Box/Box';
+ 
 export interface TableBodyProps {
   /**
    * The table columns to be rendered
@@ -52,6 +53,20 @@ export interface TableBodyProps {
    * by passing `truncateOverflow` value on a specific Column
    */
   truncateOverflow?: boolean;
+  expandedRowRender?: (row: Row, rowIndex: number) => ReactNode;
+  /**
+   * Currently expanded row key
+   */
+  expandedRow?: React.Key | null;
+  /**
+   * Callback when row expand state changes
+   */
+  onExpandedRowChange?: (rowId: React.Key | null) => void;
+  expandLabels?: {
+    expand: string;
+    collapse: string;
+  };
+  expandColumn?: Column;
 }
 
 export const TableBody: FC<TableBodyProps> = ({
@@ -66,6 +81,14 @@ export const TableBody: FC<TableBodyProps> = ({
   isCompact = false,
   isStriped = false,
   truncateOverflow = false,
+  expandedRowRender,
+  expandedRow,
+  onExpandedRowChange,
+  expandLabels = {
+    expand: 'Show details',
+    collapse: 'Hide details',
+  },
+  expandColumn,
 }) => {
   const tableBodyClasses = classNames(
     styles['table-body'],
@@ -76,20 +99,52 @@ export const TableBody: FC<TableBodyProps> = ({
     className,
   );
 
+  const handleExpand = (rowId: React.Key | null) => {
+    onExpandedRowChange?.(rowId === expandedRow ? null : rowId);
+  };
+
   return (
     <tbody className={tableBodyClasses}>
       {rows.map((row, rowIndex) => (
-        <TableRow
-          columns={columns}
-          row={row}
-          rowIndex={rowIndex}
-          align={align}
-          key={row[rowKey]}
-          emptyCellPlaceholder={emptyCellPlaceholder}
-          truncateOverflow={truncateOverflow}
-          isBorderless={isBorderless}
-          isCompact={isCompact}
-        />
+        <React.Fragment key={row[rowKey]}>
+          <TableRow
+            columns={[
+              ...columns,
+              expandedRowRender && expandColumn && {
+                ...expandColumn,
+                render: () => (
+                  <Box
+                    as="button"
+                    onClick={() => handleExpand(row[rowKey] as React.Key)}
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    className={styles.expandButton}
+                  >
+                    {expandedRow === row[rowKey]
+                      ? expandLabels.collapse
+                      : expandLabels.expand}
+                  </Box>
+                ),
+              },
+            ].filter((column): column is Column => Boolean(column))}
+            row={row}
+            rowIndex={rowIndex}
+            align={align}
+            key={row[rowKey]}
+            emptyCellPlaceholder={emptyCellPlaceholder}
+            truncateOverflow={truncateOverflow}
+            isBorderless={isBorderless}
+            isCompact={isCompact}
+          />
+          {expandedRowRender && expandedRow === row[rowKey] && (
+            <tr className={styles.expandedRow}>
+              <td colSpan={columns.length + 1}>
+                {expandedRowRender(row, rowIndex)}
+              </td>
+            </tr>
+          )}
+        </React.Fragment>
       ))}
     </tbody>
   );
