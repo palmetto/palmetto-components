@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import useExpandableRow from './useExpandableRow';
+import { useExpandableRow, UseExpandableRowProps } from './useExpandableRow';
 
-const UseExpandableRowExample = ({ onExpandedRowChange, expandedRow }: any) => {
+const UseExpandableRowExample = (props: UseExpandableRowProps = {}) => {
+  const { expandedRow, onExpandedRowChange } = props;
   const { handleToggle, expandedRow: currentExpandedRow } = useExpandableRow({
     expandedRow,
     onExpandedRowChange,

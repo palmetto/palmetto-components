@@ -1,11 +1,10 @@
 import { useState, useCallback } from 'react';
 
-interface UseExpandableRowProps {
+export interface UseExpandableRowProps {
   expandedRow?: React.Key;
   onExpandedRowChange?: (expandedRow: React.Key | null) => void;
 }
-
-const useExpandableRow = (props: UseExpandableRowProps = {}) => {
+export const useExpandableRow = (props: UseExpandableRowProps = {}) => {
   const { expandedRow: controlledExpandedRow, onExpandedRowChange } = props;
 
   const [internalExpandedRow, setInternalExpandedRow] = useState<React.Key | null>(null);
@@ -33,5 +32,3 @@ const useExpandableRow = (props: UseExpandableRowProps = {}) => {
     handleToggle,
   };
 };
-
-export default useExpandableRow;
