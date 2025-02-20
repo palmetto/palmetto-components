@@ -5,7 +5,7 @@ import { Spinner } from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 import { TableBody } from './TableBody/TableBody';
 import { TableHead } from './TableHead/TableHead';
-import { useExpandableRow } from '../../hooks/useExpandableRow/useExpandableRow';
+import useExpandableRow from '../../hooks/useExpandableRow/useExpandableRow';
 
 export interface TableProps {
   /**

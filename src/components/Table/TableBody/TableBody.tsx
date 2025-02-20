@@ -4,7 +4,7 @@ import styles from './TableBody.module.scss';
 import { Column, Row } from '../../../types';
 import { TableRow } from '../common/TableRow/TableRow';
 import { Box } from '../../Box/Box';
- 
+
 export interface TableBodyProps {
   /**
    * The table columns to be rendered
@@ -114,12 +114,8 @@ export const TableBody: FC<TableBodyProps> = ({
                 ...expandColumn,
                 render: () => (
                   <Box
-                    as="button"
                     onClick={() => handleExpand(row[rowKey] as React.Key)}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    className={styles.expandButton}
+                    fontSize="xs"
                   >
                     {expandedRow === row[rowKey]
                       ? expandLabels.collapse
@@ -131,14 +127,13 @@ export const TableBody: FC<TableBodyProps> = ({
             row={row}
             rowIndex={rowIndex}
             align={align}
-            key={row[rowKey]}
             emptyCellPlaceholder={emptyCellPlaceholder}
             truncateOverflow={truncateOverflow}
             isBorderless={isBorderless}
             isCompact={isCompact}
           />
           {expandedRowRender && expandedRow === row[rowKey] && (
-            <tr className={styles.expandedRow}>
+            <tr>
               <td colSpan={columns.length + 1}>
                 {expandedRowRender(row, rowIndex)}
               </td>
