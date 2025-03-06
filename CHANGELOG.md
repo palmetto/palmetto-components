@@ -1,5 +1,13 @@
 Changelog
 
+# [2.1.0](https://github.com/palmetto/palmetto-components/compare/v2.0.0...v2.1.0) (2025-03-06)
+
+
+### Features
+
+* **Table:** Support for expandable rows ([c3010d4](https://github.com/palmetto/palmetto-components/commit/c3010d41eeee9430816623b1f09fc9e629646ceb))
+* **Table:** Support for expandable rows ([c2c013e](https://github.com/palmetto/palmetto-components/commit/c2c013eee6f6b60b2175fdecd17dd76696fcae12))
+
 # [2.0.0](https://github.com/palmetto/palmetto-components/compare/v1.0.1...v2.0.0) (2024-07-17)
 
 
