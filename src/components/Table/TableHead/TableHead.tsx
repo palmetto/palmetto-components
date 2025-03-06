@@ -45,6 +45,7 @@ export interface TableHeadProps {
    * by passing `truncateOverflow` value on a specific Column
    */
   truncateOverflow?: boolean;
+  expandColumn?: Column;
 }
 
 export const TableHead: FC<TableHeadProps> = ({
@@ -57,13 +58,17 @@ export const TableHead: FC<TableHeadProps> = ({
   onSort = undefined,
   sortedColumn = undefined,
   truncateOverflow = false,
+  expandColumn,
 }) => {
   const tableHeadClasses = classNames(className);
 
   return (
     <thead className={tableHeadClasses}>
       <TableRow
-        columns={columns}
+        columns={[
+          ...columns,
+          expandColumn,
+        ].filter((column): column is Column => Boolean(column))}
         align={align}
         isTableHead
         isBorderless={isBorderless}

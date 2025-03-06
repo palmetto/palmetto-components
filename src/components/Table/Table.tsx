@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Column, Row, EventWithColumnKey } from '../../types';
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Table.module.scss';
 import { TableBody } from './TableBody/TableBody';
 import { TableHead } from './TableHead/TableHead';
+import { useExpandableRow } from '../../hooks';
 
 export interface TableProps {
   /**
@@ -88,6 +89,25 @@ export interface TableProps {
    * by passing `truncateOverflow` value on a specific Column
    */
   truncateOverflow?: boolean;
+  /**
+   * Render function for expanded content
+   */
+  expandedRowRender?: (row: Row, rowIndex: number) => ReactNode;
+  /**
+   * Control which row is expanded.
+   */
+  expandedRow?: React.Key;
+  /**
+   * Callback when row expand state changes
+   */
+  onExpandedRowChange?: (expandedRow: React.Key | null) => void;
+  /**
+   * Labels for expand/collapse actions
+   */
+  expandLabels?: {
+    expand: string;
+    collapse: string;
+  };
 }
 
 export const Table: FC<TableProps> = ({
@@ -108,7 +128,19 @@ export const Table: FC<TableProps> = ({
   sortedColumn = undefined,
   useFixedTableLayout = false,
   truncateOverflow = false,
+  expandedRowRender,
+  expandedRow: controlledExpandedRow,
+  onExpandedRowChange,
+  expandLabels = {
+    expand: 'Show details',
+    collapse: 'Hide details',
+  },
 }) => {
+  const { expandedRow, handleToggle } = useExpandableRow({
+    expandedRow: controlledExpandedRow,
+    onExpandedRowChange,
+  });
+
   const containerClasses = classNames(
     styles.container,
     {
@@ -136,6 +168,12 @@ export const Table: FC<TableProps> = ({
     },
   );
 
+  const expandColumn = expandedRowRender ? {
+    heading: '',
+    width: 120,
+    dataKey: '__expand__',
+  } : undefined;
+
   return (
     <div className={containerClasses}>
       {isLoading && (
@@ -147,6 +185,7 @@ export const Table: FC<TableProps> = ({
         <table className={tableClasses}>
           <TableHead
             columns={columns}
+            expandColumn={expandColumn}
             align={align}
             onSort={onSort}
             isBorderless={isBorderless}
@@ -158,6 +197,9 @@ export const Table: FC<TableProps> = ({
           <TableBody
             rows={rows}
             columns={columns}
+            expandColumn={expandColumn}
+            expandedRowRender={expandedRowRender}
+            expandLabels={expandLabels}
             rowKey={rowKey}
             align={align}
             isStriped={isStriped}
@@ -166,6 +208,8 @@ export const Table: FC<TableProps> = ({
             truncateOverflow={truncateOverflow}
             isBorderless={isBorderless}
             isCompact={isCompact}
+            expandedRow={expandedRow}
+            onExpandedRowChange={handleToggle}
           />
         </table>
       </div>
