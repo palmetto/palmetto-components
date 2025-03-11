@@ -1,5 +1,13 @@
 Changelog
 
+# [2.2.0](https://github.com/palmetto/palmetto-components/compare/v2.1.0...v2.2.0) (2025-03-11)
+
+
+### Features
+
+* **Table:** Support for expandable box styles ([3dfb589](https://github.com/palmetto/palmetto-components/commit/3dfb58956fddcbe8d6bc1448f50bc9a98ddcdfcf))
+* **Table:** Support for expandable box styles ([8331df4](https://github.com/palmetto/palmetto-components/commit/8331df43a5ae24f52b4e6b60b3b87ce0df13a0ec))
+
 # [2.1.0](https://github.com/palmetto/palmetto-components/compare/v2.0.0...v2.1.0) (2025-03-06)
 
 
