@@ -112,20 +112,19 @@ export const TableBody: FC<TableBodyProps> = ({
           <TableRow
             columns={[
               ...columns,
-              expandedRowRender &&
-                expandColumn && {
-                  ...expandColumn,
-                  render: () => (
-                    <Box
-                      onClick={() => handleExpand(row[rowKey] as React.Key)}
-                      {...expandBoxProps}
-                    >
-                      {expandedRow === row[rowKey]
-                        ? expandLabels.collapse
-                        : expandLabels.expand}
-                    </Box>
-                  ),
-                },
+              expandedRowRender && expandColumn && {
+                ...expandColumn,
+                render: () => (
+                  <Box
+                    onClick={() => handleExpand(row[rowKey] as React.Key)}
+                    {...expandBoxProps}
+                  >
+                    {expandedRow === row[rowKey]
+                      ? expandLabels.collapse
+                      : expandLabels.expand}
+                  </Box>
+                ),
+              },
             ].filter((column): column is Column => Boolean(column))}
             row={row}
             rowIndex={rowIndex}
