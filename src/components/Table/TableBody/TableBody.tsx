@@ -67,6 +67,7 @@ export interface TableBodyProps {
     collapse: string;
   };
   expandColumn?: Column;
+  expandBoxProps?: Partial<React.ComponentProps<typeof Box>>;
 }
 
 export const TableBody: FC<TableBodyProps> = ({
@@ -89,6 +90,7 @@ export const TableBody: FC<TableBodyProps> = ({
     collapse: 'Hide details',
   },
   expandColumn,
+  expandBoxProps = {},
 }) => {
   const tableBodyClasses = classNames(
     styles['table-body'],
@@ -110,19 +112,20 @@ export const TableBody: FC<TableBodyProps> = ({
           <TableRow
             columns={[
               ...columns,
-              expandedRowRender && expandColumn && {
-                ...expandColumn,
-                render: () => (
-                  <Box
-                    onClick={() => handleExpand(row[rowKey] as React.Key)}
-                    fontSize="xs"
-                  >
-                    {expandedRow === row[rowKey]
-                      ? expandLabels.collapse
-                      : expandLabels.expand}
-                  </Box>
-                ),
-              },
+              expandedRowRender &&
+                expandColumn && {
+                  ...expandColumn,
+                  render: () => (
+                    <Box
+                      onClick={() => handleExpand(row[rowKey] as React.Key)}
+                      {...expandBoxProps}
+                    >
+                      {expandedRow === row[rowKey]
+                        ? expandLabels.collapse
+                        : expandLabels.expand}
+                    </Box>
+                  ),
+                },
             ].filter((column): column is Column => Boolean(column))}
             row={row}
             rowIndex={rowIndex}
