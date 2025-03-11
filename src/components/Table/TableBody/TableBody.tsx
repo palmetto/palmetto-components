@@ -67,6 +67,7 @@ export interface TableBodyProps {
     collapse: string;
   };
   expandColumn?: Column;
+  expandBoxProps?: Partial<React.ComponentProps<typeof Box>>;
 }
 
 export const TableBody: FC<TableBodyProps> = ({
@@ -89,6 +90,7 @@ export const TableBody: FC<TableBodyProps> = ({
     collapse: 'Hide details',
   },
   expandColumn,
+  expandBoxProps = {},
 }) => {
   const tableBodyClasses = classNames(
     styles['table-body'],
@@ -115,7 +117,7 @@ export const TableBody: FC<TableBodyProps> = ({
                 render: () => (
                   <Box
                     onClick={() => handleExpand(row[rowKey] as React.Key)}
-                    fontSize="xs"
+                    {...expandBoxProps}
                   >
                     {expandedRow === row[rowKey]
                       ? expandLabels.collapse

@@ -6,6 +6,7 @@ import styles from './Table.module.scss';
 import { TableBody } from './TableBody/TableBody';
 import { TableHead } from './TableHead/TableHead';
 import { useExpandableRow } from '../../hooks';
+import { Box } from '../Box/Box';
 
 export interface TableProps {
   /**
@@ -108,6 +109,10 @@ export interface TableProps {
     expand: string;
     collapse: string;
   };
+  /**
+   * Additional props to pass to the Box component used for expand/collapse
+   */
+  expandBoxProps?: Partial<React.ComponentProps<typeof Box>>;
 }
 
 export const Table: FC<TableProps> = ({
@@ -135,6 +140,7 @@ export const Table: FC<TableProps> = ({
     expand: 'Show details',
     collapse: 'Hide details',
   },
+  expandBoxProps = {},
 }) => {
   const { expandedRow, handleToggle } = useExpandableRow({
     expandedRow: controlledExpandedRow,
@@ -210,6 +216,7 @@ export const Table: FC<TableProps> = ({
             isCompact={isCompact}
             expandedRow={expandedRow}
             onExpandedRowChange={handleToggle}
+            expandBoxProps={expandBoxProps}
           />
         </table>
       </div>
