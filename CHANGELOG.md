@@ -1,5 +1,12 @@
 Changelog
 
+# [2.3.0](https://github.com/palmetto/palmetto-components/compare/v2.2.0...v2.3.0) (2025-03-25)
+
+
+### Features
+
+* update token package ([b74e6f5](https://github.com/palmetto/palmetto-components/commit/b74e6f5c4ef1cba53d520769f5f611946d038ecf))
+
 # [2.2.0](https://github.com/palmetto/palmetto-components/compare/v2.1.0...v2.2.0) (2025-03-11)
 
 
