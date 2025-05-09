@@ -8,6 +8,7 @@ import React, {
   ButtonHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import { IconName, ResponsiveProp } from '../../types';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { handleReactRouterClick } from '../../lib/reactRouterClickHandler';
@@ -48,9 +49,11 @@ export interface BaseButtonProps {
   id?: string;
   /**
    * URL to navigate to when clicked. Passing this attribute automatically
-   * renders an anchor <a> tag, NOT a <button> element.
+   * renders an anchor <a> tag, NOT a <button> element, and does not use react-router.
    */
   href?: string;
+  /** URL to navigate to via react-router. */
+  to?: string;
   /**
    * Disables the button, making it inoperable.
    */
@@ -132,6 +135,7 @@ export const Button = forwardRef<
       fullWidth = false,
       id = undefined,
       href = undefined,
+      to = undefined,
       iconPrefix = undefined,
       iconSuffix = undefined,
       isDisabled = false,
@@ -257,8 +261,7 @@ export const Button = forwardRef<
     );
 
     const buttonElement = getElementType(Button, { as });
-
-    return createElement(
+    const button = createElement(
       buttonElement,
       {
         id,
@@ -276,5 +279,15 @@ export const Button = forwardRef<
       },
       buttonContent,
     );
+
+    if (to) {
+      return (
+        <Link to={to}>
+          {button}
+        </Link>
+      );
+    }
+
+    return button;
   },
 );
