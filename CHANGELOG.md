@@ -1,5 +1,42 @@
 Changelog
 
+# [2.5.0](https://github.com/palmetto/palmetto-components/compare/v2.4.0...v2.5.0) (2025-05-06)
+
+
+### Features
+
+* update token package ([a5cc5eb](https://github.com/palmetto/palmetto-components/commit/a5cc5ebe36c4e6c2354e1ead0ccc7cc24a933f33))
+
+# [2.4.0](https://github.com/palmetto/palmetto-components/compare/v2.3.0...v2.4.0) (2025-04-17)
+
+
+### Features
+
+* update token package ([d3a9570](https://github.com/palmetto/palmetto-components/commit/d3a9570f93aa8c17a0568f377ef9eff28350c751))
+
+# [2.3.0](https://github.com/palmetto/palmetto-components/compare/v2.2.0...v2.3.0) (2025-03-25)
+
+
+### Features
+
+* update token package ([b74e6f5](https://github.com/palmetto/palmetto-components/commit/b74e6f5c4ef1cba53d520769f5f611946d038ecf))
+
+# [2.2.0](https://github.com/palmetto/palmetto-components/compare/v2.1.0...v2.2.0) (2025-03-11)
+
+
+### Features
+
+* **Table:** Support for expandable box styles ([3dfb589](https://github.com/palmetto/palmetto-components/commit/3dfb58956fddcbe8d6bc1448f50bc9a98ddcdfcf))
+* **Table:** Support for expandable box styles ([8331df4](https://github.com/palmetto/palmetto-components/commit/8331df43a5ae24f52b4e6b60b3b87ce0df13a0ec))
+
+# [2.1.0](https://github.com/palmetto/palmetto-components/compare/v2.0.0...v2.1.0) (2025-03-06)
+
+
+### Features
+
+* **Table:** Support for expandable rows ([c3010d4](https://github.com/palmetto/palmetto-components/commit/c3010d41eeee9430816623b1f09fc9e629646ceb))
+* **Table:** Support for expandable rows ([c2c013e](https://github.com/palmetto/palmetto-components/commit/c2c013eee6f6b60b2175fdecd17dd76696fcae12))
+
 # [2.0.0](https://github.com/palmetto/palmetto-components/compare/v1.0.1...v2.0.0) (2024-07-17)
 
 

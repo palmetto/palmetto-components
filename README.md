@@ -74,4 +74,4 @@ When raising an issue:
 ## License
 
 This project is licensed under the terms of the
-[MIT license](/LICENSE).
+[MIT license](/LICENSE). 

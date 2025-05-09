@@ -4,6 +4,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Badge } from '../Badge/Badge';
 import { Button } from '../Button/Button';
 import { Table } from './Table';
+import { Box } from '../Box/Box';
 
 <Meta title="Components/Table/Overview" component={Table} />
 
@@ -11,7 +12,7 @@ import { Table } from './Table';
 
 Use tables to render datasets.
 
-Tables display information in a way that’s easy to scan, while making it easy to interact with individual records in a data set.
+Tables display information in a way that's easy to scan, while making it easy to interact with individual records in a data set.
 
 Lastly use tables when you need the ability to sort, filter and/or paginate data.
 
@@ -496,7 +497,7 @@ Pass `hasStickyHeader` as a prop to stick the header to the top of the table, an
 
 ## Scrollable with First Column Stuck to Left
 
-To stick the first column to the left of the table when it scrolls horizontally, add `sticky: 'left` to the column's config.
+To stick the first column to the left of the table when it scrolls horizontally, add `sticky: 'left'` to the column's config.
 
 <Canvas>
   <Story name="Scrollable with First Column Stuck to Left">
@@ -538,7 +539,7 @@ To stick the first column to the left of the table when it scrolls horizontally,
 
 ## Scrollable with Sticky Header and Nth Column Stuck to Left
 
-Add `sticky: 'left` to any column to stick it to the left of the table when it scrolls horizontally.
+Add `sticky: 'left'` to any column to stick it to the left of the table when it scrolls horizontally.
 
 <Canvas>
   <Story name="Scrollable with Sticky Header and Nth Column Stuck to Left">
@@ -1123,6 +1124,88 @@ You can use a ReactNode as your table header or cell.
         },
       ];
       return <Table rowKey="id" columns={columnConfig} rows={tableData} />;
+    }}
+  </Story>
+</Canvas>
+
+## Expandable Rows
+
+<Canvas>
+  <Story name="Expandable Rows">
+    {() => {
+      const [expandedRow, setExpandedRow] = useState(null);
+      
+      const columnConfig = [
+        { heading: 'ID', dataKey: 'id' },
+        { heading: 'Name', dataKey: 'name' },
+        { heading: 'Email', dataKey: 'email' },
+      ];
+      
+      const tableData = [
+        { 
+          id: 1, 
+          name: 'John Smith', 
+          email: 'john@example.com',
+          expandedInfo: {
+            phone: '555-0123',
+            address: '123 Main St',
+            city: 'New York',
+            country: 'USA'
+          }
+        },
+        { 
+          id: 2, 
+          name: 'Jane Doe', 
+          email: 'jane@example.com',
+          expandedInfo: {
+            phone: '555-4567',
+            address: '456 Oak Ave',
+            city: 'Los Angeles',
+            country: 'USA'
+          }
+        },
+      ];
+      
+      return (
+        <Table
+          rowKey="id"
+          columns={columnConfig}
+          rows={tableData}
+          expandedRow={expandedRow}
+          onExpandedRowChange={setExpandedRow}
+          expandedRowRender={row => (
+            <Box background="primary" padding="md">
+              {Object.entries(row.expandedInfo).map(([label, value]) => (
+                <Box 
+                  key={label}
+                  display="flex"
+                  direction="row"
+                  alignItems="center"
+                  gap="md"
+                  padding="xs 0"
+                >
+                  <Box 
+                    fontWeight="bold" 
+                    minWidth="100px"
+                    flex="none"
+                  >
+                    {label}:
+                  </Box>
+                  <Box flex="1">{value}</Box>
+                </Box>
+              ))}
+            </Box>
+          )}
+          expandLabels={{
+            expand: 'Show details',
+            collapse: 'Hide details'
+          }}
+          expandBoxProps={{
+            cursor: 'pointer',
+            fontSize: "xs"
+          }}
+        />
+      );
     }}
   </Story>
 </Canvas>
