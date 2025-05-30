@@ -1,20 +1,20 @@
-import React, { FC, FocusEvent, ReactNode } from 'react';
 import classNames from 'classnames';
+import React, { FC, FocusEvent, ReactNode } from 'react';
 import Select, {
   components,
   FocusEventHandler,
+  GroupedOptionsType,
   IndicatorProps,
+  OptionsType,
   OptionTypeBase,
   ValueType,
-  GroupedOptionsType,
-  OptionsType,
 } from 'react-select';
-import { SimulatedEventPayloadType, ResponsiveProp } from '../../types';
-import { Z_INDEX_VALUES } from '../../lib/tokens';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
+import { Z_INDEX_VALUES } from '../../lib/tokens';
+import { ResponsiveProp, SimulatedEventPayloadType } from '../../types';
 import { Box } from '../Box/Box';
-import { Icon } from '../Icon/Icon';
 import { FormLabel } from '../FormLabel/FormLabel';
+import { Icon } from '../Icon/Icon';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
