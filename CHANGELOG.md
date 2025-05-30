@@ -1,5 +1,12 @@
 Changelog
 
+## [2.5.1](https://github.com/palmetto/palmetto-components/compare/v2.5.0...v2.5.1) (2025-05-30)
+
+
+### Bug Fixes
+
+* bump version ([7340eb4](https://github.com/palmetto/palmetto-components/commit/7340eb429d2f9ba45e7956f69bf2111e0c6c9906))
+
 # [2.5.0](https://github.com/palmetto/palmetto-components/compare/v2.4.0...v2.5.0) (2025-05-06)
 
 
