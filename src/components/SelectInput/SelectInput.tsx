@@ -6,7 +6,12 @@ import Select, {
 } from 'react-select';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { Z_INDEX_VALUES } from '../../lib/tokens';
-import { IndicatorProps, OptionTypeBase, ResponsiveProp, SelectInputOptions, SimulatedEventPayloadType } from '../../types';
+import { IndicatorProps,
+  OptionTypeBase,
+  ResponsiveProp,
+  SelectInputOptions,
+  SimulatedEventPayloadType,
+} from '../../types';
 import { Box } from '../Box/Box';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Icon } from '../Icon/Icon';
