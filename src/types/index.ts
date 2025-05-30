@@ -6,34 +6,25 @@ import {
   ReactNode,
 } from 'react';
 
-
 import {
   BorderRadiusSize as BorderRadius,
+  BreakpointSize,
   HeightSize,
   SpacingSize,
   WidthSize,
-  BreakpointSize,
 } from '@palmetto/palmetto-design-tokens/build/types';
 import { CommonProps } from 'react-select';
 
 export type {
-  BorderSize,
-  BoxShadowSize,
   BackgroundColor,
-  BorderColor,
-  BrandColor,
-  FontColor,
-  FontSize,
+  BorderColor, BorderSize,
+  BoxShadowSize, BrandColor, BreakpointSize, FontColor, FontFamily, FontSize,
   FontWeight,
-  HeightSize,
-  LineHeightSize,
+  HeightSize, IconName, LineHeightSize,
   OpacitySize,
   SpacingSize,
   WidthSize,
   ZIndexSize,
-  IconName,
-  FontFamily,
-  BreakpointSize,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type BreakpointSizeWithBase = BreakpointSize | 'base';
@@ -221,7 +212,7 @@ export interface OptionTypeBase {
     [key: string]: any;
 }
 
- export type GroupedOptionsType<
+export type GroupedOptionsType<
     OptionType extends OptionTypeBase,
     GroupType extends GroupTypeBase<OptionType> = GroupTypeBase<OptionType>
 > = ReadonlyArray<GroupType>;
@@ -230,7 +221,7 @@ export type SelectInputOptions =
   | GroupedOptionsType<OptionTypeBase>
   | OptionsType<OptionTypeBase>;
 
-  export type IndicatorProps<
+export type IndicatorProps<
     OptionType extends OptionTypeBase,
     IsMulti extends boolean,
     GroupType extends GroupTypeBase<OptionType> = GroupTypeBase<OptionType>
