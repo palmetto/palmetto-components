@@ -1,26 +1,19 @@
 import classNames from 'classnames';
-import React, { FC, FocusEvent, ReactNode } from 'react';
+import React, {  FC, FocusEvent, FocusEventHandler, ReactNode } from 'react';
 import Select, {
   components,
-  FocusEventHandler,
-  GroupedOptionsType,
-  IndicatorProps,
-  OptionsType,
-  OptionTypeBase,
-  ValueType,
+  OnChangeValue,
 } from 'react-select';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { Z_INDEX_VALUES } from '../../lib/tokens';
-import { ResponsiveProp, SimulatedEventPayloadType } from '../../types';
+import { ResponsiveProp, SelectInputOptions, SimulatedEventPayloadType, IndicatorProps, OptionTypeBase } from '../../types';
 import { Box } from '../Box/Box';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Icon } from '../Icon/Icon';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
 
-export type SelectInputOptions =
-  | GroupedOptionsType<OptionTypeBase>
-  | OptionsType<OptionTypeBase>;
+
 
 export interface SelectInputProps {
   /**
@@ -141,7 +134,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   size = 'md',
   ...restProps
 }) => {
-  const handleChange = (values: ValueType<OptionTypeBase, boolean>) => {
+  const handleChange = (values: OnChangeValue<OptionTypeBase, boolean>) => {
     const simulatedEventPayloadType: SimulatedEventPayloadType = {
       target: {
         name,
@@ -152,11 +145,11 @@ export const SelectInput: FC<SelectInputProps> = ({
     onChange(simulatedEventPayloadType);
   };
 
-  const handleFocus: FocusEventHandler = e => {
+  const handleFocus: FocusEventHandler = (e: React.FocusEvent<HTMLElement, Element>) => {
     if (onFocus) onFocus(e);
   };
 
-  const handleBlur: FocusEventHandler = e => {
+  const handleBlur: FocusEventHandler = (e: React.FocusEvent<HTMLElement, Element>) => {
     if (onBlur) onBlur(e);
   };
 
@@ -220,7 +213,7 @@ export const SelectInput: FC<SelectInputProps> = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         styles={{
-          menuPortal: base => ({
+          menuPortal: (base: any) => ({
             ...base,
             zIndex: Number(Z_INDEX_VALUES.popover),
           }),
