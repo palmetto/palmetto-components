@@ -185,3 +185,6 @@ export type EventWithColumnKey =
     KeyboardEvent<HTMLTableHeaderCellElement>
   )
   & { sortedKey: Key | undefined; };
+
+export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue;
+export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>;
