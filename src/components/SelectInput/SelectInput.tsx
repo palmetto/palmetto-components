@@ -2,21 +2,29 @@ import classNames from 'classnames';
 import React, { FC, FocusEvent, FocusEventHandler, ReactNode } from 'react';
 import Select, {
   components,
+  DropdownIndicatorProps,
   OnChangeValue,
+  Options,
 } from 'react-select';
 import { generateResponsiveClasses } from '../../lib/generateResponsiveClasses';
 import { Z_INDEX_VALUES } from '../../lib/tokens';
-import { IndicatorProps,
-  OptionTypeBase,
-  ResponsiveProp,
-  SelectInputOptions,
-  SimulatedEventPayloadType,
-} from '../../types';
+import { ResponsiveProp } from '../../types';
 import { Box } from '../Box/Box';
 import { FormLabel } from '../FormLabel/FormLabel';
 import { Icon } from '../Icon/Icon';
 import { InputValidationMessage } from '../InputValidationMessage/InputValidationMessage';
 import styles from './SelectInput.module.scss';
+
+export type SimulatedEventPayloadType = {
+  target: {
+    name: string;
+    value: OnChangeValue<any, boolean>;
+  };
+};
+
+export type SelectInputOptions =
+  | ReadonlyArray<any>
+  | Options<any>;
 
 export interface SelectInputProps {
   /**
@@ -137,7 +145,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   size = 'md',
   ...restProps
 }) => {
-  const handleChange = (values: OnChangeValue<OptionTypeBase, boolean>) => {
+  const handleChange = (values: OnChangeValue<any, boolean>) => {
     const simulatedEventPayloadType: SimulatedEventPayloadType = {
       target: {
         name,
@@ -179,14 +187,14 @@ export const SelectInput: FC<SelectInputProps> = ({
     requiredIndicator,
   };
 
-  const ClearIndicator = (props: IndicatorProps<OptionTypeBase, boolean>) => (
+  const ClearIndicator = (props: DropdownIndicatorProps<any, boolean>) => (
     <components.ClearIndicator {...props}>
       <Icon name="remove-light" />
     </components.ClearIndicator>
   );
 
   const DropdownIndicator = (
-    props: IndicatorProps<OptionTypeBase, boolean>,
+    props: DropdownIndicatorProps<any, boolean>,
   ) => (
     <components.ClearIndicator {...props}>
       <Icon name="caret-down" />

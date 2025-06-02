@@ -1,5 +1,4 @@
 import {
-  ElementType,
   Key,
   KeyboardEvent,
   MouseEvent,
@@ -13,7 +12,6 @@ import {
   SpacingSize,
   WidthSize,
 } from '@palmetto/palmetto-design-tokens/build/types';
-import { CommonProps } from 'react-select';
 
 export type {
   BackgroundColor,
@@ -187,54 +185,3 @@ export type EventWithColumnKey =
     KeyboardEvent<HTMLTableHeaderCellElement>
   )
   & { sortedKey: Key | undefined; };
-
-export type ValueType<OptionType extends OptionTypeBase, IsMulti extends boolean> = IsMulti extends true
-  ? OptionsType<OptionType>
-  : OptionType | null;
-
-export type SimulatedEventPayloadType = {
-  target: {
-    name: string;
-    value: ValueType<OptionTypeBase, boolean>;
-  };
-};
-
-export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue;
-export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>;
-
-export interface OptionTypeBase {
-  [key: string]: any;
-}
-
-type OptionsType<OptionType extends OptionTypeBase> = ReadonlyArray<OptionType>;
-
-interface GroupTypeBase<OptionType extends OptionTypeBase> {
-  options: OptionsType<OptionType>;
-  [key: string]: any;
-}
-
-export type GroupedOptionsType<
-  OptionType extends OptionTypeBase,
-  GroupType extends GroupTypeBase<OptionType> = GroupTypeBase<OptionType>
-> = ReadonlyArray<GroupType>;
-
-export type SelectInputOptions =
-  | GroupedOptionsType<OptionTypeBase>
-  | OptionsType<OptionTypeBase>;
-
-export type IndicatorProps<
-  OptionType extends OptionTypeBase,
-  IsMulti extends boolean,
-  GroupType extends GroupTypeBase<OptionType> = GroupTypeBase<OptionType>
-  > = CommonProps<OptionType, IsMulti, GroupType> & {
-  /** The children to be rendered inside the indicator. */
-  children: ElementType;
-  /** Props that will be passed on to the children. */
-  innerProps: any;
-  /** The focused state of the select. */
-  isFocused: boolean;
-  /** Whether the text is right to left */
-  isRtl: boolean;
-  /** Whether the component is disabled */
-  isDisabled: boolean;
-};
