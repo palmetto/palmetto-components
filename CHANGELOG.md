@@ -1,5 +1,12 @@
 Changelog
 
+## [2.5.3](https://github.com/palmetto/palmetto-components/compare/v2.5.2...v2.5.3) (2025-06-04)
+
+
+### Bug Fixes
+
+* update styling for light and dark mode ([1342678](https://github.com/palmetto/palmetto-components/commit/1342678842752ac412817b80d34df946954e38d1))
+
 ## [2.5.2](https://github.com/palmetto/palmetto-components/compare/v2.5.1...v2.5.2) (2025-06-02)
 
 
