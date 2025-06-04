@@ -1,4 +1,5 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
+
 // The following styles required the :global tag since they need to be applied to react-select elements for which we do not own the markup
 
 @mixin react-select-icon {
@@ -17,6 +18,27 @@
 
 .react-select-icon {
   @extend %react-select-icon;
+}
+
+:global(.react-select__control) {
+  :global(.react-select__multi-value) {
+    border-radius: var(--size-border-radius-md, 8px);
+    background-color: var(--color-text-contrast);
+    color: var(--color-background-form-control);
+  }
+
+  :global(.react-select__multi-value__label) {
+    color: var(--color-background-form-control);
+  }
+
+  :global(.react-select__multi-value__remove) {
+    &:hover {
+      border-top-right-radius: var(--size-border-radius-md, 8px);
+      border-bottom-right-radius: var(--size-border-radius-md, 8px);
+      background-color: var(--color-text-body-secondary);
+      color: var(--color-background-form-control);
+    }
+  }
 }
 
 // stylelint-disable
@@ -91,6 +113,8 @@
       var(--INTERNAL_form-control-size-md-font-size)
     );
   }
+
+ 
 
   :global(.react-select__multi-value__label) {
     font-size: var(
