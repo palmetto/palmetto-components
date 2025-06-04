@@ -1,5 +1,4 @@
 @import '~@palmetto/palmetto-design-tokens/build/scss/variables-size';
-
 // The following styles required the :global tag since they need to be applied to react-select elements for which we do not own the markup
 
 @mixin react-select-icon {
@@ -113,8 +112,6 @@
       var(--INTERNAL_form-control-size-md-font-size)
     );
   }
-
- 
 
   :global(.react-select__multi-value__label) {
     font-size: var(
