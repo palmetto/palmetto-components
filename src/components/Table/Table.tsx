@@ -44,9 +44,9 @@ export interface TableProps {
    * Remove borders around table, thead, tbody, td, etc.
    */
   isBorderless?: boolean;
-   /**
-   * Make Table more compact by cutting cell padding in half.
-   */
+  /**
+  * Make Table more compact by cutting cell padding in half.
+  */
   isCompact?: boolean;
   /**
    * If table scrolls vertically, header will remain stuck to the top of the table, and not scroll away.
@@ -101,7 +101,7 @@ export interface TableProps {
   /**
    * Callback when row expand state changes
    */
-  onExpandedRowChange?: (expandedRow: React.Key | null) => void;
+  onExpandedRowChange?: (expandedRow: React.Key | undefined) => void;
   /**
    * Labels for expand/collapse actions
    */
