@@ -1,5 +1,20 @@
 Changelog
 
+## [2.5.2](https://github.com/palmetto/palmetto-components/compare/v2.5.1...v2.5.2) (2025-06-02)
+
+
+### Bug Fixes
+
+* add missing type ([973eee6](https://github.com/palmetto/palmetto-components/commit/973eee6ad51f92345ec94731af7105cfde3d0158))
+* update types ([cf9ee8b](https://github.com/palmetto/palmetto-components/commit/cf9ee8bfbcc2e32858a486e7c1400277798b6c57))
+
+## [2.5.1](https://github.com/palmetto/palmetto-components/compare/v2.5.0...v2.5.1) (2025-05-30)
+
+
+### Bug Fixes
+
+* bump version ([7340eb4](https://github.com/palmetto/palmetto-components/commit/7340eb429d2f9ba45e7956f69bf2111e0c6c9906))
+
 # [2.5.0](https://github.com/palmetto/palmetto-components/compare/v2.4.0...v2.5.0) (2025-05-06)
 
 

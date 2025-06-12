@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import selectEvent from 'react-select-event';
 import { SelectInput } from './SelectInput';
 
@@ -52,10 +52,11 @@ describe('SelectInput', () => {
           onFocus={mockedHandleFocus}
           placeholder="Test Placeholder"
           options={selectOptions}
+          label="onfocus test"
         />,
       );
 
-      fireEvent.focus(screen.getByRole('textbox'));
+      fireEvent.focus(screen.getByLabelText('onfocus test'));
 
       expect(mockedHandleFocus).toBeCalledTimes(1);
     });
@@ -71,10 +72,11 @@ describe('SelectInput', () => {
           onBlur={mockedHandleBlur}
           placeholder="Test Placeholder"
           options={selectOptions}
+          label="onblur test"
         />,
       );
 
-      fireEvent.blur(screen.getByRole('textbox'));
+      fireEvent.blur(screen.getByLabelText('onblur test'));
 
       expect(mockedHandleBlur).toBeCalledTimes(1);
     });
