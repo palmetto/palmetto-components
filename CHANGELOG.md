@@ -1,5 +1,12 @@
 Changelog
 
+## [2.5.4](https://github.com/palmetto/palmetto-components/compare/v2.5.3...v2.5.4) (2025-06-12)
+
+
+### Bug Fixes
+
+* mutually exclusive types for exandable row props ([086deee](https://github.com/palmetto/palmetto-components/commit/086deeef236addefef3846af6fb94f616f490472))
+
 ## [2.5.3](https://github.com/palmetto/palmetto-components/compare/v2.5.2...v2.5.3) (2025-06-04)
 
 
