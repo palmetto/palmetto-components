@@ -2,12 +2,12 @@ import { useState, useCallback } from 'react';
 
 export interface UseExpandableRowProps {
   expandedRow?: React.Key;
-  onExpandedRowChange?: (expandedRow: React.Key | null) => void;
+  onExpandedRowChange?: (expandedRow: React.Key | undefined) => void;
 }
 export const useExpandableRow = (props: UseExpandableRowProps = {}) => {
   const { expandedRow: controlledExpandedRow, onExpandedRowChange } = props;
 
-  const [internalExpandedRow, setInternalExpandedRow] = useState<React.Key | null>(null);
+  const [internalExpandedRow, setInternalExpandedRow] = useState<React.Key | undefined>(undefined);
 
   const isControlled = controlledExpandedRow !== undefined;
   const currentExpandedRow = isControlled
@@ -15,8 +15,8 @@ export const useExpandableRow = (props: UseExpandableRowProps = {}) => {
     : internalExpandedRow;
 
   const handleToggle = useCallback(
-    (rowId: React.Key | null) => {
-      const newExpandedRow = currentExpandedRow === rowId ? null : rowId;
+    (rowId: React.Key | undefined) => {
+      const newExpandedRow = currentExpandedRow === rowId ? undefined : rowId;
 
       if (!isControlled) {
         setInternalExpandedRow(newExpandedRow);
