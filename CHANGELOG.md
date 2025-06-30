@@ -1,5 +1,13 @@
 Changelog
 
+# [2.6.0](https://github.com/palmetto/palmetto-components/compare/v2.5.4...v2.6.0) (2025-06-30)
+
+
+### Features
+
+* updating .lock file ([5b14850](https://github.com/palmetto/palmetto-components/commit/5b148501e52896ce0c531dde5ccc8011423a9ea7))
+* updating design-token app version ([6e92ddb](https://github.com/palmetto/palmetto-components/commit/6e92ddba8bab4ecc188a5c2cee63ba882e66339d))
+
 ## [2.5.4](https://github.com/palmetto/palmetto-components/compare/v2.5.3...v2.5.4) (2025-06-12)
 
 
