@@ -103,13 +103,14 @@ jobs:
       - name: unit test
         run: |
           yarn test
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.6.0
-        env:
-          CC_TEST_REPORTER_ID: 33f3435d9437e9c9c10480d4a1b066a260bb9813624e5038b30c4b32a1be62c0
-        with:
-          coverageCommand: yarn test
-          debug: true
+      # commented out for now, as it requires a Code Climate account
+      # - name: Test & publish code coverage
+      #   uses: paambaati/codeclimate-action@v2.6.0
+      #   env:
+      #     CC_TEST_REPORTER_ID: 33f3435d9437e9c9c10480d4a1b066a260bb9813624e5038b30c4b32a1be62c0
+      #   with:
+      #     coverageCommand: yarn test
+      #     debug: true
   visual-tests:
     name: visual regression tests
     runs-on: ubuntu-latest
