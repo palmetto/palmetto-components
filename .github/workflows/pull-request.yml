@@ -103,7 +103,7 @@ jobs:
       - name: unit test
         run: |
           yarn test
-      # commented out for now, as it requires an account with access lvl to fix this job
+      # commented out for now, as it requires an account with access level to fix this job
       # - name: Test & publish code coverage
       #   uses: paambaati/codeclimate-action@v2.6.0
       #   env:
