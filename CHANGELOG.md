@@ -1,5 +1,18 @@
 Changelog
 
+# [2.7.0](https://github.com/palmetto/palmetto-components/compare/v2.6.0...v2.7.0) (2025-07-23)
+
+
+### Bug Fixes
+
+* comment ([facb4a8](https://github.com/palmetto/palmetto-components/commit/facb4a8e3fb72a883d5083475ac7a269b5d3d64f))
+
+
+### Features
+
+* comenting code coverage to bypass job ([499952e](https://github.com/palmetto/palmetto-components/commit/499952e429744199ef1e355ed0ce108277ce4739))
+* updating design token version ([cba39e9](https://github.com/palmetto/palmetto-components/commit/cba39e9a92c7d284579495d7bbb6a0b7fd2e6f47))
+
 # [2.6.0](https://github.com/palmetto/palmetto-components/compare/v2.5.4...v2.6.0) (2025-06-30)
 
 
