@@ -3633,10 +3633,10 @@
     react-remove-scroll "^2.4.3"
     tslib "^2.3.0"
 
-"@palmetto/palmetto-design-tokens@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-1.11.0.tgz#bb781fb9f4595a89ac00c477effa8739e0848539"
-  integrity sha512-5eBCXyG3HcrBg1xjSva0Zc3qh29vDNQOivCdepIIU9fCn1MCabjDga8GyhyqwxUr9MWJ7xSTqyh68RpsUkv8/g==
+"@palmetto/palmetto-design-tokens@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@palmetto/palmetto-design-tokens/-/palmetto-design-tokens-1.12.0.tgz#612ae2291d65c0ce5aed74772420b7b227386d44"
+  integrity sha512-VnerqJ/Fg2RxXKNLm8axNdlpINYZZ9PuAsZC/4f4BG15bBdKf2ARbjEE9mQ5OVc6mEjorqN2rdqhQCh+Ikko+A==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.10"
