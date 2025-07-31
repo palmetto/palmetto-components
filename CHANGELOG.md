@@ -1,5 +1,12 @@
 Changelog
 
+# [2.8.0](https://github.com/palmetto/palmetto-components/compare/v2.7.0...v2.8.0) (2025-07-31)
+
+
+### Features
+
+* bump design-tokens version ([7c1d30a](https://github.com/palmetto/palmetto-components/commit/7c1d30a1eedb66a283a5567e4aecaa2d2068d948))
+
 # [2.7.0](https://github.com/palmetto/palmetto-components/compare/v2.6.0...v2.7.0) (2025-07-23)
 
 
