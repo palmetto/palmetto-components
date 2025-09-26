@@ -14,10 +14,10 @@ jobs:
     name: type check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -32,10 +32,10 @@ jobs:
     name: tbuild
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -50,10 +50,10 @@ jobs:
     name: lint js
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -68,10 +68,10 @@ jobs:
     name: lint styles
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -88,10 +88,10 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -117,12 +117,12 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0 # Required to retrieve git history
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v5
         with:
-          node-version: 16
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
