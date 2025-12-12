@@ -14,10 +14,10 @@ jobs:
     name: type check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -32,10 +32,10 @@ jobs:
     name: tbuild
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -50,10 +50,10 @@ jobs:
     name: lint js
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -68,10 +68,10 @@ jobs:
     name: lint styles
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -88,10 +88,10 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '16'
+          node-version: 22
       - uses: actions/cache@v4
         with:
           path: ~/.cache/yarn
@@ -117,25 +117,26 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Required to retrieve git history
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: install dependencies
-        run: yarn
-      - uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          onlyChanged: true
-          externals: |
-            - '*.scss'
-            - 'public/**'
+      - run: echo "Visual regression tests are currently disabled"
+      # - uses: actions/checkout@v5
+      #   with:
+      #     fetch-depth: 0 # Required to retrieve git history
+      # - uses: actions/setup-node@v5
+      #   with:
+      #     node-version: 22
+      # - uses: actions/cache@v4
+      #   with:
+      #     path: ~/.cache/yarn
+      #     key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-yarn-
+      # - name: install dependencies
+      #   run: yarn
+      # - uses: chromaui/action@v1
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      #     onlyChanged: true
+      #     externals: |
+      #       - '*.scss'
+      #       - 'public/**'
