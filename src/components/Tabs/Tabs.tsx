@@ -15,6 +15,7 @@ export interface TabsProps extends BoxProps {
   isFullWidth?: boolean;
   isCentered?: boolean;
   size?: 'sm' | 'md' | ResponsiveProp<'sm' | 'md'>;
+  disableAutoScroll?: boolean;
 }
 
 const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef(
@@ -24,6 +25,7 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef(
       borderWidth = '0 0 xs 0',
       borderColor = 'separator',
       children,
+      disableAutoScroll = false,
       isCentered = false,
       isFullWidth = false,
       onChange,
@@ -83,12 +85,12 @@ const TabsBaseComponent: React.FC<TabsProps> = React.forwardRef(
     });
 
     React.useEffect(() => {
-      if (activeTabRef.current) {
+      if (!disableAutoScroll && activeTabRef.current) {
         activeTabRef.current.scrollIntoView({
           behavior: 'smooth',
         });
       }
-    }, []);
+    }, [disableAutoScroll]);
 
     return (
       <Box
