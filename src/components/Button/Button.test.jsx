@@ -427,7 +427,7 @@ describe('Button', () => {
         expect(buttonElement.getAttribute('type')).toBe(null);
       });
 
-      test('it renders a target attribute if one is passed, the element is an anchor, and there is a href', () => {
+      test('it renders a target attribute if one is passed, the element is an anchor, and there is an href', () => {
         render(
           <Button href="http://palmetto.com" as="a" target="_blank">
             hey there
