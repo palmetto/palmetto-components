@@ -1,5 +1,62 @@
 Changelog
 
+# [2.8.0](https://github.com/palmetto/palmetto-components/compare/v2.7.0...v2.8.0) (2025-07-31)
+
+
+### Features
+
+* bump design-tokens version ([7c1d30a](https://github.com/palmetto/palmetto-components/commit/7c1d30a1eedb66a283a5567e4aecaa2d2068d948))
+
+# [2.7.0](https://github.com/palmetto/palmetto-components/compare/v2.6.0...v2.7.0) (2025-07-23)
+
+
+### Bug Fixes
+
+* comment ([facb4a8](https://github.com/palmetto/palmetto-components/commit/facb4a8e3fb72a883d5083475ac7a269b5d3d64f))
+
+
+### Features
+
+* comenting code coverage to bypass job ([499952e](https://github.com/palmetto/palmetto-components/commit/499952e429744199ef1e355ed0ce108277ce4739))
+* updating design token version ([cba39e9](https://github.com/palmetto/palmetto-components/commit/cba39e9a92c7d284579495d7bbb6a0b7fd2e6f47))
+
+# [2.6.0](https://github.com/palmetto/palmetto-components/compare/v2.5.4...v2.6.0) (2025-06-30)
+
+
+### Features
+
+* updating .lock file ([5b14850](https://github.com/palmetto/palmetto-components/commit/5b148501e52896ce0c531dde5ccc8011423a9ea7))
+* updating design-token app version ([6e92ddb](https://github.com/palmetto/palmetto-components/commit/6e92ddba8bab4ecc188a5c2cee63ba882e66339d))
+
+## [2.5.4](https://github.com/palmetto/palmetto-components/compare/v2.5.3...v2.5.4) (2025-06-12)
+
+
+### Bug Fixes
+
+* mutually exclusive types for exandable row props ([086deee](https://github.com/palmetto/palmetto-components/commit/086deeef236addefef3846af6fb94f616f490472))
+
+## [2.5.3](https://github.com/palmetto/palmetto-components/compare/v2.5.2...v2.5.3) (2025-06-04)
+
+
+### Bug Fixes
+
+* update styling for light and dark mode ([1342678](https://github.com/palmetto/palmetto-components/commit/1342678842752ac412817b80d34df946954e38d1))
+
+## [2.5.2](https://github.com/palmetto/palmetto-components/compare/v2.5.1...v2.5.2) (2025-06-02)
+
+
+### Bug Fixes
+
+* add missing type ([973eee6](https://github.com/palmetto/palmetto-components/commit/973eee6ad51f92345ec94731af7105cfde3d0158))
+* update types ([cf9ee8b](https://github.com/palmetto/palmetto-components/commit/cf9ee8bfbcc2e32858a486e7c1400277798b6c57))
+
+## [2.5.1](https://github.com/palmetto/palmetto-components/compare/v2.5.0...v2.5.1) (2025-05-30)
+
+
+### Bug Fixes
+
+* bump version ([7340eb4](https://github.com/palmetto/palmetto-components/commit/7340eb429d2f9ba45e7956f69bf2111e0c6c9906))
+
 # [2.5.0](https://github.com/palmetto/palmetto-components/compare/v2.4.0...v2.5.0) (2025-05-06)
 
 

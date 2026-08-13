@@ -57,11 +57,11 @@ export interface TableBodyProps {
   /**
    * Currently expanded row key
    */
-  expandedRow?: React.Key | null;
+  expandedRow?: React.Key;
   /**
    * Callback when row expand state changes
    */
-  onExpandedRowChange?: (rowId: React.Key | null) => void;
+  onExpandedRowChange?: (rowId: React.Key | undefined) => void;
   expandLabels?: {
     expand: string;
     collapse: string;
@@ -101,8 +101,8 @@ export const TableBody: FC<TableBodyProps> = ({
     className,
   );
 
-  const handleExpand = (rowId: React.Key | null) => {
-    onExpandedRowChange?.(rowId === expandedRow ? null : rowId);
+  const handleExpand = (rowId: React.Key | undefined) => {
+    onExpandedRowChange?.(rowId === expandedRow ? undefined : rowId);
   };
 
   return (

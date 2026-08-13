@@ -6,36 +6,23 @@ import {
 } from 'react';
 
 import {
-  OptionTypeBase,
-  ValueType,
-} from 'react-select';
-
-import {
   BorderRadiusSize as BorderRadius,
+  BreakpointSize,
   HeightSize,
   SpacingSize,
   WidthSize,
-  BreakpointSize,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type {
-  BorderSize,
-  BoxShadowSize,
   BackgroundColor,
-  BorderColor,
-  BrandColor,
-  FontColor,
-  FontSize,
+  BorderColor, BorderSize,
+  BoxShadowSize, BrandColor, BreakpointSize, FontColor, FontFamily, FontSize,
   FontWeight,
-  HeightSize,
-  LineHeightSize,
+  HeightSize, IconName, LineHeightSize,
   OpacitySize,
   SpacingSize,
   WidthSize,
   ZIndexSize,
-  IconName,
-  FontFamily,
-  BreakpointSize,
 } from '@palmetto/palmetto-design-tokens/build/types';
 
 export type BreakpointSizeWithBase = BreakpointSize | 'base';
@@ -198,13 +185,6 @@ export type EventWithColumnKey =
     KeyboardEvent<HTMLTableHeaderCellElement>
   )
   & { sortedKey: Key | undefined; };
-
-export type SimulatedEventPayloadType = {
-  target: {
-    name: string;
-    value: ValueType<OptionTypeBase, boolean>;
-  };
-};
 
 export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue;
 export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>;

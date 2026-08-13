@@ -38,7 +38,7 @@ describe('useExpandableRow', () => {
   });
 
   describe('uncontrolled behavior', () => {
-    test('initializes with null expandedRow', () => {
+    test('initializes with undefined expandedRow', () => {
       const { getByTestId } = render(<UseExpandableRowExample />);
       expect(getByTestId('expanded-row').textContent).toBe('');
     });
@@ -56,7 +56,7 @@ describe('useExpandableRow', () => {
 
       fireEvent.click(getByTestId('toggle-row1'));
       expect(getByTestId('expanded-row').textContent).toBe('');
-      expect(mockOnExpandedRowChange).toHaveBeenCalledWith(null);
+      expect(mockOnExpandedRowChange).toHaveBeenCalledWith(undefined);
     });
 
     test('changes to different row when another row is toggled', () => {
@@ -97,7 +97,7 @@ describe('useExpandableRow', () => {
 
       fireEvent.click(getByTestId('toggle-row1'));
       expect(getByTestId('expanded-row').textContent).toBe('row1');
-      expect(mockOnExpandedRowChange).toHaveBeenCalledWith(null);
+      expect(mockOnExpandedRowChange).toHaveBeenCalledWith(undefined);
 
       fireEvent.click(getByTestId('toggle-row2'));
       expect(getByTestId('expanded-row').textContent).toBe('row1');
